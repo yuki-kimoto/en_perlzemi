@@ -1,91 +1,89 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Perl </span></a>
+    <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161102147817.html">
-        <span itemprop="name">特殊変数</span></a>
-    <meta itemprop="position" content="2" />
+        <span itemprop = "name"> Special variables </span></a>
+    <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </span>
+    <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>コマンドライン引数の扱い @ARGV</h2>
+<h2> Handling command line arguments @ARGV </h2>
 
 
 
-Perlで<b>コマンドライン引数</b>を処理する方法を解説します。
+Learn how to handle <b> command line arguments </b> in Perl.
 
-コマンドライン引数とは、プログラムを実行するときに、プログラム名に加えて空白区切りで指定できる引数のことです。
+Command line arguments are arguments that can be specified in addition to the program name, separated by spaces, when the program is executed.
 
-たとえば「test.pl」を実行するときに「1」「3」「5」という値を指定したい場合は、次のようにプログラムを呼び出すことができます。
+For example, if you want to specify the values ​​"1", "3", and "5" when executing "test.pl", you can call the program as follows.
 
 <pre>
 perl test.pl 1 3 5
 </pre>
 
-上記の例は数字ですがファイル名などの文字列でも大丈夫です。
+The above example is a number, but a character string such as a file name is also acceptable.
 
 <pre>
 perl test.pl a.txt b.txt
 </pre>
 
-<h4>コマンドライン引数内で空白を使いたい場合</h4>
+<h4> If you want to use spaces in command line arguments </h4>
 
-コマンドライン引数の区切りは空白です。空白を使いたい場合は、クォートを使って、エスケープをする必要があります。
+The command line argument delimiter is blank. If you want to use whitespace, you need to escape it with quotes.
 
 <pre>
 perl test.pl foo "bar baz"
 </pre>
 
-<h3>コマンドライン引数の受け取り方</h3>
+<h3> How to receive command line arguments </h3>
 
-コマンドライン引数は<b>@ARGV</b>という<a href="/blog/20161102147817.html">特殊変数</a>に代入されています。この特殊変数は、通常の<a href="/blog/20161012147627.html">配列</a>と同じように利用することができます。
+The command line arguments are assigned to the <b> @ARGV </b> <a href="/blog/20161102147817.html"> special variable</a>. This special variable can be used in the same way as a normal <a href="/blog/20161012147627.html"> array</a>.
 
-たとえば、複数の数値がコマンドライン引数として指定された場合は、名前のつけた配列に代入してあげましょう。
+For example, if multiple numbers are specified as command line arguments, assign them to the named array.
 
 <pre>
 my @nums = @ARGV;
 </pre>
 
-<a href="/blog/20100308126967.html">リスト代入</a>を使って、コマンドライン引数を受け取ることもできます。
+You can also use <a href="/blog/20100308126967.html"> List Assignment</a> to receive command line arguments.
 
 <pre>
 my ($name, $age) = @ARGV;
 </pre>
 
-引数を指定しない<a href="/blog/20100104126425.html">shift関数</a>を使って@ARGVの先頭の引数を受け取ることができます。
+You can use the <a href="/blog/20100104126425.html"> shift function</a> with no arguments to receive the first argument of @ARGV.
 
 <pre>
-# @ARGVの先頭の値を取得
+Get the first value of # @ARGV
 my $file = shift;
 </pre>
 
-いずれの場合も、「@ARGV」はそのまま使うのではなく、名前のついた<a href="/blog/20161107147852.html">変数</a>に格納して使うようにしましょう。
+In either case, do not use "@ARGV" as it is, but store it in the named <a href="/blog/20161107147852.html"> variable</a>.
 
-コマンドライン引数の個数を知りたい場合は@ARGVは通常の変数ですので、<a href="/blog/20080608121292.html">スカラコンテキスト</a>で評価すると取得することができます。
+If you want to know the number of command line arguments, @ARGV is a normal variable, so you can get it by evaluating it with <a href="/blog/20080608121292.html"> scalar context</a>.
 
 <pre>
-# コマンドライン引数の個数
+#Number of command line arguments
 my $count = @ARGV;
 </pre>
 
-<a href="/blog/20101130129876.html">サブルーチン</a>における引数は<b>@_</b>という特殊変数に代入されていました。コマンドライン引数は<b>@ARGV</b>なので、しっかり区別して覚えておきましょう。
+The arguments in the <a href="/blog/20101130129876.html"> subroutine</a> were assigned to a special variable called <b> @_ </b>. The command line arguments are <b> @ARGV </b>, so be sure to distinguish them and remember them.
 
-<h3>コマンドライン引数の「オプション」を処理する</h3>
+<h3> Handle command line argument "options" </h3>
 
-通常のコマンドライン引数に加えて、「オプション」形式のコマンドライン引数を処理したい場合は、Getopt::Longというモジュールを使うのが簡単です。
+If you want to handle "optional" form of command line arguments in addition to the usual command line arguments, it's easy to use a module called Getopt :: Long.
 
 <ul>
   <li>
-    <a href="/blog/20100514127696.html">Getopt::Long - コマンドライン引数のオプションを処理する</a>
+    <a href="/blog/20100514127696.html"> Getopt :: Long --Handle command line argument options</a>
   </li>
 </ul>
-
-
