@@ -1,36 +1,36 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Perl </span></a>
+    <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
+      <span itemprop = "name"> Module </span></a>
+    <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
   <li>
     here
   </li>
 </ol>
-<h2>Data::Dumper - データをダンプする</h2>
+<h2> Data::Dumper - Dump data </h2>
 
 
 
-<strong>Data::Dumper</strong>モジュールを使うと、<a href="/blog/20161013147635.html">ハッシュ</a>や<a href="/blog/20161012147627.html">配列</a>などの変数の内容を見やすい形で出力することができます。また<a href="/blog/20100930127859.html">リファレンス</a>を使用した複雑なデータ構造を見やすく出力することができます。
+With the <strong> Data::Dumper </strong> module, <a href="/blog/20161013147635.html"> hashes</a> and <a href="/blog/20161012147627.html">arrays</a> You can output the contents of variables such as in an easy-to-read format. You can also output complex data structures using <a href="/blog/20100930127859.html"> reference</a> in an easy-to-read manner.
 
 <pre>
 use Data::Dumper;
 
-# データをダンプ
+# Dump data
 my $dump_string = Dumper $data;
 </pre>
 
-Dumper関数を使用するとデータを見やすい文字列に変換することができます。Dumper関数は出力を行わないことに注意してください。
+You can use the Dumper function to convert the data into an easy-to-read string. Note that the Dumper function produces no output.
 
-画面に出力に出力したい場合は、<a href="/blog/20170404149131.html">print関数</a>や<a href="/blog/20100213126425.html">warn関数</a>と組み合わせます。
+If you want to output to the screen, combine it with <a href="/blog/20170404149131.html"> print function</a> or <a href="/blog/20100213126425.html"> warn function</a> increase.
 
 <pre>
 print Dumper $data;
@@ -38,51 +38,51 @@ print Dumper $data;
 warn Dumper $data;
 </pre>
 
-Data::Dumperのいくつかの例を紹介します。
+Here are some examples of Data::Dumper.
 
-<h4>スカラ変数を出力</h4>
+<h4> Output scalar variables </h4>
 
-<a href="/blog/20161107147852.html">スカラ変数</a>を出力します。
+<a href="/blog/20161107147852.html"> Scalar variable</a> is output.
 
 <pre>
-my $name = 'kimoto';
+my $name ='kimoto';
 print Dumper $name;
 </pre>
 
-<h4>配列を出力する</h4>
+<h4> Output array </h4>
 
-Dumperの引数には、配列のリファレンスを渡してください。
+Pass an array reference as an argument to Dumper.
 
 <pre>
 my @nums = (1, 2, 3);
 print Dumper \@nums;
 </pre>
 
-<h4>配列のリファレンスを出力する</h4>
+<h4> Output array reference </h4>
 
 <pre>
 print Dumper [1, 2, 3];
 </pre>
 
-<h4>ハッシュを出力する</h4>
+<h4> Output hash </h4>
 
-Dumperの引数には、ハッシュのリファレンスを渡してください。
+Pass a hash reference as an argument to Dumper.
 
 <pre>
-my %score = (math => 97, english => 80);
+my%score = (math => 97, english => 80);
 print Dumper \%score;
 </pre>
 
-<h4>ハッシュのリファレンスを出力する</h4>
+<h4> Output hash reference </h4>
 
 <pre>
 print Dumper {math => 97, english => 80};
 </pre>
 
-<h3>Data::Dumperに関するFAQ</h3>
+<h3> Data::Dumper FAQ </h3>
 
-Q. Data::Dumperで日本語を出力すると日本語ではなく16進数の記号のようなものになってしまうときがあるのですが、解決策はありますか。
+Q. When I output Japanese with Data::Dumper, it sometimes looks like a hexadecimal symbol instead of Japanese. Is there a solution?
 
-A. それは内部文字列(※1)を出力しようとしているために起こっています。出力する文字列は内部文字列ではなくバイト文字列である必要あります。とはいえ、ハッシュや配列の中に含まれるすべての文字列をバイト文字列に変換することは大変だと思います。これを助けてくれる<a href="http://search.cpan.org/dist/Data-Recursive-Encode/lib/Data/Recursive/Encode.pm">Data::Recursive::Encode.pm</a>モジュールというものがCPANにありますので、Data::Dumperと組み合わせて利用してみるのもよいと思います。
+A. It's happening because you're trying to output an internal string (* 1). The output string must be a byte string, not an internal string. However, I find it difficult to convert all strings contained in hashes and arrays to byte strings. <a href="http://search.cpan.org/dist/Data-Recursive-Encode/lib/Data/Recursive/Encode.pm"> Data::Recursive::Encode.pm</a> There is module on CPAN, so I think it's a good idea to use it in combination with Data::Dumper.
 
-※1 内部文字列とバイト文字列については<a href="/blog/20091118124667.html">Encodeモジュールの解説</a>をご覧ください。
+* 1 For the internal character string and byte character string, see <a href="/blog/20091118124667.html"> Explanation of Encode module</a>.
