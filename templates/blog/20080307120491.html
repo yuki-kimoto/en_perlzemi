@@ -1,137 +1,135 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Perl </span></a>
+    <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
+      <span itemprop = "name"> Syntax </span></a>
+    <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </span>
+    <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>my - レキシカル変数の宣言</h2>
+<h2> my - Declaration of lexical variables </h2>
 
-
-
-<b>my</b>を使えばレキシカル変数を宣言することができます。
+You can declare lexical variables using <b> my </b>.
 
 <pre>
-# レキシカル変数の宣言
+# Declaration of lexical variables
 my $num;
 my @nums;
 my %scores;
 </pre>
 
-レキシカル変数というのは、C言語でいうところの、ローカル変数のことです。
+A lexical variable is a local variable in C language.
 
-Perlには<a href="/blog/20080309120507.html">local</a>というキーワードがあるのですが、こちらは実際には、ローカル変数を作成しません。localキーワードは、<a href="/blog/20080308120495.html">パッケージ変数</a>を一時的に保存して復元するという機能を持っています。
+Perl has the keyword <a href="/blog/20080309120507.html"> local</a>, but it doesn't actually create a local variable. The local keyword has the ability to temporarily save and restore <a href="/blog/20080308120495.html"> package variables</a>.
 
-myによる変数宣言は、<a href="/blog/20160225145640.html">Perl 5.6</a>で追加された機能です。これは他の言語におけるローカル変数そのものなのですが、localというキーワードがすでにあるので、紛らわしくならないようにレキシカル変数という名前になったのかもしれません。
+Variable declaration by my is a feature added in <a href="/blog/20160225145640.html"> Perl 5.6</a>. This is the local variable itself in other languages, but since the keyword local already exists, it may have been named lexical variable so as not to be confusing.
 
-Perlでレキシカル変数といえば、他の言語におけるローカル変数のことだと考えてください。
+Think of lexical variables in Perl as local variables in other languages.
 
-<h3>変数宣言とは</h3>
+<h3> What is a variable declaration? </H3>
 
-変数宣言というのはこれから<a href="/blog/20161107147852.html">変数</a>を使うよということを宣言するものです。新しく使う変数は「my」を使って変数宣言しましょう。
+The variable declaration declares that we will use <a href="/blog/20161107147852.html"> variables</a> from now on. Declare new variables using "my".
 
 <pre>
-# スカラ変数の宣言
+# Declaration of scalar variables
 my $num;
 </pre>
 
-スカラ変数のほかに、<a href="/blog/20161012147627.html">配列変数</a>、<a href="/blog/20161013147635.html">ハッシュ変数</a>を宣言することもできます。
+In addition to scalar variables, you can also declare <a href="/blog/20161012147627.html"> array variables</a> and <a href="/blog/20161013147635.html"> hash variables</a>. I can do it.
 
 <pre>
-# 配列変数の宣言
+# Declaration of array variables
 my @nums;
 
-# ハッシュ変数の宣言
+# Hash variable declaration
 my %score;
 </pre>
 
-<h3>変数の初期化</h3>
+<h3> Variable initialization </h3>
 
-変数宣言と同時に「変数の初期化」を行うことができます。
+"Variable initialization" can be performed at the same time as the variable declaration.
 
 <pre>
-# スカラ変数の初期化
+# Initialization of scalar variables
 my $num = 3;
 
-# 配列変数の初期化
+# Initialization of array variables
 my @nums = (1, 2, 3);
 
-# ハッシュ変数の初期化
+# Initialization of hash variables
 my %score = (math => 80, english => 70);
 </pre>
 
-初期化を行わなかった場合はスカラ変数の場合は<a href="/blog/20100220126425.html">未定義値</a>が代入されます。配列変数とハッシュ変数の場合は<a href="/blog/20100308126967.html">空リスト</a>が代入されます。
+If initialization is not performed, <a href="/blog/20100220126425.html"> undefined value</a> will be assigned for scalar variables. For array variables and hash variables, <a href="/blog/20100308126967.html"> empty list</a> is assigned.
 
-<h3>レキシカル変数とは</h3>
+<h3> What are lexical variables? </H3>
 
-myを使うと「レキシカル変数」を宣言できると書きましたが、レキシカル変数とは、いったいなんでしょうか。レキシカル変数とは、レキシカルなスコープを持つ変数のことです。
+I wrote that you can declare a "lexical variable" using my, but what exactly is a lexical variable? A lexical variable is a variable that has a lexical scope.
 
-レキシカル変数は、スコープの終わりになると、寿命がつきて、メモリから解放されます。
+Lexical variables have reached the end of their life and are freed from memory at the end of scope.
 
 <pre>
-# スコープの開始
+# Start of scope
 {
   my $num = 2;
 }
-# ここでは「$num」を利用できない。
+# "$num" is not available here.
 </pre>
 
-レキシカルなスコープについての詳しい解説は以下をご覧ください。
+See below for a detailed explanation of lexical scopes.
 
 <ul>
   <li>
-    <a href="/blog/20110128130016.html">Perlのスコープを理解する</a>
+    <a href="/blog/20110128130016.html"> Understanding Perl scope</a>
   </li>
 </ul>
 
-<h3>strictモジュールとの連携</h3>
+<h3> Cooperation with strict module </h3>
 
-strictモジュールとmyによる変数宣言を一緒に使うと、変数宣言がない場合に、変数を使おうとした場合に、コンパイルエラーになります。
+If you use the strict module and the variable declaration by my together, you will get a compile error if you try to use the variable without the variable declaration.
 
 <pre>
 use strict;
 
 my $num = 1;
 
-# 変数名が間違っているのでコンパイルエラーになる
+# Compile error occurs because the variable name is incorrect
 print $nam;
 </pre>
 
-意図しない変数の利用をすぐに発見できるので、Perlのプログラムでは、必ずstrictモジュールを使うようにしましょう。
+Be sure to use the strict module in your Perl programs, as you can quickly discover unintended variable usage.
 
-strictモジュールについての詳しい解説は以下をご覧ください。
+See below for a detailed explanation of the strict module.
 <ul>
   <li>
-    <a href="/blog/20130912137895.html">strict - 文法チェックを厳しくする</a>
+    <a href="/blog/20130912137895.html"> strict - Strict grammar check</a>
   </li>
 </ul>
 
-<h3>「my」と「our」と「local」による変数宣言の違い</h3>
+<h3> Difference in variable declaration by "my", "our" and "local" </h3>
 
-Perlの変数宣言には「my」と「our」と「local」の三つがあります。
+There are three Perl variable declarations: "my", "our", and "local".
 
-簡単に違いをいうと「my」は「レキシカル変数」の宣言、「our」は「パッケージ変数」の宣言、「local」は「パッケージ変数を宣言してスコープが終わるまで値を保存」という効果があります。
+The simple difference is that "my" declares a "lexical variable", "our" declares a "package variable", and "local" declares a package variable and saves the value until the end of scope. I have.
 
-Perlで変数を宣言するときは「our」や「local」の使用はできる限り避けてください。現代のPerlでは「my」による変数宣言だけで、完全なプログラミングを行うことができます。
+Avoid using "our" or "local" when declaring variables in Perl as much as possible. In modern Perl, you can do complete programming with just a variable declaration with "my".
 
-our、localに追加の解説は以下をご覧ください。
+See below for additional explanations for our and local.
 
 <ul>
   <li>
-    <a href="/blog/20080308120495.html">our - パッケージ変数の宣言</a>
+    <a href="/blog/20080308120495.html"> our - Declaration of package variables</a>
   </li>
   <li>
-    <a href="/blog/20080309120507.html">local - パッケージ変数を一時的に退避して復元</a>
+    <a href="/blog/20080309120507.html"> local - Temporarily save and restore package variables</a>
   </li>
 </ul>
