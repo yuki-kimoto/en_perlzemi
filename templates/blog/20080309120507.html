@@ -1,60 +1,60 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Perl </span></a>
+    <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
+      <span itemprop = "name"> Syntax </span></a>
+    <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </span>
+    <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>local - パッケージ変数を一時的に退避して復元</h2>
+<h2> local - Temporarily save and restore package variables </h2>
 
-<b>local</b>を使うと、パッケージ変数を一時的に変更することができます。
+You can use <b> local </b> to temporarily change package variables.
 
 <pre>
-local 変数名 = 値；
+LOCAL_VARIABLE_NAME = value;
 </pre>
 
-値が指定されなかった場合は、<a href="/blog/20100220126425.html">未定義値</a>が設定されます。
+If no value is specified, <a href="/blog/20100220126425.html"> undefined value</a> will be set.
 
-<h3>値の保存と復元</h3>
+<h3> Saving and restoring values ​​</h3>
 
-localを使って値を代入すると、<a href="/blog/20110128130016.html">スコープ</a>の終わりで以前の値が復元されます。
+Assigning a value using local restores the previous value at the end of the <a href="/blog/20110128130016.html"> scope</a>.
 
 <pre>
 our $NUM = 5;
 {
   local $NUM = 3;
 }
-# ここでは「$NUM」は「元の値」である「5」に戻る
+# Here, "$NUM" returns to "5" which is the "original value"
 </pre>
 
-localによって変更されたパッケージ変数は、<a href="/blog/20110128130016.html">スコープ</a>の最後で復元されます。
+Package variables modified by local are restored at the end of <a href="/blog/20110128130016.html"> scope</a>.
 
-初期化を行わなかった場合は、変数の値の初期値は、未定義値になります。
+If initialization is not performed, the initial value of the variable value will be an undefined value.
 
 <pre>
 local $NUM;
 </pre>
 
-localは、<a href="/blog/20080308120495.html">ourで宣言されたパッケージ変数</a>が対象であって、<a href="/blog/20080307120491.html">myで宣言されたレキシカル変数</a>には利用できないことに注意してください。
+local is for package variables declared with <a href="/blog/20080308120495.html"> our</a>. Note that it is not available for lexical variables declared by <a href="/blog/20080307120491.html"> my</a>.
 
 <pre>
-# コンパイルエラー
+# Compile error
 my $num;
 local $num;
 </pre>
 
-ただし例外があって、<a href="/blog/20161012147627.html">配列</a>の値と<a href="/blog/20161013147635.html">ハッシュ</a>の値には使用することができます。
+However, no exception occurs for <a href="/blog/20161012147627.html"> array</a> values ​​and <a href="/blog/20161013147635.html"> hash</a> values.
 
 <pre>
 my @nums = (1, 2, 3);
@@ -64,13 +64,13 @@ my %score = (math => 90, english => 70);
 local $score{math};
 </pre>
 
-<h3>特殊変数に対するlocal</h3>
+<h3> local for special variables </h3>
 
-Perlで最もよくlocalを使う場面は「$/」や「%ENV」や「@ARGV」などの、<a href="/blog/20161102147817.html">特殊変数</a>に対してです。
+The most common use of local in Perl is for <a href="/blog/20161102147817.html"> special variables</a> such as "$/", "%ENV" and "@ARGV".
 
-localはパッケージ変数を対象としますが、実は特殊変数は、mainという<a href="/blog/20100419127089.html">パッケージ</a>に属しています。
+local targets package variables, but special variables actually belong to the <a href="/blog/20100419127089.html"> package</a> called main.
 
-ですので、特殊変数に対しても、localを使用できます。
+So you can use local for special variables as well.
 
 <pre>
 local $/;
@@ -78,20 +78,20 @@ local $ENV{HOME};
 local @ARGV;
 </pre>
 
-<h3>変数宣言にはmyを使う</h3>
+<h3> Use my for variable declaration </h3>
 
-<a href="/blog/20160225145640.html">Perl 5.0</a>以降のPerlには「my」による変数宣言が導入されていて、lcoalによって変数を宣言する必要性はほとんどなくなっています。ほぼすべての変数宣言は「my」を使うようにしましょう。
+Since <a href="/blog/20160225145640.html"> Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variables by lcoal. Try to use "my" for almost all variable declarations.
 
 <pre>
-# 変数宣言
+# Variable declaration
 my $num;
 </pre>
 
-<h3>myとlocalの違い</h3>
+<h3> Difference between my and local </h3>
 
-localは、名前の期待に反して、変数宣言ではありません。ダイナミックなスコープを持ちます。
+local is not a variable declaration, contrary to the expectation of the name. It has a dynamic scope.
 
-他の言語でいうローカル変数とはPerlにおけるmyを使ったレキシカル変数のことです。
+Local variables in other languages ​​are lexical variables using my in Perl.
 
 <table>
   <tr>
@@ -104,98 +104,96 @@ localは、名前の期待に反して、変数宣言ではありません。ダ
   </tr>
   <tr>
     <td>
-      変数宣言ではない
+      Not a variable declaration
     </td>
     <td>
-      変数宣言である
-    </td>
-  </tr>
-  <tr>
-    <td>
-      値を保存・復元する
-    </td>
-    <td>
-      変数を宣言する
+      Variable declaration
     </td>
   </tr>
   <tr>
     <td>
-      ダイナミックスコープを持つ
+      Save / restore values
     </td>
     <td>
-      レキシカルスコープを持つ
+      Declare a variable
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Has a dynamic scope
+    </td>
+    <td>
+      Have a lexical scope
     </td>
   </tr>
 </table>
 
-<h3>ファイルの内容を一度に読み込む</h3>
+<h3> Read the contents of the file at once </h3>
 
-localを自発的に使う場面は、あまりありませんが、使う場面があります。それは、ファイルの内容を一度に読み込むという処理を記述する場合です。
-
-ファイルの内容を一度に読み込む処理を記述してみます。
+There are not many occasions when local is used voluntarily, but there are occasions when it is used. That is when describing the process of reading the contents of a file at once.
+Let's describe the process of reading the contents of a file at once.
 
 <pre>
-my $file = 'a.txt';
-open my $fh, '<', $file
+my $file ='a.txt';
+open my $fh,'<', $file
   or die "Can't open $file: $!";
 
-# ファイルの内容を一度に読み込む
-my $content = do { local $/; <$fh> };
+# Read the contents of the file at once
+my $content = do {local $/; <$fh>};
 </pre>
 
-<a href="/blog/20090208123289.html">doブロック</a>は最後に評価された値を返すものです。
+The <a href="/blog/20090208123289.html"> do block</a> returns the last evaluated value.
 
-localによって、ファイルの中での改行を表す<a href="/blog/20161102147817.html">特殊変数</a>「$/」を未定義にしています。
+local undefined the <a href="/blog/20161102147817.html"> special variable</a> "$/" that represents a line break in the file.
 
-これによって<a href="/blog/20080722121673.html">ファイル入力演算子</a>「<$fh>」が、ファイル全体の内容を返すようにしています。
+This causes the <a href="/blog/20080722121673.html"> file input operator</a> "<$fh>" to return the contents of the entire file.
 
-そして、スコープが終わると「$/」は元の状態に戻ります。
+And when the scope ends, "$/" returns to its original state.
 
-ファイルを一度に読むこむ関数を標準で持たないPerlでは、このようにしてファイル全体の内容を読み込むことがあるということを覚えておきましょう。
+Keep in mind that Perl, which doesn't have a standard function to read a file at once, may read the entire contents of the file in this way.
 
-<h3>localのサンプルプログラム</h3>
+<h3> local sample program </h3>
 
-localを使って、特殊変数を一時的に変更するサンプルです。特殊変数はmainパッケージに属するパッケージ変数です。
+This is a sample to temporarily change a special variable using local. Special variables are package variables that belong to the main package.
 
 <pre>
 {
-    # 特殊変数$/の一時的な変更
+    # Temporary change of special variable $/
     local $/ = undef;
 }
-# スコープを抜けると元の値が復元される
+# Original value is restored when exiting scope
 </pre>
 
-localを理解するためのサンプルです。
+This is a sample to understand local.
 
 <pre>
 use strict;
 use warnings;
 
-# localの説明
+# local description
 
 our $NUM = 1;
 print "\$NUM = $NUM\n";
 
-# $NUM の完全修飾名は、$main::NUM で、mainパッケージに属する。
-# ( Perlでは、どんな変数もグローバル変数にはならない 
-# Perlには、レキシカル変数とパッケージ変数しか存在しない。)
+# The fully qualified name of $NUM is $main::NUM and belongs to the main package.
+# (In Perl, no variable is a global variable
+# Perl has only lexical and package variables. )
 
 print "\$main::NUM = $main::NUM\n";
 print "\n";
 
-{ 
-  # レキシカルスコープの内部で「$NUM」の値を一時的に変更
-  local $NUM = 2; 
+{
+  # Temporarily change the value of "$NUM" inside the lexical scope
+  local $NUM = 2;
 
   print "In scope\n";
   
-  # 2を出力
-  print "\$NUM = $NUM\n"; 
+  # Output 2
+  print "\$NUM = $NUM\n";
 }
 print "\n";
 
-# 1を出力 
+# Output 1
 print "Out of scope\n";
-print "\$NUM = $NUM\n"; 
+print "\$NUM = $NUM\n";
 </pre>
-
