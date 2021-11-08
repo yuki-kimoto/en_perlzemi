@@ -1,158 +1,156 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Perl </span></a>
+    <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="3" />
+      <span itemprop = "name"> Syntax </span></a>
+    <meta itemprop = "position" content = "3" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">my</span>
-    <meta itemprop="position" content="4" />
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> my </span>
+    <meta itemprop = "position" content = "4" />
   </li>
 </ol>
-<h2>our - パッケージ変数の宣言</h2>
+<h2> our - Declaration of package variables </h2>
 
+I will explain the declaration of <b> package variables </b> by <b> our </b>.
 
+<h3> Declaration of package variables </h3>
 
-<b>our</b>による<b>パッケージ変数</b>の宣言について解説します。
-
-<h3>パッケージ変数の宣言</h3>
-
-パッケージ変数を宣言するには<strong>our</strong>を使用します。
+Use <strong> our </strong> to declare package variables.
 
 <pre>
 our $NUM;
 </pre>
 
-パッケージ変数は、ひとつの名前空間に属するグローバル変数です。パッケージ変数は、修飾名(パッケージ名)を持ち、ソースコードのどの位置からでも参照できます。
+Package variables are global variables that belong to one namespace. Package variables have qualified names (package names) and can be referenced from anywhere in the source code.
 
-パッケージ変数の変数名は「大文字」にするのが、Perlでは慣習となっています。
+It is customary in Perl to make the variable name of a package variable "uppercase".
 
-<h3>パッケージ変数の初期化</h3>
+<h3> Initialization of package variables </h3>
 
-パッケージ変数の宣言と同時に「初期化」を行うことができます。
+"Initialization" can be performed at the same time as the declaration of the package variable.
 
 <pre>
 our $NUM = 5;
 </pre>
 
-<h3>パッケージ変数のスコープと寿命</h3>
+<h3> Package variable scope and lifetime </h3>
 
-パッケージ変数の寿命とスコープについて解説します。
+Describes the life and scope of package variables.
 
-<h4>パッケージ変数の寿命</h4>
+<h4> Package variable lifespan </h4>
 
-パッケージ変数は、宣言して初期化されると、プログラムの最後まで、その値は存在し続けます。
+Once a package variable is declared and initialized, its value will continue to exist until the end of the program.
 
-<h4>パッケージ変数のスコープ</h4>
+<h4> Package variable scope </h4>
 
-スコープが終わると、パッケージ名なしで、参照できなくなります。完全修飾名を、使えば、参照できます。
+At the end of the scope, you will not be able to see it without the package name. You can refer to it by using the fully qualified name.
 
 <pre>
 package SomePackage;
 
-our $package_var1;
-$package_var1 = 1;
+our $PACKAGE_VAR1;
+$PACKAGE_VAR1 = 1;
 
-# ourのスコープ
+#our scope
 {
-  our $package_var2 = 2;
+  our $PACKAGE_VAR2 = 2;
 }
-# スコープが終わると、完全修飾名でのみ、参照できる
-$SomePackage::$package_var2;
+# At the end of scope, you can only refer to it with a fully qualified name
+$SomePackage::PACKAGE_VAR2;
 </pre>
 
-スコープの詳しい解説については以下をご覧ください。
+See below for a detailed explanation of the scope.
 
 <ul>
   <li>
-    <a href="/blog/20110128130016.html">Perlのスコープについて理解しよう</a>
+    <a href="/blog/20110128130016.html"> Understand Perl scope</a>
   </li>
 </ul>
 
-<h3>パッケージの宣言</h3>
+<h3> Package declaration </h3>
 
-Perlではパッケージの宣言は、他の言語の名前空間の宣言にあたります。一般的には、パッケージ名は大文字ではじめる。単語の区切りも大文字にします。
+In Perl, a package declaration is a namespace declaration in another language. Generally, package names start with an uppercase letter. Capitalize the word breaks as well.
 
 <pre>
 package SomePackage;
 </pre>
 
-パッケージ変数は完全修飾名でアクセスすることもできます。
+Package variables can also be accessed with fully qualified names.
 
 <pre>
-$SomePackage::package_var1
+$SomePackage::PACKAGE_VAR1
 </pre>
 
-パッケージの宣言については詳しくは以下の記事をご覧ください。
+See the following articles for more information on package declarations.
 
 <ul>
   <li>
-    <a href="/blog/20100419127089.html">package - パッケージの宣言</a>
+    <a href="/blog/20100419127089.html"> package - Package declaration</a>
   </li>
 </ul>
 
-<h3>mainパッケージ</h3>
+<h3> main package </h3>
 
-パッケージの宣言が行われない場合、ourで宣言されたパッケージ変数は、mainパッケージに属します。
+If no package is declared, the package variables declared with our belong to the main package.
 
 <pre>
-# 「$main::NUM」として「mainパッケージ」に属する
+# Belongs to "main package" as "$main::NUM"
 our $NUM;
 </pre>
 
-Perlには、パッケージを持たない変数は存在しません。パッケージがないように見えるものは実は、mainパッケージに属しています。
+In Perl, there are no variables that do not have a package. What looks like no package actually belongs to the main package.
 
-たとえば<a href="/blog/20161102147817.html">特殊変数</a>はパッケージに属さないように見えますが、mainパッケージに属しています。
+For example, <a href="/blog/20161102147817.html"> special variables</a> don't seem to belong to the package, but they do.
 
-<h3>ourによる変数宣言は使うべきか</h3>
+<h3> Should we use variable declaration by our? </h3>
 
-自分でプログラムを書く場合は、ourによる変数宣言を使う機会は、ほとんどありません。より安全で速い「my」による変数宣言によって、完全なプログラムが書けてしまうからです。できる限り「our」は避けて「my」だけを使うようにしましょう。
+If you write your own program, you rarely have the opportunity to use our variable declarations. The safer and faster "my" variable declaration makes it possible to write a complete program. Avoid "our" as much as possible and use only "my".
 
-myはレキシカルなスコープを持ちアクセス可能な範囲が小さく安全です。連続した領域にあるため変数へのアクセス速度が速いという特徴があります。
+my has a lexical scope and is safe with a small accessible range. Since it is in a continuous area, it has the characteristic that the access speed to variables is fast.
 
-myによる変数宣言については以下の記事をご覧ください。
+See the following article for variable declaration by my.
 
 <ul>
   <li>
-    <a href="/blog/20080307120491.html">my - レキシカル変数の宣言</a>
+    <a href="/blog/20080307120491.html"> my - Declaration of lexical variables</a>
   </li>
 </ul>
 
-<h3>サンプル</h3>
+<h3> Sample </h3>
 
-パッケージ変数を使ったサンプルです。
+This is a sample using package variables.
 
 <pre>
 use strict;
 use warnings;
 
-# パッケージ変数
-print "1: パッケージ変数は、修飾名( SomePackage )を持ち".
-    "プログラムのどの位置からも( スコープの外部からでも )参照できる。\n";
+# Package variables
+print "1: Package variable has a qualified name (SomePackage)".
+    "It can be referenced from anywhere in the program (even from outside the scope).\n";
 {
-  # SomePackageに属するpackage_var1
-  $SomePackage::package_var1 = 1; 
+  # PACKAGE_VAR1 belonging to SomePackage
+  $SomePackage::PACKAGE_VAR1 = 1;
   
-  # OtherPackageに属するpackage_var1;
-  $OtherPackage::package_var1 = 2; 
+  # PACKAGE_VAR1 belonging to OtherPackage;
+  $OtherPackage::PACKAGE_VAR1 = 2;
 }
 
-print "\$SomePackage::package_var1 = $SomePackage::package_var1\n";
-print "\$OtherPackage::package_var1 = $OtherPackage::package_var1\n\n";
+print "\$SomePackage::PACKAGE_VAR1 = $SomePackage::PACKAGE_VAR1\n";
+print "\$OtherPackage::PACKAGE_VAR1 = $OtherPackage::PACKAGE_VAR1\n\n";
 </pre>
 
-実行結果
+Execution result
 
 <pre>
-1: パッケージ変数は、修飾名( SomePackage )を持ちプログラムのどの位置からも( スコ
-ープの外部からでも )参照できる。
-$SomePackage::package_var1 = 1
-$OtherPackage::package_var1 = 2
+1: The package variable has a qualified name (SomePackage) from any position in the program (Sco)
+You can also refer to it from outside the loop).
+$SomePackage::PACKAGE_VAR1 = 1
+$OtherPackage::PACKAGE_VAR1 = 2
 </pre>
