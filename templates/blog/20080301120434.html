@@ -1,121 +1,117 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
+        <span itemprop = "name"> Perl </span></a>
+    <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
+      <span itemprop = "name"> standard function </span></a>
+    <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
   <li>
     here
   </li>
 </ol>
-<h2>split関数 - 文字列の分割</h2>
+<h2> split function - split string </h2>
 
-
-
-<strong>split関数</strong>を使用すると区切り文字を指定して<a href="/blog/20161003147558.html">文字列</a>を分割することができます。
+You can use the <strong> split function </strong> to split the <a href="/blog/20161003147558.html"> string</a> by specifying a delimiter.
 
 <pre>
 my @ret = split(/,/, $person_csv);
 </pre>
 
-第1引数には区切り文字を<a href="/blog/20100827127859.html">正規表現</a>で指定します。第2引数には分割したい文字列を指定します。戻り値は分割された文字列の<a href="/blog/20161012147627.html">配列</a>です。
+In the first argument, specify the delimiter with <a href="/blog/20100827127859.html"> regular expression</a>. In the second argument, specify the character string you want to split. The return value is a <a href="/blog/20161012147627.html"> array</a> of the split strings.
 
-<h4>正規表現を使う</h4>
+<h4> Use regular expressions </h4>
 
-split関数は、第一引数に正規表現を受け取るので、複数の空白で分割ということも簡単にできます。
+Since the split function receives a regular expression as the first argument, it is easy to split with multiple spaces.
 
 <pre>
 my @ret = split(/ +/, $line);
 </pre>
 
-<h4>文字列の連結</h4>
+<h4> Concatenation of strings </h4>
 
-split関数は、文字列を分解しますが、その反対の操作として、文字列の連結を行いたい場合は、join関数を使用します。join関数については以下の記事をご覧ください。
+The split function splits a string, but the opposite is to use the join function if you want to concatenate the strings. See the following article for the join function.
 
 <ul>
   <li>
-    <a href="/blog/20081007122338.html">join関数 - 区切り文字で配列を結合</a>
+    <a href="/blog/20081007122338.html"> join function - join array with delimiter</a>
   </li>
 </ul>
 
-<h3>サンプル</h3>
+<h3> Sample </h3>
 
-split関数のサンプルプログラムです。
+This is a sample program of the split function.
 
-<h4>CSVデータ</h4>
+<h4> CSV data </h4>
 
-CSV形式のデータを配列に変換するサンプルです。
+This is a sample to convert CSV format data to an array.
 
 <pre>
-# CSV形式のデータを配列に変換
-my $string = 'a,b,c';
+# Convert CSV format data to array
+my $string ='a,b,c';
 my @record = split /,/, $string;
 </pre>
 
-<h4>空白区切り</h4>
+<h4> Blank delimiter </h4>
 
-空白で区切られたデータ配列に変換するサンプルです。
+This is a sample to convert to a data array separated by blanks.
 
 <pre>
-# 空白で区切られたデータを配列に変換
-my $string = 'a   b     c';
+# Convert data separated by blanks to an array
+my $string ='a b c';
 my @record = split /\s+/, $string;
 </pre>
 
-<h4>カンマ区切り</h4>
+<h4> Comma separated </h4>
 
-カンマ区切りの文字列を処理するサンプルです。
+This is a sample that processes comma-separated strings.
 
 <pre>
 use strict;
 use warnings;
 
-# 1: カンマ区切りの文字列を処理する。
+# 1: Process comma separated strings.
 my $header_csv = "name,age,country\n";
 my $person_csv = "kaori,23,Japan\n";
 
-# chomp関数で改行を取り除く
+# Remove line breaks with chomp function
 chomp $header_csv;
 chomp $person_csv;
 
-# split関数を用いて、区切り文字にカンマを指定する。
-# split( /区切り文字/, 文字列 )
+# Use the split function to specify a comma as the delimiter.
+# split (/delimiter/, string)
 my @header = split(/,/, $header_csv);
 my @person_attribute = split(/,/, $person_csv);
 
-print "1: カンマ区切りの文字列を処理する。\n";
+print "1: Process comma separated strings.\n";
 print "\$header_csv = $header_csv\n";
 print "\$person_csv = $person_csv\n";
 print "\n";
 
 for my $i (0 .. 2) {
-  print "\$header[ $i ] = " . $header[$i] . "\n";
-  print "\$person_attribute[ $i ] = " . $person_attribute[$i] . "\n\n";
+  print "\$header[$i] =" . $Header[$i] . "\n";
+  print "\$person_attribute[$i] =" . $person_attribute[$i] . "\n\n";
 }
 </pre>
 
-実行結果
+Execution result
 
 <pre>
-1: カンマ区切りの文字列を処理する。
+1: Process comma separated strings.
 $header_csv = name,age,country
 $person_csv = kaori,23,Japan
 
-$header[ 0 ] = name
+$header[0] = name
 $person_attribute[0] = kaori
 
-$header[ 1 ] = age
+$header[1] = age
 $person_attribute[1] = 23
 
-$header[ 2 ] = country
+$header[2] = country
 $person_attribute[2] = Japan
 </pre>
-
-
