@@ -798,10 +798,10 @@ Since you can roughly predict the abbreviations used for variables, pick up the 
 
 <ul>
   <li>
-    Abbreviation for fn --finish
+    Abbreviation for fn - finish
   </li>
   <li>
-    Abbreviation for ix --index
+    Abbreviation for ix - index
   </li>
 </ul>
 
@@ -961,7 +961,7 @@ XPVNV is assigned to SV type sv_any. It represents a number.
 // sv.c
 #define new_body_allocated (sv_type) \
     (void *) ((char *) S_new_body (aTHX_ sv_type) \
---body_by_type [sv_type] .offset)
+- body_by_type [sv_type] .offset)
 
 // sv.c
 STATIC void *
@@ -1076,8 +1076,8 @@ When reading the source code, it is important to understand that Perl can have m
 
 <pre>
 Perl-Perl Interpreter 1 (current interpreter)
-     --Perl interpreter 2
-     --Perl interpreter 3
+     - Perl interpreter 2
+     - Perl interpreter 3
 </pre>
 
 By default, it's a good idea to follow the source code, imagining that only one interpreter is running.
@@ -1575,7 +1575,7 @@ This seems to be a type called "Perl Interpreter". The definition of this struct
 <pre>
 // intrpvar.h
 PERLVAR (I, Latin1, SV *)
-PERLVAR (I, UpperLatin1, SV *) / * Code points 128 --255 * /
+PERLVAR (I, UpperLatin1, SV *) / * Code points 128 - 255 * /
 PERLVAR (I, AboveLatin1, SV *)
 PERLVAR (I, InBitmap, SV *)
 </pre>

@@ -38,7 +38,7 @@ Let's write an image of the array reference below.
 <pre>
 # image
                       @nums
-$ nums_ref -------> (1, 3, 5)
+$ nums_ref - -- --> (1, 3, 5)
 </pre>
 
 An array reference represents "what points to an array" rather than the array itself.
@@ -67,8 +67,8 @@ Below is an image. In the case of an array, the entire contents are copied, wher
 @ nums1 @ nums2
 (1, 3, 5) (1, 3, 5)
 
-$ nums_ref1 ------------>
-$ nums_ref2 ------------> (1, 3, 5)
+$ nums_ref1 - -- -- -- ->
+$ nums_ref2 - -- -- -- -> (1, 3, 5)
 </pre>
 
 When passing to <a href="/blog/20101130129876.html"> subroutine</a>, it is more efficient to pass an array reference because the contents are not copied.

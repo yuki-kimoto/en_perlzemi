@@ -38,7 +38,7 @@ Let's write an image of the hash reference below.
 <pre>
 # image
                       % score
-$ score_ref -------> (math => 68, english => 90)
+$ score_ref - -- --> (math => 68, english => 90)
 </pre>
 
 A hash reference represents "what points to a hash" rather than the hash itself.
@@ -67,8 +67,8 @@ Below is an image. In the case of a hash, the entire contents are copied, wherea
 % score1% score2
 (math => 68, english => 90) (math => 68, english => 90)
 
-$ score_ref1 ------------>
-$ score_ref2 ------------> (math => 68, english => 90)
+$ score_ref1 - -- -- -- ->
+$ score_ref2 - -- -- -- -> (math => 68, english => 90)
 </pre>
 
 When passing to <a href="/blog/20101130129876.html"> subroutine</a>, it is more efficient to pass a hash reference because the contents are not copied.

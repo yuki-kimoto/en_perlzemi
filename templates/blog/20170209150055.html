@@ -68,7 +68,7 @@ Convert the XS file to a C language source file using a program called xsubpp. A
 
 <pre>
                         xsubpp
-XS file + typemap ------------> C language source file
+XS file + typemap - -- -- -- -> C language source file
 </pre>
 
 With the XS language, you often don't have to write the C and Perl type conversion process yourself. xsubpp will refer to the typemap file and automatically add the conversion process. You can also write the conversion process yourself or extend the typemap.
@@ -79,7 +79,7 @@ C language source files are compiled using a C compiler (such as gcc) and conver
 
 <pre>
                        C compiler
-C language source file ------------------> Dynamic link library
+C language source file - -- -- -- -- -- -> Dynamic link library
 </pre>
 
 A dynamic link library is a library that can be called dynamically. Normally, the library is created in this format.
@@ -103,7 +103,7 @@ Make sure to remember the above flow. When creating an XS module, the flow is th
 
 However, generally speaking, creating an XS module is difficult. This is because it requires a large amount of not-so-easy peripheral knowledge such as "XS language", "typemap", "Perl API", "make", "C compiler", "linker", and "ExtUtils :: MakeMaker". Therefore, it is important to first grasp the basics firmly and then acquire peripheral knowledge.
 
-<h3> Create XS module --h2xs command </h3>
+<h3> Create XS module - h2xs command </h3>
 
 Use the command <b> h2xs </b> to create an XS module.
 
@@ -131,40 +131,40 @@ The created module has the following structure.
 <pre>
 Changes
 SomeModule.xs
-lib --SomeModule.pm
+lib - SomeModule.pm
 Makefile.PL
 MANIFEST
 ppport.h
 README
-t --SomeModule.t
+t - SomeModule.t
 </pre>
 
 I would like to briefly explain the role of each file.
 
 <ul>
   <li>
-    Changes --Describes the change history of the module.
+    Changes - Describes the change history of the module.
   </li>
   <li>
-    SomeModule.xs --XS file. Write XSUB in XS language.
+    SomeModule.xs - XS file. Write XSUB in XS language.
   </li>
   <li>
-    lib --Contains Perl modules. This module calls a library written in C language.
+    lib - Contains Perl modules. This module calls a library written in C language.
   </li>
   <li>
-    Makefile.PL --A Perl script for generating makefiles for compiling C source files, installing modules, etc.
+    Makefile.PL - A Perl script for generating makefiles for compiling C source files, installing modules, etc.
   </li>
   <li>
     Describes the files required when distributing the MANIFEST -XS module.
   </li>
   <li>
-    ppport.h --C header file for compatibility with older Perl.
+    ppport.h - C header file for compatibility with older Perl.
   </li>
   <li>
     README-A brief description of the module.
   </li>
   <li>
-    t --Stores test scripts.
+    t - Stores test scripts.
   </li>
 </ul>
 
@@ -174,7 +174,7 @@ How to write Makefile.PL is explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20150725143778.html"> How to write Makefile.PL --Learn ExtUtil :: MakeMaker</a>
+    <a href="/blog/20150725143778.html"> How to write Makefile.PL - Learn ExtUtil :: MakeMaker</a>
   </li>
 </ul>
 
@@ -206,16 +206,16 @@ I will briefly explain the C language header file required when writing an XS fi
 
 <ul>
   <li>
-    EXTERN.h --Perl Global VariablesHeader file required to refer to the number
+    EXTERN.h - Perl Global VariablesHeader file required to refer to the number
   </li>
   <li>
-    perl.h --Perl header file
+    perl.h - Perl header file
   </li>
   <li>
-    XSUB.h --Header file for XSUB
+    XSUB.h - Header file for XSUB
   </li>
   <li>
-    ppport.h --Header file to absorb API differences between Perl versions
+    ppport.h - Header file to absorb API differences between Perl versions
   </li>
 </ul>
 
@@ -231,7 +231,7 @@ PACKAGE is the Perl package name. In other words, the following correspondence c
 
 <pre>
 Perl C language
-SomeModule :: twice ---> XS_SomeModule_twice
+SomeModule :: twice - -> XS_SomeModule_twice
 </pre>
 
 <h4> XSUB description </h4>

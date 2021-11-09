@@ -55,17 +55,17 @@ cpan DBD :: mysql
 DBI does not change when connecting to any database. This is because DBI is a collection of functions for connections that are designed to be database independent. The DBD actually exchanges data with the database.
 
 <pre>
-| ----- | | ------------- | | ------------- |
+| - --- | | - -- -- -- -- | | - -- -- -- -- |
 | | | | | |
-| | ------- | DBD :: mysql | --------- | MySQL |
+| | - -- -- | DBD :: mysql | - -- -- - | MySQL |
 | | | | | |
-| | | ------------- | | ------------- |
+| | | - -- -- -- -- | | - -- -- -- -- |
 DBI |
-| | | ------------- | | ------------- |
+| | | - -- -- -- -- | | - -- -- -- -- |
 | | | | | |
-| | ------- | DBD :: Oracle | --------- | Oracle |
+| | - -- -- | DBD :: Oracle | - -- -- - | Oracle |
 | | | | | |
-| ----- | | ------------- | | ------------- |
+| - --- | | - -- -- -- -- | | - -- -- -- -- |
 </pre>
 
 <h3> Connect to MySQL server </h3>
@@ -144,9 +144,9 @@ When I was looking for a tool to automatically generate commands that eliminate 
 
 Very useful for bridging the gap between development and production environments. It doesn't show all the differences, it seems to be only the part related to the table definition, so it seems that you need to set the trigger and index yourself.
 
-The documentation doesn't seem to explain the options, so you can check with the --help command.
+The documentation doesn't seem to explain the options, so you can check with the - help command.
 <pre>
-mysqldiff --help
+mysqldiff - help
 </pre>
 
 <h3> You need mysql-devel to install DBD :: mysql </h3>

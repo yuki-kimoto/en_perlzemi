@@ -24,11 +24,11 @@ A process is a unit of resource management as seen from the OS. Processes are as
 
 <pre>
    Image of event OS process management
-                            | ------------------------------------------------- |
+                            | - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
                             | Determine process ID (3452) |
-| ------------------ | | |
-| Program execution started | -------> | Memory allocation management |
-| ------------------ | | Reserve a certain amount of memory space for the process, |
+| - -- -- -- -- -- - | | |
+| Program execution started | - -- --> | Memory allocation management |
+| - -- -- -- -- -- - | | Reserve a certain amount of memory space for the process, |
                             | Manage by process ID |
                             | (The allocated memory area, |
                             | Do not interfere with other processes) |
@@ -39,20 +39,20 @@ A process is a unit of resource management as seen from the OS. Processes are as
                             | CPU allocation management |
                             | Process ID to schedule CPU allocation |
                             | Register. |
-                            | ------------------------------------------------- |
+                            | - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 
-                            | ------------------------------------------------- |
-| ------------------ | | In response to process file open request |
-| Open file | -------> | Open file |
-| ------------------ | | Manage open files by process ID |
-                            | ------------------------------------------------- |
+                            | - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
+| - -- -- -- -- -- - | | In response to process file open request |
+| Open file | - -- --> | Open file |
+| - -- -- -- -- -- - | | Manage open files by process ID |
+                            | - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 
                                 A process is a memory, a file, as seen from the OS.
                               A unit for managing CPU scheduling.
 
 </pre>
 
-<h4> $$ --Get process ID </h4>
+<h4> $$ - Get process ID </h4>
 
 Use the special variable "<strong> $$ </strong>" to get the process ID.
 
@@ -62,7 +62,7 @@ $$
 
 The process ID is an identifier assigned when the process is started so that the OS can uniquely identify the process.
 
-<h4> $ ^ T --Get the process start time </h4>
+<h4> $ ^ T - Get the process start time </h4>
 
 Use the special variable "<strong> $ ^ T </strong>" to get the start time of the process.
 
@@ -97,7 +97,7 @@ my $ pid = wait;
 
 For the wait function, see "<a href="/blog/20090413124032.html"> wait function</a>".
 
-<h3> $? --Child process exit status </h3>
+<h3> $? - Child process exit status </h3>
 
 If wait waits for the child process to terminate, the special variable "$?" Stores multiple values ​​including the exit status of the child process. $? Is also set when a child process is executed using the system function.
 
@@ -279,7 +279,7 @@ print $ pipe "Hello world";
 
 When writing to a pipe, the output result is passed to another command. Notice that from the program's point of view, it looks like it's writing to a file.
 
-<h3> getpwuid function --get user information (user name) </h3>
+<h3> getpwuid function - get user information (user name) </h3>
 
 To get the <strong> username </strong>, use the <a href="/blog/20101222130016.html"> getpwuid function</a> and the special variable <strong> $> </strong> below will do so.
 
@@ -298,7 +298,7 @@ To <strong> get the user ID from the username </strong>, use the <a href="/blog/
 my $ uid = (getpwnam'ken') [2];
 </pre>
 
-<h3> getgrnam function --get group ID from group name </h3>
+<h3> getgrnam function - get group ID from group name </h3>
 
 
 To get the group ID from the <strong> group name </strong>, use the <a href="/blog/20130417136634.html"> getgrnam function</a> as follows.

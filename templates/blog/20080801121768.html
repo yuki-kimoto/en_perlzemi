@@ -25,9 +25,9 @@ The function called pipe is a very convenient function. If you create a program 
 <h3> 1. Image of pipe </h3>
 
 <pre>
-               | ----------- | | ----------- | | ----------- |
-First input ---> | Program A | ---> | Program B | ---> | Program C | ---> Final output
-               | ----------- | | ----------- | | ----------- |
+               | - -- -- --- | | - -- -- --- | | - -- -- --- |
+First input - -> | Program A | - -> | Program B | - -> | Program C | - -> Final output
+               | - -- -- --- | | - -- -- --- | | - -- -- --- |
 </pre>
 
 You can use a pipe to connect the standard output of Program A to the standard input of Program B. In addition, the standard output of program B can be concatenated with the standard input of program C. By concatenating standard output and standard input in this way, data can be processed continuously without creating an intermediate file.
@@ -51,9 +51,9 @@ Pipe is a function that connects the standard output of one program to the stand
 Don't be afraid to misunderstand, a pipe is a temporary file (* 1). Program A outputs to a temporary file, and Program B reads from that temporary file. The image is as follows.
 
 <pre>
-| ----------- | | ----------- |
-| Program A | ---> Temporary files (pipes) ---> | Program B |
-| ----------- | | ----------- |
+| - -- -- --- | | - -- -- --- |
+| Program A | - -> Temporary files (pipes) - -> | Program B |
+| - -- -- --- | | - -- -- --- |
 </pre>
 
 Since the OS implicitly uses temporary files, it looks like the output of program A is directly the input of program B. This is the mechanism behind the pipe.

@@ -38,7 +38,7 @@ cpanm makes it easy to install CPAN modules in your local environment. If you do
 To use the installed modules and commands, you need to add the following settings to the bash configuration file called ".bashrc".
 
 <pre>
-export PERL_CPANM_OPT = "--local-lib = ~ / perl5"
+export PERL_CPANM_OPT = "- local-lib = ~ / perl5"
 export PATH = $ HOME / perl5 / bin: $ PATH;
 export PERL5LIB = $ HOME / perl5 / lib / perl5: $ PERL5LIB;
 </pre>
@@ -188,16 +188,16 @@ You can use the following notation for the version:
 
 <h4> Module installation </h4>
 
-The cpanm <strong> --installdeps </strong> option will look up the description in the cpanfile and install the module for you. (Note that the dot follows the option)
+The cpanm <strong> - installdeps </strong> option will look up the description in the cpanfile and install the module for you. (Note that the dot follows the option)
 
 <pre>
-perl cpanm --installdeps.
+perl cpanm - installdeps.
 </pre>
 
 You can also use the <strong> -L </strong> option to install the module in a specified directory.
 
 <pre>
-perl cpanm -L extlib --installdeps.
+perl cpanm -L extlib - installdeps.
 </pre>
 
 If your Perl application depends on a module that exists on CPAN, you can include cpanm and cpanfile together to make it easier for your users to use.

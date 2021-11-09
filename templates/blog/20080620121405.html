@@ -60,11 +60,11 @@ sub parse {
 <h4> Conversion image </h4>
 
 <pre>
-| ------------------ |
+| - -- -- -- -- -- - |
 | tora, 24, Japan |
 | rika,12,USA |
 | kenta, 25, Chinese |
-| ------------------ |
+| - -- -- -- -- -- - |
         ↓
 [
   [tora, 24, Japan],
@@ -164,11 +164,11 @@ sub parse {
 <h4> Conversion image </h4>
 
 <pre>
-| ------------------ |
+| - -- -- -- -- -- - |
 | tora, 24, Japan |
 | rika,12,USA |
 | kenta, 25, Chinese |
-| ------------------ |
+| - -- -- -- -- -- - |
         ↓
 [
     {
@@ -334,13 +334,13 @@ sub bubble_sort_ascend {
     return @nums;
   }
   
-  my $ change_cnt = @nums --1;
+  my $ change_cnt = @nums - 1;
 
   #If you have an array a with n elements
-  # At first, do n --one exchange.
+  # At first, do n - one exchange.
   # a [0] and a [1], a [1] and a [2], ...., a [n-2] and a [n-1]
 
-  # 2nd time, n --2 exchanges
+  # 2nd time, n - 2 exchanges
   # a [0] and a [1], a [1] and a [2], ...., a [n-3] and a [n-2]
 
   #Finally
@@ -351,7 +351,7 @@ sub bubble_sort_ascend {
   # Decrease the number of exchanges by 1.
                        
   while ($ change_cnt> 0) {
-    for my $ i (0 .. $ change_cnt --1) {
+    for my $ i (0 .. $ change_cnt - 1) {
        
      #If you are bigger than the next number, replace it,
      # If you are smaller, do nothing.
@@ -374,10 +374,10 @@ sub bubble_sort_descend {
     return @nums;
   }
   
-  my $ change_cnt = @nums --1;
+  my $ change_cnt = @nums - 1;
                        
   while ($ change_cnt> 0) {
-    for my $ i (0 .. $ change_cnt --1) {
+    for my $ i (0 .. $ change_cnt - 1) {
      if ($ nums [$ i] <$ nums [$ i + 1]) {
        ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
        print join (',', @nums). "(Snap) \ n";
@@ -477,10 +477,10 @@ sub bubble_sort {
     return @nums;
   }
   
-  my $ change_cnt = @nums --1;
+  my $ change_cnt = @nums - 1;
                        
   while ($ change_cnt> 0) {
-    for my $ i (0 .. $ change_cnt --1) {
+    for my $ i (0 .. $ change_cnt - 1) {
       # To select ascending or descending order, you only have to rewrite this part from the last time.
       my $ is_change;
       if ($ order eq'ascend') {

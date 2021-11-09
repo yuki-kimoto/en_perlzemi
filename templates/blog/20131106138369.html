@@ -32,7 +32,7 @@ Install the module <strong> PDL :: Graphics :: PLplot </strong> to draw the grap
 To install in ppm, execute the following command.
 
 <pre>
-ppm install http://www.sisyphusion.tk/ppm/PDL-Graphics-PLplot.ppd --force
+ppm install http://www.sisyphusion.tk/ppm/PDL-Graphics-PLplot.ppd - force
 </pre>
 
 Press Enter to complete the installation. Since it is necessary to set the environment variable, set the displayed environment variable PLPLOT_LIB. For example, the following is displayed.
@@ -47,7 +47,7 @@ Versions that support png
 It is convenient if png output is supported, so if you want to install a version that supports png, run the following command.
 
 <pre>
-ppm install http://www.sisyphusion.tk/ppm_alt/PDL-Graphics-PLplot_alt.ppd --force
+ppm install http://www.sisyphusion.tk/ppm_alt/PDL-Graphics-PLplot_alt.ppd - force
 </pre>
 
 Press Enter to complete the installation. Since it is necessary to set the environment variables, set the displayed environment variables PLPLOT_LIB and PLPLOT_DRV_DIR. For example, the following is displayed.
@@ -251,7 +251,7 @@ my $ pl = PDL :: Graphics :: PLplot-> new (
 );
 
 # Create a PDL variable that represents 0 to 99 as the value of x
-my $ x = pdl-> sequence (100)--50;
+my $ x = pdl-> sequence (100)- 50;
 
 # y = 2x
 my $ y = (1/2) * $ x + 10;
@@ -292,7 +292,7 @@ my $ pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
 # x value (0 to 4 in 0.1 increments)
 my $ x = pdl-> sequence (40) * 0.1;
 
-# y = x ^ 3 --6x ^ 2 + 11x -6
+# y = x ^ 3 - 6x ^ 2 + 11x -6
 my $ y = ($ x ** 3) -6 * ($ x ** 2) + (11 * $ x) -6;
 
 # Create a graph
@@ -351,7 +351,7 @@ my $ pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
 my $ e = pdl [exp (1)];
 
 # x value
-my $ x = pdl-> sequence (60) * 0.1 --3;
+my $ x = pdl-> sequence (60) * 0.1 - 3;
 
 # y = e ^ x
 my $ y = $ e ** $ x;

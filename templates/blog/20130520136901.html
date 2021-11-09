@@ -34,9 +34,9 @@ First, Perl's keys, values, and each now return a different key / value order ea
 
 This seems to be the Perl community's decision that security is more important.
 
-Next, the given --when syntax and smart match (~~) introduced in the Perl 5.10 migration have been reverted to experimental functionality. If you are using the given --when syntax, smart match, you will get an experimental warning. You can disable the warnings with "no warnings'experimental'", but this is not recommended as the implementation and behavior of smart matches is very likely to change in the future.
+Next, the given - when syntax and smart match (~~) introduced in the Perl 5.10 migration have been reverted to experimental functionality. If you are using the given - when syntax, smart match, you will get an experimental warning. You can disable the warnings with "no warnings'experimental'", but this is not recommended as the implementation and behavior of smart matches is very likely to change in the future.
 
-If you are using the given --when syntax, smart match, it is recommended to rewrite it to a method that does not use it. Check for Perl files using given or smart match with the following command.
+If you are using the given - when syntax, smart match, it is recommended to rewrite it to a method that does not use it. Check for Perl files using given or smart match with the following command.
 
 <pre>
 grep -r'~~' dir | grep -e'\ .p [lm]'

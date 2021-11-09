@@ -30,7 +30,7 @@ my $ time1 = time_from_str ($ time_str1);
 my $ time2 = time_from_str ($ time_str2);
 
 # Convert time information hash to seconds to calculate elapsed seconds
-my $ sec_interval = time_to_sec ($ time2) --time_to_sec ($ time1);
+my $ sec_interval = time_to_sec ($ time2) - time_to_sec ($ time1);
 
 # Convert elapsed seconds to hash of time representation
 my $ time_interval = sec_to_time ($ sec_interval);
@@ -159,7 +159,7 @@ return wantarray?% $ time: $ time;
 The calculation to convert the time to seconds is "hours x 3600 + minutes x 60 + seconds".
 
 <pre>
-my $ sec_interval = time_to_sec ($ time2) --time_to_sec ($ time1);
+my $ sec_interval = time_to_sec ($ time2) - time_to_sec ($ time1);
 
 # Function to convert time to seconds
 sub time_to_sec {

@@ -83,15 +83,15 @@ Only the var subroutine can see $ var. After the scope is finished, the value of
 <h4> Closure image </h4>
 
 <pre>
-| -------------- Scope (closure) -------------- |
+| - -- -- -- --- Scope (closure) - -- -- -- --- |
 | |
-| | -------- | | -------------- | | | ------------ |
+| | - -- --- | | - -- -- -- --- | | | - -- -- -- - |
 | | | Accessible | | accessible | |
-| | Data | <------------| Subroutines | <------------- | Out of scope |
+| | Data | <- -- -- -- -| Subroutines | <- -- -- -- -- | Out of scope |
 | | | | | | | |
-| | -------- | | -------------- | | | ------------ |
+| | - -- --- | | - -- -- -- --- | | | - -- -- -- - |
 | |
-| ------------------------------------------------- |
+| - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 
                    Data is inaccessible from outside the scope
 </pre>
@@ -379,17 +379,17 @@ As you can see, classes and closures are very similar. Next time, I will explain
 
 <pre>
 ## class
-| ------ Class ------ |
+| - -- - Class - -- - |
 | ・ Data |
 | ・ Data manipulation functions |
-| ------------------ |
+| - -- -- -- -- -- - |
 
 
 ## Closure
-| ---- Closure ---- |
+| - -- Closure - -- |
 | ・ Data |
 | ・ Data manipulation functions |
-| ------------------ |
+| - -- -- -- -- -- - |
 
 </pre>
 
@@ -397,7 +397,7 @@ As you can see, classes and closures are very similar. Next time, I will explain
 
 <ul>
   <li>
-    <a href="http://blog.livedoor.jp/dankogai/archives/51079991.html"> perl --Class vs. Closure (404 Blog Not Found)</a>
+    <a href="http://blog.livedoor.jp/dankogai/archives/51079991.html"> perl - Class vs. Closure (404 Blog Not Found)</a>
   </li>
   <li>
     Closures can do the same thing as classes, but in Perl creating closures costs more than creating objects.

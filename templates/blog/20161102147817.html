@@ -16,7 +16,7 @@
 
 A list of Perl special variables. Special variables are global variables that are predefined in Perl. The variable name identifies its use. I will introduce only this from the special variables that I definitely want to remember.
 
-<h4> @ARGV --command line arguments </h4>
+<h4> @ARGV - command line arguments </h4>
 
 <a href="/blog/20080108132865.html"> command line argument</a> is assigned to "@ARGV".
 
@@ -24,7 +24,7 @@ A list of Perl special variables. Special variables are global variables that ar
 @ARGV
 </pre>
 
-<h4> @ _ --Subroutine arguments </h4>
+<h4> @ _ - Subroutine arguments </h4>
 
 The <a href="/blog/20180523152759.html"> argument</a> of the <a href="/blog/20101130129876.html"> subroutine</a> is assigned to "@ _".
 
@@ -32,7 +32,7 @@ The <a href="/blog/20180523152759.html"> argument</a> of the <a href="/blog/2010
 @_
 </pre>
 
-<h4> $ 1, $ 2, $ 3, ... --Regex captured string </h4>
+<h4> $ 1, $ 2, $ 3, ... - Regex captured string </h4>
 
 For "$ 1", "$ 2" and "$ 3", use <a href="/blog/20100827127859.html"> regular expression</a> to <a href="/blog/20180524152759.html"> capture</a> The specified character string is assigned.
 
@@ -42,7 +42,7 @@ $ 2;
 $ 3;
 </pre>
 
-<h4> $ _ --Default variable </h4>
+<h4> $ _ - Default variable </h4>
 
 "$ _" Is called <a href="/blog/20180118151628.html"> default variable</a>. It's best to refrain from using default arguments yourself for readability, but some standard functions use default variables, so there are a few things to keep in mind.
 
@@ -66,7 +66,7 @@ grep {$ _ eq'foo'} @elements
 $ _ for @elements;
 </pre>
 
-<h4>% ENV --Getting and setting environment variables </h4>
+<h4>% ENV - Getting and setting environment variables </h4>
 
 You can access <a href="/blog/20180510152716.html"> environment variables</a> with a special variable called <strong>% ENV </strong>.
 
@@ -77,7 +77,7 @@ You can access <a href="/blog/20180510152716.html"> environment variables</a> wi
 The environment variable name is the key and you can refer to the value with $ ENV {'env_name'}. Environment variables are like variables that the OS has. Environment variables are copied into the memory of the process space when the OS starts the process. OS environment variables cannot be changed from the process.
 Environment variables can be set freely, but they are valid only in that process. When a process launches a child process, the environment variables are copied, as if the OS launched the process.
 
-<h4> $ 0 --Get program name </h4>
+<h4> $ 0 - Get program name </h4>
 
 Use the <strong> special variable "$ 0" </strong> to <a href="/blog/20180509152716.html"> get the program name</a>.
 
@@ -113,7 +113,7 @@ unshift @ INC,'./lib2';
 
 Add it directly to the beginning with <a href="/blog/20100105126425.html"> unshift function</a>. It is better to use use lib than this way. The advantage of using use lib is that it adds a search path at compile time, makes it more readable, and adds an architectural path as well.
 
-<h4>% INC --Check loaded modules </h4>
+<h4>% INC - Check loaded modules </h4>
 
 To find out <a href="/blog/20180529152759.html"> loaded modules</a>, look at the variable <strong>% INC </strong>.
 
@@ -125,7 +125,7 @@ The% INC hash is assigned a combination of module name and module file name. You
 
 It has nothing to do with @INC, which stores the module's search path. @INC and% INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function</a> to retrieve only the keys.
 
-<h4> $ ^ O --Get OS name </h4>
+<h4> $ ^ O - Get OS name </h4>
 
 To get the <a href="/blog/20180527152759.html"> OS name</a>, use the special variable <strong> $ ^ O </strong>.
 
@@ -283,7 +283,7 @@ The value of "$ ^ O" in each OS is summarized.
 
 <h3> Other special variables </h3>
 
-<h4> $$ --Get process ID </h4>
+<h4> $$ - Get process ID </h4>
 
 Use the special variable "<strong> $$ </strong>" to <a href="/blog/20180520152690.html"> get the process ID</a>.
 
@@ -293,7 +293,7 @@ $$
 
 The process ID is the unique knowledge of the process by the OS.To separate it, it is an identifier assigned when a process is started.
 
-<h4> $ ^ T --Get the process start time </h4>
+<h4> $ ^ T - Get the process start time </h4>
 
 <a href="/blog/20180526152759.html"> To get the process start time</a>, use the special variable "<strong> $ ^ T </strong>".
 
@@ -303,7 +303,7 @@ $ ^ T
 
 The time is obtained in epoch seconds (seconds from 00:00:00 on January 1, 1970).
 
-<h4> $? --Child process exit status </h4>
+<h4> $? - Child process exit status </h4>
 
 Use "$?" To get the <a href="/blog/20180525152759.html"> exit status of the child process</a>.
 

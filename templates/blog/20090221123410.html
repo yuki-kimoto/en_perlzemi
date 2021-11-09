@@ -10,7 +10,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Test :: More --Write a test program for automated testing </h2>
+<h2> Test :: More - Write a test program for automated testing </h2>
 
 
 
@@ -96,8 +96,8 @@ The test results of the above sample are as follows. You can see that the first 
 
 <pre>
 1..2
-ok 1 --Test1
-not ok 2 --Test2
+ok 1 - Test1
+not ok 2 - Test2
 # Failed test'Test2'
 # at b.pl line 9.
 #Looks like you failed 1 test of 2.
@@ -201,10 +201,10 @@ As you write a lot of tests, variable name collisions become more frequent. To a
 Let's take a look at the test results. The double function is wrongly a function that triples, so the second test fails.
 
 <pre>
-ok 1 --sum
-not ok 2 --double
+ok 1 - sum
+not ok 2 - double
 # Failed test'double'
-# at --line 25.
+# at - line 25.
 #Looks like you failed 1 test of 2.
 </pre>
 
@@ -216,16 +216,16 @@ The above script was done in one file, but I'll show you the general layout of t
 <pre>
 SomeModule /
     |
-    | ---- lib /
+    | - -- lib /
     | |
-    | | ---- SomeModule.pm
+    | | - -- SomeModule.pm
     |
     |
-    | ----- t /
+    | - --- t /
            |
-           | ---- sum.t
+           | - -- sum.t
            |
-           | ---- double.t
+           | - -- double.t
 </pre>
 
 The module itself is stored in a directory called lib. The automated test program is stored in a directory named t. The extension of the automated test program should be .t.
@@ -347,7 +347,7 @@ t \ double .... dubius
 DIED. FAILED test 1
         Failed 1/1 tests, 0.00% okay
 Failed Test Stat Wstat Total Fail List of Failed
--------------------------------------------------- ---------------------------
+- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --- - -- -- -- -- -- -- -- -- -
 t \ double.t 1 256 1 1 1
 Failed 1/2 test scripts. 1/2 subtests failed.
 Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)

@@ -22,7 +22,7 @@ Let's start sqlite3 by specifying the database name. If the database does not ex
 
 The difficult part in SQL is the select statement. Other syntax is relatively simple. In preparation for executing the select statement, I will first explain the SQL that is frequently used other than the select statement.
 
-<h4> create table --create table </h4>
+<h4> create table - create table </h4>
 
 Use the "create table" statement to create a table. Here, I will explain only the format of the simplest "create table" statement. (For "create table", see "Defining a table with create table (unpublished)".)
 
@@ -50,7 +50,7 @@ SQLite provides a command to display the created table list. Run the following c
 .table
 </pre>
 
-<h3> drop table --drop the table </h3>
+<h3> drop table - drop the table </h3>
 
 Use "drop table" to drop a table.
 
@@ -66,7 +66,7 @@ drop table books;
 
 Type ".table" to make sure the table has been deleted. After this, the "books" table will be used, so create it again using "create table".
 
-<h3> insert --add record </h3>
+<h3> insert - add record </h3>
 
 Use the insert statement to insert a record into the table.
 
@@ -83,11 +83,11 @@ insert into books (title, author, price) values ​​('Good life','Saki', 1900)
 This will add a record like the one below to the table.
 
 <pre>
-+ -------------- + ------------ + -------- +
++ - -- -- -- --- + - -- -- -- - + - -- --- +
 | title | author | price | # This is the field name
 + ============= + ========== + ======== +
 | Good life | Saju | 1900 |
-+ -------------- + ------------ + -------- +
++ - -- -- -- --- + - -- -- -- - + - -- --- +
 </pre>
 
 I will explain the select statement in detail later, but let's execute the select statement to confirm that one line has been inserted.
@@ -129,11 +129,11 @@ $ dbh-> do ($ update);
 The previous record is updated and looks like this:
 
 <pre>
-+ -------- + ---------- +
++ - -- --- + - -- -- -- +
 | title | author | # header (this can be done when you create the table)
-+ -------- + ---------- +
++ - -- --- + - -- -- -- +
 | Ruby | taro | # record (record updated by update statement)
-+ -------- + ---------- +
++ - -- --- + - -- -- -- +
 </pre>
 
 <h3> Delete record delete </h3>
