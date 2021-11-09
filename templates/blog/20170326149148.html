@@ -16,7 +16,7 @@
 Use the <b> printf function </b> to set the format and print the string.
 
 <pre>
-printf "Number% 03d% .3f\n", 3, 3.14567;
+printf "Number%03d%.3f\n", 3, 3.14567;
 </pre>
 
 The above output result is as follows. The integer "3" is padded with 0s to the left so that it has 3 digits. The decimal point "3.14567" is rounded to three decimal places of "3.146".
@@ -25,7 +25,7 @@ The above output result is as follows. The integer "3" is padded with 0s to the 
 Number 003 3.146
 </pre>
 
-"% 03d" and "% .3f" are called format specifiers. See the <a href="/blog/20081001122296.html">sprintf function</a> description for more information on format specifiers.
+"%03d" and "%.3f" are called format specifiers. See the <a href="/blog/20081001122296.html">sprintf function</a> description for more information on format specifiers.
 
 <ul>
   <li>
@@ -39,10 +39,10 @@ Like the <a href="/blog/20170404149131.html">print function</a>, the fprintf fun
 
 <pre>
 # Output to standard error output
-printf STDERR "Number% 03d% .3f\n", 3, 3.14567;
+printf STDERR "Number%03d%.3f\n", 3, 3.14567;
 
 # Output to file using file handle
-printf $fh "Number% 03d% .3f\n", 3, 3.14567;
+printf $fh "Number%03d%.3f\n", 3, 3.14567;
 </pre>
 
 Note that there are no commas behind the filehandle.
@@ -60,7 +60,7 @@ For details on how to output, see the explanation of <a href="/blog/201704041491
 The printf function is a function that outputs, but you can use the <a href="/blog/20081001122296.html">sprintf function</a> to write a formatted string to a variable.
 
 <pre>
-my $string = sprintf "Number% 03d% .3f\n", 3, 3.14567;
+my $string = sprintf "Number%03d%.3f\n", 3, 3.14567;
 </pre>
 
 See below for more information on the sprintf function.

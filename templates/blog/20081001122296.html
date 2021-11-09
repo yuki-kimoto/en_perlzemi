@@ -17,9 +17,9 @@
 You can use the <strong> sprintf function </strong> to create a formatted <a href="/blog/20161003147558.html">string</a>. It is convenient to use the sprintf function when you want to fill the left side of <a href="/blog/20161026147748.html">number</a> with 0 and output it, or when you want to specify a small number of floating point digits. is.
 
 <pre>
-my $str = sprintf("% 08d", $num1);
-my $str = sprintf("% .2f", $num2);
-my $str = sprintf("aiueo% 08daiueo% .2f", $num1, $num2);
+my $str = sprintf("%08d", $num1);
+my $str = sprintf("%.2f", $num2);
+my $str = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
 </pre>
 
 You may want to output numbers or strings according to certain rules. For example, if you want to create a fixed-length character string with the missing parts filled with blanks, it is troublesome to create blanks like "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;".
@@ -33,14 +33,14 @@ You can also output by rounding the decimal point to a certain digit. You can ro
 <h3> Format specification description method </h3>
 
 <pre>
-my $str = sprintf("% 08d", $num1);
-my $str = sprintf("% .2f", $num2);
-my $str = sprintf("aiueo% 08daiueo% .2f", $num1, $num2);
+my $str = sprintf("%08d", $num1);
+my $str = sprintf("%.2f", $num2);
+my $str = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
 </pre>
 
 Formatting starts with%. It ends with a fixed alphanumeric character such as d or f. d means to interpret the second argument as an integer, and f means to interpret it as a floating point number.
 
-Specifies the format in which the string is created between the%and the alphabet. "% 08d" is read as "Interpret $num1 as an integer and pad it with 0 if it is less than 8 characters". "% .2f" is read as "Interpret $num2 as a floating point number and round it to two decimal places."
+Specifies the format in which the string is created between the%and the alphabet. "%08d" is read as "Interpret $num1 as an integer and pad it with 0 if it is less than 8 characters". "%.2f" is read as "Interpret $num2 as a floating point number and round it to two decimal places."
 
 <h3> List of format specifiers for sprintf function </h3>
 
@@ -99,7 +99,7 @@ To format a <strong> fixed-length string </strong> with the <strong> sprintf </s
 <table>
   <tr>
     <td>
-      % 5s
+      %5s
     </td>
     <td>
       Right-justified space filling
@@ -117,7 +117,7 @@ To format a <strong> fixed-length string </strong> with the <strong> sprintf </s
 
   <tr>
     <td>
-      % 0s
+      %0s
     </td>
     <td>
       0 fill
@@ -126,9 +126,9 @@ To format a <strong> fixed-length string </strong> with the <strong> sprintf </s
 
 </table>
 
-To format a fixed-length string with the sprintf function, write a number after%. Write as% 5s.
+To format a fixed-length string with the sprintf function, write a number after%. Write as%5s.
 
-The default is right-justified space filling. To left justify, add a minus (-) in front of the number to make it like% -5s. To fill in the missing parts with 0, write as% 05s.
+The default is right-justified space filling. To left justify, add a minus (-) in front of the number to make it like% -5s. To fill in the missing parts with 0, write as%05s.
 
 If the formatted string exceeds the specified string, it will not be truncated and the specification will be ignored.
 
@@ -168,7 +168,7 @@ To specify the precision with the number of decimal places using the sprintf fun
 
 <pre>
 # 3rd place after the decimal point
-$formatted [1] = sprintf("% .3f", 0.45674);
+$formatted [1] = sprintf("%.3f", 0.45674);
 </pre>
 
 To specify the precision with the number of decimal places, use the format specifier%f, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is .3, it will be rounded to the third decimal place.
@@ -200,10 +200,10 @@ To specify precision by significant digits using the sprintf function, use the f
 
 <pre>
 # 3 significant digits
-my $formatted = sprintf("% .3g", 45.674);
+my $formatted = sprintf("%.3g", 45.674);
 </pre>
 
-To specify the precision with the number of decimal places, use the format specifier%g, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is% .3g, it will be rounded to 3 digits.
+To specify the precision with the number of decimal places, use the format specifier%g, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is%.3g, it will be rounded to 3 digits.
 
 <h3> Sample sprintf function </h3>
 
@@ -220,16 +220,16 @@ use warnings;
 my $num1 = 3;
 
 # Fill in the missing part with 8 digits with 0
-my $formatted1 = sprintf("% 08d", $num1);
+my $formatted1 = sprintf("%08d", $num1);
 print $formatted1. "\n\n";
 
 # Round to two decimal places
 my $num2 = 3.1415;
-my $formatted2 = sprintf("% .2f", $num2);
+my $formatted2 = sprintf("%.2f", $num2);
 print $formatted2. "\n\n";
 
 # Specify multiple arguments
-my $formatted3 = sprintf("aiueo% 08daiueo% .2f", $num1, $num2);
+my $formatted3 = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
 print $formatted3 . "\n";
 </pre>
 
@@ -309,22 +309,22 @@ print "(1) Format to a fixed-length character string.\n";
 my @formated;
 
 # Fill right-justified space
-$formatted [1] = sprintf("1:% 5s", 1);
+$formatted [1] = sprintf("1:%5s", 1);
 
 # Fill left-justified space
 $formatted [2] = sprintf("2:% -5s", 1);
 
 # 0 fill
-$formatted [3] = sprintf("3:% 05s", 1);
+$formatted [3] = sprintf("3:%05s", 1);
 
 # Ignored if the specified character length is exceeded
-$formatted [4] = sprintf("4:% 5d", 123456);
+$formatted [4] = sprintf("4:%5d", 123456);
 
 Other than # %s is OK.
-$formatted [5] = sprintf("5:% 5d", 1);
+$formatted [5] = sprintf("5:%5d", 1);
 
 Other than # %s is OK.
-$formatted [6] = sprintf("6:% 5g", 1.23);
+$formatted [6] = sprintf("6:%5g", 1.23);
 
 for my $i (1 .. 6) {
   print $formatted [$i] . "\n";
@@ -378,7 +378,7 @@ printf "(1) Specify the precision with the number of digits after the decimal po
 my @formated;
 # With precision up to 3 decimal places
 # Format.
-$formatted [1] = sprintf("% .3f", 0.45674);
+$formatted [1] = sprintf("%.3f", 0.45674);
 print $formatted [1]. "\n\n";
 
 # Round to the third decimal place with a character width of 10 that fills the left-justified space
@@ -398,6 +398,6 @@ use warnings;
 printf "(1) Specify the precision by the number of significant digits.\n";
 
 # Format with a precision of 3 significant digits.
-my $formatted = sprintf("% .3g", 45.674);
+my $formatted = sprintf("%.3g", 45.674);
 print $formatted . "\n";
 </pre>

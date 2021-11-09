@@ -729,7 +729,7 @@ I will explain how to check the permissions. To find out the file permissions, u
 <pre>
 use Fcntl': mode';
 my $mode = (stat $file) [2];
-printf "% 03o\n", S_IMODE ($mode);
+printf "%03o\n", S_IMODE ($mode);
 </pre>
 
 Constants and functions that can be bitwise operated.
@@ -772,8 +772,8 @@ print "Get file permissions.\n";
 my $mode = (stat $file) [2];
 
 Convert to number with # S_IMODE function
-printf "Permissions for $file (octal display):% 03o\n", S_IMODE ($mode);
-printf "$file permissions (binary display):% 09b\n", S_IMODE ($mode);
+printf "Permissions for $file (octal display):%03o\n", S_IMODE ($mode);
+printf "$file permissions (binary display):%09b\n", S_IMODE ($mode);
 </pre>
 
 <h3> What is a bit mask? </H3>

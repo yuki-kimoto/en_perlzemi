@@ -14,25 +14,25 @@
 
 
 
-To round off, use the <a href="/blog/20081001122296.html">sprintf function</a>. Specify the format like "% .3g" or "% .5g" if you want to round off by specifying a valid digit, and "% .3f" or "%." If you want to round off by a digit with a decimal point. Specify as 5f ".
+To round off, use the <a href="/blog/20081001122296.html">sprintf function</a>. Specify the format like "%.3g" or "%.5g" if you want to round off by specifying a valid digit, and "%.3f" or "%." If you want to round off by a digit with a decimal point. Specify as 5f ".
 
 <pre>
 # Specify by the number of digits after the decimal point.
-sprintf("% .1f", $num1);
+sprintf("%.1f", $num1);
 
 # Specified by the number of significant digits.
-sprintf("% .1g", $num1);
+sprintf("%.1g", $num1);
 </pre>
 
-To round off, use the sprintf function. The format "% .1f" is a format that rounds a floating point number to the first decimal place. The second decimal place is rounded off.
+To round off, use the sprintf function. The format "%.1f" is a format that rounds a floating point number to the first decimal place. The second decimal place is rounded off.
 
-If you want to round off by specifying the number of significant digits, specify as "% .1g". For example, if you format 37.48 with "% .3g", you will get a number of 37.5.
+If you want to round off by specifying the number of significant digits, specify as "%.1g". For example, if you format 37.48 with "%.3g", you will get a number of 37.5.
 
 <h4> Notes on rounding </h4>
 
 <pre>
 my $num2 = 0.725;
-my $num2_round = sprintf("% .2f", $num2);
+my $num2_round = sprintf("%.2f", $num2);
 </pre>
 
 0.725 expressed in <a href="/blog/20080826121977.html">numeric literal</a> is not 0.725 internally. Numerical values ​​that are not expressed in binary are always treated as an approximation 0.72499999999999998 (in my environment) due to internal error.
@@ -64,15 +64,15 @@ use warnings;
 my $num1 = 100.47;
 
 print "(1) Round off.\n";
-my $num1_round = sprintf("% .1f", $num1);
+my $num1_round = sprintf("%.1f", $num1);
 print "Rounding $num1 to the second decimal place gives ${num1_round}.\n\n";
 
 print "(2) Notes on rounding\n";
 my $num2 = 0.725;
 
 It does not become # 0.73.
-my $num2_round = sprintf("% .2f", $num2);
+my $num2_round = sprintf("%.2f", $num2);
 print "If you round 0.725 to the third decimal place, you get ${num2_round}\n\n";
 
-printf("caused internally by the number% .30f\n". $Num2);
+printf("caused internally by the number%.30f\n". $Num2);
 </pre>

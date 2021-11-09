@@ -574,26 +574,26 @@ use strict;
 use warnings;
 
 You can express it in binary by prefixing the number with # 0b.
-Fill in 4 digits left 0 with the format specification # % 04b
+Fill in 4 digits left 0 with the format specification # %04b
 # You can output binary representation.
 print "1: Logical product of binary numbers 1100 and 1010\n";
-printf("% 04b", 0b1100 & 0b1010);
+printf("%04b", 0b1100 & 0b1010);
 
 print "\n";
 
 print "2: OR of binary numbers 1100 and 1010\n";
-printf("% 04b", 0b1100 | 0b1010);
+printf("%04b", 0b1100 | 0b1010);
 print "\n";
 
 print "3: Exclusive OR of binary numbers 1100 and 1010\n";
-printf("% 04b", 0b1100 ^ 0b1010);
+printf("%04b", 0b1100 ^ 0b1010);
 print "\n";
 
 # Perl double-precision floating point(32 bits)
 Since it is represented by # , all 32 bits are
 # Invert.
 print "4: Negation of binary 1100\n";
-printf("% 04b", ~ 0b1100);
+printf("%04b", ~ 0b1100);
 print "\n\n";
 
 print "5: Use bitwise operations to indicate that all flags are on.\n";
@@ -602,7 +602,7 @@ A subroutine that returns sub FLG2 {2;} # 2. 2 is 10 in binary.
 A subroutine that returns sub FLG3 {4;} # 4. 4 is 100 in base.
 
 my $all_flg_on = FLG1 | FLG2 | FLG3;
-printf("% 03b", $all_flg_on);
+printf("%03b", $all_flg_on);
 print "\n\n";
 
 print "6: Make sure FLG3 is on.\n";
@@ -613,7 +613,7 @@ if ($all_flg_on & FLG3) {
 
 
 <pre>
-printf("% 04b", 0b1100 & 0b1010);
+printf("%04b", 0b1100 & 0b1010);
 </pre>
 
 <h4> (1) Express numbers in binary </h4>
@@ -632,7 +632,7 @@ A subroutine that returns sub FLG2 {2;} # 2. 2 is 10 in binary.
 A subroutine that returns sub FLG3 {4;} # 4. 4 is 100 in base.
 
 my $all_flg_on = FLG1 | FLG2 | FLG3;
-printf("% 03b", $all_flg_on);
+printf("%03b", $all_flg_on);
 print "\n\n";
 
 print "6: Make sure FLG3 is on.\n";
