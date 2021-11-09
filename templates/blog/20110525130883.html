@@ -1,237 +1,236 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110525130883.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110525130883.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Mojolicious::Liteでさまざまなルートを記述する</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Describe various routes with Mojolicious :: Lite </ h2>
 
 
 
 
-Mojolicious::Liteでさまざまなルートを記述してみましょう。
+Let's write various routes with Mojolicious :: Lite.
 
-<h3>GETメソッドとPOSTメソッド</h3>
+<h3> GET and POST methods </ h3>
 
-GETメソッドによる「/」へのルートです。GETメソッドはページを取得するときや検索を行うときに利用されることが多いです。
+The route to "/" by the GET method. The GET method is often used when retrieving a page or performing a search.
 
 <pre>
 # Via get method
-use Mojolicious::Lite;
-get '/' => sub { shift->render(text => 'Hello') };
-app->start;
-</pre>
+use Mojolicious :: Lite;
+get'/' => sub {shift-> render (text =>'Hello')};
+app-> start;
+</ pre>
 
-次はPOSTメソッドによる「/create」へのルートです。POSTメソッドは新しい記事の投稿や更新、削除などサーバーに存在するデータに対して変更を行う場合に利用されることが多いです。一般的にフォームの送信処理で利用すると考えるとよいでしょう。
+Next is the route to "/ create" by the POST method. The POST method is often used to make changes to data that resides on the server, such as posting, updating, or deleting new articles. Generally, you can think of it as being used in the form submission process.
 
 <pre>
 # Via post method
-use Mojolicious::Lite;
-get '/' => 'index';
-post '/create' => sub {
-  my $self = shift;
+use Mojolicious :: Lite;
+get'/' =>'index';
+post'/ create'=> sub {
+  my $ self = shift;
   
-  my $title = $self->param('title');
+  my $ title = $ self-> param ('title');
   
-  $self->render(text => $title);
+  $ self-> render (text => $ title);
 };
-app->start;
+app-> start;
 
 __DATA__
 
 @@ index.html.ep
 <html>
-  <head><title>Top Page</title></head>
+  <head> <title> Top Page </ title> </ head>
   <body>
-    <form method="post" action="<%= url_for '/create' %>" >
-      <div>Title: <input type="text" name="title"></div>
-      <div><input type="submit" value="Send"></div>
-    </form>
-  </body>
-</html>
-</pre>
+    <form method = "post" action = "<% = url_for'/ create'%>">
+      <div> Title: <input type = "text" name = "title"> </ div>
+      <div> <input type = "submit" value = "Send"> </ div>
+    </ form>
+  </ body>
+</ html>
+</ pre>
 
-<h3>プレースホルダーの利用</h3>
+<h3> Use placeholders </ h3>
 
-URLの中にはプレースホルダを含めることができます。「:名前」のようにコロンで始めます。プレースホルダは変数のようなものだと考えればよいでしょう。
+You can include placeholders in the URL. Start with a colon, like ": name". You can think of placeholders as variables.
 
 <pre>
-# Place holder
-get '/entry/:date' => sub {
-  my $self = shift;
+#Place holder
+get'/ entry /: date' => sub {
+  my $ self = shift;
   
-  my $date = $self->param('date');
+  my $ date = $ self-> param ('date');
   
-  $self->render(text => $date);
+  $ self-> render (text => $ date);
 };
-</pre>
+</ pre>
 
-プレースホルダに指定した値はparamメソッドで取得することができます。
+The value specified in the placeholder can be obtained by the param method.
 
-次のURLでアクセスしてみましょう。20111212と表示されます。
-
-<pre>
-/entry/20111212
-</pre>
-
-<h4>リラックスプレースホルダー</h4>
-
-ところがこのプレースホルダーには.(ドット)を含めることができません。.もキャプチャしたい場合はリラックスプレースホルダを利用します。リラックスプレースホルダーは「#名前」のようにシャープで始めます。リラックスプレースホルダーについては常に括弧「()」で囲む必要があることに注意してください。(注:Mojolicious3.0くらいからはリラックスプレースホルダーの記法は「.名前」から「#名前」に変更されました。)
+Let's access it with the following URL. It is displayed as 20111212.
 
 <pre>
-# Relax place holder
-get '/entry/(.datetime)' => sub {
-  my $self = shift;
+/ entry / 20111212
+</ pre>
+
+<h4> Relax Placeholder </ h4>
+
+However, this placeholder cannot contain. (Dot). If you also want to capture. Use the Relax Placeholder. Relax placeholders start with a sharp, like "#name". Note that relax placeholders should always be enclosed in parentheses "()". (Note: From around Mojolicious 3.0, the Relax Placeholder notation has changed from ".name" to "#name".)
+
+<pre>
+#Relax place holder
+get'/ entry / (.datetime)' => sub {
+  my $ self = shift;
   
-  my $datetime = $self->param('datetime');
+  my $ datetime = $ self-> param ('datetime');
   
-  $self->render(text => $datetime);
+  $ self-> render (text => $ datetime);
 };
-</pre>
+</ pre>
 
-次のURLでアクセスしてみましょう。20111212.102232と表示されます。
+Let's access it with the following URL. It is displayed as 20111212.102232.
 
 <pre>
 /entry/20111212.102232
-</pre>
+</ pre>
 
-<h4>ワイルドカードプレースホルダー</h4>
+<h4> Wildcard Placeholder </ h4>
 
-/(スラッシュ)も含めてマッチさせたい場合はワイルドカードプレースホルダーを使用します。
+Use wildcard placeholders if you want to match including / (slash).
 
 <pre>
-# Wildcard place holder
-get '/entry/*datetime' => sub {
-  my $self = shift;
+#Wildcard place holder
+get'/ entry / * datetime' => sub {
+  my $ self = shift;
   
-  my $datetime = $self->param('datetime');
+  my $ datetime = $ self-> param ('datetime');
   
-  $self->render(text => $datetime);
+  $ self-> render (text => $ datetime);
 };
-</pre>
+</ pre>
 
-次のURLでアクセスしてみましょう。20111212/102232と表示されます。
-
-<pre>
-/entry/20111212/102232
-</pre>
-
-<h3>ルートのテクニック</h3>
-
-<h4>ふたつのルート</h4>
-
-次のふたつのURLで同じロジックを実行したい場合はどうしたらよいでしょうか。
+Let's access it with the following URL. 20111212/102232 is displayed.
 
 <pre>
-/entry
-/entry/20101111
-</pre>
+/ entry / 20111212/102232
+</ pre>
 
-このような場合はデフォルト値をundefに設定してあげるのがよいでしょう。そうすると上の二つのルートで同じロジックを利用できます。
+<h3> Root technique </ h3>
+
+<h4> Two routes </ h4>
+
+What if you want to execute the same logic on the following two URLs?
 
 <pre>
-# Match above two URL
-get '/entry/:date' => {date => undef} => sub {
-  my $self = shift;
+/ entry
+/ entry / 20101111
+</ pre>
+
+In such a case, it is better to set the default value to undef. Then you can use the same logic in the above two routes.
+
+<pre>
+#Match above two URL
+get'/ entry /: date'=> {date => undef} => sub {
+  my $ self = shift;
   
-  my $date = $self->param('date') || 'undefined';
+  my $ date = $ self-> param ('date') ||'undefined';
   
-  $self->render(text => $date);
+  $ self-> render (text => $ date);
 };
-</pre>
+</ pre>
 
-<h4>静的なルートと動的なルートの混合</h4>
+<h4> Mixing static and dynamic routes </ h4>
 
-静的なルートと動的なルートを混ぜたい場合はどうすればよいでしょうか。
+What if you want to mix static and dynamic routes?
 
 <pre>
-# Static route
-/description
+#Static route
+/ description
 
 # User name
-/kimoto
-/kraih
-/taro
-</pre>
+/ kimoto
+/ kraih
+/ taro
+</ pre>
 
-その場合は静的なルートを上部に記述すればよいだけです。
-
-<pre>
-# Static route
-get '/description' => sub { shift->render(text => 'description') };
-
-# Dinamic route
-get '/:user' => sub {
-  my $self = shift;
-  
-  my $user = $self->param('user');
-  
-  $self->render(text => $user);
-};
-</pre>
-
-もう少し難しいルートも記述してみましょう。GithubなどのURLなんかもこのような仕組みになっていますね。
+In that case, all you have to do is write the static route at the top.
 
 <pre>
-# Description(Static)
-/description
+#Static route
+get'/ description' => sub {shift-> render (text =>'description')};
 
-# User name(Dinamic)
-/kimoto
-/kraih
-/taro
+#Dinamic route
+get'/: user' => sub {
+  my $ self = shift;
+  
+  my $ user = $ self-> param ('user');
+  
+  $ self-> render (text => $ user);
+};
+</ pre>
 
-# User name and profile (Dinamic and Static)
-/kimoto/profile
-/kraih/profile
-/taro/profile
-
-# User name and project (Dinamic and Dinamic)
-/kimoto/dbix-custom
-/kraih/mojo
-/taro/foobar
-</pre>
+Let's describe a slightly more difficult route. URLs such as Github also have this kind of mechanism.
 
 <pre>
-# Description(Static)
-get '/description' => sub { shift->render(text => 'description') };
+#Description (Static)
+/ description
 
-# User name(Dinamic)
-get '/:user' => sub {
-  my $self = shift;
+#User name (Dinamic)
+/ kimoto
+/ kraih
+/ taro
+
+#User name and profile (Dinamic and Static)
+/ kimoto / profile
+/ kraih / profile
+/ taro / profile
+
+#User name and project (Dinamic and Dinamic)
+/ kimoto / dbix-custom
+/ kraih / mojo
+/ taro / foobar
+</ pre>
+
+<pre>
+#Description (Static)
+get'/ description' => sub {shift-> render (text =>'description')};
+
+#User name (Dinamic)
+get'/: user' => sub {
+  my $ self = shift;
   
-  my $user = $self->param('user');
+  my $ user = $ self-> param ('user');
   
-  $self->render(text => "User $user");
+  $ self-> render (text => "User $ user");
 };
 
-# User name and profile (Dinamic and Static)
-get '/:user/profile' => sub {
-  my $self = shift;
+#User name and profile (Dinamic and Static)
+get'/: user / profile'=> sub {
+  my $ self = shift;
   
-  my $user = $self->param('user');
+  my $ user = $ self-> param ('user');
   
-  $self->render(text => "$user Profile");
+  $ self-> render (text => "$ user Profile");
 };
 
-# User name and project (Dinamic and Dinamic)
-get '/:user/:project' => sub {
-  my $self = shift;
+#User name and project (Dinamic and Dinamic)
+get'/: user /: project' => sub {
+  my $ self = shift;
   
-  my $user = $self->param('user');
-  my $project = $self->param('project');
+  my $ user = $ self-> param ('user');
+  my $ project = $ self-> param ('project');
   
-  $self->render(text => "$user $project Project");
+  $ self-> render (text => "$ user $ project Project");
 };
-</pre>
-
+</ pre>

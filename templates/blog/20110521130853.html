@@ -1,46 +1,45 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110521130853.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110521130853.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>MojoliciousでHello World!アプリケーション</h2>
+      <span itemprop = "name"> Mojolicious </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Hello World! Application with Mojolicious </ h2>
 
 
 
-MojoliciousによるHello Worldアプリケーション(hello.pl)は次のように書きます。Mojoliciousに含まれるMojolicious::Liteというモジュールを利用します。たったの3行ですがひとつの完全なWebアプリケーションになっています。
+The Hello World application (hello.pl) by Mojolicious writes: We will use a module called Mojolicious :: Lite included in Mojolicious. It's just three lines, but it's a complete web application.
 
 <pre>
-use Mojolicious::Lite;
-get '/' => sub { shift->render(text => 'Hello World!') };
-app->start;
-</pre>
+use Mojolicious :: Lite;
+get'/' => sub {shift-> render (text =>'Hello World!')};
+app-> start;
+</ pre>
 
-アプリケーションを組み込みのWebサーバー上で実行してみましょう。コマンドラインで<a href="/blog/20120406133367.html">morbo</a>コマンドを実行します。
+Let's run the application on a built-in web server. Run the <a href="/blog/20120406133367.html"> morbo </a> command on the command line.
 
 <pre>
 morbo hello.pl
-</pre>
+</ pre>
 
-ポート番号が3000版でWebアプリケーションが起動されます。
+The web application is started with the port number 3000.
 
 <pre>
 Server available at http://127.0.0.1:3000.
-</pre>
+</ pre>
 
-ブラウザ上で以下のURLにアクセスしましょう。
+Access the following URL on your browser.
 
 <pre>
 http://127.0.0.1:3000/
-</pre>
+</ pre>
 
-画面上に「Hello World!」と表示されます。
-
+"Hello World!" Is displayed on the screen.

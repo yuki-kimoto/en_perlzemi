@@ -1,117 +1,116 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110501130707.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110501130707.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>パラメーターを取得する / Mojolicious</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+Get <h2> parameters / Mojolicious </ h2>
 
 
 
-Mojoliciousでパラメーターといった場合次の三つの要素を含むことが多いので、まず次の三つのものの区別をしておきましょう。
+Mojolicious often includes the following three elements when it comes to parameters, so let's first distinguish between the following three.
 
 <ol>
   <li>
-    クエリ文字列に含まれるデータ
-  </li>
+    Data contained in the query string
+  </ li>
   <li>
-    POSTで送信されたHTTPボディに含まれるデータ
-  </li>
+    Data contained in the HTTP body sent by POST
+  </ li>
   <li>
-    URLの中でキャプチャされたデータ
-  </li>
-</ol>
+    Data captured in the URL
+  </ li>
+</ ol>
 
-<h4>(1)クエリ文字列に含まれるデータ</h4>
+<h4> (1) Data contained in the query string </ h4>
 
-クエリ文字列とはURLの?以降に設定されるデータのことです。
+The query string is the data set after? In the URL.
 
 <pre>
 http://somehost.com/search?name=Ken&age=19
-</pre>
+</ pre>
 
-それぞれのパラメーター「パラメータ名:値」は「&」で結ばれた形になっています。クエリ文字列によるパラメータは、何かを検索するときによく利用されいます。
+Each parameter "parameter name: value" is connected by "&". Query string parameters are often used when searching for something.
 
-<h4>(2)POSTで送信されたHTTPボディに含まれるデータ</h4>
+<h4> (2) Data contained in the HTTP body sent by POST </ h4>
 
-これはフォームの送信などでHTTPボディに含まれるデータです。
+This is the data contained in the HTTP body, such as when submitting a form.
 
-<h4>URLの中でキャプチャされたデータ</h4>
+<h4> Data captured in the URL </ h4>
 
-MojoliciousではURLの中の一部分をパラメータとしてキャプチャすることができます。
-
-<pre>
-get '/entry/:id' => sub { ... };
-</pre>
-
-この値もパラメータとして扱われます。
-
-<h3>パラメーターの値の取得</h3>
-
-パラメーターの値を取得するにはMojolicious::Controllerのparamメソッドを使用します。これは上記の(1),(2),(3)すべてを含みます。
+Mojolicious allows you to capture a portion of the URL as a parameter.
 
 <pre>
-my $age = $c->param('age');
-</pre>
+get'/ entry /: id'=> sub {...};
+</ pre>
 
-<h3>複数の値の取得</h3>
+This value is also treated as a parameter.
 
-チェックボックスなどで複数選択された値を取得するにはevery_paramメソッドを呼び出します。
+<h3> Get parameter values ​​</ h3>
 
-<pre>
-my $contries = $c->every_param('country');
-</pre>
-
-<b>注意</b>:リストコンテキストでのparam($name)は、セキュリティ上の問題のために、Mojolicious 6で機能が削除されました。every_paramを使うようにしてください。
-
-<h3>すべてのパラメーターの名前と値を取得</h3>
-
-パラメーター名をすべて取得するには「$c->req->params->to_hash」を使います。
+To get the value of a parameter, use the param method of Mojolicious :: Controller. This includes all of the above (1), (2), (3).
 
 <pre>
-my $params = $c->req->params->to_hash
-</pre>
+my $ age = $ c-> param ('age');
+</ pre>
 
-<b>注意</b>:リストコンテキストにおける$c->paramは、セキュリティ上の理由で、Mojolicious 6から廃止されています。すべての名前を取得するには、上記で名前と値を取得した後に「keys @$params」にキーを取得してください。
+<h3> Get multiple values ​​</ h3>
 
-以下はMojolicious::Liteにおけるサンプルです。
+Call the every_param method to get multiple selected values ​​such as checkboxes.
 
 <pre>
-# Mojolicious::Lite
-use Mojolicious::Lite;
+my $ contries = $ c-> every_param ('country');
+</ pre>
+
+<b> Caution </ b>: param ($ name) in list context has been removed in Mojolicious 6 due to security concerns. Be sure to use every_param.
+
+<h3> Get the names and values ​​of all parameters </ h3>
+
+Use "$ c-> req-> params-> to_hash" to get all the parameter names.
+
+<pre>
+my $ params = $ c-> req-> params-> to_hash
+</ pre>
+
+<b> Caution </ b>: $ c-> param in list context is obsolete from Mojolicious 6 for security reasons. To get all the names, get the keys in "keys @ $ params" after getting the names and values ​​above.
+
+Below is a sample from Mojolicious :: Lite.
+
+<pre>
+#Mojolicious :: Lite
+use Mojolicious :: Lite;
 
 use utf8;
 
-get '/entry/:id' => sub {
-  my $self = shift;
-  my $age = $self->param('age');
-  my @countries = $self->param('country');
-  my @names = $self->param;
+get'/ entry /: id'=> sub {
+  my $ self = shift;
+  my $ age = $ self-> param ('age');
+  my @countries = $ self-> param ('country');
+  my @names = $ self-> param;
 };
-</pre>
+</ pre>
 
-以下はMojoliciousにおけるサンプルです。
+Below is a sample from Mojolicious.
 
 <pre>
-package MyApp::Diary;
+package MyApp :: Diary;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo :: Base'Mojolicious :: Controller';
 
 sub entry {
-  my $self = shift;
-  my $age = $self->param('age');
-  my @countries = $self->param('country');
-  my @names = $self->param;
+  my $ self = shift;
+  my $ age = $ self-> param ('age');
+  my @countries = $ self-> param ('country');
+  my @names = $ self-> param;
 }
-</pre>
-
+</ pre>

@@ -1,194 +1,193 @@
-<script>location.href='https://dbix-custom.perlzemi.com';</script>
+<script> location.href ='https://dbix-custom.perlzemi.com'; </ script>
 
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20170130148603.html">
-      <span itemprop="name">データベース</span></a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> database </ span> </a>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>DBIx::Custom - SQLでデータベースに簡単アクセス</h2>
+  </ li>
+</ ol>
+<h2> DBIx :: Custom --Easy access to database with SQL </ h2>
 
 
 
-<strong>DBIx::Custom</strong>は「insert,update,delete,select」などのデータベースへのクエリを簡単にするためモジュールです。<strong>O/Rマッパー</strong>としては、覚えることが少なく、生のSQLに近い記述ができます。
+<strong> DBIx :: Custom </ strong> is a module that simplifies queries to databases such as "insert, update, delete, select". As a <strong> O / R mapper </ strong>, you can write something close to raw SQL with little to remember.
 
-DBIx::Customは以下のような便利な機能を備えています。
+DBIx :: Custom has the following useful features.
 
-<ul class="check-list">
+<ul class = "check-list">
 <ol>
   <li>
-    insert, update, delete, selectを簡単に実行、高速insert文、バルクインサートサポート
-  </li>
+    Easily execute insert, update, delete, select, fast insert statement, bulk insert support
+  </ li>
   <li>
-    柔軟なWhere句の生成、柔軟なorder by句の生成、名前つきプレースホルダのサポート
-  </li>
+    Flexible Where clause generation, flexible order by clause generation, support for named placeholders
+  </ li>
   <li>
-    MySQL, PostgreSQL, SQLite, Oracle, Microsoft SQL Server, Microsoft Accessをサポート
-  </li>
-</ol>
-</ul>
+    Supports MySQL, PostgreSQL, SQLite, Oracle, Microsoft SQL Server, Microsoft Access
+  </ li>
+</ ol>
+</ ul>
 
-サンプルコードを見てください。
+See the sample code.
 
 <pre>
-use DBIx::Custom;
-my $dbi = DBIx::Custom->connect(dsn => $dsn);
+use DBIx :: Custom;
+my $ dbi = DBIx :: Custom-> connect (dsn => $ dsn);
 
-# 挿入
-$dbi->insert({id => 1, title => 'Perl'}, table => 'book');
+#Insert
+$ dbi-> insert ({id => 1, title =>'Perl'}, table =>'book');
 
-# 更新
-$dbi->update({title => 'Perl'}, table => 'book', where => {id => 1});
+# Update
+$ dbi-> update ({title =>'Perl'}, table =>'book', where => {id => 1});
 
-# 削除
-$dbi->delete(where => {id => 1}, table => 'book');
+# delete
+$ dbi-> delete (where => {id => 1}, table =>'book');
 
-# 選択
-my $rows = $dbi->select(table => 'book')->all;
-</pre>
+# Choice
+my $ rows = $ dbi-> select (table =>'book')-> all;
+</ pre>
 
-簡単に書けるでしょう。
+It will be easy to write.
 
-<h3>インストール</h3>
+<h3> Installation </ h3>
 
-DBIx::Customを「インストール」してみましょう。
-
-<ul>
-  <li>
-    <a href="/blog/20110508130736.html">DBIx::Customのインストール</a>
-  </li>
-</ul>
-
-<h3>データベースへの接続</h3>
-
-DBIx::Customで「データベース接続」する方法を解説しています。さまざまなデータベースでも利用することができます。
+Let's "install" DBIx :: Custom.
 
 <ul>
   <li>
-    <a href="/blog/20110516130787.html">データベースへ接続する</a>
-  </li>
-</ul>
+    <a href="/blog/20110508130736.html"> Install DBIx :: Custom </a>
+  </ li>
+</ ul>
 
-<h3>クエリの実行</h3>
+<h3> Connecting to the database </ h3>
 
-DBIx::Customでクエリを実行する方法を解説します。insert,update,delete,select文を覚えましょう。
-
-<ul>
-  <li>
-    <a href="/blog/20110210130016.html">行の選択 select</a>
-  </li>
-  <li>
-    <a href="/blog/20110129130016.html">行の挿入 insert</a>
-  </li>
-  <li>
-    <a href="/blog/20110130130016.html">行の更新 update</a>
-  </li>
-  <li>
-    <a href="/blog/20110202130016.html">行の削除 delete</a>
-  </li>
-  <li>
-    <a href="/blog/20110708131364.html">SQLを実行する execute</a>
-  </li>
-</ul>
-
-<h3>行のフェッチ</h3>
-
-DBIx::Customで「行をフェッチ」する方法を解説します。
+Explains how to "connect to the database" with DBIx :: Custom. It can also be used in various databases.
 
 <ul>
   <li>
-    <a href="/blog/20110709131364.html">行をフェッチする</a>
-  </li>
-</ul>
+    <a href="/blog/20110516130787.html"> Connect to the database </a>
+  </ li>
+</ ul>
 
-<h3>Where句の動的な作成</h3>
+<h3> Query execution </ h3>
 
-DBIx::Customで「動的にwhere句を作成」する方法を解説します。
-
-<ul>
-  <li>
-    <a href="/blog/20110924132031.html">動的にWhere句の生成する</a>
-  </li>
-</ul>
-
-<h3>Order By句の動的な生成</h3>
-
-DBIx::Customで「動的にorder by句を作成」する方法を解説します。
+I will explain how to execute a query with DBIx :: Custom. Remember the insert, update, delete, select statements.
 
 <ul>
   <li>
-    <a href="/blog/20110928132041.html">Order By句の生成</a>
-  </li>
-</ul>
+    <a href="/blog/20110210130016.html"> Select row select </a>
+  </ li>
+  <li>
+    <a href="/blog/20110129130016.html"> Insert line insert </a>
+  </ li>
+  <li>
+    <a href="/blog/20110130130016.html"> Line update update </a>
+  </ li>
+  <li>
+    <a href="/blog/20110202130016.html"> Delete line delete </a>
+  </ li>
+  <li>
+    <a href="/blog/20110708131364.html"> Execute SQL execute </a>
+  </ li>
+</ ul>
 
-<h3>モデル</h3>
+<h3> Row fetch </ h3>
 
-DBIx::Customで「モデル」を利用する方法を解説します。
+I will explain how to "fetch rows" with DBIx :: Custom.
 
 <ul>
   <li>
-    <a href="/blog/20110816131802.html">「モデル」を利用する</a>
-  </li>
-</ul>
+    <a href="/blog/20110709131364.html"> Fetch rows </a>
+  </ li>
+</ ul>
 
-<h3>応用的な機能</h3>
+<h3> Dynamic creation of Where clauses </ h3>
 
-DBIx::Customの「応用的な機能」について紹介します。
-
-<h4>SQLの生成</h4>
-
-DBIx::Customで「SQLを生成」するための便利なメソッドを紹介します。
+I will explain how to "dynamically create a where clause" with DBIx :: Custom.
 
 <ul>
   <li>
-    <a href="/blog/20110812131778.html">DBIx::Customで「SQLを生成」するためのメソッドの紹介</a>
-  </li>
-</ul>
+    <a href="/blog/20110924132031.html"> Dynamically generate Where clause </a>
+  </ li>
+</ ul>
 
-<h4>フィルタリング</h4>
+<h3> Dynamic generation of Order By clause </ h3>
 
-DBIx::Customで「フィルタリング」を利用する方法を解説します。
-
-<ul>
-  <li>
-    <a href="/blog/20110926132031.html">「フィルタリング」を利用する</a>
-  </li>
-</ul>
-
-<h4>テーブルと列の情報</h4>
-
-DBIx::Customの「テーブルと列の情報」を調べるメソッドを紹介します。
+Learn how to "dynamically create an order by clause" with DBIx :: Custom.
 
 <ul>
   <li>
-    <a href="/blog/20110911131900.html">DBIx::Customの「テーブル」と「列」の情報を調べるメソッド</a>
-  </li>
-</ul>
+    <a href="/blog/20110928132041.html"> Order By clause generation </a>
+  </ li>
+</ ul>
 
-<h4>ユーティリティ</h4>
+<h3> Model </ h3>
 
-DBIx::Customの「ユーティリティ」メソッドを紹介します。
+I will explain how to use "model" with DBIx :: Custom.
 
 <ul>
   <li>
-    <a href="/blog/20110904131900.html">DBIx::Customの「ユーティリティ」メソッドの紹介</a>
-  </li>
-</ul>
+    <a href="/blog/20110816131802.html"> Use "model" </a>
+  </ li>
+</ ul>
 
+<h3> Applied functions </ h3>
+
+Introducing the "advanced features" of DBIx :: Custom.
+
+<h4> SQL generation </ h4>
+
+Here's a handy method for "generating SQL" with DBIx :: Custom.
+
+<ul>
+  <li>
+    <a href="/blog/20110812131778.html"> Introduction of methods for "generating SQL" with DBIx :: Custom </a>
+  </ li>
+</ ul>
+
+<h4> Filtering </ h4>
+
+I will explain how to use "filtering" with DBIx :: Custom.
+
+<ul>
+  <li>
+    <a href="/blog/20110926132031.html"> Use "filtering" </a>
+  </ li>
+</ ul>
+
+<h4> Table and column information </ h4>
+
+Introducing a method to check "table and column information" of DBIx :: Custom.
+
+<ul>
+  <li>
+    <a href="/blog/20110911131900.html"> Method to check the "table" and "column" information of DBIx :: Custom </a>
+  </ li>
+</ ul>
+
+<h4> Utility </ h4>
+
+Introducing the "utility" method of DBIx :: Custom.
+
+<ul>
+  <li>
+    <a href="/blog/20110904131900.html"> Introduction of DBIx :: Custom's "utility" method </a>
+  </ li>
+</ ul>

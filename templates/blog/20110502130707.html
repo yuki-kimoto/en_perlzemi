@@ -1,68 +1,67 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110502130707.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110502130707.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>HTTPヘッダを取得する / Mojolicious</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Get HTTP headers / Mojolicious </ h2>
 
 
 
-HTTPヘッダを取得するにはMojo::Headersクラスの<strong>header</strong>メソッドを使用します。
-
-<pre>
-my $x_forwarded_host = $headers->header('X-Forwarded-Host');
-</pre>
-
-またMojo::Headersクラスには一般的なヘッダを取得するためのショートカットメソッドがたくさん用意されています。
+To get the HTTP headers, use the <strong> header </ strong> method of the Mojo :: Headers class.
 
 <pre>
-my $content_type = $headers->content_type;
-my $accept_language = $headers->accept_language;
-</pre>
+my $ x_forwarded_host = $ headers-> header ('X-Forwarded-Host');
+</ pre>
+
+The Mojo :: Headers class also has a lot of shortcut methods for getting common headers.
+
+<pre>
+my $ content_type = $ headers-> content_type;
+my $ accept_language = $ headers-> accept_language;
+</ pre>
 
 <ul>
   <li>
-    <a href="https://mojodoc.perlzemi.com/Mojo%3A%3AHeaders">HTTPヘッダのショートカットメソッド</a>
-  </li>
-</ul>
+    <a href="https://mojodoc.perlzemi.com/Mojo%3A%3AHeaders"> HTTP header shortcut method </a>
+  </ li>
+</ ul>
 
-以下はMojolicious::Liteのサンプルです。Mojo::Message::RequestオブジェクトをMojolicious::Controllerオブジェクトのreqメソッドによって取得し、Mojo::HeadersオブジェクトをMojo::Message::Requestオブジェクトのheadersメソッドによって取得しています。
+Below is a sample of Mojolicious :: Lite. The Mojo :: Message :: Request object is fetched by the req method of the Mojolicious :: Controller object, and the Mojo :: Headers object is fetched by the headers method of the Mojo :: Message :: Request object.
 
 <pre>
-# Mojolicious::Lite
-use Mojolicious::Lite;
+#Mojolicious :: Lite
+use Mojolicious :: Lite;
 
-get '/' => sub {
-  my $self = shift;
-  my $x_forwarded_host = $self->req->headers->header('X-Forwarded-Host');
-  my $content_type = $self->req->headers->content_type;
-  my $accept_language = $self->req->headers->accept_language;
+get'/' => sub {
+  my $ self = shift;
+  my $ x_forwarded_host = $ self-> req-> headers-> header ('X-Forwarded-Host');
+  my $ content_type = $ self-> req-> headers-> content_type;
+  my $ accept_language = $ self-> req-> headers-> accept_language;
 };
-</pre>
+</ pre>
 
-以下はMojoliciousのサンプルです。
+Below is a sample of Mojolicious.
 
 <pre>
-package MyApp::Diary;
+package MyApp :: Diary;
 
-use Mojo::Base 'Mojolicious::Controller';
+use Mojo :: Base'Mojolicious :: Controller';
 
 sub entry {
-  my $self = shift;
-  my $x_forwarded_host = $self->req->headers->header('X-Forwarded-Host');
-  my $content_type = $self->req->headers->content_type;
-  my $accept_language = $self->req->headers->accept_language;
+  my $ self = shift;
+  my $ x_forwarded_host = $ self-> req-> headers-> header ('X-Forwarded-Host');
+  my $ content_type = $ self-> req-> headers-> content_type;
+  my $ accept_language = $ self-> req-> headers-> accept_language;
 }
-</pre>
-
+</ pre>

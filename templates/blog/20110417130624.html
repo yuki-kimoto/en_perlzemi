@@ -1,581 +1,580 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Webアプリケーション作成のためのHTMLの基礎</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> HTML basics for creating web applications </ h2>
 
 
 
-PerlでWebアプリケーションを作成するための前提知識としてHTMLの基本を解説します。これだけ知っていれば、HTMLを自由に記述することができる程度のものを目指しました。タグの役割を中心に解説します。通常のタグ、フォームタグ、ヘッダ部で利用するタグなどを解説しています。日本語などの扱い方、CSSやJavaScriptの利用の仕方などにも触れています。画面のレイアウトや色については、CSSを解説するときに解説します。
+I will explain the basics of HTML as a prerequisite for creating a web application in Perl. With this much knowledge, I aimed for something that would allow me to write HTML freely. I will mainly explain the role of tags. Explains normal tags, form tags, tags used in the header part, etc. It also touches on how to handle Japanese and how to use CSS and JavaScript. The screen layout and colors will be explained when explaining CSS.
 
-<h3>基礎の基礎</h3>
+<h3> Basic foundation </ h3>
 
-HTMLのフォーマットです。
+HTML format.
 
 <pre>
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html>
 
  <head>
-  <title>タイトル</title>
- </head>
+  <title> Title </ title>
+ </ head>
 
  <body>
-  内容
- </body>
+  Contents
+ </ body>
 
-</html>
-</pre>
-HTMLでは「<」と「>」で囲まれたタグというものを使って文書を記述します。HTML文書は「<html>」で始まって「</html>」で終わります。「<head>」と「</head>」の間には、HTML文書のタイトルなどのメタ情報を記述します。「<doby>」と「</body>」の間には、画面に表示される文書の内容を記述します。
+</ html>
+</ pre>
+In HTML, documents are described using tags surrounded by "<" and ">". HTML documents start with "<html>" and end with "</ html>". Write meta information such as the title of the HTML document between "<head>" and "</ head>". Describe the content of the document displayed on the screen between "<doby>" and "</ body>".
 
-<!DOCTYPE html>はドキュメントタイプと呼ばれ、とりあえず先頭に記述するものだと覚えて起きましょう。
+Remember that <! DOCTYPE html> is called a document type and is written at the beginning for the time being.
 
-<h4>文字参照</h4>
+<h4> Character reference </ h4>
 
-「<」や「>」といった文字は、そのままではHTMLの中で利用することができません。文字参照という方法を使ってこれらの文字を記述することができます。
+Characters such as "<" and ">" cannot be used as they are in HTML. You can write these characters using a method called character references.
 
 <table>
   <tr>
     <td>
-      &amp;quot;
-    </td>
+      & amp; quot;
+    </ td>
     <td>
       "
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      &amp;amp;
-    </td>
+      & amp; amp;
+    </ td>
     <td>
       &
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      &amp;lt;
-    </td>
+      & amp; lt;
+    </ td>
     <td>
       <
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      &amp;gt;
-    </td>
+      & amp; gt;
+    </ td>
     <td>
       >
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      &amp;nbsp;
-    </td>
+      & amp; nbsp;
+    </ td>
     <td>
-      スペース
-    </td>
-  </tr>
+      space
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-HTMLの中ではスペースはいくつ記述してもひとつのスペースに切り詰められるので「&nbsp;」を使用します。
+In HTML, no matter how many spaces you write, they will be truncated to one space, so use "& nbsp;".
 
-<h3>body部で利用されるタグ</h3>
+<h3> Tags used in the body part </ h3>
 
-<h4>コメント</h4>
-
-<pre>
-<!-- コメント -->
-</pre>
-
-「<!--」から「-->」までがコメントになります。
-
-<h4>ブロック要素 div</h4>
+<h4> Comments </ h4>
 
 <pre>
-<div>なにか</div>
-</pre>
+<!-Comment->
+</ pre>
 
-ブロック要素を記述します。ブロック要素の特徴は、前後に改行が行われることと、幅と高さを持つことです。デフォルトで画面の左右いっぱいまで領域を広げます。また内部にある文字の位置をCSSを使って制御することもできます。
+Comments are from "<!-" To "->".
 
-<pre>
-# ブロック要素のイメージ
-+----------------------------------------------------------------+
-|                                                                |
-|なにか                                                          |
-|                                                                |
-+----------------------------------------------------------------+
-+----------------------------------------------------------------+
-|                                                                |
-|                           なにか                               |
-|                                                                |
-+----------------------------------------------------------------+
-</pre>
-
-<h4>インライン要素 span</h4>
+<h4> Block element div </ h4>
 
 <pre>
-<span>なにか</span>
-</pre>
+<div> something </ div>
+</ pre>
 
-インライン要素を記述します。インライン要素の特徴は、画面の右端に到達するまでは、改行が行われずに左に流れるようにつめられることです。
-
-<pre>
-# インライン要素のイメージ
-+------+ +------+
-|なにか| |なにか|
-+------+ +------+
-</pre>
-
-<h4>見出し1 h1</h4>
+Describe the block element. The characteristics of block elements are that line breaks occur before and after, and that they have width and height. By default, the area is expanded to fill the left and right sides of the screen. You can also use CSS to control the position of the characters inside.
 
 <pre>
-<h1>見出し1</h1>
-</pre>
+#Image of block element
++ ------------------------------------------------- --------------- +
+| |
+| Something |
+| |
++ ------------------------------------------------- --------------- +
++ ------------------------------------------------- --------------- +
+| |
+| Something |
+| |
++ ------------------------------------------------- --------------- +
+</ pre>
 
-見出しです。タグの使い方は自由ですが、一般的には、ページのタイトルを記述するために利用されます。大きく表示されます。h1はブロック要素です。
-
-<h4>見出し2 h2</h4>
-
-<pre>
-<h2>見出し2</h2>
-</pre>
-
-見出しです。h1よりは小さく表示されます。一般的には、個別の記事があった場合のタイトルなどに利用されます。h2はブロック要素です。
-
-<h4>見出し3 h3</h4>
-
-<pre>
-<h3>見出し3</h3>
-</pre>
-
-見出しです。h2よりは小さく表示されます。h3はブロック要素です。
-
-<h4>見出し4 h4</h4>
+<h4> Inline element span </ h4>
 
 <pre>
-<h4>見出し4</h4>
-</pre>
+<span> something </ span>
+</ pre>
 
-見出しです。h3よりは小さく表示されます。h4はブロック要素です。
-
-<h4>見出し5 h5</h4>
+Describe the inline element. The feature of the inline element is that it flows to the left without line breaks until it reaches the right edge of the screen.
 
 <pre>
-<h5>見出し5</h5>
-</pre>
+# Image of inline element
++ ------ + + ------ +
+| Something | | Something |
++ ------ + + ------ +
+</ pre>
 
-見出しです。h4よりは小さく表示されます。h5はブロック要素です。
-
-<h4>見出し6 h6</h4>
-
-<pre>
-<h6>見出し6</h6>
-</pre>
-
-見出しです。h5よりは小さく表示されます。h6はブロック要素です。
-
-<h4>段落 p</h4>
+<h4> Heading 1 h1 </ h4>
 
 <pre>
-<p>段落</p>
-</pre>
+<h1> Heading 1 </ h1>
+</ pre>
 
-段落を作成するにはpタグを使用します。pはブロック要素です。
+It's a headline. You can use the tags freely, but they are generally used to describe the title of the page. It will be displayed larger. h1 is a block element.
 
-<h4>水平線 hr</h4>
+<h4> Heading 2 h2 </ h4>
+
+<pre>
+<h2> Heading 2 </ h2>
+</ pre>
+
+It's a headline. It is displayed smaller than h1. Generally, it is used as a title when there is an individual article. h2 is a block element.
+
+<h4> Heading 3 h3 </ h4>
+
+<pre>
+<h3> Heading 3 </ h3>
+</ pre>
+
+It's a headline. It is displayed smaller than h2. h3 is a block element.
+
+<h4> Heading 4 h4 </ h4>
+
+<pre>
+<h4> Heading 4 </ h4>
+</ pre>
+
+It's a headline. It is displayed smaller than h3. h4 is a block element.
+
+<h4> Heading 5 h5 </ h4>
+
+<pre>
+<h5> Heading 5 </ h5>
+</ pre>
+
+It's a headline. It is displayed smaller than h4. h5 is a block element.
+
+<h4> Heading 6 h6 </ h4>
+
+<pre>
+<h6> Heading 6 </ h6>
+</ pre>
+
+It's a headline. It is displayed smaller than h5. h6 is a block element.
+
+<h4> Paragraph p </ h4>
+
+<pre>
+<p> Paragraph </ p>
+</ pre>
+
+Use the p tag to create a paragraph. p is a block element.
+
+<h4> Horizon hr </ h4>
 
 <pre>
 <hr>
-</pre>
+</ pre>
 
-水平線を描画するにはhrタグを使用します。hrはブロック要素です。
+Use the hr tag to draw a horizontal line. hr is a block element.
 
-<h4>ハイパーリンク a</h4>
-
-<pre>
-<a href="/other.html">ハイパーリンク</a>
-</pre>
-
-ハイパーリンクです。リンク先の文書をhrefに指定します。aはインライン要素です。
-
-クリックした場合は同じ画面でハイパーリンク先のページへ移動します。新しい画面でリンクを開きたい場合はtargetに「_blank」を指定します。
+<h4> Hyperlink a </ h4>
 
 <pre>
-<a href="/other.html" target="_blank">ハイパーリンク</a>
-</pre>
+<a href="/other.html"> Hyperlink </a>
+</ pre>
 
-<h4>強調 strong</h4>
+It is a hyperlink. Specify the linked document in href. a is an inline element.
 
-<pre>
-<strong>強調表示</strong>
-</pre>
-
-ページの中で強調したい言葉に利用します。strongはインライン要素です。
-
-<h4>画像 img</h4>
+If you click it, you will be taken to the hyperlinked page on the same screen. If you want to open the link on a new screen, specify "_blank" for target.
 
 <pre>
-<img border="0" src="/images/img001.gif" width="128" height="128" alt="説明">
-</pre>
+<a href="/other.html" target="_blank"> Hyperlink </a>
+</ pre>
 
-画像を表示するにはimgタグを使用します。デフォルトでボーダーがついてしまうので、borderには0を指定します。scrに画像へのリンクを指定します。widthには画像の幅、heightには画像の高さを指定します。altには画像の説明を記述します。imgはインライン要素です。
+<h4> Emphasis strong </ h4>
 
-<h4>整形済みテキスト pre</h4>
+<pre>
+<strong> Highlight </ strong>
+</ pre>
+
+Use it for words you want to emphasize on the page. strong is an inline element.
+
+<h4> Image img </ h4>
+
+<pre>
+<img border = "0" src = "/ images / img001.gif" width = "128" height = "128" alt = "description">
+</ pre>
+
+Use the img tag to display the image. Border is added by default, so specify 0 for border. Specify a link to the image in scr. Specify the width of the image in width and the height of the image in height. Describe the description of the image in alt. img is an inline element.
+
+<h4> Formatted text pre </ h4>
 
 <pre>
 use strict;
 use warnings;
 
 print "Hello World!";
-</pre>
+</ pre>
 
-整形済みテキストを記述したい場合はpreタグを使用します。改行やスペースなどがそのまま表示されますが、「<」と「>」は特殊文字として解釈されるので「&lt;」と「&gt;」に置き換える必要があることに注意してください。
+If you want to write formatted text, use the pre tag. Note that line breaks, spaces, etc. are displayed as they are, but "<" and ">" are interpreted as special characters and must be replaced with "& lt;" and "& gt;".
 
-<h4>テーブル table, tr, th, td</h4>
-
-<pre>
-<table border="1" cellspacing="0">
-  <tr>
-    <th>1列目のヘッダ</th>
-    <th>2列目のヘッダ</th>
-    <th>3列目のヘッダ</th>
-  </tr>
-  <tr>
-    <td>1行1列</td>
-    <td>1行2列</td>
-    <td>1行3列</td>
-  </tr>
-  <tr>
-    <td>2行1列</td>
-    <td>2行2列</td>
-    <td>2行3列</td>
-  </tr>
-</table>
-</pre>
-
-テーブル(表)を作成するには、上記のタグを組み合わせて使用します。tableタグが一番外側にきます。列のヘッダはthタグを使って記述します。列はtrタグを使って記述します。列の中の各行はtdタグを使って記述します。
-
-tableタグのborderはボーダーの太さです。celspacingはtd間の幅の指定です。borderを1にしてcellspacingを0にすると一般的な見栄えのテーブルになります。
-
-<h4>太字 b</h4>
+<h4> Table table, tr, th, td </ h4>
 
 <pre>
-<b>太字</b>
-</pre>
+<table border = "1" cellspacing = "0">
+  <tr>
+    <th> First column header </ th>
+    <th> Second column header </ th>
+    <th> Third column header </ th>
+  </ tr>
+  <tr>
+    <td> 1 row 1 column </ td>
+    <td> 1 row 2 columns </ td>
+    <td> 1 row 3 columns </ td>
+  </ tr>
+  <tr>
+    <td> 2 rows 1 columns </ td>
+    <td> 2 rows 2 columns </ td>
+    <td> 2 rows 3 columns </ td>
+  </ tr>
+</ table>
+</ pre>
 
-文字を太字にするにはbタグを使用します。bはインライン要素です。
+To create a table, use the above tags in combination. The table tag is on the outermost side. Column headers are described using the th tag. Columns are described using the tr tag. Each row in the column is described using the td tag.
 
-<h4>改行 br</h4>
+The border of the table tag is the thickness of the border. celspacing is a specification of the width between td. Set border to 1 and cellspacing to 0 for a typical looking table.
+
+<h4> Bold b </ h4>
+
+<pre>
+<b> Bold </ b>
+</ pre>
+
+Use the b tag to make the text bold. b is an inline element.
+
+<h4> Line break br </ h4>
 
 <pre>
 <br>
-</pre>
+</ pre>
 
-改行を行うにはbrタグを使用します。一般的には、brを使うよりも、divやpを使って改行を行うのがよいとされています。
+Use the br tag to break a line. In general, bIt is said that it is better to use div or p to start a new line than to use r.
 
-<h3>順序付きリスト ol, li</h3>
+<h3> Ordered list ol, li </ h3>
 
 <pre>
 <ol>
-  <li>項目1</li>
-  <li>項目2</li>
-  <li>項目3</li>
-</ol>
-</pre>
+  <li> Item 1 </ li>
+  <li> Item 2 </ li>
+  <li> Item 3 </ li>
+</ ol>
+</ pre>
 
-順序付きリストを作成するには上記のタグを使用します。olタグの中に、liタグを並べます。以下のように順序がつきます。
+Use the tags above to create an ordered list. Arrange the li tags inside the ol tags. The order is as follows.
 
 <pre>
-1. 項目1
-2. 項目2
-3. 項目3
-</pre>
+1. Item 1
+2. Item 2
+3. Item 3
+</ pre>
 
-<h3>順序なしリスト ul, li</h3>
+<h3> Unordered list ul, li </ h3>
 
 <pre>
 <ul>
-  <li>項目1</li>
-  <li>項目2</li>
-  <li>項目3</li>
-</ul>
-</pre>
+  <li> Item 1 </ li>
+  <li> Item 2 </ li>
+  <li> Item 3 </ li>
+</ ul>
+</ pre>
 
-順序なしリストを作成するには上記のタグを使用します。ulタグの中に、liタグを並べます。以下のように順序がつきません。
-
-<pre>
-・項目1
-・項目2
-・項目3
-</pre>
-
-<h3>フォームで利用するタグ</h3>
-
-<h4>フォーム form</h4>
+Use the above tags to create an unordered list. Arrange the li tags inside the ul tags. There is no order as shown below.
 
 <pre>
-<form action="/register" method="post">
-  <div>年：<input type="text" name="age"></div>
-  <div><input type="submit" value="送信する"></div>
-</form>
-</pre>
+・ Item 1
+・ Item 2
+・ Item 3
+</ pre>
 
-フォームを送信するにはformタグの中に、inputタグなどのフォームの要素を記述する必要があります。actionには、データーの送信先のURLを指定します。methodにはHTTPメソッドを指定しますが、フォームからの送信の場合はpostを利用するのが一般的です。
+<h3> Tags used in forms </ h3>
 
-<h4>テキストボックス &lt;input type="text"></h4>
+<h4> form form </ h4>
 
 <pre>
-<input type="text" name="age">
-</pre>
+<form action = "/ register" method = "post">
+  <div> Year: <input type = "text" name = "age"> </ div>
+  <div> <input type = "submit" value = "submit"> </ div>
+</ form>
+</ pre>
 
-テキストボックスは1行のテキスト入力エリアです。typeに「text」を指定します。送信されたデータの名前になるのでnameは必ず指定します。inputタグはインライン要素です。
+To submit a form, you need to describe the elements of the form such as input tag inside the form tag. For action, specify the URL to which the data will be sent. HTTP method is specified for method, but post is generally used when submitting from a form.
 
-次のような属性を指定することができます。
+<h4> Text box & lt; input type = "text"> </ h4>
+
+<pre>
+<input type = "text" name = "age">
+</ pre>
+
+The text box is a one-line text entry area. Specify "text" for type. Be sure to specify the name because it will be the name of the sent data. The input tag is an inline element.
+
+You can specify the following attributes:
 
 <ul>
   <li>
-    value - 値
-  </li>
+    value --value
+  </ li>
   <li>
-    size - 横のサイズ
-  </li>
+    size --horizontal size
+  </ li>
   <li>
-    maxlength - 最大文字数
-  </li>
-</ul>
+    maxlength --maximum number of characters
+  </ li>
+</ ul>
 
-<h4>パスワード入力ボックス &lt;input type="password"></h4>
+<h4> Password input box & lt; input type = "password"> </ h4>
 
 <pre>
-<input type="password" name="pass">
-</pre>
+<input type = "password" name = "pass">
+</ pre>
 
-パスワード入力ボックスです。nameに名前を指定します。
+This is a password entry box. Specify a name in name.
 
-以下の属性が指定できます。
+The following attributes can be specified.
 
 <ul>
   <li>
-    value - 値
-  </li>
+    value --value
+  </ li>
   <li>
-    size - 横のサイズ
-  </li>
+    size --horizontal size
+  </ li>
   <li>
-    maxlength - 最大文字数
-  </li>
-</ul>
+    maxlength --maximum number of characters
+  </ li>
+</ ul>
 
-<h4>ボタン &lt;input type="button"></h4>
+<h4> Button & lt; input type = "button"> </ h4>
 
 <pre>
-<input type="button" value="押す" name="send">
-</pre>
+<input type = "button" value = "press" name = "send">
+</ pre>
 
-ボタンです。inputタグのtypeに「button」を指定します。ボタンを識別するときに利用するのでnameを指定しておきましょう。valueはボタンに表示されるテキストになります。
+It is a button. Specify "button" for the type of input tag. Let's specify the name because it will be used to identify the button. value will be the text displayed on the button.
 
-<h4>送信ボタン &lt;input type="submit"></h4>
+<h4> Submit button & lt; input type = "submit"> </ h4>
 
 <pre>
-<input type="submit" value="送信">
-</pre>
+<input type = "submit" value = "submit">
+</ pre>
 
-送信ボタンです。フォームの値を送信するのに利用されます。valueは送信ボタンに表示されるテキストになります。
-次のような属性を指定することができます。
+This is the send button. It is used to submit the value of the form. value will be the text displayed on the submit button.
+You can specify the following attributes:
 
 <ul>
   <li>
-    name - 名前
-  </li>
-</ul>
+    name --name
+  </ li>
+</ ul>
 
-<h4>リセットボタン &lt;input type="reset"></h4>
+<h4> Reset button & lt; input type = "reset"> </ h4>
 
 <pre>
-<input type="reset" value="リセット">
-</pre>
+<input type = "reset" value = "reset">
+</ pre>
 
-リセットボタンです。フォームの値をリセットするのに利用されます。valueはリセットボタンに表示されるテキストになります。
+It is a reset button. It is used to reset the value of the form. value will be the text displayed on the reset button.
 
-次のような属性を指定することができます。
+You can specify the following attributes:
 
 <ul>
   <li>
-    name - 名前
-  </li>
-</ul>
+    name --name
+  </ li>
+</ ul>
 
-<h4>画像ボタン &lt;input type="image"></h4>
+<h4> Image button & lt; input type = "image"> </ h4>
 
 <pre>
-<input type="image" src="/image/dog.png" alt="犬">
-</pre>
+<input type = "image" src = "/ image / dog.png" alt = "dog">
+</ pre>
 
-画像ボタンです。srcは画像のURLになります。altは画像の説明です。
+It is an image button. src will be the URL of the image. alt is a description of the image.
 
-次のような属性を指定することができます。
+You can specify the following attributes:
 
 <ul>
   <li>
-    name - 名前
-  </li>
-</ul>
+    name --name
+  </ li>
+</ ul>
 
-<h4>ラジオボタン &lt;input type="radio"></h4>
-
-<pre>
-<input type="radio" name="animal" value="犬" checked="checked">
-<input type="radio" name="animal" value="猫">
-</pre>
-
-ラジオボタンは複数の項目の中からひとつを選んでもらうときに使用します。nameに名前を指定します。同じグループに属するものは同じ名前にします。valueには値を指定します。checkedを「checked」にすると、その項目が選択されます。
-
-<h4>隠しフィールド &lt;input type="hidden"></h4>
+<h4> Radio button & lt; input type = "radio"> </ h4>
 
 <pre>
-<input type="hidden" name="title" value="Perl">
-</pre>
+<input type = "radio" name = "animal" value = "dog" checked = "checked">
+<input type = "radio" name = "animal" value = "cat">
+</ pre>
 
-見えないフィールドです。ブラウザ上でユーザーに見せないで送信したい値がある場合に利用します。nameには名前を指定します。valueには値を指定します。
+Radio buttons are used to have one selected from multiple items. Specify a name in name. Those belonging to the same group should have the same name. Specify a value for value. If checked is set to "checked", that item will be selected.
 
-<h4>チェックボックス &lt;input type="checkbox"></h4>
-
-<pre>
-<input type="checkbox" name="animal" value="犬" checked="checked">
-<input type="checkbox" name="animal" value="猫">
-</pre>
-
-チェックボックスは複数の項目を選択してもらう場合に使用します。nameには名前を指定します。同じグループに属するものは同じ名前にします。valueには値を指定します。checkedを「checked」にすると、その項目が選択されます。
-<h4>ファイルのアップロード &lt;input type="file"></h4>
+<h4> Hidden field & lt; input type = "hidden"> </ h4>
 
 <pre>
-<input type="file" name="datafile">
-</pre>
+<input type = "hidden" name = "title" value = "Perl">
+</ pre>
 
-ファイルをアップロードしたい場合に利用します。nameに名前を指定します。これはファイル名ではなくて、単に識別するための名前です。
+It is an invisible field. It is used when there is a value that you want to send without showing it to the user on the browser. For name, specify the name. Specify a value for value.
 
-以下の属性が指定できます。
+<h4> checkbox & lt; input type = "checkbox"> </ h4>
+
+<pre>
+<input type = "checkbox" name = "animal" value = "dog" checked = "checked">
+<input type = "checkbox" name = "animal" value = "cat">
+</ pre>
+
+Check boxes are used to have multiple items selected. For name, specify the name. Those belonging to the same group should have the same name. Specify a value for value. If checked is set to "checked", that item will be selected.
+<h4> File upload & lt; input type = "file"> </ h4>
+
+<pre>
+<input type = "file" name = "datafile">
+</ pre>
+
+It is used when you want to upload a file. Specify a name in name. This is not a file name, it is just a name to identify.
+
+The following attributes can be specified.
 
 <ul>
   <li>
-    size - 横のサイズ
-  </li>
-</ul>
+    size --horizontal size
+  </ li>
+</ ul>
 
-ファイルをアップロードする場合は、formタグのenctypeに「multipart/form-data」を指定しなければならないことに注意してください。
-
-<pre>
-<form action="cgi-bin/abc.cgi" method="post" enctype="multipart/form-data">
-<input type="file" name="datafile">
-<input type="submit" value="送信" >
-</form>
-</pre>
-
-<h3>プルダウンメニューあるいはリストボックス select</h3>
+Note that when uploading a file, you must specify "multipart / form-data" for the enctype of the form tag.
 
 <pre>
-<select name="animal">
-  <option value="犬">犬</option>
-  <option value="猫">猫</option>
-</select><
-</pre>
+<form action = "cgi-bin / abc.cgi" method = "post" enctype = "multipart / form-data">
+<input type = "file" name = "datafile">
+<input type = "submit" value = "submit">
+</ form>
+</ pre>
 
-selectタグを使うとプルダウンメニューを作成することができます。nameに名前を指定します。optionタグが選択する要素になります。valueには値を指定します。optionタグのテキストの部分には表示される項目を記述します。
-
-sizeを1より大きいものに指定するとリストボックスになります。
+<h3> Pull-down menu or list box select </ h3>
 
 <pre>
-<select name="animal" size="4">
-  <option value="1">猫</option>
-  <option value="2">犬</option>
-  <option value="3">亀</option>
-  <option value="4">ライオン</option>
-</select><
-</pre>
+<select name = "animal">
+  <option value = "dog"> dog </ option>
+  <option value = "cat"> cat </ option>
+</ select> <
+</ pre>
 
-select要素については以下の解説も参考にしてください。
+You can create a pull-down menu using the select tag. Specify a name in name. The option tag is the element to select. Specify a value for value. Describe the items to be displayed in the text part of the option tag.
+
+If size is specified to be larger than 1, it becomes a list box.
+
+<pre>
+<select name = "animal" size = "4">
+  <option value = "1"> cat </ option>
+  <option value = "2"> dog </ option>
+  <option value = "3"> Turtle </ option>
+  <option value = "4"> Lion </ option>
+</ select> <
+</ pre>
+
+Please also refer to the following explanation for the select element.
 
 <ul>
   <li>
-    <a href="/blog/20110416130621.html">select要素の操作まとめ</a>
-  </li>
-</ul>
+    <a href="/blog/20110416130621.html"> Summary of select element operations </a>
+  </ li>
+</ ul>
 
-<h3>ヘッダ部で利用するタグ</h3>
-ヘッダ部で利用するタグを紹介します。
+<h3> Tags used in the header part </ h3>
+Introducing the tags used in the header part.
 
-<h4>文字コードの指定</h4>
-
-<pre>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-</pre>
-
-HTMLで利用する文字コードを指定するときはmetaタグを利用します。metaタグを利用するとhttp-equivに「Content-Type」を、contentに「text/html; charset=UTF-8」を指定します。この指定を行わないとブラウザで文字化けすることがある
-ので、headタグの先頭で記述してください。http-equiv属性を利用するとHTTPレスポンスのヘッダにContent-Typeがない場合にブラウザはhttp-equivの情報を利用します。
-
-<h4>CSS(スタイルシート)の記述</h4>
+<h4> Character code specification </ h4>
 
 <pre>
-<style type="text/css">/*<![CDATA[*/
+<meta http-equiv = "Content-Type" content = "text / html; charset = UTF-8">
+</ pre>
 
-/* CSSの記述*/
+Use the meta tag to specify the character code to be used in HTML. When using the meta tag, specify "Content-Type" for http-equiv and "text / html; charset = UTF-8" for content. If you do not specify this, the characters may be garbled in the browser.
+Therefore, please describe at the beginning of the head tag. If you use the http-equiv attribute, the browser will use the http-equiv information if there is no Content-Type in the HTTP response header.
 
-/*]]>*/</style>
-</pre>
-
-CSSを記述するにはstyleタグを使用します。typeには「text/css」を指定します。XHTMLという仕様でもちゃんと動くようにCSSのコードはCDATAと呼ばれるセクションに記述する必要があるそうです。反対にCSSからから見るとCDATAセクションはいらない子なので/* */でコメントアウトされています。
-
-<h4>外部CSS(スタイルシート)の読み込み</h4>
+<h4> CSS (style sheet) description </ h4>
 
 <pre>
-<link href="/css/common.css" media="screen" rel="stylesheet" type="text/css" /> 
-</pre>
+<style type = "text / css"> / * <! [CDATA [* /
 
-外部のCSSを読み込むにはlinkタグを使用します。mediaには「screen」を指定します。これは、コンピュータースクリーン用のCSSであることを指定するためにです。relには「stylesheet」を指定します。これは外部スタイルシート定義ファイルを示します。typeには「text/css」を指定します。
+/ * CSS description * /
 
-<h4>JavaScriptの記述</h4>
+/ *]]> * / </ style>
+</ pre>
+
+Use the style tag to write CSS. Specify "text / css" for type. It seems that the CSS code needs to be written in a section called CDATA so that it works properly even with the specification of XHTML. On the contrary, from the perspective of CSS, the CDATA section is not needed, so it is commented out with / * * /.
+
+<h4> Loading external CSS (style sheet) </ h4>
 
 <pre>
-<script type="text/javascript">//<![CDATA[
+<link href = "/ css / common.css" media = "screen" rel = "stylesheet" type = "text / css" />
+</ pre>
+
+Use the link tag to load external CSS. Specify "screen" for media. This is to specify that it is CSS for computer screens. Specify "stylesheet" for rel. This shows the external stylesheet definition file. Specify "text / css" for type.
+
+<h4> JavaScript description </ h4>
+
+<pre>
+<script type = "text / javascript"> // <! [CDATA [
  
-// JavaScriptのソースコード
+// JavaScript source code
  
-//]]</script>
-</pre>
+//]] </ script>
+</ pre>
 
-JavaScriptを記述するにはscriptタグを利用します。typeに「text/javascript」を指定します。XHTMLという仕様でもちゃんと動くようにJavaScriptのコードはCDATAと呼ばれるセクションに記述する必要があるそうです。反対にJavaScriptから見るとCDATAセクションはいらない子なので//でコメントアウトされています。
+Use the script tag to write JavaScript. Specify "text / javascript" for type. It seems that the JavaScript code needs to be written in a section called CDATA so that it works properly even with the specification of XHTML. On the contrary, from the viewpoint of JavaScript, the CDATA section is not needed, so it is commented out with //.
 
-<h4>外部JavaScriptの読み込み</h4>
+<h4> Loading external JavaScript </ h4>
 
 <pre>
-<script src="/js/myapi.js" type="text/javascript"></script> 
-</pre>
+<script src = "/ js / myapi.js" type = "text / javascript"> </ script>
+</ pre>
 
-外部のJavaScriptを読み込むはscriptタグを利用します。srcにJavaScriptのソースのURLを指定し、typeに「text/javascript」を指定します。
+Use the script tag to load external JavaScript. Specify the URL of the JavaScript source in src, and specify "text / javascript" in type.
 
-<h3>終わりに</h3>
+<h3> At the end </ h3>
 
-駆け足でしたが、HTMLの解説を終わります。
+It was a rush, but I will finish the explanation of HTML.
 
 <hr>
 
 <a href="http://px.a8.net/svt/ejp?a8mat=25TFA7+74LUIA+D8Y+C5VW1" target="_blank">
-<img border="0" width="250" height="250" alt="" src="http://www21.a8.net/svt/bgt?aid=130703263431&wid=001&eno=01&mid=s00000001717002043000&mc=1"></a>
-<img border="0" width="1" height="1" src="http://www18.a8.net/0.gif?a8mat=25TFA7+74LUIA+D8Y+C5VW1" alt="">
-
+<img border = "0" width = "250" height = "250" alt = "" src = "http://www21.a8.net/svt/bgt?aid=130703263431&wid=001&eno=01&mid=s00000001717002043000&mc=1" > </a>
+<img border = "0" width = "1" height = "1" src = "http://www18.a8.net/0.gif?a8mat=25TFA7+74LUIA+D8Y+C5VW1" alt = "">

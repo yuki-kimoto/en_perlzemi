@@ -1,296 +1,295 @@
-<script>location.href='https://dbix-custom.perlzemi.com/blog/20110709131364.html';</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href ='https://dbix-custom.perlzemi.com/blog/20110709131364.html'; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20170130148603.html">
-      <span itemprop="name">データベース</span></a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> database </ span> </a>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110401130559.html">
-      <span itemprop="name">DBIx::Custom</span></a>
-    <meta itemprop="position" content="4" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> DBIx :: Custom </ span> </a>
+    <meta itemprop = "position" content = "4" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>DBIx::Customで「行をフェッチ」する方法</h2>
+  </ li>
+</ ol>
+<h2> How to "fetch rows" with DBIx :: Custom </ h2>
 
 
 
 
-DBIx::Customで「行をフェッチ」する方法を解説します。
+I will explain how to "fetch rows" with DBIx :: Custom.
 
-<h3>行をフェッチする</h3>
+<h3> Fetch rows </ h3>
 
-executeやselectメソッドの戻り値はDBIx::Custom::Resultオブジェクトです。DBIx::Custom::Resultクラスは行をフェッチするためのたくさんのメソッドがあります。
+The return value of execute and select methods is a DBIx :: Custom :: Result object. The DBIx :: Custom :: Result class has many methods for fetching rows.
 
-<h4>一行づつフェッチ(配列)</h4>
+<h4> Fetch line by line (array) </ h4>
 
- 一行フェッチして、その行を配列のリファレンスとして取得するにはfetchメソッドを使用します。
+ Use the fetch method to fetch a row and retrieve that row as an array reference.
 
 <pre>
 # fetch a row and put it into array refrence
-my $row = $result->fetch;
-</pre>
+my $ row = $ result-> fetch;
+</ pre>
 
-次のようなデータを取得できます。
+You can get the following data.
 
 <pre>
-['Perl', 'Ken']
-</pre>
+['Perl','Ken']
+</ pre>
 
-一般的には次のように<a href="/blog/20100123126425.html">while文</a>と一緒に使います。フェッチできる行がなくなれば、undefが返ります。
+Generally, it is used together with <a href="/blog/20100123126425.html"> while statement </a> as follows. If there are no more rows to fetch, undef is returned.
 
 <pre>
 # Fetch with while loop
-while (my $row = $result->fetch) {
-  my $title  = $row->[0];
-  my $author = $row->[1];
+while (my $ row = $ result-> fetch) {
+  my $ title = $ row-> [0];
+  my $ author = $ row-> [1];
 }
-</pre>
+</ pre>
 
-<h4>一行だけフェッチ(配列)</h4>
+<h4> Fetch only one row (array) </ h4>
 
-一行だけフェッチして、その行を配列のリファレンスとして取得するにはfetch_oneメソッドを使用します。自動的にステートメントハンドルのfinishメソッドが呼び出されます。
+Use the fetch_one method to fetch only one row and fetch that row as an array reference. The finish method of the statement handle is automatically called.
 
 <pre>
 # Fetch only a row and put it into array reference
-my $row = $result->fetch_one;
-</pre>
+my $ row = $ result-> fetch_one;
+</ pre>
 
-次のようなデータを取得できます。
+You can get the following data.
 
 <pre>
-['Perl', 'Ken']
-</pre>
+['Perl','Ken']
+</ pre>
 
-<h4>すべての行をフェッチ(配列)</h4>
+<h4> Fetch all rows (array) </ h4>
 
-すべての行をフェッチして、それを配列の配列のリファレンスとして取得するにはfetch_allメソッドを使用します。
+Use the fetch_all method to fetch all the rows and get it as an array reference for the array.
 
 <pre>
 # Fetch all rows and put them into array of array reference
-my $rows = $result->fetch_all;
-</pre>
+my $ rows = $ result-> fetch_all;
+</ pre>
 
-次のようなデータを取得できます。
+You can get the following data.
 <pre>
 [
-  ['Perl', 'Ken'],
-  ['Ruby', 'Mike']
+  ['Perl','Ken'],
+  ['Ruby','Mike']
 ]
-</pre>
+</ pre>
 
-<h4>一行づつフェッチ(ハッシュ)</h4>
+<h4> Fetch line by line (hash) </ h4>
 
-一行フェッチして、その行をハッシュのリファレンスとして取得するにはfetch_hashメソッドを使用します。
+Use the fetch_hash method to fetch a row and retrieve that row as a hash reference.
 
 <pre>
 # Fetch a row and put it into hash reference
-my $row = $result->fetch_hash;
-</pre>
+my $ row = $ result-> fetch_hash;
+</ pre>
 
-次のようなデータを取得できます。
+You can get the following data.
 
 <pre>
-{title => 'Perl', author => 'Ken'}
-</pre>
+{title =>'Perl', author =>'Ken'}
+</ pre>
 
-一般的には次のようにwhileループと一緒に使います。フェッチできる行がなくなれば、undefが返ります。
+Generally used with a while loop as follows. If there are no more rows to fetch, undef is returned.
 
 <pre>
 # Fetch with while loop
-while (my $row = $result->fetch_hash) {
-  my $title  = $row->{title};
-  my $author = $row->{author};
+while (my $ row = $ result-> fetch_hash) {
+  my $ title = $ row-> {title};
+  my $ author = $ row-> {author};
 }
-</pre>
+</ pre>
 
-<h4>1行だけフェッチ(ハッシュ)</h4>
+<h4> Fetch (hash) only one row </ h4>
 
-一行だけフェッチして、その行を配列のリファレンスとして取得するにはfetch_hash_oneメソッドを使用します。自動的にステートメントハンドルのfinishメソッドが呼び出されます。
+Use the fetch_hash_one method to fetch only one row and fetch that row as an array reference. The finish method of the statement handle is automatically called.
 
 <pre>
 # Fetch only a row and put it into hash reference
-my $row = $result->fetch_hash_one;
-</pre>
+my $ row = $ result-> fetch_hash_one;
+</ pre>
 
-次のようなデータを取得できます。
-
-<pre>
-{title => 'Perl', author => 'Ken'}
-</pre>
-
-oneというメソッドはfetch_hash_oneメソッドの別名になっていて、こちらのほうが短く記述することができます。
+You can get the following data.
 
 <pre>
-# Alias of fetch_hash_one
-my $row = $result->one;
-</pre>
+{title =>'Perl', author =>'Ken'}
+</ pre>
 
-<h4>すべての行をフェッチ(ハッシュ)</h4>
+The method called one is an alias for the fetch_hash_one method, which can be written shorter.
 
-すべての行をフェッチして、それをハッシュの配列のリファレンスとして取得するにはfetch_hash_allメソッドを使用します。
+<pre>
+#Alias ​​of fetch_hash_one
+my $ row = $ result-> one;
+</ pre>
+
+<h4> Fetch (hash) all rows </ h4>
+
+Use the fetch_hash_all method to fetch all the rows and get it as a reference to the array of hashes.
 
 <pre>
 # Fetch all rows and put them into array of hash reference
-my $rows = $result->fetch_hash_all;
-</pre>
+my $ rows = $ result-> fetch_hash_all;
+</ pre>
 
-次のようなデータを取得します。
+Get the following data:
 
 <pre>
   [
-    {title => 'Perl', author => 'Ken'},
-    {title => 'Ruby', author => 'Mike'}
+    {title =>'Perl', author =>'Ken'},
+    {title =>'Ruby', author =>'Mike'}
   ]
-</pre>
+</ pre>
 
-allというメソッドはfetch_hash_allメソッドの別名になっていて、こちらのほうが短く記述することができます。
-
-<pre>
-# Alias of fetch_hash_all
-my $rows = $result->all;
-</pre>
-
-
-<h3>便利なフェッチ方法</h3>
-
-DBIx::Custom::Resultクラスは他にも便利なフェッチするためのメソッドがあります。
-
-<h4>value</h4>
-
-ひとつの値を取得するのにvalueメソッドは便利です。最初の行の最初の値だけを取得できます。フェッチできなかった場合はundefを返します。
+The method called all is an alias for the fetch_hash_all method, which can be written shorter.
 
 <pre>
-my $value = $result->value;
-</pre>
+#Alias ​​of fetch_hash_all
+my $ rows = $ result-> all;
+</ pre>
 
-valueメソッドは、count関数などを使って、件数を取得したい場合に便利でしょう。
 
-<pre>
-my $count = $dbi->select('count(*)')->value;
-</pre>
+<h3> Convenient fetch method </ h3>
 
-以下の記述とほぼ同じ意味になります。
+The DBIx :: Custom :: Result class has other useful methods for fetching.
 
-<pre>
-my $count = $dbi->select('count(*)')->fetch_one->[0];
-</pre>
+<h4> value </ h4>
 
-<h4>values</h4>
-
-最初の列の複数の値を取得するのにvaluesメソッドは便利です。
+The value method is useful for getting a single value. You can only get the first value in the first row. If it cannot be fetched, it returns undef.
 
 <pre>
-my $values = $result->values;
-</pre>
+my $ value = $ result-> value;
+</ pre>
 
-たとえばMySQLの「show tables」文を実行してテーブル一覧を取得するときに利用できます。
-
-<pre>
-my $tables = $dbi->select('show tables')->values;
-</pre>
-
-これは以下の記述と同じ意味になります。
+The value method is useful when you want to get the number of records using the count function.
 
 <pre>
-my $rows =  $dbi->select('show tables')->fetch_all;
-my $tables = [map { $_->[0] } @$rows];
-</pre>
+my $ count = $ dbi-> select ('count (*)')-> value;
+</ pre>
 
-<h4>flat</h4>
-
-flatメソッドは、取得した行の値をひとつの平坦なリストにします。
+It has almost the same meaning as the following description.
 
 <pre>
-my @list = $result->flat;
-</pre>
+my $ count = $ dbi-> select ('count (*)')-> fetch_one-> [0];
+</ pre>
 
-たとえば以下のような処理を実行するとします。
+<h4> values ​​</ h4>
 
-<pre>
-my @list = $dbi->select(['id', 'title'])->flat;
-</pre>
-
-そして以下のようなテーブルだったとします。
-<pre>
-(ヘッダ) id    title 
-         1     Perl
-         2     Ruby
-</pre>
-
-するとflatメソッドは以下のようなリストを返却します。
+The values ​​method is useful for getting multiple values ​​in the first column.
 
 <pre>
-(1, 'Perl', 2, 'Ruby')
-</pre>
+my $ values ​​= $ result-> values;
+</ pre>
 
-ハッシュに代入すればキーと値のペアを簡単に取得できます。
-
-<pre>
-my %titles = $dbi->select(['id', 'title'])->flat;
-</pre>
-
-<h4>kv</h4>
-
-kvメソッドはキーと値のペアを取得するときに便利です。
+For example, it can be used to get a list of tables by executing the "show tables" statement of MySQL.
 
 <pre>
-my $key_value = $result->kv;
-my $key_values = $result->kv(multi => 1);
-</pre>
+my $ tables = $ dbi-> select ('show tables')-> values;
+</ pre>
 
-たとえば、本のIDをキーとしてタイトルと著者の値としたハッシュのリファレンスを取得するには次のようにします。
+This has the same meaning as the description below.
 
 <pre>
-my $books = $dbi->select(['id', 'title', 'author'])->kv;
-</pre>
+my $ rows = $ dbi-> select ('show tables')-> fetch_all;
+my $ tables = [map {$ _-> [0]} @ $ rows];
+</ pre>
 
-これは以下のようなデータになります。
+<h4> flat </ h4>
+
+The flat method turns the retrieved row values ​​into a flat list.
+
+<pre>
+my @list = $ result-> flat;
+</ pre>
+
+For example, suppose you want to do the following:
+
+<pre>
+my @list = $ dbi-> select (['id','title'])-> flat;
+</ pre>
+
+And suppose you have a table like this:
+<pre>
+(Header) id title
+         1 Perl
+         2 Ruby
+</ pre>
+
+Then the flat method returns a list like the one below.
+
+<pre>
+(1,'Perl', 2,'Ruby')
+</ pre>
+
+You can easily get a key / value pair by assigning it to a hash.
+
+<pre>
+my% titles = $ dbi-> select (['id','title'])-> flat;
+</ pre>
+
+<h4> kv </ h4>
+
+The kv method is useful for getting key / value pairs.
+
+<pre>
+my $ key_value = $ result-> kv;
+my $ key_values ​​= $ result-> kv (multi => 1);
+</ pre>
+
+For example, to get a hash reference with the book ID as the key and the title and author values:
+
+<pre>
+my $ books = $ dbi-> select (['id','title','author'])-> kv;
+</ pre>
+
+This will give you the following data:
 
 <pre>
 {
-  1 => {title => 'Perl', author => 'Ken'},
-  2 => {title => 'Ruby', author => 'Taro'}
+   1 => {title =>'Perl', author =>'Ken'},
+   2 => {title =>'Ruby', author =>'Taro'}
 }
-</pre>
+</ pre>
 
-<h4>kvs</h4>
+<h4> kvs </ h4>
 
-一つのキーに対して複数の値を対応させたい場合は<b>kvs</b>メソッドを使用します。
+If you want to correspond multiple values to one key, use the <b> kvs </ b> method.
 
 <pre>
-my $books = $dbi->select(['author', 'title', 'price'])->kvs;
-</pre>
+my $ books = $ dbi-> select (['author','title','price'])-> kvs;
+</ pre>
 
-次のような値が返却されます。
+The following values will be returned.
 
 <pre>
 {
-  Ken => [
-    {title => 'Perl', price => 1000},
-    {title => 'Good', price => 2000}
-  ],
-  Taro => [
-    {title => 'Ruby', price => 3000},
-    {title => 'Sky', price => 4000}
-  ]
+   Ken => [
+     {title =>'Perl', price => 1000},
+     {title =>'Good', price => 2000}
+   ],,
+   Taro => [
+     {title =>'Ruby', price => 3000},
+     {title =>'Sky', price => 4000}
+   ]
 }
-</pre>
-
+</ pre>

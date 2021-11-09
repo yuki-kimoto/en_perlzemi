@@ -1,29 +1,29 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Imager - 画像の編集を簡単に行う</h2>
+  </ li>
+</ ol>
+<h2> Imager --Easy to edit images </ h2>
 
 
 
-「Imager」モジュールを使用すると「画像の編集」が簡単にできます。Tipsを紹介します。
+The "Imager" module makes it easy to "edit images". Here are some tips.
 
-<h3>「日本語」を描画する</h3>
+<h3> Draw "Japanese" </ h3>
 
-Imagerで日本語を描画するには次のようにします。
+To draw Japanese with Imager:
 
 <pre>
 use strict;
@@ -32,64 +32,63 @@ use utf8;
 
 use Imager;
 
-my $img = Imager->new;
+my $ img = Imager-> new;
 
-# 画像の読み込み
-$img->read(file => 'example.jpg')
-  or die $img->errstr;
+#Load image
+$ img-> read (file =>'example.jpg')
+  or die $ img-> errstr;
 
-# フォント
-my $font = Imager::Font->new(
-  file => '/usr/share/fonts/ja/TrueType/kochi-gothic-subst.ttf'
+#Font
+my $ font = Imager :: Font-> new (
+  file =>'/usr/share/fonts/ja/TrueType/kochi-gothic-subst.ttf'
 );
 
-# 文字列の描画
-$img->string(
+#Drawing a string
+$ img-> string (
   x => 50,
   y => 50,
-  string => 'やったー',
-  font => $font,
+  string =>'I did it',
+  font => $ font,
   size => 15,
   aa => 1,
-  color => '#000000',
-) or die $img->errstr;
+  color =>'# 000000',
+) or die $ img-> errstr;
 
-# 画像の保存
-$img->write(file => 'new_example.jpg')
-  or die $img->errstr;
-</pre>
+#Save image
+$ img-> write (file =>'new_example.jpg')
+  or die $ img-> errstr;
+</ pre>
 
-Imager::Fontでフォントオブジェクトを作成しています、フォントが実際に存在するパスを指定します。上記の例はCentOSの場合です。
+Creating a font object with Imager :: Font, specify the path where the font actually exists. The above example is for CentOS.
 
-stringメソッドを使って、画像の上に文字列を描画しています。aaはアンチエイリアスをかけるオプションです。
+I'm using the string method to draw a string on top of the image. aa is an option to apply antialiasing.
 
-スクリプトはUTF-8で保存して、utf8プラグマを有効にしましょう。
+Save the script in UTF-8 and enable the utf8 pragma.
 
-<h3>バイナリデータを読み込む</h3>
+<h3> Read binary data </ ​​h3>
 
-PerlのImagerモジュールでバイナリデータを読み込むにはreadメソッドのdataオプションを使用します。
+Use the data option of the read method to read binary data in Perl's Imager module.
 
 <pre>
-$img->read(data => $data, type => 'jpeg')
-  or die $img->errstr;
-</pre>
+$ img-> read (data => $ data, type =>'jpeg')
+  or die $ img-> errstr;
+</ pre>
 
-画像のタイプも合わせて指定する必要があるので注意してください。
+Please note that you also need to specify the image type.
 
-<h3>CentOSでImagerを使うための準備</h3>
+<h3> Preparation for using Imager on CentOS </ h3>
 
-Imagerは画像を加工するためのPerlのモジュールです。jpeg, png, gifという画像形式とフォントを扱うためにあらかじめ以下のライブラリをCentOSにインストールしておきましょう。
+Imager is a Perl module for processing images. Install the following libraries on CentOS in advance to handle image formats and fonts such as jpeg, png, and gif.
 
 <pre>
 yum -y install libjpeg-devel
 yum -y install libpng-devel
 yum -y install giflib-devel
 yum -y install freetype-devel
-</pre>
+</ pre>
 
-それからImagerをインストールします。
+Then install Imager.
 
 <pre>
 cpan Imager
-</pre>
-
+</ pre>

@@ -1,102 +1,102 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">スコープ</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlのスコープについて理解しよう</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> scope </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Understand Perl scope </ h2>
 
 
 
-Perlのスコープについて理解を深めましょう。この記事はstrictプラグマを有効にした前提で書いていますので、ソースコードの先頭には普段どおり以下のように書いてくださいね。
+Get a better understanding of Perl scope. This article is written on the assumption that the strict pragma is enabled, so please write the following at the beginning of the source code as usual.
 
 <pre>
 use strict;
 use warnings;
-</pre>
+</ pre>
 
-<h3>スコープの作成</h3>
+<h3> Create scope </ h3>
 
-Perlのスコープは「{」で始まり「}」で終わります。
-
-<pre>
-{
-  # スコープ
-}
-</pre>
-
-<h3>スコープの意味</h3>
-
-<h4>レキシカル変数</h4>
-
-スコープの中で宣言されたレキシカル変数(myで宣言された変数)は、そのスコープ内でしか参照することができません。また変数に含まれる値はスコープが終わった時点で解放されます。
+Perl scope starts with "{" and ends with "}".
 
 <pre>
 {
-  my $num = 1;
-
-  # 参照できる
-  print $num;
+  #Scope
 }
+</ pre>
 
-# この位置では参照できない
-print $num;
-</pre>
+<h3> Meaning of scope </ h3>
 
-<h4>パッケージ変数</h4>
+<h4> Lexical variables </ h4>
 
-スコープの内部で宣言されたパッケージ変数(ourで宣言された変数)は、そのスコープの中では部分名で参照できます。スコープの外から参照するには完全修飾名を使用する必要があります。
+Lexical variables declared within a scope (variables declared with my) can only be referenced within that scope. Also, the value contained in the variable is released when the scope ends.
 
 <pre>
-package Foo;
-
 {
-  our $NUM = 1;
+  my $ num = 1;
 
-  # 部分名で参照できる
-  print $NUM;
+  # Can be referenced
+  print $ num;
 }
 
-# 部分名では参照できない
-print $NUM;
+# Cannot be referenced at this position
+print $ num;
+</ pre>
 
-# 完全修飾名で参照できる
-print $Foo::NUM;
-</pre>
+<h4> Package variables </ h4>
 
-パッケージ変数は一度作成されればプログラムの最後まで存在し、プログラムのどの位置からでも完全修飾名で参照できるということを覚えておきましょう。
-
-<h4>localで変更されたパッケージ変数</h4>
-
-<a href="/blog/20080309120507.html">local</a>を使うとパッケージ変数を一時的に変更することができます。この変更された値は、スコープの最後で元に戻ります。
+Package variables declared inside a scope (variables declared with our) can be referenced by partial name within that scope. You must use a fully qualified name to reference it from outside the scope.
 
 <pre>
 package Foo;
 
-our $NUM = 1;
-
 {
-  local $NUM = 2;
+  our $ NUM = 1;
 
-  # 2が出力される
-  print $NUM;
+  # Can be referenced by part name
+  print $ NUM;
 }
 
-# この位置では1に戻る
-print $NUM;
-</pre>
+# Cannot be referenced by partial name
+print $ NUM;
 
-localは、パッケージ変数の値の一時的な変更にだけ利用して、昔のように変数宣言には使わないようにしましょう。
+# Can be referenced by fully qualified name
+print $ Foo :: NUM;
+</ pre>
 
-<h4>サブルーチン</h4>
+Keep in mind that once a package variable is created, it exists to the end of the program and can be referenced by its fully qualified name from anywhere in the program.
 
-Perlのサブルーチンはスコープの影響を受けません。
+<h4> Package variables modified locally </ h4>
+
+You can use <a href="/blog/20080309120507.html"> local </a> to temporarily change a package variable. This changed value is reverted at the end of the scope.
+
+<pre>
+package Foo;
+
+our $ NUM = 1;
+
+{
+  local $ NUM = 2;
+
+  # 2 is output
+  print $ NUM;
+}
+
+# Return to 1 at this position
+print $ NUM;
+</ pre>
+
+Use local only for temporary changes to the value of package variables, and don't use it for variable declarations as it used to be.
+
+<h4> Subroutine </ h4>
+
+Perl subroutines are scope-independent.
 
 <pre>
 {
@@ -104,156 +104,155 @@ Perlのサブルーチンはスコープの影響を受けません。
     ...
   }
 
-  # 呼び出しが可能
-  foo();
+  # Can be called
+  foo ();
 }
 
-# 呼び出しが可能
-foo();
-</pre>
+# Can be called
+foo ();
+</ pre>
 
-サブルーチンは定義された時点で、シンボルテーブルと呼ばれるものに登録され、プログラムのすべての位置から呼び出せるようになります。
+When a subroutine is defined, it is registered in what is called a symbol table and can be called from any position in the program.
 
-サブルーチンにスコープを持たせたい場合は、無名サブルーチン(これはサブルーチンのリファレンス)をレキシカル変数に代入します。
+If you want the subroutine to have scope, assign an anonymous subroutine (which is the subroutine's reference) to a lexical variable.
 
 <pre>
 {
-  my $foo = sub { ... };
+  my $ foo = sub {...};
 
-  # 呼び出しが可能
-  $foo->();
+  # Can be called
+  $ foo-> ();
 }
 
-# この位置らからは呼び出すことができない
-$foo->();
-</pre>
+# Cannot be called from this position
+$ foo-> ();
+</ pre>
 
-スコープの終わりで$fooに代入されているサブルーチンのリファレンスが解放されます。サブルーチン自体が解放されるわけではないということに注意しましょう。sub { ...}は、コンパイルの時点で、解析されてメモリ上に配置されます。
+At the end of the scope, the subroutine reference assigned to $ foo is released. Note that the subroutine itself is not freed. sub {...} is parsed and placed in memory at compile time.
 
-<h3>if文やwhile文におけるスコープ</h3>
+<h3> Scope in if and while statements </ h3>
 
-if文や<a href="/blog/20100123126425.html">while文</a>などで利用される「{}」もスコープです。Perlではありとあらゆる構文で使用される「{}」がスコープになります。この点では一貫しており、他の言語と比較してとてもわかりやすいものになっています。
+The "{}" used in if statements and <a href="/blog/20100123126425.html"> while statements </a> is also a scope. In Perl, the scope is "{}", which is used in all kinds of syntax. It's consistent in this regard and is very straightforward compared to other languages.
 
 <pre>
-if (条件) {
-  # スコープ
+if (condition) {
+  #Scope
 }
 
-while (条件) {
-  # スコープ
+while (condition) {
+  #Scope
 }
 
 eval {
-  # スコープ
+  #Scope
 };
 
 sub {
-  # スコープ
+  #Scope
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20100312126967.html">eval</a>
+(Reference) <a href="/blog/20100312126967.html"> eval </a>
 
-またファイルもひとつのスコープを持ちます。
+Files also have one scope.
 
 <pre>
 use strict;
 use warnings;
 
-# 処理
-</pre>
+# process
+</ pre>
 
-上記は以下のようにファイルの先頭と終わりが「{」と「}」で囲まれているものと考えることができます。
+The above can be thought of as the beginning and end of the file surrounded by "{" and "}" as shown below.
 
 <pre>
 {
   use strict;
   use warnings;
 
-  # 処理
+  # process
 }
-</pre>
+</ pre>
 
-<h3>特殊な位置で宣言されたレキシカル変数</h3>
+<h3> Lexical variables declared at special positions </ h3>
 
-スコープの内部では宣言されてはいないけれども、スコープを持つ場合がいくつかあります。
+There are some cases where you have a scope, though it is not declared inside the scope.
 
-<h4>ifの条件部</h4>
+<h4> if condition part </ h4>
 
-ifの条件部で宣言されたレキシカル変数は、ifのスコープを持ちます。
+The lexical variable declared in the conditional part of if has the scope of if.
 
 <pre>
-if (my $num = 1) {
-  # 参照できる
-  print $num;
+if (my $ num = 1) {
+  # Can be referenced
+  print $ num;
 }
 
-# この位置では参照できない
-print $num;
-</pre>
+# Cannot be referenced at this position
+print $ num;
+</ pre>
 
-後置されるifについてはそもそもスコープがないので、スコープを持ちません。
+Since there is no scope for the postfixed if in the first place, it does not have a scope.
 
 <pre>
-文 if my $num = 1;
+Statement if my $ num = 1;
 
-# 参照することができる
-print $num;
-</pre>
+# Can be referenced
+print $ num;
+</ pre>
 
-unless文や<a href="/blog/20100123126425.html">while文</a>についても同じです。
+The same is true for unless statements and <a href="/blog/20100123126425.html"> while statements </a>.
 
 <pre>
 # unless
-unless (my $num = 1) {
-  # 参照できる
-  print $num;
+unless (my $ num = 1) {
+  # Can be referenced
+  print $ num;
 }
 
-# 参照できない
-print $num;
-</pre>
+# Cannot be referenced
+print $ num;
+</ pre>
 
 <pre>
 # while
-while (my $num = 1) {
-  # 参照できる
-  print $num;
+while (my $ num = 1) {
+  # Can be referenced
+  print $ num;
 }
 
-# 参照できない
-print $num;
-</pre>
+# Cannot be referenced
+print $ num;
+</ pre>
 
-<h4>forの条件部</h4>
+<h4> for condition part </ h4>
 
-forの条件部で宣言されたレキシカル変数はforのスコープを持ちます。
+The lexical variable declared in the condition part of for has the scope of for.
 
 <pre>
-for (my $i = 0; $i < @nums; $i++) {
-  # 参照できる
-  print $i;
+for (my $ i = 0; $ i <@nums; $ i ++) {
+  # Can be referenced
+  print $ i;
 }
 
-# 参照できない
-print $i;
-</pre>
+# Cannot be referenced
+print $ i;
+</ pre>
 
-<h4>forの変数の代入部</h4>
+<h4> variable assignment part of for </ h4>
 
-forの変数の代入部で宣言されたレキシカル変数はforのスコープを持ちます。
+The lexical variable declared in the variable assignment part of for has the scope of for.
 
 <pre>
-for my $num (@nums) {
-  # 参照できる
-  print $num;
+for my $ num (@nums) {
+  # Can be referenced
+  print $ num;
 }
 
-# 参照できない
-print $num;
-</pre>
+# Cannot be referenced
+print $ num;
+</ pre>
 
-<h4>終わりに</h4>
+<h4> At the end </ h4>
 
-これだけ覚えておけばPerlのスコープで困ることはないでしょう。Perlのスコープは直感的でわかりやすいものだということがわかると思います。これはPerlのプログラムの構造を見やすいものにするのにとても役立っています。
-
+If you keep this in mind, you won't have any problems with Perl scope. You'll find that Perl scope is intuitive and straightforward. This has been very helpful in making the structure of Perl programs easier to see.

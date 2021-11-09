@@ -1,55 +1,54 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110406130586.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110406130586.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>署名つきクッキーのためのパスフレーズを設定する / Mojolicious</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Set a passphrase for signed cookies / Mojolicious </ h2>
 
 
 
-署名つきクッキーのためのパスフレーズを設定する設定するにはMojoliciousクラスの<strong>secrets</strong>メソッドを使用します。引数には、配列のリファレンスを渡してください。
-
-<pre>
-$app->secrets(['lkjsdf%$#']);
-</pre>
-
-この設定を行わない場合は警告が発生しますので、試験環境以外では設定するようにしましょう。
-
-Mojolicious::LiteとMojoliciousでの使用例です。
+Set a passphrase for signed cookies Use the <strong> secrets </ strong> method of the Mojolicious class to set it. Pass an array reference as an argument.
 
 <pre>
-# Mojolicious::Lite
-app->secrets(['lkjsdf%$#']);
+$ app-> secrets (['lkjsdf% $ #']);
+</ pre>
 
-# Mojolicious
+If you do not make this setting, a warning will be issued, so make sure to set it in a non-test environment.
+
+This is an example of use with Mojolicious :: Lite and Mojolicious.
+
+<pre>
+#Mojolicious :: Lite
+app-> secrets (['lkjsdf% $ #']);
+
+#Mojolicious
 sub starup {
-  my $self = shift;
-  $self->secrets(['lkjsdf%$#']);
+  my $ self = shift;
+  $ self-> secrets (['lkjsdf% $ #']);
 }
-</pre>
+</ pre>
 
-<h3>新しいパスフレーズを、セッションを途切れさせないで、設定する。</h3>
+<h3> Set a new passphrase without interrupting the session. </ h3>
 
-新しいパスフレーズを、セッションを途切れさせないで、設定することができます。
+You can set a new passphrase without interrupting your session.
 
 <pre>
-$app->secrets(['new_passw0rd', 'old_passw0rd']);
-</pre>
+$ app-> secrets (['new_passw0rd','old_passw0rd']);
+</ pre>
 
-先頭に新しいパスフレーズを設定してください。
+Please set a new passphrase at the beginning.
 
-<h3>Mojolicious 5での変更</h3>
+<h3> Changes in Mojolicious 5 </ h3>
 
-secretメソッドは廃止され、secretsメソッドに変更されています。これは、新しいパスフレーズを、セッションの破棄を避けて、設定するためです。
-
+The secret method has been deprecated and replaced by the secrets method. This is to set a new passphrase to avoid discarding the session.

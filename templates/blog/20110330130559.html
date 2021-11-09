@@ -1,56 +1,55 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110330130559.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110330130559.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>UTF-8の扱い / Mojoliciousリファレンス</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> UTF-8 handling / Mojolicious reference </ h2>
 
 
 
-MojoliciousでUTF-8を利用する場合の扱い方。
+How to handle when using UTF-8 with Mojolicious.
 
 <ul>
   <li>
-    <a href="https://github.com/kraih/mojo/wiki/Utf-8-manipulation">UTF-8 Manipulation</a>
-  </li>
-</ul>
+    <a href="https://github.com/kraih/mojo/wiki/Utf-8-manipulation"> UTF-8 Manipulation </a>
+  </ li>
+</ ul>
 
-ポイントはみっつ。ひとつは、スクリプトでUTF-8を扱う場合はutf8プラグマを有効にするということ。もちろんファイルはUTF-8で保存します。
+The point is Mitsu. One is to enable the utf8 pragma when dealing with UTF-8 in scripts. Of course, save the file in UTF-8.
 
 <pre>
 use utf8;
-</pre>
+</ pre>
 
-(現在のMojoliciousでは、自動的にutf8プラグマが自動的に設定されるため、記述する必要はありません。)
+(Currently Mojolicious automatically sets the utf8 pragma automatically, so you don't need to write it.)
 
-ふたつめは、リクエストがコントローラーにわたってきた時点で、パラメーターなどに含む文字列は内部文字列に変換済みであるということ。ですので注意点としてはたとえばデータベースに登録するときなどは、内部文字列からバイト文字列に変更する必要があるということです。
+The second is that when the request reaches the controller, the character string included in the parameters etc. has already been converted to the internal character string. So, as a caveat, for example, when registering in the database, it is necessary to change from the internal character string to the byte character string.
 
-みっつめは、テンプレートが描画されるときには、内部文字列からバイト文字列に変換されるということです。テンプレート自体は読み込まれた時点でバイト文字列から内部文字列に変換され、出力されるときに内部文字列からバイト文字列に自動的に変換されます。ですからrenderメソッドなどで、パラメータを渡すときは内部文字列に変換した文字列を渡す必要があります。
+The third is that when the template is drawn, it is converted from an internal string to a byte string. The template itself is converted from a byte string to an internal string when it is loaded, and automatically converted from an internal string to a byte string when it is output. Therefore, when passing parameters with the render method etc., it is necessary to pass the converted character string to the internal character string.
 
 <pre>
-get '/' => sub {
-  my $self = shift;
+get'/' => sub {
+  my $ self = shift;
 
-  # 内部文字列に変換済み
-  my $title = $self->param('title');
+  # Converted to internal string
+  my $ title = $ self-> param ('title');
     
-  # データベースに保存するときなどは内部文字列からバイト文字列へ変換
+  #Convert internal string to byte string when saving to database
 
-   # データベースから取り出すときなどはバイト文字列から内部文字列へ変換
+   #Convert byte string to internal string when retrieving from database
 
-  # 内部文字列を渡す
-  $self->render(title => $title);
+  # Pass an internal string
+  $ self-> render (title => $ title);
 }
-</pre>
-
+</ pre>

@@ -1,77 +1,76 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20170130148603.html">
-      <span itemprop="name">データベース</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> database </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>DBD::Oracleをインストール</h2>
+  </ li>
+</ ol>
+<h2> Install DBD :: Oracle </ h2>
 
 
 
-(CentOS5.5, CentOS5.7で確認)
+(Confirmed with CentOS5.5, CentOS5.7)
 
-PerlモジュールのDBD::Oracleをインストールしたのでメモ。
+Note that I installed the Perl module DBD :: Oracle.
 
-DBD::Oracleをインストールするためには以下のライブラリが必要でした。
+The following libraries were required to install DBD :: Oracle.
 
 <pre>
 oracle-instantclient11.2-basic-11.2.0.2.0.i386.rpm
 oracle-instantclient11.2-devel-11.2.0.2.0.i386.rpm
 oracle-instantclient11.2-sqlplus-11.2.0.2.0.i386.rpm
-</pre>
+</ pre>
 
-<a href="http://www.oracle.com/technetwork/jp/topics/linuxsoft-083388-ja.html">Oracleのサイトからダウンロード</a>できますが、ユーザー登録が必要になります。
+<a href="http://www.oracle.com/technetwork/jp/topics/linuxsoft-083388-ja.html"> You can download it from the Oracle site </a>, but user registration is required. ..
 
-次にこれらのrpmパッケージをインストールします。
+Then install these rpm packages.
 
 <pre>
 rpm -hiv oracle-instantclient11.2-basic-11.2.0.2.0.i386.rpm
 rpm -hiv oracle-instantclient11.2-devel-11.2.0.2.0.i386.rpm
 rpm -hiv oracle-instantclient11.2-sqlplus-11.2.0.2.0.i386.rpm
-</pre>
+</ pre>
 
-次に必要な環境変数の設定を行います。
+Next, set the required environment variables.
 
 <pre>
 vi /etc/profile.d/oracle.sh
-</pre>
+</ pre>
 
-上記の空のファイルに以下の設定を追加します。
+Add the following settings to the above empty file.
 
 <pre>
-export ORACLE_HOME='/usr/lib/oracle/11.2/client'
-export C_INCLUDE_PATH='/usr/include/oracle/11.2/client'
-export LD_LIBRARY_PATH='/usr/lib/oracle/11.2/client/lib'
-</pre>
+export ORACLE_HOME ='/usr/lib/oracle/11.2/client'
+export C_INCLUDE_PATH ='/usr/include/oracle/11.2/client'
+export LD_LIBRARY_PATH ='/usr/lib/oracle/11.2/client/lib'
+</ pre>
 
-次にライブラリの設定を行います。
+Next, set the library.
 
 <pre>
 vi /etc/ld.so.conf.d/oracle.conf
-</pre>
+</ pre>
 
-上記の空のファイルに以下の項目を追加します。
-
-<pre>
-/usr/lib/oracle/11.2/client/lib
-</pre>
-
-この状態で環境変数を反映させるために端末を立ち上げなおしてください。
-
-後はcpanコマンドでインストールするだけです。
+Add the following items to the above empty file.
 
 <pre>
-cpan DBD::Oracle
-</pre>
+/usr/lib/oracle/112/client/lib
+</ pre>
 
+In this state, restart the terminal to reflect the environment variables.
+
+All you have to do now is install it with the cpan command.
+
+<pre>
+cpan DBD :: oracle
+</ pre>
