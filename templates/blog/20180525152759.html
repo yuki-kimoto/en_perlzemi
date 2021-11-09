@@ -1,122 +1,122 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161102147817.html">
-        <span itemprop="name">特殊変数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>子プロセスの終了ステータス $?</h2>
+        <span itemprop = "name"> Special variables </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Exit status of child process $? </ H2>
 
 
 
-子プロセスの終了ステータスを取得するには特殊変数「$?」を使用します。
+Use the special variable "$?" To get the exit status of the child process.
 
-waitで子プロセスの終了を待った]場合は、$?に子プロセスの終了ステータスを含めた複数の値が格納されます。また<a href="/blog/20180124151680.html">system関数</a>を使って子プロセスを実行した場合にも$?が設定されます。
+If wait waits for the child process to terminate, $? Contains multiple values, including the exit status of the child process. $? Is also set when a child process is executed using the <a href="/blog/20180124151680.html"> system function </a>.
 
-$?の解釈の方法はやや複雑です。$?には16ビットの値が設定されます。<b>上位8ビット</b>に子プロセスの終了ステータス</b>が設定されます。<b>下位8ビットの8ビット目</b>には、コアダンプが生成されたかどうか</b>を表します。<b>下位8ビットの7ビット目</b>までは、もしあれば<b>プロセスを終了させたシグナルの番号</b>を表します。
-
-<pre>
-|----------------------+----+------------------|
-|           8          |  1 |       7          |
-|----------------------+----+------------------|
-             |           |          |
-  終了ステータス    コアダンプの  子プロセスを終了させたシグナル
-　　　　　　　　発生
-</pre>
-
-ですので、終了ステータスを取得するためには、$?を8ビット右にシフトさせる必要があります。
+The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </ b>. The <b> 8th bit of the lower 8 bits </ b> indicates whether a core dump was generated </ b>. The <b> lower 8 bits up to the 7th bit </ b> represent the <b> signal number that terminated the process </ b>, if any.
 
 <pre>
-# 終了ステータスの取得
-my $exit_value = $? >> 8;
-</pre>
+| ----------------------- + ---- + ------------------ |
+| 8 | 1 | 7 |
+| ----------------------- + ---- + ------------------ |
+             | | |
+  Exit Status Signal that terminated the child process of the core dump
+        occurrence
+</ pre>
 
-コアダンプが発生したかどうかを見るには
-
-<pre>
-# コアダンプが発生したかどうか
-my $dumped_core = $? & 128;
-</pre>
-
-とします。128は2進数になおすと 10000000 ですので、ビット積をとると8ビット目以外が0になります。子プロセスを終了させたシグナル番号を見るには
+So you need to shift $? To the right by 8 bits to get the exit status.
 
 <pre>
-# 子プロセスを終了させたシグナル番号
-my $signal_num = $? & 127;
-</pre>
+# Get exit status
+my $ exit_value = $? >> 8;
+</ pre>
 
-とします。127は2進数で、01111111 ですので、ビット積をとると下位7ビットが取得できます。
-
-<h4>子プロセスが終了したかどうかを調べる</h4>
-
-wait関数はCHLDシグナルが発生すると制御を戻します。つまり、子プロセスが終了したときだけではなく、子プロセスが停止したり、再開したりした場合にも制御が戻るということです。
-
-子プロセスが確実に終了したかどうかを調べるには、<b>WIFEXITED</b> 関数を使用します。
+To see if a core dump has occurred
 
 <pre>
-use POSIX q(:sys_wait_h);
-my $is_finished = WIFEXITED($?);
-</pre>
+#Whether a core dump has occurred
+my $ dumped_core = $? & 128;
+</ pre>
 
-<h4>子プロセスの終了ステータスを見るサンプル</h4>
+will do. Since 128 is 10000000 when converted to a binary number, the bit product is 0 except for the 8th bit. To see the signal number that killed the child process
 
-子プロセスの中でdieを呼んだので終了ステータスは255になります。親プロセスがこのステータスを取得できているのがわかると思います。
+<pre>
+#Signal number that terminated the child process
+my $ signal_num = $? & 127;
+</ pre>
+
+will do. Since 127 is a binary number and is 01111111, the lower 7 bits can be obtained by taking the bit product.
+
+<h4> Check if the child process has terminated </ h4>
+
+The wait function returns control when a CHLD signal occurs. This means that control returns not only when the child process terminates, but also when the child process is stopped or restarted.
+
+Use the <b> WIFEXITED </ b> function to see if the child process has terminated.
+
+<pre>
+use POSIX q (: sys_wait_h);
+my $ is_finished = WIFEXITED ($?);
+</ pre>
+
+<h4> Sample to see the exit status of the child process </ h4>
+
+The exit status is 255 because we called die in the child process. You can see that the parent process is getting this status.
 
 <pre>
 use strict;
 use warnings;
 
-use POSIX qw(:sys_wait_h);
+use POSIX qw (: sys_wait_h);
 
-my $pid = fork;
+my $ pid = fork;
 
-die "Cannot fork: $!" unless defined $pid;
+die "Cannot fork: $!" unless defined $ pid;
 
-if ($pid) {
-  # 子プロセスの終了を待機する。
+if ($ pid) {
+  # Wait for the child process to finish.
   wait;
-  print "親プロセス( 子プロセスID: $pid )\n\n";
-  my $exit_value = $? >> 8;
-  my $dumped_core = $? & 128;
-  my $signal_num = $? & 127;
+  print "Parent process (child process ID: $ pid) \ n \ n";
+  my $ exit_value = $? >> 8;
+  my $ dumped_core = $? & 128;
+  my $ signal_num = $? & 127;
   
-  my $is_finished = WIFEXITED( $? );
+  my $ is_finished = WIFEXITED ($?);
  
-  print "子プロセスの終了コード: $exit_value\n";
-  print "コアダンプが発生したかどうか : $dumped_core\n";
-  print "子プロセスを終了させたシグナル : $signal_num\n";
-  print "子プロセスが終了したかどうか : $is_finished\n";
+  print "Exit code of child process: $ exit_value \ n";
+  print "whether a core dump has occurred: $ dumped_core \ n";
+  print "Signal that terminated the child process: $ signal_num \ n";
+  print "whether the child process has terminated: $ is_finished \ n";
 }
 else {
-  # 子プロセスで2秒待つ
+  #Wait 2 seconds in child process
   sleep 2;
-  print "子プロセス\n";
+  print "child process \ n";
   die;
 }
-</pre>
+</ pre>
 
-実行結果は
+The execution result is
 
 <pre>
-子プロセス
+Child process
 Died at c.pl line 29.
-親プロセス(子プロセスID: 13830)
+Parent process (child process ID: 13830)
 
-子プロセスの終了コード: 255
-コアダンプが発生したかどうか : 0
-子プロセスを終了させたシグナル : 0
-子プロセスが終了したかどうか : 1
-</pre>
+Exit code of child process: 255
+Whether a core dump has occurred: 0
+Signal that terminated the child process: 0
+Whether the child process has terminated: 1
+</ pre>
 
-のようになります。
+It looks like.

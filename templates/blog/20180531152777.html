@@ -1,64 +1,64 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20080608121292.html">
-        <span itemprop="name">コンテキスト</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>スカラコンテキスト</h2>
+        <span itemprop = "name"> context </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Scalar context </ h2>
 
 
 
-Perlにはコンテキストと呼ばれる概念があり、スカラとして評価される文脈を<b>スカラコンテキスト</b>といいます。
+Perl has a concept called context, and the context that is evaluated as a scalar is called a <b> scalar context </ b>.
 
-<h4>スカラ変数への代入</h4>
+<h4> Assignment to scalar variable </ h4>
 
-<a href="/blog/20161107147852.html">スカラ変数</a>への代入はスカラコンテキストです。<a href="/blog/20161012147627.html">配列</a>はスカラコンテキストで評価すると、配列の長さを返します。
-
-<pre>
-my $num = @values;
-</pre>
-
-<h4>比較演算子の項</h4>
-
-<a href="/blog/20080318120585.html">比較演算子</a>の左右の項はスカラコンテキストです。
+Assignment to <a href="/blog/20161107147852.html"> scalar variable </a> is a scalar context. <a href="/blog/20161012147627.html"> Array </a> returns the length of the array when evaluated in a scalar context.
 
 <pre>
-$x < @values
-$x == @values
-</pre>
+my $ num = @values;
+</ pre>
 
-<a href="/blog/20170521149524.html">for文</a>のループで頻繁に目にします。
+<h4> Comparison operator term </ h4>
+
+The left and right terms of <a href="/blog/20080318120585.html"> comparison operator </a> are scalar contexts.
 
 <pre>
-for (my $i = 0; $i < @nums; $i++) {
+$ x <@values
+$ x == @values
+</ pre>
+
+I often see it in the loop of <a href="/blog/20170521149524.html"> for statement </a>.
+
+<pre>
+for (my $ i = 0; $ i <@nums; $ i ++) {
   ...
 }
-</pre>
+</ pre>
 
-<h4>ifの条件部</h4>
+<h4> if condition part </ h4>
 
-<a href="/blog/20161023147731.html">if</a>の条件部はスカラコンテキストです。以下では@valuesはスカラコンテキストで評価されるので、配列の個数を返します。
+The conditional part of <a href="/blog/20161023147731.html"> if </a> is the scalar context. In the following, @values ​​is evaluated in scalar context, so it returns the number of arrays.
 
 <pre>
 if (@values) {
   ...
 }
-</pre>
+</ pre>

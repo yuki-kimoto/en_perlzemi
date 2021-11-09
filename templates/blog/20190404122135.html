@@ -1,108 +1,107 @@
-<h2>開発環境で静的HTMLファイルとCGIをサーブする方法</h2>
+<h2> How to serve static HTML files and CGI in development environment </ h2>
 
-開発環境で静的HTMLファイルとCGIをサーブするために、Mojoliciousを使って簡単な実装を行いました。
+I made a simple implementation using Mojolicious to serve static HTML files and CGI in my development environment.
 
-本番の実行環境はApacheで、開発環境では、そうではないことは、普通にあります。
+The production execution environment is Apache, and in the development environment it is common that this is not the case.
 
-開発環境で静的なHTMLとCGIの試験が行える実装を書いてみました。
+I wrote an implementation that can test static HTML and CGI in the development environment.
 
-<h3>使い方</h3>
+<h3> How to use </ h3>
 
 <pre>
 morbo serve_cgi.pl
-</pre>
+</ pre>
 
-<h3>ソースコード</h3>
+<h3> Source code </ h3>
 
 <pre>
 # serve_cgi.pl
-use Mojo::Message::Response;
-use File::Temp 'tempfile';
+use Mojo :: Message :: Response;
+use File :: Temp'temp file';
 
-use Mojolicious::Lite;
+use Mojolicious :: Lite;
 
-# render CGI
-app->hook(before_dispatch => sub {
-  my $c = shift;
+#render CGI
+app-> hook (before_dispatch => sub {
+  my $ c = shift;
   
-  my $req = $c->req;
+  my $ req = $ c-> req;
   
-  my $path = $req->url->path;
+  my $ path = $ req-> url-> path;
   
-  if ($path =~ /\.cgi$/) {
-    my $method = $c->req->method;
-    my $script_name = $c->app->home->rel_file("public/$path");
+  if ($ path = ~ /\.cgi$/) {
+    my $ method = $ c-> req-> method;
+    my $ script_name = $ c-> app-> home-> rel_file ("public / $ path");
     
-    # CGI Environment variable
-    local $ENV{AUTH_TYPE} = '';
-    local $ENV{CONTENT_LENGTH} = $req->headers->content_length;
-    local $ENV{CONTENT_TYPE} = $req->headers->content_type;
-    local $ENV{GATEWAY_INTERFACE} = 'CGI/1.1';
-    local $ENV{PATH_INFO} = $req->url->path;
-    local $ENV{PATH_TRANSLATED} = $req->url->path;
-    local $ENV{QUERY_STRING} = $req->url->query->to_string;
-    local $ENV{REMOTE_ADDR} = $c->tx->remote_address;
-    local $ENV{REMOTE_HOST} = $c->tx->remote_address;
-    local $ENV{REMOTE_IDENT} = '';
-    local $ENV{REMOTE_USER} = '';
-    local $ENV{REQUEST_METHOD} = $method;
-    local $ENV{SCRIPT_NAME} = $script_name;
-    local $ENV{SERVER_NAME} = 'localhost';
-    local $ENV{SERVER_PORT} = $c->tx->remote_port;
-    local $ENV{SERVER_SOFTWARE} = "Mojolicious (Perl)";
-    local $ENV{SERVER_PROTOCOL} = 'HTTP/1.1';
+    #CGI Environment variable
+    local $ ENV {AUTH_TYPE} ='';
+    local $ ENV {CONTENT_LENGTH} = $ req-> headers-> content_length;
+    local $ ENV {CONTENT_TYPE} = $ req-> headers-> content_type;
+    local $ ENV {GATEWAY_INTERFACE} ='CGI / 1.1';
+    local $ ENV {PATH_INFO} = $ req-> url-> path;
+    local $ ENV {PATH_TRANSLATED} = $ req-> url-> path;
+    local $ ENV {QUERY_STRING} = $ req-> url-> query-> to_string;
+    local $ ENV {REMOTE_ADDR} = $ c-> tx-> remote_address;
+    local $ ENV {REMOTE_HOST} = $ c-> tx-> remote_address;
+    local $ ENV {REMOTE_IDENT} ='';
+    local $ ENV {REMOTE_USER} ='';
+    local $ ENV {REQUEST_METHOD} = $ method;
+    local $ ENV {SCRIPT_NAME} = $ script_name;
+    local $ ENV {SERVER_NAME} ='localhost';
+    local $ ENV {SERVER_PORT} = $ c-> tx-> remote_port;
+    local $ ENV {SERVER_SOFTWARE} = "Mojolicious (Perl)";
+    local $ ENV {SERVER_PROTOCOL} ='HTTP / 1.1';
     
     # Check script name
-    unless ($script_name =~ /^[a-zA-Z_0-9\/\-\.]+$/) {
+    unless ($ script_name = ~ / ^ [a-zA-Z_0-9 \ / \-\.] + $ /) {
       die "Invalid script name";
     }
     
-    # Run CGI script
-    my $output;
-    if ($method eq 'GET') {
+    #Run CGI script
+    my $ output;
+    if ($ method eq'GET') {
       # GET requst
-      $output = `$^X $script_name`;
+      $ output = `$ ^ X $ script_name`;
       if ($?) {
-        $c->res->code('505');
-        $c->render(text => "Internal Server Error");
+        $ c-> res-> code ('505');
+        $ c-> render (text => "Internal Server Error");
       }
     }
-    elsif ($method eq 'POST') {
-      # POST request
-      my $body = $req->body;
-      my ($in_fh, $in_file) = tempfile;
-      print $in_fh $body;
-      close $in_fh;
-      $output = `$^X -pe "" $in_file | $^X $script_name`;
+    elsif ($ method eq'POST') {
+      #POST request
+      my $ body = $ req-> body;
+      my ($ in_fh, $ in_file) = tempfile;
+      print $ in_fh $ body;
+      close $ in_fh;
+      $ output = `$ ^ X -pe" "$ in_file | $ ^ X $ script_name`;
       if ($?) {
-        $c->res->code('505');
-        $c->render(text => "Internal Server Error");
+        $ c-> res-> code ('505');
+        $ c-> render (text => "Internal Server Error");
       }
-      unlink $in_file;
+      unlink $ in_file;
     }
     
-    # Header part and body part
-    my ($header_part, $body_part) = split("\n\n", $output, 2);
+    #Header part and body part
+    my ($ header_part, $ body_part) = split ("\ n \ n", $ output, 2);
     
-    # Response
-    my $res = Mojo::Message::Response->new;
-    while (!$res->is_finished) {
-      $res->parse($header_part);
+    #Response
+    my $ res = Mojo :: Message :: Response-> new;
+    while (! $ Res-> is_finished) {
+      $ res-> parse ($ header_part);
     }
-    $c->res->code($res->code);
-    $c->res->headers($res->headers);
-    $c->render(data => $body_part);
+    $ c-> res-> code ($ res-> code);
+    $ c-> res-> headers ($ res-> headers);
+    $ c-> render (data => $ body_part);
   }
 });
 
-get '/' => sub {
-  my $c = shift;
+get'/' => sub {
+  my $ c = shift;
   
-  $c->reply->static('index.html');
+  $ c-> reply-> static ('index.html');
 };
 
-app->start;
-</pre>
+app-> start;
+</ pre>
 
-もっといい方法あるよという方は、Twitterで、教えてください。
-
+If you have a better way, please let me know on Twitter.

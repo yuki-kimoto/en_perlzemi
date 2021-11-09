@@ -1,102 +1,102 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20080910122105.html">
-      <span itemprop="name">算術演算子</span></a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>デクリメント演算子「--」</h2>
+      <span itemprop = "name"> Arithmetic operator </ span> </a>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Decrement operator "-" </ h2>
 
 
 
-<b>デクリメント演算子</b>を使用すると、<a href="/blog/20161107147852.html">変数</a>に代入されている<a href="/blog/20161026147748.html">数値</a>から1を減算することができます。デクリメント演算子は、変数の前か後につけることができます。
-
-<pre>
-# デクリメント(後置)
-$num--;
-
-# デクリメント(前置)
---$num;
-</pre>
-
-デクリメント演算子は<a href="/blog/20180220151913.html">減算演算子</a>を使った次の記述と同じ意味になります。
+Using the <b> decrement operator </ b>, the <a href="/blog/20161026147748.html"> assigned to the <a href="/blog/20161107147852.html"> variable </a> You can subtract 1 from the number </a>. Decrement operators can be added before or after a variable.
 
 <pre>
-$num = $num - 1;
-</pre>
+#Decrement (postscript)
+$ num--;
 
-デクリメント演算子は<a href="/blog/20161022147731.html">for文</a>の中で時々利用されます。
+#Decrement (prefix)
+--$ num;
+</ pre>
+
+The decrement operator has the same meaning as the following description using the <a href="/blog/20180220151913.html"> subtraction operator </a>.
 
 <pre>
-for (my $i = 10; $i >= 0; $i--) {
-  print "$i\n";
+$ num = $ num --1;
+</ pre>
+
+Decrement operators are sometimes used in <a href="/blog/20161022147731.html"> for statements </a>.
+
+<pre>
+for (my $ i = 10; $ i> = 0; $ i--) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-このサンプルプログラムでは、10から0が出力されます。
+This sample program outputs 10 to 0.
 
-<h3>前置のデクリメントと後置のデクリメントの違い</h3>
+<h3> Difference between prefix decrement and post-decrement </ h3>
 
-前置のデクリメントと後置のデクリメントは単独で利用される場合は、意味が同じですが、代入されるなど戻り値が利用される場合は、意味が異なります。
+The prefix decrement and the suffix decrement have the same meaning when used alone, but have different meanings when the return value is used, such as when they are assigned.
 
-<h4>前置のデクリメント</h4>
+<h4> Prefix decrement </ h4>
 
-前置のデクリメントの場合は、デクリメントされた値が返されます。
-
-<pre>
-my $num1 = 1;
-my $num2 = --$num;
-</pre>
-
-「$num1」がデクリメントされて0になります。この0という値が返されて「$num2」に代入されます。
-
-代入の場合で解説しましたが、<a href="/blog/20101130129876.html">サブルーチン</a>に値を渡す場合の例も挙げておきます。funには<b>デクリメントされた値</b>が渡されます。
+For prefix decrements, the decremented value is returned.
 
 <pre>
-func(--$i);
-</pre>
+my $ num1 = 1;
+my $ num2 = --$ num;
+</ pre>
 
-<h4>後置のデクリメント</h4>
+"$ Num1" is decremented to 0. This value of 0 is returned and assigned to "$ num2".
 
-前置のデクリメントの場合は、デクリメントされる前の値が返されます。
-
-<pre>
-my $num1 = 1;
-my $num2 = $i--;
-</pre>
-
-「$num1」がデクリメントされ0になりますが、デクリメントされる前の値である1が$num2に代入されます。
-
-上記の二つは$kに入る値が異なります。最初の場合は、$kには、0が入ります。二つ目の場合は、$kには1が入ります。
-
-代入の場合で解説しましたが、サブルーチンに値を渡す場合の例も挙げておきます。funには<b>デクリメントされる前の値</b>が渡されます。
+I explained in the case of assignment, but I will also give an example of passing a value to <a href="/blog/20101130129876.html"> subroutine </a>. The fun is passed a <b> decremented value </ b>.
 
 <pre>
-func($i--);
-</pre>
+func (-$ i);
+</ pre>
 
-<h3>インクリメント演算子</h3>
+<h4> Postfix decrement </ h4>
 
-インクリメント演算子は、デクリメント演算子の反対で、1を加算することができる演算子です。インクリメント演算子については以下で詳しく解説しています。
+For prefix decrements, the value before decrementing is returned.
+
+<pre>
+my $ num1 = 1;
+my $ num2 = $ i--;
+</ pre>
+
+"$ Num1" is decremented to 0, but the value before decrementing, 1 is assigned to $ num2.
+
+The above two have different values ​​in $ k. In the first case, $ k contains 0. In the second case, $ k contains 1.
+
+I explained in the case of assignment, but I will also give an example of passing a value to a subroutine. The fun is passed <b> the value before it was decremented </ b>.
+
+<pre>
+func ($ i--);
+</ pre>
+
+<h3> Increment operator </ h3>
+
+The increment operator is the opposite of the decrement operator and is an operator that can add one. The increment operator is explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20180224151948.html">インクリメント演算子</a>
-  </li>
-</ul>
+    <a href="/blog/20180224151948.html"> Increment operator </a>
+  </ li>
+</ ul>

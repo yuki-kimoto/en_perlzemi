@@ -1,117 +1,116 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name"><a href="/blog/20180820153471.html">インストール</a></span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Unix/LinuxへのPerlのインストール</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> <a href="/blog/20180820153471.html"> Installation </a> </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Installing Perl on Unix / Linux </ h2>
 
-Unix/Linux環境には、すでにPerlがインストールされてることが多いです。
+Perl is often already installed in Unix / Linux environments.
 
-Linuxディストリビューションとしては、<a href="https://ubuntu.perlclub.net/">Ubuntu</a>や<a href="https://centos.perlclub.net/">CentOS</a>があります。
+Linux distributions include <a href="https://ubuntu.perlclub.net/"> Ubuntu </a> and <a href="https://centos.perlclub.net/"> CentOS </a> > There is.
 
-以下のコマンドでPerlがインストールされているか確認してみましょう。
+Check if Perl is installed with the following command.
 
 <pre>
 perl -v
-</pre>
+</ pre>
 
-存在する場合はすぐにPerlを使い始めることができます。
+You can start using Perl as soon as it exists.
 
-ない場合は、Unix/Linuxディストリビューションの標準のPerlをインストールすることができます。
+If you don't have one, you can install the standard Perl for Unix / Linux distributions.
 
-あるいは、ユーザー環境にPerlをインストールすることもできます。
+Alternatively, you can install Perl in your environment.
 
 
-<h3>システムPerlのインストール</h3>
+<h3> Install system Perl </ h3>
 
-rootユーザー権限で以下のコマンドを実行しましょう。ディストリビューションごとに、コマンドが異なるので、自分の環境にあったコマンドを実行してみてください。
+Execute the following command with root user privileges. Each distribution has a different command, so try running the command that suits your environment.
 
-<h4>UbuntuでのPerlのインストール</h4>
+<h4> Installing Perl on Ubuntu </ h4>
 
-UbuntuでのPerlのインストール方法です。
+How to install Perl on Ubuntu.
 
 <pre>
-# UbuntuでのPerlのインストール
+#Install Perl on Ubuntu
 sudo apt install perl
-</pre>
+</ pre>
 
-UbuntuでのPerlのインストールについては以下の記事も参考にしてください。
+Please also refer to the following articles for installing Perl on Ubuntu.
 
 <ul>
-  <a href="https://ubuntu.perlclub.net/blog/20200616085351.html">UbuntuでPerlをインストール</a>
-</ul>
+  <a href="https://ubuntu.perlclub.net/blog/20200616085351.html"> Install Perl on Ubuntu </a>
+</ ul>
 
-<h4>Redhat LinuxでのPerlのインストール</h4>
+<h4> Installing Perl on Redhat Linux </ h4>
 
 <pre>
-# RedHatでのPerlのインストール
+#Install Perl on RedHat
 yum install perl
-</pre>
+</ pre>
 
-<h4>CentOSでのPerlのインストール</h4>
+<h4> Installing Perl on CentOS </ h4>
 
 <pre>
-# Cent OSでのPerlのインストール
+#Install Perl on Cent OS
 yum install perl
-</pre>
+</ pre>
 
-<h4>DebianでのPerlのインストール</h4>
+<h4> Installing Perl on Debian </ h4>
 
 <pre>
-# DebianでのPerlのインストール
+#Install Perl on Debian
 apt-get install perl
-</pre>
+</ pre>
 
-<h4>FreeBSDでのPerlのインストール</h4>
+<h4> Installing Perl on FreeBSD </ h4>
 
 <pre>
-# FreeBSDでのPerlのインストール
+#Install Perl on FreeBSD
 pkg_add -r perl
-</pre>
+</ pre>
 
-<h3>ユーザー環境へのPerlのインストール</h3>
+<h3> Installing Perl in the user environment </ h3>
 
-自分のユーザー環境にPerlをインストールしたい場合はperlbrewあるいはplenvというツールを使うことができます。
+If you want to install Perl in your own user environment, you can use a tool called perlbrew or plenv.
 
-ルート権限が必要ないので、インストールは簡単で、OSの環境を汚しません。最新のPerlをインストールして使うことができます。
+It doesn't require root privileges, so it's easy to install and doesn't pollute the OS environment. You can install and use the latest Perl.
 
-本番環境のWebサービスでPerlを実行する場合は、この方法が2018年現在は主流となっています。
+If you're running Perl on a production web service, this method is the mainstream as of 2018.
 
-perlbrewとplenvはどちらも、似ているツールで、ユーザー環境にPerlをインストールするためのツールです。お好みで選択してください。
+Both perlbrew and plenv are similar tools for installing Perl in your environment. Please select as you like.
 
 <ul>
   <li>
-    <a href="/blog/20110220130464.html">perlbrew - ユーザー環境にPerlをインストールする</a>
-  </li>
+    <a href="/blog/20110220130464.html"> perlbrew --Install Perl in your environment </a>
+  </ li>
   <li>
-    <a href="/blog/20180816153437.html">plenv - ユーザー環境にPerlをインストールする</a>
-  </li>
-</ul>
+    <a href="/blog/20180816153437.html"> plenv --Install Perl in your environment </a>
+  </ li>
+</ ul>
 
-<h3>Linuxサーバー管理・Webシステム開発環境構築</h3>
+<h3> Linux server management / Web system development environment construction </ h3>
 
-<h4>Ubuntu+PerlでWebシステム開発 環境構築</h4>
+<h4> Web system development environment construction with Ubuntu + Perl </ h4>
 
-UbuntuでPerlのWebシステム開発環境を構築したい場合は、以下のコンテンツを参考にしてください。
+If you want to build a Perl Web system development environment on Ubuntu, please refer to the following contents.
 
-<a href="https://ubuntu.perlclub.net/">Ubuntu+PerlでWebシステム開発 環境構築</a>
+<a href="https://ubuntu.perlclub.net/"> Web system development environment construction with Ubuntu + Perl </a>
 
-<h4>CentOS+PerlでWebシステム開発環境構築</h4>
+<h4> Web system development environment construction with CentOS + Perl </ h4>
 
-CentOSでPerlのWebシステム開発環境を構築したい方は、以下のコンテンツがあります。
+For those who want to build a Perl Web system development environment on CentOS, there are the following contents.
 
-<a href="https://centos.perlclub.net/">CentOSサーバー構築入門</a>
+<a href="https://centos.perlclub.net/"> Introduction to CentOS server construction </a>
 
-<h4>Linuxサーバー管理入門</h4>
+<h4> Introduction to Linux Server Management </ h4>
 
-Linuxサーバー管理として、Linuxの基本的なコマンドや考え方について、学びたいという場合は、Linuxサーバー管理入門を参考にしてください。
+If you want to learn the basic commands and ideas of Linux as Linux server management, please refer to the introduction to Linux server management.
 
-<a href="https://linux.perlclub.net/">Linuxサーバー管理入門</a>
-
+<a href="https://linux.perlclub.net/"> Introduction to Linux Server Management </a>

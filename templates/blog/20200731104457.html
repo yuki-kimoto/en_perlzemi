@@ -1,53 +1,53 @@
-<h2>Perlにおけるお勧めのシェバンの書き方</h2>
+<h2> Recommended way to write a shebang in Perl </ h2>
 
-Perlにおける、お勧めのシェバンの書き方。「#!/usr/bin/env perl」。
+Recommended way to write a shebang in Perl. "#! / Usr / bin / env perl".
 
 <pre>
-#!/usr/bin/env perl
-</pre>
+#! / usr / bin / env perl
+</ pre>
 
-Unix/Linuxには、シェバンと呼ばれる機能があり、シェバンに書かれたコマンドで、ファイルに書かれた内容を実行してくれます。
+Unix / Linux has a function called a shebang, which executes the contents written in the file with the command written in the shebang.
 
-シェバンは「#!」で始まります。
+Shebangs start with "#!".
 
-「#!/usr/bin/env perl」がお勧めな理由は、ほとんどの<a href="https://linux.perlclub.net/">Linux</a>/Unix環境で動くからです。
+"#! / Usr / bin / env perl" is recommended because it works on most <a href="https://linux.perlclub.net/"> Linux </a> / Unix environments.
 
-<a href="https://perlzemi.com/blog/20110220130464.html">perlbrew</a>や<a href="https://perlzemi.com/blog/20180816153437.html">plenv</a>でユーザー環境にPerlをインストールした場合でも正しく動きます。
+<a href="https://perlzemi.com/blog/20110220130464.html"> perlbrew </a> and <a href="https://perlzemi.com/blog/20180816153437.html"> plenv </a> Even if Perl is installed in the user environment with>, it works correctly.
 
-envコマンドは、環境変数PATHのディレクトリを検索して最初に見つかったperlで実行してくれます。
+The env command searches the directory in the environment variable PATH and executes it with the first perl found.
 
-<h3>envを使うことのデメリット</h3>
+<h3> Disadvantages of using env </ h3>
 
-envを使うことのデメリットは、どのPerlを使うかが確定されないということです。envという名前のとおり、PATH環境変数という、環境に依存します。
+The disadvantage of using env is that it is uncertain which Perl to use. As the name env suggests, it depends on the environment, called the PATH environment variable.
 
-Perlスクリプトのポータビリティを高めるか、指定したPerlでプログラムを実行するのと、どちらがメリットがあるかという選択になります。
+You have the choice of increasing the portability of your Perl scripts or running your program in a specified Perl.
 
-<h3>シェバン行は必須ですか?</h3>
+<h3> Is the Shebang line required? </ H3>
 
-シェバン行は必須ではないです。
+Shebang line is not mandatory.
 
-perlコマンドを実行すれば、シェバンに関係なく、perlで実行できるからです。
+If you run the perl command, you can run it in perl, regardless of shebang.
 
 <pre>
 perl script.pl
-</pre>
+</ pre>
 
-Windows環境であれば、シェバンを書かずに、直接Perlで実行するということも多いでしょう。
+In a Windows environment, you will often run it directly in Perl without writing a shebang.
 
-サーバー運用の現場で作るプログラムでは、perlスクリプトは、シェバンを書いて、拡張子をなしにして、実行ファイルのように扱うという規約や慣例があれば、それに従ってください。
+For programs created in the field of server operation, follow any conventions or conventions that perl scripts should write shebangs, remove extensions, and treat them like executable files.
 
-Perlを中心に開発している現場では、Perlのプログラムは、拡張子をplにして、perlで実行するという選択もよいでしょう。
+In the field of Perl-centered development, you may choose to run Perl programs with perl with the extension pl.
 
-CGIスクリプトにおいては、シェバンは必須です。CGIというプロトコルは、実行権限のあるファイルをそのまま実行し、perlというコマンドで実行してくれるわけではないからです。ApacheなどのWebサーバーでは、シェバンを書かないと「Internal Server Error」になります。
+Shebangs are required in CGI scripts. This is because the CGI protocol does not execute a file that you have permission to execute as it is, and execute it with a command called perl. On a web server such as Apache, if you do not write a shebang, you will get an "Internal Server Error".
 
-<h3>CPANモジュールに含むスクリプトは「#!perl」がお勧め</h3>
+<h3> "#! Perl" is recommended for scripts included in the CPAN module </ h3>
 
-CPANモジュールを配布する場合に含むスクリプトは「#!perl」がお勧めです。
+We recommend "#! Perl" as the script to include when distributing the CPAN module.
 
 <pre>
-#!perl
-</pre>
+#! perl
+</ pre>
 
-<a href="https://mojolicious.perlzemi.com/">Mojolicious</a>の本番サーバー起動コマンドの<a href="https://mojolicious.perlzemi.com/blog/20110122130016.html">hypnotoad</a>も「#!perl」を使っています。CPANクライアントは、インストール先の、Unix/Linux/Windowsで、スクリプトを実行できるように、この行を、自動的に書き換えてくれます。
+<a href="https://mojolicious.perlzemi.com/"> Mojolicious </a> production server startup command <a href="https://mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad </a> also uses "#! perl". The CPAN client will automatically rewrite this line so that you can run the script on your Unix / Linux / Windows installation.
 
-<a href="https://github.com/mojolicious/mojo/blob/master/script/hypnotoad">hypnotoadで「#!perl」をシェバンとして使っている例</a>
+<a href="https://github.com/mojolicious/mojo/blob/master/script/hypnotoad"> Example of using "#! perl" as a shebang in hypnotoad </a>

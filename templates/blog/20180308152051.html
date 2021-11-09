@@ -1,78 +1,78 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100930127859.html">
-      <span itemprop="name">リファレンス</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>スカラ変数のリファレンス</h2>
+      <span itemprop = "name"> Reference </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Scalar variable reference </ h2>
 
 
 
-スカラ変数のリファレンスは、スカラ変数を指し示すものです。
+A scalar variable reference points to a scalar variable.
 
-<h4>スカラ変数のリファレンスの作成</h4>
+<h4> Creating a reference for scalar variables </ h4>
 
-スカラ変数のリファレンスを作成するには次のようにします。
-
-<pre>
-my $str = "Hello";
-my $str_ref = \$str;
-</pre>
-
-<h4>スカラ変数のリファレンスをデリファレンス</h4>
-
-スカラ変数のリファレンスをデリファレンスするには「${}」とします。
+To create a scalar variable reference:
 
 <pre>
-my $str = ${$str_ref};
-</pre>
+my $ str = "Hello";
+my $ str_ref = \ $ str;
+</ pre>
 
-単純な変数であれば先頭に「$」を付けるだけでデリファレンスできます。
+<h4> Dereference scalar variable reference </ h4>
 
-<pre>
-my $str = $$str_ref;
-</pre>
-
-<h3>スカラ変数のリファレンスを使う意義はありますか?</h3>
-
-大きなサイズの<a href="/blog/20161003147558.html">文字列</a>を<a href="/blog/20101130129876.html">サブルーチン</a>に渡す場合は、リファレンスを使ったほうが、速い気がしますね。
-
-でも、Perlでは、文字列はコピーオンライトと呼ばれる手法を使ってコピーされるので、実際に文字列に変更が加えられるまでは、コピーが行われません。
-
-ですから、大きなサイズの文字列でも、気にしないで、サブルーチンの引数に渡してください。
-
-<h4>Getopt::Long</h4>
-
-自分でプログラミングをするときは、スカラ変数のリファレンスを利用する機会はほぼありませんが、ライブラリが使っている場合は、使い方を覚えておく必要があります。
-
-よく利用するモジュールとしては<a href="/blog/20100514127696.html">Getopt::Long</a>があります。
+Use "$ {}" to dereference the scalar variable reference.
 
 <pre>
-# GetOptionsによるコマンドライン引数のオプションの処理
+my $ str = $ {$ str_ref};
+</ pre>
 
-# デフォルト値の設定
-my $enable_cache;
-my $max_clients = 5;
-my $type = 'prefork';
+Simple variables can be dereferenced by simply prefixing them with "$".
 
-# オプションの処理
-GetOptions(
-  'enable_cache'  => \$enable_cache,
-  'max_clients=i' => \$max_clients,
-  'type=s'        => \$type
+<pre>
+my $ str = $$ str_ref;
+</ pre>
+
+<h3> Is it worth using a scalar variable reference? </ H3>
+
+I used a reference when passing a large <a href="/blog/20161003147558.html"> string </a> to a <a href="/blog/20101130129876.html"> subroutine </a> I think it's faster.
+
+However, in Perl, strings are copied using a technique called copy-on-write, so they are not copied until the strings are actually modified.
+
+So don't worry about large strings, just pass them as subroutine arguments.
+
+<h4> Getopt :: Long </ h4>
+
+When programming yourself, you rarely have the opportunity to use scalar variable references, but if your library uses them, you need to remember how to use them.
+
+A frequently used module is <a href="/blog/20100514127696.html"> Getopt :: Long </a>.
+
+<pre>
+Handling command line argument options with #GetOptions
+
+#Set default value
+my $ enable_cache;
+my $ max_clients = 5;
+my $ type ='prefork';
+
+# Optional processing
+GetOptions (
+  'enable_cache' => \ $ enable_cache,
+  'max_clients = i'=> \ $ max_clients,
+  'type = s'=> \ $ type
 );
 
-# オプション以外の引数を受け取る 
-my $conf_file = shift;
-</pre>
+Receives non-option arguments
+my $ conf_file = shift;
+</ pre>

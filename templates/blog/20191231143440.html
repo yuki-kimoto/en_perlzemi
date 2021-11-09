@@ -1,121 +1,121 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20191228171433.html">
-      <span itemprop="name">帳票作成</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Form creation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>画像を挿入する - PDF::API2で帳票作成</h2>
+  </ li>
+</ ol>
+<h2> Insert image --PDF :: Create form with API2 </ h2>
 
-PDF::API2で、PNG,GIF,JPEGの画像を挿入する方法を解説します。
+I will explain how to insert PNG, GIF, JPEG images with PDF :: API2.
 
-PDFには、画像を含めることができます。PDF::API2では、PNG,GIF,JPEG画像を、PDFに挿入することができます。
+The PDF can contain images. PDF :: API2 allows you to insert PNG, GIF, JPEG images into PDF.
 
-<h3>画像ファイルの挿入</h3>
+<h3> Insert image file </ h3>
 
-画像ファイルを挿入するには、まず画像ファイルを読み込んで、画像表現するリソースオブジェクトを生成する必要があります。
+To insert an image file, you must first read the image file and create a resource object to represent the image.
 
-<h4>画像ファイルの読み込み</h4>
+<h4> Reading image files </ h4>
 
-画像ファイルを読み込んで、画像表現するリソースオブジェクトを生成しましょう。
+Let's read the image file and generate a resource object to represent the image.
 
-<b>JPEGファイルの読み込み</b>
+<b> Reading JPEG files </ b>
 
-PDF::API2で、JPEGファイルを読み込むには、image_jpegメソッドを使用します。JPEG画像を表現するリソースオブジェクトが返されます。
-
-<pre>
-# JPEG画像を表現するリソースオブジェクトを生成
-my $image_file = '/path/image.jpeg';
-my $image_object = $pdf->image_jpeg($image_file);
-</pre>
-
-<b>PNGファイルの読み込み</b>
-
-PDF::API2で、PNGファイルを読み込むには、image_pngメソッドを使用します。PNG画像を表現するリソースオブジェクトが返されます。
+To read a JPEG file with PDF :: API2, use the image_jpeg method. Returns a resource object that represents the JPEG image.
 
 <pre>
-# PNG画像を表現するリソースオブジェクトを生成
-my $image_file = '/path/image.png';
-my $image_object = $pdf->image_png($image_file);
-</pre>
+# Generate a resource object that represents a JPEG image
+my $ image_file ='/path/image.jpeg';
+my $ image_object = $ pdf-> image_jpeg ($ image_file);
+</ pre>
 
-「Unsupported Interlace」というエラーがでた場合は、PNGのインターレース機能を解除する必要があります。
+<b> Reading PNG files </ b>
 
-<b>GIFファイルの読み込み</b>
-
-PDF::API2で、GIFファイルを読み込むには、image_gifメソッドを使用します。GIF画像を表現するリソースオブジェクトが返されます。
+To read a PNG file in PDF :: API2, use the image_png method. Returns a resource object that represents the PNG image.
 
 <pre>
-# GIF画像を表現するリソースオブジェクトを生成
-my $image_file = '/path/image.gif';
-my $image_object = $pdf->image_gif($image_file);
-</pre>
+#Create a resource object that represents a PNG image
+my $ image_file ='/path/image.png';
+my $ image_object = $ pdf-> image_png ($ image_file);
+</ pre>
 
-<h4>画像コンテンツオブジェクトの生成</h4>
+If you get the error "Unsupported Interlace", you need to turn off the PNG interlacing feature.
 
-画像を挿入するための、コンテンツオブジェクトを生成します。これはPDF::API2::Contentオブジェクトです。
+<b> Reading GIF files </ b>
 
-<pre>
-# 画像を挿入するために必要なコンテンツオブジェクト
-my $gfx = $page->gfx;
-</pre>
-
-<h4>画像ファイルの挿入</h4>
-
-PDF::API2で、画像ファイルを挿入するには、コンテンツオブジェクトのimageメソッドを使用します。
+In PDF :: API2, use the image_gif method to read a GIF file. Returns a resource object that represents the GIF image.
 
 <pre>
-# 指定した位置に画像を挿入
-$gfx->image($image_object, $x, $y);
+#Create a resource object that represents a GIF image
+my $ image_file ='/path/image.gif';
+my $ image_object = $ pdf-> image_gif ($ image_file);
+</ pre>
 
-# 指定した位置に画像挿入。幅と高さを指定
-$gfx->image($image_object, $x, $y, $width, $height);
+<h4> Generation of image content object </ h4>
 
-# 指定した位置に画像挿入。スケールを指定(1.5倍など)
-$gfx->image($image_object, $x, $y, $scale);
-</pre>
-
-指定した位置に画像が挿入されます。
-
-幅と高さは、PDF単位であることに注意してください。座標は、右上に向かって進むので、指定した点から見て、右上に描画されることに注意してください。
-
-例として、600x600のイメージを600dpiの解像度で表示したい場合は、72を指定します。
-
-<h3>PNG画像を挿入するサンプル</h3>
-
-PNG画像を挿入するサンプルを書いてみます。
+Create a content object to insert the image. This is a PDF :: API2 :: Content object.
 
 <pre>
-use PDF::API2;
+#Content object needed to insert an image
+my $ gfx = $ page-> gfx;
+</ pre>
 
-my $pdf = PDF::API2->new;
+<h4> Insert image file </ h4>
 
-my $page = $pdf->page;
+In PDF :: API2, use the image method of the content object to insert an image file.
 
-# PNG画像を表現するリソースオブジェクトを生成
-my $image_file = "$FindBin::Bin/rokkaku.png";
-my $image_object = $pdf->image_png($image_file);
+<pre>
+#Insert image at specified position
+$ gfx-> image ($ image_object, $ x, $ y);
 
-# 画像を挿入するために必要なコンテンツオブジェクト
-my $gfx = $page->gfx;
+#Insert image at the specified position. Specify width and height
+$ gfx-> image ($ image_object, $ x, $ y, $ width, $ height);
 
-# 指定した位置に画像を挿入
-my $x = 50;
-my $y = 500;
-$gfx->image($image_object, $x, $y);
+#Insert image at the specified position. Specify scale (1.5x, etc.)
+$ gfx-> image ($ image_object, $ x, $ y, $ scale);
+</ pre>
 
-my $pdf_file = 'image_png.pdf';
-$pdf->saveas($pdf_file);
-</pre>
+The image will be inserted at the specified position.
 
-<a href="/examples/pdf/image_png.pdf">出力結果 PNG画像の挿入</a>
+Note that the width and height are in PDF units. Note that the coordinates move toward the upper right, so they are drawn in the upper right when viewed from the specified point.
+
+As an example, if you want to display a 600x600 image at 600dpi resolution, specify 72.
+
+<h3> Sample to insert PNG image </ h3>
+
+Let's write a sample to insert a PNG image.
+
+<pre>
+use PDF :: API2;
+
+my $ pdf = PDF :: API2-> new;
+
+my $ page = $ pdf-> page;
+
+#Create a resource object that represents a PNG image
+my $ image_file = "$ FindBin :: Bin / rokkaku.png";
+my $ image_object = $ pdf-> image_png ($ image_file);
+
+#Content object needed to insert an image
+my $ gfx = $ page-> gfx;
+
+#Insert image at specified position
+my $ x = 50;
+my $ y = 500;
+$ gfx-> image ($ image_object, $ x, $ y);
+
+my $ pdf_file ='image_png.pdf';
+$ pdf-> saveas ($ pdf_file);
+</ pre>
+
+<a href="/examples/pdf/image_png.pdf"> Output result PNG image insertion </a>

@@ -1,69 +1,67 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161003147558.html">
-        <span itemprop="name">文字列</span></a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> string </ span> </a>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
+  </ li>
+</ ol>
 
-<h2>シングルクォート文字列</h2>
+<h2> Single quote string </ h2>
 
-<b>シングルクォート文字列</b>とは、シングルクォートで囲まれた文字列です。<a href="/blog/20201026075254.html">ダブルクォート文字列</a>とは違って、<a href="/blog/20180228151982.html">変数展開</a>は行われず、改行文字「\n」などの<a href="/blog/20201030075254.html">ダブルクォート用のエスケープシーケンス</a>も使えません。
-
-<pre>
-# シングルクォート文字列
-my $name = 'Perl Tutorial Book';
-</pre>
-
-変数展開は行われず、改行文字もそのまま表示されます。
+A <b> single-quote string </ b> is a string enclosed in single-quotes. Unlike <a href="/blog/20201026075254.html"> double quoted string </a>, <a href="/blog/20180228151982.html"> variable expansion </a> is not done and newline characters You cannot use <a href="/blog/20201030075254.html"> escape sequences for double quotes </a> such as "\ n".
 
 <pre>
-my $message = 'I like $book\n';
+#Single quote string
+my $ name ='Perl Tutorial Book';
+</ pre>
 
-# 「I like $book\n」と表示される。
-print $message;
-</pre>
+Variable expansion is not performed and the newline character is displayed as it is.
 
-シングルクォート文字列は、変数展開や改行文字を使わない文字列定数であることを明示的に表現したいときに使うことができます。
+<pre>
+my $ message ='I like $ book \ n';
 
-<h3>シングルクォート文字列のエスケープシーケンス</h3>
+# "I like $ book \ n" is displayed.
+print $ message;
+</ pre>
 
-シングルクォート文字列のエスケープシーケンスの一覧です。
+Single quoted strings can be used when you want to explicitly express that they are string constants that do not use variable expansion or newline characters.
+
+<h3> Escape sequence of single quoted strings </ h3>
+
+A list of single-quote string escape sequences.
 
 <table>
-  <tr><th>エスケープシーケンス</th><th>意味</th></tr>
-  <tr><td>\'</td><td>'</td></tr>
-  <tr><td>\\</td><td>\</td></tr>
-</table>
+  <tr> <th> Escape sequence </ th> <th> Meaning </ th> </ tr>
+  <tr> <td> \'</ td> <td>'</ td> </ tr>
+  <tr> <td> \\ </ td> <td> \ </ td> </ tr>
+</ table>
 
-シングルクォートの中で、シングルクォートを表現する「\'」と、バックスラッシュ自体を表現する「\\」を覚えておきましょう。
+In single quotes, remember the "\'" that represents a single quote and the "\\" that represents the backslash itself.
 
 <pre>
-my $message = 'I \'m honest Perl User\\';
-</pre>
+my $ message ='I \'m honest Perl User \\';
+</ pre>
 
-シングルクォート文字列のエスケープシーケンスの解説ページは以下です。
+The explanation page of the escape sequence of the single quote string is as follows.
 
 <ul>
-  <li><a href="/blog/20201029075254.html">シングルクォート文字列のエスケープシーケンス</a></li>
-</ul>
+  <li> <a href="/blog/20201029075254.html"> Escape sequence of single quoted strings </a> </ li>
+</ ul>
 
-もしシングルクォートが含まれた文字列をコピー＆ペーストで利用したい場合は、<a href="/blog/20100304126967.html">シングルクォート演算子</a>を使うこともできます。
-
-
+If you want to copy and paste a string containing single quotes, you can also use the <a href="/blog/20100304126967.html"> single quote operator </a>.

@@ -1,89 +1,87 @@
+<h2> Perl 5.28 released-Unicode 10.0 support, faster string concatenation, ref function, keys function, faster for loop </ h2>
 
-<h2>Perl 5.28リリース - Unicode 10.0サポート、文字列連結の高速化、ref関数、keys関数、forループの高速化</h2>
+<a href="http://f.hatena.ne.jp/perlcodesample/20180626074702"> <img src = "https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample" /20180626/20180626074702.png "alt =" 20180626074702 "> </a>
 
-<a href="http://f.hatena.ne.jp/perlcodesample/20180626074702"><img src="https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20180626/20180626074702.png" alt="20180626074702"></a>
+Perl 5.28 was released on June 22, 2018. Introducing some nice features in Perl 5.28.
 
-Perl 5.28が2018年6月22日にリリースされました。Perl 5.28でうれしい機能をピックアップして紹介。
+<h4> Unicode 10.0 support </ h4>
 
-<h4>Unicode 10.0サポート</h4>
+<a href="https://internet.watch.impress.co.jp/docs/news/1066482.html"> Unicode 10.0 </a> is now supported. It seems that 56 kinds of new emoji can be used.
 
-<a href="https://internet.watch.impress.co.jp/docs/news/1066482.html">Unicode 10.0</a>がサポートされました。56種類の新しい絵文字が使えるようです。
+<h4> Speeding up string concatenation </ h4>
 
-<h4>文字列連結の高速化</h4>
+Multiple string concatenation has been sped up. This is because it is now processed internally by a single opcode called multiconcat.
 
-複数の文字列連結が、高速化されました。内部的にmulticoncatという一つのオペコードで処理するようになったからです。
-
-以下のようなコードが高速化されます。
-
-<pre>
-    $s .= "a=$a b=$b\n"
-</pre>
-
-
-たとえば、x86_64のシステムでは、以下の文字列連結のコードが4倍高速化されます。
+Code like the following will be accelerated.
 
 <pre>
-    my $s;
-    my $a = "ab\x{100}cde";
-    my $b = "fghij";
-    my $c = "\x{101}klmn";
+    $ s. = "a = $ a b = $ b \ n"
+</ pre>
 
-    for my $i (1..10_000_000) {
-        $s = "\x{100}wxyz";
-        $s .= "foo=$a bar=$b baz=$c";
+
+For example, on an x86_64 system, the following string concatenation code is four times faster.
+
+<pre>
+    my $ s;
+    my $ a = "ab \ x {100} cde";
+    my $ b = "fghij";
+    my $ c = "\ x {101} klmn";
+
+    for my $ i (1..10_000_000) {
+        $ s = "\ x {100} wxyz";
+        $ s. = "foo = $ a bar = $ b baz = $ c";
     }
-</pre>
+</ pre>
 
-さらに加えて定数文字列を含むsprintfもmulticoncatを使って、最適化されています。
+In addition, sprintf, which contains constant strings, has also been optimized using multiconcat.
 
-<h4>ref関数の高速化</h4>
+<h4> Speeding up the ref function </ h4>
 
-真偽値コンテキストではref関数がかなり速くなりました。真偽値コンテキストでは、一時的な文字列を作成しなくなったからです。
+The ref function is now much faster in boolean contexts. This is because the boolean context no longer creates temporary strings.
 
-<h4>keys関数の高速化</h4>
+<h4> Speeding up the keys function </ h4>
 
-keys関数は、スカラコンテキストでより最適化されました。
+The keys function has been more optimized in the scalar context.
 
-<h4>forループの高速化</h4>
+<h4> Speed ​​up for loop </ h4>
 
-forループとそれに類似した構文は、ほとんどのケースで、より効率的になりました。
+For loops and similar syntax have become more efficient in most cases.
  
-<h4>perl -iによる置換が安全に</h4>
+<h4> Perl -i replacement is safe </ h4>
 
-perl -iによるファイル内容の置換は、編集中はバックアップがとられるようになり、安全になりました。
+Replacing file contents with perl -i is now safer as it is backed up during editing.
 
-<h4>Cent OS 5でインストールできないバグを修正</h4>
+<h4> Fixed a bug that cannot be installed on Cent OS 5 </ h4>
 
-Perl 5.26はCent OS 5にインストールできませんでしたが、Perl 5.28では、インストールできるようになっています。僕の環境でも試して、インストールできることを確認!
+Perl 5.26 couldn't be installed on Cent OS 5, but Perl 5.28 allows it to be installed. Try it in my environment and see if it can be installed!
 
-<h4>実験的なサブルーチンシグネチャにおける属性の位置が変更</h4>
+<h4> Attribute position changed in experimental subroutine signature </ h4>
 
-実験的なサブルーチンシグネチャにおける属性の位置が変更されました。
+The position of the attribute in the experimental subroutine signature has changed.
 
 <pre>
-変更前 sub foo ($foo, $bar) : attr;
-変更後 sub foo : attr ($foo, $bar)
-</pre>
+Before change sub foo ($ foo, $ bar): attr;
+After change sub foo: attr ($ foo, $ bar)
+</ pre>
 
-<h3>互換性のない変更</h3>
+<h3> Incompatible changes </ h3>
 
-<h4>PerlはC89が必須に</h4>
+<h4> Perl requires C89 </ h4>
 
-PerlのコンパイルにはC89がコンパイルできるコンパイラが必須になりました。C99やC11ではないので、見間違わないでね。
+A compiler that can compile C89 is now required to compile Perl. It's not C99 or C11, so don't get me wrong.
 
-<h4>${^ENCODING}への値の設定は不正になりました</h4>
+<h4> Setting the value to $ {^ ENCODING} is invalid </ h4>
 
-もし過去に、${^ENCODING}を設定している方がいればご注意。
+Please note if anyone has set $ {^ ENCODING} in the past.
 
-<h4>sortプラグマによるsortアルゴリズムが指定できなくなりました</h4>
+<h4> The sort algorithm by the sort pragma can no longer be specified </ h4>
 
-sortプラグマによるsortアルゴリズムが指定できなくなりました。常に、Perlデフォルトのsortアルゴリズムが使用されます。
+You can no longer specify the sort algorithm with the sort pragma. The Perl default sort algorithm is always used.
 
-<h3>Perl 5.28リリース雑感</h3>
+<h3> Perl 5.28 release miscellaneous thoughts </ h3>
 
-今回のリリースは、小さなパフォーマンス改善が中心となるリリースに感じます。文字列のパフォーマンス改善は、すべてのPerlユーザーのメリットになるので、とてもうれしい。
+I feel that this release focuses on small performance improvements. I'm very happy that the improved string performance benefits all Perl users.
 
-最近のPerlでは、真偽値コンテキストのリファクタリングがされていて、文字列を返さなくって良い場所では、1が返されるようになって、これが高速化につながっている。
+In recent Perl, the boolean context has been refactored so that 1 is returned where it doesn't have to return a string, which leads to faster speeds.
 
-まだまだ息の長いCent OS 5にも最新のPerlがインストールできるようになって「一度書けば、Perlどこでも動くよ」って感じですね。
-
+The latest Perl can be installed on Cent OS 5, which is still long-lived, and it feels like "Once you write it, Perl will work anywhere."

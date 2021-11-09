@@ -1,59 +1,59 @@
-<h2>Math::Bezier - Perlでベジェ曲線の座標を求める</h2>
+<h2> Math :: Bezier --Find the coordinates of a Bezier curve with Perl </ h2>
 
-Perlでベジェ曲線の座標を求めるにはMath::Bezierモジュールを使用します。制御点を指定して、それに沿った曲線の座標を分割して取得することができます。
+Use the Math :: Bezier module to find the coordinates of a Bezier curve in Perl. You can specify a control point and get the coordinates of the curve along it by dividing it.
 
 <pre>
-use Math::Bezier;
+use Math :: Bezier;
  
-# (x, y)制御点のリストを渡して曲線を作成
-my $bezier = Math::Bezier->new($x1, $y1, $x2, $y2, ..., $xn, $yn);
+# (x, y) Create a curve by passing a list of control points
+my $ bezier = Math :: Bezier-> new ($ x1, $ y1, $ x2, $ y2, ..., $ xn, $ yn);
  
-# 代わりにリファレンスを渡す
-my $bezier = Math::Bezier->new([ $x1, $y1, $x2, $y2, ..., $xn, $yn]);
+# Pass the reference instead
+my $ bezier = Math :: Bezier-> new ([$ x1, $ y1, $ x2, $ y2, ..., $ xn, $ yn]);
  
-# 曲線の中の点(x, y)を決定する。0～1の範囲を指定。
-my ($x, $y) = $bezier->point(0.5);
+# Determine the point (x, y) in the curve. Specify a range from 0 to 1.
+my ($ x, $ y) = $ bezier-> point (0.5);
  
-# スカラコンテキストにおいて、リストを返す
-my $xy = $bezier->point(0.5);
+#Returns a list in scalar context
+my $ xy = $ bezier-> point (0.5);
  
-# 曲線にそって20個に分割された (x, y)の点を返す。
-my @curve = $bezier->curve(20);
+# Returns the (x, y) points divided into 20 along the curve.
+my @curve = $ bezier-> curve (20);
  
-# リファレンスで受け取る
-my $curve = $bezier->curve(20);
-</pre>
+#Receive in reference
+my $ curve = $ bezier-> curve (20);
+</ pre>
 
-<h3>3次元ベジェ曲線を書いて100個の点に分割するサンプル</h3>
+<h3> A sample that draws a 3D Bezier curve and divides it into 100 points </ h3>
 
-ベジェ曲線は3次元で利用されることが多いので、3次元ベジェ曲線を書いて100個の点に分割するサンプルを示します。
+Bezier curves are often used in 3D, so here is a sample of drawing a 3D Bezier curve and dividing it into 100 points.
 
-制御点は(0, 0), (10, 10), (20, 40)です。3次元ベジェ曲線の場合は、3つの点を制御点として指定します。
+The control points are (0, 0), (10, 10), (20, 40). For a 3D Bezier curve, specify three points as control points.
 
-一つ目の制御点と二つ目の制御点を結んだ直線は、一つ目の制御点における曲線の接線になります。
+The straight line connecting the first control point and the second control point is the tangent to the curve at the first control point.
 
-二つ目の制御点と三つ目の制御点を結んだ直線は、三つ目の制御点における曲線の接線になります。
+The straight line connecting the second control point and the third control point is the tangent to the curve at the third control point.
 
 <pre>
 use strict;
 use warnings;
 
-use Math::Bezier;
+use Math :: Bezier;
 
-# 制御点の(x, y)のリスト
-my $bezier = Math::Bezier->new(0, 0, 10, 10, 20, 40);
+# List of control points (x, y)
+my $ bezier = Math :: Bezier-> new (0, 0, 10, 10, 20, 40);
 
-my $curve_points = $bezier->curve(100);
+my $ curve_points = $ bezier-> curve (100);
 
-for (my $i = 0; $i < @$curve_points; $i += 2) {
-  my $x = $curve_points->[$i];
-  my $y = $curve_points->[$i + 1];
+for (my $ i = 0; $ i <@ $ curve_points; $ i + = 2) {
+  my $ x = $ curve_points-> [$ i];
+  my $ y = $ curve_points-> [$ i + 1];
   
-  print "($x, $y)\n";
+  print "($ x, $ y) \ n";
 }
-</pre>
+</ pre>
 
-出力結果は、3次元ベジェ曲線に沿った100個の点が表示されます。
+The output will show 100 points along the 3D Bezier curve.
 
 <pre>
 (0, 0)
@@ -105,7 +105,7 @@ for (my $i = 0; $i < @$curve_points; $i += 2) {
 (9.29292929292929, 13.6108560350985)
 (9.49494949494949, 14.0026527905316)
 (9.6969696969697, 14.3985307621671)
-(9.8989898989899, 14.7984899500051)
+(9.8989898989899, ​​14.7984899500051)
 (10.1010101010101, 15.2025303540455)
 (10.3030303030303, 15.6106519742883)
 (10.5050505050505, 16.0228548107336)
@@ -150,14 +150,14 @@ for (my $i = 0; $i < @$curve_points; $i += 2) {
 (18.3838383838384, 35.2821140699929)
 (18.5858585858586, 35.8575655545352)
 (18.7878787878788, 36.4370982552801)
-(18.989898989899, 37.0207121722273)
+(18.989898989899, ​​37.0207121722273)
 (19.1919191919192, 37.608407305377)
 (19.3939393939394, 38.2001836547291)
 (19.5959595959596, 38.7960412202836)
 (19.7979797979798, 39.3959800020406)
 (20, 40)
-</pre>
+</ pre>
 
-<h3>Math::Bezierのドキュメント</h3>
+<h3> Math :: Bezier documentation </ h3>
 
-<a href="http://www.mahoroba.ne.jp/~felix/Toolbox/Lang/Perl/Package/Math-Bezier.html">Math::Bezierのドキュメント</a>
+<a href="http://www.mahoroba.ne.jp/~felix/Toolbox/Lang/Perl/Package/Math-Bezier.html"> Math :: Bezier documentation </a>

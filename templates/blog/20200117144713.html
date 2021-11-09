@@ -1,154 +1,154 @@
-<h2>Strawberry PerlとコマンドプロンプトでLinux風環境を作る方法</h2>
+<h2> How to create a Linux-like environment with Strawberry Perl and command prompt </ h2>
 
-Strawberry Perlとコマンドプロンプトで<a href="https://linux.perlclub.net/">Linux</a>風の環境を作る方法を紹介します。
+I will show you how to create a <a href="https://linux.perlclub.net/"> Linux </a> -like environment with Strawberry Perl and a command prompt.
 
-Perlエンジニアは、開発やサーバー運用をするときは、Linux/Unix環境で作業をしていることが多いです。
+Perl engineers often work in a Linux / Unix environment when developing or operating a server.
 
-<a href="https://linux.perlclub.net/">Linux</a>用に作ったプログラムをWindowsで試験をしたいといった場合に、実行するコマンドがLinuxとなるべく近いとやりやすいですね。
+If you want to test a program created for <a href="https://linux.perlclub.net/"> Linux </a> on Windows, it will be easier if the command to be executed is as close as possible to Linux. ..
 
-コマンドプロンプトでもLinuxと同じ感覚で作業ができる方法を紹介します。
+I will show you how to work at the command prompt in the same way as Linux.
 
-<h3>Linux環境とコマンドプロンプトで同じ方法で作業ができること</h3>
+<h3> You can work in the same way in Linux environment and command prompt </ h3>
 
-先にLinux環境とコマンドプロンプトで、同じ方法で作業ができることはなんでしょうか? 2020年1月に、以下は、Windows 10の環境で確認した項目です。
+Is it possible to work in the same way in the Linux environment and the command prompt first? In January 2020, the following items were confirmed in the Windows 10 environment.
 
-<h4>cdコマンド</h4>
+<h4> cd command </ h4>
 
-Linuxの<a href="https://linux.perlclub.net/blog/20191012191854.html">cdコマンド</a>は、コマンドプロンプトにも、cdコマンドとして存在します。
+The Linux <a href="https://linux.perlclub.net/blog/20191012191854.html"> cd command </a> also exists as a cd command at the command prompt.
 
-<h4>ファイルパスの区切りは「/」でOK</h4>
+<h4> File path delimiter is OK with "/" </ h4>
 
-Windowsのファイルパスの区切りは「\」ですが、実は「/」を使うこともできます。コマンドプロンプトのcdコマンドで、「/」を使った例です。
+The Windows file path delimiter is "\", but you can actually use "/". This is an example of using "/" in the cd command of the command prompt.
 
 <pre>
-cd labo/perlzemi
-</pre>
+cd labo / perlzemi
+</ pre>
 
-<h4>gccはStrawberry Perlがインストールされていれば使える</h4>
+<h4> gcc can be used if Strawberry Perl is installed </ h4>
 
-PerlのXSモジュールをインストールするのに必要な、C言語のコンパイラであるgccは、<a href="/blog/20180808153368.html">Strawberry Perl</a>がインストールされていれば最初から使うことができます。
+Use gcc, the C language compiler required to install Perl's XS module, from the beginning if <a href="/blog/20180808153368.html"> Strawberry Perl </a> is installed. I can.
 
 <pre>
 gcc --help
-</pre>
+</ pre>
 
-<h4>コマンドプロンプトを閉じる</h4>
+<h4> Close command prompt </ h4>
 
-コマンドプロンプトを閉じる場合は、Linuxのexitコマンドと同じコマンドがコマンドプロンプトにも存在します。
+If you close the command prompt, the same command as the Linux exit command exists at the command prompt.
 
 <pre>
 exit
-</pre>
+</ pre>
 
-<h4>右クリックで、コピーと張り付け</h4>
+<h4> Right-click to copy and paste </ h4>
 
-コマンドプロンプトの設定で、簡易編集モードにチェックをいれると、右クリックとで、コピーと貼り付けができます。
+If you check the simple edit mode in the command prompt settings, you can copy and paste by right-clicking.
 
-<a href="https://www.relief.jp/docs/003578.html">コマンドプロンプトのコピー＆ペーストを簡単に−右クリック</a>
+<a href="https://www.relief.jp/docs/003578.html"> Easily copy and paste command prompt-right click </a>
 
-<h4>&&によるコマンドの連続実行</h4>
+<h4> Continuous command execution by && </ h4>
 
-コマンドプロンプトでも&&は、Linuxと同じように使えます。
+You can use && at the command prompt as you would Linux.
 
 <pre>
 command1 && command2
-</pre>
+</ pre>
 
-<h4>リダイレクトとパイプ</h4>
+<h4> Redirects and pipes </ h4>
 
-Linuxのリダイレクトとパイプは、コマンドプロンプトでも利用できます。
+Linux redirection and pipes are also available at the command prompt.
 
 <pre>
-command > file.txt
-command < file.txt
+command> file.txt
+command <file.txt
 command1 | command2
-</pre>
+</ pre>
 
 
-<h3>コマンドプロンプトには、存在しないLinuxコマンド</h3>
+<h3> Linux commands that do not exist at the command prompt </ h3>
 
-次は、コマンドプロンプトには、存在しないLinuxコマンドです。存在しないのであれば、作ってしまいましょう。
+The following are Linux commands that do not exist at the command prompt. If it doesn't exist, let's create it.
 
-Strawberry Perlがインストールされていれば、次のパスが、コマンドの検索パスに含まれているはずです。
+If you have Strawberry Perl installed, the following path should be included in the command's search path:
 
 <pre>
-C:\Strawberry\perl\site\bin
-</pre>
+C: \ Strawberry \ perl \ site \ bin
+</ pre>
 
-これは、ユーザーがインストールした実行ファイルやバッチファイルが格納される場所です。
+This is where the user-installed executables and batch files are stored.
 
-このパスの中に、存在しないコマンドを書いてみましょう。
+Let's write a command that does not exist in this path.
 
-<h4>lsコマンドの作成</h4>
+<h4> Create ls command </ h4>
 
-Linuxの<a href="https://linux.perlclub.net/blog/20191126082723.html">lsコマンド</a>に該当するコマンドを作成しましょう。
+Let's create a command that corresponds to the Linux <a href="https://linux.perlclub.net/blog/20191126082723.html"> ls command </a>.
 
-拡張子を「.bat」にするとWindowsは、それはコマンドとして認識します。
+If you set the extension to ".bat", Windows will recognize it as a command.
 
-Strawberry Perlのコマンドの検索パスの中に「ls.bat」というファイルを作成してください。
+Create a file called "ls.bat" in the search path of Strawberry Perl commands.
 
-以下の内容を書き込みます。これでlsコマンドでdirコマンドを呼び出します。
+Write the following content. Now call the dir command with the ls command.
 
 <pre>
 dir
-</pre>
+</ pre>
 
-コマンドプロンプトで以下のコマンドを実行できるようになります。
+You will be able to execute the following commands at the command prompt.
 
 <pre>
 ls
-</pre>
+</ pre>
 
-<h4>makeコマンドの作成</h4>
+<h4> Create make command </ h4>
 
-gmakeというコマンドは、<a href="/blog/20180808153368.html">Strawberry Perl</a>がインストールされていれば最初から使うことができます。
+The command gmake can be used from the beginning if <a href="/blog/20180808153368.html"> Strawberry Perl </a> is installed.
 
-ですので、これをラッピングしてmakeコマンドを作成してみましょう。
+So let's wrap this and create a make command.
 
-Strawberry Perlのコマンドの検索パスの中に「make.bat」というファイルを作成してください。
+Create a file called "make.bat" in the search path of Strawberry Perl commands.
 
-以下の内容を書き込みます。これでmakeコマンドでgmakeコマンドを呼び出します。
+Write the following content. Now the make command calls the gmake command.
 
 <pre>
-gmake %1
-</pre>
+gmake% 1
+</ pre>
 
-%1は、コマンドライン引数です。これを指定しておくと「make test」のように、makeコマンドに引数を与えることができます。
+% 1 is a command line argument. If this is specified, arguments can be given to the make command, such as "make test".
 
-コマンドプロンプトで以下のコマンドを実行できるようになります。
+You will be able to execute the following commands at the command prompt.
 
 <pre>
 make
-</pre>
+</ pre>
 
-<h4>その他のLinuxコマンド</h4>
+<h4> Other Linux commands </ h4>
 
-必要になれば<a href="https://linux.perlclub.net/blog/20200113083613.html">catコマンド</a>や<a href="https://linux.perlclub.net/blog/20191210081417.html">rmコマンド</a>なども、同じ方法で、簡単につくれそうですね。
+<a href="https://linux.perlclub.net/blog/20200113083613.html"> cat command </a> or <a href="https://linux.perlclub.net/blog/" if needed 20191210081417.html "> rm command </a> etc. seems to be easy to make in the same way.
 
-<h3>Linux風環境を試す</h3>
+<h3> Try a Linux-like environment </ h3>
 
-さぁ、Linuxのあれをやってみましょう。例のあれです。
+Now let's do that for Linux. That is an example.
 
 <pre>
-cd proj/MyModule
+cd proj / MyModule
 perl Makefile.PL
 make && make test
-</pre>
+</ pre>
 
-いいですね!
+Sounds good!
 
-<h3>よくある質問</h3>
+<h3> Frequently Asked Questions </ h3>
 
-よくある質問です。
+Frequently asked questions.
 
-<h4>DOSKEYで、エイリアスを使えばよいのでは?</h4>
+<h4> Should I use an alias with DOSKEY? </ H4>
 
-はい、これは試しました。ですが、&&を実行するときは、コマンドプロンプトは新しいプロセスを実行します。実はこのとき環境を受け継いでくれず、エイリアスが効かなくなります。
+Yes, I tried this. But when you run &&, the command prompt runs a new process. Actually, at this time, the environment is not inherited and the alias does not work.
 
-<h4>パワーシェルではだめなのですか?</h4>
+<h4> Is powershell useless? </ H4>
 
-パワーシェルは、コマンドプロンプトの改良というよりは、Windowsの運用をやりやすい用に設計されているように感じます。
+I feel that Powershell is designed to make Windows easier to operate, rather than improving the command prompt.
 
-リダイレクトやパイプは、.netに接続されて、加工された情報が出力されます。
+Redirects and pipes are connected to .net and the processed information is output.
 
-リダイレクトやパイプを使って、プログラムの動作を確認したい場合は、そのままの情報が出力される、コマンドプロンプトが優れていると感じます。
+If you want to check the operation of the program by using redirect or pipe, I feel that the command prompt, which outputs the information as it is, is excellent.

@@ -1,653 +1,652 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20191228171433.html">
-      <span itemprop="name">帳票作成</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Form creation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>基本図形の描画と表の作成 - PDF::API2で帳票作成</h2>
+  </ li>
+</ ol>
+<h2> Drawing basic figures and creating tables --PDF :: Create forms with API2 </ h2>
 
-PDF::API2で、表を作成する方法を解説します。
+I will explain how to create a table with PDF :: API2.
 
-PDF::API2には、直線や塗りつぶし可能な円、三角形、四角形、それ以上の多角形を作成できる機能があります。
+PDF :: API2 has the ability to create straight lines, fillable circles, triangles, rectangles and even more polygons.
 
-直線を書くことができれば、それを組み合わせて表を作成することができます。表に背景色を設定したい場合は、塗りつぶし可能な四角形を書くことで実現できます。
+If you can draw straight lines, you can combine them to create a table. If you want to set the background color for the table, you can do it by drawing a fillable rectangle.
 
-HTMLのテーブルは表を作成するのに使えます。ここでは、以下の構造をPDFの表として表現できるようにしてみましょう。
+HTML tables can be used to create tables. Here, let's make it possible to express the following structure as a PDF table.
 
 <pre>
 <table>
-  <tr><td>見出し1</td><td>見出し2</td><td>見出し3</td></tr>
-  <tr><td>項目</td><td>項目</td><td>項目</td></tr>
-  <tr><td>項目</td><td>項目</td><td>項目</td></tr>
-</table>
-</pre>
+  <tr> <td> Heading 1 </ td> <td> Heading 2 </ td> <td> Heading 3 </ td> </ tr>
+  <tr> <td> Item </ td> <td> Item </ td> <td> Item </ td> </ tr>
+  <tr> <td> Item </ td> <td> Item </ td> <td> Item </ td> </ tr>
+</ table>
+</ pre>
 
 <table>
-  <tr><td>見出し1</td><td>見出し2</td><td>見出し3</td></tr>
-  <tr><td>項目</td><td>項目</td><td>項目</td></tr>
-  <tr><td>項目</td><td>項目</td><td>項目</td></tr>
-</table>
+  <tr> <td> Heading 1 </ td> <td> Heading 2 </ td> <td> Heading 3 </ td> </ tr>
+  <tr> <td> Item </ td> <td> Item </ td> <td> Item </ td> </ tr>
+  <tr> <td> Item </ td> <td> Item </ td> <td> Item </ td> </ tr>
+</ table>
 
-<h3>基本的な図形を描画する</h3>
+<h3> Draw basic shapes </ h3>
 
-まず最初に、表を作成するための基礎として、PDF::API2で基本的な図形を描画してみましょう。
+First of all, let's draw a basic shape with PDF :: API2 as a basis for creating a table.
 
-<h4>グラフィック用のコンテンツオブジェクトを生成</h4>
+<h4> Generate content object for graphics </ h4>
 
-まず最初に、グラフィック用のコンテンツオブジェクトを生成します。ページオブジェクトからgfxメソッドを呼び出すことで、グラフィック用のコンテンツオブジェクトを生成できます。これはPDF::API2::Contentオブジェクトです。
-
-<pre>
-# PDFオブジェクトの生成
-my $pdf = PDF::API2->new;
-
-# ページの作成
-my $page = $pdf->page;
-
-# グラフィック用のコンテンツオブジェクトの生成
-my $gfx = $page->gfx;
-</pre>
-
-<h4>線を書く</h4>
-
-最も基本的な描画として、PDF::API2で線を書いてみましょう。
-
-moveメソッドで、新しいパスが作成され、始点に移動します。lineメソッドで、パスを終点まで移動します。
-
-まだ、実際に線は書かれません。実際に線を書くには、strokeメソッドを呼び出します。
+First of all, create a content object for the graphic. You can create a content object for graphics by calling the gfx method from the page object. This is a PDF :: API2 :: Content object.
 
 <pre>
-# 線の始点の設定
-my $start_x = 100;
-my $start_y = 100;
-$gfx->move($start_x, $start_y);
+#Generate PDF object
+my $ pdf = PDF :: API2-> new;
 
-# 線の終点を設定
-my $end_x = 300;
-my $end_y = 300;
-$gfx->line($end_x, $end_y);
+#Create page
+my $ page = $ pdf-> page;
 
-# 線を描画
-$gfx->stroke;
-</pre>
+#Generate content objects for graphics
+my $ gfx = $ page-> gfx;
+</ pre>
 
-PDF::API2の図形の描画では、パスをつなげて描画するという感覚を覚えてください。
+<h4> Draw a line </ h4>
 
-<h4>線の太さを設定</h4>
+As the most basic drawing, let's draw a line with PDF :: API2.
 
-線の太さは、linewidthメソッドで、設定できます。strokeする前に呼び出してください。
+The move method creates a new path and moves you to the starting point. Use the line method to move the path to the end point.
+
+No lines are actually drawn yet. To actually draw the line, call the stroke method.
 
 <pre>
-# 線の太さの設定
-$gfx->linewidth(3);
-</pre>
+# Setting the start point of the line
+my $ start_x = 100;
+my $ start_y = 100;
+$ gfx-> move ($ start_x, $ start_y);
 
-線の幅は、円や多角形を書くときの設定の場合も同じです。
+# Set the end point of the line
+my $ end_x = 300;
+my $ end_y = 300;
+$ gfx-> line ($ end_x, $ end_y);
 
-<h4>線の色を設定</h4>
+#Draw a line
+$ gfx-> stroke;
+</ pre>
 
-線の色は、strokecolorメソッドで、設定できます。strokeする前に呼び出してください。色は、色名、RGB、CMYKで指定できます。各色に1バイト、2バイト、3バイト、または4バイトの値を持つことができます。たとえば、シアンは%F000または、%FFFF000000000000として設定できます。
+When drawing figures in PDF :: API2, remember the feeling of connecting paths and drawing.
 
-<pre>
-# 線の色を設定(色名)
-$gfx->strokecolor('red');
+<h4> Set line thickness </ h4>
 
-# 線の色を設定(RGB)
-$gfx->strokecolor('#0123ab');
-
-# 線の色を設定(CMYK)
-$gfx->strokecolor('%FF000000');
-</pre>
-
-線の色は、円や多角形を書くときの設定の場合も同じです。
-
-色の書式は、塗りつぶしの色の設定の場合も同じです。
-
-<h4>線で囲んで三角形を書く</h4>
-
-線を書く応用として、線で囲んで三角形を書いてみましょう。lineメソッドで、点をつなげて、最後に始点に戻ります。
+The line thickness can be set with the linewidth method. Call it before you stroke.
 
 <pre>
-use strict;
-use warnings;
-use utf8;
+# Line thickness setting
+$ gfx-> linewidth (3);
+</ pre>
 
-use PDF::API2;
+The line width is the same for the settings when drawing circles and polygons.
 
-# PDFオブジェクトの生成
-my $pdf = PDF::API2->new;
+<h4> Set line color </ h4>
 
-my $page = $pdf->page;
+The line color can be set with the strokecolor method. Call it before you stroke. The color can be specified by color name, RGB, or CMYK. Each color can have a 1-byte, 2-byte, 3-byte, or 4-byte value. For example, cyan can be set as% F000 or% FFFF000000000000.
 
-my $gfx = $page->gfx;
+<pre>
+# Set the line color (color name)
+$ gfx-> strokecolor ('red');
 
-# 点P1
-my $x1 = 100;
-my $y1 = 100;
-$gfx->move($x1, $y1);
+# Set line color (RGB)
+$ gfx-> strokecolor ('# 0123ab');
 
-# 点P2
-my $x2 = 300;
-my $y2 = 300;
-$gfx->line($x2, $y2);
+# Set line color (CMYK)
+$ gfx-> strokecolor ('% FF000000');
+</ pre>
 
-# 点P3
-my $x3 = 500;
-my $y3 = 100;
-$gfx->line($x3, $y3);
+The line color is the same for the settings when drawing circles and polygons.
 
-# 点P1に戻る
-$gfx->line($x1, $y1);
+The color format is the same for the fill color settings.
 
-# 線を描画
-$gfx->stroke;
+<h4> Draw a triangle surrounded by a line </ h4>
 
-my $pdf_file = 'render_tri.pdf';
-$pdf->saveas($pdf_file);
-</pre>
-
-<a href="/examples/pdf/render_tri.pdf">出力結果 三角形</a>
-
-polyメソッドを使うと、moveする点を設定して、複数の点を渡して、連続した線を描画できます。
+As an application of drawing a line, let's draw a triangle surrounded by a line. The line method connects the points and finally returns to the starting point.
 
 <pre>
 use strict;
 use warnings;
 use utf8;
 
-use PDF::API2;
+use PDF :: API2;
 
-# PDFオブジェクトの生成
-my $pdf = PDF::API2->new;
+#Generate PDF object
+my $ pdf = PDF :: API2-> new;
 
-my $page = $pdf->page;
+my $ page = $ pdf-> page;
 
-my $gfx = $page->gfx;
+my $ gfx = $ page-> gfx;
 
-# 点P1
-my ($x1, $y1) = (100, 100);
+#Point P1
+my $ x1 = 100;
+my $ y1 = 100;
+$ gfx-> move ($ x1, $ y1);
 
-# 点P2
-my ($x2, $y2) = (300, 300);
+#Point P2
+my $ x2 = 300;
+my $ y2 = 300;
+$ gfx-> line ($ x2, $ y2);
 
-# 点P3
-my ($x3, $y3) = (500, 100);
+#Point P3
+my $ x3 = 500;
+my $ y3 = 100;
+$ gfx-> line ($ x3, $ y3);
 
-# polyメソッドで、三角形を一度に描画
-$gfx->poly($x1, $y1, $x2, $y2, $x3, $y3, $x1, $y1);
+# Return to point P1
+$ gfx-> line ($ x1, $ y1);
 
-# 線を描画
-$gfx->stroke;
+#Draw a line
+$ gfx-> stroke;
 
-my $pdf_file = 'render_tri.pdf';
-$pdf->saveas($pdf_file);
-</pre>
+my $ pdf_file ='render_tri.pdf';
+$ pdf-> saveas ($ pdf_file);
+</ pre>
 
-<h4>塗りつぶす</h4>
+<a href="/examples/pdf/render_tri.pdf"> Output triangle </a>
 
-パスで囲むと、塗りつぶすことができます。塗りつぶすにはfillメソッドを使用します。塗りつぶしのデフォルト色は、黒です。fillは、strokeの前に呼び出す必要があることに注意してください。
-
-<pre>
-# 塗りつぶす(strokeの前で)
-$gfx->fill;
-
-# 線を書く
-$gfx->stroke;
-</pre>
-
-塗りつぶしと線を書くのを同時に行うfillstrokeメソッドもあります。
-
-<pre>
-# 塗りつぶして、線を書く
-$gfx->fillstroke;
-</pre>
-
-<h4>塗りつぶしの色を設定</h4>
-
-塗りつぶしの色は、fillcolorメソッドで、設定できます。fillする前に呼び出してください。色は、色名、RGB、CMYKで指定できます。各色に1バイト、2バイト、3バイト、または4バイトの値を持つことができます。たとえば、シアンは%F000または、%FFFF000000000000として設定できます。
-
-<pre>
-# 塗りつぶしの色を設定(色名)
-$gfx->fillcolor('red');
-
-# 塗りつぶしの色を設定(RGB)
-$gfx->fillcolor('#0123ab');
-
-# 塗りつぶしの色を設定(CMYK)
-$gfx->fillcolor('%FF000000');
-</pre>
-
-<h3>四角形を書く</h3>
-
-PDF::API2には、四角形を書くための便利なメソッドがあります。すべての図形は、上記の方法で、線をつなげて作成できますが、線をつなげる方法は、手順が多いので、四角形などの基本的な図形を描画するメソッドが、準備されています。
-
-四角形を作成して、薄いグレーで、背景を塗りつぶしてみましょう。四角形を書くには、rectメソッドとrectxyメソッドがありますが、始点と対角線の向かい側の点を指定するだけで、四角形が書けるrectxyを使ってみましょう。
+You can use the poly method to set points to move and pass multiple points to draw a continuous line.
 
 <pre>
 use strict;
 use warnings;
 use utf8;
 
-use PDF::API2;
+use PDF :: API2;
 
-# PDFオブジェクトの生成
-my $pdf = PDF::API2->new;
+#Generate PDF object
+my $ pdf = PDF :: API2-> new;
 
-# ページの作成
-my $page = $pdf->page;
+my $ page = $ pdf-> page;
 
-# グラフィック用のコンテンツオブジェクトの生成
-my $gfx = $page->gfx;
+my $ gfx = $ page-> gfx;
 
-# 点P1
-my $x1 = 100;
-my $y1 = 100;
+#Point P1
+my ($ x1, $ y1) = (100, 100);
 
-# 対角線の向かいの点P3
-my $x3 = 300;
-my $y3 = 300;
+#Point P2
+my ($ x2, $ y2) = (300, 300);
 
-# 四角形を描画
-$gfx->rectxy($x1, $y1, $x3, $y3);
+#Point P3
+my ($ x3, $ y3) = (500, 100);
 
-# 線の色を、黒より少し薄い色に
-$gfx->strokecolor('#333');
+Draw triangles at once with # poly method
+$ gfx-> poly ($ x1, $ y1, $ x2, $ y2, $ x3, $ y3, $ x1, $ y1);
 
-# 背景色をとても薄いグレーに
-$gfx->fillcolor('#eee');
+#Draw a line
+$ gfx-> stroke;
 
-# 四角形を塗りつぶして線を描画
-$gfx->fillstroke;
+my $ pdf_file ='render_tri.pdf';
+$ pdf-> saveas ($ pdf_file);
+</ pre>
 
-my $pdf_file = 'basic_rect.pdf';
-$pdf->saveas($pdf_file);
-</pre>
+<h4> Fill </ h4>
 
-そのまま実行できる四角形を描画できるサンプルです。
-
-<h3>その他の基本図形を書く</h3>
-
-その他の基本図形を書きたい場合に、どのメソッドを使うのかを紹介しておきます。
-
-<h4>円を書く</h4>
-
-円を書く場合は、circleメソッドを使用します。リストの箇条書きの●などに利用できます。
-
-<h4>楕円を書く</h4>
-
-楕円を書く場合は、ellipseメソッドを使用します。
-
-<h4>扇形を書く</h4>
-
-扇形を書きたい場合は、pieメソッドを使用します。
-
-<h4>円弧を書く</h4>
-
-円弧を書く場合は、arcあるいはbogenメソッドを使用します。bogenメソッドは、円弧の始点と終点を指定できるので、角丸などに利用できます。
-
-<h4>楕円の円弧を書く</h4>
-
-楕円の円弧を書く場合は、bogenメソッドを使用します。
-
-<h4>曲線(ペジェ曲線)を書く</h4>
-
-曲線(ペジェ曲線)を書くには、curveメソッドを使用します。ペジェ曲線のアルゴリズムによる曲線が書けます。
-
-<h4>曲線(スプライン曲線)を書く</h4>
-
-曲線(スプライン曲線)を書くには、splineメソッドを使用します。点を滑らかにつなげた曲線が書けます。
-
-<h4>多角形を描画する</h4>
-
-多角形を描画するには、polyメソッドを使用します。三角形や、五角形や六角形などを描画できます。
-
-<h4>図形を回転させる</h4>
-
-図形を回転させるには、rotateメソッドを使用します。
-
-<h4>図形を拡大・縮小する</h4>
-
-図形を拡大・縮小させるには、scaleメソッドを使用します。
-
-<h4>水平線を引くには</h4>
-
-水平線を簡易的に描画できるhlineメソッドがあります。
-
-<h4>縦線を引くには</h4>
-
-縦線を簡易的に描画できるvlineメソッドがあります。
-
-<h4>破線を引くには</h4>
-
-波線を引くには、linedashメソッドを使用します。
-
-<h3>表を作成する</h3>
-
-では、表を作成してみましょう。
-
-表の考え方は、まず一番外側に、枠があります。それぞれの項目に対しても枠があります。項目の枠と外枠を重ねることができれば、表の完成です。四角形を組み合わせて、外側を重ねることで、描画できそうです。
-
-でも、この方法問題点が発覚しました。同じに位置に二回描画すると、線が濃くなってしまうのです。
-
-ですので、縦と横に線を引くというシンプルな方法で、表を作成してみます。
+You can fill it by enclosing it in a path. Use the fill method to fill. The default fill color is black. Note that fill must be called before the stroke.
 
 <pre>
-use PDF::API2;
+#Fill (before stroke)
+$ gfx-> fill;
 
-# PDFオブジェクトの生成
-my $pdf = PDF::API2->new;
+# Draw a line
+$ gfx-> stroke;
+</ pre>
 
-# 用紙サイズのデフォルトのグローバル設定(用紙サイズを取得するため)
-$pdf->mediabox(undef);
+There is also a fillstroke method that fills and draws lines at the same time.
 
-# ページの高さと幅
-my @page_size_infos = $pdf->mediabox;
-my $page_width = $page_size_infos[2];
-my $page_height = $page_size_infos[3];
+<pre>
+#Fill and draw a line
+$ gfx-> fillstroke;
+</ pre>
 
-# 項目の高さ
-my $item_height = 25;
+<h4> Set the fill color </ h4>
 
-# 行の数
-my $rows_count = 20;
+The fill color can be set with the fillcolor method. Call it before filling. The color can be specified by color name, RGB, or CMYK. Each color can have a 1-byte, 2-byte, 3-byte, or 4-byte value. For example, cyan can be set as% F000 or% FFFF000000000000.
 
-# 各項目の幅
-my $name_width = 230;
-my $unit_price_width = 80;
-my $count_width = 80;
-my $price_width = 80;
-my $table_width = $name_width + $unit_price_width + $count_width + $price_width;
+<pre>
+# Set the fill color (color name)
+$ gfx-> fillcolor ('red');
 
-# テーブルの高さ
-my $table_height = $item_height * $rows_count;
+#Set fill color (RGB)
+$ gfx-> fillcolor ('# 0123ab');
 
-# テーブルの始点
+#Set fill color (CMYK)
+$ gfx-> fillcolor ('% FF000000');
+</ pre>
 
-# 表の外枠
-my $table_start_x = 50;
-my $table_start_y = $page_height - 50;
-my $table_other_side_x = $table_start_x + $table_width;
-my $table_other_side_y = $table_start_y - $table_height;
+<h3> Draw a rectangle </ h3>
 
-# ページの作成
-my $page = $pdf->page;
+PDF :: API2 has a convenient method for drawing rectangles. All shapes can be created by connecting lines using the above method, but since there are many steps to connect lines, a method for drawing basic shapes such as rectangles is prepared.
 
-# グラフィック用のコンテンツオブジェクトの生成
-my $gfx = $page->gfx;
+Let's create a rectangle and fill the background with a light gray color. There are rect method and rectxy method to draw a rectangle, but let's use rectxy which can draw a rectangle just by specifying the start point and the point opposite the diagonal line.
 
-# 上の線を引く
-$gfx->move($table_start_x, $table_start_y);
-$gfx->line($table_start_x + $table_width, $table_start_y);
+<pre>
+use strict;
+use warnings;
+use utf8;
 
-# 左の線を引く
-$gfx->move($table_start_x, $table_start_y);
-$gfx->line($table_start_x, $table_start_y - $table_height);
+use PDF :: API2;
 
-my $cur_x = $table_start_x;
-my $cur_y = $table_start_y;
+#Generate PDF object
+my $ pdf = PDF :: API2-> new;
 
-# 各項目の枠の描画
-for (my $column = 0; $column < $rows_count; $column++) {
+#Create page
+my $ page = $ pdf-> page;
+
+#Generate content objects for graphics
+my $ gfx = $ page-> gfx;
+
+#Point P1
+my $ x1 = 100;
+my $ y1 = 100;
+
+# Diagonal point opposite P3
+my $ x3 = 300;
+my $ y3 = 300;
+
+#Draw a rectangle
+$ gfx-> rectxy ($ x1, $ y1, $ x3, $ y3);
+
+# Make the line color a little lighter than black
+$ gfx-> strokecolor ('# 333');
+
+# Make the background color very light gray
+$ gfx-> fillcolor ('# eee');
+
+# Fill the rectangle and draw a line
+$ gfx-> fillstroke;
+
+my $ pdf_file ='basic_rect.pdf';
+$ pdf-> saveas ($ pdf_file);
+</ pre>
+
+This is a sample that can draw a rectangle that can be executed as it is.
+
+<h3> Write other basic figures </ h3>
+
+I will introduce which method to use when you want to write other basic figures.
+
+<h4> Write a circle </ h4>
+
+If you want to draw a circle, use the circle method. It can be used for bullet points in the list.
+
+<h4> Draw an ellipse </ h4>
+
+If you want to draw an ellipse, use the ellipse method.
+
+<h4> Write a fan shape</ H4>
+
+If you want to draw a sector, use the pie method.
+
+<h4> Draw an arc </ h4>
+
+If you want to draw an arc, use the arc or bogen method. The bogen method can be used for rounded corners because you can specify the start and end points of the arc.
+
+<h4> Draw an elliptical arc </ h4>
+
+If you want to draw an elliptical arc, use the bogen method.
+
+<h4> Write a curve (Peget curve) </ h4>
+
+To draw a curve (Peget curve), use the curve method. You can draw a curve by the Peje curve algorithm.
+
+<h4> Write a curve (spline curve) </ h4>
+
+To draw a curve (spline curve), use the spline method. You can draw a curve that connects points smoothly.
+
+<h4> Draw a polygon </ h4>
+
+Use the poly method to draw a polygon. You can draw triangles, pentagons, hexagons, etc.
+
+<h4> Rotate the shape </ h4>
+
+Use the rotate method to rotate the shape.
+
+<h4> Enlarge / reduce the figure </ h4>
+
+Use the scale method to scale the shape.
+
+<h4> To draw a horizontal line </ h4>
+
+There is a hline method that allows you to easily draw a horizontal line.
+
+<h4> To draw a vertical line </ h4>
+
+There is a vline method that allows you to easily draw vertical lines.
+
+<h4> To draw a dashed line </ h4>
+
+To draw a wavy line, use the linedash method.
+
+<h3> Create a table </ h3>
+
+Now let's create a table.
+
+The idea of ​​the table is that there is a frame on the outermost side. There is also a frame for each item. If you can overlap the item frame and the outer frame, the table is complete. It seems that you can draw by combining the rectangles and overlapping the outside.
+
+However, a problem with this method was discovered. If you draw twice at the same position, the lines will become darker.
+
+So, let's create a table by simply drawing lines vertically and horizontally.
+
+<pre>
+use PDF :: API2;
+
+#Generate PDF object
+my $ pdf = PDF :: API2-> new;
+
+# Default global setting for paper size (to get paper size)
+$ pdf-> mediabox (undef);
+
+#Page height and width
+my @page_size_infos = $ pdf-> mediabox;
+my $ page_width = $ page_size_infos [2];
+my $ page_height = $ page_size_infos [3];
+
+#Item height
+my $ item_height = 25;
+
+# Number of rows
+my $ rows_count = 20;
+
+#Width of each item
+my $ name_width = 230;
+my $ unit_price_width = 80;
+my $ count_width = 80;
+my $ price_width = 80;
+my $ table_width = $ name_width + $ unit_price_width + $ count_width + $ price_width;
+
+#Table height
+my $ table_height = $ item_height * $ rows_count;
+
+#Starting point of the table
+
+#Table outer frame
+my $ table_start_x = 50;
+my $ table_start_y = $ page_height --50;
+my $ table_other_side_x = $ table_start_x + $ table_width;
+my $ table_other_side_y = $ table_start_y-$ table_height;
+
+#Create page
+my $ page = $ pdf-> page;
+
+#Generate content objects for graphics
+my $ gfx = $ page-> gfx;
+
+# Draw the upper line
+$ gfx-> move ($ table_start_x, $ table_start_y);
+$ gfx-> line ($ table_start_x + $ table_width, $ table_start_y);
+
+# Draw the line on the left
+$ gfx-> move ($ table_start_x, $ table_start_y);
+$ gfx-> line ($ table_start_x, $ table_start_y-$ table_height);
+
+my $ cur_x = $ table_start_x;
+my $ cur_y = $ table_start_y;
+
+#Drawing the frame of each item
+for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   
-  # 名前の枠(右と下)
-  $gfx->move($cur_x + $name_width, $cur_y);
-  $gfx->line($cur_x + $name_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $name_width, $cur_y - $item_height);
-  $cur_x += $name_width;
+  # Name frame (right and bottom)
+  $ gfx-> move ($ cur_x + $ name_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
+  $ cur_x + = $ name_width;
 
-  # 単価の枠(右と下)
-  $gfx->move($cur_x + $unit_price_width, $cur_y);
-  $gfx->line($cur_x + $unit_price_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $unit_price_width, $cur_y - $item_height);
-  $cur_x += $unit_price_width;
+  # Unit price frame (right and bottom)
+  $ gfx-> move ($ cur_x + $ unit_price_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
+  $ cur_x + = $ unit_price_width;
 
-  # 数量の枠(右と下)
-  $gfx->move($cur_x + $count_width, $cur_y);
-  $gfx->line($cur_x + $count_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $count_width, $cur_y - $item_height);
-  $cur_x += $count_width;
+  # Quantity frame (right and bottom)
+  $ gfx-> move ($ cur_x + $ count_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
+  $ cur_x + = $ count_width;
 
-  # 価格の枠(右と下)
-  $gfx->move($cur_x + $price_width, $cur_y);
-  $gfx->line($cur_x + $price_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $price_width, $cur_y - $item_height);
-  $cur_x += $price_width;
+  #Price frame (right and bottom)
+  $ gfx-> move ($ cur_x + $ price_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
+  $ cur_x + = $ price_width;
   
-  # 次の行へ
-  $cur_x = $table_start_x;
-  $cur_y -= $item_height;
+  #To the next line
+  $ cur_x = $ table_start_x;
+  $ cur_y-= $ item_height;
 }
 
-# 線の色を、黒より少し薄い色に
-$gfx->strokecolor('#333');
+# Make the line color a little lighter than black
+$ gfx-> strokecolor ('# 333');
 
-# 四角形を塗りつぶして線を描画
-$gfx->stroke;
+# Fill the rectangle and draw a line
+$ gfx-> stroke;
 
-my $pdf_file = 'table.pdf';
-$pdf->saveas($pdf_file);
-</pre>
+my $ pdf_file ='table.pdf';
+$ pdf-> saveas ($ pdf_file);
+</ pre>
 
-情報が何も入っていない表が完成しました。
+You have completed a table with no information.
 
-<a href="/examples/pdf/table.pdf">出力結果 空の表</a>、
+<a href="/examples/pdf/table.pdf"> Output result empty table </a>,
 
-<h4>見出しと項目が入った表のサンプル</h4>
+<h4> Sample table with headings and items </ h4>
 
-最後に、見出しと項目が入った表のサンプルを作成してみましょう。
+Finally, let's create a sample table with headings and items.
 
-PDFに以下の表が書き出されます。
+The following table will be exported to PDF.
 
 <table>
-  <tr><th>Name</th><th>Unit</th><th>Count</th><th>Price</th></tr>
-  <tr><td>Book1</td><td>1000</td><td>3</td><td>3000</td></tr>
-  <tr><td>Book2</td><td>2000</td><td>6</td><td>12000</td></tr>
-  <tr><td>Book3</td><td>1500</td><td>5</td><td>7500</td></tr>
-</table>
+  <tr> <th> Name </ th> <th> Unit </ th> <th> Count </ th> <th> Price </ th> </ tr>
+  <tr> <td> Book1 </ td> <td> 1000 </ td> <td> 3 </ td> <td> 3000 </ td> </ tr>
+  <tr> <td> Book2 </ td> <td> 2000 </ td> <td> 6 </ td> <td> 12000 </ td> </ tr>
+  <tr> <td> Book3 </ td> <td> 1500 </ td> <td> 5 </ td> <td> 7500 </ td> </ tr>
+</ table>
 
-<div style="margin-bottom:10px"></div>
+<div style = "margin-bottom: 10px"> </ div>
 
 <pre>
 use strict;
 use warnings;
 use utf8;
 
-use PDF::API2;
+use PDF :: API2;
 
-# PDFオブジェクトの生成
-my $pdf = PDF::API2->new;
+#Generate PDF object
+my $ pdf = PDF :: API2-> new;
 
-# 用紙サイズのデフォルトのグローバル設定(用紙サイズを取得するため)
-$pdf->mediabox(undef);
+# Default global setting for paper size (to get paper size)
+$ pdf-> mediabox (undef);
 
-# ページの高さと幅
-my @page_size_infos = $pdf->mediabox;
-my $page_width = $page_size_infos[2];
-my $page_height = $page_size_infos[3];
+#Page height and width
+my @page_size_infos = $ pdf-> mediabox;
+my $ page_width = $ page_size_infos [2];
+my $ page_height = $ page_size_infos [3];
 
-# 項目の高さ
-my $item_height = 25;
+#Item height
+my $ item_height = 25;
 
-# 行の数
-my $rows_count = 20;
+# Number of rows
+my $ rows_count = 20;
 
-# 各項目の幅
-my $name_width = 230;
-my $unit_price_width = 80;
-my $count_width = 80;
-my $price_width = 80;
-my $table_width = $name_width + $unit_price_width + $count_width + $price_width;
+#Width of each item
+my $ name_width = 230;
+my $ unit_price_width = 80;
+my $ count_width = 80;
+my $ price_width = 80;
+my $ table_width = $ name_width + $ unit_price_width + $ count_width + $ price_width;
 
-# テーブルの高さ
-my $table_height = $item_height * $rows_count;
+#Table height
+my $ table_height = $ item_height * $ rows_count;
 
-# テーブルの始点
+#Starting point of the table
 
-# 表の外枠
-my $table_start_x = 50;
-my $table_start_y = $page_height - 50;
-my $table_other_side_x = $table_start_x + $table_width;
-my $table_other_side_y = $table_start_y - $table_height;
+#Table outer frame
+my $ table_start_x = 50;
+my $ table_start_y = $ page_height --50;
+my $ table_other_side_x = $ table_start_x + $ table_width;
+my $ table_other_side_y = $ table_start_y-$ table_height;
 
-# ページの作成
-my $page = $pdf->page;
+#Create page
+my $ page = $ pdf-> page;
 
-# グラフィック用のコンテンツオブジェクトの生成
-my $gfx = $page->gfx;
+#Generate content objects for graphics
+my $ gfx = $ page-> gfx;
 
-# テキスト用のコンテンツオブジェクトの生成
-my $text = $page->text;
-my $font = $pdf->corefont('Helvetica');
-my $font_bold = $pdf->corefont('Helvetica-Bold');
-my $font_size = 11;
-$text->font($font, $font_size);
-my $text_height = $font_size;
+#Generate content object for text
+my $ text = $ page-> text;
+my $ font = $ pdf-> corefont ('Helvetica');
+my $ font_bold = $ pdf-> corefont ('Helvetica-Bold');
+my $ font_size = 11;
+$ text-> font ($ font, $ font_size);
+my $ text_height = $ font_size;
 
-my $books = [
+my $ books = [
   {
-    name => 'Book1',
+    name =>'Book1',
     unit_price => 1000,
     count => 3,
   },
   {
-    name => 'Book2',
+    name =>'Book2',
     unit_price => 2000,
     count => 6,
   },
   {
-    name => 'Book3',
+    name =>'Book3',
     unit_price => 1500,
     count => 5,
   }
-];
-my $books_length = @$books;
+];;
+my $ books_length = @ $ books;
 
-# 上の線を引く
-$gfx->move($table_start_x, $table_start_y);
-$gfx->line($table_start_x + $table_width, $table_start_y);
+# Draw the upper line
+$ gfx-> move ($ table_start_x, $ table_start_y);
+$ gfx-> line ($ table_start_x + $ table_width, $ table_start_y);
 
-# 左の線を引く
-$gfx->move($table_start_x, $table_start_y);
-$gfx->line($table_start_x, $table_start_y - $table_height);
+# Draw the line on the left
+$ gfx-> move ($ table_start_x, $ table_start_y);
+$ gfx-> line ($ table_start_x, $ table_start_y-$ table_height);
 
-my $cur_x = $table_start_x;
-my $cur_y = $table_start_y;
+my $ cur_x = $ table_start_x;
+my $ cur_y = $ table_start_y;
 
-my $item_padding_top = 17;
-my $item_padding_left = 5;
+my $ item_padding_top = 17;
+my $ item_padding_left = 5;
 
-# 各項目の枠の描画
-for (my $column = 0; $column < $rows_count; $column++) {
+#Drawing the frame of each item
+for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   
-  my $book_index = $column - 1;
+  my $ book_index = $ column --1;
   
-  # 名前の枠(右と下)
-  # 見出し
-  $text->translate($cur_x + $item_padding_left, $cur_y - $item_padding_top);
-  if ($column == 0) {
-    $text->font($font_bold, $font_size);
-    $text->text('Name');
+  # Name frame (right and bottom)
+  #Heading
+  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
+  if ($ column == 0) {
+    $ text-> font ($ font_bold, $ font_size);
+    $ text-> text ('Name');
   }
-  # 項目
+  #Item
   else {
-    $text->font($font, $font_size);
-    if ($book_index < $books_length) {
-      $text->text($books->[$book_index]{name});
+    $ text-> font ($ font, $ font_size);
+    if ($ book_index <$ books_length) {
+      $ text-> text ($ books-> [$ book_index] {name});
     }
   }
-  $gfx->move($cur_x + $name_width, $cur_y);
-  $gfx->line($cur_x + $name_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $name_width, $cur_y - $item_height);
-  $cur_x += $name_width;
+  $ gfx-> move ($ cur_x + $ name_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
+  $ cur_x + = $ name_width;
 
-  # 単価の枠(右と下)
-  $text->translate($cur_x + $item_padding_left, $cur_y - $item_padding_top);
-  if ($column == 0) {
-    $text->font($font_bold, $font_size);
-    $text->text('Unit');
+  # Unit price frame (right and bottom)
+  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
+  if ($ column == 0) {
+    $ text-> font ($ font_bold, $ font_size);
+    $ text-> text ('Unit');
   }
-  # 項目
+  #Item
   else {
-    $text->font($font, $font_size);
-    if ($book_index < $books_length) {
-      $text->text($books->[$book_index]{unit_price});
+    $ text-> font ($ font, $ font_size);
+    if ($ book_index <$ books_length) {
+      $ text-> text ($ books-> [$ book_index] {unit_price});
     }
   }
-  $gfx->move($cur_x + $unit_price_width, $cur_y);
-  $gfx->line($cur_x + $unit_price_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $unit_price_width, $cur_y - $item_height);
-  $cur_x += $unit_price_width;
+  $ gfx-> move ($ cur_x + $ unit_price_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
+  $ cur_x + = $ unit_price_width;
 
-  # 数量の枠(右と下)
-  # 見出し
-  $text->translate($cur_x + $item_padding_left, $cur_y - $item_padding_top);
-  if ($column == 0) {
-    $text->font($font_bold, $font_size);
-    $text->text('Count');
+  # Quantity frame (right and bottom)
+  #Heading
+  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
+  if ($ column == 0) {
+    $ text-> font ($ font_bold, $ font_size);
+    $ text-> text ('Count');
   }
-  # 項目
+  #Item
   else {
-    $text->font($font, $font_size);
-    if ($book_index < $books_length) {
-      $text->text($books->[$book_index]{count});
+    $ text-> font ($ font, $ font_size);
+    if ($ book_index <$ books_length) {
+      $ text-> text ($ books-> [$ book_index] {count});
     }
   }
-  $gfx->move($cur_x + $count_width, $cur_y);
-  $gfx->line($cur_x + $count_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $count_width, $cur_y - $item_height);
-  $cur_x += $count_width;
+  $ gfx-> move ($ cur_x + $ count_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
+  $ cur_x + = $ count_width;
 
-  # 価格の枠(右と下)
-  # 見出し
-  $text->translate($cur_x + $item_padding_left, $cur_y - $item_padding_top);
-  if ($column == 0) {
-    $text->font($font_bold, $font_size);
-    $text->text('Pirce');
+  #Price frame (right and bottom)
+  #Heading
+  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
+  if ($ column == 0) {
+    $ text-> font ($ font_bold, $ font_size);
+    $ text-> text ('Pirce');
   }
-  # 項目
+  #Item
   else {
-    $text->font($font, $font_size);
-    if ($book_index < $books_length) {
-      $text->text($books->[$book_index]{unit_price} * $books->[$book_index]{count});
+    $ text-> font ($ font, $ font_size);
+    if ($ book_index <$ books_length) {
+      $ text-> text ($ books-> [$ book_index] {unit_price} * $ books-> [$ book_index] {count});
     }
   }
-  $gfx->move($cur_x + $price_width, $cur_y);
-  $gfx->line($cur_x + $price_width, $cur_y - $item_height);
-  $gfx->move($cur_x, $cur_y - $item_height);
-  $gfx->line($cur_x + $price_width, $cur_y - $item_height);
-  $cur_x += $price_width;
+  $ gfx-> move ($ cur_x + $ price_width, $ cur_y);
+  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
+  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
+  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
+  $ cur_x + = $ price_width;
   
-  # 次の行へ
-  $cur_x = $table_start_x;
-  $cur_y -= $item_height;
+  #To the next line
+  $ cur_x = $ table_start_x;
+  $ cur_y-= $ item_height;
 }
 
-# 線の色を、黒より少し薄い色に
-$gfx->strokecolor('#333');
+# Make the line color a little lighter than black
+$ gfx-> strokecolor ('# 333');
 
-# 四角形を塗りつぶして線を描画
-$gfx->stroke;
+# Fill the rectangle and draw a line
+$ gfx-> stroke;
 
-my $pdf_file = 'table_items.pdf';
-$pdf->saveas($pdf_file);
-</pre>
+my $ pdf_file ='table_items.pdf';
+$ pdf-> saveas ($ pdf_file);
+</ pre>
 
-<a href="/examples/pdf/table_items.pdf">出力結果 項目ありの表</a>
-
+<a href="/examples/pdf/table_items.pdf"> Table with output result items </a>

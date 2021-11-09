@@ -1,180 +1,180 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Fcntl - flock/seek/sysopen関数の定数をインポート</h2>
+  </ li>
+</ ol>
+<h2> Fcntl --Import constants for flock / seek / sysopen function </ h2>
 
 
 
-<b>Fcntl関数</b>を使用すると、flock関数やseek関数で利用する定数をインポートすることができます。
+You can use the <b> Fcntl function </ b> to import constants used in the flock and seek functions.
 
 <pre>
-# flock関数の定数
-use Fcntl ':flock';
+# constant of flock function
+use Fcntl': flock';
 
-# seek関数の定数
-use Fcntl ':seek';
+# seek function constant
+use Fcntl': seek';
 
-# sysopen関数の定数
-use Fcntl ':DEFAULT';
-</pre>
+#sysopen function constant
+use Fcntl': DEFAULT';
+</ pre>
 
-<h4>flock関数で使う定数</h4>
+<h4> Constants used in the flock function </ h4>
 
-インポートされる<a href="/blog/20080814121872.html">flock関数</a>で使う定数です。
+This is the constant used in the imported <a href="/blog/20080814121872.html"> flock function </a>.
 
 <table>
   <tr>
     <td>
       LOCK_SH
-    </td>
+    </ td>
     <td>
-      読み込みロック
-    </td>
-  </tr>
+      Read lock
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       LOCK_EX
-    </td>
+    </ td>
     <td>
-      書き込みロック
-    </td>
-  </tr>
+      Write lock
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       LOCK_NB
-    </td>
+    </ td>
     <td>
-      ノンブロッキングモード
-    </td>
-  </tr>
+      Non-blocking mode
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       LOCK_UN
-    </td>
+    </ td>
     <td>
-      ロック解除
-    </td>
-  </tr>
+      unlock
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>seek関数で使う定数</h4>
+<h4> Constants used in the seek function </ h4>
 
-インポートされるseek関数で使う定数です。
+A constant used in the imported seek function.
 
 <table>
   <tr>
     <td>
       SEEK_SET
-    </td>
+    </ td>
     <td>
-      ファイルの先頭
-    </td>
-  </tr>
+      Top of file
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       SEEK_CUR
-    </td>
+    </ td>
     <td>
-      現在位置
-    </td>
-  </tr>
+      present location
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       SEEK_END
-    </td>
+    </ td>
     <td>
-      ファイルの最後
-    </td>
-  </tr>
+      End of file
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>sysopen関数で使う定数</h4>
+<h4> Constants used in sysopen function </ h4>
 
-インポートされる<a href="/blog/20080804121794.html">sysopen関数</a>で使うファイルモードに関する定数です。
+This is a constant related to the file mode used by the imported <a href="/blog/20080804121794.html"> sysopen function </a>.
 
 <table>
   <tr>
     <td>
-      O_RDONLY	
-    </td>
+      O_RDONLY
+    </ td>
     <td>
-      読み込み
-    </td>
-  </tr>
+      Read
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_WRONLY	
-    </td>
+      O_WRONLY
+    </ td>
     <td>
-      書き込み
-    </td>
-  </tr>
+      write in
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       O_RDWR
-    </td>
+    </ td>
     <td>
-      読み書き両用
-    </td>
-  </tr>
+      Read / write
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_CREAT	
-    </td>
+      O_CREAT
+    </ td>
     <td>
-      ファイルが存在しなければ作成する。
-    </td>
-  </tr>
+      Create the file if it does not exist.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       O_EXCL
-    </td>
+    </ td>
     <td>
-      ファイルが存在すればopenを失敗させる
-    </td>
-  </tr>
+      Fail open if the file exists
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_APPEND	
-    </td>
+      O_APPEND
+    </ td>
     <td>
-      追加書き込み
-    </td>
-  </tr>
+      Additional writing
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_TRUNC	
-    </td>
+      O_TRUNC
+    </ td>
     <td>
-      ファイルを0バイトに切り詰める
-    </td>
-  </tr>
+      Truncate the file to 0 bytes
+    </ td>
+  </ tr>
 
-</table>
+</ table>

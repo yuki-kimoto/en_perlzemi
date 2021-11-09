@@ -1,32 +1,30 @@
+<h2> To get infinity (Inf), infinitesimal (-Inf), non-number (NaN) </ h2>
 
-<h2>無限大(Inf)、無限小(-Inf)、非数(NaN)を得るには</h2>
+To get an infinitesimal (Inf), infinitesimal (-Inf), and non-numeric (NaN) numeric representation in Perl:
 
-Perlで無限大(Inf)、無限小(-Inf)、非数(NaN)の数値表現を得るには以下のようにします。
+<h4> Infinity Inf </ h4>
 
-<h4>無限大 Inf</h4>
-
-正の方向でオーバーフローする浮動小数点演算を行うと無限大(Inf)を得ることができます。
-
-<pre>
-9**9**9
-</pre>
-
-<h4>無限小 -Inf</h4>
-
-負の方向でオーバーフローする浮動小数点演算を行うと無限大(Inf)を得ることができます。
+You can get infinity (Inf) by doing a floating point operation that overflows in the positive direction.
 
 <pre>
--9**9**9
-</pre>
+9 ** 9 ** 9
+</ pre>
 
-<h4>非数 NaN</h4>
+<h4> Infinitesimal -Inf </ h4>
 
-無限大を無限大で除算すると非数(NaN)を得ることができます。
+You can get infinity (Inf) by doing a floating point operation that overflows in the negative direction.
 
 <pre>
-9**9**9 / 9**9**9
-</pre>
+-9 ** 9 ** 9
+</ pre>
+
+<h4> Innumerable NaN </ h4>
+
+You can get a non-number (NaN) by dividing infinity by infinity.
+
+<pre>
+9 ** 9 ** 9/9 ** 9 ** 9
+</ pre>
 
 
-(参考)<a href="http://perldoc.jp/docs/perl/5.22.1/perldata.pod#Special32floating32point:32infinity32-40Inf41-32and32not-a-number32-40NaN41">特殊浮動小数点数: 無限 (Inf) と非数 (NaN)</a>
-
+(Reference) <a href="http://perldoc.jp/docs/perl/5.22.1/perldata.pod#Special32floating32point:32infinity32-40Inf41-32and32not-a-number32-40NaN41"> Special floating point number: Infinite ( Inf) and non-numerical (NaN) </a>

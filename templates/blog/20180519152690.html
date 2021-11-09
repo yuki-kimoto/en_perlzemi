@@ -1,27 +1,25 @@
+<h2> Check the processing time </ h2>
 
-<h2>処理にかかっている時間を調べる</h2>
+When creating a batch processing program, it is often the case that you want to know how long it took from the start of processing to the end of processing.
 
-バッチ処理のプログラムなどを作っているときに、処理の開始から処理の終了まで、どれくらいかかったのかということを知りたい場合などがよくあります。
+I would like to know how long it takes if I download a large zip file or insert a large amount of data into a database or the like.
 
-大きなzipファイルをダウンロードしたり、大量のデータをデータベースなどに挿入している場合は、どれくらいかかっているのかということを知りたいですね。
-
-このような場合は、処理の開始時間と狩猟時間を<a href="/blog/20081008122347.html">time関数</a>を使って取得して、処理にかかった時間を計算します。
+In such a case, use the <a href="/blog/20081008122347.html"> time function </a> to get the processing start time and hunting time to calculate the processing time.
 
 <pre>
-# 開始時間
-my $start_time = time;
+# Start time
+my $ start_time = time;
 
-# 処理
+# process
 ...
 
-# 終了時間
-my $end_time = time;
+# ending time
+my $ end_time = time;
 
-# 経過秒数
-my $process_time = $end_time - $start_time;
+#Elapsed seconds
+my $ process_time = $ end_time-$ start_time;
 
-print "$process_time\n";
-</pre>
+print "$ process_time \ n";
+</ pre>
 
-終了時間から開始時間を引き算すると、処理にかかった時間を計算できます。
-
+You can calculate how long it took to process by subtracting the start time from the end time.

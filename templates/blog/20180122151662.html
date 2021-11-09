@@ -1,78 +1,77 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文・文法</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>デストラクタ - DESTROY</h2>
+        <span itemprop = "name"> Syntax / Grammar </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Destructor --DESTROY </ h2>
 
 
 
-Perlは<a href="/blog/20131010138141.html">リファレンスカウント方式のGC</a>を持つプログラミング言語です。オブジェクトが解放されるのは、リファレンスカウントが0になった場合です。
+Perl is a programming language with <a href="/blog/20131010138141.html"> reference counting GC </a>. The object is freed when the reference count reaches zero.
 
-DESTROYというメソッドを実装することで、リファレンスカウントが0になるタイミングで、デストラクタを実行することができます。
+By implementing a method called DESTROY, the destructor can be executed when the reference count reaches 0.
 
 <pre>
 sub DESTROY {
-  # オブジェクトが解放されるときに実行される処理
+  # What happens when an object is released
   ...
 }
-</pre>
+</ pre>
 
-<h3>ファイルハンドルをデストラクタでクローズする</h3>
+<h3> Close the file handle with a destructor </ h3>
 
-たとえば、ファイルを表現するFileクラスがあったとします。Fileクラスはfhフィールドに、<a href="/blog/20080718121643.html">open関数</a>でオープンしたファイルハンドルを保存しています。
+For example, suppose you have a File class that represents a file. The File class stores the file handle opened by the <a href="/blog/20080718121643.html"> open function </a> in the fh field.
 
-これを、オブジェクトを開放するタイミングで<a href="/blog/20160312145776.html">close関数</a>を使ってクローズしたいとします。
+Suppose you want to close this using the <a href="/blog/20160312145776.html"> close function </a> when you open the object.
 
-そのような場合、次のようにデストラクタを記述します。
+In such a case, write the destructor as follows:
 
 <pre>
 package File;
-use Carp 'croak';
+use Carp'croak';
 
-# コンストラクタ
+#Constructor
 sub new {
-  my ($class, $file) = @_;
+  my ($ class, $ file) = @_;
   
-  my $self = {};
-  open my $fh, '<', $file
-    or croak "Can't open $file: $!";
-  $self->{fh} = $fh;
+  my $ self = {};
+  open my $ fh,'<', $ file
+    or croak "Can't open $ file: $!";
+  $ self-> {fh} = $ fh;
   
-  return bless $self, $class;
+  return bless $ self, $ class;
 }
 
-# デストラクタ
+#Destructor
 sub DESTROY {
-  my $self = shift;
+  my $ self = shift;
   print "DESTROY";
-  close $self->{fh};
+  close $ self-> {fh};
 }
 
 package main;
 
 {
-  my $file = File->new('a.txt');
+  my $ file = File-> new ('a.txt');
 }
-</pre>
+</ pre>
 
-参考: <a href="/blog/20161030147778.html">オブジェクト指向</a>、<a href="/blog/20100430127089.html">Carpモジュール</a>、<a href="/blog/20110128130016.html">スコープ</a>、<a href="/blog/20100419127089.html">mainパッケージ</a>
+Reference: <a href="/blog/20161030147778.html"> Object Oriented </a>, <a href="/blog/20100430127089.html"> Carp Module </a>, <a href="/blog/ 20110128130016.html "> Scope </a>, <a href="/blog/20100419127089.html"> main package </a>
 
-このスクリプトを実行すると「DESTROY」と表示されますが、これは、デストラクタが実行されていることを確認するために入れたものです。デストラクタが実行されており、ファイルハンドルはクローズされます。
+When I run this script, it says "DESTROY", which I put in to make sure the destructor is running. The destructor is running and the file handle is closed.
 
-<h3>デストラクタの主な用途</h3>
+<h3> Main uses of destructors </ h3>
 
-デストラクタが利用されることが多いのは、ファイルやデータベースなどの外部リソースをクローズするときです。Perlはオブジェクトが解放されるタイミングが明確なので、デストラクタ内でリソースのクローズ処理を書いておくことができます。
-
+Destructors are often used when closing external resources such as files and databases. Since Perl has a clear timing for the object to be released, you can write the resource closing process in the destructor.

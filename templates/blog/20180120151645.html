@@ -1,39 +1,37 @@
+<h2> Change the enclosing character of the regular expression --m // </ h2>
 
-<h2>正規表現の囲み文字を変更する - m//</h2>
+Perl allows you to change the enclosing character of a regular expression.
 
-Perlでは正規表現の囲み文字を変更することができます。
-
-<a href="/blog/20100827127859.html">正規表現</a>はパターンマッチ演算子を組み合わせて以下のように書くことができましたね。
-
-<pre>
-$string =~ /cat/
-</pre>
-
-でもここで、たとえば、URLのパスにマッチさせたい場合を考えてみてください。スラッシュをエスケープして次のように書けます。
+<a href="/blog/20100827127859.html"> Regular expression </a> could be written as follows by combining pattern matching operators.
 
 <pre>
-$string =~ /\/foo\/bar\/baz/
-</pre>
+$ string = ~ / cat /
+</ pre>
 
-ちょっと読みずらくないですか。Perlではこんな場合、正規表現の囲み文字「/」を別の囲み文字に変える方法があります。次のように書きます。
-
-<pre>
-$string =~ m|/foo/bar/baz|
-</pre>
-
-先頭に「m」を付けて、囲み文字を別のものに変更します。以下の組み合わせなどが囲み文字としてつかえます。
+But now, suppose you want to match the path of a URL, for example. You can escape the slash and write:
 
 <pre>
-m|正規表現|
-m#正規表現#
-m!正規表現!
-</pre>
+$ string = ~ / \ / foo \ / bar \ / baz /
+</ pre>
 
-sを使って置換をする場合も同じように利用できます。
+Isn't it a little difficult to read? In Perl, there is a way to change the regular expression enclosing character "/" to another enclosing character. Write as follows.
 
 <pre>
-s|正規表現|置換後の文字列|
-s#正規表現#置換後の文字列#
-s!正規表現!置換後の文字列!
-</pre>
+$ string = ~ m | / foo / bar / baz |
+</ pre>
 
+Prefix it with an "m" to change the enclosing character to something else. The following combinations can be used as enclosing characters.
+
+<pre>
+m | regular expression |
+m # regular expression #
+m! Regular expression!
+</ pre>
+
+It can be used in the same way when replacing with s.
+
+<pre>
+s | Regular expression | Replaced string |
+s #Regular expression #Replaced string #
+s! Regular expression! Replaced string!
+</ pre>

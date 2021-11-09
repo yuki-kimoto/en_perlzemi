@@ -1,172 +1,172 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100930127859.html">
-      <span itemprop="name">リファレンス</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>配列のリファレンス</h2>
+      <span itemprop = "name"> Reference </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Array reference </ h2>
 
 
 
-Perlには<b>配列のリファレンス</b>というデータ構造が頻繁に登場します。このページでは、<a href="/blog/20100930127859.html">リファレンス</a>の中から配列のリファレンスを詳しく取り上げます。
+A data structure called <b> array reference </ b> frequently appears in Perl. This page details array references from <a href="/blog/20100930127859.html"> References </a>.
 
-<h4>配列のリファレンスとは</h4>
+<h4> What is an array reference? </ H4>
 
-配列のリファレンスとは、<a href="/blog/20161012147627.html">配列</a>に対するリファレンスのことです。リファレンスというのは、指すということを表します。配列に対して、リファレンス生成子「\」を使用すると、配列のリファレンスを作成することができます。
+An array reference is a reference to a <a href="/blog/20161012147627.html"> array </a>. A reference means to point. You can use the reference generator "\" on an array to create an array reference.
 
 <pre>
-# 配列のリファレンスを作成
+#Create array reference
 my @nums = (1, 3, 5);
-my $nums_ref = \@nums;
-</pre>
+my $ nums_ref = \ @nums;
+</ pre>
 
-配列のリファレンスは、<a href="/blog/20161107147852.html">スカラ変数</a>に代入されるとういうことに注意してください。
+Note that the array reference is assigned to the <a href="/blog/20161107147852.html"> scalar variable </a>.
 
-配列のリファレンスのイメージを以下に書いてみます。
-
-<pre>
-# イメージ
-                      @nums 
-$nums_ref  ------->   (1, 3, 5)
-</pre>
-
-配列のリファレンスは、配列そのものではなく「配列を指し示すもの」を表現します。
-
-<h4>配列のリファレンスは代入で中身がコピーされない</h4>
-
-配列と配列のリファレンスの違いをここから見ていきましょう。
-
-配列は、代入によって、中身がすべてコピーされますが、配列のリファレンスはコピーが行われません。
+Let's write an image of the array reference below.
 
 <pre>
-# 配列は値がコピーされる
-my @nums1 = (1, 3, 5);
-my @nums2 = @nums1;
+# image
+                      @nums
+$ nums_ref -------> (1, 3, 5)
+</ pre>
 
-# 配列のリファレンスは値はコピーされない
-my @nums1 = (1, 3, 5);
-my $nums_ref1 = \@nums1;
-my $nums_ref2 = $nums_ref1;
-</pre>
+An array reference represents "what points to an array" rather than the array itself.
 
-以下はイメージです。配列の場合は、中身すべてがコピーされるのに対して、配列のリファレンスは、中身ではなく、リファレンスそのものがコピーされます。
+<h4> Array reference is assigned and the contents are not copied </ h4>
 
-<pre>
-# イメージ
-@nums1                       @nums2
-(1, 3, 5)                    (1, 3, 5)
+Let's look at the difference between arrays and array references from here.
 
-$nums_ref1 ------------>     
-$nums_ref2 ------------>    (1, 3, 5)
-</pre>
-
-<a href="/blog/20101130129876.html">サブルーチン</a>に渡す場合は、配列のリファレンスを渡す方が、中身のコピーが行われないので、効率が良くなります。
+The entire contents of the array are copied by assignment, but the array reference is not copied.
 
 <pre>
-# サブルーチンに配列のリファレンスを渡す
-my_func($nums_ref1);
-</pre>
+# Arrays are copied with values
+my @ nums1 = (1, 3, 5);
+my @ nums2 = @ nums1;
 
-<h3>無名配列生成子</h3>
+# Array reference does not copy values
+my @ nums1 = (1, 3, 5);
+my $ nums_ref1 = \ @ nums1;
+my $ nums_ref2 = $ nums_ref1;
+</ pre>
 
-配列のリファレンスは、リファレンス生成子「\」を使用すると作成できますが、少し手間がかかります。すぐに配列のリファレンスを作成するために、<a href="/blog/20170924150634.html">無名配列生成子</a>と呼ばれる演算子が定義されています。
-
-<pre>
-my $nums_ref = [1, 3, 5];
-</pre>
-
-通常の配列が「()」で作成されるのに対して、配列のリファレンスは無名配列生成子「[]」を使って生成されているのに注意してください。
-
-Perlのソースコードでは、この記法が頻繁に登場します。配列なのか、配列のリファレンスなのかをソースコードから読み取ることが大切です。
+Below is an image. In the case of an array, the entire contents are copied, whereas in the array reference, the reference itself is copied, not the contents.
 
 <pre>
-# 配列
+# image
+@ nums1 @ nums2
+(1, 3, 5) (1, 3, 5)
+
+$ nums_ref1 ------------>
+$ nums_ref2 ------------> (1, 3, 5)
+</ pre>
+
+When passing to <a href="/blog/20101130129876.html"> subroutine </a>, it is more efficient to pass an array reference because the contents are not copied.
+
+<pre>
+# Pass an array reference to a subroutine
+my_func ($ nums_ref1);
+</ pre>
+
+<h3> Anonymous array generator </ h3>
+
+Array references can be created using the reference generator "\", but this is a bit tricky. An operator called <a href="/blog/20170924150634.html"> anonymous array generator </a> is defined to quickly create an array reference.
+
+<pre>
+my $ nums_ref = [1, 3, 5];
+</ pre>
+
+Note that regular arrays are created with "()", whereas array references are created with the anonymous array generator "[]".
+
+This notation appears frequently in Perl source code. It is important to read from the source code whether it is an array or an array reference.
+
+<pre>
+# arrangement
 my @nums = (1, 3, 5);
 
-# 配列のリファレンス
-my $nums = [1, 3, 5];
-</pre>
+# Array reference
+my $ nums = [1, 3, 5];
+</ pre>
 
-<h3>デリファレンス</h3>
+<h3> Dereference </ h3>
 
-配列のリファレンスを生成するには、リファレンス生成子を使いました。今度は反対に配列のリファレンスから、配列を取り出してみましょう。
+I used a reference generator to generate an array reference. Now let's extract the array from the array reference, on the contrary.
 
-そのためには<b>デリファレンス</b>という操作を行います。
-
-<pre>
-my $nums_ref = [1, 3, 5];
-
-# デリファレンス
-my @nums = @{$nums_ref};
-</pre>
-
-デリファレンスは「@{配列のリファレンス}」という記法を使って行うことができます。
-
-配列のリファレンスがスカラ変数の場合は「{}」を省略することもできます。
+To do this, perform an operation called <b> dereference </ b>.
 
 <pre>
-my @nums = @$nums_ref;
-</pre>
+my $ nums_ref = [1, 3, 5];
 
-<h4>標準関数に引数として渡す</h4>
+#Dereference
+my @nums = @ {$ nums_ref};
+</ pre>
 
-<a href="/blog/20100104126425.html">shift関数</a>、<a href="/blog/20100105126425.html">unshift関数</a>、<a href="/blog/20100107126425.html">pop関数</a>、<a href="/blog/20100106126425.html">push</a>などの配列に関する関数は、引数に配列をとります。そのため、配列のリファレンスを渡したい場合は、デリファレンスする必要があるので注意してください。
+Dereferences can be made using the notation "@ {array reference}".
 
-<pre>
-# デリファレンスして標準関数に渡す
-shift @$array;
-unshift @$array, $element;
-push @$array, $element;
-pop @$array;
-</pre>
-
-<h3>配列のリファレンスから配列の値を取り出す</h3>
-
-配列のリファレンスから配列の値を取り出すにはアロー演算子「->」を使うことができます。
+If the array reference is a scalar variable, you can omit the "{}".
 
 <pre>
-# 配列のリファレンスから配列の値の取得
-my $num = $nums_ref->[3];
+my @nums = @ $ nums_ref;
+</ pre>
 
-# 配列のリファレンスから配列の値を設定
-$nums_ref->[3] = 67;
-</pre>
+<h4> Pass as an argument to a standard function </ h4>
 
-アロー演算子が使われている場合は、配列のリファレンスです。そうでない場合は、配列です。これもソースコードの中で、しっかり読み取れるようになってください。
+<a href="/blog/20100104126425.html"> shift function </a>, <a href="/blog/20100105126425.html"> unshift function </a>, <a href="/blog/20100107126425. Array-related functions such as html "> pop function </a> and <a href="/blog/20100106126425.html"> push </a> take an array as an argument. So be aware that if you want to pass an array reference, you need to dereference it.
 
 <pre>
-# 配列の値の取得
-my $num = $nums[3];
+#Dereference and pass to standard function
+shift @ $ array;
+unshift @ $ array, $ element;
+push @ $ array, $ element;
+pop @ $ array;
+</ pre>
 
-# 配列の値を設定
-$nums[3] = 67;
-</pre>
+<h3> Extract array values ​​from array reference </ h3>
 
-アロー演算子のあるなしだけで、配列なのか配列のリファレンスなのかが異なるので、しっかり見ることが大切です。
-
-<h4>ハッシュのリファレンス</h4>
-
-配列のリファレンスと同じくらい頻繁に利用されるものとしてハッシュのリファレンスがあります。
+You can use the arrow operator "->" to retrieve an array value from an array reference.
 
 <pre>
-my $score_ref = {math => 78, english => 89};
-</pre>
+# Get array values ​​from array references
+my $ num = $ nums_ref-> [3];
 
-ハッシュのリファレンスについては以下で詳しく解説しています。
+# Set array values ​​from array reference
+$ nums_ref-> [3] = 67;
+</ pre>
+
+If the arrow operator is used, it is an array reference. If not, it's an array. Please be able to read this well in the source code.
+
+<pre>
+# Get array values
+my $ num = $ nums [3];
+
+#Set array values
+$ nums [3] = 67;
+</ pre>
+
+It's important to look closely, as it depends on whether it's an array or an array reference, with or without the arrow operator.
+
+<h4> Hash reference </ h4>
+
+Hash references are as often used as array references.
+
+<pre>
+my $ score_ref = {math => 78, english => 89};
+</ pre>
+
+Hash references are explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20180208151809.html">ハッシュのリファレンス</a>
-  </li>
-</ul>
+    <a href="/blog/20180208151809.html"> Hash reference </a>
+  </ li>
+</ ul>

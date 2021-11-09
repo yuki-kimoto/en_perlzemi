@@ -1,202 +1,201 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name"><a href="/blog/20100827127859.html">正規表現</a></span>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> <a href="/blog/20100827127859.html"> Regular expression </a> </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
 
-<h2>正規表現の文字クラス</h2>
+<h2> Regular expression character class </ h2>
 
-複数の文字の集合を表現するには文字クラスを使用します。
+Use a character class to represent a set of characters.
 
 <pre>
-[文字の集合]
-</pre>
+[Character set]
+</ pre>
 
-たとえば「a」か「b」か「c」という文字を表現したい場合は[abc]と書きます。
+For example, if you want to express the letters "a", "b", or "c", write [abc].
 
 <pre>
 a
-b    ->    [abc]
+b-> [abc]
 c
-</pre>
+</ pre>
 
-アルファベットの範囲や数値の範囲を指定するのにハイフン「-」記号を使用することができます。
+You can use the hyphen "-" symbol to specify a range of letters or numbers.
 
 <pre>
 a
-b
-c    ->    [a-e]
+b b
+c-> [a-e]
 d
 e
-</pre>
+</ pre>
 
 <pre>
 0
 1
-2    ->    [0-4]
+2-> [0-4]
 3
-4
-</pre>
+Four
+</ pre>
 
-アルファベットと数値のいずれかを表現したい場合は[a-zA-Z0-9]と書きます。
-
-<pre>
-アルファベットと数字    ->    [a-zA-Z0-9]
-</pre>
-
-<h3>文字クラスの否定</h3>
-
-文字クラスを使って特定の文字以外を表現することもできます。特定の文字以外を表現するには「^」を使用します。文字クラス[]の先頭で「^」が使用されると「それ以外」という意味になり、「文字の先頭」という意味にはならないので注意してください。
-
-たとえば「a」「b」「c」以外の文字を表現するには次のようにします。
+If you want to express either an alphabet or a numerical value, write [a-zA-Z0-9].
 
 <pre>
-「a」「b」「c」以外の文字    ->    [^abc]
-</pre>
+Alphabets and numbers-> [a-zA-Z0-9]
+</ pre>
 
-<h3>Perlで定義済みの文字クラス</h3>
+<h3> Negation of character class </ h3>
 
-Perlで定義済みの文字クラスというものが存在します。「\d」というのは、定義済みの文字クラスです。
+You can also use character classes to represent non-specific characters. Use "^" to represent something other than a specific character. Note that if "^" is used at the beginning of the character class [], it means "other than that", not "the beginning of the character".
 
-<a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES">文字クラス - 正規表現のリファレンス</a>から、定義済みの文字クラスを引用します。
-
-<pre>
-   \d      数値
-   \D      非数値
-   \w      単語文字
-   \W      非単語文字
-   \s      空白文字
-   \S      非空白文字
-   \h      水平空白文字
-   \H      非水平空白文字
-   \N      非改行 ('{NAME}' に引き続いていない場合; 実験的; 文字クラスでは
-           不正; [^\n] と等価; /s なしの場合の '.' と同様)
-   \v      垂直空白文字
-   \V      非垂直空白文字
-   \R      一般的な改行                (?>\v|\x0D\x0A)
-   \C      1 バイトにマッチする (Unicode では、'.' は文字にマッチする)
-   \pP     P の名前の (Unicode) プロパティ
-   \p{...} 1 文字より長い名前の Unicode プロパティにマッチする
-   \PP     非 P にマッチする
-   \P{...} 1 文字より長い名前の Unicode プロパティがないものにマッチする
-   \X      Unicode の拡張書記素クラスタにマッチする
-</pre>
-
-文字クラスは、文字クラスの中でも使用できます。
+For example, to represent a character other than "a", "b", and "c":
 
 <pre>
-[a-c\d\s]
-</pre>
+Characters other than "a", "b" and "c"-> [^ abc]
+</ pre>
 
-注意してほしいのは、これらは、すべて、Unicodeの影響を受けるということです。PerlはUnicodeをサポートしており、日本語を扱うよい慣習は、プログラムの中では、すべて<a href="https://perlzemi.com/blog/20091118124667.html">内部文字列(デコードされた文字列)</a>として扱うことです。
+<h3> Perl-defined character classes </ h3>
 
-この場合、「\d」は半角の0～9だけではなく、全角の０～９にもマッチします。\sは、半角の空白文字だけではなく、全角の空白文字にもマッチします。
+There is a character class defined in Perl. "\ D" is a predefined character class.
 
-ASCII範囲に限定したい場合は、以下の解説を読んでください。
-
-<h4>文字クラスをASCII範囲のみに限定する</h4>
-
-文字クラスをASCII範囲のみに限定する「a」オプションがPerl 5.14から導入されています。
+<a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES"> Character class --Regular expression reference </a>, quote the defined character class ..
 
 <pre>
-# ASCII範囲の数字のみにマッチさせる。
-$str =~ /\d+/a;
-</pre>
+   \ d Numerical value
+   \ D non-numeric
+   \ w word letter
+   \ W Non-word character
+   \ s whitespace
+   \ S Non-whitespace character
+   \ h Horizontal whitespace
+   \ H Non-horizontal whitespace character
+   \ N Non-line feed (if not followed by'{NAME}'; experimental; in character class
+           Illegal; equivalent to [^ \ n]; similar to'.' Without / s)
+   \ v Vertical whitespace
+   \ V Non-vertical whitespace
+   \ R General line breaks (?> \ V | \ x0D \ x0A)
+   \ C Match 1 byte (in Unicode,'.' Matches a character)
+   \ pP P P's name (Unicode) property
+   \ p {...} Matches a Unicode property with a name longer than one character
+   \ PP Matches non-P
+   \ P {...} Matches one that does not have a Unicode property with a name longer than one character
+   \ X Matches Unicode extended grapheme clusters
+</ pre>
 
-<h4>ASCII範囲のみを表現する文字クラス</h4>
-
-Perlには、ASCIIの範囲を表現する文字クラスも存在します。この方法も、ASCII範囲のみに限定したい場合の、もう一つの解決方法です。
-
-たとえばASCIIの範囲で、アルファベットと数字にマッチする文字クラスは以下のように表現できます。
+Character classes can also be used within character classes.
 
 <pre>
-# ASCIIの範囲で、アルファベットと数字にマッチする文字クラス
-\p{PosixAlnum}
-</pre>
+[a-c \ d \ s]
+</ pre>
 
-<a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES">文字クラス - 正規表現のリファレンス</a>から、定義済みの文字クラスを引用します。
+Please note that all of these are Unicode affected. Perl supports Unicode, and a good practice for working with Japanese is all <a href="https://perlzemi.com/blog/20091118124667.html"> internal strings (decoded) in your program. Treat it as a string) </a>.
 
-ASCII-rangeと書かれている列の文字クラスに、注目してみましょう。
+In this case, "\ d" matches not only half-width 0-9 but also full-width 0-9. \ s matches not only half-width space characters but also full-width space characters.
+
+If you want to limit it to the ASCII range, read the instructions below.
+
+<h4> Limit character classes to ASCII range only </ h4>
+
+Perl 5.14 introduces the "a" option, which limits the character class to the ASCII range only.
 
 <pre>
-            ASCII-         Full-
-   POSIX    range          range    backslash
- [[:...:]]  \p{...}        \p{...}   sequence    Description
- -----------------------------------------------------------------------
- alnum   PosixAlnum       XPosixAlnum            Alpha と Digit
- alpha   PosixAlpha       XPosixAlpha            英字
- ascii   ASCII                                   任意の ASCII 文字
- blank   PosixBlank       XPosixBlank   \h       水平空白;
-                                                   全種類は \p{HorizSpace}
-                                                   とも (GNU 拡張)
- cntrl   PosixCntrl       XPosixCntrl            制御文字
- digit   PosixDigit       XPosixDigit   \d       数字
- graph   PosixGraph       XPosixGraph            Alnum と Punct
- lower   PosixLower       XPosixLower            小文字
- print   PosixPrint       XPosixPrint            Graph と Print、しかし
-                                                   Cntrl は含まない
- punct   PosixPunct       XPosixPunct            ASCII の範囲の句読点と
-                                                   シンボル; 単にその外側の
+#Match only numbers in the ASCII range.
+$ str = ~ / \ d + / a;
+</ pre>
+
+<h4> Character class that represents only ASCII range </ h4>
+
+Perl also has character classes that represent ASCII ranges. This method is another solution if you want to limit it to the ASCII range only.
+
+For example, in the ASCII range, character classes that match alphabets and numbers can be expressed as follows.
+
+<pre>
+Character classes that match alphabets and numbers in the #ASCII range
+\ p {PosixAlnum}
+</ pre>
+
+<a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES"> Character class --Regular expression reference </a>, quote the defined character class ..
+
+Notice the character class in the column labeled ASCII-range.
+
+<pre>
+            ASCII- Full-
+   POSIX range range backslash
+ [[: ...:]] \ p {...} \ p {...} sequence Description
+ -------------------------------------------------- ---------------------
+ alnum PosixAlnum XPosixAlnum Alpha and Digit
+ alpha PosixAlpha XPosixAlpha alphabet
+ ascii ASCII any ASCII character
+ blank PosixBlank XPosixBlank \ h Horizontal blank;
+                                                   All types are \ p {HorizSpace}
+                                                   Tomo (GNU extension)
+ cntrl PosixCntrl XPosixCntrl Control character
+ digit PosixDigit XPosixDigit \ d Numbers
+ graph PosixGraph XPosixGraph Alnum and Punct
+ lower PosixLower XPosixLower Lowercase
+ print PosixPrint XPosixPrint Graph and Print, but
+                                                   Does not include Cntrl
+ punct PosixPunct XPosixPunct With ASCII range punctuation
+                                                   Symbol; simply outside of it
                                                    punct
- space   PosixSpace       XPosixSpace            [\s\cK]
-         PerlSpace        XPerlSpace    \s       Perl の空白の定義
- upper   PosixUpper       XPosixUpper            大文字
- word    PosixWord        XPosixWord    \w       Alnum + Unicode マーク +
-                                                   '_' のような接続文字
-                                                   (Perl 拡張)
- xdigit  ASCII_Hex_Digit  XPosixDigit            16 進数;
-                                                    ASCII の範囲では
+ space PosixSpace XPosixSpace [\ s \ cK]
+         PerlSpace XPerlSpace \ s Perl blank definition
+ upper PosixUpper XPosixUpper Uppercase
+ word PosixWord XPosixWord \ w Alnum + Unicode mark +
+                                                   Connection characters like'_'
+                                                   (Perl extension)
+ xdigit ASCII_Hex_Digit XPosixDigit Hexadecimal;
+                                                    In the ASCII range
                                                     [0-9A-Fa-f]
-</pre>
+</ pre>
 
-<h3>文字クラスのサンプル</h3>
+<h3> Character class sample </ h3>
 
-文字クラスのサンプルです。<a href="https://webapp.perlzemi.com/blog/20200112082904.html">Webサイトの会員登録</a>にも使える、ユーザーIDの正規表現、Webサービスのパスワードの正規表現のサンプルも書いてみました。
+This is a sample character class. <a href="https://webapp.perlzemi.com/blog/20200112082904.html"> Sample user ID regular expression and web service password regular expression that can also be used for website membership registration </a> I also wrote.
 
 <pre>
 use strict;
 use warnings;
 use utf8;
 
-# 文字クラスを使う
-my $str = 'Hello';
-if ($str =~ /[abcde]/) {
-  print "Match\n";
+# Use character class
+my $ str ='Hello';
+if ($ str = ~ / [abcde] /) {
+  print "Match \ n";
 }
 
-# WebサービスのユーザーID(a-zA-Z0-9_)にマッチさせる
-my $user_id = 'kimoto_yuki089';
-my $user_id_invalid = 'abc&cde';
-if ($user_id =~ /^\p{PosixWord}+$/) {
-  print "user_is valid\n";
+#Match with web service user ID (a-zA-Z0-9_)
+my $ user_id ='kimoto_yuki089';
+my $ user_id_invalid ='abc & cde';
+if ($ user_id = ~ / ^ \ p {PosixWord} + $ /) {print "user_is valid \ n";
 }
-unless ($user_id_invalid =~ /^\p{PosixWord}+$/) {
-  print "user_id_invalid is invalid\n";
+unless ($ user_id_invalid = ~ / ^ \ p {PosixWord} + $ /) {
+   print "user_id_invalid is invalid \ n";
 }
 
-# Webサービスのパスワード(ASCII範囲の空白以外の見える文字)にマッチさせる
-my $password = 'Ufy|&123_';
-my $passowrd_invalid1 = 'abc def';
-my $passowrd_invalid2 = 'abcあ';
-if ($password =~ /^\p{PosixGraph}+$/) {
-  print "password is valid\n";
+#Match a web service password (a non-blank visible character in the ASCII range)
+my $ password ='Ufy | & 123_';
+my $ passowrd_invalid1 ='abc def';
+my $ passowrd_invalid2 ='abc a';
+if ($ password = ~ / ^ \ p {PosixGraph} + $ /) {
+   print "password is valid \ n";
 }
-unless ($passowrd_invalid1 =~ /^\p{PosixGraph}+$/) {
-  print "passowrd_invalid1 is inalid\n";
+unless ($ passowrd_invalid1 = ~ / ^ \ p {PosixGraph} + $ /) {
+   print "passowrd_invalid1 is inalid \ n";
 }
-unless ($passowrd_invalid2 =~ /^\p{PosixGraph}+$/) {
-  print "passowrd_invalid2 is inalid\n";
+unless ($ passowrd_invalid2 = ~ / ^ \ p {PosixGraph} + $ /) {
+   print "passowrd_invalid2 is inalid \ n";
 }
-</pre>
+</ pre>

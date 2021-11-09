@@ -1,343 +1,333 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
+  </ li>
+</ ol>
 
-<h2>Amazon::S3::Thin - 薄くて、軽量、低レベル操作ができるAmazon S3クライアント</h2>
+<h2> Amazon :: S3 :: Thin --Thin, lightweight, low-level Amazon S3 client </ h2>
 
-Amazon::S3::Thinは薄くて、軽量、低レベル操作ができるAmazon S3クライアントです。以下は、<a href="https://metacpan.org/pod/Amazon::S3::Thin">Amazon::S3::Thin </a> 0.29の日本語訳です。
+Amazon :: S3 :: Thin is a thin, lightweight, low-level Amazon S3 client. The following is a Japanese translation of <a href="https://metacpan.org/pod/Amazon :: S3 :: Thin"> Amazon :: S3 :: Thin </a> 0.29.
 
-<h3>概要</h3>
+<h3> Overview </ h3>
 
 <pre>
-use Amazon::S3::Thin;
+use Amazon :: S3 :: Thin;
  
-my $s3client = Amazon::S3::Thin->new({
-      aws_access_key_id     => $aws_access_key_id,
-      aws_secret_access_key => $aws_secret_access_key,
-      aws_session_token     => $aws_session_token, # optional
-      region                => $region, # e.g. 'ap-northeast-1'
+my $ s3client = Amazon :: S3 :: Thin-> new ({{
+      aws_access_key_id => $ aws_access_key_id,
+      aws_secret_access_key => $ aws_secret_access_key,
+      aws_session_token => $ aws_session_token, # optional
+      region => $ region, # e.g.'ap-northeast-1'
     });
  
-my $bucket = "mybucket";
-my $key = "dir/file.txt";
-my $response;
+my $ bucket = "mybucket";
+my $ key = "dir / file.txt";
+my $ response;
  
-$response = $s3client->put_bucket($bucket);
+$ response = $ s3client-> put_bucket ($ bucket);
  
-$response = $s3client->put_object($bucket, $key, "hello world");
+$ response = $ s3client-> put_object ($ bucket, $ key, "hello world");
  
-$response = $s3client->get_object($bucket, $key);
-print $response->content; # => "hello world"
+$ response = $ s3client-> get_object ($ bucket, $ key);
+print $ response-> content; # => "hello world"
  
-$response = $s3client->delete_object($bucket, $key);
+$ response = $ s3client-> delete_object ($ bucket, $ key);
  
-$response = $s3client->list_objects(
-                            $bucket,
+$ response = $ s3client-> list_objects (
+                            $ bucket,
                             {prefix => "foo", delimiter => "/"}
                            );
-</pre>
+</ pre>
 
-また、任意のユーザーエージェントを好きなように渡すことができます
-
-<pre>
-my $s3client = Amazon::S3::Thin->new({
-        ...
-        ua => $any_LWP_copmatible_useragent,
-    });
-</pre>
-
-デフォルトでは、署名バージョン 4 が使用されます。署名バージョン 2 を使用するには、オプションを追加します。signature_version
+You can also pass any user agent as you like
 
 <pre>
-my $s3client = Amazon::S3::Thin->new({
+my $ s3client = Amazon :: S3 :: Thin-> new ({{
         ...
-        signature_version     => 2,
+        ua => $ any_LWP_copmatible_useragent,
     });
-</pre>
+</ pre>
 
-<h3>説明</h3>
+By default, signature version 4 is used. To use signature version 2, add an option. signature_version
 
-Amazon::S3:::Thin は薄くて軽量で低レベルの Amazon S3 クライアントです。
+<pre>
+my $ s3client = Amazon :: S3 :: Thin-> new ({{
+        ...
+        signature_version => 2,
+    });
+</ pre>
 
-リクエストを送信して応答を得るという目的だけで設計されています。
+<h3> Explanation </ h3>
 
-詳細には、次の機能を提供しています。
+Amazon :: S3 ::: Thin is a thin, lightweight, low-level Amazon S3 client.
 
-<b>低レベル</b>
+It is designed solely for the purpose of sending a request and getting a response.
 
-<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクトを返して、内部で何が起こっているかを簡単に調べることができ、必要に応じてエラーを処理できます。
+In detail, it provides the following features:
 
-<b>低依存</b>
+<b> Low level </ b>
 
-XML::*モジュールは必要ないので、インストールは簡単です。
+<a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> You can easily find out what's going on inside by returning an object, you need You can handle the error accordingly.
 
-<b>低学習コスト</b>
+<b> Low dependence </ b>
 
-インターフェイスは、S3 公式 REST API に従うように設計されています。だから、学ぶことは簡単です。
+No XML :: * module is needed, so it's easy to install.
 
-<b>以前に作られたモジュールとの比較</b>
+<b> Low learning cost </ b>
 
-すでにAmazon::S3、Net::Amazon::S3のような便利なモジュールがあります。彼らはPerlプログラマにとってきれいに見える「Perlish」インターフェイスを提供しますが、低レベルの動作も隠しています。たとえば、「get_key」メソッドは、HTTP ステータス 404 を undef に変換し、HTTP 5xx ステータスを例外に変換します。
+The interface is designed to follow the official S3 REST API. So it's easy to learn.
 
-状況によっては、生の HTTP 通信を確認することが非常に重要です。だから私はこのモジュールを作ったのです。
+<b> Comparison with previously created modules </ b>
 
-<h3>コンストラクタ</h3>
+There are already useful modules like Amazon :: S3, Net :: Amazon :: S3. They provide a "Perlish" interface that looks nice to Perl programmers, but also hides low-level behavior. For example, the "get_key" method converts the HTTP status 404 to undef and the HTTP 5xx status to an exception.
 
-<h4>new( \%params )</h4>
+In some situations it is very important to check her raw HTTP communication. That's why I made this module.
 
-<b>引数:</b>オプションを含んだハッシュリファレンス.
+<h3> Constructor </ h3>
 
-<b>戻り値</b>:Amazon::S3::薄いオブジェクト
+<h4> new (\% params) </ h4>
 
-次の引数を受け取ることができます。
+<B> Arguments: Hash reference with </ b> options.
+
+<b> Return value </ b>: Amazon :: S3 :: Thin object
+
+You can receive the following arguments:
 
 <ul>
-  <li>aws_access_key_id (<b>必須</b>)- 資格情報のアクセス キー ID。</li>
-  <li>aws_secret_access_key (<b>必須</b>)- 資格情報の秘密のアクセスキー。</li>
-  <li>region - (<b>必須</b>)アクセスするバケットのリージョン(現在は署名バージョンが4の場合にのみ使用)</li>
-  <li>secure- httpsを使用するかどうか。デフォルトは 0 (http) です。</li>
-  <li>ua- ユーザー エージェント オブジェクトで、LWP::UserAgent と互換性があります。デフォルトはLWP::ユーザーエージェントのインスタンスです。</li>  <li>signature_version- 使用する AWS 署名バージョン。サポートされる値は 2 と 4 です。デフォルトは 4 です。</li>
-  <li>debug- デバッグオプション。デフォルトは 0 (偽) です。設定値 1 の場合、HTTP 要求と応答の内容は stderr に表示されます。</li>
-  <li>virtual_host- 仮想ホスト型の要求形式を使用するかどうか。デフォルトは 0 (パススタイル) です。</li>
-</ul>
+  <li> aws_access_key_id (<b> Required </ b>)-Credential access key ID. </ li>
+  <li> aws_secret_access_key (<b> Required </ b>)-The secret access key for your credentials. </ li>
+  <li> region-(<b> required </ b>) Region of bucket to access (currently only used if signature version is 4) </ li>
+  <li> secure- Whether to use https. The default is 0 (http). </ li>
+  <li> ua-User agent object compatible with LWP :: UserAgent. The default is an instance of LWP :: user agent. </ li> <li> signature_version-Her AWS signature version to use. The supported values ​​are 2 and 4. The default is 4. </ li>
+  <li> debug- Debug options. The default is 0 (false). If the setting value is 1, the contents of HTTP requests and responses are displayed in stderr. </ li>
+  <li> virtual_host-Whether to use a virtual host type request format. The default is 0 (path style). </ li>
+</ ul>
 
-<h3>アクセサ</h3>
+<h3> Accessor </ h3>
 
-次のアクセサが提供されます。これらを使用して、オブジェクトの属性を取得/設定できます。
+The following accessors are provided: You can use these to get / set the attributes of an object.
 
-<h4>secure</h4>
+<h4> secure </ h4>
 
-S3 に接続するときに https (1) または http (0) を使用するかどうか。
+Whether to use https (1) or http (0) when connecting to S3.
 
-<h4>ua</h4>
+<h4> ua </ h4>
 
-ユーザー エージェントは、要求を実行し、応答を返すために内部で使用しました。この属性を設定する場合は、<a href="https://metacpan.org/pod/LWP::UserAgent">LWP::UserAgent</a>(同じインターフェイスを提供する)と互換性のあるオブジェクトで設定してください。
+The user agent used it internally to execute the request and return a response. If you set this attribute, it's an object compatible with <a href="https://metacpan.org/pod/LWP :: UserAgent"> LWP :: UserAgent </a> (which provides the same interface). Please set with.
 
-<h4>debug</h4>
+<h4> debug </ h4>
 
-デバッグ オプション。
+Debug options.
 
-<h3>バケットに対する操作</h3>
+<h3> Operation on bucket </ h3>
 
-<h4>put_bucket($bucket[,$headers])</h4>
+<h4> put_bucket ($ bucket [, $ headers]) </ h4>
 
-<b>引数:</b>
+<b> Arguments: </ b>
 
-1. バケット - バケットを持つ文字列
+1. Bucket-a string with a bucket
 
-2. ヘッダー (オプション) - 余分なヘッダー情報を含むハッシュリファレンス
+2. Header (optional)-Hash reference with extra header information
 
-<h4>delete_bucket($bucket[$headers])</h4>
+<h4> delete_bucket ($ bucket [$ headers]) </ h4>
 
-<b>引数:</b>
+<b> Arguments: </ b>
 
-1. バケット - バケットを持つ文字列
+1. Bucket-a string with a bucket
 
-2. ヘッダー (オプション) - 余分なヘッダー情報を含むハッシュリファレンス
+2. Header (optional)-Hash reference with extra header information
 
-<h3>オブジェクトに対する操作</h3>
+<h3> Operations on objects </ h3>
 
-<h4>get_object($bucket, $key[, $headers] )</h4>
+<h4> get_object ($ bucket, $ key [, $ headers]) </ h4>
 
-<b>引数:</b>
+<b> Arguments: </ b>
 
-1. バケット - バケットを持つ文字列
+1. Bucket-a string with a bucket
 
-2. キー - キーを持つ文字列
+2. Key-A string with a key
 
-3. ヘッダー (オプション) - 余分なヘッダー情報を含むハッシュリファレンス
+3. Header (optional)-Hash reference with extra header information
 
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。返されたオブジェクトに対してcontent()メソッドを使用して、内容を読み取れます。
-
-<pre>
-my $res = $s3->get_object( 'my.bucket', 'my/key.ext' );
- 
-if ($res->is_success) {
-    my $content = $res->content;
-}
-</pre>
-
-GET オペレーションは、Amazon S3 からオブジェクトを取得します。
-
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">GETに関するAmazonのドキュメント</a>を参照してください。
-
-<h4>head_object($bucket, $key)</h4>
-
-<b>引数:</b>
-
-1. バケット - バケットを持つ文字列
-
-2. キー - キーを持つ文字列
-
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。返されたオブジェクトに対してheader()メソッドを使用して、メタデータを読み取れます。
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request. You can use the content () method on the returned object to read its contents.
 
 <pre>
-my $res = $s3->head_object( 'my.bucket', 'my/key.ext' );
+my $ res = $ s3-> get_object ('my.bucket','my / key.ext');
  
-if ($res->is_success) {
-    my $etag = $res->header('etag'); #=> `"fba9dede5f27731c9771645a39863328"`
+if ($ res-> is_success) {
+    my $ content = $ res-> content;
 }
-</pre>
+</ pre>
 
-HEAD オペレーションは、Amazon S3 からオブジェクトのメタデータを取得します。
+The GET operation gets an object from Amazon S3.
 
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectHEAD.html">HEADに関するAmazonのドキュメント</a>を参照してください。
+For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html"> Amazon documentation on GET </a>.
 
-<h4>delete_object($bucket, $key)</h4>
+<h4> head_object ($ bucket, $ key) </ h4>
 
-<b>引数:</b> バケット名を持つ文字列と、キー名を持つ文字列。
+<b> Arguments: </ b>
 
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。
+1. Bucket-a string with a bucket
 
-DELETE 操作は、オブジェクトの null バージョン (存在する場合) を削除し、削除マーカーを挿入します。null バージョンがない場合、Amazon S3 はオブジェクトを削除しません。
+2. Key-A string with a key
 
-応答オブジェクトを使用して、成功したかどうかを確認します。
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request. You can use the header () method on the returned object to read the metadata.
 
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html">DELETEに関するAmazonのドキュメント</a>を参照してください。
+<pre>
+my $ res = $ s3-> head_object ('my.bucket','my / key.ext');
+ 
+if ($ res-> is_success) {
+    my $ etag = $ res-> header ('etag'); # => `" fba9dede5f27731c9771645a39863328 "`
+}
+</ pre>
 
-<h4>copy_object( $src_bucket, $src_key, $dst_bucket, $dst_key [, $headers] )</h4>
+The HEAD operation gets the object's metadata from Amazon S3.
 
-<b>引数:</b> ソース (バケット、キー) と宛先 (バケット、キー) を持つリスト、追加のヘッダー情報を含むハッシュリファレンス (オプション)。
+For more information, <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjSee ectHEAD.html "> Amazon documentation on HEAD </a>.
 
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。
+<h4> delete_object ($ bucket, $ key) </ h4>
 
-このメソッドは、Amazon の S3 API で説明されている PUT 操作のバリエーションです。すでに Amazon S3 に保存されているオブジェクトのコピーを作成します。この「PUT コピー」操作は、古いバケット/キーから GET を実行し、新しいバケット/キーに PUT を実行するのと同じです。
+<b> Arguments: </ b> A string with a bucket name and a string with a key name.
 
-COPY 要求は 200 OK でエラー応答を返す場合がありますが、このメソッドはエラー応答を判別し、状況コードを 500 に書き換えます。
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request.
 
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html">COPYに関するAmazonのドキュメント</a>を参照してください。
+The DELETE operation deletes the null version of the object (if it exists) and inserts a delete marker. If there is no null version, Amazon S3 will not delete the object.
 
-<h4>put_object($bucket, $key, $content[,$headers] )</h4>
+Use the response object to see if it succeeded.
 
-<b>引数:</b>
+For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html"> Amazon documentation on DELETE </a>.
 
-1. バケット - 宛先バケットを含む文字列
+<h4> copy_object ($ src_bucket, $ src_key, $ dst_bucket, $ dst_key [, $ headers]) </ h4>
 
-2. キー - 宛先キーを持つ文字列
+<b> Arguments: </ b> A list with source (bucket, key) and destination (bucket, key), hash reference (optional) with additional header information.
 
-3. コンテンツ - アップロードするコンテンツを含む文字列
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request.
 
-4. ヘッダー (オプション) - 余分なヘッダー情報を含むハッシュリファレンス
+This method is a variation of the PUT operation described in Amazon's S3 API. Make a copy of the object that is already stored in Amazon S3. This "PUT copy" operation is the same as performing a GET from the old bucket / key and performing her PUT on the new bucket / key.
 
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。
+A COPY request may return an error response with 200 OK, but this method determines the error response and rewrites the status code to 500.
 
-PUT 操作は、バケットにオブジェクトを追加します。Amazon S3 は、部分オブジェクトを追加しません。成功レスポンスを受け取った場合、Amazon S3 はオブジェクト全体をバケットに追加します。
+For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html"> Amazon documentation on COPY </a>.
 
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html">PUTに関するAmazonのドキュメント</a>を参照してください。
+<h4> put_object ($ bucket, $ key, $ content [, $ headers]) </ h4>
 
-<h4>delete_multiple_objects($bucket, @keys)</h4>
+<b> Arguments: </ b>
 
-<b>引数:</b> バケット名を持つ文字列と、削除するすべてのキーを含む配列。
+1. Bucket-a string containing the destination bucket
 
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。
+2. Key-A string with a destination key
 
-複数オブジェクトの削除操作では、単一の HTTP リクエストを使用して、バケットから複数のオブジェクト (最大 1000) を削除できます。削除するオブジェクトキーがわかっている場合、この操作は、個々の削除要求を 送信する代わりに、要求ごとのオーバーヘッドを削減します。delete_object()
+3. Content-A string containing the content to upload
 
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/multiobjectdeleteapi.html">複数オブジェクトの削除に関するDELETEのAmazonのドキュメント</a>を参照してください。
+4. Header (optional)-Hash reference with extra header information
 
-<h4>list_objects( $bucket [, \%options] )</h4>
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request.
 
-<b>引数:</b> バケット名を持つ文字列、および以下のオプションを含むハッシュリファレンス(オプション)のいずれかを使用します。
+The PUT operation adds an object to the bucket. Amazon S3 doesn't add partial objects. When you receive a success response, Amazon S3 adds the entire object to your bucket.
+
+For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html"> Amazon documentation on PUT </a>.
+
+<h4> delete_multiple_objects ($ bucket, @keys) </ h4>
+
+<b> Arguments: </ b> An array containing a string with the bucket name and all the keys to delete.
+
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request.
+
+The delete multiple objects operation allows you to delete multiple objects (up to 1000) from your bucket using a single HTTP request. If you know the object key to delete, this operation reduces the overhead for each request instead of sending individual delete requests. delete_object ()
+
+For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/multiobjectdeleteapi.html"> DELETE's Amazon documentation on deleting multiple objects </a>. Please give me.
+
+<h4> list_objects ($ bucket [, \% options]) </ h4>
+
+<b> Arguments: </ b> Use either a string with the bucket name and a hash reference (optional) that includes the following options:
 
 <ul>
-  <li>prefix (文字列)- 指定したプレフィックスで始まるキーのみを返します。ファイルシステム内のフォルダーを使用する場合と同じように、プレフィックスを使用してバケットを異なるグループのキーに分けることができます。</li>
-  <li>delimiter (文字列)- キーの先頭 (または指定されている場合はプレフィックスの後) と区切り文字の最初の出現との間に同じ文字列を含むグループ キー。</li>
-  <li>encoding-type (文字列)- "url" に設定すると、応答のキーがエンコードされます (XML パーサーが Unicode キーを動作できない場合に便利です)。</li>
-  <li>marker (文字列)- オブジェクトをリストする際に開始するキーを指定します。Amazon S3 は、オブジェクトキーをアルファベット順に、マーカーの直後のキーから順に返します。</li>
-  <li>max-keys (文字列)- 応答本文に返されるキーの最大数を設定します。デフォルトの 1000 キーより少ない数のキーを取得する場合は、これをリクエストに追加できます。</li>
-</ul>
+  <li> prefix (string)-Returns only keys that start with the specified prefix. You can use prefixes to separate buckets into different groups of keys, just as you would with folders in the file system. </ li>
+  <li> delimiter (string)-A group key that contains the same string between the beginning of the key (or after the prefix, if specified) and the first occurrence of the delimiter. </ li>
+  <li> encoding-type (string)-Set to "url" to encode the response key (useful if the XML parser cannot work with Unicode keys). </ li>
+  <li> marker (string)-Specifies the key to start when listing objects. Amazon S3 returns the object keys in alphabetical order, starting with the key immediately following the marker. </ li>
+  <li> max-keys (string) -Sets the maximum number of keys returned in the response body. If you want to get fewer keys than the default 1000 keys, you can add this to your request. </ li>
+</ ul>
 
-<b>戻り値:</b>リクエストに応じた<a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a>オブジェクト。返されたオブジェクトに対してcontent()メソッドを使用して、内容を読み取れます。
+<b> Return: </ b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response </a> object in response to the request. You can use the content () method on the returned object to read its contents.
 
-このメソッドは、バケット内のオブジェクトの一部または全部 (最大 1000 個) を返します。応答に含まれるキーは少なくなる可能性がありますが、それ以上は含まれていないことに注意してください。検索条件を満たすキーが制限値 (1000 または max-key) を超えたために返されなかった場合、応答には .追加のキーを返す場合は、上記の「marker」を参照してください。
+This method returns some or all of the objects in the bucket (up to 1000). Note that the response may contain fewer keys, but no more. If a key that meets the search criteria is not returned because it exceeds the limit (1000 or max-key), the response will return an additional key, see "marker" above.
 
-詳細については、<a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html">AMAZONのRESTバケットGETのドキュメント</a>を参照してください。
+For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html"> AMAZON REST Bucket GET Documentation </a>.
 
-<h4>generate_presigned_post($bucket, $key [, $fields, $conditions, $expires_in ] )</h4>
+<h4> generate_presigned_post ($ bucket, $ key [, $ fields, $ conditions, $ expires_in]) </ h4>
 
-<b>引数:</b>
+<b> Arguments: </ b>
 
-1. バケット (文字列) - 送信先バケットを含む文字列
+1. Bucket (string)-a string containing the destination bucket
 
-2. キー (文字列) - 宛先キーを持つ文字列
+2. Key (string)-a string with a destination key
 
-3. フィールド (配列リファレンス) - キー/値ペアの配列リファレンスを事前に記入したフォームフィールドに対して、上に構築します。
+3. Field (Array Reference)-Builds an array reference for key / value pairs on top of the pre-filled form field.
 
-4. 条件 (配列リファレンス) - ポリシーに含める条件 (配列リファレンスまたはハッシュリファレンス) の配列リファレンス
+4. Condition (array reference)-Array reference of the condition (array reference or hash reference) to include in the policy
 
-5. expires_in (数) - 署名付き URL が期限切れになる前の現在の時刻からの秒数
+5. expires_in (number)-the number of seconds since the current time before the signed URL expired
 
-<b>戻り値:</b> 「url」と「fields」という2 つの要素を持つハッシュリファレンスを返します。「url」は、ポストされたURLです。「fields」は、POSTをサブミットしたときに使用された、フォームのフィールドとそれぞれの値です。 は、投稿を送信するときに使用するフォームフィールドとそれぞれの値を記入した配列リファレンスです。(fieldsの順序に従う必要があります。)
+<b> Return value: </ b> Returns a hash reference with two elements, "url" and "fields". "Url" is the posted URL. "Fields" are the fields of the form and their respective values ​​that were used when submitting POST. Is an array reference with the form fields to use when submitting the post and their respective values. (You must follow the order of fields.)
 
-このメソッドは、HTTP POST を使用して Amazon S3 にファイルをアップロードするための署名付き URL を生成します。boto3 からの元の実装は、<a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.generate_presigned_post">S3Client.generate_presigned_post()</a>を参照して移植されました。
+This method uses HTTP POST to generate a signed URL for uploading a file to Amazon S3. The original implementation from boto3 is <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.generate_presigned_post"> S3Client.generate_presigned_post ( ) </a> was referenced and ported.
 
-注: このメソッドは、シグネチャ v4 のみがサポートされています。
+Note: This method only supports signature v4.
 
-これは、署名付き URL を生成し、ファイル「test.txt」をアップロードする例です。この場合、任意の値を持つオブジェクトメタデータ「x-amz-meta-foo」を設定することができ、アップロードサイズは1MBに制限されています。
+This is an example of generating a signed URL and uploading the file "test.txt". In this case, you can set the object metadata "x-amz-meta-foo" with any value and the upload size is limited to 1MB.
 
 <pre>
-my $presigned = $s3->generate_presigned_post('my.bucket', 'my/key.ext', [
-    'x-amz-meta-foo' => 'bar',
+my $ presigned = $ s3-> generate_presigned_post ('my.bucket','my / key.ext', [
+    'x-amz-meta-foo' =>'bar',
 ], [
-    ['starts-with' => '$x-amz-meta-foo', ''],
-    ['content-length-range' => 1, 1024*1024],
-], 24*60*60);
+    ['starts-with' =>'$ x-amz-meta-foo',''],
+    ['content-length-range' => 1, 1024 * 1024],
+], 24 * 60 * 60);
  
-my $ua = LWP::UserAgent->new;
-my $res = $ua->post(
-    $presigned->{url},
-    Content_Type => 'multipart/form-data',
-    Content      => [
-        @{$presigned->{fields}},
+my $ ua = LWP :: UserAgent-> new;
+my $ res = $ ua-> post (
+    $ signed-> {url},
+    Content_Type =>'multipart / form-data',
+    Content => [
+        @ {$ signed-> {fields}},
         file => ['test.txt'],
-    ],
+    ],,
 );
-</pre>
+</ pre>
 
-詳細については、<a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html">POSTポリシーの作成に関するAmazonのドキュメント</a>を参照してください。
+For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html"> Amazon documentation on creating POST policies </a>. Please give me.
 
-<h3>Todo</h3>
+<h3> Todo </ h3>
 
-多くの API はまだ実装されていません。
+Many APIs have not been implemented yet.
 
-リポジトリ
+Repository
 
-<a href="https://github.com/DQNEO/Amazon-S3-Thin">https://github.com/DQNEO/Amazon-S3-Thin</a>
+<a href="https://github.com/DQNEO/Amazon-S3-Thin"> https://github.com/DQNEO/Amazon-S3-Thin </a>
 
-<h3>ライセンス</h3>
+<h3> License </ h3>
 
-著作権(C)DQNEO。
+Copyright (C) DQNEO.
 
-このライブラリはフリーソフトウェアです。Perl 自体と同じ用語で再配布したり、変更することができます。
+This library is free software. It can be redistributed or modified using the same terminology as Perl itself.
 
-<h3>著者</h3>
+<h3> Author </ h3>
 
 DQNEO
 
-<h3>サンクス</h3>
+<h3> Thanks </ h3>
 
-ティモシー・アプネル・ブレノ・G・デ・オリベイラ
-
-<h3>参考</h3>
-
-Amazon::S3 <a href="https://github.com/tima/perl-amazon-s3">https://github.com/tima/perl-amazon-s3</a>
-
-Net::Amazon::S3
-
-アマゾン S3 API リファレンス : REST API
-
-Amazon S3 API リファレンス : エラーコードのリスト
+Timothy Apnel Breno G. de Olivey

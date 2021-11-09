@@ -1,117 +1,117 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161102147817.html">
-        <span itemprop="name">特殊変数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>デフォルト変数 $_</h2>
+        <span itemprop = "name"> Special variables </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Default variable $ _ </ h2>
 
 
 
-Perlにはデフォルト変数というものが存在します。
-
-<pre>
-$_
-</pre>
-
-デフォルト変数が利用されるいくつかの例を最初に見てみます。
-
-<h4>grep関数</h4>
-
-<a href="/blog/20100119126425.html">grep関数</a>に渡された配列のそれぞれの要素は、デフォルト変数に代入されます。
+There is a default variable in Perl.
 
 <pre>
-my @values2 = grep { $_ eq 'cat' } @values1;
-</pre>
+$ _
+</ pre>
 
-「$_」はデフォルト変数であり、@values1のそれぞれの要素が順番に代入されます。
+Let's first look at some examples where default variables are used.
 
-これは、英語の代名詞「it」を表現していると考えるとわかりやすいです。
+<h4> grep function </ h4>
 
-<h4>map関数</h4>
-
-<a href="/blog/20100118126425.html">map関数</a>に渡された配列のそれぞれの要素は、デフォルト変数に代入されます。
+Each element of the array passed to the <a href="/blog/20100119126425.html"> grep function </a> is assigned to the default variable.
 
 <pre>
-my @values2 = map { lc $_  } @values1;
-</pre>
+my @ values2 = grep {$ _ eq'cat'} @ values1;
+</ pre>
 
-<h4>forでレキシカル変数の宣言が省略された場合</h4>
+"$ _" Is the default variable, and each element of @ values1 is assigned in order.
 
-forでレキシカル変数の宣言が省略された場合は、配列のそれぞれの要素がデフォルト変数に代入されます。
+This is easy to understand if you think of it as expressing the English pronoun "it".
+
+<h4> map function </ h4>
+
+Each element of the array passed to the <a href="/blog/20100118126425.html"> map function </a> is assigned to the default variable.
+
+<pre>
+my @ values2 = map {lc $ _} @ values1;
+</ pre>
+
+<h4> When the declaration of a lexical variable is omitted in for </ h4>
+
+If for omits the declaration of a lexical variable, each element of the array is assigned to the default variable.
 
 <pre>
 for (@values) {
-  print "$_\n";
+  print "$ _ \ n";
 }
-</pre>
+</ pre>
 
-<h4>後置のfor</h4>
+<h4> Postfix for </ h4>
 
-後置のforを使った場合、配列のそれぞれの要素は、デフォルト変数に代入されます。
+If you use the trailing for, each element of the array is assigned to the default variable.
 
 <pre>
-print "$_\n" for @values;
-</pre>
+print "$ _ \ n" for @values;
+</ pre>
 
-<h4>while文でダイヤモンド演算子を単独で使用した場合</h4>
+<h4> When the diamond operator is used alone in the while statement </ h4>
 
-<a href="/blog/20100123126425.html">while文</a>で<a href="http://d.hatena.ne.jp/perlcodesample/comment/20080722/1216737340">ダイヤモンド演算子</a>を単独で使用した場合は、各行がデフォルト引数に順番に代入されます。
+<a href="/blog/20100123126425.html"> while statement </a> <a href="http://d.hatena.ne.jp/perlcodesample/comment/20080722/1216737340"> Diamond operator < If you use / a> alone, each line is assigned to the default argument in turn.
 
 <pre>
 while (<>) {
-  print "$_\n";
+  print "$ _ \ n";
 }
-</pre>
+</ pre>
 
-この上記の利用方法が、頻繁に目にするデフォルト変数の利用方法です。
+This usage above is the usage of default variables that you often see.
 
-<h3>標準関数における暗黙の引数</h3>
+<h3> Implicit arguments in standard functions </ h3>
 
-<a href="/blog/20161004147558.html">Perlの標準関数</a>には、引数を省略すると、暗黙の引数として、デフォルト変数を使用するものがあります。
+Some <a href="/blog/20161004147558.html"> Perl standard functions </a> use default variables as implicit arguments if you omit the arguments.
 
-これは、自分で記述するときは、可読性が下がるので避けたほうがよい書き方です。
+This is a bad way to avoid writing it yourself, as it will reduce readability.
 
-たとえば<a href="/blog/20100326127089.html">lc関数</a>で引数を省略した場合は、デフォルト変数が暗黙の引数になります。
-
-<pre>
-my @values2 = map { lc } @values1;
-</pre>
-
-これは、明示的にデフォルト引数を書いたときと同じ意味になります。
+For example, if you omit the argument in the <a href="/blog/20100326127089.html"> lc function </a>, the default variable becomes the implicit argument.
 
 <pre>
-my @values2 = map { lc $_  } @values1;
-</pre>
+my @ values2 = map {lc} @ values1;
+</ pre>
 
-標準関数で引数が省略されていた場合は、暗黙の引数が利用されているのではないかと疑ってみましょう。
+This has the same meaning as if you explicitly wrote the default arguments.
 
-<h3>正規表現における暗黙のターゲット</h3>
+<pre>
+my @ values2 = map {lc $ _} @ values1;
+</ pre>
 
-<a href="/blog/20100827127859.html">正規表現</a>のパターンマッチ演算子の左辺が省略された場合は、デフォルト変数が使用されます。
+If the argument is omitted in the standard function, suspect that an implicit argument is being used.
+
+<h3> Implicit target in regular expression </ h3>
+
+If the left side of the <a href="/blog/20100827127859.html"> regular expression </a> pattern matching operator is omitted, the default variable will be used.
 
 <pre>
 for (@values) {
-  s/cat/dog/;
+  s / cat / dog /;
 }
-</pre>
+</ pre>
 
-これはデフォルト変数を明示的に書いた場合と同じ意味になります。
+This has the same meaning as if you explicitly wrote the default variable.
 
 <pre>
 for (@values) {
-  $_ =~ s/cat/dog/;
+  $ _ = ~ s / cat / dog /;
 }
-</pre>
+</ pre>

@@ -1,66 +1,64 @@
+<h2> A tool to run morbo on Windows --winmorbo </ h2>
 
-<h2>morboをWindowsで動かすツール - winmorbo</h2>
-
-Mojolicious開発サーバー「morbo」をWindowsでうまく動作させるツール<b>winmorbo</b>をリリースしました。
-
-<blockquote>
-<a href="https://github.com/yuki-kimoto/winmorbo">winmorbo</a>
-</blockquote>
-
-Windowsでは、Mojolicious開発サーバーmorboはうまく動きません。なぜなら、ワーカープロセスは親TERMシグナルをうまく受信できないからです。
-
-このため、Windows上では、Web開発は、とても面倒なものになります。
-
-Windowsでmorboをうまく動作させるため、Mojo::Server::Morboを簡単な方法でハックしました。
-
-<h3>winmorboのインストール方法</h3>
-
-<h4>winmorbo.batのダウンロード</h4>
-
-まず、Mojoliciousプロジェクトディレクトリにwinmorb.batをダウンロードします。
+We have released a tool <b> winmorbo </ b> that makes the Mojolicious development server "morbo" work well on Windows.
 
 <blockquote>
-<a href="https://github.com/yuki-kimoto/winmorbo">winmorbo - Github</a>
-</blockquote>
+<a href="https://github.com/yuki-kimoto/winmorbo"> winmorbo </a>
+</ blockquote>
 
-GitHubでwinmorbo.batをクリックし、Rawボタンをクリックしてwinmorbo.batをダウンロードします。
+On Windows, the Mojolicious development server morbo doesn't work. This is because the worker process does not receive the parent TERM signal well.
 
-<h4>winmorbo.batを実行</h4>
+This makes web development very tedious on Windows.
 
-Mojoliciousアプリケーションを実行するには以下のコマンドを実行します。
+I hacked Mojo :: Server :: Morbo in a simple way to get morbo working well on Windows.
 
-Windowsバッチファイルなので、.bat拡張子は指定する必要はありません。
+<h3> How to install winmorbo </ h3>
 
-このサンプルでは、Mojoliciousアプリケーションはapp.plです。
+<h4> Download winmorbo.bat </ h4>
+
+First, download winmorb.bat to your Mojolicious project directory.
+
+<blockquote>
+<a href="https://github.com/yuki-kimoto/winmorbo"> winmorbo --Github </a>
+</ blockquote>
+
+Click winmorbo.bat on GitHub and click the Raw button to download winmorbo.bat.
+
+<h4> Run winmorbo.bat </ h4>
+
+To run the Mojolicious application, run the following command.
+
+Since it is a Windows batch file, you do not need to specify the .bat extension.
+
+In this sample, the Mojolicious application is app.pl.
 
 <pre>
     winmorbo app.pl
-</pre>
+</ pre>
 
-ウィンドウが開いて次の画面がでれば成功です。
+If the window opens and the next screen appears, it is successful.
 
 <pre>
-    C:\Users\kimot\labo>cmd /C perl -x -S winmorbo app.pl
+    C: \ Users \ kimot \ labo> cmd / C perl -x -S winmorbo app.pl
     Server available at http://127.0.0.1:3000
-</pre>
+</ pre>
 
-これでファイルを変更するたびに、自動的にmorboサーバーが再起動するようになります。
+This will automatically restart the morbo server every time you change a file.
 
-<h3>よくある質問</h3>
+<h3> Frequently Asked Questions </ h3>
 
-<h4>"Can't opendir(templates)"エラーが表示されます</h4>
+<h4> I get a "Can't open dir (templates)" error </ h4>
 
-これは、Windowsのユーザーディレクトリに「Templates」ディレクトリがあるためです。
+This is because there is a "Templates" directory in the Windows user directory.
 
-Mojoliciousもは「templates」ディレクトリも使用します。
+Mojolicious also uses the "templates" directory.
 
-この問題を解決するには、ひとつディレクトリを作成します（例：labo）。
+To solve this problem, create one directory (eg labo).
 
 <pre>
-    cd C:\Users\kimot
+    cd C: \ Users \ kimot
     mkdir labo
     cd labo
-</pre>
+</ pre>
 
-そして、laboディレクトリの中にapp.plを作成しましょう。
-
+Then create app.pl in the labo directory.
