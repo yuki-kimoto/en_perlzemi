@@ -20,7 +20,7 @@ Learn about Perl's iterative syntax. Learning the iterative syntax greatly expan
 First, I will explain the iterative syntax <b> for statement </b>. Take a look at the following sample first. This is a program that outputs a number from 0 to 9 on the screen.
 
 <pre>
-for (my $i = 0; $i <10; $i ++) {
+for (my $i = 0; $i <10; $i++) {
   print "$i \ n";
 }
 </pre>
@@ -55,7 +55,7 @@ The first part is the initialization of the loop variable. This part determines 
 Let's look at the first example again. Notice the part "my $i = 0".
 
 <pre>
-for (my $i = 0; $i <10; $i ++) {
+for (my $i = 0; $i <10; $i++) {
   print "$i \ n";
 }
 </pre>
@@ -65,7 +65,7 @@ In the initialization part of the loop variable, variable declarations can be ma
 What if this part is "my $i = 5"?
 
 <pre>
-for (my $i = 5; $i <10; $i ++) {...}
+for (my $i = 5; $i <10; $i++) {...}
 </pre>
 
 Since "$i" is initialized with "5", the output result will be as follows.
@@ -91,7 +91,7 @@ for (Initialization of loop variable; Condition to loop; Update of loop variable
 The for statement repeatedly executes the block while the looping condition is met. Looking at the first example, the condition is that "$i" is less than "10".
 
 <pre>
-for (my $i = 0; $i <10; $i ++) {
+for (my $i = 0; $i <10; $i++) {
   print "$i \ n";
 }
 </pre>
@@ -101,7 +101,7 @@ So the block will be executed while "$i" is less than "10".
 What if this part is "$i <7"?
 
 <pre>
-for (my $i = 0; $i <7; $i ++) {...}
+for (my $i = 0; $i <7; $i++) {...}
 </pre>
 
 The output result is as follows. Since "$i" loops while it is smaller than "7", you can see that it is output up to "6".
@@ -129,12 +129,12 @@ for (Initialization of loop variable; Condition to loop; Update of loop variable
 In the loop variable update part, you can change the value of the loop variable before executing the next block.
 
 <pre>
-for (my $i = 0; $i <10; $i ++) {
+for (my $i = 0; $i <10; $i++) {
   print "$i \ n";
 }
 </pre>
 
-In the first example, it is written as "$i ++". This is called <a href="/blog/20180224151948.html"> increment</a> and you can increment the value of $i by 1.
+In the first example, it is written as "$i++". This is called <a href="/blog/20180224151948.html"> increment</a> and you can increment the value of $i by 1.
 
 The value of "$i" is incremented by 1 before proceeding to the next loop. In other words, each time you go through the loop, it will increase to "1", "2", "3".
 
@@ -218,7 +218,7 @@ Let's combine the for statement and the if statement. Programming will improve w
 I will write a sample program that loops from "0" to "10", but outputs only when the loop variable is a multiple of 3.
 
 <pre>
-for (my $i = 0; $i <10; $i ++) {
+for (my $i = 0; $i <10; $i++) {
   if ($i% 3 == 0) {
     print "$i \ n";
   }
@@ -265,7 +265,7 @@ while ($i <10) {
   
   print "$i \ n";
   
-  $i ++;
+  $i++;
 }
 </pre>
 
@@ -301,14 +301,14 @@ while ($i <10) {
   print "$i \ n";
   
   # Update loop variable
-  $i ++;
+  $i++;
 }
 </pre>
 
 The above while statement sample corresponds to the following for statement.
 
 <pre>
-for (my $i = 0; $i <10; $i ++) {
+for (my $i = 0; $i <10; $i++) {
   print "$i \ n";
 }
 </pre>
@@ -439,7 +439,7 @@ Next, suppose you may need the element number. In that case, use the normal for 
 <pre>
 my @animals = ('Cat','Dog','Mouse');
 
-for (my $i = 0; $i <@animals; $i ++) {
+for (my $i = 0; $i <@animals; $i++) {
   my $animal = $animals [$i];
   print "$i: $animal \ n";
 }
