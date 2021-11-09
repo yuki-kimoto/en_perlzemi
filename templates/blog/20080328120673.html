@@ -66,7 +66,7 @@ This is a sample that outputs the elements of an array in order when the data st
 <pre>
 # Output array elements in sequence (array reference)
 my $nums = [3, 4, 5];
-foreach my $num (@ $nums) {
+foreach my $num (@$nums) {
   print "$num\n";
 }
 </pre>
@@ -80,8 +80,8 @@ my $data = [
   ['b', 2]
 ];;
 
-foreach my $record(@ $data) {
-  print join("\t", @ $record). "\n";
+foreach my $record(@$data) {
+  print join("\t", @$record). "\n";
 }
 </pre>
 
@@ -94,7 +94,7 @@ my $people = [
   {name =>'Taro', age => 32}
 ];;
 
-foreach my $person (@ $persons) {
+foreach my $person (@$persons) {
   my @record = ($person-> {name}, $person-> {age});
   print join("\t", @record). "\n";
 }

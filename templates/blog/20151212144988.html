@@ -68,7 +68,7 @@ Validator::Custom - HTML form validation, concise and flexible
   $favorite = $vc-> filter_each($favorite,'trim');
   
   # Check that "Favorites" have at least one value
-  if (@ $favorite == 0) {
+  if (@$favorite == 0) {
     $validation-> add_failed (favorite =>'favorite must be selected more than one');
   }
   # Check that "Favorites" is one of "001", "002", and "003"
@@ -189,7 +189,7 @@ You can use the <b> filter_each </b> method to filter each value of "Favorites".
 
 <pre>
   # Check that "Favorites" have at least one value
-  if (@ $favorite == 0) {
+  if (@$favorite == 0) {
     $validation-> add_failed (favorite =>'favorite must be selected more than one');
   }
   # Check that "Favorites" is one of "001", "002", and "003"
@@ -603,7 +603,7 @@ At least one check box is selected. Specific value.
 
   my $validation = $vc-> validation;
   
-  if (@ $favorite == 0) {
+  if (@$favorite == 0) {
 
     $validation-> add_failed (favorite =>'favorite must be selected at least 1');
   }

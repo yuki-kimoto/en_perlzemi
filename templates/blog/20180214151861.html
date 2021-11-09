@@ -116,7 +116,7 @@ Dereferences can be made using the notation "@ {array reference}".
 If the array reference is a scalar variable, you can omit the "{}".
 
 <pre>
-my @nums = @ $nums_ref;
+my @nums = @$nums_ref;
 </pre>
 
 <h4> Pass as an argument to a standard function </h4>
@@ -125,10 +125,10 @@ my @nums = @ $nums_ref;
 
 <pre>
 # Dereference and pass to standard function
-shift @ $array;
-unshift @ $array, $element;
-push @ $array, $element;
-pop @ $array;
+shift @$array;
+unshift @$array, $element;
+push @$array, $element;
+pop @$array;
 </pre>
 
 <h3> Extract array values ​​from array reference </h3>

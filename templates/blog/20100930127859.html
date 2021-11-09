@@ -81,7 +81,7 @@ my @nums = @ {$nums};
 You can also omit the parentheses as follows:
 
 <pre>
-my @nums = @ $nums;
+my @nums = @$nums;
 </pre>
 
 You can dereference and then get the elements of the array, but that's a bit inconvenient. Perl provides a way to get elements directly from an array reference. Use the arrow operator "->" to retrieve an element from an array reference.
@@ -176,8 +176,8 @@ Let's loop through a two-dimensional array.
 First, let's output all the elements.
 
 <pre>
-for my $person (@ $persons) {
-  for my $column (@ $person) {
+for my $person (@$persons) {
+  for my $column (@$person) {
     print "$column\n";
   }
 }
@@ -193,7 +193,7 @@ USA
 45
 </pre>
 
-Perl's two-dimensional array is essentially an array reference that has an array reference as an element. So if you want to loop, you need to dereference and retrieve the array. This means that you need to dereference the outer loop as "@ $persons" and the inner loop as "@ $person".
+Perl's two-dimensional array is essentially an array reference that has an array reference as an element. So if you want to loop, you need to dereference and retrieve the array. This means that you need to dereference the outer loop as "@$persons" and the inner loop as "@$person".
 
 <h4> Output all records separated by commas </h4>
 
@@ -207,8 +207,8 @@ Taro, USA, 45
 You can use the <a href="/blog/20081007122338.html"> join function</a> to join the records with the specified string. You don't need to write the inner loop.
 
 <pre>
-for my $person (@ $persons) {
-  print join(',', @ $person). "\n";
+for my $person (@$persons) {
+  print join(',', @$person). "\n";
 }
 </pre>
 
@@ -242,12 +242,12 @@ my $people = [];
 while (my $line = <>) {
   chomp $line;
   my @person = split(',', $line);
-  push @ $persons, \ @person;
+  push @$persons, \ @person;
 }
 </pre>
 chomp is a function that removes line breaks. Use the split function to decompose a string with the specified delimiter to create an array. Note that the first argument of the push function is an array.
 
-You need to dereference and pass it like "@ $persons". Also, the elements added by push must be an array reference. Generate an array reference like "\ @ person" and specify it as the second argument of the push function.
+You need to dereference and pass it like "@$persons". Also, the elements added by push must be an array reference. Generate an array reference like "\ @ person" and specify it as the second argument of the push function.
 
 The created two-dimensional array is as follows.
 
@@ -263,7 +263,7 @@ my $people = [
 This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the character string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
 
 <pre>
-print join("\t", @ $person). "\n";
+print join("\t", @$person). "\n";
 </pre>
 
 <h3> Hash reference </h3>
@@ -387,7 +387,7 @@ Let's loop through an array of hashes.
 First, let's output all the elements.
 
 <pre>
-for my $person (@ $persons) {
+for my $person (@$persons) {
   for my $key (keys %$person) {
     my $value = $person-> {$key};
     print "$key: $value\n";
@@ -406,7 +406,7 @@ name: Taro
 age: 45
 </pre>
 
-A Perl hash array is essentially an "array reference" with a "hash reference" as an element. The outer loop dereferences the array like "@ $persons". In the inner loop, the hash key is obtained using the keys function, and the value of the hash corresponding to the key is output. Because the keys function receives a hash, not a hash reference
+A Perl hash array is essentially an "array reference" with a "hash reference" as an element. The outer loop dereferences the array like "@$persons". In the inner loop, the hash key is obtained using the keys function, and the value of the hash corresponding to the key is output. Because the keys function receives a hash, not a hash reference
 
 <pre>
 keys %$person
@@ -417,7 +417,7 @@ You need to dereference it like this.
 One caveat is that the order of the keys obtained with the keys function is indefinite. So if you want to determine the order of the output, use the sort function to sort the keys.
 
 <pre>
-for my $person (@ $persons) {
+for my $person (@$persons) {
   for my $key (sort keys %$person) {
     my $value = $person-> {$key};
     print "$key: $value\n";
@@ -437,7 +437,7 @@ Taro, USA, 45
 You can use the join function to join records with a specified string. Set the output value to an array called @rec and then join with the join function. You don't need to write the inner loop.
 
 <pre>
-for my $person (@ $persons) {
+for my $person (@$persons) {
   my @rec = (
     $person-> {name},
     $person-> {country},
@@ -476,11 +476,11 @@ while (my $line = <>) {
   $person-> {age} = $rec [2];
     
   # (4) Added to array reference
-  push @ $persons, $person;
+  push @$persons, $person;
 }
 </pre>
 
-(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the character string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@ $persons".
+(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the character string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@$persons".
 
 The resulting array of hashes looks like this:
 

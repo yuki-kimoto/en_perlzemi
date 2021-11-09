@@ -531,7 +531,7 @@ my $students = [
   {name =>'jiro', age => 56}
 ];;
 
-for my $student (@ $students) {
+for my $student (@$students) {
   my $name = $student-> {name};
   my $age = $student-> {age};
   
@@ -547,7 +547,7 @@ Name: kana, Age: 21
 Name: jiro, Age: 56
 </pre>
 
-Here, "[]", "{}", "@ $students", and "$student-> {name}" that have never been explained have appeared. This is a Perl syntax called a reference. The processing of multidimensional data structures is explained in detail below, so please refer to it.
+Here, "[]", "{}", "@$students", and "$student-> {name}" that have never been explained have appeared. This is a Perl syntax called a reference. The processing of multidimensional data structures is explained in detail below, so please refer to it.
 
 <ul>
   <li>
@@ -569,7 +569,7 @@ This is the same as writing the following in a for statement, but more concisely
 
 <pre>
 my @matches;
-for my $value (@ $values) {
+for my $value (@$values) {
   if ($value> 5) {
     push @matches, $value;
   }

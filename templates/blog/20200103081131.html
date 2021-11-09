@@ -82,7 +82,7 @@ my $books = [
 
 # Amount subtotal
 my $price_total_no_tax = 0;
-for my $book (@ $books) {
+for my $book (@$books) {
   $price_total_no_tax + = $book-> {unit_price} * $book-> {count};
 }
 my $price_total_no_tax_disp = price_disp ($price_total_no_tax);

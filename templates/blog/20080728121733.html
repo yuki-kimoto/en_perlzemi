@@ -39,7 +39,7 @@ my @recs = parse_file ($file);
 # Output (because it is a two-dimensional array, follow it with for)
 for my $items (@recs) {
   Output by connecting with # comma.
-  print join(',', @ $items). "\n";
+  print join(',', @$items). "\n";
 }
 
 # Function for file analysis (I just write it back this time ...)
@@ -57,14 +57,14 @@ sub parse_file {
     # Prepare a reference to the array that stores the data
     # Separate rows with commas and store in array
     # split returns an array, so
-    Dereference with # @ $items
+    Dereference with # @$items
 
     my $items = [];
-    @ $items = split(/, /, $line);
+    @$items = split(/, /, $line);
 
-    The first argument of the # push function is an array, so @ $recs
+    The first argument of the # push function is an array, so @$recs
     # And dereference.
-    push @ $recs, $items;
+    push @$recs, $items;
   }
   close $fh;
   return $recs;
@@ -119,7 +119,7 @@ rika, 38, France
 <pre>
 for my $items (@recs) {
   Output by connecting with # comma.
-  print join(',', @ $items). "\n";
+  print join(',', @$items). "\n";
 }
 </pre>
 
@@ -143,12 +143,12 @@ sub parse_file {
     # Prepare a reference to the array that stores the data
     # Separate rows with commas and store in array
     # split returns an array, so
-    Dereference with # @ $items
+    Dereference with # @$items
     my $items = [];
-    @ $items = split(/, /, $line);
+    @$items = split(/, /, $line);
 
-    Since the first argument of the # push function is an array, dereference it with @ $recs.
-    push @ $recs, $items;
+    Since the first argument of the # push function is an array, dereference it with @$recs.
+    push @$recs, $items;
   }
   close $fh;
   return $recs;
@@ -193,11 +193,11 @@ while (my $line = <$fh>) {
 
   # Separate rows with commas and store in array
   # split returns an array, so
-  Dereference with # @ $items
-  @ $items = split(/, /, $line);
+  Dereference with # @$items
+  @$items = split(/, /, $line);
 
   Since the first argument of the # push function is an array, dereference it with @ {$recs}.
-  push @ $recs, $items;
+  push @$recs, $items;
 }
 </pre>
 
@@ -212,15 +212,15 @@ At the end of the first while loop, it will be [masao, 10, Japan], but first cre
 <h4> (4) -3-b Comma-separated string split </h4>
 
 <pre>
-@ $items = split(/, /, $line);
+@$items = split(/, /, $line);
 </pre>
 
-The split function returns an array, so to receive it, dereference $items to @ $items.
+The split function returns an array, so to receive it, dereference $items to @$items.
 
 <h4> (4) -3-c Add the created record to the reference to the array </h4>
 
 <pre>
-push @ $recs, $items;
+push @$recs, $items;
 </pre>
 
 Add $items to $recs. When the first while is finished, it will be as follows.
@@ -236,7 +236,7 @@ The first argument of push receives an array and dereferences it.
 <h3> Rewrote the subroutine after being pointed out by kits </h3>
 
 <pre>
-Put the data in my @recs rather than push @ $recs
+Put the data in my @recs rather than push @$recs
 It's like returning @recs or \ @recs at the end.
 (I feel that the effort of dereference is wasted)
 </pre>

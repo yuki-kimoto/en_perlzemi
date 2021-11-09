@@ -50,10 +50,10 @@ sub parse {
   my $items_list = [];
   for my $line (@lines) {
     my @items = split(',', $line);
-    push @ $items_list, [@items];
+    push @$items_list, [@items];
   }
   
-  wantarray? return @ $items_list: $items_list;
+  wantarray? return @$items_list: $items_list;
 }
 </pre>
 
@@ -101,9 +101,9 @@ Pass an argument called $text to a subroutine called parse. This will cause a pa
 <h4> (3) How to create an array of arrays </h4>
 
 <pre>
-push @ $items_list, [@items];
+push @$items_list, [@items];
 </pre>
-The <a href="/blog/20100107126425.html"> push function</a> requires an array as the first argument. Dereference and pass an array with @ $items_list.
+The <a href="/blog/20100107126425.html"> push function</a> requires an array as the first argument. Dereference and pass an array with @$items_list.
 The push function requests a list after the second argument, but do not pass an array as @items. And finally,
 <pre>
 [tora, 24, Japan, rika, 12, USA, kenta, 25, Chinese]
@@ -114,7 +114,7 @@ Will be created. Create a reference to the array as [@items] and push it.
 <h4> (4) Selectively return the return value </h4>
 
 <pre>
-wantarray? return @ $items_list: $items_list;
+wantarray? return @$items_list: $items_list;
 </pre>
 
 You can use the <a href="/blog/20080610121319.html"> wantarray function</a> to return the return value depending on the context. (Currently I don't recommend want array)
@@ -152,12 +152,12 @@ sub parse {
     my @items = split(',', $line);
     
     my %items_hash = ();
-    @items_hash {@ $headers} = @items;
+    @items_hash {@$headers} = @items;
     
-    push @ $items_hash_list, {% items_hash};
+    push @$items_hash_list, {% items_hash};
   }
   
-  wantarray? return @ $items_hash_list: $items_hash_list;
+  wantarray? return @$items_hash_list: $items_hash_list;
 }
 </pre>
 
@@ -207,16 +207,16 @@ for my $line (@lines) {
   my @items = split(',', $line);
     
   my %items_hash = ();
-  @items_hash {@ $headers} = @items;
+  @items_hash {@$headers} = @items;
     
-  push @ $items_hash_list, {% items_hash};
+  push @$items_hash_list, {% items_hash};
 }
 </pre>
 
 Use <a href="/blog/20080215120307.html"> hash slice</a> to create the hash corresponding to the header.
 
 <pre>
-@items_hash {@ $headers} = @items;
+@items_hash {@$headers} = @items;
 
 # Same meaning as below
 @items_hash {('name','age','country') = ('tora', 24,'Japan');
@@ -230,7 +230,7 @@ $items_hash {contry} ='Japan';
 Using hash slices in this way eliminates the need to write iterations.
 
 <pre>
-push @ $items_hash_list, {% items_hash};
+push @$items_hash_list, {% items_hash};
 </pre>
 
 The push function requests a list after the second argument, but do not pass a hash as% items_hash. Then finally create a reference to the hash as {% items_hash} and push it.
@@ -452,7 +452,7 @@ sub bubble_sort {
   Check if # $nums is an array reference.
   if (defined $nums) {
    if (ref $nums eq'ARRAY') {
-     @nums = @ $nums
+     @nums = @$nums
    }
    else {return}
   }
@@ -517,7 +517,7 @@ I want to pass an array and a hash, so I'll use a reference. In actual programmi
 my @nums;
 if (defined $nums) {
   if (ref $nums eq'ARRAY') {
-    @nums = @ $nums;
+    @nums = @$nums;
   }
   else {return}
 }

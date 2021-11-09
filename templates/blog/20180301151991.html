@@ -34,7 +34,7 @@ Please be aware that a new <a href="/blog/20161012147627.html"> array</a> is not
 If the inside of "@ {}" is a simple <a href="/blog/20161107147852.html"> variable</a>, you can omit "{}".
 
 <pre>
-my @array = @ $array_ref;
+my @array = @$array_ref;
 </pre>
 
 This is a sample program that dereferences an array reference.
@@ -44,7 +44,7 @@ This is a sample program that dereferences an array reference.
 my $nums_ref = [1, 2, 3];
 
 # Dereference
-my @nums = @ $nums_ref;
+my @nums = @$nums_ref;
 </pre>
 
 <a href="/blog/20161004147558.html"> standard functions</a> that perform Perl array operations must pass an array, not an array reference. In this case, dereference it and pass it to the function.
@@ -52,7 +52,7 @@ my @nums = @ $nums_ref;
 <pre>
 my $nums = [1, 2, 3];
 
-my $num = shift @ $nums;
+my $num = shift @$nums;
 </pre>
 
 <ul>
