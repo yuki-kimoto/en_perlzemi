@@ -137,9 +137,9 @@ If you are not the author of the module, you will not have the opportunity to us
 
 I like and dislike how to write code, but I think it's a little better to match it with the writing style introduced in Perl Best Practices and the format output by a code formatting tool called Perltidy.
 
-As a sample, I will link the source code of Mojo :: URL. You can remember it by imitating this.
+As a sample, I will link the source code of Mojo::URL. You can remember it by imitating this.
 
-<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo :: URL source code></a>
+<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo::URL source code></a>
 
 I will write a few points to imitate.
 
@@ -250,15 +250,15 @@ sub func {
 
 <h3> Use the standard module of date processing (reference) </h3>
 
-If you are using Perl 5.10 or later, a module called Time :: Piece is attached as standard and can be used for date processing.
+If you are using Perl 5.10 or later, a module called Time::Piece is attached as standard and can be used for date processing.
 
-<a href="/blog/20091105124627.html"> <Time :: Piece - Standard module for handling date / time></a>
+<a href="/blog/20091105124627.html"> <Time::Piece - Standard module for handling date / time></a>
 
 You may also want to install the DataTime module if you can install it from CPAN. This is highly functional but a little heavy.
 
 <a href="/blog/20090815124848.html"> <DateTime, a module that handles dates universally></a>
 
-If you can't do that, try localtime or Time :: Local.
+If you can't do that, try localtime or Time::Local.
 
 <a href="/blog/20090809124848.html"> <Handling of dates and times in Perl></a>
 
@@ -270,8 +270,8 @@ If you have copied the source code of another program, extra modules may be load
 # Because I copied the source code from another program
 # Unnecessary module loading may remain
 # be careful
-use File :: Spec;
-use File :: Basename'basename';
+use File::Spec;
+use File::Basename'basename';
                                
 </pre>
 
@@ -354,7 +354,7 @@ sub func {
 }
 </pre>
 
-<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo :: URL source code></a>
+<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo::URL source code></a>
 Please also refer to.
 
 <h3> String list operator (reference) </h3>
@@ -375,9 +375,9 @@ my @strings = ('aa','bb','cc');
 
 It's a good idea to make it explicit when importing functions in a module. A reader of the source code can easily understand which module the function belongs to.
 <pre>
-use File :: Basename'basename';
-use File :: Copy qw / copy move /;
-use File :: Path'mkpath';
+use File::Basename'basename';
+use File::Copy qw / copy move /;
+use File::Path'mkpath';
 use Encode qw / encode decode /;
 
 Use the # mkpath function.
@@ -387,9 +387,9 @@ mkpath $dir;
 What if there was no explicit import description?
 
 <pre>
-use File :: Basename;
-use File :: Copy;
-use File :: Path;
+use File::Basename;
+use File::Copy;
+use File::Path;
 use Encode;
 
 # I don't know where this was imported from
@@ -398,7 +398,7 @@ mkpath $dir;
 
 In such a case, you may end up reading the documentation for all the modules being used. You may know from which module the function was imported, but it's not explicit to anyone reading the source code. So be sure to explicitly specify the function you want to import, no matter how obvious it may seem to you.
 
-(Reference) <a href="/blog/20100409127089.html"> File :: Path</a>, <a href="/blog/20100408127089.html"> File :: Copy</a>
+(Reference) <a href="/blog/20100409127089.html"> File::Path</a>, <a href="/blog/20100408127089.html"> File::Copy</a>
 
 <h3> Don't use goto (required except in really special cases) </h3>
 

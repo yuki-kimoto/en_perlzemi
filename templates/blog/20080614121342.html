@@ -16,21 +16,21 @@
 The typeglob represents an entry in the symbol table.
 
 <pre>
- * Main :: num # $main :: {num} has almost the same meaning.
+ * Main::num # $main::{num} has almost the same meaning.
  * num # You can omit the package name.
 </pre>
 
-On the symbol table, $main :: {num} is assigned the string'* main :: num', which is exactly what it is (called the symbol table entry, maybe). .. However, it's not a string, it's a typeglob.
+On the symbol table, $main::{num} is assigned the string'* main::num', which is exactly what it is (called the symbol table entry, maybe). .. However, it's not a string, it's a typeglob.
 
 If you omit the package name, it becomes an entry in the symbol table of the current current package.
 
 <h3> Typeglobs and variables </h3>
 
 <pre>
-my $num_from_typedglob = ${* main :: num}; # Same as $num
-my @num_from_typedglob = @ {* main :: num}; # Same as @num
-my% num_from_typedglob =% {* main :: num}; # Same as% num
-my $ret_from_typedglob = & {* main :: num}; # Same as & num (also same as num ())
+my $num_from_typedglob = ${* main::num}; # Same as $num
+my @num_from_typedglob = @ {* main::num}; # Same as @num
+my% num_from_typedglob =% {* main::num}; # Same as% num
+my $ret_from_typedglob = & {* main::num}; # Same as & num (also same as num ())
 </pre>
 
 A typeglob is a kind of hash, <a href="/blog/20161107147852.html"> scalar variable</a>, <a href="/blog/20161012147627.html"> array</a>, < You can access a href = "/ blog / 20161013147635.html"> hash</a>, <a href="/blog/20101130129876.html"> subroutine</a>, and more. It looks exactly like a dereference, but it's not a dereference.
@@ -75,36 +75,36 @@ sub num {
   return 15;
 }
 
-require Data :: Dumper;
+require Data::Dumper;
 
 print "1-1: Access variables from the symbol table. \ N";
 Enclosed in # ${}, a scalar entry
-my $num_from_symbol = ${$main :: {num}};
+my $num_from_symbol = ${$main::{num}};
 Array entries, enclosed in # @ {}
-my @num_from_symbol = @ {$main :: {num}};
+my @num_from_symbol = @ {$main::{num}};
 Hash entries, enclosed in # % {}
-my% num_from_symbol =% {$main :: {num}};
+my% num_from_symbol =% {$main::{num}};
 
-print Data :: Dumper-> Dump ([$num_from_symbol], ['* num_from_symbol']);
-print Data :: Dumper-> Dump ([\ @ num_from_symbol], ['* num_from_symbol']);
-print Data :: Dumper-> Dump ([\% num_from_symbol], ['* num_from_symbol']);
+print Data::Dumper-> Dump ([$num_from_symbol], ['* num_from_symbol']);
+print Data::Dumper-> Dump ([\ @ num_from_symbol], ['* num_from_symbol']);
+print Data::Dumper-> Dump ([\% num_from_symbol], ['* num_from_symbol']);
 print "\ n";
 
 print "1-2: Call a subroutine from the symbol table. \ N";
-my $ret_from_symbol = & {$main :: {num}};
+my $ret_from_symbol = & {$main::{num}};
 print "\ $ret_from_symbol = $ret_from_symbol \ n \ n";
 
 print "2-1: Access the variable from the typeglob. \ N";
-my $num_from_typedglob = ${* main :: num}; Enclosed in # ${} is a scalar entry
-my @num_from_typedglob = @ {* main :: num}; If you enclose it with # @ {}, the array entry will be
-my% num_from_typedglob =% {* main :: num}; # % {} is a hash entry
+my $num_from_typedglob = ${* main::num}; Enclosed in # ${} is a scalar entry
+my @num_from_typedglob = @ {* main::num}; If you enclose it with # @ {}, the array entry will be
+my% num_from_typedglob =% {* main::num}; # % {} is a hash entry
 
-print Data :: Dumper-> Dump ([$num_from_typedglob], ['* num_from_typedglob']);
-print Data :: Dumper-> Dump ([\ @ num_from_typedglob], ['* num_from_typedglob']);
-print Data :: Dumper-> Dump ([\% num_from_typedglob], ['* num_from_typedglob']);
+print Data::Dumper-> Dump ([$num_from_typedglob], ['* num_from_typedglob']);
+print Data::Dumper-> Dump ([\ @ num_from_typedglob], ['* num_from_typedglob']);
+print Data::Dumper-> Dump ([\% num_from_typedglob], ['* num_from_typedglob']);
 print "\ n";
 
 print "2-2: Call a subroutine from a typeglob. \ N";
-my $ret_from_typedglob = & {* main :: num};
+my $ret_from_typedglob = & {* main::num};
 print "\ $ret_from_typedglob = $ret_from_typedglob \ n \ n";
 </pre>

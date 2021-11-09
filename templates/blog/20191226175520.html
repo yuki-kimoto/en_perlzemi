@@ -16,9 +16,9 @@
   </li>
 </ol>
 
-<h2> Create PDF file - Create form with PDF :: API2 </h2>
+<h2> Create PDF file - Create form with PDF::API2 </h2>
 
-To create a PDF file with PDF :: API2:
+To create a PDF file with PDF::API2:
 
 Use the new method to create empty information in the PDF.
 
@@ -32,10 +32,10 @@ By following this procedure, you can create a PDF file with one empty page.
 use strict;
 use warnings;
 
-use PDF :: API2;
+use PDF::API2;
 
 # Create empty PDF information
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Add an empty page
 my $page = $pdf-> page;
@@ -51,16 +51,16 @@ If you can create an empty PDF file, you are successful.
 
 <h3> Open an existing PDF file </h3>
 
-To open an existing PDF file with PDF :: API2, use the open method.
+To open an existing PDF file with PDF::API2, use the open method.
 
 <pre>
 # Open an existing PDF file
-my $pdf = PDF :: API2-> open ('some.pdf');
+my $pdf = PDF::API2-> open ('some.pdf');
 </pre>
 
 <h3> Add a new page </h3>
 
-Use the page method to add a new page in PDF :: API2. The page created by page is added to the end of the PDF document.
+Use the page method to add a new page in PDF::API2. The page created by page is added to the end of the PDF document.
 
 <pre>
 # Add page to end of PDF document
@@ -76,7 +76,7 @@ my $page = $pdf-> page (5);
 
 <h3> Get an existing page </h3>
 
-To get the page that already exists in PDF :: API2, specify the page number in the openpage method. Page numbers start at 1. Note that it does not start at 0.
+To get the page that already exists in PDF::API2, specify the page number in the openpage method. Page numbers start at 1. Note that it does not start at 0.
 
 <pre>
 # Get pages that already exist
@@ -85,7 +85,7 @@ my $page = $pdf-> openpage ($page_number);
 
 <h3> Get the number of pages </h3>
 
-In PDF :: API2, use the pages method to get the number of existing pages.
+In PDF::API2, use the pages method to get the number of existing pages.
 
 <pre>
 # Get the number of pages in a PDF document
@@ -94,7 +94,7 @@ my $pages_count = $pdf-> pages;
 
 <h3> Set the paper size </h3>
 
-To set the page paper size in PDF :: API2, use the mediabox method.
+To set the page paper size in PDF::API2, use the mediabox method.
 
 <pre>
 # Specified by name
@@ -141,14 +141,14 @@ When a PDF document is given to the screen, it usually needs physical values ​
 </blockquote>
 
 
-This is a sample to specify the paper size in PDF :: API2.
+This is a sample to specify the paper size in PDF::API2.
 
 <pre>
-use PDF :: API2;
+use PDF::API2;
 
 # Specified by A4 size
 {
-  my $pdf = PDF :: API2-> new ();
+  my $pdf = PDF::API2-> new ();
   $pdf-> mediabox ('A4');
   my $mediabox = $pdf-> mediabox;
   my $page = $pdf-> page;
@@ -158,7 +158,7 @@ use PDF :: API2;
 
 # Specify by B5 size
 {
-  my $pdf = PDF :: API2-> new ();
+  my $pdf = PDF::API2-> new ();
   $pdf-> mediabox ('B5');
   my $page = $pdf-> page;
   my $pdf_file ='size_b5.pdf';
@@ -167,7 +167,7 @@ use PDF :: API2;
 
 # PDF unit Width 595, height 842
 {
-  my $pdf = PDF :: API2-> new ();
+  my $pdf = PDF::API2-> new ();
   $pdf-> mediabox (595, 842);
   my $page = $pdf-> page;
   my $pdf_file ='size_595_842.pdf';
@@ -203,15 +203,15 @@ Generally, the margin X from the lower left is 0 and the margin Y from the lower
 
 <h3> Combine multiple PDF files </h3>
 
-Here are the steps to combine multiple PDF files. Create a new PDF :: API2 object. Open an existing PDF file.
+Here are the steps to combine multiple PDF files. Create a new PDF::API2 object. Open an existing PDF file.
 
 Insert an existing PDF file into a new PDF using the import_page method.
 
 Finally, save the new PDF and you're done.
 
 <pre>
-my $pdf = PDF :: API2-> new ();
-my $old = PDF :: API2-> open ('our / old.pdf');
+my $pdf = PDF::API2-> new ();
+my $old = PDF::API2-> open ('our / old.pdf');
  
 # Add page 2 from the old PDF as page 1 of the new PDF
 $pdf-> import_page ($old, 2);

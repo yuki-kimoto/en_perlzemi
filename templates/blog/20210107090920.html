@@ -16,16 +16,16 @@
   </li>
 </ol>
 
-<h2> Selenium :: Chrome - JavaScript-enabled web scraping using Chrome </h2>
+<h2> Selenium::Chrome - JavaScript-enabled web scraping using Chrome </h2>
 
-Selenium :: Chrome allows you to use Chrome for JavaScript-enabled web scraping. Selenium :: Chrome is an extension of <a href="/blog/20210105145700.html"> Selenium :: Remote :: Driver</a> for Chrome. You can use it by installing Selenium :: Remote :: Driver.
+Selenium::Chrome allows you to use Chrome for JavaScript-enabled web scraping. Selenium::Chrome is an extension of <a href="/blog/20210105145700.html"> Selenium::Remote::Driver</a> for Chrome. You can use it by installing Selenium::Remote::Driver.
 
 <h4> When running on Windows, Mac </h4>
 
 <pre>
 # When running on Windows, Mac
-use Selenium :: Chrome;
-my $driver = Selenium :: Chrome-> new;
+use Selenium::Chrome;
+my $driver = Selenium::Chrome-> new;
 $driver-> get ('http://www.google.com');
 print $driver-> get_title ();
 $driver-> shutdown_binary ();
@@ -37,8 +37,8 @@ If you want to execute on the CUI screen when there is no GUI environment, execu
 
 <pre>
 When executing headless when there is no GUI screen such as # Unix / Linux
-use Selenium :: Chrome;
-my $driver = Selenium :: Chrome-> new (
+use Selenium::Chrome;
+my $driver = Selenium::Chrome-> new (
   extra_capabilities => {
     'goog: chromeOptions' => {
       args => ['headless','disable-gpu','window-size = 1920,1080','no-sandbox']
@@ -60,7 +60,7 @@ Could not create new session: unknown error: Chrome failed to start: exited abno
 
 <h3> Preparation of execution environment </h3>
 
-Chrome browser and Chrome Driver are required as an execution environment for JavaScript-compatible web scraping using Selenium :: Chrome. Chrome Driver is software for operating Chrome itself. The environment construction procedure differs depending on the OS, refer to the following.
+Chrome browser and Chrome Driver are required as an execution environment for JavaScript-compatible web scraping using Selenium::Chrome. Chrome Driver is software for operating Chrome itself. The environment construction procedure differs depending on the OS, refer to the following.
 
 It's a good idea to match Chrome browser and Chrome Driver versions as much as possible to avoid binary compatibility issues.
 
@@ -74,7 +74,7 @@ For other <a href="https://linux.perlclub.net/"> UNIX / Linux</a> such as Ubuntu
 
 <h4> Windows </h4>
 
-<a href="https://qiita.com/omokawa_yasu/items/2d985efb346dd889fe27"> On the SPA site, the environment construction procedure of performing GUI test with Selenium :: Remote :: Driver</a> will be helpful.
+<a href="https://qiita.com/omokawa_yasu/items/2d985efb346dd889fe27"> On the SPA site, the environment construction procedure of performing GUI test with Selenium::Remote::Driver</a> will be helpful.
 
 <a href="https://perlzemi.com/blog/20080602121231.html"> Active Perl</a> but <a href="https://perlzemi.com/blog/20180808153368.html"> Strawberry Perl < / a> I think it's okay.
 

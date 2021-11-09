@@ -24,16 +24,13 @@ The symbol table is just a hash named% main ::. From the hash% main ::, you can 
 
 <pre>
 # main A symbol table containing the contents of the package
-% main ::
-Another name for # % main ::
-% ::
-</pre>
+% main::Another name for # % main::%::</pre>
 
 <h3> Know the contents of package variables through the symbol table </h3>
 
 <pre>
 our $num = 1;
-${$main :: {num}};
+${$main::{num}};
 </pre>
 
 A detailed explanation is given in the explanation of typeglobs. Here, remember Perl's ability to know the contents of package variables and subroutines from the symbol table.
@@ -56,23 +53,23 @@ sub func {
 }
 
 print "1: Take a peek at the symbol table \ n";
-require Data :: Dumper;
+require Data::Dumper;
 The print # symbol table is just a hash.
 What belongs to the # main package
 You can refer to it with the name # % main ::.
-Data :: Dumper-> Dump ([\% main ::], [qw (* main ::)]), "\ n";
+Data::Dumper-> Dump ([\% main ::], [qw (* main ::)]), "\ n";
 
 print "2: View the contents of num and func in the main package. \ N";
-print $main :: {num}, "\ n";
-You can also use :: as an alias for # main ::.
+print $main::{num}, "\ n";
+You can also use::as an alias for # main ::.
 print $:: {num}, "\ n";
 
-print $main :: {func}, "\ n";
+print $main::{func}, "\ n";
 print $:: {func}, "\ n \ n";
 
 print "3: Get the contents of the variable from the symbol table. \ N";
-Extract the scalar variable from'* main :: num' with # ${}.
-my $num_from_symbol = ${$main :: {num}};
+Extract the scalar variable from'* main::num' with # ${}.
+my $num_from_symbol = ${$main::{num}};
 print $num_from_symbol;
 
 </pre>
@@ -80,9 +77,9 @@ print $num_from_symbol;
 <h3> Meaning of output result </h3>
 
 <pre>
-print $main :: {num};
+print $main::{num};
 # Output result
-* main :: num
+* main::num
 </pre>
 
-The above output will be displayed as * main :: num. The * symbol is a symbol that represents a typeglob. The type glob will be explained next time.
+The above output will be displayed as * main::num. The * symbol is a symbol that represents a typeglob. The type glob will be explained next time.

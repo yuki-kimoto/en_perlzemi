@@ -15,9 +15,9 @@
     here
   </li>
 </ol>
-<h2> Invoice creation - PDF :: API2 form creation </h2>
+<h2> Invoice creation - PDF::API2 form creation </h2>
 
-I tried to create an invoice with PDF :: API2. It can be used as a basic template for creating full-scale forms such as quotations, application forms, receipts, and service usage details.
+I tried to create an invoice with PDF::API2. It can be used as a basic template for creating full-scale forms such as quotations, application forms, receipts, and service usage details.
 
 <ul>
   <li> A4 paper size </li>
@@ -40,9 +40,9 @@ You can download a PDF sample of the invoice you created here.
 
 <a href="/examples/pdf/invoice.pdf"> Invoice PDF sample</a>
 
-<h3> PDF :: Invoice source code written in API2 </h3>
+<h3> PDF::Invoice source code written in API2 </h3>
 
-This is the source code of the invoice written in PDF :: API2.
+This is the source code of the invoice written in PDF::API2.
 
 <b> Caution </b>
 
@@ -52,14 +52,14 @@ The Japanese font uses the Aozora Mincho font introduced in <a href="/blog/20191
 
 The layout algorithm has a table structure. You are advancing the line by specifying one vertical width. The column is divided into 100 and is displayed at the position showing the ratio.
 
-<b> PDF :: API2 invoice source code </b>
+<b> PDF::API2 invoice source code </b>
 
 <pre>
 use strict;
 use warnings;
 use utf8;
 use FindBin;
-use PDF :: API2;
+use PDF::API2;
 
 # Product data (book)
 my $books = [
@@ -97,7 +97,7 @@ my $price_total = $price_total_no_tax + $tax;
 my $price_total_disp = price_disp ($price_total);
 
 # PDF
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Paper size A4 setting
 $pdf-> mediabox ('A4');
@@ -114,9 +114,9 @@ my $page_left_margin = 49;
 my $page_right_margin = 49;
 
 # Loading TrueType fonts that support Japanese-normal fonts and bold fonts
-my $true_type_font_file = "$FindBin :: Bin / AozoraMinchoRegular.ttf";
+my $true_type_font_file = "$FindBin::Bin / AozoraMinchoRegular.ttf";
 my $font = $pdf-> ttfont ($true_type_font_file);
-my $true_type_font_bold_file = "$FindBin :: Bin / AozoraMincho-bold.ttf";
+my $true_type_font_bold_file = "$FindBin::Bin / AozoraMincho-bold.ttf";
 my $font_bold = $pdf-> ttfont ($true_type_font_bold_file);
 
 # Font size-default
@@ -285,7 +285,7 @@ $gfx-> stroke;
 $cur_row + = 0.5;
 
 # Insert company logo
-my $logo_image_file = "$FindBin :: Bin / logo.png";
+my $logo_image_file = "$FindBin::Bin / logo.png";
 my $logo_image_object = $pdf-> image_png ($logo_image_file);
 my $logo_image_width = 60;
 $gfx-> image (

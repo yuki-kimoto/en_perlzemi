@@ -15,23 +15,23 @@
     here
   </li>
 </ol>
-<h2> Pod :: Usage - POD document output </h2>
+<h2> Pod::Usage - POD document output </h2>
 
 
 
-<strong> Pod :: Usage </strong> is a module for outputting POD documents. You can use a function called <strong> pod2usage </strong> that displays the documentation and terminates the program.
+<strong> Pod::Usage </strong> is a module for outputting POD documents. You can use a function called <strong> pod2usage </strong> that displays the documentation and terminates the program.
 
 If you use a function, it's a good idea to import it explicitly.
 
 <pre>
 # Import function
-use Pod :: Usage'pod2usage';
+use Pod::Usage'pod2usage';
 </pre>
 
 This is the most basic usage sample of pod2 usage. Exit the program by displaying the item "SYNOPSIS" in the document.
 
 <pre>
-The most basic usage of # Pod :: Usage
+The most basic usage of # Pod::Usage
 
 = head1 SYNOPSIS
 
@@ -39,7 +39,7 @@ script.pl FILE
 
 = cut
 
-use Pod :: Usage'pod2usage';
+use Pod::Usage'pod2usage';
 
 # Command line arguments
 my $file = shift;
@@ -55,9 +55,9 @@ Usage:
     script.pl FILE
 </pre>
 
-This is a sample that combines Pod :: Usage and Getopt :: Long.
+This is a sample that combines Pod::Usage and Getopt::Long.
 <pre>
-Combine # Pod :: Usage and Getopt :: Long
+Combine # Pod::Usage and Getopt::Long
 
 = head1 SYNOPSIS
 
@@ -65,8 +65,8 @@ script.pl [- force] FILE
 
 = cut
 
-use Pod :: Usage'pod2usage';
-use Getopt :: Long'GetOptions';
+use Pod::Usage'pod2usage';
+use Getopt::Long'GetOptions';
 
 # Analysis of command line options
 my $force;

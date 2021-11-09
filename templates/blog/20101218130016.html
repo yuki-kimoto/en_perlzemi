@@ -19,7 +19,7 @@
 
 
 
-Here are the steps to connect to SQL Server using Perl's DBI on CentOS. You need to properly install and configure the Unix (Linux) libraries FreeTDS, Unix ODBC and the Perl DBD :: ODBC module.
+Here are the steps to connect to SQL Server using Perl's DBI on CentOS. You need to properly install and configure the Unix (Linux) libraries FreeTDS, Unix ODBC and the Perl DBD::ODBC module.
 
 (The environment I tried was CentOS release 5.5 (Final). This article may be valid for Red Hat Enterprise Linux, Fedora, and also for other Linux distributions. Disable SE Linux If you don't, the installation may not work. Since it is installed from the source, it is assumed that development tools such as gcc are pre-installed.)
 
@@ -29,7 +29,7 @@ The image of the connection is as follows.
 DBI-ODWD (using FreeTDS protocol for communication)-SQL Server
 </pre>
 
-DBI requires ODBC as a driver. The corresponding Perl module is DBD :: ODBC. DBD :: ODBC also requires a library called UnixODBC. A library called UnixODBC requires a library called FreeTDS to communicate with SQL Server.
+DBI requires ODBC as a driver. The corresponding Perl module is DBD::ODBC. DBD::ODBC also requires a library called UnixODBC. A library called UnixODBC requires a library called FreeTDS to communicate with SQL Server.
 
 <h3> Installing UnixODBC </h3>
 
@@ -73,16 +73,16 @@ This library is installed under "/ usr / local / lib". Let's check.
 ls /usr/local/lib/libtdsodbc.so
 </pre>
 
-<h3> DBD :: ODBC module installation </h3>
+<h3> DBD::ODBC module installation </h3>
 
-Install the DBD :: ODBC module.
+Install the DBD::ODBC module.
 
 <pre>
 export ODBCHOME = / usr / local
-cpan DBD :: ODBC
+cpan DBD::ODBC
 </pre>
 
-DBD :: ODBC does not need to be installed with root privileges, so it is a good idea to install it in your personal directory using something like cpanm.
+DBD::ODBC does not need to be installed with root privileges, so it is a good idea to install it in your personal directory using something like cpanm.
 
 <h3> FreeTDS settings </h3>
 

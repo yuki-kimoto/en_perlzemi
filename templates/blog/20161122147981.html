@@ -47,7 +47,7 @@ DBI provides functions, but in reality DBD interacts with the database internall
 Install the DBD for MySQL. MySQL must be installed.
 
 <pre>
-cpan DBD :: mysql
+cpan DBD::mysql
 </pre>
 
 <h4> Image of interaction between DBI, DBD and database server </h4>
@@ -57,13 +57,13 @@ DBI does not change when connecting to any database. This is because DBI is a co
 <pre>
 | - --- | | - -- -- -- -- | | - -- -- -- -- |
 | | | | | |
-| | - -- -- | DBD :: mysql | - -- -- - | MySQL |
+| | - -- -- | DBD::mysql | - -- -- - | MySQL |
 | | | | | |
 | | | - -- -- -- -- | | - -- -- -- -- |
 DBI |
 | | | - -- -- -- -- | | - -- -- -- -- |
 | | | | | |
-| | - -- -- | DBD :: Oracle | - -- -- - | Oracle |
+| | - -- -- | DBD::Oracle | - -- -- - | Oracle |
 | | | | | |
 | - --- | | - -- -- -- -- | | - -- -- -- -- |
 </pre>
@@ -108,7 +108,7 @@ Use the database handle to interact with the MySQL server.
 If the database name is incorrect, the password is incorrect, or the database cannot be connected for some reason, undef will be returned in the return value. The content of the error at that time is
 
 <pre>
-$DBI :: errstr;
+$DBI::errstr;
 </pre>
 
 You can get it at. err is a number and errstr is the content of the error.
@@ -121,7 +121,7 @@ my $dbh = DBI-> connect (
   "DBI: mysql: $database: $hostname",
   $user,
   $password
-) or die "cannot connect to MySQL: $DBI :: errstr";
+) or die "cannot connect to MySQL: $DBI::errstr";
 </pre>
 
 <h3> Convert current time to MySQL datetime type </h3>
@@ -138,9 +138,9 @@ my $current_datetime = strftime ("% Y-% m-% d% H:% M:% S", localtime);
 my $current_date = strftime ("% Y-% m-% d", localtime);
 </pre>
 
-<h3> Extract "database definition difference" with "MySQL :: Diff" module </h3>
+<h3> Extract "database definition difference" with "MySQL::Diff" module </h3>
 
-When I was looking for a tool to automatically generate commands that eliminate the differences from the differences in the MySQL database, I found the <a href="/blog/20111101132239.html"> MySQL :: Diff</a> module. This module comes with a command line tool called mysqldiff, so it's usually best to use it.
+When I was looking for a tool to automatically generate commands that eliminate the differences from the differences in the MySQL database, I found the <a href="/blog/20111101132239.html"> MySQL::Diff</a> module. This module comes with a command line tool called mysqldiff, so it's usually best to use it.
 
 Very useful for bridging the gap between development and production environments. It doesn't show all the differences, it seems to be only the part related to the table definition, so it seems that you need to set the trigger and index yourself.
 
@@ -149,16 +149,16 @@ The documentation doesn't seem to explain the options, so you can check with the
 mysqldiff - help
 </pre>
 
-<h3> You need mysql-devel to install DBD :: mysql </h3>
+<h3> You need mysql-devel to install DBD::mysql </h3>
 
-If you want to connect to MySQL from DBI with Perl, you need a module called <strong> DBD :: mysql </strong>. This module depends on the C language library and will fail to install on its own. .. For example, if you have a Red Hat OS such as Cent OS, you need to install the package <strong> mysql-devel </strong>.
+If you want to connect to MySQL from DBI with Perl, you need a module called <strong> DBD::mysql </strong>. This module depends on the C language library and will fail to install on its own. .. For example, if you have a Red Hat OS such as Cent OS, you need to install the package <strong> mysql-devel </strong>.
 
 <pre>
 yum -y install mysql-devel
 </pre>
 
-Once "mysql-devel" is installed, the DBD :: mysql installation will be successful.
+Once "mysql-devel" is installed, the DBD::mysql installation will be successful.
 
 <pre>
-cpan DBD :: mysql
+cpan DBD::mysql
 </pre>

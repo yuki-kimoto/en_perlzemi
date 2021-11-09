@@ -37,10 +37,10 @@ When we talk about file handles in Perl, we mean multiple entities that Perl rec
     Reference to typeglobs (\ * FH)
   </li>
   <li>
-    IO :: Handle class object
+    IO::Handle class object
   </li>
   <li>
-    An object of a class that inherits the IO :: Handle object (such as IO :: File)
+    An object of a class that inherits the IO::Handle object (such as IO::File)
   </li>
 </ol>
 
@@ -57,14 +57,14 @@ open (* FH, "<", $file) or die "$!";
 my $fh = \ * FH;
 open ($fh, "<", $file) or die "$!";
 
-# 4. IO :: Handle object
-use IO :: Handle;
-my $fh = IO :: Handle-> new;
+# 4. IO::Handle object
+use IO::Handle;
+my $fh = IO::Handle-> new;
 open ($fh, "<", $file) or die "$!";
 
-# 5. IO :: File object (inheriting IO :: Handle)
-use IO :: File;
-my $fh = IO :: File-> new;
+# 5. IO::File object (inheriting IO::Handle)
+use IO::File;
+my $fh = IO::File-> new;
 open ($fh, "<", $file) or die "$!";
 </pre>
 
@@ -78,4 +78,4 @@ open (my $fh, "<", $file)
 
 is.
 
-When an undefined scalar variable is passed as the first argument to the open function, a reference to the anonymous glob is automatically generated. With the same description as "3. Reference to typeglob (\ * FH)", only the part of my $fh = \ * FH; is automatically performed. (This is a modern implementation of Perl, which may in the future automatically generate objects to IO :: Handle.)
+When an undefined scalar variable is passed as the first argument to the open function, a reference to the anonymous glob is automatically generated. With the same description as "3. Reference to typeglob (\ * FH)", only the part of my $fh = \ * FH; is automatically performed. (This is a modern implementation of Perl, which may in the future automatically generate objects to IO::Handle.)

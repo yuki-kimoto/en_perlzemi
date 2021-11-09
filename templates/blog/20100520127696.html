@@ -15,15 +15,15 @@
     here
   </li>
 </ol>
-<h2> Net :: Ping :: External - Execute the ping command in an OS-independent manner </h2>
+<h2> Net::Ping::External - Execute the ping command in an OS-independent manner </h2>
 
 
 
-The <strong> Net :: Ping :: External </strong> module is a module for executing ping commands in an OS-independent manner.
+The <strong> Net::Ping::External </strong> module is a module for executing ping commands in an OS-independent manner.
 
 <pre>
 # Loading modules and importing functions
-use Net :: Ping :: External'ping';
+use Net::Ping::External'ping';
 </pre>
 
 Use the <strong> ping </strong> function to execute the ping command. In addition to the host name (domain name), you can also specify an IP address for host.
@@ -40,8 +40,8 @@ You can also specify a timeout value (seconds).
 my $alive = ping (host =>'localhost', timeout => 3);
 </pre>
 
-<h3> FAQ about Net :: Ping :: External </h3>
+<h3> FAQ about Net::Ping::External </h3>
 
-Q. What are the benefits of the Net :: Ping :: External <a href="/blog/20100519127696.html"> Net :: Ping</a> module?
+Q. What are the benefits of the Net::Ping::External <a href="/blog/20100519127696.html"> Net::Ping</a> module?
 
-A. If you specify icmp as the new argument of the Net :: Ping module, you can check the existence of the remote host using ICMP in the same way as the ping command. However, this requires root privileges. If this feels inconvenient, you may want to use the Net :: Ping :: External module.
+A. If you specify icmp as the new argument of the Net::Ping module, you can check the existence of the remote host using ICMP in the same way as the ping command. However, this requires root privileges. If this feels inconvenient, you may want to use the Net::Ping::External module.

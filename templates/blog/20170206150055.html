@@ -95,12 +95,12 @@ foo (...)
 
 Next, let's modify <a href="/blog/20150725143778.html"> Makefile.PL</a> a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$(O_FILES)", all C language source files in the current directory will be compiled.
 <pre>
-use ExtUtils :: MakeMaker;
+use ExtUtils::MakeMaker;
 
 WriteMakefile (
     NAME =>'SomeModule',
     VERSION_FROM =>'lib / SomeModule.pm', # finds $VERSION
-    PREREQ_PM => {}, # e.g., Module :: Name => 1.1
+    PREREQ_PM => {}, # e.g., Module::Name => 1.1
     ($]> = 5.005? # # Add these new keywords supported since 5.005
       (ABSTRACT_FROM =>'lib / SomeModule.pm', # retrieve abstract from module
        AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
@@ -121,7 +121,7 @@ use warnings;
 
 use SomeModule;
 
-SomeModule :: foo ();
+SomeModule::foo ();
 </pre>
 
 <h3> Compile and run </h3>

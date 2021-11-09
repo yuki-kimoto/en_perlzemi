@@ -80,16 +80,16 @@ C ++ source file. Implements constructors, methods, and class methods. In the so
 # include "MyClass.h"
 
 // constructor
-MyClass :: MyClass () {}
+MyClass::MyClass () {}
 
 // method
-void MyClass :: print () {
-  std :: cout << "MyClass :: print \ n";
+void MyClass::print () {
+  std::cout << "MyClass::print \ n";
 }
 
 // class method
-void MyClass :: print_static () {
-  std :: cout << "MyClass :: print_static \ n";
+void MyClass::print_static () {
+  std::cout << "MyClass::print_static \ n";
 }
 
 </pre>
@@ -148,7 +148,7 @@ void
 print_static (...)
   PPCODE:
 {
-  MyClass :: print_static ();
+  MyClass::print_static ();
   XSRETURN (0);
 }
 
@@ -224,12 +224,12 @@ void
 print_static (...)
   PPCODE:
 {
-  MyClass :: print_static ();
+  MyClass::print_static ();
   XSRETURN (0);
 }
 </pre>
 
-I'm just calling "MyClass :: print_static ()" with a fully qualified name.
+I'm just calling "MyClass::print_static ()" with a fully qualified name.
 
 <b> Destructor </b>
 
@@ -251,14 +251,14 @@ Next, let's modify <a href="/blog/20150725143778.html"> Makefile.PL</a> a little
 Then change the compiler and linker to "g ++". The compiler can be set with the "CC" option, and the linker can be set with the "LD".
 
 <pre>
-use ExtUtils :: MakeMaker;
+use ExtUtils::MakeMaker;
 use strict;
 use warnings;
 
 WriteMakefile (
     NAME =>'MyClass',
     VERSION_FROM =>'lib / MyClass.pm', # finds $VERSION
-    PREREQ_PM => {}, # e.g., Module :: Name => 1.1
+    PREREQ_PM => {}, # e.g., Module::Name => 1.1
     ($]> = 5.005? # # Add these new keywords supported since 5.005
       (ABSTRACT_FROM =>'lib / MyClass.pm', # retrieve abstract from module
        AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
@@ -299,8 +299,8 @@ perl -Mblib test.pl
 If the output is as follows, it is successful.
 
 <pre>
-MyClass :: print
-MyClass :: print_static
+MyClass::print
+MyClass::print_static
 </pre>
 
 Now you can use C ++ classes from your XS file.(Returns a pointer to the SV * type)

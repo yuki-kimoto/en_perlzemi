@@ -1,13 +1,13 @@
-<h2> Documentation for Validator :: Custom 1.0 and earlier </h2>
+<h2> Documentation for Validator::Custom 1.0 and earlier </h2>
 
-<a href="/blog/20151212144988.html"> This page is a document prior to Validator :: Custom 1.0. The latest version of the documentation is here.</a>
+<a href="/blog/20151212144988.html"> This page is a document prior to Validator::Custom 1.0. The latest version of the documentation is here.</a>
 
 
-<strong> Validator :: Custom </strong> is useful for <strong> validation </strong> (<strong> value validation </strong>) of <strong> HTML form </strong> data It is a module. It features the ability to write validation rules with a small amount of description, the ability to set error messages for each constraint, the frequently used functions provided from the beginning, and the highly flexible design that allows easy addition of user-defined constraints.
+<strong> Validator::Custom </strong> is useful for <strong> validation </strong> (<strong> value validation </strong>) of <strong> HTML form </strong> data It is a module. It features the ability to write validation rules with a small amount of description, the ability to set error messages for each constraint, the frequently used functions provided from the beginning, and the highly flexible design that allows easy addition of user-defined constraints.
 
 <pre>
-use Validator :: Custom;
-my $vc = Validator :: Custom-> new;
+use Validator::Custom;
+my $vc = Validator::Custom-> new;
 
 # data
 my $data = {
@@ -73,23 +73,23 @@ my $rule = [
 
 This document will be rewritten to the new grammar, so please refer to the official grammar for the old grammar.
 
-<h3> Install Validator :: Custom </h3>
+<h3> Install Validator::Custom </h3>
 
-Use the cpan command to <strong> install </strong> <strong> Validator :: Custom </strong>.
+Use the cpan command to <strong> install </strong> <strong> Validator::Custom </strong>.
 
 <pre>
-cpan Validator :: Custom
+cpan Validator::Custom
 </pre>
 
 It can be installed on both Windows and Unix-like operating systems. You can't install without root privileges with the cpan command, so if you want to install in your local environment, use a tool such as cpanm.
 
-<h3> Validator :: Create Custom Object </h3>
+<h3> Validator::Create Custom Object </h3>
 
-Use the <strong> new </strong> method to create a Validator :: Custom object.
+Use the <strong> new </strong> method to create a Validator::Custom object.
 
 <pre>
-use Validator :: Custom;
-my $vc = Validator :: Custom-> new;
+use Validator::Custom;
+my $vc = Validator::Custom-> new;
 </pre>
 
 Use this object for validation.
@@ -99,8 +99,8 @@ Use this object for validation.
 I will explain the basics of validation. See the source code below.
 
 <pre>
-use Validator :: Custom;
-my $vc = Validator :: Custom-> new;
+use Validator::Custom;
+my $vc = Validator::Custom-> new;
 
 # data
 my $data = {price => 1200};
@@ -136,7 +136,7 @@ my $rule = $vc-> create_rule;
 $rule-> require ('price')-> check ('int');
 </pre>
 
-First, create a Validator :: Custom :: Rule object using the <b> create_rule </b> method.
+First, create a Validator::Custom::Rule object using the <b> create_rule </b> method.
 
 <pre>
 my $rule = $vc-> create_rule;
@@ -175,11 +175,11 @@ Use the validate method for validation.
 my $vresult = $vc-> validate ($data, $rule);
 </pre>
 
-The return value is a Validator :: Custom :: Result object.
+The return value is a Validator::Custom::Result object.
 
 <h4> Confirmation of results </h4>
 
-You can check the result using the Validator :: Custom :: Result object.
+You can check the result using the Validator::Custom::Result object.
 
 <pre>
 my $ok = $vresult-> is_ok;
@@ -211,7 +211,7 @@ $rule-> require ('title')-> check ('ascii');
 
 <h3> Register user-defined constraints - register_constraint </h3>
 
-I was able to express various constraints using the constraints provided by default, and and or conditions. In addition to this, Validator :: Custom allows you to create new user-defined constraints.
+I was able to express various constraints using the constraints provided by default, and and or conditions. In addition to this, Validator::Custom allows you to create new user-defined constraints.
 
 Here, I will simply register a constraint to check whether the email is in the correct format. Use the <b> register_constraint </b> method to register the constraint.
 
@@ -268,7 +268,7 @@ my $data = {admin_email =>'foo@my.com'};
 
 <h3> Register constraint function </h3>
 
-Validator :: Custom makes it easy to register constraint functions for validation. Use the <strong> register_constraint </strong> method to register the constraint function.
+Validator::Custom makes it easy to register constraint functions for validation. Use the <strong> register_constraint </strong> method to register the constraint function.
 
 <pre>
 $vc-> register_constraint (
@@ -299,7 +299,7 @@ $vc-> register_constraint (
 );
 </pre>
 
-<h3> Item does not have to exist require => 0 / Validator :: Custom Reference </h3>
+<h3> Item does not have to exist require => 0 / Validator::Custom Reference </h3>
 
 If the <strong> item may or may not exist </strong>, use the <b> optional </b> method instead of the <strong> require </strong> method.
 
@@ -316,7 +316,7 @@ You may want to enter multiple text boxes and check that at least one of them co
 
 <pre>
 # At least one item contains a value
-my $vc = Validator :: Custom-> new;
+my $vc = Validator::Custom-> new;
 $data = {name1 =>'Ken', name2 =>'', name3 =>'Taro'};
 $rule = [
   {key => qr / ^ name \ d + $/} => [
@@ -466,7 +466,7 @@ $rule-> require ('food')
   -> check ({'in_array' => [qw / 001 002 /]});
 </pre>
 
-Validator :: Custom makes it easy to validate HTML forms.
+Validator::Custom makes it easy to validate HTML forms.
 
 <h3> selected_at_least (constraint function)-at least one is selected </h3>
 
@@ -485,13 +485,13 @@ The selected_at_least constraint function can specify at least how many must be 
 
 <h3> Use the constraint function registered in the constraint function </h3>
 
-When writing constraint functions for validation with Validator :: Custom, you may want to use low-level constraint functions.
+When writing constraint functions for validation with Validator::Custom, you may want to use low-level constraint functions.
 
 Write as follows.
 
 <pre>
-use Validator :: Custom;
-my $vc = Validator :: Custom-> new;
+use Validator::Custom;
+my $vc = Validator::Custom-> new;
 
 $vc-> register_constraint (
   int_plus_alpha => sub {
@@ -506,7 +506,7 @@ $vc-> register_constraint (
 );
 </pre>
 
-The point of the constraint function is that the Validator :: Custom object is passed as the third argument.
+The point of the constraint function is that the Validator::Custom object is passed as the third argument.
 
 The constraints attribute returns a hash reference that includes the constraint function, so you can use the already registered constraint function as follows.
 

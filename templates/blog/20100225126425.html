@@ -15,9 +15,9 @@
     here
   </li>
 </ol>
-<h2> File :: Basename - Get the base name of the file </h2>
+<h2> File::Basename - Get the base name of the file </h2>
 
-<strong> File :: Basename </strong> is a module to get the base name and directory name from the file name. You can use the following three functions:
+<strong> File::Basename </strong> is a module to get the base name and directory name from the file name. You can use the following three functions:
 
 <ul>
   <li>
@@ -35,7 +35,7 @@ To use these functions, it's a good idea to import them explicitly.
 
 <pre>
 # Import function
-use File :: Basename'basename','dirname';
+use File::Basename'basename','dirname';
 </pre>
 
 <h3> basename function </h3>
@@ -60,7 +60,7 @@ Samples of basename and dirname. If the file name is "dir / a.txt", you can get 
 
 <pre>
 # Get base name and directory name
-use File :: Basename qw / basename dirname /;
+use File::Basename qw / basename dirname /;
 my $file ='dir / a.txt';
 my $basename = basename $file;
 my $dirname = dirname $file;
@@ -86,7 +86,7 @@ This is a sample to extract the extension. Specify a regular expression as the s
 
 <pre>
 # Extract extension
-use File :: Basename'fileparse';
+use File::Basename'fileparse';
 my $file ='dir / a.txt';
 my ($basename, $dirname, $ext) = fileparse ($file, qr / \ .. * $/);
 </pre>

@@ -15,11 +15,11 @@
     here
   </li>
 </ol>
-<h2> Insert image - PDF :: Create form with API2 </h2>
+<h2> Insert image - PDF::Create form with API2 </h2>
 
-I will explain how to insert PNG, GIF, JPEG images with PDF :: API2.
+I will explain how to insert PNG, GIF, JPEG images with PDF::API2.
 
-The PDF can contain images. PDF :: API2 allows you to insert PNG, GIF, JPEG images into PDF.
+The PDF can contain images. PDF::API2 allows you to insert PNG, GIF, JPEG images into PDF.
 
 <h3> Insert image file </h3>
 
@@ -31,7 +31,7 @@ Let's read the image file and generate a resource object to represent the image.
 
 <b> Reading JPEG files </b>
 
-To read a JPEG file with PDF :: API2, use the image_jpeg method. Returns a resource object that represents the JPEG image.
+To read a JPEG file with PDF::API2, use the image_jpeg method. Returns a resource object that represents the JPEG image.
 
 <pre>
 # Generate a resource object that represents a JPEG image
@@ -41,7 +41,7 @@ my $image_object = $pdf-> image_jpeg ($image_file);
 
 <b> Reading PNG files </b>
 
-To read a PNG file in PDF :: API2, use the image_png method. Returns a resource object that represents the PNG image.
+To read a PNG file in PDF::API2, use the image_png method. Returns a resource object that represents the PNG image.
 
 <pre>
 # Create a resource object that represents a PNG image
@@ -53,7 +53,7 @@ If you get the error "Unsupported Interlace", you need to turn off the PNG inter
 
 <b> Reading GIF files </b>
 
-In PDF :: API2, use the image_gif method to read a GIF file. Returns a resource object that represents the GIF image.
+In PDF::API2, use the image_gif method to read a GIF file. Returns a resource object that represents the GIF image.
 
 <pre>
 # Create a resource object that represents a GIF image
@@ -63,7 +63,7 @@ my $image_object = $pdf-> image_gif ($image_file);
 
 <h4> Generation of image content object </h4>
 
-Create a content object to insert the image. This is a PDF :: API2 :: Content object.
+Create a content object to insert the image. This is a PDF::API2::Content object.
 
 <pre>
 # Content object needed to insert an image
@@ -72,7 +72,7 @@ my $gfx = $page-> gfx;
 
 <h4> Insert image file </h4>
 
-In PDF :: API2, use the image method of the content object to insert an image file.
+In PDF::API2, use the image method of the content object to insert an image file.
 
 <pre>
 # Insert image at specified position
@@ -96,14 +96,14 @@ As an example, if you want to display a 600x600 image at 600dpi resolution, spec
 Let's write a sample to insert a PNG image.
 
 <pre>
-use PDF :: API2;
+use PDF::API2;
 
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 my $page = $pdf-> page;
 
 # Create a resource object that represents a PNG image
-my $image_file = "$FindBin :: Bin / rokkaku.png";
+my $image_file = "$FindBin::Bin / rokkaku.png";
 my $image_object = $pdf-> image_png ($image_file);
 
 # Content object needed to insert an image

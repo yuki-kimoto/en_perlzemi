@@ -36,7 +36,7 @@ my $nums = pdl [4, 2, 7];
 my $max = $nums-> max;
 </pre>
 
-The PDL :: Ufunc module provides functions for calculating statistics from PDL variables.
+The PDL::Ufunc module provides functions for calculating statistics from PDL variables.
 
 <h3> Minimum </h3>
 
@@ -96,7 +96,7 @@ my $nums_sort_asc = $nums-> qsort;
 To sort in descending order, combine ascending sort and slice.
 
 <pre>
-use PDL :: NiceSlice;
+use PDL::NiceSlice;
 my $nums_sort_desc = $nums_sort_asc (-1: 0);
 </pre>
 
@@ -111,7 +111,7 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: NiceSlice;
+use PDL::NiceSlice;
 
 # Create data
 my $nums = pdl [4, 4, 2, 2, 2, 7];
@@ -151,18 +151,18 @@ print "$nums_sort_asc \ n";
 print "$nums_sort_desc \ n";
 </pre>
 
-<h3> Install PDL :: Stats :: Basic </h3>
+<h3> Install PDL::Stats::Basic </h3>
 
-The following statistical functions are made available by a module called <strong> PDL :: Stats :: Basic </strong>. You need to install PDL :: Stats.
+The following statistical functions are made available by a module called <strong> PDL::Stats::Basic </strong>. You need to install PDL::Stats.
 
 <pre>
-cpan PDL :: Stats;
+cpan PDL::Stats;
 </pre>
 
-Loading PDL :: Stats :: Basic makes the functions defined in PDL :: Stats :: Basic available from PDL variables.
+Loading PDL::Stats::Basic makes the functions defined in PDL::Stats::Basic available from PDL variables.
 
 <pre>
-use PDL :: Stats :: Basic;
+use PDL::Stats::Basic;
 </pre>
 
 <h3> Distributed </h3>
@@ -171,7 +171,7 @@ To find the <strong> distributed </strong>, use the <strong> var </strong> metho
 
 <pre>
 use PDL;
-use PDL :: Stats :: Basic;
+use PDL::Stats::Basic;
 
 # data
 my $nums = pdl [4, 2, 7];
@@ -276,7 +276,7 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: Stats :: Basic;
+use PDL::Stats::Basic;
 
 # data
 my $nums = pdl [4, 2, 7, 3, 5];

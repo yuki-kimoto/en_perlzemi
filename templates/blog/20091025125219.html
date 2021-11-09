@@ -112,12 +112,12 @@ Use the <a href="/blog/20080906122079.html"> rand function</a> to generate rando
 $ret = rand $num;
 </pre>
 
-<h4> looks_like_number (Scalar :: Util) </h4>
+<h4> looks_like_number (Scalar::Util) </h4>
 
-Use the <a href="/blog/20090501124313.html"> looks_like_number function</a> of the Scalar :: Util module to determine if it is a number.
+Use the <a href="/blog/20090501124313.html"> looks_like_number function</a> of the Scalar::Util module to determine if it is a number.
 
 <pre>
-use Scalar :: Util'looks_like_number';
+use Scalar::Util'looks_like_number';
 $ret = looks_like_number $num;
 </pre>
 
@@ -472,30 +472,30 @@ This is a sample that doubles all the elements.
 
 The elements of the array are sequentially assigned to $_. The result of $_ * 2 is assigned to @ret.
 
-<h4> max (List :: Util) </h4>
+<h4> max (List::Util) </h4>
 
-To find the maximum value of an array element, use the max function of the <a href="/blog/20080114120030.html"> List :: Util module</a>.
+To find the maximum value of an array element, use the max function of the <a href="/blog/20080114120030.html"> List::Util module</a>.
 
 <pre>
-use List :: Util'max';
+use List::Util'max';
 $ret = max @array;
 </pre>
 
-<h4> min (List :: Util) </h4>
+<h4> min (List::Util) </h4>
 
-To find the minimum value of an array element, use the min function of the <a href="/blog/20080114120030.html"> List :: Util module</a>.
+To find the minimum value of an array element, use the min function of the <a href="/blog/20080114120030.html"> List::Util module</a>.
 
 <pre>
-use List :: Util'min';
+use List::Util'min';
 $ret = min @array;
 </pre>
 
-<h4> sum (List :: Util) </h4>
+<h4> sum (List::Util) </h4>
 
-Use the sum function of the <a href="/blog/20080114120030.html"> List :: Util module</a> to sum the elements of the array.
+Use the sum function of the <a href="/blog/20080114120030.html"> List::Util module</a> to sum the elements of the array.
 
 <pre>
-use List :: Util'sum';
+use List::Util'sum';
 $ret = sum @array;
 </pre>
 
@@ -543,12 +543,12 @@ This is a sample that compares in dictionary order and sorts in descending order
 
 Use cmp to compare in lexicographical order. If you want to sort in descending order, use $b cmp $a.
 
-<h4> shuffle (List :: Util) </h4>
+<h4> shuffle (List::Util) </h4>
 
-To sort the array randomly, use the shuffle function of the <a href="/blog/20080114120030.html"> List :: Util module</a>.
+To sort the array randomly, use the shuffle function of the <a href="/blog/20080114120030.html"> List::Util module</a>.
 
 <pre>
-use List :: Util'shuffle';
+use List::Util'shuffle';
 @ret = shuffle @array;
 </pre>
 
@@ -737,22 +737,22 @@ unlink $file
   or die "Cannot remove $file: $!";
 </pre>
 
-<h4> copy (File :: Copy) </h4>
+<h4> copy (File::Copy) </h4>
 
-To copy a file, use the copy function of the <a href="/blog/20100408127089.html"> File :: Copy</a> module.
+To copy a file, use the copy function of the <a href="/blog/20100408127089.html"> File::Copy</a> module.
 
 <pre>
-use File :: Copy'copy';
+use File::Copy'copy';
 copy ($file_from, $file_to)
   or die "Cannot copy $file_from to $file_to: $!";
 </pre>
 
-<h4> move (File :: Copy) </h4>
+<h4> move (File::Copy) </h4>
 
-To move a file, use the move function of the <a href="/blog/20100408127089.html"> File :: Copy</a> module.
+To move a file, use the move function of the <a href="/blog/20100408127089.html"> File::Copy</a> module.
 
 <pre>
-use File :: Copy'copy';
+use File::Copy'copy';
 move ($file_from, $file_to)
   or die "Cannot move $file_from to $file_to: $!";
 </pre>
@@ -784,12 +784,12 @@ rmdir $dir
   or die "Cannot remove directory $dir: $!";
 </pre>
 
-<h4> mkpath (File :: Path) </h4>
+<h4> mkpath (File::Path) </h4>
 
-To create a multi-level directory, use the mkpath function of the <a href="/blog/20100409127089.html"> File :: Path</a> module.
+To create a multi-level directory, use the mkpath function of the <a href="/blog/20100409127089.html"> File::Path</a> module.
 
 <pre>
-use File :: Path'mkpath';
+use File::Path'mkpath';
 eval {
   mkpath $dir
 };
@@ -801,12 +801,12 @@ if ($@) {
 
 If mkpath fails, an exception will be thrown, so catch it with the eval block. The content of the error when an exception occurs is stored in $@.
 
-<h4> rmtree (File :: Path) </h4>
+<h4> rmtree (File::Path) </h4>
 
-If you want to delete the directory that contains the files inside, use the rmtree function of the <a href="/blog/20100409127089.html"> File :: Path module</a>.
+If you want to delete the directory that contains the files inside, use the rmtree function of the <a href="/blog/20100409127089.html"> File::Path module</a>.
 
 <pre>
-use File :: Path'rmtree';
+use File::Path'rmtree';
 
 rmtree ($dir, {error => \ my $errors});
 for my $diag (@ $errors) {
@@ -835,23 +835,23 @@ chmod ($permission, $file)
   or die "Cannot change permission $file: $!";
 </pre>
 
-<h4> basename (File :: Basename) </h4>
+<h4> basename (File::Basename) </h4>
 
-To retrieve the base name of a file, use the basename function of the <a href="/blog/20100225126425.html"> File :: Basename module</a>.
+To retrieve the base name of a file, use the basename function of the <a href="/blog/20100225126425.html"> File::Basename module</a>.
 
 <pre>
-use File :: Basename'basename';
+use File::Basename'basename';
 $ret = basename $file;
 </pre>
 
 If the file name is /a/b/c.txt, c.txt is the base name.
 
-<h4> dirname (File :: Basename) </h4>
+<h4> dirname (File::Basename) </h4>
 
-To get the name of the directory that contains the file, use the dirname function of the <a href="/blog/20100225126425.html"> File :: Basename module</a>.
+To get the name of the directory that contains the file, use the dirname function of the <a href="/blog/20100225126425.html"> File::Basename module</a>.
 
 <pre>
-use File :: Basename'dirname';
+use File::Basename'dirname';
 $ret = dirname $file;
 </pre>
 
@@ -916,12 +916,12 @@ $mon + = 1;
 
 From the beginning, the order is "seconds, minutes, hours, days, months, years, days of the week". The year is an elapsed year from 1900, so you need to add 1900 to the year you acquired it. Months start at 0, so you need to add 1 to get the actual month.
 
-<h4> timelocal (Time :: Local) </h4>
+<h4> timelocal (Time::Local) </h4>
 
-To get the elapsed seconds since the epoch from the date and time information, use the <a href="/blog/20081014122416.html"> Time :: Local module's timelocal function</a>.
+To get the elapsed seconds since the epoch from the date and time information, use the <a href="/blog/20081014122416.html"> Time::Local module's timelocal function</a>.
 
 <pre>
-use Time :: Local'timelocal';
+use Time::Local'timelocal';
 $ret = timelocal ($sec, $min, $hour, $mday, $mon, $year);
 </pre>
 
@@ -935,12 +935,12 @@ sleep $sec;
 
 When it sleeps, the program will stop during that time.
 
-<h4> usleep (Time :: HiRes) </h4>
+<h4> usleep (Time::HiRes) </h4>
 
-To sleep in microseconds, use the usleep function of the <a href="/blog/20180309152509.html"> Time :: HiRes</a> module.
+To sleep in microseconds, use the usleep function of the <a href="/blog/20180309152509.html"> Time::HiRes</a> module.
 
 <pre>
-use Time :: HiRes'usleep';
+use Time::HiRes'usleep';
 usleep $microsec;
 </pre>
 
@@ -983,12 +983,12 @@ $ret = getpwuid ($>);
 
 Specify the user ID in the first argument. The execution user ID is stored in a special variable called $>, so specify this.
 
-<h4> hostname (Sys :: Hostname) </h4>
+<h4> hostname (Sys::Hostname) </h4>
 
-To get the hostname, use the hostname function in the <a href="/blog/20100522127696.html"> Sys :: Hostname module</a>.
+To get the hostname, use the hostname function in the <a href="/blog/20100522127696.html"> Sys::Hostname module</a>.
 
 <pre>
-use Sys :: Hostname'hostname';
+use Sys::Hostname'hostname';
 $ret = hostname;
 </pre>
 
@@ -1097,13 +1097,13 @@ $@ Eval error
 <div id = "standard-module"> </div>
 <h3> 11 Frequently used modules </h3>
 
-<h4> File :: Spec </h4>
+<h4> File::Spec </h4>
 
-You can use <a href="/blog/20100412127089.html"> File :: Spec module</a> to create a file name according to the OS.
+You can use <a href="/blog/20100412127089.html"> File::Spec module</a> to create a file name according to the OS.
 
 <pre>
-use File :: Spec;
-my $file_name = File :: Spec-> catfile ('dir','file.txt');
+use File::Spec;
+my $file_name = File::Spec-> catfile ('dir','file.txt');
 </pre>
 
 On Windows operating systems, $file_name is dir \ file.txt, and on Unix operating systems, the file name is dir / file.txt.
@@ -1114,10 +1114,10 @@ You can use the <a href="/blog/20100524127696.html"> FindBin</a> module to get t
 
 <pre>
 use FindBin;
-my $script_dir = $FindBin :: Bin;
+my $script_dir = $FindBin::Bin;
 </pre>
 
-$FindBin :: Bin contains the name of the directory where the script you are running is located.
+$FindBin::Bin contains the name of the directory where the script you are running is located.
 
 <h4> lib </h4>
 
@@ -1143,9 +1143,9 @@ Same as # warn
 carp ($message);
 </pre>
 
-<h4> Get :: Options </h4>
+<h4> Get::Options </h4>
 
-If you want to receive options with <a href="/blog/20080108132865.html"> command line arguments</a>, use <a href="/blog/20100514127696.html"> Get :: Options module</a> To use. For example, suppose you want to receive the following options:
+If you want to receive options with <a href="/blog/20080108132865.html"> command line arguments</a>, use <a href="/blog/20100514127696.html"> Get::Options module</a> To use. For example, suppose you want to receive the following options:
 
 <pre>
 perl script_name - length = 100 - file = test.txt - verbose
@@ -1154,7 +1154,7 @@ perl script_name - length = 100 - file = test.txt - verbose
 To receive this option, write:
 
 <pre>
-use Getopt :: Long'GetOptions';
+use Getopt::Long'GetOptions';
 
 # Set default value
 my $data ='file.dat';
@@ -1198,35 +1198,35 @@ my $query = $url-> query;
 my $url_str = $url-> as_string;
 </pre>
 
-<h4> Data :: Dumper </h4>
+<h4> Data::Dumper </h4>
 
-Use the <a href="/blog/20080208120248.html"> Data :: Dumper module</a> to output the contents of an array or hash.
+Use the <a href="/blog/20080208120248.html"> Data::Dumper module</a> to output the contents of an array or hash.
 
 <pre>
-use Data :: Dumper;
+use Data::Dumper;
 my $hash = {a => 1, b => 2};
-print Data :: Dumper-> Dump ([$hash], ['$hash']);
+print Data::Dumper-> Dump ([$hash], ['$hash']);
 </pre>
 
-<h4> XML :: Simple </h4>
+<h4> XML::Simple </h4>
 
-Use the <a href="/blog/20100424127089.html"> XML :: Simple module</a> to convert XML to a Perl data structure.
+Use the <a href="/blog/20100424127089.html"> XML::Simple module</a> to convert XML to a Perl data structure.
 
 <pre>
-use XML :: Simple;
-my $xml = XML :: Simple-> new;
+use XML::Simple;
+my $xml = XML::Simple-> new;
 my $hash = $xml-> XMLin ($xml_file);
 </pre>
 
 You can parse an XML file with the XMLin method and convert it to a Perl data structure.
 
-<h4> LWP :: UserAgent </h4>
+<h4> LWP::UserAgent </h4>
 
-Use the LWP :: UserAgent module to get information from the internet.
+Use the LWP::UserAgent module to get information from the internet.
 
 <pre>
-use LWP :: UserAgent;
-my $ua = LWP :: UserAgent-> new;
+use LWP::UserAgent;
+my $ua = LWP::UserAgent-> new;
 my $response = $ua-> get ($url);
 
 my $content; # Obtained content
@@ -1238,17 +1238,17 @@ else {
 }
 </pre>
 
-Get the URL of the page you want to get in the get method. An HTTP :: Response object will be returned, so check if the is_success method succeeded. If successful, get the content of the page obtained by the content method.
+Get the URL of the page you want to get in the get method. An HTTP::Response object will be returned, so check if the is_success method succeeded. If successful, get the content of the page obtained by the content method.
 
-<h4> Net :: FTP </h4>
+<h4> Net::FTP </h4>
 
-If you want to do FTP, use <a href="/blog/20091115124667.html"> Net :: FTP module</a>.
+If you want to do FTP, use <a href="/blog/20091115124667.html"> Net::FTP module</a>.
 
 <pre>
-use Net :: FTP;
+use Net::FTP;
 
 # Specify the host name (or IP address) to connect to the FTP server
-my $ftp = Net :: FTP-> new ($host)
+my $ftp = Net::FTP-> new ($host)
   or die "Cannot connect to $host: $@";
 
 # Login by specifying user name and password
@@ -1267,11 +1267,11 @@ $ftp-> get ($file)
 $ftp-> quit;
 </pre>
 
-<h4> Text :: Diff </h4>
+<h4> Text::Diff </h4>
 
-If you want to check the difference between files, use <a href="/blog/20100414127089.html"> Text :: Diff module</a>.
+If you want to check the difference between files, use <a href="/blog/20100414127089.html"> Text::Diff module</a>.
 
 <pre>
-use Text :: Diff'diff';
+use Text::Diff'diff';
 my $diff = diff ($file1, $file2);
 </pre>

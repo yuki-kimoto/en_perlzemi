@@ -112,11 +112,11 @@ open my $fh,'<', encode ('cp932', $file);
 open my $fh,'<', encode ('UTF-8', $file);
 
 # For Mac OS X
-use Encode :: UTF8Mac;
+use Encode::UTF8Mac;
 open my $fh,'<', encode ('' utf-8-mac'', $file);
 </pre>
 
-Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html"> Encode :: UTF8Mac</a> module.
+Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html"> Encode::UTF8Mac</a> module.
 
 The following explanation is detailed about the handling of Japanese.
 
@@ -406,7 +406,7 @@ The actual script looks like this:
 use strict;
 use warnings;
 
-use File :: Copy'move';
+use File::Copy'move';
 
 # (1) Read the contents of the file
 my $file ='date.txt';
@@ -430,7 +430,7 @@ move $temp_file, $file
   or die qq / Can't move "$temp_file" to "$file": $! /;
 </pre>
 
-(Reference) <a href="/blog/20100408127089.html"> File :: Copy</a>
+(Reference) <a href="/blog/20100408127089.html"> File::Copy</a>
 
 <h3> File I / O Techniques </h3>
 

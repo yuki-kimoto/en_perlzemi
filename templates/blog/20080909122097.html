@@ -16,34 +16,34 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Math :: Random :: MT - Generates pseudo-random numbers close to natural random numbers </h2>
+<h2> Math::Random::MT - Generates pseudo-random numbers close to natural random numbers </h2>
 
 
 
 A good algorithm for generating pseudo-random numbers is the <strong> Mersenne Twister method </strong>.
 
-The module that finds pseudo-random numbers by the Mersenne Twister method is <strong> Math :: Random :: MT </strong>. You can get it from CAPN.
+The module that finds pseudo-random numbers by the Mersenne Twister method is <strong> Math::Random::MT </strong>. You can get it from CAPN.
 
 <pre>
-use Math :: Random :: MT qw / rand srand /;
+use Math::Random::MT qw / rand srand /;
 
 srand time ^ $$;
 my $num = rand 100
 </pre>
 
-Used in the same way as the standard Perl modules <a href="/blog/20080906122079.html"> rand function</a> and <a href="/blog/20080908122097.html"> srand function</a> can. When using Math :: Randam :: MT, make sure to call the srand function explicitly.
+Used in the same way as the standard Perl modules <a href="/blog/20080906122079.html"> rand function</a> and <a href="/blog/20080908122097.html"> srand function</a> can. When using Math::Randam::MT, make sure to call the srand function explicitly.
 
 The <a href="/blog/20081008122347.html"> time function</a> is the time, and $$is the <a href="/blog/20180520152690.html"> process ID</a>, which is the initial value given to srand. I try to make the values ​​as random as possible.
 
 <h3> Sample </h3>
 
-This is a sample using Math :: Randam :: MT.
+This is a sample using Math::Randam::MT.
 
 <pre>
 use strict;
 use warnings;
 
-use Math :: Random :: MT qw / rand srand /;
+use Math::Random::MT qw / rand srand /;
 
 print "(1) Generates a random random number. \ N";
 # Give as random an initial value as possible.

@@ -23,9 +23,9 @@
 
 I will explain how to create a graph using PDL.
 
-<h3> Install PDL :: Graphics :: PLplot </h3>
+<h3> Install PDL::Graphics::PLplot </h3>
 
-Install the module <strong> PDL :: Graphics :: PLplot </strong> to draw the graph. (You need to <a href="/blog/20131101138330.html"> PDL installed</a> first.)
+Install the module <strong> PDL::Graphics::PLplot </strong> to draw the graph. (You need to <a href="/blog/20131101138330.html"> PDL installed</a> first.)
 
 <h4> Windows </h4>
 
@@ -65,7 +65,7 @@ Running PDL-Graphics-PLplot-0.62 install script ...
 
 <h3> Creating a simple graph </h3>
 
-Let's draw a graph in PDL. Use the module <strong> PDL :: Graphics :: PLplot </strong> to draw the graph.
+Let's draw a graph in PDL. Use the module <strong> PDL::Graphics::PLplot </strong> to draw the graph.
 
 <h4> Linear function graph </h4>
 
@@ -73,10 +73,10 @@ First, let's draw a graph of the simplest linear function "y = 2x". Use the <str
 
 <pre>
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object (output as graph.png in PNG format)
-my $pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
+my $pl = PDL::Graphics::PLplot-> new (DEV =>'png', FILE =>'graph.png');
 
 # Create a PDL variable that represents 0 to 99 as the value of x
 my $x = pdl-> sequence (100);
@@ -102,7 +102,7 @@ You can create a graph of the linear function as follows.
 Here are some graph options. It can be passed as an argument to the new method.
 
 <pre>
-my $pl = PDL :: Graphics :: PLplot-> new (
+my $pl = PDL::Graphics::PLplot-> new (
   DEV =>'png',
   FILE =>'graph.png',
   PAGESIZE => [500, 400]
@@ -241,10 +241,10 @@ I wrote a graph of a linear function "y = 1/2 x + 10".
 
 <pre>
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object (output as graph.png in PNG format)
-my $pl = PDL :: Graphics :: PLplot-> new (
+my $pl = PDL::Graphics::PLplot-> new (
   DEV =>'png',
   FILE =>'graph.png',
   PAGESIZE => [600, 300],
@@ -284,10 +284,10 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object
-my $pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
+my $pl = PDL::Graphics::PLplot-> new (DEV =>'png', FILE =>'graph.png');
 
 # x value (0 to 4 in 0.1 increments)
 my $x = pdl-> sequence (40) * 0.1;
@@ -304,7 +304,7 @@ $pl-> close;
 
 <h3> Trigonometric function </h3>
 
-The following is a graph of trigonometric functions (sin). Use the <strong> sin </strong> method to calculate trigonometric functions. It is defined in PDL :: Math.
+The following is a graph of trigonometric functions (sin). Use the <strong> sin </strong> method to calculate trigonometric functions. It is defined in PDL::Math.
 
 [f: id: perlcodesample: 20131106102522p: image: w500]
 
@@ -313,10 +313,10 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object
-my $pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
+my $pl = PDL::Graphics::PLplot-> new (DEV =>'png', FILE =>'graph.png');
 
 # x value
 my $x = pdl-> sequence (200) * 0.1;
@@ -342,10 +342,10 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object
-my $pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
+my $pl = PDL::Graphics::PLplot-> new (DEV =>'png', FILE =>'graph.png');
 
 # e
 my $e = pdl [exp (1)];
@@ -366,7 +366,7 @@ $pl-> close;
 
 <h3> Logarithmic function (natural logarithm) </h3>
 
-The last is a graph of logarithmic function (natural logarithm). Use the <strong> log </strong> method to calculate the logarithmic function (natural logarithm). It is defined in PDL :: Math. Note that the graph starts at 0.1, as the value of log0 will be infinitesimal.
+The last is a graph of logarithmic function (natural logarithm). Use the <strong> log </strong> method to calculate the logarithmic function (natural logarithm). It is defined in PDL::Math. Note that the graph starts at 0.1, as the value of log0 will be infinitesimal.
 
 [f: id: perlcodesample: 20131106102524p: image: w500]
 
@@ -375,10 +375,10 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object
-my $pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
+my $pl = PDL::Graphics::PLplot-> new (DEV =>'png', FILE =>'graph.png');
 
 # x value
 my $x = pdl-> sequence (100) * 0.1 + 0.1;
@@ -405,10 +405,10 @@ use strict;
 use warnings;
 
 use PDL;
-use PDL :: Graphics :: PLplot;
+use PDL::Graphics::PLplot;
 
 # Create PLPlot object
-my $pl = PDL :: Graphics :: PLplot-> new (DEV =>'png', FILE =>'graph.png');
+my $pl = PDL::Graphics::PLplot-> new (DEV =>'png', FILE =>'graph.png');
 
 # data
 my $x = pdl-> sequence (20);

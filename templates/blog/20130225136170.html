@@ -66,7 +66,7 @@ my $ages = {kimoto => 20, ken => 25};
 <h4> When the subroutine is one line, put a space inside the brace </h4>
 
 <pre>
-sub ua {LWP :: UserAgent-> new}
+sub ua {LWP::UserAgent-> new}
 </pre>
 
 <h4> When the sentence is one line, put a space inside the brace </h4>
@@ -158,7 +158,7 @@ It is easy to see if it is aligned at the position of the character string, but 
 <h4> Do not add a semicolon; when the subroutine is on one line </h4>
 
 <pre>
-sub ua {LWP :: UserAgent-> new}
+sub ua {LWP::UserAgent-> new}
 </pre>
 
 <h4> Do not add a semicolon; when the statement is on one line </h4>
@@ -219,13 +219,13 @@ my $class = ref $obj;
 
 <pre>
 my $time = time;
-my $ua = LWP :: UserAgent-> new;
+my $ua = LWP::UserAgent-> new;
 </pre>
 
 <h4> Use direct object syntax </h4>
 
 <pre>
-my $ua = LWP :: UserAgent-> new;
+my $ua = LWP::UserAgent-> new;
 </pre>
 
 It doesn't use indirect object syntax.
@@ -248,8 +248,8 @@ use Encode'encode';
 exception. When it is very common not to describe the import.
 
 <pre>
-use Mojolicious :: Lite;
-use Time :: Piece;
+use Mojolicious::Lite;
+use Time::Piece;
 </pre>
 
 <h4> If there is only one function to import, enclose it in single quotes </h4>
@@ -267,15 +267,15 @@ use Encode qw / encode decode /;
 <h4> Always use use to load modules </h4>
 
 <pre>
-use LWP :: UserAgent;
-use XML :: Simple;
+use LWP::UserAgent;
+use XML::Simple;
 </pre>
 
 exception. Use require if you want to load the module at runtime.
 
 <pre>
 if ($use_agent) {
-  require LWP :: UserAgent;
+  require LWP::UserAgent;
 }
 </pre>
 

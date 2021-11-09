@@ -15,11 +15,11 @@
     here
   </li>
 </ol>
-<h2> Drawing basic figures and creating tables - PDF :: Create forms with API2 </h2>
+<h2> Drawing basic figures and creating tables - PDF::Create forms with API2 </h2>
 
-I will explain how to create a table with PDF :: API2.
+I will explain how to create a table with PDF::API2.
 
-PDF :: API2 has the ability to create straight lines, fillable circles, triangles, rectangles and even more polygons.
+PDF::API2 has the ability to create straight lines, fillable circles, triangles, rectangles and even more polygons.
 
 If you can draw straight lines, you can combine them to create a table. If you want to set the background color for the table, you can do it by drawing a fillable rectangle.
 
@@ -41,15 +41,15 @@ HTML tables can be used to create tables. Here, let's make it possible to expres
 
 <h3> Draw basic shapes </h3>
 
-First of all, let's draw a basic shape with PDF :: API2 as a basis for creating a table.
+First of all, let's draw a basic shape with PDF::API2 as a basis for creating a table.
 
 <h4> Generate content object for graphics </h4>
 
-First of all, create a content object for the graphic. You can create a content object for graphics by calling the gfx method from the page object. This is a PDF :: API2 :: Content object.
+First of all, create a content object for the graphic. You can create a content object for graphics by calling the gfx method from the page object. This is a PDF::API2::Content object.
 
 <pre>
 # Generate PDF object
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Create page
 my $page = $pdf-> page;
@@ -60,7 +60,7 @@ my $gfx = $page-> gfx;
 
 <h4> Draw a line </h4>
 
-As the most basic drawing, let's draw a line with PDF :: API2.
+As the most basic drawing, let's draw a line with PDF::API2.
 
 The move method creates a new path and moves you to the starting point. Use the line method to move the path to the end point.
 
@@ -81,7 +81,7 @@ $gfx-> line ($end_x, $end_y);
 $gfx-> stroke;
 </pre>
 
-When drawing figures in PDF :: API2, remember the feeling of connecting paths and drawing.
+When drawing figures in PDF::API2, remember the feeling of connecting paths and drawing.
 
 <h4> Set line thickness </h4>
 
@@ -122,10 +122,10 @@ use strict;
 use warnings;
 use utf8;
 
-use PDF :: API2;
+use PDF::API2;
 
 # Generate PDF object
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 my $page = $pdf-> page;
 
@@ -165,10 +165,10 @@ use strict;
 use warnings;
 use utf8;
 
-use PDF :: API2;
+use PDF::API2;
 
 # Generate PDF object
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 my $page = $pdf-> page;
 
@@ -229,7 +229,7 @@ $gfx-> fillcolor ('% FF000000');
 
 <h3> Draw a rectangle </h3>
 
-PDF :: API2 has a convenient method for drawing rectangles. All shapes can be created by connecting lines using the above method, but since there are many steps to connect lines, a method for drawing basic shapes such as rectangles is prepared.
+PDF::API2 has a convenient method for drawing rectangles. All shapes can be created by connecting lines using the above method, but since there are many steps to connect lines, a method for drawing basic shapes such as rectangles is prepared.
 
 Let's create a rectangle and fill the background with a light gray color. There are rect method and rectxy method to draw a rectangle, but let's use rectxy which can draw a rectangle just by specifying the start point and the point opposite the diagonal line.
 
@@ -238,10 +238,10 @@ use strict;
 use warnings;
 use utf8;
 
-use PDF :: API2;
+use PDF::API2;
 
 # Generate PDF object
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Create page
 my $page = $pdf-> page;
@@ -342,10 +342,10 @@ However, a problem with this method was discovered. If you draw twice at the sam
 So, let's create a table by simply drawing lines vertically and horizontally.
 
 <pre>
-use PDF :: API2;
+use PDF::API2;
 
 # Generate PDF object
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Default global setting for paper size (to get paper size)
 $pdf-> mediabox (undef);
@@ -466,10 +466,10 @@ use strict;
 use warnings;
 use utf8;
 
-use PDF :: API2;
+use PDF::API2;
 
 # Generate PDF object
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Default global setting for paper size (to get paper size)
 $pdf-> mediabox (undef);

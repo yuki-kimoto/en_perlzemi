@@ -47,7 +47,7 @@ If you've done the initial setup for cpan, you can download it. You will be aske
 
 If you proceed to the end, you are done.
 
-Since Perl 5.10 and later, you can use Time :: Piece as a standard Perl module, so it's a good idea to use Time :: Piece. For the handling of time by Time :: Piece, see "<a href="/blog/20091105124627.html"> Handling date and time by" Time :: Piece "</a>".
+Since Perl 5.10 and later, you can use Time::Piece as a standard Perl module, so it's a good idea to use Time::Piece. For the handling of time by Time::Piece, see "<a href="/blog/20091105124627.html"> Handling date and time by" Time::Piece "</a>".
 
 <h3> DateTime initialization and acquisition of date / time information </h3>
 
@@ -67,7 +67,7 @@ my $dt = DateTime-> new (
 
 The DateTime module is an object-oriented module. Create a DateTime object with the DateTime-> new method. Specify the same number for the year and month.
 
-You don't have to specify the year as a number from 1900 or the month as a number starting from 0, unlike the localtime function in the standard function or the Time :: Local in the standard module.
+You don't have to specify the year as a number from 1900 or the month as a number starting from 0, unlike the localtime function in the standard function or the Time::Local in the standard module.
 
 <h4> Acquisition of date / time information </h4>
 
@@ -125,34 +125,34 @@ my $dt = DateTime-> from_epoch (epoch => $epoch, time_zone =>'local');
 <h3> Create a timezone object </h3>
 
 
-DateTime is a constructor that allows you to specify the time zone. You can reuse the DateTime :: TimeZone object by creating it first.
+DateTime is a constructor that allows you to specify the time zone. You can reuse the DateTime::TimeZone object by creating it first.
 
 <pre>
-my $time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+my $time_zone = DateTime::TimeZone-> new (name =>'Asia / Tokyo');
 </pre>
 
 <h4> Creating a timezone object </h4>
 
 Use the new method to create a timezone object. In the argument, specify the time zone name in name. (List of time zone names)
 <pre>
-my $time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+my $time_zone = DateTime::TimeZone-> new (name =>'Asia / Tokyo');
 </pre>
 
 <h4> Automatic generation of timezone objects </h4>
 
-As shown below, if you specify the time zone in the DateTime constructor (new, now, etc.), the DateTime :: TimeZone object is automatically created internally.
+As shown below, if you specify the time zone in the DateTime constructor (new, now, etc.), the DateTime::TimeZone object is automatically created internally.
 
 <pre>
 my $dt = DateTime-> now (time_zone =>'Asia / Tokyo');
 </pre>
 
-Every time you create a DateTime object, a DateTime :: TimeZone object will be created.
+Every time you create a DateTime object, a DateTime::TimeZone object will be created.
 
-This is a cost, so if you want to create a DateTime object more than once, it's a good idea to create a DateTime :: TimeZone object first.
+This is a cost, so if you want to create a DateTime object more than once, it's a good idea to create a DateTime::TimeZone object first.
 
 <h4> Use of timezone objects </h4>
 
-Just specify the created DateTime :: TimeZone object in time_zone, which is an argument of the DateTime constructor.
+Just specify the created DateTime::TimeZone object in time_zone, which is an argument of the DateTime constructor.
 
 <pre>
 my $dt1 = DateTime-> now (time_zone => $time_zone);
@@ -227,20 +227,20 @@ print (
 You can specify the locale name in the argument of the DateTime constructor.
 
 <pre>
-my $locale = DateTime :: Locale-> load ('ja');
+my $locale = DateTime::Locale-> load ('ja');
 </pre>
 
-DateTime creates a DateTime :: Locale object in its constructor. Then, based on the generated locale object, it creates an output of date information for each region or country.
+DateTime creates a DateTime::Locale object in its constructor. Then, based on the generated locale object, it creates an output of date information for each region or country.
 
 <h4> Explicit creation of locale object </h4>
 
 <pre>
-my $locale = DateTime :: Locale-> load ('ja');
+my $locale = DateTime::Locale-> load ('ja');
 </pre>
 
-To explicitly create a DateTime :: Locale object, use the load method. The load method creates a DateTime :: Locale object the first time, but reuses the DateTime :: Locale object saved in memory from the second time onward.
+To explicitly create a DateTime::Locale object, use the load method. The load method creates a DateTime::Locale object the first time, but reuses the DateTime::Locale object saved in memory from the second time onward.
 
-There is always only one DateTime :: Locale object that represents'ja' in your program. Such an object is called a singleton. It is not created every time like the DateTime :: TimeZone object.
+There is always only one DateTime::Locale object that represents'ja' in your program. Such an object is called a singleton. It is not created every time like the DateTime::TimeZone object.
 
 <h4> Pass the locale object to the constructor </h4>
 
@@ -256,7 +256,7 @@ You can explicitly pass a locale object, but
 my $dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 </pre>
 
-It is easy to specify by a character string like. If you write this, the DateTime :: Locale object will be created automatically in the DateTime constructor.
+It is easy to specify by a character string like. If you write this, the DateTime::Locale object will be created automatically in the DateTime constructor.
 
 See "<a href="/blog/20081107122606.html"> List of available locales</a>" for available locales.
 
@@ -797,7 +797,7 @@ $dt-> subtract (minutes => 1);
 $dt-> subtract (seconds => 1);
 </pre>
 
-You can also subtract dates. You can use the <strong>-</strong> symbol to make the calculation normal. (This is achieved using a feature called operator overloading.) The return value is a DateTime :: Duration object that represents the period, not a DateTime object. You can get the date of the period with the years, months, days method.
+You can also subtract dates. You can use the <strong>-</strong> symbol to make the calculation normal. (This is achieved using a feature called operator overloading.) The return value is a DateTime::Duration object that represents the period, not a DateTime object. You can get the date of the period with the years, months, days method.
 
 <pre>
 my $duration = $dt2- $dt1;
@@ -807,9 +807,9 @@ There are two types of date subtraction. Some subtract the period on a date (for
 
 <h3> Object representing the period </h3>
 
-The period between dates is represented by the DateTime :: Duration object. DateTime represents date information, while DateTime :: Duration represents period information. When adding a certain period to a date or subtracting a certain period, I used the add method and the submit method, but internally, the operation is performed after the DateTime :: Duration object is created.
+The period between dates is represented by the DateTime::Duration object. DateTime represents date information, while DateTime::Duration represents period information. When adding a certain period to a date or subtracting a certain period, I used the add method and the submit method, but internally, the operation is performed after the DateTime::Duration object is created.
 
-When subtracting DateTime objects from each other, DateTime :: Duration object is returned as a return value. A feature called operator overloading is used to allow subtraction between DateTime objects using the-symbol.
+When subtracting DateTime objects from each other, DateTime::Duration object is returned as a return value. A feature called operator overloading is used to allow subtraction between DateTime objects using the-symbol.
 
 <pre>
 my $duration = $dt2- $dt1;
@@ -1104,13 +1104,13 @@ This is a sample to specify the time zone.
 use strict;
 use warnings;
 use DateTime;
-use DateTime :: TimeZone;
+use DateTime::TimeZone;
 
 # (1) Creating a timezone object
-my $time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+my $time_zone = DateTime::TimeZone-> new (name =>'Asia / Tokyo');
 
 # When automatically acquiring the time zone from the OS settings
-# my $time_zone = DateTime :: TimeZone-> new (name =>'local');
+# my $time_zone = DateTime::TimeZone-> new (name =>'local');
                                                      
 # (2) Use of timezone object
 my $dt1 = DateTime-> now (time_zone => $time_zone);
@@ -1168,7 +1168,7 @@ This is a sample to specify the locale with DateTime.
 use strict;
 use warnings;
 use DateTime;
-use DateTime :: Locale;
+use DateTime::Locale;
 
 # For encoding
 use Encode;
@@ -1178,8 +1178,8 @@ hift-jis'}
 else {$encode_to ='utf8'}
 
 # Generation of locale
-print "(1) DateTime :: Locale object \ n";
-my $locale = DateTime :: Locale-> load ('ja');
+print "(1) DateTime::Locale object \ n";
+my $locale = DateTime::Locale-> load ('ja');
 my $dt = DateTime-> now (locale => $locale, time_zone =>'local');
 
 # Day of the week name
@@ -1193,8 +1193,8 @@ This is a sample to get the date and time.
 use strict;
 use warnings;
 use DateTime;
-use DateTime :: TimeZone;
-use DateTime :: Locale;
+use DateTime::TimeZone;
+use DateTime::Locale;
 
 my $dt = DateTime-> now (time_zone =>'local');
 

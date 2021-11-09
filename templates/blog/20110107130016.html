@@ -31,11 +31,11 @@ To install a module, simply enter the module name in the text box and press the 
 # ! / usr / bin / perl
 
 use FindBin;
-use lib "$FindBin :: Bin / lib";
+use lib "$FindBin::Bin / lib";
 
-use Mojolicious :: Lite;
-use File :: Copy'move';
-use LWP :: UserAgent;
+use Mojolicious::Lite;
+use File::Copy'move';
+use LWP::UserAgent;
 use utf8;
 
 # top page
@@ -57,7 +57,7 @@ get'/' => sub {
             chdir $home
               or die qq {Can't change directory "$home": $!};
             
-            my $ua = LWP :: UserAgent-> new;
+            my $ua = LWP::UserAgent-> new;
             my $res = $ua-> get ('http://xrl.us/cpanm/');
             my $cpanm_content;
             if ($res-> is_success) {
@@ -113,7 +113,7 @@ __DATA__
     <pre>
     # If you want to use the installed module, write as follows in the script (app.cgi).
     use FindBin;
-    use lib "$FindBin :: Bin / .. / .. / perl5 / lib / perl5";
+    use lib "$FindBin::Bin / .. / .. / perl5 / lib / perl5";
     
     # This script is available to everyone and should be removed as soon as the installation is complete.
     </pre>
@@ -132,4 +132,4 @@ __DATA__
 </html>
 </pre>
 
-(Reference) <a href="/blog/20100408127089.html"> File :: Copy</a>, <a href="/blog/20100524127696.html"> FindBin</a>
+(Reference) <a href="/blog/20100408127089.html"> File::Copy</a>, <a href="/blog/20100524127696.html"> FindBin</a>

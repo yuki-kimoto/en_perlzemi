@@ -30,12 +30,12 @@ my% scores = (math => 80, english => 77);
 my $twice = twice (5);
 
 # breakpoint
-$DB :: single = 1;
+$DB::single = 1;
 
 for my $num (@nums) {
     
   # Conditional breakpoints
-  if ($num == 2) {$DB :: single = 1}
+  if ($num == 2) {$DB::single = 1}
   print "$num \ n";
 }
 
@@ -57,7 +57,7 @@ perl -d debug.pl
 When you start the debugger, it stops at the first line.
 
 <pre>
-main :: (a.pl: 4): my $message ='Hello';
+main::(a.pl: 4): my $message ='Hello';
 </pre>
 
 Use "q" to exit the debugger.
@@ -85,7 +85,7 @@ Use "n" to execute a <strong> script on a single line. </strong> Type "n" and th
 If you execute "n" in the initial state, the following will be displayed and you can confirm that you are advancing one line.
 
 <pre>
-main :: (a.pl: 5): my @nums = (1, 2, 3);
+main::(a.pl: 5): my @nums = (1, 2, 3);
 </pre>
 
 Type "n", "Enter", "n", "Enter" to reach the end of the script and end the script.
@@ -107,13 +107,13 @@ Use "s" to run the <strong> script in a single step. </strong> The difference fr
 Encourage one line execution with "n" and advance the script to the line where the subroutine call is.
 
 <pre>
-main :: (a.pl: 8): my $twice = twice (5);
+main::(a.pl: 8): my $twice = twice (5);
 </pre>
 
 You can move to the processing inside the subroutine by executing "s" on this line.
 
 <pre>
-main :: twice (a.pl:21): my $num = shift;
+main::twice (a.pl:21): my $num = shift;
 </pre>
 
 <h4> c - Run to breakpoint or specified line </h4>
@@ -127,7 +127,7 @@ c 5
 Is executed until just before the 5th line.
 
 <pre>
-main :: (a.pl: 5): my @nums = (1, 2, 3);
+main::(a.pl: 5): my @nums = (1, 2, 3);
 </pre>
 
 Then without giving any arguments
@@ -139,12 +139,12 @@ c
 Will advance to the position next to the breakpoint in the sentence.
 
 <pre>
-main :: (a.pl: 13): for my $num (@nums) {
+main::(a.pl: 13): for my $num (@nums) {
 </pre>
 
 <pre>
 # breakpoint
-$DB :: single = 1;
+$DB::single = 1;
 </pre>
 
 Is a breakpoint that can be embedded in a script. If you want to see the contents of a variable, set a breakpoint around the line immediately before it, and it is very convenient because you can stop the execution there.
@@ -233,17 +233,17 @@ Here are some commonly used debugging techniques.
 <strong> Perl allows you to embed breakpoints in your scripts. </strong> If you assign 1 to a variable called single in the DB class (class for the debugger), the process will switch to single-step execution at that position.
 
 <pre>
-$DB :: single = 1;
+$DB::single = 1;
 </pre>
 
 This is really convenient, so please use it more and more. Also, don't forget to remove it from the script after you finish the exam.
 
 <h4> Conditional breakpoints </h4>
 
-When debugging, there are times when you want to stop processing and see the contents of variables only under certain conditions. In such a case, use the conditional statement in combination with "$DB :: single = 1". In this sample, when $num is 2, the debugger stops at that position.
+When debugging, there are times when you want to stop processing and see the contents of variables only under certain conditions. In such a case, use the conditional statement in combination with "$DB::single = 1". In this sample, when $num is 2, the debugger stops at that position.
 
 <pre>
-if ($num == 2) {$DB :: single = 1}
+if ($num == 2) {$DB::single = 1}
 </pre>
 
 <h4> Find out where the warning occurred </h4>
@@ -263,15 +263,15 @@ Perl can receive warnings as signals, so you can set the following breakpoints i
 <pre>
 # Catch the warning and set a breakpoint
 $SIG {__ WARN__} = sub {
-    $DB :: single = 1;
+    $DB::single = 1;
 };
 </pre>
 
 <h3> I can't use the history function because I can't use the up and down keys in the debugger. </H3>
 
-I think there are cases where the history function cannot be used because the up and down keys cannot be used in the Perl debugger.This is because Term :: ReadLine :: Gnu is not installed.
+I think there are cases where the history function cannot be used because the up and down keys cannot be used in the Perl debugger.This is because Term::ReadLine::Gnu is not installed.
 
-The following C language libraries are required to install Term :: ReadLine :: Gnu.
+The following C language libraries are required to install Term::ReadLine::Gnu.
 
 <h4> For CentOS, RedHat </h4>
 
@@ -279,25 +279,25 @@ The following C language libraries are required to install Term :: ReadLine :: G
 yum -y install readline-devel
 </pre>
 
-<h4> Install Term :: ReadLine :: Gnu </h4>
+<h4> Install Term::ReadLine::Gnu </h4>
 
-Install Term :: ReadLine :: Gnu on cpanm or cpan.
+Install Term::ReadLine::Gnu on cpanm or cpan.
 
 <pre>
 # cpanm
-cpanm Term :: ReadLine :: Gnu
+cpanm Term::ReadLine::Gnu
 </pre>
 
 <pre>
 # cpan
-cpan Term :: ReadLine :: Gnu
+cpan Term::ReadLine::Gnu
 </pre>
 
 <h3> Stop the debugger by specifying a breakpoint at any position </h3>
 
 Perl's debugger is useful. When you start using a debugger, you will feel that you want to stop at the position you want to see. How can I stop at the position I want to see?
 
-For example, when writing an exam, it is common to go through the same part of the same process multiple times. In such a case, the breakpoint description "$DB :: single = 1" is not enough to stop it. In the following cases, the breakpoint will be caught when the first total is executed.
+For example, when writing an exam, it is common to go through the same part of the same process multiple times. In such a case, the breakpoint description "$DB::single = 1" is not enough to stop it. In the following cases, the breakpoint will be caught when the first total is executed.
 
 <pre>
 total (1, 2);
@@ -308,7 +308,7 @@ total (3, 4);
 sub total {
   my ($num1, $num2) = @_;
   
-  $DB :: single = 1;
+  $DB::single = 1;
   my $total = $num1 + $num2;
 
   return $total;
@@ -327,7 +327,7 @@ total (3, 4);
 sub total {
   my ($num1, $num2) = @_;
   
-  $DB :: single = 1 if $ENV {a};
+  $DB::single = 1 if $ENV {a};
   my $total = $num1 + $num2;
 
   return $total;

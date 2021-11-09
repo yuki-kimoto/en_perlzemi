@@ -243,7 +243,7 @@ Avoid concatenating internal and byte strings. In this case, the byte string is 
 
 <h4> It is not possible to accurately distinguish between an internal string and a byte string </h4>
 
-Perl has no way in your program to pinpoint whether a string is a byte string or an internal string. You cannot use the utf8 :: is_utf8 method to identify whether it is an internal string or a byte string. The utf8 :: is_utf8 method can only determine if the UTF8 flag is set, not an internal string or a byte string.
+Perl has no way in your program to pinpoint whether a string is a byte string or an internal string. You cannot use the utf8::is_utf8 method to identify whether it is an internal string or a byte string. The utf8::is_utf8 method can only determine if the UTF8 flag is set, not an internal string or a byte string.
 
 So, while you can use it to speculate that this is probably the case, be aware that it can't be used to determine in-program whether it's an internal string or a byte string. Whenever the UTF8 flag is set, it is an internal string. If the UTF8 flag is not set, it is an internal string or a byte string.
 

@@ -15,13 +15,13 @@
     here
   </li>
 </ol>
-<h2> MIME :: Lite-Easily send emails </h2>
+<h2> MIME::Lite-Easily send emails </h2>
 
 
 
-The <b> MIME :: Lite </b> module makes it easy to send emails.
+The <b> MIME::Lite </b> module makes it easy to send emails.
 
-MIME :: Lite uses the senmail command by default, so install <b> sendmail </b> or <b> postfix </b>.
+MIME::Lite uses the senmail command by default, so install <b> sendmail </b> or <b> postfix </b>.
 
 There are several ways to send an email, but I think sending an email with the sendmail command is an easy way to deal with various email issues.
 
@@ -30,10 +30,10 @@ There are several ways to send an email, but I think sending an email with the s
 To send an email: It's easy to create in the form of a multipart message and attach and send text or images.
 
 <pre>
-use MIME :: Lite;
+use MIME::Lite;
 
 # Create multipart message
-my $msg = MIME :: Lite-> new (
+my $msg = MIME::Lite-> new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
@@ -71,9 +71,9 @@ $msg-> send;
   </li>
 </ol>
 
-<h3> Send Japanese email with MIME :: Lite </h3>
+<h3> Send Japanese email with MIME::Lite </h3>
 
-When sending Japanese emails with MIME :: Lite, you need to think about encoding.
+When sending Japanese emails with MIME::Lite, you need to think about encoding.
 
 Remember the following two things.
 
@@ -94,11 +94,11 @@ The above sample can be rewritten for Japanese transmission as follows.
 
 <pre>
 use utf8;
-use MIME :: Lite;
+use MIME::Lite;
 use Encode'encode';
 
 # Create multipart message
-my $msg = MIME :: Lite-> new (
+my $msg = MIME::Lite-> new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
@@ -130,11 +130,11 @@ As of 2017, I'm not sure what's going on, but I feel that it's often sent in UTF
 
 <pre>
 use utf8;
-use MIME :: Lite;
+use MIME::Lite;
 use Encode'encode';
 
 # Create multipart message
-my $msg = MIME :: Lite-> new (
+my $msg = MIME::Lite-> new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
@@ -170,13 +170,13 @@ If you don't know the character code of Perl, see the explanation article of Enc
 
 <h3> FAQ </h3>
 
-Answer the FAQ about MIME :: Lite.
+Answer the FAQ about MIME::Lite.
 
-<h4> MIME :: Lite seems to be deprecated </h4>
+<h4> MIME::Lite seems to be deprecated </h4>
 
-MIME :: Lite is easy to use, but is currently deprecated.
+MIME::Lite is easy to use, but is currently deprecated.
 
-MIME :: Lite is personally the easiest email sending module to use, but if you follow the community's wishes, <a href="http://search.cpan.org/~rjbs/Email-Sender-1.300031/lib/" Use Email / Sender.pm "> Email :: Sender</a>.
+MIME::Lite is personally the easiest email sending module to use, but if you follow the community's wishes, <a href="http://search.cpan.org/~rjbs/Email-Sender-1.300031/lib/" Use Email / Sender.pm "> Email::Sender</a>.
 
 <h4> Garbled characters occur </h4>
 

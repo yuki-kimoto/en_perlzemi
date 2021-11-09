@@ -1,17 +1,17 @@
-<h2> Class :: Struct - Core module that provides object orientation </h2>
+<h2> Class::Struct - Core module that provides object orientation </h2>
 
-Class :: Struct is a classic module that provides Perl with <a href="/blog/20161030147778.html"> object-oriented</a> functionality. The constructor new can be automatically generated and the accessor can be automatically generated. An accessor is a method for setting and retrieving fields.
+Class::Struct is a classic module that provides Perl with <a href="/blog/20161030147778.html"> object-oriented</a> functionality. The constructor new can be automatically generated and the accessor can be automatically generated. An accessor is a method for setting and retrieving fields.
 
 The Perl Primer will show you how to have a hash reference as the basic type of an object and provide a scalar accessor.
 
 <h3> Create a Point class with fields x and y </h3>
 
-Let's use Class :: Struct to create a Point class with fields x and y.
+Let's use Class::Struct to create a Point class with fields x and y.
 
 <pre>
 package Point;
 
-use Class :: Struct __PACKAGE__, {
+use Class::Struct __PACKAGE__, {
   x =>'$',
   y =>'$',
 };
@@ -75,14 +75,14 @@ my $y2 = $point-> y;
 print "($x2, $y2) \ n";
 </pre>
 
-<h3> Is it possible to inherit with Class :: Struct? </H3>
+<h3> Is it possible to inherit with Class::Struct? </H3>
 
-It is possible to inherit the class created by Class :: Strcut, but as a limitation, you cannot add fields. If you want to inherit, most of the time you want to add a field, so it's a good idea to think that you can't.
+It is possible to inherit the class created by Class::Strcut, but as a limitation, you cannot add fields. If you want to inherit, most of the time you want to add a field, so it's a good idea to think that you can't.
 
 If you plan to inherit, use <a href="/blog/20100203126425.html"> bless</a> to create the object for Perl cores only. When using the CPAN module, use a module that supports adding field definitions by inheritance.
 
 <h3> Is it possible to override the constructor? </H3>
 
-Class :: Strcut will generate a constructor for the target class, so you cannot override the constructor.
+Class::Strcut will generate a constructor for the target class, so you cannot override the constructor.
 
 If you plan to customize the constructor, use <a href="/blog/20100203126425.html"> bless</a> to create the object for Perl cores only. If you want to use the CPAN module, use a module that supports constructor customization.

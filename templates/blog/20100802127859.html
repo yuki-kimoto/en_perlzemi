@@ -31,12 +31,12 @@ BEGIN {
 require is similar to use, except that it loads the module at runtime and does not automatically execute the import method.
 
 <pre>
-use File :: Basename'basename';
+use File::Basename'basename';
 
 # Same meaning as above
 BEGIN {
-  require File :: Basename;
-  File :: Basename-> import ('basename');
+  require File::Basename;
+  File::Basename-> import ('basename');
 }
 </pre>
 
@@ -147,19 +147,19 @@ perldoc perlfunc
 You can also see the module documentation.
 
 <pre>
-perldoc File :: Basename
+perldoc File::Basename
 </pre>
 
 If you want to see the contents of the module, specify the m option.
 
 <pre>
-perldoc -m File :: Basename
+perldoc -m File::Basename
 </pre>
 
 If you want to know the module path, specify the l option.
 
 <pre>
-perldoc -l File :: Basename
+perldoc -l File::Basename
 </pre>
 
 If you want to see the standard function documentation, specify the f option.
@@ -171,7 +171,7 @@ perldoc -f substr
 It's easier to see if you redirect and drop it in a file.
 
 <pre>
-perldoc File :: Basename> File-Basename.txt
+perldoc File::Basename> File-Basename.txt
 </pre>
 
 <h3> Anonymous subroutine </h3>
@@ -477,7 +477,7 @@ If the variable name is followed by a colon or underscore, the variable cannot b
 
 <pre>
 my $name ='aaa';
-my $message = "${name} :: aaa ${name} _ppp";
+my $message = "${name}::aaa ${name} _ppp";
 </pre>
 
 <h3> Take a peek at the symbol table </h3>
@@ -486,10 +486,7 @@ A data structure in which names such as variables and subroutines are registered
 
 <pre>
 # Symbol table
-% main ::
-% CGI ::
-% File :: Basename ::
-</pre>
+% main::% CGI::% File::Basename::</pre>
 
 <h3> use each function only in while </h3>
 
@@ -528,7 +525,7 @@ This is called indirect object notation and has the same meaning as:
 $fh-> print ($output);
 </pre>
 
-<h3> On Windows IO :: Poll and select only work for sockets </h3>
+<h3> On Windows IO::Poll and select only work for sockets </h3>
 
 On Windows, asynchronous IO processing can only be done on sockets. Not for files.
 

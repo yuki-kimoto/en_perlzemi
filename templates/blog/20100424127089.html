@@ -15,18 +15,18 @@
     here
   </li>
 </ol>
-<h2> XML :: Simple - Easy to parse XML </h2>
+<h2> XML::Simple - Easy to parse XML </h2>
 
 
 
-The <strong> XML :: Simple </strong> module allows you to easily parse XML and convert it into Perl data structures. "SAX that analyzes sequentially from the beginning" and "DOM that builds an XML tree structure" are famous as XML analysis methods, but XML :: Simple is the best in terms of easy handling.
+The <strong> XML::Simple </strong> module allows you to easily parse XML and convert it into Perl data structures. "SAX that analyzes sequentially from the beginning" and "DOM that builds an XML tree structure" are famous as XML analysis methods, but XML::Simple is the best in terms of easy handling.
 
 XML is a common format for writing data in text files. It can be used when writing a program configuration file.
 
 <pre>
 # Load module and create object
-use XML :: Simple;
-my $xml = XML :: Simple-> new;
+use XML::Simple;
+my $xml = XML::Simple-> new;
 </pre>
 
 Use the <strong> XMLin method </strong> to read the XML file. XML is transformed into Perl data structures (multidimensional hashes and arrays).
@@ -92,7 +92,7 @@ $conf = {
 };
 </pre>
 
-<h3> Handling Japanese in XML :: Simple </h3>
+<h3> Handling Japanese in XML::Simple </h3>
 
 When a character string containing Japanese is read by XMLin, the character code specified by the encoding attribute of the XML declaration is converted to the internal character string. Note that it is not a byte string.
 
@@ -112,13 +112,13 @@ my $conf = $xml-> XMLin ('japanese.xml');
 print encode ('UTF-8', $conf-> {name});
 </pre>
 
-<h3> XML :: Simple options </h3>
+<h3> XML::Simple options </h3>
 
-XML :: Simple allows you to specify options in the constructor arguments.
+XML::Simple allows you to specify options in the constructor arguments.
 
 <pre>
 # Option
-my $xml = XML :: Simple-> new (ForceArray => 1);
+my $xml = XML::Simple-> new (ForceArray => 1);
 </pre>
 
 The following two options may be used frequently.
@@ -153,15 +153,15 @@ The following two options may be used frequently.
 
 </table>
 
-<h3> XML :: LibXML - Standard and fast XML parsing </h3>
+<h3> XML::LibXML - Standard and fast XML parsing </h3>
 
-XML :: Simple is not suitable for parsing complex XML. If you want to parse XML in a standard and fast way, you can choose the XML :: LibXML module. XML :: LibXML can read XML as a DOM tree. You can also access each element of XML using a method called XPath.
+XML::Simple is not suitable for parsing complex XML. If you want to parse XML in a standard and fast way, you can choose the XML::LibXML module. XML::LibXML can read XML as a DOM tree. You can also access each element of XML using a method called XPath.
 
-This method requires more coding than XML :: Simple and is technically difficult, but it is the best method for some requirements.
+This method requires more coding than XML::Simple and is technically difficult, but it is the best method for some requirements.
 
-<h4> What to do if the XML :: LibXML module cannot be installed on CentOS </h4>
+<h4> What to do if the XML::LibXML module cannot be installed on CentOS </h4>
 
-If the <strong> XML :: LibXML </strong> module <strong> installation fails </strong> on CentOS, the <b> libxml2-devel </b> package is missing and you should install it.
+If the <strong> XML::LibXML </strong> module <strong> installation fails </strong> on CentOS, the <b> libxml2-devel </b> package is missing and you should install it.
 
 <pre>
 yum -y install libxml2-devel

@@ -26,11 +26,11 @@ You can use the <strong> FindBin </strong> module to get the path of the directo
 use FindBin;
 </pre>
 
-The path to the directory where the script resides is assigned to the <strong> $FindBin :: Bin </strong> <a href="/blog/20080308120495.html"> package variable</a>.
+The path to the directory where the script resides is assigned to the <strong> $FindBin::Bin </strong> <a href="/blog/20080308120495.html"> package variable</a>.
 
 <pre>
 # Get the path of the directory where the script resides
-my $script_dir = $FindBin :: Bin;
+my $script_dir = $FindBin::Bin;
 </pre>
 
 FindBin is a slightly unusual module, but it's the standard way to get the path to the directory where the script resides.
@@ -44,14 +44,14 @@ By doing the following, you can set the directory called lib in the directory wh
 <pre>
 # Add the lib directory of the directory where the script exists to the search path
 use FindBin;
-use lib "$FindBin :: Bin / lib";
+use lib "$FindBin::Bin / lib";
 </pre>
 
 <h4> Script base name </h4>
 
-You can get the base name of the script with <strong> $FindBin :: Script </strong>.
+You can get the base name of the script with <strong> $FindBin::Script </strong>.
 
 <pre>
 use FindBin;
-$FindBin :: Script
+$FindBin::Script
 </pre>

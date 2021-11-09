@@ -48,7 +48,7 @@ $hash2-> {hash1} = $hash1;
 Simply writing as above will cause a cross-reference and this object will not be released automatically. This can easily happen if the programmer is not careful. So if you're cross-referencing, you'll have to change the reference to either object to a weak reference that doesn't increase the reference count.
 
 <pre>
-use Scalar :: Util'weaken';
+use Scalar::Util'weaken';
 
 # Cross-reference
 my $hash1 = {};

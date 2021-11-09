@@ -16,14 +16,14 @@
   </li>
 </ol>
 
-<h2> Draw text - PDF :: Create form with API2 </h2>
+<h2> Draw text - PDF::Create form with API2 </h2>
 
-To draw text in PDF with PDF :: API2:
+To draw text in PDF with PDF::API2:
 
 <pre>
-use PDF :: API2;
+use PDF::API2;
 
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 my $page = $pdf-> page;
 
@@ -51,7 +51,7 @@ $pdf-> saveas ($pdf_file);
 
 <b> Get font object </b>
 
-In PDF :: API2, get the font object that represents the font using the corefont method or ttfont method. Here, we are drawing using the corefont object.
+In PDF::API2, get the font object that represents the font using the corefont method or ttfont method. Here, we are drawing using the corefont object.
 
 <pre>
 # Load core font
@@ -62,7 +62,7 @@ Use the corefont method to get the core font. Please note that corefont cannot d
 
 <b> Content object that represents text </b>
 
-In PDF :: API2, the content object that represents the text is obtained using the text method of the page object. Here, a content object that represents text is called a text object. This is a PDF :: API2 :: Content object.
+In PDF::API2, the content object that represents the text is obtained using the text method of the page object. Here, a content object that represents text is called a text object. This is a PDF::API2::Content object.
 
 <pre>
 # Get a content object that represents the text
@@ -71,7 +71,7 @@ my $text = $page-> text ();
 
 <b> Font settings </b>
 
-In PDF :: API2, set the font with the font method of the text object.
+In PDF::API2, set the font with the font method of the text object.
 
 <pre>
 # Set font
@@ -80,7 +80,7 @@ $text-> font ($font, 11);
 
 <b> Specify drawing position </b>
 
-In PDF :: API2, the drawing position is set by the translate method of the text object.
+In PDF::API2, the drawing position is set by the translate method of the text object.
 
 <pre>
 # Set drawing position (origin is lower left. By default, page width is 612 units and height is 792 units)
@@ -93,7 +93,7 @@ Please note that you cannot set page margins, number of lines of text, etc., and
 
 <b> Drawing text </b>
 
-PDF :: API2 draws text with the text method of the text object.
+PDF::API2 draws text with the text method of the text object.
 
 <pre>
 # Draw text
@@ -130,7 +130,7 @@ For a detailed explanation of drawing shapes and stroke color and fill color, re
 
 I will explain how to draw the background color and draw the text on it. In fact, there are pitfalls to this, so be careful.
 
-The behavior of PDF :: API2 is that the first defined content object is drawn first.
+The behavior of PDF::API2 is that the first defined content object is drawn first.
 
 If you create a graphic content object after you create a text content object, the text will be erased graphically. So be sure to create the graphic content object first and the text content object later.
 
@@ -169,7 +169,7 @@ This will allow you to draw text on top of the background color.
 
 <h3> Draw underline </h3>
 
-To underline text in PDF :: API2, specify the "-underline" option of the text method. "Auto" will automatically determine the position of the underline.
+To underline text in PDF::API2, specify the "-underline" option of the text method. "Auto" will automatically determine the position of the underline.
 
 <pre>
 # Draw underline
@@ -187,7 +187,7 @@ my $font = $pdf-> corefont ('Helvetica-Bold');
 
 There are two types of expression in bold on a computer, either using a font for bold or using an application to draw overlapping characters.
 
-Note that PDF :: API2 does not have an API to make it bold. It has a method called hscale that expands the characters horizontally, but it also opens the character spacing, which makes it look unnatural for bold characters.
+Note that PDF::API2 does not have an API to make it bold. It has a method called hscale that expands the characters horizontally, but it also opens the character spacing, which makes it look unnatural for bold characters.
 
 As an alternative, consider increasing the font size by 1.
 
@@ -207,7 +207,7 @@ $text-> charspace (1);
 
 <h3> Draw text around the specified position </h3>
 
-To draw text centered on a specified position in PDF :: API2, use the text_center method. The options are the same as the text method.
+To draw text centered on a specified position in PDF::API2, use the text_center method. The options are the same as the text method.
 
 <pre>
 # Draw underline
@@ -218,7 +218,7 @@ It can be used when you want to display the page heading etc. in the center of t
 
 <h3> Draw text with the specified position as the right edge </h3>
 
-Use the text_right method to draw the text as a drawing with the specified position as the right edge in PDF :: API2. The options are the same as the text method.
+Use the text_right method to draw the text as a drawing with the specified position as the right edge in PDF::API2. The options are the same as the text method.
 
 It can be used when you want to display the page number etc. at the bottom right.
 
@@ -229,7 +229,7 @@ $text-> text_right ('Hello World!');
 
 <h3> Get the current text drawing position </h3>
 
-To get the current text drawing position in PDF :: API2, use the textpos method.
+To get the current text drawing position in PDF::API2, use the textpos method.
 
 <pre>
 # Get the current text drawing position
@@ -240,7 +240,7 @@ You can use this value to check where line breaks should occur and where page br
 
 <h3> Get the font size </h3>
 
-To get the font size of an existing text in PDF :: API2, call the textstate method with no arguments and it will return a hash that represents the state of the text, so retrieve the fontsize value.
+To get the font size of an existing text in PDF::API2, call the textstate method with no arguments and it will return a hash that represents the state of the text, so retrieve the fontsize value.
 
 <pre>
 # Get the font size of existing text
@@ -287,7 +287,7 @@ It can be used when performing a process called line break when it extends to th
 
 <h3> Margin settings </h3>
 
-When using PDF :: API2, if you want to set the margin on the page, you cannot set the margin value like the screen on the GUI. You have to calculate it yourself.
+When using PDF::API2, if you want to set the margin on the page, you cannot set the margin value like the screen on the GUI. You have to calculate it yourself.
 
 However, not only the disadvantages, but if you remember this method, you can change the margins on odd and even pages, which is very flexible.
 
@@ -385,9 +385,9 @@ use strict;
 use warnings;
 use utf8;
 
-use PDF :: API2;
+use PDF::API2;
 
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Load core font
 my $font = $pdf-> corefont ('Helvetica-Bold');
@@ -510,7 +510,7 @@ message
 </p>
 </pre>
 
-XML :: Simple seems to be easy to use. With fixed format, you don't have to think about difficult things, so it would be nice if you could make Perl's multidimensional data structure with XML :: Simple.
+XML::Simple seems to be easy to use. With fixed format, you don't have to think about difficult things, so it would be nice if you could make Perl's multidimensional data structure with XML::Simple.
 
 If you output in a fixed format like when making a book, CSS analysis seems to be unnecessary. It seems that it is necessary to set the margin programmatically for each heading and p tag.
 
@@ -522,7 +522,7 @@ First, remember the x-coordinate where the alphabet starts. Also, if an alphabet
 
 <h3> Font for drawing Japanese </h3>
 
-In order to draw Japanese with PDF :: API2, a font that supports Japanese is required. The core font is English only.
+In order to draw Japanese with PDF::API2, a font that supports Japanese is required. The core font is English only.
 
 Among the fonts, you need to use a font called TrueType Font.
 
@@ -561,14 +561,14 @@ As a promise when handling Perl Japanese, save the file in UTF-8 and use utf8.
 use utf8;
 </pre>
 
-In PDF :: API2, the font is embedded in the PDF file, and the PDF file does not refer to the font file.
+In PDF::API2, the font is embedded in the PDF file, and the PDF file does not refer to the font file.
 
 If you want to put the font file in the directory where you put the program and read it, it is easy to use the FindBin module and do the following.
 
 <pre>
 use FindBin;
 
-my $true_type_font_file = "$FindBin :: Bin / kochi-gothic-subst.ttf";
+my $true_type_font_file = "$FindBin::Bin / kochi-gothic-subst.ttf";
 </pre>
 
 <h4> I want to make it bold with a TrueType font that supports Japanese </h4>
@@ -625,14 +625,14 @@ use warnings;
 use utf8;
 use FindBin;
 
-use PDF :: API2;
+use PDF::API2;
 
-my $pdf = PDF :: API2-> new;
+my $pdf = PDF::API2-> new;
 
 # Reading TrueType fonts that support Japanese
-my $true_type_font_file = "$FindBin :: Bin / AozoraMinchoRegular.ttf";
+my $true_type_font_file = "$FindBin::Bin / AozoraMinchoRegular.ttf";
 my $font = $pdf-> ttfont ($true_type_font_file);
-my $true_type_font_bold_file = "$FindBin :: Bin / AozoraMincho-bold.ttf";
+my $true_type_font_bold_file = "$FindBin::Bin / AozoraMincho-bold.ttf";
 my $font_bold = $pdf-> ttfont ($true_type_font_bold_file);
 
 my $font_size = 11;

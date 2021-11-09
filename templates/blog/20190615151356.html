@@ -1,15 +1,15 @@
-<h2> Math :: Bezier - Find the coordinates of a Bezier curve with Perl </h2>
+<h2> Math::Bezier - Find the coordinates of a Bezier curve with Perl </h2>
 
-Use the Math :: Bezier module to find the coordinates of a Bezier curve in Perl. You can specify a control point and get the coordinates of the curve along it by dividing it.
+Use the Math::Bezier module to find the coordinates of a Bezier curve in Perl. You can specify a control point and get the coordinates of the curve along it by dividing it.
 
 <pre>
-use Math :: Bezier;
+use Math::Bezier;
  
 # (x, y) Create a curve by passing a list of control points
-my $bezier = Math :: Bezier-> new ($x1, $y1, $x2, $y2, ..., $xn, $yn);
+my $bezier = Math::Bezier-> new ($x1, $y1, $x2, $y2, ..., $xn, $yn);
  
 # Pass the reference instead
-my $bezier = Math :: Bezier-> new ([$x1, $y1, $x2, $y2, ..., $xn, $yn]);
+my $bezier = Math::Bezier-> new ([$x1, $y1, $x2, $y2, ..., $xn, $yn]);
  
 # Determine the point (x, y) in the curve. Specify a range from 0 to 1.
 my ($x, $y) = $bezier-> point (0.5);
@@ -38,10 +38,10 @@ The straight line connecting the second control point and the third control poin
 use strict;
 use warnings;
 
-use Math :: Bezier;
+use Math::Bezier;
 
 # List of control points (x, y)
-my $bezier = Math :: Bezier-> new (0, 0, 10, 10, 20, 40);
+my $bezier = Math::Bezier-> new (0, 0, 10, 10, 20, 40);
 
 my $curve_points = $bezier-> curve (100);
 
@@ -158,6 +158,6 @@ The output will show 100 points along the 3D Bezier curve.
 (20, 40)
 </pre>
 
-<h3> Math :: Bezier documentation </h3>
+<h3> Math::Bezier documentation </h3>
 
-<a href="http://www.mahoroba.ne.jp/~felix/Toolbox/Lang/Perl/Package/Math-Bezier.html"> Math :: Bezier documentation</a>
+<a href="http://www.mahoroba.ne.jp/~felix/Toolbox/Lang/Perl/Package/Math-Bezier.html"> Math::Bezier documentation</a>

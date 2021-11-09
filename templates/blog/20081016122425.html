@@ -15,7 +15,7 @@
 
 
 
-This is a sample function to get the last day of the month. The timelocal function of the Time :: Local module is used to check the existing date.
+This is a sample function to get the last day of the month. The timelocal function of the Time::Local module is used to check the existing date.
 
 <pre>
 use strict;
@@ -30,11 +30,11 @@ sub end_of_month {
   my ($year, $month) = @_;
   return if! $year ||! $month;
 
-  # Time :: Local :: timelocal function takes an elapsed year from 1900 as an argument
+  # Time::Local::timelocal function takes an elapsed year from 1900 as an argument
   Since it is taken to # , subtract 1900.
   $year-= 1900;
 
-  # Time :: Local :: timelocal function starts from 0 like 0 in January and 1 in February
+  # Time::Local::timelocal function starts from 0 like 0 in January and 1 in February
   # Takes the month that starts as an argument, so subtract 1.
   $month-;
 
@@ -42,12 +42,12 @@ sub end_of_month {
   my @days = (31, 30, 29, 28);
     
   # Used for checking the existence of dates.
-  require Time :: Local;
+  require Time::Local;
   
   for my $day (@days) {
     eval {
       # If you specify a non-existent day, an exception will be thrown.
-      Time :: Local :: timelocal (0, 0, 0, $day, $month, $year);
+      Time::Local::timelocal (0, 0, 0, $day, $month, $year);
     };
     # Date that exists if no exception occurs.
     return $day unless $@;
@@ -70,17 +70,17 @@ my @days = (31, 30, 29, 28);
 
 <h4> Check existing dates </h4>
 
-Check the date with the timelocal function of the Time :: Local module, as explained in "Determining if a date exists."
+Check the date with the timelocal function of the Time::Local module, as explained in "Determining if a date exists."
 
 We will check from the 31st to the 28th. If you specify a date that does not exist, an exception will be thrown, so if no exception is raised, it is the last day of the month.
 
 <pre>
-require Time :: Local;
+require Time::Local;
   
 for my $day (@days) {
   eval {
     # If you specify a non-existent day, an exception will be thrown.
-    Time :: Local :: timelocal (0, 0, 0, $day, $month, $year);
+    Time::Local::timelocal (0, 0, 0, $day, $month, $year);
   };
   # Date that exists if no exception occurs.
   return $day unless $@;

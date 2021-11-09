@@ -26,10 +26,10 @@ use strict;
 use warnings;
 
 # Use an HTTP client to get information from the web.
-use LWP :: UserAgent;
+use LWP::UserAgent;
 
-# Since the feed is given in XML, parse it with XML :: Simple.
-use XML :: Simple;
+# Since the feed is given in XML, parse it with XML::Simple.
+use XML::Simple;
 
 # Google Calendar Data API URL (URL to get Japanese holidays)
 my $feed_base
@@ -49,7 +49,7 @@ my $query = "start-min = ${start_date} & start-max = ${end_date} & max-results =
 my $feed_url = $feed_base.'?'. $Query;
 
 # Get XML from the web
-my $http_client = LWP :: UserAgent-> new;
+my $http_client = LWP::UserAgent-> new;
 my $response = $http_client-> get ($feed_url);
 
 my $holidays_xml;
@@ -61,9 +61,9 @@ else {
 }
 
 # Parse XML
-my $xml_parser = XML :: Simple-> new;
-# XML :: Change parser for those who don't have SAX
-$XML :: Simple :: PREFERRED_PARSER ='XML :: Parser';
+my $xml_parser = XML::Simple-> new;
+# XML::Change parser for those who don't have SAX
+$XML::Simple::PREFERRED_PARSER ='XML::Parser';
 my $holidays_data = $xml_parser-> XMLin ($holidays_xml);
 
 my $holidays = [];
@@ -90,8 +90,8 @@ for my $holiday (@ $holidays) {
   }
 }
 
-use Data :: Dumper;
-print Data :: Dumper-> Dump ([$holidays], ['* holidays']);
+use Data::Dumper;
+print Data::Dumper-> Dump ([$holidays], ['* holidays']);
 </pre>
 
 <h3> Holiday issues </h3>
@@ -134,11 +134,11 @@ After that, get the information of the above URL from the Web, analyze it becaus
 
 <h4> Get XML data from the Web. </h4>
 
-LWP :: UserAgent is a module for creating HTTP clients. You can programmatically do what your web browser is doing.
+LWP::UserAgent is a module for creating HTTP clients. You can programmatically do what your web browser is doing.
 
 <pre>
-use LWP :: UserAgent;
-my $http_client = LWP :: UserAgent-> new;
+use LWP::UserAgent;
+my $http_client = LWP::UserAgent-> new;
 my $response = $http_client-> get ($feed_url);
 
 my $holidays_xml;
@@ -151,13 +151,13 @@ else {
 </pre>
 
 <h4> Parse XML to make it easy to use. </h4>
-Use XML :: Simple to parse the XML. XML :: Simple is a module for converting XML data into Perl data (hash, array).
+Use XML::Simple to parse the XML. XML::Simple is a module for converting XML data into Perl data (hash, array).
 <pre>
-use XML :: Simple;
+use XML::Simple;
 
 # Parse XML
-my $xml_parser = XML :: Simple-> new ();
-$XML :: Simple :: PREFERRED_PARSER ='XML :: Parser';
+my $xml_parser = XML::Simple-> new ();
+$XML::Simple::PREFERRED_PARSER ='XML::Parser';
 my $holidays_data = $xml_parser-> XMLin ($holidays_xml);
 
 my $holidays = [];
@@ -180,7 +180,7 @@ $holidays_data-> {entry} {URL as an identifier} {title} {content};
 
 <h4> Convert character code </h4>
 
-The character code of XML received from the Web is UTF-8. When XML :: Simple converts XML to Perl data, the characters are converted to Perl's internal representation (UTF-8).
+The character code of XML received from the Web is UTF-8. When XML::Simple converts XML to Perl data, the characters are converted to Perl's internal representation (UTF-8).
 
 In order to output this correctly, it is necessary to encode it from Perl's internal representation to an appropriate character code.
 

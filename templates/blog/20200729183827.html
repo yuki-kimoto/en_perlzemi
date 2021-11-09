@@ -16,16 +16,16 @@
   </li>
 </ol>
 
-<h2> Amazon :: S3 :: Thin - Thin, lightweight, low-level Amazon S3 client </h2>
+<h2> Amazon::S3::Thin - Thin, lightweight, low-level Amazon S3 client </h2>
 
-Amazon :: S3 :: Thin is a thin, lightweight, low-level Amazon S3 client. The following is a Japanese translation of <a href="https://metacpan.org/pod/Amazon :: S3 :: Thin"> Amazon :: S3 :: Thin</a> 0.29.
+Amazon::S3::Thin is a thin, lightweight, low-level Amazon S3 client. The following is a Japanese translation of <a href="https://metacpan.org/pod/Amazon::S3::Thin"> Amazon::S3::Thin</a> 0.29.
 
 <h3> Overview </h3>
 
 <pre>
-use Amazon :: S3 :: Thin;
+use Amazon::S3::Thin;
  
-my $s3client = Amazon :: S3 :: Thin-> new ({{
+my $s3client = Amazon::S3::Thin-> new ({{
       aws_access_key_id => $aws_access_key_id,
       aws_secret_access_key => $aws_secret_access_key,
       aws_session_token => $aws_session_token, # optional
@@ -54,7 +54,7 @@ $response = $s3client-> list_objects (
 You can also pass any user agent as you like
 
 <pre>
-my $s3client = Amazon :: S3 :: Thin-> new ({{
+my $s3client = Amazon::S3::Thin-> new ({{
         ...
         ua => $any_LWP_copmatible_useragent,
     });
@@ -63,7 +63,7 @@ my $s3client = Amazon :: S3 :: Thin-> new ({{
 By default, signature version 4 is used. To use signature version 2, add an option. signature_version
 
 <pre>
-my $s3client = Amazon :: S3 :: Thin-> new ({{
+my $s3client = Amazon::S3::Thin-> new ({{
         ...
         signature_version => 2,
     });
@@ -71,7 +71,7 @@ my $s3client = Amazon :: S3 :: Thin-> new ({{
 
 <h3> Explanation </h3>
 
-Amazon :: S3 ::: Thin is a thin, lightweight, low-level Amazon S3 client.
+Amazon::S3 ::: Thin is a thin, lightweight, low-level Amazon S3 client.
 
 It is designed solely for the purpose of sending a request and getting a response.
 
@@ -79,11 +79,11 @@ In detail, it provides the following features:
 
 <b> Low level </b>
 
-<a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> You can easily find out what's going on inside by returning an object, you need You can handle the error accordingly.
+<a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> You can easily find out what's going on inside by returning an object, you need You can handle the error accordingly.
 
 <b> Low dependence </b>
 
-No XML :: * module is needed, so it's easy to install.
+No XML::* module is needed, so it's easy to install.
 
 <b> Low learning cost </b>
 
@@ -91,7 +91,7 @@ The interface is designed to follow the official S3 REST API. So it's easy to le
 
 <b> Comparison with previously created modules </b>
 
-There are already useful modules like Amazon :: S3, Net :: Amazon :: S3. They provide a "Perlish" interface that looks nice to Perl programmers, but also hides low-level behavior. For example, the "get_key" method converts the HTTP status 404 to undef and the HTTP 5xx status to an exception.
+There are already useful modules like Amazon::S3, Net::Amazon::S3. They provide a "Perlish" interface that looks nice to Perl programmers, but also hides low-level behavior. For example, the "get_key" method converts the HTTP status 404 to undef and the HTTP 5xx status to an exception.
 
 In some situations it is very important to check her raw HTTP communication. That's why I made this module.
 
@@ -101,7 +101,7 @@ In some situations it is very important to check her raw HTTP communication. Tha
 
 <B> Arguments: Hash reference with </b> options.
 
-<b> Return value </b>: Amazon :: S3 :: Thin object
+<b> Return value </b>: Amazon::S3::Thin object
 
 You can receive the following arguments:
 
@@ -110,7 +110,7 @@ You can receive the following arguments:
   <li> aws_secret_access_key (<b> Required </b>)-The secret access key for your credentials. </li>
   <li> region-(<b> required </b>) Region of bucket to access (currently only used if signature version is 4) </li>
   <li> secure- Whether to use https. The default is 0 (http). </li>
-  <li> ua-User agent object compatible with LWP :: UserAgent. The default is an instance of LWP :: user agent. </li> <li> signature_version-Her AWS signature version to use. The supported values ​​are 2 and 4. The default is 4. </li>
+  <li> ua-User agent object compatible with LWP::UserAgent. The default is an instance of LWP::user agent. </li> <li> signature_version-Her AWS signature version to use. The supported values ​​are 2 and 4. The default is 4. </li>
   <li> debug- Debug options. The default is 0 (false). If the setting value is 1, the contents of HTTP requests and responses are displayed in stderr. </li>
   <li> virtual_host-Whether to use a virtual host type request format. The default is 0 (path style). </li>
 </ul>
@@ -125,7 +125,7 @@ Whether to use https (1) or http (0) when connecting to S3.
 
 <h4> ua </h4>
 
-The user agent used it internally to execute the request and return a response. If you set this attribute, it's an object compatible with <a href="https://metacpan.org/pod/LWP :: UserAgent"> LWP :: UserAgent</a> (which provides the same interface). Please set with.
+The user agent used it internally to execute the request and return a response. If you set this attribute, it's an object compatible with <a href="https://metacpan.org/pod/LWP::UserAgent"> LWP::UserAgent</a> (which provides the same interface). Please set with.
 
 <h4> debug </h4>
 
@@ -161,7 +161,7 @@ Debug options.
 
 3. Header (optional)-Hash reference with extra header information
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request. You can use the content () method on the returned object to read its contents.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request. You can use the content () method on the returned object to read its contents.
 
 <pre>
 my $res = $s3-> get_object ('my.bucket','my / key.ext');
@@ -183,7 +183,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 2. Key-A string with a key
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request. You can use the header () method on the returned object to read the metadata.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request. You can use the header () method on the returned object to read the metadata.
 
 <pre>
 my $res = $s3-> head_object ('my.bucket','my / key.ext');
@@ -201,7 +201,7 @@ For more information, <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RE
 
 <b> Arguments: </b> A string with a bucket name and a string with a key name.
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request.
 
 The DELETE operation deletes the null version of the object (if it exists) and inserts a delete marker. If there is no null version, Amazon S3 will not delete the object.
 
@@ -213,7 +213,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 <b> Arguments: </b> A list with source (bucket, key) and destination (bucket, key), hash reference (optional) with additional header information.
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request.
 
 This method is a variation of the PUT operation described in Amazon's S3 API. Make a copy of the object that is already stored in Amazon S3. This "PUT copy" operation is the same as performing a GET from the old bucket / key and performing her PUT on the new bucket / key.
 
@@ -233,7 +233,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 4. Header (optional)-Hash reference with extra header information
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request.
 
 The PUT operation adds an object to the bucket. Amazon S3 doesn't add partial objects. When you receive a success response, Amazon S3 adds the entire object to your bucket.
 
@@ -243,7 +243,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 <b> Arguments: </b> An array containing a string with the bucket name and all the keys to delete.
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request.
 
 The delete multiple objects operation allows you to delete multiple objects (up to 1000) from your bucket using a single HTTP request. If you know the object key to delete, this operation reduces the overhead for each request instead of sending individual delete requests. delete_object ()
 
@@ -261,7 +261,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
   <li> max-keys (string) -Sets the maximum number of keys returned in the response body. If you want to get fewer keys than the default 1000 keys, you can add this to your request. </li>
 </ul>
 
-<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP :: Response</a> object in response to the request. You can use the content () method on the returned object to read its contents.
+<b> Return: </b> <a href="https://metacpan.org/pod/HTTP ::Response"> HTTP::Response</a> object in response to the request. You can use the content () method on the returned object to read its contents.
 
 This method returns some or all of the objects in the bucket (up to 1000). Note that the response may contain fewer keys, but no more. If a key that meets the search criteria is not returned because it exceeds the limit (1000 or max-key), the response will return an additional key, see "marker" above.
 
@@ -297,7 +297,7 @@ my $presigned = $s3-> generate_presigned_post ('my.bucket','my / key.ext', [
     ['content-length-range' => 1, 1024 * 1024],
 ], 24 * 60 * 60);
  
-my $ua = LWP :: UserAgent-> new;
+my $ua = LWP::UserAgent-> new;
 my $res = $ua-> post (
     $signed-> {url},
     Content_Type =>'multipart / form-data',

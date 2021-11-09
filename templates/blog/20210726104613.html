@@ -17,16 +17,16 @@ Strawberry Perl has a GUI operation module installed to create a web browser aut
 Web browser automatic operation Perl modules used to create robots are mainly as follows.
 
 <ul>
-  <li> Win32 :: GuiTest - Mouse position specification, keyboard operation </li>
-  <li> Win32 :: Clipboard - Clipboard operation </li>
+  <li> Win32::GuiTest - Mouse position specification, keyboard operation </li>
+  <li> Win32::Clipboard - Clipboard operation </li>
 </ul>
 
 <h3> Window operation </h3>
 
-On Windows, use Win32 :: GuiTest to get windows, position the mouse, click, and operate the keyboard. Loading the required function.
+On Windows, use Win32::GuiTest to get windows, position the mouse, click, and operate the keyboard. Loading the required function.
 
 <pre>
-use Win32 :: GuiTest (
+use Win32::GuiTest (
   'Unicode Semantics',
   'GetDesktopWindow',
   'GetParent',
@@ -43,7 +43,7 @@ use Win32 :: GuiTest (
 
 <h4> Enable Unicode semantics </h4>
 
-First of all, Perl is Unicode-enabled since Perl 5.8, so Win32 :: GuiTest will also be able to use Unicode-enabled semantics. It is assumed that the Perl source code is written in UTF-8 and "use utf8;" is written.
+First of all, Perl is Unicode-enabled since Perl 5.8, so Win32::GuiTest will also be able to use Unicode-enabled semantics. It is assumed that the Perl source code is written in UTF-8 and "use utf8;" is written.
 
 <pre>
 # Enable unicode semantics
@@ -157,10 +157,10 @@ SendKeys ('^ c');
 
 <h3> Clipboard </h3>
 
-Use the Win32 :: Clipboard module to work with the Windows clipboard.
+Use the Win32::Clipboard module to work with the Windows clipboard.
 
 <pre>
-use Win32 :: Clipboard;
+use Win32::Clipboard;
 </pre>
 
 <h4> Clipboard object generation </h4>
@@ -169,7 +169,7 @@ First create a clipboard object.
 
 <pre>
 # Clipboard object creation
-my $clip = Win32 :: Clipboard-> new;
+my $clip = Win32::Clipboard-> new;
 </pre>
 
 <h4> Save Perl string to clipboard </h4>
@@ -188,7 +188,7 @@ By specifying "CF_UNICODETEXT" in the argument of the GetAs method, it can be ob
 <pre>
 # Fetch a Perl string from the clipboard
 my $string = $CLIP-> GetAs (CF_UNICODETEXT);
-$text = Encode :: decode ("UTF16-LE", $string);
+$text = Encode::decode ("UTF16-LE", $string);
 </pre>
 
 <h4> Paste the contents of the clipboard to the form part </h4>

@@ -15,15 +15,15 @@
     here
   </li>
 </ol>
-<h2> Object :: Simple - Generate Mojo :: Base compatible accessor </h2>
+<h2> Object::Simple - Generate Mojo::Base compatible accessor </h2>
 
 
 
-Use <strong> Object :: Simple </strong> to create an accessor with a default value. Object :: Simple is highly compatible with Mojolicious's Mojo :: Base.
+Use <strong> Object::Simple </strong> to create an accessor with a default value. Object::Simple is highly compatible with Mojolicious's Mojo::Base.
 
 <pre>
 package Point;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 has x => 1;
 has y => 1;
@@ -36,7 +36,7 @@ print $point-> x;
 1;
 </pre>
 
-You can inherit Object :: Simple by specifying -base when using. Object :: Simple has a new method. It also imports a method called has for defining accessors. Also, strict and warnings are automatically enabled.
+You can inherit Object::Simple by specifying -base when using. Object::Simple has a new method. It also imports a method called has for defining accessors. Also, strict and warnings are automatically enabled.
 
 <h3> General class sample </h3>
 
@@ -44,7 +44,7 @@ This is a sample of a general class. The Point class has accessors x and y. It a
 
 <pre>
 package Point;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 has x => 0;
 has y => 0;
@@ -59,7 +59,7 @@ sub clear {
 1;
 </pre>
 
-Use the Point class as follows: The constructor new is inherited from Object :: Simple.
+Use the Point class as follows: The constructor new is inherited from Object::Simple.
 
 <pre>
 my $point = Point-> new (x => 4, y => 6);
@@ -73,7 +73,7 @@ my $y = $point-> y;
 $point-> clear;
 </pre>
 
-<h3> How to use Object :: Simple </h3>
+<h3> How to use Object::Simple </h3>
 
 There are several ways to define attributes.
 
@@ -102,7 +102,7 @@ has foo => sub {[]};
 has bar => sub {{}};
 
 # object
-has baz => sub {LWP :: UserAgent-> new};
+has baz => sub {LWP::UserAgent-> new};
 </pre>
 
 When setting array references, hash references, objects, etc. to default values, you need to enclose them in sub {} for lazy evaluation.
@@ -129,7 +129,7 @@ has z => 0;
 
 sub clear {
   my $self = shift;
-  $self-> SUPER :: clear ();
+  $self-> SUPER::clear ();
   $self-> z (0);
 }
 
@@ -143,7 +143,7 @@ You can override the constructor new () for object initialization and argument p
 <pre>
 # Override new () for object initialization
 sub new {
-  my $self = shift-> SUPER :: new (@_);
+  my $self = shift-> SUPER::new (@_);
   
   # Initialization
   
@@ -156,7 +156,7 @@ sub new {
 sub new {
   my $self = shift;
   
-  $self-> SUPER :: new (x => $_ [0], y => $_ [1]);
+  $self-> SUPER::new (x => $_ [0], y => $_ [1]);
   
   return $self;
 }

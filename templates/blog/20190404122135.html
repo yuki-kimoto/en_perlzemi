@@ -16,10 +16,10 @@ morbo serve_cgi.pl
 
 <pre>
 # serve_cgi.pl
-use Mojo :: Message :: Response;
-use File :: Temp'temp file';
+use Mojo::Message::Response;
+use File::Temp'temp file';
 
-use Mojolicious :: Lite;
+use Mojolicious::Lite;
 
 # render CGI
 app-> hook (before_dispatch => sub {
@@ -85,7 +85,7 @@ app-> hook (before_dispatch => sub {
     my ($header_part, $body_part) = split ("\ n \ n", $output, 2);
     
     # Response
-    my $res = Mojo :: Message :: Response-> new;
+    my $res = Mojo::Message::Response-> new;
     while (! $Res-> is_finished) {
       $res-> parse ($header_part);
     }

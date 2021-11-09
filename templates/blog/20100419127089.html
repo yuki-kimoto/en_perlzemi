@@ -44,8 +44,8 @@ Package names can be multi-tiered. Connect individual parts with "::".
 
 <pre>
 # Multi-level package name
-package File :: Basename;
-package Class :: Accessor :: Fast;
+package File::Basename;
+package Class::Accessor::Fast;
 </pre>
 
 You can get the package to which you currently belong with __PACKAGE__.
@@ -85,25 +85,25 @@ Variable names and subroutine names, including package names, are called fully q
 
 <pre>
 # Fully qualified name
-$SomeModule :: VAR;
-SomeModule :: func ();
+$SomeModule::VAR;
+SomeModule::func ();
 </pre>
 
 This is a sample that calls a function with a fully qualified name.
 
 <pre>
 # Call a function with a fully qualified name
-use File :: Basename;
-File :: Basename :: basename ('xxx / yyy.txt');
+use File::Basename;
+File::Basename::basename ('xxx / yyy.txt');
 </pre>
 
 <h3> Package name and module file structure </h3>
 
-The package name is closely related to the file structure of the module. For example, if the module name is "Foo :: Bar :: Baz", the corresponding file structure will be "Foo / Bar / Baz.pm". Create a directory called "Bar" in a directory called "Foo" and create a file called "Baz.pm" in it. Declare the package at the beginning of "Baz.pm".
+The package name is closely related to the file structure of the module. For example, if the module name is "Foo::Bar::Baz", the corresponding file structure will be "Foo / Bar / Baz.pm". Create a directory called "Bar" in a directory called "Foo" and create a file called "Baz.pm" in it. Declare the package at the beginning of "Baz.pm".
 
 <pre>
 # Baz.pm
-package Foo :: Bar :: Baz;
+package Foo::Bar::Baz;
 </pre>
 
 With such a configuration, it is possible to search for and load modules with use or require.

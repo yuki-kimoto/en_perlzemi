@@ -15,15 +15,15 @@
     here
   </li>
 </ol>
-<h2> Encode :: UTF8Mac - Mac OS X filename encoding </h2>
+<h2> Encode::UTF8Mac - Mac OS X filename encoding </h2>
 
 
 
-I think Mac OS X uses UTF-8 as the file system encoding, but it's actually a little different, and it's a Mac OX X-specific specification. To handle this correctly, it is easy to use a module called Encode :: UTF8Mac.
+I think Mac OS X uses UTF-8 as the file system encoding, but it's actually a little different, and it's a Mac OX X-specific specification. To handle this correctly, it is easy to use a module called Encode::UTF8Mac.
 
 <pre>
 use Encode qw / encode decode /;
-use Encode :: UTF8Mac;
+use Encode::UTF8Mac;
 
 # Encode
 my $byte = encode ('utf-8-mac', $string);
@@ -32,6 +32,6 @@ my $byte = encode ('utf-8-mac', $string);
 my $string = decode ('utf-8-mac', $byte);
 </pre>
 
-If you use use to load Encode :: UTF8Mac, you will be able to use <b> utf-8-mac </b> as the encoding for your Encode module. This encoding allows Mac OS X filenames to be handled correctly.
+If you use use to load Encode::UTF8Mac, you will be able to use <b> utf-8-mac </b> as the encoding for your Encode module. This encoding allows Mac OS X filenames to be handled correctly.
 
-The Encode :: UTF8Mac method is recommended because it allows you to use standard Encode modules without using Mac OS X-specific methods such as Text :: Iconv.
+The Encode::UTF8Mac method is recommended because it allows you to use standard Encode modules without using Mac OS X-specific methods such as Text::Iconv.

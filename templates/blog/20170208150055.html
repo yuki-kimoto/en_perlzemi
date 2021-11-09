@@ -183,26 +183,26 @@ foo (...)
 }
 </pre>
 
-<h4> From SV * type to std :: string type </h4>
+<h4> From SV * type to std::string type </h4>
 
 <pre>
-From # SV * type to std :: string type
+From # SV * type to std::string type
 void
 foo (...)
   PPCODE:
 {
   SV * str_sv = ST (0);
   char * str_ch = SvPV_nolen (str_sv);
-  std :: string str (str_ch);
+  std::string str (str_ch);
 
   XSRETURN (0);
 }
 </pre>
 
-<h4> From std :: string type to SV * type </h4>
+<h4> From std::string type to SV * type </h4>
 
 <pre>
-# std :: string type to SV * type
+# std::string type to SV * type
 void
 foo (...)
   PPCODE:

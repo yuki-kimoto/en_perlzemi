@@ -22,7 +22,7 @@
   &#8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100412127089.html">
-      <span itemprop = "name"> File :: Spec </span>
+      <span itemprop = "name"> File::Spec </span>
 </a>
     <meta itemprop = "position" content = "4" />
   </li>
@@ -31,7 +31,7 @@
 
 
 
-You could use File :: Spec-> catfile to create an OS-independent filename. This time, I will explain how to convert a certain file representation to the file name of the OS of the execution environment. When specifying a file name in a configuration file, etc., the file representation in Unix is ​​often used.
+You could use File::Spec-> catfile to create an OS-independent filename. This time, I will explain how to convert a certain file representation to the file name of the OS of the execution environment. When specifying a file name in a configuration file, etc., the file representation in Unix is ​​often used.
 
 <pre>
 # File representation on Unix
@@ -40,12 +40,12 @@ dir1 / dir2 / file.txt
 
 Suppose you want to convert this Unix file representation to a Windows file representation on Windows. It's easy to do the following:
 
-The <b> splitdir method of File :: Spec splits $unix_path into individual parts. Connect it with the catfile method. </b> catfile will combine the decomposed filenames with \.
+The <b> splitdir method of File::Spec splits $unix_path into individual parts. Connect it with the catfile method. </b> catfile will combine the decomposed filenames with \.
 
 <pre>
-use File :: Spec;
+use File::Spec;
 my $unix_path ='dir1 / dir2 / file.txt';
-my $windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($unix_path));
+my $windows_path = File::Spec-> catfile (File::Spec-> splitdir ($unix_path));
 </pre>
 
 <h3> Executable sample </h3>
@@ -54,9 +54,9 @@ my $windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($unix_path))
 use strict;
 use warnings;
 
-use File :: Spec;
+use File::Spec;
 my $unix_path ='dir1 / dir2 / file.txt';
-my $windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($unix_path));
+my $windows_path = File::Spec-> catfile (File::Spec-> splitdir ($unix_path));
 
 print "1. Convert to Windows file path \ n";
 print $windows_path, "\ n";

@@ -62,7 +62,7 @@ C ++ source file. mylib_print is a function that outputs the string "mylib_cpp".
 # include <iostream>
 
 void mylib_print () {
-  std :: cout << "mylib_cpp \ n";
+  std::cout << "mylib_cpp \ n";
 }
 </pre>
 
@@ -98,14 +98,14 @@ Next, let's modify Makefile.PL a little. The bottom "OBJECT" option is commented
 Then change the compiler and linker to "g ++". The compiler can be set with the "CC" option, and the linker can be set with the "LD".
 
 <pre>
-use ExtUtils :: MakeMaker;
+use ExtUtils::MakeMaker;
 use strict;
 use warnings;
 
 WriteMakefile (
     NAME =>'SomeModule',
     VERSION_FROM =>'lib / SomeModule.pm', # finds $VERSION
-    PREREQ_PM => {}, # e.g., Module :: Name => 1.1
+    PREREQ_PM => {}, # e.g., Module::Name => 1.1
     ($]> = 5.005? # # Add these new keywords supported since 5.005
       (ABSTRACT_FROM =>'lib / SomeModule.pm', # retrieve abstract from module
        AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
@@ -128,7 +128,7 @@ use warnings;
 
 use SomeModule;
 
-SomeModule :: foo ();
+SomeModule::foo ();
 </pre>
 
 <h3> Compile and run </h3>

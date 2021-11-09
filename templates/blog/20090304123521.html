@@ -15,30 +15,30 @@
     here
   </li>
 </ol>
-<h2> IO :: Capture - Capture standard output / standard error output </h2>
+<h2> IO::Capture - Capture standard output / standard error output </h2>
 
 Occasionally I have tested standard output. For example, if you want to create interactive programming or test a function that uses print in your source code.
 
-To get the standard output, use the module <a href="http://search.cpan.org/dist/IO-Capture/lib/IO/Capture.pm"> IO :: Capture</a> increase. If you can get the standard output, just perform the automatic test as usual.
+To get the standard output, use the module <a href="http://search.cpan.org/dist/IO-Capture/lib/IO/Capture.pm"> IO::Capture</a> increase. If you can get the standard output, just perform the automatic test as usual.
 
-IO :: Capture is not a standard module, so
+IO::Capture is not a standard module, so
 
 <pre>
-cpan IO :: Capture
+cpan IO::Capture
 </pre>
 
 Install with.
 
 <h3> 1. Capture standard output </h3>
 
-To get standard output, use the IO :: Capture :: Stdout module. It comes with the installation of the IO :: Capture module.
+To get standard output, use the IO::Capture::Stdout module. It comes with the installation of the IO::Capture module.
 
 The start method starts the capture, and the stop method ends the capture. You can then call the read method to get the captured standard output.
 
 <pre>
-use IO :: Capture :: Stdout;
+use IO::Capture::Stdout;
 
-my $capture = IO :: Capture :: Stdout-> new;
+my $capture = IO::Capture::Stdout-> new;
 $capture-> start;
 print "aaa";
 $capture-> stop;
@@ -84,12 +84,12 @@ print $stdout; # "hoge" is output
 
 <h3> 2. Capture standard error output </h3>
 
-You can do the same with IO :: Capture :: Stderr.
+You can do the same with IO::Capture::Stderr.
 
 <pre>
-use IO :: Capture :: Stderr;
+use IO::Capture::Stderr;
 
-my $capture = IO :: Capture :: Stderr-> new;
+my $capture = IO::Capture::Stderr-> new;
 $capture-> start;
 print STDERR "aaa";
 $capture-> stop;

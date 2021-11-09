@@ -30,7 +30,7 @@ Perl 5.18 has been released. Crackling crackling.
 
 I feel that it is better to wait for a while to upgrade to Perl 5.18 this time.
 
-First, Perl's keys, values, and each now return a different key / value order each time they are executed, which causes problems with implementations that expect the same order. It seems that JSON :: XS is now known to fail the test. So I'm a little worried as long as there are modules on CPAN that don't test well for a while.
+First, Perl's keys, values, and each now return a different key / value order each time they are executed, which causes problems with implementations that expect the same order. It seems that JSON::XS is now known to fail the test. So I'm a little worried as long as there are modules on CPAN that don't test well for a while.
 
 This seems to be the Perl community's decision that security is more important.
 
@@ -76,65 +76,65 @@ The encoding pragma is deprecated. Encoding pragmas are deprecated and should no
 
 CPAN PLUS is scheduled to be abolished. There is also cpan, and there is a simple and convenient cpanm, so it seems that CPANPLUS is not necessary for the core.
 
-In addition, Module :: Pluggable, Log :: Message, Object :: Accessor, etc. are deprecated.
+In addition, Module::Pluggable, Log::Message, Object::Accessor, etc. are deprecated.
 
 <blockquote>
 encoding
-Archive :: Extract
-B :: Lint
-B :: Lint :: Debug
+Archive::Extract
+B::Lint
+B::Lint::Debug
 CPANPLUS
-CPANPLUS :: Backend
-CPANPLUS :: Backend :: RV
-CPANPLUS :: Config
-CPANPLUS :: Config :: HomeEnv
-CPANPLUS :: Configure
-CPANPLUS :: Configure :: Setup
-CPANPLUS :: Dist
-CPANPLUS :: Dist :: Autobundle
-CPANPLUS :: Dist :: Base
-CPANPLUS :: Dist :: Build
-CPANPLUS :: Dist :: Build :: Constants
-CPANPLUS :: Dist :: MM
-CPANPLUS :: Dist :: Sample
-CPANPLUS :: Error
-CPANPLUS :: Internals
-CPANPLUS :: Internals :: Constants
-CPANPLUS :: Internals :: Constants :: Report
-CPANPLUS :: Internals :: Extract
-CPANPLUS :: Internals :: Fetch
-CPANPLUS :: Internals :: Report
-CPANPLUS :: Internals :: Search
-CPANPLUS :: Internals :: Source
-CPANPLUS :: Internals :: Source :: Memory
-CPANPLUS :: Internals :: Source :: SQLite
-CPANPLUS :: Internals :: Source :: SQLite :: Tie
-CPANPLUS :: Internals :: Utils
-CPANPLUS :: Internals :: Utils :: Autoflush
-CPANPLUS :: Module
-CPANPLUS :: Module :: Author
-CPANPLUS :: Module :: Author :: Fake
-CPANPLUS :: Module :: Checksums
-CPANPLUS :: Module :: Fake
-CPANPLUS :: Module :: Signature
-CPANPLUS :: Selfupdate
-CPANPLUS :: Shell
-CPANPLUS :: Shell :: Classic
-CPANPLUS :: Shell :: Default
-CPANPLUS :: Shell :: Default :: Plugins :: CustomSource
-CPANPLUS :: Shell :: Default :: Plugins :: Remote
-CPANPLUS :: Shell :: Default :: Plugins :: Source
-Devel :: InnerPackage
-Log :: Message
-Log :: Message :: Config
-Log :: Message :: Handlers
-Log :: Message :: Item
-Log :: Message :: Simple
-Module :: Pluggable
-Module :: Pluggable :: Object
-Object :: Accessor
-Term :: UI
-Term :: UI :: History
+CPANPLUS::Backend
+CPANPLUS::Backend::RV
+CPANPLUS::Config
+CPANPLUS::Config::HomeEnv
+CPANPLUS::Configure
+CPANPLUS::Configure::Setup
+CPANPLUS::Dist
+CPANPLUS::Dist::Autobundle
+CPANPLUS::Dist::Base
+CPANPLUS::Dist::Build
+CPANPLUS::Dist::Build::Constants
+CPANPLUS::Dist::MM
+CPANPLUS::Dist::Sample
+CPANPLUS::Error
+CPANPLUS::Internals
+CPANPLUS::Internals::Constants
+CPANPLUS::Internals::Constants::Report
+CPANPLUS::Internals::Extract
+CPANPLUS::Internals::Fetch
+CPANPLUS::Internals::Report
+CPANPLUS::Internals::Search
+CPANPLUS::Internals::Source
+CPANPLUS::Internals::Source::Memory
+CPANPLUS::Internals::Source::SQLite
+CPANPLUS::Internals::Source::SQLite::Tie
+CPANPLUS::Internals::Utils
+CPANPLUS::Internals::Utils::Autoflush
+CPANPLUS::Module
+CPANPLUS::Module::Author
+CPANPLUS::Module::Author::Fake
+CPANPLUS::Module::Checksums
+CPANPLUS::Module::Fake
+CPANPLUS::Module::Signature
+CPANPLUS::Selfupdate
+CPANPLUS::Shell
+CPANPLUS::Shell::Classic
+CPANPLUS::Shell::Default
+CPANPLUS::Shell::Default::Plugins::CustomSource
+CPANPLUS::Shell::Default::Plugins::Remote
+CPANPLUS::Shell::Default::Plugins::Source
+Devel::InnerPackage
+Log::Message
+Log::Message::Config
+Log::Message::Handlers
+Log::Message::Item
+Log::Message::Simple
+Module::Pluggable
+Module::Pluggable::Object
+Object::Accessor
+Term::UI
+Term::UI::History
 </blockquote>
 
 <h3> Addition of new functions </h3>
@@ -149,7 +149,7 @@ As an experimental feature, the ability to define lexical subroutines has been a
 
 <pre>
 use 5.018;
-no warnings "experimental :: lexical_subs";
+no warnings "experimental::lexical_subs";
 use feature "lexical_subs";
 {
   my sub foo {...}

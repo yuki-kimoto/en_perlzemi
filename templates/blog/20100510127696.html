@@ -15,16 +15,16 @@
     here
   </li>
 </ol>
-<h2> Archive :: Tar - Create and extract tar file </h2>
+<h2> Archive::Tar - Create and extract tar file </h2>
 
 
 
-You can use <strong> Archive :: Tar </strong> to extract or create a tar file.
+You can use <strong> Archive::Tar </strong> to extract or create a tar file.
 
 <pre>
 # Loading modules and creating objects
-use Archive :: Tar;
-my $tar = Archive :: Tar-> new;
+use Archive::Tar;
+my $tar = Archive::Tar-> new;
 </pre>
 
 Use the <strong> read </strong> method to read the tar file information into memory. To extract the file, use the <strong> extract </strong> method after loading the tar file. The file will be expanded to the current directory.
@@ -62,7 +62,7 @@ You can also create a tar file compressed in gzip format. When compressing to gz
 $tar-> write ('archive.tar.gz', 9);
 </pre>
 
-<h3> Archive :: Tar's Other Techniques </h3>
+<h3> Archive::Tar's Other Techniques </h3>
 
 If you specify the file name in the argument of extract, you can extract only the specified file.
 
@@ -99,26 +99,26 @@ You can use the <strong> clear method </strong> to clear the information in the 
 $tar-> clear;
 </pre>
 
-<h3> Archive :: Tar FAQ </h3>
+<h3> Archive::Tar FAQ </h3>
 
 Q. Is it possible to specify a directory and make all the files contained in it a tar file?
-A. There is no such method, so you need to devise it. Use the File :: Find module, which can search all files recursively. This is a sample to create a tar file from all the files (including the top directory itself) contained under the directory named top.
+A. There is no such method, so you need to devise it. Use the File::Find module, which can search all files recursively. This is a sample to create a tar file from all the files (including the top directory itself) contained under the directory named top.
 
 <pre>
 # Specify a directory to create a tar file from all files under it
-use File :: Find'find';
-use Archive :: Tar;
+use File::Find'find';
+use Archive::Tar;
 
 my $curdir ='/ somedir';
 chdir $curdir
   or die qq / Can't change directory "$curdir": $! /;
 
-my $tar = Archive :: Tar-> new;
+my $tar = Archive::Tar-> new;
 my $top ='top';
 
 my @files;
 find (sub {
-  push @files, $File :: Find :: name;
+  push @files, $File::Find::name;
 }, $top);
 
 $tar-> add_files (@files);
@@ -126,11 +126,11 @@ $tar-> write ("$top.tar");
 </pre>
 
 Q. Is it possible to include the symbolic linked file in the tar file?
-A. Yes. Set the package variable $Archive :: Tar :: FOLLOW_SYMLINK to 1.
+A. Yes. Set the package variable $Archive::Tar::FOLLOW_SYMLINK to 1.
 
 <pre>
 # Include the symbolic link destination file in the tar file
-local $Archive :: Tar :: FOLLOW_SYMLINK = 1;
+local $Archive::Tar::FOLLOW_SYMLINK = 1;
 $tar-> write ('archive.tar');
 </pre>
 

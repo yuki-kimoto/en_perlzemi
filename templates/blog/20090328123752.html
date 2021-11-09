@@ -24,7 +24,7 @@ Let's modify the class a little and change the behavior according to the OS.
 
 <h3> 1. Polymorphism that changes its behavior according to the environment </h3>
 
-If the environment is Windows, I created an object of FilePath :: Windows class, and if the environment is not, I wrote a class that creates an object of FilaPath :: Unix class.
+If the environment is Windows, I created an object of FilePath::Windows class, and if the environment is not, I wrote a class that creates an object of FilaPath::Unix class.
 
 <pre>
 use strict;
@@ -42,15 +42,15 @@ package FilePath;
 sub new {
   my $self = shift;
   if ($^ O eq'MSWin32') {
-    return FilePath :: Windows-> new;
+    return FilePath::Windows-> new;
   }
   else {
-    return FilePath :: Unix-> new;
+    return FilePath::Unix-> new;
   }
 }
 
 # Base class for handling file paths
-package FilePath :: Base;
+package FilePath::Base;
 
 sub new {
   my $proto = shift;
@@ -66,16 +66,16 @@ sub cat_path {
 }
 
 # For Unix
-package FilePath :: Unix;
-use base'FilePath :: Base';
+package FilePath::Unix;
+use base'FilePath::Base';
 
 # Unix delimiter
 sub delimiter {return'/'}
 
 
 # For Windows
-package FilePath :: Windows;
-use base'FilePath :: Base';
+package FilePath::Windows;
+use base'FilePath::Base';
 
 # Delimiter for Windows
 sub delimiter {return'\\'}
@@ -93,7 +93,7 @@ Otherwise,
 Result: a / b
 </pre>
 
-It will be. If the environment is Windows, an object of the FilePath :: Windows class is created, otherwise an object of the FilePath :: Unix class is created.
+It will be. If the environment is Windows, an object of the FilePath::Windows class is created, otherwise an object of the FilePath::Unix class is created.
 
 <pre>
 print ref $file_path;
@@ -111,10 +111,10 @@ package FilePath;
 sub new {
   my $self = shift;
   if ($^ O eq'MSWin32') {
-    return FilePath :: Windows-> new;
+    return FilePath::Windows-> new;
   }
   else {
-    return FilePath :: Unix-> new;
+    return FilePath::Unix-> new;
   }
 }
 </pre>
@@ -125,10 +125,10 @@ I'm looking at $^ O to find out what type of OS I'm using and changing the objec
 sub new {
   my $self = shift;
   if ($^ O eq'MSWin32') {
-    return FilePath :: Windows-> new (@_);
+    return FilePath::Windows-> new (@_);
   }
   else {
-    return FilePath :: Unix-> new (@_);
+    return FilePath::Unix-> new (@_);
   }
 }
 </pre>
@@ -137,8 +137,8 @@ It is more often described as. Writing using the ternary operator makes it even 
 <pre>
 sub new {
   my $self = shift;
-  return $^ O eq'MSWin32'? FilePath :: Windows-> new (@_):
-                            FilePath :: Unix-> new (@_);
+  return $^ O eq'MSWin32'? FilePath::Windows-> new (@_):
+                            FilePath::Unix-> new (@_);
 }
 </pre>
 
@@ -146,7 +146,7 @@ sub new {
 
 If you use inheritance well, you will find that you can clearly write a description that makes it behave according to the environment.
 
-Also, if you want to support other environments, just create a class called "FilePath :: Honyara" and modify the constructor of the FilePath class a little.
+Also, if you want to support other environments, just create a class called "FilePath::Honyara" and modify the constructor of the FilePath class a little.
 
 In other words, when it comes to situations where inheritance is effective, there are many patterns and there is a high possibility of expansion. Twice
 

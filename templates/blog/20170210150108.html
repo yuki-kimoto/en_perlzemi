@@ -15,11 +15,11 @@
     here
   </li>
 </ol>
-<h2> ExtUtils :: MakeMaker - Customize Makefile.PL </h2>
+<h2> ExtUtils::MakeMaker - Customize Makefile.PL </h2>
 
 
 
-<a href="http://pointoht.ti-da.net/e9338756.html"> ExtUtils :: MakeMaker</a> is used to explain how to write <b> Makefile.PL </b>. ..
+<a href="http://pointoht.ti-da.net/e9338756.html"> ExtUtils::MakeMaker</a> is used to explain how to write <b> Makefile.PL </b>. ..
 
 <h4> Specify a test script </h4>
 
@@ -53,17 +53,17 @@ Please note that in FILES, it is necessary to describe the file name according t
 
 When you create an XS module using h2xs, if the namespace contains "::", the XS file name will be "last name.xs".
 
-For example, if you create an XS module using h2xs with the name "Some :: Module", the XS file name will be "Module.xs". This is a little unpleasant.
+For example, if you create an XS module using h2xs with the name "Some::Module", the XS file name will be "Module.xs". This is a little unpleasant.
 
 To give a free XS file name, you need to specify the XS file name in Makefile.PL.
 
 For example, if you want to create an XS file with the name "SomeModule.xs", write as follows. Look only at the commented "XS Options" and "OBJECT" options. The other part is automatically generated.
 
 <pre>
-use ExtUtils :: MakeMaker;
+use ExtUtils::MakeMaker;
 
 WriteMakefile (
-    NAME =>'Rstats :: Element',
+    NAME =>'Rstats::Element',
     VERSION_FROM =>'lib / Rstats / Element.pm',
     PREREQ_PM => {},
     ($]> = 5.005?
@@ -100,22 +100,22 @@ The following is a sample using the OPTIMIZE option.
 <pre>
 use strict;
 use warnings;
-use ExtUtils :: MakeMaker;
+use ExtUtils::MakeMaker;
 
 WriteMakefile (
     NAME =>'Rstats',
     AUTHOR =>'Yuki Kimoto <kimoto.yuki@gmail.com>',
     VERSION_FROM =>'lib / Rstats.pm',
     ABSTRACT_FROM =>'lib / Rstats.pm',
-    ($ExtUtils :: MakeMaker :: VERSION> = 6.3002
+    ($ExtUtils::MakeMaker::VERSION> = 6.3002
       ? ('LICENSE'=>' perl')
       : ()),
     PL_FILES => {},
     PREREQ_PM => {
-        'Test :: More' => 0,
-        'Object :: Simple'=> '3.10',
-        'Math :: Round'=> '0.06',
-        'Text :: UnicodeTable :: Simple'=> '0.09'
+        'Test::More' => 0,
+        'Object::Simple'=> '3.10',
+        'Math::Round'=> '0.06',
+        'Text::UnicodeTable::Simple'=> '0.09'
     },
     dist => {COMPRESS =>'gzip -9f', SUFFIX =>'gz',},
     clean => {FILES =>'Rstats-*'},
@@ -131,7 +131,7 @@ WriteMakefile (
 
 <h4> How to add a search path for a C / C ++ language header file in Makefile.PL </h4>
 
-When writing Makefile.PL, you may want to change or add the location of C / C ++ header files. For ExtUtils :: MakeMaker, you can set it with the <b> INC </b> and <b> H </b> options in the WriteMakefile.
+When writing Makefile.PL, you may want to change or add the location of C / C ++ header files. For ExtUtils::MakeMaker, you can set it with the <b> INC </b> and <b> H </b> options in the WriteMakefile.
 
 The following settings assume that you have a C / C ++ header file in "Rstats_lib / include".
 
@@ -211,7 +211,7 @@ use 5.010001;
 
 use strict;
 use warnings;
-use ExtUtils :: MakeMaker;
+use ExtUtils::MakeMaker;
 
 use Config;
 
@@ -229,7 +229,7 @@ WriteMakefile (
     AUTHOR =>'Yuki Kimoto <kimoto.yuki@gmail.com>',
     VERSION_FROM =>'lib / Rstats.pm',
     ABSTRACT_FROM =>'lib / Rstats.pm',
-    ($ExtUtils :: MakeMaker :: VERSION> = 6.3002
+    ($ExtUtils::MakeMaker::VERSION> = 6.3002
       ? ('LICENSE'=>' perl')
       : ()),
     PL_FILES => {},
@@ -242,9 +242,9 @@ WriteMakefile (
       }
     },
     PREREQ_PM => {
-        'Object :: Simple'=> '3.10',
-        'Math :: Round'=> '0.06',
-        'Text :: UnicodeTable :: Simple'=> '0.09'
+        'Object::Simple'=> '3.10',
+        'Math::Round'=> '0.06',
+        'Text::UnicodeTable::Simple'=> '0.09'
     },
     dist => {COMPRESS =>'gzip -9f', SUFFIX =>'gz',},
     clean => {FILES =>'Rstats-*'},

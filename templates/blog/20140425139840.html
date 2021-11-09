@@ -15,17 +15,17 @@
     here
   </li>
 </ol>
-<h2> Lingua :: JA :: Regular :: Unicode module </h2>
+<h2> Lingua::JA::Regular::Unicode module </h2>
 
 
 
 Old Jcode had a method called h2z that converts half-width katakana to full-width katakana, but modern Perl doesn't use Jcode. In modern Perl, it's best to treat strings as internal strings inside your program.
 
-I think it's a good idea to use the <strong> katakana_h2z </strong> function of the <strong> Lingua :: JA :: Regular :: Unicode </strong> module to replace the old code.
+I think it's a good idea to use the <strong> katakana_h2z </strong> function of the <strong> Lingua::JA::Regular::Unicode </strong> module to replace the old code.
 
 <pre>
 use utf8;
-use Lingua :: JA :: Regular :: Unicode'katakana_h2z';
+use Lingua::JA::Regular::Unicode'katakana_h2z';
 my $str_h ='Aiueo';
 my $str_z = katakana_h2z $str_h;
 </pre>

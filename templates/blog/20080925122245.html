@@ -15,49 +15,49 @@
     here
   </li>
 </ol>
-<h2> Math :: BigInt, Math :: BigFloat - Calculation of numbers with large digits </h2>
+<h2> Math::BigInt, Math::BigFloat - Calculation of numbers with large digits </h2>
 
 
 
-Perl's <a href="/blog/20161026147748.html"> number</a> has about 15 to 16 significant digits, and ordinary operations cannot perform larger numbers. Use <strong> Math :: BigInt </strong> or <strong> Math :: BigFloat </strong> if you want to work with large digits.
+Perl's <a href="/blog/20161026147748.html"> number</a> has about 15 to 16 significant digits, and ordinary operations cannot perform larger numbers. Use <strong> Math::BigInt </strong> or <strong> Math::BigFloat </strong> if you want to work with large digits.
 
 <h4> Large integer arithmetic </h4>
 
-To calculate a large integer, use the object created by the Math :: BigInt module.
+To calculate a large integer, use the object created by the Math::BigInt module.
 
 <pre>
-use Math :: BigInt;
-my $big_int = Math :: BigInt-> new ("11111111111111111111111111111111111111111111");
+use Math::BigInt;
+my $big_int = Math::BigInt-> new ("11111111111111111111111111111111111111111111");
 $big_int = $big_int * 2;
 </pre>
 
 <h4> Calculation of numbers with a large number of digits after the decimal point </h4>
 
-Calculation is performed using the object created by the Math :: BigFloat module.
+Calculation is performed using the object created by the Math::BigFloat module.
 
 <pre>
-use Math :: BigFloat;
-my $big_float = Math :: BigFloat-> new ("0.1111111111111111111111111111111111111");
+use Math::BigFloat;
+my $big_float = Math::BigFloat-> new ("0.1111111111111111111111111111111111111");
 $big_float = $big_float * 2;
 </pre>
 
 <h3> Sample </h3>
 
-This is a sample using Math :: BigInt and Math :: BigFloat.
+This is a sample using Math::BigInt and Math::BigFloat.
 
 <pre>
 use strict;
 use warnings;
-use Math :: BigInt;
-use Math :: BigFloat;
+use Math::BigInt;
+use Math::BigFloat;
 
 print "(1) Operation of large integers \ n";
-my $big_int = Math :: BigInt-> new ("11111111111111111111111111111111111111111111");
+my $big_int = Math::BigInt-> new ("11111111111111111111111111111111111111111111");
 $big_int = $big_int * 2;
 print $big_int. "\ n \ n";
 
 print "(2) Operations on numbers with a large number of digits after the decimal point \ n";
-my $big_float = Math :: BigFloat-> new ("0.1111111111111111111111111111111111111");
+my $big_float = Math::BigFloat-> new ("0.1111111111111111111111111111111111111");
 $big_float = $big_float * 2;
 print $big_float. "\ n";
 </pre>

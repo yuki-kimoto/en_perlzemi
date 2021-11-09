@@ -525,14 +525,14 @@ To get the package variable, write:
 
 <pre>
 # Perl
-$Foo :: bar;
-@Foo :: bar;
-% Foo :: bar;
+$Foo::bar;
+@Foo::bar;
+% Foo::bar;
 
 # XS
-SV * sv_var = get_sv ("Foo :: bar", 0);
-AV * av_var = get_av ("Foo :: bar", 0);
-HV * hv_var = get_hv ("Foo :: bar", 0);
+SV * sv_var = get_sv ("Foo::bar", 0);
+AV * av_var = get_av ("Foo::bar", 0);
+HV * hv_var = get_hv ("Foo::bar", 0);
 </pre>
 
 The second argument, 0, means that no new variable is created.
@@ -543,14 +543,14 @@ Introducing a function that creates a package variable in XS. Specify "GV_ADD" i
 
 <pre>
 # Perl
-our $Foo :: bar;
-our @Foo :: bar;
-our% Foo :: bar;
+our $Foo::bar;
+our @Foo::bar;
+our% Foo::bar;
 
 # XS
-SV * sv_var = get_sv ("Foo :: bar", GV_ADD);
-AV * av_var = get_av ("Foo :: bar", GV_ADD);
-HV * hv_var = get_hv ("Foo :: b"ar ", GV_ADD);
+SV * sv_var = get_sv ("Foo::bar", GV_ADD);
+AV * av_var = get_av ("Foo::bar", GV_ADD);
+HV * hv_var = get_hv ("Foo::b"ar ", GV_ADD);
 </pre>
 
 <h3> Use regular expressions </h3>

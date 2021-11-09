@@ -30,7 +30,7 @@ use strict;
 use warnings;
 
 # Used to rename the file.
-use File :: Copy;
+use File::Copy;
 
 # Be careful about the specified file as it will be edited and written back.
 my $infile = shift;
@@ -81,7 +81,7 @@ close $tmpfh
   or die "Error closing $tmpfile";
 
 # Change the temporary file name to the original file name.
-File :: Copy :: move ($tmpfile, $infile)
+File::Copy::move ($tmpfile, $infile)
   or die "Cannot move $tmpfile to $infile";
 </pre>
 
@@ -176,10 +176,10 @@ So if close fails, the buffer will be left unflushed and you will not be able to
 
 <pre>
 # Change the temporary file name to the original file name.
-File :: Copy :: move ($tmpfile, $infile)
+File::Copy::move ($tmpfile, $infile)
   or die "Cannot move $tmpfile to $infile";
 </pre>
 
 (Reference) <a href="/blog/20100212126425.html"> die function</a>
 
-Use the <a href="/blog/20100408127089.html"> File :: Copy</a> module to rename the temporary file for writing to the original file name. That's it.
+Use the <a href="/blog/20100408127089.html"> File::Copy</a> module to rename the temporary file for writing to the original file name. That's it.

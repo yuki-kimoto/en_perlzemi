@@ -152,11 +152,11 @@ my $val = $mat-> at (0, 1);
 
 <h3> Set matrix elements </h3>
 
-To set the elements of a matrix, use the notation <strong> nice slice </strong>. You need to load the <b> PDL :: NiceSlice </b> module to use nice slice notation.
+To set the elements of a matrix, use the notation <strong> nice slice </strong>. You need to load the <b> PDL::NiceSlice </b> module to use nice slice notation.
 
 <pre>
 use PDL;
-use PDL :: NiceSlice;
+use PDL::NiceSlice;
 
 $matrix (column, row). = Value
 </pre>
@@ -167,7 +167,7 @@ Below is a sample of a 2x2 matrix with the value in the 2nd row and 1st column s
 
 <pre>
 use PDL;
-use PDL :: NiceSlice;
+use PDL::NiceSlice;
 
 my $mat = pdl [
   [1, 2],
@@ -187,12 +187,12 @@ The output of this variable is as follows.
 
 <h3> Create an identity matrix </h3>
 
-Let's create an identity matrix. Let's make a 3x3 identity matrix. The procedure is to create a 3x3 square matrix with all zeros in the <b> zeroes </b> function of <strong> PDL :: Core </strong>. Then slice the diagonal with the <b> diagonal </b> method and substitute 1. The argument (0, 1) means 1D and 2D. It means to get the diagonal of 1D and 2D.
+Let's create an identity matrix. Let's make a 3x3 identity matrix. The procedure is to create a 3x3 square matrix with all zeros in the <b> zeroes </b> function of <strong> PDL::Core </strong>. Then slice the diagonal with the <b> diagonal </b> method and substitute 1. The argument (0, 1) means 1D and 2D. It means to get the diagonal of 1D and 2D.
 
 <pre>
 use PDL;
 
-my $mat = PDL :: Core :: zeroes (3, 3);
+my $mat = PDL::Core::zeroes (3, 3);
 $mat-> diagonal (0, 1). = 1;
 </pre>
 

@@ -15,8 +15,8 @@
 
 
 
-To easily determine if a date exists, use the Time :: Local module.
-The timelocal function of Time :: Local is a function that converts the specified date to the elapsed seconds from the epoch, but throws an exception if a date that does not exist is specified.
+To easily determine if a date exists, use the Time::Local module.
+The timelocal function of Time::Local is a function that converts the specified date to the elapsed seconds from the epoch, but throws an exception if a date that does not exist is specified.
 
 By using this, it is possible to determine the existing date.
 
@@ -24,7 +24,7 @@ By using this, it is possible to determine the existing date.
 use strict;
 use warnings;
 
-use Time :: Local'timelocal';
+use Time::Local'timelocal';
 
 print "(1) Check if the date exists. \ N";
 # Perl treats the time as the number of years since 1900
@@ -69,9 +69,9 @@ sub day_exist {
   $year-= 1900;
   $mon-;
     
-  require Time :: Local;
+  require Time::Local;
   eval {
-    Time :: Local :: timelocal (0, 0, 0, $mday, $mon, $year);
+    Time::Local::timelocal (0, 0, 0, $mday, $mon, $year);
   };
   return $@? 0: 1;
 }
@@ -85,7 +85,7 @@ sub day_exist {
 
 Perl's standard functions treat years as the number of years since 1900. The month starts from 0, such as 0 in January and 1 in February.
 
-You need to take this into account when passing arguments to the timelocal function of the Time :: Local module.
+You need to take this into account when passing arguments to the timelocal function of the Time::Local module.
 
 <pre>
 # Perl treats the time as the number of years since 1900
@@ -101,14 +101,14 @@ my $mday = 32;
 
 <h4> Determine if the date exists </h4>
 
-Use the timelocal function of the Time :: Local module to determine the date.
+Use the timelocal function of the Time::Local module to determine the date.
 
 Since the arguments of the timelocal function must be specified in the order of "seconds, minutes, hours, days, months, and years", 0 is passed as a dummy for seconds, minutes, and hours.
 
 If the date does not exist, the timelocal function throws an exception, so catch it with eval. If an exception occurs, the content will be set in $@, so the judgment will be made with this.
 
 <pre>
-use Time :: Local'timelocal';
+use Time::Local'timelocal';
 eval {
   timelocal (0, 0, 0, $mday, $mon, $year);
 };
@@ -131,9 +131,9 @@ sub day_exist {
   $year-= 1900;
   $mon-;
     
-  require Time :: Local;
+  require Time::Local;
   eval {
-    Time :: Local :: timelocal (0, 0, 0, $mday, $mon, $year);
+    Time::Local::timelocal (0, 0, 0, $mday, $mon, $year);
   };
   return $@? 0: 1;
 }

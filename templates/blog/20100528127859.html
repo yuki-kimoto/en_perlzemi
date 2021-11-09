@@ -47,11 +47,11 @@ A. The interpretation is wrong. If the string in the source code consists of cha
 This makes it very difficult to understand what you are doing from the programmer's point of view. So don't be afraid to remember that the utf8 pragma converts a UTF-8 byte string into an internal string.
 
 Q. Should I forget about the UTF-8 flag?
-A. Yes, basically forget about it. But there is one thing that is useful to remember, so let me tell you. That is, "If the UTF-8 flag is set, it can be said that it is an internal string." The opposite is not true. There is a <strong> utf8 :: is_utf8 </strong> function as a function to check if the UTF-8 flag is set. If you use this function to verify that the UTF-8 flag is set, you can say that it is an internal string.
+A. Yes, basically forget about it. But there is one thing that is useful to remember, so let me tell you. That is, "If the UTF-8 flag is set, it can be said that it is an internal string." The opposite is not true. There is a <strong> utf8::is_utf8 </strong> function as a function to check if the UTF-8 flag is set. If you use this function to verify that the UTF-8 flag is set, you can say that it is an internal string.
 
 <pre>
 Internal string if # UTF-8 flag is set
-my $utf8_flagged = utf8 :: is_utf8 ($str);
+my $utf8_flagged = utf8::is_utf8 ($str);
 
 if ($utf8_flagged) {
   # $str is an internal string

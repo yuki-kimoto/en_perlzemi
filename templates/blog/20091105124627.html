@@ -15,17 +15,17 @@
     here
   </li>
 </ol>
-<h2> Time :: Piece - A new way to handle dates and times </h2>
+<h2> Time::Piece - A new way to handle dates and times </h2>
 
 
 
-Starting with Perl 5.10, a module called Time :: Piece has been added to the standard module to handle time conveniently. If you're using Perl 5.10 or higher, the Time :: Piece module is useful if you want to work with dates and times.
+Starting with Perl 5.10, a module called Time::Piece has been added to the standard module to handle time conveniently. If you're using Perl 5.10 or higher, the Time::Piece module is useful if you want to work with dates and times.
 
-In traditional Perl, standard modules didn't have an intuitive way to handle dates and times. It took a little tedious work to handle dates and times. Time :: Piece provides intuitive manipulation of dates and times. It also has a date / time formatting function and an analysis function.
+In traditional Perl, standard modules didn't have an intuitive way to handle dates and times. It took a little tedious work to handle dates and times. Time::Piece provides intuitive manipulation of dates and times. It also has a date / time formatting function and an analysis function.
 
 Perl has a module called DateTime, which is essentially the standard for date-handling modules. However, this module must be installed from CPAN, not the standard module. Also, since it is a huge module, it takes a lot of time to load the module. You may be a little dissatisfied with the execution speed except in an environment where modules can be expanded in memory such as mod_perl.
 
-Think of Time :: Piece as a fast, lightweight module with some functionality.
+Think of Time::Piece as a fast, lightweight module with some functionality.
 
 For general information on dates and times, please refer to the following.
 
@@ -37,12 +37,12 @@ For general information on dates and times, please refer to the following.
 
 <h3> Acquisition of time / date information </h3>
 
-Use the Time :: Piece module as follows: When used, the Time :: Piece module overwrites the core localtime and gmtime.
+Use the Time::Piece module as follows: When used, the Time::Piece module overwrites the core localtime and gmtime.
 
 <pre>
-use Time :: Piece;
+use Time::Piece;
 
-Get # Time :: Piece object
+Get # Time::Piece object
 my $t = localtime;
 
 # Get date and time information
@@ -55,7 +55,7 @@ my $minute = $t-> minute;
 my $second = $t-> sec;
 </pre>
 
-You can get the Time :: Piece object by calling localtime, and you can get the date and time information from now on.
+You can get the Time::Piece object by calling localtime, and you can get the date and time information from now on.
 
 The case where the time information is acquired by the standard function localtime is described for comparison.
 
@@ -70,11 +70,11 @@ $month + = 1;
 $year + = 1900;
 </pre>
 
-It is more intuitive to use localtime of Time :: Piece to handle date and time information.
+It is more intuitive to use localtime of Time::Piece to handle date and time information.
 
-<h3> List of information that can be obtained with Time :: Piece </h3>
+<h3> List of information that can be obtained with Time::Piece </h3>
 
-A list of information that can be obtained with Time :: Piece.
+A list of information that can be obtained with Time::Piece.
 
 <table>
   <tr>
@@ -315,7 +315,7 @@ A list of information that can be obtained with Time :: Piece.
 
 <h3> Judgment of date </h3>
 
-You can use Time :: Piece to determine if it is a leap year and if it is the last day of the month.
+You can use Time::Piece to determine if it is a leap year and if it is the last day of the month.
 
 <pre>
 # Is it a leap year?
@@ -327,7 +327,7 @@ $t-> month_last_day
 
 <h3> Format date / time </h3>
 
-You may want to format the date / time and output it. Time :: Piece provides several fixed formats. You can also format it freely using the strftime method.
+You may want to format the date / time and output it. Time::Piece provides several fixed formats. You can also format it freely using the strftime method.
 
 <h4> [A] Formats provided by default </h4>
 
@@ -505,7 +505,7 @@ Same as% T:% H:% M:% S. Hours, minutes and seconds (such as 23:14:03)
 
 <h4> Precautions when handling Japanese </h4>
 
-Note that Time :: Piece's strftime method always returns a byte string, whether the input is a byte string or an internal string.
+Note that Time::Piece's strftime method always returns a byte string, whether the input is a byte string or an internal string.
 
 <pre>
 # Byte string is always returned
@@ -514,17 +514,17 @@ my $bytes = $tp-> strftime ("% Y year% m month");
 
 <h3> Parse the character string that expresses the date / time </h3>
 
-You can parse date and time representations to create Time :: Piece objects. Use the strptime method to parse dates and times.
+You can parse date and time representations to create Time::Piece objects. Use the strptime method to parse dates and times.
 
 <pre>
-my $t = Time :: Piece-> strptime (character string representing date / time, format);
+my $t = Time::Piece-> strptime (character string representing date / time, format);
 </pre>
 
-As a sample, let's parse the MySQL date representation and create a Time :: Piece object. Use the above strftime format for the format.
+As a sample, let's parse the MySQL date representation and create a Time::Piece object. Use the above strftime format for the format.
 
 <pre>
 my $datetime_mysql = '2009-12-31 23:59:59';
-my $t = Time :: Piece-> strptime ($datetime_mysql,'% Y-% m-% d% H:% M:% S');
+my $t = Time::Piece-> strptime ($datetime_mysql,'% Y-% m-% d% H:% M:% S');
 </pre>
 
 <h3> Localization </h3>
@@ -533,22 +533,22 @@ By default, month and week names are in English. If you want to get the Japanese
 
 <pre>
 my @week_names = ('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
-my $t = Time :: Piece :: localtime;
+my $t = Time::Piece::localtime;
 # Get week name in Japanese
 my $wday = $t-> wdayname (@week_names);
 </pre>
 
 <h3> Calculation of date / time information </h3>
 
-<h4> Tempe :: Piece object subtraction </h4>
+<h4> Tempe::Piece object subtraction </h4>
 
-Time :: Piece can also calculate dates and times. If you subtract between Time :: Piece objects, the return value will be a Time :: Seconds object. This object is in seconds when evaluated as a string.
+Time::Piece can also calculate dates and times. If you subtract between Time::Piece objects, the return value will be a Time::Seconds object. This object is in seconds when evaluated as a string.
 
 <pre>
 my $sec = $t2- $t1;
 </pre>
 
-You can also convert Time :: Soconds objects to days and years.
+You can also convert Time::Soconds objects to days and years.
 
 <pre>
 $sec-> seconds;
@@ -564,16 +564,16 @@ $sec-> financial_months;
 
 The conversion to days and years is done according to the following rules. One day is converted to 24 hours. One week is converted to 7 days. One year is converted to 365.24225 days. One year is converted to 12 months.
 
-<h4> Addition of Time :: Piece objects </h4>
+<h4> Addition of Time::Piece objects </h4>
 
-Time :: Piece objects cannot be added to each other. You can add seconds or a Time :: Seconds object to the Timpe :: Piece object.
+Time::Piece objects cannot be added to each other. You can add seconds or a Time::Seconds object to the Timpe::Piece object.
 
 <pre>
 $t + 533;
-$t + Time :: Seconds-> new (300);
+$t + Time::Seconds-> new (300);
 </pre>
 
-Time :: Seconds also provides constants that can be added to the Time :: Piece object.
+Time::Seconds also provides constants that can be added to the Time::Piece object.
 
 <pre>
 ONE_DAY
@@ -587,10 +587,10 @@ LEAP_YEAR
 NON_LEAP_YEAR
 </pre>
 
-To add 5 days: The Time :: Seconds module must be loaded to take advantage of these constants.
+To add 5 days: The Time::Seconds module must be loaded to take advantage of these constants.
 
 <pre>
-use Time :: Seconds;
+use Time::Seconds;
 $t + ONE_DAY * 5
 </pre>
 
@@ -602,22 +602,22 @@ You can use comparison operators to compare dates. You can use "<", ">", "<=", "
 $t1 <$t2
 </pre>
 
-<h3> Create Time :: Piece object </h3>
+<h3> Create Time::Piece object </h3>
 
-As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time :: Piece object at any date and time.
+As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time::Piece object at any date and time.
 
 <pre>
-my $t = Time :: Piece-> strptime ('2009-12-31 23:59:59','% Y-% m-% d% H:% M:% S');
+my $t = Time::Piece-> strptime ('2009-12-31 23:59:59','% Y-% m-% d% H:% M:% S');
 </pre>
 
 (When I read the source code, there is a parse method, but when I tried it, it seems to be broken ... It seems that it is private because it is not in the document.)
 
 <h3> Get an object that represents today's date </h3>
 
-To use the <strong> Time :: Piece </strong> module to get an object that represents today:
+To use the <strong> Time::Piece </strong> module to get an object that represents today:
 
 <pre>
-use Time :: Piece;
+use Time::Piece;
 
 my $today = today ();
 

@@ -15,13 +15,13 @@
     here
   </li>
 </ol>
-<h2> Net :: FTP - File transfer using FTP </h2>
+<h2> Net::FTP - File transfer using FTP </h2>
 
-Net :: FTP allows you to download and upload files via FTP.
+Net::FTP allows you to download and upload files via FTP.
 
 IT-related work often accesses servers to download and upload files. Doing this using FTP client software such as FFFTP can be very tedious. You'll want to automate it if you can.
 
-Perl comes standard with a module called Net :: FTP for creating client applications for FTP. If you use Net :: FTP, file download / upload work can be automated and work efficiency can be improved.
+Perl comes standard with a module called Net::FTP for creating client applications for FTP. If you use Net::FTP, file download / upload work can be automated and work efficiency can be improved.
 
 <h3> What is FTP? </H3>
 
@@ -50,10 +50,10 @@ Let's write a simple sample to actually download the file.
 
 <pre>
 # Load module
-use Net :: FTP;
+use Net::FTP;
 
 # Connect to FTP server (host name or IP address is OK)
-my $ftp = Net :: FTP-> new ('somehost');
+my $ftp = Net::FTP-> new ('somehost');
 
 # Login by specifying user name and password
 $ftp-> login ('user','password');
@@ -76,16 +76,16 @@ Here are some commonly used methods.
 
 <h4> new </h4>
 
-Create a Net :: FTP object to connect to the FTP server.
+Create a Net::FTP object to connect to the FTP server.
 
 <pre>
-$ftp = Net :: FTP-> new ($host);
+$ftp = Net::FTP-> new ($host);
 </pre>
 
 You can specify the host name or IP address as an argument. In addition, options can be specified after the second argument. Options are specified in the hash reference. Frequently used options include Timeout to set the number of seconds to time out. The default timeout period is 120 seconds.
 
 <pre>
-$ftp = Net :: FTP-> new ($host, Timeout => 180)
+$ftp = Net::FTP-> new ($host, Timeout => 180)
 </pre>
 
 <h4> login </h4>
@@ -287,17 +287,17 @@ This method is used from time to time.
 
 <h4> List of all methods </h4>
 
-See the Net :: FTP documentation for a complete list of methods.
+See the Net::FTP documentation for a complete list of methods.
 
-<a href="http://perldoc.jp/docs/modules/libnet-1.12/Net/FTP.pod "> Net :: FTP (perldocjp)</a>
+<a href="http://perldoc.jp/docs/modules/libnet-1.12/Net/FTP.pod "> Net::FTP (perldocjp)</a>
 
-<h3> Net :: FTP error handling </h3>
+<h3> Net::FTP error handling </h3>
 
-In fact, the first sample omitted error handling to briefly explain how to use Net :: FTP. Net :: FTP does not throw an exception when a command fails, so you need to handle the error yourself. Adding error handling to the first sample gives:
+In fact, the first sample omitted error handling to briefly explain how to use Net::FTP. Net::FTP does not throw an exception when a command fails, so you need to handle the error yourself. Adding error handling to the first sample gives:
 
 <pre>
 # Connect to FTP server
-my $ftp = Net :: FTP-> new ('somehost')
+my $ftp = Net::FTP-> new ('somehost')
   or die "Cannot connect to'$host': $!";
 
 # Login
@@ -315,14 +315,14 @@ Why should error handling be done? Because the FTP server is external and there 
 
 If the host name is incorrect, the connection will fail. In such a case, there is no point in continuing the rest of the processing. The program should stop with a descriptive error message.
 
-Let's take a brief look at Net :: FTP error handling.
+Let's take a brief look at Net::FTP error handling.
 
 <h4> [A] Connection error handling </h4>
 
 If the connection to the FTP server fails with the new method, the return value will be undef, so do or die to terminate the program. Include the OS error message $!.
 
 <pre>
-my $ftp = Net :: FTP-> new ('somehost')
+my $ftp = Net::FTP-> new ('somehost')
   or die "Cannot connect to'$host': $!";
 </pre>
 
@@ -340,7 +340,7 @@ $ftp-> get ('/ dir / somefile');
   or die "FTP command fail:". $ftp-> message;
 </pre>
 
-<h3> Net :: FTP executable sample </h3>
+<h3> Net::FTP executable sample </h3>
 
 The sample cannot connect to the FTP server that specifies the user and password. Try downloading the file from an anonymous server that does not require a password. This is a sample to download the CPAN top page (index.html) from the CPAN mirror site.
 
@@ -348,12 +348,12 @@ The sample cannot connect to the FTP server that specifies the user and password
 use strict;
 use warnings;
 
-use Net :: FTP;
+use Net::FTP;
 
 my $host ='ftp.u-aizu.ac.jp';
 my $user ='anonymous';
 
-my $ftp = Net :: FTP-> new ($host)
+my $ftp = Net::FTP-> new ($host)
   or die "Cannot connect to'$host': $!";
 
 $ftp-> login ($user)
@@ -370,11 +370,11 @@ $ftp-> quit;
 
 <h3> FTPS connection - FTP over SSL / TLS </h3>
 
-I will explain how to connect with FTPS by Net :: FTP. FTPS is a protocol for FTP connection over SSL / TSL. Please note that it is different from SFTP, which transfers files over SSH.
+I will explain how to connect with FTPS by Net::FTP. FTPS is a protocol for FTP connection over SSL / TSL. Please note that it is different from SFTP, which transfers files over SSH.
 
 This section describes how to perform "explicit TSL / SSL encryption" that makes an SSL connection request with the AUTH command after making an FTP connection with the FTP port number (21 as standard).
 
-Net :: FTP can communicate using FTPS if IO :: Socket :: SSL is installed. If you have an older version of IO :: Socket :: SSL, please upgrade.
+Net::FTP can communicate using FTPS if IO::Socket::SSL is installed. If you have an older version of IO::Socket::SSL, please upgrade.
 
 To do "explicit TSL / SSL encryption", just call the starttls method immediately after connecting with the new method. Let's rewrite the above sample with "explicit TSL / SSL encryption".
 
@@ -382,12 +382,12 @@ To do "explicit TSL / SSL encryption", just call the starttls method immediately
 use strict;
 use warnings;
 
-use Net :: FTP;
+use Net::FTP;
 
 my $host ='ftp.u-aizu.ac.jp';
 my $user ='anonymous';
 
-my $ftp = Net :: FTP-> new ($host)
+my $ftp = Net::FTP-> new ($host)
   or die "Cannot connect to'$host': $!";
 
 # Start explicit TSL / SSL encryption

@@ -15,15 +15,15 @@
     here
   </li>
 </ol>
-<h2> File :: Temp - Create a temporary file </h2>
+<h2> File::Temp - Create a temporary file </h2>
 
 
 
-You can use <strong> File :: Temp </strong> to create <b> temporary files </b> and <b> temporary directories </b>. You can create temporary files (or temporary directories) in a secure way regardless of the OS.
+You can use <strong> File::Temp </strong> to create <b> temporary files </b> and <b> temporary directories </b>. You can create temporary files (or temporary directories) in a secure way regardless of the OS.
 
 <pre>
 # Loading modules and importing functions
-use File :: Temp qw / tempfile tempdir /;
+use File::Temp qw / tempfile tempdir /;
 </pre>
 
 Use the <strong> tempfile </strong> function to create a temporary file. The return value is the file handle of the temporary file in the scalar context and the file handle and filename of the temporary file in the list context.
@@ -45,8 +45,8 @@ This is a sample that safely overwrites a file using a temporary file. (* 1)
 
 <pre>
 # Safely overwrite files
-use File :: Temp'temp file';
-use File :: Copy'move';
+use File::Temp'temp file';
+use File::Copy'move';
 
 my $file = shift;
 
@@ -79,7 +79,7 @@ sub get_content {
 }
 </pre>
 
-(Reference) <a href="/blog/20100408127089.html"> File :: Copy</a>
+(Reference) <a href="/blog/20100408127089.html"> File::Copy</a>
 
 <h3> tempfile options </h3>
 

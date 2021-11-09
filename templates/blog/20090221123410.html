@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Test :: More - Write a test program for automated testing </h2>
+<h2> Test::More - Write a test program for automated testing </h2>
 
 
 
 Almost every Perl module on CPAN comes with a program to test your program. Not only the program, but also the program for testing the program comes with it. This is called an automatic test. Instead of running each program by hand, you can just run the automated test program and see if it works properly.
 
-In Perl, it's convenient to write automated test programs using the standard module <strong> Test :: More </strong>. Here, we will explain the advantages of automated tests and how to write automated tests with Test :: More.
+In Perl, it's convenient to write automated test programs using the standard module <strong> Test::More </strong>. Here, we will explain the advantages of automated tests and how to write automated tests with Test::More.
 
 <h3> Advantages of automated testing </h3>
 
@@ -46,14 +46,14 @@ Once you have written the correct exam, you can check it automatically.
 
 <h3> Simple sample of automatic test </h3>
 
-Now let's write an automated test program using Perl's module for automated tests Test :: More.
+Now let's write an automated test program using Perl's module for automated tests Test::More.
 
 <pre>
 use strict;
 use warnings;
 
 # Specify the number of tests
-use Test :: More tests => 2;
+use Test::More tests => 2;
 
 Check if the test was successful with the # ok function. This test succeeds.
 my $num1 = 1;
@@ -68,10 +68,10 @@ A description of the automated test script.
 
 <h4> 1. Specify the number of exams. </h4>
 
-When using Test :: More, specify the number of tests.
+When using Test::More, specify the number of tests.
 
 <pre>
-use Test :: More tests => 2;
+use Test::More tests => 2;
 </pre>
 
 <h4> 2. Check the test result with the ok function </h4>
@@ -111,7 +111,7 @@ Let's take a look at another simple sample. Test a function called sum that sums
 use strict;
 use warnings;
 
-use Test :: More tests => 2;
+use Test::More tests => 2;
 
 
 # Collision of lexical variables declared by my does not occur when creating a scope in test units.
@@ -272,9 +272,9 @@ use warnings;
 
 # Add module search path
 use FindBin;
-use lib "$FindBin :: Bin / ../ lib";
+use lib "$FindBin::Bin / ../ lib";
 
-use Test :: More tests => 1;
+use Test::More tests => 1;
 use SomeModule;
 
 # sum exam
@@ -282,7 +282,7 @@ use SomeModule;
 my $num1 = 1;
   my $num2 = 2;
   
-  my $total = SomeModule :: sum ($num1, $num2);
+  my $total = SomeModule::sum ($num1, $num2);
   
   ok ($total == 3,'sum');
 }
@@ -298,16 +298,16 @@ use warnings;
 
 # Add module search path
 use FindBin;
-use lib "$FindBin :: Bin / ../ lib";
+use lib "$FindBin::Bin / ../ lib";
 
-use Test :: More tests => 1;
+use Test::More tests => 1;
 use SomeModule;
 
 # double exam
 {
   my $num1 = 1;
   
-  my $double = SomeModule :: double ($num1);
+  my $double = SomeModule::double ($num1);
   
   ok ($double == 2,'double');
 }
@@ -363,9 +363,9 @@ All tests successful.
 Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
 </pre>
 
-<h3> Test :: More function </h3>
+<h3> Test::More function </h3>
 
-So far, we've used only the "ok function" to create tests, but the Test :: More module has a lot of useful functions.
+So far, we've used only the "ok function" to create tests, but the Test::More module has a lot of useful functions.
 
 To test booleans, numbers, strings, object contents, etc., use the following functions.
 
@@ -574,7 +574,7 @@ The <strong> use_ok function </strong> is used for testing to verify that the mo
 <pre>
 BEGIN {use_o
 
-k ('Some :: Module')}
+k ('Some::Module')}
 </pre>
 
 <h3> FAQ </h3>
@@ -592,11 +592,11 @@ note'some test';
 Use "no_plan" or "done_testing".
 
 <pre>
-use Test :: More'no_plan';
+use Test::More'no_plan';
 </pre>
 
 <pre>
-use Test :: More;
+use Test::More;
 
 # Write an exam
 
@@ -612,7 +612,7 @@ In rare cases, there seems to be an edge case that passes even though the test h
 For example, in certain environments you may want to skip the exam. Write as follows.
 
 <pre>
-use Test :: More;
+use Test::More;
 if ($^ O eq'MacOS') {
   plan skip_all =>'Test irrelevant on MacOS';
 }
@@ -667,6 +667,6 @@ else {
 
 <h3> Finally </h3>
 
-It is convenient to create an automated test using Test :: More so that you can check whether the program is correct just by running the automated test. Also, in order to write your own CPAN module, you must remember it.
+It is convenient to create an automated test using Test::More so that you can check whether the program is correct just by running the automated test. Also, in order to write your own CPAN module, you must remember it.
 
 When I learned that the exam could be automated, I was struck by the fact that there was such a convenient way. Everyone, please use it conveniently.

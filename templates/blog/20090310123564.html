@@ -26,7 +26,7 @@ For the time being, I'll list the advantages of object-oriented modules that fun
 
 <h3> 1. Prevents name collisions </h3>
 
-The first object-oriented advantage is that it <strong> prevents name collisions </strong>. Let's compare Encode, a functional module, with XML :: Simple, an object-oriented module.
+The first object-oriented advantage is that it <strong> prevents name collisions </strong>. Let's compare Encode, a functional module, with XML::Simple, an object-oriented module.
 
 <h4> Encode </h4>
 
@@ -39,20 +39,20 @@ my $string ='ah';
 my $dec_string = decode ('utf8', $string);
 </pre>
 
-<h4> XML :: Simple </h4>
+<h4> XML::Simple </h4>
 
-Using XML :: Simple doesn't allow me to use any function. Methods can be used from objects created by XML :: Simple-> new.
+Using XML::Simple doesn't allow me to use any function. Methods can be used from objects created by XML::Simple-> new.
 
 <pre>
-use XML :: Simple;
+use XML::Simple;
 my $file ='a.xml';
-my $parser = XML :: Simple-> new;
+my $parser = XML::Simple-> new;
 $parser-> XMLin ($file);
 </pre>
 
 When I use Encode, I can use a function called decode, but what if a function called decode has already been defined somewhere?
 
-This will cause a <strong> name collision </strong>. On the other hand, the object-oriented module XML :: Parser does not import any functions. Object-oriented modules are <strong> users don't have to worry about name collisions </strong>.
+This will cause a <strong> name collision </strong>. On the other hand, the object-oriented module XML::Parser does not import any functions. Object-oriented modules are <strong> users don't have to worry about name collisions </strong>.
 
 This is the first advantage. The <strong> disadvantage </strong> of object-oriented modules is that they are verbose. Encode has a shorter description, isn't it?
 

@@ -22,30 +22,30 @@
 
 Many people find it difficult to do object-oriented programming in Perl, and don't intuitively know how to create classes or define instance variables.
 
-In fact, with the help of modules, Perl's object orientation is very straightforward. This time, I will explain Perl's object orientation using a module called Object :: Simple.
+In fact, with the help of modules, Perl's object orientation is very straightforward. This time, I will explain Perl's object orientation using a module called Object::Simple.
 
-<h3> Install Object :: Simple </h3>
+<h3> Install Object::Simple </h3>
 
-Install Object :: Simple. You can easily install modules using cpan.
+Install Object::Simple. You can easily install modules using cpan.
 
 <pre>
-cpan Object :: Simple
+cpan Object::Simple
 </pre>
 
 Now you are ready to go.
 
 <h3> Class definition </h3>
 
-In Perl, classes are defined using <strong> package </strong>. First, use the <b> -base </b> flag to create a class that inherits from Object :: Simple. Remember the following description as a spell first.
+In Perl, classes are defined using <strong> package </strong>. First, use the <b> -base </b> flag to create a class that inherits from Object::Simple. Remember the following description as a spell first.
 
 <pre>
 package MyClass;
-use Object :: Simple -base;
+use Object::Simple -base;
 </pre>
 
 <h3> Constructor </h3>
 
-This way you can define a class called <b> MyClass </b>. You can create an object from a class using the constructor <b> new </b>. (This new is inherited from Object :: Simple.)
+This way you can define a class called <b> MyClass </b>. You can create an object from a class using the constructor <b> new </b>. (This new is inherited from Object::Simple.)
 
 <pre>
 my $obj = MyClass-> new;
@@ -115,7 +115,7 @@ Use <b> -base </b> for inheritance. Let's create a <b> SubClass </b> that inheri
 
 <pre>
 package MyClass;
-use Object :: Simple -base;
+use Object::Simple -base;
 </pre>
 
 <pre>
@@ -134,7 +134,7 @@ use MyClass -base;
 sub clear {
   my $self = shift;
   
-  $self-> SUPER :: clear;
+  $self-> SUPER::clear;
 }
 </pre>
 
@@ -144,12 +144,12 @@ You may want to override the constructor in a subclass. To override the construc
 
 <pre>
 package MyClass;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 sub new {
   my $class = shift;
   
-  my $self = $class-> SUPER :: new (@_);
+  my $self = $class-> SUPER::new (@_);
   
   return $self;
 }
@@ -179,7 +179,7 @@ Oh mysteriously, Perl's object-oriented programming is almost master if you reme
 
 <pre>
 package Point;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 has x => 0;
 has y => 0;
@@ -233,7 +233,7 @@ has z => 0;
 sub clear {
   my $self = shift;
   
-  $self-> SUPER :: clear;
+  $self-> SUPER::clear;
   
   $self-> z (0);
 }
@@ -261,7 +261,7 @@ Create a directory called lib and create a file called Point.pm in it.
 
 <pre>
 package Point;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 has x => 0;
 has y => 0;
@@ -289,7 +289,7 @@ has z => 0;
 sub clear {
   my $self = shift;
   
-  $self-> SUPER :: clear;
+  $self-> SUPER::clear;
   
   $self-> z (0);
 }
@@ -341,7 +341,7 @@ perl test.pl
 
 <h4> Inheritance </h4>
 
-To better understand Object :: Simple, I would like to explain object-oriented concepts.
+To better understand Object::Simple, I would like to explain object-oriented concepts.
 
 The first object-oriented concept is "inheritance". "Inheritance" means "if class Q inherits from class P, then class Q can call all the methods of class P".
 
@@ -359,7 +359,7 @@ Since class Q inherits from class P, class Q can call all the methods of class P
 
 <pre>
 package P;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 sub method1 {...}
 sub method2 {...}
@@ -422,7 +422,7 @@ Perl programmers don't have to worry about overloading. Perl is a dynamic langua
 
 <pre>
 package P;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 sub method1 {return 1}
 </pre>
@@ -450,13 +450,13 @@ If you want to call a method of the base class from a subclass, use the SUPER ps
 
 <pre>
 package Q;
-use Object :: Simple -base;
+use Object::Simple -base;
 
 sub method1 {
   my $self = shift;
   
   Call method1 of P using the # SUPER pseudo-class
-  my $value = $self-> SUPER :: method1 (@ _);
+  my $value = $self-> SUPER::method1 (@ _);
   
   return 2 + $value;
 }
@@ -466,7 +466,7 @@ new can be overridden. For example, if you want to initialize the object, overri
 
 <pre>
 sub new {
-  my $self = shift-> SUPER :: new (@_);
+  my $self = shift-> SUPER::new (@_);
   
   # Initialization process
   
@@ -480,7 +480,7 @@ If you want to change the argument of new, you can solve it by overriding new.
 sub new {
   my $self = shift;
   
-  $self-> SUPER :: new (x => $_ [0], y => $_ [1]);
+  $self-> SUPER::new (x => $_ [0], y => $_ [1]);
   
   return $self;
 }
@@ -494,7 +494,7 @@ In Perl 5.14, a package block syntax has been added that allows you to write the
 
 <pre>
 package Point {
-  use Object :: Simple -base;
+  use Object::Simple -base;
 
   has x => 0;
   has y => 0;

@@ -15,7 +15,7 @@
 
 
 
-To find the difference when the time contains a date, use the timelocal function of the Time :: Local module to convert the time containing the date to seconds and find the difference.
+To find the difference when the time contains a date, use the timelocal function of the Time::Local module to convert the time containing the date to seconds and find the difference.
 
 Since the formatted time is described in logs etc., I created a sample to find the time difference from that state.
 
@@ -87,9 +87,9 @@ sub time_to_sec {
   return unless defined $time-> {mon};
   return unless defined $time-> {year};
   
-  Convert to seconds using the # Time :: Local module
-  require Time :: Local;
-  my $sec = Time :: Local :: timelocal (
+  Convert to seconds using the # Time::Local module
+  require Time::Local;
+  my $sec = Time::Local::timelocal (
     $time-> {sec},
     $time-> {min},
     $time-> {hour},
@@ -153,7 +153,7 @@ Others are the same as "<a href="/blog/20081018122442.html"> Find the time diffe
 
 <h4> Convert time to seconds </h4>
 
-To convert a time containing a date to seconds (epoch seconds), use the timelocal function of the Time :: Local module.
+To convert a time containing a date to seconds (epoch seconds), use the timelocal function of the Time::Local module.
 
 Others are the same as "<a href="/blog/20081018122442.html"> Find the time difference (if it does not exceed 24 hours)</a>".
 
@@ -178,9 +178,9 @@ sub time_to_sec {
   return unless defined $time-> {mon};
   return unless defined $time-> {year};
   
-  Convert to seconds using the # Time :: Local module
-  require Time :: Local;
-  my $sec = Time :: Local :: timelocal (
+  Convert to seconds using the # Time::Local module
+  require Time::Local;
+  my $sec = Time::Local::timelocal (
     $time-> {sec},
     $time-> {min},
     $time-> {hour},

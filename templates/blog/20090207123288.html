@@ -40,7 +40,7 @@ When you load a module, you can use the functions described in the loaded module
 require Carp;
 
 # You can use the carp module's croak function with a fully qualified name.
-Carp :: croak ("croak function");
+Carp::croak ("croak function");
 </pre>
 
 The standard way to load a module is to use use, but there are times when you want to use require. If you use use, all modules will be loaded at compile time. Therefore, if the module is huge, it will take extra time to compile.
@@ -64,11 +64,11 @@ In such a case, if you write as follows, you can load fewer modules.
 
 <pre>
 if ($ext eq'.csv') {
-  require Text :: CSV;
+  require Text::CSV;
   # ...
 }
 elsif ($ext eq'.xml') {
-  require XML :: Simple;
+  require XML::Simple;
   # ...
 }
 </pre>

@@ -17,15 +17,15 @@
 
 
 
-Use the <a href="/blog/20080530121229.html"> File :: Find</a> module to recursively copy multi-level directories.
+Use the <a href="/blog/20080530121229.html"> File::Find</a> module to recursively copy multi-level directories.
 
 <pre>
 use strict;
 use warnings;
-use File :: Path'mkpath';
+use File::Path'mkpath';
 use Fcntl;
-use File :: Find'find';
-use File :: Copy'copy';
+use File::Find'find';
+use File::Copy'copy';
 use Cwd'getcwd';
 
 # Preparation (Creating directories and files)
@@ -55,7 +55,7 @@ print "Preparation: $top_dir has been created. \ N \ n";
 print "1: Copy directory recursively. \ N";
 
 my $cur_dir = getcwd ();
-# File :: Find internally repeats chdir, so
+# File::Find internally repeats chdir, so
 # Create a copy destination directory name with an absolute path.
 my $dir_copy_to = "$cur_dir / dir_20080601_ ${$} _ cp";
 
@@ -70,7 +70,7 @@ sub recursive_copy {
   # The top directory of the copy source
   # In the top directory of the copy destination
   # Replace.
-  my $file_to = $File :: Find :: name;
+  my $file_to = $File::Find::name;
   $file_to = ~ s # ^ $top_dir # $dir_copy_to # ;
                                         
   if (-d $file_from) {
@@ -85,7 +85,7 @@ sub recursive_copy {
 }
 </pre>
 
-(Reference) <a href="/blog/20100409127089.html"> File :: Path</a>, <a href="/blog/20100408127089.html"> File :: Copy</a>, <a href = "/ blog / 20100312126967.html"> eval</a>, <a href="/blog/20080804121794.html"> sysopen function</a>, <a href="/blog/20180310152509.html"> Fcntl</a>
+(Reference) <a href="/blog/20100409127089.html"> File::Path</a>, <a href="/blog/20100408127089.html"> File::Copy</a>, <a href = "/ blog / 20100312126967.html"> eval</a>, <a href="/blog/20080804121794.html"> sysopen function</a>, <a href="/blog/20180310152509.html"> Fcntl</a>
 
 <h3> Recursively copy multi-level directories </h3>
 
@@ -100,7 +100,7 @@ sub recursive_copy {
   # The top directory of the copy source
   # In the top directory of the copy destination
   # Replace.
-  my $file_to = $File :: Find :: name;
+  my $file_to = $File::Find::name;
   $file_to = ~ s # ^ $top_dir # $dir_copy_to # ;
                                         
   if (-d $file_from) {
@@ -115,6 +115,6 @@ sub recursive_copy {
 }
 </pre>
 
-To copy a directory recursively, use the File :: Find module to repeatedly create the directory and copy the file. Since the configuration other than the top directory is the same as the copy source, only the top directory name is replaced.
+To copy a directory recursively, use the File::Find module to repeatedly create the directory and copy the file. Since the configuration other than the top directory is the same as the copy source, only the top directory name is replaced.
 
 Since the directory cannot be copied, we will create it with the name of the copy destination.

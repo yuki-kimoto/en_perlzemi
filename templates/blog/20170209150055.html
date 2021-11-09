@@ -64,7 +64,7 @@ Processing (the processing part is C language)
 
 <h4> Generate C language source file from XS file </h4>
 
-Convert the XS file to a C language source file using a program called xsubpp. At this time, a definition called typemap is used to convert the types of Perl in C language to each other. The typemap is included in the ExtUtils :: MakeMaker module.
+Convert the XS file to a C language source file using a program called xsubpp. At this time, a definition called typemap is used to convert the types of Perl in C language to each other. The typemap is included in the ExtUtils::MakeMaker module.
 
 <pre>
                         xsubpp
@@ -92,7 +92,7 @@ Finally, create a Perl module to call the dynamic link library. A module called 
 package Your Package;
 use XSLoader;
 
-XSLoader :: load'YourPackage', $YourPackage :: VERSION;
+XSLoader::load'YourPackage', $YourPackage::VERSION;
 </pre>
 
 XSLoader loads the dynamic link library under the directory auto in the search path contained in @INC. The dynamic link library has the extension dll on Windows and so on Linux.
@@ -101,7 +101,7 @@ XSLoader loads the dynamic link library under the directory auto in the search p
 
 Make sure to remember the above flow. When creating an XS module, the flow is the same no matter what you create. All the programmer needs to focus on is creating the XS file. Most of the rest of the work can be automated, so creating a simple XS module is not difficult.
 
-However, generally speaking, creating an XS module is difficult. This is because it requires a large amount of not-so-easy peripheral knowledge such as "XS language", "typemap", "Perl API", "make", "C compiler", "linker", and "ExtUtils :: MakeMaker". Therefore, it is important to first grasp the basics firmly and then acquire peripheral knowledge.
+However, generally speaking, creating an XS module is difficult. This is because it requires a large amount of not-so-easy peripheral knowledge such as "XS language", "typemap", "Perl API", "make", "C compiler", "linker", and "ExtUtils::MakeMaker". Therefore, it is important to first grasp the basics firmly and then acquire peripheral knowledge.
 
 <h3> Create XS module - h2xs command </h3>
 
@@ -174,7 +174,7 @@ How to write Makefile.PL is explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20150725143778.html"> How to write Makefile.PL - Learn ExtUtil :: MakeMaker</a>
+    <a href="/blog/20150725143778.html"> How to write Makefile.PL - Learn ExtUtil::MakeMaker</a>
   </li>
 </ul>
 
@@ -231,7 +231,7 @@ PACKAGE is the Perl package name. In other words, the following correspondence c
 
 <pre>
 Perl C language
-SomeModule :: twice - -> XS_SomeModule_twice
+SomeModule::twice - -> XS_SomeModule_twice
 </pre>
 
 <h4> XSUB description </h4>
@@ -303,7 +303,7 @@ Let's write a script that calls the module. Create a file called test.pl in the 
 <pre>
 # test.pl
 use SomeModule;
-print SomeModule :: twice (2);
+print SomeModule::twice (2);
 </pre>
 
 You can run this script as follows: In order to load a module for blib, you need to load a module called blib with the -M option.

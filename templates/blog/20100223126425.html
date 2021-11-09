@@ -15,23 +15,23 @@
     here
   </li>
 </ol>
-<h2> Class :: Accessor :: Fast - Easy to create accessors </h2>
+<h2> Class::Accessor::Fast - Easy to create accessors </h2>
 
 
 
-<strong> Class :: Accessor :: Fast </strong> is a module for easily creating accessors. Accessors are methods for accessing the attributes of an object.
+<strong> Class::Accessor::Fast </strong> is a module for easily creating accessors. Accessors are methods for accessing the attributes of an object.
 
-You can use the mk_accessors method to generate accessors. Inherit Class :: Accessor :: Fast and call mk_accesors () from the package name.
+You can use the mk_accessors method to generate accessors. Inherit Class::Accessor::Fast and call mk_accesors () from the package name.
 
 <pre>
 # Generation of accessor
 package Your Class;
-use base'Class :: Accessor :: Fast';
+use base'Class::Accessor::Fast';
 
 __PACKAGE __-> mk_accessors ($meth1, $meth2, ...);
 </pre>
 
-This is a sample of a general class. The Point class has accessors x () and y (). Class :: Accessor :: Fast's new () can only receive hash references, so it's a good idea to override it so that it can receive hashes and hash references.
+This is a sample of a general class. The Point class has accessors x () and y (). Class::Accessor::Fast's new () can only receive hash references, so it's a good idea to override it so that it can receive hashes and hash references.
 
 <pre>
 package Point;
@@ -39,7 +39,7 @@ package Point;
 use strict;
 use warnings;
 
-use base'Class :: Accessor :: Fast';
+use base'Class::Accessor::Fast';
 
 # Accessor
 __PACKAGE __-> mk_accessors (qw / x y /);
@@ -52,7 +52,7 @@ sub new {
     my $args = ref $_ [0] eq'HASH'? $_ [0]: {@_};
     
     Override # new ()
-    return $class-> SUPER :: new ({{
+    return $class-> SUPER::new ({{
         x => 0,
         y => 0,
         % $args
@@ -68,8 +68,8 @@ $point-> x (4);
 $point-> y (5);
 </pre>
 
-<h3> FAQ about Class :: Accessor :: Fast </h3>
+<h3> FAQ about Class::Accessor::Fast </h3>
 
 Q. I want to pass a hash instead of a hash reference as an argument to the constructor, or set a default value for the accessor.
 
-A. The <a href="/blog/20100224126425.html"> Object :: Simple</a> module provides those features. Object :: Simple allows you to pass a hash to the constructor and specify default values ​​for accessors. If you want to do it with Class :: Accessor :: Fast, you can do it by overriding new as shown in the sample.
+A. The <a href="/blog/20100224126425.html"> Object::Simple</a> module provides those features. Object::Simple allows you to pass a hash to the constructor and specify default values ​​for accessors. If you want to do it with Class::Accessor::Fast, you can do it by overriding new as shown in the sample.

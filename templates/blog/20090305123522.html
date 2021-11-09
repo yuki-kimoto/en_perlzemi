@@ -15,11 +15,11 @@
     here
   </li>
 </ol>
-<h2> IO :: ScalarArray - Active in standard input testing </h2>
+<h2> IO::ScalarArray - Active in standard input testing </h2>
 
 
 
-This time, I will explain the automatic test of standard input using "IO :: ScalarArray".
+This time, I will explain the automatic test of standard input using "IO::ScalarArray".
 
 <h3> 1. How to feed data to standard input </h3>
 
@@ -33,19 +33,19 @@ It is not possible to input data to the standard input, but it is possible to pe
 
 Can be linked to the description of reading data from a variable. (I won't explain in detail here, but kits's <a href="http://www.akatsukinishisu.net/itazuragaki/perl/tie_stdin.html"> tie replaces STDIN</a> article explains how to do this. It has been.)
 
-<h3> 2. Standard input test using IO :: ScalarArray </h3>
+<h3> 2. Standard input test using IO::ScalarArray </h3>
 
-IO :: ScalarArray is a module that uses the tie mechanism to enable descriptions that flow data into standard input. Use it as follows.
+IO::ScalarArray is a module that uses the tie mechanism to enable descriptions that flow data into standard input. Use it as follows.
 
 First, create an array of the data you want to flow into the standard input. Since the standard input has one line break, add a line break at the end of the data.
 
-Pass it to new in IO :: ScalarArray to create the object. Then use a typeglob to make STDIN an alias for $stdin.
+Pass it to new in IO::ScalarArray to create the object. Then use a typeglob to make STDIN an alias for $stdin.
 
 <pre>
-use IO :: ScalarArray;
+use IO::ScalarArray;
 {
   my @inputs = ("1 \ n", "2 \ n", "3 \ n");
-  my $stdin = IO :: ScalarArray-> new (\ @ inputs);
+  my $stdin = IO::ScalarArray-> new (\ @ inputs);
   local * STDIN = * $stdin;
   # Exam description
 }
@@ -58,15 +58,15 @@ use IO :: ScalarArray;
 This is a test of a program that asks questions interactively. The question function is a function that asks if you are a man.
 
 <pre>
-use Test :: More tests => 1;
+use Test::More tests => 1;
 use strict;
 use warnings;
 
-use IO :: ScalarArray;
+use IO::ScalarArray;
 
 {
   my @answers = ("y \ n");
-  my $stdin = IO :: ScalarArray-> new (\ @ answers);
+  my $stdin = IO::ScalarArray-> new (\ @ answers);
   
   local * STDIN = * $stdin;
   
@@ -92,7 +92,7 @@ sub question {
 This is a sample that uses Perl's scalar input / output function.
 
 <pre>
-use Test :: More tests => 1;
+use Test::More tests => 1;
 use strict;
 use warnings;
 

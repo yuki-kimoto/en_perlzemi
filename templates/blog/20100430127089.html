@@ -68,7 +68,7 @@ package main; # 10
                                           # 11
                                           # 12
 # Call the parse function. An exception occurs. # 13
-YourModule :: parse (); # 14
+YourModule::parse (); # 14
 </pre>
 
 The program will exit with the following message: Contains the line number where the die was executed.
@@ -91,7 +91,7 @@ package main; # 10
                                           # 11
                                           # 12
 # Call the parse function. An exception occurs. # 13
-YourModule :: parse (); # 14
+YourModule::parse (); # 14
 </pre>
 
 The program will then exit with the following message: Contains the line number where parse was called.
@@ -112,20 +112,20 @@ Change the # croak message to one that contains the complete stack trace informa
 use Carp'verbose';
 </pre>
 
-I embedded it in the script above. I put it just before YourModule :: parse ().
+I embedded it in the script above. I put it just before YourModule::parse ().
 
 <pre>
 package main;
 
 # Call the parse function
 use Carp'verbose';
-YourModule :: parse ();
+YourModule::parse ();
 </pre>
 
 Then you can see the complete stack trace as follows:
 <pre>
 Exception! At a.pl line 7
-        YourModule :: parse () called at a.pl line 14
+        YourModule::parse () called at a.pl line 14
 </pre>
 
 Generally speaking, many Perl modules on CPAN use croak to raise exceptions. This means that you can expect to see a complete stack trace by writing use Carp'verbose'.

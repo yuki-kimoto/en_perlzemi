@@ -547,7 +547,7 @@ Use the caller function to get the name of the function you are executing. For t
 
 You can use the caller function to get the package name, subroutine name, etc. of the caller of the function. It is also possible to get the arguments of the calling subroutine.
 
-To get the arguments of the calling function, call the caller function in the DB namespace in the list context. <b> @DB :: args </b> is set to the argument of the calling function. DB is a module used for debugging. Since the namespace will be temporarily changed to DB, let's enclose it in a block. When the block is finished, it will return to the original namespace.
+To get the arguments of the calling function, call the caller function in the DB namespace in the list context. <b> @DB::args </b> is set to the argument of the calling function. DB is a module used for debugging. Since the namespace will be temporarily changed to DB, let's enclose it in a block. When the block is finished, it will return to the original namespace.
 
 <pre>
 sub a2 {
@@ -558,8 +558,8 @@ sub a2 {
     When you call the # caller function in list context
     my @c = caller 1;
     
-    Arguments are stored in # @DB :: args
-    my @args = @DB :: args;
+    Arguments are stored in # @DB::args
+    my @args = @DB::args;
   }
 }
 </pre>

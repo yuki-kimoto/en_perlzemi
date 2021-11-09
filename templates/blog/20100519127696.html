@@ -15,16 +15,16 @@
     here
   </li>
 </ol>
-<h2> Net :: Ping - Check the existence of the remote host </h2>
+<h2> Net::Ping - Check the existence of the remote host </h2>
 
 
 
-You can check the existence of the remote host by using the <strong> Net :: Ping </strong> module.
+You can check the existence of the remote host by using the <strong> Net::Ping </strong> module.
 
 <pre>
 # Loading modules and creating objects
-use Net :: Ping;
-my $p = Net :: Ping-> new;
+use Net::Ping;
+my $p = Net::Ping-> new;
 </pre>
 
 Use the <strong> ping </strong> method to check the existence of the remote host. You can use the host name (domain name) and IP address as arguments.
@@ -34,12 +34,12 @@ Use the <strong> ping </strong> method to check the existence of the remote host
 my $alive = $p-> ping ('localhost');
 </pre>
 
-One thing to note is that the Net :: Ping ping method is not an alternative to the ping command. Ping command Although it uses a protocol called ICMP, Net :: Ping uses the TCP protocol by default to check for survival on the echo port (port number 7). For example, even if you can connect to a remote host via HTTP (port 80), if you close the echo port for security reasons, you will get a judgment that it is not alive.
+One thing to note is that the Net::Ping ping method is not an alternative to the ping command. Ping command Although it uses a protocol called ICMP, Net::Ping uses the TCP protocol by default to check for survival on the echo port (port number 7). For example, even if you can connect to a remote host via HTTP (port 80), if you close the echo port for security reasons, you will get a judgment that it is not alive.
 
 To check the existence using ICMP, specify icmp in the constructor. However, you need root privileges to do this (* 1).
 <pre>
 # Survival confirmation using ICMP
-my $p = Net :: Ping-> new ('icmp');
+my $p = Net::Ping-> new ('icmp');
 my $alive = $p-> ping ('somehost');
 </pre>
 
@@ -60,9 +60,9 @@ my $alive = $p-> ping ('www.google.co.jp', 2);
 <h3> Documents </h3>
 <ul>
   <li>
-    <a href="http://search.cpan.org/dist/Net-Ping/"> Net :: Ping (CPAN)</a>
+    <a href="http://search.cpan.org/dist/Net-Ping/"> Net::Ping (CPAN)</a>
   </li>
 </ul>
 
 <h3> Note </h3>
-* 1 It is a little inconvenient that you cannot confirm the existence without root authority. CPAN has a module called <a href="/blog/20100520127696.html"> Net :: Ping :: External</a>, which is the Perl interface for the ping command. If you use this, you can check the existence by using ICMP without root authority.
+* 1 It is a little inconvenient that you cannot confirm the existence without root authority. CPAN has a module called <a href="/blog/20100520127696.html"> Net::Ping::External</a>, which is the Perl interface for the ping command. If you use this, you can check the existence by using ICMP without root authority.

@@ -19,7 +19,7 @@
 
 
 
-When I tried to make a module using XS, I suddenly had a problem when dividing it into multiple modules. For example, if you want to implement XS with both SomeModule and SomeModule :: Util. I was investigating the method, but I found the implementation method to be quite complicated and difficult.
+When I tried to make a module using XS, I suddenly had a problem when dividing it into multiple modules. For example, if you want to implement XS with both SomeModule and SomeModule::Util. I was investigating the method, but I found the implementation method to be quite complicated and difficult.
 
 I tried various things, but the next method seemed to be easy, so I will introduce it. The advantages of this method are:
 
@@ -61,7 +61,7 @@ t /
 
 <h4> XS file description </h4>
 
-I will create an XS file. Let's add a function called foo that displays "foo" to SomeModule, and a function called bar that displays "bar" to SomeModule :: Util.
+I will create an XS file. Let's add a function called foo that displays "foo" to SomeModule, and a function called bar that displays "bar" to SomeModule::Util.
 
 First of all, when you open the XS file, you should see something like the following.
 
@@ -78,7 +78,7 @@ MODULE = SomeModule PACKAGE = SomeModule
 
 The first thing to remember is that the "MODULE = SomeModule PACKAGE = SomeModule" section should be at the bottom. If you do not leave this part at the end, the XS will fail to load.
 
-Let's write it. Add "MODULE = SomeModule :: Util PACKAGE = SomeModule :: Util". Then define bar in XS. Also, define foo in the section "MODULE = SomeModule PACKAGE = SomeModule".
+Let's write it. Add "MODULE = SomeModule::Util PACKAGE = SomeModule::Util". Then define bar in XS. Also, define foo in the section "MODULE = SomeModule PACKAGE = SomeModule".
 
 <pre>
 # include "EXTERN.h"
@@ -87,7 +87,7 @@ Let's write it. Add "MODULE = SomeModule :: Util PACKAGE = SomeModule :: Util". 
 
 # include "ppport.h"
 
-MODULE = SomeModule :: Util PACKAGE = SomeModule :: Util
+MODULE = SomeModule::Util PACKAGE = SomeModule::Util
 
 void
 bar (...)
@@ -110,7 +110,7 @@ foo (...)
 
 <h4> Creating a module </h4>
 
-At this point, all you have to do is create SomeModule and SomeModule :: Util.
+At this point, all you have to do is create SomeModule and SomeModule::Util.
 
 <b> SomeModule source code </b>
 
@@ -125,17 +125,17 @@ use warnings;
 our $VERSION = '0.01';
 
 require XSLoader;
-XSLoader :: load ('SomeModule', $VERSION);
+XSLoader::load ('SomeModule', $VERSION);
 
 1;
 </pre>
 
-<b> SomeModule :: Util source code </b>
+<b> SomeModule::Util source code </b>
 
-Let's also create SomeModule :: Util :: bar. Save this in "lib / SomeModule / Util.pm". This is an almost empty file with only the package name declared.
+Let's also create SomeModule::Util::bar. Save this in "lib / SomeModule / Util.pm". This is an almost empty file with only the package name declared.
 
 <pre>
-package SomeModule :: Util;
+package SomeModule::Util;
 
 1;
 </pre>
@@ -149,10 +149,10 @@ use strict;
 use warnings;
 
 use SomeModule;
-use SomeModule :: Util;
+use SomeModule::Util;
 
-SomeModule :: foo ();
-SomeModule :: Util :: bar ();
+SomeModule::foo ();
+SomeModule::Util::bar ();
 </pre>
 
 <h4> Compile and run </h4>

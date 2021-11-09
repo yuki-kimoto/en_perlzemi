@@ -14,15 +14,15 @@
     here
   </li>
 </ol>
-<h2> File :: Path - Create / delete multi-level directories </h2>
+<h2> File::Path - Create / delete multi-level directories </h2>
 
 
 
-The <b> File :: Path </b> module allows you to create and delete multi-level directories.
+The <b> File::Path </b> module allows you to create and delete multi-level directories.
 
 <pre>
 # Loading modules and importing functions
-use File :: Path qw / mkpath rmtree /;
+use File::Path qw / mkpath rmtree /;
 </pre>
 
 You can create multiple-level directories with mkpath (* 1). The return value is a list of created directory names. For example, if you create a directory called'xxx / yyy / zzz', @created will be ('xxx','xxx / yyy','xxx / yyy / zzz'). If an error (* 2) occurs in mkpath, an exception will be thrown.
@@ -68,7 +68,7 @@ local $SIG {__ WARN__} = sub {die @_};
 rmtree $dir;
 </pre>
 
-Some of the File :: Path APIs are new and some have new features, but for compatibility reasons we're only introducing the older APIs.
+Some of the File::Path APIs are new and some have new features, but for compatibility reasons we're only introducing the older APIs.
 
 An error will occur if the directory cannot be created because you do not have write permission. No error will occur if the directory already exists.
 

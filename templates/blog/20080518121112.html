@@ -18,19 +18,19 @@
 
 
 
-To extract the extension from the file name, specify the extension with the second argument of <strong> fileparse </strong> in the <a href="/blog/20100225126425.html"> File :: Basename</a> module. To do. The third return value gives you the extension.
+To extract the extension from the file name, specify the extension with the second argument of <strong> fileparse </strong> in the <a href="/blog/20100225126425.html"> File::Basename</a> module. To do. The third return value gives you the extension.
 
 <pre>
-use File :: Basename;
+use File::Basename;
 my ($base_name, $dir, $suffix) = fileparse ($file_txt,'.txt');
 </pre>
 
-You can retrieve the extension by specifying the extension name in the second argument of the fileparse function of the File :: Basename module.
+You can retrieve the extension by specifying the extension name in the second argument of the fileparse function of the File::Basename module.
 
 You can also use <a href="/blog/20100827127859.html"> regular expression</a> to specify the extension pattern.
 
 <pre>
-use File :: Basename;
+use File::Basename;
 my $regex_suffix = qr / \. [^ \.] + $/;
 my $suffix_txt = (fileparse ($file_txt, $regex_suffix)) [2];
 </pre>
@@ -44,7 +44,7 @@ This is a sample to extract the extension from the file name.
 <pre>
 use strict;
 use warnings;
-use File :: Basename'fileparse';
+use File::Basename'fileparse';
 
 # Extract the extension from the file name.
 my $file_txt ='dir1 / dir2 / base_name.txt';
