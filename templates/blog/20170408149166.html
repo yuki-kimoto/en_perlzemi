@@ -1,39 +1,39 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> How to write POD (Plain Old Documentation) </ h2>
+  </li>
+</ol>
+<h2> How to write POD (Plain Old Documentation) </h2>
 
 
 
-Perl allows you to embed documentation in your source code. This in-source document is called <b> POD </ b> and has its own description method.
+Perl allows you to embed documentation in your source code. This in-source document is called <b> POD </b> and has its own description method.
 
 Perl has a site called CPAN where you can publish modules, but all module documentation published on CPAN is written in POD.
 
 Let's think that POD can easily write HTML and is automatically converted to HTML.
 
-<h3> Character code </ h3>
+<h3> Character code </h3>
 
 If you want to include non-alphanumeric characters in the document, you need to set the character code. When writing in "UTF-8", write as follows at the beginning of the document.
 
 <pre>
 = encoding utf8
-</ pre>
+</pre>
 
-<h3> Header </ h3>
+<h3> Header </h3>
 
 Corresponds to HTML h1 to h6.
 
@@ -49,31 +49,31 @@ Corresponds to HTML h1 to h6.
 = head5 Header 5
 
 = head6 Header 6
-</ pre>
+</pre>
 
 One thing to keep in mind when writing a POD is that you must insert a line break on the next line. For example, the following statement does not work.
 
 <pre>
 = head1 Header 1
 = head2 Header 2
-</ pre>
+</pre>
 
-<h3> Source code </ h3>
+<h3> Source code </h3>
 
 To write the source code, set a blank at the beginning of the source code. This corresponds to the HTML pre.
 
 <pre>
   use DBIx :: Custom;
   my $ dbi = DBIx :: Custom-> connect (...);
-</ pre>
+</pre>
 
 The space can be 1, 2, or 4, and can be any width.
 
-<h3> List </ h3>
+<h3> List </h3>
 
 I will explain how to write a list.
 
-<h4> Unordered list </ h4>
+<h4> Unordered list </h4>
 
 The unordered list is written as follows:
 
@@ -95,9 +95,9 @@ Item 2
 Item 3
 
 = back
-</ pre>
+</pre>
 
-<h4> Order list </ h4>
+<h4> Order list </h4>
 
 The sequence list is described as follows. It's almost the same as an unordered list, but if you specify a number after "= item", it becomes an ordered list.
 
@@ -117,57 +117,57 @@ Item 2
 Item 3
 
 = back
-</ pre>
+</pre>
 
-<h3> Format </ h3>
+<h3> Format </h3>
 
 How to format with POD.
 
-<h4> Bold </ h4>
+<h4> Bold </h4>
 
 To set it in bold, use the description "B & lt; & gt;".
 
 <pre>
 B <aiueo>
-</ pre>
+</pre>
 
-<h4> Italics </ h4>
+<h4> Italics </h4>
 
 Use the description "I & lt; & gt;" to set italics.
 
 <pre>
 I <aiueo>
-</ pre>
+</pre>
 
-<h4> Program text </ h4>
+<h4> Program text </h4>
 
 You can use "C <>" if you want to format the function name in the text in a way that you can understand.
 
 <pre>
 C <select>
-</ pre>
+</pre>
 
-<h3> Hyperlink </ h3>
+<h3> Hyperlink </h3>
 
 I will explain the notation of hyperlinks.
 
-<h4> Other CPAN modules </ h4>
+<h4> Other CPAN modules </h4>
 
 To write a link to another CPAN module, use "L & lt; & gt;" and write: It will be a link to the Object :: Simple page.
 
 <pre>
 L <Object :: Simple>
-</ pre>
+</pre>
 
-<h4> Links to general URLs </ h4>
+<h4> Links to general URLs </h4>
 
 A general URL is described as "L & lt; text | URL & gt;".
 
 <pre>
 L <Perl Seminar | http://d.hatena.ne.jp/perlcodesample>
-</ pre>
+</pre>
 
-<h3> Start and end of POD </ h3>
+<h3> Start and end of POD </h3>
 
 The start of POD ends with "= pod" and the end of POD ends with "= cut".
 
@@ -177,32 +177,32 @@ The start of POD ends with "= pod" and the end of POD ends with "= cut".
 document
 
 = cut
-</ pre>
+</pre>
 
 Generally, when even one description of POD such as "= head1" appears, POD starts, so it is rare to write "= pod". However, when using <a href="/blog/20130712137361.html"> multi-line comment </a> in the source code, this description method is used.
 
-<h3> Character escape </ h3>
+<h3> Character escape </h3>
 
 If you want to use the symbols used in POD, you need to escape. Escape can be done using "".
 
 <pre>
 E <lt> <
 E <gt >>
-</ pre>
+</pre>
 
-<h3> FAQ </ h3>
+<h3> FAQ </h3>
 
 FAQ about POD.
 
-<h4> Is it possible to write a table in POD? </ h4>
+<h4> Is it possible to write a table in POD? </h4>
 
 You cannot write a table in POD.
 
-<h4> Is it possible to use images with POD? </ h4>
+<h4> Is it possible to use images with POD? </h4>
 
 Images are not available in POD.
 
-<h4> What is the customary way to write on the CPAN module? </ H4>
+<h4> What is the customary way to write on the CPAN module? </H4>
 
 CPAN module documentation is generally written as follows:
 
@@ -234,14 +234,14 @@ Author name
 Copyright notice
 
 = cut
-</ pre>
+</pre>
 
-<h3> Detailed POD documentation </ h3>
+<h3> Detailed POD documentation </h3>
 
 For detailed POD documentation, see Perl's POD documentation.
 
 <ul>
   <li>
     <a href="http://perldoc.jp/docs/perl/5.22.1/perlpod.pod"> perlpod --POD documentation </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

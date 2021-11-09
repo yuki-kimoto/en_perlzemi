@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop = "name"> Subroutine </ span> </a>
+        <span itemprop = "name"> Subroutine </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> How to create a closure </ h2>
+  </li>
+</ol>
+<h2> How to create a closure </h2>
 
 
 
 Learn how to create "closures" in Perl.
 
-<h3> Closure definition </ h3>
+<h3> Closure definition </h3>
 
 I will explain the definition of closure using code.
 
@@ -44,9 +44,9 @@ Only the #var subroutine can see $ var.
 
 print "1: The simplest closure \ n";
 print var (), "\ n";
-</ pre>
+</pre>
 
-<h4> Closure definition </ h4>
+<h4> Closure definition </h4>
 
 The condition for being a closure is that the subroutine references a lexical variable that is out of its scope. (In this example, var refers to $ var outside its scope.)
 
@@ -59,10 +59,10 @@ Please refer to the following article for the scope of Perl.
 <ul>
   <li>
     <a href="/blog/20110128130016.html"> Understand Perl scope </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Closure features </ h4>
+<h4> Closure features </h4>
 
 <pre>
 {
@@ -72,7 +72,7 @@ Please refer to the following article for the scope of Perl.
     return $ var;
   }
 }
-</ pre>
+</pre>
 
 Since $ var is referenced in the var subroutine, it is not deleted from memory when the scope ends. (Lexical variables are destroyed from memory when they are out of scope and are not referenced anywhere.)
 
@@ -80,7 +80,7 @@ When the scope ends, $ var is no longer visible outside the scope. (The var subr
 
 Only the var subroutine can see $ var. After the scope is finished, the value of $ var can only be accessed through the var subroutine.
 
-<h4> Closure image </ h4>
+<h4> Closure image </h4>
 
 <pre>
 | -------------- Scope (closure) -------------- |
@@ -94,11 +94,11 @@ Only the var subroutine can see $ var. After the scope is finished, the value of
 | ------------------------------------------------- |
 
                    Data is inaccessible from outside the scope
-</ pre>
+</pre>
 
 Data can only be accessed from outside the scope through subroutines. You cannot access the data directly.
 
-<h3> Create closures using "function generator" </ h3>
+<h3> Create closures using "function generator" </h3>
 
 Let's create a closure using a function generator.
 
@@ -135,9 +135,9 @@ sub create_timer {
     return time ()-$ time;
   }
 }
-</ pre>
+</pre>
 
-<h4> Function generator for generating closures </ h4>
+<h4> Function generator for generating closures </h4>
 
 <pre>
 sub create_timer {
@@ -151,36 +151,36 @@ sub create_timer {
     return time ()-$ time;
   }
 }
-</ pre>
+</pre>
 
 A function generator is a subroutine that creates a suboutin. You can use the function generator to generate multiple closures.
 
 Each generated closure has its own data. In this example, the value of $ time is created in memory for each closure. The return value is a reference to the subroutine. This is because Perl does not allow the subroutine itself to be the return value.
 
-<h4> Call a function generator to create a closure </ h4>
+<h4> Call a function generator to create a closure </h4>
 
 <pre>
 my $ timer1 = create_timer ();
 my $ timer2 = create_timer ();
-</ pre>
+</pre>
 
 The return value serves as a reference to the subroutine. This subroutine is a closure and has its own environment (variables referenced in the subroutine and the definition of the subroutine) in memory.
 
-<h4> Call closure </ h4>
+<h4> Call closure </h4>
 
 <pre>
 $ timer1-> ();
-</ pre>
+</pre>
 
 Now that we have a reference to the subroutine, we dereference it and call it.
 
-<h4> How to use closures </ h4>
+<h4> How to use closures </h4>
 
 Closures allow you to concisely describe the changes between the "state at the time of reference" and the "state at the moment".
 
 You can do the same thing by creating a class, but if you don't want to create a class, use closures. (If you create one class, it will take more time to manage the class. If you do not want to create a class for simple description like this example, use closure.)
 
-<h3> "Initialize variables" referenced by closures </ h3>
+<h3> "Initialize variables" referenced by closures </h3>
 
 This is a sample to initialize the variable referenced by the closure.
 
@@ -220,9 +220,9 @@ sub create_sign_checker {
     }
   }
 }
-</ pre>
+</pre>
 
-<h4> Initialize variables referenced by closures </ h4>
+<h4> Initialize variables referenced by closures </h4>
 
 <pre>
 # Generate closures. (Initialize the variable referenced by the closure with 1)
@@ -244,72 +244,72 @@ t;
     # ...
   }
 }
-</ pre>
+</pre>
 
 When you create a closure, you can initialize the variables that the closure references. Pass it as an argument when creating the closure. Take it as an argument to the function generator and set it in a variable.
 
-<h3> Explain the concept of closures in an easy-to-understand manner in comparison with classes </ h3>
+<h3> Explain the concept of closures in an easy-to-understand manner in comparison with classes </h3>
 
 The concept of closures is vague and difficult to capture contours. I would like to explain it so that I can understand it as much as possible.
 
-<h4> What is a closure </ h4>
+<h4> What is a closure </h4>
 
 <ol>
   <li>
     A closure is a set of data and functions that manipulate that data.
-  </ li>
+  </li>
   <li>
     The data is encapsulated and only the functions inside the closure can manipulate the data.
-  </ li>
+  </li>
   <li>
     Data can be initialized.
-  </ li>
+  </li>
   <li>
     You can create individual instances for each piece of data.
-  </ li>
+  </li>
   <li>
     The function is called from the instance.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 Next, about classes in object orientation.
 
-<h4> What is a class? </ H4>
+<h4> What is a class? </H4>
 
 <ol>
   <li>
     A class is a set of data and functions that manipulate that data.
-  </ li>
+  </li>
   <li>
     The data is encapsulated and only the functions inside the class can manipulate the data.
-  </ li>
+  </li>
   <li>
     Data can be initialized.
-  </ li>
+  </li>
   <li>
     You can create individual instances for each piece of data.
-  </ li>
+  </li>
   <li>
     The function is called from the instance.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 What you should be aware of here is that classes and closures are actually the same thing. In Perl implementations, classes and closures differ in their grammatical writing. However, they are functionally the same. Closures are easy to understand if you think of them as simple classes. (The concept of closures is a bit broader, but at first I understand it's a simple class.)
 
-<h4> Differences between classes and closures </ h4>
+<h4> Differences between classes and closures </h4>
 
 <ol>
   <li>
     Closures do not have a class name. By calling new my $ ins = Class-> new ;, instead of creating an instance, create an instance in the form of my $ ins = closure_maker () ;.
-  </ li>
+  </li>
   <li>
     Closures cannot be inherited. It cannot be inherited like a class.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 Let's implement a function (counter) for counting using classes and closures.
 
-<h4> Implement the counter in a class </ h4>
+<h4> Implement the counter in a class </h4>
 
 <pre>
 use strict;
@@ -340,9 +340,9 @@ print "1: Class-based counter implementation \ n";
 print "Before counting:", $ cnt-> count, "\ n";
 $ cnt-> add_count;
 print "after counting:", $ cnt-> count, "\ n \ n";
-</ pre>
+</pre>
 
-<h4> Implement the counter with closures </ h4>
+<h4> Implement the counter with closures </h4>
 
 <pre>
 use strict;
@@ -371,11 +371,11 @@ print "2: Implementation of counters with closures \ n";
 print "Before counting:". $ Cnt-> {count}-> (). "\ n";
 $ cnt-> {add_count}-> ();
 print "after counting:". $ Cnt-> {count}-> (). "\ n";
-</ pre>
+</pre>
 
 As you can see, classes and closures are very similar. Next time, I will explain the code.
 
-<h4> Visual image of classes and closures </ h4>
+<h4> Visual image of classes and closures </h4>
 
 <pre>
 ## class
@@ -391,18 +391,18 @@ As you can see, classes and closures are very similar. Next time, I will explain
 | ・ Data manipulation functions |
 | ------------------ |
 
-</ pre>
+</pre>
 
-<h4> Correction of Dan Kogai </ h4>
+<h4> Correction of Dan Kogai </h4>
 
 <ul>
   <li>
     <a href="http://blog.livedoor.jp/dankogai/archives/51079991.html"> perl --Class vs. Closure (404 Blog Not Found) </a>
-  </ li>
+  </li>
   <li>
     Closures can do the same thing as classes, but in Perl creating closures costs more than creating objects.
-  </ li>
+  </li>
   <li>
     I wrote that closures cannot be inherited, but it seems that they can be inherited. (I can't think of a way to do it for now.)
-  </ li>
-</ ul>
+  </li>
+</ul>

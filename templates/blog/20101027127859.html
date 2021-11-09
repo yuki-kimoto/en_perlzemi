@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Building a local Perl environment with cpanm </ h2>
+  </li>
+</ol>
+<h2> Building a local Perl environment with cpanm </h2>
 
 
 
 This is the procedure to build a local environment using cpanm. It is a straightforward procedure without hesitation.
 
-<h3> Install cpanm </ h3>
+<h3> Install cpanm </h3>
 
 Execute the following command as an individual user.
 
@@ -29,11 +29,11 @@ Execute the following command as an individual user.
 # installation of cpanm
 curl -L -O http://xrl.us/cpanm
 perl cpanm App :: cpanminus
-</ pre>
+</pre>
 
 cpanm makes it easy to install CPAN modules in your local environment. If you don't have root privileges, the CPAN module will be installed under the directory perl5 under your home directory. The installation may take some time, but wait for a while.
 
-<h3> Settings for using modules and commands </ h3>
+<h3> Settings for using modules and commands </h3>
 
 To use the installed modules and commands, you need to add the following settings to the bash configuration file called ".bashrc".
 
@@ -41,7 +41,7 @@ To use the installed modules and commands, you need to add the following setting
 export PERL_CPANM_OPT = "--local-lib = ~ / perl5"
 export PATH = $ HOME / perl5 / bin: $ PATH;
 export PERL5LIB = $ HOME / perl5 / lib / perl5: $ PERL5LIB;
-</ pre>
+</pre>
 
 PERL_CPANM_OPT is an environment variable for setting cpanm. Specifies the directory where the module will be installed. By default, it is installed under "~ / perl5", but a warning will occur, so specify it explicitly. PATH is a setting for using installed commands. For example, the cpanm command will be available. You can add a module include path with PERL5LIB. With this setting, the modules installed from the script will be available.
 
@@ -49,51 +49,51 @@ Edit ".bashrc" as follows and add the above description.
 
 <pre>
 vi ~ / .bashrc
-</ pre>
+</pre>
 
 Then reflect this setting.
 
 <pre>
 source ~ / .bashrc
-</ pre>
+</pre>
 
-<h3> Module installation </ h3>
+<h3> Module installation </h3>
 
 Let's try installing a module called Mojolicious.
 
 <pre>
 cpanm Mojolicious
-</ pre>
+</pre>
 
 You can use the ls command to verify that Mojolicious is installed in the directory "~ / perl5 / lib / perl5".
 
 <pre>
 ls ~ / perl5 / lib / perl5
-</ pre>
+</pre>
 
 Also try to see if the module is actually available. If you execute the following command from the command line and no error occurs, it is successful.
 
 <pre>
 perl -MMojolicious -e 1
-</ pre>
+</pre>
 
 Now you can install more and more modules in your local environment. If you want to put the module on another server, just copy "~ / perl5" entirely if the architecture is exactly the same. Of course, don't forget to write ".bashrc". Deploying in Perl is very easy, isn't it?
 
-<h3> Install the CPAN module in the directory you specified using cpanm </ h3>
+<h3> Install the CPAN module in the directory you specified using cpanm </h3>
 
-Use the <b> -L </ b> option to install the CPAN module on the directory specified using cpanm.
+Use the <b> -L </b> option to install the CPAN module on the directory specified using cpanm.
 
 <pre>
 cpanm -L extlib DBIx :: Custom
-</ pre>
+</pre>
 
-DBIx :: Custom will be installed in the current directory <b> extlib </ b>.
+DBIx :: Custom will be installed in the current directory <b> extlib </b>.
 
-<h3> Install the module by specifying the version with cpanm and cpanfile </ h3>
+<h3> Install the module by specifying the version with cpanm and cpanfile </h3>
 
-<strong> cpanm </ strong> and <strong> cpanfile </ strong> allow you to specify the version to install the module.
+<strong> cpanm </strong> and <strong> cpanfile </strong> allow you to specify the version to install the module.
 
-<h4> Cpanfile description </ h4>
+<h4> Cpanfile description </h4>
 
 Write a cpanfile. cpanfile is a file for specifying the module version. Create a file named cpanfile. Make the following description.
 
@@ -101,103 +101,103 @@ Write a cpanfile. cpanfile is a file for specifying the module version. Create a
 requires'DBI','== 1.619';
 requires'DBD :: SQLite','== 1.36_04';
 requires'DBIx :: Custom','== 0.25';
-</ pre>
+</pre>
 
 Describe in the following format.
 
 <pre>
 requires module name version
-</ pre>
+</pre>
 
 You can use the following notation for the version:
 
 <table>
   <tr>
     <td>
-      <b> Meaning </ b>
-    </ td>
+      <b> Meaning </b>
+    </td>
     <td>
-      <b> Format </ b>
-    </ td>
+      <b> Format </b>
+    </td>
     <td>
-      <b> Sample </ b>
-    </ td>
-  </ tr>
+      <b> Sample </b>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Specified version
-    </ td>
+    </td>
     <td>
       == Version
-    </ td>
+    </td>
     <td>
       == 0.03
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Specified version or higher
-    </ td>
+    </td>
     <td>
       Version only or> = version
-    </ td>
+    </td>
     <td>
       0.03 or> = 0.03
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Below the specified version
-    </ td>
+    </td>
     <td>
       <=
-    </ td>
+    </td>
     <td>
       <= 0.03
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Greater than the specified version
-    </ td>
+    </td>
     <td>
       > Version
-    </ td>
+    </td>
     <td>
       > 0.03
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Less than the specified version
-    </ td>
+    </td>
     <td>
       <Version
-    </ td>
+    </td>
     <td>
       <0.03
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> Module installation </ h4>
+<h4> Module installation </h4>
 
-The cpanm <strong> --installdeps </ strong> option will look up the description in the cpanfile and install the module for you. (Note that the dot follows the option)
+The cpanm <strong> --installdeps </strong> option will look up the description in the cpanfile and install the module for you. (Note that the dot follows the option)
 
 <pre>
 perl cpanm --installdeps.
-</ pre>
+</pre>
 
-You can also use the <strong> -L </ strong> option to install the module in a specified directory.
+You can also use the <strong> -L </strong> option to install the module in a specified directory.
 
 <pre>
 perl cpanm -L extlib --installdeps.
-</ pre>
+</pre>
 
 If your Perl application depends on a module that exists on CPAN, you can include cpanm and cpanfile together to make it easier for your users to use.

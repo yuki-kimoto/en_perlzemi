@@ -1,24 +1,24 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Debugger </ span>
+      <span itemprop = "name"> Debugger </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Perl Debugger Guide </ h2>
+  </li>
+</ol>
+<h2> Perl Debugger Guide </h2>
 
 
 
-<Strong> One of Perl's most useful tools is the debugger. You can use the </ strong> debugger to traverse the script line by line to see what's inside a variable, or to set a breakpoint and stop at that position.
+<Strong> One of Perl's most useful tools is the debugger. You can use the </strong> debugger to traverse the script line by line to see what's inside a variable, or to set a breakpoint and stop at that position.
 
 Debuggers are really useful, but some people don't even know if they're doing Perl. Once you learn the debugger, you can't let go of it when you test. It's a tool I want you to use more and more from the time you learned Perl. I tried to summarize the commands and techniques of such a debugger.
 
-<h3> Debugging script </ h3>
+<h3> Debugging script </h3>
 
 I have prepared a simple script for debugging. Save it as debug.pl. We will use this script to explain the debugger.
 
@@ -44,134 +44,134 @@ sub twice {
   
   return $ num * 2;
 }
-</ pre>
+</pre>
 
-<h3> Debugger startup </ h3>
+<h3> Debugger startup </h3>
 
-To start the <strong> debugger, start perl with the "-d" option. </ strong>
+To start the <strong> debugger, start perl with the "-d" option. </strong>
 
 <pre>
 perl -d debug.pl
-</ pre>
+</pre>
 
 When you start the debugger, it stops at the first line.
 
 <pre>
 main :: (a.pl: 4): my $ message ='Hello';
-</ pre>
+</pre>
 
 Use "q" to exit the debugger.
 
 <pre>
 q
-</ pre>
+</pre>
 
 Use "h" to get help.
 
 <pre>
 h
-</ pre>
+</pre>
 
 Let's remember the debugger commands in order.
 
-<h3> 1. Execution command </ h3>
+<h3> 1. Execution command </h3>
 
 This section describes the commands for executing the Perl debugger.
 
-<h4> n --One line execution </ h4>
+<h4> n --One line execution </h4>
 
-Use "n" to execute a <strong> script on a single line. </ strong> Type "n" and then "Enter" to go to the next line.
+Use "n" to execute a <strong> script on a single line. </strong> Type "n" and then "Enter" to go to the next line.
 
 If you execute "n" in the initial state, the following will be displayed and you can confirm that you are advancing one line.
 
 <pre>
 main :: (a.pl: 5): my @nums = (1, 2, 3);
-</ pre>
+</pre>
 
 Type "n", "Enter", "n", "Enter" to reach the end of the script and end the script.
 
 <pre>
 Debugged program terminated. Use q to quit or R to restart,
-</ pre>
+</pre>
 
 You will be asked if you want to stop or restart debugging, but if you want to do a second debug, be sure to stop debugging with q.
 
 Entering "n", "Enter", "n", and "Enter" is a bit tedious. Actually, you can advance the line with "n" "Enter" "Enter" "Enter". If "n" or "s" was entered immediately before, you can press "Enter" to repeat the previous command.
 
-It is easy to remember that <strong> n is n of "next". </ strong>
+It is easy to remember that <strong> n is n of "next". </strong>
 
-<h4> s --single step execution </ h4>
+<h4> s --single step execution </h4>
 
-Use "s" to run the <strong> script in a single step. </ strong> The difference from "n" is that it traces the internal processing of the subroutine.
+Use "s" to run the <strong> script in a single step. </strong> The difference from "n" is that it traces the internal processing of the subroutine.
 
 Encourage one line execution with "n" and advance the script to the line where the subroutine call is.
 
 <pre>
 main :: (a.pl: 8): my $ twice = twice (5);
-</ pre>
+</pre>
 
 You can move to the processing inside the subroutine by executing "s" on this line.
 
 <pre>
 main :: twice (a.pl:21): my $ num = shift;
-</ pre>
+</pre>
 
-<h4> c --Run to breakpoint or specified line </ h4>
+<h4> c --Run to breakpoint or specified line </h4>
 
-<strong> "c" is a command that executes up to a breakpoint or a specified line. </ strong> c is the acronym for continue.
+<strong> "c" is a command that executes up to a breakpoint or a specified line. </strong> c is the acronym for continue.
 
 <pre>
 c 5
-</ pre>
+</pre>
 
 Is executed until just before the 5th line.
 
 <pre>
 main :: (a.pl: 5): my @nums = (1, 2, 3);
-</ pre>
+</pre>
 
 Then without giving any arguments
 
 <pre>
 c
-</ pre>
+</pre>
 
 Will advance to the position next to the breakpoint in the sentence.
 
 <pre>
 main :: (a.pl: 13): for my $ num (@nums) {
-</ pre>
+</pre>
 
 <pre>
 # breakpoint
 $ DB :: single = 1;
-</ pre>
+</pre>
 
 Is a breakpoint that can be embedded in a script. If you want to see the contents of a variable, set a breakpoint around the line immediately before it, and it is very convenient because you can stop the execution there.
 
-<h3> 2. Display commands </ h3>
+<h3> 2. Display commands </h3>
 
 This section describes display commands.
 
-<h4> p --Display the contents of variables </ h4>
+<h4> p --Display the contents of variables </h4>
 
-<strong> You can display the contents of the variable with "p". </ strong> For example, if you want to display a variable called $ message, do as follows.
+<strong> You can display the contents of the variable with "p". </strong> For example, if you want to display a variable called $ message, do as follows.
 
 <pre>
 p $ message
-</ pre>
+</pre>
 
-<h4> x --Expand and display the contents of variables </ h4>
+<h4> x --Expand and display the contents of variables </h4>
 
 The "p" is useful for displaying the contents of scalar variables, but not for displaying hashes, arrays, or even more complex data structures.
 
-<strong> "x" can be used to display the internal structure of data in an easy-to-understand manner. Note that you must pass a reference to the </ strong> "x" argument.
+<strong> "x" can be used to display the internal structure of data in an easy-to-understand manner. Note that you must pass a reference to the </strong> "x" argument.
 
 For example, to display the contents of% scores: \ Is for getting a reference.
 
 <pre>
 x \% scores
-</ pre>
+</pre>
 
 The variable data is displayed in an easy-to-understand manner as shown below.
 
@@ -179,19 +179,19 @@ The variable data is displayed in an easy-to-understand manner as shown below.
 0 HASH (0x19b205c)
    'english' => 77
    'math' => 80
-</ pre>
+</pre>
 
-<b> 3. Other frequently used commands </ b>
+<b> 3. Other frequently used commands </b>
 
 This section describes other frequently used commands.
 
-<h4> v --Display surrounding lines </ h4>
+<h4> v --Display surrounding lines </h4>
 
 You can display the surrounding lines with "v".
 
 <pre>
 v
-</ pre>
+</pre>
 
 If you execute "v" on the 4th line, the surrounding lines will be displayed as shown below.
 
@@ -202,57 +202,57 @@ If you execute "v" on the 4th line, the surrounding lines will be displayed as s
 4 ==> my $ message ='Hello';
 5: my @nums = (1, 2, 3);
 6: my% scores = (math => 80, english => 77);
-</ pre>
+</pre>
 
 You can move the display to the line below by executing "v" many times.
 
-<h4>. --Display current line </ h4>
+<h4>. --Display current line </h4>
 
 If you execute "v" many times, the display will move to the lower line. You can use "." To return to the current line at such times.
 
 <pre>
 ..
-</ pre>
+</pre>
 
-<h4> Arbitrary perl statement </ h4>
+<h4> Arbitrary perl statement </h4>
 
-The <strong> debugger can execute any Perl statement. </ strong> Below is an example of using the defined function to see if a variable is defined.
+The <strong> debugger can execute any Perl statement. </strong> Below is an example of using the defined function to see if a variable is defined.
 
 <pre>
 print defined $ message;
-</ pre>
+</pre>
 
 Any statement can be executed, which is useful for confirmation.
 
-<h3> 4. Debugging techniques </ h3>
+<h3> 4. Debugging techniques </h3>
 
 Here are some commonly used debugging techniques.
 
-<h4> Breakpoints in the text </ h4>
+<h4> Breakpoints in the text </h4>
 
-<strong> Perl allows you to embed breakpoints in your scripts. </ strong> If you assign 1 to a variable called single in the DB class (class for the debugger), the process will switch to single-step execution at that position.
+<strong> Perl allows you to embed breakpoints in your scripts. </strong> If you assign 1 to a variable called single in the DB class (class for the debugger), the process will switch to single-step execution at that position.
 
 <pre>
 $ DB :: single = 1;
-</ pre>
+</pre>
 
 This is really convenient, so please use it more and more. Also, don't forget to remove it from the script after you finish the exam.
 
-<h4> Conditional breakpoints </ h4>
+<h4> Conditional breakpoints </h4>
 
 When debugging, there are times when you want to stop processing and see the contents of variables only under certain conditions. In such a case, use the conditional statement in combination with "$ DB :: single = 1". In this sample, when $ num is 2, the debugger stops at that position.
 
 <pre>
 if ($ num == 2) {$ DB :: single = 1}
-</ pre>
+</pre>
 
-<h4> Find out where the warning occurred </ h4>
+<h4> Find out where the warning occurred </h4>
 
 When testing scripts, I often get a warning that I am using an undefined value like the one below.
 
 <pre>
 Use of uninitialized value
-</ pre>
+</pre>
 
 It is especially difficult to find the cause when a warning occurs in a loop such as a for statement or <a href="/blog/20100123126425.html"> while statement </a>. This means that you should have assigned it somewhere, but you haven't been able to assign it, so you need to pinpoint its location.
 
@@ -265,35 +265,35 @@ Perl can receive warnings as signals, so you can set the following breakpoints i
 $ SIG {__ WARN__} = sub {
     $ DB :: single = 1;
 };
-</ pre>
+</pre>
 
-<h3> I can't use the history function because I can't use the up and down keys in the debugger. </ H3>
+<h3> I can't use the history function because I can't use the up and down keys in the debugger. </H3>
 
 I think there are cases where the history function cannot be used because the up and down keys cannot be used in the Perl debugger.This is because Term :: ReadLine :: Gnu is not installed.
 
 The following C language libraries are required to install Term :: ReadLine :: Gnu.
 
-<h4> For CentOS, RedHat </ h4>
+<h4> For CentOS, RedHat </h4>
 
 <pre>
 yum -y install readline-devel
-</ pre>
+</pre>
 
-<h4> Install Term :: ReadLine :: Gnu </ h4>
+<h4> Install Term :: ReadLine :: Gnu </h4>
 
 Install Term :: ReadLine :: Gnu on cpanm or cpan.
 
 <pre>
 # cpanm
 cpanm Term :: ReadLine :: Gnu
-</ pre>
+</pre>
 
 <pre>
 # cpan
 cpan Term :: ReadLine :: Gnu
-</ pre>
+</pre>
 
-<h3> Stop the debugger by specifying a breakpoint at any position </ h3>
+<h3> Stop the debugger by specifying a breakpoint at any position </h3>
 
 Perl's debugger is useful. When you start using a debugger, you will feel that you want to stop at the position you want to see. How can I stop at the position I want to see?
 
@@ -313,7 +313,7 @@ sub total {
 
   return $ total;
 }
-</ pre>
+</pre>
 
 Use conditional breakpoints in these cases.
 
@@ -332,10 +332,10 @@ sub total {
 
   return $ total;
 }
-</ pre>
+</pre>
 
 Environment variables are global variables, so let me use them for a moment. If you set the environment variable a and set a breakpoint only when it is set, you can stop at the position you want to stop. This is a pretty useful technique, so keep it in mind.
 
-<h3> Please use the debugger positively </ h3>
+<h3> Please use the debugger positively </h3>
 
 This concludes the explanation of debugger commands and techniques. There are many debugger commands, but if you write them here and remember only the ones, you will not have any trouble debugging. The debugger is a really useful tool, so please take advantage of it.

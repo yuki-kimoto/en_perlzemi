@@ -1,25 +1,25 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Object :: Simple --Generate Mojo :: Base compatible accessor </ h2>
+  </li>
+</ol>
+<h2> Object :: Simple --Generate Mojo :: Base compatible accessor </h2>
 
 
 
-Use <strong> Object :: Simple </ strong> to create an accessor with a default value. Object :: Simple is highly compatible with Mojolicious's Mojo :: Base.
+Use <strong> Object :: Simple </strong> to create an accessor with a default value. Object :: Simple is highly compatible with Mojolicious's Mojo :: Base.
 
 <pre>
 package Point;
@@ -34,11 +34,11 @@ my $ point = Point-> new;
 print $ point-> x;
 
 1;
-</ pre>
+</pre>
 
 You can inherit Object :: Simple by specifying -base when using. Object :: Simple has a new method. It also imports a method called has for defining accessors. Also, strict and warnings are automatically enabled.
 
-<h3> General class sample </ h3>
+<h3> General class sample </h3>
 
 This is a sample of a general class. The Point class has accessors x and y. It also has a method called clear that initializes x and y to 0.
 
@@ -57,7 +57,7 @@ sub clear {
 }
 
 1;
-</ pre>
+</pre>
 
 Use the Point class as follows: The constructor new is inherited from Object :: Simple.
 
@@ -71,13 +71,13 @@ my $ x = $ point-> x;
 my $ y = $ point-> y;
 
 $ point-> clear;
-</ pre>
+</pre>
 
-<h3> How to use Object :: Simple </ h3>
+<h3> How to use Object :: Simple </h3>
 
 There are several ways to define attributes.
 
-<h4> Define multiple attributes at once </ h4>
+<h4> Define multiple attributes at once </h4>
 
 <pre>
 #No default value
@@ -85,11 +85,11 @@ has ['x','y'];
 
 #With default value
 has ['x','y'] => 0;
-</ pre>
+</pre>
 
 You can define multiple accessors at once by specifying the array reference as the first argument of has.
 
-<h4> Specify default value </ h4>
+<h4> Specify default value </h4>
 
 <pre>
 #Constant
@@ -103,21 +103,21 @@ has bar => sub {{}};
 
 # object
 has baz => sub {LWP :: UserAgent-> new};
-</ pre>
+</pre>
 
 When setting array references, hash references, objects, etc. to default values, you need to enclose them in sub {} for lazy evaluation.
 
-<h4> Define all accessors at once </ h4>
+<h4> Define all accessors at once </h4>
 
 <pre>
 has [qw / foo bar baz /],
     some => 1,
     other => sub {5};
-</ pre>
+</pre>
 
 You can also define all accessors at once.
 
-<h3> Inheritance sample </ h3>
+<h3> Inheritance sample </h3>
 
 This is a sample to create a Point3D class that inherits the Point class.
 
@@ -134,9 +134,9 @@ sub clear {
 }
 
 1;
-</ pre>
+</pre>
 
-<h3> Constructor override </ h3>
+<h3> Constructor override </h3>
 
 You can override the constructor new () for object initialization and argument processing.
 
@@ -149,7 +149,7 @@ sub new {
   
   return $ self;
 }
-</ pre>
+</pre>
 
 <pre>
 # Override new () for argument processing
@@ -160,4 +160,4 @@ sub new {
   
   return $ self;
 }
-</ pre>
+</pre>

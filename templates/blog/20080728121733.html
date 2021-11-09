@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Read a CSV file and convert it to an array of arrays </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Read a CSV file and convert it to an array of arrays </h2>
 
 This is a sample that actually reads a CSV file, converts it to a Perl data type (array of arrays), and writes it to standard output. The conversion from csv to an array of arrays is done using subroutines. I think it will also be a basic template for reading and editing some kind of file.
 
@@ -69,7 +69,7 @@ sub parse_file {
   close $ fh;
   return $ recs;
 }
-</ pre>
+</pre>
 
 Below is a sample of csv data. Create a CSV file, give it to the first argument of the script, and execute it.
 
@@ -77,26 +77,26 @@ Below is a sample of csv data. Create a CSV file, give it to the first argument 
 masao, 10, Japan
 taro, 20, USA
 rika, 38, France
-</ pre>
+</pre>
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> (1) Processing when the file name is not given in the first argument </ h4>
+<h4> (1) Processing when the file name is not given in the first argument </h4>
 
 <pre>
 unless ($ file) {
   # If there is no argument, indicate the usage and end.
   die "Usage: $ 0 file";
 }
-</ pre>
+</pre>
 
 Check the arguments as much as possible. If there is no file name in the first argument, indicate the usage and exit. $ 0 is the name of the script running in the special variable.
 
-<h4> (2) Read the file and convert the csv format text to an array of arrays </ h4>
+<h4> (2) Read the file and convert the csv format text to an array of arrays </h4>
 
 <pre>
 my @recs = parse_file ($ file);
-</ pre>
+</pre>
 
 parse_file is a self-made subroutine. Read the file and convert the csv format text to an array of arrays. The input and output images are as follows.
 
@@ -112,20 +112,20 @@ rika, 38, France
     ['taro', 20,'USA'],
     ['rika', 38,'France'],
 )
-</ pre>
+</pre>
 
-<h4> (3) Output in csv format </ h4>
+<h4> (3) Output in csv format </h4>
 
 <pre>
 for my $ items (@recs) {
   Output by connecting with #comma.
   print join (',', @ $ items). "\ n";
 }
-</ pre>
+</pre>
 
 To output, repeat the foreach statement for the number of records contained in @recs. Each record is concatenated with a comma with <a href="/blog/20081007122338.html"> join function </a> and output. Add a line break at the end.
 
-<h4> (4) Explanation of the function that reads a file and converts csv format text into an array of arrays </ h4>
+<h4> (4) Explanation of the function that reads a file and converts csv format text into an array of arrays </h4>
 
 <pre>
 sub parse_file {
@@ -153,21 +153,21 @@ sub parse_file {
   close $ fh;
   return $ recs;
 }
-</ pre>
+</pre>
 
-<h4> (4) -1 Receive file name as an argument </ h4>
+<h4> (4) -1 Receive file name as an argument </h4>
 
 <pre>
 my $ file = shift;
-</ pre>
+</pre>
 
 Give the file name as an argument to open and close the file in the subroutine.
 
-<h4> (4) -2 Creating an array of arrays to return as a return value </ h4>
+<h4> (4) -2 Creating an array of arrays to return as a return value </h4>
 
 <pre>
 my $ recs = []; # Prepare a reference to an array that stores multiple records
-</ pre>
+</pre>
 
 The final result will be as follows, but first create only the outermost frame.
 
@@ -177,9 +177,9 @@ $ recs = [
   ['taro', 20,'USA'],
   ['rika', 38,'France'],
 ]
-</ pre>
+</pre>
 
-<h4> (4) -3 Processing in a while loop </ h4>
+<h4> (4) -3 Processing in a while loop </h4>
 
 I'm using a <a href="/blog/20100123126425.html"> while statement </a> to create a Perl data structure.
 
@@ -199,29 +199,29 @@ while (my $ line = <$ fh>) {
   Since the first argument of the #push function is an array, dereference it with @ {$ recs}.
   push @ $ recs, $ items;
 }
-</ pre>
+</pre>
 
-<h4> (4) -3-a Creating a reference to an empty array </ h4>
+<h4> (4) -3-a Creating a reference to an empty array </h4>
 
 <pre>
 my $ items = [];
-</ pre>
+</pre>
 
 At the end of the first while loop, it will be [masao, 10, Japan], but first create only the frame.
 
-<h4> (4) -3-b Comma-separated string split </ h4>
+<h4> (4) -3-b Comma-separated string split </h4>
 
 <pre>
 @ $ items = split (/, /, $ line);
-</ pre>
+</pre>
 
 The split function returns an array, so to receive it, dereference $ items to @ $ items.
 
-<h4> (4) -3-c Add the created record to the reference to the array </ h4>
+<h4> (4) -3-c Add the created record to the reference to the array </h4>
 
 <pre>
 push @ $ recs, $ items;
-</ pre>
+</pre>
 
 Add $ items to $ recs. When the first while is finished, it will be as follows.
 
@@ -229,17 +229,17 @@ Add $ items to $ recs. When the first while is finished, it will be as follows.
 $ recs = [
   ['masao', 10,'Japan'],
 ]
-</ pre>
+</pre>
 
 The first argument of push receives an array and dereferences it.
 
-<h3> Rewrote the subroutine after being pointed out by kits </ h3>
+<h3> Rewrote the subroutine after being pointed out by kits </h3>
 
 <pre>
 Put the data in my @recs rather than push @ $ recs
 It's like returning @recs or \ @recs at the end.
 (I feel that the effort of dereference is wasted)
-</ pre>
+</pre>
 
 The following is a rewritten subroutine. As kits said, this one is much cleaner. Thank you very much.
 
@@ -266,4 +266,4 @@ chomp $ line;
    close $ fh;
    return \ @recs;
 }
-</ pre>
+</pre>

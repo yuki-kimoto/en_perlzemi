@@ -1,26 +1,26 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Interprocess communication </ span> </a>
-  </ li>
-</ ol>
-<h2> Interprocess communication </ h2>
+      <span itemprop = "name"> Interprocess communication </span> </a>
+  </li>
+</ol>
+<h2> Interprocess communication </h2>
 
 
 
 
 I will explain how to perform "interprocess communication" in Perl.
 
-<h3> What is a process </ h3>
+<h3> What is a process </h3>
 
 A process is a unit of resource management as seen from the OS. Processes are assigned a unique process ID for the OS, resources include file handles, memory space, and CPU. From the user's point of view, a process is a program that is running.
 
-<h4> Image of OS process management </ h4>
+<h4> Image of OS process management </h4>
 
 <pre>
    Image of event OS process management
@@ -50,97 +50,97 @@ A process is a unit of resource management as seen from the OS. Processes are as
                                 A process is a memory, a file, as seen from the OS.
                               A unit for managing CPU scheduling.
 
-</ pre>
+</pre>
 
-<h4> $$ --Get process ID </ h4>
+<h4> $$ --Get process ID </h4>
 
-Use the special variable "<strong> $$ </ strong>" to get the process ID.
+Use the special variable "<strong> $$ </strong>" to get the process ID.
 
 <pre>
 $$
-</ pre>
+</pre>
 
 The process ID is an identifier assigned when the process is started so that the OS can uniquely identify the process.
 
-<h4> $ ^ T --Get the process start time </ h4>
+<h4> $ ^ T --Get the process start time </h4>
 
-Use the special variable "<strong> $ ^ T </ strong>" to get the start time of the process.
+Use the special variable "<strong> $ ^ T </strong>" to get the start time of the process.
 
 <pre>
 $ ^ T
-</ pre>
+</pre>
 
 The time is obtained in epoch seconds (seconds from 00:00:00 on January 1, 1970).
 
-<h3> fork function </ h3>
+<h3> fork function </h3>
 
-You can use the <b> fork </ b> function to <b> branch a process into two </ b>. One forked process is the parent process and the other is the child process.
+You can use the <b> fork </b> function to <b> branch a process into two </b>. One forked process is the parent process and the other is the child process.
 
 
 The fork function takes no arguments. The return value will be the process ID of the branched child process if the branched process is the parent process. 0 for child processes. If fork fails, undef is returned.
 
 <pre>
 my $ pid = fork;
-</ pre>
+</pre>
 
 For the fork function, see "<a href="/blog/20090413124032.html"> fork function </a>".
 
-<h3> wait function </ h3>
+<h3> wait function </h3>
 
 If you branch with fork, you don't know which of the parent and child processes will terminate first. This time, I will explain how the parent process waits for the child process to finish.
 
-Use the <b> wait </ b> function to wait for the child process to terminate. The wait function <b> waits until one child process terminates </ b>. The return value is <b> the process ID of the terminated child process </ b>. If the child process was automatically reclaimed for any reason, -1 will be returned.
+Use the <b> wait </b> function to wait for the child process to terminate. The wait function <b> waits until one child process terminates </b>. The return value is <b> the process ID of the terminated child process </b>. If the child process was automatically reclaimed for any reason, -1 will be returned.
 
 <pre>
 my $ pid = wait;
-</ pre>
+</pre>
 
 For the wait function, see "<a href="/blog/20090413124032.html"> wait function </a>".
 
-<h3> $? --Child process exit status </ h3>
+<h3> $? --Child process exit status </h3>
 
 If wait waits for the child process to terminate, the special variable "$?" Stores multiple values ​​including the exit status of the child process. $? Is also set when a child process is executed using the system function.
 
-<h4> Exit status of child process *** </ h4>
+<h4> Exit status of child process *** </h4>
 
-The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </ b>. The <b> 8th bit of the lower 8 bits </ b> indicates whether a core dump was generated </ b>. The <b> lower 8 bits up to the 7th bit </ b> represent the <b> signal number that terminated the process </ b>, if any.
+The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </b>. The <b> 8th bit of the lower 8 bits </b> indicates whether a core dump was generated </b>. The <b> lower 8 bits up to the 7th bit </b> represent the <b> signal number that terminated the process </b>, if any.
 
 For more information on the special variable "$?", See "<a href="http://d.hatena.ne.jp/perlcodesample/20161102"> See the list of" special variables "in Perl </a>". Please give me.
 
-<h3> Describe the process of releasing the resource of the child process </ h3>
+<h3> Describe the process of releasing the resource of the child process </h3>
 
 To release the resources of the child process, use the waitpid function and write the following.
 
 <pre>
 use POSIX'WNOHANG';
 $ SIG {CHLD} = sub {while (waitpid (-1, WNOHANG)> 0) {Resource release process}}
-</ pre>
+</pre>
 
 I think it is difficult to understand the meaning of this description at first glance, so I will explain it.
 
-<h4> CHLD signal </ h4>
+<h4> CHLD signal </h4>
 
 The CHLD signal is a signal sent to the parent process when the child process terminates. In other words, by monitoring the CHLD signal on the parent process side, you can do something when the child process terminates.
 
 <pre>
 $ SIG {CHLD} = sub {What to do if a child process terminates}
-</ pre>
+</pre>
 
-<h4> waitpid function </ h4>
+<h4> waitpid function </h4>
 
 The waitpid function waits until the child process with the specified process ID changes state. There are three state changes:
 
 <ol>
   <li>
     Child process terminated
-  </ li>
+  </li>
   <li>
     Child process stopped
-  </ li>
+  </li>
   <li>
     Child process resumed
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 If there is a state change, the watipid function returns the process ID of its child process. Also, when the child process terminates, it releases the process in the zombie state. A zombie state is a state that has been terminated but has not been removed from the OS process table.
 
@@ -152,21 +152,21 @@ I tried to extract only the call part of waitpid.
 
 <pre>
 waitpid (-1, WNOHANG)
-</ pre>
+</pre>
 
 Let's summarize this.
 
 <ol>
   <li>
     If any of the child processes have changed state, the process ID (greater than 0) is returned, and if the child process has terminated, the zombie state process is released. (Since it is set as a handler for the CHLD signal this time, you can think of it as "returning the process ID and releasing the zombie-state process if any of the child processes are terminated")
-  </ li>
+  </li>
   <li>
     If no child process exists, an error will occur and -1 will be returned.
-  </ li>
+  </li>
   <li>
     If one or more of the specified child processes exist, but no state change has occurred in any of the child processesReturns 0.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 Therefore, if you describe the condition that the return value is greater than 0 as shown below, you can describe the processing to be executed when any of the child processes is terminated.
 
@@ -174,26 +174,26 @@ Therefore, if you describe the condition that the return value is greater than 0
 if (waitpid (-1, WNOHANG)> 0) {
   # ...
 }
-</ pre>
+</pre>
 
-<h4> While loop </ h4>
+<h4> While loop </h4>
 
 <pre>
 while (waitpid (-1, WNOHANG)> 0) {Resource release process}
-</ pre>
+</pre>
 
 Looking at this part, you may wonder why you need a <a href="/blog/20100123126425.html"> while statement </a>. If one CHLD signal is sent when one child process terminates, it's natural to think that a while statement isn't needed. However, there is one constraint on the signal, and if multiple child processes are terminated in a very short time, the signal will be overwritten and even though multiple child processes are terminated. , It is possible that only one signal can be sent.
 To do this, you need to use a while statement to process all terminated child processes.
 
-<h4> If you don't need any specific action and just want to release the zombies </ h4>
+<h4> If you don't need any specific action and just want to release the zombies </h4>
 
 If you don't need to release a specific resource and just want to release a zombie, you can set "IGNORE" without calling waitpid from the signal hands and it will do it automatically.
 
 <pre>
 $ SIG {CHLD} ='IGNORE' ；
-</ pre>
+</pre>
 
-<h3> Read the output of other commands using a pipe </ h3>
+<h3> Read the output of other commands using a pipe </h3>
 
 A mechanism called a pipe is used to read the output of other commands.
 
@@ -211,14 +211,14 @@ while (my $ line = <$ pipe>) {
 }
 
 close $ pipe;
-</ pre>
+</pre>
 
-<h4> (1) Open a pipe to read the output of other commands </ h4>
+<h4> (1) Open a pipe to read the output of other commands </h4>
 
 <pre>
 open my $ pipe,'-|','dir'
   or die qq / Can't open pipe: $! /;
-</ pre>
+</pre>
 
 The open function has special uses. To open a pipe that receives the output of other commands, specify "-|" in the second argument and the command in the third argument. This time, "dir", which is a command to output the contents of the directory, is specified.
 
@@ -226,19 +226,19 @@ Imagine replacing the hyphen part of the "-|" in the second argument with a comm
 
 <pre>
 dir | perl
-</ pre>
+</pre>
 
-<h4> (2) Read from pipe </ h4>
+<h4> (2) Read from pipe </h4>
 
 <pre>
 while (my $ line = <$ pipe>) {
   print $ line;
 }
-</ pre>
+</pre>
 
 I'm reading line by line from the pipe. Notice that from the program's point of view, it looks like it's reading from a file.
 
-<h3> Pass the output to other commands using a pipe </ h3>
+<h3> Pass the output to other commands using a pipe </h3>
 
 To pass the output to another command, use a mechanism called a pipe.
 
@@ -254,14 +254,14 @@ open my $ pipe,'|-','more'
 print $ pipe "Hello world";
 
 close $ pipe;
-</ pre>
+</pre>
 
-<h4> (1) Open a pipe to send output to other commands </ h4>
+<h4> (1) Open a pipe to send output to other commands </h4>
 
 <pre>
 open my $ pipe,'|-','more'
   or die qq / Can't open pipe: $! /;
-</ pre>
+</pre>
 
 The open function has special uses. To open a pipe that receives the output of other commands, specify "|-" in the second argument and the command in the third argument. This time, "more", which is a command to output the contents of the file, is specified.
 
@@ -269,41 +269,41 @@ Replace the hyphen part of the second argument "|-" with a command, and imagine 
 
 <pre>
 Output | more
-</ pre>
+</pre>
 
-<h4> (2) Write to pipe </ h4>
+<h4> (2) Write to pipe </h4>
 
 <pre>
 print $ pipe "Hello world";
-</ pre>
+</pre>
 
 When writing to a pipe, the output result is passed to another command. Notice that from the program's point of view, it looks like it's writing to a file.
 
-<h3> getpwuid function --get user information (user name) </ h3>
+<h3> getpwuid function --get user information (user name) </h3>
 
-To get the <strong> username </ strong>, use the <a href="/blog/20101222130016.html"> getpwuid function </a> and the special variable <strong> $> </ strong> below will do so.
+To get the <strong> username </strong>, use the <a href="/blog/20101222130016.html"> getpwuid function </a> and the special variable <strong> $> </strong> below will do so.
 
 <pre>
 my $ user = getpwuid ($>);
-</ pre>
+</pre>
 
 You can get the user name by specifying the user ID in the argument of getpwuid.
 
-<h3> getpwnam function-get user ID from username </ h3>
+<h3> getpwnam function-get user ID from username </h3>
 
-To <strong> get the user ID from the username </ strong>, use the <a href="/blog/20130418136633.html"> getpwnam function </a> and do the following:
+To <strong> get the user ID from the username </strong>, use the <a href="/blog/20130418136633.html"> getpwnam function </a> and do the following:
 
 <pre>
 # Get user ID from user name
 my $ uid = (getpwnam'ken') [2];
-</ pre>
+</pre>
 
-<h3> getgrnam function --get group ID from group name </ h3>
+<h3> getgrnam function --get group ID from group name </h3>
 
 
-To get the group ID from the <strong> group name </ strong>, use the <a href="/blog/20130417136634.html"> getgrnam function </a> as follows.
+To get the group ID from the <strong> group name </strong>, use the <a href="/blog/20130417136634.html"> getgrnam function </a> as follows.
 
 <pre>
 #Get group ID from group name
 my $ gid = (getgrnam'devel') [2];
-</ pre>
+</pre>

@@ -1,47 +1,47 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> What can Perl do? --Comparison with Ruby, Python, PHP </ h2>
+<h2> What can Perl do? --Comparison with Ruby, Python, PHP </h2>
 
 "What can Perl do?" Many programming languages ​​have appeared, and you may be wondering which programming language to choose. I've created content that answers what you can do with Perl.
 
-<h3> Good at text processing using regular expressions such as search / replace </ h3>
+<h3> Good at text processing using regular expressions such as search / replace </h3>
 
 Perl is a scripting language that excels at text processing such as search and replace. <a href="/blog/20100827127859.html"> Regular expressions </a> are built into the language, making it easy to write search and replace programs.
 
 <pre>
 # Replace all "banana" with "orange"
 $ message = ~ s / banana / orange / g;
-</ pre>
+</pre>
 
 The processing speed of text processing is high. It depends on the processing content, but the experience is that a Linux server that can be rented at a low price can process 100,000 lines of text in about 1 second.
 
 <ul>
   <li>
     <a href="/blog/20100827127859.html"> Perl regular expressions useful in practice </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Perl regular expressions are widely known for their originality and usefulness, and can also be used as the "-P" option of the Linux grep command.
 
 <pre>
 # You can use Perl regular expressions with the "-P" option of the Linux grep command
 grep -P'(foo | bar) $'file
-</ pre>
+</pre>
 
 In addition to Perl, Ruby is another programming language that incorporates regular expressions.
 
-<h3> Easy to write because you don't have to be aware of the type </ h3>
+<h3> Easy to write because you don't have to be aware of the type </h3>
 
 In Perl, you don't have to be aware of the types of strings and numbers, so it's easy to write. Consider the case where <a href="/blog/20080108132865.html"> command line argument </a> gets a number as <a href="/blog/20161003147558.html"> string </a> to watch. In Perl, you can calculate as it is without being aware of the type.
 
@@ -51,13 +51,13 @@ my ($ num1, $ num2) = @ARGV;
 
 #Calculate without being aware of the type
 my $ total = $ num1 + $ num2;
-</ pre>
+</pre>
 
-<h3> Easy to copy and paste </ h3>
+<h3> Easy to copy and paste </h3>
 
 Perl is designed to make copy and paste easy to write. Easy copy and paste reduces the risk of accidentally editing the original data, and above all, it's easy.
 
-<h4> String list operator </ h4>
+<h4> String list operator </h4>
 
 <a href="/blog/20080222120369.html"> String list operator </a> makes it easy to <a href="https://perlzemi.com/blog/" delimited strings. 20161012147627.html "> array </a> can be.
 
@@ -67,7 +67,7 @@ For example, suppose you want the following text to be an array right away.
 cat
 dog
 mouse
-</ pre>
+</pre>
 
 You can use the string list operator to quickly copy and paste into an array.
 
@@ -77,9 +77,9 @@ cat
 dog
 mouse
 );
-</ pre>
+</pre>
 
-<h4> Data section </ h4>
+<h4> Data section </h4>
 
 You can copy and paste line by line using a feature called the data section.
 
@@ -90,7 +90,7 @@ For example, suppose you want to process the following text line by line:
 Hello World
 Perl Book
 Web Development
-</ pre>
+</pre>
 
 The data section allows you to copy and paste, line by line, right away.
 
@@ -103,9 +103,9 @@ __DATA__
 Hello World
 Perl Book
 Web Development
-</ pre>
+</pre>
 
-<h4> Change the enclosing character </ h4>
+<h4> Change the enclosing character </h4>
 
 In Perl, use the <a href="/blog/20100305126967.html"> double quote operator </a> and the <a href="/blog/20100304126967.html"> quote operator </a> to describe a string. You can change the enclosing character or use the "m" notation to change the enclosing character in regular expressions. Therefore, you can copy and paste the original data without changing it.
 
@@ -123,9 +123,9 @@ if ($ name = ~ m | http: // |) {
 
 # Change the enclosing character by replacing the regular expression
 $ name = ~ s | http: // ||;
-</ pre>
+</pre>
 
-<h4> Regular expression escaped by \ Q </ h4>
+<h4> Regular expression escaped by \ Q </h4>
 
 If you use the regular expression "\ Q" escape, you can copy and paste it as a simple string without being aware of the regular expression characters.
 
@@ -135,16 +135,16 @@ my $ re = "abc [] ...";
 if ($ name = ~ / \ Q $ re /) {
   # ...
 }
-</ pre>
+</pre>
 
-<h3> Perl One Liner </ h3>
+<h3> Perl One Liner </h3>
 
 Perl's "-e" option allows you to run a Perl program like a one-line command. This is customarily called the Perl one-liner. <a href="https://linux.perlzemi.com/"> Linux server management </a> -Effective in UNIX server management.
 
 <pre>
 Find files ending in # .html and replace all foo in the file with bar
 find * | grep -P'\ .html $'| xargs perl -pi -e's / foo / bar / g';
-</ pre>
+</pre>
 
 Within the Perl one-liner, you can use all the features of Perl. Also, on Linux / UNIX, Perl is widely installed, so you can run it portablely with the same description.
 
@@ -153,24 +153,24 @@ For the Perl one-liner, please also refer to the following.
 <ul>
   <li>
     <a href="/blog/20161121147982.html"> Perl One Liner-Explanation of the "-e" option </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 In addition to Perl, Ruby is another programming language that is easy to use with One Liner.
 
-<h3> What you can do with Perl functions </ h3>
+<h3> What you can do with Perl functions </h3>
 
 The following articles explain what you can do with Perl functions.
 
 <ul>
   <li>
     <a href="/blog/20091025125219.html"> List of frequently used functions / standard modules </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 You can do the same with Python, Ruby, and PHP functions.
 
-<h3> What you can do with Perl modules </ h3>
+<h3> What you can do with Perl modules </h3>
 
 Here's a quick introduction to what you can do with Perl modules. What is called a library in other programming languages ​​is called a module in Perl. Perl has modules that come standard with it and modules that you can install for free from a site called CPAN.
 
@@ -179,72 +179,72 @@ For what you can do with Perl modules, please refer to the module thorough expla
 <ul>
   <li>
     <a href="/blog/20091116124667.html"> Thorough explanation of modules </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 You can do the same with Python, Ruby, and PHP libraries.
 
-<h3> UNIX / Linux server management </ h3>
+<h3> UNIX / Linux server management </h3>
 
 Perl has historically been a good match for UNIX / Linux servers. Perl one-liner can be used naturally, and it is highly relevant to commands that can be used on UNIX / Linux. Perl is installed on most UNIX / Linux servers.
 
 <ul>
-  <li> <a href="https://linux.perlclub.net/"> Introduction to Linux Server Management </a> </ li>
-  <li> <a href="https://ubuntu.perlclub.net/"> Ubuntu development environment construction </a> </ li>
-  <li> <a href="https://git.perlclub.net/"> Introduction to Git </a> </ li>
-</ ul>
+  <li> <a href="https://linux.perlclub.net/"> Introduction to Linux Server Management </a> </li>
+  <li> <a href="https://ubuntu.perlclub.net/"> Ubuntu development environment construction </a> </li>
+  <li> <a href="https://git.perlclub.net/"> Introduction to Git </a> </li>
+</ul>
 
-<h3> Website creation </ h3>
+<h3> Website creation </h3>
 
 Perl is good at text processing, so it is also good at outputting HTML, which is a text format. When creating a Perl website, I feel that it can be very powerful when combined with Git.
 
 Click here if you want to learn HTML / CSS for creating websites. It also explains how to create a website using a tool called Giblog.
 
 <ul>
-  <li> <a href="https://htmlcss.perlclub.net/"> Introduction to HTML / CSS </a> </ li>
-  <li> <a href="https://giblog.perlclub.net"> Giblog </a> </ li>
-</ ul>
+  <li> <a href="https://htmlcss.perlclub.net/"> Introduction to HTML / CSS </a> </li>
+  <li> <a href="https://giblog.perlclub.net"> Giblog </a> </li>
+</ul>
 
-<h3> Web application development </ h3>
+<h3> Web application development </h3>
 
 Perl is good at outputting dynamic HTML components in HTML, email body, and Ajax communication, so it is good at web application development.
 
 PHP is a well-known and strong field in the field of outputting dynamic HTML components in HTML / email body / Ajax communication in web application development, but it is also a specialty field of Perl / Ruby.
 
 <ul>
-  <li> <a href="https://webapp.perlzemi.com/"> Introduction to Web App Development </a> </ li>
-</ ul>
+  <li> <a href="https://webapp.perlzemi.com/"> Introduction to Web App Development </a> </li>
+</ul>
 
-<h3> Perl's strengths </ h3>
+<h3> Perl's strengths </h3>
 
 Here's a brief description of Perl's strengths.
 
-<h4> Linux / UNIX middleware infrastructure </ h4>
+<h4> Linux / UNIX middleware infrastructure </h4>
 
 Perl is "<a href="https://git.perlzemi.com/"> git </a>" "openssl" "Debian / <a href="https://ubuntu.perlzemi.com/ "> Ubuntu </a> Linux command line tools" "mysql, PostgreSQL peripheral tools" are supported and used as middleware on Unix / Linux.
 
-<h4> High level backward compatibility </ h4>
+<h4> High level backward compatibility </h4>
 
 Perl is backwards compatible at a very high level, making it suitable for long-term, stable business applications.
 
-<h4> Run immediately without compiling </ h4>
+<h4> Run immediately without compiling </h4>
 
 You don't have to compile when you run the program. The created program is a perl command and can be executed immediately.
 
 <pre>
 #Run Perl program
 perl test.pl
-</ pre>
+</pre>
 
 This is a great advantage for programs that need to be rewritten many times.
 
 This is a feature of dynamic programming languages, including Python, Ruby, PHP, and more.
 
-<h3> Answer to Perl's anxiety </ h3>
+<h3> Answer to Perl's anxiety </h3>
 
 You may be worried about Perl when you're doing a web search for Perl. I think there is a problem with the expression of the article, but Imagine the anxiety that you generally feel and describe it.
 
-<h4> Is Perl maintainable and readable? </ H4>
+<h4> Is Perl maintainable and readable? </H4>
 
 You may have seen Perl on other websites with low maintainability and readability, and Python with high maintainability and readability.
 
@@ -257,8 +257,8 @@ When you write Perl in what is considered a modern way of writing, Perl's readab
 <ul>
   <li>
     <a href="/blog/20091120124667.html"> Modern Perl writing method </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Programming languages ​​have their advantages and disadvantages when it comes to readability.
 
@@ -267,18 +267,18 @@ For example, Perl needs to be able to read and write data structures called refe
 <ul>
   <li>
     <a href="/blog/20100930127859.html"> References and multidimensional data structures </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Perl scopes, on the other hand, are very well implemented to represent the structure of programming. If you use scopes well, you can improve Perl's readability.
 
 <ul>
   <li>
     <a href="/blog/20110128130016.html"> Perl scope </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Is Perl not object-oriented? </ H4>
+<h4> Is Perl not object-oriented? </H4>
 
 As of 2021, Perl has the ability to be object-oriented, but for various reasons it hasn't introduced a concise class syntax.
 
@@ -307,21 +307,21 @@ package main;
 my $ point = Point-> new (x => 1, y => 2);
 my $ x = $ point-> x;
 my $ y = $ point-> y;
-</ pre>
+</pre>
 
 It feels fresh, so I'd like to expect it in the near future so that I can write it easily.
 
 Class syntax exists in Ruby, Python, and PHP.
 
-<h4> Is Perl unpopular? </ H4>
+<h4> Is Perl unpopular? </H4>
 
 I'm not familiar with the general public, but I know people who like Perl with good motives.
 
-<h4> Is Perl lagging behind in the field of AI / machine learning? </ H4>
+<h4> Is Perl lagging behind in the field of AI / machine learning? </H4>
 
 For deep learning, if you need it in practice, on Amazon AWS, one of the public clouds, Perl's AI library <a href="https://deeplearning.perlzemi.com/blog/20201118093000.html"> AI: : MXNet </a> is officially supported.
 
-<h3> Try Perl programming </ h3>
+<h3> Try Perl programming </h3>
 
 Let's try one thing you can do with Perl. Let's run Perl's sample code using the data section. A Perl program that converts "," comma-separated data to "|" -separated data.
 
@@ -342,7 +342,7 @@ while (my $ line = <DATA>) {
 __DATA__
 1, Web Development, 2000
 2, Perl Tutorial, 1500
-</ pre>
+</pre>
 
 <a href="https://perlbanjo.com/"> Try the program </a>
 
@@ -351,15 +351,15 @@ The input is the data written under "__DATA__".
 <pre>
 1, Web Development, 2000
 2, Perl Tutorial, 1500
-</ pre>
+</pre>
 
 When you run Perl, the output will look like this:
 
 <pre>
 1 | Web Development | 2000
 2 | Perl Tutorial | 1500
-</ pre>
+</pre>
 
-<h3> To conclude </ h3>
+<h3> To conclude </h3>
 
 It's been a long time, but I hope you'll learn Perl, enjoy Perl, and make your work easier with Perl as a publisher.

@@ -1,34 +1,34 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161126148016.html"> <span itemprop = "name"> File operation </ span> </a>
+    <a itemprop="item" href="/blog/20161126148016.html"> <span itemprop = "name"> File operation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Extract the directory name and base name from the file name </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Extract the directory name and base name from the file name </h2>
 
 
 
-To extract the directory name and base name from the file name, use the <strong> fileparse </ strong> method of the <a href="/blog/20100225126425.html"> File :: Basename </a> module.
+To extract the directory name and base name from the file name, use the <strong> fileparse </strong> method of the <a href="/blog/20100225126425.html"> File :: Basename </a> module.
 
 <pre>
 use File :: Basename'fileparse';
 my ($ base_name, $ dir) = fileparse $ file;
-</ pre>
+</pre>
 
 You can use the fileparse function of the File :: Basename module to separate the file name from the directory name and the base name. Note that the 0th in the list of return values ​​is the base name and the 1st is the directory name, which is the reverse of the original order.
 
 File :: Basename is created to be OS independent. On Unix, Windows, and MacOS, the file delimiters are different, but they can be used without problems.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
  This is a sample to extract the directory name and base name from the file name.
 
@@ -58,7 +58,7 @@ print "2: Extract only the base name. \ N";
 # In the array slice, extract only the 0th of the list.
 my $ base_name_only = (fileparse $ file_unix) [0];
 print "\ $ base_name_only = $ base_name_only \ n \ n";
-</ pre>
+</pre>
 Execution result
 <pre>
 1: Extract the directory name and base name from the file name.
@@ -72,7 +72,7 @@ $ base_name = base_name.txt
 
 2: Extract only the base name.
 $ base_name_only = base_name.txt
-</ pre>
+</pre>
 
 <hr>
 <a href="/blog/20080229120427.html"> Perl Reverse Dictionary </a>

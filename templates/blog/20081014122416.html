@@ -1,52 +1,52 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Time :: Local --Convert time information to epoch seconds </ h2>
+  </li>
+</ol>
+<h2> Time :: Local --Convert time information to epoch seconds </h2>
 
 
 
 The Time :: Local module is the opposite of the <a href="/blog/20081009122357.html"> localtime function </a> and <a href="/blog/20081010122376.html"> gmtime function </a>. It is a module for converting date and time.
 
-Use the <strong> timelocal function </ strong> of the <strong> Time :: Local </ strong> module to convert dates and times (local time) to epoch seconds.
+Use the <strong> timelocal function </strong> of the <strong> Time :: Local </strong> module to convert dates and times (local time) to epoch seconds.
 
 <pre>
 use Time :: Local'timelocal';
 my $ sec_from_epoch = timelocal ($ sec, $ min, $ hour, $ mday, $ month, $ year);
-</ pre>
+</pre>
 
 To convert the date and time (Coordinated Universal Time) to epoch seconds, use the timegm function of the Time :: Local module.
 
 <pre>
 my $ sec_from_epoch = timegm ($ sec, $ min, $ hour, $ mday, $ month, $ year);
-</ pre>
+</pre>
 
 For general information about dates and times, please refer to the following.
 
 <ul>
   <li>
     <a href="/blog/20161123147990.html"> Handling dates and times in Perl </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Time :: Local sample </ h3>
+<h3> Time :: Local sample </h3>
 
 This is a sample of the Time :: Local module.
 
-<h4> This is a sample to convert date and time (local time) to epoch seconds. </ h4>
+<h4> This is a sample to convert date and time (local time) to epoch seconds. </h4>
 
 <pre>
 use strict;
@@ -68,9 +68,9 @@ my $ year = 2000 --1900;
 
 my $ sec_from_epoch = timelocal ($ sec, $ min, $ hour, $ mday, $ month, $ year);
 print $ sec_from_epoch;
-</ pre>
+</pre>
 
-<h4> Convert date and time (local time) to epoch seconds </ h4>
+<h4> Convert date and time (local time) to epoch seconds </h4>
 
 <pre>
 my $ sec = 10;
@@ -85,7 +85,7 @@ my $ month = 10 -1;
 my $ year = 2000 --1900;
 
 my $ sec_from_epoch = timelocal ($ sec, $ min, $ hour, $ mday, $ month, $ year);
-</ pre>
+</pre>
 
 To convert a date and time (local time) to epoch seconds, use the timelocal function of the Time :: Local module.
 
@@ -95,7 +95,7 @@ The month starts at 0, so you need to use the actual month minus 1. The year is 
 
 To convert the date and time (Coordinated Universal Time) to epoch seconds, use the timegm function of the Time :: Local module.
 
-<h4> Sample using timegm function </ h4>
+<h4> Sample using timegm function </h4>
 
 <pre>
 use strict;
@@ -117,9 +117,9 @@ my $ year = 2000 --1900;
 
 my $ sec_from_epoch = timegm ($ sec, $ min, $ hour, $ mday, $ month, $ year);
 print $ sec_from_epoch;
-</ pre>
+</pre>
 
-<h4> Convert date and time (Coordinated Universal Time) to epoch seconds. </ h4>
+<h4> Convert date and time (Coordinated Universal Time) to epoch seconds. </h4>
 
 <pre>
 use Time :: Local'timegm';
@@ -136,7 +136,7 @@ my $ month = 10 --1;
 my $ year = 2000 --1900;
 
 my $ sec_from_epoch = timegm ($ sec, $ min, $ hour, $ mday, $ month, $ year);
-</ pre>
+</pre>
 
 To convert the date and time (Coordinated Universal Time) to epoch seconds, use the timegm function.
 

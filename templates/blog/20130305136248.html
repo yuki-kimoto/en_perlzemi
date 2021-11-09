@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-        <span itemprop = "name"> Object Oriented </ span> </a>
+        <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Introduction </ span>
+      <span itemprop = "name"> Introduction </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Introduction to Object Oriented </ h2>
+  </li>
+</ol>
+<h2> Introduction to Object Oriented </h2>
 
 
 
@@ -24,51 +24,51 @@ Many people find it difficult to do object-oriented programming in Perl, and don
 
 In fact, with the help of modules, Perl's object orientation is very straightforward. This time, I will explain Perl's object orientation using a module called Object :: Simple.
 
-<h3> Install Object :: Simple </ h3>
+<h3> Install Object :: Simple </h3>
 
 Install Object :: Simple. You can easily install modules using cpan.
 
 <pre>
 cpan Object :: Simple
-</ pre>
+</pre>
 
 Now you are ready to go.
 
-<h3> Class definition </ h3>
+<h3> Class definition </h3>
 
-In Perl, classes are defined using <strong> package </ strong>. First, use the <b> -base </ b> flag to create a class that inherits from Object :: Simple. Remember the following description as a spell first.
+In Perl, classes are defined using <strong> package </strong>. First, use the <b> -base </b> flag to create a class that inherits from Object :: Simple. Remember the following description as a spell first.
 
 <pre>
 package MyClass;
 use Object :: Simple -base;
-</ pre>
+</pre>
 
-<h3> Constructor </ h3>
+<h3> Constructor </h3>
 
-This way you can define a class called <b> MyClass </ b>. You can create an object from a class using the constructor <b> new </ b>. (This new is inherited from Object :: Simple.)
+This way you can define a class called <b> MyClass </b>. You can create an object from a class using the constructor <b> new </b>. (This new is inherited from Object :: Simple.)
 
 <pre>
 my $ obj = MyClass-> new;
-</ pre>
+</pre>
 
-The <b> new </ b> method can receive a hash or a hash reference.
+The <b> new </b> method can receive a hash or a hash reference.
     
 <pre>
 my $ obj = MyClass-> new (foo => 1, bar => 2);
 my $ obj = MyClass-> new ({foo => 1, bar => 2});
-</ pre>
+</pre>
 
 This is set as an attribute value.
 
-<h3> Accessor </ h3>
+<h3> Accessor </h3>
 
 Next, let's define an accessor. An accessor is a method for accessing an attribute value (instance variable). You can access the attribute values ​​by defining an accessor.
 
-Use the <b> has </ b> function to generate an accessor.
+Use the <b> has </b> function to generate an accessor.
 
 <pre>
 has'foo';
-</ pre>
+</pre>
 
 You can access the attribute values ​​by defining an accessor.
 
@@ -78,13 +78,13 @@ $ obj-> foo (1);
 
 #Get value
 my $ foo = $ obj-> foo;
-</ pre>
+</pre>
 
 You can also specify defaults for attribute values.
 
 <pre>
 has foo => 1;
-</ pre>
+</pre>
 
 When the accessor is first called if the attribute value is not set
 The default value is set to the attribute value.
@@ -92,7 +92,7 @@ The default value is set to the attribute value.
 <pre>
 # Get the default value of 1
 my $ default = $ obj-> foo;
-</ pre>
+</pre>
 
 If you want to specify a reference or object as the default value, it must be the return value of the subroutine reference.
 
@@ -100,32 +100,32 @@ If you want to specify a reference or object as the default value, it must be th
 has foo => sub {[]};
 has foo => sub {{}};
 has foo => sub {MyClass-> new};
-</ pre>
+</pre>
 
 You can also generate multiple accessors at once.
 
 <pre>
 has [qw / foo bar baz /];
 has [qw / foo bar baz /] => 0;
-</ pre>
+</pre>
 
-<h3> Inheritance </ h3>
+<h3> Inheritance </h3>
 
-Use <b> -base </ b> for inheritance. Let's create a <b> SubClass </ b> that inherits from <b> MyClass </ b>.
+Use <b> -base </b> for inheritance. Let's create a <b> SubClass </b> that inherits from <b> MyClass </b>.
 
 <pre>
 package MyClass;
 use Object :: Simple -base;
-</ pre>
+</pre>
 
 <pre>
 package SubClass;
 use MyClass -base;
-</ pre>
+</pre>
 
-<h3> Superclass method call </ h3>
+<h3> Superclass method call </h3>
 
-You can use <b> SUPER </ b> to call superclass methods.
+You can use <b> SUPER </b> to call superclass methods.
 
 <pre>
 package SubClass;
@@ -136,9 +136,9 @@ sub clear {
   
   $ self-> SUPER :: clear;
 }
-</ pre>
+</pre>
 
-<h3> Constructor override </ h3>
+<h3> Constructor override </h3>
 
 You may want to override the constructor in a subclass. To override the constructor:
 
@@ -153,29 +153,29 @@ sub new {
   
   return $ self;
 }
-</ pre>
+</pre>
 
 Since new is a constructor, be sure to return the object itself.
 
-<h3> Creating a class-Practice </ h3>
+<h3> Creating a class-Practice </h3>
 
-Oh mysteriously, Perl's object-oriented programming is almost master if you remember this much. Then, it is a practical edition. Let's create a <b> Point </ b> class and a <b> Point3D </ b> class.
+Oh mysteriously, Perl's object-oriented programming is almost master if you remember this much. Then, it is a practical edition. Let's create a <b> Point </b> class and a <b> Point3D </b> class.
 
-<h4> Point class </ h4>
+<h4> Point class </h4>
 
 <blockquote>
 <ul>
   <li>
     Point is a class that represents a point.
-  </ li>
+  </li>
   <li>
     It has accessors x and y.
-  </ li>
+  </li>
   <li>
     It has a method called clear that clears the values ​​of x and y to 0.
-  </ li>
-</ blockquote>
-</ ul>
+  </li>
+</blockquote>
+</ul>
 
 <pre>
 package Point;
@@ -192,7 +192,7 @@ sub clear {
 }
 
 1;
-</ pre>
+</pre>
 
 (The "1;" at the end is due to the rule that the file that writes the module must end with true.)
 
@@ -204,25 +204,25 @@ my $ point = Point-> new (x => 3, y => 5);
 print $ point-> x;
 $ point-> y (9);
 $ point-> clear;
-</ pre>
+</pre>
 
-<h4> Point3D class </ h4>
+<h4> Point3D class </h4>
 
 <blockquote>
 <ul>
   <li>
     Point3D is a class that represents a three-dimensional point.
-  </ li>
+  </li>
   <li>
     It has accessors x, y, z.
-  </ li>
+  </li>
   <li>
     It has a method called clear that clears the values ​​of x, y, z to 0.
-  </ li>
-</ blockquote>
-</ ul>
+  </li>
+</blockquote>
+</ul>
 
-<b> Point3D </ b> is created by inheriting <b> Point </ b>. The <b> clear </ b> method has been overridden to clear the values ​​of <b> x </ b>, <b> y </ b> and <b> z </ b>.
+<b> Point3D </b> is created by inheriting <b> Point </b>. The <b> clear </b> method has been overridden to clear the values ​​of <b> x </b>, <b> y </b> and <b> z </b>.
     
 <pre>
 package Point3D;
@@ -239,7 +239,7 @@ sub clear {
 }
 
 1;
-</ pre>
+</pre>
 
 The Point3D class can be used as follows.
 
@@ -249,13 +249,13 @@ my $ point = Point-> new (x => 3, y => 5, z => 8);
 print $ point-> z;
 $ point-> z (9);
 $ point-> clear;
-</ pre>
+</pre>
 
-<h3> Executable sample </ h3>
+<h3> Executable sample </h3>
 
 I'll write a sample that can be executed.
 
-<h4> lib / Point.pm </ h4>
+<h4> lib / Point.pm </h4>
 
 Create a directory called lib and create a file called Point.pm in it.
 
@@ -274,9 +274,9 @@ sub clear {
 }
 
 1;
-</ pre>
+</pre>
 
-<h4> lib / Point3D.pm </ h4>
+<h4> lib / Point3D.pm </h4>
 
 Create a file called Point3D.pm in a directory called lib.
 
@@ -295,9 +295,9 @@ sub clear {
 }
 
 1;
-</ pre>
+</pre>
 
-<h4> test.pl </ h4>
+<h4> test.pl </h4>
 
 This is a sample to read and use the class. You can add a module search path by using the lib module.
 
@@ -320,26 +320,26 @@ $ point-> clear;
 
 # 0 is displayed
 print $ point-> z. "\ n";
-</ pre>
+</pre>
 
-<h4> Script execution </ h4>
+<h4> Script execution </h4>
 The directory structure is as follows.
 
 <pre>
 test.pl
 lib --Point.pm
     --Point3D.pm
-</ pre>
+</pre>
 
 Please execute as follows.
 
 <pre>
 perl test.pl
-</ pre>
+</pre>
 
-<h3> Object-oriented programming concept </ h3>
+<h3> Object-oriented programming concept </h3>
 
-<h4> Inheritance </ h4>
+<h4> Inheritance </h4>
 
 To better understand Object :: Simple, I would like to explain object-oriented concepts.
 
@@ -353,7 +353,7 @@ The first object-oriented concept is "inheritance". "Inheritance" means "if clas
 + --- +
 | Q | Subclass
 + --- + Define method3
-</ pre>
+</pre>
 
 Since class Q inherits from class P, class Q can call all the methods of class P in addition to the methods of class Q. In other words, class Q can call method1, method2 and method3.
 
@@ -363,35 +363,35 @@ use Object :: Simple -base;
 
 sub method1 {...}
 sub method2 {...}
-</ pre>
+</pre>
 
 <pre>
 package Q;
 use P -base;
 
 sub method3 {...}
-</ pre>
+</pre>
 
 Perl has useful functions and methods to help with object-oriented programming. To find out which class an object belongs to, use the ref function.
 
 <pre>
 my $ class = ref $ obj;
-</ pre>
+</pre>
 
 To find out if an object inherits a particular class, use the isa method.
 
 <pre>
 $ obj-> isa ('MyClass');
-</ pre>
+</pre>
 
 Use the can method to find out if an object (or class) can call a particular method.
 
 <pre>
 MyClass-> can ('method1');
 $ obj-> can ('method1');
-</ pre>
+</pre>
 
-<h4> Encapsulation </ h4>
+<h4> Encapsulation </h4>
 
 The second concept of object-oriented programming is encapsulation. "Encapsulation" means "no direct access to data internally". You must use the published methods described in the documentation. By following this rule, everything will be simple.
 
@@ -400,7 +400,7 @@ In order to follow this rule, it is necessary to generate an accessor to get and
 <pre>
 my $ value = $ obj-> foo;
 $ obj-> foo (1);
-</ pre>
+</pre>
 
   Accessing data directly is a bad habit.
 
@@ -408,9 +408,9 @@ $ obj-> foo (1);
 # Not good
 my $ value = $ obj-> {foo};
 $ obj-> {foo} = 1;
-</ pre>
+</pre>
 
-<h4> Polymorphism </ h4>
+<h4> Polymorphism </h4>
 
 The third concept of object-oriented programming is "polymorphism".
 "Polymorphism" becomes two concepts of "overload" and "override"
@@ -425,14 +425,14 @@ package P;
 use Object :: Simple -base;
 
 sub method1 {return 1}
-</ pre>
+</pre>
 
 <pre>
 package Q;
 use P -base;
 
 sub method1 {return 2}
-</ pre>
+</pre>
 
 Method1 of class P returns a value of 1. Method1 of class Q returns a value of 2. In other words, in class Q, method1 has been overridden.
 
@@ -444,7 +444,7 @@ $ obj_p-> method1;
 Returns # 2
 my $ obj_q = Q-> new;
 $ obj_q-> method1; #Return value is 2
-</ pre>
+</pre>
 
 If you want to call a method of the base class from a subclass, use the SUPER pseudo-class.
 
@@ -460,7 +460,7 @@ sub method1 {
   
   return 2 + $ value;
 }
-</ pre>
+</pre>
 
 new can be overridden. For example, if you want to initialize the object, override new.
 
@@ -472,7 +472,7 @@ sub new {
   
   return $ self;
 }
-</ pre>
+</pre>
 
 If you want to change the argument of new, you can solve it by overriding new.
     
@@ -484,11 +484,11 @@ sub new {
   
   return $ self;
 }
-</ pre>
+</pre>
 
 Understanding these three concepts, "inheritance," "encapsulation," and "polymorphism," will create a powerful enough object-oriented program and make the source code readable by users in other languages.
 
-<h3> Package block syntax </ h3>
+<h3> Package block syntax </h3>
 
 In Perl 5.14, a package block syntax has been added that allows you to write the following, eliminating the need to write a "1;" at the end of the file. If you are using Perl 5.14 or higher, you may want to try it.
 
@@ -506,9 +506,9 @@ package Point {
     $ self-> y (0);
   }
 }
-</ pre>
+</pre>
 
-<h3> Summary </ h3>
+<h3> Summary </h3>
 
 Perl is a flexible language. You can be completely object-oriented in the language Perl. Perl's object-orientation is sometimes ridiculed as a retrofit implementation, but it's functionally object-oriented and complete.
 

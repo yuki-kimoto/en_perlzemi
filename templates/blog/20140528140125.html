@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20160225145640.html">
-      <span itemprop = "name"> Version information </ span> </a>
+      <span itemprop = "name"> Version information </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
+    <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Perl 5.20 released-support for ipv6, new subroutine syntax, new slice notation, Unicode 6.3 support, etc. </ h2>
+  </li>
+</ol>
+<h2> Perl 5.20 released-support for ipv6, new subroutine syntax, new slice notation, Unicode 6.3 support, etc. </h2>
 
 
 
@@ -24,19 +24,19 @@ Perl 5.20 has been released. There are quite a lot this time. I will pick it up 
 
 <blockquote>
 <a href="http://argrath.ub32.org/perldocjp/5.20.0/perl5200delta.html"> Features added / changed in Perl 5.20 </a>
-</ blockquote>
+</blockquote>
 
-<h3> IO :: Socket :: IP becomes core module </ h3>
+<h3> IO :: Socket :: IP becomes core module </h3>
 
 IO :: Socket :: IP is now the core module in Perl 5.20. Perl used IO :: Socket :: INET when using sockets, but it seems to be a module that can be used with the same interface, including support for ipv6.
 
-<h3> CGI, Module :: Build will be deprecated </ h3>
+<h3> CGI, Module :: Build will be deprecated </h3>
 
 The CGI module, which has been a core module for many years, will be removed from the core in the next release. .. Also, Module :: Build, which can do make equivalents in pure Perl, will be out of the core in the next release.
 
 Starting with the next release of Perl 5.22, the CGI module will need to be installed from cpan if needed. As for Module :: Build, it will be installed automatically if necessary, so there seems to be no problem.
 
-<h3> Subroutine signature </ h3>
+<h3> Subroutine signature </h3>
 
 Subroutine signatures have been added experimentally. This is a function that can be used with ordinary arguments in Perl. It is still in the experimental stage, so you will be warned if you use it.
 
@@ -46,7 +46,7 @@ use feature'signatures';
 sub foo ($ x, $ y) {
   ...
 }
-</ pre>
+</pre>
 
 See <a href="/blog/20140213139225.html"> Perl 5.20 experimentally introduces subroutine signatures </a> for more information.
 
@@ -56,11 +56,11 @@ Along with this, when writing a conventional prototype, the prototype attribute 
 sub foo: prototype ($$) {
   ...
 }
-</ pre>
+</pre>
 
 This feature is so good that I hope the warning goes away early on.
 
-<h3> New notation for array slices and hash slices </ h3>
+<h3> New notation for array slices and hash slices </h3>
 
 Array slices and hash slices can now be written in a new notation.
 
@@ -72,13 +72,13 @@ my ($ title, $ author) = $ array_ref-> @ [0, 1];
 
 # Hash slice
 my ($ title, $ author) = $ hash_ref-> @ {'title','author'};
-</ pre>
+</pre>
 
 The notation "$ aref-> @ *" has also been added, but I personally thought that the notation "$ aref-> @ *" would not be necessary. If you want to take the whole thing, it would be enough if you could do "@ $ aref".
 
 Slice notation is easy to understand and convenient.
 
-<h3> New slices "index / value slice" and "key / value slice" and </ h3>
+<h3> New slices "index / value slice" and "key / value slice" and </h3>
 
 An "index / value slice" has been added that allows you to get an "index-value" pair when you specify an index in an array.
 
@@ -87,7 +87,7 @@ my @array = (1, 3, 5);
 
 # (0 => 1, 1 => 3)
 my% index_values ​​=% array [0, 1];
-</ pre>
+</pre>
 
 A "key / value slice" has been added that allows you to get a "key / value" pair by specifying a key in the hash.
 
@@ -96,27 +96,27 @@ my% hash = (a => 1, b => 2, c => 3);
 
 # (a => 1, b => 2);
 my% key_values ​​=% hash {'a','b'};
-</ pre>
+</pre>
 
 It's convenient, but it's a little difficult to read unless you get used to it.
 
-<h3> Improved string copy performance </ h3>
+<h3> Improved string copy performance </h3>
 
 Copy-on-write now works when copying strings. If you just refer to it, even large strings will copy very quickly and you won't have to use a scalar reference.
 
-<h3> ithread has been deprecated </ h3>
+<h3> ithread has been deprecated </h3>
 
 ithread has been officially deprecated. The ithread looks like a fast, lightweight thread for multitasking, but that's not the case, it's very hard to use and heavy.
 
 Historically, it's probably implemented to emulate forks on Windows, but it's marked as deprecated because it was so misleading and difficult for users to use. I think it's a good thing.
 
-<h3> Other minor changes </ h3>
+<h3> Other minor changes </h3>
 
 <ul>
   <li>
     Supports Unicode 6.3
-  </ li>
+  </li>
   <li>
     find2perl, s2p, a2p have been deprecated. If you want to use it from the next release of Perl 5.22, you need to install it from cpan.
-  </ li>
-</ ul>
+  </li>
+</ul>

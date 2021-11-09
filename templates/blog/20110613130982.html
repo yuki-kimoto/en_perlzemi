@@ -1,37 +1,37 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Errno --Constant representing system error number </ h2>
+  </li>
+</ol>
+<h2> Errno --Constant representing system error number </h2>
 
 
 
-You can use the <strong> Errno </ strong> module to import constants that represent system error numbers.
+You can use the <strong> Errno </strong> module to import constants that represent system error numbers.
 
 <pre>
 use Errno qw / EAGAIN EINTR ECONNRESET EWOULDBLOCK /;
-</ pre>
+</pre>
 
 Please refer to here for the types of constants that can be imported.
 
 <ul>
   <li>
     <a href="/blog/20110612130982.html"> Unix errno list </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 You can find out what kind of error occurred by numerically comparing the system call error with the special variable $! To which it is assigned.
 
@@ -43,6 +43,6 @@ You can find out what kind of error occurred by numerically comparing the system
 if ($! == EAGAIN) {
 
 }
-</ pre>
+</pre>
 
 Please note that $! Is a special variable and is evaluated as an error number when a numerical comparison is performed, and as an error content when used as a character string.

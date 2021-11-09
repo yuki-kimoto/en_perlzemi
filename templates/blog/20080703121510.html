@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Hash :: Util --Prohibit the addition of hash keys </ h2>
+  </li>
+</ol>
+<h2> Hash :: Util --Prohibit the addition of hash keys </h2>
 
 
 
@@ -28,7 +28,7 @@ Hash :: Util :: lock_keys (% hash);
 
 # lift
 Hash :: Util :: unlock_keys (% hash);
-</ pre>
+</pre>
 
 You can use Hash :: Util :: lock_keys to limit the keys in a hash. If you specify only a hash as an argument, the addition of keys other than the current key is prohibited.
 
@@ -39,26 +39,26 @@ Limited to # key1 and key2.
 Hash :: Util :: lock_keys (% hash, @restrict_keys);
 # Remove restrictions.
 Hash :: Util :: unlock_keys (% hash);
-</ pre>
+</pre>
 
 If you specify a key as the second argument, you can prohibit the addition of keys other than that key.
 
 The Hash :: Util :: lock_keys function does not prohibit delete keys from being deleted. Only the addition of keys is prohibited.
 
-<h3> Prohibit changing hash value and adding / deleting keys </ h3>
+<h3> Prohibit changing hash value and adding / deleting keys </h3>
 
 <pre>
 Hash :: Util :: lock_hash (% hash);
 
 # Lift the prohibition on hash changes
 Hash :: Util :: lock_hash (% hash);
-</ pre>
+</pre>
 
 You can use the Hash :: Util :: lock_hash function to prevent key additions, deletions and value changes. You can treat the key and its corresponding value as read-only.
 
 To make the hash completely read-only, use Hash :: Util :: lock_hash_recurse. If the hash value contains a reference, you can prevent the reference from changing the value it points to.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that uses Hash :: Util to limit the change of hash key and value.
 
@@ -112,7 +112,7 @@ print "$ @ \ n";
 
 # Lift the prohibition on hash changes
 Hash :: Util :: lock_hash (% hash);
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100312126967.html"> eval </a>
 
@@ -129,4 +129,4 @@ Attempt to access disallowed key'key3' in a restricted hash at --line 28.
 Modification of a read-only value attempted at --line 37.
 
 Attempt to access disallowed key'key3' in a restricted hash at --line 40.
-</ pre>
+</pre>

@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Time :: Piece --A new way to handle dates and times </ h2>
+  </li>
+</ol>
+<h2> Time :: Piece --A new way to handle dates and times </h2>
 
 
 
@@ -32,10 +32,10 @@ For general information on dates and times, please refer to the following.
 <ul>
   <li>
     <a href="/blog/20161123147990.html"> Handling dates and times in Perl </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Acquisition of time / date information </ h3>
+<h3> Acquisition of time / date information </h3>
 
 Use the Time :: Piece module as follows: When used, the Time :: Piece module overwrites the core localtime and gmtime.
 
@@ -53,7 +53,7 @@ my $ mday = $ t-> mday;
 my $ hour = $ t-> hour;
 my $ minute = $ t-> minute;
 my $ second = $ t-> sec;
-</ pre>
+</pre>
 
 You can get the Time :: Piece object by calling localtime, and you can get the date and time information from now on.
 
@@ -68,11 +68,11 @@ $ month + = 1;
 
 # Year is obtained by subtracting 1900, so add 1900
 $ year + = 1900;
-</ pre>
+</pre>
 
 It is more intuitive to use localtime of Time :: Piece to handle date and time information.
 
-<h3> List of information that can be obtained with Time :: Piece </ h3>
+<h3> List of information that can be obtained with Time :: Piece </h3>
 
 A list of information that can be obtained with Time :: Piece.
 
@@ -80,240 +80,240 @@ A list of information that can be obtained with Time :: Piece.
   <tr>
     <td>
       $ t-> year
-    </ td>
+    </td>
     <td>
        Year
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> _ year
-    </ td>
+    </td>
     <td>
        Year-1900 (same as localtime for standard function) = "aaa"
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> yy
-    </ td>
+    </td>
     <td>
        Last two digits of the year
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> mon
-    </ td>
+    </td>
     <td>
        Month (starting from 1)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> _mon
-    </ td>
+    </td>
     <td>
        Month (starting at 0, same as the standard function localtime)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> monname
-    </ td>
+    </td>
     <td>
        Abbreviated name of month (Feb, etc.)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> month
-    </ td>
+    </td>
     <td>
        Same as $ t-> monname
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> fullmonth
-    </ td>
+    </td>
     <td>
        Month name (February, etc.)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> mday
-    </ td>
+    </td>
     <td>
        Day
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> day_of_month
-    </ td>
+    </td>
     <td>
        Same as $ t-> mday
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> hour
-    </ td>
+    </td>
     <td>
        24 hour
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> min
-    </ td>
+    </td>
     <td>
        Minutes
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> minute
-    </ td>
+    </td>
     <td>
        Same as $ t-> min
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> sec
-    </ td>
+    </td>
     <td>
        Seconds
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> second
-    </ td>
+    </td>
     <td>
        Same as $ t-> sec
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> wday
-    </ td>
+    </td>
     <td>
        Week number (1 is Sunday)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> _wday
-    </ td>
+    </td>
     <td>
        Week number (0 is Sunday)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> day_of_week
-    </ td>
+    </td>
     <td>
        $ t-> _wday
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> wdayname
-    </ td>
+    </td>
     <td>
        Weekly abbreviation (Tue, etc.)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> day
-    </ td>
+    </td>
     <td>
        $ t-> wdayname
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> fullday
-    </ td>
+    </td>
     <td>
        Week name (Tuesday, etc.)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> yday
-    </ td>
+    </td>
     <td>
        How many days in the year
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> day_of_year
-    </ td>
+    </td>
     <td>
        Same as $ t-> yday
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> isdst
-    </ td>
+    </td>
     <td>
        Whether it is daylight saving time
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> daylight_savings
-    </ td>
+    </td>
     <td>
        Same as $ t-> isdst
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> epoch
-    </ td>
+    </td>
     <td>
        Seconds from epoch
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> Judgment of date </ h3>
+<h3> Judgment of date </h3>
 
 You can use Time :: Piece to determine if it is a leap year and if it is the last day of the month.
 
@@ -323,138 +323,138 @@ $ t-> is_leap_year
 
 # Get the last day of the month (return the number 28-31)
 $ t-> month_last_day
-</ pre>
+</pre>
 
-<h3> Format date / time </ h3>
+<h3> Format date / time </h3>
 
 You may want to format the date / time and output it. Time :: Piece provides several fixed formats. You can also format it freely using the strftime method.
 
-<h4> [A] Formats provided by default </ h4>
+<h4> [A] Formats provided by default </h4>
 
 The formats provided by default are as follows.<table>
   <tr>
     <td>
       $ t-> hms
-    </ td>
+    </td>
     <td>
        12:34:56
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> hms (".")
-    </ td>
+    </td>
     <td>
        12.34.56
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> time
-    </ td>
+    </td>
     <td>
        Same as $ t-> hms
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> ymd
-    </ td>
+    </td>
     <td>
        2000-02-29
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> date
-    </ td>
+    </td>
     <td>
        Same as $ t-> ymd
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> mdy
-    </ td>
+    </td>
     <td>
        02-29-2000
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> mdy ("/")
-    </ td>
+    </td>
     <td>
        02/29/2000
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> dmy
-    </ td>
+    </td>
     <td>
        29-02-2000
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> dmy (".")
-    </ td>
+    </td>
     <td>
        29.02.2000
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> datetime
-    </ td>
+    </td>
     <td>
        2000-02-29T12: 34: 56 (ISO 8601)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ t-> cdate
-    </ td>
+    </td>
     <td>
        Tue Feb 29 12:34:56 2000
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       "$ t"
-    </ td>
+    </td>
     <td>
        Same as $ t-> cdate
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> [B] Format customization </ h4>
+<h4> [B] Format customization </h4>
 
 If you want to customize the format freely, use the strftime method. Specify the time representation in $ format.
 
 <pre>
 $ t-> strftime ($ format)
-</ pre>
+</pre>
 
 This is a sample format of date and time.
 
 <pre>
 $ t-> strftime ('% Y-% m-% d% H:% M:% S'); # 2009-11-34 12:14:15
-</ pre>
+</pre>
 
 A list of formats that can be used with strftime.
 
@@ -501,33 +501,33 @@ Same as% T:% H:% M:% S. Hours, minutes and seconds (such as 23:14:03)
 % z: Time zone time shift from UTC (Coordinated Universal Time))
 % Z: Timezone name
 %%:%
-</ pre>
+</pre>
 
-<h4> Precautions when handling Japanese </ h4>
+<h4> Precautions when handling Japanese </h4>
 
 Note that Time :: Piece's strftime method always returns a byte string, whether the input is a byte string or an internal string.
 
 <pre>
 # Byte string is always returned
 my $ bytes = $ tp-> strftime ("% Y year% m month");
-</ pre>
+</pre>
 
-<h3> Parse the character string that expresses the date / time </ h3>
+<h3> Parse the character string that expresses the date / time </h3>
 
 You can parse date and time representations to create Time :: Piece objects. Use the strptime method to parse dates and times.
 
 <pre>
 my $ t = Time :: Piece-> strptime (character string representing date / time, format);
-</ pre>
+</pre>
 
 As a sample, let's parse the MySQL date representation and create a Time :: Piece object. Use the above strftime format for the format.
 
 <pre>
 my $ datetime_mysql = '2009-12-31 23:59:59';
 my $ t = Time :: Piece-> strptime ($ datetime_mysql,'% Y-% m-% d% H:% M:% S');
-</ pre>
+</pre>
 
-<h3> Localization </ h3>
+<h3> Localization </h3>
 
 By default, month and week names are in English. If you want to get the Japanese week name, pass an array of day names to the method to get the week name.
 
@@ -536,17 +536,17 @@ my @week_names = ('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 my $ t = Time :: Piece :: localtime;
 # Get week name in Japanese
 my $ wday = $ t-> wdayname (@week_names);
-</ pre>
+</pre>
 
-<h3> Calculation of date / time information </ h3>
+<h3> Calculation of date / time information </h3>
 
-<h4> Tempe :: Piece object subtraction </ h4>
+<h4> Tempe :: Piece object subtraction </h4>
 
 Time :: Piece can also calculate dates and times. If you subtract between Time :: Piece objects, the return value will be a Time :: Seconds object. This object is in seconds when evaluated as a string.
 
 <pre>
 my $ sec = $ t2- $ t1;
-</ pre>
+</pre>
 
 You can also convert Time :: Soconds objects to days and years.
 
@@ -560,18 +560,18 @@ $ sec-> months;
 
 # 30 days
 $ sec-> financial_months;
-</ pre>
+</pre>
 
 The conversion to days and years is done according to the following rules. One day is converted to 24 hours. One week is converted to 7 days. One year is converted to 365.24225 days. One year is converted to 12 months.
 
-<h4> Addition of Time :: Piece objects </ h4>
+<h4> Addition of Time :: Piece objects </h4>
 
 Time :: Piece objects cannot be added to each other. You can add seconds or a Time :: Seconds object to the Timpe :: Piece object.
 
 <pre>
 $ t + 533;
 $ t + Time :: Seconds-> new (300);
-</ pre>
+</pre>
 
 Time :: Seconds also provides constants that can be added to the Time :: Piece object.
 
@@ -585,36 +585,36 @@ ONE_YEAR
 ONE_FINANCIAL_MONTH
 LEAP_YEAR
 NON_LEAP_YEAR
-</ pre>
+</pre>
 
 To add 5 days: The Time :: Seconds module must be loaded to take advantage of these constants.
 
 <pre>
 use Time :: Seconds;
 $ t + ONE_DAY * 5
-</ pre>
+</pre>
 
-<h3> Date comparison </ h3>
+<h3> Date comparison </h3>
 
 You can use comparison operators to compare dates. You can use "<", ">", "<=", "> =", "<=>", "==" and "! =".
 
 <pre>
 $ t1 <$ t2
-</ pre>
+</pre>
 
-<h3> Create Time :: Piece object </ h3>
+<h3> Create Time :: Piece object </h3>
 
 As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time :: Piece object at any date and time.
 
 <pre>
 my $ t = Time :: Piece-> strptime ('2009-12-31 23:59:59','% Y-% m-% d% H:% M:% S');
-</ pre>
+</pre>
 
 (When I read the source code, there is a parse method, but when I tried it, it seems to be broken ... It seems that it is private because it is not in the document.)
 
-<h3> Get an object that represents today's date </ h3>
+<h3> Get an object that represents today's date </h3>
 
-To use the <strong> Time :: Piece </ strong> module to get an object that represents today:
+To use the <strong> Time :: Piece </strong> module to get an object that represents today:
 
 <pre>
 use Time :: Piece;

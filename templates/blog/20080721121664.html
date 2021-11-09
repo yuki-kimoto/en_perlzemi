@@ -1,48 +1,48 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <a href="/blog/20110212130370.html"> <span itemprop = "name"> File input / output </ span> </a>
+      <a href="/blog/20110212130370.html"> <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> Understand the concept of file handles </ h2>
+  </li>
+</ol>
+<h2> Understand the concept of file handles </h2>
 
 
 
 The concept of file handles in Perl is confusing, so I'll explain it here.
 
-<h3> File handles are conceptual rather than real </ h3>
+<h3> File handles are conceptual rather than real </h3>
 
 When we talk about file handles in Perl, we mean multiple entities that Perl recognizes as file handles. There is no such thing as a file handle.
 
-<h3> What Perl recognizes as a filehandle </ h3>
+<h3> What Perl recognizes as a filehandle </h3>
 
 <ol>
   <li>
     Symbol (FH)
-  </ li>
+  </li>
   <li>
     Type glob (* FH)
-  </ li>
+  </li>
   <li>
     Reference to typeglobs (\ * FH)
-  </ li>
+  </li>
   <li>
     IO :: Handle class object
-  </ li>
+  </li>
   <li>
     An object of a class that inherits the IO :: Handle object (such as IO :: File)
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 Perl recognizes the above five as file handles. The following statements are all valid.
 
@@ -66,15 +66,15 @@ open ($ fh, "<", $ file) or die "$!";
 use IO :: File;
 my $ fh = IO :: File-> new;
 open ($ fh, "<", $ file) or die "$!";
-</ pre>
+</pre>
 
-<h3> How to write a modern file open </ h3>
+<h3> How to write a modern file open </h3>
 
 How to write a modern file open
 <pre>
 open (my $ fh, "<", $ file)
   or die "Can't open file $ file: $!";
-</ pre>
+</pre>
 
 is.
 

@@ -1,32 +1,32 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Pod :: Usage --POD document output </ h2>
+  </li>
+</ol>
+<h2> Pod :: Usage --POD document output </h2>
 
 
 
-<strong> Pod :: Usage </ strong> is a module for outputting POD documents. You can use a function called <strong> pod2usage </ strong> that displays the documentation and terminates the program.
+<strong> Pod :: Usage </strong> is a module for outputting POD documents. You can use a function called <strong> pod2usage </strong> that displays the documentation and terminates the program.
 
 If you use a function, it's a good idea to import it explicitly.
 
 <pre>
 #Import function
 use Pod :: Usage'pod2usage';
-</ pre>
+</pre>
 
 This is the most basic usage sample of pod2 usage. Exit the program by displaying the item "SYNOPSIS" in the document.
 
@@ -46,14 +46,14 @@ my $ file = shift;
 
 # If there is no argument, display SYNOPSIS and exit the program
 pod2usage () unless $ file;
-</ pre>
+</pre>
 
 If there is no <a href="/blog/20080108132865.html"> command line argument </a>, the following will be displayed and the program will terminate.
 
 <pre>
 Usage:
     script.pl FILE
-</ pre>
+</pre>
 
 This is a sample that combines Pod :: Usage and Getopt :: Long.
 <pre>
@@ -74,4 +74,4 @@ GetOptions ('force' => \ $ force) or pod2usage;
 
 my $ file = shift;
 pod2usage unless $ file;
-</ pre>
+</pre>

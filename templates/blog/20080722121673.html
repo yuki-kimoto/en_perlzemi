@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop = "name"> operator </ span> </a>
+      <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Line input operator "& lt; & gt;" --Read one line from a file </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Line input operator "& lt; & gt;" --Read one line from a file </h2>
 
 
 
-Use the <strong> line input operator "<>" </ strong> to read <strong> files line by line </ strong>. When there are no more lines to read, undef is returned.
+Use the <strong> line input operator "<>" </strong> to read <strong> files line by line </strong>. When there are no more lines to read, undef is returned.
 
 <pre>
 my $ line = <$ fh>;
-</ pre>
+</pre>
 
 Note that unlike other operators, you put the filehandle between "<" and ">".
 
@@ -33,7 +33,7 @@ Usually used in combination with <a href="/blog/20100123126425.html"> while stat
 while (my $ line = <$ fh>) {
   # ...
 }
-</ pre>
+</pre>
 
 If you think about it as above, you may feel that it will not work properly if a false value such as "0" is returned. Since a line feed code is inserted in the middle of the line, "0" is not returned, but "0" may be returned at the end.
 
@@ -43,18 +43,18 @@ But don't worry. This is because the file operator is interpreted as follows onl
 while (defined (my $ line = <$ fh>)) {
   # ...
 }
-</ pre>
+</pre>
 
 So, as long as you use it in combination with while, the first writing is fine.
 
-<h3> Diamond operator </ h3>
+<h3> Diamond operator </h3>
 
-The line input operator "<>" with nothing between "<" and ">" is specially called the <strong> diamond operator </ strong>. If the file handle is omitted, it can be read line by line from the standard input and the file name specified by the <a href="/blog/20080108132865.html"> command line argument </a>.
+The line input operator "<>" with nothing between "<" and ">" is specially called the <strong> diamond operator </strong>. If the file handle is omitted, it can be read line by line from the standard input and the file name specified by the <a href="/blog/20080108132865.html"> command line argument </a>.
 
 <pre>
 #Diamond operator
 my $ line = <>;
-</ pre>
+</pre>
 
 You can easily read a single line from a file using the diamond operator. Reads line by line from the file given by standard input and command line arguments.
 
@@ -62,7 +62,7 @@ You can easily read a single line from a file using the diamond operator. Reads 
 while (my $ line = <>) {
   ...
 }
-</ pre>
+</pre>
 
 The advantage of using the diamond operator is that you can easily write a "program that can receive the output of other programs from standard input". This is the same behavior as common UNIX utilities such as cat, sed, awk, grep, etc.
 
@@ -72,7 +72,7 @@ script.pl file.txt
 
 # Receive the output of other programs from standard input using pipes
 grep hello file.txt | script.pl
-</ pre>
+</pre>
 
 Another advantage is that you don't have to bother to open or close. For short programs, it is convenient to use the diamond operator because it is easy to write the program.
 
@@ -86,27 +86,27 @@ use warnings;
 while (my $ line = <>) {
   print $ line;
 }
-</ pre>
+</pre>
 
-<h3> Get into the array at once </ h3>
+<h3> Get into the array at once </h3>
 
 You can populate an array with all rows by evaluating the row input operator in a list context. However, be aware that if the file is large, it will use a lot of memory.
 
 <pre>
 my @lines = <$ fh>
-</ pre>
+</pre>
 
-<h3> Import all the contents of the file </ h3>
+<h3> Import all the contents of the file </h3>
 
 To capture the entire contents of a file, it is common to write something like this:
 
 <pre>
 my $ content = do {local $ /; <$ fh>};
-</ pre>
+</pre>
 
 "$ /" Is the line delimiter. If you leave this undefined, the line input operator will populate the entire contents of the file. I'm using <a href="/blog/20080309120507.html"> local </a> to temporarily undefine it. The do block returns the last evaluated value. So, with this description, you can read the contents of the file at once.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that reads a file line by line using the line input operator. Repeat reading one line in a while loop.
 
@@ -138,39 +138,39 @@ while (my $ line = readline $ fh) {
 }
 
 close $ fh;
-</ pre>
+</pre>
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> (1) Read 1-line file </ h4>
+<h4> (1) Read 1-line file </h4>
 <pre>
 while (my $ line = readline $ fh) {
     # process ...
 }
-</ pre>
+</pre>
 To read the file line by line, use the readline function. $ fh is the filehandle opened by the open function. Repeat reading one line with a while statement to read to the end of the file.
 
 It may seem strange to read one line at the position where the conditional statement of the while loop is written, but such a description is possible. With the description my $ line = readline $ fh, I declare a lexical variable called $ line and assign the read line to $ line. $ line is valid only inside a while loop and is not visible from the outside.
 
 When the end of the file is reached, the readline function returns undef and $ line is assigned undef. Since $ line is undef, the while statement ends.
 
-<h4> (2) Remove line breaks with chomp function </ h4>
+<h4> (2) Remove line breaks with chomp function </h4>
 
 <pre>
 while (my $ line = readline $ fh) {
   chomp $ line;
   # process ...
 }
-</ pre>
+</pre>
 
 Line breaks are often unnecessary after reading a line, so use the chomp function to remove the line breaks.
 
-<h4> (3) Another way to write readline <$ fh> </ h4>
+<h4> (3) Another way to write readline <$ fh> </h4>
 
 <pre>
 while (my $ line = <$ fh>) {
   # process ...
 }
-</ pre>
+</pre>
 
 In Perl, putting a filehandle inside <> has the same meaning as readline $ fh. Use this if you prefer a simple description.

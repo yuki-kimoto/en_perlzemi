@@ -1,14 +1,14 @@
-<h2> Perl 5.28 released-Unicode 10.0 support, faster string concatenation, ref function, keys function, faster for loop </ h2>
+<h2> Perl 5.28 released-Unicode 10.0 support, faster string concatenation, ref function, keys function, faster for loop </h2>
 
 <a href="http://f.hatena.ne.jp/perlcodesample/20180626074702"> <img src = "https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample" /20180626/20180626074702.png "alt =" 20180626074702 "> </a>
 
 Perl 5.28 was released on June 22, 2018. Introducing some nice features in Perl 5.28.
 
-<h4> Unicode 10.0 support </ h4>
+<h4> Unicode 10.0 support </h4>
 
 <a href="https://internet.watch.impress.co.jp/docs/news/1066482.html"> Unicode 10.0 </a> is now supported. It seems that 56 kinds of new emoji can be used.
 
-<h4> Speeding up string concatenation </ h4>
+<h4> Speeding up string concatenation </h4>
 
 Multiple string concatenation has been sped up. This is because it is now processed internally by a single opcode called multiconcat.
 
@@ -16,7 +16,7 @@ Code like the following will be accelerated.
 
 <pre>
     $ s. = "a = $ a b = $ b \ n"
-</ pre>
+</pre>
 
 
 For example, on an x86_64 system, the following string concatenation code is four times faster.
@@ -31,54 +31,54 @@ For example, on an x86_64 system, the following string concatenation code is fou
         $ s = "\ x {100} wxyz";
         $ s. = "foo = $ a bar = $ b baz = $ c";
     }
-</ pre>
+</pre>
 
 In addition, sprintf, which contains constant strings, has also been optimized using multiconcat.
 
-<h4> Speeding up the ref function </ h4>
+<h4> Speeding up the ref function </h4>
 
 The ref function is now much faster in boolean contexts. This is because the boolean context no longer creates temporary strings.
 
-<h4> Speeding up the keys function </ h4>
+<h4> Speeding up the keys function </h4>
 
 The keys function has been more optimized in the scalar context.
 
-<h4> Speed ​​up for loop </ h4>
+<h4> Speed ​​up for loop </h4>
 
 For loops and similar syntax have become more efficient in most cases.
  
-<h4> Perl -i replacement is safe </ h4>
+<h4> Perl -i replacement is safe </h4>
 
 Replacing file contents with perl -i is now safer as it is backed up during editing.
 
-<h4> Fixed a bug that cannot be installed on Cent OS 5 </ h4>
+<h4> Fixed a bug that cannot be installed on Cent OS 5 </h4>
 
 Perl 5.26 couldn't be installed on Cent OS 5, but Perl 5.28 allows it to be installed. Try it in my environment and see if it can be installed!
 
-<h4> Attribute position changed in experimental subroutine signature </ h4>
+<h4> Attribute position changed in experimental subroutine signature </h4>
 
 The position of the attribute in the experimental subroutine signature has changed.
 
 <pre>
 Before change sub foo ($ foo, $ bar): attr;
 After change sub foo: attr ($ foo, $ bar)
-</ pre>
+</pre>
 
-<h3> Incompatible changes </ h3>
+<h3> Incompatible changes </h3>
 
-<h4> Perl requires C89 </ h4>
+<h4> Perl requires C89 </h4>
 
 A compiler that can compile C89 is now required to compile Perl. It's not C99 or C11, so don't get me wrong.
 
-<h4> Setting the value to $ {^ ENCODING} is invalid </ h4>
+<h4> Setting the value to $ {^ ENCODING} is invalid </h4>
 
 Please note if anyone has set $ {^ ENCODING} in the past.
 
-<h4> The sort algorithm by the sort pragma can no longer be specified </ h4>
+<h4> The sort algorithm by the sort pragma can no longer be specified </h4>
 
 You can no longer specify the sort algorithm with the sort pragma. The Perl default sort algorithm is always used.
 
-<h3> Perl 5.28 release miscellaneous thoughts </ h3>
+<h3> Perl 5.28 release miscellaneous thoughts </h3>
 
 I feel that this release focuses on small performance improvements. I'm very happy that the improved string performance benefits all Perl users.
 

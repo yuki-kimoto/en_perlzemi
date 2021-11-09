@@ -1,35 +1,35 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> utf8 --Converts a string written in UTF-8 of the source code to an internal string </ h2>
+  </li>
+</ol>
+<h2> utf8 --Converts a string written in UTF-8 of the source code to an internal string </h2>
 
 
 
-The <strong> utf8 </ strong> module allows you to convert a string written in UTF-8 in your source code to an internal string.
+The <strong> utf8 </strong> module allows you to convert a string written in UTF-8 in your source code to an internal string.
 
 <pre>
 #Convert a string written in UTF-8 in the source code to an internal string
 use utf8;
 my $ message ='aiueo';
-</ pre>
+</pre>
 
 Save the source code in UTF-8. The string'aiueo'is automatically converted to an internal string.
 
-<h3> FAQ about utf8 pragma </ h3>
+<h3> FAQ about utf8 pragma </h3>
 
 Q, Regarding the function of the utf8 pragma, can you think that the UTF-8 byte string is converted to an internal string using the decode function of the Encode module?
 A. Yes. Think of it as doing the following:
@@ -38,7 +38,7 @@ A. Yes. Think of it as doing the following:
 Write the same process using the #Encode module
 my $ str ='aiueo';
 $ str = decode ('UTF-8', $ str);
-</ pre>
+</pre>
 
 Q. I've heard about the UTF-8 flag, but can I think that the utf8 pragma does the process of setting the UTF-8 flag?
 
@@ -47,7 +47,7 @@ A. The interpretation is wrong. If the string in the source code consists of cha
 This makes it very difficult to understand what you are doing from the programmer's point of view. So don't be afraid to remember that the utf8 pragma converts a UTF-8 byte string into an internal string.
 
 Q. Should I forget about the UTF-8 flag?
-A. Yes, basically forget about it. But there is one thing that is useful to remember, so let me tell you. That is, "If the UTF-8 flag is set, it can be said that it is an internal string." The opposite is not true. There is a <strong> utf8 :: is_utf8 </ strong> function as a function to check if the UTF-8 flag is set. If you use this function to verify that the UTF-8 flag is set, you can say that it is an internal string.
+A. Yes, basically forget about it. But there is one thing that is useful to remember, so let me tell you. That is, "If the UTF-8 flag is set, it can be said that it is an internal string." The opposite is not true. There is a <strong> utf8 :: is_utf8 </strong> function as a function to check if the UTF-8 flag is set. If you use this function to verify that the UTF-8 flag is set, you can say that it is an internal string.
 
 <pre>
 Internal string if # UTF-8 flag is set
@@ -59,4 +59,4 @@ if ($ utf8_flagged) {
 else {
   # $ str is an internal string or a byte string
 }
-</ pre>
+</pre>

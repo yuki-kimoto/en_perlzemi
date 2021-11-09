@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> wantarray function-return scalar or list depending on context </ h2>
+  </li>
+</ol>
+<h2> wantarray function-return scalar or list depending on context </h2>
 
 
 
@@ -26,24 +26,24 @@ sub func_name {
   # process ...
   return wantarray? List: Scalar;
 }
-</ pre>
+</pre>
 
 You can use wantarray to return the return value by distinguishing between the list context and the scalar context.
 
 The standard functions that wantarray uses are the <a href="/blog/20081009122357.html"> localtime function </a>.
 
-<h4> Don't use the wantarray function </ h4>
+<h4> Don't use the wantarray function </h4>
 
 We do not recommend using the wantarray function as it tends to create very hard-to-find bugs. For example, if you think that a scalar will be returned and specify it as an argument of a function, it is possible that a list is returned.
 
 <pre>
 I expected #scala to come back, but in reality the list comes back
 func (localtime ());
-</ pre>
+</pre>
 
 To avoid such a bug, don't use the wantarray function and return <a href="/blog/20161107147852.html"> scalar variable </a> or a list. ..
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample of wantarray.
 
@@ -77,4 +77,4 @@ sub grep_odd_nums {
   #If in scalar context, return the number of @odd_nums
   return wantarray? @odd_nums: scalar @odd_nums;
 }
-</ pre>
+</pre>

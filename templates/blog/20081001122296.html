@@ -1,31 +1,31 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> sprintf function --string formatting </ h2>
+  </li>
+</ol>
+<h2> sprintf function --string formatting </h2>
 
 
 
-You can use the <strong> sprintf function </ strong> to create a formatted <a href="/blog/20161003147558.html"> string </a>. It is convenient to use the sprintf function when you want to fill the left side of <a href="/blog/20161026147748.html"> number </a> with 0 and output it, or when you want to specify a small number of floating point digits. is.
+You can use the <strong> sprintf function </strong> to create a formatted <a href="/blog/20161003147558.html"> string </a>. It is convenient to use the sprintf function when you want to fill the left side of <a href="/blog/20161026147748.html"> number </a> with 0 and output it, or when you want to specify a small number of floating point digits. is.
 
 <pre>
 my $ str = sprintf ("% 08d", $ num1);
 my $ str = sprintf ("% .2f", $ num2);
 my $ str = sprintf ("aiueo% 08daiueo% .2f", $ num1, $ num2);
-</ pre>
+</pre>
 
 You may want to output numbers or strings according to certain rules. For example, if you want to create a fixed-length character string with the missing parts filled with blanks, it is troublesome to create blanks like "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;".
 
@@ -35,101 +35,101 @@ Also, for example, you can output a numerical value with the missing part filled
 
 You can also output by rounding the decimal point to a certain digit. You can round 12.3456 to one decimal place to get '12.3'.
 
-<h3> Format specification description method </ h3>
+<h3> Format specification description method </h3>
 
 <pre>
 my $ str = sprintf ("% 08d", $ num1);
 my $ str = sprintf ("% .2f", $ num2);
 my $ str = sprintf ("aiueo% 08daiueo% .2f", $ num1, $ num2);
-</ pre>
+</pre>
 
 Formatting starts with%. It ends with a fixed alphanumeric character such as d or f. d means to interpret the second argument as an integer, and f means to interpret it as a floating point number.
 
 Specifies the format in which the string is created between the% and the alphabet. "% 08d" is read as "Interpret $ num1 as an integer and pad it with 0 if it is less than 8 characters". "% .2f" is read as "Interpret $ num2 as a floating point number and round it to two decimal places."
 
-<h3> List of format specifiers for sprintf function </ h3>
+<h3> List of format specifiers for sprintf function </h3>
 
 There are various formatting specifiers for the sprintf function. I created a list.
 
-<h4>% c </ h4>
+<h4>% c </h4>
 
 % c is a format specifier that converts to the character corresponding to the ASCII character code.
 
-<h4>% s </ h4>
+<h4>% s </h4>
 
 % s is a format specifier that interprets the argument as a string. If there is a leading 0 like '002', it will be '002' as a character string as it is.
 
-<h4>% d </ h4>
+<h4>% d </h4>
 
 % d interprets the argument as a signed integer. For example, if you pass '0003', it will be converted to 3 because it is 3 in terms of numbers.
 
-<h4>% u </ h4>
+<h4>% u </h4>
 
 % u interprets the argument as a positive integer.
 
-<h4>% o </ h4>
+<h4>% o </h4>
 
 % o interprets the argument as a positive integer and converts it to an octal string.
 
-<h4>% x% X </ h4>
+<h4>% x% X </h4>
 
 % x interprets the argument as a positive integer and converts it to a hexadecimal string. The notation is lowercase for% x and uppercase for% X.
 
-<h4>% b </ h4>
+<h4>% b </h4>
 
 % b interprets the argument as a positive integer and converts it to a binary string.
 
-<h4>% f </ h4>
+<h4>% f </h4>
 
 % f interprets the argument as floating point.
 
-<h4>% e% E </ h4>
+<h4>% e% E </h4>
 
 % e is the same as% f, but it formats it in exponential notation. The notation is lowercase for% e and uppercase for% E.
 
-<h4>% g% G </ h4>
+<h4>% g% G </h4>
 
 % g interprets the argument as floating point and formats it to% e or% f. If the decimal point is short, it will be in the% f format, and if it is long, it will be in the% e format.
 
 Also, unlike% f and% e,% g does not have an extra 0 at the end.
 
-<h4>% p </ h4>
+<h4>% p </h4>
 
 You can get the memory address of the variable given as an argument by% p in hexadecimal notation.
 
-<h3> Format to a fixed length string </ h3>
+<h3> Format to a fixed length string </h3>
 
-To format a <strong> fixed-length string </ strong> with the <strong> sprintf </ strong> function, use a format specification like the example below.
+To format a <strong> fixed-length string </strong> with the <strong> sprintf </strong> function, use a format specification like the example below.
 
 <table>
   <tr>
     <td>
       % 5s
-    </ td>
+    </td>
     <td>
       Right-justified space filling
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       % -5s
-    </ td>
+    </td>
     <td>
       Left-justified space filling
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       % 0s
-    </ td>
+    </td>
     <td>
       0 fill
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 To format a fixed-length string with the sprintf function, write a number after%. Write as% 5s.
 
@@ -137,7 +137,7 @@ The default is right-justified space filling. To left justify, add a minus (-) i
 
 If the formatted string exceeds the specified string, it will not be truncated and the specification will be ignored.
 
-<h3> Format binary, octal, and hexadecimal numbers in base notation </ h3>
+<h3> Format binary, octal, and hexadecimal numbers in base notation </h3>
 
 When expressing binary, octal, and hexadecimal numbers as numeric literals, they are expressed with 0b, 0, and 0X. Use the # symbol to format binary, octal, and hexadecimal numbers into this representation.
 
@@ -146,7 +146,7 @@ sprintf ("1:% # o", 8);
 sprintf ("2:% # x", 255);
 sprintf ("3:% # X", 255);
 sprintf ("4:% # b", 4);
-</ pre>
+</pre>
 
 Use # to format in base notation.
 
@@ -155,7 +155,7 @@ It can also be combined with other formats.
 <pre>
 # Convert decimal to octal Fill space with left justification
 $ formatted [5] = sprintf ("1: <%-# 5o>", 8);
-</ pre>
+</pre>
 
 # Is classified as a "flag" in the format specification. —— Is also classified as a “flag”. 5 is categorized as what is called "string width".
 
@@ -165,16 +165,16 @@ The order of the "flags" can be anything, but the "flags" must come before the "
 "%-# 5o" # OK
 "% # -5o" # OK
 "% 5- # o" # No
-</ pre>
+</pre>
 
-<h3> Specify the precision with the number of digits after the decimal point </ h3>
+<h3> Specify the precision with the number of digits after the decimal point </h3>
 
 To specify the precision with the number of decimal places using the sprintf function, use the format specifier% f and the "precision" notation, such as .5.10.
 
 <pre>
 # 3rd place after the decimal point
 $ formatted [1] = sprintf ("% .3f", 0.45674);
-</ pre>
+</pre>
 
 To specify the precision with the number of decimal places, use the format specifier% f, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is .3, it will be rounded to the third decimal place.
 
@@ -183,38 +183,38 @@ It can also be combined with other formats.
 <pre>
 #Round to the third decimal place with a character width of 10 that fills the left-justified space
 $ formatted [2] = sprintf ("<% -10.3f>", 0.45674);
-</ pre>
+</pre>
 
 <ul>
   <li>
      Is categorized as what is called a "flag". 10 is categorized as what is called "string width". .3 is categorized as what is called "precision". f doesn't seem to have an official name, but here we call it a format specifier.
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 The order of format specification is
 
 <pre>
 % Flag String Width Precision Format Specifier
-</ pre>
+</pre>
 
 Must be. "Flag", "Character string", and "Precision" are format specification options and can be specified as necessary.
 
-<h3> Specify the precision by the number of significant digits </ h3>
+<h3> Specify the precision by the number of significant digits </h3>
 
 To specify precision by significant digits using the sprintf function, use the format specifier% g and the "precision" notation, such as .5.10.
 
 <pre>
 # 3 significant digits
 my $ formatted = sprintf ("% .3g", 45.674);
-</ pre>
+</pre>
 
 To specify the precision with the number of decimal places, use the format specifier% g, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is% .3g, it will be rounded to 3 digits.
 
-<h3> Sample sprintf function </ h3>
+<h3> Sample sprintf function </h3>
 
 This is a sample of the sprintf function.
 
-<h4> A simple sample of sprintf </ h4>
+<h4> A simple sample of sprintf </h4>
 
 A simple sample of the sprintf function.
 
@@ -236,9 +236,9 @@ print $ formatted2. "\ n \ n";
 # Specify multiple arguments
 my $ formatted3 = sprintf ("aiueo% 08daiueo% .2f", $ num1, $ num2);
 print $ formatted3. "\ n";
-</ pre>
+</pre>
 
-<h4> Samples of various formatting </ h4>
+<h4> Samples of various formatting </h4>
 
 Samples of various formatting.
 
@@ -300,9 +300,9 @@ $ formatted [14] = sprintf ("14:% p", $ num);
 for my $ i (1 .. 14) {
   print $ formatted [$ i]. "\ n";
 }
-</ pre>
+</pre>
 
-<h4> Format to a fixed length string </ h4>
+<h4> Format to a fixed length string </h4>
 
 This is a sample to format to a fixed length string using the sprintf function.
 
@@ -334,9 +334,9 @@ $ formatted [6] = sprintf ("6:% 5g", 1.23);
 for my $ i (1 .. 6) {
   print $ formatted [$ i]. "\ n";
 }
-</ pre>
+</pre>
 
-<h4> Format binary, octal, and hexadecimal numbers in base notation </ h4>
+<h4> Format binary, octal, and hexadecimal numbers in base notation </h4>
 
 This is a sample to format binary, octal, and hexadecimal numbers in binary notation with sprintf.
 
@@ -369,9 +369,9 @@ print "(2) Combine with other formats. \ N";
 $ formatted [5] = sprintf ("1: <%-# 5o>", 8);
 
 print $ formatted [5]. "\ n";
-</ pre>
+</pre>
 
-<h4> Specify the precision with the number of digits after the decimal point </ h4>
+<h4> Specify the precision with the number of digits after the decimal point </h4>
 
 This is a sample that specifies the precision with the number of digits after the decimal point.
 
@@ -390,9 +390,9 @@ print $ formatted [1]. "\ n \ n";
 print "(2) Combine with other formats. \ N";
 $ formatted [2] = sprintf ("<% -10.3f>", 0.45674);
 print $ formatted [2]. "\ n";
-</ pre>
+</pre>
 
-<h4> Specify precision by the number of significant digits </ h4>
+<h4> Specify precision by the number of significant digits </h4>
 
 This is a sample that specifies the precision by the number of significant digits.
 
@@ -405,4 +405,4 @@ printf "(1) Specify the precision by the number of significant digits. \ N";
 #Format with a precision of 3 significant digits.
 my $ formatted = sprintf ("% .3g", 45.674);
 print $ formatted. "\ n";
-</ pre>
+</pre>

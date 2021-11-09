@@ -1,138 +1,138 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20101130129876.html"> <span itemprop = "name"> Subroutine </ span> </a>
+    <a itemprop="item" href="/blog/20101130129876.html"> <span itemprop = "name"> Subroutine </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Compare the flexibility of Perl subroutines with C </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Compare the flexibility of Perl subroutines with C </h2>
 
 
 
 Here is a summary of the features of Perl subroutines. I compared it with C language. You can see the flexibility of Perl as a language. * 1
 
-<h3> Perl Subroutine Features </ h3>
+<h3> Perl Subroutine Features </h3>
 
 <table>
   <tr>
     <td>
       Twice
-    </ td>
+    </td>
     <td>
       Perl
-    </ td>
+    </td>
     <td>
       C language
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       1
-    </ td>
+    </td>
     <td>
       Subroutine definition can be done anywhere
-    </ td>
+    </td>
     <td>
       In general, a function forward declaration (prototype declaration) is required
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       2
-    </ td>
+    </td>
     <td>
       There is no need to declare the argument type
-    </ td>
+    </td>
     <td>
       The argument type must be declared.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       3
-    </ td>
+    </td>
     <td>
       There is no need to declare the return type
-    </ td>
+    </td>
     <td>
       The return type must be declared.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Four
-    </ td>
+    </td>
     <td>
       Receives variable arguments by default
-    </ td>
+    </td>
     <td>
       It is necessary to decide the number of arguments at the time of declaration
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Five
-    </ td>
+    </td>
     <td>
       List can be used as return value
-    </ td>
+    </td>
     <td>
       Array cannot be a return value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       6
-    </ td>
+    </td>
     <td>
       A reference to a lexical variable can be used as a return value
-    </ td>
+    </td>
     <td>
       Cannot return the address of a local variable
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       7
-    </ td>
+    </td>
     <td>
       There is a concept of context
-    </ td>
+    </td>
     <td>
       There is no concept of context
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       8
-    </ td>
+    </td>
     <td>
       There is a namespace to which the subroutine belongs
-    </ td>
+    </td>
     <td>
       There is no namespace to which the function belongs
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> 1. Subroutines can be defined anywhere </ h3>
+<h3> 1. Subroutines can be defined anywhere </h3>
 
 <pre>
 # perl (Subroutine definition can be done anywhere)
@@ -144,7 +144,7 @@ sub func {
 }
 
 func () # Can also be used here
-</ pre>
+</pre>
 
 <pre>
 / * C language (generally requires a forward declaration) * /
@@ -156,20 +156,20 @@ func (3) / * Here, a forward declaration (prototype declaration) is required to 
 int func (int x) {
 
 }
-</ pre>
+</pre>
 
 Perl looks for the name of the subroutine in the symbol table at run time. So you can write anywhere.
 
 In C, function names are resolved at compile time. If the function definition is after the place where the function is used, the forward declaration (prototype declaration) must be made before the place where the function is used.
 
-<h3> 2. 3. 4. It is not necessary to determine the argument type, the number of arguments, and the return type. </ H3>
+<h3> 2. 3. 4. It is not necessary to determine the argument type, the number of arguments, and the return type. </H3>
 
 <pre>
 # Perl (The first thing to decide is the name of the subroutine.)
 sub func {
 
 }
-</ pre>
+</pre>
 
 <pre>
 / * C language (It is necessary to decide the argument type, the number of arguments, and the return type.) * /
@@ -177,11 +177,11 @@ sub func {
 int func (int x, int y) {
 
 }
-</ pre>
+</pre>
 
 In Perl, the argument type, the number of arguments, and the return type are determined at run time. In C, the argument type, the number of arguments, and the return type are determined at compile time.
 
-<h3> 5. List can be used as return value </ h3>
+<h3> 5. List can be used as return value </h3>
 
 <pre>
 # Perl (list can be used as return value)
@@ -189,7 +189,7 @@ In Perl, the argument type, the number of arguments, and the return type are det
 sub func {
     return (1, 2, 3);
 }
-</ pre>
+</pre>
 
 <pre>
 / * C language (To return an array, you need to manipulate the pointer received as an argument) * /
@@ -200,11 +200,11 @@ fucn (ary); / * Pass a pointer * /
 void func (int * ary) {
   / * Now you need to assign a value to ary through a pointer. * /
 }
-</ pre>
+</pre>
 
 In Perl, you can use a list as a return value. In C language, an array cannot be returned as a return value. If you want to return the array to the caller, you need to pass it as a pointer as an argument and operate it.
 
-<h3> 6. A reference to a lexical variable can be used as a return value </ h3>
+<h3> 6. A reference to a lexical variable can be used as a return value </h3>
 
 <pre>
 # Perl
@@ -212,7 +212,7 @@ sub func {
   my $ val = 1;
   return \ $ val;
 }
-</ pre>
+</pre>
 
 <pre>
 / * C language * /
@@ -220,15 +220,15 @@ int func () {
     int x;
     return & x;
 }
-</ pre>
+</pre>
 
 In Perl, lexical variables are not destroyed from memory as long as they are referenced from somewhere. In C, local variables are discarded when the function ends.
 
-<h3> 7. There is a concept of context </ h3>
+<h3> 7. There is a concept of context </h3>
 
 Perl can use a scalar or list as the return value of a function, depending on the context. There is no such concept in C language.
 
-<h3> 8. There is a namespace to which the subroutine belongs </ h3>
+<h3> 8. There is a namespace to which the subroutine belongs </h3>
 
 <pre>
 # Perl
@@ -244,7 +244,7 @@ package SomePackage;
 sub func {
 
 }
-</ pre>
+</pre>
 
 <pre>
 / * C language * /
@@ -252,9 +252,9 @@ sub func {
 int func () {
 
 }
-</ pre>
+</pre>
 
 In Perl, all subroutines belong to namespaces. In Perl, namespaces are called packages. C language does not have a namespace.
 
-<h3> Note </ h3>
-<span style = "font-size: small;"> * 1 I'm not criticizing C, so I'm not sure. C has the characteristics of "fast execution speed", "programming from hardware", and "good at low-level data manipulation". Perl is not good at this. </ span>
+<h3> Note </h3>
+<span style = "font-size: small;"> * 1 I'm not criticizing C, so I'm not sure. C has the characteristics of "fast execution speed", "programming from hardware", and "good at low-level data manipulation". Perl is not good at this. </span>

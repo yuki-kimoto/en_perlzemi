@@ -1,35 +1,35 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> warnings module </ h2>
+  </li>
+</ol>
+<h2> warnings module </h2>
 
-Use the <strong> warnings </ strong> pragma to display warnings.
+Use the <strong> warnings </strong> pragma to display warnings.
 
 <pre>
 use warnings;
-</ pre>
+</pre>
 
 In Perl, in the default state, no warning is displayed and the script is executed. You can use the warnings pragma to display warnings. When writing a script, be sure to write it together with the strict pragma.
 
-<h3> Frequently seen warning </ h3>
+<h3> Frequently seen warning </h3>
 
 Here are some of the warnings you'll see often.
 
-<h4> Use undefined values ​​</ h4>
+<h4> Use undefined values ​​</h4>
 
 A warning is displayed if you use an undefined value. In the following script, the undefined value is output as it is by the print function.
 
@@ -39,23 +39,23 @@ use warnings;
 # Use undefined value
 my $ str;
 print $ str;
-</ pre>
+</pre>
 
 You will see a warning similar to the following:
 
 <pre>
 Use of uninitialized value $ str in print at a.pl line 6
-</ pre>
+</pre>
 
 Since it is in English, I will translate it.
 
 <pre>
 I am using the undefined value $ str in print. 6th line.
-</ pre>
+</pre>
 
 If you get a warning that you are using undefined, it means that the variable is left unassigned. In other words, there is a mistake in the script. Let's modify the script so that this warning does not appear.
 
-<h3> String is not encoded </ h3>
+<h3> String is not encoded </h3>
 
 When using multibyte characters such as Japanese, you may see a warning that the string is unencoded. Below is the script that raises the warning.
 
@@ -66,19 +66,19 @@ use utf8;
 #String is not encoded
 my $ str ='Hello';
 print $ str;
-</ pre>
+</pre>
 
 You will see a warning similar to the following:
 
 <pre>
 Wide character in print at a.pl line 7.
-</ pre>
+</pre>
 
 Since it is in English, I will translate it.
 
 <pre>
 Wide characters are used. 7th line.
-</ pre>
+</pre>
 
 This means that the string is being output unencoded. So let's encode it properly.
 
@@ -90,9 +90,9 @@ use Encode'encode';
 #String is not encoded
 my $ str ='Hello';
 print encode ('UTF-8', $ str);
-</ pre>
+</pre>
 
-<h3> Subroutines have been redefined </ h3>
+<h3> Subroutines have been redefined </h3>
 
 If you define a subroutine more than once, you will be warned that the subroutine has been redefined. Below is the script that raises the warning.
 
@@ -102,25 +102,25 @@ use warnings;
 # Subroutine redefinition
 sub one {1}
 sub one {1}
-</ pre>
+</pre>
 
 You will see a warning similar to the following:
 
 <pre>
 Subroutine one redefined at a.pl line 5.
-</ pre>
+</pre>
 
 Since it is in English, I will translate it.
 
 <pre>
 Subroutine one has been redefined. 5th line.
-</ pre>
+</pre>
 
 When redefining a subroutine, it's usually likely that you've made a mistake, but sometimes you want to temporarily replace the subroutine. In such cases, you can suppress this warning.
 
 <pre>
 no warnings'redefine';
-</ pre>
+</pre>
 
 This definition eliminates the subroutine redefinition warning.
 
@@ -131,18 +131,18 @@ no warnings'redefine';
 # Subroutine redefinition warning does not occur
 sub one {1}
 sub one {1}
-</ pre>
+</pre>
 
 Warnings other than subroutine redefinition warnings can be suppressed in a similar way, but in principle warnings should not be suppressed. You should fix the part that caused the warning.
 
-<h3> Suppress subroutine redefinition warnings </ h3>
+<h3> Suppress subroutine redefinition warnings </h3>
 
 If you have a bug during development and need to fix it in a hurry, you will sometimes apply a monkey patch. A monkey patch is to overwrite the definition of a subroutine or method so that it behaves correctly.
 
-But when I redefine the subroutine, I get a warning. To prevent this warning from appearing, use the <b> warnings </ b> pragma to instruct the compiler to stop the subroutine redefinition warning.
+But when I redefine the subroutine, I get a warning. To prevent this warning from appearing, use the <b> warnings </b> pragma to instruct the compiler to stop the subroutine redefinition warning.
 
 <pre>
 no warnings'redefine';
-</ pre>
+</pre>
 
 The warning will no longer be displayed. It has a lexical scope. Below is a sample that overrides the module's methods.

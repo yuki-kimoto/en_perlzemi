@@ -1,16 +1,16 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> scope </ span>
+      <span itemprop = "name"> scope </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Understand Perl scope </ h2>
+  </li>
+</ol>
+<h2> Understand Perl scope </h2>
 
 
 
@@ -19,9 +19,9 @@ Get a better understanding of Perl scope. This article is written on the assumpt
 <pre>
 use strict;
 use warnings;
-</ pre>
+</pre>
 
-<h3> Create scope </ h3>
+<h3> Create scope </h3>
 
 Perl scope starts with "{" and ends with "}".
 
@@ -29,11 +29,11 @@ Perl scope starts with "{" and ends with "}".
 {
   #Scope
 }
-</ pre>
+</pre>
 
-<h3> Meaning of scope </ h3>
+<h3> Meaning of scope </h3>
 
-<h4> Lexical variables </ h4>
+<h4> Lexical variables </h4>
 
 Lexical variables declared within a scope (variables declared with my) can only be referenced within that scope. Also, the value contained in the variable is released when the scope ends.
 
@@ -47,9 +47,9 @@ Lexical variables declared within a scope (variables declared with my) can only 
 
 # Cannot be referenced at this position
 print $ num;
-</ pre>
+</pre>
 
-<h4> Package variables </ h4>
+<h4> Package variables </h4>
 
 Package variables declared inside a scope (variables declared with our) can be referenced by partial name within that scope. You must use a fully qualified name to reference it from outside the scope.
 
@@ -68,11 +68,11 @@ print $ NUM;
 
 # Can be referenced by fully qualified name
 print $ Foo :: NUM;
-</ pre>
+</pre>
 
 Keep in mind that once a package variable is created, it exists to the end of the program and can be referenced by its fully qualified name from anywhere in the program.
 
-<h4> Package variables modified locally </ h4>
+<h4> Package variables modified locally </h4>
 
 You can use <a href="/blog/20080309120507.html"> local </a> to temporarily change a package variable. This changed value is reverted at the end of the scope.
 
@@ -90,11 +90,11 @@ our $ NUM = 1;
 
 # Return to 1 at this position
 print $ NUM;
-</ pre>
+</pre>
 
 Use local only for temporary changes to the value of package variables, and don't use it for variable declarations as it used to be.
 
-<h4> Subroutine </ h4>
+<h4> Subroutine </h4>
 
 Perl subroutines are scope-independent.
 
@@ -110,7 +110,7 @@ Perl subroutines are scope-independent.
 
 # Can be called
 foo ();
-</ pre>
+</pre>
 
 When a subroutine is defined, it is registered in what is called a symbol table and can be called from any position in the program.
 
@@ -126,11 +126,11 @@ If you want the subroutine to have scope, assign an anonymous subroutine (which 
 
 # Cannot be called from this position
 $ foo-> ();
-</ pre>
+</pre>
 
 At the end of the scope, the subroutine reference assigned to $ foo is released. Note that the subroutine itself is not freed. sub {...} is parsed and placed in memory at compile time.
 
-<h3> Scope in if and while statements </ h3>
+<h3> Scope in if and while statements </h3>
 
 The "{}" used in if statements and <a href="/blog/20100123126425.html"> while statements </a> is also a scope. In Perl, the scope is "{}", which is used in all kinds of syntax. It's consistent in this regard and is very straightforward compared to other languages.
 
@@ -150,7 +150,7 @@ eval {
 sub {
   #Scope
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100312126967.html"> eval </a>
 
@@ -161,7 +161,7 @@ use strict;
 use warnings;
 
 # process
-</ pre>
+</pre>
 
 The above can be thought of as the beginning and end of the file surrounded by "{" and "}" as shown below.
 
@@ -172,13 +172,13 @@ The above can be thought of as the beginning and end of the file surrounded by "
 
   # process
 }
-</ pre>
+</pre>
 
-<h3> Lexical variables declared at special positions </ h3>
+<h3> Lexical variables declared at special positions </h3>
 
 There are some cases where you have a scope, though it is not declared inside the scope.
 
-<h4> if condition part </ h4>
+<h4> if condition part </h4>
 
 The lexical variable declared in the conditional part of if has the scope of if.
 
@@ -190,7 +190,7 @@ if (my $ num = 1) {
 
 # Cannot be referenced at this position
 print $ num;
-</ pre>
+</pre>
 
 Since there is no scope for the postfixed if in the first place, it does not have a scope.
 
@@ -199,7 +199,7 @@ Statement if my $ num = 1;
 
 # Can be referenced
 print $ num;
-</ pre>
+</pre>
 
 The same is true for unless statements and <a href="/blog/20100123126425.html"> while statements </a>.
 
@@ -212,7 +212,7 @@ unless (my $ num = 1) {
 
 # Cannot be referenced
 print $ num;
-</ pre>
+</pre>
 
 <pre>
 # while
@@ -223,9 +223,9 @@ while (my $ num = 1) {
 
 # Cannot be referenced
 print $ num;
-</ pre>
+</pre>
 
-<h4> for condition part </ h4>
+<h4> for condition part </h4>
 
 The lexical variable declared in the condition part of for has the scope of for.
 
@@ -237,9 +237,9 @@ for (my $ i = 0; $ i <@nums; $ i ++) {
 
 # Cannot be referenced
 print $ i;
-</ pre>
+</pre>
 
-<h4> variable assignment part of for </ h4>
+<h4> variable assignment part of for </h4>
 
 The lexical variable declared in the variable assignment part of for has the scope of for.
 
@@ -251,8 +251,8 @@ for my $ num (@nums) {
 
 # Cannot be referenced
 print $ num;
-</ pre>
+</pre>
 
-<h4> At the end </ h4>
+<h4> At the end </h4>
 
 If you keep this in mind, you won't have any problems with Perl scope. You'll find that Perl scope is intuitive and straightforward. This has been very helpful in making the structure of Perl programs easier to see.

@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20170130148603.html">
-      <span itemprop = "name"> database </ span> </a>
+      <span itemprop = "name"> database </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Procedure for connecting to SQL Server using Perl's DBI on CentOS </ h2>
+  </li>
+</ol>
+<h2> Procedure for connecting to SQL Server using Perl's DBI on CentOS </h2>
 
 
 
@@ -27,11 +27,11 @@ The image of the connection is as follows.
 
 <pre>
 DBI-ODWD (using FreeTDS protocol for communication)-SQL Server
-</ pre>
+</pre>
 
 DBI requires ODBC as a driver. The corresponding Perl module is DBD :: ODBC. DBD :: ODBC also requires a library called UnixODBC. A library called UnixODBC requires a library called FreeTDS to communicate with SQL Server.
 
-<h3> Installing UnixODBC </ h3>
+<h3> Installing UnixODBC </h3>
 
 Unix ODBC is one of the Unix implementations of ODBC. Let's install Unix ODBC from source code. As the number of dependent modules increases, GUI support is optionally removed. Make will take some time, so wait for a while.
 
@@ -43,15 +43,15 @@ cd unixODBC-2.3.0
 ./configure --enable-gui = no
 make
 make install
-</ pre>
+</pre>
 
 This library is installed under "/ usr / local / lib". Let's check.
 
 <pre>
 ls /usr/local/lib/libodbc.so
-</ pre>
+</pre>
 
-<h3> FreeTDS installation </ h3>
+<h3> FreeTDS installation </h3>
 
 FreeTDS is a library that implements the "Tabular Data Stream" communication protocol. Used by Unix ODBC.
 
@@ -65,49 +65,49 @@ export LD_RUN_PATH = / usr / local / lib
 ./configure --with-unixodbc = / usr / local --with-msdblib
 make
 make install
-</ pre>
+</pre>
 
 This library is installed under "/ usr / local / lib". Let's check.
 
 <pre>
 ls /usr/local/lib/libtdsodbc.so
-</ pre>
+</pre>
 
-<h3> DBD :: ODBC module installation </ h3>
+<h3> DBD :: ODBC module installation </h3>
 
 Install the DBD :: ODBC module.
 
 <pre>
 export ODBCHOME = / usr / local
 cpan DBD :: ODBC
-</ pre>
+</pre>
 
 DBD :: ODBC does not need to be installed with root privileges, so it is a good idea to install it in your personal directory using something like cpanm.
 
-<h3> FreeTDS settings </ h3>
+<h3> FreeTDS settings </h3>
 
 Edit the FreeTDS configuration file. Describe the connection destination information etc. in the FreeTDS configuration file.
 
 <pre>
 vi /usr/local/etc/freetds.conf
-</ pre>
+</pre>
 
 <pre>
 [tdssqlserver]
 host = 192.168.1.19
 port = 1433
 tds version = 8.0
-</ pre>
+</pre>
 
 Specify the connection destination information and TDS version. Currently 8.0 seems to be fine. The name in [] is the name used in Unix ODBC.
 
-<h3> UnixODBC settings </ h3>
+<h3> UnixODBC settings </h3>
 
 Edit the Unix ODBC configuration file.
 
 <pre>
 vi /usr/local/etc/odbc.ini
-</ pre>
+</pre>
 
 <pre>
 [ODBC Data Sources]
@@ -118,11 +118,11 @@ Driver = /usr/local/lib/libtdsodbc.so
 Description = Microsoft SQL Server
 Servername = tdssqlserver
 Database = dbname
-</ pre>
+</pre>
 
 For Driver, specify the path of the FreeTDS library, for Servername, specify the name set in the FreeTDS configuration file, and for DesDatabase, specify the database name of the connection destination.
 
-<h3> Check FreeTDS and UnixODBC settings </ h3>
+<h3> Check FreeTDS and UnixODBC settings </h3>
 
 First, let's check if the FreeTDS settings are correct by invoking the command tsql.
 
@@ -130,17 +130,17 @@ Next, let's try using tsql and isql to see if the settings are correct.
 
 <pre>
 tsql -S tdssqlserver -U kimoto -P pipipi
-</ pre>
+</pre>
 
 If the connection with tsql is successful, you can confirm that the FreeTDS settings are correct. You can exit with exit.
 
 <pre>
 isql sqlserver kimoto pipipi
-</ pre>
+</pre>
 
 If the connection with isql is successful, you can confirm that the Unix ODBC settings are correct. You can exit with the Enter key.
 
-<h3> Connect to SQL Server from Perl </ h3>
+<h3> Connect to SQL Server from Perl </h3>
 
 Then if you can connect from the script using the DBI module, you are successful.
 
@@ -152,4 +152,4 @@ use DBI;
 
 my $ dbi = DBI-> connect ('dbi: ODBC: sqlserver','kimoto','pipipi')
   or die $ !;
-</ pre>
+</pre>

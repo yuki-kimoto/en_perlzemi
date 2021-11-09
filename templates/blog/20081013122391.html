@@ -1,17 +1,17 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161123147990.html">
-        <span itemprop = "name"> Date / Time </ span> </a>
+        <span itemprop = "name"> Date / Time </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Determine if the date exists </ h2>
+  </li>
+</ol>
+<h2> Determine if the date exists </h2>
 
 
 
@@ -75,13 +75,13 @@ sub day_exist {
   };
   return $ @? 0: 1;
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100312126967.html"> eval </a>
 
-<h3> Check if the date exists. </ h3>
+<h3> Check if the date exists. </h3>
 
-<h4> Notes on handling dates </ h4>
+<h4> Notes on handling dates </h4>
 
 Perl's standard functions treat years as the number of years since 1900. The month starts from 0, such as 0 in January and 1 in February.
 
@@ -97,9 +97,9 @@ my $ mon = 10 --1;
 
 # There should be no such day.
 my $ mday = 32;
-</ pre>
+</pre>
 
-<h4> Determine if the date exists </ h4>
+<h4> Determine if the date exists </h4>
 
 Use the timelocal function of the Time :: Local module to determine the date.
 
@@ -119,9 +119,9 @@ if ($ @) {
 else {
   print "$ year year $ mon month $ mday day exists. \ N \ n";
 }
-</ pre>
+</pre>
 
-<h4> Create a function to determine if a date exists. </ h4>
+<h4> Create a function to determine if a date exists. </h4>
 
 Since the judgment method is quite complicated as described above, it is convenient to create a date judgment function that can specify the argument by "year / month / day".
 
@@ -137,4 +137,4 @@ sub day_exist {
   };
   return $ @? 0: 1;
 }
-</ pre>
+</pre>

@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161025147739.html">
-        <span itemprop = "name"> Subroutine </ span> </a>
+        <span itemprop = "name"> Subroutine </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Subroutine reference </ h2>
+  </li>
+</ol>
+<h2> Subroutine reference </h2>
 
 
 
@@ -31,7 +31,7 @@ my $ twice_num = $ twice_ref-> ($ num);
 sub twice {
   return $ _ [0] * 2;
 }
-</ pre>
+</pre>
 
 Express the subroutine itself with & twice. (Similar to an array with @ and a hash with%, a subroutine is represented with &.) Normally, subroutines are called like twice ($ num). You can also call it explicitly, like & twice ($ num).
 
@@ -42,10 +42,10 @@ See the following articles for a detailed explanation of the reference.
 <ul>
   <li>
     <a href="/blog/20100930127859.html"> Let's master how to use the reference </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Reference to anonymous subroutines </ h4>
+<h4> Reference to anonymous subroutines </h4>
 
 You can create a reference to an unnamed subroutine such as sub {}. Write as my $ sum_ref = sub {} ;. The subroutine itself is not executed, but a reference to the subroutine is assigned to $ sum_ref.
 
@@ -58,13 +58,13 @@ my $ sum_ref = sub {
   }
   return $ total;
 };
-</ pre>
+</pre>
 
 You can create a reference to a subroutine and pass it as an argument to the subroutine. In Perl, you can use a subroutine reference to pass a subroutine to a subroutine.
 
 You can also use a reference to a subroutine to execute the subroutine selectively. I will see a concrete example next time.
 
-<h3> Polymorphism using references to subroutines </ h3>
+<h3> Polymorphism using references to subroutines </h3>
 
 This is a sample that realizes polymorphism using a reference to a subroutine.
 
@@ -127,20 +127,20 @@ $ result = $ calc_table {$ how_to_calc}-> (@nums);
 
 print "Calculation method: $ how_to_calc \ n".
   "Result: $ result \ n \ n";
-</ pre>
+</pre>
 
-<h4> Apply subroutines to variables in sequence </ h4>
+<h4> Apply subroutines to variables in sequence </h4>
 
 <pre>
 my @calc_funcs = (\ & sum, \ & average);
 for my $ calc_func (@calc_funcs) {
   my $ result = $ calc_func-> (@nums);
 }
-</ pre>
+</pre>
 
 To apply subroutines in sequence to a <a href="/blog/20161107147852.html"> variable </a>, use a reference to the subroutine. Store the reference to the subroutine in an array and call the subroutine repeatedly in <a href="/blog/20170521149524.html"> for loop </a>.
 
-<h4> Image of variables and subroutines </ h4>
+<h4> Image of variables and subroutines </h4>
 
 <pre>
 | ---------- |
@@ -150,11 +150,11 @@ To apply subroutines in sequence to a <a href="/blog/20161107147852.html"> varia
 | |
 | | <-------- Subroutine 3
 | ---------- |
-</ pre>
+</pre>
 
 An image of applying subroutines in order to a certain type of argument. The argument is fixed, and the image of the subroutine changing.
 
-<h4> Polymorphism using references to subroutines </ h4>
+<h4> Polymorphism using references to subroutines </h4>
 
 <pre>
 How to branch with #if statement
@@ -169,7 +169,7 @@ else {
 }
 
 my $ result = $ calc_func-> (@nums);
-</ pre>
+</pre>
 
 Polymorphism is a term that means "the same description but different functions are called". Object-oriented often means that "different methods are applied depending on the object".
 
@@ -177,21 +177,21 @@ In this example, the statement $ calc_func-> (@num) has different meanings depen
 
 In java, overloading and overriding are the ways to achieve polymorphism, and in C they are function pointers.
 
-<h4> Beautiful method using hash </ h4>
+<h4> Beautiful method using hash </h4>
 
 <pre>
 $ how_to_calc ='average';
 my% calc_table = (sum => \ & sum, average => \ & average);
 $ result = $ calc_table {$ how_to_calc}-> (@nums);
-</ pre>
+</pre>
 
 I think the <a href="/blog/20161013147635.html"> hash </a> method is the most sophisticated form of function-referenced polymorphism.
 
 Although it is a selective process, it does not use any if statements. The process is branched by calling the subroutine corresponding to the hash key.
 
-<h3> Implementation of signal handler in subroutine </ h3>
+<h3> Implementation of signal handler in subroutine </h3>
 
-A <strong> signal handler </ strong> is a subroutine that is executed triggered by a signal. A signal is a signal that the OS sends to a process. Ctrl + c asks the OS to "send an INT signal to the currently running process." The alerm function also asks the OS to "send a LARM signal to the currently running process after n seconds".
+A <strong> signal handler </strong> is a subroutine that is executed triggered by a signal. A signal is a signal that the OS sends to a process. Ctrl + c asks the OS to "send an INT signal to the currently running process." The alerm function also asks the OS to "send a LARM signal to the currently running process after n seconds".
 
 <pre>
 $ SIG {INT} = sub {
@@ -201,13 +201,13 @@ $ SIG {INT} = sub {
 $ SIG {ALRM} = sub {
   die "ALRM signal was sent to this process.";
 };
-</ pre>
+</pre>
 
 To catch the INT signal, assign a reference to the subroutine to $ SIG {INT}. This example defines an anonymous subroutine and assigns its reference.
 
 There are a lot of things to note about signals, but I won't write them here. I write it when I write about interprocess communication.
 
-<h3> A rudimentary implementation of event-driven programming </ h3>
+<h3> A rudimentary implementation of event-driven programming </h3>
 
 This is a sample of a rudimentary implementation of event-driven programming.
 
@@ -268,11 +268,11 @@ sub found_lc {
 sub end {
   print "The parse of the string is finished. \ N";
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20080224120386.html"> substr function </a>
 
-<h4> (1) Subroutine for detecting events </ h4>
+<h4> (1) Subroutine for detecting events </h4>
 
 <pre>
 #Call a function to detect an event.
@@ -292,13 +292,13 @@ sub parse {
   $ handler {start_h}-> ();
   # ...
 }
-</ pre>
+</pre>
 
 In event-driven programming, "event detection" and "event execution" are separated. To do this, first implement the process of detecting the event as a subroutine.
 
 The argument uses a hash to pass a reference to the subroutine. This subroutine is executed when an event occurs.
 
-<h4> (2) Subroutine (callback function) executed when an event occurs </ h4>
+<h4> (2) Subroutine (callback function) executed when an event occurs </h4>
 
 <pre>
 sub start {
@@ -317,17 +317,17 @@ sub found_lc {
 sub end {
   print "The parse of the string is finished. \ N";
 }
-</ pre>
+</pre>
 
 Subroutines that are executed when an event occurs are commonly referred to as callback functions. Here, write the processing to be performed when an event occurs.
 
 It is a function that detects an event, and if you pass an argument when calling the callback function, it can be received and used by the callback function.
 
-<h3> Sample code </ h3>
+<h3> Sample code </h3>
 
 Subroutine sample code.
 
-<h4> Subroutine reference </ h4>
+<h4> Subroutine reference </h4>
 
 This is a sample to create a reference to a subroutine.
 
@@ -370,9 +370,9 @@ my $ sum_ref = sub {
 
 my $ total = $ sum_ref-> (1, 2, 3);
 print "The sum of 1,2,3 is $ total. \ N \ n";
-</ pre>
+</pre>
 
-<h4> Signal handler </ h4>
+<h4> Signal handler </h4>
 
 This is a sample using a signal handler. I'm using a <a href="/blog/20100123126425.html"> while statement </a> to do an infinite loop.
 
@@ -390,7 +390,7 @@ $ SIG {INT} = sub {
 while (1) {};
 
 Use Ctrl + c to send a # INT signal to a running process.
-</ pre>
+</pre>
 
 <pre>
 use strict;
@@ -407,4 +407,4 @@ alarm 2;
 
 # infinite loop
 while (1) {};
-</ pre>
+</pre>

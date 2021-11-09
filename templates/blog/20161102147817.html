@@ -1,38 +1,38 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Perl special variables </ h2>
+  </li>
+</ol>
+<h2> Perl special variables </h2>
 
 
 
 A list of Perl special variables. Special variables are global variables that are predefined in Perl. The variable name identifies its use. I will introduce only this from the special variables that I definitely want to remember.
 
-<h4> @ARGV --command line arguments </ h4>
+<h4> @ARGV --command line arguments </h4>
 
 <a href="/blog/20080108132865.html"> command line argument </a> is assigned to "@ARGV".
 
 <pre>
 @ARGV
-</ pre>
+</pre>
 
-<h4> @ _ --Subroutine arguments </ h4>
+<h4> @ _ --Subroutine arguments </h4>
 
 The <a href="/blog/20180523152759.html"> argument </a> of the <a href="/blog/20101130129876.html"> subroutine </a> is assigned to "@ _".
 
 <pre>
 @_
-</ pre>
+</pre>
 
-<h4> $ 1, $ 2, $ 3, ... --Regex captured string </ h4>
+<h4> $ 1, $ 2, $ 3, ... --Regex captured string </h4>
 
 For "$ 1", "$ 2" and "$ 3", use <a href="/blog/20100827127859.html"> regular expression </a> to <a href="/blog/20180524152759.html"> capture </a> The specified character string is assigned.
 
@@ -40,280 +40,280 @@ For "$ 1", "$ 2" and "$ 3", use <a href="/blog/20100827127859.html"> regular exp
 $ 1;
 $ 2;
 $ 3;
-</ pre>
+</pre>
 
-<h4> $ _ --Default variable </ h4>
+<h4> $ _ --Default variable </h4>
 
 "$ _" Is called <a href="/blog/20180118151628.html"> default variable </a>. It's best to refrain from using default arguments yourself for readability, but some standard functions use default variables, so there are a few things to keep in mind.
 
 At a minimum, <a href="/blog/20100118126425.html"> map function </a>, <a href="/blog/20100119126425.html"> grep function </a>, <a href="/blog" /20170521149524.html "> Postscript for </a> often uses" $ _ ", so keep in mind.
 
-<b> map function </ b>
+<b> map function </b>
 
 <pre>
 map {$ _ => 1} @elements
-</ pre>
+</pre>
 
-<b> grep function </ b>
+<b> grep function </b>
 
 <pre>
 grep {$ _ eq'foo'} @elements
-</ pre>
+</pre>
 
-<b> Postfix for </ b>
+<b> Postfix for </b>
 
 <pre>
 $ _ for @elements;
-</ pre>
+</pre>
 
-<h4>% ENV --Getting and setting environment variables </ h4>
+<h4>% ENV --Getting and setting environment variables </h4>
 
-You can access <a href="/blog/20180510152716.html"> environment variables </a> with a special variable called <strong>% ENV </ strong>.
+You can access <a href="/blog/20180510152716.html"> environment variables </a> with a special variable called <strong>% ENV </strong>.
 
 <pre>
 % ENV
-</ pre>
+</pre>
 
 The environment variable name is the key and you can refer to the value with $ ENV {'env_name'}. Environment variables are like variables that the OS has. Environment variables are copied into the memory of the process space when the OS starts the process. OS environment variables cannot be changed from the process.
 Environment variables can be set freely, but they are valid only in that process. When a process launches a child process, the environment variables are copied, as if the OS launched the process.
 
-<h4> $ 0 --Get program name </ h4>
+<h4> $ 0 --Get program name </h4>
 
-Use the <strong> special variable "$ 0" </ strong> to <a href="/blog/20180509152716.html"> get the program name </a>.
+Use the <strong> special variable "$ 0" </strong> to <a href="/blog/20180509152716.html"> get the program name </a>.
 
 <pre>
 $ 0;
-</ pre>
+</pre>
 
 Gets the name when the program was started. In other words, if you specify a program with an absolute path, you can get the program name with the absolute path name from the current directory, and if you specify it with a relative path, you can get the program name with the relative path name.
 
-<h4> @INC-List of module search paths </ h4>
+<h4> @INC-List of module search paths </h4>
 
-<a href="/blog/20180508152716.html"> List of module search paths </a> is assigned to a special variable called <strong> @ INC </ strong>.
+<a href="/blog/20180508152716.html"> List of module search paths </a> is assigned to a special variable called <strong> @ INC </strong>.
 
 <pre>
 @INC
-</ pre>
+</pre>
 
 The module search path is the directory that Perl searches to load the module. Modules placed in directories not included in @INC cannot be loaded.
 
-<b> Use the lib module to add a module search path </ b>
+<b> Use the lib module to add a module search path </b>
 
 <pre>
 use lib'./lib';
-</ pre>
+</pre>
 
 You can add the search path to @INC at compile time by using the <a href="/blog/20100525127859.html"> lib </a> module.
 
-<b> Add the module search path directly to the beginning of @INC </ b>
+<b> Add the module search path directly to the beginning of @INC </b>
 
 <pre>
 unshift @ INC,'./lib2';
-</ pre>
+</pre>
 
 Add it directly to the beginning with <a href="/blog/20100105126425.html"> unshift function </a>. It is better to use use lib than this way. The advantage of using use lib is that it adds a search path at compile time, makes it more readable, and adds an architectural path as well.
 
-<h4>% INC --Check loaded modules </ h4>
+<h4>% INC --Check loaded modules </h4>
 
-To find out <a href="/blog/20180529152759.html"> loaded modules </a>, look at the variable <strong>% INC </ strong>.
+To find out <a href="/blog/20180529152759.html"> loaded modules </a>, look at the variable <strong>% INC </strong>.
 
 <pre>
 % INC
-</ pre>
+</pre>
 
 The% INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported.
 
 It has nothing to do with @INC, which stores the module's search path. @INC and% INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function </a> to retrieve only the keys.
 
-<h4> $ ^ O --Get OS name </ h4>
+<h4> $ ^ O --Get OS name </h4>
 
-To get the <a href="/blog/20180527152759.html"> OS name </a>, use the special variable <strong> $ ^ O </ strong>.
+To get the <a href="/blog/20180527152759.html"> OS name </a>, use the special variable <strong> $ ^ O </strong>.
 
 <pre>
 $ ^ O
-</ pre>
+</pre>
 
-<b> $ ^ O value and OS type </ b>
+<b> $ ^ O value and OS type </b>
 
 The value of "$ ^ O" in each OS is summarized.
 
 <table>
   <tr>
     <td>
-      <span style = "font-weight: bold;"> $ ^ O value </ span>
-    </ td>
+      <span style = "font-weight: bold;"> $ ^ O value </span>
+    </td>
     <td>
-      <span style = "font-weight: bold;"> Description and link </ span>
-    </ td>
-  </ tr>
+      <span style = "font-weight: bold;"> Description and link </span>
+    </td>
+  </tr>
 
   <tr>
     <td>
       MacOS
-    </ td>
+    </td>
     <td>
        MacOS
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       MSWin32
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 | Windows in general |
   <tr>
     <td>
       os2
-    </ td>
+    </td>
     <td>
        OS / 2
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       VMS
-    </ td>
+    </td>
     <td>
         VMS
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       epoc
-    </ td>
+    </td>
     <td>
        <a href="http://sudo.com/index.php/archive/mobilephone/nokia/epoc-os"> EPOC OS (probably) </a>
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       NetWare
-    </ td>
+    </td>
     <td>
        NetWare
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       symbian
-    </ td>
+    </td>
     <td>
        Symbian OS
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       dos
-    </ td>
+    </td>
     <td>
       MS-DOS
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       cygwin
-    </ td>
+    </td>
     <td>
        cygwin
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       linux
-    </ td>
+    </td>
     <td>
        Linux
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       freebsd
-    </ td>
+    </td>
     <td>
       FreeBSD
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       solaris
-    </ td>
+    </td>
     <td>
       Solaris
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Unix (maybe different)
-    </ td>
+    </td>
     <td>
        Unix
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       darwin
-    </ td>
+    </td>
     <td>
       Mac OS X
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       CentOS
-    </ td>
+    </td>
     <td>
       Linux
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> Other special variables </ h3>
+<h3> Other special variables </h3>
 
-<h4> $$ --Get process ID </ h4>
+<h4> $$ --Get process ID </h4>
 
-Use the special variable "<strong> $$ </ strong>" to <a href="/blog/20180520152690.html"> get the process ID </a>.
+Use the special variable "<strong> $$ </strong>" to <a href="/blog/20180520152690.html"> get the process ID </a>.
 
 <pre>
 $$
-</ pre>
+</pre>
 
 The process ID is the unique knowledge of the process by the OS.To separate it, it is an identifier assigned when a process is started.
 
-<h4> $ ^ T --Get the process start time </ h4>
+<h4> $ ^ T --Get the process start time </h4>
 
-<a href="/blog/20180526152759.html"> To get the process start time </a>, use the special variable "<strong> $ ^ T </ strong>".
+<a href="/blog/20180526152759.html"> To get the process start time </a>, use the special variable "<strong> $ ^ T </strong>".
 
 <pre>
 $ ^ T
-</ pre>
+</pre>
 
 The time is obtained in epoch seconds (seconds from 00:00:00 on January 1, 1970).
 
-<h4> $? --Child process exit status </ h4>
+<h4> $? --Child process exit status </h4>
 
 Use "$?" To get the <a href="/blog/20180525152759.html"> exit status of the child process </a>.
 
 <pre>
 $?
-</ pre>
+</pre>
 
 If wait waits for the child process to terminate, $? Contains multiple values, including the exit status of the child process. $? Is also set when a child process is executed using the system function.
 
-<h3> List of all special variables </ h3>
+<h3> List of all special variables </h3>
 
 Below is a list of special variables. See the <a href="http://perldoc.jp/docs/perl/5.20.1/perlvar.pod"> official document "perlvar" </a> for more information.
 
@@ -321,668 +321,668 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
   <tr>
     <td>
       * Special variables
-    </ td>
+    </td>
     <td>
       *meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ _
-    </ td>
+    </td>
     <td>
       Default argument
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       @_
-    </ td>
+    </td>
     <td>
       Subroutine arguments
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ "
-    </ td>
+    </td>
     <td>
       Separator when the array is interpolated with double quotes
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $$
-    </ td>
+    </td>
     <td>
       Process ID
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ 0
-    </ td>
+    </td>
     <td>
       The name of the running program
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ (
-    </ td>
+    </td>
     <td>
       Process real group ID
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $)
-    </ td>
+    </td>
     <td>
       Process execution group ID
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ <
-    </ td>
+    </td>
     <td>
       The real user ID of the process
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $>
-    </ td>
+    </td>
     <td>
       Process execution user ID
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $;
-    </ td>
+    </td>
     <td>
       Subscript delimiter for emulation of multidimensional arrays
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ a, $ b
-    </ td>
+    </td>
     <td>
       Variables used in the sort function
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       % ENV
-    </ td>
+    </td>
     <td>
       environmental variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ F
-    </ td>
+    </td>
     <td>
       Maximum file descriptor
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       @F
-    </ td>
+    </td>
     <td>
       Includes fields in each row when automatic split mode is enabled
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       @INC
-    </ td>
+    </td>
     <td>
       List of library load paths
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       % INC
-    </ td>
+    </td>
     <td>
       List of included file names
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ I
-    </ td>
+    </td>
     <td>
       Replacement edit extension
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ M
-    </ td>
+    </td>
     <td>
       Do you want to trap if you run out of memory?
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ O
-    </ td>
+    </td>
     <td>
       Operating system name
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 |
   <tr>
     <td>
       % SIG
-    </ td>
+    </td>
     <td>
       Signal handler
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ T
-    </ td>
+    </td>
     <td>
       Time when the program started
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ V
-    </ td>
+    </td>
     <td>
       Perl version information
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ X
-    </ td>
+    </td>
     <td>
       Name when executed
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ 1, $ 2, $ 3
-    </ td>
+    </td>
     <td>
       String captured with regular expression
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ & &
-    </ td>
+    </td>
     <td>
       The string that matched in the last successful pattern match
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ `
-    </ td>
+    </td>
     <td>
       The part before the string matched by pattern matching
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $'
-    </ td>
+    </td>
     <td>
       The part after the string matched by pattern matching
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ +
-    </ td>
+    </td>
     <td>
       The string captured at the end of the last pattern match
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ N
-    </ td>
+    </td>
     <td>
       Last used group in pattern matching
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 |
   <tr>
     <td>
       @ +
-    </ td>
+    </td>
     <td>
       Offset to the end of the last successful match
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       % +
-    </ td>
+    </td>
     <td>
       Named capture value with last successful match
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       @-
-    </ td>
+    </td>
     <td>
       Last matched first offset
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       %-
-    </ td>
+    </td>
     <td>
       Last successful match allows for named capture values, list of values
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ R
-    </ td>
+    </td>
     <td>
       Result of regular expression assertion
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ RE_DEBUG_FLAGS}
-    </ td>
+    </td>
     <td>
       Regular expression debug flag
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ARGV
-    </ td>
+    </td>
     <td>
       File name when reading from & lt; & gt;
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       @ARGV
-    </ td>
+    </td>
     <td>
       Command line arguments
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ARGV
-    </ td>
+    </td>
     <td>
       File handle for filename in @ARGV with & lt; ARGV & gt;
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ARGVOUT
-    </ td>
+    </td>
     <td>
       Currently open filehandle when using -i
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $,
-    </ td>
+    </td>
     <td>
       Output field delimiter for print
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $.
-    </ td>
+    </td>
     <td>
       Current line number of filehandle
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ /
-    </ td>
+    </td>
     <td>
       Input record separator
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ \
-    </ td>
+    </td>
     <td>
       Output record separator
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ & # x7c;
-    </ td>
+    </td>
     <td>
       Avoid buffering
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ LAST_FH}
-    </ td>
+    </td>
     <td>
       Reference to the last loaded file handle
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ A
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ L
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $%
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $-
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
-      $:</ td>
+      $:</td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ =
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ~
-    </ td>
+    </td>
     <td>
       Format special variables
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ CHILD_ERROR_NATIVE}
-    </ td>
+    </td>
     <td>
       Native status on system calls
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ E
-    </ td>
+    </td>
     <td>
       Current OS error information
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ S
-    </ td>
+    </td>
     <td>
       Current interpreter status
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ W
-    </ td>
+    </td>
     <td>
       warning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $!
-    </ td>
+    </td>
     <td>
       System call error
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       %!
-    </ td>
+    </td>
     <td>
       System call error number and content
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $?
-    </ td>
+    </td>
     <td>
       Child process error
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ @
-    </ td>
+    </td>
     <td>
       If you catch an exception with <a href="/blog/20100312126967.html"> eval </a>, its contents will be saved.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ C
-    </ td>
+    </td>
     <td>
       Compile switch
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ D
-    </ td>
+    </td>
     <td>
       Debug flag
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ ENCODING}
-    </ td>
+    </td>
     <td>
       Perl source code character code
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ GLOBAL_PHASE}
-    </ td>
+    </td>
     <td>
       Current phase of Perl interpreter
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ H
-    </ td>
+    </td>
     <td>
       Compile time tips
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       % ^ H
-    </ td>
+    </td>
     <td>
       Has the same scope as $ ^ H
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ OPEN}
-    </ td>
+    </td>
     <td>
       Internal variables for PerlIO
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ ^ P
-    </ td>
+    </td>
     <td>
       Internal variables for debugging
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ TAINT}
-    </ td>
+    </td>
     <td>
       Whether in tein mode
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ UNICODE}
-    </ td>
+    </td>
     <td>
       Unicode settings
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ UTF8CACHE}
-    </ td>
+    </td>
     <td>
       Internal UTF-8 offset cache code state
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       $ {^ UTF8LOCALE}
-    </ td>
+    </td>
     <td>
       Whether UTF-8 locale was detected
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 We recommend that you do not use special variables until you really need them, as they significantly reduce the readability of your source code.

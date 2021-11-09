@@ -1,17 +1,17 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop = "name"> reading material </ span> </a>
+        <span itemprop = "name"> reading material </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Make sure you give the variable a proper name </ h2>
+  </li>
+</ol>
+<h2> Make sure you give the variable a proper name </h2>
 
 
 
@@ -21,30 +21,30 @@ This is my personal opinion, but I would like to write down what I think about h
 <ol>
   <li>
     Make variable names meaningful.
-  </ li>
+  </li>
   <li>
     Variable names are all lowercase and word joints use _ (underscore).
-  </ li>
+  </li>
   <li>
     How detailed the variable name should be
-  </ li>
+  </li>
   <li>
     Variable names that may be omitted
-  </ li>
+  </li>
   <li>
     How to name variables that represent boolean values
-  </ li>
+  </li>
   <li>
     Array naming method
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h3> (1) Make the variable name meaningful. </ h3>
+<h3> (1) Make the variable name meaningful. </h3>
 
 The hardest thing to read in programming is the intent of the person who wrote the code.
 Proper variable names make it easier to convey your intentions.
 
-<h4> (a) When variables have meaning </ h4>
+<h4> (a) When variables have meaning </h4>
 
 <pre>
 # This variable stores the sum of something
@@ -55,20 +55,20 @@ my $ offset;
 
 # This variable represents the maximum number of clients
 my $ max_client
-</ pre>
+</pre>
 
-<h4> (b) When variables have no meaning </ h4>
+<h4> (b) When variables have no meaning </h4>
 
 <pre>
 # I don't know anything
 my $ p;
 my $ q;
 my $ k;
-</ pre>
+</pre>
 
 The only concern for computers is whether variable names can be distinguished, but for humans it is important what the variable names mean.
 
-<h3> (2) Variable names are all lowercase, and word joints are _ (underscore.) </ H3>
+<h3> (2) Variable names are all lowercase, and word joints are _ (underscore.) </H3>
 
 Do not use uppercase letters in variable names, only lowercase letters. Use underscores at word joints.
 
@@ -76,26 +76,26 @@ Do not use uppercase letters in variable names, only lowercase letters. Use unde
 my $ user_name;
 my $ search_word;
 my $ max_database_connection;
-</ pre>
+</pre>
 
 This is a Perl convention, not compulsory, but if you're writing code in Perl, you'll probably want to keep it. I think there is less confusion for the user.
 
 On the contrary, when programming with java, do not bring in the perl convention and write it as userName.
 
-<h3> (3) How detailed the variable name should be </ h3>
+<h3> (3) How detailed the variable name should be </h3>
 
 I think that how detailed the variable name should be based on whether the meaning can be distinguished within the scope.
 
-<h4> (a) If you can clearly understand the intention, you can use a short variable name </ h4>
+<h4> (a) If you can clearly understand the intention, you can use a short variable name </h4>
 
 <pre>
 sub sum {
   # Represents the total value
   my $ total;
 }
-</ pre>
+</pre>
 
-<h4> (b) If it is necessary to distinguish, use a variable name that can distinguish the meaning depending on the situation </ h4>
+<h4> (b) If it is necessary to distinguish, use a variable name that can distinguish the meaning depending on the situation </h4>
 
 For example, if you had a function that added odd sums and even sums, give each sum an appropriate name.
 
@@ -107,17 +107,17 @@ sub sum {
   # Even sum
   my $ even_total
 }
-</ pre>
+</pre>
 
-<h4> (c) If you can clearly understand the intention with the for statement, you can use a short variable name such as $ i </ h4>
+<h4> (c) If you can clearly understand the intention with the for statement, you can use a short variable name such as $ i </h4>
 
 <pre>
 for my $ i (0 .. @nums --1) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> (d) If there is a possibility that the intention may be difficult to understand in the for statement, use a variable name that can distinguish the meaning </ h4>
+<h4> (d) If there is a possibility that the intention may be difficult to understand in the for statement, use a variable name that can distinguish the meaning </h4>
 
 <pre>
 my $ data_table = [[1, 2, 3], [2, 4, 6]];
@@ -126,21 +126,21 @@ for my $ row_num (0 .. @ $ data_table --1) {
     ...
   }
 }
-</ pre>
+</pre>
 
-<h3> (4) Variable names that may be omitted </ h3>
+<h3> (4) Variable names that may be omitted </h3>
 
 You may omit anything that makes sense by convention. If the variable scope is narrow, you can omit it. When omitting it, it is easy to understand to leave the first few characters.
 
-<h4> Variable names that can be understood even if omitted </ h4>
+<h4> Variable names that can be understood even if omitted </h4>
 
 <pre>
 my $ num; # number
 my $ len; # length;
 my $ char; # charactor;
-</ pre>
+</pre>
 
-<h3> (5) Naming method for variables that represent boolean values ​​</ h3>
+<h3> (5) Naming method for variables that represent boolean values ​​</h3>
 
 Here are some examples of variable names that represent boolean values.
 
@@ -162,9 +162,9 @@ my $ check_success;
 
 #The state is ok. (Noun + noun)
 my $ status_ok;
-</ pre>
+</pre>
 
-<h3> (6) Sequence naming method </ h3>
+<h3> (6) Sequence naming method </h3>
 
 If you want to name the array, add an s at the end.
 <pre>
@@ -174,4 +174,4 @@ my @members;
 for my $ member (@members) {
   # ...
 }
-</ pre>
+</pre>

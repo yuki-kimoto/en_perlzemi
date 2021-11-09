@@ -1,44 +1,44 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> undef function --undefined value </ h2>
+  </li>
+</ol>
+<h2> undef function --undefined value </h2>
 
 
 
-You can use the <strong> undef function </ strong> to set a <strong> undefined value </ strong>. Alternatively, undefine the value of the variable specified in the argument.
+You can use the <strong> undef function </strong> to set a <strong> undefined value </strong>. Alternatively, undefine the value of the variable specified in the argument.
 
 <pre>
 undef
 undef (variable)
-</ pre>
+</pre>
 
 Set the undefined value as follows. The value of the variable "$ name" becomes undefined.
 
 <pre>
 $ name = "Kimoto";
 $ name = undef;
-</ pre>
+</pre>
 
 You can also undefine the value of a variable by passing the variable as an argument of the undef function as follows.
 
 <pre>
 $ name = "Kimoto";
 undef $ name;
-</ pre>
+</pre>
 
 You can also use the undef function for arrays and hashes.
 
@@ -48,9 +48,9 @@ undef @names;
 
 % scores = undef;
 undef% score;
-</ pre>
+</pre>
 
-<h3> Judgment of undefined value </ h3>
+<h3> Judgment of undefined value </h3>
 
 You can use the <a href="/blog/20100219126425.html"> defined function </a> to determine if it is an undefined value. Returns true if defined, false if undefined.
 
@@ -58,7 +58,7 @@ You can use the <a href="/blog/20100219126425.html"> defined function </a> to de
 if (defined $ name) {
   ...
 }
-</ pre>
+</pre>
 
 It's also a good idea to write using unless to handle cases where the value is undefined.
 
@@ -66,24 +66,24 @@ It's also a good idea to write using unless to handle cases where the value is u
 unless (defined $ name) {
   #What to do if undefined
 }
-</ pre>
+</pre>
 
-<h3> Comparison with undefined value </ h3>
+<h3> Comparison with undefined value </h3>
 
 undef is treated as an "empty string" when compared as a string and as "0" when compared as a number.
 
 <pre>
 undef == 0
 undef eq ""
-</ pre>
+</pre>
 
 If you use <a href="/blog/20130916137930.html"> warnings module </a>, it will warn you in such a case and prevent bugs, so be sure to declare it.
 
 <pre>
 use warnings;
-</ pre>
+</pre>
 
-<h3> Memory release using undef </ h3>
+<h3> Memory release using undef </h3>
 
 Assigning undef frees the memory.
 
@@ -94,7 +94,7 @@ However, in Perl, lexical variables automatically free memory at the end of scop
   my $ num = 5;
 }
 # At the end of scope, "$ num" memory is freed
-</ pre>
+</pre>
 
 However, even after the scope ends, the memory may not be released due to closures. In such cases, you can explicitly use undef to free memory.
 
@@ -103,10 +103,10 @@ Please refer to the following articles for closures.
 <ul>
   <li>
     <a href="/blog/20080710121570.html"> Closure </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample undef function that you can run and try.
 
@@ -124,4 +124,4 @@ if (defined $ name) {
 else {
   print "Undef";
 }
-</ pre>
+</pre>

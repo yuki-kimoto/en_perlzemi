@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Polymorphism </ span>
+      <span itemprop = "name"> Polymorphism </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Polymorphism with inheritance </ h2>
+  </li>
+</ol>
+<h2> Polymorphism with inheritance </h2>
 
 
 
-One of the characteristics of object orientation is polymorphism. Polymorphism can be understood in the sense that <b> similar descriptions behave differently </ b>.
+One of the characteristics of object orientation is polymorphism. Polymorphism can be understood in the sense that <b> similar descriptions behave differently </b>.
 
-<h3> 1. Make different behaviors depending on the class </ h3>
+<h3> 1. Make different behaviors depending on the class </h3>
 
 Now, let's write a sample that behaves differently depending on the class to which you belong. A simple example is to concatenate strings with specific symbols. The Unix delimiter and the Windows delimiter are treated as samples.
 
@@ -68,17 +68,17 @@ use base'FilePath :: Base';
 
 # Delimiter for Windows
 sub delimiter {return'\\'}
-</ pre>
+</pre>
 When you run this sample
 
 <pre>
 unix: a / b
 win: a \ b
-</ pre>
+</pre>
 
 It will be displayed.
 
-<h3> 2. Pay attention to the behavior of cat_path </ h3>
+<h3> 2. Pay attention to the behavior of cat_path </h3>
 
 First of all, the characteristic of this sample is that the method called cat_path has two meanings.
 
@@ -90,7 +90,7 @@ sub cat_path {
   my ($ self, $ str1, $ str2) = @_;
   return $ str1. $ Self-> delimiter. $ Str2;
 }
-</ pre>
+</pre>
 
 If you look at the class FilePath :: Base, there is a method called cat_path. By the way, if you look at the part that calls cat_path, the object of File :: Path class is not created.
 
@@ -100,7 +100,7 @@ my $ file_path_win = FilePath :: Windows-> new;
 
 my $ unix_result = $ file_path_unix-> cat_path ('a','b');
 my $ win_result = $ file_path_win-> cat_path ('a','b');
-</ pre>
+</pre>
 
 Objects of the FilePath :: Unix class and FilePath :: Windows class have been created, respectively.
 
@@ -108,7 +108,7 @@ This is because FilePath :: Unix and FilePath :: Windows inherits his FilePath :
 
 The next thing to pay attention to is the description of $ self-> delimiter in cat_path.
 
-<h3> 3. Call a subclass method in the superclass. </ h3>
+<h3> 3. Call a subclass method in the superclass. </h3>
 
 Let's pay attention to the inside of cat_path.
 
@@ -117,47 +117,47 @@ sub cat_path {
   my ($ self, $ str1, $ str2) = @_;
   return $ str1. $ Self-> delimiter. $ Str2;
 }
-</ pre>
+</pre>
 In cat_path, the delimiter method is called. However, FilePath :: Base does not have a method called delimiter. Can I call a method I don't have?
 
 Actually, there is a secret in this $ self part.
 
 <pre>
 my $ unix_result = $ file_path_unix-> cat_path ('a','b');
-</ pre>
+</pre>
 
 When you call the cat_path method like this, the object assigned to $ self is the FilePath :: Unix class object.
 
 The FilePath :: Unix class has a delimiter method, so you can call the delimiter method from within the cat_path method.
 
-<h3> 4. The FilePath :: Base class is an incomplete class that is intended to be inherited. </ h3>
+<h3> 4. The FilePath :: Base class is an incomplete class that is intended to be inherited. </h3>
 
 If you create an object of the FilePath :: Base class, cat_file will fail if you try to call the delimiter method internally.
 
 <pre>
 my $ file_path_base = FilePath :: Base-> new;
 $ file_path_base-> cat_file ('a','b'); #Failure!
-</ pre>
+</pre>
 
 A class that implements the delimiter method that inherits the FilePath :: Base class will be created and meaningful.
 
-I would like to name such a class <b> inherited class </ b>. (I couldn't find a proper name for such a class in a Perl book, so I'll call it a <b> inherited class </ b>. It's called a Java abstract class because it can create objects. Not really)
+I would like to name such a class <b> inherited class </b>. (I couldn't find a proper name for such a class in a Perl book, so I'll call it a <b> inherited class </b>. It's called a Java abstract class because it can create objects. Not really)
 
-<h3> 5. Defining methods in subclasses </ h3>
+<h3> 5. Defining methods in subclasses </h3>
 
 And notice that the FilePath :: Unix class and the FilePath :: Windows class have different implementations of the delimiter method to achieve polymorphism.
 
 <pre>
 # FilePath :: Unix class
 sub delimiter {return'/'}
-</ pre>
+</pre>
 
 <pre>
 # FilePath :: For Windows class
 sub delimiter {return'\\'}
-</ pre>
+</pre>
 This description is the part that substantially changes the behavior of the output result.
 <pre>
 unix: a / b
 win: a \ b
-</ pre>
+</pre>

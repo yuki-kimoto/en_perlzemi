@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Standard input Standard output Standard error output </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Standard input Standard output Standard error output </h2>
 
 
 
@@ -24,16 +24,16 @@ I will write about standard input, standard output, and standard error output.
 <ol>
   <li>
     Standard input
-  </ li>
+  </li>
   <li>
     Standard output
-  </ li>
+  </li>
   <li>
     Standard error output
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h3> 1. Standard input </ h3>
+<h3> 1. Standard input </h3>
 
 The standard input is read to the keyboard. You can use standard input to receive input from the keyboard. If you write a program that outputs the characters received from the keyboard as they are, it will be as follows. A file handle called STDIN represents standard input.
 
@@ -44,11 +44,11 @@ use warnings;
 Read a line from the file handle that represents the standard input # STDIN.
 my $ line = <STDIN>;
 print $ line;
-</ pre>
+</pre>
 
  If you read from STDIN, you can see that it is read from the keyboard.
 
-<h3> 2. Standard output </ h3>
+<h3> 2. Standard output </h3>
 
 The output destination of the standard output is the display. You can write to standard output and see it on the display. A file handle called STDOUT represents standard output.
 
@@ -57,11 +57,11 @@ use strict;
 use warnings;
 
 print STDOUT $ line;
-</ pre>
+</pre>
 
 The print function prints to STDOUT by default, even if you do not explicitly specify STDOUT.
 
-<h3> 3. Standard error output </ h3>
+<h3> 3. Standard error output </h3>
 
 The output destination of the standard error output is the same as the standard output and is the display. Standard error output is a function for notifying the user of an error. A file handle called STDERR represents standard error output. If you write the following, the display will show "aaa" and "bbb".
 
@@ -71,7 +71,7 @@ use warnings;
 
 print STDOUT "aaa \ n";
 print STDERR "bbb \ n";
-</ pre>
+</pre>
 
 What is the role of standard error if both output to display? It is to separate standard and error output.
 
@@ -83,4 +83,4 @@ If you redirect the standard output to a file as shown below, only the standard 
 
 <pre>
 perl script name> file
-</ pre>
+</pre>

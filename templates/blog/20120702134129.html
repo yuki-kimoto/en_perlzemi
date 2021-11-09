@@ -1,30 +1,30 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-        <span itemprop = "name"> operator </ span> </a>
+        <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Defined-or operator "//" </ h2>
+  </li>
+</ol>
+<h2> Defined-or operator "//" </h2>
 
 
 
-Starting with Perl 5.10, the very useful <strong> Defined-or operator </ strong> "<b> // </ b>" has been introduced. An operator followed by two slashes. It's very difficult to search, so it's a good idea to remember it early. In recent years, it's the most recommended function for me.
+Starting with Perl 5.10, the very useful <strong> Defined-or operator </strong> "<b> // </b>" has been introduced. An operator followed by two slashes. It's very difficult to search, so it's a good idea to remember it early. In recent years, it's the most recommended function for me.
 
 <pre>
 # Defined-or operator
 // //
-</ pre>
+</pre>
 
 The Defined-or operator returns the lvalue if the lvalue is defined, and returns the rvalue if it is undefined.
 
@@ -36,35 +36,35 @@ my $ value = undef //'default'; #'default'
 my $ value = 0 //'default'; # 0
 my $ value ='' //'default'; #''''
 my $ value ='foo' //'default'; #'foo'
-</ pre>
+</pre>
 
 This is very useful for defining a default value if no value is given.
 
 <pre>
 my $ name = $ opts {name} //'Ken';
-</ pre>
+</pre>
 
-You can also write <b> // = </ b>.
+You can also write <b> // = </b>.
 
 <pre>
 $ value // ='default';
-</ pre>
+</pre>
 
 Only if $ value is undefined will $ value be assigned'default'.
 
-<h3> What did you do before Perl 5.10 </ h3>
+<h3> What did you do before Perl 5.10 </h3>
 
 Previously, in order to do this, you had to use the <a href="/blog/20100219126425.html"> defined function </a> to write:
 
 <pre>
 $ value ='default' unless defined $ value;
-</ pre>
+</pre>
 
-Also, since this writing method is verbose, many people used the <b> || </ b> operator to write as follows.
+Also, since this writing method is verbose, many people used the <b> || </b> operator to write as follows.
 
 <pre>
 $ value || ='default';
-</ pre>
+</pre>
 
 However, this way of writing introduced a potential bug to the application because'default' was assigned even if $ value was 0 or an empty string.
 

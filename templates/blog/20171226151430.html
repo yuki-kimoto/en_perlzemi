@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> kill function-sends a signal to the process </ h2>
+  </li>
+</ol>
+<h2> kill function-sends a signal to the process </h2>
 
 
 
-You can use the <b> kill function </ b> to kill the process.
+You can use the <b> kill function </b> to kill the process.
 
 <pre>
 kill (signal number, process ID);
-</ pre>
+</pre>
 
 Specify the signal number in the first argument.
 
@@ -35,9 +35,9 @@ You can also specify multiple process IDs in a list, as shown below.
 
 <pre>
 kill (signal number, process ID1, process ID2, ...);
-</ pre>
+</pre>
 
-<h3> Get the process ID </ h3>
+<h3> Get the process ID </h3>
 
 The process ID is specified in the second argument of the kill function, but in the case of Linux, this ID can be obtained by executing "ps -ef".
 
@@ -45,11 +45,11 @@ For example, in the following, the server process is started, but the second col
 
 <pre>
 kimoto 20220 25715 0 Dec25? 00:05:35 / home / kimoto / labo / perltweet / script / perltweet
-</ pre>
+</pre>
 
 For example, the second number from the left, "20220", is the process ID. This will be the process ID you specify for kill.
 
-<h3> Get signal number </ h3>
+<h3> Get signal number </h3>
 
 A list of signals can be found by loading the Config module and using "$ Config {sig_name}".
 
@@ -59,21 +59,21 @@ use Config;
 use Data :: Dumper;
 
 print Dumper $ Config {sig_name};
-</ pre>
+</pre>
 
 This number is the signal number because it is arranged in order from the first.
 
-<h3> Check if the signal can be received </ h3>
+<h3> Check if the signal can be received </h3>
 
 Signal number 0 is a special number that allows the target process to check if it can receive the signal.
 
 <pre>
 my $ success = kill (0, process ID);
-</ pre>
+</pre>
 
 This can be used to check if the child process is actually alive.
 
-<h3> Doesn't work well for Windows fork child processes </ h3>
+<h3> Doesn't work well for Windows fork child processes </h3>
 
 Note that the kill function works fine for Linux / Unix-based fork child processes, but not for Windows fork child processes.
 

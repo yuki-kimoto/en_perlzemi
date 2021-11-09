@@ -1,38 +1,38 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> map function-transformation of all elements of an array </ h2>
+  </li>
+</ol>
+<h2> map function-transformation of all elements of an array </h2>
 
 
-Use the <strong> map function </ strong> to convert all the elements of a <strong> array </ strong>. Each element of @array is passed to the default variable $ _, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
+Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $ _, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
 
 <pre>
 #Conversion of all elements of the array
 @mapped = map {conversion} @array;
-</ pre>
+</pre>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that doubles all elements using map. If @nums is (1, 2, 3) then @doubled is (2, 4, 6).
 <pre>
 # Double all elements
 my @nums = (1, 2, 3);
 my @doubled = map {$ _ * 2} @nums;
-</ pre>
+</pre>
 
 This is a sample that deletes the first string of all elements using map. If @strs is ('& nbsp; & nbsp; a','& nbsp; & nbsp; b','& nbsp; & nbsp; & nbsp; c'), then @trimed is ('a','b','c') Become.
 
@@ -40,7 +40,7 @@ This is a sample that deletes the first string of all elements using map. If @st
 # Excluding leading blanks
 my @strs = ('a','b','c');
 my @trimed = map {$ _ = ~ s / ^ \ s + //; $ _} @strs;
-</ pre>
+</pre>
 
 You can also convert one element into two elements. If @keys is ('a','b','c') then @mapped is (a => 1, b => 1, c => 1).
 
@@ -48,7 +48,7 @@ You can also convert one element into two elements. If @keys is ('a','b','c') th
 # Convert to two elements
 my @keys = ('a','b','c');
 my @mapped = map {$ _ => 1} @keys;
-</ pre>
+</pre>
 
 What can be written on the map can also be written on the foreach statement. Maps are often used in Perl because they are simpler to write.
 
@@ -59,14 +59,14 @@ my @doubled;
 for my $ num (@nums) {
   push @doubled, $ num * 2;
 }
-</ pre>
+</pre>
 
-<h3> Reference "Array of Perl" </ h3>
+<h3> Reference "Array of Perl" </h3>
 
 See below for a description of Perl's "arrays".
 
 <ul>
   <li>
     <a href="/blog/20161012147627.html"> Understand Perl's "arrays" </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

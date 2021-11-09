@@ -1,39 +1,39 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Getopt :: Long --Handle command line options </ h2>
+  </li>
+</ol>
+<h2> Getopt :: Long --Handle command line options </h2>
 
 
 
-You can use <strong> Getopt :: Long </ strong> to handle options for <a href="/blog/20080108132865.html"> command line arguments </a>.
+You can use <strong> Getopt :: Long </strong> to handle options for <a href="/blog/20080108132865.html"> command line arguments </a>.
 
 <pre>
 #Loading modules and importing functions
 use Getopt :: Long'GetOptions';
-</ pre>
+</pre>
 
 Consider specifying the following options with command line arguments:
 
 <pre>
 Specify the option with the # command line argument.
 perl script.pl --enable_cache --max_clients = 5 --type = single config.init
-</ pre>
+</pre>
 
-You can easily handle such command line options using the <strong> GetOptions function </ strong>.
+You can easily handle such command line options using the <strong> GetOptions function </strong>.
 
 <pre>
 Handling command line argument options with #GetOptions
@@ -52,7 +52,7 @@ GetOptions (
 
 Receives non-option arguments
 my $ conf_file = shift;
-</ pre>
+</pre>
 
 How to use the GetOptions function.
 
@@ -63,7 +63,7 @@ GetOptions (
   'Option name = Value type' =>'Variable to save',
   ...
 );
-</ pre>
+</pre>
 
 For "Option name = Type", specify the option name and value type. If the option name is a boolean value, the value type is omitted. If the option name is an integer, specify i as the value type. If the option name is a string, specify s as the value type.
 
@@ -76,7 +76,7 @@ For "Option name = Type", specify the option name and value type. If the option 
 
 #String
 'type = s'=> \ $ type
-</ pre>
+</pre>
 
 For "Variables to save", specify a reference for scalar variables. Set the default value first and pass it as a reference to the GetOptions argument.
 
@@ -88,18 +88,18 @@ my $ max_clients = 5;
 GetOptions (
   'max_clients = i'=> \ $ max_clients,
 );
-</ pre>
+</pre>
 
 Command line options can also be specified by abbreviated names. The initial letter of the option name is the abbreviated name.
 
 <pre>
 # Specify command line argument options with abbreviated name
 perl script.pl -e -m = 5 -t = single config.init
-</ pre>
+</pre>
 
 = Can be omitted.
 
 <pre>
 # Omit equal
 perl script.pl --enable_cache --max_clients 5 --type single config.init
-</ pre>
+</pre>

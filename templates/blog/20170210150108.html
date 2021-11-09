@@ -1,37 +1,37 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop = "name"> XS </ span> </a>
+        <span itemprop = "name"> XS </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> ExtUtils :: MakeMaker --Customize Makefile.PL </ h2>
+  </li>
+</ol>
+<h2> ExtUtils :: MakeMaker --Customize Makefile.PL </h2>
 
 
 
-<a href="http://pointoht.ti-da.net/e9338756.html"> ExtUtils :: MakeMaker </a> is used to explain how to write <b> Makefile.PL </ b>. ..
+<a href="http://pointoht.ti-da.net/e9338756.html"> ExtUtils :: MakeMaker </a> is used to explain how to write <b> Makefile.PL </b>. ..
 
-<h4> Specify a test script </ h4>
+<h4> Specify a test script </h4>
 
 By default, the test scripts under the "t" directory are executed, but you may want to execute the test scripts in subdirectories in a deeper hierarchy.
 
-In that case, use the <b> test </ b> option. The following example allows the test script up to 3 levels down to be executed.
+In that case, use the <b> test </b> option. The following example allows the test script up to 3 levels down to be executed.
 
 <pre>
   test => {TESTS =>'t /*.t t /*/*.tt/*/*/*.t'}
-</ pre>
+</pre>
 
-<h4> Add files to be deleted when doing make clean, make real clean </ h4>
+<h4> Add files to be deleted when doing make clean, make real clean </h4>
 
 Makefile.PL automatically creates a Makefile, which defines the commands that are executed by "make clean" and "make real clean".
 
@@ -41,15 +41,15 @@ In such a case, you can handle it by writing the following option in the WriteMa
 
 <pre>
 clean => {FILES => "* .xyz foo"}
-</ pre>
+</pre>
 
 <pre>
 realclean => {FILES =>'$ (INST_ARCHAUTODIR) /*.xyz'}
-</ pre>
+</pre>
 
 Please note that in FILES, it is necessary to describe the file name according to the make syntax rules.
 
-<h4> How to rename the XS file </ h4>
+<h4> How to rename the XS file </h4>
 
 When you create an XS module using h2xs, if the namespace contains "::", the XS file name will be "last name.xs".
 
@@ -77,7 +77,7 @@ WriteMakefile (
     # OBJECT option
     OBJECT =>'SomeModule $ (OBJ_EXT)'
 );
-</ pre>
+</pre>
 
 Specify that "SomeModule.xs" should be named "SomeModule.c" in the XS option. This is an instruction to xsubpp to convert the XS file to a C source file.
 
@@ -85,15 +85,15 @@ However, this is not enough, and you also need to describe the C language file n
 
 If you write like this, "SomeModule.c" will be compiled. It's complicated.
 
-<h4> Specify gcc optimization options </ h4>
+<h4> Specify gcc optimization options </h4>
 
-To specify gcc optimization options on XS Specify the <strong> OPTIMIZE </ strong> option as a WriteMakefile option in Makefile.PL.
+To specify gcc optimization options on XS Specify the <strong> OPTIMIZE </strong> option as a WriteMakefile option in Makefile.PL.
 
 <pre>
 OPTIMIZE =>'-O3'
-</ pre>
+</pre>
 
-Specifying <strong> -O3 </ strong> seems to give the strongest optimization.
+Specifying <strong> -O3 </strong> seems to give the strongest optimization.
 
 The following is a sample using the OPTIMIZE option.
 
@@ -127,49 +127,49 @@ WriteMakefile (
     INC =>'-I.',
     OBJECT =>'$ (O_FILES)',
 );
-</ pre>
+</pre>
 
-<h4> How to add a search path for a C / C ++ language header file in Makefile.PL </ h4>
+<h4> How to add a search path for a C / C ++ language header file in Makefile.PL </h4>
 
-When writing Makefile.PL, you may want to change or add the location of C / C ++ header files. For ExtUtils :: MakeMaker, you can set it with the <b> INC </ b> and <b> H </ b> options in the WriteMakefile.
+When writing Makefile.PL, you may want to change or add the location of C / C ++ header files. For ExtUtils :: MakeMaker, you can set it with the <b> INC </b> and <b> H </b> options in the WriteMakefile.
 
 The following settings assume that you have a C / C ++ header file in "Rstats_lib / include".
 
 <pre>
     INC =>'-I. -I./Rstats_lib/include',
     H => ['ppport.h', glob ('Rstats_lib / include / *. h')],
-</ pre>
+</pre>
 
-<h4> Add header file include path </ h4>
+<h4> Add header file include path </h4>
 
 Use the option "INC" to add the include path for the header file. By default, the current directory is set, so "./Rstats_lib/include" is added to this.
 
 <pre>
     INC =>'-I. -I./Rstats_lib/include'
-</ pre>
+</pre>
 
 Do not delete the current directory settings. Because it is needed to read the header file "ppport.h".
 
 This is an option passed to the compiler (such as gcc). Note that even if you specify multiple header file search paths, write the option "-I" multiple times instead of specifying it in the array reference.
 
-<b> Specify a list of header file names </ b>
+<b> Specify a list of header file names </b>
 
 The "H" option passes a list of header files. Specify all header files in the array reference. All header files under "Rstats_lib / include" are specified using "ppport.h" and the glob function.
 
 <pre>
     H => ['ppport.h', glob ('Rstats_lib / include / *. h')],
-</ pre>
+</pre>
 
 If this is not specified, the dependency will not be resolved correctly when make is executed, so be sure to specify it. The "INC" option alone will compile successfully for the first time, but make will not understand the dependencies correctly.
 
-<h4> How to add a search path for C / C ++ language source files in Makefile.PL </ h4>
+<h4> How to add a search path for C / C ++ language source files in Makefile.PL </h4>
 
 How can I store C / C ++ language source files in a different directory when writing an XS? You can do that if you write Makefile.PL well. Write the WriteMakefile options in Makefile.PL as follows:
 
 <pre>
     C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],OBJECT =>'$ (O_FILES)',
     DEFINE =>'-o $ @'
-</ pre>
+</pre>
 
 This is the case when the module name is Rstats and the source file directory is "Rstats_lib / src". It is assumed that a file called Rstats.xs is located at the top "/". The source file type is a C ++ source file.
 
@@ -202,7 +202,7 @@ To make the image easier, I'll show you the structure of the directory and a com
 | `--Rstats.pm
 |-ppport.h
 `--t
-</ pre>
+</pre>
 
 The source code of Makefile.PL.
 
@@ -258,9 +258,9 @@ WriteMakefile (
     OBJECT =>'$ (O_FILES)',
     DEFINE =>'-o $ @'
 );
-</ pre>
+</pre>
 
-<h4> C language source file description </ h4>
+<h4> C language source file description </h4>
 
 I think it is difficult to understand as it is, so I will explain the options of WriteMakefile.
 
@@ -268,36 +268,36 @@ I think it is difficult to understand as it is, so I will explain the options of
     C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],
     OBJECT =>'$ (O_FILES)',
     DEFINE =>'-o $ @'
-</ pre>
+</pre>
 
 First, write all the source code required for compilation with the option "C". "Rstats.c" corresponds to "Rstats.xs". I am using the glog function to get the cpp file under "Rstats_lib / src". If it was C language, the options in this part would be as follows.
 
 <pre>
     C => ['Rstats.c', glob ('Rstats_lib / src / *. C')],
-</ pre>
+</pre>
 
 Internally, the file specified by the "C" option is stored in a variable called "C_FILES" in Makefile. In addition, a variable called "O_FILES" with the extension of "C_FILES" changed to ".o" is automatically created.
 
-<h4> Change the output location of the object file </ h4>
+<h4> Change the output location of the object file </h4>
 
 What does the "DEFINE" option describe?
 
 <pre>
   DEFINE =>'-o $ @'
-</ pre>
+</pre>
 
 This is changing the output location of the object file. You can add gcc arguments using the option "DEFINE". And you can change the output destination of the object file by using the "-o" option of gcc.
 
 What is "$ @"? This is a Makefile syntax rule for variables to which the target name is automatically assigned. Since the target name is the object file name, if you write it like this, the object file will be output in the same directory as the source code file.
 
-<h4> Linker targeting </ h4>
+<h4> Linker targeting </h4>
 
 Finally, you need to describe the targeting of the linker. You need to tell the linker the object file name, as all the object files will be merged into one and the final dynamic link library will end up with a ".so" extension.
 
 To do this, specify:
 <pre>
     OBJECT =>'$ (O_FILES)',
-</ pre>
+</pre>
 
 The list of object file names was in a variable called "O_FILES". To expand "O_FILES", write "$ (O_FILES)".
 

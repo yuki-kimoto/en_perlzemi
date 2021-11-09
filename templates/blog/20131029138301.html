@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop = "name"> Module </ span> </a>
+        <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-        <span itemprop = "name"> PDL </ span>
+        <span itemprop = "name"> PDL </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Representation of multidimensional data in PDL </ h2>
+  </li>
+</ol>
+<h2> Representation of multidimensional data in PDL </h2>
 
 
 
-So far, we have only dealt with one-dimensional data, but I would like to explain how to represent <strong> multidimensional data </ ​​strong> in PDL.
+So far, we have only dealt with one-dimensional data, but I would like to explain how to represent <strong> multidimensional data </​​strong> in PDL.
 
-<h3> Representation of multidimensional data </ ​​h3>
+<h3> Representation of multidimensional data </​​h3>
 
 To represent multidimensional data, use the pdl function as follows:
 
@@ -35,9 +35,9 @@ my $ data = pdl [
   [7, 8, 9],
   [10, 11, 12]
 ];;
-</ pre>
+</pre>
 
-First, let's learn the concepts called <strong> dimension </ strong> and <strong> rank </ strong>. It is easier to understand if you understand it visually, so I will show it.
+First, let's learn the concepts called <strong> dimension </strong> and <strong> rank </strong>. It is easier to understand if you understand it visually, so I will show it.
 
 <pre>
 1D
@@ -46,7 +46,7 @@ First, let's learn the concepts called <strong> dimension </ strong> and <strong
       Rank 2 [4, 5, 6],
       Rank 3 [7, 8, 9],
       Rank 4 [10, 11, 12]
-</ pre>
+</pre>
 
 Think of it as the one-dimensional data you've come up with.
 
@@ -54,9 +54,9 @@ Think of it as the one-dimensional data you've come up with.
 1D
 Rank 1 Rank 2 Rank 3
 [one two Three],
-</ pre>
+</pre>
 
-<h4> Get and set elements </ h4>
+<h4> Get and set elements </h4>
 
 Learn how to get and set elements of multidimensional data. Use nice slice notation to get and set elements. Specify in the order of 1D rank and 2D rank, and the subscripts start from 0.
 
@@ -80,30 +80,30 @@ my $ data_1_2_raw = $ data-> at (1, 2);
 
 #Set element.
 $ data (1, 2). = 20;
-</ pre>
+</pre>
 
-<h4> Get multiple elements, set multiple elements </ h4>
+<h4> Get multiple elements, set multiple elements </h4>
 
 You can also get and set multiple elements for a PDL variable. In the following example, the 2nd to 3rd ranks of the 1st dimension and the 3rd rank of the 2nd dimension are acquired.
 
 <pre>
 # Acquisition of multiple elements (1D 2-3 ranks, 2D 3 ranks)
 my $ data_sliced1 = $ data (1: 2, 2);
-</ pre>
+</pre>
 
 To set multiple elements:
 
 <pre>
 #Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
 $ data (1: 2, 2). = pdl [21, 22];
-</ pre>
+</pre>
 
 Of course, it is possible to acquire not only the first dimension but also multiple elements in the second dimension.
 
 <pre>
 #Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
 my $ data_sliced2 = $ data (2, 0: 1);
-</ pre>
+</pre>
 
 To set multiple elements in the second dimension:
 
@@ -113,7 +113,7 @@ $ data (2, 0: 1). = pdl [
   [30],
   [31]
 ];;
-</ pre>
+</pre>
 
 You can also acquire and set multiple ranks in multiple dimensions in the same way.
 
@@ -126,9 +126,9 @@ $ data (1: 2, 0: 1). = pdl [
   [40, 41],
   [42, 43]
 ];;
-</ pre>
+</pre>
 
-<h4> Sample </ h4>
+<h4> Sample </h4>
 
 This is a sample that can be executed.
 
@@ -196,13 +196,13 @@ $ data (1: 2, 0: 1). = pdl [
 ];;
 
 print "$ data";
-</ pre>
+</pre>
 
-<h3> Data initialization </ h3>
+<h3> Data initialization </h3>
 
 PDL has various data initialization functions. I will show you how to initialize the data.
 
-<h4> Initialize with 0 </ h4>
+<h4> Initialize with 0 </h4>
 
 Use the zeros method to specify a multidimensional rank number and initialize it with 0. zeros is defined in PDL :: Core.
 
@@ -211,9 +211,9 @@ use PDL;
 
 Initialize with # 0 (1D has 2 ranks, 2D has 3 ranks)
 my $ data_zeros = pdl-> sequence (2, 3);
-</ pre>
+</pre>
 
-<h4> Initialize with 1 </ h4>
+<h4> Initialize with 1 </h4>
 
 Use the ones method to specify the number of ranks in multiple dimensions and initialize with 1. ones is defined in PDL :: Core.
 
@@ -221,34 +221,34 @@ Use the ones method to specify the number of ranks in multiple dimensions and in
 Initialize with # 1 (1D has 2 ranks, 2D has 3 ranks)
 my $ data_ones = pdl-> ones (2, 3);
 print "$ data_ones \ n";
-</ pre>
+</pre>
 
-<h4> Initialize with null </ h4>
+<h4> Initialize with null </h4>
 
 The PDL defines a value of null. Use the null method to initialize with null. null is defined in PDL :: Core.
 
 <pre>
 Initialize with #null
 my $ data_null = pdl-> null;
-</ pre>
+</pre>
 
-<h4> Initialize from 1 to n </ h4>
+<h4> Initialize from 1 to n </h4>
 
-Use the <strong> sequence </ strong> method to <strong> initialize with a value between 0 and n-1 </ strong>. sequence is defined in PDL :: Basic.
+Use the <strong> sequence </strong> method to <strong> initialize with a value between 0 and n-1 </strong>. sequence is defined in PDL :: Basic.
 
 <pre>
 Initialize with # 0-19
 my $ data_seq = pdl-> sequence (20);
-</ pre>
+</pre>
 
 You can also specify multiple dimensions.
 
 <pre>
 Initialize with # 0-14 (1D 3 ranks, 2D 5 ranks)
 my $ data_seq2 = pdl-> sequence (3, 5);
-</ pre>
+</pre>
 
-<h4> Sample </ h4>
+<h4> Sample </h4>
 
 This is a sample that can be executed.
 
@@ -274,10 +274,10 @@ print "$ data_seq \ n";
 Initialize with # 0-14 (1D 3 ranks, 2D 5 ranks)
 my $ data_seq2 = pdl-> sequence (3, 5);
 print "$ data_seq2 \ n";
-</ pre>
+</pre>
 
 
-<h3> Calculate multiple elements at once </ h3>
+<h3> Calculate multiple elements at once </h3>
 
 PDL allows you to calculate multiple elements at once. See the data below.
 
@@ -290,9 +290,9 @@ my $ data = pdl [
   [7, 8, 9],
   [10, 11, 12]
 ];;
-</ pre>
+</pre>
 
-<h4> Sum calculation to reduce one-dimensional rank </ h4>
+<h4> Sum calculation to reduce one-dimensional rank </h4>
 
 First, let's perform a sum operation that reduces the one-dimensional rank. The above data is an image that looks like the following.
 
@@ -301,14 +301,14 @@ First, let's perform a sum operation that reduces the one-dimensional rank. The 
 [15]
 [twenty four]
 [33]
-</ pre>
+</pre>
 
-Use the <strong> sumover </ strong> method to find the sum. someover is implemented in PDL :: UfuncI am.
+Use the <strong> sumover </strong> method to find the sum. someover is implemented in PDL :: UfuncI am.
 
 <pre>
 # Sum calculation to reduce one-dimensional rank
 my $ data_sumover1 = $ data-> sumover;
-</ pre>
+</pre>
 
 Use the sumover method when the contained value is an integer type. For floating point, use dsomeover instead.
 
@@ -316,132 +316,132 @@ If you perform an operation to reduce the rank, the dimension will be reduced by
 
 <pre>
 [6, 15, 24, 33]
-</ pre>
+</pre>
 
-<h4> Sum calculation to reduce 2D rank </ h4>
+<h4> Sum calculation to reduce 2D rank </h4>
 
-In the above example, the sum operation is performed to reduce the one-dimensional rank. Next, let's perform a sum operation that reduces the two-dimensional rank. To do this, use the <strong> xchg </ strong> method to exchange 1D and 2D positions, and then use the someover function.
+In the above example, the sum operation is performed to reduce the one-dimensional rank. Next, let's perform a sum operation that reduces the two-dimensional rank. To do this, use the <strong> xchg </strong> method to exchange 1D and 2D positions, and then use the someover function.
 
 <pre>
 # Sum calculation to reduce 2D rank
 my $ data_sumover2 = $ data-> xchg (0, 1)-> sumover;
-</ pre>
+</pre>
 
 You can get the following data.
 
 <pre>
 [22 26 30]
-</ pre>
+</pre>
 
-In addition to xchg, there are <strong> mv </ strong> and <strong> reorder </ strong> methods for moving the position of the dimension, so let's check them.
+In addition to xchg, there are <strong> mv </strong> and <strong> reorder </strong> methods for moving the position of the dimension, so let's check them.
 
-<h4> Methods that perform other operations that reduce dimensions </ h4>
+<h4> Methods that perform other operations that reduce dimensions </h4>
 
 In addition to sumover, PDL :: Ufunc defines methods that perform the same type of operations.
 
 <table>
   <tr>
     <td>
-      <b> Arithmetic </ b>
-    </ td>
+      <b> Arithmetic </b>
+    </td>
     <td>
       Method
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       average
-    </ td>
+    </td>
     <td>
       average, daverage
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Median
-    </ td>
+    </td>
     <td>
       medover, medoddover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Mode
-    </ td>
+    </td>
     <td>
       modeover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       product
-    </ td>
+    </td>
     <td>
       prodover, dprodover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Cumulative product
-    </ td>
+    </td>
     <td>
       cumuprodover, dcumuprodover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Cumulative total
-    </ td>
+    </td>
     <td>
       cumusumover, dcumusumover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       and operation
-    </ td>
+    </td>
     <td>
       andover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       or operation
-    </ td>
+    </td>
     <td>
       orover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Bitwise and arithmetic
-    </ td>
+    </td>
     <td>
       bandover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Bitwise or operation
-    </ td>
+    </td>
     <td>
       borover
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> Sample </ h4>
+<h4> Sample </h4>
 
 This is a sample that can be executed.
 
@@ -464,4 +464,4 @@ print "$ data_sumover \ n";
 # Sum calculation to reduce 2D rank
 my $ data_sumover2 = $ data-> xchg (0, 1)-> sumover;
 print "$ data_sumover2 \ n";
-</ pre>
+</pre>

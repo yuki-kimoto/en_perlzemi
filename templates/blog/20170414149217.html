@@ -1,8 +1,8 @@
-<h2> @INC problem, I thought about what kind of danger there is if there is a current directory "." At the beginning of the module path </ h2>
+<h2> @INC problem, I thought about what kind of danger there is if there is a current directory "." At the beginning of the module path </h2>
 
 In Perl 5.26, the current directory "." Is deleted from the beginning of @INC, which is the module search path. There is an explanation that it is for security measures, but I thought about what kind of situation there is actually danger.
 
-<h3> It is dangerous to change the directory writable by other users to the current directory </ h3>
+<h3> It is dangerous to change the directory writable by other users to the current directory </h3>
 
 For example, consider the following script (test.pl).
 
@@ -10,11 +10,11 @@ For example, consider the following script (test.pl).
 chdir'/ tmp';
 
 require File :: Path;
-</ pre>
+</pre>
 
 This script first changes the current directory to a directory called "/ tmp".
 
-<b> The important thing here is that the directory "/ tmp" can be read and written by other users. </ b>
+<b> The important thing here is that the directory "/ tmp" can be read and written by other users. </b>
 
 Being writable by other users means that you can put a file called "Find / Path.pm". (Reference: <a href="/blog/20100409127089.html"> File :: Path </a>)
 
@@ -29,11 +29,11 @@ This seems to be a problem of "untrustworthy search path vulnerability".
 <ul>
   <li>
     <a href="https://www.ipa.go.jp/security/fy21/reports/tech1-tg/a_01.html"> Information Security Technology Trend Survey (1st half of 2009) "Untrusted Search Path Vulnerability" </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Scripts other than "/ tmp" that make a directory writable by other users the current directory can be said to have this vulnerability.
 
-<h3> Addendum </ h3>
+<h3> Addendum </h3>
 
-I've written many times that "." Has been added to the beginning of @INC, but it was a mistake that <b> "." Was added to the end </ b>. I got an indication on Twitter.
+I've written many times that "." Has been added to the beginning of @INC, but it was a mistake that <b> "." Was added to the end </b>. I got an indication on Twitter.

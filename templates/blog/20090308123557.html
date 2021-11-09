@@ -1,70 +1,70 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> "Monotype" and "Human type" </ span>
+      <span itemprop = "name"> "Monotype" and "Human type" </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> "Monotype" object and "Human type" object </ h2>
+  </li>
+</ol>
+<h2> "Monotype" object and "Human type" object </h2>
 
 
 
-In object-oriented programming, <strong> objects are not "things". There are two types of </ strong> objects: <strong> "things" </ strong> type objects and <strong> "people" </ strong> type objects.
+In object-oriented programming, <strong> objects are not "things". There are two types of </strong> objects: <strong> "things" </strong> type objects and <strong> "people" </strong> type objects.
 
-<h3> 1. "Things" type object </ h3>
+<h3> 1. "Things" type object </h3>
 
-A "thing" type object is an object that represents a <strong> "thing" </ strong>. The following is this object, but it has title and price as attributes.
+A "thing" type object is an object that represents a <strong> "thing" </strong>. The following is this object, but it has title and price as attributes.
 
 <pre>
 my $ book = Book-> new (title =>'a', price => 2300);
-</ pre>
+</pre>
 
-Such "things" type objects are constructors that set <strong> book properties such as titles and prices </ strong>. You can think of a "thing" type object as something very close to a <strong> hash </ strong>. Monotype objects represent structured data.
+Such "things" type objects are constructors that set <strong> book properties such as titles and prices </strong>. You can think of a "thing" type object as something very close to a <strong> hash </strong>. Monotype objects represent structured data.
 
 <pre>
 my $ book = {title =>'a', price => 2300};
-</ pre>
+</pre>
 
-<h3> 2. "Human" type object </ h3>
+<h3> 2. "Human" type object </h3>
 
-A "human" type object is an object that represents <strong> "human" </ strong>. Below are the objects that parse the file. It has encoding (circular coding method) and err_raise (raises an exception if parsing fails) as attributes.
+A "human" type object is an object that represents <strong> "human" </strong>. Below are the objects that parse the file. It has encoding (circular coding method) and err_raise (raises an exception if parsing fails) as attributes.
 
 After that, a method called parse that parses the file will be called.
 <pre>
 my $ file_parser = FileParser-> new (encoding =>'utf8', err_raise => 1);
 $ file_parser-> parse ($ file);
-</ pre>
+</pre>
 
-Such "human" objects often specify in the constructor the options used by subsequent <strong> methods </ strong>. Think of a "human" object as something very close to a <strong> function </ strong>.
+Such "human" objects often specify in the constructor the options used by subsequent <strong> methods </strong>. Think of a "human" object as something very close to a <strong> function </strong>.
 
 <pre>
 my $ opt = {encoding =>'utf8', err_raise => 1};
 parse_file ($ file, $ opt);
-</ pre>
+</pre>
 
-<h3> 3. Class design guidelines </ h3>
+<h3> 3. Class design guidelines </h3>
 <ol>
   <li>
     First, be aware of whether you want to create a "thing" type object or a "human" type object.
-  </ li>
+  </li>
   <li>
     If you want to represent data, create a "thing" typeclass
-  </ li>
+  </li>
   <li>
     If you want to call a method with options, create a "human" typeclass
-  </ li>
+  </li>
   <li>
     If convenience is superior, it may be a hybrid class in which the "thing" type is mixed with the "human" type.
-  </ li>
-</ ol>
+  </li>
+</ol>

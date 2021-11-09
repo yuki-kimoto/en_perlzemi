@@ -3,7 +3,7 @@ th-> execute ($ i, $ title);
     }
 });
 cmpthese ($ result);
-</ pre>
+</pre>
 
 Benchmark results are slightly lower than those using raw DBI. Compared to using a normal insert, there is a difference of nearly 10 times, so I think it is better to use it when performing a large number of inserts at the same time.
 
@@ -12,17 +12,17 @@ Benchmark results are slightly lower than those using raw DBI. Compared to using
 normal 22.3 / s --- 90% -92%
 multiple 213 / s 855% ---23%
 raw 278 / s 1147% 31% -
-</ pre>
+</pre>
 
-<h4> Speed ​​up with bulk insert </ h4>
+<h4> Speed ​​up with bulk insert </h4>
 
 If your database supports bulk inserts, you can do bulk inserts. Currently available for MySQL and PostgreSQL. You can use the database function to insert multiple data at once, so you can expect even higher speeds.
 
 <pre>
 $ dbi-> insert ($ params, table =>'book', bulk_insert => 1);
-</ pre>
+</pre>
 
-<b> Benchmark with bulk_insert in MySQL </ b>
+<b> Benchmark with bulk_insert in MySQL </b>
 
 Below is the benchmark script.
 
@@ -82,7 +82,7 @@ my $ result = timethese (100, {
 });
 
 cmpthese ($ result);
-</ pre>
+</pre>
 
 Benchmark results show that using bulk_insert gives about 5 times the normal performance of a normal insert.
 
@@ -92,6 +92,6 @@ normal 24.0 / s --- 72% -76% -83%
 multiple 86.2 / s 259% ---16% -40%
 raw 102 / s 326% 18% --- 29%
 bulk_insert 143 / s 496% 66% 40% -
-</ pre>
+</pre>
 
 If bulk inserts are not performing well, check once to see if there is enough memory space for database inserts. If this memory area is insufficient, swap-in / swap-out will occur, which will be very slow.

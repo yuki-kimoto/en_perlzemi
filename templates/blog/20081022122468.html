@@ -1,4 +1,4 @@
-<h2> Find the date n days later </ h2>
+<h2> Find the date n days later </h2>
 
 To find the date n days later, convert n days to seconds and add them to the current time (seconds from the epoch) obtained with the time function. Convert the added seconds to date and time notation using the localtime function.
 
@@ -23,18 +23,18 @@ $ month ++;
 $ year + = 1900;
 
 print "$ n days later is $ year year $ month month $ mday day $ hour hour $ min minutes $ sec seconds. \ N";
-</ pre>
+</pre>
 
 Execution result
 
 <pre>
 (1) Find the date n days later
 Two days later, it is 23:02:43 on October 24, 2008.
-</ pre>
+</pre>
 
-<h3> Explanation </ h3>
+<h3> Explanation </h3>
 
-<h4> Convert date to seconds and add </ h4>
+<h4> Convert date to seconds and add </h4>
 
 When dealing with time, convert it to seconds before handling it. You can get the number of seconds from the epoch with the time function, so add the number of seconds after n days to it.
 
@@ -44,7 +44,7 @@ my $ n = 2;
 
 # Convert the date to seconds and add it.
 my $ sec_from_epoch = time + (60 * 60 * 24 * $ n);
-</ pre>
+</pre>
 
 If you want to get two days after a particular date, first use the timelocal function of the Time :: Local module to find the number of seconds since the epoch on a particular date.
 
@@ -58,9 +58,9 @@ my $ year = 2000 --1900;
 my $ mon = 3 -1;
 my $ mday = 31;
 my $ sec_from_epoch = timelocal (0, 0, 0, $ mday, $ mon, $ year);
-</ pre>
+</pre>
 
-<h4> Convert seconds to date and time </ h4>
+<h4> Convert seconds to date and time </h4>
 
 Convert seconds to date and time using the localtime function.
 
@@ -71,7 +71,7 @@ my ($ sec, $ min, $ hour, $ mday, $ month, $ year)
 
 $ month ++;
 $ year + = 1900;
-</ pre>
+</pre>
 
 <hr>
 <a href="/blog/20080229122347.html"> Perl Reverse Dictionary / To Date and Time </a>

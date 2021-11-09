@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> lib --Add module search path </ h2>
+<h2> lib --Add module search path </h2>
 
-The <strong> lib </ strong> module allows you to add a search path for a module.
+The <strong> lib </strong> module allows you to add a search path for a module.
 
 <pre>
 # Add module search path
 use lib'home / user / local / lib';
-</ pre>
+</pre>
 
 In Perl, the <a href="/blog/20180508152716.html"> list of module search paths </a> is stored in the special variable "@INC", but the lib module is at the beginning of @INC at compile time. Add the search path to.
 
@@ -32,7 +32,7 @@ In Perl, the <a href="/blog/20180508152716.html"> list of module search paths </
 BEGIN {
   unshift @INC,'/ home / user / local / lib';
 }
-</ pre>
+</pre>
 
 The lib module is often used in combination with the <a href="/blog/20100524127696.html"> FindBin </a> module. This is a sample to add a directory called lib in the directory where the script exists to the module search path.
 
@@ -40,10 +40,10 @@ The lib module is often used in combination with the <a href="/blog/201005241276
 # Add the lib directory of the directory where the script exists to the search path
 use FindBin;
 use lib "$ FindBin :: Bin / lib";
-</ pre>
+</pre>
 
-<h4> FAQ about lib module </ h4>
+<h4> FAQ about lib module </h4>
 
 Q. Is there a way to add a module search path other than the lib module?
 
-A. Yes. You can either set the <a href="/blog/20200617111016.html"> PERL5LIB environment variable </a> or specify the <strong> -I option </ strong> when starting the script. The lib module is the most flexible, but it's tightly coupled with scripts and less portable. Think about which method is best for your situation.
+A. Yes. You can either set the <a href="/blog/20200617111016.html"> PERL5LIB environment variable </a> or specify the <strong> -I option </strong> when starting the script. The lib module is the most flexible, but it's tightly coupled with scripts and less portable. Think about which method is best for your situation.

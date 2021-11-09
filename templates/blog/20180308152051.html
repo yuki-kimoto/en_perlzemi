@@ -1,50 +1,50 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100930127859.html">
-      <span itemprop = "name"> Reference </ span> </a>
+      <span itemprop = "name"> Reference </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Scalar variable reference </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Scalar variable reference </h2>
 
 
 
 A scalar variable reference points to a scalar variable.
 
-<h4> Creating a reference for scalar variables </ h4>
+<h4> Creating a reference for scalar variables </h4>
 
 To create a scalar variable reference:
 
 <pre>
 my $ str = "Hello";
 my $ str_ref = \ $ str;
-</ pre>
+</pre>
 
-<h4> Dereference scalar variable reference </ h4>
+<h4> Dereference scalar variable reference </h4>
 
 Use "$ {}" to dereference the scalar variable reference.
 
 <pre>
 my $ str = $ {$ str_ref};
-</ pre>
+</pre>
 
 Simple variables can be dereferenced by simply prefixing them with "$".
 
 <pre>
 my $ str = $$ str_ref;
-</ pre>
+</pre>
 
-<h3> Is it worth using a scalar variable reference? </ H3>
+<h3> Is it worth using a scalar variable reference? </H3>
 
 I used a reference when passing a large <a href="/blog/20161003147558.html"> string </a> to a <a href="/blog/20101130129876.html"> subroutine </a> I think it's faster.
 
@@ -52,7 +52,7 @@ However, in Perl, strings are copied using a technique called copy-on-write, so 
 
 So don't worry about large strings, just pass them as subroutine arguments.
 
-<h4> Getopt :: Long </ h4>
+<h4> Getopt :: Long </h4>
 
 When programming yourself, you rarely have the opportunity to use scalar variable references, but if your library uses them, you need to remember how to use them.
 
@@ -75,4 +75,4 @@ GetOptions (
 
 Receives non-option arguments
 my $ conf_file = shift;
-</ pre>
+</pre>

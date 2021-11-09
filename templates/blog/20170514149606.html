@@ -1,43 +1,43 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax / Grammar </ span> </a>
+        <span itemprop = "name"> Syntax / Grammar </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> goto statement-jump to any label </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> goto statement-jump to any label </h2>
 
 
 
-You can use the <b> goto statement </ b> to jump to any label.
+You can use the <b> goto statement </b> to jump to any label.
 
 <pre>
 goto label
-</ pre>
+</pre>
 
-<h3> It is good not to use goto </ h3>
+<h3> It is good not to use goto </h3>
 
 As explained in <a href="/blog/20091120124667.html"> Perl's modern writing style </a>, goto is a good programming style not to use.
 
 Use <a href="/blog/20100411127089.html"> exception handling </a> if you want to handle errors, and <a href="/blog/20170527149589.html"> last statement if you want to break out of the loop. Use </a>. Perl has alternatives, so it's unlikely that you'll use goto.
 
-<h3> The only use of goto is to recurse a function </ h3>
+<h3> The only use of goto is to recurse a function </h3>
 
 Besides jumping to the label, goto can execute functions without increasing the call stack. Perl doesn't optimize tail recursion and warns you of deep stacks, which you can work around with the "goto & function name" syntax.
 
 <pre>
 goto & function name
-</ pre>
+</pre>
 
 This is a sample using goto with tail recursion.
 
@@ -60,6 +60,6 @@ sub fact {
     goto & fact;
   }
 }
-</ pre>
+</pre>
 
 The only use of goto is tail recursion, but you can write the same thing with tail recursion using <a href="/blog/20170521149524.html"> for statement </a>. increase. Therefore, it is recommended to write using a for statement instead of tail recursion so that goto is not used in the source code at all.

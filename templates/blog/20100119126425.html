@@ -1,32 +1,32 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> grep function --Get only array elements that meet certain conditions </ h2>
+  </li>
+</ol>
+<h2> grep function --Get only array elements that meet certain conditions </h2>
 
 
 
-You can use the "<strong> grep function </ strong>" to retrieve only the elements that match the conditions in the array. Each element of @array is passed to the default argument $ _. Only elements that meet the conditional statement will be added to @matched.
+You can use the "<strong> grep function </strong>" to retrieve only the elements that match the conditions in the array. Each element of @array is passed to the default argument $ _. Only elements that meet the conditional statement will be added to @matched.
 
 <pre>
 # Extract only the elements that match the conditions
 @matched = grep {conditional statement} @array;
-</ pre>
+</pre>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample to get only the elements that match <a href="/blog/20100827127859.html"> regular expression </a>. In this sample, only integers are taken. If @nums is (1.23, 123, 43) then @matched will be (123, 43).
 
@@ -34,14 +34,14 @@ This is a sample to get only the elements that match <a href="/blog/201008271278
 # Get only the elements that match the regular expression
 my @nums = (1.23, 123, 43);
 my @matched = grep {/ ^ \ d + $ /} @nums;
-</ pre>
+</pre>
 
 If the pattern matching operator (= ~) is omitted in the regular expression, the default variable $ _ will be the target of pattern matching. The sample above has the same meaning as:
 
 <pre>
 # Explicitly specify the default variable $ _
 my @matched = grep {$ _ = ~ / ^ \ d + $ /} @nums;
-</ pre>
+</pre>
 
 This is a sample to get only multiples of 2. If @nums is (1, 2, 3, 4) then @even is (2, 4).
 
@@ -49,7 +49,7 @@ This is a sample to get only multiples of 2. If @nums is (1, 2, 3, 4) then @even
 Get only multiples of # 2
 my @nums = (1, 2, 3, 4);
 my @even = grep {$ _% 2 == 0} @nums;
-</ pre>
+</pre>
 
 Processing using grep can be written using the foreach statement. Grep is often used in Perl because it is easier to write.
 
@@ -60,14 +60,14 @@ my @matched;
 for my $ num (@nums) {
   push @matched, $ num if $ num = ~ / ^ \ d + $ /;
 }
-</ pre>
+</pre>
 
-<h3> Reference "Array of Perl" </ h3>
+<h3> Reference "Array of Perl" </h3>
 
 See below for a description of Perl's "arrays".
 
 <ul>
   <li>
     <a href="/blog/20161012147627.html"> Understand Perl's "arrays" </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

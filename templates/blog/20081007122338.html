@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> join function-join array with delimiter </ h2>
+  </li>
+</ol>
+<h2> join function-join array with delimiter </h2>
 
 
 
-You can use the <strong> join function </ strong> to join <a href="/blog/20161012147627.html"> arrays </a> by specifying a delimiter.
+You can use the <strong> join function </strong> to join <a href="/blog/20161012147627.html"> arrays </a> by specifying a delimiter.
 
 <pre>
 my $ joined = join (',', @array);
-</ pre>
+</pre>
 
 The first argument is the delimiter. In this example, a comma is specified as the delimiter. The strings contained in the array given in the second and subsequent arguments are combined with a delimiter.
 
@@ -33,7 +33,7 @@ See the following simple example. Here is a simple example of how to use the joi
 # Create "Yuki, Toro, Kato" from an array
 my @names = ('Yuki','Taro','Kato');
 my $ names_csv = join (',', @names);
-</ pre>
+</pre>
 
 The delimiter can be anything, and the tab character "\ t" is often used.
 
@@ -41,7 +41,7 @@ The delimiter can be anything, and the tab character "\ t" is often used.
 #Create "Yuki Toro Kato" from the array
 my @names = ('Yuki','Taro','Kato');
 my $ names_csv = join ("\ t", @names);
-</ pre>
+</pre>
 
 Strings rarely contain tabs, so they are often easier to work with than commas.
 
@@ -49,25 +49,25 @@ If you add a line break at the end, you can easily create one line of data separ
 
 <pre>
 my $ line = join ("\ t", @names). "\ n";
-</ pre>
+</pre>
 
-<h4> Decompose to array by specifying delimiter </ h4>
+<h4> Decompose to array by specifying delimiter </h4>
 
 You can use the <a href="/blog/20080301120434.html"> split function </a> to split into an array by doing the opposite of the join function, that is, by specifying a delimiter.
 
 <pre>
 my @names = split (/, /, "Yuki, Taro, Kato");
-</ pre>
+</pre>
 
-<h4> Push function to add data to the array to join </ h4>
+<h4> Push function to add data to the array to join </h4>
 
 If you want to add data to combine, you can use <a href="/blog/20100106126425.html"> push function </a>.
 
 <pre>
 push @names,'Kenta';
-</ pre>
+</pre>
 
-<h3> Sample join function </ h3>
+<h3> Sample join function </h3>
 
 This is a sample that joins characters by "tab" using the join function.
 
@@ -78,6 +78,6 @@ use warnings;
 # Concatenate multiple strings with tabs
 my @animals = qw (cat dog sheep);
 my $ line = join ("\ t", @animals);
-</ pre>
+</pre>
 
 Reference: <a href="/blog/20080221120361.html"> qw () String concatenation operator </a>

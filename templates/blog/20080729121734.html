@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Read a csv file and convert it to an array of Perl hashes </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Read a csv file and convert it to an array of Perl hashes </h2>
 
 This is a sample that reads a csv format file and converts it into an array of hashes.
 
@@ -70,30 +70,30 @@ sub parse_file {
     close $ fh;
     wantarray? return @ $ recs: return $ recs;
 }
-</ pre>
+</pre>
 
 Below is a sample of csv data. Create a csv file, give it to the first argument of the script, and execute it.
 <pre>
 masao, 10, Japan
 taro, 20, USA
 rika, 38, France
-</ pre>
+</pre>
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> (1) Creating an array of hash keys </ h4>
+<h4> (1) Creating an array of hash keys </h4>
 
 <pre>
 my $ headers = ['name','age','country'];
-</ pre>
+</pre>
 
 By using the hash key, we give meaning to what was just an array last time. The first item of the csv file corresponds to name, the second item corresponds to age, and the third item corresponds to country.
 
-<h4> (2) Read the file and convert the csv format text to an array of hashes </ h4>
+<h4> (2) Read the file and convert the csv format text to an array of hashes </h4>
 
 <pre>
 my @recs = parse_file ($ file, $ headers);
-</ pre>
+</pre>
 
 parse_file is a self-made function that reads a file and converts csv format text into an array of hashes. The input and output images are as follows.
 
@@ -109,19 +109,19 @@ rika, 38, France
   {name =>'taro', age => 20, country =>'USA'},
   {name =>'rika', age => 38, country =>'France'},
 )
-</ pre>
+</pre>
 
-<h4> (3) Output an array of hashes </ h4>
+<h4> (3) Output an array of hashes </h4>
 
 <pre>
 for my $ items (@recs) {
   print join (',', @ {$ items} {@ $ headers}). "\ n";
 }
-</ pre>
+</pre>
 
 Since it is an array, the outside is a foreach loop. Output $ items, which is a reference to the hash, concatenated with commas with <a href="/blog/20081007122338.html"> join function </a>.
 
-<h4> (3) -1 Explanation of hash slices </ h4>
+<h4> (3) -1 Explanation of hash slices </h4>
 
 I will explain the esoteric hash slice @ {$ items} {@ $ headers}.
 
@@ -129,7 +129,7 @@ First, $ items is a reference to the hash.
 
 <pre>
 {name =>'masao', age => 10, country =>'Japan'}
-</ pre>
+</pre>
 
 It looks like this.
 
@@ -137,19 +137,19 @@ I usually use% $ items to dereference, but I want to dereference it so that hash
 
 <pre>
 @ {$ items} {list of hash keys}
-</ pre>
+</pre>
 
 will do.
 
 <pre>
 @ {$ items} {'name','age','country'}
-</ pre>
+</pre>
 
 If you write
 
 <pre>
 ('masao', 10,'Japan')
-</ pre>
+</pre>
 
 Can be obtained.
 
@@ -157,24 +157,24 @@ Also, since ['name','age','country'] is assigned to $ headers, you can get ('nam
 
 <pre>
 @ {$ items} {@ $ headers}
-</ pre>
+</pre>
 
 Is the description
 
 <pre>
 @ {$ items} {'name','age','country'}
-</ pre>
+</pre>
 Is the same as the description
 <pre>
 ('masao', 10,'Japan')
-</ pre>
+</pre>
 Can be obtained.
 <pre>
 join (',', @ {$ items} {@ $ headers})
-</ pre>
+</pre>
 As a result, it is completed by connecting with commas.
 
-<h4> (4) Processing in a while loop </ h4>
+<h4> (4) Processing in a while loop </h4>
 
 I'm using a <a href="/blog/20100123126425.html"> while statement </a> to create a Perl data structure.
 
@@ -193,20 +193,20 @@ while (my $ line = <$ fh>) {
   # And dereference.
   push @ $ recs, $ items;
 }
-</ pre>
+</pre>
 
-<h4> (4) -1 Prepare a reference to the hash </ h4>
+<h4> (4) -1 Prepare a reference to the hash </h4>
 
 <pre>
 my $ items = {}; #Prepare a reference to the hash that stores the data
-</ pre>
+</pre>
 
 Prepare a reference to the hash you want to have in the array.
 
-<h4> (4) -2 Assign hash slice to corresponding key on the left side </ h4>
+<h4> (4) -2 Assign hash slice to corresponding key on the left side </h4>
 
 <pre>
 @ {$ items} {@ $ headers} = split (',', $ line);
-</ pre>
+</pre>
 
 Same as explained above. Make the left side a hash slice and assign the list divided by the split function to it.

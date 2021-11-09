@@ -1,38 +1,38 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop = "name"> XS </ span> </a>
+        <span itemprop = "name"> XS </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Mutual conversion between Perl type and C type in XS </ h2>
+  </li>
+</ol>
+<h2> Mutual conversion between Perl type and C type in XS </h2>
 
 
 
 Calling a C function from Perl means converting the Perl type to a C type, calling the C function, returning the result to the C type and returning it to Perl. In other words, most of what you learn is about learning type conversions.
 Here, I would like to provide information that can handle any type conversion.
 
-<h3> Basic type conversion </ h3>
+<h3> Basic type conversion </h3>
 
 First, I will explain the basic type conversion.
 
-<h4> From SV * type to IV type </ h4>
+<h4> From SV * type to IV type </h4>
 
 In Perl, the values ​​passed to functions are mostly scalar. The scalar type is the "SV * type" in the world of XS. If a C function requires type IV, then SV * type must be converted to type IV.
 
 SV * type values ​​have integer type values ​​in the area called IV. In other words, in order to convert to type IV, the value of IV contained in SV * type should be taken out.
 
-Use <b> "SvIV (sv)" </ b> to retrieve the value of IV owned by a value of type SV *.
+Use <b> "SvIV (sv)" </b> to retrieve the value of IV owned by a value of type SV *.
 
 In the world of XS, the integer type is mapped to the type IV, so assign it to the IV type. Type IV is defined as large enough to store integers and pointers. In Perl, where 64-bit integers are supported, there is enough size to store 64-bit integers.
 
@@ -47,13 +47,13 @@ foo (...)
   
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> From type IV to type SV * </ h4>
+<h4> From type IV to type SV * </h4>
 
-Next, in order to return it to the Perl world, it is necessary to convert type IV to type SV *. Use <b> newSViv (iv) </ b> to create a new SV * type from type IV.
+Next, in order to return it to the Perl world, it is necessary to convert type IV to type SV *. Use <b> newSViv (iv) </b> to create a new SV * type from type IV.
 
-One thing to note is that if you create a new SV * type, be sure to use <b> sv_2mortal (sv) </ b> to bring the value to a state called mortal. By setting the value to mortal, memory is automatically freed when SV * is no longer in use. If you forget this, you will get a memory leak.
+One thing to note is that if you create a new SV * type, be sure to use <b> sv_2mortal (sv) </b> to bring the value to a state called mortal. By setting the value to mortal, memory is automatically freed when SV * is no longer in use. If you forget this, you will get a memory leak.
 
 <pre>
 # From type IV to type SV *
@@ -66,12 +66,12 @@ foo (...)
   XPUSHs (num_sv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h4> From SV * type to UV type </ h4>
+<h4> From SV * type to UV type </h4>
 
 SV * type values ​​have an unsigned integer value called UV. In other words, in order to convert to UV type, it is sufficient to extract the UV value owned by the SV * type value.
-Use <b> "SvUV (sv)" </ b> to retrieve the UV value owned by an SV * type value.
+Use <b> "SvUV (sv)" </b> to retrieve the UV value owned by an SV * type value.
 
 In the XS world, unsigned integers are mapped to a type called UV, so substitute them for the UV type. UV and unsigned int are compatible.
 
@@ -86,11 +86,11 @@ foo (...)
 
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> From UV type to SV * type </ h4>
+<h4> From UV type to SV * type </h4>
 
-To return it to the Perl world, you need to convert the UV type to the SV * type. Use <b> newSVuv (uv) </ b> to create a new SV * type from a UV type. Don't forget to set the value to mortal.
+To return it to the Perl world, you need to convert the UV type to the SV * type. Use <b> newSVuv (uv) </b> to create a new SV * type from a UV type. Don't forget to set the value to mortal.
 
 <pre>
 #From UV type to SV * type
@@ -103,13 +103,13 @@ foo (...)
   XPUSHs (num_sv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h4> From SV * type to double type </ h4>
+<h4> From SV * type to double type </h4>
 
 The double type value is contained in the SV * type NV value. In order to convert to double type, it is enough to take out the value of NV owned by SV * type.
 
-Use <b> "SvNV (sv)" </ b> to retrieve the value of NV owned by a value of type SV *.
+Use <b> "SvNV (sv)" </b> to retrieve the value of NV owned by a value of type SV *.
 
 <pre>
 From # SV * type to double type
@@ -122,11 +122,11 @@ foo (...)
 
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> From double type to SV * type </ h4>
+<h4> From double type to SV * type </h4>
 
-To return it to the Perl world, you need to convert the double type to the SV * type. To create a new SV * type from double type, use <b> newSVnv (nv) </ b>. Don't forget to set the value to mortal.
+To return it to the Perl world, you need to convert the double type to the SV * type. To create a new SV * type from double type, use <b> newSVnv (nv) </b>. Don't forget to set the value to mortal.
 
 <pre>
 #From double type to SV * type
@@ -139,13 +139,13 @@ foo (...)
   XPUSHs (num_sv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h4> From SV * type to char * type </ h4>
+<h4> From SV * type to char * type </h4>
 
 The char * type value is included in the value PV in the SV * type value. In order to convert to char * type, the value of PV owned by the value of SV * type should be taken out.
 
-Use <b> "SvPV_nolen (sv)" </ b> to retrieve the value of PV owned by an SV * type value.
+Use <b> "SvPV_nolen (sv)" </b> to retrieve the value of PV owned by an SV * type value.
 
 <pre>
 # From SV * type to char * type
@@ -158,11 +158,11 @@ foo (...)
 
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> From char * type to SV * type </ h4>
+<h4> From char * type to SV * type </h4>
 
-To return it to the Perl world, you need to convert the char * type to the SV * type. To create a new SV * type from a char * type, use <b> newSVpvn (pv, length) </ b>.
+To return it to the Perl world, you need to convert the char * type to the SV * type. To create a new SV * type from a char * type, use <b> newSVpvn (pv, length) </b>.
 
 You need to specify the length of the string in the second argument. I'm using the strlen function to find out the length of the string.
 
@@ -181,9 +181,9 @@ foo (...)
   XPUSHs (str_sv2);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h4> From SV * type to std :: string type </ h4>
+<h4> From SV * type to std :: string type </h4>
 
 <pre>
 From # SV * type to std :: string type
@@ -197,9 +197,9 @@ foo (...)
 
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> From std :: string type to SV * type </ h4>
+<h4> From std :: string type to SV * type </h4>
 
 <pre>
 # std :: string type to SV * type
@@ -213,13 +213,13 @@ foo (...)
   XPUSHs (str_sv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h3> Complex type conversion </ h3>
+<h3> Complex type conversion </h3>
 
 Now, this time I would like to take up a slightly more complicated type conversion. For example, what if you had a function that took a <a href="/blog/20161012147627.html"> Perl array </a>? You need to convert a Perl array reference to a C array. Let's consider such a complex type conversion this time.
 
-<h4> Convert array reference to C language array </ h4>
+<h4> Convert array reference to C language array </h4>
 
 First, the array reference is converted to an array (AV * type), then the elements of the array are acquired one by one and converted to a C language array. The reference is SV * type. You can dereference it with "SvRV (rv)". Dereferencing something that is not a reference will cause a segmentation fault, so be sure to use "SvROK (rv)" to check that the SV * type value is a reference.
 

@@ -1,8 +1,8 @@
-<h2> Summary of how to create a web browser automatic operation robot with Perl --Let's make a practical RPA with Perl (start writing) </ h2>
+<h2> Summary of how to create a web browser automatic operation robot with Perl --Let's make a practical RPA with Perl (start writing) </h2>
 
 Here is a summary of how to create a web browser automatic operation robot in Perl. For Windows users.
 
-<h3> Install Strawberry Perl on Windows </ h3>
+<h3> Install Strawberry Perl on Windows </h3>
 
 To create a web browser auto-operation robot, you need Perl set up for Windows.
 
@@ -12,16 +12,16 @@ Strawberry Perl has a GUI operation module installed to create a web browser aut
 
 <a href="https://perlzemi.com/blog/20180808153368.html"> Installing Strawberry Perl </a>
 
-<h3> Perl module used to create a web browser automatic operation robot </ h3>
+<h3> Perl module used to create a web browser automatic operation robot </h3>
 
 Web browser automatic operation Perl modules used to create robots are mainly as follows.
 
 <ul>
-  <li> Win32 :: GuiTest --Mouse position specification, keyboard operation </ li>
-  <li> Win32 :: Clipboard --Clipboard operation </ li>
-</ ul>
+  <li> Win32 :: GuiTest --Mouse position specification, keyboard operation </li>
+  <li> Win32 :: Clipboard --Clipboard operation </li>
+</ul>
 
-<h3> Window operation </ h3>
+<h3> Window operation </h3>
 
 On Windows, use Win32 :: GuiTest to get windows, position the mouse, click, and operate the keyboard. Loading the required function.
 
@@ -39,27 +39,27 @@ use Win32 :: GuiTest (
   'SendLButtonDown',
   'Send Keys',
 );
-</ pre>
+</pre>
 
-<h4> Enable Unicode semantics </ h4>
+<h4> Enable Unicode semantics </h4>
 
 First of all, Perl is Unicode-enabled since Perl 5.8, so Win32 :: GuiTest will also be able to use Unicode-enabled semantics. It is assumed that the Perl source code is written in UTF-8 and "use utf8;" is written.
 
 <pre>
 # Enable unicode semantics
 Unicode Semantics (1);
-</ pre>
+</pre>
 
-<h4> Get desktop window </ h4>
+<h4> Get desktop window </h4>
 
 To get the desktop window, use the GetDesktopWindow function. A desktop window is a window that shows the entire desktop.
 
 <pre>
 #Get desktop window
 my $ desktop_win = GetDesktopWindow ();
-</ pre>
+</pre>
 
-<h4> Get a list of child windows </ h4>
+<h4> Get a list of child windows </h4>
 
 In order to perform automatic operation of the web browser, it is necessary to get the window of the browser, but in order to do so, it is necessary to first get the list of child windows managed under the desktop window. Use GetChildWindows to get a list of child windows.
 
@@ -71,24 +71,24 @@ my @windows = GetChildWindows ($ desktop_win);
 for my $ window (@windows) {
   
 }
-</ pre>
+</pre>
 
-<h4> Get the text of the window </ h4>
+<h4> Get the text of the window </h4>
 
 Use the GetWindowText function to get the text of the window.
 
 <pre>
 # Get the text of the window
 my $ win_text = GetWindowText ($ win);
-</ pre>
+</pre>
 
 The text in the window can vary depending on the browser type. In what I checked with Google Chrome, it was "Window title-Application name" as shown below.
 
 <pre>
 Perl Club-Google Chrome
-</ pre>
+</pre>
 
-<h4> Get the target window </ h4>
+<h4> Get the target window </h4>
 
 If you want to create a web browser automatic operation robot, you need to get the target window from the list of child windows. Write a sample to get the target window. Make sure that the target page of the target web browser is launched.
 
@@ -120,11 +120,11 @@ my $ win;
   }
   $ win = $ browser_wins [0];
 }
-</ pre>
+</pre>
 
 <!-
 
-<h4> Keyboard input </ h4>
+<h4> Keyboard input </h4>
     #Go to Console tab
     SendKeys ('^]');
 
@@ -155,33 +155,33 @@ SendKeys ('^ c');
 ->
 
 
-<h3> Clipboard </ h3>
+<h3> Clipboard </h3>
 
 Use the Win32 :: Clipboard module to work with the Windows clipboard.
 
 <pre>
 use Win32 :: Clipboard;
-</ pre>
+</pre>
 
-<h4> Clipboard object generation </ h4>
+<h4> Clipboard object generation </h4>
 
 First create a clipboard object.
 
 <pre>
 #Clipboard object creation
 my $ clip = Win32 :: Clipboard-> new;
-</ pre>
+</pre>
 
-<h4> Save Perl string to clipboard </ h4>
+<h4> Save Perl string to clipboard </h4>
 
 Save the Perl string with the Set method. It is assumed that the Perl source code is written in UTF-8 and "use utf8;" is written. When saving a character string from the Perl side to the Windows clipboard, encode it in cp932 and pass it. This is because the character code of the text on the Windows clipboard is cp932.
 
 <pre>
 #Save string to clipboard
 $ clip-> Set (encode ('cp932', $ string));
-</ pre>
+</pre>
 
-<h4> Extract Perl string from clipboard </ h4>
+<h4> Extract Perl string from clipboard </h4>
 
 By specifying "CF_UNICODETEXT" in the argument of the GetAs method, it can be obtained in one Unicode encoding format called "UTF16-LE". Convert this to a Perl string using the Perl Encode function decode function. You can get the contents of the Windows clipboard as a Perl string. Please note that you cannot get it correctly with just the GetText function.
 
@@ -189,29 +189,29 @@ By specifying "CF_UNICODETEXT" in the argument of the GetAs method, it can be ob
 # Fetch a Perl string from the clipboard
 my $ string = $ CLIP-> GetAs (CF_UNICODETEXT);
 $ text = Encode :: decode ("UTF16-LE", $ string);
-</ pre>
+</pre>
 
-<h4> Paste the contents of the clipboard to the form part </ h4>
+<h4> Paste the contents of the clipboard to the form part </h4>
 
 Send "Ctrl + c" to paste the contents of the clipboard into a text field or form part such as a text area. "^" Means "Ctrl".
 
 <pre>
 # Paste the contents of the clipboard into a form part
 SendKeys ('^ c');
-</ pre>
+</pre>
 
-<h3> Points for creating RPA robots </ h3>
+<h3> Points for creating RPA robots </h3>
 
-<h4> Wait for browser response </ h4>
+<h4> Wait for browser response </h4>
 
 If you want to wait for the browser response, use the sleep function. Set the seconds as safe as possible when the browser response is returned. However, it depends on the network conditions, so it may happen that the next operation starts and the operation changes without returning.
 
 <pre>
 # Wait 3 seconds
 sleep 3;
-</ pre>
+</pre>
 
-<h3> Notes on RPA robots </ h3>
+<h3> Notes on RPA robots </h3>
 
 RPA is a method with many problems in processing automation and operational efficiency. RPA robots are impressed with their movement the moment they see them, but keep in mind that processing speed, program maintainability, and automation are unreliable.
 

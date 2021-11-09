@@ -1,25 +1,25 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> XML :: Simple --Easy to parse XML </ h2>
+  </li>
+</ol>
+<h2> XML :: Simple --Easy to parse XML </h2>
 
 
 
-The <strong> XML :: Simple </ strong> module allows you to easily parse XML and convert it into Perl data structures. "SAX that analyzes sequentially from the beginning" and "DOM that builds an XML tree structure" are famous as XML analysis methods, but XML :: Simple is the best in terms of easy handling.
+The <strong> XML :: Simple </strong> module allows you to easily parse XML and convert it into Perl data structures. "SAX that analyzes sequentially from the beginning" and "DOM that builds an XML tree structure" are famous as XML analysis methods, but XML :: Simple is the best in terms of easy handling.
 
 XML is a common format for writing data in text files. It can be used when writing a program configuration file.
 
@@ -27,14 +27,14 @@ XML is a common format for writing data in text files. It can be used when writi
 #Load module and create object
 use XML :: Simple;
 my $ xml = XML :: Simple-> new;
-</ pre>
+</pre>
 
-Use the <strong> XMLin method </ strong> to read the XML file. XML is transformed into Perl data structures (multidimensional hashes and arrays).
+Use the <strong> XMLin method </strong> to read the XML file. XML is transformed into Perl data structures (multidimensional hashes and arrays).
 
 <pre>
 # XML file parsing
 my $ data = $ xml-> XMLin ('conf.xml');
-</ pre>
+</pre>
 
 This is a sample XML of the configuration file. Imagine an application that edits multiple logs on multiple systems. Save the file in UTF-8.
 
@@ -44,25 +44,25 @@ This is a sample XML of the configuration file. Imagine an application that edit
   <!-Version 1.01->
 
   <!-Application home directory->
-  <app-home-dir> c: \ apphome </ app-home-dir>
+  <app-home-dir> c: \ apphome </app-home-dir>
 
   <!-Library directory->
-  <lib-dir> lib </ lib-dir>
+  <lib-dir> lib </lib-dir>
 
   <!-Directory to store logs->
-  <log-dir> log </ log-dir>
+  <log-dir> log </log-dir>
 
   <!-System type->
-  <system> xxx yyy zzz </ system>
+  <system> xxx yyy zzz </system>
 
   <!-Log type->
   <log-types>
     <cpu script = "parse_cpu.pl" from-dir = "raw / cpu" to-dir = "edit / cpu" />
     <mem script = "parse_mem.pl" from-dir = "raw / mem" to-dir = "edit / mem" />
     <gclog script = "parse_gclog.pl" from-dir = "raw / gclog" to-dir = "edit / gclog" />
-  </ log-types>
-</ conf>
-</ pre>
+  </log-types>
+</conf>
+</pre>
 
 This file is converted to the following data structure.
 ▼
@@ -90,18 +90,18 @@ $ conf = {
   'app-home-dir' =>' c: \\ apphome',
   'lib-dir' =>'lib'
 };
-</ pre>
+</pre>
 
-<h3> Handling Japanese in XML :: Simple </ h3>
+<h3> Handling Japanese in XML :: Simple </h3>
 
 When a character string containing Japanese is read by XMLin, the character code specified by the encoding attribute of the XML declaration is converted to the internal character string. Note that it is not a byte string.
 
 <pre>
 <? xml version = "1.0" encoding = "UTF-8"?>
 <conf>
-  <name> Masuda </ name>
-</ conf>
-</ pre>
+  <name> Masuda </name>
+</conf>
+</pre>
 
 Since it is converted to an internal character string, if you want to output it, you need to convert it to a byte character string using the encode function of the Encode module.
 
@@ -110,59 +110,59 @@ Since it is converted to an internal character string, if you want to output it,
 use Encode'encode';
 my $ conf = $ xml-> XMLin ('japanese.xml');
 print encode ('UTF-8', $ conf-> {name});
-</ pre>
+</pre>
 
-<h3> XML :: Simple options </ h3>
+<h3> XML :: Simple options </h3>
 
 XML :: Simple allows you to specify options in the constructor arguments.
 
 <pre>
 #Option
 my $ xml = XML :: Simple-> new (ForceArray => 1);
-</ pre>
+</pre>
 
 The following two options may be used frequently.
 
 <table>
   <tr>
     <td>
-      <b> Option name </ b>
-    </ td>
+      <b> Option name </b>
+    </td>
     <td>
-      <b> Explanation </ b>
-    </ td>
-  </ tr>
+      <b> Explanation </b>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ForceArray
-    </ td>
+    </td>
     <td>
       Make sure nested elements are array references
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       KeyAttr
-    </ td>
+    </td>
     <td>
       Treat the specified attribute as a hash key
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> XML :: LibXML --Standard and fast XML parsing </ h3>
+<h3> XML :: LibXML --Standard and fast XML parsing </h3>
 
 XML :: Simple is not suitable for parsing complex XML. If you want to parse XML in a standard and fast way, you can choose the XML :: LibXML module. XML :: LibXML can read XML as a DOM tree. You can also access each element of XML using a method called XPath.
 
 This method requires more coding than XML :: Simple and is technically difficult, but it is the best method for some requirements.
 
-<h4> What to do if the XML :: LibXML module cannot be installed on CentOS </ h4>
+<h4> What to do if the XML :: LibXML module cannot be installed on CentOS </h4>
 
-If the <strong> XML :: LibXML </ strong> module <strong> installation fails </ strong> on CentOS, the <b> libxml2-devel </ b> package is missing and you should install it.
+If the <strong> XML :: LibXML </strong> module <strong> installation fails </strong> on CentOS, the <b> libxml2-devel </b> package is missing and you should install it.
 
 <pre>
 yum -y install libxml2-devel
-</ pre>
+</pre>

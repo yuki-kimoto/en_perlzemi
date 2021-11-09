@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> pack function-packs data into binary format </ h2>
+  </li>
+</ol>
+<h2> pack function-packs data into binary format </h2>
 
 
 
-The <b> pack function </ b> packs the data into various binary formats.
+The <b> pack function </b> packs the data into various binary formats.
 
 <pre>
 my $ packed = pack ($ format, @values);
-</ pre>
+</pre>
 
 The first argument specifies the binary data format.
 
@@ -31,13 +31,13 @@ After the second argument, specify the <a href="/blog/20100308126967.html"> list
 
 The return value is the packed data.
 
-<h4> Packed in signed 32-bit binary format </ h4>
+<h4> Packed in signed 32-bit binary format </h4>
 
 As an example, to pack three integers into a signed 32-bit binary format:
 
 <pre>
 my $ packed = pack ("l3", 7, 8, 9);
-</ pre>
+</pre>
 
 First, 7, 8 and 9 are Perl data. Pack this into a signed 32-bit binary format.
 
@@ -54,19 +54,19 @@ In this example, we are passing a list as an argument, but you can also pass a <
 <pre>
 my @values ​​= (7, 8, 9);
 my $ packed = pack ("l3", @values);
-</ pre>
+</pre>
 
-<h4> Pack floating point into signed double binary format </ h4>
+<h4> Pack floating point into signed double binary format </h4>
 
 Let's pack the three floating point numbers into a double precision floating point double binary format.
 
 <pre>
 my $ packed = pack ("d3", 0.5, 1.2, 5.4);
-</ pre>
+</pre>
 
 Double-precision floating point numbers can be packed with the symbol "d".
 
-<h4> To write binary data </ ​​h4>
+<h4> To write binary data </​​h4>
 
 To write binary data, set the filehandle to binary mode using the <a href="/blog/20100204126425.html"> binmode function </a> and <a href="/blog/20170404149131.html"> print Use the function </a>.
 
@@ -86,9 +86,9 @@ print $ fh $ data;
 
 #Close file
 close $ fh;
-</ pre>
+</pre>
 
-<h4> To change endianness </ h4>
+<h4> To change endianness </h4>
 
 The conversion from big endian to little endian can be done using "N" and "V". The following example is an example of an unsigned 32-bit integer.
 
@@ -98,13 +98,13 @@ my $ value = unpack ('N1', $ value_big);
 
 #Perl value to little endian
 my $ value_litte = pack ('V1', $ value);
-</ pre>
+</pre>
 
-<h4> How to restore packed data </ ​​h4>
+<h4> How to restore packed data </​​h4>
 
 Use the unpack function to restore the packed data.
 
-<h3> List of formats </ h3>
+<h3> List of formats </h3>
 
 List of formats for the pack function.
 
@@ -112,289 +112,289 @@ List of formats for the pack function.
   <tr>
     <td>
       a
-    </ td>
+    </td>
     <td>
       A string containing arbitrary binary data. It will be null padded.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       A
-    </ td>
+    </td>
     <td>
       Text (ASCII) string. It will be filled with spaces.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Z
-    </ td>
+    </td>
     <td>
       A null-terminated (ASCIZ) string. Filled with nulls.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       b b
-    </ td>
+    </td>
     <td>
       Bit string (ascending bit order within each byte, such as the vec function)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       B
-    </ td>
+    </td>
     <td>
       Bit string (descending bit order within each byte)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       h
-    </ td>
+    </td>
     <td>
       Hexadecimal string (low nibbles first)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       H
-    </ td>
+    </td>
     <td>
       Hexadecimal string (high nibbles first)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       c
-    </ td>
+    </td>
     <td>
       Signed char (8-bit) value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       C
-    </ td>
+    </td>
     <td>
       Unsigned char (octet) value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       W
-    </ td>
+    </td>
     <td>
       Unsigned char value (may exceed 255)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       s
-    </ td>
+    </td>
     <td>
       Signed short (16-bit) value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       S
-    </ td>
+    </td>
     <td>
       Unsigned short value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       l
-    </ td>
+    </td>
     <td>
       Signed long (32-bit) value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       L
-    </ td>
+    </td>
     <td>
       Unsigned long value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       q
-    </ td>
+    </td>
     <td>
       Signed quad (64-bit) value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Q
-    </ td>
+    </td>
     <td>
       Unsigned 4x value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       i
-    </ td>
+    </td>
     <td>
       Signed integer value (at least 32 bits, C int)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       I
-    </ td>
+    </td>
     <td>
       Unsigned integer value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       n
-    </ td>
+    </td>
     <td>
        Unsigned short (16 bits) in network (big endian) order
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       N
-    </ td>
+    </td>
     <td>
        Unsigned long (32 bits) in network (big endian) order
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       v
-    </ td>
+    </td>
     <td>
       Unsigned short (16 bits) in "VAX" (little endian) order
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       V
-    </ td>
+    </td>
     <td>
        Unsigned long (32 bits) in VAX (little endian) order
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       j
-    </ td>
+    </td>
     <td>
        Perl's internally signed integer value (IV)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       J
-    </ td>
+    </td>
     <td>
        A Perl's internal unsigned integer value (UV)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       f
-    </ td>
+    </td>
     <td>
       Native format single precision floating point number
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       d
-    </ td>
+    </td>
     <td>
       Native format double precision floating point number
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       F
-    </ td>
+    </td>
     <td>
       Native Perl Internal Floating Point Values ​​(NV)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       D
-    </ td>
+    </td>
     <td>
       Native format long-double precision float type
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       p
-    </ td>
+    </td>
     <td>
       Pointer to null-terminated string
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       P
-    </ td>
+    </td>
     <td>
       Pointer to structure (fixed length string)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> Advantages of binary format </ h3>
+<h3> Advantages of binary format </h3>
 
-The advantage of the <b> binary format is that it is smaller in size. </ b> Perl numbers are internally a structure called SVIt is represented by, and the size is larger by the existence of the field of the structure.
+The advantage of the <b> binary format is that it is smaller in size. </b> Perl numbers are internally a structure called SVIt is represented by, and the size is larger by the existence of the field of the structure.
 
-Another advantage is that it is <b> placed in a contiguous area </ b>. Since 32bit is 4 bytes, 3 4 bytes are consecutive and 12 bytes can express 3 integers.
+Another advantage is that it is <b> placed in a contiguous area </b>. Since 32bit is 4 bytes, 3 4 bytes are consecutive and 12 bytes can express 3 integers.
 
-<h4> Data exchange with C language </ h4>
+<h4> Data exchange with C language </h4>
 
 C language arrays correspond to just the packed binary format. The following declaration has exactly the same data structure as the packed binary format.
 
 <pre>
 int32_t values [3];
-</ pre>
+</pre>
 
-<h3> More details </ h3>
+<h3> More details </h3>
 
 For more information about the pack function, see the official documentation <a href="http://perldoc.jp/docs/perl/5.8.8/perlpacktut.pod"> Introduction to pack </a> and <a href=" Please refer to http://perldoc.jp/func/pack "> pack function </a>.

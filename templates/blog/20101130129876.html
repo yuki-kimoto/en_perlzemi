@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> How to create a subroutine </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> How to create a subroutine </h2>
 
 
 
 Learn how to create a subroutine. A subroutine is a function that allows you to name and call a set of functions. It is the same as a function called a function in other languages. Perl standard functions are explained in <a href="/blog/20161004147558.html"> Perl standard functions </a>.
 
-<h3> Subroutine definition </ h3>
+<h3> Subroutine definition </h3>
 
 To define a subroutine:
 
@@ -23,7 +23,7 @@ To define a subroutine:
 sub Subroutine name {
   # process
 }
-</ pre>
+</pre>
 
 As a simple subroutine, let's define a subroutine named total that finds the sum of two values.
 
@@ -38,17 +38,17 @@ sub total {
   # (3) Return value
   return $ total;
 }
-</ pre>
+</pre>
 
-(1) The argument is stored in the variable "<strong> @ _ </ strong>". I've reassigned the variables $ num1 and $ num2 to give the arguments descriptive names. (2) The two values ​​are totaled. (3) The return value can be returned using the <a href="/blog/20171111151040.html"> return function </a>.
+(1) The argument is stored in the variable "<strong> @ _ </strong>". I've reassigned the variables $ num1 and $ num2 to give the arguments descriptive names. (2) The two values ​​are totaled. (3) The return value can be returned using the <a href="/blog/20171111151040.html"> return function </a>.
 
-<h3> Subroutine call </ h3>
+<h3> Subroutine call </h3>
 
 To call the subroutine: You can pass an argument and receive the processed result as a return value.
 
 <pre>
 Return value = Subroutine (argument);
-</ pre>
+</pre>
 
 Now let's call the total function we created earlier.
 
@@ -71,15 +71,15 @@ sub total {
 
   return $ total;
 }
-</ pre>
+</pre>
 
 (1) This is the value to be passed to the argument. (2) This is a subroutine call. The return value is assigned to $ total. The result of adding 1 and 2 is returned, so $ total is 3. (3) Subroutine definitions can also be placed under the call. This is because the subroutine definition is read at compile time.
 
-<h3> Subroutine arguments </ h3>
+<h3> Subroutine arguments </h3>
 
 Explains how to receive subroutine arguments.
 
-<h4> Receive one argument </ h4>
+<h4> Receive one argument </h4>
 
 A common way to receive a single argument is to use the shift function.
 
@@ -87,7 +87,7 @@ A common way to receive a single argument is to use the shift function.
 sub func {
   my $ arg = shift;
 }
-</ pre>
+</pre>
 
 When you call the shift function in a subroutine, "@_" is the implicit argument of the shift function. So the above is
 
@@ -95,11 +95,11 @@ When you call the shift function in a subroutine, "@_" is the implicit argument 
 sub func {
   my $ arg = shift @_;
 }
-</ pre>
+</pre>
 
 Will be the same as.
 
-<h4> Receive multiple arguments </ h4>
+<h4> Receive multiple arguments </h4>
 
 A commonly used method when receiving multiple arguments is list assignment.
 
@@ -107,7 +107,7 @@ A commonly used method when receiving multiple arguments is list assignment.
 sub func {
   my ($ arg1, $ arg2) = @_;
 }
-</ pre>
+</pre>
 
 The first element of @_ is assigned to $ arg1 and the second element is assigned to $ arg2.
 
@@ -117,9 +117,9 @@ If the arguments are of the same type, they should be received in an array.
 sub func {
   my @args = @_;
 }
-</ pre>
+</pre>
 
-<h4> Access arguments directly </ h4>
+<h4> Access arguments directly </h4>
 
 "@ _" Is an array, but you can also access this array directly.
 
@@ -129,11 +129,11 @@ $ _ [0]
 
 #Second argument
 $ _ [1]
-</ pre>
+</pre>
 
 This style of writing reduces readability and is recommended not to be used unless performance is absolutely necessary.
 
-<h4> Pass an array as a subroutine argument </ h4>
+<h4> Pass an array as a subroutine argument </h4>
 
 You can pass an array to a subroutine.
 
@@ -146,9 +146,9 @@ sub sum {
   my @nums = @_;
   # process
 }
-</ pre>
+</pre>
 
-<h4> Pass a hash as a subroutine argument </ h4>
+<h4> Pass a hash as a subroutine argument </h4>
 
 You can also pass a hash to the subroutine. On the receiving side, @_ will be assigned to the hash. In Perl, the contents of an array are lists, so you can assign them to hashes.
 
@@ -161,9 +161,9 @@ sub sum_examin {
   my% examin = @_;
   # process
 }
-</ pre>
+</pre>
 
-<h4> I want to pass multiple arrays to a subroutine </ h4>
+<h4> I want to pass multiple arrays to a subroutine </h4>
 
 If you want to pass multiple arrays to a subroutine, you need to pass them as an array reference.
 
@@ -176,7 +176,7 @@ func (\ @ array1, \ @ array2);
 sub func {
   my ($ array1, $ array2) = @_;
 }
-</ pre>
+</pre>
 
 If you pass two arrays as shown below, it will become one array and it will not work.
 
@@ -190,9 +190,9 @@ sub func {
   # It becomes one array
   my @array = @_;
 }
-</ pre>
+</pre>
 
-<h4> Pass arrays and hashes separately to subroutines </ h4>
+<h4> Pass arrays and hashes separately to subroutines </h4>
 
 What if I want to put both an array and a hash in a subroutine? In such cases, you need to use array references and hash references.
 
@@ -205,9 +205,9 @@ sub summary {
   my ($ nums, $ option) = @_;
   # process                            
 }
-</ pre>
+</pre>
 
-<h4> Allow both "hash" and "hash reference" to be received as subroutine arguments </ h4>
+<h4> Allow both "hash" and "hash reference" to be received as subroutine arguments </h4>
 
 To receive a hash or hash reference in a subroutine, write:
 
@@ -219,26 +219,26 @@ sub func {
   # Convert to hash reference as needed
   my $ arg = ref $ _ [0] eq'HASH'? $ _ [0]: {@_};
 }
-</ pre>
+</pre>
 
 If the argument is a hash reference, it is assigned as it is, and if it is a hash, it is converted to a hash reference. $ _ [0] is the first element of the argument @_.
 
-<h3> Typical pattern of how to receive arguments </ h3>
+<h3> Typical pattern of how to receive arguments </h3>
 
 Here is a typical pattern of how to receive arguments.
 
-<h4> (1) Multiple scalars </ h4>
+<h4> (1) Multiple scalars </h4>
 <pre>
 search ('aiueo','eo', 2);
 
 sub search {
   my ($ str, $ search, $ offset) = @_;
 }
-</ pre>
+</pre>
 
 Receive in a list and assign each value in the list to a scalar on the receiving side.
 
-<h4> (2) Simple list </ h4>
+<h4> (2) Simple list </h4>
 
 <pre>
 average (1,2,3,4,5);
@@ -246,11 +246,11 @@ average (1,2,3,4,5);
 sub average {
   my @nums = @_;
 }
-</ pre>
+</pre>
 
 Receive it in a list and assign it to an array.
 
-<h4> (3) One scalar and list </ h4>
+<h4> (3) One scalar and list </h4>
 
 <pre>
 search_file ('file','apple','dog');
@@ -258,11 +258,11 @@ search_file ('file','apple','dog');
 sub search_file {
   my ($ file, @search_list) = @_;
 }
-</ pre>
+</pre>
 
 The first argument is assigned to the scalar, and the second and subsequent arguments are assigned to the array.
 
-<h4> (4) Simple hash </ h4>
+<h4> (4) Simple hash </h4>
 
 <pre>
 search_arg_hash (str =>'aiueo', search =>'eo', offset => 2);
@@ -271,13 +271,13 @@ sub search_arg_hash {
   my% arg = @_;
   my ($ str, $ search, $ offset) = @arg {'str','search','offset'};
 }
-</ pre>
+</pre>
 
 Substitute in the hash on the receiving side. If the number of arguments increases, it is a nice interface to give the arguments a name using a hash.
 
 It is not always necessary to reassign the hash to the scalar, but it is often easier to see and code.
 
-<h4> (5) One scalar and hash </ h4>
+<h4> (5) One scalar and hash </h4>
 
 <pre>
 parse_file ('in_file', out_file =>'out_file', search_path =>'dir');
@@ -287,13 +287,13 @@ sub parse_file {
   my ($ out_file, $ search_path) = @opt {'out_file','search_path'};
   return;
 }
-</ pre>
+</pre>
 
 Assign the first argument to the scalar and the second and subsequent arguments to the hash. You can use this interface if the first argument is a required argument and the other arguments are considered optional.
 
-<h3> Subroutine return value </ h3>
+<h3> Subroutine return value </h3>
 
-<h4> Return the scalar value as the return value </ h4>
+<h4> Return the scalar value as the return value </h4>
 
 Basically, the scalar value is returned as the return value of the subroutine.
 
@@ -303,9 +303,9 @@ sub func {
 
   return $ name;
 }
-</ pre>
+</pre>
 
-<h4> Return an array or hash as a return value </ h4>
+<h4> Return an array or hash as a return value </h4>
 
 Perl can also return lists (arrays and hashes).
 
@@ -315,13 +315,13 @@ func {
 
   return @nums;
 }
-</ pre>
+</pre>
 
 However, this method is not recommended.The recommended method is to return the "array reference" and "hash reference" described below.
 
 You can also use the <a href="/blog/20080610121319.html"> wantarray function </a> to return arguments depending on the context of the caller, but this is not recommended. The reason is that changing the return value depending on the context forces the user to write "scalar func ()" at some point to enforce the scalar context.
 
-<h4> Return reference as return value </ h4>
+<h4> Return reference as return value </h4>
 
 Array references and hash references are also scalar values, so they can be returned as return values.
 
@@ -339,9 +339,9 @@ sub func {
 
   return $ score;
 }
-</ pre>
+</pre>
 
-<h4> Single return </ h4>
+<h4> Single return </h4>
 
 A single return returns an undefined value undef in a scalar context and an empty list () in a list context.
 
@@ -350,11 +350,11 @@ sub func_name {
   # process ...
   return;
 }
-</ pre>
+</pre>
 
 It is customary to use a "single return" if you want to return an undefined value. "Return undef" has some advantages, but it seems to be used less frequently.
 
-<h3> Setting default values ​​</ h3>
+<h3> Setting default values ​​</h3>
 
 You may want to specify a default value for the subroutine argument. In such a case, if the argument is undefined, set the default value.
 
@@ -365,7 +365,7 @@ sub num {
     $ num = 0;
   }
 }
-</ pre>
+</pre>
 
 Since Perl 5.10 introduced a convenient "defined-or operator", you can also write: If the left side is undefined, the value on the right side will be assigned.
 
@@ -374,13 +374,13 @@ sub num {
   my $ num = shift;
   $ num // = 0;
 }
-</ pre>
+</pre>
 
-<h3> Error handling </ h3>
+<h3> Error handling </h3>
 
 Explains how to handle errors in subroutines.
 
-<h4> How to return undef </ h4>
+<h4> How to return undef </h4>
 
 The easiest way is to return "undef" when the subroutine fails. Returns undef with a single return.
 
@@ -395,7 +395,7 @@ sub foo {
     return;
   }
 }
-</ pre>
+</pre>
 
 The caller checks the return value.
 
@@ -405,9 +405,9 @@ my $ ret = foo ();
 unless (defined $ ret) {
   #Error handling
 }
-</ pre>
+</pre>
 
-<h4> How to throw an exception </ h4>
+<h4> How to throw an exception </h4>
 
 The recommended method is to throw an exception when an error occurs. Use the die function to throw an exception.
 
@@ -422,7 +422,7 @@ sub foo {
     die "Error";
   }
 }
-</ pre>
+</pre>
 
 If you want to throw an exception in a module, use the carp module's croak function. The caller information is easy to understand.
 
@@ -439,7 +439,7 @@ sub foo {
     croak "Error";
   }
 }
-</ pre>
+</pre>
 
 The caller catches the exception as follows: You can catch exceptions by using <a href="/blog/20100312126967.html"> eval </a>. Note that we need a semicolon at the end of the eval block.
 
@@ -451,47 +451,47 @@ eval {
 if (my $ error = $ @) {
   #Error handling
 }
-</ pre>
+</pre>
 
 When an exception occurs, the content of the error is stored in the <a href="/blog/20161102147817.html"> special variable </a> called "$ @". Since "$ @" may be overwritten by a global variable, it is recommended to assign it to a lexical variable immediately.
 
 For a detailed explanation of exception handling, see "<a href="/blog/20100411127089.html"> Perl's" Exception Handling "Mechanism-Error Notification and Detection </a>".
 
-<h3> Subroutine exercises </ h3>
+<h3> Subroutine exercises </h3>
 
 I have created an exercise to understand the subroutine properly.
 
 <ul>
   <li>
     <a href="/blog/20080620121405.html"> Convert a cvs format string to an array of arrays </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 <blockquote>
-<b> Learning themes </ b>
+<b> Learning themes </b>
 CSV, array of arrays, array of hashes, maximum and minimum values, sort, bubble sort, ascending, descending order
-</ blockquote>
+</blockquote>
 
-<h3> Subroutine reference </ h3>
+<h3> Subroutine reference </h3>
 
 This is a description of the subroutine reference.
 
 <ul>
   <li>
     <a href="/blog/20080704121518.html"> Create a reference to the subroutine </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 
 <blockquote>
-<b> Learning themes </ b>
+<b> Learning themes </b>
 Subroutine references, polymorphism, dispatch tables, signal handlers, event-driven programming
-</ blockquote>
+</blockquote>
 
-<h3> Subroutine technique </ h3>
+<h3> Subroutine technique </h3>
 
 
-<h4> Function parenthesis omission rules </ h4>
+<h4> Function parenthesis omission rules </h4>
 
 You may or may not use standard function parentheses.
 
@@ -501,7 +501,7 @@ print ('Hello');
 
 # Without parentheses
 print'Hello';
-</ pre>
+</pre>
 
 You may or may not use parentheses for functions imported from the module.
 
@@ -509,7 +509,7 @@ You may or may not use parentheses for functions imported from the module.
 #Functions imported from module
 use Carp'croak';
 croak'Error';
-</ pre>
+</pre>
 
 Parentheses are required if the function definition is after the position where the function is used.
 
@@ -520,13 +520,13 @@ func ();
 sub func {
   ...
 }
-</ pre>
+</pre>
 
 There is no such criterion as to whether to omit the parentheses. Decide on "whether it is easy for others to read" and "beauty".
 
 * Regarding the relationship with the prototype, I will not write it because the prototype is deprecated.
 
-<h4> Redefine subroutine (monkey patch) </ h4>
+<h4> Redefine subroutine (monkey patch) </h4>
 
 Perl allows you to redefine a subroutine definition once it has been done.
 
@@ -534,20 +534,20 @@ Perl allows you to redefine a subroutine definition once it has been done.
 sub sum {...}
 no warnings'redefine';
 sub sum {...}
-</ pre>
-If you redefine a subroutine, you will be warned of the redefinition. You can remove the warnings by writing <strong> no warnings'redefine'; </ strong> to remove this.
+</pre>
+If you redefine a subroutine, you will be warned of the redefinition. You can remove the warnings by writing <strong> no warnings'redefine'; </strong> to remove this.
 
 Overwriting a subroutine is sometimes referred to as a monkey patch. If you find a subroutine that has a bug, you can temporarily overwrite the subroutine and apply a patch.
 
-<h4> caller function-get the name of the function you are executing </ h4>
+<h4> caller function-get the name of the function you are executing </h4>
 
 Use the caller function to get the name of the function you are executing. For the caller function, see "<a href="/blog/20080424120904.html"> caller function --get the name of the function being executed </a>".
 
-<h4> Get the arguments of the calling subroutine </ h4>
+<h4> Get the arguments of the calling subroutine </h4>
 
 You can use the caller function to get the package name, subroutine name, etc. of the caller of the function. It is also possible to get the arguments of the calling subroutine.
 
-To get the arguments of the calling function, call the caller function in the DB namespace in the list context. <b> @DB :: args </ b> is set to the argument of the calling function. DB is a module used for debugging. Since the namespace will be temporarily changed to DB, let's enclose it in a block. When the block is finished, it will return to the original namespace.
+To get the arguments of the calling function, call the caller function in the DB namespace in the list context. <b> @DB :: args </b> is set to the argument of the calling function. DB is a module used for debugging. Since the namespace will be temporarily changed to DB, let's enclose it in a block. When the block is finished, it will return to the original namespace.
 
 <pre>
 sub a2 {
@@ -562,49 +562,49 @@ sub a2 {
     my @args = @DB :: args;
   }
 }
-</ pre>
+</pre>
 
-<h4> Subroutine autoloading </ h4>
+<h4> Subroutine autoloading </h4>
 
 Perl has a feature called autoloading that defines a function that will be executed if a subroutine isn't defined.
 
 <ul>
   <li>
     <a href="/blog/20080709121562.html"> Subroutine autoload AUTOLOAD </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Dynamic creation of subroutines </ h4>
+<h4> Dynamic creation of subroutines </h4>
 
 You can dynamically create subroutines in Perl.
 
 <ul>
   <li>
     <a href="/blog/20080716121630.html"> Dynamic generation of subroutines </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Creating a closure </ h4>
+<h4> Creating a closure </h4>
 
 For information on creating "closures" in Perl, see <a href="/blog/20080710121570.html"> How to create "closures" in Perl </a>.
 
-<h3> Reading material about subroutines </ h3>
+<h3> Reading material about subroutines </h3>
 
 <ul>
   <li>
     <a href="/blog/20080612121341.html"> Subroutine definitions are not affected by scope </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080615121350.html"> Compare the flexibility of Perl subroutines with C </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080616121363.html"> Keep in mind to create good subroutines </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080620121405.html"> Subroutine exercises </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> List of standard Perl functions </ h3>
+<h3> List of standard Perl functions </h3>
 
 If you want to see a list of standard Perl functions, see <a href="/blog/20161004147558.html"> List of Perl functions </a>.

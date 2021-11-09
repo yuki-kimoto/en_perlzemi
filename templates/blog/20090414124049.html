@@ -1,33 +1,33 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> wait function-waits for the termination of the child process </ h2>
+  </li>
+</ol>
+<h2> wait function-waits for the termination of the child process </h2>
 
 
 
 If you branch with fork, you don't know which of the parent and child processes will terminate first. This time, I will explain how the parent process waits for the child process to finish.
 
-<h3> 1. Wait for the end of the child process with wait </ h3>
+<h3> 1. Wait for the end of the child process with wait </h3>
 
-Use the <b> wait </ b> function to wait for the child process to terminate. The wait function <b> waits until one child process terminates </ b>. The return value is <b> the process ID of the terminated child process </ b>. If the child process was automatically reclaimed for any reason, -1 will be returned.
+Use the <b> wait </b> function to wait for the child process to terminate. The wait function <b> waits until one child process terminates </b>. The return value is <b> the process ID of the terminated child process </b>. If the child process was automatically reclaimed for any reason, -1 will be returned.
 
 <pre>
 my $ pid = wait;
-</ pre>
+</pre>
 
 This is a sample that waits for a child process. Let's modify the previous sample a little. To make the result easier to understand, the <a href="/blog/20170522149546.html"> sleep function </a> waits for 2 seconds before executing the print statement on the child process side.
 
@@ -49,37 +49,37 @@ else {
   sleep 2;
   print "child process \ n";
 }
-</ pre>
+</pre>
 
 The output result is
 
 <pre>
 Child process
 Parent process (child process ID: 25870)
-</ pre>
+</pre>
 
 It will be. You can see that the parent process is waiting for the child process.
 
-<h3> 2. Termination of child process and deletion from process table </ h3>
+<h3> 2. Termination of child process and deletion from process table </h3>
 
-When a child process terminates, it is <b> not immediately deleted from the process table </ b>. (The process table is used by the OS to manage the process.)
+When a child process terminates, it is <b> not immediately deleted from the process table </b>. (The process table is used by the OS to manage the process.)
 
-Wait for the child process to be removed from the process table after it terminates. This condition is called the "dead child process." The child process waits for removal from the process table because <b> the parent process needs to know the termination status of the child process </ b>.
+Wait for the child process to be removed from the process table after it terminates. This condition is called the "dead child process." The child process waits for removal from the process table because <b> the parent process needs to know the termination status of the child process </b>.
 
 Calling wait removes the terminated child process from the process table. The child process is also deleted from the process table when the parent process terminates.
 
-<h3> 3. Child process exit status </ h3>
+<h3> 3. Child process exit status </h3>
 
 When you call wait
 
 <pre>
 $?
-</ pre>
+</pre>
 
 Multiple data including the exit status of the child process are stored in the special variable called. Next time, I will explain how to get the exit status of the child process stored in $ ?.
 
-<h3> 4. What wait really does </ h3>
+<h3> 4. What wait really does </h3>
 
-In fact, <b> wait is not waiting for the child process to terminate </ b>. Waiting for the child process to <b> generate a CHLD signal </ b>. The CHLD signal occurs not only when the child process terminates, but also when the child process is stopped or restarted.
+In fact, <b> wait is not waiting for the child process to terminate </b>. Waiting for the child process to <b> generate a CHLD signal </b>. The CHLD signal occurs not only when the child process terminates, but also when the child process is stopped or restarted.
 
-This means that using wait does not <b> reliably recover dead child processes </ b>. To ensure that the dead child process is reclaimed, set the signal handler for the CHLD signal to IGNORE or use the waitpid function appropriately.
+This means that using wait does not <b> reliably recover dead child processes </b>. To ensure that the dead child process is reclaimed, set the signal handler for the CHLD signal to IGNORE or use the waitpid function appropriately.

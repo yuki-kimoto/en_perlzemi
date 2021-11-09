@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20191228171433.html">
-      <span itemprop = "name"> Form creation </ span> </a>
+      <span itemprop = "name"> Form creation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> Draw text --PDF :: Create form with API2 </ h2>
+<h2> Draw text --PDF :: Create form with API2 </h2>
 
 To draw text in PDF with PDF :: API2:
 
@@ -44,67 +44,67 @@ $ text-> text ('Hello World!');
 
 my $ pdf_file ='text_core_font.pdf';
 $ pdf-> saveas ($ pdf_file);
-</ pre>
+</pre>
 
 <a href="/examples/pdf/text_core_font.pdf"> Output result text English </a>
 
 
-<b> Get font object </ b>
+<b> Get font object </b>
 
 In PDF :: API2, get the font object that represents the font using the corefont method or ttfont method. Here, we are drawing using the corefont object.
 
 <pre>
 #Load core font
 my $ font = $ pdf-> corefont ('Helvetica');
-</ pre>
+</pre>
 
 Use the corefont method to get the core font. Please note that corefont cannot draw Japanese. If you want to use Japanese, you need to specify a truetype font that supports Japanese with ttfont.
 
-<b> Content object that represents text </ b>
+<b> Content object that represents text </b>
 
 In PDF :: API2, the content object that represents the text is obtained using the text method of the page object. Here, a content object that represents text is called a text object. This is a PDF :: API2 :: Content object.
 
 <pre>
 #Get a content object that represents the text
 my $ text = $ page-> text ();
-</ pre>
+</pre>
 
-<b> Font settings </ b>
+<b> Font settings </b>
 
 In PDF :: API2, set the font with the font method of the text object.
 
 <pre>
 #Set font
 $ text-> font ($ font, 11);
-</ pre>
+</pre>
 
-<b> Specify drawing position </ b>
+<b> Specify drawing position </b>
 
 In PDF :: API2, the drawing position is set by the translate method of the text object.
 
 <pre>
 # Set drawing position (origin is lower left. By default, page width is 612 units and height is 792 units)
 $ text-> translate (30, 750);
-</ pre>
+</pre>
 
 The origin is at the bottom left. By default, the page width is 612 units and height is 792 units. For PDF coordinates, see the explanation of "Setting the paper size" in <a href="/blog/20191226175520.html"> Creating a PDF file </a>.
 
 Please note that you cannot set page margins, number of lines of text, etc., and you need to specify the drawing position with the translate method. Note that you have to calculate and specify the drawing position yourself.
 
-<b> Drawing text </ b>
+<b> Drawing text </b>
 
 PDF :: API2 draws text with the text method of the text object.
 
 <pre>
 #Draw text
 $ text-> text ('Hello World!');
-</ pre>
+</pre>
 
 When you draw text, the x-coordinate of the current drawing position moves to the end of the text. This position can be obtained with the textpos method.
 
 Note that the text is written on the font baseline.
 
-<h3> Set the font color </ h3>
+<h3> Set the font color </h3>
 
 To set the font color, set the stroke color and fill color. Please note that there is no method that allows you to specify the font color directly.
 
@@ -120,13 +120,13 @@ $ text-> fillcolor ('red');
 #Set font color --CMYK
 $ text-> strokecolor ('% FF000000');
 $ text-> fillcolor ('% FF000000');
-</ pre>
+</pre>
 
 Text drawing is also created by using the content drawing function to create the outline path that exists in the font and then fill the inside of the path.
 
 For a detailed explanation of drawing shapes and stroke color and fill color, refer to <a href="/blog/20200101082734.html"> Drawing basic shapes and creating tables </a>.
 
-<h3> Set the background color </ h3>
+<h3> Set the background color </h3>
 
 I will explain how to draw the background color and draw the text on it. In fact, there are pitfalls to this, so be careful.
 
@@ -144,7 +144,7 @@ my $ text = $ page-> text;
 # Mistakes (Pit Pit, Graphic Text Disappears)
 my $ text = $ page-> text;
 my $ gfx = $ page-> gfx;
-</ pre>
+</pre>
 
 Another thing you need to do is set the font color. If you forget this, the background color will be the text color and it will be as if it was not drawn.
 
@@ -167,23 +167,23 @@ The background color is simply written using the function of the graphic content
 
 This will allow you to draw text on top of the background color.
 
-<h3> Draw underline </ h3>
+<h3> Draw underline </h3>
 
 To underline text in PDF :: API2, specify the "-underline" option of the text method. "Auto" will automatically determine the position of the underline.
 
 <pre>
 # Draw underline
 $ text-> text ('Hello World!', -Underline =>'auto');
-</ pre>
+</pre>
 
-<h3> Make it bold </ h3>
+<h3> Make it bold </h3>
 
 To use bold in the core font, specify the font for bold.
 
 <pre>
 #Load core font
 my $ font = $ pdf-> corefont ('Helvetica-Bold');
-</ pre>
+</pre>
 
 There are two types of expression in bold on a computer, either using a font for bold or using an application to draw overlapping characters.
 
@@ -194,29 +194,29 @@ As an alternative, consider increasing the font size by 1.
 <pre>
 # Increase font size by 1 as an alternative to bold
 $ text-> font ($ font, $ font_size + 1);
-</ pre>
+</pre>
 
-<h3> Set character spacing </ h3>
+<h3> Set character spacing </h3>
 
 Use the charspace method to set the character spacing. The default is 0.
 
 <pre>
 #Set character spacing
 $ text-> charspace (1);
-</ pre>
+</pre>
 
-<h3> Draw text around the specified position </ h3>
+<h3> Draw text around the specified position </h3>
 
 To draw text centered on a specified position in PDF :: API2, use the text_center method. The options are the same as the text method.
 
 <pre>
 # Draw underline
 $ text-> text_center ('Hello World!');
-</ pre>
+</pre>
 
 It can be used when you want to display the page heading etc. in the center of the screen.
 
-<h3> Draw text with the specified position as the right edge </ h3>
+<h3> Draw text with the specified position as the right edge </h3>
 
 Use the text_right method to draw the text as a drawing with the specified position as the right edge in PDF :: API2. The options are the same as the text method.
 
@@ -225,20 +225,20 @@ It can be used when you want to display the page number etc. at the bottom right
 <pre>
 # Draw underline
 $ text-> text_right ('Hello World!');
-</ pre>
+</pre>
 
-<h3> Get the current text drawing position </ h3>
+<h3> Get the current text drawing position </h3>
 
 To get the current text drawing position in PDF :: API2, use the textpos method.
 
 <pre>
 # Get the current text drawing position
 my ($ x, $ y) = $ text-> textpos ();
-</ pre>
+</pre>
 
 You can use this value to check where line breaks should occur and where page breaks should occur.
 
-<h3> Get the font size </ h3>
+<h3> Get the font size </h3>
 
 To get the font size of an existing text in PDF :: API2, call the textstate method with no arguments and it will return a hash that represents the state of the text, so retrieve the fontsize value.
 
@@ -246,18 +246,18 @@ To get the font size of an existing text in PDF :: API2, call the textstate meth
 # Get the font size of existing text
 my% text_state = $ text-> textstate;
 my $ font_size = $ text_state {fontsize};
-</ pre>
+</pre>
 
-<h3> Get the height of the text </ h3>
+<h3> Get the height of the text </h3>
 
 The height of the text is actually the same as the font size. Font size 16 is the same as 16 in PDF units. If you want to start a new line, you can use the font size to start a new line so that they do not overlap.
 
 <pre>
 my $ font_size = 16;
 my $ text_height = $ font_size;
-</ pre>
+</pre>
 
-<h3> Row height </ h3>
+<h3> Row height </h3>
 
 There is a little space between the lines. The line height is the height of the text plus the width between the lines. If the font size (text height) is 11 and the line spacing is 2, the line height is 13.
 
@@ -271,27 +271,27 @@ my $ line_margin = 2;
 
 # Line height
 my $ line_height = $ text_height + $ line_margin;
-</ pre>
+</pre>
 
 For example, if you want to make a line break and move, you can subtract the line height.
 
-<h3> Get the width of the text to draw </ h3>
+<h3> Get the width of the text to draw </h3>
 
 Use the advancewidth method to get the width of the text to draw in advance.
 
 <pre>
 my $ text_width = $ text-> advancewidth ($ string);
-</ pre>
+</pre>
 
 It can be used when performing a process called line break when it extends to the right side.
 
-<h3> Margin settings </ h3>
+<h3> Margin settings </h3>
 
 When using PDF :: API2, if you want to set the margin on the page, you cannot set the margin value like the screen on the GUI. You have to calculate it yourself.
 
 However, not only the disadvantages, but if you remember this method, you can change the margins on odd and even pages, which is very flexible.
 
-<h4> Relationship between PDF unit and inch and mm </ h4>
+<h4> Relationship between PDF unit and inch and mm </h4>
 
 First of all, let's remember the relationship between the PDF unit specified in PDF and inches and mm.
 
@@ -323,11 +323,11 @@ my $ page_left_margin = 36;
 
 # Page right margin
 my $ page_right_margin = 36;
-</ pre>
+</pre>
 
 Note that the top and bottom margins are based on the baseline of the font, so the characters may be slightly out of the way they look.
 
-<h4> Drawing start position and drawing end position </ h4>
+<h4> Drawing start position and drawing end position </h4>
 
 When considering the margins, it is necessary to calculate the XY coordinates of the drawing start position and the XY coordinates of the drawing end position.
 
@@ -338,7 +338,7 @@ First, let's get the width of the paper size. (Reference: Get the paper size of 
 my @page_size_infos = $ page-> mediabox;
 my $ page_width = $ page_size_infos [2];
 my $ page_height = $ page_size_infos [3];
-</ pre>
+</pre>
 
 Keep in mind that PDF coordinates start at the bottom left. If this is a typical PDF document, the width of the page is 612 units and the height is 792 units, so the coordinates at the top left of the page are (0, 791). Please note that it is not (0, 0).
 
@@ -358,7 +358,7 @@ my $ render_end_x = $ page_width --1;
 
 #End of drawing y coordinate = 0;
 my $ render_end_y = 0;
-</ pre>
+</pre>
 
 If you add a margin to this, it will be as follows.
 
@@ -374,9 +374,9 @@ my $ render_end_x = $ page_width --1- $ page_right_margin;
 
 # Drawing end y coordinate
 my $ render_end_y = $ page_bottom_margin;
-</ pre>
+</pre>
 
-<h4> Text drawing corresponding to margins, line breaks, and page breaks </ h4>
+<h4> Text drawing corresponding to margins, line breaks, and page breaks </h4>
 
 Now, let's draw the text, paying attention to the margins, line breaks, and page breaks. When it reaches the right end, it will start a new line. English only. English words are broken on a character-by-character basis. When you reach the bottom, the page will break.
 
@@ -490,7 +490,7 @@ while ($ message = ~ / (.) / G) {
 
 my $ pdf_file ='margin_full_text.pdf';
 $ pdf-> saveas ($ pdf_file);
-</ pre>
+</pre>
 
 Three pages with margins that repeat "Hello World!" Are output.
 
@@ -498,29 +498,29 @@ In my environment, 12,000 characters take 1-2 seconds. PDF output is a surprisin
 
 <a href = "/ examples / pdf / margin_full_text.pdf"> Output result margins, line breaks, page breaks </a>
 
-<h4> How to represent HTML headlines and p tags? </ H4>
+<h4> How to represent HTML headlines and p tags? </H4>
 
 I won't go into detail here, but I'll just give you a hint. At the very least, you need to parse the tags. Regular expressions and modules that parse HTML will be available. Is it general-purpose to use a module that parses HTML, considering that it will correspond to lists and tables later?
 
 <pre>
-<h1> Title </ h1>
+<h1> Title </h1>
 
 <p>
 message
-</ p>
-</ pre>
+</p>
+</pre>
 
 XML :: Simple seems to be easy to use. With fixed format, you don't have to think about difficult things, so it would be nice if you could make Perl's multidimensional data structure with XML :: Simple.
 
 If you output in a fixed format like when making a book, CSS analysis seems to be unnecessary. It seems that it is necessary to set the margin programmatically for each heading and p tag.
 
-<h4> How to break a line in English words? </ H4>
+<h4> How to break a line in English words? </H4>
 
 It seems that you often don't want to cut English words in the middle of a line break. In this case, it's a little difficult, but think about it as follows.
 
 First, remember the x-coordinate where the alphabet starts. Also, if an alphabetic character starts, save it in a string like $ tmp_word. Let's wait for the text output yet and move on to the next loop. When a non-English character arrives, one English word is up to just before that. If the width of $ tmp_word exceeds the right end, it will be output with a line break, and if it does not exceed, it will be output as it is.
 
-<h3> Font for drawing Japanese </ h3>
+<h3> Font for drawing Japanese </h3>
 
 In order to draw Japanese with PDF :: API2, a font that supports Japanese is required. The core font is English only.
 
@@ -528,7 +528,7 @@ Among the fonts, you need to use a font called TrueType Font.
 
 Fonts are provided as a single file with a TrueType Font extension of ttf.
 
-<h4> Get TrueType Font </ h4>
+<h4> Get TrueType Font </h4>
 
 There are TrueType fonts available for free, so get them. If you search, you will find many.
 
@@ -540,18 +540,18 @@ Here, I would like to introduce one TrueType font that can draw Japanese, called
 
 <ul>
   <li> <a href="https://github.com/indico/indico-fonts/raw/master/indico_fonts/kochi-gothic-subst.ttf"> kochi-gothic-subst.ttf </a> (< a href = "https://github.com/indico/indico-fonts/tree/master/indico_fonts"> Font list page </a>)
-</ ul>
+</ul>
 
 Download it and place it wherever you like.
 
-<h4> Loading TrueType Fonts </ h4>
+<h4> Loading TrueType Fonts </h4>
 
 TrueType Fonts can be read with the ttfont method. Specify the path of the acquired TrueType Font.
 
 <pre>
 my $ true_type_font_file ='/path/kochi-gothic-subst.ttf';
 my $ font = $ pdf-> ttfont ($ true_type_font_file);
-</ pre>
+</pre>
 
 You can output Japanese by rewriting the location where the core font is read by corefont to the above.
 
@@ -559,7 +559,7 @@ As a promise when handling Perl Japanese, save the file in UTF-8 and use utf8.
 
 <pre>
 use utf8;
-</ pre>
+</pre>
 
 In PDF :: API2, the font is embedded in the PDF file, and the PDF file does not refer to the font file.
 
@@ -569,19 +569,19 @@ If you want to put the font file in the directory where you put the program and 
 use FindBin;
 
 my $ true_type_font_file = "$ FindBin :: Bin / kochi-gothic-subst.ttf";
-</ pre>
+</pre>
 
-<h4> I want to make it bold with a TrueType font that supports Japanese </ h4>
+<h4> I want to make it bold with a TrueType font that supports Japanese </h4>
 
 If you want to make it bold with TrueType Font that supports Japanese, use a font that has a bold font in addition to the normal font.
 
 I have searched for Japanese, TrueType fonts, bold fonts, and commercially available ones, so I will introduce them.
 
-<b> Aozora Mincho Font </ b>
+<b> Aozora Mincho Font </b>
 
 <ul>
   <a href="http://blueskis.wktk.so/AozoraMincho/"> Aozora Mincho Font </a> (<a href="http://ayapin-film.sakura.ne.jp/Jttf/jttf" .html "> Japanese TTF Free Fonts for X11 </a>)
-</ ul>
+</ul>
 
 Download from below.
 
@@ -597,7 +597,7 @@ AozoraMinchoHeavy.ttf
 AozoraMinchoLight.ttf
 AozoraMinchoMedium.ttf
 AozoraMinchoRegular.ttf Normal
-</ pre>
+</pre>
 
 These files can be used for normal and bold.
 
@@ -609,13 +609,13 @@ my $ font = $ pdf-> ttfont ($ true_type_font_file);
 # Bold
 my $ true_type_font_bold_file ='/path/AozoraMincho-bold.ttf';
 my $ font_bold = $ pdf-> ttfont ($ true_type_font_file);
-</ pre>
+</pre>
 
 In Japanese fonts, it is assumed that the text baseline is almost always at the bottom of the character, but in Aozora Mincho font, the baseline is at the bottom of the character. In other words, the characters are drawn so that they extend to the upper right of the point moved by translate.
 
 In this case, please note that the setting above the margin needs to be taken into consideration because the characters will protrude upward.
 
-<h3> Samples for margins, line breaks, page breaks, Japanese, and bold </ h3>
+<h3> Samples for margins, line breaks, page breaks, Japanese, and bold </h3>
 
 This is a sample that supports margins, line breaks, page breaks, Japanese, and bold. "Hello world." Is displayed repeatedly, and only in the case of the world, it is in bold.
 
@@ -742,6 +742,6 @@ while ($ message = ~ / (.) / G) {
 
 my $ pdf_file ='margin_full_text_jp.pdf';
 $ pdf-> saveas ($ pdf_file);
-</ pre>
+</pre>
 
 <a href="/examples/pdf/margin_full_text_jp.pdf"> Output result Japanese, bold support </a>

@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop = "name"> XS </ span> </a>
+        <span itemprop = "name"> XS </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Easy way to implement XS using multiple modules </ h2>
+  </li>
+</ol>
+<h2> Easy way to implement XS using multiple modules </h2>
 
 
 
@@ -26,25 +26,25 @@ I tried various things, but the next method seemed to be easy, so I will introdu
 <ol>
   <li>
     No need to modify <a href="/blog/20150725143778.html"> Makefile.PL </a>
-  </ li>
+  </li>
   <li>
     No need to modify the name of the file SomeModule.xs
-  </ li>
+  </li>
   <li>
     Only one XS file called SomeModule.xs is OK
-  </ li>
+  </li>
   <li>
     The standard tool <a href="/blog/20170209150055.html"> h2xs </a> is fine
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h4> Create a module with h2xs </ h4>
+<h4> Create a module with h2xs </h4>
 
 First, create a module for XS with h2xs.
 
 <pre>
 h2xs -A -n SomeModule
-</ pre>
+</pre>
 
 This will create a directory called "SomeModule". The following files and directories will be created.
 
@@ -57,9 +57,9 @@ ppport.h
 README
 SomeModule.xs
 t /
-</ pre>
+</pre>
 
-<h4> XS file description </ h4>
+<h4> XS file description </h4>
 
 I will create an XS file. Let's add a function called foo that displays "foo" to SomeModule, and a function called bar that displays "bar" to SomeModule :: Util.
 
@@ -74,7 +74,7 @@ First of all, when you open the XS file, you should see something like the follo
 
 
 MODULE = SomeModule PACKAGE = SomeModule
-</ pre>
+</pre>
 
 The first thing to remember is that the "MODULE = SomeModule PACKAGE = SomeModule" section should be at the bottom. If you do not leave this part at the end, the XS will fail to load.
 
@@ -106,13 +106,13 @@ foo (...)
   PerlIO_printf (PerlIO_stdout (), "foo \ n");
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> Creating a module </ h4>
+<h4> Creating a module </h4>
 
 At this point, all you have to do is create SomeModule and SomeModule :: Util.
 
-<b> SomeModule source code </ b>
+<b> SomeModule source code </b>
 
 You can leave the source code for SomeModule.pm as it is. I organized it a little and made it as follows.
 
@@ -128,9 +128,9 @@ require XSLoader;
 XSLoader :: load ('SomeModule', $ VERSION);
 
 1;
-</ pre>
+</pre>
 
-<b> SomeModule :: Util source code </ b>
+<b> SomeModule :: Util source code </b>
 
 Let's also create SomeModule :: Util :: bar. Save this in "lib / SomeModule / Util.pm". This is an almost empty file with only the package name declared.
 
@@ -138,9 +138,9 @@ Let's also create SomeModule :: Util :: bar. Save this in "lib / SomeModule / Ut
 package SomeModule :: Util;
 
 1;
-</ pre>
+</pre>
 
-<h4> Test script </ h4>
+<h4> Test script </h4>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -153,9 +153,9 @@ use SomeModule :: Util;
 
 SomeModule :: foo ();
 SomeModule :: Util :: bar ();
-</ pre>
+</pre>
 
-<h4> Compile and run </ h4>
+<h4> Compile and run </h4>
 
 Let's compile and run it.
 
@@ -163,13 +163,13 @@ Let's compile and run it.
 perl Makefile.PL
 make
 perl -Mblib test.pl
-</ pre>
+</pre>
 
 If the output is as follows, it is successful.
 
 <pre>
 foo
 bar
-</ pre>
+</pre>
 
 Writing XS in multiple modules doesn't seem to be that difficult.

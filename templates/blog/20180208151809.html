@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100930127859.html">
-      <span itemprop = "name"> Reference </ span> </a>
+      <span itemprop = "name"> Reference </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Hash reference </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Hash reference </h2>
 
 
 
-A data structure called <b> hash reference </ b> frequently appears in Perl. This page details the hash reference from the <a href="/blog/20100930127859.html"> Reference </a>.
+A data structure called <b> hash reference </b> frequently appears in Perl. This page details the hash reference from the <a href="/blog/20100930127859.html"> Reference </a>.
 
-<h4> What is a hash reference? </ H4>
+<h4> What is a hash reference? </H4>
 
 A hash reference is a reference to a <a href="/blog/20161013147635.html"> hash </a>. A reference means to point. You can use the reference generator "\" on a hash to create a hash reference.
 
@@ -29,7 +29,7 @@ A hash reference is a reference to a <a href="/blog/20161013147635.html"> hash <
 #Create a hash reference
 my% score = (math => 68, english => 90);
 my $ score_ref = \% score;
-</ pre>
+</pre>
 
 Note that the hash reference is assigned to the <a href="/blog/20161107147852.html"> scalar variable </a>.
 
@@ -39,11 +39,11 @@ Let's write an image of the hash reference below.
 # image
                       % score
 $ score_ref -------> (math => 68, english => 90)
-</ pre>
+</pre>
 
 A hash reference represents "what points to a hash" rather than the hash itself.
 
-<h4> Hash reference is assigned and the contents are not copied </ h4>
+<h4> Hash reference is assigned and the contents are not copied </h4>
 
 Let's see the difference between hashes and hash references from here.
 
@@ -58,7 +58,7 @@ my% score2 =% score1;
 my% score1 = (math => 68, english => 90);
 my $ score_ref1 = \% score1;
 my $ score_ref2 = $ score_ref1;
-</ pre>
+</pre>
 
 Below is an image. In the case of a hash, the entire contents are copied, whereas in the hash reference, the reference itself is copied, not the contents.
 
@@ -69,22 +69,22 @@ Below is an image. In the case of a hash, the entire contents are copied, wherea
 
 $ score_ref1 ------------>
 $ score_ref2 ------------> (math => 68, english => 90)
-</ pre>
+</pre>
 
 When passing to <a href="/blog/20101130129876.html"> subroutine </a>, it is more efficient to pass a hash reference because the contents are not copied.
 
 <pre>
 # Pass the hash reference to the subroutine
 my_func ($ score_ref1);
-</ pre>
+</pre>
 
-<h3> Anonymous hash generator </ h3>
+<h3> Anonymous hash generator </h3>
 
 Hash references can be created using the reference generator "\", but this is a bit tricky. An operator called <a href="/blog/20170926150643.html"> anonymous hash generator </a> is defined to quickly create a hash reference.
 
 <pre>
 my $ score_ref = {math => 68, english => 90};
-</ pre>
+</pre>
 
 Note that the hash reference is generated using the anonymous hash generator "{}", whereas the normal hash is created with "()".
 
@@ -96,20 +96,20 @@ my% score = (math => 68, english => 90);
 
 # Hash reference
 my $ score = {math => 68, english => 90};
-</ pre>
+</pre>
 
-<h3> Dereference </ h3>
+<h3> Dereference </h3>
 
 I used a reference generator to generate a hash reference. Now let's extract the hash from the hash reference, on the contrary.
 
-To do this, perform an operation called <b> dereference </ b>.
+To do this, perform an operation called <b> dereference </b>.
 
 <pre>
 my $ score_ref = {math => 68, english => 90};
 
 #Dereference
 my% score =% {$ score_ref};
-</ pre>
+</pre>
 
 Dereferences can be made using the notation "% {hash reference}".
 
@@ -117,9 +117,9 @@ If the hash reference is a scalar variable, you can omit the "{}".
 
 <pre>
 my% score =% $ score_ref;
-</ pre>
+</pre>
 
-<h4> Pass as an argument to a standard function </ h4>
+<h4> Pass as an argument to a standard function </h4>
 
 <a href="/blog/20080210120265.html"> keys function </a>, <a href="/blog/20100222126425.html"> values ​​function </a>, <a href="/blog/20080212120283. Hash-related functions such as the html "> each function </a> take a hash as an argument. So be aware that if you want to pass a hash reference, you need to dereference it.
 
@@ -128,9 +128,9 @@ my% score =% $ score_ref;
 keys% $ hash;
 values% $ hash;
 each% $ hash;
-</ pre>
+</pre>
 
-<h3> Extract the hash value from the hash reference </ h3>
+<h3> Extract the hash value from the hash reference </h3>
 
 You can use the arrow operator "->" to retrieve the hash value from the hash reference.
 
@@ -140,7 +140,7 @@ my $ score_math = $ score_ref-> {math};
 
 # Set the hash value from the hash reference
 $ score_ref-> {math} = 67;
-</ pre>
+</pre>
 
 If the arrow operator is used, it is a hash reference. If not, it's a hash. Please be able to read this well in the source code.
 
@@ -150,22 +150,22 @@ my $ score_math = $ score {math};
 
 #Set hash value
 $ score {math} = 67;
-</ pre>
+</pre>
 
 It's important to look closely, as it depends on whether it's a hash or a hash reference, with or without the arrow operator.
 
-<h4> Array reference </ h4>
+<h4> Array reference </h4>
 
 Array references are as often used as hash references.
 
 <pre>
 my $ nums_ref = [1, 3, 5];
-</ pre>
+</pre>
 
 Array references are described in detail below.
 
 <ul>
   <li>
     <a href="/blog/20180214151861.html"> Array reference </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

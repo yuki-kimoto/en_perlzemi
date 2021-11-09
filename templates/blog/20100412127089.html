@@ -1,48 +1,48 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> File :: Spec --Create OS-independent file name </ h2>
+  </li>
+</ol>
+<h2> File :: Spec --Create OS-independent file name </h2>
 
 
 
-The <strong> File :: Spec </ strong> module allows you to do portable processing on filenames. For example, you can create a file name using an OS-specific file name delimiter.
+The <strong> File :: Spec </strong> module allows you to do portable processing on filenames. For example, you can create a file name using an OS-specific file name delimiter.
 
 <pre>
 #Load module
 use File :: Spec;
-</ pre>
+</pre>
 
 The File :: Spec method is implemented as a class method and is called in the following format.
 
 <pre>
 #Class method call
 File :: Spec-> $ method;
-</ pre>
+</pre>
 
-<h3> method </ h3>
+<h3> method </h3>
 
-<h4> catfile </ h4>
+<h4> catfile </h4>
 
 Use catfile to create filenames from individual parts. $ file is "xxx \ yyy \ zzz" for Windows and "xxx / yyy / zzz" for Unix. OS-specific delimiters are used to create filenames.
 
 <pre>
 #Create file name
 my $ file = File :: Spec-> catfile ('xxx','yyy','zzz');
-</ pre>
+</pre>
 
 It can also be used to concatenate directory names and file names. You do not need to be aware of the presence of delimiters such as "/" and "\" at the end of the directory name.
 
@@ -52,18 +52,18 @@ my $ dir ='xxx / yyy /';
 my $ file ='zzz';
 
 my $ file_abs = File :: Spec-> catfile ($ dir, $ file);
-</ pre>
+</pre>
 
-<h4> splitdir </ h4>
+<h4> splitdir </h4>
 
 Use splitdir to split the filename into individual parts. @parts becomes ('xxx','yyy','zzz').
 
 <pre>
 # Decompose file name
 my @parts = File :: Spec-> splitdir ('xxx / yyy / zzz');
-</ pre>
+</pre>
 
-<h4> File :: Spec Technique </ h4>
+<h4> File :: Spec Technique </h4>
 
 You may want to create a file name with the delimiter "/" even on Windows. To achieve this, use File :: Spec :: Unix instead of File :: Spec.
 
@@ -71,16 +71,16 @@ You may want to create a file name with the delimiter "/" even on Windows. To ac
 # Concatenate file names with "/"
 use File :: Spec :: Unix;
 my $ file = File :: Spec :: Unix-> catfile ('xxx','yyy','zzz');
-</ pre>
+</pre>
 
-<h3> Supplement </ h3>
+<h3> Supplement </h3>
 
 The standard open function etc. works correctly with both the Unix delimiter "/" and the Windows delimiter "\". So if you just want to open a file, you don't need to convert Unix delimiters to Windows delimiters.
 
-<h3> Related articles </ h3>
+<h3> Related articles </h3>
 
 <ul>
   <li>
     <a href="/blog/20080516121095.html"> Create an OS-independent file name </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

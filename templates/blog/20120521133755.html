@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20160225145640.html">
-      <span itemprop = "name"> Version information </ span> </a>
+      <span itemprop = "name"> Version information </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
+    <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> The latest version of Perl, 5.16.0, has been released </ h2>
+  </li>
+</ol>
+<h2> The latest version of Perl, 5.16.0, has been released </h2>
 
 
 
@@ -26,7 +26,7 @@ The long-awaited latest version of Perl, Perl 5.16.0, was released on May 20, 20
 
 <blockquote>
 <a href="http://perl5.git.perl.org/perl.git/tag/refs/tags/v5.16.0"> First release of the v5.16 series! </a>
-</ blockquote>
+</blockquote>
 
 This is the third release since the policy of releasing it once a year was decided. Perl has an image of active development among scripting languages. The Perl 5 logo is a dinosaur.
 
@@ -36,11 +36,11 @@ As a result, the Perl 5.12 series is no longer supported. Only critical security
 
 <blockquote>
 <a href="http://perldoc.jp/docs/perl/5.16.0/perl5160delta.pod"> Changes in Perl 5.16 </a>
-</ blockquote>
+</blockquote>
 
-<h3> New features </ h3>
+<h3> New features </h3>
 
-<h4> __SUB__ </ h4>
+<h4> __SUB__ </h4>
 It is now possible to write __SUB__, which is similar to __FILE__ and __PACKAGE__. This is a feature that allows you to get a reference to the subroutine you are currently executing, making it easier to write recursive subroutines. It can be used in the state of use 5.16 or use feature'current_sub'.
 
 <pre>
@@ -48,55 +48,55 @@ sub func {
   
   __SUB__-> ();
 }
-</ pre>
+</pre>
 
-<h4> Add enable and disable in debugger </ h4>
+<h4> Add enable and disable in debugger </h4>
 You can now enable and disable breakpoints.
 
-<h4> Specify the file name in the breakpoint setting in the debugger </ h4>
+<h4> Specify the file name in the breakpoint setting in the debugger </h4>
 
 You can now specify the file name in addition to the line number with the b command (specify breakpoints).
 
 <pre>
 b [file]: [line]
-</ pre>
+</pre>
 
 This may reduce the work of moving back and forth between files.
 
-<h4> Many Perl keywords are now available in the CORE namespace </ h4>
+<h4> Many Perl keywords are now available in the CORE namespace </h4>
 Until now, CORE was not actually a namespace, but it seems that CORE has become a namespace and can be treated in the same way as a normal namespace.
 
 <pre>
 Core :: tie
-</ pre>
+</pre>
 
-<h4> Providing a modified type map </ h4>
+<h4> Providing a modified type map </h4>
 
 Additional typemaps such as T_AVREF_REFCOUNT_FIXED are now provided. This is a story on XS.
 
 <pre>
 HV * T_HVREF_REFCOUNT_FIXED
-</ pre>
+</pre>
 
-<h4> Almost compatible with Unicode 6.1 </ h4>
+<h4> Almost compatible with Unicode 6.1 </h4>
 Almost compatible with Unicode 6.1. Please note that Unicode 6.0 and Unicode 6.1 are not fully compatible.
 
 Speaking of Unicode6, it is characteristic that emoticons are included as characters. I wonder if it will be easier to create an application that sends emails from mobile phones.
 
-<h3> Minor changes </ h3>
+<h3> Minor changes </h3>
 
-<h4> use VERSION is now expected to work with that Perl version </ h4>
+<h4> use VERSION is now expected to work with that Perl version </h4>
 The statement "use v5.16" is now expected to work with Perl 5.16.
 <pre>
 use v5.16;
-</ pre>
+</pre>
 
 In other words, "use v5.14" expects Perl 5.14 to work, and "use v5.16" expects Perl 5.16 to work.
 
-<h4> $ [is no longer disabled under use v5.16. </ h4>
+<h4> $ [is no longer disabled under use v5.16. </h4>
 $ [Now is no longer valid under use v5.16.
 
-<h4> Fixed a memory leak in a regular expression named capture </ h4>
+<h4> Fixed a memory leak in a regular expression named capture </h4>
 
 A memory leak in the following code has been fixed. This has been around since Perl 5.10.
 
@@ -107,67 +107,67 @@ A memory leak in the following code has been fixed. This has been around since P
         }
     }
     system "ps -o rss $$"'
-</ pre>
+</pre>
 
 I wonder if named capture is now available in the daemon process.
 
-<h3> Deprecated </ h3>
+<h3> Deprecated </h3>
 Unicode database files located in lib / unicore are no longer read. This is to make Perl's core smaller. Use the new Unicode :: UCD function instead.
 
-<h3> Deprecated modules </ h3>
+<h3> Deprecated modules </h3>
 
 <ul>
   <li>
     Version :: Requirements
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Version :: Requirements has been deprecated. Use CPAN :: Meta :: Requirements.
 
-<h3> Future deprecated modules </ h3>
+<h3> Future deprecated modules </h3>
 The following modules will be deprecated in the future. It will be removed after a while after being deprecated. However, it's still available on CPAN, so if you're using it, you'll have to spend more time installing it.
 
 <ul>
   <li>
     CPANPLUS
-  </ li>
+  </li>
   <li>
     Filter :: Simple
-  </ li>
+  </li>
   <li>
     PerlIO :: mmap
-  </ li>
+  </li>
   <li>
     Pod :: LaTeX
-  </ li>
+  </li>
   <li>
     Pod :: Parser
-  </ li>
+  </li>
   <li>
     SelfLoader
-  </ li>
+  </li>
   <li>
     Text :: Soundex
-  </ li>
+  </li>
   <li>
     Thread.pm
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 The core may get smaller little by little by removing unnecessary modules.
 
-<h3> Removed modules and pragmas </ h3>
+<h3> Removed modules and pragmas </h3>
 
 The following modules have been removed from the core. It's on CPAN.
 
 <ul>
   <li>
     Devel :: DProf
-  </ li>
+  </li>
   <li>
     Shell
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 The following Perl4 format libraries have been removed.
 
@@ -177,6 +177,6 @@ The following Perl4 format libraries have been removed.
     getcwd.pl getopt.pl getopts.pl hostname.pl importenv.pl
     lib / find {, depth} .pl look.pl newgetopt.pl open2.pl open3.pl
     pwd.pl shellwords.pl stat.pl tainted.pl termcap.pl timelocal.pl
-</ blockquote>
+</blockquote>
 
 These are on CPAN's Perl4 :: CoreLibs.

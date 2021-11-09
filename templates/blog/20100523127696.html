@@ -1,32 +1,32 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Storable-Serialize data </ ​​h2>
+  </li>
+</ol>
+<h2> Storable-Serialize data </​​h2>
 
 
 
-The <strong> Storable </ strong> module allows you to serialize your data. Serialization is the conversion of Perl's data structure into a format that can be stored externally.
+The <strong> Storable </strong> module allows you to serialize your data. Serialization is the conversion of Perl's data structure into a format that can be stored externally.
 
 <pre>
 #Loading modules and importing functions
 use Storable qw / freeze thaw /;
-</ pre>
+</pre>
 
-Use the <strong> freeze </ strong> function to serialize the data.
+Use the <strong> freeze </strong> function to serialize the data.
 
 <pre>
 #Serialize data
@@ -35,16 +35,16 @@ my $ data = [
   {name =>'Taro', age => 20}
 ];;
 my $ serialized_data = freeze $ data;
-</ pre>
+</pre>
 
-Use the <strong> thaw </ strong> function to restore the serialized data.
+Use the <strong> thaw </strong> function to restore the serialized data.
 
 <pre>
 #Restore serialized data
 my $ data = thaw $ serialized_data;
-</ pre>
+</pre>
 
-<h3> FAQ about Storable modules </ h3>
+<h3> FAQ about Storable modules </h3>
 
 Q. I saw an nfreeze function. How is it different from the freeze function?
 A. You can use the nfreeze function to serialize your data in an OS-independent manner. For example, suppose you save the data serialized by the freeze function on a database server on a certain OS. If another OS retrieves the serialized data from the database server, it cannot be restored by thaw. In such cases, you need to serialize with nfreeze.

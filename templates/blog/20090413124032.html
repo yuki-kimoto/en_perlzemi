@@ -1,34 +1,34 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> fork function --branch process </ h2>
+  </li>
+</ol>
+<h2> fork function --branch process </h2>
 
 
-You can use the <b> fork </ b> function to <b> branch a process into two </ b>. One forked process is the parent process and the other is the child process.
+You can use the <b> fork </b> function to <b> branch a process into two </b>. One forked process is the parent process and the other is the child process.
 
-<h3> fork function </ h3>
+<h3> fork function </h3>
 
 The fork function takes no arguments. The return value will be the process ID of the branched child process if the branched process is the parent process. 0 for child processes. If fork fails, undef is returned.
 
 <pre>
 my $ pid = fork;
-</ pre>
+</pre>
 
-<h3> Consider the return value of fork </ h3>
+<h3> Consider the return value of fork </h3>
 
 For the parent process, for the child process, there are three ways to think about fork failure.
 
@@ -44,29 +44,29 @@ if ($ pid) {
 else {
   # For child processes 0 is assigned to $ pid
 }
-</ pre>
+</pre>
 
-<h3> What fork is doing </ h3>
+<h3> What fork is doing </h3>
 
 What fork does is a copy of its process. Since it is a copy of your own process, the variables you were using up to that point can be used by both the parent and child processes. If you make changes to variables after forking, they will only be reflected in each process and will not affect each other.
 
 For interprocess communication, see "<a href="/blog/20161103147817.html"> Performing" interprocess communication "with Perl </a>".
 
-<h3> How to use fork </ h3>
+<h3> How to use fork </h3>
 
-<h4> 1. Process in parallel </ h4>
+<h4> 1. Process in parallel </h4>
 
 If you do fork, you can process in parallel. It may be used when the performance cannot be satisfied by single tasking.
 
-<h4> 2. Sharing roles </ h4>
+<h4> 2. Sharing roles </h4>
 
 In some situations, it may be simpler to branch the processes and have each process specialize in it, rather than having one process take care of everything.
 
-<h4> 3. Manage multiple processes </ h4>
+<h4> 3. Manage multiple processes </h4>
 
 You can use a technique called fork-exec to replace a branched child process with a completely different process. For example, you can replace it with a process called vmstat that looks at CPU and memory usage. Since the parent process knows the process ID of the child process, it can control the child process through controlling the parent process.
 
-<h3> fork sample code </ h3>
+<h3> fork sample code </h3>
 
 <pre>
 use strict;
@@ -82,17 +82,17 @@ if ($ pid) {
 else {
   print "child process \ n";
 }
-</ pre>
+</pre>
 
-<h3> Execution result </ h3>
+<h3> Execution result </h3>
 
 You can see that each branch is executing a print statement. (Confirmed by Fedora 7)
 
 <pre>
 Parent process (child process ID: 25229)
 Child process
-</ pre>
+</pre>
 
-<h3> Notes on Windows </ h3>
+<h3> Notes on Windows </h3>
 
 The fork function can be executed on Windows, but the fork function on Windows is different from the real fork because it is realized by using threads.

@@ -1,150 +1,150 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Getting Started with Perl XS-C Binding to Perl </ h2>
+  </li>
+</ol>
+<h2> Getting Started with Perl XS-C Binding to Perl </h2>
 
 I will explain the binding of C language to Perl using XS. First of all, I will explain how to create an XS module.
 
 If you don't understand C language at all, we offer the following courses.
 
 <ul>
-  <li> <a href="https://clanguage.perlclub.net/"> Introduction to C language for Perl XS users </a> </ li>
-</ ul>
+  <li> <a href="https://clanguage.perlclub.net/"> Introduction to C language for Perl XS users </a> </li>
+</ul>
 
-<h3> 1. Creating an XS module </ h3>
+<h3> 1. Creating an XS module </h3>
 
 Let's actually create an XS module. The XS module creation command, Makefile.PL, and make are explained carefully.
 
 <ul>
   <li>
     <a href="/blog/20170209150055.html"> Create an XS module </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> 2. perlapi </ h3>
+<h3> 2. perlapi </h3>
 
 Explains how to manipulate Perl data from XS. Perl is implemented in C, but there are many APIs for calling Perl functions from C.
 
 <ul>
   <li>
     <a href="/blog/20100818127859.html"> perlapi --API for data manipulation in XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> 3. Makefile.PL related </ h3>
+<h3> 3. Makefile.PL related </h3>
 
 To generate a Makefile, Perl creates a file called Makefile.PL and uses a module called ExtUtil :: MakeMaker. I will post an article to use this module called ExtUtil :: MakeMaker conveniently.
 
 <ul>
   <li>
     <a href="/blog/20150725143778.html"> How to use Makefile.PL --From make to archive </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20170210150108.html"> ExtUtils :: MakeMaker --Customize Makefile.PL </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> 4. Type conversion </ h3>
+<h3> 4. Type conversion </h3>
 
 Using XS to use the C language from Perl means that you need to freely convert between Perl types and C language types. I will explain how to convert the type.
 
 <ul>
   <li>
     <a href="/blog/20170208150055.html"> Mutual conversion between Perl type and C type in XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> 5. XS Technique </ h3>
+<h3> 5. XS Technique </h3>
 
 Introducing the XS technique.
 
-<h4> Use multiple modules </ h4>
+<h4> Use multiple modules </h4>
 
 For example, if you want to implement two modules, MyModule and MyModule :: Util, on XS, here is an easy way to do it.
 
 <ul>
   <li>
     <a href="/blog/20170207150055.html"> Easy way to implement XS using multiple modules </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Memory management </ h4>
+<h4> Memory management </h4>
 
 Since XS will be written in C language, memory management must be done manually. In XS, Perl data is set to a mortal state, and there is a mechanism to automatically release it, which is convenient.
 
 <ul>
   <li>
     <a href="/blog/20141220141904.html"> How to write a program without causing a memory leak in XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> 6. Cooperation with C language </ h3>
+<h3> 6. Cooperation with C language </h3>
 
 I will explain how to link C language libraries and C language structures with XS.
 
-<h4> How to load a C language library </ h4>
+<h4> How to load a C language library </h4>
 
 Please refer to the following article for how to use the library created in C language from XS.
 
 <ul>
   <li>
     <a href="/blog/20170206150055.html"> How to load a C language library from an XS file </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Handling of C data types </ h4>
+<h4> Handling of C data types </h4>
 
 I will explain how to use C language structures as Perl data. If you want to make a C language structure correspond to a Perl object, refer to the following article.
 
 <ul>
   <li>
     <a href="/blog/20170205150055.html"> How to treat a C language structure as a Perl object </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> 7. Cooperation with C ++ </ h3>
+<h3> 7. Cooperation with C ++ </h3>
 
 If you want to use C ++ in XS, please refer to the following article. Explains how to write XS file and Makefile.PL when writing C ++.
 
 <ul>
   <li>
     <a href="/blog/20170203150055.html"> How to use C ++ library from XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 In C ++, there are classes in addition to C structs. The method of handling C ++ classes in XS is explained below.
 
 <ul>
   <li>
     <a href="/blog/20170204150055.html"> How to use C ++ classes from XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Official XS documentation </ h3>
+<h3> Official XS documentation </h3>
 
 A link to the official Perl XS documentation.
 
 <ul>
   <li>
     <a href="http://perldoc.jp/docs/perl/5.8.8/perlxs.pod"> perlxs --XS Language Reference Manual </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Other useful features include perlapi for manipulating Perl data and perlguts, which describes Perl's internal implementation.
 
 <ul>
   <li>
     <a href="http://perldoc.jp/docs/perl/5.12.1/perlapi.pod"> perlapi --perl public API auto-generated documentation </a>
-  </ li>
+  </li>
   <li>
     <a href="http://perldoc.jp/docs/perl/5.20.1/perlguts.pod"> perlguts --Introduction to the Perl API </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

@@ -1,24 +1,24 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> die function --display an error message and exit the program </ h2>
+  </li>
+</ol>
+<h2> die function --display an error message and exit the program </h2>
 
 
-Use the <strong> die function </ strong> to display a <strong> error message and exit the program </ strong>. The line number where the program ended is automatically added to the end of the message. To hide the line number, end it with a newline.
+Use the <strong> die function </strong> to display a <strong> error message and exit the program </strong>. The line number where the program ended is automatically added to the end of the message. To hide the line number, end it with a newline.
 
 <pre>
 # Display an error message and exit the program
@@ -28,7 +28,7 @@ die $ message;
 
 #No line number
 die "$ message \ n";
-</ pre>
+</pre>
 
 This is a sample that displays the usage and terminates the program when the argument does not exist. $ 0 is the script name.
 
@@ -36,7 +36,7 @@ This is a sample that displays the usage and terminates the program when the arg
 Exit the program if the #argument does not exist
 my $ file = shift;
 die "Usage: $ 0 [file]" unless $ file;
-</ pre>
+</pre>
 
 This is a sample to terminate the program when the file open fails.
 
@@ -45,7 +45,7 @@ This is a sample to terminate the program when the file open fails.
 my $ file ='a.txt';
 open my $ fh,'<', $ file
   or die "Can't open file \" $ file \ ": $!";
-</ pre>
+</pre>
 
 The exit status is 0 if the program exits successfully. If you exit the program with die, the exit status will be a non-zero value. The exit status of die is determined by the following rules.
 
@@ -53,9 +53,9 @@ The exit status is 0 if the program exits successfully. If you exit the program 
 1. The value of $! Evaluated numerically. (Error notified by OS)
 2. If $! Is 0 ($? >> 8). (Exit status of child process)
 3. 255 if ($? >> 8) is 0
-</ pre>
+</pre>
 
-<h3> Exception handling </ h3>
+<h3> Exception handling </h3>
 
 Languages ​​such as Java provide a mechanism called exceptions. Perl provides a concise exception handling mechanism that uses die and <a href="/blog/20100312126967.html"> eval </a> blocks.
 
@@ -70,7 +70,7 @@ eval {
 if ($ @) {
   #Exception handling
 }
-</ pre>
+</pre>
 
 A simple sample of exception handling.
 <pre>
@@ -83,12 +83,12 @@ eval {
 if ($ @) {
   die "Catch and throw again $ @";
 }
-</ pre>
+</pre>
 
 See below for a detailed explanation of Perl's exception handling.
 
 <ul>
   <li>
     <a href="/blog/20100411127089.html"> Understand how Perl handles exceptions </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

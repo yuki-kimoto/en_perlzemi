@@ -1,26 +1,26 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20160225145640.html">
-      <span itemprop = "name"> Version information </ span> </a>
+      <span itemprop = "name"> Version information </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
+    <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Perl latest version 5.24 released-faster subroutines and math, Unicode 8.0 support, grammar enhancements </ h2>
+  </li>
+</ol>
+<h2> Perl latest version 5.24 released-faster subroutines and math, Unicode 8.0 support, grammar enhancements </h2>
 
 
 
-The latest version of Perl <strong> 5.24 </ strong> has been released. In this release, Perl's subroutines and numerical calculations are faster. In terms of functionality, Unicode 8.0 is now supported. As a grammatical enhancement, the experimental status of forward dereferences has been removed. Other minor bug fixes have been made.
+The latest version of Perl <strong> 5.24 </strong> has been released. In this release, Perl's subroutines and numerical calculations are faster. In terms of functionality, Unicode 8.0 is now supported. As a grammatical enhancement, the experimental status of forward dereferences has been removed. Other minor bug fixes have been made.
 
 Following Perl 5.22, Perl 5.24 includes improvements to Perl's internal code. Although it has the great advantage of improving performance, it also has some side effects, so I will explain it together.
 
@@ -30,52 +30,52 @@ Below are some of the changes in Perl 5.24.
 
 =====
 
-<h3> Performance improvements </ h3>
+<h3> Performance improvements </h3>
 
 The biggest change in Perl 5.24 is the performance improvement.
 
-<h4> Speeding up subroutine calls </ h4>
+<h4> Speeding up subroutine calls </h4>
 
 Loops and blocks are faster because we have reduced the overhead of scope creation and termination as much as possible. For example, the following empty subroutine can be executed about three times faster than before.
 
 <pre>
 sub f {} f ();
-</ pre>
+</pre>
 
 This is probably the most pleasing change in 5.24. One of Perl's problems was that subroutine calls were slow, which has improved one of the problems.
 
-<h4> Uppercase and lowercase functions, regular expression performance improvements </ h4>
+<h4> Uppercase and lowercase functions, regular expression performance improvements </h4>
 
 Some languages, such as Chinese, are case insensitive. For such languages, skipping the logic improved the performance of the ucfirst function and "qr // i".
 
-<h4> Speeding up substr </ h4>
+<h4> Speeding up substr </h4>
 
 Substr has been accelerated on platforms that support memchr. The following process is about 7 times faster.
 
 <pre>
 $ s = "a" x 1000. "wxyz";
 $ s = ~ / wxyz / for 1..30000
-</ pre>
+</pre>
 
-<h4> Speeding up addition / subtraction / multiplication </ h4>
+<h4> Speeding up addition / subtraction / multiplication </h4>
 
 In Perl 5.8.0, numeric operations were slow to support 64-bit integers, but this slow logic has been improved. Perl is said to be slow in math, but it's a little better.
 
-<h4> Improved performance of increment decrement </ h4>
+<h4> Improved performance of increment decrement </h4>
 
 Perl's increment / decrement performance has been improved. Loop processing etc. will be a little faster.
 
-<h3> Functional enhancement </ h3>
+<h3> Functional enhancement </h3>
 
-<h4> Unicode 8.0 support </ h4>
+<h4> Unicode 8.0 support </h4>
 
 Unicode 8.0 is now supported. Perl has fast Unicode support
 
-<h4> New regular expression \ b {lb} </ h4>
+<h4> New regular expression \ b {lb} </h4>
 
 A new regular expression "\ b {lb}" has been added to represent line breaks.
 
-<h4> Experimental status of forward dereference has been obtained </ h4>
+<h4> Experimental status of forward dereference has been obtained </h4>
 
 In Perl 5.24, forward dereferences are enabled from the beginning. This makes it easier to describe the process of array slices, hash slices, partial hash acquisitions, and partial array acquisitions from the reference.
 
@@ -98,64 +98,64 @@ my @names_part = $ names_h_ref-> @ {'ken','kimoto'}; # (1, 3)
 
 # Get partial hash using forward dereference
 my% names_h_part = $ names_h_ref->% {'ken','kimoto'}; # (ken => 1, kimoto => 3)
-</ pre>
+</pre>
 
-<h3> Incompatible changes </ h3>
+<h3> Incompatible changes </h3>
 
 Some experimental features have been removed in this release.
 
-<h4> Remove automatic dereferences </ h4>
+<h4> Remove automatic dereferences </h4>
 
 The experimental automatic dereference that was issuing the obsolete warning has been removed. For example, the following processing will not work. You cannot pass references to push, pop, shift, unshift, splice, keys, values, each.
 
-<h4> The lexical $ _ has been deprecated. </ h4>
+<h4> The lexical $ _ has been deprecated. </h4>
 
 C <my $ _> was added experimentally in Perl 5.10, but it's obsolete.
 
-<h4> Nested declarations are no longer allowed </ h4>
+<h4> Nested declarations are no longer allowed </h4>
 
 Nested declarations are no longer allowed. The following description will result in a compilation error.
 
 <pre>
 my ($ x, my ($ y));
 our (my $ x);
-</ pre>
+</pre>
 
-<h4> chdir ('') can no longer be moved to home directory </ h4>
+<h4> chdir ('') can no longer be moved to home directory </h4>
 
 chdir ('') can no longer be moved to your home directory. Use chdir ().
 
-<h3> Known issues </ h3>
+<h3> Known issues </h3>
 
 In Perl 5.24, some modules that utilize non-guaranteed implementations are stuck due to internal improvements. This is currently being discussed by Perl's core team, so keep an eye on it.
 
 <ul>
   <li>
     Algorithm :: Permute
-  </ li>
+  </li>
   <li>
     Coro
-  </ li>
+  </li>
   <li>
     Data :: Alias
-  </ li>
+  </li>
   <li>
     RPerl
-  </ li>
+  </li>
   <li>
     Scope :: Upper
-  </ li>
+  </li>
   <li>
     TryCatch
-  </ li>
+  </li>
   <li>
     lexical :: underscore
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Perl has a lot of internal improvements these days, so relying on grammatical variants that rely on internal APIs is risky.
 
-<h3> Findings </ h3>
+<h3> Findings </h3>
 
 It's a nice change to improve Perl's performance. I don't think this direction is wrong. This requires internal improvements, which breaks some grammatical variants.
 

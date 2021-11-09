@@ -1,25 +1,25 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Exporter --Export function </ h2>
+  </li>
+</ol>
+<h2> Exporter --Export function </h2>
 
 
 
-The <strong> Exporter </ strong> module allows you to export a function from a module.
+The <strong> Exporter </strong> module allows you to export a function from a module.
 
 <pre>
 #Package declaration
@@ -39,7 +39,7 @@ sub func1 {...}
 sub func2 {...}
 sub func3 {...}
 sub func4 {...}
-</ pre>
+</pre>
 
 When you create a module using Exporter, the function is imported when you use the module.
 
@@ -48,18 +48,18 @@ If you execute use in the form of "use module name;", the functions included in 
 <pre>
 The functions (func1 and func2) included in # @EXPORT are imported.
 use Your Module;
-</ pre>
+</pre>
 
 When executed in the form of "use module name argument 1 argument 2 ..", the function included in @EXPORT_OK or @EXPORT and specified by the argument is imported.
 
 <pre>
 # @EXPORT_OK or the functions contained in @EXPORT (func2, func3 and func4) are imported
 use YourModule qw / func2 func3 func4 /;
-</ pre>
+</pre>
 
 @EXPORT, @EXPORT_OK are package variables.
 
-<h3> Exporter module export mechanism </ h3>
+<h3> Exporter module export mechanism </h3>
 
 I would like to explain a little about how the Exporter module works. The first thing you should know is that when you run use, it will automatically call the import method of the specified module. This example tries to execute the import method of YourModule.
 
@@ -81,9 +81,9 @@ sub import {
       * {"$ {caller} :: $ func"} = \ & {"$ {class} :: $ func"};
   }
 }
-</ pre>
+</pre>
 
-<h3> Which way to write the Exporter module </ h3>
+<h3> Which way to write the Exporter module </h3>
 
 There are multiple ways to write the Exporter module, and you can write as follows.
 
@@ -96,6 +96,6 @@ push @ISA,'Exporter';
 
 # 3
 use base'Exporter';
-</ pre>
+</pre>
 
 Here is the first one that seems to be the most intuitive.

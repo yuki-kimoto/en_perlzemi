@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Let's understand how Perl exception handling works </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Let's understand how Perl exception handling works </h2>
 
 
 
-Perl allows you to use <strong> exception handling </ strong> for error notification. Exception handling is very easy. All you have to do is learn how to raise an exception and how to catch it.
+Perl allows you to use <strong> exception handling </strong> for error notification. Exception handling is very easy. All you have to do is learn how to raise an exception and how to catch it.
 
-<h3> Raise an exception </ h3>
+<h3> Raise an exception </h3>
 
 Use the die function to raise an exception. When die is executed, the program will exit with an error status. You can pass a string to die.
 
 <pre>
 # Raise an exception
 die $ message;
-</ pre>
+</pre>
 
 Let's write a sample that raises an exception. I am trying to raise an exception if the value is not a positive integer in the function. The program will display a message and exit.
 
@@ -36,15 +36,15 @@ sub is_int {
   # Throw an exception if the value is not a positive integer
   die "\" $ num \ "must be number" unless $ num = ~ / ^ \ d + $ /;
 }
-</ pre>
+</pre>
 
-<h3> Catch exceptions </ h3>
+<h3> Catch exceptions </h3>
 
 You can catch an exception if you don't want the program to terminate when the called function raises an exception. Use the <a href="/blog/20100312126967.html"> eval </a> block to catch the exception.
 
 <pre>
 eval {Handling that raises an exception};
-</ pre>
+</pre>
 
 When an exception occurs, the message specified by the die function is stored in a special variable called $ @. Write the processing when an exception occurs using this $ @.
 
@@ -52,7 +52,7 @@ When an exception occurs, the message specified by the die function is stored in
 if ($ @) {
     # What to do if an exception occurs
 }
-</ pre>
+</pre>
 
 If an exception occurs, it means that an error has occurred, so in most cases it will not work if you continue processing. The motivation to catch the exception is when there is a possibility of recovering from the error by retrying (in the case of timeout etc.), or when the program ends as it is, garbage such as temporary files will remain, so post-processing is necessary. For example, the case.
 
@@ -73,9 +73,9 @@ sub is_int {
   # Throw an exception if the value is not a positive integer
   die "\" $ num \ "must be number." unless $ num = ~ / ^ \ d + $ /;
 }
-</ pre>
+</pre>
 
-<h3> When raising an exception in a module </ h3>
+<h3> When raising an exception in a module </h3>
 
 If you want to create a module and raise an exception in the function in it, use the croak function of the Carp module. croak calls die internally. The difference from die is that croak includes the calling line number in the exception message. This allows the user of the module to know where the function or method was called.
 
@@ -89,4 +89,4 @@ sub func {
   # Raise an exception
   croak "Error message";
 }
-</ pre>
+</pre>

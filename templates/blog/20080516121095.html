@@ -1,42 +1,42 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161126148016.html">
-      <span itemprop = "name"> File operations </ span> </a>
+      <span itemprop = "name"> File operations </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> OS-independent file name creation </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> OS-independent file name creation </h2>
 
 
 
-To create an OS-independent filename, use the <strong> catfile </ strong> method of the <a href="/blog/20100412127089.html"> File :: Spec </a> module.
+To create an OS-independent filename, use the <strong> catfile </strong> method of the <a href="/blog/20100412127089.html"> File :: Spec </a> module.
 
 <pre>
 use File :: Spec;
 my $ file_name = File :: Spec-> catfile ('t','test1.t');
-</ pre>
+</pre>
 
 File name rules vary by OS. If you use / or \ to configure filenames, portability between operating systems is compromised. If you use the File :: Spec module, the file name will be created according to the file name rules according to the OS you are running, so even if you port it to a different OS, no rework will occur.
 
-You can use the <strong> updir </ strong> method to represent an OS-independent "directory one level up".
+You can use the <strong> updir </strong> method to represent an OS-independent "directory one level up".
 
 <pre>
 File :: Spec-> updir
-</ pre>
+</pre>
 
 In both Unix and Window, the representation of the directory one level above is .., but the representation may be different on other OS.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample to create an OS-independent file name.
 
@@ -62,6 +62,6 @@ print "3: Create a directory named lib, one level above this script. \ N";
 use FindBin;
 my $ lib_dir = File :: Spec-> catfile ($ FindBin :: Bin, File :: Spec-> updir,'lib');
 print "\ $ lib_dir = $ lib_dir \ n \ n";
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100524127696.html"> FindBin </a>

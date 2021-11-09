@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Write Unix-like filter programming </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Write Unix-like filter programming </h2>
 
 
 There is a kind of programming that should be called Unix-like filter programming. To describe the features
@@ -23,11 +23,11 @@ There is a kind of programming that should be called Unix-like filter programmin
 <ol>
   <li>
     The user can choose to pass the file as an argument or as standard input.
-  </ li>
+  </li>
   <li>
     The condition is specified as an option (description such as -s10).
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 about it.
 
@@ -47,9 +47,9 @@ while (<>) {
   my @items = split (/, /, $ _);
   print $ items [0]. "\ n";
 }
-</ pre>
+</pre>
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
 <pre>
 # Special line read operator <>
@@ -59,9 +59,9 @@ while (<>) {
   my @items = split (',', $ _);
   print $ items [0]. "\ n";
 }
-</ pre>
+</pre>
 
-<h4> (1) <> Operator </ h4>
+<h4> (1) <> Operator </h4>
 
 "<>" Is a slightly unusual operator. The file handle is empty in the <a href="/blog/20080722121673.html"> line input operator </a>. If a file is given as an argument, <> reads a line from that file. If a file is given to the standard input, it will read one line of the file from the standard input.
 
@@ -71,18 +71,18 @@ The <> operator can be used to describe unix-like filter programming conditions 
 
 The read line is assigned to the special variable $ _. With the above in mind, the rest is normal programming.
 
-<h4> (2) Advantages of Unix-like filter programming </ h4>
+<h4> (2) Advantages of Unix-like filter programming </h4>
 
 The biggest advantage is that it can be used naturally when used alone or when using a pipe. When using alone
 
 <pre>
 This program input file
-</ pre>
+</pre>
 
 When using a pipe
 
 <pre>
 Program A | This Program | Program B
-</ pre>
+</pre>
 
 Can be described as.

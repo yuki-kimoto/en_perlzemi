@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Write a filter program that can specify options </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Write a filter program that can specify options </h2>
 
 
 
@@ -59,7 +59,7 @@ while (<>) {
   my $ item = (split (/ $ sep /, $ _, -1)) [$ col -1];
   print $ item. "\ n";
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100827127859.html"> Regular expression </a>
 
@@ -69,15 +69,15 @@ The following is a file for reading.
 masao: 10: Japan
 taro: 20: USA
 rika: 38: France
-</ pre>
+</pre>
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> (1) How to specify command line options </ h4>
+<h4> (1) How to specify command line options </h4>
 
 <pre>
 use Getopt :: Long;
-</ pre>
+</pre>
 
 <a href="/blog/20100514127696.html"> Getopt :: Long </a> makes it easy to specify command line options. To specify command line options:
 
@@ -86,8 +86,8 @@ If you're not sure about command line arguments, see the following articles firs
 <ul>
   <li>
     <a href="/blog/20080108132865.html"> Handle command line arguments </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 <pre>
 #Specification method 1 (--name val format)
@@ -98,9 +98,9 @@ perl script name --col = 1 --sep =: file name
 
 #Specification method 3 (abbreviated form)
 perl script name -c1 -s: file name
-</ pre>
+</pre>
 
-<h3> (2) GetOptions function </ h3>
+<h3> (2) GetOptions function </h3>
 
 The GetOption function is a function that makes it easy to receive command line options. It will be imported when you use Getopt :: Long.
 
@@ -116,18 +116,18 @@ GetOptions (
   'col = i'=> \ $ col,
   'sep = s'=> \ $ sep,
 );
-</ pre>
+</pre>
 
 First, set the default values ​​for command line options.
 Then call the GetOption function for the number of options you want to specify
 
 <pre>
 'Option name = Value type' => Reference to variable
-</ pre>
+</pre>
 
 I will arrange the description. The value type can be s, which represents a string, i, which represents a number, and so on.
 
-<h4> (3) Improvement of line reading in while loop </ h4>
+<h4> (3) Improvement of line reading in while loop </h4>
 
 <pre>
 while (<>) {
@@ -135,54 +135,54 @@ while (<>) {
   my $ item = (split (/ $ sep /, $ _, -1)) [$ col -1];
   print $ item, "\ n";
 }
-</ pre>
+</pre>
 
 For more information on while loop processing, see the following article.
 
 <ul>
   <li>
     <a href="/blog/20170521149524.html"> Iterative processing using for statement and while statement </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> (3) -1 Omission of $ _ </ h4>
+<h4> (3) -1 Omission of $ _ </h4>
 
 <pre>
 chomp;
-</ pre>
+</pre>
 
 <a href="/blog/20080226120403.html"> chomp function </a> If you omit the argument, the target that works is <a href="/blog/20161102147817.html"> special variable </a> "$ _ Will be. There are many other functions in Perl that act on $ _ if you omit the argument.
 
-<h4> (3) -Specify -1 as the third argument of the -2 split function </ h4>
+<h4> (3) -Specify -1 as the third argument of the -2 split function </h4>
 
 <pre>
 split (/ $ sep /, $ _, -1)
-</ pre>
+</pre>
 
 If the third argument of <a href="/blog/20080301120434.html"> split function </a> is omitted and the end of the element is blank, the last empty string will be ignored. (It was pointed out by Mr. huta.)
 
 <pre>
 taro, 10,
-</ pre>
+</pre>
 
 If you read, what you want is
 
 <pre>
 ('taro', 10,'')
-</ pre>
+</pre>
 
 Even though it is a list
 
 <pre>
 ('taro', 10)
-</ pre>
+</pre>
 
 Will be acquired. To solve this, you can make the last empty string recognized by giving -1 to the third argument of split.
 
-<h4> (3) -3 Get only the elements specified in the array slice </ h4>
+<h4> (3) -3 Get only the elements specified in the array slice </h4>
 
 <pre>
 my $ item = (split (/ $ sep /, $ _, -1)) [$ col -1];
-</ pre>
+</pre>
 
 Since split returns a list, <a href="/blog/20080216120316.html"> array slice </a> gets only the specified elements.

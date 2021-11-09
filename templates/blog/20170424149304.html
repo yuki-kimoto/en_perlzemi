@@ -1,31 +1,31 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> MIME :: Lite-Easily send emails </ h2>
+  </li>
+</ol>
+<h2> MIME :: Lite-Easily send emails </h2>
 
 
 
-The <b> MIME :: Lite </ b> module makes it easy to send emails.
+The <b> MIME :: Lite </b> module makes it easy to send emails.
 
-MIME :: Lite uses the senmail command by default, so install <b> sendmail </ b> or <b> postfix </ b>.
+MIME :: Lite uses the senmail command by default, so install <b> sendmail </b> or <b> postfix </b>.
 
 There are several ways to send an email, but I think sending an email with the sendmail command is an easy way to deal with various email issues.
 
-<h3> Send an email </ h3>
+<h3> Send an email </h3>
 
 To send an email: It's easy to create in the form of a multipart message and attach and send text or images.
 
@@ -57,21 +57,21 @@ $ msg-> attach (
 
 #Send email
 $ msg-> send;
-</ pre>
+</pre>
 
 <ol>
   <li>
-    Create the content to be sent with the <b> new </ b> method.
-  </ li>
+    Create the content to be sent with the <b> new </b> method.
+  </li>
   <li>
-    Add data such as text and images with the <b> atach </ b> method.
-  </ li>
+    Add data such as text and images with the <b> atach </b> method.
+  </li>
   <li>
-    Send an email with the <b> send </ b> method.
-  </ li>
-</ ol>
+    Send an email with the <b> send </b> method.
+  </li>
+</ol>
 
-<h3> Send Japanese email with MIME :: Lite </ h3>
+<h3> Send Japanese email with MIME :: Lite </h3>
 
 When sending Japanese emails with MIME :: Lite, you need to think about encoding.
 
@@ -79,16 +79,16 @@ Remember the following two things.
 
 <ol>
   <li>
-    The title (Subject) of the header part is encoded with <b> MIME-Header-ISO_2022_JP </ b>.
-  </ li>
+    The title (Subject) of the header part is encoded with <b> MIME-Header-ISO_2022_JP </b>.
+  </li>
   <li>
-    The text data of the text is encoded in <b> ISO-2022-JP </ b>.
-  </ li>
-</ ol>
+    The text data of the text is encoded in <b> ISO-2022-JP </b>.
+  </li>
+</ol>
 
 I'm wondering if UTF-8 encoding is fine in most cases, but it's safe to use the above encoding.
 
-Save the source code in UTF-8 and enable the <b> utf8 pragma </ b> at the beginning.
+Save the source code in UTF-8 and enable the <b> utf8 pragma </b> at the beginning.
 
 The above sample can be rewritten for Japanese transmission as follows.
 
@@ -122,9 +122,9 @@ $ msg-> attach (
 
 #Send email "
 $ msg-> send;
-</ pre>
+</pre>
 
-<h4> When sending in UTF-8 </ h4>
+<h4> When sending in UTF-8 </h4>
 
 As of 2017, I'm not sure what's going on, but I feel that it's often sent in UTF-8, so I'll post a sample of that as well.
 
@@ -158,27 +158,27 @@ $ msg-> attach (
 
 #Send email "
 $ msg-> send;
-</ pre>
+</pre>
 
 If you don't know the character code of Perl, see the explanation article of Encode module.
 
 <ul>
   <li>
     <a href="/blog/20091118124667.html"> Encode module-Properly handles multi-byte character strings such as Japanese </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> FAQ </ h3>
+<h3> FAQ </h3>
 
 Answer the FAQ about MIME :: Lite.
 
-<h4> MIME :: Lite seems to be deprecated </ h4>
+<h4> MIME :: Lite seems to be deprecated </h4>
 
 MIME :: Lite is easy to use, but is currently deprecated.
 
 MIME :: Lite is personally the easiest email sending module to use, but if you follow the community's wishes, <a href="http://search.cpan.org/~rjbs/Email-Sender-1.300031/lib/" Use Email / Sender.pm "> Email :: Sender </a>.
 
-<h4> Garbled characters occur </ h4>
+<h4> Garbled characters occur </h4>
 
 The cause is that there are characters that can be expressed in UTF-8 but not in "ISO-2022-JP".
 

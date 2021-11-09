@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> What is file locking? </ H2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> What is file locking? </H2>
 
 
 If multiple people write to one file at the same time, the file will be damaged. If multiple processes write to a file in parallel, each process must be in order. The file locking mechanism allows multiple processes to securely access files in order.
 
 File locking, also called exclusive control, is a mechanism in which multiple processes use files in order. Perl has a mechanism for locking files called <a href="/blog/20080814121872.html"> flock function </a>. (Some OSs such as Window98 cannot use flock.)
 
-<h3> If you need to keep the order </ h3>
+<h3> If you need to keep the order </h3>
 
 If you want to read one file in parallel, you don't have to keep the order. It just reads, so you don't have to worry about file corruption or data inconsistencies.
 
@@ -38,18 +38,18 @@ Process B Read -------------------------------> Write
                                  0 1
 
 File contents 0 1 1
-</ pre>
+</pre>
 
 In the case of access counters, it is clear that the above flow is not what you expected. We expect the first 0 to 2 to be added when the two processes have finished processing. To keep the data consistent, process B must wait for process A to write 1 to the file.
 
-<h3> Advisory Lock </ h3>
+<h3> Advisory Lock </h3>
 
 Perl uses the flock function to lock a file, but this function does not force a file to be locked. In fact, other processes can write to the file locked by the flock function.
  For file locking to work properly, every process that attempts to access a file must use the flock function to lock the file. If there is a process that does not keep this promise, the files cannot be used in sequence.
 
 Such locks are called advisory locks. "Keep the order. If you want to use the file, flock it. If no one is using it, you can get the right to use the file. Someone is using it. If so, please wait as you will be notified that it cannot be used now. "
 
-<h3> Exclusive and shared locks </ h3>
+<h3> Exclusive and shared locks </h3>
 
 Lock types include exclusive locks and shared locks. Exclusive locks are used when writing and shared locks are used when reading.
 
@@ -57,39 +57,39 @@ Lock types include exclusive locks and shared locks. Exclusive locks are used wh
   <tr>
     <td>
       Twice
-    </ td>
+    </td>
     <td>
-      <span style = "font-weight: bold;"> Opportunity to use </ span>
-    </ td>
+      <span style = "font-weight: bold;"> Opportunity to use </span>
+    </td>
     <td>
-      <span style = "font-weight: bold;"> When another process tries to lock </ span>
-    </ td>
-  </ tr>
+      <span style = "font-weight: bold;"> When another process tries to lock </span>
+    </td>
+  </tr>
 
   <tr>
     <td>
-      <span style = "font-weight: bold;"> Shared lock </ span>
-    </ td>
+      <span style = "font-weight: bold;"> Shared lock </span>
+    </td>
     <td>
       When reading
-    </ td>
+    </td>
     <td>
       Allow shared locks but not exclusive locks
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
-      <span style = "font-weight: bold;"> Exclusive lock </ span>
-    </ td>
+      <span style = "font-weight: bold;"> Exclusive lock </span>
+    </td>
     <td>
       When writing
-    </ td>
+    </td>
     <td>
       Do not allow shared or exclusive locks
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 It's a little confusing, but the simple answer is, "If you want to read it, you can read it by multiple people, but if you want to write it, be sure to write it by yourself."

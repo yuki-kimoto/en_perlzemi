@@ -1,50 +1,50 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20191228171433.html">
-      <span itemprop = "name"> Form creation </ span> </a>
+      <span itemprop = "name"> Form creation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Invoice creation --PDF :: API2 form creation </ h2>
+  </li>
+</ol>
+<h2> Invoice creation --PDF :: API2 form creation </h2>
 
 I tried to create an invoice with PDF :: API2. It can be used as a basic template for creating full-scale forms such as quotations, application forms, receipts, and service usage details.
 
 <ul>
-  <li> A4 paper size </ li>
-  <li> Japanese support </ li>
-  <li> Bold support </ li>
-  <li> Background color support </ li>
-  <li> Font size support </ li>
-  <li> Underline support </ li>
-  <li> Display table </ li>
-  <li> Table even coloring </ li>
-  <li> Unit price, quantity, price </ li>
-  <li> Total price </ li>
-  <li> Square for stamping stamps </ li>
-  <li> Insert company logo </ li>
-  <li> Amount digit separator </ li>
-  <li> 25 items </ li>
-</ ul>
+  <li> A4 paper size </li>
+  <li> Japanese support </li>
+  <li> Bold support </li>
+  <li> Background color support </li>
+  <li> Font size support </li>
+  <li> Underline support </li>
+  <li> Display table </li>
+  <li> Table even coloring </li>
+  <li> Unit price, quantity, price </li>
+  <li> Total price </li>
+  <li> Square for stamping stamps </li>
+  <li> Insert company logo </li>
+  <li> Amount digit separator </li>
+  <li> 25 items </li>
+</ul>
 
 You can download a PDF sample of the invoice you created here.
 
 <a href="/examples/pdf/invoice.pdf"> Invoice PDF sample </a>
 
-<h3> PDF :: Invoice source code written in API2 </ h3>
+<h3> PDF :: Invoice source code written in API2 </h3>
 
 This is the source code of the invoice written in PDF :: API2.
 
-<b> Caution </ b>
+<b> Caution </b>
 
 Place the company logo in the same directory with the name "logo.png".
 
@@ -52,7 +52,7 @@ The Japanese font uses the Aozora Mincho font introduced in <a href="/blog/20191
 
 The layout algorithm has a table structure. You are advancing the line by specifying one vertical width. The column is divided into 100 and is displayed at the position showing the ratio.
 
-<b> PDF :: API2 invoice source code </ b>
+<b> PDF :: API2 invoice source code </b>
 
 <pre>
 use strict;
@@ -658,4 +658,4 @@ sub price_disp {
 
 my $ pdf_file ='invoice.pdf';
 $ pdf-> saveas ($ pdf_file);
-</ pre>
+</pre>

@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> perltidy --Format Perl source code </ h2>
+  </li>
+</ol>
+<h2> perltidy --Format Perl source code </h2>
 
 
 
@@ -23,43 +23,43 @@ perltidy is a tool for shaping Perl source code. It formats the Perl source code
 
 <pre>
 perltidy source file
-</ pre>
+</pre>
 
-<h3> Steps to run perltidy on multiple files in a directory </ h3>
+<h3> Steps to run perltidy on multiple files in a directory </h3>
 
-Here are the steps to recursively process all the files in a directory using <strong> perltidy </ strong>. At this point, perltidy itself doesn't seem to implement a way to handle directories recursively.
+Here are the steps to recursively process all the files in a directory using <strong> perltidy </strong>. At this point, perltidy itself doesn't seem to implement a way to handle directories recursively.
 
-<h4> Make a backup first </ h4>
+<h4> Make a backup first </h4>
 
 Make a backup of your directory first. This is to return even if you make a mistake. Back up each directory in a different location.
 
-<h4> Find the desired file </ h4>
+<h4> Find the desired file </h4>
 
-First, find the desired file using the <b> find2perl </ b> command. I think files ending in .pm and files ending in .pl will be formatted. The target directory name is dir.
+First, find the desired file using the <b> find2perl </b> command. I think files ending in .pm and files ending in .pl will be formatted. The target directory name is dir.
 
 <pre>
 find2perl perl_lib / -name "* .p [ml]" | perl
-</ pre>
+</pre>
 
 If the target file is correct, proceed to the next step.
 
-<h4> Run perltidy </ h4>
+<h4> Run perltidy </h4>
 
 Now let's run perltidy on the output file.
 
 <pre>
 find2perl perl_lib / -name "* .p [ml]" | perl | perl -ne "system ('perltidy', $ _)"
-</ pre>
+</pre>
 
-You now have a file with the extension <b> .tdy </ b>. This is the formatted source file. Let's check if the output is correct.
+You now have a file with the extension <b> .tdy </b>. This is the formatted source file. Let's check if the output is correct.
 
-<h4> Overwrite the original file with a file with a .tdy extension </ h4>
+<h4> Overwrite the original file with a file with a .tdy extension </h4>
 
 Overwrites the original file with a file with a .tdy extension. That's it.
 
 <pre>
 find2perl perl_lib / -name "* .p [ml]" | perl | perl -MFile :: Copy -ne "chomp $ _; move ($ _.'. Tdy', $ _)"
-</ pre>
+</pre>
 
 I want perltidy to have the ability to easily format multiple files in a directory.
 

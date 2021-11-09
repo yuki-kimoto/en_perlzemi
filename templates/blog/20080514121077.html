@@ -1,78 +1,78 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span>
+      <span itemprop = "name"> Perl </span>
     </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161126148016.html">
-      <span itemprop = "name"> File operations </ span>
+      <span itemprop = "name"> File operations </span>
     </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Absolute path and relative path </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Absolute path and relative path </h2>
 
 
 
 In the program, there are two ways to express the file name: absolute path and relative path. The absolute path is the file name described without omitting the file name from the root. A relative path is a file name written relative to the current directory.
 
-<h3> Examples of absolute and relative paths </ h3>
+<h3> Examples of absolute and relative paths </h3>
 
 <table>
   <tr>
     <td>
       Twice
-    </ td>
+    </td>
     <td>
       For Unix-like OS
-    </ td>
+    </td>
     <td>
       For Windows
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Absolute path example
-    </ td>
+    </td>
     <td>
       / home / yk / sample1
-    </ td>
+    </td>
     <td>
        c: \ home \ yk \ sample1.txt
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Relative path example (* 1)
-    </ td>
+    </td>
     <td>
        sample1
-    </ td>
+    </td>
     <td>
       sample1.txt
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
-* 1 <small> When the current directories are "/ home / yk" and "c: \ home \ yk" respectively </ small>
+</table>
+* 1 <small> When the current directories are "/ home / yk" and "c: \ home \ yk" respectively </small>
 
-<h3> How to interpret absolute paths and relative paths. </ h3>
+<h3> How to interpret absolute paths and relative paths. </h3>
 
 If the file name starts with /, it is interpreted as an absolute path, and if it does not start with /, it is interpreted as a relative path. Similar for Windows, if it starts with c: \ (drivename \) it is interpreted as an absolute path, otherwise it is interpreted as a relative path.
 
-<h3> What is the current directory? </ H3>
+<h3> What is the current directory? </H3>
 
 The current directory is the directory that is the base point for relative path names. When executing from a command prompt or shell, the directory where the script is executed becomes the current directory.
 
-<h3> File name and directory name cannot be distinguished from the name. </ h3>
+<h3> File name and directory name cannot be distinguished from the name. </h3>
 
 / home / yk / sample1 can be a directory or a file. If you say / home / yk / sample1 /, it will always be the directory name. (For Windows, c: \ home \ yk \ sample1 \)

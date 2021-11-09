@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li>
-    <span itemprop = "name"> here </ span> </a>
-  </ li>
-</ ol>
-<h2> Iterative processing using for / while statement </ h2>
+    <span itemprop = "name"> here </span> </a>
+  </li>
+</ol>
+<h2> Iterative processing using for / while statement </h2>
 
 
 
 Learn about Perl's iterative syntax. Learning the iterative syntax greatly expands the range of programs.
 
-<h3> Basics of for statement </ h3>
+<h3> Basics of for statement </h3>
 
-First, I will explain the iterative syntax <b> for statement </ b>. Take a look at the following sample first. This is a program that outputs a number from 0 to 9 on the screen.
+First, I will explain the iterative syntax <b> for statement </b>. Take a look at the following sample first. This is a program that outputs a number from 0 to 9 on the screen.
 
 <pre>
 for (my $ i = 0; $ i <10; $ i ++) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 The output result of this is as follows. The number from 0 to 9 is output.
 
@@ -38,7 +38,7 @@ Five
 7
 8
 9
-</ pre>
+</pre>
 
 Let's explain the syntax in order. The for statement has the following syntax.
 
@@ -46,9 +46,9 @@ Let's explain the syntax in order. The for statement has the following syntax.
 for (Initialization of loop variable; Condition to loop; Update of loop variable) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> 1. Initialization of loop variables </ h4>
+<h4> 1. Initialization of loop variables </h4>
 
 The first part is the initialization of the loop variable. This part determines what value the loop variable starts with first. Think of a loop variable as a variable used within a loop.
 
@@ -58,7 +58,7 @@ Let's look at the first example again. Notice the part "my $ i = 0".
 for (my $ i = 0; $ i <10; $ i ++) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 In the initialization part of the loop variable, variable declarations can be made at the same time. We declare a variable called "$ i" and initialize it with "0".
 
@@ -66,7 +66,7 @@ What if this part is "my $ i = 5"?
 
 <pre>
 for (my $ i = 5; $ i <10; $ i ++) {...}
-</ pre>
+</pre>
 
 Since "$ i" is initialized with "5", the output result will be as follows.
 
@@ -76,9 +76,9 @@ Five
 7
 8
 9
-</ pre>
+</pre>
 
-<h4> 2. Looping conditions </ h4>
+<h4> 2. Looping conditions </h4>
 
 Now let's look at the conditions for looping.
 
@@ -86,7 +86,7 @@ Now let's look at the conditions for looping.
 for (Initialization of loop variable; Condition to loop; Update of loop variable) {
   ...
 }
-</ pre>
+</pre>
 
 The for statement repeatedly executes the block while the looping condition is met. Looking at the first example, the condition is that "$ i" is less than "10".
 
@@ -94,7 +94,7 @@ The for statement repeatedly executes the block while the looping condition is m
 for (my $ i = 0; $ i <10; $ i ++) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 So the block will be executed while "$ i" is less than "10".
 
@@ -102,7 +102,7 @@ What if this part is "$ i <7"?
 
 <pre>
 for (my $ i = 0; $ i <7; $ i ++) {...}
-</ pre>
+</pre>
 
 The output result is as follows. Since "$ i" loops while it is smaller than "7", you can see that it is output up to "6".
 
@@ -114,9 +114,9 @@ The output result is as follows. Since "$ i" loops while it is smaller than "7",
 Four
 Five
 6
-</ pre>
+</pre>
 
-<h4> 3. Update loop variables </ h4>
+<h4> 3. Update loop variables </h4>
 
 Finally, I will explain the update part of the loop variable.
 
@@ -124,7 +124,7 @@ Finally, I will explain the update part of the loop variable.
 for (Initialization of loop variable; Condition to loop; Update of loop variable) {
   ...
 }
-</ pre>
+</pre>
 
 In the loop variable update part, you can change the value of the loop variable before executing the next block.
 
@@ -132,7 +132,7 @@ In the loop variable update part, you can change the value of the loop variable 
 for (my $ i = 0; $ i <10; $ i ++) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 In the first example, it is written as "$ i ++". This is called <a href="/blog/20180224151948.html"> increment </a> and you can increment the value of $ i by 1.
 
@@ -144,7 +144,7 @@ What if this part is "$ i + = 2"? This is a <a href="/blog/20161005147566.html">
 for (my $ i = 0; $ i <10; $ i + = 2) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 The output will be as follows, as it will increase by two.
 
@@ -154,15 +154,15 @@ The output will be as follows, as it will increase by two.
 Four
 6
 8
-</ pre>
+</pre>
 
 Make sure you are looping from "0" to "2" and less than "10".
 
-<h3> For statement sample program </ h3>
+<h3> For statement sample program </h3>
 
 I think that the iterative syntax will be easier to understand if you actually run some samples.
 
-<h4> Output from "9" to "0" for the first time </ h4>
+<h4> Output from "9" to "0" for the first time </h4>
 
 Next, let's look at a program that outputs from "9" to "0" for the first time.
 
@@ -170,7 +170,7 @@ Next, let's look at a program that outputs from "9" to "0" for the first time.
 for (my $ i = 9; $ i> = 0; $ i--) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 Since it is initialized as "my $ i = 9", "$ i" starts with "9". Since the condition is "$ i> = 0", it is repeated when "$ i" is "0 or more". The final "$ i--" decrements the value of "$ i" by one before moving on to the next loop. "-" Is a <a href="/blog/20180226151973.html"> decrement operator </a> that decrements the value of a variable by "1".
 
@@ -187,9 +187,9 @@ Four
 2
 1
 0
-</ pre>
+</pre>
 
-<h4> Output from "9" to "1" for the first time by skipping two </ h4>
+<h4> Output from "9" to "1" for the first time by skipping two </h4>
 
 Next, I will skip two and output from "9" to "1".
 
@@ -197,7 +197,7 @@ Next, I will skip two and output from "9" to "1".
 for (my $ i = 9; $ i> = 0; $ i-= 2) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 Since the update part of the loop variable is "$ i-= 2", the value of "$ i" is reduced by "2" before entering the next loop.
 
@@ -209,9 +209,9 @@ The output result is as follows.
 Five
 3
 1
-</ pre>
+</pre>
 
-<h4> Combining for and if statements </ h4>
+<h4> Combining for and if statements </h4>
 
 Let's combine the for statement and the if statement. Programming will improve when you can combine for and if statements.
 
@@ -223,7 +223,7 @@ for (my $ i = 0; $ i <10; $ i ++) {
     print "$ i \ n";
   }
 }
-</ pre>
+</pre>
 
 Please pay attention to the conditional branching part using the if statement. You can confirm that "$ i" is a multiple of "3" by writing "$ i% 3 == 0". This is because if the remainder after dividing by "3" is "0", that number is a multiple of 3.
 
@@ -232,8 +232,8 @@ Please refer to the following articles for the modulo operator.
 <ul>
   <li>
     <a href="/blog/20080910122105.html"> Operators that perform numerical calculations </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Since the if statement block is executed only when it is a multiple of 3, the output result is as follows.
 
@@ -242,17 +242,17 @@ Since the if statement block is executed only when it is a multiple of 3, the ou
 3
 6
 9
-</ pre>
+</pre>
 
 Combining if and for statements gives you better control over your program. Please refer to the following article for a detailed explanation of the if statement.
 
 <ul>
   <li>
     <a href="/blog/20161023147731.html"> Learn the syntax of conditional branching using if statements </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> while statement </ h3>
+<h3> while statement </h3>
 
 Next, let's learn about <a href="/blog/20100123126425.html"> while statement </a>. The while statement is a syntax for looping like the for statement.
 
@@ -267,7 +267,7 @@ while ($ i <10) {
   
   $ i ++;
 }
-</ pre>
+</pre>
 
 When this is executed, the number from "0" to "9" will be output to the screen.
 
@@ -282,13 +282,13 @@ Five
 7
 8
 9
-</ pre>
+</pre>
 
 The part "$ i <10" is the part of the condition that loops in the while statement. Unlike the for statement, the while statement does not have an initialization part or a loop variable update part.
 
 <pre>
 while (condition to loop) {...}
-</ pre>
+</pre>
 
 The "Initialize loop variable" and "Update loop variable" parts must be written as Perl statements.
 
@@ -303,7 +303,7 @@ while ($ i <10) {
   #Update loop variable
   $ i ++;
 }
-</ pre>
+</pre>
 
 The above while statement sample corresponds to the following for statement.
 
@@ -311,13 +311,13 @@ The above while statement sample corresponds to the following for statement.
 for (my $ i = 0; $ i <10; $ i ++) {
   print "$ i \ n";
 }
-</ pre>
+</pre>
 
 The for statement is simpler to write. If you need a loop variable, the for statement is easier to write.
 
-<h3> foreach statement </ h3>
+<h3> foreach statement </h3>
 
-The <b> foreach statement </ b> can be used to process the elements of the <a href="/blog/20161012147627.html"> array </a> in sequence. Take a look at the following sample program.
+The <b> foreach statement </b> can be used to process the elements of the <a href="/blog/20161012147627.html"> array </a> in sequence. Take a look at the following sample program.
 
 <pre>
 my @animals = ('Cat','Dog','Mouse');
@@ -325,7 +325,7 @@ my @animals = ('Cat','Dog','Mouse');
 foreach my $ animal (@animals) {
   print "$ animal \ n";
 }
-</ pre>
+</pre>
 
 This is a program that outputs the elements of the array ('Cat','Dog','Mouse') in order. The output result is as follows.
 
@@ -333,9 +333,9 @@ This is a program that outputs the elements of the array ('Cat','Dog','Mouse') i
 Cat
 Dog
 Mouse
-</ pre>
+</pre>
 
-<h4> Same as for statement and foreach statement </ h4>
+<h4> Same as for statement and foreach statement </h4>
 
 In Perl, the foreach statement is an alias for the for statement, and you can also write for where you should write foreach.
 
@@ -345,19 +345,19 @@ my @animals = ('Cat','Dog','Mouse');
 for my $ animal (@animals) {
   print "$ animal \ n";
 }
-</ pre>
+</pre>
 
 Looking at how to write Perl these days, I think I tend to always use for rather than foreach. I think it feels like it settles down on the shorter side.
 
-<h4> Use with range operator </ h4>It can also be used with <a href="/blog/20170520149523.html"> range operator </a>.
+<h4> Use with range operator </h4>It can also be used with <a href="/blog/20170520149523.html"> range operator </a>.
 
 <pre>
 for my $ num (3 .. 6) {
   print "$ num \ n";
 }
-</ pre>
+</pre>
 
-<h3> next statement </ h3>
+<h3> next statement </h3>
 
 You can use the <a href="/blog/20170513149580.html"> next statement </a> to jump to the beginning of the next iteration. Take a look at the following sample program.
 
@@ -369,7 +369,7 @@ for my $ num (@nums) {
   }
   print "$ num \ n";
 }
-</ pre>
+</pre>
 
 The elements of the array (3, 5, 6, 7) are output, but only when "$ num" is "5", it jumps to the beginning of the next iteration. The output result is as follows.
 
@@ -377,11 +377,11 @@ The elements of the array (3, 5, 6, 7) are output, but only when "$ num" is "5",
 3
 6
 7
-</ pre>
+</pre>
 
 Only when it is "5", the "print function" is not executed because it jumps to the beginning of the loop.
 
-<h3> last statement </ h3>
+<h3> last statement </h3>
 
 You can use the <a href="/blog/20170527149589.html"> last statement </a> to end the iteration and escape the for statement. Take a look at the following sample program.
 
@@ -393,22 +393,22 @@ for my $ num (@nums) {
   }
   print "$ num \ n";
 }
-</ pre>
+</pre>
 
 It outputs the elements of the array (3, 5, 6, 7), but exits the loop when "$ num" is "6". Therefore, the output result is as follows.
 
 <pre>
 3
 Five
-</ pre>
+</pre>
 
 I introduced an example of combining with for here, but next and for can also be used in while statements.
 
-<h3> Use for, while, and foreach properly </ h3>
+<h3> Use for, while, and foreach properly </h3>
 
 I explained the syntax of the three iterations, but you may feel that "how do you actually use them properly?" Therefore, I will write a guideline for proper use.
 
-<h4> First, think about whether you can write with foreach </ h4>
+<h4> First, think about whether you can write with foreach </h4>
 
 First of all, think about whether you can write using foreach. Foreach is the easiest way to write a loop, so if foreach is enough, use foreach. It's common to process the elements of an array in sequence, but you can write this in foreach.
 
@@ -418,7 +418,7 @@ my @animals = ('Cat','Dog','Mouse');
 foreach my $ animal (@animals) {
   print "$ animal \ n";
 }
-</ pre>
+</pre>
 
 Or write as follows using the alias for.
 
@@ -428,11 +428,11 @@ my @animals = ('Cat','Dog','Mouse');
 for my $ animal (@animals) {
   print "$ animal \ n";
 }
-</ pre>
+</pre>
 
 First, consider whether you can write this way.
 
-<h4> When an element number is required, a normal for statement </ h4>
+<h4> When an element number is required, a normal for statement </h4>
 
 Next, suppose you may need the element number. In that case, use the normal for statement. The following sample program outputs the element numbers and array elements. Note that you can get the length of the array by evaluating "@animals" in a scalar context.
 
@@ -443,7 +443,7 @@ for (my $ i = 0; $ i <@animals; $ i ++) {
   my $ animal = $ animals [$ i];
   print "$ i: $ animal \ n";
 }
-</ pre>
+</pre>
 
 The output result is as follows.
 
@@ -451,13 +451,13 @@ The output result is as follows.
 0: Cat
 1: Dog
 2: Mouse
-</ pre>
+</pre>
 
-<h4> While statement for repetition that does not increase the element number </ h4>
+<h4> While statement for repetition that does not increase the element number </h4>
 
 Finally, use a while statement if the repetition does not increase the element number. Here are some common samples.
 
-<b> 1. Read a line from a file </ b>
+<b> 1. Read a line from a file </b>
 
 Use a while statement to read a line from a file.
 
@@ -465,17 +465,17 @@ Use a while statement to read a line from a file.
 while (my $ line = <>) {
   print $ line;
 }
-</ pre>
+</pre>
 
 File I / O is explained in detail below.
 
 <ul>
   <li>
     <a href="/blog/20110212130370.html"> Basics of file input / output </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<b> 2. Pop an array </ b>
+<b> 2. Pop an array </b>
 
 Use a while statement to write the process such as ending when the array is extracted using the pop function and disappears.
 
@@ -485,7 +485,7 @@ my @animals = ('Cat','Dog','Mouse');
 while (my $ animal = pop @animals) {
   print "$ animal \ n";
 }
-</ pre>
+</pre>
 
 The output result is as follows.
 
@@ -493,11 +493,11 @@ The output result is as follows.
 Mouse
 Dog
 Cat
-</ pre>
+</pre>
 
 When popped and emptied, the loop ends.
 
-<b> 3. I want to write an infinite loop </ b>
+<b> 3. I want to write an infinite loop </b>
 
 If you want to write an infinite loop, use a while statement. If the condition is set to 1, the while statement will continue to be executed.
 
@@ -505,7 +505,7 @@ If you want to write an infinite loop, use a while statement. If the condition i
 while (1) {
   # process
 }
-</ pre>
+</pre>
 
 Use last if you want to get out of an infinite loop when some condition is met.
 
@@ -517,9 +517,9 @@ while (1) {
     last;
   }
 }
-</ pre>
+</pre>
 
-<h3> Multidimensional data structures and iterations </ h3>
+<h3> Multidimensional data structures and iterations </h3>
 
 Finally, I will write a multidimensional data structure and a repetitive sample program. In Perl, we often use a data structure called an array of hashes, so I'll write a sample of it.
 
@@ -537,7 +537,7 @@ for my $ student (@ $ students) {
   
   print "Name: $ name, Age: $ age \ n";
 }
-</ pre>
+</pre>
 
 The output result is as follows.
 
@@ -545,25 +545,25 @@ The output result is as follows.
 Name: kimoto, Age: 36
 Name: kana, Age: 21
 Name: jiro, Age: 56
-</ pre>
+</pre>
 
 Here, "[]", "{}", "@ $ students", and "$ student-> {name}" that have never been explained have appeared. This is a Perl syntax called a reference. The processing of multidimensional data structures is explained in detail below, so please refer to it.
 
 <ul>
   <li>
     <a href="/blog/20100930127859.html"> References and multidimensional data structures </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Functions for writing loops easily </ h3>
+<h3> Functions for writing loops easily </h3>
 
-<h4> grep function </ h4>
+<h4> grep function </h4>
 
 Perl has a <a href="/blog/20100119126425.html"> grep function </a> that allows you to retrieve only matching elements of an array.
 
 <pre>
 my @matches = grep {$ _> 5} @values;
-</ pre>
+</pre>
 
 This is the same as writing the following in a for statement, but more concisely.
 
@@ -574,15 +574,15 @@ for my $ value (@ $ values) {
     push @matches, $ value;
   }
 }
-</ pre>
+</pre>
 
-<h4> map function </ h4>
+<h4> map function </h4>
 
 Perl has a <a href="/blog/20100118126425.html"> map function </a> that makes it easy to write transformations of all array elements.
 
 <pre>
 my @ values2 = map {"$ _. Txt"} @ values1;
-</ pre>
+</pre>
 
 This is the same as writing the following in a for statement, but more concisely.
 
@@ -592,9 +592,9 @@ for my $ value1 (@ values1) {
   my $ value2 = "$ value1.txt";
   push @ values2, $ value2;
 }
-</ pre>
+</pre>
 
-<h3> Postfix for-for modifier </ h3>
+<h3> Postfix for-for modifier </h3>
 
 A special for syntax is the for modifier, which allows you to put a for after a statement. If you can write a for statement in one line, this writing method is also simple.
 
@@ -603,10 +603,10 @@ Below is a sample that outputs all the elements of the array. The elements of th
 <pre>
 my @values ​​= (3, 4, 5);
 print "$ _ \ n" for @values;
-</ pre>
+</pre>
 
 For readability, it's a good idea to always use a regular for statement.
 
-But in fact, the postfix for has a clear advantage. That is, the <b> postfix for does not create a scope, so it performs better than a normal for </ b>.
+But in fact, the postfix for has a clear advantage. That is, the <b> postfix for does not create a scope, so it performs better than a normal for </b>.
 
 Performance shouldn't be an issue for most programs you write in your day-to-day business. However, if you can execute it in one line and you really want to gain speed, you should use the postfix for.

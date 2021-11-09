@@ -1,9 +1,9 @@
-<h2> Documentation for Validator :: Custom 1.0 and earlier </ h2>
+<h2> Documentation for Validator :: Custom 1.0 and earlier </h2>
 
 <a href="/blog/20151212144988.html"> This page is a document prior to Validator :: Custom 1.0. The latest version of the documentation is here. </a>
 
 
-<strong> Validator :: Custom </ strong> is useful for <strong> validation </ strong> (<strong> value validation </ strong>) of <strong> HTML form </ strong> data It is a module. It features the ability to write validation rules with a small amount of description, the ability to set error messages for each constraint, the frequently used functions provided from the beginning, and the highly flexible design that allows easy addition of user-defined constraints.
+<strong> Validator :: Custom </strong> is useful for <strong> validation </strong> (<strong> value validation </strong>) of <strong> HTML form </strong> data It is a module. It features the ability to write validation rules with a small amount of description, the ability to set error messages for each constraint, the frequently used functions provided from the beginning, and the highly flexible design that allows easy addition of user-defined constraints.
 
 <pre>
 use Validator :: Custom;
@@ -45,7 +45,7 @@ else {
   # Error message
   my $ errors = $ vresult-> messages;
 }
-</ pre>
+</pre>
 
 Click here for the old grammar for rule creation. It is recommended to write in the new grammar above.
 
@@ -69,32 +69,32 @@ my $ rule = [
       [duplication =>'Two password not match']
     ]
 ];;
-</ pre>
+</pre>
 
 This document will be rewritten to the new grammar, so please refer to the official grammar for the old grammar.
 
-<h3> Install Validator :: Custom </ h3>
+<h3> Install Validator :: Custom </h3>
 
-Use the cpan command to <strong> install </ strong> <strong> Validator :: Custom </ strong>.
+Use the cpan command to <strong> install </strong> <strong> Validator :: Custom </strong>.
 
 <pre>
 cpan Validator :: Custom
-</ pre>
+</pre>
 
 It can be installed on both Windows and Unix-like operating systems. You can't install without root privileges with the cpan command, so if you want to install in your local environment, use a tool such as cpanm.
 
-<h3> Validator :: Create Custom Object </ h3>
+<h3> Validator :: Create Custom Object </h3>
 
-Use the <strong> new </ strong> method to create a Validator :: Custom object.
+Use the <strong> new </strong> method to create a Validator :: Custom object.
 
 <pre>
 use Validator :: Custom;
 my $ vc = Validator :: Custom-> new;
-</ pre>
+</pre>
 
 Use this object for validation.
 
-<h3> Basics of validation </ h3>
+<h3> Basics of validation </h3>
 
 I will explain the basics of validation. See the source code below.
 
@@ -115,18 +115,18 @@ my $ vresult = $ vc-> validate ($ data, $ rule);
 #Check the result
 if ($ vresult-> is_ok) {print "OK \ n"}
 else {print "Not OK \ n"}
-</ pre>
+</pre>
 
-<h4> Data </ ​​h4>
+<h4> Data </​​h4>
 
 The data to be validated must be a hash reference.
 
 <pre>
 # data
 my $ data = {price => 1200};
-</ pre>
+</pre>
 
-<h4> Rules </ h4>
+<h4> Rules </h4>
 
 Next, create a rule for validation.
 
@@ -134,60 +134,60 @@ Next, create a rule for validation.
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ('int');
-</ pre>
+</pre>
 
-First, create a Validator :: Custom :: Rule object using the <b> create_rule </ b> method.
+First, create a Validator :: Custom :: Rule object using the <b> create_rule </b> method.
 
 <pre>
 my $ rule = $ vc-> create_rule;
-</ pre>
+</pre>
 
-Then use the <b> require </ b> method to describe the name of the key that must exist.
+Then use the <b> require </b> method to describe the name of the key that must exist.
 
 <pre>
 $ rule-> require ('price')
-</ pre>
+</pre>
 
-You can also use <b> optional </ b> instead of <b> require </ b> if the key is arbitrary.
+You can also use <b> optional </b> instead of <b> require </b> if the key is arbitrary.
 
 <pre>
 $ rule-> optional ('price')
-</ pre>
+</pre>
 
 Next, describe the constraints.
 
 <pre>
 $ rule-> require ('price')-> check ('int');
-</ pre>
+</pre>
 
 This time we only check one key, but if you want to check multiple values, you can continue to write.
 
 <pre>
 $ rule-> require ('name')-> check ('string');
-</ pre>
+</pre>
 
-<h4> Validation </ h4>
+<h4> Validation </h4>
 
 Use the validate method for validation.
 
 <pre>
 #Validation
 my $ vresult = $ vc-> validate ($ data, $ rule);
-</ pre>
+</pre>
 
 The return value is a Validator :: Custom :: Result object.
 
-<h4> Confirmation of results </ h4>
+<h4> Confirmation of results </h4>
 
 You can check the result using the Validator :: Custom :: Result object.
 
 <pre>
 my $ ok = $ vresult-> is_ok;
-</ pre>
+</pre>
 
 You can check if the validation result is correct with the is_ok method.
 
-<h3> Validation of multiple values ​​</ h3>
+<h3> Validation of multiple values ​​</h3>
 
 Let's create a rule for validating multiple values.
 
@@ -199,21 +199,21 @@ my $ data = {price => 1200, title =>'Perl'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ('int');
 $ rule-> require ('title')-> check ('ascii');
-</ pre>
+</pre>
 
-To validate multiple values, just write <b> require </ b> multiple times as follows: The contents of the rule are as follows.
+To validate multiple values, just write <b> require </b> multiple times as follows: The contents of the rule are as follows.
 
 <pre>
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ('int');
 $ rule-> require ('title')-> check ('ascii');
-</ pre>
+</pre>
 
-<h3> Register user-defined constraints --register_constraint </ h3>
+<h3> Register user-defined constraints --register_constraint </h3>
 
 I was able to express various constraints using the constraints provided by default, and and or conditions. In addition to this, Validator :: Custom allows you to create new user-defined constraints.
 
-Here, I will simply register a constraint to check whether the email is in the correct format. Use the <b> register_constraint </ b> method to register the constraint.
+Here, I will simply register a constraint to check whether the email is in the correct format. Use the <b> register_constraint </b> method to register the constraint.
 
 <pre>
 #Register a constraint to check if Email is in the correct format
@@ -226,14 +226,14 @@ $ vc-> register_constraint (
     return $ value = ~ / ^. + @. + $ /? 1: 0;
   }
 );
-</ pre>
+</pre>
 
 The format for registering constraints is as follows.
 <pre>
 $ vc-> register_constraint (
   Constraint name => Processing for constraints
 );
-</ pre>
+</pre>
 
 You can also register multiple constraints at once.
 <pre>
@@ -241,7 +241,7 @@ $ vc-> register_constraint (
   Constraint name 1 => Processing for constraint 1,
   Constraint name 2 => Processing for constraint 2
 );
-</ pre>
+</pre>
 
 The processing for constraints is a subroutine reference. Try to return 1 if the data is correct and 0 if it is incorrect.
 
@@ -255,7 +255,7 @@ sub constraint name {
     return 0;
   }
 }
-</ pre>
+</pre>
 
 The registered constraints can be used in the rules.
 
@@ -264,11 +264,11 @@ The registered constraints can be used in the rules.
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('admin_email')-> check ('email');
 my $ data = {admin_email =>'foo@my.com'};
-</ pre>
+</pre>
 
-<h3> Register constraint function </ h3>
+<h3> Register constraint function </h3>
 
-Validator :: Custom makes it easy to register constraint functions for validation. Use the <strong> register_constraint </ strong> method to register the constraint function.
+Validator :: Custom makes it easy to register constraint functions for validation. Use the <strong> register_constraint </strong> method to register the constraint function.
 
 <pre>
 $ vc-> register_constraint (
@@ -277,7 +277,7 @@ $ vc-> register_constraint (
     $ value = ~ / ^ [\ d-] + $ /? 1: 0;
   }
 );
-</ pre>
+</pre>
 
 Returns 1 if the value is correct and 0 if the value is incorrect. Note that you should not return an array reference as a true value. This is because array references are used when treating constraint functions as filters.
 
@@ -285,7 +285,7 @@ The constraint function registered in this way can be used in the rule.
 
 <pre>
 $ rule-> require ('tel')-> check ('tel_num');
-</ pre>
+</pre>
 
 Multiple constraint functions can be registered at the same time.
 
@@ -297,20 +297,20 @@ $ vc-> register_constraint (
   },
   hiragana => sub {...}
 );
-</ pre>
+</pre>
 
-<h3> Item does not have to exist require => 0 / Validator :: Custom Reference </ h3>
+<h3> Item does not have to exist require => 0 / Validator :: Custom Reference </h3>
 
-If the <strong> item may or may not exist </ strong>, use the <b> optional </ b> method instead of the <strong> require </ strong> method.
+If the <strong> item may or may not exist </strong>, use the <b> optional </b> method instead of the <strong> require </strong> method.
 
 <pre>
 my $ rule = $ vc-> create_rule;
 $ rule-> optional ('name')-> check ('int');
-</ pre>
+</pre>
 
 The above rule states that name may or may not exist, and if it does, it must be an int.
 
-<h3> At least one item contains a value </ h3>
+<h3> At least one item contains a value </h3>
 
 You may want to enter multiple text boxes and check that at least one of them contains a value. In such a case, a little ingenuity is required. It's a good idea to merge the values ​​in the textbox and then check that it's not empty.
 
@@ -326,16 +326,16 @@ $ rule = [
   ],,
 ];;
 my $ result = $ vc-> validate ($ data, $ rule);
-</ pre>
+</pre>
 
-<h3> and rules using conditions </ h3>
+<h3> and rules using conditions </h3>
 
 <a href="/blog/20151212144988.html"> This page is a document about Version 0.xx. The latest version of the documentation is here. </a>
 
 
 When performing validation, you may want to state whether multiple conditions are met. For example, when you want to write a condition that is greater than 1000 and less than 2000.
 
-Let's create a rule using the and condition. Just call the <b> check </ b> method multiple times. Here we use the constraints greater_than and less_than. You can also pass arguments by specifying constraints in the hash reference.
+Let's create a rule using the and condition. Just call the <b> check </b> method multiple times. Here we use the constraints greater_than and less_than. You can also pass arguments by specifying constraints in the hash reference.
 
 <pre>
 # data
@@ -346,13 +346,13 @@ my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')
   -> check ({greater_than => 1000})
   -> check ({less_than => 2000});
-</ pre>
+</pre>
 
-<h3> or rules using conditions </ h3>
+<h3> or rules using conditions </h3>
 
 When performing validation, you may want to state whether one condition is met. For example, you may want to write a condition that is blank or an integer.
 
-Let's create a rule using the or condition. Use the <b> check_or </ b> method to describe the or condition.
+Let's create a rule using the or condition. Use the <b> check_or </b> method to describe the or condition.
 
 <pre>
 # data
@@ -361,9 +361,9 @@ my $ data = {price => 1200};
 # or rules using conditions
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check_or ('blank','int');
-</ pre>
+</pre>
 
-<h4> and use condition and or condition at the same time </ h4>
+<h4> and use condition and or condition at the same time </h4>
 
 You can also use the and condition and the or condition at the same time.
 
@@ -371,32 +371,32 @@ You can also use the and condition and the or condition at the same time.
 $ rule-> require ('price')
   -> check_or ('blank','int')
   -> check ({greater_than => 1000});
-</ pre>
+</pre>
 
-<h3> Specifying arguments in constraints </ h3>
+<h3> Specifying arguments in constraints </h3>
 
-Some of the constraints provided by default can take arguments. <b> equal_to </ b>, <b> between </ b>, etc.
+Some of the constraints provided by default can take arguments. <b> equal_to </b>, <b> between </b>, etc.
 
 To pass an argument, specify the constraint name part using a hash reference as follows.
 
 <pre>
 {Constraint name => Arguments}
-</ pre>
+</pre>
 
-Here is a sample of <b> equal_to </ b> and <b> between </ b>:
+Here is a sample of <b> equal_to </b> and <b> between </b>:
 
 <pre>
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ({'equal_to' => 1000});
 $ rule-> require ('age')-> check ({between => [1, 20]});
 my $ data = {price => 1000, age => 19};
-</ pre>
+</pre>
 
 The argument can be a string, a number, an array reference, or a hash reference, as long as it is a scalar value.
 
-<h3> to_array (filter) --convert array to reference </ h3>
+<h3> to_array (filter) --convert array to reference </h3>
 
-If you want to convert the value to an array reference, use the <b> to_array </ b> filter.
+If you want to convert the value to an array reference, use the <b> to_array </b> filter.
 
 <pre>
 # data
@@ -408,15 +408,15 @@ $ rule-> require ('languages')-> filter ('to_array');
 
 my $ vresult = $ vc-> validate ($ data, $ rule);
 print $ vresult-> data-> {languages}; # ['Japanese']
-</ pre>
+</pre>
 
 to_array converts data that is not an array reference to an array reference. If it was originally an array reference, it does nothing.
 
 This is useful for converting to an array reference when you don't know if one value will come or multiple values ​​will come, such as checkboxes.
 
-<h3> in_array (constraint function)-Check if the value is contained in the array value </ h3>
+<h3> in_array (constraint function)-Check if the value is contained in the array value </h3>
 
-When checking an HTML form, you may not want to allow values ​​other than a certain value. In such cases, use the <strong> in_array </ strong> constraint function.
+When checking an HTML form, you may not want to allow values ​​other than a certain value. In such cases, use the <strong> in_array </strong> constraint function.
 
 <pre>
 # data
@@ -425,15 +425,15 @@ my $ data = {food =>'sushi'};
 # rule
 my $ rule = $ rule-> create_rule;
 $ rule-> require ('food')-> check ({'in_array' => [qw / sushi bread apple /]});
-</ pre>
+</pre>
 
 The argument of the in_array constraint function specifies an array reference that contains the allowed values.
 
 <pre>
 {'in_array' => [qw / sushi bread apple /]}
-</ pre>
+</pre>
 
-<h4> Apply to multiple values ​​such as checkboxes </ h4>
+<h4> Apply to multiple values ​​such as checkboxes </h4>
 
 There are multiple check box values. If you want all of the multiple values ​​to be included in a certain value, write as follows.
 
@@ -447,13 +447,13 @@ $ rule-> require ('food')
   -> each (1)-> check ({'in_array' => [qw / sushi bread apple /]);
 
 my $ is_valid = $ vc-> validate ($ data, $ rule);
-</ pre>
+</pre>
 
-By using the <b> each </ b> method, you can verify each value of the element.
+By using the <b> each </b> method, you can verify each value of the element.
 
 It's a little confusing, but it's useful to remember.
 
-<h4> Application </ h4>
+<h4> Application </h4>
 
 For example, a rule that at least one is checked and all its values ​​are 001 or 002 is applied as follows:
 
@@ -464,13 +464,13 @@ $ rule-> require ('food')
   -> check ('selected_at_least')
   -> each (1)
   -> check ({'in_array' => [qw / 001 002 /]});
-</ pre>
+</pre>
 
 Validator :: Custom makes it easy to validate HTML forms.
 
-<h3> selected_at_least (constraint function)-at least one is selected </ h3>
+<h3> selected_at_least (constraint function)-at least one is selected </h3>
 
-In an HTML form, you may want to find out if at least one of the checkboxes is selected. In such cases, use the <b> selected_at_least </ b> constraint function.
+In an HTML form, you may want to find out if at least one of the checkboxes is selected. In such cases, use the <b> selected_at_least </b> constraint function.
 
 <pre>
 # data
@@ -479,11 +479,11 @@ my $ data = {hobby => ['music','movie']};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('hobby')-> check ({selected_at_least => 1});
-</ pre>
+</pre>
 
 The selected_at_least constraint function can specify at least how many must be selected in the argument. In this sample, 1 is specified, which means at least one.
 
-<h3> Use the constraint function registered in the constraint function </ h3>
+<h3> Use the constraint function registered in the constraint function </h3>
 
 When writing constraint functions for validation with Validator :: Custom, you may want to use low-level constraint functions.
 
@@ -504,7 +504,7 @@ $ vc-> register_constraint (
     return $ is_valid;
   }
 );
-</ pre>
+</pre>
 
 The point of the constraint function is that the Validator :: Custom object is passed as the third argument.
 
@@ -512,11 +512,11 @@ The constraints attribute returns a hash reference that includes the constraint 
 
 <pre>
 my $ is_int = $ vc-> constraints-> {'int'}-> ($ value);
-</ pre>
+</pre>
 
-<h3> uint (constraint function) --Non-negative integer </ h3>
+<h3> uint (constraint function) --Non-negative integer </h3>
 
-You may want to allow only non-negative integers in your HTML form. In such cases, use the <b> uint </ b> constraint function.
+You may want to allow only non-negative integers in your HTML form. In such cases, use the <b> uint </b> constraint function.
 
 <pre>
 # data
@@ -527,13 +527,13 @@ my $ rule = $ vc-> create_rule;
 $ rule-> require ('age')-> check ('uint');
 
 my $ is_valid = $ vc-> validate ($ data, $ rule);
-</ pre>
+</pre>
 
 Internally, the regular expression "^ [0-9] + $" is used.
 
-<h3> duplication (constraint function) --Check that email addresses match </ h3>
+<h3> duplication (constraint function) --Check that email addresses match </h3>
 
-In the HTML form, you may want to have two passwords entered and check that the passwords are the same. In such cases, use the <b> duplication </ b> constraint function.
+In the HTML form, you may want to have two passwords entered and check that the passwords are the same. In such cases, use the <b> duplication </b> constraint function.
 
 <pre>
 # data
@@ -543,13 +543,13 @@ my $ data = {mail1 =>'a@somehost.com', mail2 =>'a@somehost.com'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require (['mail1','mail2'])-> name ('mail_check')
   -> check ('duplication');
-</ pre>
+</pre>
 
 Note that validation will fail if neither of the two values ​​is undefined.
 
-<h3> length (constraint function) --Check string length </ h3>
+<h3> length (constraint function) --Check string length </h3>
 
-You may want to check the length of a string in an HTML form. In such cases, use the <b> length </ b> constraint function.
+You may want to check the length of a string in an HTML form. In such cases, use the <b> length </b> constraint function.
 
 <pre>
 # data
@@ -567,75 +567,75 @@ $ rule-> require ('value3')-> check ({'length' => {min => 2, max => 5}});
 $ rule-> require ('value4')-> check ({'length' => {min => 2, max => 5}});
 # Length is 5 or less
 $ rule-> require ('value4')-> check ({'length' => {max => 5}});
-</ pre>
+</pre>
 
 You can check the length. If the string is an internal string, you can check the length of the string. If the string is a byte string, check the number of bytes.
 
-<h3> defined (constraint function) --defined </ h3>
+<h3> defined (constraint function) --defined </h3>
 
-Use the <strong> defined </ strong> constraint function to specify that it is <strong> defined </ strong>.
+Use the <strong> defined </strong> constraint function to specify that it is <strong> defined </strong>.
 
 <pre>
 my $ data => {name =>'Ken'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('name')-> check ('defined');
-</ pre>
+</pre>
 
 In the case of HTML form, you can use not_blank instead of define because you only need to be able to check if it is an empty string.
 
-<h3> decimal (constraint function) --Positive number (specify the number of digits) </ h3>
+<h3> decimal (constraint function) --Positive number (specify the number of digits) </h3>
 
 <a href="/blog/20151212144988.html"> This page is a document about Version 0.xx. The latest version of the documentation is here. </a>
 
 
-Use the <strong> decimal </ strong> constraint function to specify that it is a <strong> number </ strong>. Numerical numbers include positive integers and decimals. Please note that it does not include negative numbers. You can specify the maximum number of digits before the decimal point and the maximum number of digits after the decimal point with the argument.
+Use the <strong> decimal </strong> constraint function to specify that it is a <strong> number </strong>. Numerical numbers include positive integers and decimals. Please note that it does not include negative numbers. You can specify the maximum number of digits before the decimal point and the maximum number of digits after the decimal point with the argument.
 
 <pre>
 my $ data = {num1 => '123', num2 => '1.45'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('num1')-> check ({'decimal' => 3});
 $ rule-> require ('num2')-> check ({'decimal' => [1, 2]});
-</ pre>
+</pre>
 
-<h3> blank (constraint function) --empty string </ h3>
+<h3> blank (constraint function) --empty string </h3>
 
-Use the <strong> blank </ strong> constraint function to specify that it is a <strong> empty string </ strong>.
+Use the <strong> blank </strong> constraint function to specify that it is a <strong> empty string </strong>.
 
 <pre>
 my $ data = {name =>''};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('name')-> check ('blank');
-</ pre>
+</pre>
 
 I don't think there is any particular opportunity to use it in HTML form validation.
 
-<h3> between (constraint function) --a number between A and B </ h3>
+<h3> between (constraint function) --a number between A and B </h3>
 
-Use the <strong> between </ strong> constraint function to specify that it is a <strong> number between A and B </ strong>. Note that it includes A and B at both ends.
+Use the <strong> between </strong> constraint function to specify that it is a <strong> number between A and B </strong>. Note that it includes A and B at both ends.
 
 <pre>
 my $ data = {age => 19};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('age')-> check ({between => [1, 20]});
-</ pre>
+</pre>
 
 It does not consider whether between is an integer. If you want to apply an integer constraint, please also use the int constraint function.
 
-<h3> ascii (constraint function) --ASCII graphic characters </ h3>
+<h3> ascii (constraint function) --ASCII graphic characters </h3>
 
-You may want to allow only <strong> ASCII print characters </ strong> (hexadecimal numbers 21-7E), such as HTML form passwords. In such cases, use the <strong> ascii </ strong> constraint function.
+You may want to allow only <strong> ASCII print characters </strong> (hexadecimal numbers 21-7E), such as HTML form passwords. In such cases, use the <strong> ascii </strong> constraint function.
 
 <pre>
 my $ data = {password =>'ajf & $ #-'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('password')-> check ('ascii');
-</ pre>
+</pre>
 
 Since it is a range of graphic characters, not the entire ASCII code, validation will fail if tabs, spaces, etc. are included.
 
-<h3> duplication (constraint function) --Check that two values ​​are the same </ h3>
+<h3> duplication (constraint function) --Check that two values ​​are the same </h3>
 
-If you want to check that <strong> two values ​​match </ strong>, use the C <duplication> constraint function. Validation will always fail if either value is undefined.
+If you want to check that <strong> two values ​​match </strong>, use the C <duplication> constraint function. Validation will always fail if either value is undefined.
 
 Multiple values
 
@@ -644,11 +644,11 @@ my $ data = {password1 =>'secret', password2 =>'secret'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require (['passwrod1','password2'])-> name ('password_check')
   -> check ('duplication');
-</ pre>
+</pre>
 
 If you want to check multiple values, you can pass an array reference to the require method. In this case, add the name method to the key value.
 
-<h4> Actually check the password </ h4>
+<h4> Actually check the password </h4>
 
 When actually checking the password, also check that the password is not empty and that the password consists only of ASCII graphic characters. Also, regarding the restriction that the two passwords match, specify 0 for the copy option because the value corresponding to the identification key is not required for the validated secure data.
 
@@ -660,11 +660,11 @@ $ rule-> require ('password')
   -> check ('ascii')-> message ('password contains invalid character');
 $ rule-> require (['password1','password2'])-> name ('password_check')
   -> check ('duplication')-> message ('Two password is not matched')
-</ pre>
+</pre>
 
-<h3> regex (constraint function) --matches regular expression </ h3>
+<h3> regex (constraint function) --matches regular expression </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> regex </ strong> constraint function if you want to check that it <strong> matches a regular expression </ strong>.
+In a <strong> HTML form </strong>, use the <strong> regex </strong> constraint function if you want to check that it <strong> matches a regular expression </strong>.
 
 <pre>
 #data
@@ -673,11 +673,11 @@ my $ data = {num => '123'};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('num')-> check ({'regex' => qr / \ d {0,3} /});
-</ pre>
+</pre>
 
-<h3> not_space (constraint function)-not whitespace </ h3>
+<h3> not_space (constraint function)-not whitespace </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> not_space </ strong> constraint function if you want to check that it is <strong> not whitespace </ strong>. A space character is a character string that consists only of a space character, a tab character, and a newline character. This includes cases where the string does not exist. It does not include whitespace in Unicode.
+In a <strong> HTML form </strong>, use the <strong> not_space </strong> constraint function if you want to check that it is <strong> not whitespace </strong>. A space character is a character string that consists only of a space character, a tab character, and a newline character. This includes cases where the string does not exist. It does not include whitespace in Unicode.
 
 <pre>
 #data
@@ -686,11 +686,11 @@ my $ data = {name =>'Ken'};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('name')-> check ('not_space');
-</ pre>
+</pre>
 
-<h3> not_defined (constraint function)-value not defined </ h3>
+<h3> not_defined (constraint function)-value not defined </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> not_defined </ strong> constraint function if you want to check that the <strong> value is undefined </ strong>.
+In a <strong> HTML form </strong>, use the <strong> not_defined </strong> constraint function if you want to check that the <strong> value is undefined </strong>.
 
 <pre>
 #data
@@ -699,11 +699,11 @@ my $ data = {name =>'Ken'};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('name')-> check ('not_defined');
-</ pre>
+</pre>
 
-<h3> less_than (constraint function)-a number is less than a certain number </ h3>
+<h3> less_than (constraint function)-a number is less than a certain number </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> less_than </ strong> constraint function if you want to check that a <strong> number is less than a certain number </ strong>.
+In a <strong> HTML form </strong>, use the <strong> less_than </strong> constraint function if you want to check that a <strong> number is less than a certain number </strong>.
 
 <pre>
 #data
@@ -712,11 +712,11 @@ my $ data = {num => 20};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('num')-> check ({'less_than' => 25});
-</ pre>
+</pre>
 
-<h3> int (constraint function)-integer </ h3>
+<h3> int (constraint function)-integer </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> int </ strong> constraint function if you want to check that it is a <strong> integer </ strong>.
+In a <strong> HTML form </strong>, use the <strong> int </strong> constraint function if you want to check that it is a <strong> integer </strong>.
 
 <pre>
 #data
@@ -725,11 +725,11 @@ my $ data = {age => 19};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('age')-> check ('int');
-</ pre>
+</pre>
 
-<h3> http_url (constraint function) --HTTP or HTTPS URL </ h3>
+<h3> http_url (constraint function) --HTTP or HTTPS URL </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> http_url </ strong> constraint function if you want to check that it is a <strong> HTTP or HTTPS URL </ strong>.
+In a <strong> HTML form </strong>, use the <strong> http_url </strong> constraint function if you want to check that it is a <strong> HTTP or HTTPS URL </strong>.
 
 <pre>
 # data
@@ -738,11 +738,11 @@ my $ data = {url =>'http://somehost.com'};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('url')-> check ('http_url');
-</ pre>
+</pre>
 
-<h3> greater_than (constraint function)-greater than a certain number </ h3>
+<h3> greater_than (constraint function)-greater than a certain number </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> greater_than </ strong> constraint function if you want to check that it is <strong> greater than a certain number </ strong>.
+In a <strong> HTML form </strong>, use the <strong> greater_than </strong> constraint function if you want to check that it is <strong> greater than a certain number </strong>.
 
 <pre>
 #data
@@ -751,11 +751,11 @@ my $ data = {price => 1000};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ({'greater_than' => 900});
-</ pre>
+</pre>
 
-<h3> equal_to (constraint function) --equal numbers </ h3>
+<h3> equal_to (constraint function) --equal numbers </h3>
 
-In a <strong> HTML form </ strong>, use the <strong> equal_to </ strong> constraint function if you want to check that <strong> numbers are equal </ strong>.
+In a <strong> HTML form </strong>, use the <strong> equal_to </strong> constraint function if you want to check that <strong> numbers are equal </strong>.
 
 <pre>
 # data
@@ -764,4 +764,4 @@ my $ data = {price => 1000};
 # rule
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ({'equal_to' => 1000});
-</ pre>
+</pre>

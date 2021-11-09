@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Perl file input / output basics </ h2>
+  </li>
+</ol>
+<h2> Perl file input / output basics </h2>
 
 
 
 Let's master the basics of Perl's file I / O. The goal is to be able to read and write text files.
 
-<h3> File open </ h3>
+<h3> File open </h3>
 
 You must first open the file in order to read it. Files are managed by the OS, so you must first tell the OS that you want to work with the files programmatically. The OS returns the identifier of the target file to the program.
 
@@ -26,17 +26,17 @@ Use the <a href="/blog/20080718121643.html"> open function </a>: title = open fu
 my $ file ='data.txt';
 open my $ fh,'<', $ file
   or die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 I will explain the process of opening files one by one.
 
-<h4> open function </ h4>
+<h4> open function </h4>
 
 The open function takes three arguments. Specify the lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, the <a href="/blog/20080721121664.html"> file handle </a> is stored in the lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
 
 If the open function fails because the file does not exist, it returns <a href="/blog/20100220126425.html"> undef </a>. If it fails, use the <a href="/blog/20100212126425.html"> die function </a> to throw an exception. By using <a href="/blog/20180125151688.html"> or operator </a>, if the executable statement on the left side of or is false, you can describe the process of executing the executable statement on the right side.
 
-<h4> Open mode </ h4>
+<h4> Open mode </h4>
 
 Open mode specifies the mode in which the file is opened. Some of the most commonly used open modes are:
 
@@ -44,46 +44,46 @@ Open mode specifies the mode in which the file is opened. Some of the most commo
   <tr>
     <td>
       Open mode
-    </ td>
+    </td>
     <td>
       meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       <
-    </ td>
+    </td>
     <td>
       Read
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       >
-    </ td>
+    </td>
     <td>
       write in
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       >> >>
-    </ td>
+    </td>
     <td>
       Additional writing
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 Read mode "<" is used when you want to read the contents of a file. Write mode ">" is used when you want to write to a file. If the file does not exist, it will be created automatically. If the file exists, all the contents of the file will be erased when it is opened. The additional write mode ">>" is used when you want to add a new line to the end of the file. If the file does not exist, it will be created automatically.
 
 There are literate and readable modes, but you'll rarely have a chance to use them. As I'll explain later, if you want to read a file and then write to the same file, it's better to take a different approach.
 
-<h4> File name </ h4>
+<h4> File name </h4>
 
 The file name can be specified as an absolute path or a relative path. The absolute path is the full name of the file, such as "c: \ foo \ bar \ data.txt" (Windows) or "/foo/ba/data.txt" (Unix). ..
 
@@ -93,7 +93,7 @@ It is best to specify the file name with an absolute path. This is because if yo
 
 Regarding the file name delimiter, you can use the "/" delimiter even in Windows. Even if you write "c: /foo/bar/data.txt", the open function works correctly. Also, functions other than the open function that receive a file name will work correctly even if the delimiter is "/" (for example, unlink or glob).
 
-<h4> How to use Japanese file names </ h4>
+<h4> How to use Japanese file names </h4>
 
 You can use Japanese file names in Perl, but you must always specify the file name with the character code of each OS.
 
@@ -114,7 +114,7 @@ open my $ fh,'<', encode ('UTF-8', $ file);
 #For Mac OS X
 use Encode :: UTF8Mac;
 open my $ fh,'<', encode ('' utf-8-mac'', $ file);
-</ pre>
+</pre>
 
 Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html"> Encode :: UTF8Mac </a> module.
 
@@ -123,45 +123,45 @@ The following explanation is detailed about the handling of Japanese.
 <ul>
   <li>
     <a href="/blog/20091118124667.html"> Properly handle multi-byte character strings such as Japanese </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Exception handling </ h4>
+<h4> Exception handling </h4>
 
 If the file open fails, it means that the migration cannot do the right thing. Therefore, in general, it is necessary to notify that the file open has failed and terminate the program. In such a case, use the die function to raise an exception. Specify the message you want to notify in the first argument of the die function.
 
 <pre>
 die message;
-</ pre>
+</pre>
 
 If the file open fails, the following message will be displayed. A message is displayed that includes the line number where the exception occurred.
 
 <pre>
 Can't open file "data.txt": No such file or directory at a.pl line 6.
-</ pre>
+</pre>
 
-<h3> What to include in the exception message </ h3>
+<h3> What to include in the exception message </h3>
 
 The exception message should include the following:
 
 <ol>
   <li>
     What you want to tell the user
-  </ li>
+  </li>
   <li>
     The content of the message notified by the OS when the system call fails (set to $!)
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 <pre>
 die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 "Can't open file" $ file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html"> special variable </a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
 
 For a detailed explanation of <a href="/blog/20100411127089.html"> exception handling </a>, see the following article.
 
-<h3> Read file </ h3>
+<h3> Read file </h3>
 
 If you open the file in read mode, you can read the contents from the file.
 
@@ -170,14 +170,14 @@ If you open the file in read mode, you can read the contents from the file.
 my $ file ='data.txt';
 open my $ fh,'<', $ file
   or die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 Use the <a href="/blog/20080722121673.html"> line input operator </a> to read the file line by line.
 
 <pre>
 #Line input operator
 <File handle>
-</ pre>
+</pre>
 
 Use the <a href="/blog/20170521149524.html"> while statement </a> to read the lines line by line. The following is an example of outputting all lines to standard output (screen).
 
@@ -185,13 +185,13 @@ Use the <a href="/blog/20170521149524.html"> while statement </a> to read the li
 while (my $ line = <$ fh>) {
   print $ line;
 }
-</ pre>
+</pre>
 
 The line input operator reads one line and assigns it to a variable called $ line. This is done to the end of the file using a while statement.
 
 The line input operator returns an undef when it reaches the end of the file, so it escapes the while statement at the end of the file.
 
-<h3> File close </ h3>
+<h3> File close </h3>
 
 Close the file after reading or writing to it.
 
@@ -199,11 +199,11 @@ Use the <a href="/blog/20160312145776.html"> close function </a> to close the fi
 
 <pre>
 close $ fh;
-</ pre>
+</pre>
 
 Especially when writing to a file, the contents written to the file are completely reflected (flash) during the close process, so close is an important process.
 
-<h3> Write to file </ h3>
+<h3> Write to file </h3>
 
 Next, let's write to the file. To write to a file, first open the file in write mode ">".
 
@@ -212,30 +212,30 @@ Next, let's write to the file. To write to a file, first open the file in write 
 my $ file ='data.txt';
 open my $ fh,'>', $ file
   or die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 Use the <a href="/blog/20170404149131.html"> print function </a> to write a string to the file.
 
 <pre>
 print file handle string
-</ pre>
+</pre>
 
 Note that there is no comma between the filehandle and the string (one of the confusing and error-prone parts of Perl).
 
 <pre>
 my $ str = "Hello \ n";
 print $ fh $ str;
-</ pre>
+</pre>
 
 After writing, close the file. In the case of writing, writing to the file is completed when close is performed, so it is safe to add exception handling.
 
 <pre>
 close $ fh or die qw / Can't close file "$ file": $! /;
-</ pre>
+</pre>
 
 You can see that the string "Hello" is written in data.txt.
 
-<h3> Additional writing to file </ h3>
+<h3> Additional writing to file </h3>
 
 Let's do additional writing to the file. To write to a file, first open the file in the additional write mode ">>".
 
@@ -244,20 +244,20 @@ Let's do additional writing to the file. To write to a file, first open the file
 my $ file ='data.txt';
 open my $ fh,'>>', $ file
   or die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 Use the print function to write a string to a file.
 
 <pre>
 my $ str = "Hello \ n";
 print $ fh $ str;
-</ pre>
+</pre>
 
 After writing, close the file. In the case of writing, writing to the file is completed when close is performed, so it is safe to add exception handling.
 
 <pre>
 close $ fh or die qw / Can't close file "$ file": $! /;
-</ pre>
+</pre>
 
 When you run the program repeatedly, you can see that the character string "Hello" is added to data.txt.
 
@@ -265,15 +265,15 @@ When you run the program repeatedly, you can see that the character string "Hell
 Hello
 Hello
 Hello
-</ pre>
+</pre>
 
-<h3> Read the contents of the file at once </ h3>
+<h3> Read the contents of the file at once </h3>
 
 To read the entire contents of a file at once:
 
 <pre>
 my $ content = do {local $ /; <$ fh>};
-</ pre>
+</pre>
 
 This is confusing, but it is often described this way.
 
@@ -283,7 +283,7 @@ An input record separator is set for the special variable "$ /". By default, the
 
 <pre>
 local variable;
-</ pre>
+</pre>
 
 You can temporarily undef the contents of a variable until the end of scope. When the scope ends, the original value is restored.
 
@@ -302,9 +302,9 @@ my $ content = do {# create block
 
 The last evaluated value of "do {}" is assigned to # $ content
 # Input record separator value is restored
-</ pre>
+</pre>
 
-<h3> Line feed code </ h3>
+<h3> Line feed code </h3>
 
 A line feed code is a special character string that represents the end of a line. The line feed code differs depending on the OS. In Windows, it is a sequence of characters "0D 0A" in hexadecimal, and in Unix it is "0A".
 
@@ -316,9 +316,9 @@ my $ ln_win = "\ x0D \ x0A";
 
 # Unix line feed code
 my $ ln_unix = "\ x0A";
-</ pre>
+</pre>
 
-<h4> Behavior of line input operator </ h4>
+<h4> Behavior of line input operator </h4>
 
 When the line input operator "<file handle>" finds an input record separator, it retrieves the position immediately after it as one line. The input record separator is set to a variable called "$ /", which is "0D 0A" on Windows and "0A" on Unix.
 
@@ -328,23 +328,23 @@ $ / = "\ x0D \ x0A";
 
 # Unix input record separator
 $ / = "\ x0A";
-</ pre>
+</pre>
 
-<h4> behavior of chomp function </ h4>
+<h4> behavior of chomp function </h4>
 
 You can use the <a href="/blog/20080226120403.html"> chomp function </a> to remove the trailing newline, but it's actually removing the trailing input record separator.
 
 <pre>
 chomp string;
-</ pre>
+</pre>
 
 That is, you can change the line breaks that you remove by changing the input record separator.
 
-Characters output by <h4> \ n </ h4>
+Characters output by <h4> \ n </h4>
 
 \ n represents a newline as a code, but in Windows it is a sequence of characters "0D 0A" in hexadecimal, and in Unix it is "0A". This is a constant and cannot be changed.
 
-<h4> Edit Windows files on Unix </ h4>
+<h4> Edit Windows files on Unix </h4>
 
 Consider editing a Windwos file on Unix. Since it is on Unix, "0D 0A" is assigned to the default input record separator "$ /", and "0D 0A" is output for the escape sequence \ n. The line feed code of the file edited in Windows is "0D 0A", and it is necessary to correspond to this.
 
@@ -373,11 +373,11 @@ open my $ fh,'<', $ file
     print "$ line $ ln"; # Assuming printing to another file by redirect etc.
   }
 }
-</ pre>
+</pre>
 
 If you don't mind changing the line feed code that is output, it is better to output \ n.
 
-<h3> File read / write approach </ h3>
+<h3> File read / write approach </h3>
 
 If you want to read or write a file, you may think that you should open it in read / write mode in open mode, but when you actually read / write, it generally does not open in read / write mode. This is because if the system crashes during writing, the original contents will be destroyed. If you keep the original contents until the writing is completed, the original contents will remain even if it crashes during writing.
 
@@ -386,17 +386,17 @@ So, to read and write to a file, take the following approach.
 <ol>
   <li>
     Read the file contents
-  </ li>
+  </li>
   <li>
     Content update
-  </ li>
+  </li>
   <li>
     Export to temporary file
-  </ li>
+  </li>
   <li>
     Rename temporary file to original file
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 Write to a temporary file, then rename the temporary file to the original file name after the write is complete. Temporary file names should not overlap with other files.
 
@@ -428,101 +428,101 @@ close $ temp_fh or die qq / Can't open file "$ file": $! /;
 # (4) Change the temporary file name to the original file name
 move $ temp_file, $ file
   or die qq / Can't move "$ temp_file" to "$ file": $! /;
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100408127089.html"> File :: Copy </a>
 
-<h3> File I / O Techniques </ h3>
+<h3> File I / O Techniques </h3>
 
 Please refer to the following for various file input / output techniques.
 
-<h4> Handling CSV files </ h4>
+<h4> Handling CSV files </h4>
 
 <ul>
   <li>
     <a href="/blog/20080728121733.html"> Read the csv file and convert it to an array of arrays </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080729121734.html"> Read the csv file and convert it to an array of hashes </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Write to file </ h4>
+<h4> Write to file </h4>
 
 <ul>
   <li>
     <a href="/blog/20080804121794.html"> sysopen function --Specify the open mode in detail </a>-<a href="/blog/20080726121705.html"> Redirect the standard output and write it to a fileInclude </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20100204126425.html"> Binary mode --binmode function </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> File read / write </ h4>
+<h4> File read / write </h4>
 
 <ul>
   <li>
     <a href="/blog/20080809121824.html"> Read and write files safely </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> OS input / output mechanism </ h4>
+<h4> OS input / output mechanism </h4>
 
 <ul>
   <li>
     <a href="/blog/20080730121743.html"> Standard input, standard output, standard error output </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080731121760.html"> Standard I / O and redirection </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080801121768.html"> Pipe </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Unix-like filter programming </ h4>
+<h4> Unix-like filter programming </h4>
 
 <ul>
   <li>
     <a href="/blog/20080802121768.html"> Write Unix-like filter programming </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080803121776.html"> Write a filter program that can specify options </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Random access </ h4>
+<h4> Random access </h4>
 
 <ul>
   <li>
     <a href="/blog/20080808121826.html"> Sequential access and random access </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080810121833.html"> Read and write using random access. </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Buffering </ h4>
+<h4> Buffering </h4>
 
 <ul>
   <li>
     <a href="/blog/20080811121845.html"> What is buffering? </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080812121854.html"> Switch to command buffering </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> File lock </ h4>
+<h4> File lock </h4>
 
 <ul>
   <li>
     <a href="/blog/20080813121863.html"> What is file locking? </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080814121872.html"> Read and write files in order flock </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080815121881.html"> Lock the file using the lock file </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Create constructor </ span>
+      <span itemprop = "name"> Create constructor </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Creating a constructor </ h2>
+  </li>
+</ol>
+<h2> Creating a constructor </h2>
 
 
 
@@ -30,23 +30,23 @@ sub new {# Constructor implementation}
 sub title {# Implementation of accessor}
 sub author {# Implementation of accessor}
 
-</ pre>
+</pre>
 
-<h3> 1. What is a constructor? </ H3>
+<h3> 1. What is a constructor? </H3>
 
-<b> Objects are created based on the class </ b>. Forget a little about what an object is and what a class is, and remember that "objects are created from a class".
+<b> Objects are created based on the class </b>. Forget a little about what an object is and what a class is, and remember that "objects are created from a class".
 
 And a constructor is a method that creates an object. If you create a constructor
 
 <pre>
 my $ book = Book-> new;
-</ pre>
+</pre>
 
 You will be able to create an object with the description.
 
-The name <b> new </ b> is customarily used for the constructor name. But be sure to name the constructor new (because those who use your module expect the constructor name to be new)
+The name <b> new </b> is customarily used for the constructor name. But be sure to name the constructor new (because those who use your module expect the constructor name to be new)
 
-<h3> 2. Implementation of the simplest constructor </ h3>
+<h3> 2. Implementation of the simplest constructor </h3>
 
 Now let's implement the constructor. Below is the simplest constructor implementation. But the easiest is a little difficult.
 
@@ -56,46 +56,46 @@ sub new {
     my $ self = {};
     return bless $ self, $ class;
 }
-</ pre>
+</pre>
 
 Call the following
 
 <pre>
 my $ book = Book-> new;
-</ pre>
+</pre>
 
 What will be assigned to $ class when you do?
 
-The answer is <b> Book </ b>. The constructor new takes a <b> class name </ b> as the first argument.
+The answer is <b> Book </b>. The constructor new takes a <b> class name </b> as the first argument.
 
-<h3> 3. Prepare a hash reference </ h3>
+<h3> 3. Prepare a hash reference </h3>
 
 <pre>
   my $ self = {};
-</ pre>
+</pre>
 
 What is the line doing?
 
-This is actually <b> object-owned data </ ​​b>. It's important, so I'll say it again. The <b> object owns the data </ ​​b>. And, in general, the <b> hash reference </ b> is selected as the data.
+This is actually <b> object-owned data </​​b>. It's important, so I'll say it again. The <b> object owns the data </​​b>. And, in general, the <b> hash reference </b> is selected as the data.
 
 (To tell the truth, the object is the data itself. Remember that the object owns the data at first so it doesn't get confusing.)
 
-<h3> 4. Connect data to class </ h3>
+<h3> 4. Connect data to class </h3>
 
 Last line
 
 <pre>
 return bless $ self, $ class;
-</ pre>
+</pre>
 
 Has a function called bless.
 
 The bless function takes data in the first argument and the class name in the second argument, and connects the data and the class.
 
-Objects are created by <b> connecting data and classes </ b>. Then, I will return the tied one to the caller.
+Objects are created by <b> connecting data and classes </b>. Then, I will return the tied one to the caller.
 
-<h3> 5. What are objects in Perl? </ H3>
+<h3> 5. What are objects in Perl? </H3>
 
-A Perl object is the data associated with a <b> class </ b>. It doesn't mean anything more or less.
+A Perl object is the data associated with a <b> class </b>. It doesn't mean anything more or less.
 
 And the objects created in this way perform as well as the objects used in other languages.

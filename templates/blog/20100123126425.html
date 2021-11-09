@@ -1,33 +1,33 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> while statement </ span>
+      <span itemprop = "name"> while statement </span>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> while statement --Repeat processing </ h2>
+<h2> while statement --Repeat processing </h2>
 
-You can write a <strong> iterative process </ strong> using a while statement. Repeat the contents of the block while the condition is true.
+You can write a <strong> iterative process </strong> using a while statement. Repeat the contents of the block while the condition is true.
 
 <pre>
 while (condition) {
   ...
 }
-</ pre>
+</pre>
 
-<h3> Output numerical value from 0 to 2 </ h3>
+<h3> Output numerical value from 0 to 2 </h3>
 
 This is a sample that outputs a numerical value from 0 to 2 using a while statement. The variable "$ i" is incremented at the end of the while statement. When "$ i" becomes 3, the condition becomes false, so the while exits.
 
@@ -38,7 +38,7 @@ while ($ i <= 2) {
   print "$ i \ n";
   $ i ++;
 }
-</ pre>
+</pre>
 
 What is the difference between a while statement and a <a href="/blog/20080327120662.html"> for statement </a> (or <a href="/blog/20080328120673.html"> foreach statement </a>)? ??
 
@@ -54,11 +54,11 @@ for (my $ i = 0; $ i <= 2; $ i ++) {
 foreach my $ num (@nums) {
   print "$ num \ n";
 }
-</ pre>
+</pre>
 
 As a side note, in Perl, the for statement and the foreach statement are exactly the same and can be rewritten to each other.
 
-<h3> Sample using infinite loop </ h3>
+<h3> Sample using infinite loop </h3>
 
 A frequently used example of while is the description of an infinite loop. If you write 1 in the condition, the loop will repeat forever.
 
@@ -66,7 +66,7 @@ A frequently used example of while is the description of an infinite loop. If yo
 while (1) {
   ...
 }
-</ pre>
+</pre>
 
 To break out of the loop, use the <a href="/blog/20170527149589.html"> last statement </a>. Note that the loop escape is not a break statement but a last statement unlike C language.
 
@@ -82,9 +82,9 @@ while (1) {
     last;
   }
 }
-</ pre>
+</pre>
 
-<h3> Read lines in order from standard input / command line arguments </ h3>
+<h3> Read lines in order from standard input / command line arguments </h3>
 
 As an example often used in while statements, use <a href="/blog/20080722121673.html"> line input operator </a> to order lines from standard input or a file given as a command line argument. Let's load it into.
 
@@ -100,7 +100,7 @@ while (my $ line = <>) {
   # process
   print "Line: $ line \ n";
 }
-</ pre>
+</pre>
 
 In this sample, <a href="/blog/20080226120403.html"> chomp function </a> is used to remove line breaks and output with "Line:".
 
@@ -114,7 +114,7 @@ perl script.pl file
 
 #When reading from standard input using a pipe
 cat file> perl script.pl
-</ pre>
+</pre>
 
 This can be multiple files.
 
@@ -124,17 +124,17 @@ perl script.pl file1 file2
 
 #When reading from standard input using a pipe
 cat file1 file2> perl script.pl
-</ pre>
+</pre>
 
 
-<h3> Related information </ h3>
+<h3> Related information </h3>
 
 The iterative process is explained in detail below.
 
 <ul>
   <li>
     <a href="/blog/20170521149524.html"> Repeat with for statement and while statement </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Perl also has <a href="/blog/20171225151420.html"> do ~ while statement </a>, but since the next and last statements cannot be used as they are, it is strongly recommended to use the while statement. I recommend it.

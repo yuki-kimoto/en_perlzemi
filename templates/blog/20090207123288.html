@@ -1,38 +1,38 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop = "name"> Syntax </ span> </a>
+      <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> require --load module at runtime </ h2>
+  </li>
+</ol>
+<h2> require --load module at runtime </h2>
 
 
 
-Use <strong> require </ strong> to <strong> load modules at runtime </ strong>. Use loads the module at compile time, while require loads it at run time.
+Use <strong> require </strong> to <strong> load modules at runtime </strong>. Use loads the module at compile time, while require loads it at run time.
 
 <pre>
 #Load module
 require module name
-</ pre>
+</pre>
 
 The module name must be specified as a bare string. Strings enclosed in quotes or double quotes will not be accepted. It also does not accept variables.
 
 <pre>
 # Specify the module name with a bare string
 require CGI;
-</ pre>
+</pre>
 
 When you load a module, you can use the functions described in the loaded module with the fully qualified name.
 
@@ -41,20 +41,20 @@ require Carp;
 
 # You can use the carp module's croak function with a fully qualified name.
 Carp :: croak ("croak function");
-</ pre>
+</pre>
 
 The standard way to load a module is to use use, but there are times when you want to use require. If you use use, all modules will be loaded at compile time. Therefore, if the module is huge, it will take extra time to compile.
 
 If a module is not required and is a large module, you may be able to mitigate the performance impact by loading it at runtime using require as needed.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample using require.
 
 <pre>
 #Load the Carp module.
 require Carp;
-</ pre>
+</pre>
 
 require will import the module at runtime. This is useful if you want to selectively import modules.
 
@@ -71,6 +71,6 @@ elsif ($ ext eq'.xml') {
   require XML :: Simple;
   # ...
 }
-</ pre>
+</pre>
 
 Less module loading means faster boot times and less memory usage. With use, all modules will be loaded at compile time, even if they are written in a conditional branch such as an if statement.

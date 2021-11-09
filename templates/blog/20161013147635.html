@@ -1,16 +1,16 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> hash </ span>
+      <span itemprop = "name"> hash </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Understand Perl hashes </ h2>
+  </li>
+</ol>
+<h2> Understand Perl hashes </h2>
 
 
 
@@ -18,11 +18,11 @@ A description of Perl's "hash". Perl hashes are "associative arrays" in other la
 
 In an array, you could retrieve an element by specifying a number, but in an "associative array", you can retrieve an element by specifying a character string as a key.
 
-<h3> Hash basics </ h3>
+<h3> Hash basics </h3>
 
 The basis of hashing. Hash declaration and initialization. Hash output and assignment. You can think of a hash as an array from which you can get a value of a string as a subscript. You can retrieve the value using a character string as a key.
 
-<h4> Hash declaration and initialization </ h4>
+<h4> Hash declaration and initialization </h4>
 
 Declaring and initializing the hash is done as follows.
 
@@ -30,66 +30,66 @@ Declaring and initializing the hash is done as follows.
 my% fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
 #or
 my% fathers = (Taro =>'Kenji', Naoko =>'Yoshio');
-</ pre>
+</pre>
 
-The variable prefix is ​​<b> percent sign </ b> "%". (Key 1 => Value 1, Key 2 => Value 2, ...). Taro's father can be read as Kenji, Naoko's father as Yoshio
+The variable prefix is ​​<b> percent sign </b> "%". (Key 1 => Value 1, Key 2 => Value 2, ...). Taro's father can be read as Kenji, Naoko's father as Yoshio
 
-<h4> Hash element output </ h4>
+<h4> Hash element output </h4>
 
 <pre>
 print $ mothers {'Taro'};
-</ pre>
+</pre>
 
 When printing, $ instead of%. $ When dealing with a single element. Use {} to specify the key. (In the case of an array, it was []). {} Is read as a bracket. ([] Is brace. () Is parenthesis)
 
-<h3> Hash element assignment </ h3>
+<h3> Hash element assignment </h3>
 
 <pre>
 $ mothers {'Naoko'} ='Haruna';
-</ pre>
+</pre>
 
-<h3> Processing of each element of hash </ h3>
+<h3> Processing of each element of hash </h3>
 
 <ul>
   <li>
-    <a href="/blog/20080210120265.html"> Get all of the hashes --keys function </a> <span style = "color: red"> [Important] </ span>
-  </ li>
+    <a href="/blog/20080210120265.html"> Get all of the hashes --keys function </a> <span style = "color: red"> [Important] </span>
+  </li>
   <li>
     <a href="/blog/20100222126425.html"> Get all values ​​of a hash --values ​​function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080212120283.html"> Get all keys and values ​​of a hash --each function </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Hash manipulation </ h3>
+<h3> Hash manipulation </h3>
 
 <ul>
   <li>
-    <a href="/blog/20080213120291.html"> Check for the existence of a key --exists function </a> <span style = "color: red"> [Important] </ span>
-  </ li>
+    <a href="/blog/20080213120291.html"> Check for the existence of a key --exists function </a> <span style = "color: red"> [Important] </span>
+  </li>
   <li>
-    <a href="/blog/20080214120300.html"> Delete hash key --delete function </a> <span style = "color: red"> [Important] </ span>
-  </ li>
+    <a href="/blog/20080214120300.html"> Delete hash key --delete function </a> <span style = "color: red"> [Important] </span>
+  </li>
   <li>
     <a href="/blog/20080227120413.html"> Reverse function that swaps hash keys and values ​​</a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080215120307.html"> Hash slice ... Extract multiple values ​​of hash </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Hash reference </ h3>
+<h3> Hash reference </h3>
 
 You can create a hash reference as follows:
 
 <pre>
 my $ math_scores_ref = \% math_scores;
-</ pre>
+</pre>
 
 Prefix% with \ to generate a reference to the hash. Assign the generated reference to the scalar variable $ math_score_href
 
-<h4> Create a direct hash reference using an anonymous hash. </ h4>
+<h4> Create a direct hash reference using an anonymous hash. </h4>
 
 <pre>
 my $ math_scores_ref2 = {
@@ -97,30 +97,30 @@ my $ math_scores_ref2 = {
   Kenta => 100,
   Taro => 34,
 };
-</ pre>
+</pre>
 
 You can use {} instead of () to create a reference to a direct hash
 
-<h4> Access the hash element </ h4>
+<h4> Access the hash element </h4>
 
 <pre>
 $ math_scores_ref-> {Aiko}
-</ pre>
+</pre>
 
-<h4> Extract the hash from the hash reference </ h4>
+<h4> Extract the hash from the hash reference </h4>
 
 Dereference to retrieve a hash from a hash reference.
 
 <pre>
 my% hash =% $ hash_ref;
 my% hash =% {$ hash_ref};
-</ pre>
+</pre>
 
 You can also dereference a reference to a hash to retrieve the hash.
 
 <pre>
 my% math_scores =% $ math_scores;
-</ pre>
+</pre>
 
 You can dereference and retrieve hashes with% $ math_scores.
 
@@ -128,27 +128,27 @@ You can use "-> {key}" if you only need one element.
 
 <pre>
 $ math_scores-> {Taro};
-</ pre>
+</pre>
 
 You can read more about hash references here.
 
 <ul>
   <li>
     <a href="/blog/20180208151809.html"> Hash reference </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Multidimensional data structure using hash </ h3>
+<h3> Multidimensional data structure using hash </h3>
 
 The multidimensional data structure using hashes is explained in detail in the following articles. You can learn about "array hash", "hash array", and "hash hash".
 
 <ul>
   <li>
     <a href="/blog/20100930127859.html"> Manipulate "multidimensional data structure" freely with "array" and "hash" </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Column "It's Perl's fault that associative arrays are called hashes" </ h3>
+<h3> Column "It's Perl's fault that associative arrays are called hashes" </h3>
 
 Perl has made a great decision to incorporate associative arrays as a feature of the language. It's incredibly convenient. This was a huge success, and almost all other scripting languages ​​have been affected to incorporate associative arrays into the language itself.
 
@@ -156,9 +156,9 @@ Perhaps the name associative array was long, Perl decided to call it a hash. Thi
 
 But, surprisingly, it seems to represent the data structure exactly.
 
-<h3> Sample code </ h3>
+<h3> Sample code </h3>
 
-<h4> Hash basics </ h4>
+<h4> Hash basics </h4>
 
 The basis of hashing. Hash declaration and initialization. This is a sample of hash output and assignment.
 
@@ -190,7 +190,7 @@ print "\ n";
 print "2: Hash element assignment \ n";
 $ mathers {'Naoko'} ='Haruna';
 print "\ $ mathers {'Naoko'} =", $ mathers {'Naoko'}. "\ n";
-</ pre>
+</pre>
 Execution result
 <pre>
 1: Hash element output
@@ -198,9 +198,9 @@ $ mothers {'Taro'} = Tomoko
 
 2: Assignment of hash elements
 $ mothers {'Naoko'} = Haruna
-</ pre>
+</pre>
 
-<h4> Hash reference </ h4>
+<h4> Hash reference </h4>
 
 This is a sample using the hash reference.
 
@@ -239,7 +239,7 @@ print "3: Access the hash element. \ N";
 print "\ $ math_scores_ref-> {Aiko} = $ math_scores_ref-> {Aiko} \ n";
 print "\ $ math_scores_ref-> {Kenta} = $ math_scores_ref-> {Kenta} \ n";
 
-</ pre>
+</pre>
 
 Execution result
 <pre>
@@ -261,9 +261,9 @@ $ math_scores_ref2 = {
 3: Access the hash element.
 $ math_scores_ref-> {Aiko} = 89
 $ math_scores_ref-> {Kenta} = 100
-</ pre>
+</pre>
 
-<h4> Hash reference dereference </ h4>
+<h4> Hash reference dereference </h4>
 
 This is a sample to dereference the hash reference.
 
@@ -291,7 +291,7 @@ print "2: Delete one key \ n";
 delete $ math_scores-> {Taro};
 
 print Data :: Dumper-> Dump ([$ math_scores], ['$ math_scores']);
-</ pre>
+</pre>
 Execution result
 <pre>
 1: Dereference and output all elements of the hash
@@ -304,4 +304,4 @@ $ math_scores = {
                  'Kenji' => 54,
                  'Naoko' => 54
                };
-</ pre>
+</pre>

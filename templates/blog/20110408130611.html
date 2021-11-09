@@ -5,19 +5,19 @@ nt; filename = pictures.csv');
   return $ self-> render (data => $ content);
 };
 app-> start;
-</ pre>
+</pre>
 
 Use the Text :: CSV :: Encoded module to create CSV data. The only way to convert the data of one record to a row is to use the print method, which is a method for printing to a filehandle. Therefore, Perl's scalar input / output function is used to output to scalar variables.
 
 You can name the file using the Content-Disposition header. Let's also specify the Content-Type so that we can see that it is CSV data. When drawing, CSV data is binary data (not an internal string), so use the data option.
 
-<h3> Specify the class that describes the template when drawing </ h3>
+<h3> Specify the class that describes the template when drawing </h3>
 
-You can specify <strong> template_class </ strong> as an argument of the render method for the class that describes the template when drawing.
+You can specify <strong> template_class </strong> as an argument of the render method for the class that describes the template when drawing.
 
 <pre>
 $ c-> render (template_class => $ class);
-</ pre>
+</pre>
 
 This is very useful if you want to write the template directly in a plugin etc. Mojolicious plugins are very flexible and allow you to write and incorporate the web application itself.
 
@@ -43,14 +43,14 @@ __DATA__
 @@ viewer.html.ep
 <html>
   <head>
-    <title> Viewer </ title>
+    <title> Viewer </title>
   <body>
      Viewer <% = lc'A'%>
-  </ body>
-</ html>
-</ pre>
+  </body>
+</html>
+</pre>
 
-<h3> Dynamically deliver large files </ h3>
+<h3> Dynamically deliver large files </h3>
 
 What if you want to dynamically deliver large files in your web application? For example, if you don't know the data size and want to distribute it part by part. If you put everything on the memory, the memory may be overwhelmed, so I don't want to put everything on the memory.
 
@@ -83,20 +83,20 @@ get'/ sizeunknowndata' => sub {
   };
   $ self-> $ cb;
 };
-</ pre>
+</pre>
 
 When there is no more data to read, close the filehandle, undefine $ cb and remove the reference.
 
-<h4> Addendum </ h4>
+<h4> Addendum </h4>
 
 The title "Deliver a large file" was misleading. Changed the title to "Deliver large files dynamically".
 
 Large static files can usually be delivered under "public" without straining memory. Also, Mojolicious is an asynchronous I / O, so processing will not be blocked.
 
 
-<h3> Draw a 404 Not Found page </ h3>
+<h3> Draw a 404 Not Found page </h3>
 
-Use <strong> reply-> not_found </ strong> to draw a 404 Not found page (the page to display when the page is not found). Twice
+Use <strong> reply-> not_found </strong> to draw a 404 Not found page (the page to display when the page is not found). Twice
 
 <pre>
 get'/' => sub {
@@ -109,16 +109,16 @@ get'/' => sub {
 
   $ self-> render;
 }
-</ pre>
+</pre>
 
-<h4> Changes in Mojolicious 6 </ h4>
+<h4> Changes in Mojolicious 6 </h4>
 
 The rendering of the 404 Not Found page has changed from render_not_found to reply-> not_found.
 
 
-<h3> Draw exception (error) page </ h3>
+<h3> Draw exception (error) page </h3>
 
-You may want to show the error page to the user if something goes wrong with unintended processing. Use <strong> reply-> exception </ strong> to draw such a page. Twice
+You may want to show the error page to the user if something goes wrong with unintended processing. Use <strong> reply-> exception </strong> to draw such a page. Twice
 
 <pre>
 get'/' => sub {
@@ -131,14 +131,14 @@ get'/' => sub {
 
   $ self-> render;
 }
-</ pre>
+</pre>
 
-<h4> Changes in Mojolicious 6 </ h4>
+<h4> Changes in Mojolicious 6 </h4>
 
 The render_exception method for rendering exception pages has been changed to reply-> exception.
 
 
-<h3> How to use JSON :: XS to draw JSON </ h3>
+<h3> How to use JSON :: XS to draw JSON </h3>
 
 Mojolicious has its own module that draws JSON called Mojo :: JSON, which is written in pure Perl. If you want to use JSON :: XS to draw JSON fast, I think it's a good idea to replace the handler for JSON as follows.
 
@@ -159,10 +159,10 @@ get'/' => sub {
 };
 
 app-> start;
-</ pre>
+</pre>
 
 Mojo :: JSON :: XS is a module that has the same interface as Mojo :: JSON and uses JSON :: XS internally. It's included in a package called Mojo :: JSON :: Any, so install it when you use it.
 
 <pre>
 cpan Mojo :: JSON :: Any
-</ pre>
+</pre>

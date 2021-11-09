@@ -1,79 +1,79 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop = "name"> Module </ span> </a>
+        <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20121214135538.html">
-      <span itemprop = "name"> PDL </ span>
+      <span itemprop = "name"> PDL </span>
     </a>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
-<h2> Representing complex numbers / Statistical analysis by PDL </ h2>
+  </li>
+</ol>
+<h2> Representing complex numbers / Statistical analysis by PDL </h2>
 
 
 
-Complex numbers are represented using the <b> i </ b> function, which represents the imaginary unit that becomes available when you read <b> PDL :: Complex </ b>.
+Complex numbers are represented using the <b> i </b> function, which represents the imaginary unit that becomes available when you read <b> PDL :: Complex </b>.
 
-For example, to represent the complex number <b> 3 + 2i </ b>:
+For example, to represent the complex number <b> 3 + 2i </b>:
 
 <pre>
 use PDL;
 use PDL :: Complex;
 
 my $ num = 3 + 2 * i;
-</ pre>
+</pre>
 
 When this complex number is output, it will be displayed as follows.
 
 <pre>
 3 + 2i
-</ pre>
+</pre>
 
-<h3> Use the imaginary unit i </ h3>
+<h3> Use the imaginary unit i </h3>
 
-PDL can handle imaginary numbers. To handle imaginary numbers, load <b> PDL :: PDL :: Complex </ b>.
+PDL can handle imaginary numbers. To handle imaginary numbers, load <b> PDL :: PDL :: Complex </b>.
 
 <pre>
 use PDL :: Complex;
-</ pre>
+</pre>
 
-Then the <b> i </ b> function that represents the imaginary unit is imported.
+Then the <b> i </b> function that represents the imaginary unit is imported.
 
 <pre>
 i
-</ pre>
+</pre>
 
 When the imaginary unit is output, it is output as follows.
 
 <pre>
 0 + 1i
-</ pre>
+</pre>
 
 The imaginary unit i was a number that squared to -1. Let's square it.
 
 <pre>
 my $ ret = i * i;
-</ pre>
+</pre>
 
 When this is output, it will be displayed as follows.
 
 <pre>
 -1 + 0i
-</ pre>
+</pre>
 
-<h3> Four arithmetic operations on complex numbers </ h3>
+<h3> Four arithmetic operations on complex numbers </h3>
 
-Perform four arithmetic operations on complex numbers using <b> + </ b>, <b>-</ b>, <b> * </ b>, <b> / </ b> as in normal operations. I can.
+Perform four arithmetic operations on complex numbers using <b> + </b>, <b>-</b>, <b> * </b>, <b> / </b> as in normal operations. I can.
 
 <pre>
 use PDL;
@@ -81,38 +81,38 @@ use PDL :: Complex;
 
 my $ num1 = 1 + 2 * i;
 my $ num2 = 3 + 4 * i;
-</ pre>
+</pre>
 
-<h4> Japanese </ h4>
+<h4> Japanese </h4>
 <pre>
 # 4 + 6i
 my $ sum = $ num1 + $ num2;
-</ pre>
+</pre>
 
-<h4> Difference </ h4>
+<h4> Difference </h4>
 
 <pre>
 # 2 + 2i
 my $ sub = $ num2- $ num1;
-</ pre>
+</pre>
 
-<h4> Product </ h4>
+<h4> Product </h4>
 
 <pre>
 # -5 + 10i
 my $ multi = $ num1 * $ num2;
-</ pre>
+</pre>
 
-<h4> Commerce </ h4>
+<h4> Commerce </h4>
 
 <pre>
 # 0.44 + 0.08i
 my $ div = $ num1 / $ num2;
-</ pre>
+</pre>
 
-<h3> Calculate the nth root </ h3>
+<h3> Calculate the nth root </h3>
 
-Use the <b> Croots </ b> function to calculate the nth root.
+Use the <b> Croots </b> function to calculate the nth root.
 
 <pre>
 use PDL;
@@ -120,27 +120,27 @@ use PDL :: Complex;
 
 # 5 cube root
 my $ nums = Croots (5, 3);
-</ pre>
+</pre>
 
 The output of the calculation result is as follows.
 
 <pre>
 [1.85398 + 0.496773i -1.35721 + 1.35721i -0.496773 -1.85398i]
-</ pre>
+</pre>
 
-<h3> Convert real numbers to complex numbers </ h3>
+<h3> Convert real numbers to complex numbers </h3>
 
-Use the <b> r2C </ b> function to convert a real number to a complex number.
+Use the <b> r2C </b> function to convert a real number to a complex number.
 
 <pre>
 use PDL;
 use PDL :: Complex;
 
 my $ num = r2C 5;
-</ pre>
+</pre>
 
 The output result is as follows.
 
 <pre>
 5 + 0i
-</ pre>
+</pre>

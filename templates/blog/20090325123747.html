@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Inheritance mechanism </ span>
+      <span itemprop = "name"> Inheritance mechanism </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Inheritance mechanism </ h2>
+  </li>
+</ol>
+<h2> Inheritance mechanism </h2>
 
 
 
 I will explain the mechanism of inheritance in Perl.
 
-<h3> 1. Inheritance mechanism </ h3>
+<h3> 1. Inheritance mechanism </h3>
 
 The inheritance mechanism is that the method is searched for the upper class. Let's take a look at the previous code again.
 
@@ -46,17 +46,17 @@ package main;
 # Use button class
 my $ button = Button-> new;
 print $ button-> x;
-</ pre>
+</pre>
 
 The Button class didn't have a method called x, but it was calling a method called x. I explained that this is because it inherits with the description @ISA = ('Component').
 But in reality, it's just a method search.
 
-<h3> 2. Method search algorithm </ h3>
+<h3> 2. Method search algorithm </h3>
 
 The following is the method search algorithm.
 
 <blockquote>
 If your package (Button in this example) has an x ​​method, call it. If not, call the x method of the package (Component in this example) contained in @ISA.
-</ blockquote>
+</blockquote>
 
 Repeat this until the top superclass. Here is the implementation of inheritance in Perl.

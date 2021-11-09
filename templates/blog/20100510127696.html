@@ -1,39 +1,39 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Archive :: Tar --Create and extract tar file </ h2>
+  </li>
+</ol>
+<h2> Archive :: Tar --Create and extract tar file </h2>
 
 
 
-You can use <strong> Archive :: Tar </ strong> to extract or create a tar file.
+You can use <strong> Archive :: Tar </strong> to extract or create a tar file.
 
 <pre>
 #Loading modules and creating objects
 use Archive :: Tar;
 my $ tar = Archive :: Tar-> new;
-</ pre>
+</pre>
 
-Use the <strong> read </ strong> method to read the tar file information into memory. To extract the file, use the <strong> extract </ strong> method after loading the tar file. The file will be expanded to the current directory.
+Use the <strong> read </strong> method to read the tar file information into memory. To extract the file, use the <strong> extract </strong> method after loading the tar file. The file will be expanded to the current directory.
 
 <pre>
 # Extract tar file
 $ tar-> read ('archive.tar');
 $ tar-> extract;
-</ pre>
+</pre>
 
 You can also extract the tar file if it is compressed in gzip format. It will automatically determine if the file is compressed in gzip format.
 
@@ -41,9 +41,9 @@ You can also extract the tar file if it is compressed in gzip format. It will au
 # Extract tar file compressed in gzip format
 $ tar-> read ('archive.tar.gz');
 $ tar-> extract;
-</ pre>
+</pre>
 
-To create a tar file, add the file with the <strong> add_files </ strong> method and then write to the tar file with the <strong> write </ strong> method. After changing the current directory, add the file name with add_files with a relative path.
+To create a tar file, add the file with the <strong> add_files </strong> method and then write to the tar file with the <strong> write </strong> method. After changing the current directory, add the file name with add_files with a relative path.
 
 <pre>
 #Create tar file
@@ -53,53 +53,53 @@ chdir $ curdir
 
 $ tar-> add_files ('xxx.txt','dir / yyy.txt');
 $ tar-> write ('archive.tar');
-</ pre>
+</pre>
 
 You can also create a tar file compressed in gzip format. When compressing to gzip format, specify a value from 2 to 9 indicating the compression ratio in the second argument. The larger the number, the higher the compression ratio.
 
 <pre>
 #Create tar.gz file
 $ tar-> write ('archive.tar.gz', 9);
-</ pre>
+</pre>
 
-<h3> Archive :: Tar's Other Techniques </ h3>
+<h3> Archive :: Tar's Other Techniques </h3>
 
 If you specify the file name in the argument of extract, you can extract only the specified file.
 
 <pre>
 # Extract only specified files
 $ tar-> extract ('xxx.txt','dir / yyy.txt');
-</ pre>
+</pre>
 
-Use the <strong> list_files </ strong> method to find out which files are contained in the tar file.
+Use the <strong> list_files </strong> method to find out which files are contained in the tar file.
 
 <pre>
 #Get the list of files contained in the tar file
 my @files = $ tar-> list_files;
-</ pre>
+</pre>
 
-Use the <strong> remove </ strong> method to remove the specified file from the tar file.
+Use the <strong> remove </strong> method to remove the specified file from the tar file.
 
 <pre>
 #Remove the specified file from the tar file
 $ tar-> remove ('xxx.txt');
-</ pre>
+</pre>
 
-Use the <strong> rename </ strong> method to rename the file contained in the tar file.
+Use the <strong> rename </strong> method to rename the file contained in the tar file.
 
 <pre>
 #Rename the file contained in the tar file
 $ tar-> rename ('from.txt','to.txt');
-</ pre>
+</pre>
 
-You can use the <strong> clear method </ strong> to clear the information in the tar file in memory.
+You can use the <strong> clear method </strong> to clear the information in the tar file in memory.
 
 <pre>
 #Clear tar file information in memory
 $ tar-> clear;
-</ pre>
+</pre>
 
-<h3> Archive :: Tar FAQ </ h3>
+<h3> Archive :: Tar FAQ </h3>
 
 Q. Is it possible to specify a directory and make all the files contained in it a tar file?
 A. There is no such method, so you need to devise it. Use the File :: Find module, which can search all files recursively. This is a sample to create a tar file from all the files (including the top directory itself) contained under the directory named top.
@@ -123,7 +123,7 @@ find (sub {
 
 $ tar-> add_files (@files);
 $ tar-> write ("$ top.tar");
-</ pre>
+</pre>
 
 Q. Is it possible to include the symbolic linked file in the tar file?
 A. Yes. Set the package variable $ Archive :: Tar :: FOLLOW_SYMLINK to 1.
@@ -132,6 +132,6 @@ A. Yes. Set the package variable $ Archive :: Tar :: FOLLOW_SYMLINK to 1.
 # Include the symbolic link destination file in the tar file
 local $ Archive :: Tar :: FOLLOW_SYMLINK = 1;
 $ tar-> write ('archive.tar');
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20080309120507.html"> local --Temporarily save and restore package variables </a>

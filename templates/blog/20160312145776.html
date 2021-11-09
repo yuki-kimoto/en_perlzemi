@@ -1,32 +1,32 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> close function-close file handle </ h2>
+  </li>
+</ol>
+<h2> close function-close file handle </h2>
 
 
-Use the <strong> close function </ strong> to close the <strong> filehandle </ strong>.
+Use the <strong> close function </strong> to close the <strong> filehandle </strong>.
 
 <pre>
 close $ fh;
-</ pre>
+</pre>
 
 In a little more detail, when the close function is called, the current buffer is flushed and then the filehandle is closed.
 
-<h3> Is it necessary to close the file handle with the close function? </ H3>
+<h3> Is it necessary to close the file handle with the close function? </H3>
 
 Is it necessary to close the file handle with the close function after opening the file with the open function? It is not always necessary.
 
@@ -34,13 +34,13 @@ In general, open the file as follows:
 
 <pre>
 open (my $ fh,'<', $ file);
-</ pre>
+</pre>
 
 "$ Fh" is a lexical variable. Then, when the scope is over, the lexical variables are released. Then, when it is released, the close function is automatically called. Files are also one scope. So if a lexical variable has a filehandle assigned to it, you usually don't need to call the close function.
 
 Here are some examples when you need to use the close function.
 
-<h4> When a file handle is assigned to a type glob or symbol </ h4>
+<h4> When a file handle is assigned to a type glob or symbol </h4>
 
 Filehandles can also be assigned to typeglobs and filehandles. In old source code, you will often see the following open.
 
@@ -50,11 +50,11 @@ open (* FH,'<', $ file)
 
 # Symbol
 open (FH,'<', $ file)
-</ pre>
+</pre>
 
 In such a case, if you do not explicitly close it, the file handle will remain open even after the scope ends, so let's close it. If you have a short program and the program quits quickly, Global Destruction will close the file, so you don't have to close it, but it's a good idea to do so.
 
-<h4> If you want to flush the buffer immediately and close the filehandle </ h4>
+<h4> If you want to flush the buffer immediately and close the filehandle </h4>
 
 The close function flushes the buffer and then closes the file handle. A buffer is data that has not yet been written to a file.
 
@@ -62,6 +62,6 @@ Suppose you open a filehandle in write mode and write data with the print functi
 
 In such a case, if you want to flush immediately, you can use the close function.
 
-<h4> When you need to open a pipe, socket, etc. and explicitly close it </ h4>
+<h4> When you need to open a pipe, socket, etc. and explicitly close it </h4>
 
 If you use the fork and open functions to open multiple pipes, sockets, etc., you may want to close only the write side or only the read side. In that case, explicitly call the close function.

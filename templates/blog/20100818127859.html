@@ -1,31 +1,31 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-      <span itemprop = "name"> XS </ span> </a>
+      <span itemprop = "name"> XS </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> perlapi --Data manipulation functions in XS </ h2>
+  </li>
+</ol>
+<h2> perlapi --Data manipulation functions in XS </h2>
 
 
 
-<b> perlapi </ b> is an official API for manipulating Perl data with XS, and is a macro or function written in C language.
+<b> perlapi </b> is an official API for manipulating Perl data with XS, and is a macro or function written in C language.
 
-<h3> Output, scalar, standard input / output </ h3>
+<h3> Output, scalar, standard input / output </h3>
 
 It seems that XS is easy to understand if you understand the correspondence between Perl and XS (C language) API.
 
-<h4> Output to standard output </ h4>
+<h4> Output to standard output </h4>
 
 <pre>
 #Perl
@@ -33,11 +33,11 @@ print "Hello";
 
 # XS
 PerlIO_printf (PerlIO_stdout (), "Hello");
-</ pre>
+</pre>
 
 PerlIO_printf is a function that corresponds to printf in the C standard library. The first argument is a PerlIO * type variable, and the second argument is a char * type variable. The standard output can be obtained with the PerlIO_stdout function. In XS, the standard library of standard input / output C is not used, but the functions provided by Perl are used. This is detailed in a document called perlapio.
 
-<h4> String </ h4>
+<h4> String </h4>
 
 <pre>
 #Perl
@@ -45,7 +45,7 @@ my $ str = "Hello";
 
 # XS
 SV * sv_str = newSVpv ("Hello", 0);
-</ pre>
+</pre>
 
 Perl scalars support SV * in XS. You can use the newSVpv function to create an SV * that represents a <a href="/blog/20161003147558.html"> string </a>. The first argument is a string. The second argument is a STRLEN type argument that specifies the length of the string. If you specify 0, the length of the character string is automatically determined.
 
@@ -53,7 +53,7 @@ Others include the newSVpvn and newSVpvs functions, which focus on efficiency.
 
 The C language API is often omitted, so it's difficult to remember, but I have to do my best until I get used to it. In SV, S means scalar and V means value. p in newSVpv means pointer. This effectively represents a string. So p is remembered as a string.
 
-<h4> Numerical value </ h4>
+<h4> Numerical value </h4>
 
 <pre>
 #Unsigned integer
@@ -62,7 +62,7 @@ my $ num = 1;
 
 #XS
 SV * sv_num = newSVuv (5);
-</ pre>
+</pre>
 
 <pre>
 # Integer
@@ -71,7 +71,7 @@ my $ num = -1;
 
 #XS
 SV * sv_num = newSViv (-1);
-</ pre>
+</pre>
 
 <pre>
 # Numerical value
@@ -80,11 +80,11 @@ my $ num = 1.14;
 
 #XS
 SV * sv_num = newSVnv (1.14);
-</ pre>
+</pre>
 
 Perl treats all <a href="/blog/20161026147748.html"> numbers </a> as floating point, but internally they are unsigned integers (UV type), integers ( There are three types: IV type) and numerical type (NV type). Numeric types are the most versatile, but unsigned integers and integers are better for efficiency. These are retained as SV * internal values. UV U is "unsigned int" u. I in IV is i in int. NV's N is number n.
 
-<h4> Undefined value (corresponding to undef) </ h4>
+<h4> Undefined value (corresponding to undef) </h4>
 
 In XS, Perl's <a href="/blog/20100220126425.html"> undef </a> is represented by & PL_sv_undef.
 
@@ -94,11 +94,11 @@ my $ val = undef;
 
 # XS
 SV * sv_val = & PL_sv_undef;
-</ pre>
+</pre>
 
-<h4> Check if the value is defined (corresponding to the defined function) </ h4>
+<h4> Check if the value is defined (corresponding to the defined function) </h4>
 
-Use the <b> SvOK </ b> function to see if a value of type SV * is defined. This is the equivalent of Perl's <a href="/blog/20100219126425.html"> defined function </a>.
+Use the <b> SvOK </b> function to see if a value of type SV * is defined. This is the equivalent of Perl's <a href="/blog/20100219126425.html"> defined function </a>.
 
 <pre>
 # Perl
@@ -106,19 +106,19 @@ if (defined $ val) {...}
 
 # XS
 if (SvOK (sv_val)) {...}
-</ pre>
+</pre>
 
-<h4> Conversion from SV * to char * type </ h4>
+<h4> Conversion from SV * to char * type </h4>
 
 If SV * contains a character string or number, it must be of char * type when it is used in other functions.
 
 <pre>
 char * str = SvPV_nolen (sv_some);
-</ pre>
+</pre>
 
 The first argument of the SvPV_nolen function is an SV * type variable. The length will be calculated automatically.
 
-<h4> File input / output </ h4>
+<h4> File input / output </h4>
 
 <pre>
 #Perl
@@ -153,11 +153,11 @@ print_line (...)
     }
     PerlIO_close (infh);
 }
-</ pre>
+</pre>
 
 difficult. I wonder if this is the file input / output.
 
-<h4> Keep SV * volatile </ h4>
+<h4> Keep SV * volatile </h4>
 
 Whenever you create an SV *, make it volatile by sv_2mortal. Then, it will be automatically released at the position where it goes out of the scope.
 
@@ -166,14 +166,14 @@ The description method to prevent memory leak in XS is explained below.
 <ul>
   <li>
     <a href="/blog/20141220141904.html"> How to write a program without causing a memory leak in XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Discover APIs for Perl operations </ h4>
+<h4> Discover APIs for Perl operations </h4>
 
 In order to write XS, it is necessary to perform the operation that is usually done in Perl with the API of C language. This is quite difficult, but since all the APIs published in perlapi and perlapio are listed, search here. Perlguts, which explains the inside of Perl, is also helpful.
 
-<h3> Array manipulation </ h3>
+<h3> Array manipulation </h3>
 
 How to write in XS corresponding to the operation of <a href="/blog/20161012147627.html"> array </a>.
 
@@ -185,7 +185,7 @@ my @nums;
 
 # XS
 AV * av_nums = newAV ();
-</ pre>
+</pre>
 
 Substitution.
 <pre>
@@ -194,7 +194,7 @@ $ nums [0] = 1;
 
 # XS
 av_store (av_nums, 0, newSVuv (1));
-</ pre>
+</pre>
 
 Get the element. Since av_fetch returns a pointer to SV *, you need to remove the pointer with *. The third argument specifies whether to create the element if it does not exist. Since av_fetch returns NULL if there is no element, you need to check it before dereferencing.
 
@@ -205,7 +205,7 @@ my $ num = $ nums [0];
 # XS
 SV ** const sv_num_ptr = av_fetch (nums, 0, FALSE);
 SV * const sv_num = num_ptr? * Sv_num_ptr: & PL_sv_undef;
-</ pre>
+</pre>
 
 The size of the array.
 
@@ -215,7 +215,7 @@ my $ count = @nums;
 
 # XS (Note that a value 1 smaller than the length is returned due to historical reasons)
 int count = av_len (nums) + 1;
-</ pre>
+</pre>
 
 push function.
 
@@ -225,7 +225,7 @@ push @nums, 1;
 
 # XS
 av_push (av_nums, newSVuv (1));
-</ pre>
+</pre>
 
 pop function.
 
@@ -235,7 +235,7 @@ my $ num = pop @nums;
 
 # XS
 SV * sv_num = av_pop (av_nums);
-</ pre>
+</pre>
 
 shift function.
 
@@ -245,7 +245,7 @@ my $ num = shift @nums;
 
 # XS
 SV * sv_num = av_shift (av_nums);
-</ pre>
+</pre>
 
 unshift function. Since av_unshift does not add a value to the beginning, it just adds an empty area to the beginning, so you need to set the value in av_store.
 
@@ -256,7 +256,7 @@ unshift @nums, 1;
 # XS
 av_unshift (av_nums, 1);
 av_store (av_nums, 0, newSVuv (1));
-</ pre>
+</pre>
 
 Empty the array.
 
@@ -266,13 +266,13 @@ Empty the array.
 
 # XS
 av_clear (av_nums);
-</ pre>
+</pre>
 
-<h3> Hash operation </ h3>
+<h3> Hash operation </h3>
 
 How to write in XS corresponding to the operation of <a href="/blog/20161013147635.html"> hash </a>.
 
-<h4> Confirmation of key existence </ h4>
+<h4> Confirmation of key existence </h4>
 
 <pre>
 # Perl
@@ -280,33 +280,33 @@ exists $ hash {"key"};
 
 # XS
 hv_exists (hash, "key", strlen ("key"));
-</ pre>
+</pre>
 
-<h3> Creating an array of hashes </ h3>
+<h3> Creating an array of hashes </h3>
 
 I've been practicing XS recently, and I'm making it with the following policy for the time being, but I'm not sure if it matches.
 
 <ol>
   <li>
     The return value and arguments are written in one line
-  </ li>
+  </li>
   <li>
     Use only the PPCODE section.
-  </ li>
+  </li>
   <li>
     Enclose the source code in {} so that you can declare variables at the beginning
-  </ li>
+  </li>
   <li>
     The return value should be only one SV *. Substitute in ST (0) and then XSRETURN (1).. Ignore the warning that you are not using RETVAL.
-  </ li>
+  </li>
   <li>
     SV *, AV *, HV * execute sv_2mortal immediately after creating. Failure to do this will result in a memory leak. You don't have to create an SV * and sv_2mortal only if you want it to be an element of a hash or array.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 When writing XS, I will try to write it like this for a while. The XS grammar is quite complicated, so I want to write it as simply and consistently as possible. Let's try for a while how often this works.
 
-<h4> Creating an array of hashes </ h4>
+<h4> Creating an array of hashes </h4>
 
 Creating an array of hashes.
 
@@ -364,11 +364,11 @@ SV * return_array_of_hash ()
   xPUSHs (sv_ret);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
 AV * is an array and HV * is a hash. newAV creates an empty array. newHV creates an empty hash. hv_store sets the hash value, the third argument is the key length, and the fifth argument is 0, the hash value is calculated automatically. newRV_inc is a function that creates a reference. The argument of XSRETURN is the number of return values. The return value is pushed onto the stack with the XPUSHs macro.
 
-<h3> Creating an array of hashes Part 2 </ h3>
+<h3> Creating an array of hashes Part 2 </h3>
 
 Based on gfx's advice, I rewrote the creation of the hash array. The principle of always making it mortal immediately after creating SV *, AV *, HV *, when creating a character string, do not specify the number of characters when setting the hash element, for the array or hash element If you do, you have to increase the reference count by one. After that, I defined a macro that can be written as consistently and simply as possible. I don't know.
 
@@ -410,13 +410,13 @@ SV * return_array_of_hash ()
   ST (0) = new_mRV (persons);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h3> String manipulation </ h3>
+<h3> String manipulation </h3>
 
 <a href="/blog/20161003147558.html"> string </a> operation in XS.
 
-<h4> Creating a string </ h4>
+<h4> Creating a string </h4>
 
 <pre>
 # Perl
@@ -424,9 +424,9 @@ my $ str = "abc";
 
 # XS
 SV * sv_str = newSVpv ("abc", 0);
-</ pre>
+</pre>
 
-<h4> Copy of string </ h4>
+<h4> Copy of string </h4>
 
 <pre>
 # Perl
@@ -434,9 +434,9 @@ my $ str2 = $ str1;
 
 # XS
 SV * sv_str2 = newSV (sv_str1);
-</ pre>
+</pre>
 
-<h4> String length </ h4>
+<h4> String length </h4>
 
 <pre>
 # Perl
@@ -444,9 +444,9 @@ my $ length = length $ str;
 
 # XS
 STRLEN sv_length = sv_len (sv_str);
-</ pre>
+</pre>
 
-<h4> Concatenation of strings </ h4>
+<h4> Concatenation of strings </h4>
 
 <pre>
 # Perl
@@ -456,9 +456,9 @@ $ str. = "de";
 # XS
 SV * sv_str = newSVpv ("abc", 0);
 sv_catpv (sv_str, "de");
-</ pre>
+</pre>
 
-<h4> Variable expansion (or sprintf) </ h4>
+<h4> Variable expansion (or sprintf) </h4>
 
 <pre>
 # Perl
@@ -470,9 +470,9 @@ my $ str = "$ num1 and $ num2";
 int num1 = 1;
 int num2 = 2;
 SV * sv_str = newSVpvf ("% d and% d", num1, num2);
-</ pre>
+</pre>
 
-<h4> String concatenation + variable expansion </ h4>
+<h4> String concatenation + variable expansion </h4>
 
 <pre>
 # Perl
@@ -486,11 +486,11 @@ int num1 = 1;
 int num2 = 2;
 SV * sv_str = newSVpv ("abc", 0);
 sv_catpvf (sv_str, "% d and% d", num1, num2);
-</ pre>
+</pre>
 
-<h4> String comparison </ h4>
+<h4> String comparison </h4>
 
-Use <strong> sv_cmp </ strong> if you want to compare strings that are SVs.
+Use <strong> sv_cmp </strong> if you want to compare strings that are SVs.
 
 <pre>
 # perl
@@ -502,7 +502,7 @@ if ($ str1 gt $ str2) {...}
 if (sv_cmp (sv_str1, sv_str2) <0) {...}
 if (sv_cmp (sv_str1, sv_str2) == 0) {...}
 if (sv_cmp (sv_str1, sv_str2)> 0) {...}
-</ pre>
+</pre>
 
 There are also functions strEQ, strEQ, strGE, strGT, strLE, strLT, strNE that can be compared as char * types.
 
@@ -513,13 +513,13 @@ if (strGT ("foo", "bar")) {...}
 if (strLE ("foo", "bar")) {...}
 if (strLT ("foo", "bar")) {...}
 if (strNE ("foo", "bar")) {...}
-</ pre>
+</pre>
 
-<h3> Package variables </ h3>
+<h3> Package variables </h3>
 
 Introducing functions for manipulating package variables in XS.
 
-<h4> Get package variables </ h4>
+<h4> Get package variables </h4>
 
 To get the package variable, write:
 
@@ -533,11 +533,11 @@ $ Foo :: bar;
 SV * sv_var = get_sv ("Foo :: bar", 0);
 AV * av_var = get_av ("Foo :: bar", 0);
 HV * hv_var = get_hv ("Foo :: bar", 0);
-</ pre>
+</pre>
 
 The second argument, 0, means that no new variable is created.
 
-<h4> Creating package variables] </ h4>
+<h4> Creating package variables] </h4>
 
 Introducing a function that creates a package variable in XS. Specify "GV_ADD" in the second argument of get_sv, get_av, get_hv.
 
@@ -551,15 +551,15 @@ our% Foo :: bar;
 SV * sv_var = get_sv ("Foo :: bar", GV_ADD);
 AV * av_var = get_av ("Foo :: bar", GV_ADD);
 HV * hv_var = get_hv ("Foo :: b"ar ", GV_ADD);
-</ pre>
+</pre>
 
-<h3> Use regular expressions </ h3>
+<h3> Use regular expressions </h3>
 
-I will explain how to use <a href="/blog/20100827127859.html"> regular expressions </a> in <b> XS </ b>. However, the Perl documentation doesn't currently explain how to use it, so I'm trying it out, so please let me know if it's wrong.
+I will explain how to use <a href="/blog/20100827127859.html"> regular expressions </a> in <b> XS </b>. However, the Perl documentation doesn't currently explain how to use it, so I'm trying it out, so please let me know if it's wrong.
 
-<h4> Regular expression compilation </ h4>
+<h4> Regular expression compilation </h4>
 
-To use <a href="/blog/20100827127859.html"> regular expressions </a> in XS, you must first compile the regular expressions using the <b> pregcomp </ b> function. Think of it as corresponding to the operation of creating a regular expression reference.
+To use <a href="/blog/20100827127859.html"> regular expressions </a> in XS, you must first compile the regular expressions using the <b> pregcomp </b> function. Think of it as corresponding to the operation of creating a regular expression reference.
 
 <pre>
 # Perl
@@ -568,16 +568,16 @@ my $ re = qr / [0-9] + /;
 # XS (the second argument of pregcomp is a regular expression flag)
 SV * sv_re_str = newSVpv ("[0-9] +", 0);
 REGEXP * sv_re = pregcomp (sv_re_str, 0);
-</ pre>
+</pre>
 
 The REGEXP * type is a type of SV * type, so when you actually use the code, use sv_2mortal so that the memory is automatically released. If you write it assuming that it will be used in actual code, it will be as follows.
 
 <pre>
 SV * sv_re_str = sv_2mortal (newSVpv ("[0-9] +", 0));
 REGEXP * sv_re = (REGEXP *) sv_2mortal ((SV *) pregcomp (sv_re_str, 0));
-</ pre>
+</pre>
 
-<h4> Regular expression flags </ h4>
+<h4> Regular expression flags </h4>
 
 You can specify the regular expression flag as the second argument of pregcomp.
 
@@ -588,7 +588,7 @@ my $ re = qr / abc / im;
 # XS
 SV * sv_re_str = newSVpv ("[0-9] +", 0);
 REGEXP * sv_re = pregcomp (sv_re_str, RXf_PMf_FOLD | RXf_PMf_MULTILINE);
-</ pre>
+</pre>
 
 The correspondence of the flags is as follows. To specify more than one, use the bitwise OR "|" to connect the flags.
 
@@ -596,44 +596,44 @@ The correspondence of the flags is as follows. To specify more than one, use the
   <tr>
     <td>
       / m
-    </ td>
+    </td>
     <td>
       RXf_PMf_MULTILINE
-    </ td>
-  </ tr>
+    </td>
+  </tr>
  
   <tr>
     <td>
       / s
-    </ td>
+    </td>
     <td>
       RXf_PMf_SINGLELINE
-    </ td>
-  </ tr>
+    </td>
+  </tr>
  
   <tr>
     <td>
       / i
-    </ td>
+    </td>
     <td>
       RXf_PMf_FOLD
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       / x
-    </ td>
+    </td>
     <td>
       RXf_PMf_EXTENDED
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> Regular expression execution </ h4>
+<h4> Regular expression execution </h4>
 
-Use the <b> pregexec </ b> function to execute a regular expression. The arguments of the pregexec function are very complicated.
+Use the <b> pregexec </b> function to execute a regular expression. The arguments of the pregexec function are very complicated.
 
 <pre>
 / * pregexec --Match a regular expression against a string. * /
@@ -647,7 +647,7 @@ pregexec (
   SV * screamer, / * Represents a string SV: Used only for the utf8 flag * /
   U32 nosave / * Set to 1 if not to capture * /
 )
-</ pre>
+</pre>
 
 If the match is successful, the return value will be true. I will write a sample.
 
@@ -667,11 +667,11 @@ IV ret = pregexec (
   sv_value, // SV * type string
   0 // 0 is OK
 );
-</ pre>
+</pre>
 
-<h4> Get the matched string </ h4>
+<h4> Get the matched string </h4>
 
-Use the <b> Perl_reg_numbered_buff_fetch </ b> function to fetch the matched string. (I wonder if there is only a private API)
+Use the <b> Perl_reg_numbered_buff_fetch </b> function to fetch the matched string. (I wonder if there is only a private API)
 
 <pre>
 # Perl
@@ -684,13 +684,13 @@ Perl_reg_numbered_buff_fetch (aTHX_ sv_re, 1, match1);
 
 SV * sv_match2 = newSVpv ("", 0);
 Perl_reg_numbered_buff_fetch (aTHX_ sv_re, 2, match2);
-</ pre>
+</pre>
 
-<h3> Object-oriented API </ h3>
+<h3> Object-oriented API </h3>
 
 Introducing the XS API related to <a href="/blog/20130305136248.html"> object-oriented </a>.
 
-<h4> Create an object </ h4>
+<h4> Create an object </h4>
 
 Create an object. Be sure to make it mortal.
 
@@ -702,23 +702,23 @@ bless $ self, "MyClass";
 # XS
 SV * sv_self = sv_2mortal (new_RV_inc (sv_2mortal ((SV *) newHV ()));
 sv_bless (sv_self, gv_stashpv ("MyClass", 1));
-</ pre>
+</pre>
 
-<h4> Check if it is an object </ h4>
+<h4> Check if it is an object </h4>
 
-To check if the value is an object, use the <strong> sv_isobject function </ strong>.
+To check if the value is an object, use the <strong> sv_isobject function </strong>.
 
 <pre>
 sv_isobject (sv_obj);
-</ pre>
+</pre>
 
-<h4> Check if it inherits a class </ h4>
+<h4> Check if it inherits a class </h4>
 
-Use the <strong> sv_derived_from function </ strong> to see if it inherits from a class. If it inherits the specified class, it will return true.
+Use the <strong> sv_derived_from function </strong> to see if it inherits from a class. If it inherits the specified class, it will return true.
 
 <pre>
 sv_derived_from (sv_obj, "MyClass");
-</ pre>
+</pre>
 
 This function can also be used to verify that it is an array reference or a hash reference.
 
@@ -728,21 +728,21 @@ sv_derived_from (sv_obj, "ARRAY");
 
 / * Hash reference * /
 sv_derived_from (sv_obj, "HASH");
-</ pre>
+</pre>
 
 So, to make sure it is an object and inherits a particular class, use a combination of the sv_isobject and sv_derived_from functions.
 
 <pre>
 sv_isobject (sv_obj) && sv_derived_from (sv_obj, "MyClass")
-</ pre>
+</pre>
 
-<h3> Official Perl API documentation </ h3>
+<h3> Official Perl API documentation </h3>
 
 <ul>
   <li>
     <a href="http://perldoc.jp/docs/perl/5.20.1/perlguts.pod"> perlguts --Introduction to Perl API </a> --Introduction to Perl's internal data structure and API increase.
-  </ li>
+  </li>
   <li>
     <a href="http://perldoc.jp/docs/perl/5.12.1/perlapi.pod"> perlapi --Perl public API auto-generated documentation </a> --A list of Perl APIs is posted. ..
-  </ li>
-</ ul>
+  </li>
+</ul>

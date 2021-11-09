@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> base </ span>
+      <span itemprop = "name"> base </span>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
-<h2> Inherit class using base module </ h2>
+  </li>
+</ol>
+<h2> Inherit class using base module </h2>
 
 
 
@@ -24,7 +24,7 @@ I explained class inheritance using @ISA. However, this method touches some pack
 
 There is a little more straightforward way to express inheritance. That's how to use the <a href="/blog/20100425127089.html"> base module </a>.
 
-<h3> base module </ h3>
+<h3> base module </h3>
 
 Perl inheritance is better to use the base module than to use @ISA. Internally, the base module does the same thing by touching @ISA, but it hides touching @ISA.
 
@@ -51,12 +51,12 @@ package Button;
 use base'Component';
 
 sub new {bless {},'Button'}
-</ pre>
+</pre>
 
 Write use base and pass the class name you want to inherit as an argument. Because use base is executed at compile time
 
 <pre>
 my $ button = Button-> new;
-</ pre>
+</pre>
 
 There is no problem even if you write on the upper side. I would like to write the sample from here using the base module.

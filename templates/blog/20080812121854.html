@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Disable buffering </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Disable buffering </h2>
 
 
 
@@ -25,13 +25,13 @@ This is unlikely to be a problem when exporting to a local file. The problem ari
 
 If block buffering is performed at this time, it may happen that you intended to send data to the other party but did not send it. It remains in its own write buffer.
 
-One way to solve this is to change block buffering to command buffering. To enable command buffering <a href="/blog/20161102147817.html"> Special variables </a> Set "<strong> $ | </ strong>" to <b> 1 </ b> To do.
+One way to solve this is to change block buffering to command buffering. To enable command buffering <a href="/blog/20161102147817.html"> Special variables </a> Set "<strong> $ | </strong>" to <b> 1 </b> To do.
 
 <pre>
 $ | = 1;
-</ pre>
+</pre>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 Below is a sample to switch to command buffering.
 
@@ -59,11 +59,11 @@ print "Written at this point. Size is". -S $ file. "Bytes. \ N";
 sleep 3;
 
 close $ fh or die "Cannot close $ file";
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20170522149546.html"> sleep function </a>, <a href="/blog/20080718121643.html"> open function </a>, <a href="/blog" /20160312145776.html"> close function </a>, <a href="/blog/20100212126425.html"> die function </a>
 
-<h3> Command buffering </ h3>
+<h3> Command buffering </h3>
 
 Perl does not support writing without buffering at all. You don't have to write one character at a time. Instead, you can use command buffering to write when the command print is finished.
 
@@ -73,9 +73,9 @@ Command buffering is often used for interactive communication. For example, supp
 
 Command buffering is used to avoid this.
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> (1) Enable command buffering </ h4>
+<h4> (1) Enable command buffering </h4>
 
 <pre>
 #Change default output handle
@@ -86,7 +86,7 @@ $ | = 1;
 
 # Reselect to the original filehandle.
 select $ oldfh;
-</ pre>
+</pre>
 
 Command buffering is enabled by setting the special variable $ | to 1. It should be noted here that the operation for $ | is the operation for the "default output destination".
 

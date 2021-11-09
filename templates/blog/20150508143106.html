@@ -1,4 +1,4 @@
-<h2> Check if the string contains Japanese </ h2>
+<h2> Check if the string contains Japanese </h2>
 
 You can use <a href="/blog/20100827127859.html"> regular expression </a> to find out if the string contains Japanese. Use the following metacharacters to check for Kanji, Hiragana, and Katakana. The string must be an internal string.
 
@@ -6,40 +6,40 @@ You can use <a href="/blog/20100827127859.html"> regular expression </a> to find
    <tr>
      <td>
        Character type
-     </ td>
+     </td>
      <td>
        Metacharacters
-     </ td>
-   </ tr>
+     </td>
+   </tr>
 
    <tr>
      <td>
        Chinese characters
-     </ td>
+     </td>
      <td>
        \ p {Han}
-     </ td>
-   </ tr>
+     </td>
+   </tr>
 
    <tr>
      <td>
        Hiragana
-     </ td>
+     </td>
      <td>
        \ p {Hiragana}
-     </ td>
-   </ tr>
+     </td>
+   </tr>
 
    <tr>
      <td>
        Kanakana
-     </ td>
+     </td>
      <td>
        \ p {Katakana}
-     </ td>
-   </ tr>
+     </td>
+   </tr>
 
-</ table>
+</table>
 
 <pre>
 use strict;
@@ -50,4 +50,4 @@ my $ str ='Ai Uesan';
 if ($ str = ~ / [\ p {Han} \ p {Hiragana} \ p {Katakana}] /) {
    # Contains Japanese
 }
-</ pre>
+</pre>

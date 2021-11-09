@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> next statement-Jump to the beginning of the next iteration [Link transfer] </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> next statement-Jump to the beginning of the next iteration [Link transfer] </h2>
 
 
 
@@ -23,7 +23,7 @@ You can use the <a href="/blog/20080329120687.html"> next statement </a> to jump
 
 <pre>
 next
-</ pre>
+</pre>
 
 The next statement can be used in repetitive statements such as while statements and for statements.
 
@@ -45,15 +45,15 @@ foreach my $ animal (@animals) {
     next; next;
   }
 }
-</ pre>
+</pre>
 
 You can use the next statement when you want to skip the process only under specific conditions.
 
-<h3> Sample program </ h3>
+<h3> Sample program </h3>
 
 This is a sample program that uses the next statement.
 
-<h4> Jump to the beginning of the loop when a specific character is matched </ h4>
+<h4> Jump to the beginning of the loop when a specific character is matched </h4>
 
 In the middle of loop processing, you can use the next statement when you want to jump to the beginning of the next loop under certain conditions.
 
@@ -67,7 +67,7 @@ for my $ char (@chars) {
   next if $ char eq'z';
   print "$ char \ n";
 }
-</ pre>
+</pre>
 
 This is the execution result. Only when it is "z", it jumps to the beginning of the next loop, so the following <a href="/blog/20170404149131.html"> print function </a> is not executed.
 
@@ -78,7 +78,7 @@ c
 d
 e
 f
-</ pre>
+</pre>
 
 "Qw (z z a b c d e f)" is a <a href="/blog/20080222120369.html"> string list operator </a>.
 
@@ -87,13 +87,13 @@ The if statement, for statement, and while statement are explained in detail bel
 <ul>
   <li>
     <a href="/blog/20161023147731.html"> Learn the syntax of conditional branching using if statements </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20170521149524.html"> Let's learn the iterative processing using for statement and while statement </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Try using it with a regular expression </ h3>
+<h3> Try using it with a regular expression </h3>
 
 I often combine next with regular expressions. Let's write one sample. Let's write a sample that skips the output if it doesn't contain the string "ABC". The unless statement is used for condition judgment.
 
@@ -107,29 +107,29 @@ for my $ string (@strings) {
   next unless $ string = ~ / ABC /;
   print "$ string \ n";
 }
-</ pre>
+</pre>
 
 This is the output result. Only those that include "ABC" are output.
 
 <pre>
 ABC
 ABCD
-</ pre>
+</pre>
 
-<h3> Related information </ h3>
+<h3> Related information </h3>
 
-<h4> You can escape the loop using the last statement </ h4>
+<h4> You can escape the loop using the last statement </h4>
 
 Similar to the next statement is the last statement. You can break out of the loop with the last statement.
 
 <pre>
 last
-</ pre>
+</pre>
 
 For the last statement, refer to the following article.
 
 <ul>
   <li>
     <a href="/blog/20170527149589.html"> last sentence --get out of repetition </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> <a href="/blog/20100827127859.html"> Regular expression </a> </ span>
+      <span itemprop = "name"> <a href="/blog/20100827127859.html"> Regular expression </a> </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> Regular expression character class </ h2>
+<h2> Regular expression character class </h2>
 
 Use a character class to represent a set of characters.
 
 <pre>
 [Character set]
-</ pre>
+</pre>
 
 For example, if you want to express the letters "a", "b", or "c", write [abc].
 
@@ -30,7 +30,7 @@ For example, if you want to express the letters "a", "b", or "c", write [abc].
 a
 b-> [abc]
 c
-</ pre>
+</pre>
 
 You can use the hyphen "-" symbol to specify a range of letters or numbers.
 
@@ -40,7 +40,7 @@ b b
 c-> [a-e]
 d
 e
-</ pre>
+</pre>
 
 <pre>
 0
@@ -48,15 +48,15 @@ e
 2-> [0-4]
 3
 Four
-</ pre>
+</pre>
 
 If you want to express either an alphabet or a numerical value, write [a-zA-Z0-9].
 
 <pre>
 Alphabets and numbers-> [a-zA-Z0-9]
-</ pre>
+</pre>
 
-<h3> Negation of character class </ h3>
+<h3> Negation of character class </h3>
 
 You can also use character classes to represent non-specific characters. Use "^" to represent something other than a specific character. Note that if "^" is used at the beginning of the character class [], it means "other than that", not "the beginning of the character".
 
@@ -64,9 +64,9 @@ For example, to represent a character other than "a", "b", and "c":
 
 <pre>
 Characters other than "a", "b" and "c"-> [^ abc]
-</ pre>
+</pre>
 
-<h3> Perl-defined character classes </ h3>
+<h3> Perl-defined character classes </h3>
 
 There is a character class defined in Perl. "\ D" is a predefined character class.
 
@@ -92,13 +92,13 @@ There is a character class defined in Perl. "\ D" is a predefined character clas
    \ PP Matches non-P
    \ P {...} Matches one that does not have a Unicode property with a name longer than one character
    \ X Matches Unicode extended grapheme clusters
-</ pre>
+</pre>
 
 Character classes can also be used within character classes.
 
 <pre>
 [a-c \ d \ s]
-</ pre>
+</pre>
 
 Please note that all of these are Unicode affected. Perl supports Unicode, and a good practice for working with Japanese is all <a href="https://perlzemi.com/blog/20091118124667.html"> internal strings (decoded) in your program. Treat it as a string) </a>.
 
@@ -106,16 +106,16 @@ In this case, "\ d" matches not only half-width 0-9 but also full-width 0-9. \ s
 
 If you want to limit it to the ASCII range, read the instructions below.
 
-<h4> Limit character classes to ASCII range only </ h4>
+<h4> Limit character classes to ASCII range only </h4>
 
 Perl 5.14 introduces the "a" option, which limits the character class to the ASCII range only.
 
 <pre>
 #Match only numbers in the ASCII range.
 $ str = ~ / \ d + / a;
-</ pre>
+</pre>
 
-<h4> Character class that represents only ASCII range </ h4>
+<h4> Character class that represents only ASCII range </h4>
 
 Perl also has character classes that represent ASCII ranges. This method is another solution if you want to limit it to the ASCII range only.
 
@@ -124,7 +124,7 @@ For example, in the ASCII range, character classes that match alphabets and numb
 <pre>
 Character classes that match alphabets and numbers in the #ASCII range
 \ p {PosixAlnum}
-</ pre>
+</pre>
 
 <a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES"> Character class --Regular expression reference </a>, quote the defined character class ..
 
@@ -159,9 +159,9 @@ Notice the character class in the column labeled ASCII-range.
  xdigit ASCII_Hex_Digit XPosixDigit Hexadecimal;
                                                     In the ASCII range
                                                     [0-9A-Fa-f]
-</ pre>
+</pre>
 
-<h3> Character class sample </ h3>
+<h3> Character class sample </h3>
 
 This is a sample character class. <a href="https://webapp.perlzemi.com/blog/20200112082904.html"> Sample user ID regular expression and web service password regular expression that can also be used for website membership registration </a> I also wrote.
 
@@ -198,4 +198,4 @@ unless ($ passowrd_invalid1 = ~ / ^ \ p {PosixGraph} + $ /) {
 unless ($ passowrd_invalid2 = ~ / ^ \ p {PosixGraph} + $ /) {
    print "passowrd_invalid2 is inalid \ n";
 }
-</ pre>
+</pre>

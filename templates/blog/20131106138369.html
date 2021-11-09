@@ -1,46 +1,46 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop = "name"> Module </ span> </a>
+        <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-        <span itemprop = "name"> PDL </ span>
+        <span itemprop = "name"> PDL </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Creating a graph with PDL </ h2>
+  </li>
+</ol>
+<h2> Creating a graph with PDL </h2>
 
 
 
 
 I will explain how to create a graph using PDL.
 
-<h3> Install PDL :: Graphics :: PLplot </ h3>
+<h3> Install PDL :: Graphics :: PLplot </h3>
 
-Install the module <strong> PDL :: Graphics :: PLplot </ strong> to draw the graph. (You need to <a href="/blog/20131101138330.html"> PDL installed </a> first.)
+Install the module <strong> PDL :: Graphics :: PLplot </strong> to draw the graph. (You need to <a href="/blog/20131101138330.html"> PDL installed </a> first.)
 
-<h4> Windows </ h4>
+<h4> Windows </h4>
 
 To install in ppm, execute the following command.
 
 <pre>
 ppm install http://www.sisyphusion.tk/ppm/PDL-Graphics-PLplot.ppd --force
-</ pre>
+</pre>
 
 Press Enter to complete the installation. Since it is necessary to set the environment variable, set the displayed environment variable PLPLOT_LIB. For example, the following is displayed.
 
 <pre>
   In order to utilise the built in plplot capability set your
   PLPLOT_LIB environment variable to C: \ Perl \ site \ lib \ PDL \ plplot_supp
-</ pre>
+</pre>
 
 Versions that support png
 
@@ -48,7 +48,7 @@ It is convenient if png output is supported, so if you want to install a version
 
 <pre>
 ppm install http://www.sisyphusion.tk/ppm_alt/PDL-Graphics-PLplot_alt.ppd --force
-</ pre>
+</pre>
 
 Press Enter to complete the installation. Since it is necessary to set the environment variables, set the displayed environment variables PLPLOT_LIB and PLPLOT_DRV_DIR. For example, the following is displayed.
 
@@ -61,15 +61,15 @@ Running PDL-Graphics-PLplot-0.62 install script ...
 
   And set your PLPLOT_DRV_DIR environment variable to:
    C: \ Perl64 \ site \ bin
-</ pre>
+</pre>
 
-<h3> Creating a simple graph </ h3>
+<h3> Creating a simple graph </h3>
 
-Let's draw a graph in PDL. Use the module <strong> PDL :: Graphics :: PLplot </ strong> to draw the graph.
+Let's draw a graph in PDL. Use the module <strong> PDL :: Graphics :: PLplot </strong> to draw the graph.
 
-<h4> Linear function graph </ h4>
+<h4> Linear function graph </h4>
 
-First, let's draw a graph of the simplest linear function "y = 2x". Use the <strong> xyplot </ strong> method to create a xy graph.
+First, let's draw a graph of the simplest linear function "y = 2x". Use the <strong> xyplot </strong> method to create a xy graph.
 
 <pre>
 use PDL;
@@ -89,15 +89,15 @@ $ pl-> xyplot ($ x, $ y);
 
 # Close
 $ pl-> close;
-</ pre>
+</pre>
 
 You can create a graph of the linear function as follows.
 
 <blockquote>
 [f: id: perlcodesample: 20131106082618p: image: w500]
-</ blockquote>
+</blockquote>
 
-<h4> new options </ h4>
+<h4> new options </h4>
 
 Here are some graph options. It can be passed as an argument to the new method.
 
@@ -107,115 +107,115 @@ my $ pl = PDL :: Graphics :: PLplot-> new (
   FILE =>'graph.png',
   PAGESIZE => [500, 400]
 );
-</ pre>
+</pre>
 
-<b> Graph size </ b>
+<b> Graph size </b>
 
-You can specify the size of the graph to be output with <strong> PAGESIZE </ strong>.
+You can specify the size of the graph to be output with <strong> PAGESIZE </strong>.
 
 <pre>
 PAGESIZE => [500, 400]
-</ pre>
+</pre>
 
-<h4> Options for drawing graphs </ h4>
+<h4> Options for drawing graphs </h4>
 
 This option is specified when drawing the graph.
 
 <pre>
 $ pl-> xyplot ($ x, $ y, XLAB =>'x', YLAB =>'y');
-</ pre>
+</pre>
 
-<b> x-axis label </ b>
+<b> x-axis label </b>
 
-You can specify the x-axis label in <strong> XLAB </ strong>.
+You can specify the x-axis label in <strong> XLAB </strong>.
 
 <pre>
 XLAB =>'x'
-</ pre>
+</pre>
 
-<b> y-axis label </ b>
+<b> y-axis label </b>
 
-You can specify the y-axis label in <strong> YLAB </ strong>.
+You can specify the y-axis label in <strong> YLAB </strong>.
 
 <pre>
 YLAB =>'y'
-</ pre>
+</pre>
 
-<b> Drawing area </ b>
+<b> Drawing area </b>
 
-You can specify the drawing area with the <strong> BOX </ strong> option.
+You can specify the drawing area with the <strong> BOX </strong> option.
 
 <pre>
 BOX => [start of x, end of x, start of y, end of y]
-</ pre>
+</pre>
 
 Specify as follows.
 
 <pre>
 BOX => [0, 150, 0, 300]
-</ pre>
+</pre>
 
-<b> x-axis scale label width </ b>
+<b> x-axis scale label width </b>
 
-You can specify the width of the x-axis tick label with <strong> XTICK </ strong>.
+You can specify the width of the x-axis tick label with <strong> XTICK </strong>.
 
 <pre>
 XTICK => 10
-</ pre>
+</pre>
 
-<b> y-axis scale label width </ b>
+<b> y-axis scale label width </b>
 
-You can specify the width of the y-axis tick label with <strong> YTICK </ strong>.
+You can specify the width of the y-axis tick label with <strong> YTICK </strong>.
 
 <pre>
 YTICK => 10
-</ pre>
+</pre>
 
-<b> Title </ b>
+<b> Title </b>
 
-You can specify the title of the graph with <strong> TITLE </ strong>.
+You can specify the title of the graph with <strong> TITLE </strong>.
 
 <pre>
 TITLE =>'y = 2x'
-</ pre>
+</pre>
 
-<b> Viewport </ b>
+<b> Viewport </b>
 
-You can specify where to actually draw the graph with <strong> VIEWPORT </ strong>. Specify in a ratio of 0 to 1.
+You can specify where to actually draw the graph with <strong> VIEWPORT </strong>. Specify in a ratio of 0 to 1.
 
 <pre>
 VIEWPORT => [Minimum value position of x, Maximum value position of x, Minimum value position of y, Maximum value position of y]
-</ pre>
+</pre>
 
 Specify as follows.
 
 <pre>
 VIEWPORT => [0.1, 0.5, 0.1, 0.5]
-</ pre>
+</pre>
 
-<b> Draw x-axis </ b>
+<b> Draw x-axis </b>
 
-Specify <strong> bcnsta </ ​​strong> for <strong> XBOX </ strong> to draw the x-axis. This value defaults to <strong> bcnst </ strong> and you can add <strong> a </ strong> to draw the x-axis.
+Specify <strong> bcnsta </​​strong> for <strong> XBOX </strong> to draw the x-axis. This value defaults to <strong> bcnst </strong> and you can add <strong> a </strong> to draw the x-axis.
 
 <pre>
 XBOX =>'bcnsta',
-</ pre>
+</pre>
 
-<b> Draw x-axis </ b>
+<b> Draw x-axis </b>
 
-Specify <strong> bcnsta </ ​​strong> for <strong> YBOX </ strong> to draw the y-axis. This value defaults to <strong> bcnst </ strong> and you can add <strong> a </ strong> to draw the y-axis.
+Specify <strong> bcnsta </​​strong> for <strong> YBOX </strong> to draw the y-axis. This value defaults to <strong> bcnst </strong> and you can add <strong> a </strong> to draw the y-axis.
 
 <pre>
 YBOX =>'bcnsta',
-</ pre>
+</pre>
 
-<b> Graph color </ b>
+<b> Graph color </b>
 
-You can specify the color of the graph with <strong> COLOR </ strong>.
+You can specify the color of the graph with <strong> COLOR </strong>.
 
 <pre>
 COLOR =>'RED'
-</ pre>
+</pre>
 
 Below are the types of colors.
 
@@ -229,15 +229,15 @@ Below are the types of colors.
   TURQUOISE1 LIGHTSEAGREEN SKYBLUE FORESTGREEN
   CHARTREUSE3 GOLD2 SIENNA1 CORAL
   HOTPINK LIGHTCORAL LIGHTPINK1 LIGHTGOLDENROD
-</ pre>
+</pre>
 
-<h4> Sample </ h4>
+<h4> Sample </h4>
 
 I wrote a graph of a linear function "y = 1/2 x + 10".
 
 <blockquote>
 [f: id: perlcodesample: 20131106082619p: image: w500]
-</ blockquote>
+</blockquote>
 
 <pre>
 use PDL;
@@ -271,9 +271,9 @@ $ pl-> xyplot (
 
 # Close
 $ pl-> close;
-</ pre>
+</pre>
 
-<h3> Graph of n-th order function </ h3>
+<h3> Graph of n-th order function </h3>
 
 Now let's draw a cubic function. It's interesting to know immediately what kind of shape it is.
 
@@ -300,11 +300,11 @@ $ pl-> xyplot ($ x, $ y);
 
 # Close
 $ pl-> close;
-</ pre>
+</pre>
 
-<h3> Trigonometric function </ h3>
+<h3> Trigonometric function </h3>
 
-The following is a graph of trigonometric functions (sin). Use the <strong> sin </ strong> method to calculate trigonometric functions. It is defined in PDL :: Math.
+The following is a graph of trigonometric functions (sin). Use the <strong> sin </strong> method to calculate trigonometric functions. It is defined in PDL :: Math.
 
 [f: id: perlcodesample: 20131106102522p: image: w500]
 
@@ -329,9 +329,9 @@ $ pl-> xyplot ($ x, $ y);
 
 # Close
 $ pl-> close;
-</ pre>
+</pre>
 
-<h3> Exponential function </ h3>
+<h3> Exponential function </h3>
 
 Next is the graph of the exponential function. Note that the value e to be calculated is created as a PDL variable.
 
@@ -362,11 +362,11 @@ $ pl-> xyplot ($ x, $ y);
 # Close
 $ pl-> close;
 
-</ pre>
+</pre>
 
-<h3> Logarithmic function (natural logarithm) </ h3>
+<h3> Logarithmic function (natural logarithm) </h3>
 
-The last is a graph of logarithmic function (natural logarithm). Use the <strong> log </ strong> method to calculate the logarithmic function (natural logarithm). It is defined in PDL :: Math. Note that the graph starts at 0.1, as the value of log0 will be infinitesimal.
+The last is a graph of logarithmic function (natural logarithm). Use the <strong> log </strong> method to calculate the logarithmic function (natural logarithm). It is defined in PDL :: Math. Note that the graph starts at 0.1, as the value of log0 will be infinitesimal.
 
 [f: id: perlcodesample: 20131106102524p: image: w500]
 
@@ -391,12 +391,12 @@ $ pl-> xyplot ($ x, $ y);
 
 # Close
 $ pl-> close;
-</ pre>
+</pre>
 
 
-<h3> Strip plot-graph of one x-axis and multiple y-axis </ h3>
+<h3> Strip plot-graph of one x-axis and multiple y-axis </h3>
 
-One x-axis and multiple y-axis graphs are called strip plots and can be drawn using the <strong> stripplots </ strong> method.
+One x-axis and multiple y-axis graphs are called strip plots and can be drawn using the <strong> stripplots </strong> method.
 
 [f: id: perlcodesample: 20131107113838p: image: w500]
 
@@ -430,4 +430,4 @@ $ pl-> stripplots (
   XLAB =>'X label'
 );
 $ pl-> close;
-</ pre>
+</pre>

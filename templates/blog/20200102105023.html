@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20191228171433.html">
-      <span itemprop = "name"> Form creation </ span> </a>
+      <span itemprop = "name"> Form creation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> How to check the PDF file from the browser </ h2>
+<h2> How to check the PDF file from the browser </h2>
 
 I will explain how to check the PDF file from the browser.
 
@@ -26,11 +26,11 @@ Also, if you use <a href="https://linux.perlclub.net/"> Linux </a> to generate a
 
 It is convenient to distribute the PDF file on the web server and check it on the web browser. The web browser supports PDF display, so let's use this.
 
-<h3> Start a web server with Mojolicious </ h3>
+<h3> Start a web server with Mojolicious </h3>
 
 It's easy to use <a href="https://webapp.perlzemi.com/"> Mojolicious </a> to start a web server that delivers static files.
 
-<h4> Web server program </ h4>
+<h4> Web server program </h4>
 
 Write the web server program as follows. Name it serve.pl.
 
@@ -39,7 +39,7 @@ Write the web server program as follows. Name it serve.pl.
 use Mojolicious :: Lite;
 
 app-> start;
-</ pre>
+</pre>
 
 By default, the static file directory is called "public", so change it to the directory that outputs the PDF file. If you are outputting the PDF file to the current directory, it is a good idea to change the directory of the static file to the current directory.
 
@@ -51,15 +51,15 @@ use Mojolicious :: Lite;
 app-> static-> paths (['.']);
 
 app-> start;
-</ pre>
+</pre>
 
-<h4> Start the web server </ h4>
+<h4> Start the web server </h4>
 
 Use the morbo command to start the web server.
 
 <pre>
 morbo serve.pl
-</ pre>
+</pre>
 
 This will start the web server. You can access it at the following URL. The default port is 3000.
 
@@ -69,12 +69,12 @@ http://127.0.0.1:3000
 
 #For remote Linux
 http: // server IP address or domain name: 3000
-</ pre>
+</pre>
 
-<h4> Change port number </ h4>
+<h4> Change port number </h4>
 
 To change the port number to something other than the default 3000, use the "MOJO_LISTEN" environment variable. The following is a sample to change to No. 3001.
 
 <pre>
 MOJO_LISTEN = http: //*:3001 morbo serve.pl
-</ pre>
+</pre>

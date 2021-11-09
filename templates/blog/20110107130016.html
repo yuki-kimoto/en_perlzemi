@@ -1,15 +1,15 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20140319139520.html"> <span itemprop = "name"> Mojolicious </ span> </a>
+    <a itemprop="item" href="/blog/20140319139520.html"> <span itemprop = "name"> Mojolicious </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Script to install CPAN module with Sakura rental server light plan </ h2>
+  </li>
+</ol>
+<h2> Script to install CPAN module with Sakura rental server light plan </h2>
 
 
 
@@ -23,7 +23,7 @@ The directory structure is as follows.
 
 <pre>
 sakuracpanm --app.cgi
-</ pre>
+</pre>
 
 To install a module, simply enter the module name in the text box and press the install button. The first CPAN module installation is time consuming (5-10 minutes) as it requires the installation of cpanm's dependent modules. Please wait patiently. Anyone can use it, so remove this tool as soon as the installation is complete, or set permissions to 000, etc.
 
@@ -106,30 +106,30 @@ __DATA__
 <html>
   <head>
     <meta http-equiv = "Content-type" content = "text / html; charset = UTF-8">
-    <title> Sakura Rental Server Light CPAN Module Installation </ title>
-  </ head>
+    <title> Sakura Rental Server Light CPAN Module Installation </title>
+  </head>
   <body>
-    <h1> Sakura rental server light CPAN module installation </ h1>
+    <h1> Sakura rental server light CPAN module installation </h1>
     <pre>
     # If you want to use the installed module, write as follows in the script (app.cgi).
     use FindBin;
     use lib "$ FindBin :: Bin / .. / .. / perl5 / lib / perl5";
     
     # This script is available to everyone and should be removed as soon as the installation is complete.
-    </ pre>
+    </pre>
     <form method = "get" action = "<% = url_for'/'%>">
-      <div> Module <input type = "text" name = "module"> <input type = "submit" value = "install"> </ div>
-      <div style = "color: red"> <% = $ error%> </ div>
+      <div> Module <input type = "text" name = "module"> <input type = "submit" value = "install"> </div>
+      <div style = "color: red"> <% = $ error%> </div>
       <div>
         % if ($ output) {
           % foreach my $ line (@ $ output) {
-            <p style = "margin: 0; padding: 0"> <% = $ line%> </ p>
+            <p style = "margin: 0; padding: 0"> <% = $ line%> </p>
           %}
         %}
-      </ div>
-    </ form>
-  </ body>
-</ html>
-</ pre>
+      </div>
+    </form>
+  </body>
+</html>
+</pre>
 
 (Reference) <a href="/blog/20100408127089.html"> File :: Copy </a>, <a href="/blog/20100524127696.html"> FindBin </a>

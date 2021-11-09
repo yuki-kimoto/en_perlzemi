@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130416136637.html">
-      <span itemprop = "name"> Language implementation </ span> </a>
+      <span itemprop = "name"> Language implementation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> opcode.h </ h2>
+  </li>
+</ol>
+<h2> opcode.h </h2>
 
 
 
-<strong> opcode.h </ strong> contains information about each operation. In Perl language research, "OP type" data is called an operation. Perl is converted to a syntax tree after parsing, but each of these nodes is "OP type".
+<strong> opcode.h </strong> contains information about each operation. In Perl language research, "OP type" data is called an operation. Perl is converted to a syntax tree after parsing, but each of these nodes is "OP type".
 
 Operations are categorized by operation code, and each has its own information. That information is described.
 
-<h3> Name of operation </ h3>
+<h3> Name of operation </h3>
 
 For example, the name of the operation is described.
 
@@ -38,9 +38,9 @@ EXTCONST char * const PL_op_name [] = {
   "gvsv",
   ...
 };
-</ pre>
+</pre>
 =====
-<h3> Operation explanation </ h3>
+<h3> Operation explanation </h3>
 
 Next, a description of the operation is described.
 
@@ -56,9 +56,9 @@ EXTCONST char * const PL_op_desc [] = {
   "glob value",
   ...
 };
-</ pre>
+</pre>
 
-<h3> Address of the function that the operation executes </ h3>
+<h3> Address of the function that the operation executes </h3>
 
 Each operation has a corresponding function, but the address to that function is described.
 
@@ -79,11 +79,11 @@ EXT Perl_ppaddr_t PL_ppaddr [] /* or perlvars.h * /
   Perl_pp_gv,
   ...
 }
-</ pre>
+</pre>
 
 The prefix "pp" means "push pop", and the function executed is the function that manipulates the argument stack.
 
-<h3> Functions that optimize operations </ h3>
+<h3> Functions that optimize operations </h3>
 
 Each operation is optimized with a function prefixed with "ck". The address of the function is described. "Ck" is an abbreviation for "check".
 
@@ -99,9 +99,9 @@ Each operation is optimized with a function prefixed with "ck". The address of t
   Perl_ck_svconst, / * const * /
   Perl_ck_null, / * gvsv * /
 };
-</ pre>
+</pre>
 
-<h3> Function argument information </ h3>
+<h3> Function argument information </h3>
 
 The argument information of the function to be executed is described.
 
@@ -117,7 +117,7 @@ EXTCONST U32 PL_opargs [] = {
   0x00000644, / * gv * /
   ...
 };
-</ pre>
+</pre>
 
 This is written numerically and I don't know what it is. It is defined in "op.h". The above value is the value of the logical sum of the bit operations of the following values.
 
@@ -168,7 +168,7 @@ This is written numerically and I don't know what it is. It is defined in "op.h"
 #define OA_FILEREF 6
 #define OA_SCALARREF 7
 #define OA_OPTIONAL 8
-</ pre>
+</pre>
 
 And the above doesn't explain this value, but it's in "regen / opcodes".
 
@@ -183,9 +183,9 @@ And the above doesn't explain this value, but it's in "regen / opcodes".
 # has a corresponding integer version --I (OA_OTHERINT)
 # make temp copy in list assignment --d (OA_DANGEROUS)
 # uses $ _ if no argument given --u (OA_DEFGV)
-</ pre>
+</pre>
 
-<h3> Private flags for operations </ h3>
+<h3> Private flags for operations </h3>
 
 And there is private flag information about the operation. A detailed description of these can be found in "regen / op_private".
 
@@ -203,7 +203,7 @@ And there is private flag information about the operation. A detailed descriptio
 #define OPpHINT_STRICT_REFS 0x02
 #define OPpITER_REVERSED 0x02
 ...
-</ pre>
+</pre>
 
 <hr>
 <a href="/blog/20130416136637.html "> Perl Language Research </a>

@@ -1,25 +1,25 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130416136637.html">
-      <span itemprop = "name"> Language implementation </ span> </a>
+      <span itemprop = "name"> Language implementation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> perlvars.h </ h2>
+  </li>
+</ol>
+<h2> perlvars.h </h2>
 
 
 
-<strong> perlvars.h </ strong> defines Perl global variables.
+<strong> perlvars.h </strong> defines Perl global variables.
 
 <pre>
 /* perlvars.h * /
@@ -35,7 +35,7 @@ PERLVARI (G, curinterp, PerlInterpreter *, NULL)
 #if defined (USE_ITHREADS)
 PERLVAR (G, thr_key, perl_key) / * key to retrieve per-thread struct * /
 #endif
-</ pre>
+</pre>
 
 Perl has an interpreter variable for each interpreter, but there are also global variables. For example, the interpreter currently running, the mutex to control thread contention, etc. are defined as global variables.
 
@@ -55,19 +55,19 @@ The declaration of global variables is described using the macros "PERLVAR" and 
 
 / * like PERLVARI, but make'var' a const * /
 #define PERLVARIC (prefix, var, type, init) type prefix ## var;
-</ pre>
+</pre>
 
 For example, "PERLVAR (G, op_mutex, perl_mutex)" expands as follows:
 
 <pre>
 perl_mutex Gop_mutex;
-</ pre>
+</pre>
 
 This global variable is not used directly on the source, but is accessed in a wrapped form such as "PL_op_mutex".
 
 <pre>
 PL_op_mutex = ...;
-</ pre>
+</pre>
 
 The reason for this wrapping is that the storage method of global variables differs depending on the compile option "PERL_GLOBAL_STRUCT". If "PERL_GLOBAL_STRUCT" is defined, the global variable is stored in the structure, otherwise the global variable is written directly.
 
@@ -79,14 +79,14 @@ Let's see how "PL_op_mutex" is expanded on this premise. First, from "embedvar.h
 #define PL_op_mutex (my_vars-> Gop_mutex)
 
 #endif
-</ pre>
+</pre>
 
 "My_vars" is defined in "perlmain.c".
 
 <pre>
 /* perlmain.c * /
 struct perl_vars * my_vars = init_global_struct ();
-</ pre>
+</pre>
 
 Let's also look at the definition of a structure called "perl_vars". You can see that it is a structure that has the contents of "perlvars.h" as a member variable.
 
@@ -94,7 +94,7 @@ Let's also look at the definition of a structure called "perl_vars". You can see
 struct perl_vars {
 # include "perlvars.h"
 };
-</ pre>
+</pre>
 
 <hr>
 <a href="/blog/20130416136637.html"> Perl Language Research </a>

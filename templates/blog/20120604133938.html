@@ -1,17 +1,17 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161006147575.html">
-      <span itemprop = "name"> Character code </ span> </a>
+      <span itemprop = "name"> Character code </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Representing square meters (m2) in Unicode </ h2>
+  </li>
+</ol>
+<h2> Representing square meters (m2) in Unicode </h2>
 
 
 
@@ -19,24 +19,24 @@ If you're wondering how to express a small 2 when displaying square meters (m2),
 
 <pre>
 my $ menseki = "100m \ x {00B2}"; # 100 square meters
-</ pre>
+</pre>
 
-The code point that corresponds to the small 2 is <b> 00B2 </ b>.
+The code point that corresponds to the small 2 is <b> 00B2 </b>.
 
 This is an internal string, so you need to encode it in UTF-8 when you actually output it. Also, in the source code, let's "use utf8" so that all characters are internal strings.
 
 <pre>
 print encode ('UTF-8', $ menseki);
-</ pre>
+</pre>
 
 After all, I thought that Perl that supports Unicode would be useful in such cases.
 
-<h3> List of superscripts and subscripts </ h3>
+<h3> List of superscripts and subscripts </h3>
 
 It seems that these are called superscripts. I've bookmarked a list of superscripts and subscripts, so I'll link to them.
 
 <ul>
   <li>
     <a href="http://nakamura001.hatenablog.com/entry/20100620/1277035425"> Superscript / Subscript </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

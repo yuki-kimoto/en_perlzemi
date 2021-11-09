@@ -1,39 +1,39 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Base conversion </ span>
+      <span itemprop = "name"> Base conversion </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Binary, octal, hexadecimal conversion </ h2>
+  </li>
+</ol>
+<h2> Binary, octal, hexadecimal conversion </h2>
 
 
 
 I will explain how to perform "base conversion" in Perl.
 
-<h4> Conversion from decimal to binary, octal, hexadecimal </ h4>
+<h4> Conversion from decimal to binary, octal, hexadecimal </h4>
 
 Let's convert from decimal to binary, octal, and hexadecimal. Use the format specification in the <a href="/blog/20081001122296.html"> sprintf function </a>.
 
 <pre>
 #Convert to binary string
 my $ bit_str = sprintf ("% b", $ num);
-</ pre>
+</pre>
 
 <pre>
 # Convert to octal string
 my $ oct_str = sprintf ("% o", $ num);
-</ pre>
+</pre>
 
 <pre>
 # Convert to hexadecimal string
 my $ hex_str = sprintf ("% X", $ num);
-</ pre>
+</pre>
 
 To convert a decimal string to a binary number, use the sprintf function to specify the format as "% b". To convert to octal and hexadecimal, use "% o" and "% X" respectively.
 
@@ -62,35 +62,35 @@ print "decimal string: $ num; \ n";
 print "binary string: $ bit_str; \ n";
 print "octal string: $ oct_str; \ n";
 print "Hexadecimal string: $ hex_str; \ n";
-</ pre>
+</pre>
 
-<h4> Binary, Octal, Hexadecimal to Decimal Conversion </ h4>
+<h4> Binary, Octal, Hexadecimal to Decimal Conversion </h4>
 
 I will explain the conversion from binary numbers, octal numbers, and hexadecimal numbers to decimal numbers.
 
-<b> Binary to Decimal Conversion </ b>
+<b> Binary to Decimal Conversion </b>
 
 Use the <a href="/blog/20171027150945.html"> oct function </a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a character string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
 
 <pre>
 my $ num = oct ('0b'. $ Bit_str);
-</ pre>
+</pre>
 
-<b> Conversion from octal to decimal </ b>
+<b> Conversion from octal to decimal </b>
 
 Use the <a href="/blog/20171027150945.html"> oct function </a> to convert from octal to decimal. In the sample, '17' is passed, but even if there is a leading 0 like '017', it will be converted correctly.
 
 <pre>
 my $ num = oct ($ oct_str);
-</ pre>
+</pre>
 
-<b> Hexadecimal to Decimal Conversion </ b>
+<b> Hexadecimal to Decimal Conversion </b>
 
 Use the <a href="/blog/20171026150980.html"> hex function </a> to convert from hexadecimal to decimal. In the sample,'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
 
 <pre>
 my $ hex_to_dec = hex ($ hex_str);
-</ pre>
+</pre>
 
 This is a sample to convert binary, octal, and hexadecimal numbers to decimal numbers.
 
@@ -116,9 +116,9 @@ Convert an octal string to a decimal number with the #hex function.
 print "Hexadecimal to Decimal Conversion \ n";
 my $ hex_to_dec = hex ($ hex_str);
 print "$ hex_str-> $ hex_to_dec \ n \ n";
-</ pre>
+</pre>
 
-<h4> Algorithm for converting decimal to n-ary </ h4>
+<h4> Algorithm for converting decimal to n-ary </h4>
 
 This is a sample to convert from decimal to n-ary. I also checked the validity of the arguments properly.
 
@@ -168,22 +168,22 @@ sub dec_to_n {
     # Convert in conversion table and join characters
     return join ('', $ sign, map {$ dec_to_n [$ _]} @rem_list);
 }
-</ pre>
+</pre>
 
-<b> Subroutine specifications for converting decimal to n-ary </ b>
+<b> Subroutine specifications for converting decimal to n-ary </b>
 
 <pre>
 dec_to_n ($ dec, $ n);
 dec_to_n (255, 16);
-</ pre>
+</pre>
 
 The first argument is a decimal number, and the second argument is a number that specifies the number to convert from decimal to decimal. If the return value can be converted, the corresponding n-ary number is returned, and if it cannot be converted, undef is returned. $ n supports binary to hexadecimal numbers.
 
-<b> Checking the validity of $ n </ b>
+<b> Checking the validity of $ n </b>
 
 <pre>
 return if! defined $ n || $ n! ~ / ^ \ D + $ / || $ n <2 || $ n> 16;
-</ pre>
+</pre>
 
 First, $ n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
 
@@ -191,25 +191,25 @@ If "$ n is not defined" or "$ n is not a string" or "$ n is less than 2" or "$ n
 
 A single return returns undef for scalar contexts and an empty list for list contexts.
 
-<b> Checking the validity of $ dec and extracting the code </ b>
+<b> Checking the validity of $ dec and extracting the code </b>
 
 <pre>
 return if! defined $ dec;
 return if $ dec! ~ / ^ ([+-]?) \ D + $ /;
 my $ sign = $ 1? substr ($ dec, 0, 1,''):'';
-</ pre>
+</pre>
 
 $ dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html"> Regular expression for decimal integers </a>
 
 <pre>
 / ^ ([+-]?) \ D + $ /
-</ pre>
+</pre>
 
 Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")
 
 <pre>
 my $ sign = $ 1? substr ($ dec, 0, 1,''):'';
-</ pre>
+</pre>
 
 If there is a sign, the sign is assigned to $ 1, so the presence or absence of the sign is judged by whether or not $ 1 is defined. Here, the ternary operator is used for conditional branching.
 
@@ -217,7 +217,7 @@ If there is a sign, delete it by replacing the first character with an empty str
 
 If $ 1 is undefined, there is no sign, so substitute an empty string.
 
-<b> Algorithm for converting decimal numbers to n-ary numbers </ b>
+<b> Algorithm for converting decimal numbers to n-ary numbers </b>
 
 <pre>
 return $ dec if $ dec == 0;
@@ -229,7 +229,7 @@ while ($ dec! = 0) {
   unshift (@rem_list, $ dec% $ n);
   $ dec = int ($ dec / $ n);
 }
-</ pre>
+</pre>
 
 If $ dec is 0, the return value will always be 0, so 0 is returned. In the loop of <a href="/blog/20100123126425.html"> while statement </a>, the decimal number is converted to the n-ary number, but if it is 0, an exceptional description must be made. So I processed it first.
 
@@ -239,7 +239,7 @@ The algorithm for converting to n-ary is as follows.
 
 <pre>
 Divide the decimal number by n and repeat until the quotient is 0. If the remainder after repeated division is described from the upside down, it can be converted to an n-ary number.
-</ pre>
+</pre>
 
 I will write it in an easy-to-understand manner using a few more numbers.
 
@@ -252,16 +252,16 @@ Converts the decimal number 11 to a binary number.
  1 ÷ 2 = 0 remainder 1
 
 If you write the remainder upside down, this is the answer in 1011.
-</ pre>
+</pre>
 
 By using the unshift function and inserting the remainder at the beginning of the array, it will be arranged in this order.
 
-<b> Convert the numbers assigned to the array to n-ary characters and combine them </ b>
+<b> Convert the numbers assigned to the array to n-ary characters and combine them </b>
 
 <pre>
 my @dec_to_n = (0 .. 9,'A' ..'F');
 return join ('', $ sign, map {$ dec_to_n [$ _]} @rem_list);
-</ pre>
+</pre>
 
 For example, for hexadecimal numbers, you need to convert 11 to 15 to A to F. @dec_to_n is an array for conversion.
 
@@ -271,13 +271,13 @@ Convert each element of @rem_list to $ dec_to_n [$ _] with the map function.
 $ dec_to_n [1] → 1
 $ dec_to_n [10] → A
 $ dec_to_n [15] → F
-</ pre>
+</pre>
 
 Will be converted as
 
 The converted array and the code saved in $ sign are combined with the join function to form a single character string.
 
-<h4> Algorithm for converting from n-ary to decimal </ h4>
+<h4> Algorithm for converting from n-ary to decimal </h4>
 
 This is a sample to convert from n-ary to decimal.
 
@@ -332,22 +332,22 @@ sub n_to_dec {
   }
   return $ dec;
 }
-</ pre>
+</pre>
 
-<b> Subroutine specifications for converting n-ary to decimal </ b>
+<b> Subroutine specifications for converting n-ary to decimal </b>
 
 <pre>
 n_to_dec ($ num_str, $ n);
 n_to_dec ('FE16', 16);
-</ pre>
+</pre>
 
 The first argument is an n-ary character string, and the second argument is a number that specifies the number to convert from base to decimal. The return value returns the corresponding decimal number if it can be converted, and undef if it cannot be converted. $ n supports binary to hexadecimal numbers.
 
-<b> Checking the validity of $ n </ b>
+<b> Checking the validity of $ n </b>
 
 <pre>
 return if! defined $ n || $ n! ~ / ^ \ D + $ / || $ n <2 || $ n> 16;
-</ pre>
+</pre>
 
 First, $ n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
 
@@ -355,21 +355,21 @@ If "$ n is not defined" or "$ n is not a string" or "$ n is less than 2" or "$ n
 
 A single return returns undef for scalar contexts and an empty list for list contexts.
 
-<b> Checking the validity of $ num_str </ b>
+<b> Checking the validity of $ num_str </b>
 
 If $ num_str is valid, then "$ num_str is defined" and "$ num_str consists of numbers or A to F, a to f".
 
 Also, the validity of $ num_str depends on $ n. If $ n is 8, for example, then $ num_str should not have the number 9. If the number 9 appears in the octal character string, an error will occur.
 
-<b> Decompose into individual characters </ b>
+<b> Decompose into individual characters </b>
 
 <pre>
 my @nums = split (//, $ num_str);
-</ pre>
+</pre>
 
 If you want to convert the binary character string "1010" to decimal, you need to calculate 8 * 1 + 4 * 0 + 2 * 1 + 1 * 0, so use the split function to break it down into individual characters. I will do it.
 
-<b> Creating a hash with valid characters as keys </ b>
+<b> Creating a hash with valid characters as keys </b>
 
 <pre>
 my @valid = (0 .. 9,'A' ..'F');
@@ -377,19 +377,19 @@ my% valid;
 for (my $ i = 0; $ i <@valid; $ i ++) {
   $ valid {$ valid [$ i]} = $ i;
 }
-</ pre>
+</pre>
 We want to consider 0-9, A-F, a-f to be valid. Also, in preparation for the calculation of base conversion, create a hash that converts the character string A to 10 and the character F to 15.
 
 This hashtable is convenient, if it is a valid character it will return the converted character, otherwise it will return undef. If you create such a hash table, you can convert and judge whether it is convertible at the same time.
 
-<b> "Checking the validity of $ num_str" and "Checking the consistency with $ n" </ b>
+<b> "Checking the validity of $ num_str" and "Checking the consistency with $ n" </b>
 
 <pre>
 for my $ num (@nums) {
   $ num = $ valid {uc $ num};
   return if! defined $ num || $ num> = $ n;
 }
-</ pre>
+</pre>
 
 @nums contains each decomposed character. Convert this to a number if it can be converted using a% valid hash.
 
@@ -399,14 +399,14 @@ If it cannot be converted using% valid, $ num will be assigned undef. If $ num i
 
 Also, if $ num is greater than or equal to $ n (specified base in the argument), it is considered not to be a valid $ str_num and returns.
 
-<b> Conversion from n-ary to decimal </ b>
+<b> Conversion from n-ary to decimal </b>
 
 <pre>
 my $ dec = 0;
 for my $ i (@nums) {
   $ dec = $ dec * $ n + $ i;
 }
-</ pre>
+</pre>
 
 The algorithm for converting from n-ary to decimal is as follows. To convert the octal '254' to decimal, perform the following operations.
 
@@ -414,7 +414,7 @@ The algorithm for converting from n-ary to decimal is as follows. To convert the
 0 × 8 + 2 => 2
 2 × 8 + 5 => 21
 21 × 8 + 4 => 172
-</ pre>
+</pre>
 
 If you leave the calculation process as it is, it will be as follows.
 
@@ -424,4 +424,4 @@ If you leave the calculation process as it is, it will be as follows.
 {(0 × 8 + 2) × 8 + 5} × 8 + 4
 # So the above is
 It is 2 x 8 x 8 + 5 x 8 + 4.
-</ pre>
+</pre>

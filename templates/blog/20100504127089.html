@@ -1,32 +1,32 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> CPAN --Module installation from CPAN </ h2>
+  </li>
+</ol>
+<h2> CPAN --Module installation from CPAN </h2>
 
 
 
-You can use the <strong> CPAN </ strong> module to install the module from <a href="http://search.cpan.org/"> CPAN </a>. CPAN is a collection of modules that you can use for free. The CPAN module is supposed to be used from the command line, and you can use various functions from the cpan command.
+You can use the <strong> CPAN </strong> module to install the module from <a href="http://search.cpan.org/"> CPAN </a>. CPAN is a collection of modules that you can use for free. The CPAN module is supposed to be used from the command line, and you can use various functions from the cpan command.
 
 You can install the module by running the cpan command on the command line.
 
 <pre>
 #Install module
 cpan module name
-</ pre>
+</pre>
 
 There is also a feature called the cpan shell that allows you to install interactively. If you don't specify any arguments to the cpan command, the cpan shell will start. (You may get a YAML error in ActivePerl, but the solution is <a href="/blog/20110520130853.html"> here </a>.)
 
@@ -36,14 +36,14 @@ cpan
 
 # Module installation (cpan shell)
 install module name
-</ pre>
+</pre>
 
 Use the exit command to exit the cpan shell.
 
 <pre>
 # Exit cpan shell (cpan shell)
 exit
-</ pre>
+</pre>
 
 If you're new to running cpan, you'll need to configure cpan the first time you start it. You may be surprised to hear about a lot of settings, but let's press Enter to proceed with the default settings. You can also change the settings later.
 
@@ -91,22 +91,22 @@ Select your country (or several nearby countries) [] 5
 (6) ftp://mirror.nucba.ac.jp/mirror/Perl/
 
 Select as many URLs as you like [] 5
-</ pre>
+</pre>
 
 If you want to reconfigure cpan, use the "o conf init" command in the cpan shell.
 <pre>
 #Reconfigure (cpan shell)
 o conf init
-</ pre>
+</pre>
 
-<h3> Change cpan settings </ h3>
+<h3> Change cpan settings </h3>
 
 To change the cpan settings, start the cpan shell and then use the "o conf" command. Type "o conf" to see all settings.
 
 <pre>
 # See all settings (cpan shell)
 o conf
-</ pre>
+</pre>
 
 A list of settings is displayed as shown below.
 
@@ -124,21 +124,21 @@ List of # cpan settings
     wget [/ usr / bin / wget]
     yaml_load_code [0]
     yaml_module [YAML]
-</ pre>
+</pre>
 
 The setting items can be changed.
 
 <pre>
 #Change settings (cpan shell)
 o conf build_cache 200
-</ pre>
+</pre>
 
 The items you set are valid only while the cpan shell is running. You need to do a commit to save your settings.
 
 <pre>
 #Save settings (cpan shell)
 o conf commit
-</ pre>
+</pre>
 
 If the setting item is a list, you can also use the unshift, push, pop, and shift commands.
 
@@ -154,9 +154,9 @@ o conf urllist pop
 
 # Delete the beginning
 o conf urllist shift
-</ pre>
+</pre>
 
-<h3> If the CPAN module installation fails </ h3>
+<h3> If the CPAN module installation fails </h3>
 
 Installation of CPAN modules often fails. It's difficult to pinpoint the cause of this, but here are some possible situations.
 
@@ -179,7 +179,7 @@ Installation of CPAN modules often fails. It's difficult to pinpoint the cause o
 # Proxy settings
 o conf http_proxy ftp_proxy = http: //proxy.you.com: 8000 /
 o conf ftp_proxy http_proxy = http: //proxy.you.com: 8000 /
-</ pre>
+</pre>
 
 Also, even though only HTTP connection is allowed to the outside, if the urllist contains the ftp URL, the connection will fail. Include one of the URLs below at the beginning of your urllist.
 
@@ -189,12 +189,12 @@ http://ftp.nara.wide.ad.jp/pub/CPAN/
 http://ftp.jaist.ac.jp/pub/CPAN/
 http://ftp.riken.jp/lang/CPAN/
 http://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/
-</ pre>
+</pre>
 
 6. The module depends on another (non-Perl) library
 -> For example XML :: LibXML depends on a library called libxml2. If that library is not installed, CPAN installation will fail. You need to install the package containing libxml2 with commands such as yum and apt-get.
 
-<h3> FAQ about CPAN modules </ h3>
+<h3> FAQ about CPAN modules </h3>
 
 Q. Can I automatically answer yes when installing dependent modules?
 A. Yes. I can do it. prerequisites_polic from cpan shellSet y to follow.
@@ -203,7 +203,7 @@ A. Yes. I can do it. prerequisites_polic from cpan shellSet y to follow.
 # Automatically install dependent modules
 o conf prerequisites_policy follow
 o conf commit
-</ pre>
+</pre>
 
 If ask is specified, it will be confirmed whether to install. If ignore is specified, the dependent modules will not be installed.
 
@@ -221,7 +221,7 @@ A. The installation history is recorded in a document called perllocal.
 <pre>
 #View installation history
 perldoc perllocal
-</ pre>
+</pre>
 
 The installation history is displayed as shown below.
 <pre>
@@ -244,7 +244,7 @@ The installation history is displayed as shown below.
        ・ "VERSION: 0.31"
 
        ・ "EXE_FILES:"
-</ pre>
+</pre>
 
 Q. I just want the name of the list of installed modules.
 A. Use the following script. ExtUtils :: Installed is available.
@@ -253,7 +253,7 @@ A. Use the following script. ExtUtils :: Installed is available.
 #List of installed module names
 use ExtUtils :: Installed;
 print join "\ n", ExtUtils :: Installed-> new-> modules;
-</ pre>
+</pre>
 
 Q. How can I install the modules in a new environment?
 A. Feed cpan the file created above. It's a good idea to combine it with xargs.
@@ -261,7 +261,7 @@ A. Feed cpan the file created above. It's a good idea to combine it with xargs.
 <pre>
 #Install all CPAN modules together
 cat installed.txt | xargs cpan
-</ pre>
+</pre>
 
 Q. I would like to know the distribution name of the installed module.
 
@@ -273,13 +273,13 @@ You can find this out on "cpan -a".
 <pre>
 #View installed modules and distribution names
 cpan -a
-</ pre>
+</pre>
 
 But this has a lot of module duplication, so to get rid of the duplication: It will take some time.
 
 <pre>
 cpan -a | awk'{print $ 4;}' | sort -u
-</ pre>
+</pre>
 
 Q. I don't have root privileges, but I want to use cpan. Can it be installed in the user area?
 

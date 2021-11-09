@@ -1,40 +1,40 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop = "name"> operator </ span> </a>
+      <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> or operator --OR with low priority </ h2>
+  </li>
+</ol>
+<h2> or operator --OR with low priority </h2>
 
 
 
-<b> or </ b> is one of Perl's <a href="/blog/20100816136168.html"> logical operators </a> and represents a logical sum. It has the same meaning as ||, but or has a lower operator priority and is generally used between sentences.
+<b> or </b> is one of Perl's <a href="/blog/20100816136168.html"> logical operators </a> and represents a logical sum. It has the same meaning as ||, but or has a lower operator priority and is generally used between sentences.
 
 <pre>
 Sentence 1 or Sentence 2
-</ pre>
+</pre>
 
 With this description, statement 2 is executed when statement 1 returns false.
 
-Use <h3> or as a conditional branch </ h3>
+Use <h3> or as a conditional branch </h3>
 
 Taking advantage of these properties, or is often used for conditional branching. For example, if the <a href="/blog/20080718121643.html"> open function </a> fails, write as follows.
 
 <pre>
 open my $ fh,'<', $ file
   or die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 If the open function succeeds, true is returned and the right-hand side of or is not executed. If the open function fails, undef is returned, so <a href="/blog/20100212126425.html"> die </a> on the right side is executed and the program ends.
 
@@ -43,7 +43,7 @@ As another example, it is also used with the system function. The system functio
 <pre>
 system (@cmd) == 0
   or die "Can't execute command @cmd";
-</ pre>
+</pre>
 
 If you want to write the main processing first and write supplementary error processing later, you can use conditional branching with or.
 
@@ -53,4 +53,4 @@ You can use "and" for conditional branching, but "or" is recommended because it 
 Example rewritten with # and
 system (@cmd)
   and die "Can't execute command @cmd";
-</ pre>
+</pre>

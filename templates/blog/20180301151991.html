@@ -1,33 +1,33 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop = "name"> operator </ span> </a>
+      <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Dereference </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Dereference </h2>
 
 
 
 A dereference is the opposite of creating a <a href="/blog/20100930127859.html"> reference </a> to retrieve an entity from a reference.
 
-<h4> Dereference array reference </ h4>
+<h4> Dereference array reference </h4>
 
 Use "@ {}" to dereference the <a href="/blog/20180214151861.html"> array reference </a>.
 
 <pre>
 my @array = @ {$ array_ref};
-</ pre>
+</pre>
 
 Please be aware that a new <a href="/blog/20161012147627.html"> array </a> is not created, but the entity is being retrieved.
 
@@ -35,7 +35,7 @@ If the inside of "@ {}" is a simple <a href="/blog/20161107147852.html"> variabl
 
 <pre>
 my @array = @ $ array_ref;
-</ pre>
+</pre>
 
 This is a sample program that dereferences an array reference.
 
@@ -45,7 +45,7 @@ my $ nums_ref = [1, 2, 3];
 
 #Dereference
 my @nums = @ $ nums_ref;
-</ pre>
+</pre>
 
 <a href="/blog/20161004147558.html"> standard functions </a> that perform Perl array operations must pass an array, not an array reference. In this case, dereference it and pass it to the function.
 
@@ -53,33 +53,33 @@ my @nums = @ $ nums_ref;
 my $ nums = [1, 2, 3];
 
 my $ num = shift @ $ nums;
-</ pre>
+</pre>
 
 <ul>
   <li>
     <a href="/blog/20100106126425.html"> pop function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20100107126425.html"> push function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20100104126425.html"> shift function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20100105126425.html"> unshift function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080127120141.html"> splice function </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Dereference hash reference </ h4>
+<h4> Dereference hash reference </h4>
 
 Use "% {}" to dereference the <a href="/blog/20180208151809.html"> hash reference </a>.
 
 <pre>
 my% hash =% {$ hash_ref};
-</ pre>
+</pre>
 
 Please be aware that a new <a href="/blog/20161013147635.html"> hash </a> is not created, but the entity is being retrieved.
 
@@ -87,7 +87,7 @@ If the inside of "% {}" is a simple variable, "{}" can be omitted.
 
 <pre>
 my% hash =% $ hash_ref;
-</ pre>
+</pre>
 
 This is a sample program that dereferences the hash reference.
 
@@ -97,7 +97,7 @@ my $ score_ref = {math => 19, english => 89};
 
 #Dereference
 my% score =% $ score_ref;
-</ pre>
+</pre>
 
 Standard Perl hashing functions should pass a hash, not a hash reference. In this case, dereference it and pass it to the function.
 
@@ -105,40 +105,40 @@ Standard Perl hashing functions should pass a hash, not a hash reference. In thi
 my $ score = {math => 89, english => 45};
 
 my @keys = keys% $ score;
-</ pre>
+</pre>
 
 <ul>
   <li>
     <a href="/blog/20080210120265.html"> keys function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20100222126425.html"> values ​​function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080212120283.html"> each function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080214120300.html"> delete function </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20080213120291.html"> exists function </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Dereference scalar variable reference </ h4>
+<h4> Dereference scalar variable reference </h4>
 
 Use "$ {}" to dereference the <a href="/blog/20161107147852.html"> scalar variable </a> reference.
 
 <pre>
 my $ scalar = $ {$ scalar_ref};
-</ pre>
+</pre>
 
 If the inside of "$ {}" is a simple variable, "{}" can be omitted.
 
 <pre>
 my $ scalar = $$ scalar_ref;
 
-</ pre>
+</pre>
 
 This is a sample program that dereferences the scalar reference.
 
@@ -150,8 +150,8 @@ my $ string_ref = \ $ string;
 
 #Dereference
 my $ string2 = $$ string_ref;
-</ pre>
+</pre>
 
-<h4> Can I dereference other references? </ H4>
+<h4> Can I dereference other references? </H4>
 
 <a href="/blog/20080704121518.html"> Subroutine Reference </a> and <a href="/blog/20080419120860.html"> Regular Expression Reference </a> cannot be dereferenced ..

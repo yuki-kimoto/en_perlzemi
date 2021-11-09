@@ -1,44 +1,44 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span>
+      <span itemprop = "name"> Perl </span>
     </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop = "name"> syntax </ span>
+      <span itemprop = "name"> syntax </span>
     </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> package --Package declaration </ h2>
+  </li>
+</ol>
+<h2> package --Package declaration </h2>
 
 
 
-A feature called namespaces in other languages ​​is called <strong> packages </ strong> in Perl (* 1). A namespace is like a real-world address. I think there are several "Tatsuya Tanaka" in Japan, but there is only one "Tatsuya Tanaka" in "3- ○-△, Shinjuku-ku, Tokyo". You can decide which Tatsuya Tanaka you are by specifying the address. The namespace is the real world address.
+A feature called namespaces in other languages ​​is called <strong> packages </strong> in Perl (* 1). A namespace is like a real-world address. I think there are several "Tatsuya Tanaka" in Japan, but there is only one "Tatsuya Tanaka" in "3- ○-△, Shinjuku-ku, Tokyo". You can decide which Tatsuya Tanaka you are by specifying the address. The namespace is the real world address.
 
-<h3> Package declaration </ h3>
+<h3> Package declaration </h3>
 
-Use <strong> package </ strong> to declare a package.
+Use <strong> package </strong> to declare a package.
 
 <pre>
 #Package declaration
 package Package name;
-</ pre>
+</pre>
 
 Specify a bare string for the package name. You cannot pass a string enclosed in quotes or double quotes.
 
 <pre>
 # Specified as a bare string
 package SomeModule;
-</ pre>
+</pre>
 
 Package names can be multi-tiered. Connect individual parts with "::".
 
@@ -46,25 +46,25 @@ Package names can be multi-tiered. Connect individual parts with "::".
 #Multi-level package name
 package File :: Basename;
 package Class :: Accessor :: Fast;
-</ pre>
+</pre>
 
 You can get the package to which you currently belong with __PACKAGE__.
 
 <pre>
 #The name of the package to which it currently belongs
 __PACKAGE__
-</ pre>
+</pre>
 
-<h3> Default namespace main </ h3>
+<h3> Default namespace main </h3>
 
 In Perl, there is no such thing as not belonging to a package. It belongs to a package called main while no package declaration is made. If you want to return to the default namespace, specify main for the package name.
 
 <pre>
 #Return to default namespace
 package main;
-</ pre>
+</pre>
 
-<h3> Package variables and subroutines belong to a particular package </ h3>
+<h3> Package variables and subroutines belong to a particular package </h3>
 
 Package variables and subroutines always belong to a particular package. This corresponds to Mr. Tatsuya Yamada (name part) explained at the beginning.
 
@@ -79,7 +79,7 @@ our $ VAR;
 sub func {
   ...
 }
-</ pre>
+</pre>
 
 Variable names and subroutine names, including package names, are called fully qualified names. The fully qualified name is the package name and variable name (or subroutine name) concatenated with "::". You can access a variable or subroutine by using a fully qualified name, even if it belongs to another package.
 
@@ -87,7 +87,7 @@ Variable names and subroutine names, including package names, are called fully q
 # Fully qualified name
 $ SomeModule :: VAR;
 SomeModule :: func ();
-</ pre>
+</pre>
 
 This is a sample that calls a function with a fully qualified name.
 
@@ -95,16 +95,16 @@ This is a sample that calls a function with a fully qualified name.
 #Call a function with a fully qualified name
 use File :: Basename;
 File :: Basename :: basename ('xxx / yyy.txt');
-</ pre>
+</pre>
 
-<h3> Package name and module file structure </ h3>
+<h3> Package name and module file structure </h3>
 
 The package name is closely related to the file structure of the module. For example, if the module name is "Foo :: Bar :: Baz", the corresponding file structure will be "Foo / Bar / Baz.pm". Create a directory called "Bar" in a directory called "Foo" and create a file called "Baz.pm" in it. Declare the package at the beginning of "Baz.pm".
 
 <pre>
 # Baz.pm
 package Foo :: Bar :: Baz;
-</ pre>
+</pre>
 
 With such a configuration, it is possible to search for and load modules with use or require.
 

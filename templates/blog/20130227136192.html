@@ -1,17 +1,17 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop = "name"> reading material </ span> </a>
+        <span itemprop = "name"> reading material </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Think about the benefits of having no type in a variable </ h2>
+  </li>
+</ol>
+<h2> Think about the benefits of having no type in a variable </h2>
 
 
 
@@ -19,7 +19,7 @@ For scripting languages ​​such as PHP, Perl, Ruby, and Python, some people m
 
 But the lack of mold is really great. The lack of a mold frees you from a lot of hassle.
 
-<h3> Any type of value can be assigned </ h3>
+<h3> Any type of value can be assigned </h3>
 
 First and foremost, you can assign a value of any type as long as the variable has no type. In other words, when you receive it, you don't have to be aware of what type of value you receive.
 
@@ -29,35 +29,35 @@ my $ num = 1;
 my $ nums = [1, 2, 3];
 my $ person = {age => 2, name =>'taro'};
 my $ ua = LWP :: UserAgent-> new;
-</ pre>
+</pre>
 
 Whether it's a string, a number, an array, an associative array, or an object, you don't have to be aware of it.
 
-<h3> The amount of description becomes very short </ h3>
+<h3> The amount of description becomes very short </h3>
 
 The lack of variable types makes the amount of description very short.
 <pre>
 my $ ua = LWP :: UserAgent-> new;
-</ pre>
+</pre>
 
 If the variable had a type, it would look like this (Java example):
 
 <pre>
 LWP :: UserAgent ua = new LWP :: UserAgent ();
-</ pre>
+</pre>
 
 Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all. Type inference also slows down the time it takes to compile source code. When the source code becomes large, you will not be able to write it quickly and get the execution result quickly. It also makes it a little more difficult to implement the method auto-completion feature in an integrated development environment.
 
-<h3> Variables are resistant to change if they have no type </ h3>
+<h3> Variables are resistant to change if they have no type </h3>
 
 Untyped variables are more resistant to source code changes. For example, even if the return type on the right side changes, there is no need to change the source code on the receiving side.
 
 <pre>
 #clinet can be ClientA type or ClientB type
 my $ ua = $ c-> client;
-</ pre>
+</pre>
 
-<h3> No need to overload functions </ h3>
+<h3> No need to overload functions </h3>
 
 Languages ​​that have variable types have different types, but if you want to perform the same processing, you need to use a function called overloading. If you don't have a variable type, you don't need the overload function, you just have to branch with an if statement, which is very easy.
 
@@ -72,55 +72,55 @@ sub sum {
   
   }
 }
-</ pre>
+</pre>
 
 The lack of types in variables has the great advantage of reducing function duplication.
 
-<h3> No need to implement an interface when you want to receive multiple types </ h3>
+<h3> No need to implement an interface when you want to receive multiple types </h3>
 
 The big effort in Java is to learn and implement how the interface works. If you want to create a variable that wants to accept multiple types, you'll first implement the interface.
 
 However, if the variable has no type, there is no need for an interface mechanism. The lack of types in variables makes class implementations very simple with no duplication.
 
-<h3> No need for features like C ++ templates </ h3>
+<h3> No need for features like C ++ templates </h3>
 
 Consider the case where the function argument receives an array. Then, suppose that the type of the variable contained in the array is not fixed. Also consider if you don't know if the array itself is a regular array, a dynamic array, or a special list. When a variable has a type, you have to think about many of these things individually, implement the interface well, or use complex, hard-to-debug features like C ++ templates.
 
 But if a variable doesn't have a type, you won't face this problem in the first place. After receiving it in the function, you just have to determine the type with the if statement if necessary. Therefore, the lack of types in variables makes it easy to write function and method implementations without duplication.
 
-<h3> Answer the criticism that you don't know what type of value is assigned to a variable if it doesn't have a type. </ H3>
+<h3> Answer the criticism that you don't know what type of value is assigned to a variable if it doesn't have a type. </H3>
 
 I think there is a criticism that if a variable has no type, it is not possible to know what type of value is assigned. It's a readability issue. But I've never felt that untyped languages ​​aren't readable. I think that's because it's read differently than when reading a static language in the first place.
 When reading a scripting language, it's usually easy to see what values ​​it contains by reading contextually. For example, suppose a variable is used as follows.
 
 <pre>
 $ nums-> [3];
-</ pre>
+</pre>
 
 $ nums is an array (reference to).
 
 <pre>
 $ ages-> {age};
-</ pre>
+</pre>
 
 $ ages is a hash (reference to).
 
 <pre>
 my $ ua = LWP :: UserAgent-> new;
-</ pre>
+</pre>
 
 $ ua contains a value of type LWP :: UserAgent.
 
 <pre>
 my $ c = Client-> new;
 my $ ua = $ c-> ua;
-</ pre>
+</pre>
 
 What is $ ua? You can find out what the ua method of the Client class is returning.
 
 If you read it like this and get used to reading the scripting language, you shouldn't have any problems.
 
-<h3> The advantage of having no type in a variable is that there is less duplication and the source code is applied </ h3>
+<h3> The advantage of having no type in a variable is that there is less duplication and the source code is applied </h3>
 
 The advantage of having no type in a variable is that the source code has less duplication. The fact that you don't have to be aware of the type of a variable means that you don't have to be aware of the type when you use the classes, functions, and methods that use it. This is very useful when writing maintainable programs with few duplicates.
 
@@ -128,7 +128,7 @@ Scripting languages ​​are said to be less maintainable, but I don't think th
 
 It's sometimes commented that the untyped language is over, and it's time for a hybrid language, but I don't think that person understands the benefits of having no type. Maybe that person only understands how it looks in the source code.
 
-<h3> Is there a disadvantage that variables have no type? </ H3>
+<h3> Is there a disadvantage that variables have no type? </H3>
 
 Performance is one of them. Numerical operations can be overwhelmingly faster if the value type is known in advance. If you know that it is an integer, you can calculate on that assumption, so the performance of numerical calculation is overwhelmingly better in static languages.
 
@@ -136,119 +136,119 @@ But when performance isn't an issue, I think it's best to use a scripting langua
 
 The other is that you can't rely on the integrated development environment because you can't implement method and function name completion well. When writing a scripting language, I think that development efficiency is good if you memorize a lot and do not rely on the integrated development environment.
 
-<h3> Reply to Hatena Bookmark Comment </ h3>
+<h3> Reply to Hatena Bookmark Comment </h3>
 
 <blockquote>
 Disadvantages of not having a type: If there is a type, he can't find bugs that can be found statically by a computer, so I think he has to do it.
 (nkgt_chkonk)
-</ blockquote>
+</blockquote>
 
 I think this means that you will see a compile error when you compile. But the scripting language runs along with the compilation. Then, the bug will be found at that time, so I think that the ease of finding the bug will not change.
 
 <blockquote>
 No matter how positive it is ...!
 (gfx)
-</ blockquote>
+</blockquote>
 
 Please tell me where it is too positive.
 
 <blockquote>
 Engineering (´д ｀) Engineering
 (choplin)
-</ blockquote>
+</blockquote>
 
 Please tell me the part that will be the work (´д ｀) work.
 
 <blockquote>
 I feel like I was thinking about the same thing when I was making and maintaining something that I could grasp by myself.
 (Dolpen)
-</ blockquote>
+</blockquote>
 
 <blockquote>
 When it comes to large scale, you will realize the disadvantage of having no dynamic language type.
 (t2y-1979)
-</ blockquote>
+</blockquote>
 
 I think that the idea that maintenance becomes impossible when the scale becomes large is a mistake in the first place. Cookpad, Github, mixi, Hatena, faccbook, amazon, all use scripting languages ​​with dynamic types to create large sites. I think that's a matter of belief or project management.
 
 <blockquote>
 It depends too much on the untyped language and the human mind model that I wrote, so it's painful if I don't have a very good mind model.
 (Mizchi)
-</ blockquote>
+</blockquote>
 
 It sounds like it doesn't depend on the mind model if the static types are visible in the source code. Even if you write it in a language with static types, there is a lot of terrible source code.
 
 <blockquote>
 One of the advantages of static type systems is that you can write redundantly so that you can partially check for inconsistencies between them at compile time.
 (nakag0711)
-</ blockquote>
+</blockquote>
 
 Why do everyone think of compile time as a spell at compile time? I wonder if you can understand it once you run the program.
 
 <blockquote>
 Not knowing the error until run time can be a hindrance to improving the quality of your application.
 (Mr. mohno)
-</ blockquote>
+</blockquote>
 
 One programYou don't just have to do it once. Rather, if you're using an integrated development environment, I think compiling and executing at the same time.
 
 <blockquote>
 I want to tell that terrible language that the screaming annoyance is constant because of the metamorphic integer type specification (the variable has a type, but there is no error at the time of assignment and the type is implicitly converted).
-</ blockquote>
+</blockquote>
 
 I don't know which language.
 
 <blockquote>
 Is there a difference in the way of thinking that is strong / weak against change?
-</ blockquote>
+</blockquote>
 
 It's not out of alignment. For example, if you create an interface and want to add a method to your real class, you'll have to make duplicate changes to the interface as well. If you have a dynamic type, you don't have to modify it, so it's resistant to changes.
 
 <blockquote>
 Python and Ruby are lined up in the same line, but I felt a mysterious order where PHP could not be entered / I do not think that I have used a language with type inference seriously / When it becomes large, LL also specifies the type It's definitely more productive to use the complement of the IDE.
-</ blockquote>
+</blockquote>
 
 There is no deep intention to pull out PHP. PHP is a language that is easy to use for web programming because it is easy to deploy and has web-specific functions in the core from the beginning. When it comes to type inference, I wasn't aware of it. I don't understand the meaning of specifying the type even in LL.
 
 <blockquote>
 It's a bomb fishing. When I started Ruby after doing Java, I had this impression. It's not good, I know the good points of various languages. Next time, I think that a completely different world will spread if you try to touch scala.
 (kabisuke)
-</ blockquote>
+</blockquote>
 
 I haven't caught it. As usual, when I wrote it normally, I just got a lot of bookmarks. Twice
 
 <blockquote>
 "Once you run the program, you'll understand." Write the program for your mobile phone once. You can't test something like "The month changed while you were making an emergency call to 110, the prepaid contract expired, and the Earthquake Early Warning came at that moment." of?
 (naoya2k)
-</ blockquote>
+</blockquote>
 
 I think this is a more general exam question. I think it has nothing to do with safety because I made the program with a static type.
 
 <blockquote>
 In the first place, PHP, Perl, Ruby, and Python all have types, but you just don't explicitly declare them.
 (rokujyouhitoma)
-</ blockquote>
+</blockquote>
 
 This story isn't discussing the types of internal values, but rather the benefits of being able to assign a value of any type because the variable doesn't require a type.
 
 <blockquote>
 It is strange that you can understand it once you execute it. If Perl has a decent coverage analysis tool, you can use it and you'll find that it's not a one-time job.
 (tpro)
-</ blockquote>
+</blockquote>
 The fact that you can see it once you run it means that you can find a bug by running that part once. It doesn't mean to go through all the coverage. Coverage issues are another issue. Whether the branch is correct is completely different from whether a language has static typing in the first place.
 
 <blockquote>
 This is the level that Perl users will stab from their backs
 (Mr. Nkzn)
-</ blockquote>
+</blockquote>
 
 There is no content.
 
-<h3> Addendum </ h3>
+<h3> Addendum </h3>
 The following was misunderstood.
 <blockquote>
 Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all.
-</ blockquote>
+</blockquote>
 Type inference seems to infer types better in many cases. We will withdraw the discussion of the benefits of type inference.
 
 But I don't think we're having such an irrelevant discussion.

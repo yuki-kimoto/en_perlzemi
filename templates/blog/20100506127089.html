@@ -1,40 +1,40 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Devel :: DProf --Simple Profiler </ h2>
+  </li>
+</ol>
+<h2> Devel :: DProf --Simple Profiler </h2>
 
 
 
 You may not get the performance you want when you run the program. Finding out which part is the bottleneck is not easy. You can use a tool called a profiler to find out which process in your program is taking a long time. (Currently, it is better to use Devel :: NYTProf.)
 
-The standard module has a simple profiler, the <strong> Devel :: DProf module </ strong>, which you can take advantage of.
+The standard module has a simple profiler, the <strong> Devel :: DProf module </strong>, which you can take advantage of.
 
 Creating a profile is easy. When the following command is executed, a file that outputs the profile information "tmon.out" is created in the current directory.
 
 <pre>
 #Create profile information
 perl -d: DProf target.pl
-</ pre>
+</pre>
 
 To display "tmon.out" in an easy-to-read format, execute the dprofpp command.
 <pre>
 #Display profile in easy-to-read format
 dprofpp
-</ pre>
+</pre>
 
 Then, it will be output in the following easy-to-read format.
 <pre>
@@ -49,7 +49,7 @@ Exclusive Times
  0.00 --- 0.000 1 ---- strict :: bits
  0.00 --- 0.000 2 ---- strict :: import
  0.00 --- 0.000 2 ---- warnings :: import
-</ pre>
+</pre>
 
 The meaning of each item is as follows. It is displayed from the top in the order of time.
 
@@ -57,67 +57,67 @@ The meaning of each item is as follows. It is displayed from the top in the orde
   <tr>
     <td>
       % Time
-    </ td>
+    </td>
     <td>
       Percentage of subroutine execution time to total
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ExclSec
-    </ td>
+    </td>
     <td>
       Subroutine execution time (not including subroutine calls)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       CumulS
-    </ td>
+    </td>
     <td>
       Subroutine execution time (including subroutine call)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       #Calls
-    </ td>
+    </td>
     <td>
       Routine call count
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       sec / call
-    </ td>
+    </td>
     <td>
       Subroutine execution time per subroutine (excluding subroutine calls)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Csec / c
-    </ td>
+    </td>
     <td>
       Subroutine execution time per subroutine (including subroutine call)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Name
-    </ td>
+    </td>
     <td>
       Subroutine name
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 The above result is the result in my environment when I run the script.
 <pre>
@@ -141,6 +141,6 @@ sub func2 {
     $ i ++;
   }
 }
-</ pre>
+</pre>
 
 The number is incremented using <a href="/blog/20100123126425.html"> while statement </a>.

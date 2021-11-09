@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop = "name"> Subroutine </ span> </a>
+        <span itemprop = "name"> Subroutine </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Subroutine exercises </ h2>
+  </li>
+</ol>
+<h2> Subroutine exercises </h2>
 
 
 
 Here are some examples to help you learn with concrete examples of subroutines.
 
-<h3> Convert a csv format string to an array of arrays </ h3>
+<h3> Convert a csv format string to an array of arrays </h3>
 
 This is a sample to convert <a href="/blog/20161003147558.html"> string </a> in csv format to an array of arrays.
 
@@ -55,9 +55,9 @@ sub parse {
   
   wantarray? return @ $ items_list: $ items_list;
 }
-</ pre>
+</pre>
 
-<h4> Conversion image </ h4>
+<h4> Conversion image </h4>
 
 <pre>
 | ------------------ |
@@ -71,15 +71,15 @@ sub parse {
   [rika, 12, USA],
   [kenta, 25, Chinese],
 ]
-</ pre>
+</pre>
 
 <ul>
   <li>
     Converts text to an array of arrays.
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> (1) For those who do not understand here documents. </ h4>
+<h4> (1) For those who do not understand here documents. </h4>
 
 <pre>
 my $ text = <<'EOS';
@@ -87,39 +87,39 @@ tora, 24, Japan
 rika,12,USA
 kenta, 25, Chinese
 EOS
-</ pre>
+</pre>
 See <a href="/blog/20080619121405.html"> Here Document </a>.
 
-<h4> (2) Subroutine call </ h4>
+<h4> (2) Subroutine call </h4>
 
 <pre>
 my $ people = parse ($ text);
-</ pre>
+</pre>
 
 Pass an argument called $ text to a subroutine called parse. This will cause a parse to be executed and its return value will be assigned to $ person.
 
-<h4> (3) How to create an array of arrays </ h4>
+<h4> (3) How to create an array of arrays </h4>
 
 <pre>
 push @ $ items_list, [@items];
-</ pre>
+</pre>
 The <a href="/blog/20100107126425.html"> push function </a> requires an array as the first argument. Dereference and pass an array with @ $ items_list.
 The push function requests a list after the second argument, but do not pass an array as @items. And finally,
 <pre>
 [tora, 24, Japan, rika, 12, USA, kenta, 25, Chinese]
-</ pre>
+</pre>
 
 Will be created. Create a reference to the array as [@items] and push it.
 
-<h4> (4) Selectively return the return value </ h4>
+<h4> (4) Selectively return the return value </h4>
 
 <pre>
 wantarray? return @ $ items_list: $ items_list;
-</ pre>
+</pre>
 
 You can use the <a href="/blog/20080610121319.html"> wantarray function </a> to return the return value depending on the context. (Currently I don't recommend want array)
 
-<h3> Convert csv format string to hash array </ h3>
+<h3> Convert csv format string to hash array </h3>
 
 This is a sample to convert a csv format string to an array of <a href="/blog/20161013147635.html"> hash </a>.
 
@@ -159,9 +159,9 @@ sub parse {
   
   wantarray? return @ $ items_hash_list: $ items_hash_list;
 }
-</ pre>
+</pre>
 
-<h4> Conversion image </ h4>
+<h4> Conversion image </h4>
 
 <pre>
 | ------------------ |
@@ -187,20 +187,20 @@ sub parse {
       'age' => '25'
     }
 ]
-</ pre>
+</pre>
 
 Converts text to an array of arrays.
 
-<h4> (1) Subroutine call </ h4>
+<h4> (1) Subroutine call </h4>
 <pre>
 my $ people = parse ($ text, $ headers);
-</ pre>
+</pre>
 
 Pass the arguments $ text and $ header to a subroutine called parse. By passing the header together, you don't have to write the header name in the subroutine.
 
 If you write the header name in the subroutine, the subroutine and the header name will be tightly coupled and the versatility of the subroutine will be lost. By giving the header name as an argument, this subroutine can be used for any csv format string.
 
-<h4> (2) How to create an array of hashes </ h4>
+<h4> (2) How to create an array of hashes </h4>
 
 <pre>
 for my $ line (@lines) {
@@ -211,7 +211,7 @@ for my $ line (@lines) {
     
   push @ $ items_hash_list, {% items_hash};
 }
-</ pre>
+</pre>
 
 Use <a href="/blog/20080215120307.html"> hash slice </a> to create the hash corresponding to the header.
 
@@ -225,17 +225,17 @@ Use <a href="/blog/20080215120307.html"> hash slice </a> to create the hash corr
 $ items_hash {name} ='tora';
 $ items_hash {age} = 24;
 $ items_hash {contry} ='Japan';
-</ pre>
+</pre>
 
 Using hash slices in this way eliminates the need to write iterations.
 
 <pre>
 push @ $ items_hash_list, {% items_hash};
-</ pre>
+</pre>
 
 The push function requests a list after the second argument, but do not pass a hash as% items_hash. Then finally create a reference to the hash as {% items_hash} and push it.
 
-<h3> Find the maximum and minimum values ​​</ h3>
+<h3> Find the maximum and minimum values ​​</h3>
 
 This is a sample to find the maximum and minimum values.
 
@@ -280,9 +280,9 @@ sub min {
   }
   return $ min_num;
 }
-</ pre>
+</pre>
 
-<h4> (1) Algorithm for finding the maximum value </ h4>
+<h4> (1) Algorithm for finding the maximum value </h4>
 
 <pre>
 sub max {
@@ -301,13 +301,13 @@ sub max {
   }
   return $ max_num;
 }
-</ pre>
+</pre>
 
 A subroutine that takes an array as input and outputs the maximum value. The one that is assumed to be the maximum value is assigned to the variable and left. You can see that the last remaining $ max_num is the maximum value. It is a unique way of thinking about programming that is different from mathematics.
 
 Initially, $ max_num is an undefined value, so if it is an undefined value, $ num is assigned to $ max_num without comparison.
 
-<h3> Bubble sort </ h3>
+<h3> Bubble sort </h3>
 
 This is a sample for bubble sort. Sorting is done using <a href="/blog/20100123126425.html"> while statement </a> and for statement.
 
@@ -388,33 +388,33 @@ sub bubble_sort_descend {
   
   return @nums;
 }
-</ pre>
+</pre>
 
-<h4> What is bubble sort? </ H4>
+<h4> What is bubble sort? </H4>
 
 Bubble sort is an algorithm that compares adjacent numbers, swaps if you are larger than the next number, and finally sorts. (In ascending order)
 
-<h4> Bubble sort process (for 5,4,3,2,1) </ h4>
+<h4> Bubble sort process (for 5,4,3,2,1) </h4>
 
 <blockquote>
 # 1st week
-<b> 5 </ b>, <b> 4 </ b>, 3,2,1 (5 and 4 are exchanged.)
-4, <b> 5 </ b>, <b> 3 </ b>, 2,1 (5 and 3 are exchanged)
-4,3, <b> 5 </ b>, <b> 2 </ b>, 1 (5 and 2 are exchanged)
-4,3,2, <b> 5 </ b>, <b> 1 </ b> (5 and 1 are exchanged)
-4,3,2,1, <b> <span style = "color: # 000099;"> 5 </ span> </ b> (5 is fixed to the maximum value, next is the same for the previous 4 Exchange.)
+<b> 5 </b>, <b> 4 </b>, 3,2,1 (5 and 4 are exchanged.)
+4, <b> 5 </b>, <b> 3 </b>, 2,1 (5 and 3 are exchanged)
+4,3, <b> 5 </b>, <b> 2 </b>, 1 (5 and 2 are exchanged)
+4,3,2, <b> 5 </b>, <b> 1 </b> (5 and 1 are exchanged)
+4,3,2,1, <b> <span style = "color: # 000099;"> 5 </span> </b> (5 is fixed to the maximum value, next is the same for the previous 4 Exchange.)
 
 # 2nd week
-<b> 4 </ b>, <b> 3 </ b>, 2,1, <b> <span style = "color: # 000099;"> 5 </ span> </ b>
-3, <b> 4 </ b>, <b> 2 </ b>, 1, <b> <span style = "color: # 000099;"> 5 </ span> </ b>
-3,2, <b> 4 </ b>, <b> 1 </ b>, <b> <span style = "color: # 000099;"> 5 </ span> </ b>
-3,2,1, <span style = "color: # 000099;"> <b> 4 </ b> </ span> <span style = "color: # 000099;"> <b> 5 </ b> </ span> </ b> (4 is fixed to the maximum value, and next, the same exchange is performed with the previous three.)
+<b> 4 </b>, <b> 3 </b>, 2,1, <b> <span style = "color: # 000099;"> 5 </span> </b>
+3, <b> 4 </b>, <b> 2 </b>, 1, <b> <span style = "color: # 000099;"> 5 </span> </b>
+3,2, <b> 4 </b>, <b> 1 </b>, <b> <span style = "color: # 000099;"> 5 </span> </b>
+3,2,1, <span style = "color: # 000099;"> <b> 4 </b> </span> <span style = "color: # 000099;"> <b> 5 </b> </span> </b> (4 is fixed to the maximum value, and next, the same exchange is performed with the previous three.)
 
 # 3rd week and below
-</ blockquote>
+</blockquote>
 
 
-<h3> Select descending order and ascending order to sort bubbles </ h3>
+<h3> Select descending order and ascending order to sort bubbles </h3>
 
 By devising the previous bubble sort, it is possible to select descending order or ascending order. I also added error handling.
 
@@ -501,17 +501,17 @@ elsif ($ order eq'descend') {
   
   return @nums;
 }
-</ pre>
+</pre>
 
-<h4> (1) Explanation of arguments (options are passed as a reference to the hash) </ h4>
+<h4> (1) Explanation of arguments (options are passed as a reference to the hash) </h4>
 
 <pre>
 my @sorted_nums_ascend = bubble_sort (\ @ nums, {order =>'ascend'});
-</ pre>
+</pre>
 
 I want to pass an array and a hash, so I'll use a reference. In actual programming, options are often passed in <a href="/blog/20180208151809.html"> hash reference </a>.
 
-<h4> (2) Error handling </ h4>
+<h4> (2) Error handling </h4>
 
 <pre>
 my @nums;
@@ -522,22 +522,22 @@ if (defined $ nums) {
   else {return}
 }
 else {return}
-</ pre>
+</pre>
 
 If the first argument is not defined, <a href="/blog/20171111151040.html"> return </a> will end the process. If the first argument is defined but the first argument is not a reference to the array, return ends the process.
 
 If the variable has an invalid state, do not continue processing. For fatal errors, you may want to use the <a href="/blog/20100212126425.html"> die function </a> to throw an exception.
 
-<h4> (3) Set the default value </ h4>
+<h4> (3) Set the default value </h4>
 
 <pre>
 my $ order ='ascend';
 $ order = $ opt-> {order} if $ opt-> {order};
-</ pre>
+</pre>
 
 If $ opt-> {order} is not specified, it is a kind way to specify the default value instead of returning it with an error. Overwrite only if $ opt-> {order} exists.
 
-<h4> (4) Select ascending and descending algorithms </ h4>
+<h4> (4) Select ascending and descending algorithms </h4>
 
 <pre>
 # Last bubble sort
@@ -558,7 +558,7 @@ elsif ($ order eq'descend') {
 if ($ is_change) {
   ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
 }
-</ pre>
+</pre>
 
 In the case of ascend, the judgment is $ nums [$ i]> $ nums [$ i + 1], and in the case of descend, the judgment is $ nums [$ i] <$ nums [$ i + 1]. It's good.
 

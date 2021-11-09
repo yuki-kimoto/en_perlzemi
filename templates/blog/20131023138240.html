@@ -1,30 +1,30 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop = "name"> Module </ span> </a>
+        <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-        <span itemprop = "name"> PDL </ span>
+        <span itemprop = "name"> PDL </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Statistical functions in PDL </ h2>
+  </li>
+</ol>
+<h2> Statistical functions in PDL </h2>
 
 
 
 Here are some basic statistical functions.
 
-<h3> Maximum </ h3>
+<h3> Maximum </h3>
 
-To find the <strong> maximum </ strong> from a one-dimensional PDL variable, use the <strong> max method </ strong>.
+To find the <strong> maximum </strong> from a one-dimensional PDL variable, use the <strong> max method </strong>.
 
 <pre>
 use PDL;
@@ -34,75 +34,75 @@ my $ nums = pdl [4, 2, 7];
 
 # Maximum value
 my $ max = $ nums-> max;
-</ pre>
+</pre>
 
 The PDL :: Ufunc module provides functions for calculating statistics from PDL variables.
 
-<h3> Minimum </ h3>
+<h3> Minimum </h3>
 
-Use the <strong> min method </ strong> to find the <strong> minimum </ strong>.
+Use the <strong> min method </strong> to find the <strong> minimum </strong>.
 
 <pre>
 # minimum value
 my $ min = $ nums-> min;
-</ pre>
+</pre>
 
-<h3> Total </ h3>
+<h3> Total </h3>
 
-Use the <strong> sum method </ strong> to find the <strong> sum </ strong>.
+Use the <strong> sum method </strong> to find the <strong> sum </strong>.
 
 <pre>
 # total
 my $ total = $ nums-> sum;
-</ pre>
+</pre>
 
-<h3> Average </ h3>
+<h3> Average </h3>
 
-Use the <strong> avg method </ strong> to find the <strong> average </ strong>.
+Use the <strong> avg method </strong> to find the <strong> average </strong>.
 
 <pre>
 my $ average = $ nums-> avg;
-</ pre>
+</pre>
 
-<h3> Median </ h3>
+<h3> Median </h3>
 
-Use the <strong> median method </ strong> to find the <strong> median </ strong>.
+Use the <strong> median method </strong> to find the <strong> median </strong>.
 
 <pre>
 my $ median = $ nums-> median;
-</ pre>
+</pre>
 
 The median is the value that comes in the middle when all the values ​​are listed.
 
-<h3> Mode </ h3>
+<h3> Mode </h3>
 
-Use the <strong> mode method </ strong> to find the <strong> mode </ strong>.
+Use the <strong> mode method </strong> to find the <strong> mode </strong>.
 
 <pre>
 my $ mode = $ nums-> mode;
-</ pre>
+</pre>
 
 The mode is the value that appears most often.
 
-<h3> Sort </ h3>
+<h3> Sort </h3>
 
-Use the <strong> qsort method </ strong> to sort in ascending order.
+Use the <strong> qsort method </strong> to sort in ascending order.
 
 <pre>
 # Ascending sort
 my $ nums_sort_asc = $ nums-> qsort;
-</ pre>
+</pre>
 
 To sort in descending order, combine ascending sort and slice.
 
 <pre>
 use PDL :: NiceSlice;
 my $ nums_sort_desc = $ nums_sort_asc (-1: 0);
-</ pre>
+</pre>
 
  The meaning of "-1: 0" means that the first -1 is the last element. 0 means the first element. "-1: 0" means from the last element to the first element, and the order can be reversed.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that can be executed.
 
@@ -149,25 +149,25 @@ my $ nums_sort_desc = $ nums_sort_asc (-1: 0);
 
 print "$ nums_sort_asc \ n";
 print "$ nums_sort_desc \ n";
-</ pre>
+</pre>
 
-<h3> Install PDL :: Stats :: Basic </ h3>
+<h3> Install PDL :: Stats :: Basic </h3>
 
-The following statistical functions are made available by a module called <strong> PDL :: Stats :: Basic </ strong>. You need to install PDL :: Stats.
+The following statistical functions are made available by a module called <strong> PDL :: Stats :: Basic </strong>. You need to install PDL :: Stats.
 
 <pre>
 cpan PDL :: Stats;
-</ pre>
+</pre>
 
 Loading PDL :: Stats :: Basic makes the functions defined in PDL :: Stats :: Basic available from PDL variables.
 
 <pre>
 use PDL :: Stats :: Basic;
-</ pre>
+</pre>
 
-<h3> Distributed </ h3>
+<h3> Distributed </h3>
 
-To find the <strong> distributed </ strong>, use the <strong> var </ strong> method.
+To find the <strong> distributed </strong>, use the <strong> var </strong> method.
 
 <pre>
 use PDL;
@@ -178,96 +178,96 @@ my $ nums = pdl [4, 2, 7];
 
 #Distributed
 my $ variance = $ nums-> var;
-</ pre>
+</pre>
 
-<h3> Bias of an estimulus </ h3>
+<h3> Bias of an estimulus </h3>
 
-To find the <strong> unbiased variance </ strong>, use the <strong> var_unbiased </ strong> method.
+To find the <strong> unbiased variance </strong>, use the <strong> var_unbiased </strong> method.
 
 <pre>
 #Unbiased dispersion
 my $ variance = $ nums-> var_unbiased;
-</ pre>
+</pre>
 
 Bias of an estimulus has a denominator of (n -1).
 
-<h3> Standard deviation </ h3>
+<h3> Standard deviation </h3>
 
-To find the <strong> standard deviation </ strong>, use the <strong> stdv </ strong> method.
+To find the <strong> standard deviation </strong>, use the <strong> stdv </strong> method.
 
 <pre>
 # standard deviation
 my $ stdv = $ nums-> stdv;
-</ pre>
+</pre>
 
 The meaning of the standard deviation is an indication of how scattered the data is. The standard deviation formula is the "positive square root of the variance". Variance also indicates how scattered the data is, but because the units are different from the original data, it is difficult to compare with the original data. If you take the positive square root and make it the standard deviation, the unit will be the same as the unit of the original data.
 
-<h3> Bias of an estimulus </ h3>
+<h3> Bias of an estimulus </h3>
 
-To find the <strong> unbiased standard deviation </ strong>, use the <strong> stdv_unbiased </ strong> method.
+To find the <strong> unbiased standard deviation </strong>, use the <strong> stdv_unbiased </strong> method.
 
 <pre>
 #Unbiased standard deviation
 my $ stdv = $ nums-> stdv_unbiased;
-</ pre>
+</pre>
 
 The unbiased standard deviation formula is the "positive square root of the unbiased variance".
 
-<h3> Standard error </ h3>
+<h3> Standard error </h3>
 
-To find the <strong> standard error </ strong>, use the <strong> se </ strong> method.
+To find the <strong> standard error </strong>, use the <strong> se </strong> method.
 
 <pre>
 #Standard error
 my $ se = $ nums-> se;
-</ pre>
+</pre>
 
-<h3> Sum of deviation squares </ h3>
+<h3> Sum of deviation squares </h3>
 
-To find the <strong> sum of squared deviations </ strong>, use the <strong> ss </ strong> method.
+To find the <strong> sum of squared deviations </strong>, use the <strong> ss </strong> method.
 
 <pre>
 # Deviation square sum
 my $ ss = $ nums-> ss;
-</ pre>
+</pre>
 
-<h3> Skewness </ h3>
+<h3> Skewness </h3>
 
-To find the <strong> skewness </ strong>, use the <strong> skew </ strong> method.
+To find the <strong> skewness </strong>, use the <strong> skew </strong> method.
 
 <pre>
 # Skewness
 my $ skew = $ nums-> skew;
-</ pre>
+</pre>
 
-<h3> Bias of an estimulus </ h3>
+<h3> Bias of an estimulus </h3>
 
-To find the <strong> unbiased skewness </ strong>, use the <strong> skew_unbiased </ strong> method.
+To find the <strong> unbiased skewness </strong>, use the <strong> skew_unbiased </strong> method.
 
 <pre>
 #Bias of an estimulus
 my $ skew_unbiased = $ nums-> skew_unbiased;
-</ pre>
+</pre>
 
-<h3> Kurtosis </ h3>
+<h3> Kurtosis </h3>
 
-To find the <strong> kurtosis </ strong>, use the <strong> kurt </ strong> method.
+To find the <strong> kurtosis </strong>, use the <strong> kurt </strong> method.
 
 <pre>
 #Kurtosis
 my $ kurt = $ nums-> kurt;
-</ pre>
+</pre>
 
-<h3> Bias of an estimulus </ h3>
+<h3> Bias of an estimulus </h3>
 
-To find the <strong> unbiased kurtosis </ strong>, use the <strong> kurt_unbiased </ strong> method.
+To find the <strong> unbiased kurtosis </strong>, use the <strong> kurt_unbiased </strong> method.
 
 <pre>
 #Bias of an estimulus
 my $ kurt_unbiased = $ nums-> kurt_unbiased;
-</ pre>
+</pre>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that can be executed.
 
@@ -321,4 +321,4 @@ print "Skew: $ skew \ n";
 print "Unbiased Skew: $ skew \ n";
 print "Kurtosis: $ kurt \ n";
 print "Unbiased kurtosis: $ kurt_unbiased \ n";
-</ pre>
+</pre>

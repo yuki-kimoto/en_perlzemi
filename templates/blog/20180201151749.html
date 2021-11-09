@@ -1,40 +1,40 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop = "name"> operator </ span> </a>
+      <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Backticks operator-Run another process and get standard output </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Backticks operator-Run another process and get standard output </h2>
 
 
 
-You can use the <b> backticks operator </ b> to run another process and get the standard output produced by that process.
+You can use the <b> backticks operator </b> to run another process and get the standard output produced by that process.
 
 <pre>
 #Backticks operator
 my $ output = `$ cmd`;
-</ pre>
+</pre>
 
 It's pretty similar to the <a href="/blog/20180124151680.html"> system function </a>. The system function returns an exit status, while the backticks operator returns the standard output of the process.
 
-<h3> Execute the ls command </ h3>
+<h3> Execute the ls command </h3>
 
 As an example of the backticks operator, let's execute the Linux ls command that displays the contents of the current directory.
 
 <pre>
 my $ output = `ls`;
-</ pre>
+</pre>
 
 $ output shows a list of current directories.
 
@@ -42,9 +42,9 @@ $ output shows a list of current directories.
 a.pl gperl module-starter.txt not_important_project ringowiki static-perl.tar
 batch Image-PNG-Simple mojo Object-Simple role task deal
 crontab.txt imager-japanese-translation.wiki mojo-examples
-</ pre>
+</pre>
 
-<h3> To check the return value of the calling process </ h3>
+<h3> To check the return value of the calling process </h3>
 
 How do you check if the process you call with the backticks operator fails or returns an error status?
 
@@ -57,7 +57,7 @@ If this value is non-zero, then some error has occurred.
 if ($?) {
   die "Command error";
 }
-</ pre>
+</pre>
 
 You can also know the error status in more detail.
 
@@ -71,9 +71,9 @@ my $ status = $? >> 8;
 if ($ status! = 0) {
   #Error handling
 }
-</ pre>
+</pre>
 
-<h3> Backticks operator security </ h3>
+<h3> Backticks operator security </h3>
 
 The backticks operator is a security-prone operator. For example, suppose the input data from the Web is "rm" and you pass it unchecked to the backticks operator.
 
@@ -81,7 +81,7 @@ The backticks operator executes unintended commands.
 
 If you are receiving input from the user programmatically, make sure that the string you pass to the backticks operator is safe.
 
-<h3> Backticks operator sample </ h3>
+<h3> Backticks operator sample </h3>
 
 This is a sample backticks operator.
 
@@ -96,4 +96,4 @@ if ($?) {
 }
 
 print "$ output \ n";
-</ pre>
+</pre>

@@ -1,42 +1,42 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Exam </ span>
+      <span itemprop = "name"> Exam </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Test :: More --Write a test program for automated testing </ h2>
+  </li>
+</ol>
+<h2> Test :: More --Write a test program for automated testing </h2>
 
 
 
 Almost every Perl module on CPAN comes with a program to test your program. Not only the program, but also the program for testing the program comes with it. This is called an automatic test. Instead of running each program by hand, you can just run the automated test program and see if it works properly.
 
-In Perl, it's convenient to write automated test programs using the standard module <strong> Test :: More </ strong>. Here, we will explain the advantages of automated tests and how to write automated tests with Test :: More.
+In Perl, it's convenient to write automated test programs using the standard module <strong> Test :: More </strong>. Here, we will explain the advantages of automated tests and how to write automated tests with Test :: More.
 
-<h3> Advantages of automated testing </ h3>
+<h3> Advantages of automated testing </h3>
 
-<h4> 1. Regression test can be done easily. </ h4>
+<h4> 1. Regression test can be done easily. </h4>
 
 The regression test, also known as the regression test, is a test that confirms that the original function works properly when a function is added to the program. Once you have created an automated test, you only have to make sure that the automated test succeeds after you add functionality to your program.
 
-<h4> 2. Can be refactored </ h4>
+<h4> 2. Can be refactored </h4>
 
 Refactoring is about cleaning up your code. The act of rewriting the code to improve versatility and readability. It is not good to leave a dirty code. For programs that need to adapt to change, you need to code to make it easier to add features.
 
 Creating an automated test allows you to refactor without compromising functionality.
 
-<h3> Notes on automatic testing </ h3>
+<h3> Notes on automatic testing </h3>
 
-<h4> 1. I don't know whether the code itself is good or bad. </ h4>
+<h4> 1. I don't know whether the code itself is good or bad. </h4>
 
 An automated test is a test to see the function. I can't tell if the code is versatile, if it's neatly organized into subroutines, or if it's highly readable. I think it would be better to combine it with inspection, code reading, etc.
 
-<h4> 2. Visual confirmation is also performed </ h4>
+<h4> 2. Visual confirmation is also performed </h4>
 
 Automatic exams are not perfect exams. There will be a mistake in writing the automatic test. It is also possible that the automatic test was not conducted due to a misunderstanding, or that the test itself was wrong.
 
@@ -44,7 +44,7 @@ The key to eliminating test mistakes is to test from as many perspectives as pos
 
 Once you have written the correct exam, you can check it automatically.
 
-<h3> Simple sample of automatic test </ h3>
+<h3> Simple sample of automatic test </h3>
 
 Now let's write an automated test program using Perl's module for automated tests Test :: More.
 
@@ -62,19 +62,19 @@ ok ($ num1 == 1);
 # This exam fails
 my $ num2 = 2;
 ok ($ num2 == 1);
-</ pre>
+</pre>
 
 A description of the automated test script.
 
-<h4> 1. Specify the number of exams. </ h4>
+<h4> 1. Specify the number of exams. </h4>
 
 When using Test :: More, specify the number of tests.
 
 <pre>
 use Test :: More tests => 2;
-</ pre>
+</pre>
 
-<h4> 2. Check the test result with the ok function </ h4>
+<h4> 2. Check the test result with the ok function </h4>
 
 The first argument of the ok function describes the conditions under which the test will succeed.
 
@@ -86,11 +86,11 @@ ok ($ num1 == 1);
 # This exam fails
 my $ num2 = 2;
 ok ($ num2 == 1);
-</ pre>
+</pre>
 
 This statement can be read as "If $ num1 is equal to 1, the test is successful" and "If $ num2 is equal to 1, the test is successful".
 
-<h4> 3. Test results </ h4>
+<h4> 3. Test results </h4>
 
 The test results of the above sample are as follows. You can see that the first exam was successful and the second exam was unsuccessful.
 
@@ -101,9 +101,9 @@ not ok 2 --Test2
 # Failed test'Test2'
 # at b.pl line 9.
 #Looks like you failed 1 test of 2.
-</ pre>
+</pre>
 
-<h3> Test subroutines </ h3>
+<h3> Test subroutines </h3>
 
 Let's take a look at another simple sample. Test a function called sum that sums two numbers and a function called double that doubles the numbers. The double function is supposed to be doubled, but it is mistakenly tripled so that the automated test fails.
 
@@ -148,9 +148,9 @@ sub double {
   # I had to double it, but I accidentally tripled it!
   return $ num * 3
 }
-</ pre>
+</pre>
 
-<h4> 1. Automatic subroutine test </ h4>
+<h4> 1. Automatic subroutine test </h4>
 
 Performs an automatic test for each subroutine. In this sample, we are testing a subroutine called sum.
 
@@ -169,9 +169,9 @@ sub sum {
   my ($ num1, $ num2) = @_;
   return $ num1 + $ num2;
 }
-</ pre>
+</pre>
 
-<h4> 2. Create a scope for each test unit. </ h4>
+<h4> 2. Create a scope for each test unit. </h4>
 
 As you write a lot of tests, variable name collisions become more frequent. To avoid this, create a scope with {} and write each test in it.
 
@@ -194,9 +194,9 @@ As you write a lot of tests, variable name collisions become more frequent. To a
   
   ok ($ double == 2,'double'); #Failed!
 }
-</ pre>
+</pre>
 
-<h4> 3. Test results </ h4>
+<h4> 3. Test results </h4>
 
 Let's take a look at the test results. The double function is wrongly a function that triples, so the second test fails.
 
@@ -206,10 +206,10 @@ not ok 2 --double
 # Failed test'double'
 # at --line 25.
 #Looks like you failed 1 test of 2.
-</ pre>
+</pre>
 
 
-<h3> Automatic test layout </ h3>
+<h3> Automatic test layout </h3>
 
 The above script was done in one file, but I'll show you the general layout of the automated test directory. The layout of the automated test directory is as follows. Suppose you want to test a module called SomeModule.pm.
 
@@ -226,13 +226,13 @@ SomeModule /
            | ---- sum.t
            |
            | ---- double.t
-</ pre>
+</pre>
 
 The module itself is stored in a directory called lib. The automated test program is stored in a directory named t. The extension of the automated test program should be .t.
 
 There are no absolute rules for the layout, but many modules that make Perl's automated testing useful assume this layout, so let's do it.
 
-<h4> Module sample </ h4>
+<h4> Module sample </h4>
 
 This is a sample module for testing. Save it as "SomeModule.pm" and store it in "lib".
 
@@ -256,15 +256,15 @@ sub double {
 }
 
 1;
-</ pre>
+</pre>
 
 The last line of the module should return a true value. Be careful as it is easy to forget.
 
-<h4> Test script </ h4>
+<h4> Test script </h4>
 
 This is a sample of automatic test.
 
-<h4> sum.t </ h4>
+<h4> sum.t </h4>
 
 <pre>
 use strict;
@@ -286,11 +286,11 @@ my $ num1 = 1;
   
   ok ($ total == 3,'sum');
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100524127696.html"> FindBin </a>
 
-<h4> double.t </ h4>
+<h4> double.t </h4>
 
 <pre>
 use strict;
@@ -312,25 +312,25 @@ use SomeModule;
   ok ($ double == 2,'double');
 }
 
-</ pre>
+</pre>
 
-<h4> Execution of automatic test </ h4>
+<h4> Execution of automatic test </h4>
 
 Let's run an automated test. To do an automated test, first go inside the Somo Module. Then run the following command:
 
 <pre>
 perl t / sum.t
-</ pre>
+</pre>
 
 You can run the exam.
 
-<h3> Run all automated tests with prove script </ h3>
+<h3> Run all automated tests with prove script </h3>
 
-As the number of automated test programs increases, it is very troublesome to perform automated tests one by one. Perl has a handy script called <strong> prove </ strong> that runs all the automated tests.
+As the number of automated test programs increases, it is very troublesome to perform automated tests one by one. Perl has a handy script called <strong> prove </strong> that runs all the automated tests.
 
 <pre>
 prove t
-</ pre>
+</pre>
 
 prove is very useful because it will perform all the automated tests for you.
 
@@ -352,7 +352,7 @@ t \ double.t 1 256 1 1 1
 Failed 1/2 test scripts. 1/2 subtests failed.
 Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
 Failed 1/2 test programs. 1/2 subtests failed.
-</ pre>
+</pre>
 
 The double function is wrong, so if you modify it to double the number, all the tests will succeed as below.
 
@@ -361,9 +361,9 @@ t \ sum ....... ok
 t \ double .... ok
 All tests successful.
 Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
-</ pre>
+</pre>
 
-<h3> Test :: More function </ h3>
+<h3> Test :: More function </h3>
 
 So far, we've used only the "ok function" to create tests, but the Test :: More module has a lot of useful functions.
 
@@ -373,76 +373,76 @@ To test booleans, numbers, strings, object contents, etc., use the following fun
   <tr>
     <td>
       function
-    </ td>
+    </td>
     <td>
       Commentary
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       is
-    </ td>
+    </td>
     <td>
       Make sure the strings are equal using eq. Numerical comparison of integers is still OK
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       isnt
-    </ td>
+    </td>
     <td>
       Use ne to make sure the strings are not equal. Numerical comparison of integers is still OK
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       like
-    </ td>
+    </td>
     <td>
       Make sure the string matches <a href="/blog/20100827127859.html"> regular expression </a>
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       unlike unlike
-    </ td>
+    </td>
     <td>
       Make sure the string doesn't match the regular expression
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       cmp_ok
-    </ td>
+    </td>
     <td>
       Compare by specifying Perl operators such as ==, <,>, <=,> =, gt, lt, etc.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       is_deeply
-    </ td>
+    </td>
     <td>
       Used for comparing complex data structures such as arrays of arrays
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> is and isnt functions </ h4>
+<h4> is and isnt functions </h4>
 
-The <strong> is function </ strong> tests that the strings are equal. The <strong> isnt function </ strong> tests that the strings are not equal.
+The <strong> is function </strong> tests that the strings are equal. The <strong> isnt function </strong> tests that the strings are not equal.
 
 <pre>
 is ($ str, 3);
 isnt ($ str, 5);
-</ pre>
+</pre>
 
 The first argument is the value you want to test. The second argument is the expected result.
 
@@ -450,36 +450,36 @@ is and isnt use eq and ne, so they are compared as strings. (For example, "12.0"
 
 Otherwise, use a function called cmp_ok.
 
-<h4> like and dislike functions </ h4>
+<h4> like and dislike functions </h4>
 
-The <strong> like function </ strong> tests that the string matches the regular expression. The <strong> dislike function </ strong> tests that it doesn't match the regular expression </ strong>.
+The <strong> like function </strong> tests that the string matches the regular expression. The <strong> dislike function </strong> tests that it doesn't match the regular expression </strong>.
 
 <pre>
 like ($ str, qr / \ w + /);
 unlike ($ str, qr / \ w + /);
-</ pre>
+</pre>
 
-The first argument is the value you want to test. The second argument is a <strong> regular expression reference </ strong>.
+The first argument is the value you want to test. The second argument is a <strong> regular expression reference </strong>.
 
 Note that the second argument is a reference to the regular expression qr / \ w + /. If you change this to'\ w +'or / \ w + /, the test will not work.
 
-<h4> cmp_ok function </ h4>
+<h4> cmp_ok function </h4>
 
-The <strong> cmp_ok function </ strong> allows you to test using any comparison operator.
+The <strong> cmp_ok function </strong> allows you to test using any comparison operator.
 
 <pre>
 cmp_ok ($ num,'<', 3);
-</ pre>
+</pre>
 
 The first and third arguments are the values ​​you want to compare. The second argument is the comparison operator. All comparison operators such as "=", "<", "<=", "> =", ">", "eq", "ne", "gt", "lt", "ge", and "le" can be used.
 
-<h4> is_deeply function </ h4>
+<h4> is_deeply function </h4>
 
-You can use the <strong> is_deeply function </ strong> to test complex data structures such as array references and hash references. This is very convenient.
+You can use the <strong> is_deeply function </strong> to test complex data structures such as array references and hash references. This is very convenient.
 
 <pre>
 is_deeply ($ hash_ref, {a => 1, b => 2});
-</ pre>
+</pre>
 
 The first argument is the value you want to test. The second argument is the expected result.
 
@@ -489,111 +489,111 @@ Next, I will introduce a function for testing module loading, class definition, 
   <tr>
     <td>
       can_ok
-    </ td>
+    </td>
     <td>
       Check if the class has a method
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       isa_ok
-    </ td>
+    </td>
     <td>
       Check the class inherited by the object, check the reference type
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       require_ok
-    </ td>
+    </td>
     <td>
       Make sure the module can be required
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       use_ok
-    </ td>
+    </td>
     <td>
       Make sure the module can be used
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> can_ok function </ h4>
+<h4> can_ok function </h4>
 
-The <strong> can_ok function </ strong> is used for testing to make sure a class has a method.
+The <strong> can_ok function </strong> is used for testing to make sure a class has a method.
 
 <pre>
 can_ok ('Book','title','author','price','to_string','clone');
-</ pre>
+</pre>
 
 This is a test to make sure that the Book class has methods title, author, price, to_string, clone.
 
-<h4> isa_ok function </ h4>
+<h4> isa_ok function </h4>
 
-<strong> isa_ok </ strong> is used for testing to ensure that an object inherits a class.
+<strong> isa_ok </strong> is used for testing to ensure that an object inherits a class.
 
 <pre>
 my $ comic = Comic-> new;
 isa_ok ($ comic,'Book');
-</ pre>
+</pre>
 
 This is a test to make sure that the $ comic object inherits from the Book class.
 The exam will also succeed if you specify your own class as follows:
 
 <pre>
 isa_ok ($ comic,'Comic');
-</ pre>
+</pre>
 
 It also supports testing what kind of reference it is, not an object.
 
 <pre>
 my $ ary_ref = [];
 isa_ok ($ array_ref,'ARRAY');
-</ pre>
+</pre>
 
-<h4> require_ok function </ h4>
+<h4> require_ok function </h4>
 
-The <strong> require_ok function </ strong> is used for testing to ensure that a module can be required.
+The <strong> require_ok function </strong> is used for testing to ensure that a module can be required.
 
 <pre>
 require_ok ('Book');
-</ pre>
+</pre>
 
 This is a test to make sure the Book module can be required. It is a usage of require_ok, but it can be used when the module you want to distribute depends on another module, or when you want to confirm that the module exists.
 
-<h4> use_ok function </ h4>
+<h4> use_ok function </h4>
 
-The <strong> use_ok function </ strong> is used for testing to verify that the module can be used.
+The <strong> use_ok function </strong> is used for testing to verify that the module can be used.
 
 <pre>
 BEGIN {use_o
 
 k ('Some :: Module')}
-</ pre>
+</pre>
 
-<h3> FAQ </ h3>
+<h3> FAQ </h3>
 
-<h4> Is it possible to display easy-to-understand comments on the test results? </ H4>
+<h4> Is it possible to display easy-to-understand comments on the test results? </H4>
 
-You can use the <strong> note function </ strong> to display comments in your test results.
+You can use the <strong> note function </strong> to display comments in your test results.
 
 <pre>
 note'some test';
-</ pre>
+</pre>
 
-<h4> It's annoying to describe the number of exams </ h4>
+<h4> It's annoying to describe the number of exams </h4>
 
 Use "no_plan" or "done_testing".
 
 <pre>
 use Test :: More'no_plan';
-</ pre>
+</pre>
 
 <pre>
 use Test :: More;
@@ -601,13 +601,13 @@ use Test :: More;
 # Write an exam
 
 done_testing;
-</ pre>
+</pre>
 
 Currently, done_testing is recommended.
 
 In rare cases, there seems to be an edge case that passes even though the test has failed. If you want certainty, write the number of tests.
 
-<h4> I want to skip some exams </ h4>
+<h4> I want to skip some exams </h4>
 
 For example, in certain environments you may want to skip the exam. Write as follows.
 
@@ -619,9 +619,9 @@ if ($ ^ O eq'MacOS') {
 else {
   plan tests => 42;
 }
-</ pre>
+</pre>
 
-<h4> How do you test for exceptions? </ h4>
+<h4> How do you test for exceptions? </h4>
 
 If you want to see the exception occur, do the following:
 
@@ -638,11 +638,11 @@ else {
 # Or check the error message
 eval {some_func ()};
 like ($ @, qr / error /);
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100312126967.html"> eval </a>
 
-<h4> How do you test the warning? </ h4>
+<h4> How do you test the warning? </h4>
 
 If you want to see the warning, use a signal handler and do the following:
 
@@ -663,9 +663,9 @@ if ($ warn) {
 else {
   ok (0);
 }
-</ pre>
+</pre>
 
-<h3> Finally </ h3>
+<h3> Finally </h3>
 
 It is convenient to create an automated test using Test :: More so that you can check whether the program is correct just by running the automated test. Also, in order to write your own CPAN module, you must remember it.
 

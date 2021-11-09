@@ -1,39 +1,39 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161006147575.html">
-      <span itemprop = "name"> Character code </ span> </a>
+      <span itemprop = "name"> Character code </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Unicode </ span>
+      <span itemprop = "name"> Unicode </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> code point </ span>
+      <span itemprop = "name"> code point </span>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
-<h2> Expressing Unicode characters with code points </ h2>
+  </li>
+</ol>
+<h2> Expressing Unicode characters with code points </h2>
 
 
-<Strong> Unicode characters </ strong> have <strong> code points </ strong> assigned to all characters. In Perl, Unicode characters can be represented using code points.
+<Strong> Unicode characters </strong> have <strong> code points </strong> assigned to all characters. In Perl, Unicode characters can be represented using code points.
 
 <pre>
 # a
 my $ str = "\ x {3042}";
-</ pre>
+</pre>
 Note that strings containing Unicode characters represented by code points are always treated as internal strings, with or without utf8 pragma. In other words, it is already decoded. To output, encode as follows.
 
 <pre>
 use Encode'encode';
 print encode ('UTF-8', $ str);
-</ pre>
+</pre>
 For windows, try specifying cp932 as the character code.

@@ -1,33 +1,33 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop = "name"> XS </ span> </a>
+        <span itemprop = "name"> XS </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> How to use C ++ classes from XS </ h2>
+  </li>
+</ol>
+<h2> How to use C ++ classes from XS </h2>
 
 
 
-Learn how to call <b> C ++ classes </ b> on your XS. If I can do this, I think any C ++ library will be able to bind to Perl.
+Learn how to call <b> C ++ classes </b> on your XS. If I can do this, I think any C ++ library will be able to bind to Perl.
 
-<h3> Create a module with h2xs </ h3>
+<h3> Create a module with h2xs </h3>
 
 First, create a module for XS with <a href="/blog/20170209150055.html"> h2xs </a>.
 
 <pre>
 h2xs -A -n MyClass
-</ pre>
+</pre>
 
 This will create a directory called "MyClass". The following files and directories will be created.
 
@@ -40,13 +40,13 @@ ppport.h
 README
 MyClass.xs
 t /
-</ pre>
+</pre>
 
-<h3> Creating a class in C ++ </ h3>
+<h3> Creating a class in C ++ </h3>
 
 Let's create a class in C ++. Create a header file and a source file.
 
-<b> MyClass.h </ b>
+<b> MyClass.h </b>
 
 This is a header file. Declares constructors, methods and class methods. This is done to understand the difference between calling regular methods and class methods. The file name is "MyClass.h".
 
@@ -68,11 +68,11 @@ class MyClass {
 };
 #endif
 
-</ pre>
+</pre>
 
 What starts with "#ifndef" is what is called an include guard. The header file needs to be read from two places, the XS file and the source file. Then, if it is left as it is, the header file will be imported twice and a compile error will occur. To prevent that, we are including it.
 
-<h3> MyClass_src.cpp </ h3>
+<h3> MyClass_src.cpp </h3>
 
 C ++ source file. Implements constructors, methods, and class methods. In the source file, you need to read the header file to resolve the symbol MyClass. The file name is "MyClass_src.cpp". This is because if you name it "MyClass.cpp", the compiled name will be "MyClass.o", because it will overlap with the compiled name "MyClass.o" of the XS file "MyClass.xs". ..
 <pre>
@@ -92,11 +92,11 @@ void MyClass :: print_static () {
   std :: cout << "MyClass :: print_static \ n";
 }
 
-</ pre>
+</pre>
 
 Save the header and source files and place them in the same directory where the XS files are located.
 
-<h3> XS file description </ h3>
+<h3> XS file description </h3>
 
 Let's write an XS file.
 
@@ -159,9 +159,9 @@ void DESTORY (...)
   delete self;
 }
 
-</ pre>
+</pre>
 
-<b> Macro for type conversion </ b>
+<b> Macro for type conversion </b>
 
 Let me explain a little. Below are macros that convert Perl objects (SV * type) to C (or C ++) pointers and macros that convert C (or C ++) pointers to Perl objects (SV * type).
 
@@ -178,9 +178,9 @@ Let me explain a little. Below are macros that convert Perl objects (SV * type) 
     ), \
     gv_stashpv (class, 1) \
   );
-</ pre>
+</pre>
 
-<b> Constructor </ b>
+<b> Constructor </b>
 
 It is a constructor. Use new to instantiate MyClass and assign it to the MyClass * type. Then, this Ponita is converted into a Perl object and returned.
 
@@ -195,9 +195,9 @@ new (...)
   XPUSHs (self_sv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<b> method call </ b>
+<b> method call </b>
 
 A method call.
 
@@ -211,11 +211,11 @@ print (...)
   self-> print ();
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
 In the method call, the Perl object is passed as the first argument, so convert it to the pointer "MyClass *". Then call the method as "self-> print".
 
-<b> Calling class methods </ b>
+<b> Calling class methods </b>
 
 This is a class method call.
 
@@ -227,11 +227,11 @@ print_static (...)
   MyClass :: print_static ();
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
 I'm just calling "MyClass :: print_static ()" with a fully qualified name.
 
-<b> Destructor </ b>
+<b> Destructor </b>
 
 It is a destructor. You need to use delete to free the memory.
 
@@ -242,9 +242,9 @@ void DESTORY (...)
   MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   delete self;
 }
-</ pre>
+</pre>
 
-<h3> Modify Makefile.PL </ h3>
+<h3> Modify Makefile.PL </h3>
 
 Next, let's modify <a href="/blog/20150725143778.html"> Makefile.PL </a> a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$ (O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
 
@@ -269,9 +269,9 @@ WriteMakefile (
      CC =>'g ++',
      LD =>'g ++',
 );
-</ pre>
+</pre>
 
-<h3> Test script </ h3>
+<h3> Test script </h3>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -284,9 +284,9 @@ use MyClass;
 my $ obj = MyClass-> new;
 $ obj-> print;
 MyClass-> print_static;
-</ pre>
+</pre>
 
-<h3> Compile and run </ h3>
+<h3> Compile and run </h3>
 
 Let's compile and run it.
 
@@ -294,14 +294,14 @@ Let's compile and run it.
 perl Makefile.PL
 make
 perl -Mblib test.pl
-</ pre>
+</pre>
 
 If the output is as follows, it is successful.
 
 <pre>
 MyClass :: print
 MyClass :: print_static
-</ pre>
+</pre>
 
 Now you can use C ++ classes from your XS file.(Returns a pointer to the SV * type)
     SV ** num_sv_ptr = av_fetch (nums_av, i, FALSE);
@@ -322,9 +322,9 @@ Now you can use C ++ classes from your XS file.(Returns a pointer to the SV * ty
   
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> Convert C language array to array reference </ h4>
+<h4> Convert C language array to array reference </h4>
 
 Converts a C array into a Perl array reference. An array (AV * type) can be created with "newAV ()". If you created the array, it should be mortal. Note that sv_2mortal only accepts SV * types, so we cast it as (SV *). Also note that sv_2mortal returns the SV * type, so we cast it as (AV *).
 
@@ -357,9 +357,9 @@ foo (...)
   XPUSHs (nums_avrv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h4> Convert hash reference to struct </ h4>
+<h4> Convert hash reference to struct </h4>
 
 I will explain how to convert <a href="/blog/20161013147635.html"> Perl hash </a> to a C language structure.
 
@@ -370,7 +370,7 @@ typedef struct {
   double x;
   double y;
 } Point;
-</ pre>
+</pre>
 
 The following is written in the XS section.
 
@@ -420,9 +420,9 @@ foo (...)
   
   XSRETURN (0);
 }
-</ pre>
+</pre>
 
-<h4> Convert struct to hash reference </ h4>
+<h4> Convert struct to hash reference </h4>
 
 Converts the structure to a hash reference.
 
@@ -433,7 +433,7 @@ typedef struct {
   double x;
   double y;
 } Point;
-</ pre>
+</pre>
 
 The following is written in the XS section. Hash is created by "newHV ()". Don't forget to make it mortal. When adding to the hash element, SvREFCNT_inc increments the reference count by one.
 
@@ -467,14 +467,14 @@ foo (...)
   XPUSHs (point_hvrv);
   XSRETURN (1);
 }
-</ pre>
+</pre>
 
-<h3> To find out XS functions perlapi </ h3>
+<h3> To find out XS functions perlapi </h3>
 
 The functions that create SV type data introduced here can be found in a document called perlapi. Please use the brief explanation of perlapi.
 
 <ul>
   <li>
     <a href="/blog/20100818127859.html"> perlapi --API for data manipulation in XS </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

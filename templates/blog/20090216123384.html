@@ -1,33 +1,33 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span>
+      <span itemprop = "name"> Perl </span>
     </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161126148016.html">
-      <span itemprop = "name"> File operations </ span>
+      <span itemprop = "name"> File operations </span>
     </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span>
+      <span itemprop = "name"> Module </span>
     </a>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100412127089.html">
-      <span itemprop = "name"> File :: Spec </ span>
+      <span itemprop = "name"> File :: Spec </span>
     </a>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
-<h2> Convert the file name to the file name in the OS of the execution environment </ h2>
+  </li>
+</ol>
+<h2> Convert the file name to the file name in the OS of the execution environment </h2>
 
 
 
@@ -36,19 +36,19 @@ You could use File :: Spec-> catfile to create an OS-independent filename. This 
 <pre>
 #File representation on Unix
 dir1 / dir2 / file.txt
-</ pre>
+</pre>
 
 Suppose you want to convert this Unix file representation to a Windows file representation on Windows. It's easy to do the following:
 
-The <b> splitdir method of File :: Spec splits $ unix_path into individual parts. Connect it with the catfile method. </ b> catfile will combine the decomposed filenames with \.
+The <b> splitdir method of File :: Spec splits $ unix_path into individual parts. Connect it with the catfile method. </b> catfile will combine the decomposed filenames with \.
 
 <pre>
 use File :: Spec;
 my $ unix_path ='dir1 / dir2 / file.txt';
 my $ windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($ unix_path));
-</ pre>
+</pre>
 
-<h3> Executable sample </ h3>
+<h3> Executable sample </h3>
 
 <pre>
 use strict;
@@ -60,11 +60,11 @@ my $ windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($ unix_path
 
 print "1. Convert to Windows file path \ n";
 print $ windows_path, "\ n";
-</ pre>
+</pre>
 
-<h3> Output result on Windows </ h3>
+<h3> Output result on Windows </h3>
 
 <pre>
 1. Convert to Windows file path
 dir1 \ dir2 \ file.txt
-</ pre>
+</pre>

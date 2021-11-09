@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop = "name"> Subroutine </ span> </a>
+        <span itemprop = "name"> Subroutine </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Subroutine definitions are not affected by scope </ h2>
+  </li>
+</ol>
+<h2> Subroutine definitions are not affected by scope </h2>
 
 
 
@@ -29,13 +29,13 @@ Subroutine definitions are not affected by <a href="/blog/20110128130016.html"> 
   }
 }
 my $ ret = func ();
-</ pre>
+</pre>
 
 Subroutines are not affected by scope. At first glance, it's easy to think that func is invisible outside the scope, but that's not the case.
 
 The subroutine definition is registered in the <a href="/blog/20080613121341.html"> symbol table </a> at compile time. Since the symbol table can be referenced from anywhere in the program, subroutines can also be referenced from anywhere in the program.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 The subroutine definition is a sample to understand that it is not affected by scope.
 
@@ -55,4 +55,4 @@ use warnings;
 print "1: Subroutine definition is not affected by scope. \ N";
 my $ ret = func ();
 print "\ $ ret is $ ret. \ N";
-</ pre>
+</pre>

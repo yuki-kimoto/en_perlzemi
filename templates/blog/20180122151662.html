@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax / Grammar </ span> </a>
+        <span itemprop = "name"> Syntax / Grammar </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Destructor --DESTROY </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Destructor --DESTROY </h2>
 
 
 
@@ -28,9 +28,9 @@ sub DESTROY {
   # What happens when an object is released
   ...
 }
-</ pre>
+</pre>
 
-<h3> Close the file handle with a destructor </ h3>
+<h3> Close the file handle with a destructor </h3>
 
 For example, suppose you have a File class that represents a file. The File class stores the file handle opened by the <a href="/blog/20080718121643.html"> open function </a> in the fh field.
 
@@ -66,12 +66,12 @@ package main;
 {
   my $ file = File-> new ('a.txt');
 }
-</ pre>
+</pre>
 
 Reference: <a href="/blog/20161030147778.html"> Object Oriented </a>, <a href="/blog/20100430127089.html"> Carp Module </a>, <a href="/blog/ 20110128130016.html "> Scope </a>, <a href="/blog/20100419127089.html"> main package </a>
 
 When I run this script, it says "DESTROY", which I put in to make sure the destructor is running. The destructor is running and the file handle is closed.
 
-<h3> Main uses of destructors </ h3>
+<h3> Main uses of destructors </h3>
 
 Destructors are often used when closing external resources such as files and databases. Since Perl has a clear timing for the object to be released, you can write the resource closing process in the destructor.

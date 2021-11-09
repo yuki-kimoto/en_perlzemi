@@ -1,17 +1,17 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161123147990.html">
-        <span itemprop = "name"> Date / Time </ span> </a>
+        <span itemprop = "name"> Date / Time </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Get holidays with Google Calendar Data API </ h2>
+  </li>
+</ol>
+<h2> Get holidays with Google Calendar Data API </h2>
 
 
 
@@ -19,7 +19,7 @@ Holidays are very difficult to handle because they are decided by humans. There 
 
 In this sample, we will get the data of Japanese holidays provided by Google with Google Calendar Data API.
 
-It is not absolutely reliable because it is the data of Japanese holidays examined by Google. <span style = "color: # FF0000;"> If Google is wrong, it will get the wrong holiday data, so please do not use it as it is for applications where the wrong date causes damage. </ span> Make sure you are correct by other means.
+It is not absolutely reliable because it is the data of Japanese holidays examined by Google. <span style = "color: # FF0000;"> If Google is wrong, it will get the wrong holiday data, so please do not use it as it is for applications where the wrong date causes damage. </span> Make sure you are correct by other means.
 
 <pre>
 use strict;
@@ -92,25 +92,25 @@ for my $ holiday (@ $ holidays) {
 
 use Data :: Dumper;
 print Data :: Dumper-> Dump ([$ holidays], ['* holidays']);
-</ pre>
+</pre>
 
-<h3> Holiday issues </ h3>
+<h3> Holiday issues </h3>
 Holidays vary from country to country. Even if a holiday is decided, the holiday may change due to a transfer holiday. In some cases, such as the equinox and autumn equinox, the government decides on a formal holiday in February of the previous year.
 
-<h3> Google Calender Data API </ h3>
+<h3> Google Calender Data API </h3>
 
 You can use the Google Calender Data API to get national holidays. Transfer holidays are also taken into consideration. Reliability depends on Google's reliability.
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> Google Calender Data API </ h4>
+<h4> Google Calender Data API </h4>
 The following URL is the URL for getting holidays for the Google Calender Data API.
 <pre>
 my $ feed_base
   ='http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
-</ pre>
+</pre>
 
-<h4> Create query string </ h4>
+<h4> Create query string </h4>
 Concatenate the query string with the specified conditions to the above source URL. The date you specify will include the start date and not the end date.
 
 <pre>
@@ -125,14 +125,14 @@ my $ max_results = 100;
 
 my $ query = "start-min = $ {start_date} & start-max = $ {end_date} & max-results = $ {max_results}";
 my $ feed_url = $ feed_base.'?'. $ Query;
-</ pre>
+</pre>
 
 In this sample, the following URL is created.
 [http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full?start-min=2007-01-01&start-max=2008-01-01&max-results=100 ]
 
 After that, get the information of the above URL from the Web, analyze it because it is XML data, make it easy to use, and encode the character code according to the OS.
 
-<h4> Get XML data from the Web. </ h4>
+<h4> Get XML data from the Web. </h4>
 
 LWP :: UserAgent is a module for creating HTTP clients. You can programmatically do what your web browser is doing.
 
@@ -148,9 +148,9 @@ if ($ response-> is_success) {
 else {
   die "Failed to get the feed.";
 }
-</ pre>
+</pre>
 
-<h4> Parse XML to make it easy to use. </ h4>
+<h4> Parse XML to make it easy to use. </h4>
 Use XML :: Simple to parse the XML. XML :: Simple is a module for converting XML data into Perl data (hash, array).
 <pre>
 use XML :: Simple;
@@ -166,7 +166,7 @@ for my $ key (keys% {$ holidays_data-> {'entry'}}) {
   my $ holiday_name = $ holidays_data-> {entry} {$ key} {title} {content};
   push @ $ holidays, {day => $ holiday_day, name => $ holiday_name};
 }
-</ pre>
+</pre>
 
 After the XML transformation, you can access the data as follows.
 
@@ -176,9 +176,9 @@ $ holidays_data-> {'entry'} {URL as an identifier} {'gd: when'} {startTime};
 
 # Holiday name
 $ holidays_data-> {entry} {URL as an identifier} {title} {content};
-</ pre>
+</pre>
 
-<h4> Convert character code </ h4>
+<h4> Convert character code </h4>
 
 The character code of XML received from the Web is UTF-8. When XML :: Simple converts XML to Perl data, the characters are converted to Perl's internal representation (UTF-8).
 
@@ -202,4 +202,4 @@ for my $ holiday (@ $ holidays) {
      $ holiday-> {$ key} = encode ($ encode_to, $ holiday-> {$ key});
    }
 }
-</ pre>
+</pre>

@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Understand Perl context </ h2>
+  </li>
+</ol>
+<h2> Understand Perl context </h2>
 
 
 
@@ -25,11 +25,11 @@ Perl has a concept called context. Context means context, and there are the foll
 <ul>
   <li>
     <a href="/blog/20180531152777.html"> Scalar context </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20180530152777.html"> List context </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 The context evaluated as a scalar is called a scalar context, and the context evaluated as a list is called a list context.
 
@@ -41,7 +41,7 @@ $ date_string = localtime;
 
 #List context
 @date_info = localtime;
-</ pre>
+</pre>
 
 To give another example, an array returns the number of arrays in a scalar context and a list of elements in a list context.
 
@@ -51,36 +51,36 @@ $ count = @values;
 
 #List context
 @elements = @values;
-</ pre>
+</pre>
 
 A detailed explanation of the list is given below.
 
 <ul>
   <li>
     <a href="/blog/20100308126967.html"> List </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Scalar context </ h4>
+<h4> Scalar context </h4>
 
 Here are some places that are evaluated as scalar contexts.
 
-<b> Assignment to scalar variables </ b>
+<b> Assignment to scalar variables </b>
 
 Assignment to <a href="/blog/20161107147852.html"> scalar variable </a> is a scalar context. When the array is evaluated in scalar context, it returns the length of the array.
 
 <pre>
 my $ num = @values;
-</ pre>
+</pre>
 
-<b> Comparison operator term </ b>
+<b> Comparison operator term </b>
 
 The left and right terms of <a href="/blog/20080318120585.html"> comparison operator </a> are scalar contexts.
 
 <pre>
 $ x <@values
 $ x == @values
-</ pre>
+</pre>
 
 I often see it in the loop of <a href="/blog/20170521149524.html"> for statement </a>.
 
@@ -88,9 +88,9 @@ I often see it in the loop of <a href="/blog/20170521149524.html"> for statement
 for (my $ i = 0; $ i <@nums; $ i ++) {
   ...
 }
-</ pre>
+</pre>
 
-<b> if condition part </ b>
+<b> if condition part </b>
 
 The conditional part of <a href="/blog/20161023147731.html"> if </a> is the scalar context. In the following, @values ​​is evaluated in scalar context, so it returns the number of arrays.
 
@@ -98,53 +98,53 @@ The conditional part of <a href="/blog/20161023147731.html"> if </a> is the scal
 if (@values) {
   ...
 }
-</ pre>
+</pre>
 
 A detailed explanation of the scalar context is given below.
 
 <ul>
   <li>
     <a href="/blog/20180531152777.html"> Scalar context </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> List context </ h4>
+<h4> List context </h4>
 
 Here's where it's evaluated as a list context.
 
-<b> Assignment to an array </ b>
+<b> Assignment to an array </b>
 
 Assignment to <a href="/blog/20161012147627.html"> array </a> is a list context.
 
 <pre>
 my @ values2 = @values;
-</ pre>
+</pre>
 
-<b> List </ b>
+<b> List </b>
 
 Inside the <a href="/blog/20100308126967.html"> list </a> is the list context.
 
 <pre>
 (@values);
-</ pre>
+</pre>
 
-<b> Subroutine arguments </ b>
+<b> Subroutine arguments </b>
 
 The argument of <a href="/blog/20101130129876.html"> subroutine </a> is the list context.
 
 <pre>
 func (@values);
-</ pre>
+</pre>
 
 A detailed explanation of the list context is given below.
 
 <ul>
   <li>
     <a href="/blog/20180530152777.html"> List context </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample to understand the scalar context and list context.
 
@@ -171,7 +171,7 @@ print "formatted date \ n in scalar context",
 
 print "In list context, a list of date and time values ​​\ n".
   join (',', @list). "\ n \ n";
-</ pre>
+</pre>
 
 Perl functions can return a scalar return where a scalar is required and a list return where a list is required.
 

@@ -1,30 +1,30 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161006147575.html">
-      <span itemprop = "name"> Character code </ span> </a>
+      <span itemprop = "name"> Character code </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Unicode </ span>
+      <span itemprop = "name"> Unicode </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> code point </ span>
+      <span itemprop = "name"> code point </span>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
-<h2> How to find the code point of a character's Unicode </ h2>
+  </li>
+</ol>
+<h2> How to find the code point of a character's Unicode </h2>
 
 
-If you want to know the <strong> Unicode code point </ strong> of a character, do the following: The utf8 pragma must be enabled and the source code must be saved in UTF-8.
+If you want to know the <strong> Unicode code point </strong> of a character, do the following: The utf8 pragma must be enabled and the source code must be saved in UTF-8.
 
 <pre>
 use utf8;
@@ -33,17 +33,17 @@ my $ str ='Ah';
 
 # Displayed as hexadecimal
 printf "% x \ n", ord ($ str);
-</ pre>
+</pre>
 
-You can know the code point of the character with the ord function. The printf function specifies the format <b>% x </ b> and displays it in hexadecimal.
+You can know the code point of the character with the ord function. The printf function specifies the format <b>% x </b> and displays it in hexadecimal.
 
 The output result is as follows, and you can see that the code point of the character "A" is 3042.
 
 <pre>
 3042
-</ pre>
+</pre>
 
-<h3> Easily check with Data :: Dumper </ h3>
+<h3> Easily check with Data :: Dumper </h3>
 
 There is also a simple way to find out using the Data :: Dumper module. This is because Data :: Dumper converts any character that is not in the ASCII range to a code point when outputting the internal string.
 
@@ -54,10 +54,10 @@ my $ str ='Ah';
 
 use Data :: Dumper;
 print Dumper $ str;
-</ pre>
+</pre>
 
 Unicode code points are output in hexadecimal as shown below.
 
 <pre>
 $ VAR1 = "\ x {3042}";
-</ pre>
+</pre>

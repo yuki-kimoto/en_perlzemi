@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Read and write using random access </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Read and write using random access </h2>
 
 
 This is a random access sample where you can pinpoint only the part you want to change, change it, and write it back. Random access is generally used for fixed-length binary files, but for convenience, we will use fixed-length text files here.
@@ -86,24 +86,24 @@ printf $ fh "% 08s", $ age
 #Close file
 close $ fh
   or die "Cannot close $ file: $!";
-</ pre>
+</pre>
 
 The following is the data to read. It is the data that three records (name 8 bytes, age 8 bytes) are lined up. Save it as data_20080810.txt.
 <pre>
 taro 00000023peko 00000018akira 00000023
-</ pre>
+</pre>
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h4> (1) Preparing to use the symbols used in the seek function </ h4>
+<h4> (1) Preparing to use the symbols used in the seek function </h4>
 
 <pre>
 use Fcntl qw (: seek);
-</ pre>
+</pre>
 
 Import the symbols associated with the seek function from the Fcntl module. Three constants, SEEK_SET, SEEK_CUR and SEEK_END, are imported.
 
-<h4> (2) How to specify the position in a fixed-length file </ h4>
+<h4> (2) How to specify the position in a fixed-length file </h4>
 
 <pre>
 # 16 bytes
@@ -124,17 +124,17 @@ my $ len_age = 8;
 # This time, add 1 to the age of peko.
 #peko is on the second record. Age is the 8th byte from the beginning of the record
 my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
-</ pre>
+</pre>
 
 For fixed-length files, you can specify the byte position directly. As mentioned above, it is convenient to define the length of one record, the position from the beginning of each data and the number of bytes, when specifying the position.
 
-<h4> (3) Use the seek function to move to the byte position you want to read. </ h4>
+<h4> (3) Use the seek function to move to the byte position you want to read. </h4>
 <pre>
 # Move the position of the file pointer to the position of Peco's age
 
 seek ($ fh, $ pos_peko_age, SEEK_SET)
   or die "Cannnot seek: $ file: $!";
-</ pre>
+</pre>
 
 You can use the seek function to move the file pointer to the specified byte position. Think of a file pointer as a variable that remembers the byte position of the current file.
 
@@ -146,46 +146,46 @@ The constants that can be specified for the third argument are as follows.
   <tr>
     <td>
       constant
-    </ td>
+    </td>
     <td>
       meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       SEEK_SET
-    </ td>
+    </td>
     <td>
       Based on the beginning of the file
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       SEEK_CUR
-    </ td>
+    </td>
     <td>
       Based on the position pointed to by the current file pointer
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       SEEK_END
-    </ td>
+    </td>
     <td>
       Based on the end of the file
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 The value of the second argument is added based on the above position. SEEK_SET is used to specify the byte position from the beginning. In the case of SEEK_END, the second argument will specify a negative value.
 
 If the seek function fails, it returns undef and sets $! To the error content.
 
-<h4> (4) Read the data with the read function </ h4>
+<h4> (4) Read the data with the read function </h4>
 
 <pre>
 Load peko's age into # $ age
@@ -201,7 +201,7 @@ if (! defined $ len_read) {
 elsif ($ len_read! = $ len_age) {
   die "Read only $ len_read bytes";
 }
-</ pre>
+</pre>
 
 By using the read function, only the specified number of bytes can be read from the file. The first argument is the open filehandle, the second argument is the scalar variable that stores the read data, and the third argument is the number of bytes to read.
 
@@ -209,21 +209,21 @@ The return value of the read function is the number of bytes actually read. In c
 
 If the number of bytes read is insufficient, error handling is performed for each read error.
 
-<h4> (5) Move to the write position with the seek function </ h4>
+<h4> (5) Move to the write position with the seek function </h4>
 
 <pre>
 When #read, the file pointer advances by the amount read, so return it to the original position.
 seek ($ fh, $ pos_peko_age, SEEK_SET)
   or die "Cannnot seek: $ file: $!";
-</ pre>
+</pre>
 
 The read function advances the position of the file pointer by the amount read. To write to the same position again, call the seek function again.
 
-<h4> (6) Write to a file </ h4>
+<h4> (6) Write to a file </h4>
 
 <pre>
 printf $ fh "% 08s", $ age
   or die "Cannot print: $ file: $!";
-</ pre>
+</pre>
 
 Writing is done by specifying the format with the <a href="/blog/20170326149148.html"> printf function </a>. By specifying% 08s, it means that "in an 8-digit character string, the part less than 8 digits is filled with 0".

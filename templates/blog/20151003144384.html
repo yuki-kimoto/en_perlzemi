@@ -1,60 +1,60 @@
-<h2> Let's do simple calculations | Introduction to Rstats (statistical analysis / scientific calculation) </ h2>
+<h2> Let's do simple calculations | Introduction to Rstats (statistical analysis / scientific calculation) </h2>
 
 Let's do a simple calculation. Rstats can be calculated using the following operators.
 
-<h3> Four arithmetic operations </ h3>
+<h3> Four arithmetic operations </h3>
 
 <table>
   <tr>
     <td>
       symbol
-    </ td>
+    </td>
     <td>
       meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       +
-    </ td>
+    </td>
     <td>
       addition
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ---
-    </ td>
+    </td>
     <td>
       subtraction
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       *
-    </ td>
+    </td>
     <td>
       multiplication
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       /
-    </ td>
+    </td>
     <td>
       division
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 The symbols for addition, subtraction, multiplication, and division are the same as in R language.
 
-<h3> Exponentiation </ h3>
+<h3> Exponentiation </h3>
 
 Exponentiation is done using "**" according to Perl's arithmetic rules. Please note that it is different from "^" in R language.
 
@@ -62,24 +62,24 @@ Exponentiation is done using "**" according to Perl's arithmetic rules. Please n
   <tr>
     <td>
       symbol
-    </ td>
+    </td>
     <td>
       meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ** **
-    </ td>
+    </td>
     <td>
       Exponentiation
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> Remaining </ h3>
+<h3> Remaining </h3>
 
 The remainder is done using "%" according to Perl's arithmetic rules. Please note that it is different from "%%" in R language.
 
@@ -87,30 +87,30 @@ The remainder is done using "%" according to Perl's arithmetic rules. Please not
   <tr>
     <td>
       symbol
-    </ td>
+    </td>
     <td>
       meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       %%
-    </ td>
+    </td>
     <td>
       Surplus
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> Integer quotient </ h3>
+<h3> Integer quotient </h3>
 
 Rstats does not provide operators for calculating integer quotients. Please note that the R language "% /%" is not available. To find the integer quotient, use the trunc function. After performing the division, the integer part is taken out.
 
 <pre>
 r-> trunc ($ x1 / $ x2)
-</ pre>
+</pre>
 
 Here is an example of the calculation. In Rstats, the calculation using vectors is the basis, so we will create it using the c_ function. The c_ function is a function for creating a vector. Even if it is one numerical value, it is calculated as a vector with one element.
 
@@ -121,13 +121,13 @@ use Rstats;
 
 my $ x = (c_ (1) + c_ (2) --c_ (3) * c_ (4)) / c_ (5) ** c_ (6);
 print $ x;
-</ pre>
+</pre>
 
 This is the output result. The calculation result is output.
 
 <pre>
 [1] -0.000576
-</ pre>
+</pre>
 
 Using c_ () at any time can be a bit annoying, but it's necessary because you're implementing the R language on top of Perl. Remember that when you do calculations in Rstats, you always use vectors to do the calculations.
 
@@ -138,13 +138,13 @@ Rstats provides many functions for route calculation and logarithmic calculation
 <pre>
 my $ x = r-> sqrt (c_ (2));
 print $ x;
-</ pre>
+</pre>
 
 Output result.
 
 <pre>
 [1] 1.4142135623731
-</ pre>
+</pre>
 
 The mathematical functions provided by Rstats are introduced below.
 
@@ -152,265 +152,265 @@ The mathematical functions provided by Rstats are introduced below.
   <tr>
     <td>
       symbol
-    </ td>
+    </td>
     <td>
       meaning
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       sqrt
-    </ td>
+    </td>
     <td>
       Calculation of √
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       abs
-    </ td>
+    </td>
     <td>
       Absolute value
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       exp exp
-    </ td>
+    </td>
     <td>
       The bottom of the natural logarithm
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       expm1
-    </ td>
+    </td>
     <td>
       Calculate exp (x) -1 more accurately when the absolute value of x is much less than 1
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       log
-    </ td>
+    </td>
     <td>
       Natural logarithm
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       log10
-    </ td>
+    </td>
     <td>
       Common logarithm (base 10 logarithm)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       log2
-    </ td>
+    </td>
     <td>
       Logarithm with base 2
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       sin
-    </ td>
+    </td>
     <td>
       Sine / sine function
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       cos
-    </ td>
+    </td>
     <td>
       Cosine / cosine function
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       tan
-    </ td>
+    </td>
     <td>
       Tangent tangent function
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       asin
-    </ td>
+    </td>
     <td>
       Inverse function of sin
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       acos
-    </ td>
+    </td>
     <td>
       Inverse function of cos
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       atan
-    </ td>
+    </td>
     <td>
       Inverse function of tan
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       sinh
-    </ td>
+    </td>
     <td>
       Hyperbolic sign
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       cosh
-    </ td>
+    </td>
     <td>
       Hyperbolic cosine
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       tanh
-    </ td>
+    </td>
     <td>
       Hyperbolic tangent
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       asinh
-    </ td>
+    </td>
     <td>
       Inverse function of sinh
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       acosh
-    </ td>
+    </td>
     <td>
       Inverse function of cosh
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       atanh
-    </ td>
+    </td>
     <td>
       Inverse function of tanh
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       logb
-    </ td>
+    </td>
     <td>
       Same as log
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       log1px (not implemented)
-    </ td>
+    </td>
     <td>
       Calculate log (1 + x) more accurately when the absolute value of x is (much) less than 1
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       gamma (not implemented)
-    </ td>
+    </td>
     <td>
       Gamma function
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       lgamma (not implemented)
-    </ td>
+    </td>
     <td>
       Same as log (gamma (x))
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       ceiling
-    </ td>
+    </td>
     <td>
       Minimum integer greater than or equal to the argument
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       floor
-    </ td>
+    </td>
     <td>
       Maximum integer less than or equal to the argument: the so-called Gaussian symbol
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       trunc
-    </ td>
+    </td>
     <td>
       Find the integer part
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       round
-    </ td>
+    </td>
     <td>
       Rounding
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       signif (x, a) not implemented yet
-    </ td>
+    </td>
     <td>
       Round x to a digit with a valid digit (unlike sign that determines positive / 0 / negative)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 <hr>
 

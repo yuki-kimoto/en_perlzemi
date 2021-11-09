@@ -1,24 +1,24 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> sort function --sort array </ h2>
+  </li>
+</ol>
+<h2> sort function --sort array </h2>
 
 
-Use the <strong> sort function </ strong> to <strong> sort the array </ strong>. Pass a code block for comparison as the first argument. To sort in ascending order, write $ a before $ b, and to sort in descending order, write $ b before $ a. Use <=> as the comparison operator if you want to compare as a number, and use cmp if you want to compare in lexicographical order. Note that there is no comma immediately after the code block.
+Use the <strong> sort function </strong> to <strong> sort the array </strong>. Pass a code block for comparison as the first argument. To sort in ascending order, write $ a before $ b, and to sort in descending order, write $ b before $ a. Use <=> as the comparison operator if you want to compare as a number, and use cmp if you want to compare in lexicographical order. Note that there is no comma immediately after the code block.
 
 <pre>
 # Sort in ascending order
@@ -26,9 +26,9 @@ Use the <strong> sort function </ strong> to <strong> sort the array </ strong>.
 
 # Sort in descending order
 @sorted = sort {$ b operator $ a} @array;
-</ pre>
+</pre>
 
-<h3> Sorting sample </ h3>
+<h3> Sorting sample </h3>
 
 This is a sample that sorts in ascending order of numerical values. @nums becomes (2, 3, 5, 11).
 
@@ -36,7 +36,7 @@ This is a sample that sorts in ascending order of numerical values. @nums become
 # Sort by numerical value in ascending order
 my @nums = (5, 11, 3, 2);
 @nums = sort {$ a <=> $ b} @nums;
-</ pre>
+</pre>
 
 This is a sample that sorts the numbers in descending order. @nums becomes (11, 5, 3, 2).
 
@@ -44,7 +44,7 @@ This is a sample that sorts the numbers in descending order. @nums becomes (11, 
 # Sort by numerical value in descending order
 my @nums = (5, 11, 3, 2);
 @nums = sort {$ b <=> $ a} @nums;
-</ pre>
+</pre>
 
 This is a sample that sorts in ascending order in dictionary order. @nums will be (11, 2, 3, 5). When comparing 11 and 3 in dictionary order, 11 comes to bloom.
 
@@ -52,7 +52,7 @@ This is a sample that sorts in ascending order in dictionary order. @nums will b
 #Sort in ascending dictionary order
 my @nums = (5, 11, 3, 2);
 @nums = sort {$ a cmp $ b} @nums;
-</ pre>
+</pre>
 
 This is a sample that sorts in descending order of dictionary order. @nums becomes (5, 3, 2, 11).
 
@@ -60,9 +60,9 @@ This is a sample that sorts in descending order of dictionary order. @nums becom
 #Sort in descending order of dictionary
 my @nums = (5, 11, 3, 2);
 @nums = sort {$ b cmp $ a} @nums;
-</ pre>
+</pre>
 
-<h3> Omission of code block </ h3>
+<h3> Omission of code block </h3>
 
 If you omit the code block, it has the same meaning as if you sort in ascending dictionary order.
 
@@ -70,18 +70,18 @@ If you omit the code block, it has the same meaning as if you sort in ascending 
 #The next two have the same meaning
 @nums = sort @nums;
 @nums = sort {$ a cmp $ b} @nums;
-</ pre>
+</pre>
 
-<h3> Sort by multiple conditions </ h3>
+<h3> Sort by multiple conditions </h3>
 
 Try to sort the strings in the order of longest, and if the lengths are the same, sort them in ascending dictionary order. Use || to specify the second condition. If the order cannot be determined in the first comparison, the next comparison will be made. @strs becomes ('aaa','bbb','aa','bb','a','b').
 
 <pre>
 my @strs = ('aaa','bbb','b','a','aa','bb');
 @strs = sort {length $ b <=> length $ a || $ a cmp $ b} @strs;
-</ pre>
+</pre>
 
-<h3> Hash values ​​are sorted by key and output </ h3>
+<h3> Hash values ​​are sorted by key and output </h3>
 
 Let's sort the hashes by key and output. The order of the keys is not guaranteed for the hash, so if you want to output in a fixed order, rearrange the keys and output.
 
@@ -90,18 +90,18 @@ my% points = (Tom => 100, Mike => 30, Mami => 90);
 for my $ name (sort keys% points) {
   print "$ name: $ points {$ name} \ n";
 }
-</ pre>
+</pre>
 
-<h3> Sorting array references </ h3>
+<h3> Sorting array references </h3>
 
 Let's sort the array references. The point is to dereference when passing it to the sort function and dereference it when receiving it.
 
 <pre>
 my $ nums = [5, 11, 3, 2];
 @ $ nums = sort @ $ nums;
-</ pre>
+</pre>
 
-<h3> Sort the hash array </ h3>
+<h3> Sort the hash array </h3>
 
 Let's sort the array of hashes. The sample hash array contains information about multiple people. Let's sort this by the age of the person. (Note: We call it an array of hashes, but the exact meaning here is an array reference that contains a hash reference.)
 
@@ -116,7 +116,7 @@ my $ people = [
 ];;
 
 @ $ persons = sort {$ a-> {age} <=> $ b-> {age}} @ $ persons;
-</ pre>
+</pre>
 
 $ persons is sorted in ascending order of age and the data looks like this:
 
@@ -126,4 +126,4 @@ $ persons is sorted in ascending order of age and the data looks like this:
   {name =>'Ken', age => 19},
   {name =>'Kaori', age => 23}
 ];;
-</ pre>
+</pre>

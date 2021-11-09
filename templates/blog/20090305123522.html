@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> IO :: ScalarArray --Active in standard input testing </ h2>
+  </li>
+</ol>
+<h2> IO :: ScalarArray --Active in standard input testing </h2>
 
 
 
 This time, I will explain the automatic test of standard input using "IO :: ScalarArray".
 
-<h3> 1. How to feed data to standard input </ h3>
+<h3> 1. How to feed data to standard input </h3>
 
 The standard input STDIN is a handle for input, and data cannot be written to it from within the program.
 
@@ -29,11 +29,11 @@ It is not possible to input data to the standard input, but it is possible to pe
 
 <pre>
 <STDIN>
-</ pre>
+</pre>
 
 Can be linked to the description of reading data from a variable. (I won't explain in detail here, but kits's <a href="http://www.akatsukinishisu.net/itazuragaki/perl/tie_stdin.html"> tie replaces STDIN </a> article explains how to do this. It has been.)
 
-<h3> 2. Standard input test using IO :: ScalarArray </ h3>
+<h3> 2. Standard input test using IO :: ScalarArray </h3>
 
 IO :: ScalarArray is a module that uses the tie mechanism to enable descriptions that flow data into standard input. Use it as follows.
 
@@ -49,11 +49,11 @@ use IO :: ScalarArray;
   local * STDIN = * $ stdin;
   #Exam description
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20080309120507.html"> local </a>
 
-<h3> 3 Standard input automatic test sample </ h3>
+<h3> 3 Standard input automatic test sample </h3>
 
 This is a test of a program that asks questions interactively. The question function is a function that asks if you are a man.
 
@@ -86,9 +86,9 @@ sub question {
   
   return $ is_man;
 }
-</ pre>
+</pre>
 
-<h3> How to use scalar input / output </ h3>
+<h3> How to use scalar input / output </h3>
 This is a sample that uses Perl's scalar input / output function.
 
 <pre>
@@ -126,4 +126,4 @@ sub question {
 
   return $ is_man;
 }
-</ pre>
+</pre>

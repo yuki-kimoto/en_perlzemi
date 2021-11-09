@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130416136637.html">
-      <span itemprop = "name"> Language implementation </ span> </a>
+      <span itemprop = "name"> Language implementation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> interpvar.h </ h2>
+  </li>
+</ol>
+<h2> interpvar.h </h2>
 
 
 
-<strong> interpretvar.h </ strong> contains the definitions of interpreted variables. Interpreter variables are variables that are defined for each Perl interpreter.
+<strong> interpretvar.h </strong> contains the definitions of interpreted variables. Interpreter variables are variables that are defined for each Perl interpreter.
 
-<h3> What is an interpreter? </ H3>
+<h3> What is an interpreter? </H3>
 
 Perl can have multiple interpreters. Perl will generate an interpreter and begin interpreting the source code. Normally, one interpreter is enough, but if you want to keep multiple interpreters in a C language program, you can generate multiple interpreters.
 
@@ -32,7 +32,7 @@ Perl-Interpreter 1
      --Interpreter 2
      |
      --Interpreter 3
-</ pre>
+</pre>
 
 However, Perl can have multiple interpreters only when the macro "MULTIPLICITY" is enabled. This can be set as a compile option. In my environment, the default Perl on CentOS was valid, and the one installed by perlbrew was disabled. Performance seems to be faster if "MULTIPLICITY" is not enabled.
 
@@ -40,11 +40,11 @@ If "MULTIPLICITY" is not enabled, Perl's structure looks like this:
 
 <pre>
 Perl-(no interpreter)
-</ pre>
+</pre>
 
 =====
 
-<h3> Interpreter variable </ h3>
+<h3> Interpreter variable </h3>
 
 Interpreter variables are variables that each interpreter has. When reading Perl source code, you will open interpvar.h very often. This is because the variables defined here are used throughout the Perl source code.
 
@@ -56,14 +56,14 @@ Interpreter variables are defined using special macros. It's a macro called PERL
 PERLVAR (I, stack_sp, SV **) / * top of the stack * /
 PERLVAR (I, op, OP *) / * currently executing op * /
 PERLVAR (I, curpad, SV **) / * active pad (lexicals + tmps) * /
-</ pre>
+</pre>
 
 Let's take a look at the PERLVAR macro. There is a definition in "perl.h".
 
 <pre>
 /*perl.h */
 #define PERLVAR (prefix, var, type) type prefix ## var;
-</ pre>
+</pre>
 
 I think that few people who have used the C language define definition have seen the symbol "##". You can combine strings using "##".
 
@@ -73,17 +73,17 @@ That is, the PERLVAR macro expands as follows:
 SV ** Istack_sp;
 OP * Iop;
 SV ** Icurpad;
-</ pre>
+</pre>
 
 However, this variable is rarely used in Perl source code. It is often accessed with the variable name "PL_stacksp". It is defined in "embedvar.h".
 
 <pre>
 #define PL_stack_sp (vTHX-> Istack_sp)
-</ pre>
+</pre>
 
 When actually reading the source code, if you see the variable name "PL_stack_sp", you first guess that this is an interpreter variable. Then open "interpvar.h" and check if there is a definition like "PERLVAR (I, stack_sp, SV **)".
 
-<h3> Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled </ h3>
+<h3> Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled </h3>
 
 Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled. The description is in "perl.h".
 
@@ -93,9 +93,9 @@ START_EXTERN_C
 # include "intrpvar.h"
 END_EXTERN_C
 #endif
-</ pre>
+</pre>
 
-<h3> vTHX is the current interpreter </ h3>
+<h3> vTHX is the current interpreter </h3>
 
 vTHX is an interpreter. Under "MULTIPLICITY", "vTHX" expands to "aTHX" and "PERL_GET_INTERP", but in general Perl, read as "PERL_IMPLICIT_CONTEXT" is defined. In other words, let's think that it will be expanded to "aTHX".
 
@@ -108,28 +108,28 @@ vTHX is an interpreter. Under "MULTIPLICITY", "vTHX" expands to "aTHX" and "PERL
 # else
 #define vTHX PERL_GET_INTERP
 # endif
-</ pre>
+</pre>
 
 Furthermore, in "perl.h", "aTXH" is expanded to "my_perl".
 
 <pre>
 /*perl.h */
 #define aTHX my_perl
-</ pre>
+</pre>
 
 "My_perl" is a variable that represents the current interpreter and is defined in "perl_main.c".
 
 <pre>
 /*perl.h */
 static PerlInterpreter * my_perl;
-</ pre>
+</pre>
 
 Perl Interpreter is defined in "perl.h" as an alias for the "interpreter structure".
 
 <pre>
 /*perl.h */
 typedef struct interpreter PerlInterpreter;
-</ pre>
+</pre>
 
 And finally, the "interpreter structure" is defined as follows: The definition of the interpreter variable in "interpvar.h" is written as a member of the structure.
 
@@ -138,11 +138,11 @@ And finally, the "interpreter structure" is defined as follows: The definition o
 struct interpreter {
 # include "intrpvar.h"
 };
-</ pre>
+</pre>
 
 You can see that "PL_stack_sp" is expanded to "my_perl-> Istack_sp". This means accessing a member variable called "Istack_sp" in the current interpreter.
 
-<h3> Summary </ h3>
+<h3> Summary </h3>
 
 Keep in mind that "PL_stack_sp" will be expanded to "my_perl-> Istack_sp". In addition, if "MULTIPLICITY" is not enabled, "Istack_sp" is directly available as a global variable. By using "PL_stack_sp", you can access with or without multiple interpreters without being aware of it.
 

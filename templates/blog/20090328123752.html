@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Behavior according to the environment </ span>
+      <span itemprop = "name"> Behavior according to the environment </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Create an object according to the environment </ h2>
+  </li>
+</ol>
+<h2> Create an object according to the environment </h2>
 
 
 
 Let's modify the class a little and change the behavior according to the OS.
 
-<h3> 1. Polymorphism that changes its behavior according to the environment </ h3>
+<h3> 1. Polymorphism that changes its behavior according to the environment </h3>
 
 If the environment is Windows, I created an object of FilePath :: Windows class, and if the environment is not, I wrote a class that creates an object of FilaPath :: Unix class.
 
@@ -79,29 +79,29 @@ use base'FilePath :: Base';
 
 # Delimiter for Windows
 sub delimiter {return'\\'}
-</ pre>
+</pre>
 
 The execution result is when the environment is Windows.
 
 <pre>
 Result: a \ b
-</ pre>
+</pre>
 
 Otherwise,
 
 <pre>
 Result: a / b
-</ pre>
+</pre>
 
 It will be. If the environment is Windows, an object of the FilePath :: Windows class is created, otherwise an object of the FilePath :: Unix class is created.
 
 <pre>
 print ref $ file_path;
-</ pre>
+</pre>
 
 Then you can see which class of object is created.
 
-<h3> 2. Change the behavior with the constructor </ h3>
+<h3> 2. Change the behavior with the constructor </h3>
 
 We have prepared a class called FilePath as a class for users to use. The constructor of this class will create an object according to the environment. (Generally, it's called a factory class.)
 
@@ -117,7 +117,7 @@ sub new {
     return FilePath :: Unix-> new;
   }
 }
-</ pre>
+</pre>
 
 I'm looking at $ ^ O to find out what type of OS I'm using and changing the objects I create. The constructor in this example takes no arguments, but since constructors generally take arguments.
 
@@ -131,7 +131,7 @@ sub new {
     return FilePath :: Unix-> new (@_);
   }
 }
-</ pre>
+</pre>
 It is more often described as. Writing using the ternary operator makes it even cleaner.
 
 <pre>
@@ -140,9 +140,9 @@ sub new {
   return $ ^ O eq'MSWin32'? FilePath :: Windows-> new (@_):
                             FilePath :: Unix-> new (@_);
 }
-</ pre>
+</pre>
 
-<h3> 3. Convenient part of inheritance </ h3>
+<h3> 3. Convenient part of inheritance </h3>
 
 If you use inheritance well, you will find that you can clearly write a description that makes it behave according to the environment.
 
@@ -150,7 +150,7 @@ Also, if you want to support other environments, just create a class called "Fil
 
 In other words, when it comes to situations where inheritance is effective, there are many patterns and there is a high possibility of expansion. Twice
 
-<h3> 4. If you find it difficult to inherit </ h3>
+<h3> 4. If you find it difficult to inherit </h3>
 
 Follow this sample with a debugger. You can understand it by observing how it moves around between classes.
 

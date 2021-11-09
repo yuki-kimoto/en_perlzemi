@@ -1,17 +1,17 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161130148051.html">
-      <span itemprop = "name"> Module basics </ span> </a>
+      <span itemprop = "name"> Module basics </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Load the module by specifying the module name with a variable </ h2>
+  </li>
+</ol>
+<h2> Load the module by specifying the module name with a variable </h2>
 
 
 
@@ -23,13 +23,13 @@ require "Carp.pm";
 
 If the #argument is a bare word, it is recognized as a module name.
 require Carp;
-</ pre>
+</pre>
 
 Since require has such a specification, the argument is recognized as a file name. Therefore, to specify the module name as a variable and read it, write as follows.
 
 <pre>
 my $ module = "Carp";
 eval "require $ module;";
-</ pre>
+</pre>
 
 If you give a character string to <a href="/blog/20100312126967.html"> eval </a>, the executable statement in the character string will be executed. "require $ module;" is variable-expanded to require Carp ;. This will be executed by eval and the module will be loaded.

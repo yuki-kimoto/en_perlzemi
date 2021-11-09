@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> stat function-get detailed information about the file </ h2>
+  </li>
+</ol>
+<h2> stat function-get detailed information about the file </h2>
 
 
-Use the <strong> stat </ strong> function to get detailed information about the file.
+Use the <strong> stat </strong> function to get detailed information about the file.
 
 <pre>
 my @infos = stat $ file;
-</ pre>
+</pre>
 
 The following is the information that can be obtained with stat.
 
@@ -30,123 +30,123 @@ The following is the information that can be obtained with stat.
   <tr>
     <td>
       0
-    </ td>
+    </td>
     <td>
       File system device number
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       1
-    </ td>
+    </td>
     <td>
        inode number
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       2
-    </ td>
+    </td>
     <td>
       File mode
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       3
-    </ td>
+    </td>
     <td>
       Number of hard links to this file
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Four  
-    </ td>
+    </td>
     <td>
       File owner user ID (number)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Five  
-    </ td>
+    </td>
     <td>
       File owner group ID (number)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       6
-    </ td>
+    </td>
     <td>
       Device identifier
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       7
-    </ td>
+    </td>
     <td>
       File size (bytes)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       8
-    </ td>
+    </td>
     <td>
       The number of seconds since the last access since the epoch
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       9
-    </ td>
+    </td>
     <td>
       The number of seconds since the last update since the epoch
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Ten 
-    </ td>
+    </td>
     <td>
       The number of seconds since the epoch that has passed since the inode was changed
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       11
-    </ td>
+    </td>
     <td>
       Block size considered appropriate for reading and writing files
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       12
-    </ td>
+    </td>
     <td>
       Actual number of blocks allocated
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample to get detailed information of a file using the stat function.
 
@@ -183,21 +183,21 @@ if (@stat_inf) {
   }
 }
 else {print "stat $ file failed. \ N"}
-</ pre>
+</pre>
 
-<h3> Simple supplementary rule </ h3>
+<h3> Simple supplementary rule </h3>
 
 <ul>
   <li>
-     <span style = "font-weight: bold;"> Device number: </ span> The file system is built in association with the device (hard disk). A number that identifies the hard disk (probably). → File system
-  </ li>
+     <span style = "font-weight: bold;"> Device number: </span> The file system is built in association with the device (hard disk). A number that identifies the hard disk (probably). → File system
+  </li>
   <li>
-     <span style = "font-weight: bold;"> inode: </ span> In Unix-like OS, it is like an identifier for managing files. → <a href="http://itpro.nikkeibp.co.jp/article/Keyword/20070207/261208/"> inode </a>
-  </ li>
+     <span style = "font-weight: bold;"> inode: </span> In Unix-like OS, it is like an identifier for managing files. → <a href="http://itpro.nikkeibp.co.jp/article/Keyword/20070207/261208/"> inode </a>
+  </li>
   <li>
-    <span style = "font-weight: bold;"> File mode: </ span> <a href="http://www.tech-faq.com/lang/ja/unix-file-permissions.shtml" on Unix A value that represents "> file type </a> and <a href="/blog/20080822121950.html"> permissions </a>. →
-  </ li>
+    <span style = "font-weight: bold;"> File mode: </span> <a href="http://www.tech-faq.com/lang/ja/unix-file-permissions.shtml" on Unix A value that represents "> file type </a> and <a href="/blog/20080822121950.html"> permissions </a>. →
+  </li>
   <li>
-     <span style = "font-weight: bold;"> Hard link: </ span> On Unix-like operating systems, files can be aliased. The number of hard links is the total number of aliases that point to this file. → Hard link
-  </ li>
-</ ul>
+     <span style = "font-weight: bold;"> Hard link: </span> On Unix-like operating systems, files can be aliased. The number of hard links is the total number of aliases that point to this file. → Hard link
+  </li>
+</ul>

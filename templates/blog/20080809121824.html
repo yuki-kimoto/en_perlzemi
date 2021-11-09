@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </ span> </a>
+      <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </ span> </a>
+      <span itemprop = "name"> File input / output </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Safely read and write files </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Safely read and write files </h2>
 
 
 
@@ -83,11 +83,11 @@ close $ tmpfh
 # Change the temporary file name to the original file name.
 File :: Copy :: move ($ tmpfile, $ infile)
   or die "Cannot move $ tmpfile to $ infile";
-</ pre>
+</pre>
 
 I'm using a <a href="/blog/20100123126425.html"> while statement </a> to safely read the rows in order.
 
-<h3> How to read and write files safely </ h3>
+<h3> How to read and write files safely </h3>
 
 If you read the <a href="/blog/20080718121643.html"> open function </a> documentation, you should specify the open mode "+ <" for the open function to read and write files. maybe. You can read and write this way, but it's very dangerous.
 
@@ -97,28 +97,28 @@ Therefore, the following methods are used to read and write safely.
 <ol>
   <li>
     Read the input file.
-  </ li>
+  </li>
   <li>
     Write the edited contents to the temporarily created file.
-  </ li>
+  </li>
   <li>
     Change the temporarily created file name to the original file name.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 This will preserve the contents of the original file until the third file is renamed. Even if the system crashes while renaming a file, you can avoid losing the contents of the file.
 
-<h3> Code explanation </ h3>
+<h3> Code explanation </h3>
 
-<h3> (1) Creating a temporary file name for writing </ h3>
+<h3> (1) Creating a temporary file name for writing </h3>
 
 <pre>
 my $ tmpfile = "tmp $$";
-</ pre>
+</pre>
 
 Make sure that the temporary file name includes the process ID ($ $). By making it a convention to include the process ID ($) in the temporary file name, you can avoid conflicting temporary files with other processes (unless the convention is broken. )
 
-<h3> (2) Open both read file and temporary write file </ h3>
+<h3> (2) Open both read file and temporary write file </h3>
 
 <pre>
 open (my $ infh, "<", $ infile)
@@ -126,11 +126,11 @@ open (my $ infh, "<", $ infile)
 
 open (my $ tmpfh, ">", $ tmpfile)
   or die "Cannot open $ tmpfile: $!";
-</ pre>
+</pre>
 
 The input file is opened in read mode ("<") and the temporary file for writing is opened in write mode (">").
 
-<h3> (3) File reading error check </ h3>
+<h3> (3) File reading error check </h3>
 
 <pre>
     unless (defined ($ line = <$ infh>)) {
@@ -141,20 +141,20 @@ The input file is opened in read mode ("<") and the temporary file for writing i
          last;
       }
     }
-</ pre>
+</pre>
 
 If an error occurs at the end of the loading, we will exit the while loop. Then, it happens that the original file is overwritten because it was processed halfway. To prevent this from happening, you need to code to ensure that read errors are avoided.
 
-<h3> (4) Error checking when writing a file </ h3>
+<h3> (4) Error checking when writing a file </h3>
 
 <pre>
     print $ tmpfh $ line
       or die "Error Writing $ tmpfile: $!";
-</ pre>
+</pre>
 
 If an error occurs during aile writing, the original file may be overwritten with incorrect content. To prevent this from happening, you need to code to make sure you avoid write errors.
 
-<h3> (5) Error checking when closing a file </ h3>
+<h3> (5) Error checking when closing a file </h3>
 
 <pre>
 close $ infh;
@@ -162,7 +162,7 @@ close $ infh;
 Surely avoid # close error
 close $ tmpfh
   or die "Error closing $ tmpfile";
-</ pre>
+</pre>
 
 Although omitting the error check for closing the read file does not cause a serious problem, it is necessary to perform the error check for the written file.
 
@@ -172,13 +172,13 @@ If the written contents are accumulated to a certain extent, it will be output t
 
 So if close fails, the buffer will be left unflushed and you will not be able to write the correct content. To prevent this from happening, you need to code to ensure that you avoid close errors.
 
-<h3> (6) Rename the temporary file name for writing to the original file name </ h3>
+<h3> (6) Rename the temporary file name for writing to the original file name </h3>
 
 <pre>
 # Change the temporary file name to the original file name.
 File :: Copy :: move ($ tmpfile, $ infile)
   or die "Cannot move $ tmpfile to $ infile";
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100212126425.html"> die function </a>
 

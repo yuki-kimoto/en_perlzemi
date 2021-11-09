@@ -1,159 +1,159 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop = "name"> operator </ span> </a>
+      <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Perl logical operators </ h2>
+  </li>
+</ol>
+<h2> Perl logical operators </h2>
 
 
 
-<Strong> Perl logical operators </ strong> include:
+<Strong> Perl logical operators </strong> include:
 
 <table>
   <tr>
     <th>
       operator
-    </ th>
+    </th>
     <th>
       meaning
-    </ th>
-  </ tr>
+    </th>
+  </tr>
 
   <tr>
     <td>
       & # x7c; & # x7c;
-    </ td>
+    </td>
     <td>
       Logical sum
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       &&
-    </ td>
+    </td>
     <td>
       Logical AND
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       !!
-    </ td>
+    </td>
     <td>
       denial
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       <a href="/blog/20180125151688.html"> or </a>
-    </ td>
+    </td>
     <td>
       OR (lower priority than &&)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       and
-    </ td>
+    </td>
     <td>
       Lower priority than AND &&)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       not
-    </ td>
+    </td>
     <td>
       Negation (lower priority than!)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
-<h4> && AND (A and B) </ h4>
+<h4> && AND (A and B) </h4>
 
-Use <b> && </ b> to represent the conjunction "A and B".
+Use <b> && </b> to represent the conjunction "A and B".
 
 <pre>
 # Greater than 1 and less than 4
 if ($ num> 1 && $ num <4) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> || OR (A or B) </ h4>
+<h4> || OR (A or B) </h4>
 
-Use <b> & # x7c; & # x7c; </ b> to represent the conjunction "A or B". True if at least one of the values ​​is true.
+Use <b> & # x7c; & # x7c; </b> to represent the conjunction "A or B". True if at least one of the values ​​is true.
 
 <pre>
 #'dog' or'cat'
 if ($ pet eq'dog' || $ pet eq'cat') {
   print "\ $ pet is either'dog'or'cat'. \ N \ n";
 }
-</ pre>
+</pre>
 
-<h4>! Negation (not A) </ h4>
+<h4>! Negation (not A) </h4>
 
-Use <b>! </ B> to represent the negation of "not A".
+Use <b>! </B> to represent the negation of "not A".
 
 <pre>
 # $ num is not true
 if (! $ num) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> and AND (A and B) Low priority </ h4>
+<h4> and AND (A and B) Low priority </h4>
 
-You can also use <b> and </ b> to represent the conjunction "A and B". The priority is lower than "&&". It is recommended to use "&&" for AND. "And" can be used for conditional branching explained below.
+You can also use <b> and </b> to represent the conjunction "A and B". The priority is lower than "&&". It is recommended to use "&&" for AND. "And" can be used for conditional branching explained below.
 
 <pre>
 # Greater than 1 and less than 4
 if ($ num> 1 and $ num <4) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> or OR (A or B) Low priority </ h4>
+<h4> or OR (A or B) Low priority </h4>
 
-You can also use <b> or </ b> to represent the conjunction "A or B". The priority is lower than "||". It is recommended to use "||" for the logical sum. "Or" can be used for conditional branching explained below.
+You can also use <b> or </b> to represent the conjunction "A or B". The priority is lower than "||". It is recommended to use "||" for the logical sum. "Or" can be used for conditional branching explained below.
 
 <pre>
 #'dog' or'cat'
 if ($ pet eq'dog' or $ pet eq'cat') {
   print "\ $ pet is either'dog'or'cat'. \ N \ n";
 }
-</ pre>
+</pre>
 
-<h4> not Negative (not A) Low priority </ h4>
+<h4> not Negative (not A) Low priority </h4>
 
-You can also use <b> not </ b> to represent the negation of "not A". The priority is lower than "!". It is recommended to use "!" Instead of "not" for denial.
+You can also use <b> not </b> to represent the negation of "not A". The priority is lower than "!". It is recommended to use "!" Instead of "not" for denial.
 
 <pre>
 # $ num is not true
 if (not $ num) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> General usage of logical operators </ h4>
+<h4> General usage of logical operators </h4>
 
 When using in if statement, unless statement, <a href="/blog/20100123126425.html"> while statement </a>, for statement, it is Perl to use "&&" "||" "!" It has become a custom. and and not are rarely used.
 
@@ -162,7 +162,7 @@ When using in if statement, unless statement, <a href="/blog/20100123126425.html
 if ($ var1 && $ var2 || $ var3) {
   ...
 }
-</ pre>
+</pre>
 
 "&&" has a higher priority than "||". If you want to change the priority, use parentheses "()".
 
@@ -170,32 +170,32 @@ if ($ var1 && $ var2 || $ var3) {
 if ($ var1 && ($ var2 || $ var3)) {
   ...
 }
-</ pre>
+</pre>
 
-<h3> Perl logical operator evaluation features </ h3>
+<h3> Perl logical operator evaluation features </h3>
 
 Perl logical operators stop evaluation when the evaluation is decided. for example
 
 <pre>
 $ var1 && $ var2
-</ pre>
+</pre>
 
 If $ var1 is false, it is determined that "$ var1 & amp; & amp; $ var2" is false, so the evaluation ends there.
 
 <pre>
 $ var1 || $ var2
-</ pre>
+</pre>
 
 If $ var1 is true, then "$ var1 || $ var2" is determined to be true, and the evaluation ends there.
 
-Use <h3> or as a conditional branch </ h3>
+Use <h3> or as a conditional branch </h3>
 
 Taking advantage of these properties, or is often used for conditional branching. For example, if the <a href="/blog/20080718121643.html"> open function </a> fails, write as follows.
 
 <pre>
 open my $ fh,'<', $ file
   or die qq / Can't open file "$ file": $! /;
-</ pre>
+</pre>
 
 If the open function succeeds, true is returned and the right-hand side of or is not executed. If the open function fails, undef is returned, so <a href="/blog/20100212126425.html"> die </a> on the right side is executed and the program ends.
 
@@ -204,7 +204,7 @@ As another example, it is also used with the system function. The system functio
 <pre>
 system (@cmd) == 0
   or die "Can't execute command @cmd";
-</ pre>
+</pre>
 
 If you want to write the main processing first and write supplementary error processing later, you can use conditional branching with or.
 
@@ -214,9 +214,9 @@ You can use "and" for conditional branching, but "or" is recommended because it 
 Example rewritten with # and
 system (@cmd)
   and die "Can't execute command @cmd";
-</ pre>
+</pre>
 
-<h3> Sample program </ h3>
+<h3> Sample program </h3>
 
 It is a sample of logical product, logical sum, and negation.
 
@@ -242,4 +242,4 @@ my $ num0 = 0;
 if (! $ num0) {
   print "! \ $ Num is true \ n";
 }
-</ pre>
+</pre>

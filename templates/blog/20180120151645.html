@@ -1,4 +1,4 @@
-<h2> Change the enclosing character of the regular expression --m // </ h2>
+<h2> Change the enclosing character of the regular expression --m // </h2>
 
 Perl allows you to change the enclosing character of a regular expression.
 
@@ -6,19 +6,19 @@ Perl allows you to change the enclosing character of a regular expression.
 
 <pre>
 $ string = ~ / cat /
-</ pre>
+</pre>
 
 But now, suppose you want to match the path of a URL, for example. You can escape the slash and write:
 
 <pre>
 $ string = ~ / \ / foo \ / bar \ / baz /
-</ pre>
+</pre>
 
 Isn't it a little difficult to read? In Perl, there is a way to change the regular expression enclosing character "/" to another enclosing character. Write as follows.
 
 <pre>
 $ string = ~ m | / foo / bar / baz |
-</ pre>
+</pre>
 
 Prefix it with an "m" to change the enclosing character to something else. The following combinations can be used as enclosing characters.
 
@@ -26,7 +26,7 @@ Prefix it with an "m" to change the enclosing character to something else. The f
 m | regular expression |
 m # regular expression #
 m! Regular expression!
-</ pre>
+</pre>
 
 It can be used in the same way when replacing with s.
 
@@ -34,4 +34,4 @@ It can be used in the same way when replacing with s.
 s | Regular expression | Replaced string |
 s #Regular expression #Replaced string #
 s! Regular expression! Replaced string!
-</ pre>
+</pre>

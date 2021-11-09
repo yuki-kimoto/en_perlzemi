@@ -1,26 +1,26 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> autoload </ span>
+      <span itemprop = "name"> autoload </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> AUTOLOAD --Subroutine autoload </ h2>
+  </li>
+</ol>
+<h2> AUTOLOAD --Subroutine autoload </h2>
 
 
 
-Perl allows you to define a subroutine called <strong> AUTOLOAD </ strong> that will be called if the subroutine does not exist. This is called subroutine autoloading.
+Perl allows you to define a subroutine called <strong> AUTOLOAD </strong> that will be called if the subroutine does not exist. This is called subroutine autoloading.
 
 <pre>
 package MyModule;
@@ -31,11 +31,11 @@ our $ AUTOLOAD;
 sub AUTOLOAD {
   # ...
 }
-</ pre>
+</pre>
 
 If you define our $ AUROLOAD, you can get the name of the called function.
 
-<h4> What is autoload used for? </ H4>
+<h4> What is autoload used for? </H4>
 
 When programming in everyday work, there is little need to use autoloading. Also, there is no reason to actively use autoload when creating modules.
 
@@ -45,7 +45,7 @@ If you want to create an accessor, you can dynamically generate it with <a href=
 
 Perl has the only feature that can only be achieved with autoloading. That is to give the method to the object. I don't usually use it, but if you want to achieve this functionality in a framework, it's the only way to do it.
 
-<h3> Sample program </ h3>
+<h3> Sample program </h3>
 
 This is a sample of subroutine autoloading.
 
@@ -73,4 +73,4 @@ sub AUTOLOAD {
   print "The function you tried to call is $ AUTOLOAD. \ N";
   print "The argument is" .join (',', @arg). ". \ N";
 }
-</ pre>
+</pre>

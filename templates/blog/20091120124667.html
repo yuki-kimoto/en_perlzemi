@@ -1,15 +1,15 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> List of modern Perl writing methods </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> List of modern Perl writing methods </h2>
 
 
 
@@ -17,20 +17,20 @@ I will explain how to write standard Perl in Perl 5.8 or later.
 
 If you search the internet, you will find a lot of old descriptions from the time of Perl4. Many books are also written in Perl 4 notation. Perl4 notation can be complicated and error-prone, so it is highly recommended that future Perl writers write in Perl5's modern notation.
 
-<h3> strict pragma and warnings pragma (required) </ h3>
+<h3> strict pragma and warnings pragma (required) </h3>
 
 Enable the strict and warnings pragmas.
 
 <pre>
 use strict;
 use warnings;
-</ pre>
+</pre>
 
 Be sure to write the two lines use strict; and use warnings; at the beginning of the script. These are to tighten Perl's grammar checks. If you do not describe this with a light feeling that it is troublesome, it will be really troublesome later.
 
 Think of it as the only time you don't have to write use strict; and use warnings when writing a command line script called a one-liner.
 
-<h3> Use lexical variables for filehandles (required unless you really have a specific purpose) </ h3>
+<h3> Use lexical variables for filehandles (required unless you really have a specific purpose) </h3>
 
 Use the lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the lexical variable.
 
@@ -45,7 +45,7 @@ open $ fh,'<', $ file
 while (my $ lien = <$ fh>) {
   ...
 }
-</ pre>
+</pre>
 
 Lexical variables have the great advantage of having scope and being able to be passed as arguments to other functions. Avoid using symbols such as FH and * FH as in the old commentary.
 
@@ -53,20 +53,20 @@ It would also be more modern to put the declarations of lexical variables togeth
 
 <pre>
 open my $ fh,'<', $ file
-</ pre>
+</pre>
 
-<h3> Use open function with 3 arguments (required) </ h3>
+<h3> Use open function with 3 arguments (required) </h3>
 
 Try to use the 3-argument open function.
 <pre>
 open my $ fh,'<', $ file
-</ pre>
+</pre>
 
 Some old explanations explain the two-argument open function, but don't use it. The two-argument open function is vulnerable to security and should not be used.
 
 <pre>
 open my $ fh, "<$ file"; # 2 Do not use the open function as an argument
-</ pre>
+</pre>
 
 This is also true when opening a pipe.
 
@@ -76,16 +76,16 @@ open my $ pipe,'-|','dir';
 
 # × (two arguments)
 open my $ pipe,'dir |';
-</ pre>
+</pre>
 
-<h3> Perform error handling when opening a file (required) </ h3>
+<h3> Perform error handling when opening a file (required) </h3>
 
 Make sure to handle the error whenever you open the file.
 
 <pre>
 open my $ fh,'<', $ file
   or die "Cannot open'$ file': $!";
-</ pre>
+</pre>
 
 If the open function fails, it returns undef, so use or to handle the error. Since $! Contains the error message returned by the OS, include it in the error message shown to the user.
 
@@ -93,7 +93,7 @@ Use the die function to terminate the program with an error message. From the pe
 
 Be sure to perform error handling not only when opening a file but also when communicating with the outside of the program. External is everything except memory manipulation. Files, networks, etc. are external.
 
-<h3> Use lowercase letters and underscores in lexical variables and subroutine names (highly recommended) </ h3>
+<h3> Use lowercase letters and underscores in lexical variables and subroutine names (highly recommended) </h3>
 
 Use lowercase letters and underscores in the names of "lexical variables declared with my" and "subroutines".
 
@@ -111,7 +111,7 @@ sub parse_data {
 sub create_table {
   ...
 }
-</ pre>
+</pre>
 
 Whether this notation is good or bad, most of the new modules on CPAN are written in this notation. There are many benefits to following this habit in that it can provide users with a unified interface.
 
@@ -120,20 +120,20 @@ I have written a separate article on how to name variables, so please refer to t
 
 As a general rule, the naming method for subroutines is "verb + noun". For those whose meaning is clear, it may be possible to use only "verbs" for the convenience of the user. However, I think it is safe to use "verb + noun" because it may cause problems later.
 
-<h3> Use uppercase letters and underscores for package variables (highly recommended) </ h3>
+<h3> Use uppercase letters and underscores for package variables (highly recommended) </h3>
 
 Use uppercase letters and underscores for package variables.
 
 <pre>
 our $ OBJECT_COUNT;
 our $ CLASS_INFO;
-</ pre>
+</pre>
 
-<h3> Use lexical variables instead of package variables (required) </ h3>
+<h3> Use lexical variables instead of package variables (required) </h3>
 
 If you are not the author of the module, you will not have the opportunity to use package variables. If you're using a package variable in a single script, that's the wrong way to use it. Let's change it to a lexical variable using my.
 
-<h3> Write in standard (?) Code format (slightly recommended) </ h3>
+<h3> Write in standard (?) Code format (slightly recommended) </h3>
 
 I like and dislike how to write code, but I think it's a little better to match it with the writing style introduced in Perl Best Practices and the format output by a code formatting tool called Perltidy.
 
@@ -143,23 +143,23 @@ As a sample, I will link the source code of Mojo :: URL. You can remember it by 
 
 I will write a few points to imitate.
 
-<h4> 1. Look at the position where spaces such as if and foreach statements and subroutines are inserted </ h4>
+<h4> 1. Look at the position where spaces such as if and foreach statements and subroutines are inserted </h4>
 <pre>
 There is a space immediately after #if, there is no space in (), etc.
 if ($ flg) {
   ...
 }
-</ pre>
+</pre>
 
-<h4> 2. See how to write comments and how to insert spaces </ h4>
+<h4> 2. See how to write comments and how to insert spaces </h4>
 
 Let's see how to write a comment and how to insert a line space. Most modules on CPAN don't have kind comments, but personally I'd appreciate it if you could write some concise comments in the source code.
 
-<h4> 3. No tabs, indent width is 4 (or 2) </ h4>
+<h4> 3. No tabs, indent width is 4 (or 2) </h4>
 
 For the time being, this is what Perl best practices say. (Recently I'm Space 2). Also, some people may want to use tabs, so this is a personal preference.
 
-<h3> Use the Encode module to properly handle multibyte characters such as Japanese (highly recommended) </ h3>
+<h3> Use the Encode module to properly handle multibyte characters such as Japanese (highly recommended) </h3>
 
 Use the Encode module to properly handle multibyte characters such as Japanese. This is an article, so I will link it.
 
@@ -167,22 +167,22 @@ Use the Encode module to properly handle multibyte characters such as Japanese. 
 
 Techniques such as using Jcode.pm or Jcode.pl as in the old commentary are no longer recommended. Starting with Perl 5.8, using the Encode module is the standard and less problematic method.
 
-<h3> Do not use the default variable $ _ (highly recommended) </ h3>
+<h3> Do not use the default variable $ _ (highly recommended) </h3>
 
 Perl has a default variable called $ _. The default variable is a variable that is implicitly received if no argument is given to the function. Please refrain from using it in a program as it will reduce readability.
 
 Use the default arguments only if:
 
-<h4> 1. One liner </ h4>
+<h4> 1. One liner </h4>
 
 I think you can use it in one liner. $ _ Is used as a print argument and a regular expression target.
 
 <pre>
 One liner that retrieves lines containing the characters # AAA
 perl -ne "print if / AAA /";
-</ pre>
+</pre>
 
-<h4> 2. map function, grep function and postfix for </ h4>
+<h4> 2. map function, grep function and postfix for </h4>
 
 Since $ _ is passed to the map function, grep function, and postfix for, this must be used.
 
@@ -190,11 +190,11 @@ Since $ _ is passed to the map function, grep function, and postfix for, this mu
 my @greped_array = grep {$ _ = ~ / AAA /} @array;
 my @mapped_array = map {$ _ * 2} @array;
 print $ _ for @array;
-</ pre>
+</pre>
 
 Some well-known CPAN modules use default variables, but I personally don't recommend them. A program that is as explicit as possible will be more readable.
 
-<h3> Declare lexical variables in foreach statement (highly recommended) </ h3>
+<h3> Declare lexical variables in foreach statement (highly recommended) </h3>
 
 Perl 5 allows you to declare a lexical variable at the beginning of a foreach statement.
 
@@ -203,7 +203,7 @@ my @students = ('taro','kenji','naoya');
 for my $ student (@students) {
   ...
 }
-</ pre>
+</pre>
 
 In this example, each element of @students goes into $ student. $ student is a lexical variable that has a scope from the beginning to the end of the foreach block.
 
@@ -214,23 +214,23 @@ It is possible to omit the lexical variable, but it is not recommended.
 for (@students) {
   ...
 }
-</ pre>
+</pre>
 
-<h3> How to receive command line arguments (reference) </ h3>
+<h3> How to receive command line arguments (reference) </h3>
 
 <a href="/blog/20080108132865.html"> command line arguments </a>It is good to receive it with a feeling.
 
 <pre>
 #When there is one command line argument
 my $ file = shift;
-</ pre>
+</pre>
 
 <pre>
 #If there are multiple command line arguments
 my ($ file, $ option) = @ARGV;
-</ pre>
+</pre>
 
-<h3> How to receive subroutine arguments (reference) </ h3>
+<h3> How to receive subroutine arguments (reference) </h3>
 
 Same as for command line arguments.
 
@@ -239,16 +239,16 @@ Same as for command line arguments.
 sub func {
   my $ file = shift;
 }
-</ pre>
+</pre>
 
 <pre>
 #When there are multiple arguments
 sub func {
   my ($ file, $ option) = @_;
 }
-</ pre>
+</pre>
 
-<h3> Use the standard module of date processing (reference) </ h3>
+<h3> Use the standard module of date processing (reference) </h3>
 
 If you are using Perl 5.10 or later, a module called Time :: Piece is attached as standard and can be used for date processing.
 
@@ -262,7 +262,7 @@ If you can't do that, try localtime or Time :: Local.
 
 <a href="/blog/20090809124848.html"> <Handling of dates and times in Perl> </a>
 
-<h3> Do not load unnecessary modules (required) </ h3>
+<h3> Do not load unnecessary modules (required) </h3>
 
 If you have copied the source code of another program, extra modules may be loaded even though you do not use it in that program. Be sure to remove this as it can be misleading to those who read it later.
 
@@ -273,9 +273,9 @@ If you have copied the source code of another program, extra modules may be load
 use File :: Spec;
 use File :: Basename'basename';
                                
-</ pre>
+</pre>
 
-<h3> How to write Perl documentation (reference) </ h3>
+<h3> How to write Perl documentation (reference) </h3>
 
 For small scripts used at work, it's a good idea to embed the documentation inside the script. In the case of the CPAN module, the end of the source code is the document, but in the case of a small script, it is convenient to write it at the beginning so that the user can see it at a glance when opening the source code.
 
@@ -300,7 +300,7 @@ perl SomeScript.pl file1 file2 ...
 use strict;
 use warnings;
 
-</ pre>
+</pre>
 
 For local projects, I think it's best to write in Japanese to convey it to your colleagues in an easy-to-understand manner.
 
@@ -323,9 +323,9 @@ perl SomeScript.pl file1 file2 ...
 use strict;
 use warnings;
 
-</ pre>
+</pre>
 
-<h3> Avoid the #storm in comments (recommended) </ h3>
+<h3> Avoid the #storm in comments (recommended) </h3>
 
 I often work with comments full of #, but I don't personally recommend it. The main reason is that once you write the comment, someone who comes later has to imitate it. It makes me sick when I think that I have to imitate this to write one function. Also, instead of improving the quality of the code, it often happens that the comments are not catching up when the function is rewritten. So let's stop.
 
@@ -344,7 +344,7 @@ I often work with comments full of #, but I don't personally recommend it. The m
 sub func {
     
 }
-</ pre>
+</pre>
 
 We recommend this writing style.
 <pre>
@@ -352,26 +352,26 @@ We recommend this writing style.
 sub func {
     
 }
-</ pre>
+</pre>
 
 <a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo :: URL source code> </a>
 Please also refer to.
 
-<h3> String list operator (reference) </ h3>
+<h3> String list operator (reference) </h3>
 
 The string list operator is often used, so I will explain it. The string list operator is often used to create an array of strings.
 
 <pre>
 my @strings = qw / aa bb cc /;
-</ pre>
+</pre>
 
 It has the same meaning as the following description.
 
 <pre>
 my @strings = ('aa','bb','cc');
-</ pre>
+</pre>
 
-<h3> Explicit when importing module functions (highly recommended) </ h3>
+<h3> Explicit when importing module functions (highly recommended) </h3>
 
 It's a good idea to make it explicit when importing functions in a module. A reader of the source code can easily understand which module the function belongs to.
 <pre>
@@ -382,7 +382,7 @@ use Encode qw / encode decode /;
 
 Use the #mkpath function.
 mkpath $ dir;
-</ pre>
+</pre>
 
 What if there was no explicit import description?
 
@@ -394,13 +394,13 @@ use Encode;
 
 # I don't know where this was imported from
 mkpath $ dir;
-</ pre>
+</pre>
 
 In such a case, you may end up reading the documentation for all the modules being used. You may know from which module the function was imported, but it's not explicit to anyone reading the source code. So be sure to explicitly specify the function you want to import, no matter how obvious it may seem to you.
 
 (Reference) <a href="/blog/20100409127089.html"> File :: Path </a>, <a href="/blog/20100408127089.html"> File :: Copy </a>
 
-<h3> Don't use goto (required except in really special cases) </ h3>
+<h3> Don't use goto (required except in really special cases) </h3>
 
 Perl has a <a href="/blog/20170514149606.html"> goto statement </a>, but you shouldn't use it. Programming with goto is a thing of the past, not just Perl. If for some reason you want to use goto, be sure to have an alternative.
 
@@ -408,17 +408,17 @@ If you want to perform loop control, use "last" and "next". If you want to handl
 
 (The only time you have to use goto is in a really special case, such as an infinite recursive call, where you don't want to deepen the hierarchy of the function.)
 
-<h3> do-while is not used (recommended) </ h3>
+<h3> do-while is not used (recommended) </h3>
 
 Statements that can be described by the do while statement can always be described by <a href="/blog/20100123126425.html"> while statement </a>. The use of the do while statement does not mean that the description will be concise. On the contrary, I feel that it becomes difficult to understand the intention because I do not use it normally.
 
 Statements that can be described by the do while statement can always be described by the while statement, so it is recommended to consider the logic that uses the while statement.
 
-<h3> Do not use redo (recommended) </ h3>
+<h3> Do not use redo (recommended) </h3>
 
 Perl has a <a href="/blog/20170515149615.html"> redo statement </a>, but you can write the same logic without using redo. I've used redo several times, but I find programming with redo very confusing. Since the same logic can always be written without using redo, it is recommended to consider logic that does not use redo.
 
-<h3> Do not use prototype (highly recommended) </ h3>
+<h3> Do not use prototype (highly recommended) </h3>
 
 There is a feature that allows you to specify a type called prototype when defining a subroutine, but this is not used.
 
@@ -427,7 +427,7 @@ There is a feature that allows you to specify a type called prototype when defin
 sub func ($ @) {
   ...
 }
-</ pre>
+</pre>
 
 Perl accepts arguments of any type without explicitly specifying the type, and can have any number of arguments. So there is no need to specify the type or number in the prototype. Therefore, be sure to define a subroutine that does not specify a prototype.
 
@@ -435,9 +435,9 @@ Perl accepts arguments of any type without explicitly specifying the type, and c
 sub func {
   ...
 }
-</ pre>
+</pre>
 
-<h3> Use die instead of returning undef as a return value when reporting an error. (Recommended) </ h3>
+<h3> Use die instead of returning undef as a return value when reporting an error. (Recommended) </h3>
 
 You might think that Perl has no exception handling. There is no such thing as an exception object like Java, but it does have a concise exception mechanism.First, let's see how to return <a href="/blog/20100220126425.html"> undef </a> to the return value that was the old error handling. If you write a single return when an error occurs, undef is returned for scalar context and an empty list () is returned for list context.
 
@@ -455,14 +455,14 @@ sub func {
   #Correct value if no error occurred
   return $ val;
 }
-</ pre>
+</pre>
 Then, the error handling is described on the side that calls the function.
 <pre>
 my $ val = func ();
 
 Exit the program if # $ val is a false value
 die "Error" unless $ val;
-</ pre>
+</pre>
 
 The problem with this description is that if the func user neglects to check the return value, the program will proceed.
 
@@ -483,14 +483,14 @@ sub func {
   #Correct value if no error occurred
   return $ val;
 }
-</ pre>
+</pre>
 
 If you do this, func will be called and if an error occurs, an error message will be displayed and the program will terminate.
 
 <pre>
 #If an error occurs, an error message will be displayed and the program will end.
 func ();
-</ pre>
+</pre>
 
 If you don't want to quit the program, use the <a href="/blog/20100312126967.html"> eval block </a>. Think of it as a catch in Java. If an error occurs, the content of the error is set in a special variable called $ @, so you can check this variable to see if an error has occurred.
 
@@ -500,19 +500,19 @@ eval {func ()};
 if ($ @) {
   # Describe the processing when an error occurs
 }
-</ pre>
+</pre>
 
-<h3> Use the arrow operator when calling the constructor </ h3>
+<h3> Use the arrow operator when calling the constructor </h3>
 
 It's a good idea to use the arrow operator to call the constructor. In Perl, there is virtually no difference between a constructor and other methods.
 
 <pre>
 my $ obj = SomeClass-> new;
-</ pre>
+</pre>
 
 Indirect object calls may be deprecated in the future.
 
 <pre>
 # Indirect object call
 my $ obj = new SomeClass ();
-</ pre>
+</pre>

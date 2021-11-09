@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop = "name"> reading material </ span> </a>
+        <span itemprop = "name"> reading material </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Perl's garbage collection (GC) characteristics </ h2>
+  </li>
+</ol>
+<h2> Perl's garbage collection (GC) characteristics </h2>
 
 
 
-The mechanism that automatically releases objects (variables and values) from memory when they are no longer needed is called <strong> garbage collection </ strong>. Garbage means garbage. Collection means to collect.
+The mechanism that automatically releases objects (variables and values) from memory when they are no longer needed is called <strong> garbage collection </strong>. Garbage means garbage. Collection means to collect.
 
 <img style = "border: 1px solid #ddd" src = "https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20180907/20180907084205.png">
 
-<h3> Perl's garbage collection is a reference counting method </ h3>
+<h3> Perl's garbage collection is a reference counting method </h3>
 
-Perl's garbage collection is called the <strong> reference counting method </ strong>. Each time a reference to an object is created, it increments the reference count by one. Conversely, it decrements the reference count by one when the object's reference is removed. The object is released when the reference count reaches 0.
+Perl's garbage collection is called the <strong> reference counting method </strong>. Each time a reference to an object is created, it increments the reference count by one. Conversely, it decrements the reference count by one when the object's reference is removed. The object is released when the reference count reaches 0.
 
 Generally speaking, the reference counting method is simple and fast to implement. This is a good performance characteristic of Perl. I've never heard of a garbage collection suffering from performance issues in Perl (so far).
 
@@ -33,7 +33,7 @@ The second feature is memory saving. Since the processing is performed when the 
 
 The third is that it does not stop at the timing of Full GC like the generational GC. In generational GC, there is something called FullGC in which many objects are released at a specific timing. The program will stop during FullGC. But for web apps, you probably don't care too much (probably).
 
-<h3> The disadvantage of the reference counting method is that cross-references cannot be resolved </ h3>
+<h3> The disadvantage of the reference counting method is that cross-references cannot be resolved </h3>
 
 The obvious drawback of the reference counting method is that it cannot resolve cross-references. Objects that are referenced to each other are not released from memory. Programmers need to be careful if objects are cross-referenced or circularly referenced.
 
@@ -43,7 +43,7 @@ my $ hash1 = {};
 my $ hash2 = {};
 $ hash1-> {hash2} = $ hash2;
 $ hash2-> {hash1} = $ hash1;
-</ pre>
+</pre>
 
 Simply writing as above will cause a cross-reference and this object will not be released automatically. This can easily happen if the programmer is not careful. So if you're cross-referencing, you'll have to change the reference to either object to a weak reference that doesn't increase the reference count.
 
@@ -59,7 +59,7 @@ $ hash2-> {hash1} = $ hash1;
 
 # Make one a weak reference
 weaken $ hash1-> {hash2};
-</ pre>
+</pre>
 
 This way, memory will be freed when the reference to $ hash1 or $ hash2 reaches zero.
 

@@ -1,37 +1,37 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Carp-Raise an exception from the caller's point of view </ h2>
+  </li>
+</ol>
+<h2> Carp-Raise an exception from the caller's point of view </h2>
 
 
 
-The <strong> Carp </ strong> module allows you to raise an exception from the perspective of the module caller.
+The <strong> Carp </strong> module allows you to raise an exception from the perspective of the module caller.
 
 <pre>
 #Loading modules and importing functions
 use Carp'croak';
-</ pre>
+</pre>
 
-You can use the <strong> croak function </ strong> to raise an exception from the perspective of the module caller. The caller's line number is added to the end of the message.
+You can use the <strong> croak function </strong> to raise an exception from the perspective of the module caller. The caller's line number is added to the end of the message.
 
 <pre>
 # Include the caller's line number in the error message to raise an exception
 croak "Exception!";
-</ pre>
+</pre>
 
 Exceptions can be raised with the die function, which adds the line number of the executed position to the end of the message. croak differs from die in that it adds the calling line number to the end, not the line number where croak was executed.
 
@@ -40,13 +40,13 @@ Keep the following points in mind when using die and croak.
 <ul>
   <li>
     Use die to raise an exception in a Perl script (* .pl)
-  </ li>
+  </li>
   <li>
     Use croak to raise an exception in a Perl module (* .pm).
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> What is the perspective of the module caller? </ H3>
+<h3> What is the perspective of the module caller? </H3>
 
 I think the term module caller's point of view is a little difficult to understand, so I'll explain it using a sample.
 
@@ -69,12 +69,12 @@ package main; # 10
                                           # 12
 #Call the parse function. An exception occurs. #13
 YourModule :: parse (); # 14
-</ pre>
+</pre>
 
 The program will exit with the following message: Contains the line number where the die was executed.
 <pre>
 Exception! At a.pl line 7.
-</ pre>
+</pre>
 
 Next is the case of croak.
 <pre>
@@ -92,16 +92,16 @@ package main; # 10
                                           # 12
 #Call the parse function. An exception occurs. #13
 YourModule :: parse (); # 14
-</ pre>
+</pre>
 
 The program will then exit with the following message: Contains the line number where parse was called.
 <pre>
 Exception! At a.pl line 14
-</ pre>
+</pre>
 
 You can use croak in this way to throw an exception from the caller's point of view.
 
-<h3> See full stack trace </ h3>
+<h3> See full stack trace </h3>
 
 You may want to know all the information about where the function was called and where the exception occurred. In such cases, you can change the message added by croak to show the complete stack and race.
 
@@ -110,7 +110,7 @@ Just add the following line anywhere in the script.
 <pre>
 Change the # croak message to one that contains the complete stack trace information
 use Carp'verbose';
-</ pre>
+</pre>
 
 I embedded it in the script above. I put it just before YourModule :: parse ().
 
@@ -120,13 +120,13 @@ package main;
 #Call the parse function
 use Carp'verbose';
 YourModule :: parse ();
-</ pre>
+</pre>
 
 Then you can see the complete stack trace as follows:
 <pre>
 Exception! At a.pl line 7
         YourModule :: parse () called at a.pl line 14
-</ pre>
+</pre>
 
 Generally speaking, many Perl modules on CPAN use croak to raise exceptions. This means that you can expect to see a complete stack trace by writing use Carp'verbose'.
 
@@ -139,11 +139,11 @@ Module 1
 ▼
 Module 2-If croak is executed here, the caller will be module 1.
               I don't know the line number of the true caller.
-</ pre>
+</pre>
 
 Even in such a case, you can get a complete stack trace by writing use Carp'verbose'.
 
-<h3> FAQ about Carp module </ h3>
+<h3> FAQ about Carp module </h3>
 
 Q. The Carp module also has a function called confess, should I use croak?
 A. confess can display the complete stack trace information, but croak seems to be preferred because the message is concise and you can switch to the complete stack trace information by specifying options.
@@ -154,13 +154,13 @@ A. You can use the carp function to raise a warning.
 # warning
 use Carp'carp';
 carp'Warning!';
-</ pre>
+</pre>
 
 Q. Is it possible to see the complete stack trace without changing the script?
 A. Yes it is possible. If you want to specify it in script units, do as follows.
 <pre>
 perl -MCarp = verbose script.pl
-</ pre>
+</pre>
 
 You can also use an environment variable called PERL5OPT to display a complete stack trace for all scripts. If PERL5OPT is already set to a value, make sure to connect it after the blank.
 
@@ -172,4 +172,4 @@ export PERL5OPT ='-Mstrict -MCarp = verbose'
 # Windows
 set PERL5OPT = -MCarp = verbose
 set PERL5OPT = -Mstrict -MCarp = verbose
-</ pre>
+</pre>

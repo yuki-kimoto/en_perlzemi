@@ -1,41 +1,41 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Math :: Random :: MT --Generates pseudo-random numbers close to natural random numbers </ h2>
+  </li>
+</ol>
+<h2> Math :: Random :: MT --Generates pseudo-random numbers close to natural random numbers </h2>
 
 
 
-A good algorithm for generating pseudo-random numbers is the <strong> Mersenne Twister method </ strong>.
+A good algorithm for generating pseudo-random numbers is the <strong> Mersenne Twister method </strong>.
 
-The module that finds pseudo-random numbers by the Mersenne Twister method is <strong> Math :: Random :: MT </ strong>. You can get it from CAPN.
+The module that finds pseudo-random numbers by the Mersenne Twister method is <strong> Math :: Random :: MT </strong>. You can get it from CAPN.
 
 <pre>
 use Math :: Random :: MT qw / rand srand /;
 
 srand time ^ $$;
 my $ num = rand 100
-</ pre>
+</pre>
 
 Used in the same way as the standard Perl modules <a href="/blog/20080906122079.html"> rand function </a> and <a href="/blog/20080908122097.html"> srand function </a> can. When using Math :: Randam :: MT, make sure to call the srand function explicitly.
 
 The <a href="/blog/20081008122347.html"> time function </a> is the time, and $$ is the <a href="/blog/20180520152690.html"> process ID </a>, which is the initial value given to srand. I try to make the values ​​as random as possible.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample using Math :: Randam :: MT.
 
@@ -52,4 +52,4 @@ for my $ i (1 .. 20) {
   print "$ i times:". Int (rand 100). "\ n";
 }
 print "\ n";
-</ pre>
+</pre>

@@ -1,101 +1,101 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> App </ span>
+      <span itemprop = "name"> App </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> WebDBViewer </ span>
+      <span itemprop = "name"> WebDBViewer </span>
     <meta itemprop = "position" content = "4" />
-  </ li>
+  </li>
   |
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a href="/blog/20161009147610.html">
-      <span itemprop = "name"> Kimoto Project </ span>
+      <span itemprop = "name"> Kimoto Project </span>
     </a>
     <meta itemprop = "position" content = "5" />
-  </ li>
-</ ol>
-<h2> WebDBViewer --Database viewer for viewing database information from a web browser </ h2>
+  </li>
+</ol>
+<h2> WebDBViewer --Database viewer for viewing database information from a web browser </h2>
 
 
 
-We are pleased to announce the release of <strong> WebDB Viewer </ strong> 1.0. <strong> WebDB Viewer </ strong> is a <strong> database viewer </ strong> for viewing <strong> database information </ strong> from a <strong> web browser </ strong>. Similar to phpMyAdmin, but specializes in viewing database information. It supports <strong> MySQL </ strong> and <strong> SQLite </ strong>.
+We are pleased to announce the release of <strong> WebDB Viewer </strong> 1.0. <strong> WebDB Viewer </strong> is a <strong> database viewer </strong> for viewing <strong> database information </strong> from a <strong> web browser </strong>. Similar to phpMyAdmin, but specializes in viewing database information. It supports <strong> MySQL </strong> and <strong> SQLite </strong>.
 
 <blockquote>
 <a href="http://perlcodesample.sakura.ne.jp/webdbviewer-site/"> WebDBViewer </a> (<a href="https://github.com/yuki-kimoto/webdbviewer"> Repository And documentation </a>)
-</ blockquote>
+</blockquote>
 
 <blockquote>
 <a href="http://perlcodesample.sakura.ne.jp/webdbviewer.cgi"> Sample </a>
-</ blockquote>
+</blockquote>
 
 <img src = "http://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20130630/20130630082021_original.png" width = "800">
 
-<h3> Features </ h3>
+<h3> Features </h3>
 
 <ul>
   <li>
      Display database information on a web browser
-  </ li>
+  </li>
   <li>
      MySQL and SQLite support
-  </ li>
+  </li>
   <li>
      Executing a simple select statement
-  </ li>
+  </li>
   <li>
      Join mode support. You can search by the condition of the column of the joined table.
-  </ li>
+  </li>
   <li>
      Display table name, create table statement, primary key, nullable columns, database engine, character encoding
-  </ li>
+  </li>
   <li>
      Built-in prefork web server with CGI support and reverse proxy support
-  </ li>
+  </li>
   <li>
      Supports many operating systems. Cygwin on Unix, Linux, Windows
-  </ li>
+  </li>
   <li>
      Only need to be Perl 5.8.7 or higher
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Installation on shared server </ h3>
+<h3> Installation on shared server </h3>
 
 The shared server must support Linux / Unix, Apache, SuExec, CGI. If you have PHP that can run in CGI mode, it's even easier to install because you don't need to set permissions.
 
 Many shared servers support these, so finding a suitable server should be easy.
 
-<h4> Download </ h4>
+<h4> Download </h4>
 
 Download WebDB Viewer.
 
 <blockquote>
 https://github.com/yuki-kimoto/webdbviewer/archive/latest.zip
-</ blockquote>
+</blockquote>
 
 Extract the zip file. The following directories will be created.
 
 <pre>
 webdbviewer-latest
-</ pre>
+</pre>
 
 Rename webdbviewer-latest to webdbviewer.
 
 <pre>
 webdbviewer-latest-> webdbviewer
-</ pre>
+</pre>
 
-<h4> Settings </ h4>
+<h4> Settings </h4>
 
-You need to set the database information in <b> webdbviewer.conf </ b>. (; Is a comment)
+You need to set the database information in <b> webdbviewer.conf </b>. (; Is a comment)
 
 <pre>
 [basic]
@@ -118,40 +118,40 @@ password = secret
 
 ;;; Port
 ; port = 1234
-</ pre>
+</pre>
 
-<h4> Upload using FTP </ h4>
+<h4> Upload using FTP </h4>
 
 Upload these directories under the document root using FTP.
 
-<h4> Setup </ h4>
+<h4> Setup </h4>
 
 Please access the following URL with your browser.
 
 <blockquote>
 http: // (Your host name) /webdbviewer/setup/setup.php
-</ blockquote>
+</blockquote>
 
 (If you can't access PHP files or install PHP on your server, set the permissions of the CGI script below to 755.)
 
 <blockquote>
 http: // (Your host name) /webdbviewer/setup/setup.cgi.
-</ blockquote>
+</blockquote>
 
 Press the button labeled Setup only once and wait a few minutes.
 
-<h4> Run the application </ h4>
+<h4> Run the application </h4>
 
 When the setup result is displayed, press the "Go to Application" button.
 
-<h4> If an internal server error occurs </ h4>
+<h4> If an internal server error occurs </h4>
 
-If you get an internal server error, see <b> webdbviewer / log / production.log </ b>. You can find out what kind of error occurred.
+If you get an internal server error, see <b> webdbviewer / log / production.log </b>. You can find out what kind of error occurred.
 
-<h3> Install on a Unix / Linux server that you can manage </ h3>
+<h3> Install on a Unix / Linux server that you can manage </h3>
 
 See the relevant part of the English documentation.
 
 <blockquote>
 <a href="https://github.com/yuki-kimoto/webdbviewer"> WebDBViewer </a>
-</ blockquote>
+</blockquote>

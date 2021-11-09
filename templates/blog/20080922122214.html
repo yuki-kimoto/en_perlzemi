@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161026147748.html">
-      <span itemprop = "name"> Numerical value </ span> </a>
+      <span itemprop = "name"> Numerical value </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Round off </ h2>
+  </li>
+</ol>
+<h2> Round off </h2>
 
 
 
@@ -28,28 +28,28 @@ sprintf ("% .1f", $ num1);
 
 #Specified by the number of significant digits.
 sprintf ("% .1g", $ num1);
-</ pre>
+</pre>
 
 To round off, use the sprintf function. The format "% .1f" is a format that rounds a floating point number to the first decimal place. The second decimal place is rounded off.
 
 If you want to round off by specifying the number of significant digits, specify as "% .1g". For example, if you format 37.48 with "% .3g", you will get a number of 37.5.
 
-<h4> Notes on rounding </ h4>
+<h4> Notes on rounding </h4>
 
 <pre>
 my $ num2 = 0.725;
 my $ num2_round = sprintf ("% .2f", $ num2);
-</ pre>
+</pre>
 
 0.725 expressed in <a href="/blog/20080826121977.html"> numeric literal </a> is not 0.725 internally. Numerical values ​​that are not expressed in binary are always treated as an approximation 0.72499999999999998 (in my environment) due to internal error.
 
 Rounding this to the third decimal place gives 0.724. This is not the expected result.
 
-<h4> Rounding by sprintf is incorrect </ h4>
+<h4> Rounding by sprintf is incorrect </h4>
 
 <blockquote>
 <a href="http://d.hatena.ne.jp/end0tknr/20080928/1222581535"> Rounded by perl </a> (<a href="http://d.hatena.ne.jp/end0tknr" / "> end0tknr kipple </a>)
-</ blockquote>
+</blockquote>
 
 It was pointed out that rounding by sprintf should not be done.
 
@@ -59,7 +59,7 @@ If you want to round more accurately, there is a CPAN module called Math :: Roun
 
 Thank you for pointing out, end0tknr.
 
-<h3> Sample program </ h3>
+<h3> Sample program </h3>
 
 This is a sample for rounding.
 
@@ -81,4 +81,4 @@ my $ num2_round = sprintf ("% .2f", $ num2);
 print "If you round 0.725 to the third decimal place, you get $ {num2_round} \ n \ n";
 
 printf ("caused internally by the number% .30f \ n". $ Num2);
-</ pre>
+</pre>

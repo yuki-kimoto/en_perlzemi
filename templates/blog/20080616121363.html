@@ -1,57 +1,57 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop = "name"> Subroutine </ span> </a>
+        <span itemprop = "name"> Subroutine </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Keep in mind to create good subroutines </ h2>
+  </li>
+</ol>
+<h2> Keep in mind to create good subroutines </h2>
 
 
 
 I've scribbled my thoughts on creating subroutines.
 
-<h3> Heading </ h3>
+<h3> Heading </h3>
 
 <ol>
   <li>
     Understand the arguments and return values.
-  </ li>
+  </li>
   <li>
     Create a small subroutine.
-  </ li>
+  </li>
   <li>
     Give the subroutine flexibility.
-  </ li>
+  </li>
   <li>
     Keep the call hierarchy shallow.
-  </ li>
+  </li>
   <li>
     Create a subroutine that implements the function.
-  </ li>
+  </li>
   <li>
     Be aware of the user.
-  </ li>
+  </li>
   <li>
     Think about making the future easier.
-  </ li>
+  </li>
   <li>
     We don't want a complete abstraction.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h3> 1. Understand arguments and return values ​​</ h3>
+<h3> 1. Understand arguments and return values ​​</h3>
 
 To understand the subroutine, it is enough to learn how to receive the arguments and how to return the return value. This is because there is no difference from the programming you have learned so far from receiving the argument to returning the return value. As soon as you learn how to handle arguments and return values, let's put them into practice.
 
@@ -60,21 +60,21 @@ The following four points are difficult when creating a subroutine.
 <ol>
   <li>
     What to make a subroutine
-  </ li>
+  </li>
   <li>
     What kind of name to give
-  </ li>
+  </li>
   <li>
     What to do with the argument
-  </ li>
+  </li>
   <li>
     What to return
-  </ li>
-</ ol>
+  </li>
+</ol>
 
 There is no subroutine that can be called the correct way of writing, so you need to think hard according to the situation.
 
-<h3> 2. Create a small subroutine </ h3>
+<h3> 2. Create a small subroutine </h3>
 
 A small subroutine is a subroutine up to about 30 lines. Large subroutines are subroutines up to about 100 lines. Beyond this, the idea of ​​subroutines is wrong. It may be overloaded with multiple features.
 
@@ -82,13 +82,13 @@ Subroutines that are too large cannot be reused because they do not realize one 
 
 However, subroutines that are too large are not always wrong. If you use the subroutine very often, it makes sense. Sometimes it's okay to sacrifice reusability or functionality if it works well enough. However, avoid blindly creating large subroutines. Think about whether it really makes sense.
 
-<h3> 3. Make subroutines flexible </ h3>
+<h3> 3. Make subroutines flexible </h3>
 
 To make the subroutine flexible, use a hash as an argument to allow options to be specified. For example, you can specify the delimiter freely, whether to add a newline character to the output, and so on. Being able to change the return value by specifying an argument gives the subroutine flexibility.
 
 However, if you make it too flexible, it will be difficult to create a subroutine. Think about whether that option is likely to be useful in the future. Adding options adds complexity to the logic and is costly to test. Consider future rewards that are worth the cost. If there is no reward, there is no need to make it an option.
 
-<h3> 4. Keep the call hierarchy shallow </ h3>
+<h3> 4. Keep the call hierarchy shallow </h3>
 
 It's best not to create subroutines that are too deep. Calling a subroutine from a subroutine and then calling another subroutine from that subroutine can significantly reduce readability. Only highly versatile and reusable subroutines can be called deeply.
 
@@ -110,28 +110,28 @@ sub func2 {
 sub func3 {
   # Only really generic and reusable subroutines may be called deeper.
 }
-</ pre>
+</pre>
 
-<h3> 5. Create a subroutine that realizes the function </ h3>
+<h3> 5. Create a subroutine that realizes the function </h3>
 
 Subroutines aren't as often reusable as you might think. As you can see by actually programming, the programming you make first is not versatile. Because we don't program for general purpose. For example, if you want to process a particular text file and extract a particular string from it, you wouldn't be able to create a reusable subroutine. You can only have a special subroutine dedicated to you.
 
 Still, subroutines are worth making. It's not good not to create a subroutine because it's not reusable. It is necessary to create a subroutine to realize one function. This will increase the readability of your code and create the possibility of subroutine reuse. At first, don't worry too much about creating reusable subroutines, but focus on creating subroutines that implement a single function.
 
-<h3> 6. User awareness </ h3>
+<h3> 6. User awareness </h3>
 
 Subroutines are used to be used (including yourself, of course). This means that the name must be easy to understand. You have to know what kind of function you are realizing. The name must well describe the function. Think about whether the arguments are easy to understand and the return value is easy to understand.
 
 When creating a subroutine, I think it's best to create it with the feeling that you're creating an interface for the user, even if you're the only one using it.
 
-<h3> 7. Thinking about making the future easier </ h3>
+<h3> 7. Thinking about making the future easier </h3>
 
 To be honest, making subroutines is tiring. It takes time and effort. The program works without creating a subroutine. But creating a subroutine is an investment. An investment to ease the future. If you make it properly now, you can flexibly respond to future changes in specifications and changes in the environment. Therefore, even if it is troublesome to create a subroutine, let's be conscious of it.
 In fact, there are many programs in the world that have the worst maintainability due to lack of technology for creating subroutines or neglecting to create subroutines. There are many programs that test manpower and guts rather than ingenuity and ideas. It's also one of the reasons programmers get tired.
 
 I will try to create good subroutines for the bright future of programmers.
 
-<h3> 8. Don't ask for complete abstraction </ h3>
+<h3> 8. Don't ask for complete abstraction </h3>
 
 The exact opposite is true, but a program that is too particular about subroutine creation and never completes is meaningless. The extent to which abstraction can be achieved depends on the technical capabilities for abstraction, the difficulty, and the time constraints.
 

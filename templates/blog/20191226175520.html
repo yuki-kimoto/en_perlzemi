@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20191228171433.html">
-      <span itemprop = "name"> Form creation </ span> </a>
+      <span itemprop = "name"> Form creation </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> Create PDF file --Create form with PDF :: API2 </ h2>
+<h2> Create PDF file --Create form with PDF :: API2 </h2>
 
 To create a PDF file with PDF :: API2:
 
@@ -43,56 +43,56 @@ my $ page = $ pdf-> page;
 #Save PDF to file
 my $ pdf_file ='empty.pdf';
 $ pdf-> saveas ($ pdf_file);
-</ pre>
+</pre>
 
 If you can create an empty PDF file, you are successful.
 
 <a href="/examples/pdf/empty.pdf"> Output result empty page </a>
 
-<h3> Open an existing PDF file </ h3>
+<h3> Open an existing PDF file </h3>
 
 To open an existing PDF file with PDF :: API2, use the open method.
 
 <pre>
 #Open an existing PDF file
 my $ pdf = PDF :: API2-> open ('some.pdf');
-</ pre>
+</pre>
 
-<h3> Add a new page </ h3>
+<h3> Add a new page </h3>
 
 Use the page method to add a new page in PDF :: API2. The page created by page is added to the end of the PDF document.
 
 <pre>
 #Add page to end of PDF document
 my $ page = $ pdf-> page;
-</ pre>
+</pre>
 
 If you specify an argument, you can insert it on the specified page. Existing pages will be moved backwards.
 
 <pre>
 # Add page to specified page of PDF document
 my $ page = $ pdf-> page (5);
-</ pre>
+</pre>
 
-<h3> Get an existing page </ h3>
+<h3> Get an existing page </h3>
 
 To get the page that already exists in PDF :: API2, specify the page number in the openpage method. Page numbers start at 1. Note that it does not start at 0.
 
 <pre>
 # Get pages that already exist
 my $ page = $ pdf-> openpage ($ page_number);
-</ pre>
+</pre>
 
-<h3> Get the number of pages </ h3>
+<h3> Get the number of pages </h3>
 
 In PDF :: API2, use the pages method to get the number of existing pages.
 
 <pre>
 #Get the number of pages in a PDF document
 my $ pages_count = $ pdf-> pages;
-</ pre>
+</pre>
 
-<h3> Set the paper size </ h3>
+<h3> Set the paper size </h3>
 
 To set the page paper size in PDF :: API2, use the mediabox method.
 
@@ -102,7 +102,7 @@ $ pdf-> mediabox ($ name);
 
 #Specified by width and height
 $ pdf-> mediabox ($ width, $ height)
-</ pre>
+</pre>
 
 The name that can be specified is the value defined in PDF. Here are some examples that you can specify: This is a global setting, and if you create a new page, the setting will be inherited by the page.
 
@@ -114,19 +114,19 @@ $ page-> mediabox ($ name);
 
 #Specified by width and height
 $ page-> mediabox ($ width, $ height)
-</ pre>
+</pre>
 
 
 <ul>
-  <li> Letter </ li>
-  <li> A3 </ li>
-  <li> A4 </ li>
-  <li> B4 </ li>
-  <li> A5 </ li>
-  <li> B5 </ li>
-  <li> A6 </ li>
-  <li> B6 </ li>
-</ ul>
+  <li> Letter </li>
+  <li> A3 </li>
+  <li> A4 </li>
+  <li> B4 </li>
+  <li> A5 </li>
+  <li> B5 </li>
+  <li> A6 </li>
+  <li> B6 </li>
+</ul>
 
 I will link to a page with a brief explanation about the PDF coordinate system.
 
@@ -138,7 +138,7 @@ A typical PDF document has a page width of 612 units and a height of 792 units. 
 When a PDF document is given to the screen, it usually needs physical values ​​such as pixels. Resolution must be provided in order to convert from logical to physical units. Resolution is the value of a point (pixel) per inch used when logically converting to a physical value. In the above example, using 150 as the resolution, the page size in pixels would be 1275 x 1650. This is obtained by multiplying 8.5 x 11 inches by 150.
 
 (Reference) <a target="_blank" href="http://docs.leadtools.grapecity.com/v19/dh/to/leadtools.topics.pdf~pdf.topics.pdfcoordinatesystem.html"> PDF coordinate system < / a>
-</ blockquote>
+</blockquote>
 
 
 This is a sample to specify the paper size in PDF :: API2.
@@ -173,17 +173,17 @@ use PDF :: API2;
   my $ pdf_file ='size_595_842.pdf';
   $ pdf-> saveas ($ pdf_file);
 }
-</ pre>
+</pre>
 
 <a href="/examples/pdf/size_a4.pdf"> Output result A4 size </a>, <a href="/examples/pdf/size_b5.pdf"> Output result B5 size </a>, <a href = "/ examples / pdf / size_595_842.pdf"> Output result 595 × 842 size </a>
 
-<h3> Get the paper size </ h3>
+<h3> Get the paper size </h3>
 
 To get the paper size, use the page object's mediabox method with no arguments.
 
 <pre>
 my @page_size_infos = $ page-> mediabox;
-</ pre>
+</pre>
 
 Note that you must call the page object's mediabox method, not the PDF object, to get information about the actual page paper size.
 
@@ -191,17 +191,17 @@ Please note that the paper size information is obtained in 4 PDF units.
 
 <pre>
 (Margin X from lower left, Margin Y from lower left, Coordinate X on upper right, Coordinate Y on upper right)
-</ pre>
+</pre>
 
 For example, the following values ​​are returned.
 
 <pre>
 (0, 0, 612, 792)
-</ pre>
+</pre>
 
 Generally, the margin X from the lower left is 0 and the margin Y from the lower left is 0, so you can think of the upper right coordinate X as the width and the upper right coordinate Y as the height.
 
-<h3> Combine multiple PDF files </ h3>
+<h3> Combine multiple PDF files </h3>
 
 Here are the steps to combine multiple PDF files. Create a new PDF :: API2 object. Open an existing PDF file.
 
@@ -217,4 +217,4 @@ my $ old = PDF :: API2-> open ('our / old.pdf');
 $ pdf-> import_page ($ old, 2);
  
 $ pdf-> saveas ('our / new.pdf');
-</ pre>
+</pre>

@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> last statement-get out of repetition </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> last statement-get out of repetition </h2>
 
 
 
-You can use the <strong> last statement </ strong> to get out of the next iteration. This corresponds to a C or Java break statement.
+You can use the <strong> last statement </strong> to get out of the next iteration. This corresponds to a C or Java break statement.
 
 <pre>
 last
-</ pre>
+</pre>
 
 The last statement can be used in repetitive statements such as <a href="/blog/20100123126425.html"> while statement </a> and for statements.
 
@@ -45,15 +45,15 @@ foreach my $ animal (@animals) {
     last;
   }
 }
-</ pre>
+</pre>
 
 You can use the last statement when you want to break out of the loop only under certain conditions.
 
-<h3> Sample program </ h3>
+<h3> Sample program </h3>
 
 This is a sample program that uses the last statement.
 
-<h4> Exit the loop when a specific character is matched </ h4>
+<h4> Exit the loop when a specific character is matched </h4>
 
 In the middle of loop processing, you can use the last statement when you want to exit the loop under certain conditions. This is a sample that prepares a <a href="/blog/20161012147627.html"> array </a> of characters and exits the loop for a specific character.
 
@@ -67,7 +67,7 @@ for my $ char (@chars) {
   last if $ char eq'c';
   print "$ char \ n";
 }
-</ pre>
+</pre>
 
 This is the execution result. Since the loop is exited at "c", the output result is only the character before "c".
 
@@ -76,7 +76,7 @@ z
 z
 a
 b b
-</ pre>
+</pre>
 
 "Qw (z z a b c d e f)" is a <a href="/blog/20080222120369.html"> string list operator </a>.
 
@@ -85,13 +85,13 @@ The if statement, for statement, and while statement are explained in detail bel
 <ul>
   <li>
     <a href="/blog/20161023147731.html"> Learn the syntax of conditional branching using if statements </a>
-  </ li>
+  </li>
   <li>
     <a href="/blog/20170521149524.html"> Let's learn the iterative processing using for statement and while statement </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> How to get out of multiple loops </ h4>
+<h4> How to get out of multiple loops </h4>
 
 You can use last to escape from a loop, but only the most recent loop block can escape. It takes some ingenuity to get out of multiple loops. You can get out of multiple loops by making good use of flags and conditionals.
 
@@ -116,24 +116,24 @@ while (1) {
   }
 }
 
-</ pre>
+</pre>
 
 You could write the label on top of the outer loop and exit the multiple loop as a "last label", but I personally don't recommend it. The source code will be better visible if you flag it well as described above and break out of multiple loops.
 
-<h3> Related information </ h3>
+<h3> Related information </h3>
 
-<h4> You can jump to the beginning of the loop using the next statement </ h4>
+<h4> You can jump to the beginning of the loop using the next statement </h4>
 
 Similar to the last statement is the next statement. You can use the next statement to move to the beginning of the next loop.
 
 <pre>
 next
-</ pre>
+</pre>
 
 For the next statement, refer to the following article.
 
 <ul>
   <li>
     <a href="/blog/20080329120687.html"> next statement-jumps to the beginning of the next iteration </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

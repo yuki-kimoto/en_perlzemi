@@ -1,94 +1,94 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> glob function --get list of files contained in directory </ h2>
+  </li>
+</ol>
+<h2> glob function --get list of files contained in directory </h2>
 
 
 
-You can use the <strong> glob </ strong> function to get a list of files.
+You can use the <strong> glob </strong> function to get a list of files.
 
 <pre>
 my @all_files = glob "*";
-</ pre>
+</pre>
 
 Use the glob operator to get a list of files. The target is files (including directories) in the current directory. When you get the file list of another directory, move the current directory with <a href="/blog/20080528121197.html"> chdir function </a>, or express it with a relative path or an absolute path. ..
 
-<h3> Example of glob argument expression </ h3>
+<h3> Example of glob argument expression </h3>
 
 <table>
   <tr>
     <td>
       "*"
-    </ td>
+    </td>
     <td>
       All files that do not start with.
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       "*.TXT"
-    </ td>
+    </td>
     <td>
       Files ending in .txt
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       "* .txt * .pl
-    </ td>
+    </td>
     <td>
       .txt or a file ending in .pl (there is a space between .txt and .pl)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       "*. *"
-    </ td>
+    </td>
     <td>
       All files (with spaces between * and. *)
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       "lib / *
-    </ td>
+    </td>
     <td>
       Files under the lib directory
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       c: / dir / *
-    </ td>
+    </td>
     <td>
       Specified by absolute path
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 You can specify multiple patterns by separating them with a blank. In addition to relative paths, you can also use absolute paths. * Is one of the wildcards used in the Unix shell. The glob function expands filenames containing * according to shell wildcard expansion rules.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample glob function.
 
@@ -120,7 +120,7 @@ my @normal_files = glob "*";
 Sort by # grep.
 @normal_files = grep {-f $ _} @normal_files;
 print join ("\ n", @normal_files). "\ n \ n";
-</ pre>
+</pre>
 
 Reference: <a href="/blog/20081007122338.html"> join function </a>
 
@@ -152,9 +152,9 @@ a.pl
 hello.exe
 hello.pl
 yuki-kimoto-Portablebbs-b578c1d.zip
-</ pre>
+</pre>
 
-<h3> Use the directory handle because the glob function doesn't work properly on Windows </ h3>
+<h3> Use the directory handle because the glob function doesn't work properly on Windows </h3>
 
 I think you often use the glob function to get a list of files. But for now, it's best to see that the glob function doesn't work properly on Windows. If the directory name contains a specific character string, the file list cannot be obtained correctly.
 
@@ -171,10 +171,10 @@ sub get_files {
   
   return @dirs;
 }
-</ pre>
+</pre>
 
 How to use
 
 <pre>
 my @files = get_files ('c: / pictures');
-</ pre>
+</pre>

@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax / Grammar </ span> </a>
+        <span itemprop = "name"> Syntax / Grammar </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Variable expansion </ h2>
+    <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Variable expansion </h2>
 
 
 
-Perl has a feature called <b> variable expansion </ b> that allows you to use variables in strings. The string must be enclosed in double quotes.
+Perl has a feature called <b> variable expansion </b> that allows you to use variables in strings. The string must be enclosed in double quotes.
 
 <pre>
 my $ str2 = "AAA $ str1 CCC";
-</ pre>
+</pre>
 
 Since you can use <a href="/blog/20161107147852.html"> variables </a> directly in <a href="/blog/20161003147558.html"> string </a>, <a href="/blog/20161003147852.html"> variables </a> It's easier than writing using the a href = "/ blog / 20080221120361.html"> string concatenation operator </a>. Let's use it positively.
 
@@ -33,11 +33,11 @@ Let's write a sample of variable expansion.
 my $ animal ='cat';
 
 my $ message = "I like $ animal";
-</ pre>
+</pre>
 
 "$ Animal" is interpolated and "$ message" becomes "I like cat".
 
-<h4> When a character string follows variable expansion </ h4>
+<h4> When a character string follows variable expansion </h4>
 
 When expanding a variable, if a character string follows the variable, that character string will also be recognized as part of the variable name. In such a case, use "{}" after $ to enclose the variable name.
 
@@ -45,11 +45,11 @@ When expanding a variable, if a character string follows the variable, that char
 my $ animal ='cat';
 
 my $ message = "dog $ {animal} mouse";
-</ pre>
+</pre>
 
 It will be correctly expanded as "dog cat mouse".
 
-<h4> Array variable expansion </ h4>
+<h4> Array variable expansion </h4>
 
 <a href="/blog/20161012147627.html"> Array </a> can also be interpolated. If the array is variable-expanded, the elements are concatenated with blanks.
 
@@ -57,20 +57,20 @@ It will be correctly expanded as "dog cat mouse".
 my @animals = ('dog','cat','mouse');
 
 my $ message = "I like @animals";
-</ pre>
+</pre>
 
 "$ Message" expands to "I like dog cat mouse".
 
-<h4> Subroutine variable expansion </ h4>
+<h4> Subroutine variable expansion </h4>
 
 <a href="/blog/20101130129876.html"> Subroutine </a> is not a variable, so it cannot be interpolated. It is smart to assign to a variable and then use the variable expansion function.
 
 <pre>
 my $ total = sum (1, 2);
 my $ message = "Number is $ total";
-</ pre>
+</pre>
 
-<h4> Variable expansion in here document </ h4>
+<h4> Variable expansion in here document </h4>
 
 You can also use variable interpolation in <a href="/blog/20080619121405.html"> Here Document </a>. Enclosing the terminating string in double quotes makes it easier to understand the intention of variable expansion.
 
@@ -81,4 +81,4 @@ my $ message = << "EOS";
 I love you.
 I like $ animal.
 EOS
-</ pre>
+</pre>

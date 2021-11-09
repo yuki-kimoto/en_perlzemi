@@ -1,60 +1,60 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> File :: Basename --Get the base name of the file </ h2>
+  </li>
+</ol>
+<h2> File :: Basename --Get the base name of the file </h2>
 
-<strong> File :: Basename </ strong> is a module to get the base name and directory name from the file name. You can use the following three functions:
+<strong> File :: Basename </strong> is a module to get the base name and directory name from the file name. You can use the following three functions:
 
 <ul>
   <li>
-    <strong> basename </ strong>-Get the base name of the file
-  </ li>
+    <strong> basename </strong>-Get the base name of the file
+  </li>
   <li>
-    <strong> dirname </ strong> --Get directory name
-  </ li>
+    <strong> dirname </strong> --Get directory name
+  </li>
   <li>
-    <strong> fileparse </ strong> --A little more detailed operation
-  </ li>
-</ ul>
+    <strong> fileparse </strong> --A little more detailed operation
+  </li>
+</ul>
 
 To use these functions, it's a good idea to import them explicitly.
 
 <pre>
 #Import function
 use File :: Basename'basename','dirname';
-</ pre>
+</pre>
 
-<h3> basename function </ h3>
+<h3> basename function </h3>
 
 Use the basename function to get the base name of a file. The base name is the last part of the file name.
 
 <pre>
 #Get base name
 $ basename = basename $ file;
-</ pre>
+</pre>
 
-<h3> dirname function </ h3>
+<h3> dirname function </h3>
 
 Use the dirname function to get the directory name.
 
 <pre>
 #Get directory name
 $ dirname = dirname $ file;
-</ pre>
+</pre>
 
 Samples of basename and dirname. If the file name is "dir / a.txt", you can get "a.txt" with basename and "dir" with dirname.
 
@@ -64,23 +64,23 @@ use File :: Basename qw / basename dirname /;
 my $ file ='dir / a.txt';
 my $ basename = basename $ file;
 my $ dirname = dirname $ file;
-</ pre>
+</pre>
 
-<h3> A little more detailed operation on the file name </ h3>
+<h3> A little more detailed operation on the file name </h3>
 
 You can use fileparse to get the base name and directory name at once.
 
 <pre>
 #Get base name and directory name
 ($ basename, $ dirname) = fileparse $ file;
-</ pre>
+</pre>
 
 Also, if you specify the extension with <a href="/blog/20100827127859.html"> regular expression </a> in the second argument of fileparse, you can retrieve the extension and the base name separately.
 
 <pre>
 # Get base name, directory name, extension
 ($ basename, $ dirname, $ ext) = fileparse ($ file, $ regex);
-</ pre>
+</pre>
 
 This is a sample to extract the extension. Specify a regular expression as the second argument. The regular expression "\ .. * $" means ". Comes and ends with 0 or more characters that can be anything." If $ file is "dir / a.txt", $ basename will be "a" and $ ext will be ".txt".
 
@@ -89,7 +89,7 @@ This is a sample to extract the extension. Specify a regular expression as the s
 use File :: Basename'fileparse';
 my $ file ='dir / a.txt';
 my ($ basename, $ dirname, $ ext) = fileparse ($ file, qr / \ .. * $ /);
-</ pre>
+</pre>
 
 The above is an example of extracting the extension, but if two extensions continue, the extension after the first extension will be extracted. For example, if the file name is "dir / a.txt.gz", $ ext will be ".txt.gz".
 

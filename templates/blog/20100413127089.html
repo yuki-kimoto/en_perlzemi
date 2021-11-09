@@ -1,45 +1,45 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> File :: Temp --Create a temporary file </ h2>
+  </li>
+</ol>
+<h2> File :: Temp --Create a temporary file </h2>
 
 
 
-You can use <strong> File :: Temp </ strong> to create <b> temporary files </ b> and <b> temporary directories </ b>. You can create temporary files (or temporary directories) in a secure way regardless of the OS.
+You can use <strong> File :: Temp </strong> to create <b> temporary files </b> and <b> temporary directories </b>. You can create temporary files (or temporary directories) in a secure way regardless of the OS.
 
 <pre>
 #Loading modules and importing functions
 use File :: Temp qw / tempfile tempdir /;
-</ pre>
+</pre>
 
-Use the <strong> tempfile </ strong> function to create a temporary file. The return value is the file handle of the temporary file in the scalar context and the file handle and filename of the temporary file in the list context.
+Use the <strong> tempfile </strong> function to create a temporary file. The return value is the file handle of the temporary file in the scalar context and the file handle and filename of the temporary file in the list context.
 
 <pre>
 # Create temporary file
 $ fh = tempfile;
 ($ fh, $ filename) = tempfile;
-</ pre>
+</pre>
 
-Use the <strong> tempdir </ strong> function to create a temporary directory.
+Use the <strong> tempdir </strong> function to create a temporary directory.
 
 <pre>
 # Create temporary directory
 $ dir = tempdir;
-</ pre>
+</pre>
 
 This is a sample that safely overwrites a file using a temporary file. (* 1)
 
@@ -77,41 +77,41 @@ sub get_content {
   
   return $ content;
 }
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100408127089.html"> File :: Copy </a>
 
-<h3> tempfile options </ h3>
+<h3> tempfile options </h3>
 
 You can specify options as arguments to tempfile.
 
 <pre>
 #tempfile options
 tempfile (DIR =>'somedir', SUFFIX =>'.dat');
-</ pre>
+</pre>
 
 <table>
   <tr>
     <td>
       DIR
-    </ td>
+    </td>
     <td>
       Directory where temporary files are created
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       SUFFIX
-    </ td>
+    </td>
     <td>
       Extension added to the end of the temporary file
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 If DIR is omitted, the directory for creating temporary files is automatically determined. For Unix it is / tmp.
 
-<h3> Note </ h3>
+<h3> Note </h3>
 * 1 It is not safe to open a file in read / write mode and write to the read file. This is because if the computer crashes during writing, the data before reading will be corrupted. It is safe to write to a different file than the one you read and then overwrite with that file.

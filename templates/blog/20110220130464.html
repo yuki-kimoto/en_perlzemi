@@ -1,31 +1,31 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> perlbrew --Install Perl in your environment </ h2>
+  </li>
+</ol>
+<h2> perlbrew --Install Perl in your environment </h2>
 
 To install Perl in your environment, use a tool called perlbrew. This is useful if you don't want to use the system standard Perl or if you want to use a newer version of Perl. You can also use perlbrew to switch between multiple versions of Perl.
 
-<h3> Install perlbrew </ h3>
+<h3> Install perlbrew </h3>
 
 Execute the following command.
 
 <pre>
 curl -L http://install.perlbrew.pl | bash
-</ pre>
+</pre>
 
 If you don't have the curl command, try running the following command:
 
@@ -35,108 +35,108 @@ wget -O --http://install.perlbrew.pl | bash
 
 #FreeBSD
 fetch -o- http://install.perlbrew.pl | sh
-</ pre>
+</pre>
 
 You can also install from cpan in two steps.
 
 <pre>
 sudo cpan App :: perlbrew
 perlbrew init
-</ pre>
+</pre>
 
 Next, let's pass the path of perlbrew. Add the configuration file for bash provided by perlbrew to "~ / .bashrc" (in the case of bash).
 
 <pre>
 echo "source ~ / perl5 / perlbrew / etc / bashrc" >> ~ / .bashrc
-</ pre>
+</pre>
 
 Reload ".bashrc".
 
 <pre>
 source ~ / .bashrc
-</ pre>
+</pre>
 
-<h3> Installing Perl in the user environment </ h3>
+<h3> Installing Perl in the user environment </h3>
 
 Install Perl in your environment. Let's install Perl for 5.28.2. It will take some time, so wait (about 30 minutes).
 
 <pre>
 perlbrew install perl-5.28.2
-</ pre>
+</pre>
 
 If you can't install it, the tools needed to compile Perl may not have been installed yet. The following tools are required, so install them according to each environment.
 
 <ul>
-  <li> make </ li>
-  <li> gcc </ li>
-  <li> patch </ li>
-</ ul>
+  <li> make </li>
+  <li> gcc </li>
+  <li> patch </li>
+</ul>
 
 If you want to force the test to skip and force the installation, use the "-n" option.
 
 <pre>
 perlbrew install -n perl-5.28.2
-</ pre>
+</pre>
 
 Let's take a look at the list of available Perls. Use the perlbrew list command.
 
 <pre>
 perlbrew list
-</ pre>
+</pre>
 
 The available Perls are displayed as shown below. The one with the asterisk is the Perl you are currently using.
 
 <pre>
   perl-5.28.2
 * / usr / bin / perl (5.8.8)
-</ pre>
+</pre>
 
 Use perlbrew's switch command to switch Perl.
 
 <pre>
 perlbrew switch perl-5.28.2
-</ pre>
+</pre>
 
 Let's actually check the version of Perl.
 
 <pre>
 perl -v
-</ pre>
+</pre>
 
 The version is 5.28.2 as shown below.
 
 <pre>
 This is perl 5, version 16, subversion 3 (v5.28.2) built for i686-linux
-</ pre>
+</pre>
 
-<h3> Install cpanm </ h3>
+<h3> Install cpanm </h3>
 
 Let's also install cpanm, which is convenient for installing modules.
 <pre>
 perlbrew install-cpanm
-</ pre>
+</pre>
 
 Now you can install the module with the following command.
 
 <pre>
 cpanm JSON
-</ pre>
+</pre>
 
 The module will be installed in the following directories.
 
 <pre>
 /home/kimoto/perl5/perlbrew/perls/perl-5.28.2/lib/site_perl/5.28.2/
-</ pre>
+</pre>
 
-<h3> Revert to original Perl </ h3>
+<h3> Revert to original Perl </h3>
 
 To revert to the original Perl:
 
 <pre>
 perlbrew off
-</ pre>
+</pre>
 
-<h3> How to use the version of Perl specified by perlbrew with crontab </ h3>
+<h3> How to use the version of Perl specified by perlbrew with crontab </h3>
 
 One of the main points of perlbrew is that the version of Perl specified by perlbrew is not used by cron. This is because .bash_profile is not loaded when running from cron because the shell is not started. The setting by perlbrew is described in .bash_profile.
 
@@ -146,18 +146,18 @@ First, as the user who installed perlbrew, display the value of the PATH environ
 
 <pre>
 env | grep PATH
-</ pre>
+</pre>
 
 You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
 
 <pre>
 PATH = / home / admins / perl5 / perlbrew / bin: / home / admins / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / admins / bin
-</ pre>
+</pre>
 
 Edit crontab with the following command.
 <pre>
 crontab -e
-</ pre>
+</pre>
 
 Then write the above PATH value to the top of crontab.
 
@@ -165,17 +165,17 @@ Then write the above PATH value to the top of crontab.
 PATH = / home / admins / perl5 / perlbrew / bin: / home / admins / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / admins / bin
 
 # cron settings continue ...
-</ pre>
+</pre>
 
 Now cron will use the specified version of Perl.
 
-<h4> First line description of Perl script </ h4>
+<h4> First line description of Perl script </h4>
 
 Write the first line of the Perl script using the env command as shown below.
 
 <pre>
 #! / usr / bin / env perl
-</ pre>
+</pre>
 
 This will automatically detect perl from the set PATH value.
 

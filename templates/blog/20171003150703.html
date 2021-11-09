@@ -1,29 +1,29 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-        <span itemprop = "name"> standard function </ span> </a>
+        <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> readdir function-reads the contents of a directory </ h2>
+  </li>
+</ol>
+<h2> readdir function-reads the contents of a directory </h2>
 
 
 
-Use the <b> readdir function </ b> to read the contents of the directory.
+Use the <b> readdir function </b> to read the contents of the directory.
 
 <pre>
 readdir directory handle
-</ pre>
+</pre>
 
 Specify the directory handle obtained by <a href="/blog/20171002150691.html"> opendir function </a>. The return value is the name of the file in the directory. You can read all the files in the directory by calling it repeatedly.
 
@@ -41,7 +41,7 @@ opendir my $ dh, $ dir
 while (my $ file = readdir $ dh) {
   print "$ file \ n";
 }
-</ pre>
+</pre>
 
 The output result is a list of file names included in the directory as shown below.
 
@@ -50,7 +50,7 @@ The output result is a list of file names included in the directory as shown bel
 ..
 a.txt
 b.txt
-</ pre>
+</pre>
 
 Note that it contains a "." That represents the current directory and a ".." that represents a directory one level higher.
 
@@ -62,7 +62,7 @@ while (my $ file = readdir $ dh) {
   next if $ file eq'.' || $ file eq' ..';
   print "$ file \ n";
 }
-</ pre>
+</pre>
 
 This will give you the results you want.
 
@@ -74,19 +74,19 @@ while (my $ file = readdir $ dh) {
   next if $ file eq'.' || $ file eq' ..';
   push @files, $ file;
 }
-</ pre>
+</pre>
 
-<h3> How to get a list of files including subdirectories? </ H3>
+<h3> How to get a list of files including subdirectories? </H3>
 
 If you want to process files recursively, including subdirectories, you should use the File :: Find module.
 
 <ul>
   <li>
     <a href="/blog/20080530121229.html"> File :: Find --Recursively process subdirectories </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Please tell me how to use it properly with the glob function </ h3>
+<h3> Please tell me how to use it properly with the glob function </h3>
 
 In Perl, you can get a list of filenames by using the <a href="/blog/20080529121207.html"> glob function </a> without using the directory handle.
 
@@ -95,17 +95,17 @@ The glob function has the following advantages:
 <ul>
   <li>
     "." ".." is not included
-  </ li>
+  </li>
   <li>
     There is no need to loop. Convenient to combine with <a href="/blog/20100119126425.html"> grep function </a>.
-  </ li>
+  </li>
   <li>
     You can get the full path of the file name instead of the base name
-  </ li>
+  </li>
   <li>
     You can use the wildcard "*"
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 Frankly speaking, the readdir function doesn't come into play very often, and it's easy to use the glob function to get a list of filenames.
 

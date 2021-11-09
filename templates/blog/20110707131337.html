@@ -1,21 +1,21 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20170130148603.html">
-      <span itemprop = "name"> database </ span> </a>
+      <span itemprop = "name"> database </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Install DBD :: Oracle </ h2>
+  </li>
+</ol>
+<h2> Install DBD :: Oracle </h2>
 
 
 
@@ -29,7 +29,7 @@ The following libraries were required to install DBD :: Oracle.
 oracle-instantclient11.2-basic-11.2.0.2.0.i386.rpm
 oracle-instantclient11.2-devel-11.2.0.2.0.i386.rpm
 oracle-instantclient11.2-sqlplus-11.2.0.2.0.i386.rpm
-</ pre>
+</pre>
 
 <a href="http://www.oracle.com/technetwork/jp/topics/linuxsoft-083388-ja.html"> You can download it from the Oracle site </a>, but user registration is required. ..
 
@@ -39,13 +39,13 @@ Then install these rpm packages.
 rpm -hiv oracle-instantclient11.2-basic-11.2.0.2.0.i386.rpm
 rpm -hiv oracle-instantclient11.2-devel-11.2.0.2.0.i386.rpm
 rpm -hiv oracle-instantclient11.2-sqlplus-11.2.0.2.0.i386.rpm
-</ pre>
+</pre>
 
 Next, set the required environment variables.
 
 <pre>
 vi /etc/profile.d/oracle.sh
-</ pre>
+</pre>
 
 Add the following settings to the above empty file.
 
@@ -53,19 +53,19 @@ Add the following settings to the above empty file.
 export ORACLE_HOME ='/usr/lib/oracle/11.2/client'
 export C_INCLUDE_PATH ='/usr/include/oracle/11.2/client'
 export LD_LIBRARY_PATH ='/usr/lib/oracle/11.2/client/lib'
-</ pre>
+</pre>
 
 Next, set the library.
 
 <pre>
 vi /etc/ld.so.conf.d/oracle.conf
-</ pre>
+</pre>
 
 Add the following items to the above empty file.
 
 <pre>
 /usr/lib/oracle/112/client/lib
-</ pre>
+</pre>
 
 In this state, restart the terminal to reflect the environment variables.
 
@@ -73,4 +73,4 @@ All you have to do now is install it with the cpan command.
 
 <pre>
 cpan DBD :: oracle
-</ pre>
+</pre>

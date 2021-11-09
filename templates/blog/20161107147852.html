@@ -1,26 +1,26 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Variables </ span>
+      <span itemprop = "name"> Variables </span>
     <meta itemprop = "position" content = "2" />
-  </ li>
-</ ol>
-<h2> Perl variables </ h2>
+  </li>
+</ol>
+<h2> Perl variables </h2>
 
 
 
 A description of Perl variables. Explains variable declarations and variable types.
 
-<h3> Variable declaration </ h3>
+<h3> Variable declaration </h3>
 
 Describes Perl variable declarations.
 
-<h4> Declaration of "lexical variable" by "my" </ h4>
+<h4> Declaration of "lexical variable" by "my" </h4>
 
 You can use "my" to declare a "lexical variable".
 
@@ -33,21 +33,21 @@ my @nums;
 
 # Hash variable declaration
 my% score;
-</ pre>
+</pre>
 
 For a detailed explanation of "declaration of lexical variables" using "my", see the following article.
 
 <ul>
   <li>
     <a href="/blog/20080307120491.html"> Declare lexical variables using my </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Declaration of "package variable" by "our" </ h4>
+<h4> Declaration of "package variable" by "our" </h4>
 
 You can use "our" to declare "package variables".
 
-Use <strong> our </ strong> to declare package variables.
+Use <strong> our </strong> to declare package variables.
 
 <pre>
 #Declaration of scalar variables
@@ -58,17 +58,17 @@ our @NUMS;
 
 # Hash variable declaration
 our% SCORE;
-</ pre>
+</pre>
 
 See the following article for "declaring package variables" using "our".
 
 <ul>
   <li>
     <a href="/blog/20080308120495.html"> Declaration of package variables by our </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> Saving and restoring values ​​with "local" </ h4>
+<h4> Saving and restoring values ​​with "local" </h4>
 
 You can use "local" to temporarily save a package variable and restore it at the end of scope.
 
@@ -78,25 +78,25 @@ our $ NUM = 5;
   local $ NUM = 3;
 }
 # Here, "$ NUM" returns to "5" which is the "original value"
-</ pre>
+</pre>
 
 For "save and restore values" by "local", see the following article.
 
 <ul>
   <li>
     local is explained in "<a href="/blog/20080309120507.html"> local --temporarily save and restore package variables </a>".
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Perl variable type </ h3>
+<h3> Perl variable type </h3>
 
 Perl has three "variable types": "scalar variables", "array variables", and "hash variables". Please note that it does not indicate the type of a number like "int type" and "double type" like C language and Java.
 
-<h4> "Scalar variable"-stores one value </ h4>
+<h4> "Scalar variable"-stores one value </h4>
 
 A "scalar variable" can contain only one value within a variable. A scalar variable is represented by prefixing the variable name with "$".
 
-<b> Typical scalar value </ b>
+<b> Typical scalar value </b>
 
 Typical scalar values ​​are as follows.
 
@@ -104,20 +104,20 @@ Typical scalar values ​​are as follows.
 <ul>
   <li>
     String
-  </ li>
+  </li>
   <li>
     Numerical value
-  </ li>
+  </li>
   <li>
     reference
-  </ li>
+  </li>
   <li>
     Undefined value (<a href="/blog/20100220126425.html"> undef </a>)
-  </ li>
-</ ul>
-</ ul>
+  </li>
+</ul>
+</ul>
 
-<b> Sample of assignment of scalar value to scalar variable </ b>
+<b> Sample of assignment of scalar value to scalar variable </b>
 
 <pre>
 my $ scalar;
@@ -127,9 +127,9 @@ $ scalar = [3, 4, 5]; # Reference to array
 $ scalar = {x => 6}; # Reference to hash
 $ scalar = sub {return 7}; #Reference to subroutine
 $ scalar = undef; # undefined value
-</ pre>
+</pre>
 
-<h4> "Array variable" --stores multiple values ​​</ h4>
+<h4> "Array variable" --stores multiple values ​​</h4>
 
 An "array variable" can contain multiple values. Only scalar variables can be included in the "elements" of an array variable.
 
@@ -145,9 +145,9 @@ my @elements = (
   sub {return 8},
   undef
 )
-</ pre>
+</pre>
 
-<b> Array nesting results in array concatenation </ b>
+<b> Array nesting results in array concatenation </b>
 
 In Perl, array nesting is an array concatenation.
 
@@ -155,9 +155,9 @@ In Perl, array nesting is an array concatenation.
 my @list_in_list = ((1, 2), (3, 4));
 # It will be the same as this.
 my @list = (1, 2, 3, 4);
-</ pre>
+</pre>
 
-<h4> "Hash variable"-stores key / value pairs </ h4>
+<h4> "Hash variable"-stores key / value pairs </h4>
 
 The hash has the following characteristics.
 
@@ -167,20 +167,20 @@ A hash variable is represented by prefixing the variable with "%". Only "list ()
 
 <pre>
 my% scores = (math => 70, engligh => 80);
-</ pre>
+</pre>
 
-<b> Array-type to hash-type conversion </ b>
+<b> Array-type to hash-type conversion </b>
 
 Both array variables and hash variables have a list as their content, so they can be converted to each other.
 
 <pre>
 @array =% hash;
 % hash = @array;
-</ pre>
+</pre>
 
-<h3> Variables and scope </ h3>
+<h3> Variables and scope </h3>
 
-Another thing to know about variables is their <b> scope </ b> and <b> lifetime </ b>. Scope is a term that describes where a variable is visible. Lifespan is the length of time a variable stores a value.
+Another thing to know about variables is their <b> scope </b> and <b> lifetime </b>. Scope is a term that describes where a variable is visible. Lifespan is the length of time a variable stores a value.
 
 For example, for a lexical variable declared with my, the scope is from "{" to "}".
 
@@ -190,7 +190,7 @@ For example, for a lexical variable declared with my, the scope is from "{" to "
   my $ num = 3;
 }
 # I can't see from here
-</ pre>
+</pre>
 
 The value saved in "$ num" disappears from the memory when the scope by "{...}" ends, and the variable itself called $ num disappears.
 
@@ -199,5 +199,5 @@ See the following articles for more information on variable scope and lifetime.
 <ul>
   <li>
     <a href="/blog/20110128130016.html"> Understand Perl scope </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

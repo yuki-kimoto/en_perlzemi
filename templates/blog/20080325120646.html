@@ -1,36 +1,36 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop = "name"> operator </ span> </a>
+      <span itemprop = "name"> operator </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
-  </ li>
-</ ol>
-<h2> Ternary operator A? B: C </ h2>
+      <span itemprop = "name"> here </span>
+  </li>
+</ol>
+<h2> Ternary operator A? B: C </h2>
 
 
 
-Perl has a <b> ternary operator </ b> that allows you to change the value returned depending on the conditions.
+Perl has a <b> ternary operator </b> that allows you to change the value returned depending on the conditions.
 
 <pre>
 Condition? Value to return if true: Value to return if false
-</ pre>
+</pre>
 
 It's a little difficult to understand just by looking at the above syntax, so let's actually write a sample.
 
 <pre>
 my $ flag = 1;
 my $ num = $ flag? 3: 5;
-</ pre>
+</pre>
 
 "$ Flag" is "1", which is the true value. The ternary operator returns the value immediately after the "?" If the condition is true. So "3" is assigned to "$ num".
 
@@ -39,7 +39,7 @@ The following is a sample when the condition is false.
 <pre>
 my $ flag = 0;
 my $ num = $ flag? 3: 5;
-</ pre>
+</pre>
 
 "$ Flag" is "0", which is a fake value. The ternary operator returns the value immediately after the ":" if the condition is true. Therefore, "5" is substituted.
 
@@ -52,10 +52,10 @@ If you want to know more about Perl booleans, check out the articles below.
 <ul>
   <li>
     <a href="/blog/20080323120628.html"> Perl truth value </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h4> What is the difference from writing with if? </ H4>
+<h4> What is the difference from writing with if? </H4>
 
 What can be written with the ternary operator can be written as it is with <a href="/blog/20161023147731.html"> if statement </a>.
 
@@ -68,19 +68,19 @@ if ($ flag) {
 else {
   $ num = 5;
 }
-</ pre>
+</pre>
 
-The difference is that the ternary operator can be <b> written short </ b> and <b> can return a value </ b>.
+The difference is that the ternary operator can be <b> written short </b> and <b> can return a value </b>.
 
 Taking advantage of this, you can write it like this in <a href="/blog/20140405139642.html"> Mojolicious template </a>, for example.
 
 <pre>
 <% = $ flag? 3: 5%>
-</ pre>
+</pre>
 
 It can be omitted compared to writing with an if statement, and it was possible to write short and neat in one line.
 
-<h4> Ternary operator with consecutive conditions </ h4>
+<h4> Ternary operator with consecutive conditions </h4>
 
 The ternary operator can use multiple conditions in succession. Make it readable even if it is nested.
 
@@ -90,27 +90,27 @@ my $ num
   = $ flag == 1? 3
   : $ flag == 2? 5
   : 7;
-</ pre>
+</pre>
 
 It's a little hard to read, but I'll read it exactly as I wrote it at the beginning.
 
 <ul>
   <li>
     If "$ flag" is "1", "3" will be returned.
-  </ li>
+  </li>
   <li>
      Otherwise, it will be executed after the ":". That is, the ternary operator that follows is executed.
-  </ li>
+  </li>
   <li>
      If "$ flag" is "2", "5" will be returned.
-  </ li>
+  </li>
   <li>
      Otherwise, it will be executed after the ":". In other words, "7" will be returned.
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 
-<h3> Sample program </ h3>
+<h3> Sample program </h3>
 
 This is a sample program of the ternary operator.
 
@@ -146,4 +146,4 @@ if ($ age <20) {$ generation ='child'}
 elsif ($ age <60) {$ generation ='middle'}
 elsif ($ age <80) {$ generation ='old'}
 else {$ generation ='very old'}
-</ pre>
+</pre>

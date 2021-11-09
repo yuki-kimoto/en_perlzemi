@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161102147817.html">
-        <span itemprop = "name"> Special variables </ span> </a>
+        <span itemprop = "name"> Special variables </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </ span>
+      <span itemprop = "name"> here </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Exit status of child process $? </ H2>
+  </li>
+</ol>
+<h2> Exit status of child process $? </H2>
 
 
 
@@ -24,7 +24,7 @@ Use the special variable "$?" To get the exit status of the child process.
 
 If wait waits for the child process to terminate, $? Contains multiple values, including the exit status of the child process. $? Is also set when a child process is executed using the <a href="/blog/20180124151680.html"> system function </a>.
 
-The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </ b>. The <b> 8th bit of the lower 8 bits </ b> indicates whether a core dump was generated </ b>. The <b> lower 8 bits up to the 7th bit </ b> represent the <b> signal number that terminated the process </ b>, if any.
+The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </b>. The <b> 8th bit of the lower 8 bits </b> indicates whether a core dump was generated </b>. The <b> lower 8 bits up to the 7th bit </b> represent the <b> signal number that terminated the process </b>, if any.
 
 <pre>
 | ----------------------- + ---- + ------------------ |
@@ -33,43 +33,43 @@ The method of interpreting $? Is a little complicated. $? Is set to a 16-bit val
              | | |
   Exit Status Signal that terminated the child process of the core dump
         occurrence
-</ pre>
+</pre>
 
 So you need to shift $? To the right by 8 bits to get the exit status.
 
 <pre>
 # Get exit status
 my $ exit_value = $? >> 8;
-</ pre>
+</pre>
 
 To see if a core dump has occurred
 
 <pre>
 #Whether a core dump has occurred
 my $ dumped_core = $? & 128;
-</ pre>
+</pre>
 
 will do. Since 128 is 10000000 when converted to a binary number, the bit product is 0 except for the 8th bit. To see the signal number that killed the child process
 
 <pre>
 #Signal number that terminated the child process
 my $ signal_num = $? & 127;
-</ pre>
+</pre>
 
 will do. Since 127 is a binary number and is 01111111, the lower 7 bits can be obtained by taking the bit product.
 
-<h4> Check if the child process has terminated </ h4>
+<h4> Check if the child process has terminated </h4>
 
 The wait function returns control when a CHLD signal occurs. This means that control returns not only when the child process terminates, but also when the child process is stopped or restarted.
 
-Use the <b> WIFEXITED </ b> function to see if the child process has terminated.
+Use the <b> WIFEXITED </b> function to see if the child process has terminated.
 
 <pre>
 use POSIX q (: sys_wait_h);
 my $ is_finished = WIFEXITED ($?);
-</ pre>
+</pre>
 
-<h4> Sample to see the exit status of the child process </ h4>
+<h4> Sample to see the exit status of the child process </h4>
 
 The exit status is 255 because we called die in the child process. You can see that the parent process is getting this status.
 
@@ -104,7 +104,7 @@ else {
   print "child process \ n";
   die;
 }
-</ pre>
+</pre>
 
 The execution result is
 
@@ -117,6 +117,6 @@ Exit code of child process: 255
 Whether a core dump has occurred: 0
 Signal that terminated the child process: 0
 Whether the child process has terminated: 1
-</ pre>
+</pre>
 
 It looks like.

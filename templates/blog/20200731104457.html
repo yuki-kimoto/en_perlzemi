@@ -1,10 +1,10 @@
-<h2> Recommended way to write a shebang in Perl </ h2>
+<h2> Recommended way to write a shebang in Perl </h2>
 
 Recommended way to write a shebang in Perl. "#! / Usr / bin / env perl".
 
 <pre>
 #! / usr / bin / env perl
-</ pre>
+</pre>
 
 Unix / Linux has a function called a shebang, which executes the contents written in the file with the command written in the shebang.
 
@@ -16,13 +16,13 @@ Shebangs start with "#!".
 
 The env command searches the directory in the environment variable PATH and executes it with the first perl found.
 
-<h3> Disadvantages of using env </ h3>
+<h3> Disadvantages of using env </h3>
 
 The disadvantage of using env is that it is uncertain which Perl to use. As the name env suggests, it depends on the environment, called the PATH environment variable.
 
 You have the choice of increasing the portability of your Perl scripts or running your program in a specified Perl.
 
-<h3> Is the Shebang line required? </ H3>
+<h3> Is the Shebang line required? </H3>
 
 Shebang line is not mandatory.
 
@@ -30,7 +30,7 @@ If you run the perl command, you can run it in perl, regardless of shebang.
 
 <pre>
 perl script.pl
-</ pre>
+</pre>
 
 In a Windows environment, you will often run it directly in Perl without writing a shebang.
 
@@ -40,13 +40,13 @@ In the field of Perl-centered development, you may choose to run Perl programs w
 
 Shebangs are required in CGI scripts. This is because the CGI protocol does not execute a file that you have permission to execute as it is, and execute it with a command called perl. On a web server such as Apache, if you do not write a shebang, you will get an "Internal Server Error".
 
-<h3> "#! Perl" is recommended for scripts included in the CPAN module </ h3>
+<h3> "#! Perl" is recommended for scripts included in the CPAN module </h3>
 
 We recommend "#! Perl" as the script to include when distributing the CPAN module.
 
 <pre>
 #! perl
-</ pre>
+</pre>
 
 <a href="https://mojolicious.perlzemi.com/"> Mojolicious </a> production server startup command <a href="https://mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad </a> also uses "#! perl". The CPAN client will automatically rewrite this line so that you can run the script on your Unix / Linux / Windows installation.
 

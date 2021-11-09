@@ -1,28 +1,28 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </ span> </a>
+      <span itemprop = "name"> Object Oriented </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Class inheritance </ span>
+      <span itemprop = "name"> Class inheritance </span>
     <meta itemprop = "position" content = "3" />
-  </ li>
-</ ol>
-<h2> Inherit class </ h2>
+  </li>
+</ol>
+<h2> Inherit class </h2>
 
 
 
 This time, I will explain how to inherit other classes.
 
-<h3> Inherit other classes </ h3>
+<h3> Inherit other classes </h3>
 
 Try inheriting another class. There is something I want you to be careful about. Classes are usually created on a file-by-file basis. If you name the package Componet, save the file containing only that package as Component.pm.
 
@@ -30,7 +30,7 @@ Then call it from the script that wants to use that class. However, for the sake
 
 Consider an example of a Button class that inherits a class called Component that has methods x and y.
 
-<h3> Inheritance using @ISA </ h3>
+<h3> Inheritance using @ISA </h3>
 
 How does Perl inheritance work? Let's run the following sample to illustrate it.
 
@@ -54,7 +54,7 @@ package main;
 Use the #button class.
 my $ button = Button-> new;
 print $ button-> x;
-</ pre>
+</pre>
 
 If you try running this script, you'll see that it says 5. The important thing is that the Button class doesn't have a method called x, but you can call a method called x.
 
@@ -62,13 +62,13 @@ You can do this because the Component class has a method called x, and the Butto
 
 <pre>
 our @ISA = ('Component');
-</ pre>
+</pre>
 
 Please pay attention to the part. This is the part that inherits. To inherit, just assign the name of the class you want to inherit to the package variable @ISA.
 
 <pre>
 package main
-</ pre>
+</pre>
 
 You may be worried about that part. This description is not necessary if the class is described separately in a file.
 

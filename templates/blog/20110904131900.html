@@ -1,4 +1,4 @@
-The value of can be expressed in the format <b> & lt; value & gt; </ b>. You can also use it to create new values ​​such as <b>% Perl </ b>.
+The value of can be expressed in the format <b> & lt; value & gt; </b>. You can also use it to create new values ​​such as <b>% Perl </b>.
 
 It maps to the following parameters:
 
@@ -8,7 +8,7 @@ It maps to the following parameters:
   price => 1000,
   a =>'% Ken%'
 }
-</ pre>
+</pre>
 
 Keys not specified in the map method will not be mapped. The key b is not mapped in this sample.
 
@@ -16,28 +16,28 @@ If you want to change the value a little more flexibly, you can use the subrouti
 
 <pre>
 Original key name => [new key name => sub {return'%'. $ _ [0].'%'}]
-</ pre>
+</pre>
 
-<h4> Parameter mapping conditions </ h4>
+<h4> Parameter mapping conditions </h4>
 
 The default mapping conditions are as follows:
 
 <pre>
 The value is defined and has a length
-</ pre>
+</pre>
 
 So the following parameters are mapped.
 
 <pre>
 title =>'Perl',
-</ pre>
+</pre>
 
 However, anything that does not have an empty string, undefined value, or the key itself is not mapped. This is because the mapping is intended for web applications.
 
 <pre>
 title =>'',
 title => undef
-</ pre>
+</pre>
 
 Use the condition attribute to change this condition. You can set the reference of any subroutine or the strings "length", "defined", and "exists" as special values.
 
@@ -46,7 +46,7 @@ $ mapper-> condition ('length'); # Same as default
 $ mapper-> condition ('defined'); # value is defined
 $ mapper-> condition ('exists'); # key exists
 $ mapper-> condition (sub {defined $ _ [0]}); # Reference to any subroutine
-</ pre>
+</pre>
 
 It is also possible to set each key individually as follows with the map method.
 
@@ -54,4 +54,4 @@ It is also possible to set each key individually as follows with the map method.
 $ mapper-> map (
   Old key => [new key => new value, {condtion =>'defined'}],
 );
-</ pre>
+</pre>

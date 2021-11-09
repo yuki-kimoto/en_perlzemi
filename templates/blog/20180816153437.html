@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> plenv --Install Perl in your environment </ h2>
+  </li>
+</ol>
+<h2> plenv --Install Perl in your environment </h2>
 
 
 
 You can use a tool called plenv to install Perl in your environment. This is useful if you don't want to use the system standard Perl or if you want to use a newer version of Perl. You can also use plenv to switch between multiple versions of Perl.
 
-<h3> Install plenv </ h3>
+<h3> Install plenv </h3>
 
 Let's install plenv. As a prerequisite, please note that git must be installed to install plenv.
 
@@ -30,7 +30,7 @@ Execute the following command.
 <pre>
 git clone git: //github.com/tokuhirom/plenv.git ~ / .plenv
 git clone git: //github.com/tokuhirom/Perl-Build.git ~ / .plenv / plugins / perl-build /
-</ pre>
+</pre>
 
 Next, let's pass the path of plenv. Add the configuration file for bash provided by plenv to ".bash_profile" (for bash).
 
@@ -40,15 +40,15 @@ Execute the following command.
 echo'export PATH = "$ HOME / .plenv / bin: $ PATH"' >> ~ / .bash_profile
 echo'eval "$ (plenv init-)"'>> ~ / .bash_profile
 exec $ SHELL -l
-</ pre>
+</pre>
 
-<h3> Installing Perl in the user environment </ h3>
+<h3> Installing Perl in the user environment </h3>
 
 Let's take a look at the list of available Perls.
 
 <pre>
 plenv install -l
-</ pre>
+</pre>
 
 If plenv is installed successfully, you will see a list of Perls you can install.
 
@@ -62,18 +62,18 @@ Available versions: Available versions:
  5.28.0-RC2
  5.28.0-RC1
  ...
-</ pre>
+</pre>
 
 If you get an error such as 599 Internal Exception, try to fix it based on the following article.
 
 <ul>
   <li>
     <a href="https://qiita.com/DQNEO/items/890b99134be0ad81d174"> [Remedy </a> 599 Internal Exception, https://fastapi.metacpan.org/v1/release/_search]
-  </ li>
+  </li>
   <li>
     <a href="https://github.com/miyagawa/HTTP-Tinyish/issues/14"> want to check Mozilla :: CA </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
 If all else fails, use <a href="/blog/20110220130464.html"> perlbrew </a>.
 
@@ -81,13 +81,13 @@ Install Perl in your environment. Let's install Perl of 5.20.3. It will take som
 
 <pre>
 plenv install 5.20.3
-</ pre>
+</pre>
 
 Let's display a list of available Perls.
 
 <pre>
 plenv versions
-</ pre>
+</pre>
 
 When Perl is available
 
@@ -96,13 +96,13 @@ The available Perls are displayed as shown below. The one with the asterisk is t
 <pre>
 * system (set by /home/kimoto2/.plenv/version)
   5.20.3
-</ pre>
+</pre>
 
 Use plenv's global command to switch between Perls.
 
 <pre>
 plenv global 5.20.3
-</ pre>
+</pre>
 
 As an advantage of plenv, you can also switch Perl for each directory by using <a href="https://papix.hatenablog.com/entry/2018/03/10/160838"> local command </a>. is.
 
@@ -110,38 +110,38 @@ Let's actually check the version of Perl.
 
 <pre>
 perl -v
-</ pre>
+</pre>
 
 The version is 5.20.3 as shown below.
 
 <pre>
 This is perl 5, version 20, subversion 3 (v5.20.3) built for x86_64-linux
 (with 1 registered patch, see perl -V for more detail)
-</ pre>
+</pre>
 
-<h3> Install cpanm </ h3>
+<h3> Install cpanm </h3>
 
 Let's also install cpanm, which is convenient for installing modules.
 
 <pre>
 plenv install-cpanm
-</ pre>
+</pre>
 
 Now you can install the module with the following command.
 
 <pre>
 cpanm JSON
-</ pre>
+</pre>
 
-<h3> Revert to original Perl </ h3>
+<h3> Revert to original Perl </h3>
 
 To revert to the original Perl:
 
 <pre>
 plenv global system
-</ pre>
+</pre>
 
-<h3> How to use Perl installed with plenv with crontab </ h3>
+<h3> How to use Perl installed with plenv with crontab </h3>
 
 One of the main points of plenv is that Perl installed with plenv is not used by cron. This is because .bash_profile is not loaded when running from cron because the shell is not started. The setting by plenv is described in .bash_profile.
 
@@ -151,19 +151,19 @@ First, as the user who installed plenv, display the value of the PATH environmen
 
 <pre>
 env | grep PATH
-</ pre>
+</pre>
 
 You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
 
 <pre>
 PATH = / home / kimoto2 / .plenv / shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin: / usr / bin: / usr / local / sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
-</ pre>
+</pre>
 
 Edit crontab with the following command.
 
 <pre>
 crontab -e
-</ pre>
+</pre>
 
 Then write the above PATH value to the top of crontab.
 
@@ -171,17 +171,17 @@ Then write the above PATH value to the top of crontab.
 PATH = / home / kimoto2 / .plenv / shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin: / usr / bin: / usr / local / sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
 
 # cron settings continue ...
-</ pre>
+</pre>
 
 Now cron will use the specified version of Perl.
 
-<h4> First line description of Perl script </ h4>
+<h4> First line description of Perl script </h4>
 
 Write the first line of the Perl script using the env command as shown below.
 
 <pre>
 #! / usr / bin / env perl
-</ pre>
+</pre>
 
 This will automatically detect perl from the set PATH value.
 

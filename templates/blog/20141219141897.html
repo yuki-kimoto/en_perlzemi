@@ -1,10 +1,10 @@
-<h2> How to compile Perl itself from source code </ h2>
+<h2> How to compile Perl itself from source code </h2>
 
 How to compile Perl itself from source code. First, fetch the Perl source code with "git clone".
 
 <pre>
 git clone http://perl5.git.perl.org/perl.git
-</ pre>
+</pre>
 
 This is the latest branch of the current development version.
 
@@ -12,31 +12,31 @@ Then execute the following command listed in the README.
 
 <pre>
 ./Configure -des -Dprefix = $ HOME / localperl
-</ pre>
+</pre>
 
 In the release version, this command will generate a Makefile, but in the development version it will fail, so execute the following command.
 
 <pre>
 ./Configure -des -Dusedevel -Dprefix = $ HOME / localperl
-</ pre>
+</pre>
 
 Next is compilation. Execute the make command.
 
 <pre>
 make
-</ pre>
+</pre>
 
 Next is the test.
 
 <pre>
 make test
-</ pre>
+</pre>
 
 Finally installed. It will be installed in "$ HOME / localperl".
 
 <pre>
 make install
-</ pre>
+</pre>
 
 I've been touching the Perl source code a bit lately, but running make and make test after making changes is a bit unrealistic. This does everything, including testing the module.
 
@@ -46,10 +46,10 @@ You can compile a small Perl called miniperl with the following command:
 
 <pre>
 make miniperl
-</ pre>
+</pre>
 
 You can run a small test with the following command:
 
 <pre>
 make minitest
-</ pre>
+</pre>

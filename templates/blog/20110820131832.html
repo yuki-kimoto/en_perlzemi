@@ -1,27 +1,27 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Imager --Easy to edit images </ h2>
+  </li>
+</ol>
+<h2> Imager --Easy to edit images </h2>
 
 
 
 The "Imager" module makes it easy to "edit images". Here are some tips.
 
-<h3> Draw "Japanese" </ h3>
+<h3> Draw "Japanese" </h3>
 
 To draw Japanese with Imager:
 
@@ -57,7 +57,7 @@ $ img-> string (
 #Save image
 $ img-> write (file =>'new_example.jpg')
   or die $ img-> errstr;
-</ pre>
+</pre>
 
 Creating a font object with Imager :: Font, specify the path where the font actually exists. The above example is for CentOS.
 
@@ -65,18 +65,18 @@ I'm using the string method to draw a string on top of the image. aa is an optio
 
 Save the script in UTF-8 and enable the utf8 pragma.
 
-<h3> Read binary data </ ​​h3>
+<h3> Read binary data </​​h3>
 
 Use the data option of the read method to read binary data in Perl's Imager module.
 
 <pre>
 $ img-> read (data => $ data, type =>'jpeg')
   or die $ img-> errstr;
-</ pre>
+</pre>
 
 Please note that you also need to specify the image type.
 
-<h3> Preparation for using Imager on CentOS </ h3>
+<h3> Preparation for using Imager on CentOS </h3>
 
 Imager is a Perl module for processing images. Install the following libraries on CentOS in advance to handle image formats and fonts such as jpeg, png, and gif.
 
@@ -85,10 +85,10 @@ yum -y install libjpeg-devel
 yum -y install libpng-devel
 yum -y install giflib-devel
 yum -y install freetype-devel
-</ pre>
+</pre>
 
 Then install Imager.
 
 <pre>
 cpan Imager
-</ pre>
+</pre>

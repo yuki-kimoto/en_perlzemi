@@ -1,79 +1,79 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-        <span itemprop = "name"> standard function </ span> </a>
+        <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> open function-opens a file </ h2>
+  </li>
+</ol>
+<h2> open function-opens a file </h2>
 
 
 
-To open a <strong> file </ strong>, use the <strong> open function </ strong>. The first argument is a variable for assigning the acquired file handle, the second argument is open mode, and the third argument is the file name. Returns true if the file was opened successfully, false if it failed.
+To open a <strong> file </strong>, use the <strong> open function </strong>. The first argument is a variable for assigning the acquired file handle, the second argument is open mode, and the third argument is the file name. Returns true if the file was opened successfully, false if it failed.
 
 <pre>
 $ ret = open ($ fh, $ mode, $ file);
-</ pre>
+</pre>
 
 When opening a file, the following is a common way to write it. Learn other ways based on this.
 
 <pre>
 open (my $ fh, "<", $ file)
   or die "Can't open $ file: $!";
-</ pre>
+</pre>
 
 "<" Means open mode, and when reading a file, specify "<".
 
-<h3> Commonly used open mode </ h3>
+<h3> Commonly used open mode </h3>
 
 <table>
   <tr>
     <td>
-      <span style = "font-weight: bold;"> Open mode </ span>
-    </ td>
+      <span style = "font-weight: bold;"> Open mode </span>
+    </td>
     <td>
-      <span style = "font-weight: bold;"> Symbol </ span>
-    </ td>
-  </ tr>
+      <span style = "font-weight: bold;"> Symbol </span>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Read
-    </ td>
+    </td>
     <td>
       <
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       write in
-    </ td>
+    </td>
     <td>
       >
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Additional writing
-    </ td>
+    </td>
     <td>
       >> >>
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 Specify in the second argument of the open function. Enclose it in double or single quotes and pass it as a string.
 
@@ -81,15 +81,15 @@ Specify in the second argument of the open function. Enclose it in double or sin
 
 Read mode is a mode in which a file is opened read-only. If the file does not exist, an error will occur.
 
-<h4> Write mode> </ h4>
+<h4> Write mode> </h4>
 
 Write mode is a mode in which a file is opened write-only. The contents of the original file are deleted the moment you open it. If the file does not exist, it will be created.
 
-<h4> Additional write mode >> </ h4>
+<h4> Additional write mode >> </h4>
 
 The additional write mode is a mode in which a file is opened exclusively for additional write, and writing starts from the end of the current file. If the file does not exist, it will be created.
 
-<h4> What if you want to read a file and write to it? </ H4>
+<h4> What if you want to read a file and write to it? </H4>
 
 There is another read / write mode in the file open mode, but this mode is not used for general purposes. It's easy to think that read-write mode is used when reading a file and writing to that file, but it's different.
 
@@ -98,37 +98,37 @@ As I will explain in detail later, this method is extremely dangerous. To do it 
 <ol>
   <li>
     Read the file.
-  </ li>
+  </li>
   <li>
     Write all lines containing changes to a temporary file.
-  </ li>
+  </li>
   <li>
     Delete the original file.
-  </ li>
+  </li>
   <li>
     Rename the temporary file to the original file name.
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h3> Exception handling </ h3>
+<h3> Exception handling </h3>
 
 When you open the file, you also need to handle the exception. If the file fails to open, there is no point in moving on to the subsequent processing, so use the die function to terminate the program. The cause of the file opening failure is assigned to "$!", So include that in the error message as well.
 
 <pre>
 open (my $ fh, "<", $ file)
   or die "Can't open $ file: $!";
-</ pre>
+</pre>
 
-<h3> Open two arguments-not recommended </ h3>
+<h3> Open two arguments-not recommended </h3>
 
 Older source code may use a two-argument open function, but now it is recommended to use a three-argument open function.
 
 <pre>
 # 2 Argument open function is deprecated
 open ($ fh, "<$ file");
-</ pre>
+</pre>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample file open using the open function.
 
@@ -141,12 +141,12 @@ my $ file = shift;
 
 open (my $ fh2, "<", $ file)
   or die "Can't open file $ file: $!";
-</ pre>
+</pre>
 
-<h3> Related articles </ h3>
+<h3> Related articles </h3>
 
 <ul>
   <li>
     <a href="/blog/20080519121125.html"> Create a file </a>
-  </ li>
-</ ul>
+  </li>
+</ul>

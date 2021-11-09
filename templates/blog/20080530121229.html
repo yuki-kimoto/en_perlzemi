@@ -1,25 +1,25 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> File :: Find --Recursively process subdirectories </ h2>
+  </li>
+</ol>
+<h2> File :: Find --Recursively process subdirectories </h2>
 
 
 
-You can use <strong> File :: Find </ strong> to process all files recursively.
+You can use <strong> File :: Find </strong> to process all files recursively.
 
 <pre>
 use File :: Find;
@@ -28,13 +28,13 @@ find (\ & process, $ top_dir);
 sub process {
   # What you want to do
 }
-</ pre>
+</pre>
 
 File :: Find is chdir, which processes all files while changing directories. Pass a reference to the subroutine as the first argument. (& process is a subroutine and the \ symbol creates a reference.)
 
 After the second argument, pass the list of directories you want to process. (In the example, only one). You can change the scan order by using finddepth instead of find. (Explanation below)
 
-<h4> If you do not want to change the current directory </ h4>
+<h4> If you do not want to change the current directory </h4>
 
 If you want to scan without changing the current directory, you can use the "no_chdir" option.
 
@@ -42,44 +42,44 @@ In this case, specify "wanted" as the reference to the subroutine.
 
 <pre>
 find ({wanted => \ & process, no_chdir => 1}, $ top_dir);
-</ pre>
+</pre>
 
-<h3> Variables that can be used in the processing description </ h3>
+<h3> Variables that can be used in the processing description </h3>
 
 <table>
   <tr>
     <td>
       Current current directory
-    </ td>
+    </td>
     <td>
       $ File :: Find :: dir
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Current file name (base name)
-    </ td>
+    </td>
     <td>
       $ _
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
   <tr>
     <td>
       Current file name (absolute path)
-    </ td>
+    </td>
     <td>
       $ File :: Find :: name
-    </ td>
-  </ tr>
+    </td>
+  </tr>
 
-</ table>
+</table>
 
 
 In the sub process, you can get the current directory and the file name to be processed. Use these to describe what you want to do in each file.
 
-<h3> Find scan order (going order) </ h3>
+<h3> Find scan order (going order) </h3>
 
 <pre>
 (1) $ top_dir |-(2) top.txt
@@ -89,11 +89,11 @@ In the sub process, you can get the current directory and the file name to be pr
              | |-(7) dir1_2 |-(8) 1_2.txt
              |
              |-(8) dir2 |-(9) 2.txt
-</ pre>
+</pre>
 
 Scan in what is commonly referred to as the destination order. In the case of the same hierarchy, files are processed before the directory. (2) comes before (3).
 
-<h3> Finddepth scanning order (returning order) </ h3>
+<h3> Finddepth scanning order (returning order) </h3>
 
 <pre>
 (10) $ top_dir |-(1) top.txt
@@ -103,11 +103,11 @@ Scan in what is commonly referred to as the destination order. In the case of th
               | |-(6) dir1_2 |-(5) 1_2.txt
               |
               |-(9) dir2 |-(8) 2.txt
-</ pre>
+</pre>
 
 Scan in what is commonly referred to as the return order. Each directory is processed immediately after all the processing in the hierarchy below it is completed. In the case of the same hierarchy, files are processed before the directory.
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that recursively processes all files.
 
@@ -171,7 +171,7 @@ print "\ n";
 
 print "3: Scan directories in return order \ n";
 finddepth (\ & print_file_full_name, $ top_dir);
-</ pre>
+</pre>
 Execution result
 <pre>
 Preparation: You have created dir_20080530_4944.
@@ -211,7 +211,7 @@ dir_20080530_4944 / dir1
 dir_20080530_4944 / dir2 / 2.txt
 dir_20080530_4944 / dir2
 dir_20080530_4944
-</ pre>
+</pre>
 
 (Reference) <a href="/blog/20100409127089.html"> File :: Path </a>, <a href="/blog/20100312126967.html"> eval </a>, <a href="/ blog/20080804121794.html "> sysopen function </a>, <a href="/blog/20180310152509.html"> F
 
@@ -220,5 +220,5 @@ cntl </a>
 <ul>
    <li>
      <a href="/blog/20080601121230.html"> Recursively copy multi-level directories </a>
-   </ li>
-</ ul>
+   </li>
+</ul>

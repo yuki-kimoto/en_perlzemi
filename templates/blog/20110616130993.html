@@ -1,4 +1,4 @@
-The g> tag helper makes it easy to write <strong> hyperlinks </ strong>.
+The g> tag helper makes it easy to write <strong> hyperlinks </strong>.
 
 <pre>
 <% = link_to index => begin%> Home <% end%>
@@ -8,7 +8,7 @@ The g> tag helper makes it easy to write <strong> hyperlinks </ strong>.
 <% = link_to'/ path / to / file' => begin%> File <% end%>
 <% = link_to'http://mojolicio.us' => begin%> Mojolicious <% end%>
 <% = link_to url_for-> query (foo => $ foo) => begin%> Retry <% end%>
-</ pre>
+</pre>
 
 It will be expanded to the following HTML. The first argument is the root name or path. You can also pass a Mojo :: URL object. The last argument is a block, which allows you to specify the text of the hyperlink.
 
@@ -18,34 +18,34 @@ It will be expanded to the following HTML. The first argument is the root name o
 <a href="/path/to/file"> File </a>
 <a href="http://mojolicio.us"> Mojolicious </a>
 <a href="/current/path?foo=something"> Retry </a>
-</ pre>
+</pre>
 
-<h3> Describe image tags </ h3>
+<h3> Describe image tags </h3>
 
-The <strong> image </ strong> tag helper makes it easy to write <strong> image tags </ strong>.
+The <strong> image </strong> tag helper makes it easy to write <strong> image tags </strong>.
 
 <pre>
 <% = image'/images/foo.png'%>
 <% = image'/images/foo.png', alt =>'Foo'%>
-</ pre>
+</pre>
 
 It will be expanded as follows. The first argument is the URL to the image. This URL is expanded by the url_for method. The remaining arguments are used as attributes.
 
 <pre>
 <img src = "/ images / foo.png" />
 <img alt = "Foo" src = "/ images / foo.png" />
-</ pre>
+</pre>
 
-<h3> Style sheet (CSS) </ h3>
+<h3> Style sheet (CSS) </h3>
 
-The <strong> stylesheet </ strong> tag helper makes it easy to write external links to stylesheets and stylesheets.
+The <strong> stylesheet </strong> tag helper makes it easy to write external links to stylesheets and stylesheets.
 
 <pre>
 <% = stylesheet'/foo.css'%>
 <% = stylesheet begin%>
   body {color: # 000}
 <% end%>
-</ pre>
+</pre>
 
 When specifying a link to an external style sheet, describe the path in the first argument. If you want to describe the style sheet itself, specify the block (begin to end) as the first argument. It will be expanded to the following HTML.
 
@@ -53,19 +53,19 @@ When specifying a link to an external style sheet, describe the path in the firs
 <link href = "/ foo.css" media = "screen" rel = "stylesheet" type = "text / css" />
 <style type = "text / css"> <! [CDATA [
   body {color: # 000}
-]]> </ style>
-</ pre>
+]]> </style>
+</pre>
 
-<h3> JavaScript source code </ h3>
+<h3> JavaScript source code </h3>
 
-The <strong> javascript </ strong> tag helper makes it easy to write JavaScript source code.
+The <strong> javascript </strong> tag helper makes it easy to write JavaScript source code.
 
 <pre>
 % = javascript'/script.js';
 % = javascript begin
   var a ='b';
 % end
-</ pre>
+</pre>
 
 The argument can be an external JavaScript path or block (begin to end). You can write the actual JavaScript source code inside the block.
 
@@ -73,19 +73,19 @@ The argument can be an external JavaScript path or block (begin to end). You can
 <script src = "/ script.js" type = "text / javascript" />
 <script type = "text / javascript"> <! [CDATA [
   var a ='b';
-]]> </ script>
-</ pre>
+]]> </script>
+</pre>
 
-<h3> Input tag </ h3>
+<h3> Input tag </h3>
 
-The <strong> input_tag </ strong> tag helper makes it easy to write <strong> input tags </ strong>.
+The <strong> input_tag </strong> tag helper makes it easy to write <strong> input tags </strong>.
 
 <pre>
 <% = input_tag'first_name'%>
 <% = input_tag first_name =>'Default name'%>
 <% = input_tag'employed', type =>'checkbox'%>
 <% = input_tag'country', type =>'radio', value =>'germany'%>
-</ pre>
+</pre>
 
 It will be expanded as follows. The first argument is the value of name and the remaining arguments are used as attributes. Input values ​​contained in HTTP request parameters are automatically completed.
 
@@ -94,19 +94,19 @@ It will be expanded as follows. The first argument is the value of name and the 
 <input name = "first_name" value = "Default name" />
 <input name = "employed" type = "checkbox" />
 <input name = "country" type = "radio" value = "germany" />
-</ pre>
+</pre>
 
-<h3> Base tag </ h3>
+<h3> Base tag </h3>
 
 
 You can easily write a base tag using the base_tag function, which is a tag helper.
 
 <pre>
 <% = base_tag%>
-</ pre>
+</pre>
 
 It will be expanded to the following tags.
 
 <pre>
 <base href = "http: //localhost/cgi-bin/myapp.pl" />
-</ pre>
+</pre>

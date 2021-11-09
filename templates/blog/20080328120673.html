@@ -1,38 +1,38 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161023147731.html">
-        <span itemprop = "name"> control structure </ span> </a>
+        <span itemprop = "name"> control structure </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> foreach statement </ span>
+      <span itemprop = "name"> foreach statement </span>
     <meta itemprop = "position" content = "4" />
-  </ li>
-</ ol>
-<h2> foreach --Processing of each element of the array </ h2>
+  </li>
+</ol>
+<h2> foreach --Processing of each element of the array </h2>
 
 
 
-Use <strong> foreach </ strong> to process each element of the <strong> array in turn </ strong>. Perl prefers to use <a href="/blog/20100123126425.html"> while statement </a>.
+Use <strong> foreach </strong> to process each element of the <strong> array in turn </strong>. Perl prefers to use <a href="/blog/20100123126425.html"> while statement </a>.
 
 <pre>
 foreach my $ item (@array) {
   ...
 }
-</ pre>
+</pre>
 
 Also, in Perl, foreach is another name for for, so you can use for instead of foreach. I think this is more concise.
 
@@ -40,17 +40,17 @@ Also, in Perl, foreach is another name for for, so you can use for instead of fo
 for my $ item (@array) {
   ...
 }
-</ pre>
+</pre>
 
 The method of outputting the elements in order is explained in detail on the following page.
 
 <ul>
   <li>
     <a href="/blog/20170521149524.html"> Let's learn the iterative processing using for statement and while statement </a>
-  </ li>
-</ ul>
+  </li>
+</ul>
 
-<h3> Sample </ h3>
+<h3> Sample </h3>
 
 This is a sample that outputs the elements of the array in order.
 <pre>
@@ -59,7 +59,7 @@ my @nums = (3, 4, 5);
 foreach my $ num (@nums) {
   print "$ num \ n";
 }
-</ pre>
+</pre>
 
 This is a sample that outputs the elements of an array in order when the data structure is an array reference.
 
@@ -69,7 +69,7 @@ my $ nums = [3, 4, 5];
 foreach my $ num (@ $ nums) {
   print "$ num \ n";
 }
-</ pre>
+</pre>
 
  This is a sample that outputs the values ​​contained in the two-dimensional array, separated by tabs for each line. <a href="/blog/20081007122338.html"> join function </a> is used to connect the strings contained in the array with tabs.
 
@@ -83,7 +83,7 @@ my $ data = [
 foreach my $ record (@ $ data) {
   print join ("\ t", @ $ record). "\ n";
 }
-</ pre>
+</pre>
 
 This is a sample that outputs the values ​​contained in the hash array for each line, separated by tabs.
 
@@ -98,7 +98,7 @@ foreach my $ person (@ $ persons) {
   my @record = ($ person-> {name}, $ person-> {age});
   print join ("\ t", @record). "\ n";
 }
-</ pre>
+</pre>
 
 Here are some samples of foreach.
 
@@ -126,7 +126,7 @@ foreach my $ index (0 .. $ #persons) {
   #When you want to use the element number, pass the element number without passing the element of the array itself.
   print "\ $ persons [$ index] = $ persons [$ index] \ n";
 }
-</ pre>
+</pre>
 Execution result
 <pre>
 [1]
@@ -141,4 +141,4 @@ sinji
 $ people [0] = tom
 $ persons [1] = taro
 $ persons [2] = sinji
-</ pre>
+</pre>

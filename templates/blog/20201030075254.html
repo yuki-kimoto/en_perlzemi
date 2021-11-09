@@ -1,64 +1,64 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </ span> </a>
+        <span itemprop = "name"> Syntax </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161003147558.html">
-        <span itemprop = "name"> string </ span> </a>
+        <span itemprop = "name"> string </span> </a>
     <meta itemprop = "position" content = "3" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> Escape sequence of double quoted strings </ h2>
+<h2> Escape sequence of double quoted strings </h2>
 
 Here are the escape sequences that can be used in double-quoted strings.
 
-<h3> Escape sequence corresponding to ASCII code </ h3>
+<h3> Escape sequence corresponding to ASCII code </h3>
 
 Frequently used ones are line breaks "\ n" and tabs "\ t".
 
 <table>
-  <tr> <th> Escape <br> Sequence </ th> <th> Code <br> Point <br> Decimal </ th> <th> Code <br> Point <br> Hexadecimal </ th> < th> ASCII </ th> <th> meaning </ th> </ tr>
-  <tr> <td> \ a </ td> <td> 7 </ td> <td> 07 </ td> <td> BEL </ td> <td> Alarm or Bell </ td> </ tr>
-  <tr> <td> \ b </ td> <td> 8 </ td> <td> 08 </ td> <td> BS </ td> <td> Backspace </ td> </ tr>
-  <tr> <td> \ e </ td> <td> 27 </ td> <td> 1B </ td> <td> ESC </ td> <td> Escape Sequence </ td> </ tr>
-  <tr> <td> \ f </ td> <td> 12 </ td> <td> 0C </ td> <td> FF </ td> <td> form feed </ td> </ tr>
-  <tr> <td> \ n </ td> <td> 10 </ td> <td> 0A </ td> <td> LF </ td> <td> Line feed </ td> </ tr>
-  <tr> <td> \ r </ td> <td> 13 </ td> <td> 0D </ td> <td> CR </ td> <td> Carriage return </ td> </ tr>
-  <tr> <td> \ t </ td> <td> 9 </ td> <td> 09 </ td> <td> TAB </ td> <td> Tab </ td> </ tr>
-</ table>
+  <tr> <th> Escape <br> Sequence </th> <th> Code <br> Point <br> Decimal </th> <th> Code <br> Point <br> Hexadecimal </th> < th> ASCII </th> <th> meaning </th> </tr>
+  <tr> <td> \ a </td> <td> 7 </td> <td> 07 </td> <td> BEL </td> <td> Alarm or Bell </td> </tr>
+  <tr> <td> \ b </td> <td> 8 </td> <td> 08 </td> <td> BS </td> <td> Backspace </td> </tr>
+  <tr> <td> \ e </td> <td> 27 </td> <td> 1B </td> <td> ESC </td> <td> Escape Sequence </td> </tr>
+  <tr> <td> \ f </td> <td> 12 </td> <td> 0C </td> <td> FF </td> <td> form feed </td> </tr>
+  <tr> <td> \ n </td> <td> 10 </td> <td> 0A </td> <td> LF </td> <td> Line feed </td> </tr>
+  <tr> <td> \ r </td> <td> 13 </td> <td> 0D </td> <td> CR </td> <td> Carriage return </td> </tr>
+  <tr> <td> \ t </td> <td> 9 </td> <td> 09 </td> <td> TAB </td> <td> Tab </td> </tr>
+</table>
 
 This is a sample using the escape sequence of tabs and line breaks.
 
 <pre>
 # Use tabs and line breaks
 my $ line = "ID \ tName \ tPrice \ n";
-</ pre>
+</pre>
 
-<h3> Occasional escape sequences </ h3>
+<h3> Occasional escape sequences </h3>
 
 I also sometimes use escape sequences that represent double quotes "\" "and backslashes themselves" \\ ".
 
 <table>
-  <tr> <th> Escape <br> Sequence </ th> <th> Meaning </ th> </ tr>
-  <tr> <td> \ "</ td> <td>" </ td> </ tr>
-  <tr> <td> \\ </ td> <td> \ </ td> </ tr>
-</ table>
+  <tr> <th> Escape <br> Sequence </th> <th> Meaning </th> </tr>
+  <tr> <td> \ "</td> <td>" </td> </tr>
+  <tr> <td> \\ </td> <td> \ </td> </tr>
+</table>
 
-<h3> Notes on line break "\ n" </ h3>
+<h3> Notes on line break "\ n" </h3>
 
 There is one caveat regarding line breaks "\ n".
 
@@ -71,11 +71,11 @@ One thing to keep in mind is that Perl's I / O layer automatically converts to O
 <pre>
 # "0D 0A" on Windows, "0A" on Unix / Linux / Mac
 print "Hello \ n";
-</ pre>
+</pre>
 
 To avoid this conversion, use escape sequences that directly specify the ASCII code. How to specify the ASCII code directly is explained below.
 
-<h3> Escape sequence that directly describes ASCII code </ h3>
+<h3> Escape sequence that directly describes ASCII code </h3>
  
 There are also escape sequences that allow you to write the ASCII code itself in hexadecimal by starting with "\ x".
 
@@ -83,16 +83,16 @@ There are also escape sequences that allow you to write the ASCII code itself in
 #Specify ASCII code directly in hexadecimal to represent HTTP protocol line breaks
 my $ message = "Hello \ x0D \ x0A";
 print $ message;
-</ pre>
+</pre>
 
 The above example is a sample that expresses the line feed code in the HTTP protocol because it is an ASCII hexadecimal sequence of "D" and "A". The 0 after the "\ x" is not required, but it is included according to the convention of representing ASCII codes in 2-digit hexadecimal numbers.
 
-<h3> Document with all escape sequences </ h3>
+<h3> Document with all escape sequences </h3>
 
 Below is the Perl documentation with all the escape sequences.
 
 <ul>
-  <li> <a href="https://perldoc.jp/docs/perl/5.10.1/perlrebackslash.pod"> perlrebackslash --Perl regular expression reverse slash sequence and escape --perldoc.jp </a> </ li >
-</ ul>
+  <li> <a href="https://perldoc.jp/docs/perl/5.10.1/perlrebackslash.pod"> perlrebackslash --Perl regular expression reverse slash sequence and escape --perldoc.jp </a> </li >
+</ul>
 
 Although it covers all the escape sequences of regular expressions, the escape sequences of double-quoted strings are included in the escape sequences of regular expressions, so let's refer only to the escape sequences of the part related to double-quoted strings.

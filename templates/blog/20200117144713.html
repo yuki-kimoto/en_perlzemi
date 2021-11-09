@@ -1,4 +1,4 @@
-<h2> How to create a Linux-like environment with Strawberry Perl and command prompt </ h2>
+<h2> How to create a Linux-like environment with Strawberry Perl and command prompt </h2>
 
 I will show you how to create a <a href="https://linux.perlclub.net/"> Linux </a> -like environment with Strawberry Perl and a command prompt.
 
@@ -8,53 +8,53 @@ If you want to test a program created for <a href="https://linux.perlclub.net/">
 
 I will show you how to work at the command prompt in the same way as Linux.
 
-<h3> You can work in the same way in Linux environment and command prompt </ h3>
+<h3> You can work in the same way in Linux environment and command prompt </h3>
 
 Is it possible to work in the same way in the Linux environment and the command prompt first? In January 2020, the following items were confirmed in the Windows 10 environment.
 
-<h4> cd command </ h4>
+<h4> cd command </h4>
 
 The Linux <a href="https://linux.perlclub.net/blog/20191012191854.html"> cd command </a> also exists as a cd command at the command prompt.
 
-<h4> File path delimiter is OK with "/" </ h4>
+<h4> File path delimiter is OK with "/" </h4>
 
 The Windows file path delimiter is "\", but you can actually use "/". This is an example of using "/" in the cd command of the command prompt.
 
 <pre>
 cd labo / perlzemi
-</ pre>
+</pre>
 
-<h4> gcc can be used if Strawberry Perl is installed </ h4>
+<h4> gcc can be used if Strawberry Perl is installed </h4>
 
 Use gcc, the C language compiler required to install Perl's XS module, from the beginning if <a href="/blog/20180808153368.html"> Strawberry Perl </a> is installed. I can.
 
 <pre>
 gcc --help
-</ pre>
+</pre>
 
-<h4> Close command prompt </ h4>
+<h4> Close command prompt </h4>
 
 If you close the command prompt, the same command as the Linux exit command exists at the command prompt.
 
 <pre>
 exit
-</ pre>
+</pre>
 
-<h4> Right-click to copy and paste </ h4>
+<h4> Right-click to copy and paste </h4>
 
 If you check the simple edit mode in the command prompt settings, you can copy and paste by right-clicking.
 
 <a href="https://www.relief.jp/docs/003578.html"> Easily copy and paste command prompt-right click </a>
 
-<h4> Continuous command execution by && </ h4>
+<h4> Continuous command execution by && </h4>
 
 You can use && at the command prompt as you would Linux.
 
 <pre>
 command1 && command2
-</ pre>
+</pre>
 
-<h4> Redirects and pipes </ h4>
+<h4> Redirects and pipes </h4>
 
 Linux redirection and pipes are also available at the command prompt.
 
@@ -62,10 +62,10 @@ Linux redirection and pipes are also available at the command prompt.
 command> file.txt
 command <file.txt
 command1 | command2
-</ pre>
+</pre>
 
 
-<h3> Linux commands that do not exist at the command prompt </ h3>
+<h3> Linux commands that do not exist at the command prompt </h3>
 
 The following are Linux commands that do not exist at the command prompt. If it doesn't exist, let's create it.
 
@@ -73,13 +73,13 @@ If you have Strawberry Perl installed, the following path should be included in 
 
 <pre>
 C: \ Strawberry \ perl \ site \ bin
-</ pre>
+</pre>
 
 This is where the user-installed executables and batch files are stored.
 
 Let's write a command that does not exist in this path.
 
-<h4> Create ls command </ h4>
+<h4> Create ls command </h4>
 
 Let's create a command that corresponds to the Linux <a href="https://linux.perlclub.net/blog/20191126082723.html"> ls command </a>.
 
@@ -91,15 +91,15 @@ Write the following content. Now call the dir command with the ls command.
 
 <pre>
 dir
-</ pre>
+</pre>
 
 You will be able to execute the following commands at the command prompt.
 
 <pre>
 ls
-</ pre>
+</pre>
 
-<h4> Create make command </ h4>
+<h4> Create make command </h4>
 
 The command gmake can be used from the beginning if <a href="/blog/20180808153368.html"> Strawberry Perl </a> is installed.
 
@@ -111,7 +111,7 @@ Write the following content. Now the make command calls the gmake command.
 
 <pre>
 gmake% 1
-</ pre>
+</pre>
 
 % 1 is a command line argument. If this is specified, arguments can be given to the make command, such as "make test".
 
@@ -119,13 +119,13 @@ You will be able to execute the following commands at the command prompt.
 
 <pre>
 make
-</ pre>
+</pre>
 
-<h4> Other Linux commands </ h4>
+<h4> Other Linux commands </h4>
 
 <a href="https://linux.perlclub.net/blog/20200113083613.html"> cat command </a> or <a href="https://linux.perlclub.net/blog/" if needed 20191210081417.html "> rm command </a> etc. seems to be easy to make in the same way.
 
-<h3> Try a Linux-like environment </ h3>
+<h3> Try a Linux-like environment </h3>
 
 Now let's do that for Linux. That is an example.
 
@@ -133,19 +133,19 @@ Now let's do that for Linux. That is an example.
 cd proj / MyModule
 perl Makefile.PL
 make && make test
-</ pre>
+</pre>
 
 Sounds good!
 
-<h3> Frequently Asked Questions </ h3>
+<h3> Frequently Asked Questions </h3>
 
 Frequently asked questions.
 
-<h4> Should I use an alias with DOSKEY? </ H4>
+<h4> Should I use an alias with DOSKEY? </H4>
 
 Yes, I tried this. But when you run &&, the command prompt runs a new process. Actually, at this time, the environment is not inherited and the alias does not work.
 
-<h4> Is powershell useless? </ H4>
+<h4> Is powershell useless? </H4>
 
 I feel that Powershell is designed to make Windows easier to operate, rather than improving the command prompt.
 

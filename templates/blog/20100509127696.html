@@ -1,32 +1,32 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
-<h2> Benchmark --Benchmark (performance comparison) </ h2>
+  </li>
+</ol>
+<h2> Benchmark --Benchmark (performance comparison) </h2>
 
 
 
-The <strong> Benchmark </ strong> module allows you to benchmark (performance comparison).
+The <strong> Benchmark </strong> module allows you to benchmark (performance comparison).
 
 <pre>
 #Loading modules and importing functions
 use Benchmark qw / timethese cmpthese /;
-</ pre>
+</pre>
 
-You can get the performance information of each function by executing the <strong> timethese </ strong> function. If you specify this as an argument to the <strong> compthese </ strong> function, the standard output will display the comparison result.
+You can get the performance information of each function by executing the <strong> timethese </strong> function. If you specify this as an argument to the <strong> compthese </strong> function, the standard output will display the comparison result.
 
 <pre>
 # Performance comparison
@@ -43,7 +43,7 @@ my $ result = timethese ($ count, {
 });
 
 cmpthese $ result;
-</ pre>
+</pre>
 
 This is a sample for benchmarking. It is necessary to increase the number of executions to some extent to improve accuracy. This sample has been run 10000 times.
 
@@ -71,7 +71,7 @@ my $ result = timethese (10000, {
 });
 
 cmpthese $ result;
-</ pre>
+</pre>
 
 The output result is as follows. It can be confirmed that loop3 is nearly 3 times faster than loop1.
 
@@ -85,9 +85,9 @@ Benchmark: timing 10000 iterations of loop1, loop2, loop3 ...
 loop1 3351 / s --- 41% -65%
 loop2 5714 / s 71% --- 41%
 loop3 9699 / s 189% 70% -
-</ pre>
+</pre>
 
-<h3> FAQ about Benchmark module </ h3>
+<h3> FAQ about Benchmark module </h3>
 
 Q. Does the Benchmark module calculate the actual processing time?
 A. The time displayed by wallclock is the actual time taken. The value after @ is calculated as "number of trials / CPU time".

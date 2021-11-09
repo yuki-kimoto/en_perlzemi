@@ -1,22 +1,22 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </ span> </a>
+      <span itemprop = "name"> Module </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li>
     here
-  </ li>
-</ ol>
+  </li>
+</ol>
 
-<h2> FFI :: Raw --Call C ++ functions directly from Perl </ h2>
+<h2> FFI :: Raw --Call C ++ functions directly from Perl </h2>
 
 Perl provides <a href="/blog/20100809127859.html"> XS language </a> as a basic and general-purpose method for calling C language. increase.
 
@@ -24,7 +24,7 @@ But writing the XS language is a pain. It would be nice to be able to easily cal
 
 There is a mechanism to call a C language library called libffi from another language, and one of the Perl implementations of this is FFI :: Raw. Easy to install from CPAN.
 
-The sample below is exactly what was written on the site, but is a sample that calls a function called <b> cos </ b> in a library called <b> m </ b>.
+The sample below is exactly what was written on the site, but is a sample that calls a function called <b> cos </b> in a library called <b> m </b>.
 
 <pre>
 use FFI :: Raw;
@@ -36,21 +36,21 @@ my $ cos = FFI :: Raw-> new (
 );
 
 print $ cos-> call (2.0);
-</ pre>
+</pre>
 
-The first argument is the dynamic library name. In C language, the file name corresponding to the dynamic library <b> m </ b> is <b> libm.so </ b>.
+The first argument is the dynamic library name. In C language, the file name corresponding to the dynamic library <b> m </b> is <b> libm.so </b>.
 
-There is no description of the library search path in the documentation, but it seems that the ones in <b> / lib </ b> and <b> / usr / lib </ b> are the search targets.
+There is no description of the library search path in the documentation, but it seems that the ones in <b> / lib </b> and <b> / usr / lib </b> are the search targets.
 
 There seems to be "how to set the environment variable LD_LIBRARY_PATH" and "how to add it to /etc/ld.so.conf" to add the search path of the library.
 
 The second argument is the function name. The third argument is the return type, and the fourth and subsequent arguments are the argument types.
 
-<h3> Other Perl FFI modules </ h3>
+<h3> Other Perl FFI modules </h3>
 
 Introducing other Perl FFI modules.
 
-<h4> FFI :: Platypus </ h4>
+<h4> FFI :: Platypus </h4>
 
 There is <a href="https://metacpan.org/pod/FFI :: Platypus"> FFI :: Platypus </a> as a Perl module of FFI. FFI :: Platypus has a lot of FFI features and seems to be under continuous maintenance.
 
@@ -67,4 +67,4 @@ $ ffi-> function (puts => ['string'] =>'int')-> call ("hello world");
 #attach as a xsub and call (much faster)
 $ ffi-> attach (puts => ['string'] =>'int');
 puts ("hello world");
-</ pre>
+</pre>

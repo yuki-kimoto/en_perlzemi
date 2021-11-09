@@ -1,24 +1,24 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </ span> </a>
+        <span itemprop = "name"> Perl </span> </a>
     <meta itemprop = "position" content = "1" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </ span> </a>
+      <span itemprop = "name"> standard function </span> </a>
     <meta itemprop = "position" content = "2" />
-  </ li>
+  </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </ li>
-</ ol>
-<h2> warn function-prints a warning </ h2>
+  </li>
+</ol>
+<h2> warn function-prints a warning </h2>
 
 
-Use the <strong> warn function </ strong> to output a <strong> warning </ strong>. The line number where the warning was output is automatically added to the end of the message. To hide the line number, end it with a newline.
+Use the <strong> warn function </strong> to output a <strong> warning </strong>. The line number where the warning was output is automatically added to the end of the message. To hide the line number, end it with a newline.
 
 <pre>
 # Output warning
@@ -28,16 +28,16 @@ warn $ message;
 
 #No line number
 warn "$ message \ n";
-</ pre>
+</pre>
 
 What warn actually does is print a message to standard error. Same as the following print statement, except that it contains line numbers and raises the "__WANR__" signal. Warn may be used if you want to output a message to standard error even if it does not mean a warning.
 
 <pre>
 The meaning of # warn is almost the same as the output to standard error output.
 perl STDERR $ message;
-</ pre>
+</pre>
 
-<h3> Catch the warning </ h3>
+<h3> Catch the warning </h3>
 
 You can catch the warning. When warn is executed, __WARN__ signal is generated, so catch this with the signal handler.
 
@@ -49,4 +49,4 @@ $ SIG {__ WARN__} = sub {
 };
 
 warn "warning!";
-</ pre>
+</pre>
