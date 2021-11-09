@@ -1,257 +1,256 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">FAQ</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>FAQ - Perlでよくある質問に答える</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> FAQ </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> FAQ-Answering Frequently Asked Questions in Perl </ h2>
 
 
 
-Perlでよく訪ねられる(であろう)質問について書いてみたいとおもいます。
+I would like to write about (probably) frequently asked questions in Perl.
 
-<h3>引数のないshift関数はどういう意味ですか</h3>
+<h3> What does the shift function with no arguments mean? </ H3>
 
-Perlのソースコードでは、引数のないshift関数をよく見かけると思います。引数のないshift関数の意味は次のようになります。
+In Perl source code, you'll often see shift functions with no arguments. The meaning of the shift function with no arguments is as follows.
 
 <ol>
   <li>
-    サブルーチンの中では、サブルーチンの引数の第一引数を取ってくる
-  </li>
+    In the subroutine, fetch the first argument of the argument of the subroutine
+  </ li>
   <li>
-    それ以外の場所では、コマンドライン引数の第一引数を取ってくる
-  </li>
-</ol>
+    Elsewhere, it fetches the first argument of the command line argument
+  </ li>
+</ ol>
 
 <pre>
 sub foo {
-  # 「my $x = shift @_;」 と同じ意味
-  my $x = shift;
+  # Same meaning as "my $ x = shift @ _;"
+  my $ x = shift;
 }
 
-# 「my $y = shift @ARGV;」と同じ意味
-my $y = shift;
-</pre>
+# Same meaning as "my $ y = shift @ARGV;"
+my $ y = shift;
+</ pre>
 
-<h3>Perlで日本語を扱うことは可能ですか</h3>
+<h3> Is it possible to handle Japanese in Perl? </ H3>
 
-Perlはほぼ完全にUnicodeに対応している言語です。またたくさんのエンコーディングをサポートしているので、さまざまな環境で文字を扱うことができます。Perlで日本語を扱う参考として以下の記事を参考にしてみてください。
+Perl is a language that is almost fully Unicode-enabled. It also supports many encodings, so you can work with characters in a variety of environments. Please refer to the following article as a reference for dealing with Japanese in Perl.
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html">Encodeモジュールの解説</a>
-  </li>
-</ul>
+    <a href="/blog/20091118124667.html"> Explanation of Encode module </a>
+  </ li>
+</ ul>
 
-jcode.plやJCode.pmは現在では推奨される手法ではなくなっているので、Encode.pmを利用する現代の標準的な手法を学んでみてください。
+Jcode.pl and JCode.pm are no longer the recommended methods, so learn about the modern standard methods that use Encode.pm.
 
-<h3>Perlに例外処理はありますか</h3>
+<h3> Does Perl have exception handling? </ H3>
 
-はい。あります。Perlでは<a href="/blog/20100312126967.html">eval</a>ブロックという構文を使います。例外が発生した場合は<b>$@</b>という変数に例外の内容が代入されるのでチェックします。
+Yes. I have. Perl uses the syntax <a href="/blog/20100312126967.html"> eval </a> block. If an exception occurs, the content of the exception will be assigned to the variable <b> $ @ </ b>, so check it.
 
 <pre>
-# 例外処理
+#Exception handling
 eval {
   ...
 }
 
-# 例外が発生した場合の処理
-if ($@) {
+# What to do if an exception occurs
+if ($ @) {
   ...
 }
-</pre>
+</ pre>
 
-特別なモジュールを利用する必要はなく、デフォルトの機能として例外処理は用意されています。
+There is no need to use a special module, and exception handling is provided as a default function.
 
-<h3>文字列を関数を使って操作したいです</h3>
+<h3> I want to manipulate a string using a function </ h3>
 
-Perlにはいろいろな文字列関数が用意されています。<a href="/blog/20091025125219.html">よく使用する関数・モジュール一覧</a>の「文字列操作」という項目を読んでみてください。
+Perl provides a variety of string functions. Please read the item "String operation" in <a href="/blog/20091025125219.html"> List of frequently used functions / modules </a>.
 
-<h3>Perlでは変数のスコープはどのようになっていますか</h3>
+<h3> What is the scope of variables in Perl? </ H3>
 
-<a href="/blog/20110128130016.html">Perlのスコープを理解する</a>という記事でPerlのスコープについて解説しています。
+The article <a href="/blog/20110128130016.html"> Understanding Perl Scope </a> describes Perl Scope.
 
-<h3>日付を扱う標準的な方法はありますか</h3>
+<h3> Is there a standard way to handle dates </ h3>
 
-Perl5.10以降であれば、Time::Pieceというモジュールが標準で添付されています。<a href="/blog/20091105124627.html">Time::Pieceモジュールの解説</a>を読んでみてください。
+For Perl 5.10 or later, a module called Time :: Piece is attached as standard. Please read <a href="/blog/20091105124627.html"> Explanation of Time :: Piece module </a>.
 
-<h3>Perlで自動試験を行うことはできますか</h3>
+<h3> Can Perl perform automated tests? </ H3>
 
-はい。自動試験を行うことができます。自動試験については<a href="/blog/20090927124667.html">自動試験(Perl逆引き事典)</a>を参考にしてみてください。
+Yes. You can perform an automatic test. Please refer to <a href="/blog/20090927124667.html"> Automatic test (Perl reverse lookup dictionary) </a> for automatic test.
 
-<h3>PerlでWebアプリケーションを作成するにはCGIを利用するしか方法はありませんか</h3>
+<h3> Is CGI the only way to create a web application in Perl? </ H3>
 
-現在ではさまざまな方法が可能です。CGIを使うほかに、Apache上のmod_perlで実行する方法、FastCGIプロトコルを使って実行する方法、PSGIと呼ばれるプロトコルを利用して実行する方法などです。
-簡単にWebアプリケーションを記述したいのであれば、CGIモジュールを使うよりも、Mojoliciousというフレームワークの中のMojolicious::Liteというモジュールを利用するのがよいでしょう。
+Nowadays, various methods are possible. In addition to using CGI, there are methods such as executing with mod_perl on Apache, executing using the FastCGI protocol, and executing using a protocol called PSGI.
+If you want to write a web application easily, it is better to use the module Mojolicious :: Lite in the framework called Mojolicious rather than using the CGI module.
 
-<a href="/blog/20101206129876.html">Webフレームワーク Mojolicious</a>
+<a href="/blog/20101206129876.html"> Web framework Mojolicious </a>
 
-<h3>PerlはCGIを実現するためのプログラミング言語ですか</h3>
+<h3> Is Perl a programming language for CGI? </ H3>
 
-いいえ、Perlは汎用的なプログラミング言語です。とても多くのことがPerlで行うことができます。CGIというのはプログラムをWebサーバー上で実行するためのプロトコルのことで、Perlとは直接的には関係はありません。
+No, Perl is a generic programming language. So many things can be done in Perl. CGI is a protocol for running programs on a web server and is not directly related to Perl.
 
-<h3>Webアプリケーションの開発はPHPのほうがPerlよりも簡単ですか</h3>
+<h3> Is PHP easier than Perl to develop web applications? </ H3>
 
-PerlのCGI.pmを使った開発に比べるとPHPによるWebアプリケーションの開発は断然簡単でしょう。このため多くの人はPHPのほうが簡単にWebアプリケーションを開発できると感じているようです。
-ですがMojoliciousなどのWebフレームワークを利用した場合は素のPHPによるWebアプリケーション開発よりもさらに高い開発効率を得ることができます。さらに、記述がきわめて簡潔になる、試験環境の構築がいらない、自動試験による信頼性の高いアプリケーション開発、インストールの容易さ、さまざまな環境で実行できる汎用的なアプリケーション開発などさまざまな利点を得ることができます。
-比べるときの正しい観点は「PHP vs Perl+CGI.pm」ではなく、「PHP vs Perl+Webフレームワーク」であるということを認識しておくことは大切です。
+Developing a web application with PHP is much easier than developing with Perl's CGI.pm. For this reason, many people seem to find PHP easier to develop web applications.
+However, if you use a web framework such as Mojolicious, you can obtain even higher development efficiency than web application development using plain PHP. In addition, you can get various advantages such as extremely simple description, no need to build a test environment, reliable application development by automatic test, easy installation, general-purpose application development that can be executed in various environments. I can do it.
+It's important to realize that the correct point of view when comparing is not "PHP vs Perl + CGI.pm", but "PHP vs Perl + web framework".
 
-<h3>PHPはPerlよりも高速ですか</h3>
+<h3> Is PHP faster than Perl? </ H3>
 
-これもよく書籍などで書かれていることが多いですが、完全な誤解です。PHPという言語とPerlという言語を比べた場合、処理速度はそれほど変わりません。
+This is also often written in books, but it is a complete misunderstanding. When comparing the language PHP and the language Perl, the processing speed does not change much.
 
-よくPHPはCGIより速いと書かれていますが、CGIについて誤解した上での記述です。CGIとはプロトコルのことでPerlとは何の関係もありません。つまりCGIを利用するPHPやCGIを利用するC言語やCGIを利用するPerlがあります。
+It is often said that PHP is faster than CGI, but it is a misunderstanding about CGI. CGI is a protocol and has nothing to do with Perl. In other words, there are PHP that uses CGI, C language that uses CGI, and Perl that uses CGI.
 
-CGIで書かれたPHPは、CGIで書かれたPerlと同じくらい低速な速度です。Apache上のmod_phpで動くPHPは、Apache上のmod_perlで動くPerlと同じくらい高速です。またPSGIというプロトコル上で動くPerlは、Apache上のmod_phpで動くPHPと同じくらい高速です。
+PHP written in CGI is as slow as Perl written in CGI. PHP running on mod_php on Apache is as fast as Perl running on mod_perl on Apache. Also, Perl running on the PSGI protocol is as fast as PHP running on mod_php on Apache.
 
-つまり速度比較というのは、PHPとPerlのどちらを選ぶかという言語選択においてはほとんど意味を持っていません。
+So speed comparison has little meaning in choosing a language, PHP or Perl.
 
-<h3>Perl6とPerl5の関係について教えてください。</h3>
+<h3> Please tell us about the relationship between Perl 6 and Perl 5. </ h3>
 
-Perl6は過去にPerl5の後継として開発されていましたが、現在は、Perl6はPerl5とは別のプログラミング言語です。Perl6は、2016年12月に正式にリリースされました。現行のPerlであるPerl5は、将来にわたって開発が続き、サポートされることが約束されています。
+Perl6 was developed in the past as a successor to Perl5, but now Perl6 is a different programming language than Perl5. Perl6 was officially released in December 2016. The current Perl, Perl 5, is promised to continue development and support in the future.
 
-詳しくは以下の説明をご覧ください。
+See the explanation below for details.
 
 <ul>
   <li>
-    <a href="/blog/20091122125879.html">Perl6がリリースされてもPerl5は衰退していかないということを伝えたい</a>
-  </li>
-</ul>
+    <a href="/blog/20091122125879.html"> I want to tell you that Perl 5 will not decline even if Perl 6 is released </a>
+  </ li>
+</ ul>
 
-<h3>ネットを見ているとPerlが否定的に評価されがちなのはなぜですか。</h3>
+<h3> Why does Perl tend to be negatively evaluated when looking at the net? </ h3>
 
-いろいろな原因が考えられますが、ほとんどの人が言語の有用性ではなく、言語のイメージで語っているからです。たとえば「新しい」「古い」といった漠然としたイメージです。新しい言語が好きな人はPerlに対して古いというイメージを持ちがちになるのだと思います。またPerl4の時代に保守性の悪いPerlスクリプトを保守させられたという苦い経験が悪いイメージにつながっているのかもしれません。
+There are many possible causes, but most people speak of the image of the language, not the usefulness of the language. For example, it is a vague image such as "new" or "old". I think people who like new languages ​​tend to think of Perl as old. Also, the bitter experience of being forced to maintain unmaintainable Perl scripts in the Perl 4 era may have led to a bad image.
 
-またPerl6の誕生がいわれてから10年もたっているので、Perl5に対して廃れたイメージを持っている人も多いでしょう。世の中の流れはPerlに対して古典的なイメージを抱かせがちな雰囲気になっていますが、Perlのコミュニティにも原因がありますし、Perlではない言語のコミュニティにも原因があるのでしょう。
+It's been 10 years since Perl 6 was born, so many people may have an obsolete image of Perl 5. The trend in the world tends to give Perl a classic image, but it's also due to the Perl community, and probably to the non-Perl language community.
 
-<h3>他のスクリプト言語と比較したPerlの良い特徴はなんですか</h3>
+<h3> What are the good features of Perl compared to other scripting languages? </ H3>
 
-ひとつはたくさんのプラットフォームで利用することができ、デフォルトでインストールされていることが多いということです。たとえばプログラミング言語をインストールする権限がもしなかったとしても、Perlを利用することができる可能性が高いということです。
+One is that it is available on many platforms and is often installed by default. For example, even if you don't have permission to install a programming language, you're likely to be able to use Perl.
 
-また後方互換性が非常に高いレベルで維持されるので、作成したスクリプトは、何の変更もなしに、他の環境で実行することができます。どのバージョンを意識して書かなければならないという悩みはPerlにはあまりありません。Perlのバージョンの5.8を意識して記述すれば、ほとんどの環境で実行することができるでしょう。この点についはPerlは他のスクリプト言語と比べてかなりの配慮が払われておりユーザーに優しいです。
+It also maintains a very high level of backward compatibility, so your scripts can be run in other environments without any changes. Perl doesn't have much of a worry about which version to write. If you write it with Perl version 5.8 in mind, you should be able to run it in most environments. In this regard, Perl is much more caring and user-friendly than other scripting languages.
 
-もしあなたがインフラエンジニアであれば、Perlは知っておくべき言語の一番目に入るといっても過言ではないと思います。将来にわたってスクリプトを安心して動かし続けることができます。またWebエンジニアであれば、PHP,Ruby,Perlのうちのどれか一つを勉強することになると思います。
+If you're an infrastructure engineer, it's no exaggeration to say that Perl is one of the first languages ​​you need to know. You can rest assured that your scripts will continue to run in the future. Also, if you are a web engineer, you will probably study one of PHP, Ruby, and Perl.
 
-またテキスト処理の処理速度は速いです。テキスト処理を一般的に行う環境であれば、おそらくRubyの2倍以上の速度でテキスト処理が行えるでしょう。これは1時間かかる処理を30分で終えることができるということです。テキスト処理におけるプログラミングの記述性とパフォーマンスを考えるとPerlは最善の言語であるといえるでしょう。
+Also, the processing speed of text processing is fast. If you have a general text processing environment, you can probably do text processing more than twice as fast as Ruby. This means that a process that takes an hour can be completed in 30 minutes. Perl is probably the best language given the descriptiveness and performance of programming in text processing.
 
-また他のスクリプト言語と比較すれば省メモリですし、コンパイル速度も高速です。またPerlは他の人がイメージしているのとは異なり、スクリプトをきれいに書くことができる言語のひとつだということも押さえておくべきポイントです。記述性においてRubyやPythonがベストと呼ばれるならば、Perlは少しだけ及ばないですが、かなりベターと呼べるくらいきれいにかけます。
+It also saves memory and compiles faster than other scripting languages. It's also important to keep in mind that Perl is one of the languages ​​that allows you to write scripts neatly, unlike what others have imagined. If Ruby or Python is called the best in terms of descriptiveness, Perl is a little less than it is, but it's pretty clean enough to be called better.
 
-CPANと呼ばれる無料で利用できるモジュールが豊富にあるというのも大きな魅力の一つです。Perl本体でできないことがあった場合には、CPANにあるモジュールを調べるとほとんどの場合に解決することができるでしょう。
+One of the great attractions is that there are a lot of modules called CPAN that can be used for free. If you can't do something with Perl itself, you can probably solve it by looking at the modules on CPAN.
 
-またWebアプリケーションをとても作成しやすい環境があるというのも、利用するポイントになるでしょう。<a href="https://mojodoc.perlzemi.com">Mojolicious</a>というとても使いやすいWebフレームワークがあります。
+Also very web applicationHaving an environment that is easy to create will also be a point to use. There is a very easy-to-use web framework called <a href="https://mojodoc.perlzemi.com"> Mojolicious </a>.
 
-というわけで、Perlはビジネス用途にも適した言語であるということがいえると思います。
+So I think Perl is a good language for business use as well.
 
-<h3>Perl4(Perlのバージョン4)を学ぶ必要性はありませんか</h3>
+<h3> Need to learn Perl4 (Perl version 4) </ h3>
 
-インターネットにはPerl4でも動かせるスクリプトは多いですが、現在ではPerl4を意識してPerlを書く必要はないといってもよいでしょう。Perl5の普及率はほぼ100%ですので、保守性や可読性や柔軟性に優れたPerl5の記法で書くのが良い方法です。Perl5は、可読性や保守性において、改善されて新しくなっています。
+There are many scripts on the Internet that can be run with Perl4, but now it's safe to say that you don't have to write Perl with Perl4 in mind. Perl5 has a penetration rate of almost 100%, so it's a good idea to write in Perl5 notation, which is maintainable, readable, and flexible. Perl5 has been improved and updated in terms of readability and maintainability.
 
-<h3>シジル「$@%」がなじめないのですが。</h3>
+<h3> I'm not familiar with Sigil "$ @%". </ h3>
 
-しばらくPerlを利用していると慣れてくると思われます。シジルの利点を書いておくと、それが変数だということが視覚的にわかるということです。他の言語と比較するとPerlに慣れていないので読みにくく感じると思いますが、慣れてくるとそれが変数だということが視覚的にわかるのでかえって読みやすくなります。また関数名と変数名が衝突するということは絶対に起こらないので、プログラミングをするときに、予約語はなんだったかなぁということを考えてプログラムする必要がないので、ストレスなくプログラミングができます。
+You'll get used to it after using Perl for a while. The advantage of sigil is that you can visually see that it is a variable. Compared to other languages, I'm not used to Perl, so I think it's hard to read, but as I get used to it, I can visually understand that it's a variable, so it's easier to read. Also, since function names and variable names never collide, you don't have to think about what reserved words are when programming, so you can program without stress.
 
-<h3>Perlのソースコードは1週間たつと自分でも読めなくなるといううわさは本当ですか</h3>
+<h3> Is it true that you can't read the Perl source code after a week? </ H3>
 
-いいえ。他の言語と同じように、わかりやすく記述すれば読めますし、わかりにくく記述すれば読みにくくなります。現代のPerlはPerl5と呼ばれ、一昔前のPerlではなく、読みやすさや保守性が大幅に改善されています。他のスクリプト言語に劣らずわかりやすく処理を記述することができます。一昔前に書かれたソースコードを読もうとすると、読むのが難しいというのは事実だと思いますが、Perl言語そのものが原因ではありません。単に良いソースコードを記述するための知識が蓄えられる前にたくさんのコードが書かれたということです。
+No. As with any language, it's hard to read if you write it in an easy-to-understand manner, and it's hard to read if you write it incomprehensible. Modern Perl is called Perl 5, and it's much easier to read and maintain than the old Perl. You can describe the process as easily as other scripting languages. I think it's true that reading source code written a long time ago is difficult to read, but it's not the Perl language itself. It's just that a lot of code was written before the knowledge to write good source code was accumulated.
 
-たとえばひとつの例として代表的なWebフレームワークであるPerlの<a href="https://github.com/kraih/mojo">Mojolicious</a>とRubyの<a href="https://github.com/rails/rails">Ruby on Rails</a>のソースコードを比較してみましょう。どちらが読みやすいと感じますか?
+For example, Perl's <a href="https://github.com/kraih/mojo"> Mojolicious </a> and Ruby's <a href="https: //" are typical web frameworks. Let's compare the source code of github.com/rails/rails "> Ruby on Rails </a>. Which one do you find easier to read?
 
-<h3>Perlは古いというのは本当ですか</h3>
+<h3> Is it true that Perl is old? </ H3>
 
-起源が古いという意味であれば本当です。Perlは1987年生まれの言語です。けれども古いというのは使えないとか不便だという意味ではありません。Perlは現代的なプログラミング言語として多くの分野で利用されていますし、コミュニティは活発で、定期的に言語のバージョンアップがなされています。最新の技術に対応したモジュールはコミュニティによって活発にCPANにリリースされています。また大量のアクセスを処理する必要のあるWebの分野でPerlを利用している企業は多くあります。
+It is true if it means that the origin is old. Perl is a language born in 1987. But being old does not mean that it is unusable or inconvenient. Perl is used in many fields as a modern programming language, the community is active, and the language is updated regularly. Modules for the latest technology are actively released to CPAN by the community. There are also many companies using Perl in the area of ​​the Web that needs to handle high volumes of access.
 
-<h3>PythonやRubyはPerlを進化させた言語ですか</h3>
+<h3> Are Python and Ruby an evolution of Perl? </ H3>
 
-進化させたというよりは参考にしたというほうが正確でしょう。3つの言語はよくにていて、みっつの言語が行うことができるプログラミングの分野はよく似ています。それぞれにプログラミング言語として個性的な一面があるといったほうがよいでしょう。ただ情報を鵜呑みにするのではなくて、実際に確かめてみるというのは大切なことです。
+It would be more accurate to refer to it than to evolve it. The three languages ​​are common, and the areas of programming that the three languages ​​can do are very similar. It's better to say that each has its own unique side as a programming language. It is important not to just swallow the information, but to actually check it.
 
-Perlに対して否定的でPythonやRubyを薦められるときはその理由を聞いてみましょう。「新しくてきれいにかける。とてもすばらしい。」ということしか教えてくれないければ、その人は言語についてあまり知らない可能性が高いです。
+If you're negative about Perl and recommend Python or Ruby, ask why. If you can only tell me "new and clean. It's great.", The person is likely to know less about the language.
 
-<h3>CやJavaのように型がないので自由すぎて馴染めません</h3>
+<h3> Unlike C and Java, there is no type, so it's too free to get used to. </ H3>
 
-Perl、Ruby、Pythonなどのスクリプト言語では、変数(Perlではスカラ変数)にどのような型のオブジェクトでも代入することができます。
+Scripting languages ​​such as Perl, Ruby, and Python allow you to assign objects of any type to variables (scalar variables in Perl).
 
 <pre>
 # Perl
-my $url = URL->new;
+my $ url = URL-> new;
 
-# Java
-URL url = new URL();
-</pre>
+#Java
+URL url = new URL ();
+</ pre>
 
-静的な言語を学んできた人にとってみれば、この部分だけを見ると扱いにくい言語と見えるかもしれません。
+For those who have learned static languages, this part alone may seem awkward.
 
-ですが、型がないということは、静的言語に比べて明らかに大きすぎる利点があります。ひとつめはメソッドのオーバーロードについて何も考える必要がないということです。C++やJavaにはメソッドのオーバーロードという機能があります。これはメソッドの引数の型が異なった場合に、同じ名前のメソッドを定義できる機能です。たとえば浮動小数点型を引数にとるメソッドと整数を引数にとるメソッドは別に記述しなければなりません。
-
-<pre>
-# Java
-int sum(double num1, double num2) { ... }
-double sum(double num, double num2) { ... }
-</pre>
-
-一方動的に型を持つ言語ではひとつだけですみます。これは重複をなくすという意味で保守性は大幅に高まります。
+However, the lack of types has the obvious advantage over static languages. The first is that you don't have to think about method overloading. C ++ and Java have a feature called method overloading. This is a function that allows you to define a method with the same name when the method argument types are different. For example, a method that takes a floating-point type as an argument and a method that takes an integer as an argument must be written separately.
 
 <pre>
-sub sum { }
-</pre>
+#Java
+int sum (double num1, double num2) {...}
+double sum (double num, double num2) {...}
+</ pre>
 
-第二にC++のようなテンプレートクラスを考える必要はないということです。どのような型でも受け取ることができるので、メソッドやクラス定義において型に応じて何かをするという記述を行う必要がありません。
+On the other hand, only one dynamically typed language is required. This greatly improves maintainability in the sense that it eliminates duplication.
 
-第三に(Javaにおける)インターフェースを考える必要がないということです。Javaのクラスの設計は共通のインターフェースを考えるというとても難しい作業が伴います。汎用性を高めようとするとインターフェースの設計はかかせないものになるでしょう。動的言語の場合はどのような型をもつオブジェクトであっても、変数に代入することができ、メソッドを実行時に呼び出すのでこのような心配をすることがありません。
+<pre>
+sub sum {}
+</ pre>
 
-ですから、型がないということをマイナスに見るのではなくて、保守性の高い重複のない簡潔なプログラミングを記述することができるという動的言語のプラスの面に目を向けてみるのはどうでしょう。実際にプログラミングを簡単に記述できるということがわかってくるかと思います。
+Second, you don't have to think about template classes like C ++. You can accept any type, so you don't have to say anything in the method or class definition depending on the type.
 
-<h3>大規模なプログラムをPerlで作成することができますか</h3>
+Third, you don't have to think about interfaces (in Java). Designing Java classes involves the very difficult task of thinking about a common interface. Interface design will be indispensable when trying to increase versatility. In the case of a dynamic language, any type of object can be assigned to a variable, and the method is called at runtime, so there is no need to worry about this.
 
-はい。Perlは小さなプログラムを作成するのに向いていると考えられることがありますがそんなことはありません。たとえば大きなプログラムはJavaで、小さなプログラムはPerlで作ろうといういったようなイメージを持っているとしてら、Perlという言語を誤解していることになります。
+So instead of looking at the negative side of having no types, why not look at the positive side of dynamic languages, where you can write concise, consistent, and concise programming. You will find that you can actually write programming easily.
 
-Perlで書けば静的な言語で記述するよりもかなり少ないコード量で大規模なアプリケーションが作成できることに気づくと思います。また大規模なアプリケーションを作成するのに困難と思える部分はないということにも気づくと思います。
+<h3> Can I write a large program in Perl? </ H3>
 
-たとえばひとつの例としてAmazonというサイトはPerlで記述されているということを考えれば、Perlは大規模なプログラミングに向いてはいないのではないかという誤解は解けるのではないかと思います。
+Yes. Perl is sometimes thought to be good for writing small programs, but that's not the case. For example, if you have the image of making a large program in Java and a small program in Perl, you are misunderstanding the language Perl.
 
-<h3>Perlでオブジェクト指向プログラミングを行うことができますか</h3>
+You'll find that writing in Perl allows you to write large-scale applications with significantly less code than writing in a static language. You'll also notice that there's nothing that seems difficult to write a large application.
 
-Perlでオブジェクト指向プログラミングを行うことは可能ですし、オブジェクト指向プログラミングを行うための十分な機能を備えています。ただし他のオブジェクト指向言語とは、クラスの作成を行う手順が少し異なります。このために、初めてオブジェクト指向プログラミングをする場合は、いくらか学習コストが他の言語より高く感じてしまうでしょう。またPerlのオブジェクト指向の記述は、他のスクリプト言語よりも手間がかかるというのは本当です。モジュールを使えば他言語と同じ程度に記述を軽減できますが、Perlのコアには標準的なオブジェクト指向モジュールが含まれていないので、CPANからなんらかのモジュールを利用することになるでしょう。
+For example, considering that the site Amazon is written in Perl as an example, I think that the misunderstanding that Perl is not suitable for large-scale programming can be solved.
 
-たとえばObject::Simpleを使うと以下のように記述できます。
+<h3> Can I do object-oriented programming in Perl? </ H3>
+
+It's possible to do object-oriented programming in Perl, and it has enough features to do object-oriented programming. However, the procedure for creating a class is slightly different from other object-oriented languages. Because of this, the first time you do object-oriented programming, you will find that the learning cost is somewhat higher than in other languages. It's also true that Perl's object-oriented writing is more time-consuming than other scripting languages. Modules can be as light as other languages, but Perl's core doesn't include standard object-oriented modules, so you'll probably want to use some modules from CPAN.
+
+For example, using Object :: Simple, you can write as follows.
 
 <pre>
 package Point;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 has x => 0;
 has y => 0;
 
 1;
-</pre>
+</ pre>
 
-基底クラスの継承。
+Base class inheritance.
 
 <pre>
 package Point3D;
-use Object::Simple 'Point';
+use Object :: Simple'Point';
 
 has z => 0;
 
 1;
-</pre>
+</ pre>
 
-他の言語に劣らずシンプルなクラスの記述が可能です。
+It is possible to write classes as simple as other languages.
 
-<h3>CentOSでPerlの標準モジュール(コアモジュール)が使えません</h3>
+<h3> Perl standard module (core module) cannot be used on CentOS </ h3>
 
-さくらVPSでCentos6を試してみて気づいたことなのですが、デフォルトでインストールされているPerl 5.10.1は、正規のPerlではない感じです。Mojoliciousアプリケーションを動かそうとして気づいたことですが、標準モジュールの一部が足りていません。なんてこったい。
+When I tried Centos 6 with Sakura VPS, I noticed that Perl 5.10.1 installed by default is not a genuine Perl. I noticed that I was trying to run a Mojolicious application, but some of the standard modules are missing. what the hell.
 
-以下のパッケージをインストールすることで、コアモジュール(標準モジュール)が利用可能になります。
+The core module (standard module) can be used by installing the following packages.
 
 <pre>
 yum -y install perl-core
-</pre>
+</ pre>
 
-CetnOS7以降も同じ方法をお試しください。
-
+Please try the same method for CetnOS 7 or later.

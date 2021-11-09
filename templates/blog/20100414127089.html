@@ -1,132 +1,131 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">Text::Diff</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>Text::Diff - テキストの差分を確認する</h2>
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Text :: Diff </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Text :: Diff --Check text differences </ h2>
 
 
 
-テキストの差分を確認するには<strong>Text::Diff</strong>モジュールを使用します。UnixのdiffプログラムをPerlで実装したものです。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use Text::Diff 'diff';
-</pre>
-
-テキストの差分を確認するには<strong>diff</strong>関数を使用します。引数にはファイル名や文字列を指定することができます。
+Use the <strong> Text :: Diff </ strong> module to see the diffs in the text. A Perl implementation of the Unix diff program.
 
 <pre>
-# ファイルの差分を確認
-$diff = diff($filename1, $filename2);
-$diff = diff(\$string1, $string2);
-</pre>
+#Loading modules and importing functions
+use Text :: Diff'diff';
+</ pre>
 
-ファイル間のテキストの差分を出力するサンプルです。
+Use the <strong> diff </ strong> function to see the diffs in the text. You can specify a file name or a character string as an argument.
 
 <pre>
-# ファイル間の差分を確認
-use Text::Diff 'diff';
+#Check file differences
+$ diff = diff ($ filename1, $ filename2);
+$ diff = diff (\ $ string1, $ string2);
+</ pre>
+
+This is a sample that outputs the difference in text between files.
+
+<pre>
+#Check the difference between files
+use Text :: Diff'diff';
 
 my @files = @ARGV;
 
-my $diff = diff($files[0], $files[1]);
+my $ diff = diff ($ files [0], $ files [1]);
 
-print $diff;
-</pre>
+print $ diff;
+</ pre>
 
-<h3>差分結果のスタイル</h3>
+<h3> Difference result style </ h3>
 
-オプションで差分結果のスタイルを指定することができます。スタイルには次のものがあります。
+You can optionally specify the style of the diff result. The styles are:
 
-<h4>Unified</h4>
+<h4> Unified </ h4>
 
-<strong>Unified</strong>スタイルは以下のような差分表示方法です。
+The <strong> Unified </ strong> style is the following difference display method.
 
 <pre>
---- A   Mon Nov 12 23:49:30 2001
-+++ B   Mon Nov 12 23:49:30 2001
+--- A Mon Nov 12 23:49:30 2001
++++ B Mon Nov 12 23:49:30 2001
 @@ -2,13 +2,13 @@
  2
  3
- 4
+ Four
 -5d
-+5a
++ 5a
  6
  7
  8
  9
-+9a
- 10
++ 9a
+ Ten
  11
 -11d
  12
  13
-</pre>
+</ pre>
 
-<h4>Context</h4>
+<h4> Context </ h4>
 
-<strong>Context</strong>は以下のような差分表示方法です。
+<strong> Context </ strong> is the following difference display method.
 
 <pre>
-*** A   Mon Nov 12 23:49:30 2001
---- B   Mon Nov 12 23:49:30 2001
+*** A Mon Nov 12 23:49:30 2001
+--- B Mon Nov 12 23:49:30 2001
 ***************
 *** 2,14 ****
   2
   3
-  4
+  Four
 ! 5d
   6
   7
   8
   9
-  10
+  Ten
   11
-- 11d
+--11d
   12
   13
 --- 2,14 ----
   2
   3
-  4
+  Four
 ! 5a
   6
   7
   8
   9
 + 9a
-  10
+  Ten
   11
   12
   13
-</pre>
+</ pre>
 
-<h4>OldStyle</h4>
+<h4> OldStyle </ h4>
 
-<strong>OldStyle</strong>は以下のような差分表示方法です。
+<strong> OldStyle </ strong> is the following difference display method.
 
 <pre>
 5c5
-< 5d
+<5d
 ---
 > 5a
 9a10
 > 9a
 12d12
-< 11d
-</pre>
-
+<11d
+</ pre>

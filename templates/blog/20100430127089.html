@@ -1,176 +1,175 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Carp - 呼び出し元の観点で例外を発生させる</h2>
+  </ li>
+</ ol>
+<h2> Carp-Raise an exception from the caller's point of view </ h2>
 
 
 
-<strong>Carp</strong>モジュールを使用すると、モジュールの呼び出し元の観点で例外を発生させることができます。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use Carp 'croak';
-</pre>
-
-<strong>croak関数</strong>を使用するとモジュールの呼び出し元の観点で例外を発生させることができます。メッセージの末尾には呼び出し元の行番号が追加されます。
+The <strong> Carp </ strong> module allows you to raise an exception from the perspective of the module caller.
 
 <pre>
-# 呼び出し元の行番号をエラーメッセージに含めて例外を発生させる
+#Loading modules and importing functions
+use Carp'croak';
+</ pre>
+
+You can use the <strong> croak function </ strong> to raise an exception from the perspective of the module caller. The caller's line number is added to the end of the message.
+
+<pre>
+# Include the caller's line number in the error message to raise an exception
 croak "Exception!";
-</pre>
+</ pre>
 
-例外はdie関数で発生させることができますが、die関数は実行された位置の行番号をメッセージの末尾に追加します。croakはcroakが実行された位置の行番号ではなく、呼び出し元の行番号を末尾に追加する点がdieと異なります。
+Exceptions can be raised with the die function, which adds the line number of the executed position to the end of the message. croak differs from die in that it adds the calling line number to the end, not the line number where croak was executed.
 
-dieとcroakの使いわけとして、次の点を覚えておきましょう。
+Keep the following points in mind when using die and croak.
 
 <ul>
   <li>
-    Perlスクリプト(*.pl)で例外を発生させる場合はdieを使用する
-  </li>
+    Use die to raise an exception in a Perl script (* .pl)
+  </ li>
   <li>
-    Perlモジュール(*.pm)で例外を発生させる場合はcroakを使用する。
-  </li>
-</ul>
+    Use croak to raise an exception in a Perl module (* .pm).
+  </ li>
+</ ul>
 
-<h3>モジュールの呼び出し元の観点とは</h3>
+<h3> What is the perspective of the module caller? </ H3>
 
-モジュールの呼び出し元の観点という言葉は少し理解しづらい部分があると思いますので、サンプルを使って説明してみます。
+I think the term module caller's point of view is a little difficult to understand, so I'll explain it using a sample.
 
-YourModuleモジュールでparse関数が定義されているとしましょう。mainパッケージでこの関数を呼び出して例外が発生したとします。
+Let's say your Module module defines a parse function. Suppose you call this function in the main package and you get an exception.
 
-最初はdieの例を見てみましょう。
+Let's first look at the die example.
 
 <pre>
-# dieで例外を発生させた場合               # 1
-package YourModule;                       # 2
+When an exception is raised with # die # 1
+package YourModule; # 2
                                           # 3
-                                          # 4
-sub parse {                               # 5
-  # dieで例外を発生させる                 # 6
-  die "Exception!";                       # 7
-}                                         # 8
+                                          # Four
+sub parse {# 5
+  Raise an exception with # die # 6
+  die "Exception!"; # 7
+} # 8
                                           # 9
-package main;                             #10
-                                          #11
-                                          #12
-# parse関数の呼び出し。例外が発生する。   #13
-YourModule::parse();                      #14
-</pre>
+package main; # 10
+                                          # 11
+                                          # 12
+#Call the parse function. An exception occurs. #13
+YourModule :: parse (); # 14
+</ pre>
 
-このプログラムは次のメッセージを表示して終了します。dieが実行された行番号が含まれています。
+The program will exit with the following message: Contains the line number where the die was executed.
 <pre>
-Exception! at a.pl line 7.
-</pre>
+Exception! At a.pl line 7.
+</ pre>
 
-次はcroakの場合です。
+Next is the case of croak.
 <pre>
-# croakで例外を発生させた場合             # 1
-package YourModule;                       # 2
-use Carp 'croak';                         # 3
-                                          # 4
-sub parse {                               # 5
-  # dieで例外を発生させる                 # 6
-  croak "Exception!";                     # 7
-}                                         # 8
+When an exception is raised by # croak # 1
+package YourModule; # 2
+use Carp'croak'; # 3
+                                          # Four
+sub parse {# 5
+  Raise an exception with # die # 6
+  croak "Exception!"; # 7
+} # 8
                                           # 9
-package main;                             #10
-                                          #11
-                                          #12
-# parse関数の呼び出し。例外が発生する。   #13
-YourModule::parse();                      #14
-</pre>
+package main; # 10
+                                          # 11
+                                          # 12
+#Call the parse function. An exception occurs. #13
+YourModule :: parse (); # 14
+</ pre>
 
-するとプログラムは次のメッセージを表示して終了します。parseが呼び出された位置の行番号が含まれています。
+The program will then exit with the following message: Contains the line number where parse was called.
 <pre>
-Exception! at a.pl line 14
-</pre>
+Exception! At a.pl line 14
+</ pre>
 
-このようにcroakを使用すると呼び出し元の観点で例外を投げることができます。
+You can use croak in this way to throw an exception from the caller's point of view.
 
-<h3>完全なスタックトレースを見る</h3>
+<h3> See full stack trace </ h3>
 
-どこから関数が呼び出されてどの位置で例外が発生したかというすべての情報について知りたい場合があります。このような場合にはcroakで追加されるメッセージを変更して完全なスタックとレースを表示する方法があります。
+You may want to know all the information about where the function was called and where the exception occurred. In such cases, you can change the message added by croak to show the complete stack and race.
 
-次の一行をスクリプトの好きな位置に追加するだけです。
+Just add the following line anywhere in the script.
 
 <pre>
-# croakのメッセージを完全なスタックトレース情報を含むものに変える
-use Carp 'verbose';
-</pre>
+Change the # croak message to one that contains the complete stack trace information
+use Carp'verbose';
+</ pre>
 
-先ほどのスクリプトに埋め込んでみました。YourModule::parse()の直前に置きました。
+I embedded it in the script above. I put it just before YourModule :: parse ().
 
 <pre>
 package main;
 
-# parse関数の呼び出し
-use Carp 'verbose';
-YourModule::parse();
-</pre>
+#Call the parse function
+use Carp'verbose';
+YourModule :: parse ();
+</ pre>
 
-すると次のように完全なスタックトレースを見ることができます。
+Then you can see the complete stack trace as follows:
 <pre>
-Exception! at a.pl line 7
-        YourModule::parse() called at a.pl line 14
-</pre>
+Exception! At a.pl line 7
+        YourModule :: parse () called at a.pl line 14
+</ pre>
 
-一般的にいえばCPANに存在するPerlモジュールの多くは例外を発生させるときにcroakを使用しています。つまりuse Carp 'verbose'を記述することで、完全なスタックトレースを見ることが期待できるということです。
+Generally speaking, many Perl modules on CPAN use croak to raise exceptions. This means that you can expect to see a complete stack trace by writing use Carp'verbose'.
 
-またモジュールがさらに他のモジュールを利用している場合に、そこで発生した例外は本当の呼び出し元の観点ではないということがあります。
+Also, if a module is utilizing yet another module, the exception raised there may not be the true caller's point of view.
 
 <pre>
-呼び出し元
-　▼
-モジュール1
-　▼
-モジュール2 - ここでcroakが実行されると呼び出し元はモジュール1になってしまい
-              本当の呼び出し元の行番号がわからない。
-</pre>
+Caller
+▼
+Module 1
+▼
+Module 2-If croak is executed here, the caller will be module 1.
+              I don't know the line number of the true caller.
+</ pre>
 
-このような場合にもuse Carp 'verbose'を記述することで完全なスタックトレースを取得することができます。
+Even in such a case, you can get a complete stack trace by writing use Carp'verbose'.
 
-<h3>Carpモジュールに関するFAQ</h3>
+<h3> FAQ about Carp module </ h3>
 
-Q. Carpモジュールにはconfessという関数もありますがcroakを使ったほうがよいのでしょうか。
-A. confessは完全なスタックトレース情報を表示させることができますが、croakはメッセージが簡潔で、オプションを指定することで完全なスタックトレース情報に切り替えることができるので好んで利用されるようです。
+Q. The Carp module also has a function called confess, should I use croak?
+A. confess can display the complete stack trace information, but croak seems to be preferred because the message is concise and you can switch to the complete stack trace information by specifying options.
 
-Q. 例外ではなく警告を発生させたいです。
-A. carp関数を使用すると警告を発生させることができます。
+Q. I want to raise a warning, not an exception.
+A. You can use the carp function to raise a warning.
 <pre>
-# 警告
-use Carp 'carp';
-carp 'Warning!';
-</pre>
+# warning
+use Carp'carp';
+carp'Warning!';
+</ pre>
 
-Q.スクリプトを変更せずに完全なスタックトレースを表示させたいのですが可能でしょうか。
-A.はい可能です。スクリプト単位で指定したい場合は次のようにします。
+Q. Is it possible to see the complete stack trace without changing the script?
+A. Yes it is possible. If you want to specify it in script units, do as follows.
 <pre>
-perl -MCarp=verbose script.pl
-</pre>
+perl -MCarp = verbose script.pl
+</ pre>
 
-またPERL5OPTという環境変数を利用すれば、すべてのスクリプトについて完全なスタックトレースを表示することができます。PERL5OPTにすでに値が設定されている場合は空白の後ろに接続するようにしてください。
+You can also use an environment variable called PERL5OPT to display a complete stack trace for all scripts. If PERL5OPT is already set to a value, make sure to connect it after the blank.
 
 <pre>
 # bash
-export PERL5OPT=-MCarp=verbose
-export PERL5OPT='-Mstrict -MCarp=verbose'
+export PERL5OPT = -MCarp = verbose
+export PERL5OPT ='-Mstrict -MCarp = verbose'
 
 # Windows
-set PERL5OPT=-MCarp=verbose
-set PERL5OPT=-Mstrict -MCarp=verbose
-</pre>
-
+set PERL5OPT = -MCarp = verbose
+set PERL5OPT = -Mstrict -MCarp = verbose
+</ pre>

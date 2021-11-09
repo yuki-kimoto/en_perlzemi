@@ -1,112 +1,111 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span>
+      <span itemprop = "name"> syntax </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>package - パッケージの宣言</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> package --Package declaration </ h2>
 
 
 
-他の言語では名前空間と呼ばれている機能はPerlでは<strong>パッケージ</strong>と呼ばれます(※1)。名前空間とは実際の世界の住所のようなものです。日本に「田中達也」さんは何人かいると思いますが、「東京都新宿区3-○-△」の「田中達也」さんはひとりしかいません。住所を指定すればどの田中達也なのかを決定することができます。実際の世界の住所にあたるものが名前空間です。
+A feature called namespaces in other languages ​​is called <strong> packages </ strong> in Perl (* 1). A namespace is like a real-world address. I think there are several "Tatsuya Tanaka" in Japan, but there is only one "Tatsuya Tanaka" in "3- ○-△, Shinjuku-ku, Tokyo". You can decide which Tatsuya Tanaka you are by specifying the address. The namespace is the real world address.
 
-<h3>パッケージの宣言</h3>
+<h3> Package declaration </ h3>
 
-パッケージを宣言するには<strong>package</strong>を使用します。
-
-<pre>
-# パッケージの宣言
-package パッケージ名;
-</pre>
-
-パッケージ名には裸の文字列を指定します。クォートやダブルクォートで囲った文字列を渡すことはできません。
+Use <strong> package </ strong> to declare a package.
 
 <pre>
-# 裸の文字列で指定
+#Package declaration
+package Package name;
+</ pre>
+
+Specify a bare string for the package name. You cannot pass a string enclosed in quotes or double quotes.
+
+<pre>
+# Specified as a bare string
 package SomeModule;
-</pre>
+</ pre>
 
-パッケージ名は複数階層にすることができます。「::」で個々のパーツを連結します。
-
-<pre>
-# 複数階層のパッケージ名
-package File::Basename;
-package Class::Accessor::Fast;
-</pre>
-
-現在属するパッケージは__PACKAGE__で取得できます。
+Package names can be multi-tiered. Connect individual parts with "::".
 
 <pre>
-# 現在属しているパッケージ名
+#Multi-level package name
+package File :: Basename;
+package Class :: Accessor :: Fast;
+</ pre>
+
+You can get the package to which you currently belong with __PACKAGE__.
+
+<pre>
+#The name of the package to which it currently belongs
 __PACKAGE__
-</pre>
+</ pre>
 
-<h3>デフォルトの名前空間main</h3>
+<h3> Default namespace main </ h3>
 
-Perlではパッケージに属さないという状態はありません。パッケージ宣言を行っていない間はmainというパッケージに属します。デフォルトの名前空間に戻したいときはパッケージ名にmainを指定します。
+In Perl, there is no such thing as not belonging to a package. It belongs to a package called main while no package declaration is made. If you want to return to the default namespace, specify main for the package name.
 
 <pre>
-# デフォルトの名前空間に戻る
+#Return to default namespace
 package main;
-</pre>
+</ pre>
 
-<h3>パッケージ変数とサブルーチンは特定のパッケージに属する</h3>
+<h3> Package variables and subroutines belong to a particular package </ h3>
 
-パッケージ変数とサブルーチンは必ず特定のパッケージに属します。これは最初に解説した「山田達也」さん(名前の部分)に該当します。
+Package variables and subroutines always belong to a particular package. This corresponds to Mr. Tatsuya Yamada (name part) explained at the beginning.
 
 <pre>
-# パッケージ変数とサブルーチンはパッケージに属する
+#Package variables and subroutines belong to a package
 package SomeModule;
 
-# パッケージSomeModuleに属する$VARという変数
-our $VAR;
+A variable called $ VAR that belongs to the #package SomeModule
+our $ VAR;
 
-# パッケージSomeModuleに属するfuncというサブルーチン
+#Subroutine called func belonging to package SomeModule
 sub func {
   ...
 }
-</pre>
+</ pre>
 
-パッケージ名までを含めた変数名やサブルーチン名のことを完全修飾名と呼びます。完全修飾名はパッケージ名と変数名(あるいはサブルーチン名)を「::」で連結したものになります。別のパッケージに属していても完全修飾名を使えば、その変数やサブルーチンにアクセスすることができます。
-
-<pre>
-# 完全修飾名
-$SomeModule::VAR;
-SomeModule::func();
-</pre>
-
-関数を完全修飾名を使って呼び出すサンプルです。
+Variable names and subroutine names, including package names, are called fully qualified names. The fully qualified name is the package name and variable name (or subroutine name) concatenated with "::". You can access a variable or subroutine by using a fully qualified name, even if it belongs to another package.
 
 <pre>
-# 完全修飾名で関数を呼び出す
-use File::Basename;
-File::Basename::basename('xxx/yyy.txt');
-</pre>
+# Fully qualified name
+$ SomeModule :: VAR;
+SomeModule :: func ();
+</ pre>
 
-<h3>パッケージ名とモジュールのファイルの構成</h3>
+This is a sample that calls a function with a fully qualified name.
 
-パッケージ名はモジュールのファイル構成と密接な関連があります。たとえば、「Foo::Bar::Baz」というモジュール名であれば、それに対応するファイル構成は「Foo/Bar/Baz.pm」になります。「Foo」というディレクトリの中に「Bar」というディレクトリを作り、その中に「Baz.pm」というファイルを作成します。「Baz.pm」の先頭でパッケージ宣言を行います。
+<pre>
+#Call a function with a fully qualified name
+use File :: Basename;
+File :: Basename :: basename ('xxx / yyy.txt');
+</ pre>
+
+<h3> Package name and module file structure </ h3>
+
+The package name is closely related to the file structure of the module. For example, if the module name is "Foo :: Bar :: Baz", the corresponding file structure will be "Foo / Bar / Baz.pm". Create a directory called "Bar" in a directory called "Foo" and create a file called "Baz.pm" in it. Declare the package at the beginning of "Baz.pm".
 
 <pre>
 # Baz.pm
-package Foo::Bar::Baz;
-</pre>
+package Foo :: Bar :: Baz;
+</ pre>
 
-このような構成にしておくことで、useやrequireでモジュールを検索して読み込むことが可能になります。
+With such a configuration, it is possible to search for and load modules with use or require.
 
-一般的な言語感覚としてはパッケージという名前でライブラリやモジュールの集まりを連想してしまうと思います。ですがPerlでパッケージといった場合は単に名前空間を意味するだけなので注意しましょう。
-
+As a general linguistic sense, the name package is associated with a collection of libraries and modules. But be aware that when you say a package in Perl, it just means a namespace.

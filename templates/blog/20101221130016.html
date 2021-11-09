@@ -1,192 +1,191 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20101221130016.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20101221130016.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Windows上でMojoliciousの開発を始めて、さくらのレンタルサーバーで公開するまでの手順</h2>
+      <span itemprop = "name"> Mojolicious </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Steps from starting Mojolicious development on Windows to publishing it on Sakura's rental server </ h2>
 
 
 
-Windows上でMojoliciousというWebフレームワークを使ってWebアプリケーションの開発を行い、<a href="http://www.sakura.ne.jp/rentalserver/lite/index.html">さくらのレンタルサーバーのライトプラン</a>で公開するまでの手順を書きたいと思います。ライトプランは１ヶ月あたり125円なので気軽にWebフレームワークを試してみることができます。現代的なWebフレームワークを使って、気軽にWebアプリケーションを作成できるのはPerlの良いところですね。
+Develop a web application using a web framework called Mojolicious on Windows, <a href="http://www.sakura.ne.jp/rentalserver/lite/index.html"> Sakura Rental Server Lite I would like to write the procedure until it is published in the plan </a>. The light plan is 125 yen per month, so you can feel free to try out the web framework. The nice thing about Perl is that you can easily create web applications using modern web frameworks.
 
-またSQLiteというデータベースも使ってみましょう。
+Let's also use a database called SQLite.
 
-<h3>環境構築</h3>
+<h3> Environment construction </ h3>
 
-ActivePerlにはDBD::SQLiteとDBIが含まれていますから、データベース関連のモジュールをインストールする必要はありません。またさくらのレンタルサーバーでもSQLiteが最初から利用できますので、こちらも何の準備もする必要はありません。
+ActivePerl includes DBD :: SQLite and DBI, so you don't need to install any database related modules. Also, SQLite can be used from the beginning on Sakura's rental server, so you do not need to make any preparations here either.
 
-行うことはMojoliciousをダウンロードすることだけです。今回は1.47のバージョンで試してみることにします。
+All you have to do is download Mojolicious. This time I will try it with the 1.47 version.
 
-以下のページからMojoliciousをダウンロードしてください。
+Download Mojolicious from the following page.
 <blockquote>
-<a href="https://github.com/kraih/mojo/commits/v1.47">Mojolicious-1.47</a>
+<a href="https://github.com/kraih/mojo/commits/v1.47"> Mojolicious-1.47 </a>
 
-<a href="https://github.com/kraih/mojo/zipball/v1.47">Download</a>
-</blockquote>
+<a href="https://github.com/kraih/mojo/zipball/v1.47"> Download </a>
+</ blockquote>
 
-ダウンロードしたファイルは圧縮されていますので、開発を行うディレクトリに移動して展開してください。今回は「C:\labo」に移動して展開してみましょう。「右クリック」→「すべて展開」で展開することができます。
+The downloaded file is compressed, so move it to the development directory and extract it. This time, let's move to "C: \ labo" and expand it. You can expand it by right-clicking → Expand All.
 
-「C:\labo\kraih-mojo-v1.47-コミット番号」というディレクトリ以下に以下のファイルがあるはずです。
+You should find the following files under the directory "C: \ labo \ kraih-mojo-v1.47-commit number".
 
 <pre>
-kraih-mojo-コミット番号
-</pre>
+kraih-mojo-commit number
+</ pre>
 
-このディレクトリ名を今から作成するアプリケーション名に変更しましょう。myappとします。このディレクトリの中にはMojoliciousのすべての機能が含まれており、利用することができます。
+Let's change this directory name to the name of the application we are about to create. Let's say myapp. This directory contains all the features of Mojolicious and is available to you.
 
 <pre>
 myapp
-</pre>
+</ pre>
 
-<h3>スクリプトの作成</h3>
+<h3> Script creation </ h3>
 
-このディレクトリに中に入って「app.cgi」というファイルを作成してください。
-
-<pre>
-myapp - app.cgi
-</pre>
-
-次のスクリプトを作成してみましょう。ひとこと掲示板です。Mojoliciousのフレームワークの中のMojolicious::Liteというモジュールを使って、掲示板を作成しています。このスクリプトはUTF-8で保存してください。
+Go inside this directory and create a file called "app.cgi".
 
 <pre>
-#!/usr/bin/perl
+myapp --app.cgi
+</ pre>
 
-# Mojoliciousを読み込むためのライブラリのパスの設定
+Let's create the following script. A word is a bulletin board. I am creating a bulletin board using a module called Mojolicious :: Lite in the Mojolicious framework. Save this script in UTF-8.
+
+<pre>
+#! / usr / bin / perl
+
+Setting the library path to load #Mojolicious
 use FindBin;
-use lib "$FindBin::Bin/lib";
+use lib "$ FindBin :: Bin / lib";
 
-# Mojolicious::Liteの利用
-use Mojolicious::Lite;
+Using #Mojolicious :: Lite
+use Mojolicious :: Lite;
 
 use utf8;
 
-use DBD::SQLite;
-my $sqlite_unicode
-  = $DBD::SQLite::VERSION > 1.26
-  ? 'sqlite_unicode'
-  : 'unicode';
+use DBD :: SQLite;
+my $ sqlite_unicode
+  = $ DBD :: SQLite :: VERSION> 1.26
+  ?'sqlite_unicode'
+  :'unicode';
 
-# データベースのためのモジュール
+#Module for database
 use DBI;
 
-# データベースへの接続
-my $database = app->home->rel_file('app.db');
-my $dbh = DBI->connect(
-  "dbi:SQLite:dbname=$database",
+#Connect to database
+my $ database = app-> home-> rel_file ('app.db');
+my $ dbh = DBI-> connect (
+  "dbi: SQLite: dbname = $ database",
   undef,
   undef,
   {RaiseError => 1, PrintError => 0, AutoCommit => 1,
-   $sqlite_unicode => 1}
+   $ sqlite_unicode => 1}
 );
 
-# テーブルの作成
-$dbh->do(<<"EOS");
-create table if not exists entry(
+#Create table
+$ dbh-> do (<< "EOS");
+create table if not exists entry (
   id INTEGER PRIMARY KEY,
   message
 );
 EOS
 
-# トップページ
-get '/' => sub {
-  my $self = shift;
+# top page
+get'/' => sub {
+  my $ self = shift;
   
-  my $sth = $dbh->prepare(<<"EOS");
+  my $ sth = $ dbh-> prepare (<< "EOS");
 select message from entry order by id desc;
 EOS
 
-  $sth->execute;
+  $ sth-> execute;
   
-  my $rows = [];
-  while (my $row = $sth->fetchrow_hashref) {
-    push @$rows, $row;
+  my $ rows = [];
+  while (my $ row = $ sth-> fetchrow_hashref) {
+    push @ $ rows, $ row;
   }
     
-  $self->render(rows => $rows);
-} => 'index';
+  $ self-> render (rows => $ rows);
+} =>'index';
 
-# データの登録
-post '/register' => sub {
-  my $self = shift;
+#Data registration
+post'/ register' => sub {
+  my $ self = shift;
   
-  my $param = $self->req->params->to_hash;
-  my $message = $param->{message} || '';
+  my $ param = $ self-> req-> params-> to_hash;
+  my $ message = $ param-> {message} ||'';
   
-  if ($message) {
-    my $sth = $dbh->prepare(<<"EOS");
-insert into entry (message) values (?);
+  if ($ message) {
+    my $ sth = $ dbh-> prepare (<< "EOS");
+insert into entry (message) values ​​(?);
 EOS
-    $sth->execute($message);
+    $ sth-> execute ($ message);
   }
     
-    $self->redirect_to('/');
+    $ self-> redirect_to ('/');
 };
 
-# アプリケーションの開始
-app->start;
+#Start application
+app-> start;
 
 __DATA__
 
 @@ index.html.ep
 <html>
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    <title>ひとことだけメッセージ掲示板</title>
-  </head>
+    <meta http-equiv = "Content-type" content = "text / html; charset = UTF-8">
+    <title> Message board with just one word </ title>
+  </ head>
   
-  <h1>ひとことだけメッセージ掲示板</h1>
+  <h1> Just one word message board </ h1>
   <body>
-    <form method="post" action="<%= url_for '/register' %>" >
-      <div>メッセージ <input type="text" name="message"></div>
-      <div><input type="submit" value="送信" ></div>
-    </form>
+    <form method = "post" action = "<% = url_for'/ register'%>">
+      <div> message <input type = "text" name = "message"> </ div>
+      <div> <input type = "submit" value = "submit"> </ div>
+    </ form>
     <div>
-      % foreach my $row (@$rows) {
-        <div><%= $row->{message} %></div>
+      % foreach my $ row (@ $ rows) {
+        <div> <% = $ row-> {message}%> </ div>
         <hr>
-      % }
-    </div>
-  </body>
-</html>
-</pre>
+      %}
+    </ div>
+  </ body>
+</ html>
+</ pre>
 
-(参考)<a href="/blog/20100524127696.html">FindBin</a>
+(Reference) <a href="/blog/20100524127696.html"> FindBin </a>
 
-DBD::SQLiteのバージョンによって推奨されるUNICODEのオプションが異なるので選択的に使い分けています。
+Since the recommended UNICODE option differs depending on the version of DBD :: SQLite, it is selected and used properly.
 
-<h3>ファイルのアップロード</h3>
+<h3> File upload </ h3>
 
-FFFTPの使いかたについては以下を参考にしてください。
+Please refer to the following for how to use FFFTP.
 
 <blockquote>
-<a href="http://support.sakura.ad.jp/support/manual/rs/set_f_winffftp.shtml">FFFTP(さくらインターネット)</a>
-</blockquote>
+<a href="http://support.sakura.ad.jp/support/manual/rs/set_f_winffftp.shtml"> FFFTP (Sakura Internet) </a>
+</ blockquote>
 
-myappディレクトリ以下をそのまま以下のディレクトリにアップロードします。
+Upload the files under the myapp directory to the following directories as they are.
 
 <pre>
-/home/ユーザー名/www
-</pre>
+/ home / username / www
+</ pre>
 
-注意点として「app.cgi」はアスキーモードで転送する必要があるということです。FFFTPのデフォルトでは「.cgi」で終わるファイルはアスキーモードで転送されると思うのでおそらくだいじょうでしょう。
+Please note that "app.cgi" needs to be transferred in ASCII mode. By default, FFFTP will transfer files ending in ".cgi" in ASCII mode, so it's probably okay.
 
-次に「app.cgi」だけパーミッションを変更する必要があります。「右クリック」→「属性」から755にパーミッションを変更してください。
+Next, you need to change the permissions only for "app.cgi". Change the permission from "Right click"-> "Attributes" to 755.
 
-<h3>Webからのアクセス</h3>
+<h3> Access from the Web </ h3>
 
-これで以下のURLからブラウザで見ることができるはずです。
+You should now be able to see it in your browser from the URL below.
 <pre>
-http://ユーザー名.sakura.ne.jp/myapp/app.cgi
-</pre>
+http://username.sakura.ne.jp/myapp/app.cgi
+</ pre>
 
-お疲れ様でした。
-
+good job for today.

@@ -1,664 +1,663 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">豆知識</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>豆知識 - 知っておくと役に立つ</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Trivia </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Trivia-Useful to know </ h2>
 
 
 
-知っておくと何かとPerlが使いやすくなったり、読みやすくなるかもしれないことをいろいろと追加していきます。
+We'll add a lot of things that may make Perl easier to use and read if you know it.
 
-<h3>BEGIN</h3>
+<h3> BEGIN </ h3>
 
-BEGINはコンパイルのときに実行するということをあらわします。
+BEGIN means that it is executed at compile time.
 
 <pre>
 BEGIN {
-  # コンパイルのときに実行したい文
+  # Statement you want to execute when compiling
 }
-</pre>
+</ pre>
 
-<h3>require</h3>
+<h3> require </ h3>
 
-requireはuseと似ていますが実行時にモジュールを読み込むことと、importメソッドを自動的に実行しないところがことなります。
+require is similar to use, except that it loads the module at runtime and does not automatically execute the import method.
 
 <pre>
-use File::Basename 'basename';
+use File :: Basename'basename';
 
-# 上と同じ意味
+# Same meaning as above
 BEGIN {
-  require File::Basename;
-  File::Basename->import('basename');
+  require File :: Basename;
+  File :: Basename-> import ('basename');
 }
-</pre>
+</ pre>
 
-動的にモジュールを読み込みたい場合はrequireを使用することがありますが、一般的な用途ではuseで統一するのがわかりやすいでしょう。
+If you want to load the module dynamically, you may use require, but for general use it will be easier to unify with use.
 
-<h3>local</h3>
+<h3> local </ h3>
 
-localはローカル変数を生成するためのものではありません。localは値を一時的に変更してスコープを抜けた段階で値を復元するためのものです。なぜかmyで宣言されたスカラ変数自体には利用することはできません。使用できるのはパッケージ変数とハッシュの要素、配列の要素などです。
+local is not meant to generate local variables. local is for temporarily changing the value and restoring it when it goes out of scope. For some reason it cannot be used for the scalar variable itself declared by my. You can use package variables and hash elements, array elements, and so on.
 
 <pre>
-our $num = 1;
+our $ num = 1;
 {
-  # 一時的に変更
-  local $num = 2;
+  # Temporary change
+  local $ num = 2;
 }
 
-# 1に戻る
-print $foo;
+Return to # 1
+print $ foo;
 
-my $scores = {math => 90, english => 100};
+my $ scores = {math => 90, english => 100};
 {
-  # 一時的に変更
-  local $scores->{math} = 80;
+  # Temporary change
+  local $ scores-> {math} = 80;
 }
 
-# 90に戻る
-print $scores->{math};
-</pre>
+Return to # 90
+print $ scores-> {math};
+</ pre>
 
-けれどもlocalはよほど特殊な用途でない限りは使う場面はありません。ほぼすべての場面でmyですんでしまうので、まずmyで済ませられないかどうかを真剣に検討しましょう。
+However, local is not used unless it has a very special purpose. You can do it with my in almost all situations, so first seriously consider whether you can do it with my.
 
-localについての詳しい解説は以下を参考にしてください。
+Please refer to the following for a detailed explanation of local.
 
 <ul>
   <li>
-    <a href="/blog/20080309120507.html">local - パッケージ変数を一時的に退避して復元</a>
-  </li>
-</ul>
+    <a href="/blog/20080309120507.html"> local --Temporarily save and restore package variables </a>
+  </ li>
+</ ul>
 
-<h3>複数行コメント</h3>
+<h3> Multi-line comment </ h3>
 
-複数行コメントの構文はないので、少し残念ですがコメントは#のみになります。デバッグ中に複数行コメントをしたい場合は、ドキュメントとして解釈させることで、コメントアウトすることができます。
-
-<pre>
-=pod
-
-my $str = 'aaa';
-my $foo = 'foo';
-
-=cut
-</pre>
-
-「=pod」「=cut」として囲まれた部分はドキュメントと解釈され無視されます。
-
-<h3>シジルが異なれば別の変数</h3>
-
-シジルが異なればまったく別の変数です。
+There is no multi-line comment syntax, so it's a bit disappointing, but the comment is only #. If you want to comment on multiple lines while debugging, you can comment out by interpreting it as a document.
 
 <pre>
-# 配列
+= pod
+
+my $ str ='aaa';
+my $ foo ='foo';
+
+= cut
+</ pre>
+
+The part enclosed as "= pod" and "= cut" is interpreted as a document and ignored.
+
+<h3> Different variables with different sigils </ h3>
+
+Different sigils are completely different variables.
+
+<pre>
+# arrangement
 my @ids;
 
-# スカラ
-my $ids;
-</pre>
-上記の変数はidsという名前を持ちますが、まったく別の変数になります。
+#Scalar
+my $ ids;
+</ pre>
+The above variable has the name ids, but it's a completely different variable.
 
-<h3>特殊変数の意味を調べる</h3>
+<h3> Examine the meaning of special variables </ h3>
 
-特殊変数はgoogleの検索ではとても探しにくくて苦労します。またドキュメントから探すのも面倒です。perldocコマンドの「-v」オプションを使用すると、英語ですが、特殊変数の意味を知ることができます。
+Special variables are very difficult to find by google search. It is also troublesome to search from the document. You can use the "-v" option of the perldoc command to find out the meaning of special variables, albeit in English.
 
 <pre>
 perldoc -v $.
-</pre>
+</ pre>
 
-<h3>メソッド呼び出し</h3>
+<h3> Method call </ h3>
 
-Perlでは->を使ってメソッド呼び出しを行うことができます。
+In Perl you can use-> to make method calls.
 <pre>
-# メソッド呼び出し
-SomeClass->method('a', 'b');
-$obj->method('a', 'b');
-</pre>
+#Method call
+SomeClass-> method ('a','b');
+$ obj-> method ('a','b');
+</ pre>
 
-メソッド呼び出しが関数呼び出しと異なるのはサブルーチンの第一引数に->の左側の値が渡されるということです。上記の例ではmethodの第一引数はSomeClassという文字列あるいは$objになります。'a', 'b'は第二引数、第三引数になります。
+A method call differs from a function call in that the value to the left of-> is passed as the first argument of the subroutine. In the above example, the first argument of method is the string SomeClass or $ obj. 'a' and'b' are the second and third arguments.
 
-受け取る側は次のように記述します。
+The recipient describes it as follows.
 <pre>
-# クラスメソッドの場合
+# For class methods
 sub method {
-  my ($class, $arg1, $arg2) = @_;
+  my ($ class, $ arg1, $ arg2) = @_;
 }
 
-# オブジェクトメソッドの場合
+#For object methods
 sub method {
-  my ($self, $arg1, $arg2) = @_;
+  my ($ self, $ arg1, $ arg2) = @_;
 }
-</pre>
+</ pre>
 
-<h3>ミニperldocガイド</h3>
+<h3> Mini perldoc guide </ h3>
 
-perldocコマンドでPerlのドキュメントを見ることができます。
+You can see the Perl documentation with the perldoc command.
 
 <pre>
 perldoc perlfunc
-</pre>
+</ pre>
 
-モジュールのドキュメントも見ることができます。
-
-<pre>
-perldoc File::Basename
-</pre>
-
-モジュールの中身を見たい場合はmオプションを指定します。
+You can also see the module documentation.
 
 <pre>
-perldoc -m File::Basename
-</pre>
+perldoc File :: Basename
+</ pre>
 
-モジュールのパスを知りたいときはlオプションを指定します。
+If you want to see the contents of the module, specify the m option.
 
 <pre>
-perldoc -l File::Basename
-</pre>
+perldoc -m File :: Basename
+</ pre>
 
-標準関数のドキュメントを見たい場合はfオプションを指定します。
+If you want to know the module path, specify the l option.
+
+<pre>
+perldoc -l File :: Basename
+</ pre>
+
+If you want to see the standard function documentation, specify the f option.
 
 <pre>
 perldoc -f substr
-</pre>
+</ pre>
 
-リダイレクトしてファイルに落とすと見るのが楽です。
-
-<pre>
-perldoc File::Basename > File-Basename.txt
-</pre>
-
-<h3>無名サブルーチン</h3>
-
-Perlではsub { } を使うことで無名サブルーチンを作成することができます。
+It's easier to see if you redirect and drop it in a file.
 
 <pre>
-my $twice = sub {
-  my $num = shift;
+perldoc File :: Basename> File-Basename.txt
+</ pre>
 
-  return $num * 2;
+<h3> Anonymous subroutine </ h3>
+
+In Perl you can create anonymous subroutines by using sub {}.
+
+<pre>
+my $ twice = sub {
+  my $ num = shift;
+
+  return $ num * 2;
 }
-</pre>
+</ pre>
 
-実行するには次のようにします。
-
-<pre>
-my $result = $twice->(5);
-</pre>
-
-<h3>デリファレンスの{}の省略</h3>
-
-デリファレンスの記号{}は省略することも可能です。
+To do this:
 
 <pre>
-my @array = @$array_ref;
+my $ result = $ twice-> (5);
+</ pre>
 
-# 以下と同じ意味
-my @array = @{$array_ref};
-</pre>
+<h3> Omission of {} in dereference </ h3>
 
-単純な変数でない場合は{}が必要です。
+The dereference symbol {} can be omitted.
 
 <pre>
-my @array = @{$var->nums};
-</pre>
+my @array = @ $ array_ref;
 
-<h3>ファイル演算子のドキュメントの見方</h3>
+# Same meaning as below
+my @array = @ {$ array_ref};
+</ pre>
 
--sや-fなどのファイル演算子はよく使用しますが、どうやってドキュメントを見たらよいかがわかりにくいです。コマンドラインで次のようにします。
+{} Is required if it is not a simple variable.
+
+<pre>
+my @array = @ {$ var-> nums};
+</ pre>
+
+<h3> How to read the document of the file operator </ h3>
+
+I often use file operators such as -s and -f, but it's hard to figure out how to look at the documentation. At the command line:
 
 <pre>
 perldoc -f -X
-</pre>
+</ pre>
 
-<h3>文字の置換 tr</h3>
+<h3> Character substitution tr </ h3>
 
-trというのを時々みるかもしれませんが、tr演算子は文字列の置換を行います。以下の文は「a ⇒ 1」「b ⇒ 2」「c ⇒ 3」という置換を行います。
+You may sometimes see tr, but the tr operator does string substitutions. The following sentence replaces "a ⇒ 1", "b ⇒ 2", and "c ⇒ 3".
 
 <pre>
-$str =~ tr/abc/123/;
-</pre>
+$ str = ~ tr / abc / 123 /;
+</ pre>
 
-<h3>Perl自体の設定を見る</h3>
+<h3> See the settings in Perl itself </ h3>
 
-コマンドライン引数で
+With command line arguments
 
 <pre>
 perl -V
-</pre>
+</ pre>
 
-とします。
+will do.
 
-<h3>ハッシュのリファレンスのハッシュスライス</h3>
+<h3> Hash slice of hash reference </ h3>
 
-ハッシュのリファレンスをデリファレンスしてハッシュスライスする記法はとても読みにくいです。
-
-<pre>
-my ($key1, $key2, $key3) = @{$hash}{qw/key1 key2 key3/};
-</pre>
-
-できればひとつづつ代入するほうがよいと思います。
+The notation of dereferencing a hash reference and hash slicing is very hard to read.
 
 <pre>
-my $key1 = $hash->{key1};
-my $key2 = $hash->{key2};
-my $key3 = $hash->{key3};
-</pre>
+my ($ key1, $ key2, $ key3) = @ {$ hash} {qw / key1 key2 key3 /};
+</ pre>
 
-<h3>evalのある使い方</h3>
+I think it is better to substitute one by one if possible.
 
 <pre>
-eval { 実行文; 1; } or die "Exception";
-</pre>
+my $ key1 = $ hash-> {key1};
+my $ key2 = $ hash-> {key2};
+my $ key3 = $ hash-> {key3};
+</ pre>
 
-という記述は良く見かけますが、少し読みにくいです。これの意味はまず<a href="/blog/20100312126967.html">eval</a>は{}の中が正常であった場合は最後の実行文の結果を返却します。つまり、1を返却します。この場合はorの右辺は実行されません。失敗した場合はundefを返します。この場合は右辺は実行されます。1;とわざわざ書くのは実行文の戻り値が0で合った場合は成功していても右辺が実行されてしまうからです。
+<h3> How to use eval </ h3>
 
 <pre>
-eval { 実行文 };
-die "Exception" if $@;
-</pre>
-のほうが好みです。
+eval {execution statement; 1;} or die "Exception";
+</ pre>
 
-<h3>よく使用する特殊変数</h3>
+I often see the description, but it is a little difficult to read. The meaning of this is that <a href="/blog/20100312126967.html"> eval </a> returns the result of the last executable statement if the inside of {} is normal. That is, 1 is returned. In this case, the right side of or is not executed. Returns undef on failure. In this case, the right-hand side is executed. The reason for writing 1; is that if the return value of the executable statement matches 0, the right-hand side will be executed even if it succeeds.
+
+<pre>
+eval {execution statement};
+die "Exception" if $ @;
+</ pre>
+I prefer.
+
+<h3> Frequently used special variables </ h3>
 <ul>
   <li>
-    @_ - サブルーチンの引数
-  </li>
+    @_ --Subroutine arguments
+  </ li>
   <li>
-    @ARGV - コマンドライン引数
-  </li>
+    @ARGV --command line arguments
+  </ li>
   <li>
-    $. - ファイルを読み込んだ場合の行番号
-  </li>
+    $. --Line number when reading a file
+  </ li>
   <li>
-    $0 - スクリプト名
-  </li>
+    $ 0-script name
+  </ li>
   <li>
-    $1 - 正規表現の括弧()にマッチした部分。$2, $3 も同じ意味
-  </li>
+    $ 1-The part that matches the parentheses () in the regular expression. $ 2 and $ 3 have the same meaning
+  </ li>
   <li>
-    $! - OSのエラーメッセージ
-  </li>
+    $! --OS error message
+  </ li>
   <li>
-    $@ - evalで例外をキャッチした場合の例外メッセージ
-  </li>
+    Exception message when catching an exception with $ @ --eval
+  </ li>
   <li>
-    $? - 子プロセスのステータス
-  </li>
-</ul>
+    $?-Child process status
+  </ li>
+</ ul>
 
-<h3>shift関数のデフォルト引数</h3>
+<h3> Default argument of shift function </ h3>
 
-shift関数で引数を指定しなかった場合、トップレベルであれば引数はコマンドライン引数(@ARGV)、サブルーチンの中であればサブルーチンの引数(@_)になります。単独のshiftはよく使われます。
-
-<pre>
-# トップレベル
-my $num = shift;
-
-# 以下と同じ意味
-my $num = shift @ARGV; 
-</pre>
+If no argument is specified in the shift function, the argument will be the command line argument (@ARGV) if it is the top level, and the subroutine argument (@_) if it is in the subroutine. A single shift is often used.
 
 <pre>
-# サブルーチンの中
+# Top level
+my $ num = shift;
+
+# Same meaning as below
+my $ num = shift @ARGV;
+</ pre>
+
+<pre>
+# In a subroutine
 sub {
-  my $num = shift;
+  my $ num = shift;
   
-  # 以下と同じ意味
-  my $num = shift @_;
+  # Same meaning as below
+  my $ num = shift @_;
 }
-</pre>
+</ pre>
 
-<h3>外部プロセスの終了ステータス</h3>
+<h3> Exit status of external process </ h3>
 
-system関数などで外部プロセスを呼び出したとき、外部プロセスの終了ステータスは$?という特殊変数の上位8bitの中に入っています。コマンドの呼び出し自体が失敗した場合は$?に-1が設定されます。ですから、終了ステータスが正常(0であれば正常)であることを調べるには次のようにします。
+When an external process is called with the system function etc., the exit status of the external process is in the upper 8 bits of the special variable $ ?. If the command call itself fails, $? Is set to -1. So, to check that the exit status is normal (normal if 0), do the following:vinegar.
 
 <pre>
-my $command = "ls -l";
-system $command;
+my $ command = "ls -l";
+system $ command;
 
 if ($? == -1) {
-  die "failed to execute: $!\n";
+  die "failed to execute: $! \ N";
 }
-elsif ($? >> 8 != 0) {
-  die "Return error status\n";
+elsif ($? >> 8! = 0) {
+  die "Return error status \ n";
 }
-</pre>
+</ pre>
 
-<h3>Perlのithreadの実装はあまりよくない</h3>
+<h3> Perl's ithread implementation isn't very good </ h3>
 
-Perlではithreadと呼ばれる軽量スレッドの実装がありますが、あまり実装がよろしくないといううわさです。またCPANモジュールはスレッドセーフであることを意識して作成されていないので、思わぬバグに突き当たります。またネイティブスレッドはサポートしていません。自動的にスレッドを切り替える処理はPerlで書くのはあきらめたほうが無難でしょう。
+Perl has a lightweight thread implementation called ithread, but it's rumored that the implementation isn't very good. Also, the CPAN module wasn't created with thread safety in mind, so you'll run into unexpected bugs. It also does not support native threads. It is safer to give up writing in Perl for the process of automatically switching threads.
 
-自分でスレッドを切り替える用途であればコルーチンであるCoroが使えるでしょう。
+If you want to switch threads yourself, you can use the coroutine Coro.
 
-<h3>古典Perl</h3>
+<h3> Classic Perl </ h3>
 
-書くときは使わないですが、読むときに古典的な文法に遭遇するかもしれません。
+I don't use it when writing, but you may come across classical grammar when reading.
 
-varsプラグマは、ourで宣言したのと同じ効果をもちます。
+The vars pragma has the same effect as declared in our.
 <pre>
-# our $VAR; と同じ
-use vars 'VAR'; 
-</pre>
+Same as # our $ VAR;
+use vars'VAR';
+</ pre>
 
-<h3>覚えておきたいqで始まる演算子</h3>
+<h3> Operators starting with q that you want to remember </ h3>
 
-  qで始まる演算子は覚えにくいのでまとめておきます。また囲む文字には//や{}や##や||などを使うことができます。
+  Operators starting with q are difficult to remember, so I will summarize them. You can also use //, {}, ##, ||, etc. as the enclosing characters.
 
-qはシングルクォート演算子です。シングルクォートが使える以外はシングルクォートと同じです。
-
-<pre>
-my $str = q/aaa ''' bbb/;
-</pre>
-
-qqはダブルクォート演算子です。ダブルクォートが使える以外はダブルクォートと同じです。
+q is a single quote operator. It is the same as single quote except that single quote can be used.
 
 <pre>
-my $str = qq/aaa """ $str/;
-</pre>
+my $ str = q / aaa'''bbb /;
+</ pre>
 
-qwは文字列リスト演算子です。文字列のリストを簡単に書くことができます。
+qq is a double quote operator. Same as double quotes except that double quotes can be used.
+
 <pre>
-# ('foo', 'bar', 'baz') と同じ
-my $str = qw/foo bar baz/ 
-</pre>
+my $ str = qq / aaa "" "$ str /;
+</ pre>
 
-qrは正規表現のリファレンスです。
+qw is a string list operator. You can easily write a list of strings.
 <pre>
-my $regex_ref = qr/^aaa.*bbb$/ms;
-</pre>
+Same as # ('foo','bar','baz')
+my $ str = qw / foo bar baz /
+</ pre>
 
-<h3>モジュールの末尾には1;が必要</h3>
+qr is a regular expression reference.
+<pre>
+my $ regex_ref = qr / ^ aaa. * Bbb $ / ms;
+</ pre>
 
-モジュールの末尾には1;が必要です。1でなくても真の値であれば何でもかまいませんが、普通は1;を使います。
+<h3> 1; is required at the end of the module </ h3>
+
+1; is required at the end of the module. It doesn't have to be 1 but can be any true value, but usually 1; is used.
 <pre>
 package SomeModule;
 
-# 実装
+# Mounting
 
 1;
-</pre>
+</ pre>
 
-<h3>ブロックの最後にはセミコロンは不要。評価が最後の場合はreturnは不要。</h3>
+No semicolon is required at the end of the <h3> block. No return is required if the evaluation is final. </ h3>
 
-ブロックの最後であればセミコロンはあってもなくてもかまいません。
-
-<pre>
-sub func1 {
-  my $arg = shift;
-
-  # このセミコロンはあってもなくてもよい。
-  return $arg; 
-}
-</pre>
-
-また戻り値はそれが最後の評価になる場合はreturnが必要ではありません。
+The semicolon may or may not be present at the end of the block.
 
 <pre>
 sub func1 {
-  my $arg = shift;
+  my $ arg = shift;
 
-  # returnは合ってもなくてもよい。
-  $arg; 
+  # This semicolon may or may not be present.
+  return $ arg;
 }
-</pre>
+</ pre>
 
-通常はreturnもセミコロンもつけておいたほうがよいでしょう。関数を一行で書く場合はセミコロンもreturnも使わないほうがきれいに書けることが多いようです。
+Also, the return value does not need a return if it is the last evaluation.
 
 <pre>
-# 定数など
-sub CONST_VALUE { 3 }
-</pre>
+sub func1 {
+  my $ arg = shift;
 
-<h3>たくさんPerlを試したいとき</h3>
+  #return may or may not match.
+  $ arg;
+}
+</ pre>
 
-わたしはどこかで見つけたサンプルを実行したい場合はa.plという簡単なファイルを用意して、そこで実験するようにしています。削除するのも面倒なので、新しく実験したい場合は「__END__」を使えば、スクリプトはそこで終了とみなされます。
+Normally, it is better to add both return and semicolon. When writing a function in one line, it seems that it is often better to write it without using a semicolon or return.
+
+<pre>
+# Constant etc.
+sub CONST_VALUE {3}
+</ pre>
+
+<h3> When you want to try Perl a lot </ h3>
+
+If I want to run a sample I find somewhere, I have a simple file called a.pl and I experiment there. It's also a hassle to delete, so if you want to experiment anew, use "__END__" and the script will be considered to end there.
 
 <pre>
 perl a.pl
-</pre>
+</ pre>
 
 <pre>
 use strict;
 use warnings;
 
-print 'aaa';
+print'aaa';
 
 __END__
 
-print 'bbb';
-</pre>
+print'bbb';
+</ pre>
 
-<h3>デバッガで最終行を実行したときにプログラムを終わらせない</h3>
+<h3> Do not end the program when the last line is executed in the debugger </ h3>
 
-Perlのデバッガを使ったときに最終行を実行するとプログラムが終わってしまうのを避けたい場合は次のように意味のない「1;」という実行文を最終行に入れます。
+If you want to avoid the program ending when you execute the last line when using the Perl debugger, put the meaningless "1;" executable statement in the last line as follows.
 
 <pre>
-my $str = 'aaa';
-print $str;
+my $ str ='aaa';
+print $ str;
 
 1;
-</pre>
+</ pre>
 
-<h3>ファイル読込のショートカット</h3>
+<h3> Shortcut for reading files </ h3>
 
-使い捨てのスクリプトを作成する場合は、ファイルオープンの記述を行うのは少し面倒です。ダイヤモンド演算子を単独で使えば、コマンドライン引数、あるいは標準入力から1行づつファイルの読込ができます。
+If you're writing a disposable script, writing a file open can be a bit tedious. You can use the diamond operator alone to read a file line by line from command line arguments or standard input.
 
 <pre>
-# コマンドライン
+# Command line
 perl script.pl file1 file2
-</pre>
+</ pre>
 
 <pre>
-# ファイルから1行づつ読み込み
-while (my $line = <>) {
+# Read line by line from file
+while (my $ line = <>) {
   ...
 }
-</pre>
+</ pre>
 
-この記述は
+This description is
 <pre>
-while (defined(my $line = <>)) {
+while (defined (my $ line = <>)) {
   ...
 }
-</pre>
+</ pre>
 
-と同じ意味を持つので0だけが含まれる行なども、正しく読み込んでくれるので安心です。
+Since it has the same meaning as, it is safe because it correctly reads lines that contain only 0.
 
-<h3>変数展開の注意</h3>
+<h3> Notes on variable expansion </ h3>
 
-変数名の後にコロンやアンダーバーが続いていると正しく変数展開を行うことができません。そのような場合は「{}」でくくって明示的に変数名を示します。
-
-<pre>
-my $name = 'aaa';
-my $message = "${name}::aaa ${name}_ppp";
-</pre>
-
-<h3>シンボルテーブルを覗いてみる</h3>
-
-変数やサブルーチンなどの名前が登録されているデータ構造です。各パッケージのシンボルは「::」をパッケージ名の末尾に付けた変数に格納されています。
+If the variable name is followed by a colon or underscore, the variable cannot be expanded correctly. In such a case, enclose it in "{}" to explicitly indicate the variable name.
 
 <pre>
-# シンボルテーブル
-%main::
-%CGI::
-%File::Basename::
-</pre>
+my $ name ='aaa';
+my $ message = "$ {name} :: aaa $ {name} _ppp";
+</ pre>
 
-<h3>each関数はwhileの中だけで使う</h3>
+<h3> Take a peek at the symbol table </ h3>
 
-each関数は内部的にイテレータを持っているので、一度だけ使うとイテレータが進んだままになってしまいます。
+A data structure in which names such as variables and subroutines are registered. The symbol for each package is stored in a variable with "::" at the end of the package name.
 
 <pre>
-# イテレータが進んだままになってしまう。
-my ($key, $value) = each %hash;
-</pre>
-keys関数を作用させるとイテレータはリセットされますが、あまり良い方法ではないでしょう。
+# Symbol table
+% main ::
+% CGI ::
+% File :: Basename ::
+</ pre>
+
+<h3> use each function only in while </ h3>
+
+Each function has an iterator internally, so if you use it only once, the iterator will stay advanced.
 
 <pre>
-# イテレータのリセット
-keys %hash;
-</pre>
-
-each関数は<a href="/blog/20100123126425.html">while文</a>のループの中でだけ利用しましょう。
+#Iterator stays advanced.
+my ($ key, $ value) = each% hash;
+</ pre>
+Activating the keys function resets the iterator, but that's not a good idea.
 
 <pre>
-while(my ($key, $value) = each %hash) {
+#Reset iterator
+keys% hash;
+</ pre>
+
+Use each function only in the loop of <a href="/blog/20100123126425.html"> while statement </a>.
+
+<pre>
+while (my ($ key, $ value) = each% hash) {
   ...
 }
-</pre>
+</ pre>
 
-<h3>print関数に渡すファイルハンドルは第一引数ではない</h3>
+<h3> The filehandle passed to the print function is not the first argument </ h3>
 
-変な仕様です。print関数に渡すファイルハンドルは第一引数ではないです。ファイルハンドルの後ろにはカンマがありません。
-
-<pre>
-# $fhは第一引数ではない。
-print $fh $output;
-</pre>
-これは間接オブジェクト記法と呼ばれ次と同じ意味を持ちます。
+It's a strange specification. The filehandle passed to the print function is not the first argument. There is no comma behind the file handle.
 
 <pre>
-$fh->print($output);
-</pre>
-
-<h3>WindowsではIO::Pollやselectはソケットに対してしかうまくいかない</h3>
-
-Windowsでは非同期IO処理はソケットに対してしか行うことができません。ファイルに対してはできません。
-
-<h3>Windowsではglob関数の引数に空白が含まれているとうまく動かない</h3>
-
-Windowsではglob関数の引数に空白が含まれているとうまく動きません。なんとかこれをうまくいかせるには、ダブルクォートで囲む必要があります。
+# $ fh is not the first argument.
+print $ fh $ output;
+</ pre>
+This is called indirect object notation and has the same meaning as:
 
 <pre>
-my @files = glob('"C:/Documents and Settings/*.*"');
-</pre>
+$ fh-> print ($ output);
+</ pre>
 
-<h3>サブルーチンの括弧が必要な場合</h3>
+<h3> On Windows IO :: Poll and select only work for sockets </ h3>
 
-サブルーチンがすでに宣言されていれば括弧はいりません。
+On Windows, asynchronous IO processing can only be done on sockets. Not for files.
 
-<pre>
-# すでにサブルーチンが宣言されている場合は括弧がいらない。
-sub func1 { print $_[0] }
-func1 'aaaa';
-</pre>
+<h3> On Windows, it doesn't work well if the argument of the glob function contains a space. </ H3>
 
-インポートした場合も同じです。
+On Windows, it doesn't work well if the argument of the glob function contains a space. To get this to work, you need to enclose it in double quotes.
 
 <pre>
-# インポートした場合も括弧はいらない
-use Carp 'croak';
+my @files = glob ('"C: / Documents and Settings / *. *"');
+</ pre>
 
-croak 'aaa';
-</pre>
+<h3> If you need parentheses for the subroutine </ h3>
 
-後ろで宣言されている場合は括弧が必要です。
+If the subroutine has already been declared, no parentheses are needed.
 
 <pre>
-# 後ろで宣言されている場合は括弧が必要
-func1('aaa');
-sub func1 { print 1 }
-</pre>
+# If the subroutine has already been declared, no parentheses are needed.
+sub func1 {print $ _ [0]}
+func1'aaaa';
+</ pre>
 
-<h3>無名サブルーチンは最初から最後まで存在する</h3>
+The same is true when importing.
 
-動的に作成したように見える無名サブルーチンはプログラムの最初にコンパイルされて、プログラムの最後に破棄されます。次のコードで生成されるのはサブルーチンのリファレンスであって、サブルーチンそのものではないです。ごちゃまぜになりやすいので注意。
+<pre>
+# You don't need parentheses when you import
+use Carp'croak';
+
+croak'aaa';
+</ pre>
+
+Parentheses are required if declared later.
+
+<pre>
+# Need parentheses if declared after
+func1 ('aaa');
+sub func1 {print 1}
+</ pre>
+
+<h3> Anonymous subroutines exist from start to finish </ h3>
+
+Anonymous subroutines that appear to be dynamically created are compiled at the beginning of the program and destroyed at the end of the program. The following code produces a subroutine reference, not the subroutine itself. Be careful as it can easily get mixed up.
 
 <pre>
 {
-  # 生成されるのはサブルーチンのリファレンスでサブルーチンそのものではない
-  my $sub = sub {
+  # What is generated is a subroutine reference, not the subroutine itself
+  my $ sub = sub {
     ...
   }
 }
-</pre>
+</ pre>
 
-<h3>正規表現でのリストコンテキスト</h3>
+<h3> Regular expression list context </ h3>
 
-<a href="/blog/20100827127859.html">正規表現</a>を使ってマッチした文字の一部分を取得したい場合はif文と組み合わせて次のように書きます。
+If you want to get a part of the matched character using <a href="/blog/20100827127859.html"> regular expression </a>, write as follows in combination with the if statement.
 
 <pre>
-if ($str =~ /正規表現/) {
-  my $match1 = $1;
-  my $match2 = $2;
+if ($ str = ~ / regular expression /) {
+  my $ match1 = $ 1;
+  my $ match2 = $ 2;
 }
-</pre>
+</ pre>
 
-もうひとつ書き方があって、正規表現をリストコンテキストで評価してマッチした文字を取得することもできます。
-
-<pre>
-my ($match1, $match2) = $str =~ /正規表現/;
-</pre>
-
-<h3>正規表現の囲み文字の変更</h3>
-
-通常は正規表現は次のように書きます。
+Another way to write it is to evaluate the regular expression in the list context to get the matched characters.
 
 <pre>
-$str =~ /正規表現/
-</pre>
+my ($ match1, $ match2) = $ str = ~ / regular expression /;
+</ pre>
 
-もうひとつ同じ意味を持つ書き方があります。mを使って上記と同じ意味になります。
+<h3> Change the enclosing character of the regular expression </ h3>
 
-<pre>
-$str =~ m/正規表現/;
-</pre>
-
-これは何のためにあるかというと正規表現の中で「/」がたくさん出てくる場合にエスケープするのはとても見にくくなると思った場合に正規表現の囲み文字を変えることができます。囲み文字を「#」に変更した例です。
+Normally, the regular expression is written as follows.
 
 <pre>
-$str =~ m#http://aaa.com#;
-</pre>
+$ str = ~ / regular expression /
+</ pre>
 
-<h3>ord関数はordinalの略</h3>
-
-文字列を渡すとコードポイントを返却してくれるord関数はordinalの略。これは日本語に訳すと序数という意味。ちなみに対になっているchr関数はコードポイントを渡すと文字に変換してくれます。
+There is another way of writing that has the same meaning. Using m has the same meaning as above.
 
 <pre>
-ord関数 <-> chr関数
-</pre>
+$ str = ~ m / regular expression /;
+</ pre>
 
-<h3>orは「左辺が真でなければ」と英文的に読みます。</h3>
+The reason for this is that you can change the regex enclosing character if you find it very difficult to escape when there are a lot of "/" s in the regex. This is an example of changing the enclosing character to "#".
 
-orはもともと論理演算子なのですが、論理演算子としては使われずに条件分岐に使われることがほとんどです。
+<pre>
+$ str = ~ m # http://aaa.com#;
+</ pre>
+
+<h3> ord function is an abbreviation for ordinal </ h3>
+
+The ord function that returns a code point when a character string is passed is an abbreviation for ordinal. This means ordinal when translated into Japanese. By the way, the paired chr function converts it to a character when you pass a code point.
+
+<pre>
+ord function <-> chr function
+</ pre>
+
+<h3> or is read in English as "if the left side is not true". </ h3>
+
+Although or is originally a logical operator, it is often used for conditional branching without being used as a logical operator.
 
 <pre>
 A or B
-</pre>
+</ pre>
 
-Perlのor演算子は左辺(A)が真であった場合は、右辺(B)の結果がどうであろうと「A or B」は真になるので、右辺を実行しないという特徴があります。条件分岐に利用される場合はこの特徴が利用されています。
+Perl's or operator has the characteristic that if the left side (A) is true, "A or B" will be true regardless of the result of the right side (B), so the right side will not be executed. This feature is used when it is used for conditional branching.
 
-つまり左辺(A)が真の場合には右辺(B)は実行されす、左辺(A)が偽の場合は右辺(B)が実行されます。英文的に読むと「左辺(A)が真でなければ右辺(B)を実効する」と読めます。
+That is, the left sideIf (A) is true, the right-hand side (B) is executed, and if the left-hand side (A) is false, the right-hand side (B) is executed. When read in English, it can be read as "If the left side (A) is not true, the right side (B) is effective".
 
-<h3>設定ファイルをPerlで記述する</h3>
+<h3> Write the configuration file in Perl </ h3>
 
-設定ファイルはPerlで記述するのが便利です。設定ファイルを読み込むには<a href="/blog/20090208123289.html">do</a>を使用します。 
+It is convenient to write the configuration file in Perl. Use <a href="/blog/20090208123289.html"> do </a> to load the configuration file.
 
 <pre>
-my $conf_file = "app.conf";
-my $conf = do $conf_file
-  or die qq/Can't load config file "$conf_file": $!$@/;
-</pre>
+my $ conf_file = "app.conf";
+my $ conf = do $ conf_file
+  or die qq / Can't load config file "$ conf_file": $! $ @ /;
+</ pre>
 
-設定ファイルの内容です。
+The contents of the configuration file.
 
 <pre>
 {
-  name => 'Foo',
+  name =>'Foo',
   number => 9
 }
-</pre>
+</ pre>
 
-ファイルの読み込みか解析に成功しなかった場合は未定義値が返却されます。ファイル名が存在しなかった場合は$!に、Perlのソースコードの読み込みに失敗した場合は$@にエラーの内容が設定されます。
+If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $ @ will be set to the error content.
 
-なぜか今までわたしはXMLとかJSONで設定ファイルを書いていましたが、よく考えるとPerlで書くのが一番楽ですね。
+For some reason, I used to write configuration files in XML or JSON, but when I think about it, it's easiest to write in Perl.
 
-注意点ですが、自分の手で書いた設定ファイル以外をdoで読み込んではいけません。さもなければ任意のスクリプトが実行されてしまう危険があるからです。
-
+Please note that you should not use do to read anything other than the configuration file you wrote yourself. Otherwise there is a risk that arbitrary scripts will be executed.

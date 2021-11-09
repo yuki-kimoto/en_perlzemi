@@ -1,147 +1,146 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>JSON - JSONデータを解析</h2>
+  </ li>
+</ ol>
+<h2> JSON --Analyzing JSON data </ ​​h2>
 
 
 
-<strong>JSONモジュール</strong>を使用すると、JSONデータを解析することができます。JSONはデータを記述するための言語で、配列やハッシュなどのデータ構造を表現することができます。JSONは単なる文字列ですので可搬性があります。他のプログラム言語とデータをやり取りした場合によく利用されます。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use JSON qw/encode_json decode_json/;
-</pre>
-
-JSONをPerlのデータ構造に変換するには<strong>decode_json関数</strong>を使用します。
+You can use the <strong> JSON module </ strong> to parse JSON data. JSON is a language for describing data and can represent data structures such as arrays and hashes. JSON is just a string, so it's portable. It is often used when exchanging data with other programming languages.
 
 <pre>
-# JSONをPerlのデータ構造に変換する
-my $json_in = '[{"name" : "Ken", "age" : 19}, {"name" : "Ken", "age" : 25}]';
+#Loading modules and importing functions
+use JSON qw / encode_json decode_json /;
+</ pre>
 
-my $data = decode_json($json_in);
-</pre>
-
-これは次のようなPerlのデータ構造に変換されます。
+Use the <strong> decode_json function </ strong> to convert JSON to a Perl data structure.
 
 <pre>
-# JSON
-'[{"name" : "Ken", "age" : 19}, {"name" : "Ken", "age" : 25}]'
-</pre>
-　　　　　　　　　　　　　　▼
+#Convert JSON to Perl data structures
+my $ json_in ='[{"name": "Ken", "age": 19}, {"name": "Ken", "age": 25}]';
+
+my $ data = decode_json ($ json_in);
+</ pre>
+
+This translates into a Perl data structure that looks like this:
+
+<pre>
+#JSON
+'[{" name ":" Ken "," age ": 19}, {" name ":" Ken "," age ": 25}]'
+</ pre>
+▼
 <pre>
 # Perl
 [
   {
-    'name' => 'Ken',
+    'name' =>'Ken',
     'age' => 19
   },
   {
-    'name' => 'Ken',
+    'name' =>'Ken',
     'age' => 25
   }
-];
-</pre>
+];;
+</ pre>
 
-逆にPerlのデータ構造をJSONに変換するには<strong>encode_json関数</strong>を使用します。
+Conversely, use the <strong> encode_json function </ strong> to convert Perl data structures to JSON.
 
 <pre>
-# Perlのデータ構造をJSONに変換する
-my $json_out = encode_json($data);
-</pre>
+#Convert Perl data structures to JSON
+my $ json_out = encode_json ($ data);
+</ pre>
 
-<h3>JSONモジュールでの日本語の扱い</h3>
+<h3> Handling of Japanese in JSON module </ h3>
 
-JSONモジュールで日本語を扱うときは少し注意が必要です。次のことを覚えておく必要があります。
+You need to be a little careful when dealing with Japanese in the JSON module. You need to remember the following:
 
 <ol>
   <li>
-    decode_jsonは「UTF-8バイト文字列-JSON」から「内部文字列-Perlデータ」への変換を行う
-  </li>
+    decode_json converts from "UTF-8 byte string-JSON" to "internal string-Perl data"
+  </ li>
   <li>
-    encode_jsonは「内部文字列-Perlデータ」から「UTF-8バイト文字列-JSON」への変換を行う
-  </li>
-</ol>
+    encode_json converts from "internal string-Perl data" to "UTF-8 byte string-JSON"
+  </ li>
+</ ol>
 
-この関係を図示すると次のようになります。
-
-<pre>
-UTF-8バイト文字列-JSON     UTF-8バイト文字列-Perlデータ
-                      \
-encode_jsonは          \
-左上への変換            \
-                         \   decode_jsonは右下への変換
-                          \
-内部文字列JSON             内部文字列-Perlデータ
-</pre>
-
-左上から右下への変換がdecode_jsonによって行われ、右下から左上への変換がencode_jsonによって行われます。上下や左右への変換を行うメソッドは用意されていません。
-
-たとえば間違いやすい例ですが次のように書くとうまくいきません。(日本語をスクリプトの中で扱うので、utf8プラグマを有効にして、スクリプトはUTF-8で保存しています。)
+This relationship is illustrated below.
 
 <pre>
-# 日本語を扱うときのよくある間違い。decode_jsonはUTF-8バイト文字列を受け取る必要がある
+UTF-8 byte string-JSON UTF-8 byte string-Perl data
+                      \ \
+encode_json is \
+Conversion to top left \
+                         \ decode_json is the conversion to the lower right
+                          \ \
+Internal string JSON Internal string-Perl data
+</ pre>
+
+The conversion from top left to bottom right is done by decode_json, and the conversion from bottom right to top left is done by encode_json. There is no method to convert up / down or left / right.
+
+For example, it is easy to make a mistake, but if you write the following, it will not work. (Since Japanese is handled in the script, the utf8 pragma is enabled and the script is saved in UTF-8.)
+
+<pre>
+#Common mistakes when dealing with Japanese. decode_json needs to receive UTF-8 byte string
 use utf8;
-use JSON 'decode_json';
+use JSON'decode_json';
 
-my $json = '{"name" : "増田"}';
+my $ json ='{"name": "Masuda"}';
 
-my $data = decode_json($json);
-</pre>
+my $ data = decode_json ($ json);
+</ pre>
 
-これがうまくいかない理由は、utf8プラグマが有効になっているので$jsonはすでに内部文字列に変換されているからです。decode_jsonはバイト文字列を引数に取りますので、これではうまくいきません。Encodeモジュールのencode_utf8関数でUTF-8バイト文字列に変換する必要があります。
+The reason this doesn't work is that $ json has already been converted to an internal string because the utf8 pragma is enabled. This doesn't work because decode_json takes a byte string as an argument. You need to convert it to a UTF-8 byte string with the encode_utf8 function of the Encode module.
 
 <pre>
-# 日本語を扱う場合の正しい例
+# Correct example when dealing with Japanese
 use utf8;
-use JSON 'decode_json';
-use Encode 'encode_utf8';
+use JSON'decode_json';
+use Encode'encode_utf8';
 
-my $json = '{"name" : "増田"}';
+my $ json ='{"name": "Masuda"}';
 
-# UTF-8バイト文字列に変換
-$json = encode_utf8($json);
+#Convert to UTF-8 byte string
+$ json = encode_utf8 ($ json);
 
-my $data = decode_json($json);
-</pre>
+my $ data = decode_json ($ json);
+</ pre>
 
-<h3>ファイルに書かれたJSONを読み込む</h3>
+<h3> Read the JSON written in the file </ h3>
 
-JSONモジュールにはファイルを読み込む機能はありませんので、ファイルから読み込む方法を記載しておきます。
+Since the JSON module does not have a function to read a file, I will describe how to read from a file.
 
 <pre>
-# ファイルからJSONを読み込むサンプル
-use JSON 'decode_json';
+# Sample to read JSON from file
+use JSON'decode_json';
 
-my $file = shift;
+my $ file = shift;
 
-my $data = decode_json(get_content($file));
+my $ data = decode_json (get_content ($ file));
 
-# ファイルの内容を取得する関数
+# Function to get the contents of a file
 sub get_content {
-  my $file = shift;
+  my $ file = shift;
 
-  open my $fh, '<', $file
-    or die "Can't open file \"$file\": $!";
+  open my $ fh,'<', $ file
+    or die "Can't open file \" $ file \ ": $!";
   
-  my $content = do { local $/; <$fh> };
+  my $ content = do {local $ /; <$ fh>};
  
-  close $fh;
+  close $ fh;
 
-  return $content;
+  return $ content;
 }
-</pre>
-
+</ pre>

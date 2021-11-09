@@ -1,73 +1,72 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>File::Copy - ファイルの移動とコピー</h2>
+  </ li>
+</ ol>
+<h2> File :: Copy --Move and copy files </ h2>
 
 
 
-<strong>File::Copy</strong>モジュールを使用すると、ファイルを移動したり、コピーしたりすることができます。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use File::Copy qw/copy move/;
-</pre>
-
-copy関数でファイルをコピー、move関数でファイルを移動することができます。rename関数というファイルを移動する標準関数がありますが、ファイルシステムを隔てた移動に対応していません。ファイルを移動する場合はFile::Copyのmoveを使用するのがよいでしょう。またmoveはディレクトリを移動するときも利用することができます。
+The <strong> File :: Copy </ strong> module allows you to move and copy files.
 
 <pre>
-# ファイルのコピー
-copy($from, $to);
+#Loading modules and importing functions
+use File :: Copy qw / copy move /;
+</ pre>
 
-# ファイルの移動
-move($from, $to)
-</pre>
-
-ファイルをコピーするサンプルです。ファイルのコピーに失敗(※1)したときのためにエラー処理を行います。エラーメッセージにはOSのエラーメッセージ「$!」を含めるようにします。
+You can copy the file with the copy function and move the file with the move function. There is a standard function to move files called the rename function, but it does not support moving across file systems. If you want to move files, it's a good idea to use File :: Copy's move. Move can also be used when moving directories.
 
 <pre>
-# ファイルのコピー
-my $from = 'xxx';
-my $to   = 'yyy';
+#File copy
+copy ($ from, $ to);
 
-copy($from, $to)
-  or die "Can't copy \"$from\" to \"$to\": $!";
-</pre>
+#Move file
+move ($ from, $ to)
+</ pre>
 
-ファイルを移動するサンプルです。ファイルの移動に失敗したときのためにエラー処理を行います。エラーメッセージにはOSのエラーメッセージ「$!」を含めるようにします。
+This is a sample to copy a file. Error processing is performed in case the file copy fails (* 1). Make sure to include the OS error message "$!" In the error message.
 
 <pre>
-# ファイルの移動
-my $from = 'xxx';
-my $to   = 'yyy';
+#File copy
+my $ from ='xxx';
+my $ to ='yyy';
 
-move($from, $to)
-  or die "Can't move \"$from\" to \"$to\": $!";
-</pre>
+copy ($ from, $ to)
+  or die "Can't copy \" $ from \ "to \" $ to \ ": $!";
+</ pre>
 
-ファイルが存在しなかった場合や、送り先のディレクトリにパーミッションの書き込み権限がない場合などにファイルコピーは失敗します。
+This is a sample to move files. Performs error handling in case the file move fails. Make sure to include the OS error message "$!" In the error message.
 
-<h3>関連記事</h3>
+<pre>
+#Move file
+my $ from ='xxx';
+my $ to ='yyy';
+
+move ($ from, $ to)
+  or die "Can't move \" $ from \ "to \" $ to \ ": $!";
+</ pre>
+
+The file copy will fail if the file does not exist, or if the destination directory does not have write permissions.
+
+<h3> Related articles </ h3>
 
 <ul>
   <li>
-    <a href="/blog/20080521121142.html">ファイルをコピーする</a>
-  </li>
+    <a href="/blog/20080521121142.html"> Copy the file </a>
+  </ li>
   <li>
-    <a href="/blog/20080522121142.html">ファイルを移動する(ファイル名を変更する)</a>
-  </li>
-</ul>
-
+    <a href="/blog/20080522121142.html"> Move the file (rename the file) </a>
+  </ li>
+</ ul>

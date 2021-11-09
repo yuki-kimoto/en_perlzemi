@@ -1,128 +1,127 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>Perlのリスト</h2>
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Perl list </ h2>
 
 
 
-<strong>リスト</strong>とは複数の値の並びを表現したものです。
-
-<pre>
-# リスト
-('a', 'b', 'c', 'd')
-</pre>
-
-リストは<a href="/blog/20161012147627.html">配列</a>や<a href="/blog/20161013147635.html">ハッシュ</a>に代入して、初期化に利用できます。
+A <strong> list </ strong> is a representation of a sequence of multiple values.
 
 <pre>
-# 配列への代入
-my @array = ('a', 'b', 'c', 'd');
+#List
+('a','b','c','d')
+</ pre>
 
-# ハッシュへの代入
-my %hash = ('a', 'b', 'c', 'd');
-</pre>
-
-<h3>配列とリストの違い</h3>
-
-配列とリストは、似ていますが、実際にはいくつか異なる部分があります。
-
-一つ目の違いは、言語的な意味での違いです。配列は変数であり、リストは表記法であるということです。
-
-二つ目は、<a href="/blog/20080608121292.html">スカラコンテキスト</a>で評価された場合に値が異なるということです。
-
-次のコードを見てください。「$num1」と「$num2」はどうなると思いますか?
+Lists can be assigned to <a href="/blog/20161012147627.html"> arrays </a> or <a href="/blog/20161013147635.html"> hashes </a> for initialization. ..
 
 <pre>
-# スカラコンテキストでリストを評価
-my $num1 = (5, 6, 7);
+#Assignment to array
+my @array = ('a','b','c','d');
 
-# スカラコンテキストで配列を評価
+#Assignment to hash
+my% hash = ('a','b','c','d');
+</ pre>
+
+<h3> Difference between array and list </ h3>
+
+Arrays and lists are similar, but in reality there are some differences.
+
+The first difference is in the linguistic sense. Arrays are variables and lists are notations.
+
+The second is that the values ​​are different when evaluated in <a href="/blog/20080608121292.html"> scalar context </a>.
+
+Take a look at the following code. What do you think about "$ num1" and "$ num2"?
+
+<pre>
+#Evaluate list in scalar context
+my $ num1 = (5, 6, 7);
+
+#Evaluate arrays in scalar context
 my @nums = (5, 6, 7);
-my $num2 = @nums;
+my $ num2 = @nums;
 
-</pre>
+</ pre>
 
-答えは「$num1」は「7」になり、$num2は「3」になります。
+The answer is that "$ num1" becomes "7" and $ num2 becomes "3".
 
-スカラコンテキストで、リストを評価すると「リストの最後の値」が返り、配列を評価すると「配列の個数」が返るからです。
+In a scalar context, evaluating a list returns the "last value in the list", and evaluating an array returns the "number of arrays".
 
-<h3>ハッシュ用のリストの表記法</h3>
+<h3> List notation for hashing </ h3>
 
-ハッシュに代入を行うために、「=>」を使用した簡易記法が用意されています。
-
-<pre>
-# ハッシュ用の記法
-my %hash = (a => 'b', c => 'd');
-</pre>
-
-記法が異なるだけで通常のリストとまったく同じ意味です。=>の左側の文字列については英数字とアンダーバーのみで構成される場合にシングルクォートを省略することができます。シングルクォートを省略する記法が好んで用いられます。
-
-<h3>リスト代入</h3>
-
-リストを左辺に使うことによってリスト代入を行うことができます。複数の値を、複数の変数に代入できます。
+A simple notation using "=>" is provided to make assignments to hashes.
 
 <pre>
-my ($var1, $var2) = (3, 5);
-</pre>
+# Hash notation
+my% hash = (a =>'b', c =>'d');
+</ pre>
 
-<a href="/blog/20080108132865.html">コマンドライン引数</a>の受け取りや、<a href="/blog/20101130129876.html">サブルーチン</a>での引数の受け取りで、リスト代入を使うことができます。
+It has exactly the same meaning as a regular list, only the notation is different. For the string to the left of =>, single quotes can be omitted if it consists only of alphanumeric characters and underscores. The notation that omits single quotes is preferred.
+
+<h3> List assignment </ h3>
+
+You can assign a list by using the list on the left side. You can assign multiple values ​​to multiple variables.
 
 <pre>
-# コマンドライン引数の受け取り
-my ($var1, $var2) = @ARGV;
+my ($ var1, $ var2) = (3, 5);
+</ pre>
 
-# サブルーチンでの引数の受け取り
+List by receiving <a href="/blog/20080108132865.html"> command line arguments </a> and receiving arguments in <a href="/blog/20101130129876.html"> subroutine </a> You can use assignment.
+
+<pre>
+#Receiving command line arguments
+my ($ var1, $ var2) = @ARGV;
+
+#Receiving arguments in a subroutine
 sub foo {
-  my ($var1, $var2) = @_;
+  my ($ var1, $ var2) = @_;
   ...
 }
-</pre>
+</ pre>
 
-これは使用頻度が高いので、ぜひ覚えておきましょう。
+This is used frequently, so be sure to remember it.
 
-<h3>文字列リスト演算子</h3>
+<h3> String list operator </ h3>
 
-文字列リスト演算子を使用すると、文字列のリストを簡単に表現することができます。
+The string list operator makes it easy to represent a list of strings.
 
 <pre>
-qw(Cat Mouse Dog)
-</pre>
+qw (Cat Mouse Dog)
+</ pre>
 
-文字列リスト演算子の詳しい解説については以下の記事を参考にしてください。
+Please refer to the following articles for a detailed explanation of the string list operator.
 
 <ul>
   <li>
-    <a href="/blog/20080222120369.html">文字列リスト演算子</a>
-  </li>
-</ul>
+    <a href="/blog/20080222120369.html"> String list operator </a>
+  </ li>
+</ ul>
 
-<h3>空のリストによる自動的な初期化</h3>
+<h3> Automatic initialization with empty list </ h3>
 
-配列とハッシュは宣言されると同時に、空のリストによって初期化されます。
+Arrays and hashes are declared and initialized with an empty list.
 
 <pre>
-# 以下は同じ
+# The following is the same
 my @nums;
 my @nums = ();
-</pre>
+</ pre>
 
 <pre>
-# 以下は同じ
-my %score;
-my %score = ();
-</pre>
-
+# The following is the same
+my% score;
+my% score = ();
+</ pre>

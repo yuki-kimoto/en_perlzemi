@@ -1,52 +1,51 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>さくらのレンタルサーバーで「505 Internal Server」エラーが発生する場合の対処方法</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> What to do if a "505 Internal Server" error occurs on Sakura's rental server </ h2>
 
 
 
-Mojoliciousのアプリケーションがローカル環境では実行できるけれど、レンタルサーバーにアップロードしてCGIとして動かそうとしたときに動かないということはよくあります。以下の原因が考えられるので順番に対処しましょう。
+Mojolicious applications can run locally, but often don't work when I upload them to a rental server and try to run them as CGI. The following causes are possible, so let's deal with them in order.
 
-<h3>404 Not Foundが表示される</h3>
+<h3> 404 Not Found is displayed </ h3>
 
-URLが間違っています。正しいURLをブラウザに入力しましょう。
+The URL is incorrect. Enter the correct URL in your browser.
 
-<h3>スクリプトの内容が表示される</h3>
+<h3> The contents of the script are displayed </ h3>
 
-拡張子が「.cgi」以外になっていませんか。「.cgi」という拡張子がないとCGIスクリプトとして実行されません。
+Is the extension other than ".cgi"? It will not be executed as a CGI script without the ".cgi" extension.
 
-<h3>モジュールのロードができていない</h3>
+<h3> Module not loaded </ h3>
 
-ローカルの環境には、CPANモジュールが存在するのに、サーバー上には存在していないということがあります。以下の記述をスクリプトの先頭に追加すると、読み込みに失敗した場合のエラー内容が表示されます。
+In your local environment, the CPAN module may be present, but not on the server. If you add the following description to the beginning of the script, the error content when loading fails will be displayed.
 
 <pre>
-use CGI::Carp 'fatalsToBrowser';
-</pre>
+use CGI :: Carp'fatalsToBrowser';
+</ pre>
 
-<h3>改行コードの変換ミス</h3>
+<h3> Line feed code conversion error </ h3>
 
-Windowsからレンタルサーバにアプリケーションをアップロードする場合は、改行コードを変換する必要があります。ASCIIモードで転送を行っているかを確認しましょう。app.cgiのみASCIIモードで転送されていればよいです。他のスクリプトについては、どちらのモードであってもかまいません。
+When uploading an application from Windows to a rental server, you need to convert the line feed code. Make sure you are transferring in ASCII mode. Only app.cgi needs to be transferred in ASCII mode. For other scripts, it doesn't matter which mode you use.
 
-<h3>CGIスクリプトに実行権限がない</h3>
+<h3> CGI script does not have execute permission </ h3>
 
-CGIスクリプトに実行権限がない場合はエラーになります。CGIスクリプトの実行権限が755になっているかを確認しましょう(suEXEC環境の場合。さくらレンタルサーバーはsuEXEC環境)。app.cgiの権限だけ変える必要があり、その他のファイルについては大丈夫です。
+If the CGI script does not have execute permission, an error will occur. Make sure that the execution permission of the CGI script is 755 (in the case of suEXEC environment. Sakura rental server is in the suEXEC environment). You only need to change the permissions of app.cgi, other files are fine.
 
-<h3>一行目のPerlのパスの間違い</h3>
+<h3> Perl path error on the first line </ h3>
 
-一行目のPerlのパスが間違っているとエラーになります。
+An error will occur if the Perl path on the first line is incorrect.
 <pre>
-#!/usr/bin/perl
-</pre>
-
+#! / usr / bin / perl
+</ pre>

@@ -1,58 +1,57 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>FindBin - スクリプトが存在するディレクトリのパスを取得</h2>
+  </ li>
+</ ol>
+<h2> FindBin --Get the path to the directory where the script resides </ h2>
 
 
 
-<strong>FindBin</strong>モジュールを使用すると、スクリプトが存在するディレクトリのパスを取得することができます。
+You can use the <strong> FindBin </ strong> module to get the path of the directory where the script resides.
 
 <pre>
-# モジュールの読み込み
+#Load module
 use FindBin;
-</pre>
+</ pre>
 
-スクリプトが存在するディレクトリのパスは<strong>$FindBin::Bin</strong>という<a href="/blog/20080308120495.html">パッケージ変数</a>に代入されています。
-
-<pre>
-# スクリプトが存在するディレクトリのパスを取得
-my $script_dir = $FindBin::Bin;
-</pre>
-
-FindBinは使い方が少し変わったモジュールですが、スクリプトの存在するディレクトリのパスを取得するための標準的な方法です。
-
-<h4>モジュールの読み込みパスを設定</h4>
-
-FindBinモジュールは<a href="/blog/20100525127859.html">lib</a>モジュールと一緒に利用され、モジュールの読み込みパスを設定することが多いです。
-
-以下のようにすると、スクリプトの存在するディレクトリの中にあるlibというディレクトリが、モジュールの読み込みパスに設定できます。
+The path to the directory where the script resides is assigned to the <strong> $ FindBin :: Bin </ strong> <a href="/blog/20080308120495.html"> package variable </a>.
 
 <pre>
-# スクリプトの存在するディレクトリのlibディレクトリを検索パスに追加
+#Get the path of the directory where the script resides
+my $ script_dir = $ FindBin :: Bin;
+</ pre>
+
+FindBin is a slightly unusual module, but it's the standard way to get the path to the directory where the script resides.
+
+<h4> Set the module loading path </ h4>
+
+The FindBin module is used together with the <a href="/blog/20100525127859.html"> lib </a> module and often sets the module loading path.
+
+By doing the following, you can set the directory called lib in the directory where the script exists as the loading path of the module.
+
+<pre>
+# Add the lib directory of the directory where the script exists to the search path
 use FindBin;
-use lib "$FindBin::Bin/lib";
-</pre>
+use lib "$ FindBin :: Bin / lib";
+</ pre>
 
-<h4>スクリプトのベース名</h4>
+<h4> Script base name </ h4>
 
-スクリプトのベース名は<strong>$FindBin::Script</strong>で取得することができます。
+You can get the base name of the script with <strong> $ FindBin :: Script </ strong>.
 
 <pre>
 use FindBin;
-$FindBin::Script
-</pre>
-
+$ FindBin :: Script
+</ pre>

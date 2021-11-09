@@ -1,34 +1,33 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20110120130016.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20110120130016.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Apacheのmod_proxyを使った場合に"Service Temporarily Unavailable"エラーが出る場合の対処法 / Mojoliciousリファレンス</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> What to do if you get a "Service Temporarily Unavailable" error when using Apache mod_proxy / Mojolicious Reference </ h2>
 
 
 
-MojoliciousアプリケーションをApacheのmod_proxyを使って、アクセスしようとした場合に、"Service Temporarily Unavailable"がでることがあります。考えられる原因のひとつは、SELinuxが有効になっているということです。プロジェクトとしてSELinuxを無効にしてもよいのであれば、無効にするのが楽な対処方です。
+If you try to access a Mojolicious application using Apache mod_proxy, you may get "Service Temporarily Unavailable". One of the possible causes is that SELinux is enabled. If you can disable SELinux as a project, disabling it is an easy workaround.
 
-SELinuxの設定ファイルを編集します。
+Edit the SELinux configuration file.
 <pre>
-vi /etc/selinux/config
-</pre>
+vi / etc / selinux / config
+</ pre>
 
-以下の項目に変更してください。
+Please change to the following items.
 <pre>
-SELINUX=disabled
-</pre>
+SELINUX = disabled
+</ pre>
 
-変更後はサーバーを再起動してください。
-
+Please restart the server after making changes.

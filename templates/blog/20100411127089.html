@@ -1,93 +1,92 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>Perlの例外処理の仕組みを理解しよう</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Let's understand how Perl exception handling works </ h2>
 
 
 
-Perlではエラーの通知に<strong>例外処理</strong>を使用することができます。例外処理はとても簡単です。例外を発生させる方法と例外をキャッチする方法を覚えればよいだけだからです。
+Perl allows you to use <strong> exception handling </ strong> for error notification. Exception handling is very easy. All you have to do is learn how to raise an exception and how to catch it.
 
-<h3>例外を発生させる</h3>
+<h3> Raise an exception </ h3>
 
-例外を発生させるにはdie関数を使用します。dieが実行されるとプログラムはエラーステータスで終了します。dieには文字列を渡すことができます。
-
-<pre>
-# 例外を発生させる
-die $message;
-</pre>
-
-例外を発生させるサンプルを書いてみます。関数の中で値が正の整数ではなかった場合に例外を発生させるようにしています。プログラムはメッセージを表示して終了します。
+Use the die function to raise an exception. When die is executed, the program will exit with an error status. You can pass a string to die.
 
 <pre>
-# 値のチェック。正の整数ではないので例外が発生し、プログラムは終了する。
-is_int('a');
+# Raise an exception
+die $ message;
+</ pre>
+
+Let's write a sample that raises an exception. I am trying to raise an exception if the value is not a positive integer in the function. The program will display a message and exit.
+
+<pre>
+#Check value. Since it is not a positive integer, an exception will be thrown and the program will exit.
+is_int ('a');
 
 sub is_int {
-  my $num = shift;
+  my $ num = shift;
   
-  # 値が正の整数でない場合に例外を発生させる
-  die "\"$num\" must be number" unless $num =~ /^\d+$/;
+  # Throw an exception if the value is not a positive integer
+  die "\" $ num \ "must be number" unless $ num = ~ / ^ \ d + $ /;
 }
-</pre>
+</ pre>
 
-<h3>例外をキャッチする</h3>
+<h3> Catch exceptions </ h3>
 
-呼び出した関数で例外が発生したときにプログラムを終了させたくない場合は例外をキャッチすることができます。例外をキャッチするには<a href="/blog/20100312126967.html">eval</a>ブロックを使用します。
-
-<pre>
-eval { 例外が発生する処理 };
-</pre>
-
-例外が発生した場合die関数で指定されたメッセージは$@という特殊変数に格納されます。この$@を利用して例外が発生した場合の処理を書きます。
+You can catch an exception if you don't want the program to terminate when the called function raises an exception. Use the <a href="/blog/20100312126967.html"> eval </a> block to catch the exception.
 
 <pre>
-if ($@) {
-    # 例外が発生した場合の処理
+eval {Handling that raises an exception};
+</ pre>
+
+When an exception occurs, the message specified by the die function is stored in a special variable called $ @. Write the processing when an exception occurs using this $ @.
+
+<pre>
+if ($ @) {
+    # What to do if an exception occurs
 }
-</pre>
+</ pre>
 
-例外が発生したということはエラーが起こったということなので、たいていの場合はそのまま処理を続けてもうまくいきません。例外をキャッチする動機としては、リトライしてエラーから回復できる可能性のある場合(タイムアウトなどの場合)や、そのままプログラムが終了すると一時ファイルなどのゴミが残ってしまうので後処理を行う必要がある場合などが挙げられます。
+If an exception occurs, it means that an error has occurred, so in most cases it will not work if you continue processing. The motivation to catch the exception is when there is a possibility of recovering from the error by retrying (in the case of timeout etc.), or when the program ends as it is, garbage such as temporary files will remain, so post-processing is necessary. For example, the case.
 
-is_int関数で発生した例外をキャッチするサンプルです。
+This is a sample to catch the exception that occurred in the is_int function.
 
 <pre>
-# 例外をキャッチ
-eval { is_int('a') };
+# Catch exceptions
+eval {is_int ('a')};
 
-# 例外が発生した場合の処理
-if ($@) {
-  print "Exception occur: $@";
+# What to do if an exception occurs
+if ($ @) {
+  print "Exception occur: $ @";
 }
 
 sub is_int {
-  my $num = shift;
+  my $ num = shift;
   
-  # 値が正の整数でない場合に例外を発生させる
-  die "\"$num\" must be number." unless $num =~ /^\d+$/;
+  # Throw an exception if the value is not a positive integer
+  die "\" $ num \ "must be number." unless $ num = ~ / ^ \ d + $ /;
 }
-</pre>
+</ pre>
 
-<h3>モジュールで例外を発生させる場合</h3>
+<h3> When raising an exception in a module </ h3>
 
-モジュールを作成してその中の関数で例外を発生させる場合はCarpモジュールのcroak関数を使用します。croakは内部でdieを呼び出しています。dieと異なる点は、croakは呼び出し元の行番号を例外メッセージの中に含めてくれるということです。これによってモジュールの利用者がその関数やメソッドを呼び出した位置を知ることができます。
+If you want to create a module and raise an exception in the function in it, use the croak function of the Carp module. croak calls die internally. The difference from die is that croak includes the calling line number in the exception message. This allows the user of the module to know where the function or method was called.
 
 <pre>
-package YourModule;
+package Your Module;
 
-use Carp 'croak';
+use Carp'croak';
 
 sub func {
   
-  # 例外を発生させる
+  # Raise an exception
   croak "Error message";
 }
-</pre>
-
+</ pre>

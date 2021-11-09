@@ -1,47 +1,46 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>MIME::Base64 - base64形式にエンコード・デコード</h2>
+  </ li>
+</ ol>
+<h2> MIME :: Base64 --Encode and decode to base64 format </ h2>
 
 
 
-<strong>MIME::Base64</strong>モジュールを使用すると、データをbase64形式にエンコードすることができます。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use MIME::Base64 qw/encode_base64 decode_base64/;
-</pre>
-
-base64形式にエンコードするには<strong>encode_base64</strong>関数を使用します。
+The <strong> MIME :: Base64 </ strong> module allows you to encode your data into base64 format.
 
 <pre>
-# base64形式にエンコード
-my $b64_data = encode_base64 $data;
-</pre>
+#Loading modules and importing functions
+use MIME :: Base64 qw / encode_base64 decode_base64 /;
+</ pre>
 
-base64形式のデータをデコードするには<strong>decode_base64</strong>関数を使用します。
+Use the <strong> encode_base64 </ strong> function to encode to base64 format.
 
 <pre>
-# base64形式のデータをデコード
-my $data = decode_base64 $b64_data;
-</pre>
+Encode to # base64 format
+my $ b64_data = encode_base64 $ data;
+</ pre>
 
-<h3>MIME::Base64モジュールに関するFAQ</h3>
+Use the <strong> decode_base64 </ strong> function to decode base64 format data.
 
-Q. base64形式とは簡単にいうとどのようなものですか。
-A. 64文字の英数字のみを使ったデータ形式です。利用の観点でいうとバイナリデータやマルチバイト文字列を英数字のみの文字列に変換するのに利用されます。たとえば電子メールでは7bitの文字列以外のデータをやりとりすることができません。このような場合に添付ファイルなどのバイナリデータをbase64形式に変換します。
+<pre>
+Decode # base64 format data
+my $ data = decode_base64 $ b64_data;
+</ pre>
 
+<h3> FAQ about MIME :: Base64 module </ h3>
+
+Q. What is the base64 format in a nutshell?
+A. This is a data format that uses only 64 alphanumeric characters. From a usage point of view, it is used to convert binary data and multi-byte character strings to alphanumeric characters only. For example, e-mail cannot exchange data other than 7-bit character strings. In such a case, convert binary data such as attachments to base64 format.

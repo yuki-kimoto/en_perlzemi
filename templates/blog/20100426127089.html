@@ -1,102 +1,101 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Exporter - 関数をエクスポートする</h2>
+  </ li>
+</ ol>
+<h2> Exporter --Export function </ h2>
 
 
 
-<strong>Exporter</strong>モジュールを使用すると、モジュールから関数をエクスポートすることができます。
-
-<pre>
-# パッケージの宣言
-package YourModule;
-
-# Exporterを継承
-use Exporter 'import';
-
-# エクスポートする関数を記述
-our @EXPORT = qw/func1 func2/;
-
-# エクスポート可能な関数を記述
-our @EXPORT_OK = qw/func3 func4/;
-
-# 関数
-sub func1 { ... }
-sub func2 { ... }
-sub func3 { ... }
-sub func4 { ... }
-</pre>
-
-Exporterを使ってモジュールを作成すると、そのモジュールをuseしたときに関数がインポートされます。
-
-「use モジュール名;」という形でuseを実行した場合は@EXPORTに含まれる関数がインポートされます。
+The <strong> Exporter </ strong> module allows you to export a function from a module.
 
 <pre>
-# @EXPORTに含まれる関数(func1とfunc2)がインポートされる。
-use YourModule;
-</pre>
+#Package declaration
+package Your Module;
 
-「use モジュール名 引数1 引数2 ..」という形で実行した場合は@EXPORT_OKあるいは@EXPORTに含まれ、かつ引数で指定されている関数がインポートされます。
+Inherit #Exporter
+use Exporter'import';
+
+# Write the function to export
+our @EXPORT = qw / func1 func2 /;
+
+# Write an exportable function
+our @EXPORT_OK = qw / func3 func4 /;
+
+#Function
+sub func1 {...}
+sub func2 {...}
+sub func3 {...}
+sub func4 {...}
+</ pre>
+
+When you create a module using Exporter, the function is imported when you use the module.
+
+If you execute use in the form of "use module name;", the functions included in @EXPORT will be imported.
 
 <pre>
-# @EXPORT_OKあるいは@EXPORTに含まれる関数(func2とfunc3とfunc4)がインポートされる
-use YourModule qw/func2 func3 func4/;
-</pre>
+The functions (func1 and func2) included in # @EXPORT are imported.
+use Your Module;
+</ pre>
 
-@EXPORT, @EXPORT_OKはパッケージ変数です。
+When executed in the form of "use module name argument 1 argument 2 ..", the function included in @EXPORT_OK or @EXPORT and specified by the argument is imported.
 
-<h3>Exporterモジュールのエクスポートの仕組み</h3>
+<pre>
+# @EXPORT_OK or the functions contained in @EXPORT (func2, func3 and func4) are imported
+use YourModule qw / func2 func3 func4 /;
+</ pre>
 
-Exporterモジュールの仕組みについて少し解説したいと思います。まず知っておいてほしいことはuseを実行すると指定したモジュールのimportメソッドを自動的に呼び出すということです。この例ではYourModuleのimportメソッドを実行しようとします。
+@EXPORT, @EXPORT_OK are package variables.
 
-YourModuleにはimportメソッドは定義されていませんが、Exporterモジュールのimportメソッドをインポートしているので、Exporterのimportメソッドが呼び出されます。
+<h3> Exporter module export mechanism </ h3>
 
-Exporterのimportメソッドの中では呼び出し元のパッケージに関数をエクスポートする処理が記述されています。雰囲気が伝えることができるように@EXPORTに書かれた関数を呼び出し元のパッケージにエクスポートする処理を書いてみます。
+I would like to explain a little about how the Exporter module works. The first thing you should know is that when you run use, it will automatically call the import method of the specified module. This example tries to execute the import method of YourModule.
+
+The import method is not defined in YourModule, but since you are importing the import method of the Exporter module, the import method of the Exporter is called.
+
+In the import method of Exporter, the process of exporting the function to the calling package is described. Let's write a process to export the function written in @EXPORT to the calling package so that the atmosphere can be conveyed.
 
 <pre>
 sub import {
-  # useの第一引数(今回の例だとYourModule)
-  my $class = shift;
+  First argument of # use (YourModule in this example)
+  my $ class = shift;
 
-  # 呼び出し元のパッケージ(今回の例だとmain)
-  my $caller = caller;
+  #Caller's package (main in this example)
+  my $ caller = caller;
 
-  # 関数のエクスポート
-  no strict 'refs';
-  foreach my $func (@{"${class}::EXPORT"}) {
-      *{"${caller}::$func"} = \&{"${class}::$func"};
+  #Export function
+  no strict'refs';
+  foreach my $ func (@ {"$ {class} :: EXPORT"}) {
+      * {"$ {caller} :: $ func"} = \ & {"$ {class} :: $ func"};
   }
 }
-</pre>
+</ pre>
 
-<h3>Exporterモジュールはどの書き方がよいの</h3>
+<h3> Which way to write the Exporter module </ h3>
 
-Exporterモジュールには、複数の書き方があって次のような書き方ができます。
+There are multiple ways to write the Exporter module, and you can write as follows.
 
 <pre>
-# その1
-use Exporter 'import';
+# Part 1
+use Exporter'import';
 
-# その2
-push @ISA, 'Exporter';
+# 2
+push @ISA,'Exporter';
 
-# その3
-use base 'Exporter';
-</pre>
+# 3
+use base'Exporter';
+</ pre>
 
-ここでは、もっとも直感的であると思われる一番目を紹介しています。
-
+Here is the first one that seems to be the most intuitive.

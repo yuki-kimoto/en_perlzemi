@@ -1,313 +1,313 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>サブルーチンの作成方法</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> How to create a subroutine </ h2>
 
 
 
-サブルーチンの作成方法を学びましょう。サブルーチンとは、あるまとまった機能に名前をつけて呼び出せるようにする機能のことです。他の言語で関数と呼ばれる機能と同じです。Perlの標準関数については<a href="/blog/20161004147558.html">Perlの標準関数</a>で解説しています。
+Learn how to create a subroutine. A subroutine is a function that allows you to name and call a set of functions. It is the same as a function called a function in other languages. Perl standard functions are explained in <a href="/blog/20161004147558.html"> Perl standard functions </a>.
 
-<h3>サブルーチンの定義</h3>
+<h3> Subroutine definition </ h3>
 
-サブルーチンを定義するには次のようにします。
+To define a subroutine:
 
 <pre>
-sub サブルーチン名 {
-  # 処理
+sub Subroutine name {
+  # process
 }
-</pre>
+</ pre>
 
-簡単なサブルーチンとして二つの値の和を求めるtotalという名前をつけたサブルーチンを定義してみましょう。
+As a simple subroutine, let's define a subroutine named total that finds the sum of two values.
 
 <pre>
 sub total {
-  # (1)引数の受け取り
-  my ($num1, $num2) = @_;
+  # (1) Receiving arguments
+  my ($ num1, $ num2) = @_;
 
-  # (2)処理
-  my $total = $num1 + $num2;
+  # (2) Processing
+  my $ total = $ num1 + $ num2;
 
-  # (3)戻り値
-  return $total;
+  # (3) Return value
+  return $ total;
 }
-</pre>
+</ pre>
 
-(1)引数は「<strong>@_</strong>」という変数に格納されています。引数にわかりやすい名前をつけるために、$num1と$num2という変数に代入しなおしています。(2)二つの値を合計しています。(3)戻り値は<a href="/blog/20171111151040.html">return関数</a>を使って返却することができます。
+(1) The argument is stored in the variable "<strong> @ _ </ strong>". I've reassigned the variables $ num1 and $ num2 to give the arguments descriptive names. (2) The two values ​​are totaled. (3) The return value can be returned using the <a href="/blog/20171111151040.html"> return function </a>.
 
-<h3>サブルーチンの呼び出し</h3>
+<h3> Subroutine call </ h3>
 
-サブルーチンを呼び出すには次のようにします。引数を渡して、処理した結果を戻り値として受け取ることができます。
+To call the subroutine: You can pass an argument and receive the processed result as a return value.
 
 <pre>
-戻り値 = サブルーチン(引数);
-</pre>
+Return value = Subroutine (argument);
+</ pre>
 
-では先ほど作成した、total関数を呼び出してみましょう。
+Now let's call the total function we created earlier.
 
 <pre>
 use strict;
 use warnings;
 
-# (1)引数に渡す値
-my $num1 = 1;
-my $num2 = 2;
+# (1) Value to be passed as an argument
+my $ num1 = 1;
+my $ num2 = 2;
 
-# (2)サブルーチンの呼び出し
-my $total = total($num1, $num2);
+# (2) Subroutine call
+my $ total = total ($ num1, $ num2);
 
-# (3)サブルーチンの定義
+# (3) Subroutine definition
 sub total {
-  my ($num1, $num2) = @_;
+  my ($ num1, $ num2) = @_;
 
-  my $total = $num1 + $num2;
+  my $ total = $ num1 + $ num2;
 
-  return $total;
+  return $ total;
 }
-</pre>
+</ pre>
 
-(1)引数に渡すための値です。(2)サブルーチンの呼び出しです。戻り値は$totalに代入されます。1と2を足した結果が返ってくるので$totalは3になります。(3)サブルーチンの定義は、呼び出しの下におくことも可能です。サブルーチンの定義の読み込みは、コンパイル時に行われるからです。
+(1) This is the value to be passed to the argument. (2) This is a subroutine call. The return value is assigned to $ total. The result of adding 1 and 2 is returned, so $ total is 3. (3) Subroutine definitions can also be placed under the call. This is because the subroutine definition is read at compile time.
 
-<h3>サブルーチンの引数</h3>
+<h3> Subroutine arguments </ h3>
 
-サブルーチンの引数の受け取り方について解説します。
+Explains how to receive subroutine arguments.
 
-<h4>ひとつの引数を受け取る</h4>
+<h4> Receive one argument </ h4>
 
-ひとつの引数を受け取るときによく使われるのはshift関数を使う方法です。
+A common way to receive a single argument is to use the shift function.
 
 <pre>
 sub func {
-  my $arg = shift;
+  my $ arg = shift;
 }
-</pre>
+</ pre>
 
-サブルーチンの中でshift関数を呼び出したときは「@_」がshift関数の暗黙の引数になります。つまり上記は
+When you call the shift function in a subroutine, "@_" is the implicit argument of the shift function. So the above is
 
 <pre>
 sub func {
-  my $arg = shift @_;
+  my $ arg = shift @_;
 }
-</pre>
+</ pre>
 
-と同じになります。
+Will be the same as.
 
-<h4>複数の引数を受け取る</h4>
+<h4> Receive multiple arguments </ h4>
 
-複数の引数を受け取るときによく使われるのはリスト代入という方法です。
+A commonly used method when receiving multiple arguments is list assignment.
 
 <pre>
 sub func {
-  my ($arg1, $arg2) = @_;
+  my ($ arg1, $ arg2) = @_;
 }
-</pre>
+</ pre>
 
-@_のひとつ目の要素は$arg1に、ふたつめの要素は$arg2に代入されます。
+The first element of @_ is assigned to $ arg1 and the second element is assigned to $ arg2.
 
-また引数が同一種類の場合は、配列に受け取るようにします。
+If the arguments are of the same type, they should be received in an array.
 
 <pre>
 sub func {
   my @args = @_;
 }
-</pre>
+</ pre>
 
-<h4>引数に直接アクセスする</h4>
+<h4> Access arguments directly </ h4>
 
-「@_」は配列ですが、この配列に直接アクセスすることも可能です。
-
-<pre>
-#第一引数
-$_[0]
-
-#第二引数
-$_[1]
-</pre>
-
-この書き方は可読性を下げますので、パフォーマンスがどうしても必要という場合以外は使わないことをお勧めします。
-
-<h4>サブルーチンの引数に配列を渡す</h4>
-
-サブルーチンに、配列を渡すことができます。
+"@ _" Is an array, but you can also access this array directly.
 
 <pre>
-# 渡す側
-my $num_total = sum(@nums);
+#First argument
+$ _ [0]
 
-#受け取る側
-sub sum{
-  my @nums = @_; 
-  # 処理
+#Second argument
+$ _ [1]
+</ pre>
+
+This style of writing reduces readability and is recommended not to be used unless performance is absolutely necessary.
+
+<h4> Pass an array as a subroutine argument </ h4>
+
+You can pass an array to a subroutine.
+
+<pre>
+# Passing side
+my $ num_total = sum (@nums);
+
+#Recipient
+sub sum {
+  my @nums = @_;
+  # process
 }
-</pre>
+</ pre>
 
-<h4>サブルーチンの引数にハッシュを渡す</h4>
+<h4> Pass a hash as a subroutine argument </ h4>
 
-サブルーチンに、ハッシュを渡すこともできます。受け取る側では、@_をハッシュに代入してあげます。Perlでは配列の中身はリストですので、ハッシュに代入することができます。
+You can also pass a hash to the subroutine. On the receiving side, @_ will be assigned to the hash. In Perl, the contents of an array are lists, so you can assign them to hashes.
 
 <pre>
-# 渡す側
-my $examin_total = sum_examin(%examin); 
+# Passing side
+my $ examin_total = sum_examin (% examin);
 
-# 受け取る側
-sub sum_examin{
-  my %examin = @_;
-  # 処理
+#Recipient
+sub sum_examin {
+  my% examin = @_;
+  # process
 }
-</pre>
+</ pre>
 
-<h4>サブルーチンに複数の配列を渡したい</h4>
+<h4> I want to pass multiple arrays to a subroutine </ h4>
 
-サブルーチンに複数の配列を渡したい場合は配列のリファレンスとして渡す必要があります。
+If you want to pass multiple arrays to a subroutine, you need to pass them as an array reference.
 
 <pre>
-my @array1;
-my @array2;
+my @ array1;
+my @ array2;
 
-func(\@array1, \@array2);
+func (\ @ array1, \ @ array2);
 
 sub func {
-  my ($array1, $array2) = @_;
+  my ($ array1, $ array2) = @_;
 }
-</pre>
+</ pre>
 
-以下のように二つの配列を渡してしまうとひとつの配列になってしまいうまくいきません。
+If you pass two arrays as shown below, it will become one array and it will not work.
 
 <pre>
-my @array1;
-my @array2;
+my @ array1;
+my @ array2;
 
-func(@array1, @array2);
+func (@ array1, @ array2);
 
 sub func {
-  # ひとつの配列になってしまう
+  # It becomes one array
   my @array = @_;
 }
-</pre>
+</ pre>
 
-<h4>サブルーチンに配列とハッシュを区別して渡す</h4>
+<h4> Pass arrays and hashes separately to subroutines </ h4>
 
-サブルーチンに配列とハッシュを両方わたしたいときはどうすればいいでしょうか。そのような場合は、配列のリファレンス、ハッシュのリファレンスを使う必要があります。
+What if I want to put both an array and a hash in a subroutine? In such cases, you need to use array references and hash references.
 
 <pre>
-# 渡す側
-my $max_num = summary([1, 2, 3], {how => 'max'});
+# Passing side
+my $ max_num = summary ([1, 2, 3], {how =>'max'});
 
-# 受け取る側
+#Recipient
 sub summary {
-  my ($nums, $option) = @_; 
-  # 処理                            
+  my ($ nums, $ option) = @_;
+  # process                            
 }
-</pre>
+</ pre>
 
-<h4>サブルーチンの引数で「ハッシュ」と「ハッシュのリファレンス」の両方を受け取れるようにする</h4>
+<h4> Allow both "hash" and "hash reference" to be received as subroutine arguments </ h4>
 
-サブルーチンでハッシュあるいはハッシュのリファレンスを受け取るには次のように記述します。
+To receive a hash or hash reference in a subroutine, write:
 
 <pre>
-func(name => 'Ken', age => 19);
-func({name => 'Ken', age => 19});
+func (name =>'Ken', age => 19);
+func ({name =>'Ken', age => 19});
 
 sub func {
-  # 場合に応じてハッシュのリファレンスに変換
-  my $arg = ref $_[0] eq 'HASH' ? $_[0] : {@_};
+  # Convert to hash reference as needed
+  my $ arg = ref $ _ [0] eq'HASH'? $ _ [0]: {@_};
 }
-</pre>
+</ pre>
 
-引数がハッシュのリファレンスだった場合は、そのまま代入をおこない、ハッシュだった場合は、ハッシュのリファレンスに変換します。$_[0]は引数である@_の一つ目の要素です。
+If the argument is a hash reference, it is assigned as it is, and if it is a hash, it is converted to a hash reference. $ _ [0] is the first element of the argument @_.
 
-<h3>引数の受け取り方の典型的なパターン</h3>
+<h3> Typical pattern of how to receive arguments </ h3>
 
-典型的な引数の受け取り方のパターンを紹介します。
+Here is a typical pattern of how to receive arguments.
 
-<h4>(1) 複数のスカラー</h4>
+<h4> (1) Multiple scalars </ h4>
 <pre>
-search('aiueo', 'eo', 2);
+search ('aiueo','eo', 2);
 
 sub search {
-  my ( $str, $search, $offset ) = @_;
+  my ($ str, $ search, $ offset) = @_;
 }
-</pre>
+</ pre>
 
-リストで受け取って、受け取り側でリストのそれぞれの値をスカラーに代入します。
+Receive in a list and assign each value in the list to a scalar on the receiving side.
 
-<h4>(2) シンプルなリスト</h4>
+<h4> (2) Simple list </ h4>
 
 <pre>
-average(1 ,2 ,3 ,4 ,5);
+average (1,2,3,4,5);
 
 sub average {
   my @nums = @_;
 }
-</pre>
+</ pre>
 
-リストで受け取って、配列に代入します。
+Receive it in a list and assign it to an array.
 
-<h4>(3) ひとつのスカラーとリスト</h4>
+<h4> (3) One scalar and list </ h4>
 
 <pre>
-search_file('file', 'apple', 'dog');
+search_file ('file','apple','dog');
 
 sub search_file {
-  my ($file, @search_list) = @_;
+  my ($ file, @search_list) = @_;
 }
-</pre>
+</ pre>
 
-第1引数はスカラーに代入、第2引数以降は配列に代入します。
+The first argument is assigned to the scalar, and the second and subsequent arguments are assigned to the array.
 
-<h4>(4) シンプルなハッシュ</h4>
+<h4> (4) Simple hash </ h4>
 
 <pre>
-search_arg_hash(str => 'aiueo', search => 'eo', offset => 2);
+search_arg_hash (str =>'aiueo', search =>'eo', offset => 2);
 
-sub search_arg_hash{
-  my %arg = @_;
-  my ($str, $search, $offset) = @arg{'str', 'search', 'offset'};
+sub search_arg_hash {
+  my% arg = @_;
+  my ($ str, $ search, $ offset) = @arg {'str','search','offset'};
 }
-</pre>
+</ pre>
 
-受け取り側で、ハッシュに代入します。引数の個数が増えた場合は、ハッシュを用いて、引数に名前を与えてあげたほうが、親切なインターフェイスになります。
+Substitute in the hash on the receiving side. If the number of arguments increases, it is a nice interface to give the arguments a name using a hash.
 
-ハッシュをスカラーに代入しなおす必要は必ずしもありませんが、代入しなおしたほうが見やすくコーディングしやすくなることが多いです。
+It is not always necessary to reassign the hash to the scalar, but it is often easier to see and code.
 
-<h4>(5) ひとつのスカラーとハッシュ</h4>
+<h4> (5) One scalar and hash </ h4>
 
 <pre>
-parse_file('in_file', out_file => 'out_file', search_path => 'dir');
+parse_file ('in_file', out_file =>'out_file', search_path =>'dir');
 
-sub parse_file{
-  my ($in_file, %opt) = @_;
-  my ($out_file, $search_path) = @opt{'out_file', 'search_path'};
+sub parse_file {
+  my ($ in_file,% opt) = @_;
+  my ($ out_file, $ search_path) = @opt {'out_file','search_path'};
   return;
 }
-</pre>
+</ pre>
 
-第１引数をスカラーに、第２引数以降をハッシュに代入します。第一引数が必須の引数で、そのほかの引数はオプションと考えられる場合は、このインターフェイスが使えます。
+Assign the first argument to the scalar and the second and subsequent arguments to the hash. You can use this interface if the first argument is a required argument and the other arguments are considered optional.
 
-<h3>サブルーチンの戻り値</h3>
+<h3> Subroutine return value </ h3>
 
-<h4>スカラ値を戻り値として返却</h4>
+<h4> Return the scalar value as the return value </ h4>
 
-サブルーチンの戻り値としてはスカラ値を返すのが基本です。
+Basically, the scalar value is returned as the return value of the subroutine.
 
 <pre>
 sub func {
-  my $name = 'Ken';
+  my $ name ='Ken';
 
-  return $name;
+  return $ name;
 }
-</pre>
+</ pre>
 
-<h4>配列やハッシュを戻り値として返却</h4>
+<h4> Return an array or hash as a return value </ h4>
 
-Perlではリスト(配列やハッシュ)を返却することもできます。
+Perl can also return lists (arrays and hashes).
 
 <pre>
 func {
@@ -315,296 +315,296 @@ func {
 
   return @nums;
 }
-</pre>
+</ pre>
 
-ただし、この方法はあまりお勧めしません。以下で解説する「配列のリファレンス」「ハッシュのリファレンス」を返す方法をお勧めします。
+However, this method is not recommended.The recommended method is to return the "array reference" and "hash reference" described below.
 
-また<a href="/blog/20080610121319.html">wantarray関数</a>で、呼び出しもとのコンテキストに応じて引数を返却することもできますが、余りお勧めしません。コンテキストに応じて戻り値を変えるとユーザは、スカラコンテキストを強制するために、ある位置では「scalar func()」という記述をせざるを得なくなるのが理由です。
+You can also use the <a href="/blog/20080610121319.html"> wantarray function </a> to return arguments depending on the context of the caller, but this is not recommended. The reason is that changing the return value depending on the context forces the user to write "scalar func ()" at some point to enforce the scalar context.
 
-<h4>リファレンスを戻り値として返却</h4>
+<h4> Return reference as return value </ h4>
 
-配列のリファレンスやハッシュのリファレンスもスカラ値ですので戻り値として返すことができます。
+Array references and hash references are also scalar values, so they can be returned as return values.
 
 <pre>
-# 戻り値として配列のリファレンスを返す
+# Returns an array reference as a return value
 sub func {
-  my $nums = [1, 2, 3];
+  my $ nums = [1, 2, 3];
 
-  return $nums;
+  return $ nums;
 }
 
-# 戻り値としてハッシュのリファレンスを返す
+# Returns a hash reference as a return value
 sub func {
-  my $score = {math => 100, english => 90};
+  my $ score = {math => 100, english => 90};
 
-  return $score;
+  return $ score;
 }
-</pre>
+</ pre>
 
-<h4>単独のreturn</h4>
+<h4> Single return </ h4>
 
-単独のreturnは、スカラーコンテキストでは、未定義値 undef、リストコンテキストでは、空リスト () を、 を返します。
+A single return returns an undefined value undef in a scalar context and an empty list () in a list context.
 
 <pre>
 sub func_name {
-  # 処理 ...
+  # process ...
   return;
 }
-</pre>
+</ pre>
 
-未定義値を返したい場合は「単独のreturn」を使うのが、慣習になっています。「return undef」とするのは利点もあるのですが、利用頻度は少ないようです。
+It is customary to use a "single return" if you want to return an undefined value. "Return undef" has some advantages, but it seems to be used less frequently.
 
-<h3>デフォルト値の設定</h3>
+<h3> Setting default values ​​</ h3>
 
-サブルーチンの引数にデフォルト値を指定しておきたい場合があります。そのような場合、引数が、未定義ならば、デフォルト値を設定するという風に記述します。
-
-<pre>
-sub num {
-  my $num = shift;
-  unless (defined $num) {
-    $num = 0;
-  } 
-}
-</pre>
-
-Perl 5.10からは便利な「defined-or演算子」が導入されたので次のように書くこともできます。左辺が未定義だった場合は、右辺の値が代入されます。
+You may want to specify a default value for the subroutine argument. In such a case, if the argument is undefined, set the default value.
 
 <pre>
 sub num {
-  my $num = shift;
-  $num //= 0;
+  my $ num = shift;
+  unless (defined $ num) {
+    $ num = 0;
+  }
 }
-</pre>
+</ pre>
 
-<h3>エラー処理</h3>
+Since Perl 5.10 introduced a convenient "defined-or operator", you can also write: If the left side is undefined, the value on the right side will be assigned.
 
-サブルーチンにおけるエラー処理の方法を解説します。
+<pre>
+sub num {
+  my $ num = shift;
+  $ num // = 0;
+}
+</ pre>
 
-<h4>undefを返す方法</h4>
+<h3> Error handling </ h3>
 
-一番簡単な方法はサブルーチンが失敗したときに「undef」を返す方法です。単独のreturnを使ってundefを返します。
+Explains how to handle errors in subroutines.
+
+<h4> How to return undef </ h4>
+
+The easiest way is to return "undef" when the subroutine fails. Returns undef with a single return.
 
 <pre>
 sub foo {
   
-  my $error;
+  my $ error;
   
   # ...
   
-  if ($error)
+  if ($ error)
     return;
   }
 }
-</pre>
+</ pre>
 
-呼び出し側では、戻り値をチェックします。
+The caller checks the return value.
 
 <pre>
-my $ret = foo();
+my $ ret = foo ();
 
-unless (defined $ret) {
-  # エラー処理
+unless (defined $ ret) {
+  #Error handling
 }
-</pre>
+</ pre>
 
-<h4>例外を投げる方法</h4>
+<h4> How to throw an exception </ h4>
 
-お勧めの方法は、エラーが発生したときに例外を投げるものです。die関数を使って例外を投げます。
+The recommended method is to throw an exception when an error occurs. Use the die function to throw an exception.
 
 <pre>
 sub foo {
   
-  my $error;
+  my $ error;
   
   # ...
   
-  if ($error)
+  if ($ error)
     die "Error";
   }
 }
-</pre>
+</ pre>
 
-もしモジュールの中で例外を投げる場合は、Carpモジュールのcroak関数を利用しましょう。呼び出し元の情報がわかりやすいです。
+If you want to throw an exception in a module, use the carp module's croak function. The caller information is easy to understand.
 
 <pre>
-use Carp 'croak';
+use Carp'croak';
 
 sub foo {
   
-  my $error;
+  my $ error;
   
   # ...
   
-  if ($error)
+  if ($ error)
     croak "Error";
   }
 }
-</pre>
+</ pre>
 
-呼び出し側では次のようにして例外をキャッチします。<a href="/blog/20100312126967.html">eval</a>を使うことで、例外を捕獲できます。evalブロックの最後にセミコロンが必要なので注意しましょう。
+The caller catches the exception as follows: You can catch exceptions by using <a href="/blog/20100312126967.html"> eval </a>. Note that we need a semicolon at the end of the eval block.
 
 <pre>
 eval {
-  foo();
+  foo ();
 };
 
-if (my $error = $@) {
-  # エラー処理
+if (my $ error = $ @) {
+  #Error handling
 }
-</pre>
+</ pre>
 
-例外が発生した場合は「$@」という<a href="/blog/20161102147817.html">特殊変数</a>に、エラーの内容が格納されます。「$@」はグローバル変数で上書きされてしまう可能性があるので、すぐにレキシカル変数に代入しておくのがお勧めです。
+When an exception occurs, the content of the error is stored in the <a href="/blog/20161102147817.html"> special variable </a> called "$ @". Since "$ @" may be overwritten by a global variable, it is recommended to assign it to a lexical variable immediately.
 
-例外処理についての詳しい解説は「<a href="/blog/20100411127089.html">Perlの「例外処理」の仕組み - エラーの通知と検知</a>」をご覧ください。
+For a detailed explanation of exception handling, see "<a href="/blog/20100411127089.html"> Perl's" Exception Handling "Mechanism-Error Notification and Detection </a>".
 
-<h3>サブルーチン演習</h3>
+<h3> Subroutine exercises </ h3>
 
-サブルーチンをきちんと理解するための演習問題を作成しました。
-
-<ul>
-  <li>
-    <a href="/blog/20080620121405.html">cvs形式の文字列を、配列の配列に変換する</a>
-  </li>
-</ul>
-
-<blockquote>
-<b>学べるテーマ</b>
-CSV、配列の配列、ハッシュの配列、最大値と最小値、並び替え、バブルソート、昇順、降順
-</blockquote>
-
-<h3>サブルーチンへのリファレンス</h3>
-
-サブルーチンのリファレンスについての解説です。
+I have created an exercise to understand the subroutine properly.
 
 <ul>
   <li>
-    <a href="/blog/20080704121518.html">サブルーチンへのリファレンスを作成する</a>
-  </li>
-</ul>
+    <a href="/blog/20080620121405.html"> Convert a cvs format string to an array of arrays </a>
+  </ li>
+</ ul>
+
+<blockquote>
+<b> Learning themes </ b>
+CSV, array of arrays, array of hashes, maximum and minimum values, sort, bubble sort, ascending, descending order
+</ blockquote>
+
+<h3> Subroutine reference </ h3>
+
+This is a description of the subroutine reference.
+
+<ul>
+  <li>
+    <a href="/blog/20080704121518.html"> Create a reference to the subroutine </a>
+  </ li>
+</ ul>
 
 
 <blockquote>
-<b>学べるテーマ</b>
-サブルーチンのリファレンス、ポリモーフィズム、ディスパッチテーブル、シグナルハンドラ、イベント駆動型プログラミング
-</blockquote>
+<b> Learning themes </ b>
+Subroutine references, polymorphism, dispatch tables, signal handlers, event-driven programming
+</ blockquote>
 
-<h3>サブルーチンのテクニック</h3>
+<h3> Subroutine technique </ h3>
 
 
-<h4>関数の括弧の省略の規則</h4>
+<h4> Function parenthesis omission rules </ h4>
 
-標準関数の括弧は使用しても使用しなくてもかまいません。
-
-<pre>
-# 括弧あり
-print('Hello');
-
-# 括弧なし
-print 'Hello';
-</pre>
-
-モジュールからインポートした関数の場合も括弧を使用してもしなくてもかまいません。
+You may or may not use standard function parentheses.
 
 <pre>
-# モジュールからインポートした関数
-use Carp 'croak';
-croak 'Error';
-</pre>
+# With parentheses
+print ('Hello');
 
-関数の定義が関数を使用する位置より後ろにある場合は括弧が必須になります。
+# Without parentheses
+print'Hello';
+</ pre>
+
+You may or may not use parentheses for functions imported from the module.
 
 <pre>
-# 関数定義が後ろにある場合は括弧は必須
-func();
+#Functions imported from module
+use Carp'croak';
+croak'Error';
+</ pre>
+
+Parentheses are required if the function definition is after the position where the function is used.
+
+<pre>
+#Parentheses are required if the function definition is at the end
+func ();
 
 sub func {
   ...
 }
-</pre>
+</ pre>
 
-括弧を省略するかどうかにはこれといった判断基準はありません。「ほかの人が読みやすいかどうか」と「美感」で決めてください。
+There is no such criterion as to whether to omit the parentheses. Decide on "whether it is easy for others to read" and "beauty".
 
-※プロトタイプとの関係については、プロトタイプは非推奨なので書きません。
+* Regarding the relationship with the prototype, I will not write it because the prototype is deprecated.
 
-<h4>サブルーチンを再定義する(モンキーパッチ)</h4>
+<h4> Redefine subroutine (monkey patch) </ h4>
 
-Perlでは一度行ったサブルーチンの定義を再定義することが可能です。
+Perl allows you to redefine a subroutine definition once it has been done.
 
 <pre>
-sub sum { ... }
-no warnings 'redefine';
-sub sum { ... }
-</pre>
-サブルーチンを再定義すると、再定義の警告がでます。これを消すのに<strong>no warnings 'redefine';</strong>という記述を行うことで、警告を消すことができます。
+sub sum {...}
+no warnings'redefine';
+sub sum {...}
+</ pre>
+If you redefine a subroutine, you will be warned of the redefinition. You can remove the warnings by writing <strong> no warnings'redefine'; </ strong> to remove this.
 
-サブルーチンを上書きすることは、モンキーパッチとも呼ばれることがあります。バグがあるサブルーチンを発見した場合に、一時的に、サブルーチンを上書きして、パッチを当てるという使い方ができます。
+Overwriting a subroutine is sometimes referred to as a monkey patch. If you find a subroutine that has a bug, you can temporarily overwrite the subroutine and apply a patch.
 
-<h4>caller関数 - 実行している関数名を取得</h4>
+<h4> caller function-get the name of the function you are executing </ h4>
 
-実行している関数名を取得するにはcaller関数を使用します。caller関数については「<a href="/blog/20080424120904.html">caller関数 - 実行している関数名を取得</a>」をご覧ください。
+Use the caller function to get the name of the function you are executing. For the caller function, see "<a href="/blog/20080424120904.html"> caller function --get the name of the function being executed </a>".
 
-<h4>呼び出し元のサブルーチンの引数を取得する</h4>
+<h4> Get the arguments of the calling subroutine </ h4>
 
-caller関数を使用すれば、関数の呼び出し元のパッケージ名、サブルーチン名などを取得することができます。さらに呼び出し元のサブルーチンの引数を取得することも可能です。
+You can use the caller function to get the package name, subroutine name, etc. of the caller of the function. It is also possible to get the arguments of the calling subroutine.
 
-呼び出し元の関数の引数を取得するにはcaller関数をDB名前空間内でリストコンテキストで呼び出します。<b>@DB::args</b> に呼び出しもとの関数の引数が設定されます。DBはデバッグに利用されるモジュールです。名前空間をDBに一時的に変更するので、ブロックで囲っておきましょう。ブロックが終わると元の名前空間に戻ります。
+To get the arguments of the calling function, call the caller function in the DB namespace in the list context. <b> @DB :: args </ b> is set to the argument of the calling function. DB is a module used for debugging. Since the namespace will be temporarily changed to DB, let's enclose it in a block. When the block is finished, it will return to the original namespace.
 
 <pre>
 sub a2 {
   {
-    # DBパッケージに変更
-    package DB; 
+    #Change to DB package
+    package DB;
     
-    # caller関数をリストコンテキストで呼び出すと
+    When you call the #caller function in list context
     my @c = caller 1;
     
-    # @DB::argsに引数が格納される    
-    my @args = @DB::args;
+    Arguments are stored in # @DB :: args
+    my @args = @DB :: args;
   }
 }
-</pre>
+</ pre>
 
-<h4>サブルーチンのオートロード</h4>
+<h4> Subroutine autoloading </ h4>
 
-Perlでは、サブルーチンが定義されていなかった場合に実行される関数を定義するオートロードという機能があります。
-
-<ul>
-  <li>
-    <a href="/blog/20080709121562.html">サブルーチンのオートロード AUTOLOAD</a>
-  </li>
-</ul>
-
-<h4>サブルーチンの動的な作成</h4>
-
-Perlではサブルーチンを動的に作成することができます。
+Perl has a feature called autoloading that defines a function that will be executed if a subroutine isn't defined.
 
 <ul>
   <li>
-    <a href="/blog/20080716121630.html">サブルーチンの動的な生成</a>
-  </li>
-</ul>
+    <a href="/blog/20080709121562.html"> Subroutine autoload AUTOLOAD </a>
+  </ li>
+</ ul>
 
-<h4>クロージャーの作成</h4>
+<h4> Dynamic creation of subroutines </ h4>
 
-Perlにおける「クロージャー」の作成については「<a href="/blog/20080710121570.html">Perlで「クロージャー」を作成する方法</a>」をご覧ください。
-
-<h3>サブルーチンに関する読み物</h3>
+You can dynamically create subroutines in Perl.
 
 <ul>
   <li>
-    <a href="/blog/20080612121341.html">サブルーチンの定義はスコープの影響を受けない</a>
-  </li>
-  <li>
-    <a href="/blog/20080615121350.html">Perlのサブルーチンの柔軟性をC言語と比較してみる</a>
-  </li>
-  <li>
-    <a href="/blog/20080616121363.html">よいサブルーチンを作成するための心がけ</a>
-  </li>
-  <li>
-    <a href="/blog/20080620121405.html">サブルーチンの演習問題</a>
-  </li>
-</ul>
+    <a href="/blog/20080716121630.html"> Dynamic generation of subroutines </a>
+  </ li>
+</ ul>
 
-<h3>Perlの標準関数の一覧</h3>
+<h4> Creating a closure </ h4>
 
-Perlの標準関数の一覧を見たい場合は「<a href="/blog/20161004147558.html">Perlの関数の一覧</a>」をご覧ください。
+For information on creating "closures" in Perl, see <a href="/blog/20080710121570.html"> How to create "closures" in Perl </a>.
+
+<h3> Reading material about subroutines </ h3>
+
+<ul>
+  <li>
+    <a href="/blog/20080612121341.html"> Subroutine definitions are not affected by scope </a>
+  </ li>
+  <li>
+    <a href="/blog/20080615121350.html"> Compare the flexibility of Perl subroutines with C </a>
+  </ li>
+  <li>
+    <a href="/blog/20080616121363.html"> Keep in mind to create good subroutines </a>
+  </ li>
+  <li>
+    <a href="/blog/20080620121405.html"> Subroutine exercises </a>
+  </ li>
+</ ul>
+
+<h3> List of standard Perl functions </ h3>
+
+If you want to see a list of standard Perl functions, see <a href="/blog/20161004147558.html"> List of Perl functions </a>.

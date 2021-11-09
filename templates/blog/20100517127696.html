@@ -1,49 +1,48 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>MIME::QuotedPrint - quoted-printable形式にエンコード</h2>
+  </ li>
+</ ol>
+<h2> MIME :: QuotedPrint --encoded to quoted-printable format </ h2>
 
 
 
-<strong>MIME::QuotedPrint</strong>モジュールを使用すると、データをquoted-printable形式にエンコードすることができます。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use MIME::QuotedPrint qw/encode_qp decode_qp/;
-</pre>
-
-quoted-printable形式にエンコードするには<strong>encode_qp</strong>関数を使用します。
+The <strong> MIME :: QuotedPrint </ strong> module allows you to encode data in quoted-printable format.
 
 <pre>
-# quoted-printable形式にエンコード
-my $qp_data = encode_qp $data;
-</pre>
+#Loading modules and importing functions
+use MIME :: QuotedPrint qw / encode_qp decode_qp /;
+</ pre>
 
-quoted-printable形式のデータをデコードするには<strong>decode_qp</strong>関数を使用します。
+Use the <strong> encode_qp </ strong> function to encode to quoted-printable format.
 
 <pre>
-# quoted-printable形式のデータをデコード
-my $data = decode_qp $qp_data;
-</pre>
+# Quoted-encoded to printable format
+my $ qp_data = encode_qp $ data;
+</ pre>
 
-<h3>MIME::QuotedPrintモジュールに関するFAQ</h3>
+Use the <strong> decode_qp </ strong> function to decode quoted-printable format data.
 
-Q. quoted-printable形式とは簡単にいうとどのようなものですか。
-A. 印字可能な文字(英数字や等号「=」)を使用したデータ形式です。利用の観点でいうとBase64形式と似ています(※1)。たとえば電子メールでは7bitデータ以外の文字を送信することができないので、quoted-printable形式でASCIIの範囲の文字列へ変換を行ったりします。
+<pre>
+Decode data in # quoted-printable format
+my $ data = decode_qp $ qp_data;
+</ pre>
 
-入力テキストがほとんど英数字である場合はquoted-printable形式を利用するとエンコード後も英数字については読むことができ、サイズ効率も良くなります。反対に、バイナリデータやマルチバイト文字列を扱う場合はBase64形式のほうがサイズ効率が良くなります。
+<h3> FAQ about MIME :: QuotedPrint module </ h3>
 
+Q. What is the quoted-printable format in a nutshell?
+A. It is a data format that uses printable characters (alphanumeric characters and equal sign "="). From a usage point of view, it is similar to the Base64 format (* 1). For example, since it is not possible to send characters other than 7-bit data by e-mail, it is converted to a character string in the ASCII range in quoted-printable format.
+
+If the input text is mostly alphanumeric, the quoted-printable format allows you to read the alphanumeric characters even after encoding, which improves size efficiency. On the contrary, when dealing with binary data and multibyte character strings, the Base64 format is more size efficient.

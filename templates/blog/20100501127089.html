@@ -1,53 +1,52 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Digest::MD5 - MD5を使ったダイジェスト値</h2>
+  </ li>
+</ ol>
+<h2> Digest :: MD5 --Digest value using MD5 </ h2>
 
 
 
-<strong>Digest::MD5</strong>モジュールを使用すると、MD5を使ったダイジェスト値を求めることができます。
-
-<pre>
-# モジュールの読み込みと関数のインポート
-use Digest::MD5 'md5_hex';
-</pre>
-
-<strong>md5_hex</strong>関数を使用するとMD5の値を32桁の16進数の文字列として取得できます。
+You can use the <strong> Digest :: MD5 </ strong> module to find the digest value using MD5.
 
 <pre>
-# MD5値を求める
-my $md5_sum = md5_hex 'alkeiop2lkj39';
-</pre>
+#Loading modules and importing functions
+use Digest :: MD5'md5_hex';
+</ pre>
 
-結果は次のような32桁の16進数になります。
+You can use the <strong> md5_hex </ strong> function to get the MD5 value as a 32-digit hexadecimal string.
 
 <pre>
-# MD5値(16進数の文字列で取得)
+Find the # MD5 value
+my $ md5_sum = md5_hex'alkeiop2lkj39';
+</ pre>
+
+The result is a 32-digit hexadecimal number like this:
+
+<pre>
+# MD5 value (obtained as a hexadecimal string)
 fb4b7c4a986c550fce0a645ab425ea6d
-</pre>
+</ pre>
 
-<h4>Digest::MD5に関するFAQ</h4>
+<h4> Digest :: MD5 FAQ </ h4>
 
-Q. 簡単にいうとMD5とはなんでしょうか。
-A. 「ある値」から「元の値を推測することがとても難しい値」を作り出す関数のひとつです。ファイルが破損していないかをチェックしたり(ファイルがわずかでも壊れているとMD5値が異なることでチェックできる)、電子署名に用いられたりします。
+Q. Simply put, what is MD5?
+A. It is one of the functions that creates "a value that is very difficult to guess the original value" from "a certain value". It is used to check if the file is corrupted (if the file is even slightly corrupted, it can be checked by the different MD5 value), or it is used for digital signatures.
 
-Q. 他の形式でMD5値を取得することができるでしょうか。
-A. はいできます。md5関数を使えばバイナリ形式で、md5_base64関数を使えばbase64形式でMD5値を取得することができます。
+Q. Is it possible to get MD5 values ​​in other formats?
+A. Yes you can. You can use the md5 function to get the MD5 value in binary format, and the md5_base64 function to get the MD5 value in base64 format.
 
-Q. より安全なハッシュ関数はありますか
-A. より安全なダイジェスト値を取得できる<a href="/blog/20100502127089.html">Digest::SHA</a>というモジュールがあります。
-
+Q. Is there a safer hash function?
+A. There is a module called <a href="/blog/20100502127089.html"> Digest :: SHA </a> that allows you to get a safer digest value.

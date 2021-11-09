@@ -1,80 +1,79 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20101114127859.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20101114127859.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Mojolicious::LiteからMojoliciousに移行する場合に考えておきたいこと</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Things to think about when migrating from Mojolicious :: Lite to Mojolicious </ h2>
 
 
 
-仕事でMojolicious::Liteでプロトタイピングをはじめて、Mojoliciousに移行させたのですけれど、そのときにこんな風にMojolicious::Liteを記述しておいたほうが移行が楽だったなぁということを書いておきます。ほとんとどの手順は<a href="http://wiki.livedoor.jp/mojolicious/d/Mojolicious::Guides::Growing">Mojolicious::Guides::Growing</a>を見れば大丈夫です。移行してみるとやはりメンテナンス性があがりますね。
+I started prototyping with Mojolicious :: Lite at work and migrated to Mojolicious, but at that time I wrote that it was easier to describe Mojolicious :: Lite like this. increase. Most of the steps are fine by looking at <a href="http://wiki.livedoor.jp/mojolicious/d/Mojolicious :: Guides :: Growing"> Mojolicious :: Guides :: Growing </a>. After all, the maintainability will improve when you try to migrate.
 
-<h4>URLをコントローラとアクションのふたつの組にしておく</h4>
+<h4> Keep the URL in two pairs, controller and action </ h4>
 
-Mojoliciousへの移行を考えている場合は、次のように定義しておくとよいです。ルート名は自動でも設定されますが、ハイフン区切りにしておくと見やすいでしょう。
-
-<pre>
-# Mojolicious::Lite
-get '/foo/bar' => sub { ... } => 'foo-bar';
-
-# Mojolicious
-$r->get('/foo/bar')->to('foo#bar')->name('foo-bar');
-</pre>
-
-URLにパラメーターを含めるのはもちろんかまいません。アクションとコントローラには影響がありません。
+If you're thinking of migrating to Mojolicious, it's a good idea to define it as follows: The route name is set automatically, but it will be easier to see if it is separated by a hyphen.
 
 <pre>
-# Mojolicious::Lite
-get '/foo/bar/:id' => sub { ... } => 'foo-bar';
+#Mojolicious :: Lite
+get'/ foo / bar'=> sub {...} =>'foo-bar';
 
-# Mojolicious
-$r->get('/foo/bar/:id')->to('foo#bar')->name('foo-bar');
-</pre>
+#Mojolicious
+$ r-> get ('/ foo / bar')-> to ('foo # bar')-> name ('foo-bar');
+</ pre>
 
-以下のように3つにしてしまったりするとMojoliciousへの移行が大変になります。
-
-<pre>
-# Mojolicious::Lite
-get '/foo/bar/baz' => sub { ... } => 'foo-bar-baz';
-</pre>
-
-反対にアクション名がない場合はindexというアクションに対応させるとよいでしょう。
+Of course, you can include the parameters in the URL. It has no effect on actions and controllers.
 
 <pre>
-# Mojolicious::Lite
-get '/foo' => sub { ... } => 'foo';
+#Mojolicious :: Lite
+get'/ foo / bar /: id'=> sub {...} =>'foo-bar';
 
-# Mojolicious
-$r->get('/foo')->to('foo#index')->name('foo');
-</pre>
+#Mojolicious
+$ r-> get ('/ foo / bar /: id')-> to ('foo # bar')-> name ('foo-bar');
+</ pre>
 
-<h3>埋め込まれているテンプレートファイルは自動的にファイルに出力できる</h3>
+If you set it to three as shown below, it will be difficult to migrate to Mojolicious.
 
-埋め込まれているテンプレートファイルは自動的にファイルに出力できます。自分で記述する必要はありません。
+<pre>
+#Mojolicious :: Lite
+get'/ foo / bar / baz' => sub {...} =>'foo-bar-baz';
+</ pre>
+
+On the other hand, if there is no action name, it is better to correspond to the action called index.
+
+<pre>
+#Mojolicious :: Lite
+get'/ foo' => sub {...} =>'foo';
+
+#Mojolicious
+$ r-> get ('/ foo')-> to ('foo # index')-> name ('foo');
+</ pre>
+
+<h3> Embedded template files can be automatically output to a file </ h3>
+
+The embedded template file can be automatically output to a file. You don't have to write it yourself.
 
 <pre>
 __DATA__
 
 @@ foo-bar.html.ep
-<html><body>Hello</body></html>
-</pre>
+<html> <body> Hello </ body> </ html>
+</ pre>
 
-inflateコマンドを使用します。
+Use the inflate command.
 
 <pre>
 perl myapp.pl inflate
-</pre>
+</ pre>
 
-出力されたファイルは「foo-bar.html.ep」のようにハイフン区切りになっていますので、「foo/bar.html.ep」のようにコントローラー名を持つディレクトリを作ってその中にアクション名のファイルをいれます。
-
+The output file is separated by hyphens like "foo-bar.html.ep", so create a directory with the controller name like "foo / bar.html.ep" and the action name in it. Put the file of.

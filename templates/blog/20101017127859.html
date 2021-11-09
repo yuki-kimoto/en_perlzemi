@@ -1,324 +1,323 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20101017127859.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20101017127859.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Mojoliciousの「自動試験」のテクニック</h2>
+      <span itemprop = "name"> Mojolicious </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Mojolicious's "automatic test" technique </ h2>
 
 
 
-Mojoliciousの「自動試験」を行うためのテクニックをまとめました。
+We have summarized the techniques for performing "automatic tests" of Mojolicious.
 
-<h3>Mojolicious::Liteでスクリプトをデバッグする方法</h3>
+<h3> How to debug a script with Mojolicious :: Lite </ h3>
 
-<strong>Mojolicious::Lite</strong>ではスクリプトを簡単に<strong>デバッグ</strong>することができます。とても短い記述で試験をかけるというのがうれしい点です。Mojolcious::LiteでWebアプリを作成する場合の大きな利点です。
+<strong> Mojolicious :: Lite </ strong> makes it easy to <strong> debug </ strong> your scripts. The nice thing is that you can test with a very short description. This is a great advantage when creating web apps with Mojolcious :: Lite.
 
-まずはMojolicious::Liteで作成した簡単なWebアプリです。
+First of all, it is a simple web application created with Mojolicious :: Lite.
 <pre>
-use Mojolicious::Lite;
+use Mojolicious :: Lite;
 
-get '/' => sub {
-  my $self = shift;
+get'/' => sub {
+  my $ self = shift;
 
-  $DB::single = 1;    
+  $ DB :: single = 1;
 
-  $self->render(text => 'Hello');
+  $ self-> render (text =>'Hello');
 };
 
-app->start;
-</pre>
+app-> start;
+</ pre>
 
-このファイルを「myapp.pl」という名前で保存してください。注目するポイントは「$DB::single = 1」という記述です。これはスクリプトの中にブレークポイントを埋め込むための記法です。デバッガはこの行を見つけるとその位置でストップします。
+Save this file as "myapp.pl". The point to pay attention to is the description "$ DB :: single = 1". This is the notation for embedding breakpoints in scripts. If the debugger finds this line, it will stop at that position.
 
-次に試験用のディレクトリを作成します。
+Next, create a test directory.
 <pre>
 mkdir t
-</pre>
+</ pre>
 
-tというディレクトリの中に試験用のスクリプトを配置します。このディレクトリの中に「basic.t」という名前のスクリプトを作成してみてください。
+Place the test script in a directory called t. Try creating a script named "basic.t" in this directory.
 
 <pre>
-use Test::More 'no_plan';
+use Test :: More'no_plan';
 
 use strict;
 use warnings;
 use utf8;
 
-use Test::Mojo;
+use Test :: Mojo;
 
 use FindBin;
-$ENV{MOJO_HOME} = "$FindBin::Bin/..";
-require "$ENV{MOJO_HOME}/myapp.pl";
+$ ENV {MOJO_HOME} = "$ FindBin :: Bin / ..";
+require "$ ENV {MOJO_HOME} /myapp.pl";
 
-my $t = Test::Mojo->new;
-$t->get_ok('/');
-</pre>
+my $ t = Test :: Mojo-> new;
+$ t-> get_ok ('/');
+</ pre>
 
-(参考)<a href="/blog/20100524127696.html">FindBin</a>
+(Reference) <a href="/blog/20100524127696.html"> FindBin </a>
 
-このスクリプトはMojolicious::LiteのPODに記述されている自動試験用のスクリプトですが、デバッグを行うためにも利用することができます。「$t->get_ok('/')」という記述で実際に「/」にアクセスした場合の処理が実行されるからです。
+This script is written in Mojolicious :: Lite's POD for automated testing, but it can also be used for debugging. This is because the process when actually accessing "/" is executed with the description "$ t-> get_ok ('/')".
 
-次にこのテストスクリプトををデバッガを使って起動しましょう。実行するディレクトリは、tディレクトリの中ではなくて、スクリプトのおいてあるディレクトリから行うのがよいでしょう。
-
-<pre>
-perl -d t/basic.t 
-</pre>
-
-libディレクトリの中にモジュールを配置してある場合は次のようにlibディレクトリをモジュールの検索パスに追加してあげます。
+Next, let's start this test script using the debugger. It is better to execute the script from the directory where the script is located, not from the t directory.
 
 <pre>
-perl -d -Ilib t/basic.t 
-</pre>
+perl -d t / basic.t
+</ pre>
 
-デバッガが起動したら「c」コマンドで「$DB::single = 1」と記述したブレークポイントまで進みます。
+If the module is placed in the lib directory, add the lib directory to the module search path as follows.
+
+<pre>
+perl -d -Ilib t / basic.t
+</ pre>
+
+When the debugger starts, use the "c" command to go to the breakpoint described as "$ DB :: single = 1".
 
 <pre>
 c
-</pre>
+</ pre>
 
-デバッグをしたい位置に到着することができます。
+You can reach the position you want to debug.
 
 <pre>
-5
-6:          $DB::single = 1;
+Five
+6: $ DB :: single = 1;
 7
-8==>        $self->render(text => 'Hello');
-9:      };
-10
-11:     app->start;
-</pre>
+8 ==> $ self-> render (text =>'Hello');
+9:};
+Ten
+11: app-> start;
+</ pre>
 
-このテクニックを覚えておけば、Mojolicious::Liteの開発はいっそう楽なものになります。
+Remembering this technique will make developing Mojolicious :: Lite even easier.
 
 
-<h3>Mojoliciousでページのリンクが切れていないかをチェックするテストを書く</h3>
+<h3> Write a test to check if a page link is broken in Mojolicious </ h3>
 
-次のようなメソッドを定義します。これはページの内容を取得して、その中のハイパーリンクをすべて取得し、そのリンクにアクセスしたときに200が返ってくるとOKという試験です。use Test::Mojoした後に、記述してください。$Test::Builder::Levelを1増やしているのは、テストに失敗した行の呼び出しもとの情報を得るためです。
+Define a method like this: This is a test that gets the contents of the page, gets all the hyperlinks in it, and if 200 is returned when the link is accessed, it is OK. Please describe after use Test :: Mojo. $ Test :: Builder :: Level is incremented by 1 to get information about the caller of the row that failed the test.
 
 <pre>
 {
-  package Test::Mojo;
+  package Test :: Mojo;
   
   sub link_ok {
-    my ($t, $url) = @_;
+    my ($ t, $ url) = @_;
     
-    local $Test::Builder::Level = $Test::Builder::Level + 1;
+    local $ Test :: Builder :: Level = $ Test :: Builder :: Level + 1;
     
     my @links;
-    $t->ua->get($url)->res->dom->find('a[href]')->each(sub {
-      my $self = shift;
+    $ t-> ua-> get ($ url)-> res-> dom-> find ('a [href]')-> each (sub {
+      my $ self = shift;
       
-      push @links, $self->attrs->{href};
+      push @links, $ self-> attrs-> {href};
     });
     
-    for my $link (@links) {
-      $t->get_ok($link)->status_is(200) unless $link =~ /logout/;
+    for my $ link (@links) {
+      $ t-> get_ok ($ link)-> status_is (200) unless $ link = ~ / logout /;
     }
   }
 }
-</pre>
+</ pre>
 
-利用するときはこんな感じです。
-
-<pre>
-$t->link_ok('/user/list');
-</pre>
-
-テストを作成するのは、面倒に感じるかもしれませんが、コードの変更にとても強く、安心感があります。
-
-<h3>Mojoliciousの自動試験で試験が失敗した行を表示する</h3>
-
-Mojoliciousで自動試験をしていると、出力の内容が大きいのでどこの行で試験が失敗したかとても見づらくて大変です。
-
-パイプとgrepをうまく使うとその行番号だけを表示することができます。
+It looks like this when using it.
 
 <pre>
-perl myapp.pl test 2>&1 | grep line
-</pre>
+$ t-> link_ok ('/ user / list');
+</ pre>
 
-試験結果は標準エラー出力に出力されるので、それをパイプを使ってgrepに流し込んでlineという行が含まれている行のみ取り出します。
+Creating tests can be a hassle, but it's very resistant to code changes and gives you peace of mind.
 
-<h3>自動試験中に警告が発生した場所を調べる</h3>
+<h3> Show lines where tests failed in Mojolicious's automated tests </ h3>
 
-Mojoliciousで自動試験を行っていると以下のような未定義値が利用されていますというような警告がよく発生します。
+When doing an automatic test with Mojolicious, it is very difficult to see where the test failed because the output content is large.
 
-<pre>
-Use of uninitialized value in concatenation (.) or string at (eval 520) line 94.
-</pre>
-
-場所を特定して問題の場所を探さなければならないのですが、これを自力で行うのは大変です。このような場合は警告を例外に変換して、呼び出し元の情報を取得するのがよい方法です。警告を例外に変換するには以下のようにします。
+With good use of pipes and grep, you can only see the line numbers.
 
 <pre>
-# Convert warning to exeption
-use Carp 'confess';
-$SIG{__WARN__} = sub { confess $_[0] };
-</pre>
+perl myapp.pl test 2> & 1 | grep line
+</ pre>
 
-上記のように記述すると警告が発生したときのコールバックを記述することができます。confessは例外を発生させて、メッセージに呼び出し元を含むスタックとレースを含めることができます。これは自動試験のスクリプトの上のほうで記述しておくとよいでしょう。
+Since the test result is output to the standard error output, it is piped into grep and only the line containing the line line is extracted.
 
-これでスクリプトでの行番号とどのような処理を行っているのかがわかるので、その処理が出力しているデータをダンプすると原因がわかる場合が多いでしょう。
+<h3> Find out where the warning occurred during the automated test </ h3>
 
-<h3>Mojoliciousの試験中に無限ループで固まった場合の対処方法</h3>
+When performing automatic tests with Mojolicious, I often get warnings that the following undefined values ​​are being used.
 
-Mojoliciousで開発していると、同名のメソッドを間違って呼び出したために、無限ループに陥ってしまうということがときどきあります。Ctrl + cが聞かなくなりサーバをとめられなくなってしまいます。
+<pre>
+Use of uninitialized value in concatenation (.) Or string at (eval 520) line 94.
+</ pre>
 
-このような場合は、いったんCtrl + zを押してサーバーをバックグラウンド実行に切り替えます。その後にpsコマンドでサーバのプロセスIDを特定し、-KILLシグナルで、プロセスを強制的にとめます。
+You have to pinpoint the location and find the location of the problem, but it's hard to do this on your own. In such cases, it's a good idea to convert the warning to an exception to get the caller's information. To convert a warning to an exception:
+
+<pre>
+#Convert warning to exeption
+use Carp'confess';
+$ SIG {__ WARN __} = sub {confess $ _ [0]};
+</ pre>
+
+If you write as above, you can write a callback when a warning occurs. confess can raise an exception to include the stack and race containing the caller in the message. It's a good idea to write this at the top of the automated test script.
+
+Now that you know the line number in the script and what you're doing, you can often find the cause by dumping the data output by that process.
+
+<h3> What to do if you get stuck in an infinite loop during a Mojolicious test </ h3>
+
+When developing with Mojolicious, I sometimes get stuck in an infinite loop because I accidentally called a method with the same name. I can't stop the server because I can't hear Ctrl + c.
+
+In this case, press Ctrl + z once to switch the server to background execution. Then use the ps command to identify the process ID of the server and the -KILL signal to kill the process.
 
 <pre>
 ps -ef | grep myapp.pl
 
-kill -KILL プロセスID
-</pre>
+kill -KILL process ID
+</ pre>
 
-<h4>追記</h4>
+<h4> Addendum </ h4>
 
-以下のような意見があったので補足。
+I added the following opinions.
 
 <blockquote>
-mojoliciousはctrl+cしないといけない事が多いってのは、コントローラとビューでそれぞれ余計な事やっちゃってる説
-</blockquote>
+Mojolicious often has to ctrl + c, the theory that the controller and the view are doing extra things respectively
+</ blockquote>
 
-これはMojoliciousが原因ではなくて、コントローラクラスの一部の機能をベースクラスに分離したときに、スーパークラスのメソッドを呼び出すのをわすれて、自身と同名のメソッドを呼び出してしまって無限ループという一般的なオブジェクト指向で間違いのことをいっています。通常のプログラミングだと、無限ループが発生するとプログラムがエラーで終了するわけですけれど、サーバーの場合はとめられなくなるので、解決策を書いているわけで、Mojoliciousが変なことやっているわけではないです。
+This is not due to Mojolicious, but when some functions of the controller class are separated into the base class, I forgot to call the method of the superclass and called the method with the same name as myself, which is generally called an infinite loop. Object-oriented and making mistakes. In normal programming, when an infinite loop occurs, the program ends with an error, but in the case of the server it can not be stopped, so I am writing a solution, Mojolicious is not doing strange things is.
 
-<h3>自動試験の中で発生した例外を知る方法</h3>
+<h3> How to know the exception that occurred in the automatic test </ h3>
 
-Mojoliciousで自動試験を書いているときに、試験がうまくいかなくてテンプレートにServer errorと表示され例外がおきたことだけが、わかることって結構ありますね。こういうときは、どうやって例外の内容を知ったらいいのだろうかと悩みます。
+When writing an automated test in Mojolicious, it's pretty good to know that the test didn't work and the template displayed a Server error with an exception. In such a case, I wonder how to know the contents of the exception.
 
-それで、ひとつの方法をお知らせしておきますね。
+So, let me tell you one way.
 
-<h4>例外の内容を捕獲して出力する</h4>
+<h4> Capture and output the contents of the exception </ h4>
 
-例外の内容はスタッシュの<b>exception</b>というキーから取得できます。フックを仕掛けてこれを取得してしまいましょう。
+The content of the exception can be obtained from the stash key <b> exception </ b>. Let's set up a hook and get this.
 
 <pre>
-my $app = YourApp->new;
-my $t = Test::Mojo->new($app);
+my $ app = YourApp-> new;
+my $ t = Test :: Mojo-> new ($ app);
 
-$app->hook(after_dispatch => sub {
-  my $c = shift;
-  my $exception= $c->stash('exception');
-  warn $exception if $exception;
+$ app-> hook (after_dispatch => sub {
+  my $ c = shift;
+  my $ exception = $ c-> stash ('exception');
+  warn $ exception if $ exception;
 });
-</pre>
+</ pre>
 
-<h3>testコマンドで試験の詳細を表示する</h3>
+<h3> test frameView exam details on the screen </ h3>
 
-<strong>verbose</strong>オプションを使うと、testコマンドで詳細を表示することができます。
+The <strong> verbose </ strong> option allows you to view details with the test command.
 
 <pre>
 perl myapp.pl test --verbose
-</pre>
+</ pre>
 
-<h3>テスト用途でSSLで接続できるサーバーを起動する</h3>
+<h3> Start a server that can be connected via SSL for testing purposes </ h3>
 
-SSLの試験をしたい場合があると思います。Mojoliciousでは試験用の秘密鍵とサーバー証明書を持っているので、httpsで接続するサーバーを起動することができます。前提条件としてIO::Socket::SSLというモジュールが必要になりますのでインストールしておきます。
-
-<pre>
-cpan IO::Socket::SSL
-</pre>
-
-次のようなオプションでサーバーを起動するとhttpsで接続を行うことができます。
+You may want to test SSL. Mojolicious has a test private key and a server certificate, so you can start a server that connects via https. As a prerequisite, a module called IO :: Socket :: SSL is required, so install it.
 
 <pre>
-# 組み込みのスタンドアロンサーバー
-perl myapp.pl daemon --listen https://*:3000
+cpan IO :: Socket :: SSL
+</ pre>
 
-# 自動リロードしてくれる試験用のmorboサーバー
-morbo myapp.pl --listen https://*:3000
-</pre>
-
-(参考)<a href="/blog/20120406133367.html">morbo</a>
-
-次のようなURLでhttpsで接続することが可能になります。
+You can connect via https by starting the server with the following options.
 
 <pre>
-https://localhost:3000
-</pre>
+#Built-in standalone server
+perl myapp.pl daemon --listen https: // *: 3000
 
-もちろんHTTPとHTTPSの両方でリッスンするのが普通なので、次のようにするのがよいでしょう。
+#Test morbo server that automatically reloads
+morbo myapp.pl --listen https: // *: 3000
+</ pre>
 
-<pre>
-morbo myapp.pl --listen http://*:3000 --listen https://*:3001
-</pre>
+(Reference) <a href="/blog/20120406133367.html"> morbo </a>
 
-SSLというのはポートが指定されない場合は、デフォルトで<b>443</b>番ポートに接続することが想定されます。でも試験環境では、違うポートでSSLへのリクエストをリッスンしますね。
-
-でもこうしちゃうよりも環境変数を設定することがお勧めです。こうしておくと、ユーザーごとに別ポートを利用して試験ができるようになります。
+You can connect via https with the following URL.
 
 <pre>
-export MOJO_LISTEN=http://*:3000,https://*:3001
-</pre>
+https: // localhost: 3000
+</ pre>
 
-でもこれだと本番機と開発機でURLに関して別のソースコードを書かないといけなくなったりして、面倒ですね。そこで次のようなヘルパーを作成しておくのがよいでしょう。ポート番号が存在する場合は、それに1を足したポート番号がSSLのポート番号とするように、運用で決めておきます。
-
-また本番では、ポートは指定せずに、デフォルトに任せて、HTTPは80番、HTTPSは443番とします。
-
-次のようなヘルパーを登録しておけば、汎用的にできますね。
+Of course, it's normal to listen on both HTTP and HTTPS, so it's a good idea to do the following:
 
 <pre>
-$app->helper(
+morbo myapp.pl --listen http: // *: 3000 --listen https: // *: 3001
+</ pre>
+
+SSL is supposed to connect to port <b> 443 </ b> by default if no port is specified. But in a test environment, it listens for SSL requests on different ports.
+
+But it's better to set environment variables than to do this. This will allow each user to test using a different port.
+
+<pre>
+export MOJO_LISTEN = http: // *: 3000, https: // *: 3001
+</ pre>
+
+However, this is troublesome because you have to write different source code for the URL on the production machine and the development machine. Therefore, it is a good idea to create the following helper. If a port number exists, determine the port number by adding 1 to the SSL port number in operation.
+
+Also, in production, do not specify the port, leave it to the default, HTTP is 80, HTTPS is 443.
+
+If you register the following helpers, you can do it for general purposes.
+
+<pre>
+$ app-> helper (
   url_for_https => sub {
-    my $self = shift;
-    my $url = $self->url_for(@_)->to_abs->scheme('https');
-    my $port = $url->port;
-    $url->port($port + 1) if defined $port;
-    return $url;
+    my $ self = shift;
+    my $ url = $ self-> url_for (@ _)-> to_abs-> scheme ('https');
+    my $ port = $ url-> port;
+    $ url-> port ($ port + 1) if defined $ port;
+    return $ url;
   }
 );
-</pre>
+</ pre>
 
-<h3>CSS3セレクタを使ってHTMLの要素が存在するかを確認する</h3>
+<h3> Use CSS3 selector to check if HTML element exists </ h3>
 
-<strong>Test::Mojo</strong>の<strong>element_exists</strong>メソッドを使用すれば、CSS3セレクタに一致するHTMLの要素が存在するかを試験することができます。
-
-<pre>
-$t = $t->element_exists('div.foo[x=y]');
-$t = $t->element_exists('html head title', 'has a title');
-</pre>
-
-<strong>Test::Mojo</strong>の<strong>element_exists_not</strong>メソッドを使用すれば、CSS3セレクタに一致するHTMLの要素が存在しないこと試験することができます。
+You can use the <strong> Test :: Mojo </ strong> <strong> element_exists </ strong> method to test for the existence of HTML elements that match the CSS3 selector.
 
 <pre>
-$t = $t->element_exists_not('div.foo[x=y]');
-$t = $t->element_exists_not('html head title', 'has no title');
-</pre>
+$ t = $ t-> element_exists ('div.foo [x = y]');
+$ t = $ t-> element_exists ('html head title','has a title');
+</ pre>
 
-<h3>CSS3セレクタを使ってHTMLの要素のテキスト内容を試験する</h3>
-
-<strong>Test::Mojo</strong>の<strong>text_is</strong>メソッドを使用すれば、CSS3セレクタに一致するHTMLの要素のテキスト内容を試験することができます。
+You can use the <strong> Test :: Mojo </ strong> <strong> element_exists_not </ strong> method to test that there are no HTML elements that match the CSS3 selector.
 
 <pre>
-$t = $t->text_is('div.foo[x=y]' => 'Hello!');
-$t = $t->text_is('html head title' => 'Hello!', 'right title');
-</pre>
+$ t = $ t-> element_exists_not ('div.foo [x = y]');
+$ t = $ t-> element_exists_not ('html head title','has no title');
+</ pre>
 
-<strong>Test::Mojo</strong>の<strong>text_isnt</strong>メソッドを使用すれば、CSS3セレクタに一致しないHTMLの要素のテキスト内容を試験することができます。
+<h3> Test the text content of HTML elements using CSS3 selectors </ h3>
 
-<pre>
-$t = $t->text_isnt('div.foo[x=y]' => 'Hello!');
-$t = $t->text_isnt('html head title' => 'Hello!', 'different title');
-</pre>
-
-<strong>Test::Mojo</strong>の<strong>text_like</strong>メソッドを使用すれば、CSS3セレクタにマッチするHTMLの要素のテキスト内容を試験することができます。
+You can use the <strong> Test :: Mojo </ strong> <strong> text_is </ strong> method to test the text content of HTML elements that match the CSS3 selector.
 
 <pre>
-$t = $t->text_like('div.foo[x=y]' => qr/Hello/);
-$t = $t->text_like('html head title' => qr/Hello/, 'right title');
-</pre>
+$ t = $ t-> text_is ('div.foo [x = y]'=>' Hello!');
+$ t = $ t-> text_is ('html head title' =>'Hello!',' Right title');
+</ pre>
 
-また<strong>Test::Mojo</strong>の<strong>text_unlike</strong>メソッドを使用すれば、CSS3セレクタにマッチしないするHTMLの要素のテキスト内容を試験することができます。
+You can use the <strong> Test :: Mojo </ strong> <strong> text_isnt </ strong> method to test the text content of HTML elements that don't match the CSS3 selector.
 
 <pre>
-$t = $t->text_unlike('div.foo[x=y]' => qr/Hello/);
-$t = $t->text_unlike('html head title' => qr/Hello/, 'different title');
-</pre>
+$ t = $ t-> text_isnt ('div.foo [x = y]'=>' Hello!');
+$ t = $ t-> text_isnt ('html head title' =>'Hello!','Different title');
+</ pre>
 
+You can use the <strong> Test :: Mojo </ strong> <strong> text_like </ strong> method to test the text content of an HTML element that matches a CSS3 selector.
+
+<pre>
+$ t = $ t-> text_like ('div.foo [x = y]' => qr / Hello /);
+$ t = $ t-> text_like ('html head title' => qr / Hello /,'right title');
+</ pre>
+
+You can also use the <strong> Test :: Mojo </ strong> <strong> text_unlike </ strong> method to test the text content of HTML elements that don't match the CSS3 selector.
+
+<pre>
+$ t = $ t-> text_unlike ('div.foo [x = y]' => qr / Hello /);
+$ t = $ t-> text_unlike ('html head title' => qr / Hello /,'different title');
+</ pre>

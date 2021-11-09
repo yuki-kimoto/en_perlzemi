@@ -1,169 +1,168 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>XML::Simple - 簡単にXMLを解析</h2>
+  </ li>
+</ ol>
+<h2> XML :: Simple --Easy to parse XML </ h2>
 
 
 
-<strong>XML::Simple</strong>モジュールを使うと簡単にXMLを解析してPerlのデータ構造に変換することができます。XMLの解析手法には「先頭から順次解析を行うSAX」と「XMLツリー構造を構築するDOM」が有名ですが、簡単に扱うという点では、XML::Simpleが一番です。
+The <strong> XML :: Simple </ strong> module allows you to easily parse XML and convert it into Perl data structures. "SAX that analyzes sequentially from the beginning" and "DOM that builds an XML tree structure" are famous as XML analysis methods, but XML :: Simple is the best in terms of easy handling.
 
-XMLはテキストファイルにデータを記述するときの一般的なフォーマットです。プログラムの設定ファイルを記述するときなどに利用することができます。
-
-<pre>
-# モジュールの読み込みとオブジェクトの生成
-use XML::Simple;
-my $xml = XML::Simple->new;
-</pre>
-
-XMLファイルを読み込むには<strong>XMLinメソッド</strong>を使用します。XMLはPerlのデータ構造(多次元のハッシュや配列)に変換されます。
+XML is a common format for writing data in text files. It can be used when writing a program configuration file.
 
 <pre>
-# XMLファイルのパース
-my $data = $xml->XMLin('conf.xml');
-</pre>
+#Load module and create object
+use XML :: Simple;
+my $ xml = XML :: Simple-> new;
+</ pre>
 
-設定ファイルのXMLのサンプルです。複数システムにある複数のログを編集するアプリケーションを想定しています。ファイルはUTF-8で保存してください。
+Use the <strong> XMLin method </ strong> to read the XML file. XML is transformed into Perl data structures (multidimensional hashes and arrays).
 
 <pre>
-<?xml version="1.0" encoding="UTF-8" ?>
+# XML file parsing
+my $ data = $ xml-> XMLin ('conf.xml');
+</ pre>
+
+This is a sample XML of the configuration file. Imagine an application that edits multiple logs on multiple systems. Save the file in UTF-8.
+
+<pre>
+<? xml version = "1.0" encoding = "UTF-8"?>
 <conf>
-  <!-- Version 1.01 -->
+  <!-Version 1.01->
 
-  <!-- アプリケーションのホームディレクトリ -->
-  <app-home-dir>c:\apphome</app-home-dir>
+  <!-Application home directory->
+  <app-home-dir> c: \ apphome </ app-home-dir>
 
-  <!-- ライブラリのディレクトリ -->
-  <lib-dir>lib</lib-dir>
+  <!-Library directory->
+  <lib-dir> lib </ lib-dir>
 
-  <!-- ログを格納するディレクトリ -->
-  <log-dir>log</log-dir>
+  <!-Directory to store logs->
+  <log-dir> log </ log-dir>
 
-  <!-- システムの種類 -->
-  <system>xxx yyy zzz</system>
+  <!-System type->
+  <system> xxx yyy zzz </ system>
 
-  <!-- ログの種類 -->
+  <!-Log type->
   <log-types>
-    <cpu script="parse_cpu.pl" from-dir="raw/cpu" to-dir="edit/cpu" />
-    <mem script="parse_mem.pl" from-dir="raw/mem" to-dir="edit/mem" />
-    <gclog script="parse_gclog.pl" from-dir="raw/gclog" to-dir="edit/gclog" />
-  </log-types>
-</conf>
-</pre>
+    <cpu script = "parse_cpu.pl" from-dir = "raw / cpu" to-dir = "edit / cpu" />
+    <mem script = "parse_mem.pl" from-dir = "raw / mem" to-dir = "edit / mem" />
+    <gclog script = "parse_gclog.pl" from-dir = "raw / gclog" to-dir = "edit / gclog" />
+  </ log-types>
+</ conf>
+</ pre>
 
-このファイルは次のようなデータ構造に変換されます。
-　　　　　　　　　　　　　▼
+This file is converted to the following data structure.
+▼
 <pre>
-$conf = {
+$ conf = {
   'log-types' => {
     'cpu' => {
-      'to-dir' => 'edit/cpu',
-      'script' => 'parse_cpu.pl',
-      'from-dir' => 'raw/cpu'
+      'to-dir' =>'edit / cpu',
+      'script' =>'parse_cpu.pl',
+      'from-dir' =>' raw / cpu'
     },
     'gclog' => {
-      'to-dir' => 'edit/gclog',
-      'script' => 'parse_gclog.pl',
-      'from-dir' => 'raw/gclog'
+      'to-dir' =>'edit / gclog',
+      'script' =>'parse_gclog.pl',
+      'from-dir' =>' raw / gclog'
     },
     'mem' => {
-      'to-dir' => 'edit/mem',
-      'script' => 'parse_mem.pl',
-      'from-dir' => 'raw/mem'
+      'to-dir' =>'edit / mem',
+      'script' =>'parse_mem.pl',
+      'from-dir' =>' raw / mem'
     }
   },
-  'system' => 'xxx yyy zzz',
-  'log-dir' => 'log',
-  'app-home-dir' => 'c:\\apphome',
-  'lib-dir' => 'lib'
+  'system' =>'xxx yyy zzz',
+  'log-dir' =>'log',
+  'app-home-dir' =>' c: \\ apphome',
+  'lib-dir' =>'lib'
 };
-</pre>
+</ pre>
 
-<h3>XML::Simpleでの日本語の扱い</h3>
+<h3> Handling Japanese in XML :: Simple </ h3>
 
-XMLinで日本語を含む文字列を読み込んだ場合は、XML宣言のencoding属性で指定された文字コードから内部文字列に変換されます。バイト文字列のままではないので注意してください。
+When a character string containing Japanese is read by XMLin, the character code specified by the encoding attribute of the XML declaration is converted to the internal character string. Note that it is not a byte string.
 
 <pre>
-<?xml version="1.0" encoding="UTF-8" ?>
+<? xml version = "1.0" encoding = "UTF-8"?>
 <conf>
-  <name>増田</name>
-</conf>
-</pre>
+  <name> Masuda </ name>
+</ conf>
+</ pre>
 
-内部文字列に変換されていますので、出力したい場合などはEncodeモジュールのencode関数を使ってバイト文字列に変換する必要があります。
-
-<pre>
-# 出力するときは内部文字列からバイト文字列へ変換
-use Encode 'encode';
-my $conf = $xml->XMLin('japanese.xml');
-print encode('UTF-8', $conf->{name});
-</pre>
-
-<h3>XML::Simpleのオプション</h3>
-
-XML::Simpleはコンストラクタの引数にオプションを指定することができます。
+Since it is converted to an internal character string, if you want to output it, you need to convert it to a byte character string using the encode function of the Encode module.
 
 <pre>
-# オプション
-my $xml = XML::Simple->new(ForceArray => 1);
-</pre>
+# When outputting, convert from internal character string to byte character string
+use Encode'encode';
+my $ conf = $ xml-> XMLin ('japanese.xml');
+print encode ('UTF-8', $ conf-> {name});
+</ pre>
 
-次の二つのオプションは使用頻度が高いかもしれません。
+<h3> XML :: Simple options </ h3>
+
+XML :: Simple allows you to specify options in the constructor arguments.
+
+<pre>
+#Option
+my $ xml = XML :: Simple-> new (ForceArray => 1);
+</ pre>
+
+The following two options may be used frequently.
 
 <table>
   <tr>
     <td>
-      <b>オプション名</b>
-    </td>
+      <b> Option name </ b>
+    </ td>
     <td>
-      <b>解説</b>
-    </td>
-  </tr>
+      <b> Explanation </ b>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       ForceArray
-    </td>
+    </ td>
     <td>
-      入れ子の要素を必ず配列のリファレンスにする
-    </td>
-  </tr>
+      Make sure nested elements are array references
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       KeyAttr
-    </td>
+    </ td>
     <td>
-      指定した属性をハッシュのキーとして扱う
-    </td>
-  </tr>
+      Treat the specified attribute as a hash key
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h3>XML::LibXML - 標準的で高速なXML解析</h3>
+<h3> XML :: LibXML --Standard and fast XML parsing </ h3>
 
-XML::Simpleは複雑なXMLの解析には向いていません。標準的かつ高速な方法でXMLを解析したいのであればXML::LibXMLモジュールを選択することができます。XML::LibXMLはDOMツリーとしてXMLを読み込むことができます。またXPathという方法で、XMLの各要素にアクセスことができます。
+XML :: Simple is not suitable for parsing complex XML. If you want to parse XML in a standard and fast way, you can choose the XML :: LibXML module. XML :: LibXML can read XML as a DOM tree. You can also access each element of XML using a method called XPath.
 
-この方法はXML::Simpleに比べてコーディング量が増え、技術的にも難しいですが、用件によっては最適な方法になります。
+This method requires more coding than XML :: Simple and is technically difficult, but it is the best method for some requirements.
 
-<h4>CentOSでXML::LibXMLモジュールがインストールできない場合の対処</h4>
+<h4> What to do if the XML :: LibXML module cannot be installed on CentOS </ h4>
 
-CentOSで<strong>XML::LibXML</strong>モジュールの<strong>インストールに失敗</strong>する場合は<b>libxml2-devel</b>パッケージが足りないのでインストールしましょう。
+If the <strong> XML :: LibXML </ strong> module <strong> installation fails </ strong> on CentOS, the <b> libxml2-devel </ b> package is missing and you should install it.
 
 <pre>
 yum -y install libxml2-devel
-</pre>
-
+</ pre>
