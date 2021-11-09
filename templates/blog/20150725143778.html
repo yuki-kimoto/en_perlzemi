@@ -1,13 +1,8 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop = "name"> XS </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20100809127859.html">        <span itemprop = "name">XS </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
@@ -19,19 +14,19 @@
 
 
 
-<b> Makefile.PL </b> is a script that automatically generates a Makefile. <a href="/blog/20170209150055.html"> Create XS module</a>, Makefile.PL will be created automatically.
+<b> Makefile.PL </b> is a script that automatically generates a Makefile. <a href="/blog/20170209150055.html">Create XS module</a>, Makefile.PL will be created automatically.
 
 Here, we will explain the basic usage of Makefile.PL. If you want to know how to write Makefile.PL, please refer to the following article.
 
 <ul>
   <li>
-    <a href="/blog/20170210150108.html"> ExtUtils::MakeMaker - Customize Makefile.PL</a>
+    <a href="/blog/20170210150108.html">ExtUtils::MakeMaker - Customize Makefile.PL</a>
   </li>
 </ul>
 
 <h3> Basics of Makefile.PL </h3>
 
-Makefile.PL is for automatically generating <a href="http://www.ie.u-ryukyu.ac.jp/~e085739/c.makefile.tuts.html"> Makefile</a> This is a script. Once you have created a Mekefile, you can compile the module with the make command.
+Makefile.PL is for automatically generating <a href="http://www.ie.u-ryukyu.ac.jp/~e085739/c.makefile.tuts.html">Makefile</a> This is a script. Once you have created a Mekefile, you can compile the module with the make command.
 
 <h4> Run Makefile.PL </h4>
 
@@ -81,7 +76,7 @@ Please refer to the following article for how to write an automated test in Perl
 
 <ul>
   <li>
-    <a href="/blog/20090221123410.html"> Test::More - Write a test program for automated testing</a>
+    <a href="/blog/20090221123410.html">Test::More - Write a test program for automated testing</a>
   </li>
 </ul>
 
@@ -95,7 +90,7 @@ make install
 
 Installation is, in a nutshell, copying the required files to a location in the Perl library path.
 
-I haven't used this command recently when installing. It is easier to install the "module.tar.gz" file using <a href="/blog/20101027127859.html"> cpanm</a>.
+I haven't used this command recently when installing. It is easier to install the "module.tar.gz" file using <a href="/blog/20101027127859.html">cpanm</a>.
 
 <pre>
 cpanm module .tar.gz
@@ -105,7 +100,7 @@ How to create a "module.tar.gz" file is explained below.
 
 <h4> Run make manifest </h4>
 
-You may want to upload your module to <a href="https://www.cpan.org/"> CPAN</a> for distribution. In that case, the files to be included in the distribution must be included in the MANIFEST file.
+You may want to upload your module to <a href="https://www.cpan.org/">CPAN</a> for distribution. In that case, the files to be included in the distribution must be included in the MANIFEST file.
 
 You can use the "make manifest" command to automatically add the required files to the <b> MANIFEST </b> file.
 
@@ -113,7 +108,7 @@ You can use the "make manifest" command to automatically add the required files 
 make manifest
 </pre>
 
-Unnecessary files can be added to MANIFEST by writing them in <b> MANIFEST.SKIP </b>. Below is a sample of MANIFEST.SKIP. You can specify the file you want to skip with <a href="/blog/20100827127859.html"> Regular expression</a>.
+Unnecessary files can be added to MANIFEST by writing them in <b> MANIFEST.SKIP </b>. Below is a sample of MANIFEST.SKIP. You can specify the file you want to skip with <a href="/blog/20100827127859.html">Regular expression</a>.
 
 <pre>
 \ bRCS \ b
@@ -485,4 +480,4 @@ The "OBJECT" option will then be automatically set to an option called "LDFROM" 
 
 <h3> How to write XS module </h3>
 
-Makefile.PL is often rewritten when writing an XS module. See <a href="/blog/20100809127859.html"> Introduction to C / C ++ Binding with XS</a> for how to create an XS module.
+Makefile.PL is often rewritten when writing an XS module. See <a href="/blog/20100809127859.html">Introduction to C / C ++ Binding with XS</a> for how to create an XS module.

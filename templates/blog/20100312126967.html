@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">      <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> eval-catch exceptions, dynamically execute strings </h2>
@@ -42,7 +36,7 @@ eval {...};
 
 This plays the same role as the catch syntax for exception handling in Java and elsewhere. If an exception occurs inside the eval block, you can catch the exception and prevent the program from terminating.
 
-The content of the exception is assigned to <a href="/blog/20161102147817.html"> special variable</a> "$@", so let's check this. It is recommended to save $@in a <a href="/blog/20161107147852.html"> variable</a> as it may be overwritten by other processing.
+The content of the exception is assigned to <a href="/blog/20161102147817.html">special variable</a> "$@", so let's check this. It is recommended to save $@in a <a href="/blog/20161107147852.html">variable</a> as it may be overwritten by other processing.
 
 <pre>
 if (my $error = $@) {
@@ -54,7 +48,7 @@ See the following articles for a detailed explanation of Perl's exception handli
 
 <ul>
   <li>
-    <a href="/blog/20100411127089.html"> Understand how Perl handles exceptions</a>
+    <a href="/blog/20100411127089.html">Understand how Perl handles exceptions</a>
   </li>
 </ul>
 
@@ -67,7 +61,7 @@ The one called the eval string is a syntax that dynamically executes a string. I
 eval $string;
 </pre>
 
-As an example, you can define a <a href="/blog/20101130129876.html"> subroutine</a> at runtime. The following example defines a subroutine called foo that returns 5 with an eval string and a <a href="/blog/20080614121342.html"> typeglob</a> at runtime. "No string'refs'" temporarily allows symbolic references.
+As an example, you can define a <a href="/blog/20101130129876.html">subroutine</a> at runtime. The following example defines a subroutine called foo that returns 5 with an eval string and a <a href="/blog/20080614121342.html">typeglob</a> at runtime. "No string'refs'" temporarily allows symbolic references.
 
 <pre>
 {

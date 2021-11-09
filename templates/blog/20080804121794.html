@@ -1,24 +1,18 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">      <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> sysopen function - specify open mode in detail </h2>
 
 
-You can specify the open mode in detail using the <strong> sysopen </strong> function. <a href="/blog/20080718121643.html"> open function</a> open mode You can use it when you want to do more than that.
+You can specify the open mode in detail using the <strong> sysopen </strong> function. <a href="/blog/20080718121643.html">open function</a> open mode You can use it when you want to do more than that.
 
 <pre>
 sysopen(my $fh, $file, O_WRONLY | O_EXCL | O_CREAT)
@@ -26,7 +20,7 @@ sysopen(my $fh, $file, O_WRONLY | O_EXCL | O_CREAT)
 
 Perl's sysopen is a function equivalent to C's fopen. Specify the file handle in the first argument, the file name in the second argument, and the open flag in the third argument. If you want, you can specify the permission in octal as the 4th argument, and the default permission is 0666.
 
-You can specify multiple open flags by connecting them with <a href="/blog/20080806121804.html"> bit operator</a> |. Specify the open mode with a combination of open flags.
+You can specify multiple open flags by connecting them with <a href="/blog/20080806121804.html">bit operator</a> |. Specify the open mode with a combination of open flags.
 
 For example, let's say you want to create a file if it doesn't exist and open it in write mode.
 
@@ -40,7 +34,7 @@ In order to use the symbol that represents the open flag, it must be imported in
 use Fcntl;
 </pre>
 
-The <a href="/blog/20180310152509.html"> Fcntl</a> module allows you to use symbols such as O_WRONLY. When using the sysopen function, remember to use it as a set.
+The <a href="/blog/20180310152509.html">Fcntl</a> module allows you to use symbols such as O_WRONLY. When using the sysopen function, remember to use it as a set.
 
 <h4> Open mode type </h4>
 
@@ -110,7 +104,7 @@ The <a href="/blog/20180310152509.html"> Fcntl</a> module allows you to use symb
 
 </table>
 
-Perl's open function allows you to specify the open mode using easy-to-understand symbols such as "<", ">", ">>", but on the other hand, you can specify the open mode in detail like the C language open function. can not do.
+Perl's open function allows you to specify the open mode using easy-to-understand symbols such as "<",">",">>", but on the other hand, you can specify the open mode in detail like the C language open function. can not do.
 
 You can use the sysopen function to specify the open mode in detail. (Although you can specify permissions as well, I'll mention them when writing about file permissions.)
 

@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">      <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> rand function-generate random numbers </h2>
@@ -67,7 +61,7 @@ If 10 is given, a random decimal number greater than or equal to 0 and less than
 int(rand 10);
 </pre>
 
-You can get only the integer part by using <a href="/blog/20080923122214.html"> int function</a>. You can get integers from 0 to 9 with int(rand 10).
+You can get only the integer part by using <a href="/blog/20080923122214.html">int function</a>. You can get integers from 0 to 9 with int(rand 10).
 
 <h4> Randomly select elements of the array </h4>
 
@@ -76,13 +70,13 @@ my @members = qw / aya ​​toru kato kenji mina haruna kita michel kotaro /;
 $members [int(rand scalar @members)];
 </pre>
 
-To randomly select the elements of the <a href="/blog/20161012147627.html"> array</a>, give the number of elements in the array to the rand function, extract the integer part with the int function, and add subscripts. You can do it.
+To randomly select the elements of the <a href="/blog/20161012147627.html">array</a>, give the number of elements in the array to the rand function, extract the integer part with the int function, and add subscripts. You can do it.
 
 If the elements of the array are 10, random numbers from 0 to 9 will be generated and the corresponding elements will be returned.
 
 <h3> To generate reproducible random numbers </h3>
 
-To generate reproducible random numbers, give the <a href="/blog/20080908122097.html"> srand function</a> an appropriate number before calling the rand function.
+To generate reproducible random numbers, give the <a href="/blog/20080908122097.html">srand function</a> an appropriate number before calling the rand function.
 
 <pre>
 # Initialize random number generation algorithm
@@ -92,6 +86,6 @@ rand $num;
 
 <h3> How to find accurate pseudo-random numbers </h3>
 
-If you want to find a random number that is more accurate than Perl's rand function, it is convenient to use the <a href="/blog/20080909122097.html"> Math::Random::MT module</a> available on CPAN. is.
+If you want to find a random number that is more accurate than Perl's rand function, it is convenient to use the <a href="/blog/20080909122097.html">Math::Random::MT module</a> available on CPAN. is.
 
 A method called the "Mersenne Twister method" is used to obtain accurate random numbers.

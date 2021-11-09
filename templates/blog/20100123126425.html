@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161022147731.html">        <span itemprop = "name">Syntax </span></a>
     <meta itemprop = "position" content = "3" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> while statement </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">while statement </span>
     <meta itemprop = "position" content = "4" />
   </li>
 </ol>
@@ -40,7 +34,7 @@ while ($i <= 2) {
 }
 </pre>
 
-What is the difference between a while statement and a <a href="/blog/20080327120662.html"> for statement</a> (or <a href="/blog/20080328120673.html"> foreach statement</a>)? ??
+What is the difference between a while statement and a <a href="/blog/20080327120662.html">for statement</a> (or <a href="/blog/20080328120673.html">foreach statement</a>)? ??
 
 You can write all the iterative processing with the while statement, but if you can write it with the for statement or foreach statement, it is better to write it using the for statement or foreach statement.
 
@@ -68,9 +62,9 @@ while (1) {
 }
 </pre>
 
-To break out of the loop, use the <a href="/blog/20170527149589.html"> last statement</a>. Note that the loop escape is not a break statement but a last statement unlike C language.
+To break out of the loop, use the <a href="/blog/20170527149589.html">last statement</a>. Note that the loop escape is not a break statement but a last statement unlike C language.
 
-In the example below, the <a href="/blog/20161012147627.html"> array</a> elements are removed one by one with the <a href="/blog/20100106126425.html"> pop function</a>. So, when there are no more elements in the array, it is judged by <a href="/blog/20161023147731.html"> if statement</a>, and the while block is exited by using the last statement.
+In the example below, the <a href="/blog/20161012147627.html">array</a> elements are removed one by one with the <a href="/blog/20100106126425.html">pop function</a>. So, when there are no more elements in the array, it is judged by <a href="/blog/20161023147731.html">if statement</a>, and the while block is exited by using the last statement.
 
 <pre>
 my @nums = (1, 2, 3);
@@ -86,7 +80,7 @@ while (1) {
 
 <h3> Read lines in order from standard input / command line arguments </h3>
 
-As an example often used in while statements, use <a href="/blog/20080722121673.html"> line input operator</a> to order lines from standard input or a file given as a command line argument. Let's load it into.
+As an example often used in while statements, use <a href="/blog/20080722121673.html">line input operator</a> to order lines from standard input or a file given as a command line argument. Let's load it into.
 
 <pre>
 # Read line
@@ -102,9 +96,9 @@ while (my $line = <>) {
 }
 </pre>
 
-In this sample, <a href="/blog/20080226120403.html"> chomp function</a> is used to remove line breaks and output with "Line:".
+In this sample, <a href="/blog/20080226120403.html">chomp function</a> is used to remove line breaks and output with "Line:".
 
-Using <a href="/blog/20161102147817.html"> special variable "$."</a> and <a href="/blog/20080329120687.html"> next statement</a>, the line number is Processing is skipped only at the first line.
+Using <a href="/blog/20161102147817.html">special variable "$."</a> and <a href="/blog/20080329120687.html">next statement</a>, the line number is Processing is skipped only at the first line.
 
 Use this program as follows. Using the while statement and the line input operator, you can easily write a program that reads lines from a file or standard input.
 
@@ -133,8 +127,8 @@ The iterative process is explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20170521149524.html"> Repeat with for statement and while statement</a>
+    <a href="/blog/20170521149524.html">Repeat with for statement and while statement</a>
   </li>
 </ul>
 
-Perl also has <a href="/blog/20171225151420.html"> do ~ while statement</a>, but since the next and last statements cannot be used as they are, it is strongly recommended to use the while statement. I recommend it.
+Perl also has <a href="/blog/20171225151420.html">do ~ while statement</a>, but since the next and last statements cannot be used as they are, it is strongly recommended to use the while statement. I recommend it.

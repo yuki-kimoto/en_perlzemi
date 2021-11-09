@@ -1,13 +1,8 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161126148016.html">
-      <span itemprop = "name"> File operations </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161126148016.html">      <span itemprop = "name">File operations </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
@@ -22,9 +17,9 @@ Since Perl was born on Unix, some standard functions have meaning only on Unix-l
 Permission means "permission" when translated into Japanese. I think the meaning of this permission is easy to understand if you think about it as follows. (From here on, file permissions are abbreviated as permissions.)
 
 <blockquote>
-<span style = "font-weight: bold;"> Permission concept </span>
+<span style = "font-weight: bold;">Permission concept </span>
 
-<span style = "font-weight: bold;"> "A file" </span> is <span style = "font-weight: bold;"> "Who" </span> is <span style = Allows you to do "font-weight: bold;"> "what" </span>.
+<span style = "font-weight: bold;">"A file" </span> is <span style = "font-weight: bold;">"Who" </span> is <span style = Allows you to do "font-weight: bold;">"what" </span>.
 </blockquote>
 
 Permissions are set on a "file" basis. It is also set for all files without exception.
@@ -90,7 +85,7 @@ Use the chmod function to actually change the file permissions. Please refer to 
 
 <ul>
   <li>
-    <a href="/blog/20080821121933.html"> chmod function - change file permissions</a>
+    <a href="/blog/20080821121933.html">chmod function - change file permissions</a>
   </li>
 </ul>
 
@@ -154,7 +149,7 @@ For example, if the bit string is 110, you have read and write permissions, and 
 
 <h4> Octal representation of file permissions </h4>
 
-File permissions are just bit strings, but they are often specified in octal for convenience. Use octal numbers when changing permissions with the command chmod, or when specifying permissions with the <a href="/blog/20080804121794.html"> sysopen function</a>.
+File permissions are just bit strings, but they are often specified in octal for convenience. Use octal numbers when changing permissions with the command chmod, or when specifying permissions with the <a href="/blog/20080804121794.html">sysopen function</a>.
 
 The correspondence between binary numbers (bit strings) and octal numbers is described.
 
@@ -274,7 +269,7 @@ Of these, the four most commonly used are 6 (110, read and write), 7 (111, read 
 
 <h4> Character representation of file permissions </h4>
 
-File permissions are often expressed in text for human readability. It is used when specifying permissions with the <a href="/blog/20080821121933.html"> chmod function</a> and when displaying detailed file information with the ls -l command.
+File permissions are often expressed in text for human readability. It is used when specifying permissions with the <a href="/blog/20080821121933.html">chmod function</a> and when displaying detailed file information with the ls -l command.
 
 The read permission bit is represented by "r", the write permission bit is represented by "w", and the execute permission bit is represented by "x". If the bit is not set, it is represented by "-".
 
@@ -658,7 +653,7 @@ Binary numbers or character representations are easy to understand, but since yo
 
 The meaning of permissions on directories is a little different from the meaning of permissions on files. Explains the meaning of permissions on directories.
 
-<span style = "font-weight: bold;"> In UNIX, a directory is a special file. </span> If it is a normal text file, the contents of the file are written with a character string, but the directory contains the information of the file.
+<span style = "font-weight: bold;">In UNIX, a directory is a special file. </span> If it is a normal text file, the contents of the file are written with a character string, but the directory contains the information of the file.
 
 <pre>
 ls -l directory name
@@ -682,12 +677,12 @@ A directory is a special file that contains file information.
 
 Understanding a directory as a special file makes it easier to understand the read and write permissions for the directory.
 
-<span style = "font-weight: bold;"> For directories
+<span style = "font-weight: bold;">For directories
 Read permission is the permission to read the file information written in the directory. </span> For example, you cannot view directory information with the ls command unless you give read permission to the directory.
 
-<span style = "font-weight: bold;"> Write permission for a directory is permission to change the information of files written in the directory. </span> For example, you cannot add or delete files to a directory.
+<span style = "font-weight: bold;">Write permission for a directory is permission to change the information of files written in the directory. </span> For example, you cannot add or delete files to a directory.
 
-One thing to keep in mind here is that the permissions to delete and add files are set by the write permissions on the directory. <span style = "font-weight: bold;"> Even if you don't give write permission to a file, you can delete it if you have write permission on the directory. </span>
+One thing to keep in mind here is that the permissions to delete and add files are set by the write permissions on the directory. <span style = "font-weight: bold;">Even if you don't give write permission to a file, you can delete it if you have write permission on the directory. </span>
 
 <h4> Execution permission for the directory </h4>
 
@@ -729,7 +724,7 @@ There is little point in losing execute permission on a directory. It is suffici
 
 <h3> Check file permissions </h3>
 
-I will explain how to check the permissions. To find out the file permissions, use the <a href="/blog/20080512121060.html"> stat function</a> to retrieve the file permissions information. The third element is the mode information. Converting with the obtained S_IMODE function gives pure permission information.
+I will explain how to check the permissions. To find out the file permissions, use the <a href="/blog/20080512121060.html">stat function</a> to retrieve the file permissions information. The third element is the mode information. Converting with the obtained S_IMODE function gives pure permission information.
 
 <pre>
 use Fcntl': mode';
@@ -783,7 +778,7 @@ printf "$file permissions (binary display):% 09b\n", S_IMODE ($mode);
 
 <h3> What is a bit mask? </H3>
 
-Bitmasks affect the permissions when creating files and directories with the <a href="/blog/20080804121794.html"> sysopen function</a> and mkdir functions.
+Bitmasks affect the permissions when creating files and directories with the <a href="/blog/20080804121794.html">sysopen function</a> and mkdir functions.
 
 For example, if the permission specified in the sysopen function is 666 and the bitmask setting is 022, the permission of the created file will be 644.
 
@@ -793,6 +788,6 @@ Bitmasks are explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20080824121967.html"> umask function - Limit permissions with bitmask</a>
+    <a href="/blog/20080824121967.html">umask function - Limit permissions with bitmask</a>
   </li>
 </ul>

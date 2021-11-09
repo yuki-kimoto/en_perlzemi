@@ -1,13 +1,8 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop = "name"> Module </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20091116124667.html">      <span itemprop = "name">Module </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
@@ -92,7 +87,7 @@ loop3 9699 / s 189% 70% -
 Q. Does the Benchmark module calculate the actual processing time?
 A. The time displayed by wallclock is the actual time taken. The value after @is calculated as "number of trials / CPU time".
 
-The value after @is calculated by the formula "number of trials / CPU time". CPU time is the time of the CPU used by the process, so it does not include I / O waits such as database access or time to execute child processes. Also, when the <a href="/blog/20170522149546.html"> sleep function</a> is executed, it is not included in the execution time because it does not use the CPU.
+The value after @is calculated by the formula "number of trials / CPU time". CPU time is the time of the CPU used by the process, so it does not include I / O waits such as database access or time to execute child processes. Also, when the <a href="/blog/20170522149546.html">sleep function</a> is executed, it is not included in the execution time because it does not use the CPU.
 
 This means that the value after @cannot be used as a reference when benchmarking I / O or calling child processes. The value compared by cmpthese is also "number of trials / CPU time", so the displayed value cannot be used for evaluation as it is.
 

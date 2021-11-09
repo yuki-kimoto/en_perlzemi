@@ -1,30 +1,24 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">      <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> keys function - get all keys in the hash </h2>
 
-You can use the <strong> keys function </strong> to get all the keys in the <a href="/blog/20161013147635.html"> hash</a>. The order of the acquired keys is indefinite.
+You can use the <strong> keys function </strong> to get all the keys in the <a href="/blog/20161013147635.html">hash</a>. The order of the acquired keys is indefinite.
 
 <pre>
 # Get all keys
 my @keys = keys %hash;
 </pre>
 
-If you pass <a href="/blog/20180208151809.html"> hash reference</a> as an argument, you need to dereference it.
+If you pass <a href="/blog/20180208151809.html">hash reference</a> as an argument, you need to dereference it.
 
 <pre>
 # Get all keys. For hash references.
@@ -51,7 +45,7 @@ Mike: 2
 Rika: 3
 </pre>
 
-The keys obtained with the keys function are in an indefinite order. When combined with <a href="/blog/20100110126528.html"> sort function</a>, it can be output in a stable order.
+The keys obtained with the keys function are in an indefinite order. When combined with <a href="/blog/20100110126528.html">sort function</a>, it can be output in a stable order.
 
 <pre>
 # Sort by key dictionary order and output
@@ -61,7 +55,7 @@ for my $person (sort keys %$scores) {
 }
 </pre>
 
-Furthermore, if you combine it with <a href="/blog/20080227120413.html"> reverse function</a>, you can output in the reverse order.
+Furthermore, if you combine it with <a href="/blog/20080227120413.html">reverse function</a>, you can output in the reverse order.
 
 <pre>
 # Sort by key dictionary order and output
@@ -73,7 +67,7 @@ for my $person (reverse sort keys %$scores) {
 
 <h4> Get all hash values ​​</h4>
 
-If you just want to get all the hash values, you can use the <a href="/blog/20100222126425.html"> values ​​function</a>.
+If you just want to get all the hash values, you can use the <a href="/blog/20100222126425.html">values ​​function</a>.
 
 <pre>
 my @values ​​= values %hash;
@@ -91,6 +85,6 @@ while (my ($name, $age) = each %age) {
 }
 </pre>
 
-The <a href="/blog/20100123126425.html"> while statement</a> is used to retrieve the key / name pairs in order.
+The <a href="/blog/20100123126425.html">while statement</a> is used to retrieve the key / name pairs in order.
 
 There are similar functions such as keys function, values ​​function, and each function, but it is recommended to use the keys function for hash processing. The keys function has good performance and is very easy to use among the three.

@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-        <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">        <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> opendir function-opens a directory </h2>
@@ -36,13 +30,13 @@ opendir my $dh, $dir
   or die "Can't open directory $dir: $!"
 </pre>
 
-An undefined variable is specified in the first argument, but <a href="/blog/20161107147852.html"> variable declaration by my</a> is performed at the same time. The second argument specifies the directory name.
+An undefined variable is specified in the first argument, but <a href="/blog/20161107147852.html">variable declaration by my</a> is performed at the same time. The second argument specifies the directory name.
 
-If the directory opening fails, a false message will be returned, so you need to handle the error. Use <a href="/blog/20100816136168.html"> or operator</a> to describe the processing when a failure occurs.
+If the directory opening fails, a false message will be returned, so you need to handle the error. Use <a href="/blog/20100816136168.html">or operator</a> to describe the processing when a failure occurs.
 
-<a href="/blog/20100212126425.html"> die function</a> raises an exception and terminates the program.
+<a href="/blog/20100212126425.html">die function</a> raises an exception and terminates the program.
 
-The <a href="/blog/20161102147817.html"> special variable "$!"</a> is assigned the reason why the directory open failed, so be sure to include it in the error message.
+The <a href="/blog/20161102147817.html">special variable "$!"</a> is assigned the reason why the directory open failed, so be sure to include it in the error message.
 
 <!-
 <h4> How to read the contents of a directory? </H4>
@@ -57,7 +51,7 @@ Use the readdir function to actually read the contents of the directory. The rea
 
 <h4> How to close the directory handle? </H4>
 
-The directory handle is automatically released when the <a href="/blog/20110128130016.html"> scope</a> is finished, so there is no need to explicitly close it. This is because the destructor runs when there are no more references to the directory handle.
+The directory handle is automatically released when the <a href="/blog/20110128130016.html">scope</a> is finished, so there is no need to explicitly close it. This is because the destructor runs when there are no more references to the directory handle.
 
 <pre>
 {
@@ -72,7 +66,7 @@ The directory handle is automatically released when the <a href="/blog/201101281
 # The directory handle is automatically closed when the scope ends
 </pre>
 
-If you want to explicitly close the directory handle, use the <a href="/blog/20171001150694.html"> closedir function</a>.
+If you want to explicitly close the directory handle, use the <a href="/blog/20171001150694.html">closedir function</a>.
 
 <pre>
 closedir $dh;

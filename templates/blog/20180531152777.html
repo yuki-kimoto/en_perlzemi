@@ -1,24 +1,16 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161022147731.html">        <span itemprop = "name">Syntax </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20080608121292.html">
-        <span itemprop = "name"> context </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20080608121292.html">        <span itemprop = "name">context </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">here </span>
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
@@ -30,7 +22,7 @@ Perl has a concept called context, and the context that is evaluated as a scalar
 
 <h4> Assignment to scalar variable </h4>
 
-Assignment to <a href="/blog/20161107147852.html"> scalar variable</a> is a scalar context. <a href="/blog/20161012147627.html"> Array</a> returns the length of the array when evaluated in a scalar context.
+Assignment to <a href="/blog/20161107147852.html">scalar variable</a> is a scalar context. <a href="/blog/20161012147627.html">Array</a> returns the length of the array when evaluated in a scalar context.
 
 <pre>
 my $num = @values;
@@ -38,14 +30,14 @@ my $num = @values;
 
 <h4> Comparison operator term </h4>
 
-The left and right terms of <a href="/blog/20080318120585.html"> comparison operator</a> are scalar contexts.
+The left and right terms of <a href="/blog/20080318120585.html">comparison operator</a> are scalar contexts.
 
 <pre>
 $x <@values
 $x == @values
 </pre>
 
-I often see it in the loop of <a href="/blog/20170521149524.html"> for statement</a>.
+I often see it in the loop of <a href="/blog/20170521149524.html">for statement</a>.
 
 <pre>
 for (my $i = 0; $i <@nums; $i++) {
@@ -55,7 +47,7 @@ for (my $i = 0; $i <@nums; $i++) {
 
 <h4> if condition part </h4>
 
-The conditional part of <a href="/blog/20161023147731.html"> if</a> is the scalar context. In the following, @values ​​is evaluated in scalar context, so it returns the number of arrays.
+The conditional part of <a href="/blog/20161023147731.html">if</a> is the scalar context. In the following, @values ​​is evaluated in scalar context, so it returns the number of arrays.
 
 <pre>
 if (@values) {

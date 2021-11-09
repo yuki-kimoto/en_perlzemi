@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20110212130370.html">      <span itemprop = "name">File input / output </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
 <h2> Disable buffering </h2>
@@ -25,7 +19,7 @@ This is unlikely to be a problem when exporting to a local file. The problem ari
 
 If block buffering is performed at this time, it may happen that you intended to send data to the other party but did not send it. It remains in its own write buffer.
 
-One way to solve this is to change block buffering to command buffering. To enable command buffering <a href="/blog/20161102147817.html"> Special variables</a> Set "<strong> $| </strong>" to <b> 1 </b> To do.
+One way to solve this is to change block buffering to command buffering. To enable command buffering <a href="/blog/20161102147817.html">Special variables</a> Set "<strong> $| </strong>" to <b> 1 </b> To do.
 
 <pre>
 $| = 1;
@@ -42,7 +36,7 @@ use warnings;
 # File for writing (Note that it will be overwritten)
 my $file = "sample20080812.txt";
 
-open(my $fh, ">", $file)
+open(my $fh,">", $file)
   or die "Cannot open $file: $!";
 
 # Change default output handle
@@ -61,7 +55,7 @@ sleep 3;
 close $fh or die "Cannot close $file";
 </pre>
 
-(Reference) <a href="/blog/20170522149546.html"> sleep function</a>, <a href="/blog/20080718121643.html"> open function</a>, <a href="/blog" /20160312145776.html"> close function</a>, <a href="/blog/20100212126425.html"> die function</a>
+(Reference) <a href="/blog/20170522149546.html">sleep function</a>, <a href="/blog/20080718121643.html">open function</a>, <a href="/blog" /20160312145776.html">close function</a>, <a href="/blog/20100212126425.html">die function</a>
 
 <h3> Command buffering </h3>
 

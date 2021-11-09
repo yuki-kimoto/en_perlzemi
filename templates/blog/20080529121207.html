@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">      <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> glob function - get list of files contained in directory </h2>
@@ -25,7 +19,7 @@ You can use the <strong> glob </strong> function to get a list of files.
 my @all_files = glob "*";
 </pre>
 
-Use the glob operator to get a list of files. The target is files (including directories) in the current directory. When you get the file list of another directory, move the current directory with <a href="/blog/20080528121197.html"> chdir function</a>, or express it with a relative path or an absolute path. ..
+Use the glob operator to get a list of files. The target is files (including directories) in the current directory. When you get the file list of another directory, move the current directory with <a href="/blog/20080528121197.html">chdir function</a>, or express it with a relative path or an absolute path. ..
 
 <h3> Example of glob argument expression </h3>
 
@@ -122,7 +116,7 @@ Sort by # grep.
 print join("\n", @normal_files). "\n\n";
 </pre>
 
-Reference: <a href="/blog/20081007122338.html"> join function</a>
+Reference: <a href="/blog/20081007122338.html">join function</a>
 
 Execution result
 
@@ -158,7 +152,7 @@ yuki-kimoto-Portablebbs-b578c1d.zip
 
 I think you often use the glob function to get a list of files. But for now, it's best to see that the glob function doesn't work properly on Windows. If the directory name contains a specific character string, the file list cannot be obtained correctly.
 
-So, instead of using the glob function, it's a good idea to create a function that gets a list of filenames like this: <a href="/blog/20171002150691.html"> opendir function</a> to open the directory handle, <a href="/blog/20171003150703.html"> readdir function</a> to read the directory Use>.
+So, instead of using the glob function, it's a good idea to create a function that gets a list of filenames like this: <a href="/blog/20171002150691.html">opendir function</a> to open the directory handle, <a href="/blog/20171003150703.html">readdir function</a> to read the directory Use>.
 
 <pre>
 sub get_files {

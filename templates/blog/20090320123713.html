@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop = "name"> Object Oriented </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161030147778.html">      <span itemprop = "name">Object Oriented </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> Generic constructor </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">Generic constructor </span>
     <meta itemprop = "position" content = "4" />
   </li>
 </ol>
@@ -68,9 +62,9 @@ I think this part is difficult to understand.
   my $proto = shift;
   my $class = ref $proto || $proto;
 </pre>
-What this does is that if $proto is an object, use the <a href="/blog/20090318123712.html"> ref function</a> to retrieve the associated class name. increase.
+What this does is that if $proto is an object, use the <a href="/blog/20090318123712.html">ref function</a> to retrieve the associated class name. increase.
 
-If not, I'm trying to just use the class name. If a string (class name) is passed to the <a href="/blog/20090318123712.html"> ref function</a>, a false value will be returned and the right side of || will be executed.
+If not, I'm trying to just use the class name. If a string (class name) is passed to the <a href="/blog/20090318123712.html">ref function</a>, a false value will be returned and the right side of || will be executed.
 
 That's why $class will contain the class name, whether it's called by the class name or by an object.
 

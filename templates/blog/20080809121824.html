@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20110212130370.html">      <span itemprop = "name">File input / output </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
 <h2> Safely read and write files </h2>
@@ -44,7 +38,7 @@ open(my $infh, "<", $infile)
   or die "Cannot open $infile: $!";
 
 # Open a temporary file for export.
-open(my $tmpfh, ">", $tmpfile)
+open(my $tmpfh,">", $tmpfile)
   or die "Cannot open $tmpfile: $!";
     
 while (1) {
@@ -85,11 +79,11 @@ File::Copy::move ($tmpfile, $infile)
   or die "Cannot move $tmpfile to $infile";
 </pre>
 
-I'm using a <a href="/blog/20100123126425.html"> while statement</a> to safely read the rows in order.
+I'm using a <a href="/blog/20100123126425.html">while statement</a> to safely read the rows in order.
 
 <h3> How to read and write files safely </h3>
 
-If you read the <a href="/blog/20080718121643.html"> open function</a> documentation, you should specify the open mode "+ <" for the open function to read and write files. maybe. You can read and write this way, but it's very dangerous.
+If you read the <a href="/blog/20080718121643.html">open function</a> documentation, you should specify the open mode "+ <" for the open function to read and write files. maybe. You can read and write this way, but it's very dangerous.
 
 If the system crashes while writing, the files will be corrupted and cannot be restored.
 Therefore, the following methods are used to read and write safely.
@@ -124,7 +118,7 @@ Make sure that the temporary file name includes the process ID ($$). By making i
 open(my $infh, "<", $infile)
   or die "Cannot open $infile: $!";
 
-open(my $tmpfh, ">", $tmpfile)
+open(my $tmpfh,">", $tmpfile)
   or die "Cannot open $tmpfile: $!";
 </pre>
 
@@ -166,9 +160,9 @@ close $tmpfh
 
 Although omitting the error check for closing the read file does not cause a serious problem, it is necessary to perform the error check for the written file.
 
-Perl's <a href="/blog/20170404149131.html"> print function</a> buffers (stores in memory) what you write. Buffering means that when you call the print function, it doesn't actually write to the file. Outputting to a file is very slow, so it is implicit that the contents to be written are stored in a buffer and written out all at once.
+Perl's <a href="/blog/20170404149131.html">print function</a> buffers (stores in memory) what you write. Buffering means that when you call the print function, it doesn't actually write to the file. Outputting to a file is very slow, so it is implicit that the contents to be written are stored in a buffer and written out all at once.
 
-If the written contents are accumulated to a certain extent, it will be output to a file, but it will not be output until then. In that case, when the <a href="/blog/20160312145776.html"> close function</a> is called, it will be output to a file (forcibly writing the buffer contents to a file is called flash). increase).
+If the written contents are accumulated to a certain extent, it will be output to a file, but it will not be output until then. In that case, when the <a href="/blog/20160312145776.html">close function</a> is called, it will be output to a file (forcibly writing the buffer contents to a file is called flash). increase).
 
 So if close fails, the buffer will be left unflushed and you will not be able to write the correct content. To prevent this from happening, you need to code to ensure that you avoid close errors.
 
@@ -180,6 +174,6 @@ File::Copy::move ($tmpfile, $infile)
   or die "Cannot move $tmpfile to $infile";
 </pre>
 
-(Reference) <a href="/blog/20100212126425.html"> die function</a>
+(Reference) <a href="/blog/20100212126425.html">die function</a>
 
-Use the <a href="/blog/20100408127089.html"> File::Copy</a> module to rename the temporary file for writing to the original file name. That's it.
+Use the <a href="/blog/20100408127089.html">File::Copy</a> module to rename the temporary file for writing to the original file name. That's it.

@@ -1,13 +1,8 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161130148051.html">
-      <span itemprop = "name"> Module basics </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161130148051.html">      <span itemprop = "name">Module basics </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
@@ -15,7 +10,7 @@
 
 
 
-It takes some ingenuity to specify the module name as a variable and load it. <a href="/blog/20090207123288.html"> requere</a> takes a string or a bare word as an argument. When require receives a string, it recognizes it as a filename. On the other hand, when it receives a bare word, it recognizes it as a module name.
+It takes some ingenuity to specify the module name as a variable and load it. <a href="/blog/20090207123288.html">requere</a> takes a string or a bare word as an argument. When require receives a string, it recognizes it as a filename. On the other hand, when it receives a bare word, it recognizes it as a module name.
 
 <pre>
 If the # argument is a character string, it is recognized as a file name.
@@ -32,4 +27,4 @@ my $module = "Carp";
 eval "require $module;";
 </pre>
 
-If you give a character string to <a href="/blog/20100312126967.html"> eval</a>, the executable statement in the character string will be executed. "require $module;" is variable-expanded to require Carp ;. This will be executed by eval and the module will be loaded.
+If you give a character string to <a href="/blog/20100312126967.html">eval</a>, the executable statement in the character string will be executed. "require $module;" is variable-expanded to require Carp ;. This will be executed by eval and the module will be loaded.

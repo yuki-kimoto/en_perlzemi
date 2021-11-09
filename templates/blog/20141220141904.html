@@ -1,13 +1,8 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop = "name"> XS </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20100809127859.html">        <span itemprop = "name">XS </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
@@ -23,7 +18,7 @@ I will explain how to write a program without causing a memory leak in XS.
 
 <h3> Perl memory management is a reference counting method </h3>
 
-First of all, as a basic knowledge, please be aware that Perl's memory management is performed by the <a href="/blog/20131010138141.html"> reference counting method</a>. In the reference counting method, the memory is released when the reference count reaches 0. In other words, freeing memory in Perl is equivalent to setting the reference count to 0.
+First of all, as a basic knowledge, please be aware that Perl's memory management is performed by the <a href="/blog/20131010138141.html">reference counting method</a>. In the reference counting method, the memory is released when the reference count reaches 0. In other words, freeing memory in Perl is equivalent to setting the reference count to 0.
 
 Let me explain a little more about the reference counting method. For Perl variables, the reference count for that variable is 1 when you first declare the variable. Also, when a reference to a variable is made, the reference count is incremented by 1.
 
@@ -37,7 +32,7 @@ Let me explain a little more about the reference counting method. For Perl varia
 }
 </pre>
 
-Also, in Perl, variables are automatically released when you exit the <a href="/blog/20110128130016.html"> scope</a>. This is because the variable is automatically in a state called mortal. The concept of mortal is very important. Mortal means "when the scope is removed, the reference count is automatically decremented by 1."
+Also, in Perl, variables are automatically released when you exit the <a href="/blog/20110128130016.html">scope</a>. This is because the variable is automatically in a state called mortal. The concept of mortal is very important. Mortal means "when the scope is removed, the reference count is automatically decremented by 1."
 
 The above code describes what happens when you get out of scope.
 
@@ -67,7 +62,7 @@ Next, based on this, I will explain the basics of memory management in XS.
 
 First, let's take a brief look at Perl variables.
 
-I will explain <a href="/blog/20161107147852.html"> Perl variables</a>. First, internally, scalar variables are represented by "SV * type". Arrays are represented by "AV * type" and hashes are represented by "HV * type". Let's remember this three first. Of course, the reference can be assigned to "SV * type". And, internally, keep in mind that "AV * type" and "HV * type" are derived from "SV * type". This means that you can upcast and downcast.
+I will explain <a href="/blog/20161107147852.html">Perl variables</a>. First, internally, scalar variables are represented by "SV * type". Arrays are represented by "AV * type" and hashes are represented by "HV * type". Let's remember this three first. Of course, the reference can be assigned to "SV * type". And, internally, keep in mind that "AV * type" and "HV * type" are derived from "SV * type". This means that you can upcast and downcast.
 
 The following function is used to create a scalar variable. Keep in mind that in XS, the functions you create are different for strings, floats, and integers.
 
@@ -181,7 +176,7 @@ hv_store (hv_scores, "math", strlen ("math"), SvREFCNT_inc (sv_score_math), 0);
 
 <h3> When storing Perl data in a C structure </h3>
 
-If you want to store Perl data in a C structure, you need to manage the memory yourself. As a premise of this story, you should look at <a href="/blog/20140807140729.html"> How to treat C structs as Perl objects</a>.
+If you want to store Perl data in a C structure, you need to manage the memory yourself. As a premise of this story, you should look at <a href="/blog/20140807140729.html">How to treat C structs as Perl objects</a>.
 
 Let's consider a case where you want to save an "SV * type" in a C language structure. I tried to declare a structure called People with a member called sv_name.
 
@@ -264,6 +259,6 @@ The functions used in XS mentioned in this explanation are explained in detail i
 
 <ul>
   <li>
-    <a href="/blog/20100818127859.html"> perlapi - API for data manipulation in XS</a>
+    <a href="/blog/20100818127859.html">perlapi - API for data manipulation in XS</a>
   </li>
 </ul>

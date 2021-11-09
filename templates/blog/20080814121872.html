@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop = "name"> standard function </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161004147558.html">      <span itemprop = "name">standard function </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    here
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
 <h2> flock function - exclusive control of files </h2>
@@ -84,9 +78,9 @@ while (1) {
 }
 </pre>
 
-(Reference) <a href="/blog/20100524127696.html"> FindBin</a>, <a href="/blog/20180309152509.html"> Time::HiRes</a>
+(Reference) <a href="/blog/20100524127696.html">FindBin</a>, <a href="/blog/20180309152509.html">Time::HiRes</a>
 
-The script is called repeatedly using the <a href="/blog/20100123126425.html"> while statement</a>.
+The script is called repeatedly using the <a href="/blog/20100123126425.html">while statement</a>.
 
 Launch about 3 command prompts and execute write_loop_20080814.pl at all prompts. Read data_20080814.txt, count up and write back in 3 parallels.
 
@@ -98,7 +92,7 @@ Kill all three processes with Ctrl + C and make sure there are no duplicate coun
 
 <h4> Fcntl - Read constants for file locking </h4>
 
-The <a href="/blog/20180310152509.html"> Fcntl</a> module allows you to use the file locking constants used by flock.
+The <a href="/blog/20180310152509.html">Fcntl</a> module allows you to use the file locking constants used by flock.
 
 <pre>
 use Fcntl qw /: DEFAULT: flock: seek /;
@@ -138,7 +132,7 @@ Use use Fcntl qw (: flock) to read the constants used by flock. There are three 
 
 LOCK_NB is used with LOCK_SH LOCK_EX to return control to the program without waiting for the lock to be released if the lock has already been applied.
 
-As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and O_CREAT in the <a href="/blog/20080804121794.html"> sysopen function</a>. Therefore, it is specified.
+As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and O_CREAT in the <a href="/blog/20080804121794.html">sysopen function</a>. Therefore, it is specified.
 
 <h4> (2) If the file does not exist, create it and open it in read / write mode </h4>
 
@@ -214,6 +208,6 @@ while (1) {
 }
 </pre>
 
-FindBin is a module that allows you to know the path of a script. The system function is a function that can execute a specified command. The rand function is a function for generating a random number. The usleep function is a function that stops the script for a certain period of time. Unlike the <a href="/blog/20170522149546.html"> sleep function</a>, you can specify the number of seconds in microseconds.
+FindBin is a module that allows you to know the path of a script. The system function is a function that can execute a specified command. The rand function is a function for generating a random number. The usleep function is a function that stops the script for a certain period of time. Unlike the <a href="/blog/20170522149546.html">sleep function</a>, you can specify the number of seconds in microseconds.
 
 The usleep function is given a random value of 1 second or less, and when this process is run in parallel, it is devised so that a file conflict occurs.

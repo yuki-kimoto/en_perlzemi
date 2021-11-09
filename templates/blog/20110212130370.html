@@ -1,12 +1,8 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">here </span>
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
@@ -20,7 +16,7 @@ Let's master the basics of Perl's file I / O. The goal is to be able to read and
 
 You must first open the file in order to read it. Files are managed by the OS, so you must first tell the OS that you want to work with the files programmatically. The OS returns the identifier of the target file to the program.
 
-Use the <a href="/blog/20080718121643.html"> open function</a>: title = open function] to open the file.
+Use the <a href="/blog/20080718121643.html">open function</a>: title = open function] to open the file.
 
 <pre>
 my $file ='data.txt';
@@ -32,9 +28,9 @@ I will explain the process of opening files one by one.
 
 <h4> open function </h4>
 
-The open function takes three arguments. Specify the lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, the <a href="/blog/20080721121664.html"> file handle</a> is stored in the lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
+The open function takes three arguments. Specify the lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, the <a href="/blog/20080721121664.html">file handle</a> is stored in the lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
 
-If the open function fails because the file does not exist, it returns <a href="/blog/20100220126425.html"> undef</a>. If it fails, use the <a href="/blog/20100212126425.html"> die function</a> to throw an exception. By using <a href="/blog/20180125151688.html"> or operator</a>, if the executable statement on the left side of or is false, you can describe the process of executing the executable statement on the right side.
+If the open function fails because the file does not exist, it returns <a href="/blog/20100220126425.html">undef</a>. If it fails, use the <a href="/blog/20100212126425.html">die function</a> to throw an exception. By using <a href="/blog/20180125151688.html">or operator</a>, if the executable statement on the left side of or is false, you can describe the process of executing the executable statement on the right side.
 
 <h4> Open mode </h4>
 
@@ -79,7 +75,7 @@ Open mode specifies the mode in which the file is opened. Some of the most commo
 
 </table>
 
-Read mode "<" is used when you want to read the contents of a file. Write mode ">" is used when you want to write to a file. If the file does not exist, it will be created automatically. If the file exists, all the contents of the file will be erased when it is opened. The additional write mode ">>" is used when you want to add a new line to the end of the file. If the file does not exist, it will be created automatically.
+Read mode "<" is used when you want to read the contents of a file. Write mode">" is used when you want to write to a file. If the file does not exist, it will be created automatically. If the file exists, all the contents of the file will be erased when it is opened. The additional write mode">>" is used when you want to add a new line to the end of the file. If the file does not exist, it will be created automatically.
 
 There are literate and readable modes, but you'll rarely have a chance to use them. As I'll explain later, if you want to read a file and then write to the same file, it's better to take a different approach.
 
@@ -116,13 +112,13 @@ use Encode::UTF8Mac;
 open my $fh,'<', encode ('' utf-8-mac'', $file);
 </pre>
 
-Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html"> Encode::UTF8Mac</a> module.
+Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html">Encode::UTF8Mac</a> module.
 
 The following explanation is detailed about the handling of Japanese.
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html"> Properly handle multi-byte character strings such as Japanese</a>
+    <a href="/blog/20091118124667.html">Properly handle multi-byte character strings such as Japanese</a>
   </li>
 </ul>
 
@@ -157,9 +153,9 @@ The exception message should include the following:
 die qq / Can't open file "$file": $! /;
 </pre>
 
-"Can't open file" $file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html"> special variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
+"Can't open file" $file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html">special variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
 
-For a detailed explanation of <a href="/blog/20100411127089.html"> exception handling</a>, see the following article.
+For a detailed explanation of <a href="/blog/20100411127089.html">exception handling</a>, see the following article.
 
 <h3> Read file </h3>
 
@@ -172,14 +168,14 @@ open my $fh,'<', $file
   or die qq / Can't open file "$file": $! /;
 </pre>
 
-Use the <a href="/blog/20080722121673.html"> line input operator</a> to read the file line by line.
+Use the <a href="/blog/20080722121673.html">line input operator</a> to read the file line by line.
 
 <pre>
 # Line input operator
 <File handle>
 </pre>
 
-Use the <a href="/blog/20170521149524.html"> while statement</a> to read the lines line by line. The following is an example of outputting all lines to standard output (screen).
+Use the <a href="/blog/20170521149524.html">while statement</a> to read the lines line by line. The following is an example of outputting all lines to standard output (screen).
 
 <pre>
 while (my $line = <$fh>) {
@@ -195,7 +191,7 @@ The line input operator returns an undef when it reaches the end of the file, so
 
 Close the file after reading or writing to it.
 
-Use the <a href="/blog/20160312145776.html"> close function</a> to close the file.
+Use the <a href="/blog/20160312145776.html">close function</a> to close the file.
 
 <pre>
 close $fh;
@@ -205,7 +201,7 @@ Especially when writing to a file, the contents written to the file are complete
 
 <h3> Write to file </h3>
 
-Next, let's write to the file. To write to a file, first open the file in write mode ">".
+Next, let's write to the file. To write to a file, first open the file in write mode">".
 
 <pre>
 # Open in additional write mode
@@ -214,7 +210,7 @@ open my $fh,'>', $file
   or die qq / Can't open file "$file": $! /;
 </pre>
 
-Use the <a href="/blog/20170404149131.html"> print function</a> to write a string to the file.
+Use the <a href="/blog/20170404149131.html">print function</a> to write a string to the file.
 
 <pre>
 print file handle string
@@ -237,7 +233,7 @@ You can see that the string "Hello" is written in data.txt.
 
 <h3> Additional writing to file </h3>
 
-Let's do additional writing to the file. To write to a file, first open the file in the additional write mode ">>".
+Let's do additional writing to the file. To write to a file, first open the file in the additional write mode">>".
 
 <pre>
 # Open in write mode
@@ -279,7 +275,7 @@ This is confusing, but it is often described this way.
 
 An input record separator is set for the special variable "$/". By default, the standard line feed code of the OS is set as the input record separator. You can use the line input operator to read the contents of a file at once by setting the input record separator to undef. So if you set $/ to undef, you can get all the contents of the file when you run <$fh>. However, $/ is global, so you should always restore it to its original value if you change it.
 
-<a href="/blog/20080309120507.html"> local</a> is for temporarily changing the contents of a variable. local can be used for variables other than lexical variables.
+<a href="/blog/20080309120507.html">local</a> is for temporarily changing the contents of a variable. local can be used for variables other than lexical variables.
 
 <pre>
 local variable;
@@ -287,7 +283,7 @@ local variable;
 
 You can temporarily undef the contents of a variable until the end of scope. When the scope ends, the original value is restored.
 
-Next is <a href="/blog/20090208123289.html"> do block</a>, but you can create a block that returns the return value by writing "do {...}". .. The last evaluated value in the block is the return value.
+Next is <a href="/blog/20090208123289.html">do block</a>, but you can create a block that returns the return value by writing "do {...}". .. The last evaluated value in the block is the return value.
 
 The following processing is performed throughout.
 
@@ -332,7 +328,7 @@ $/ = "\ x0A";
 
 <h4> behavior of chomp function </h4>
 
-You can use the <a href="/blog/20080226120403.html"> chomp function</a> to remove the trailing newline, but it's actually removing the trailing input record separator.
+You can use the <a href="/blog/20080226120403.html">chomp function</a> to remove the trailing newline, but it's actually removing the trailing input record separator.
 
 <pre>
 chomp string;
@@ -430,7 +426,7 @@ move $temp_file, $file
   or die qq / Can't move "$temp_file" to "$file": $! /;
 </pre>
 
-(Reference) <a href="/blog/20100408127089.html"> File::Copy</a>
+(Reference) <a href="/blog/20100408127089.html">File::Copy</a>
 
 <h3> File I / O Techniques </h3>
 
@@ -440,10 +436,10 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080728121733.html"> Read the csv file and convert it to an array of arrays</a>
+    <a href="/blog/20080728121733.html">Read the csv file and convert it to an array of arrays</a>
   </li>
   <li>
-    <a href="/blog/20080729121734.html"> Read the csv file and convert it to an array of hashes</a>
+    <a href="/blog/20080729121734.html">Read the csv file and convert it to an array of hashes</a>
   </li>
 </ul>
 
@@ -451,10 +447,10 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080804121794.html"> sysopen function - Specify the open mode in detail</a>-<a href="/blog/20080726121705.html"> Redirect the standard output and write it to a fileInclude</a>
+    <a href="/blog/20080804121794.html">sysopen function - Specify the open mode in detail</a>-<a href="/blog/20080726121705.html">Redirect the standard output and write it to a fileInclude</a>
   </li>
   <li>
-    <a href="/blog/20100204126425.html"> Binary mode - binmode function</a>
+    <a href="/blog/20100204126425.html">Binary mode - binmode function</a>
   </li>
 </ul>
 
@@ -462,7 +458,7 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080809121824.html"> Read and write files safely</a>
+    <a href="/blog/20080809121824.html">Read and write files safely</a>
   </li>
 </ul>
 
@@ -470,13 +466,13 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080730121743.html"> Standard input, standard output, standard error output</a>
+    <a href="/blog/20080730121743.html">Standard input, standard output, standard error output</a>
   </li>
   <li>
-    <a href="/blog/20080731121760.html"> Standard I / O and redirection</a>
+    <a href="/blog/20080731121760.html">Standard I / O and redirection</a>
   </li>
   <li>
-    <a href="/blog/20080801121768.html"> Pipe</a>
+    <a href="/blog/20080801121768.html">Pipe</a>
   </li>
 </ul>
 
@@ -484,10 +480,10 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080802121768.html"> Write Unix-like filter programming</a>
+    <a href="/blog/20080802121768.html">Write Unix-like filter programming</a>
   </li>
   <li>
-    <a href="/blog/20080803121776.html"> Write a filter program that can specify options</a>
+    <a href="/blog/20080803121776.html">Write a filter program that can specify options</a>
   </li>
 </ul>
 
@@ -495,10 +491,10 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080808121826.html"> Sequential access and random access</a>
+    <a href="/blog/20080808121826.html">Sequential access and random access</a>
   </li>
   <li>
-    <a href="/blog/20080810121833.html"> Read and write using random access.</a>
+    <a href="/blog/20080810121833.html">Read and write using random access.</a>
   </li>
 </ul>
 
@@ -506,10 +502,10 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080811121845.html"> What is buffering?</a>
+    <a href="/blog/20080811121845.html">What is buffering?</a>
   </li>
   <li>
-    <a href="/blog/20080812121854.html"> Switch to command buffering</a>
+    <a href="/blog/20080812121854.html">Switch to command buffering</a>
   </li>
 </ul>
 
@@ -517,12 +513,12 @@ Please refer to the following for various file input / output techniques.
 
 <ul>
   <li>
-    <a href="/blog/20080813121863.html"> What is file locking?</a>
+    <a href="/blog/20080813121863.html">What is file locking?</a>
   </li>
   <li>
-    <a href="/blog/20080814121872.html"> Read and write files in order flock</a>
+    <a href="/blog/20080814121872.html">Read and write files in order flock</a>
   </li>
   <li>
-    <a href="/blog/20080815121881.html"> Lock the file using the lock file</a>
+    <a href="/blog/20080815121881.html">Lock the file using the lock file</a>
   </li>
 </ul>

@@ -1,6 +1,6 @@
 <h2> Class::Struct - Core module that provides object orientation </h2>
 
-Class::Struct is a classic module that provides Perl with <a href="/blog/20161030147778.html"> object-oriented</a> functionality. The constructor new can be automatically generated and the accessor can be automatically generated. An accessor is a method for setting and retrieving fields.
+Class::Struct is a classic module that provides Perl with <a href="/blog/20161030147778.html">object-oriented</a> functionality. The constructor new can be automatically generated and the accessor can be automatically generated. An accessor is a method for setting and retrieving fields.
 
 The Perl Primer will show you how to have a hash reference as the basic type of an object and provide a scalar accessor.
 
@@ -17,11 +17,11 @@ use Class::Struct __PACKAGE__, {
 };
 </pre>
 
-<a href="/blog/20090205123287.html"> use</a> allows you to pass arguments after the module name.
+<a href="/blog/20090205123287.html">use</a> allows you to pass arguments after the module name.
 
-The first argument is the package name. This argument specifies for which package the constructor or accessor should be generated. <a href="/blog/20080425120914.html"> __PACKAGE__</a> is a function that returns the current package name and returns Point.
+The first argument is the package name. This argument specifies for which package the constructor or accessor should be generated. <a href="/blog/20080425120914.html">__PACKAGE__</a> is a function that returns the current package name and returns Point.
 
-The second argument is the <a href="/blog/20180208151809.html"> hash reference</a> that defines the field. An accessor is automatically generated.
+The second argument is the <a href="/blog/20180208151809.html">hash reference</a> that defines the field. An accessor is automatically generated.
 
 <h3> Use of Point class </h3>
 
@@ -46,7 +46,7 @@ my $y2 = $point-> y;
 print "($x2, $y2)\n";
 </pre>
 
-For the main package, refer to the <a href="/blog/20100419127089.html"> Package Declaration</a> article.
+For the main package, refer to the <a href="/blog/20100419127089.html">Package Declaration</a> article.
 
 <h4> Call constructor new </h4>
 
@@ -79,10 +79,10 @@ print "($x2, $y2)\n";
 
 It is possible to inherit the class created by Class::Strcut, but as a limitation, you cannot add fields. If you want to inherit, most of the time you want to add a field, so it's a good idea to think that you can't.
 
-If you plan to inherit, use <a href="/blog/20100203126425.html"> bless</a> to create the object for Perl cores only. When using the CPAN module, use a module that supports adding field definitions by inheritance.
+If you plan to inherit, use <a href="/blog/20100203126425.html">bless</a> to create the object for Perl cores only. When using the CPAN module, use a module that supports adding field definitions by inheritance.
 
 <h3> Is it possible to override the constructor? </H3>
 
 Class::Strcut will generate a constructor for the target class, so you cannot override the constructor.
 
-If you plan to customize the constructor, use <a href="/blog/20100203126425.html"> bless</a> to create the object for Perl cores only. If you want to use the CPAN module, use a module that supports constructor customization.
+If you plan to customize the constructor, use <a href="/blog/20100203126425.html">bless</a> to create the object for Perl cores only. If you want to use the CPAN module, use a module that supports constructor customization.

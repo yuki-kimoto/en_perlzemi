@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop = "name"> Syntax </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161022147731.html">      <span itemprop = "name">Syntax </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">here </span>
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
@@ -24,11 +18,11 @@ You can use <b> local </b> to temporarily change package variables.
 LOCAL_VARIABLE_NAME = value;
 </pre>
 
-If no value is specified, <a href="/blog/20100220126425.html"> undefined value</a> will be set.
+If no value is specified, <a href="/blog/20100220126425.html">undefined value</a> will be set.
 
 <h3> Saving and restoring values ​​</h3>
 
-Assigning a value using local restores the previous value at the end of the <a href="/blog/20110128130016.html"> scope</a>.
+Assigning a value using local restores the previous value at the end of the <a href="/blog/20110128130016.html">scope</a>.
 
 <pre>
 our $NUM = 5;
@@ -38,7 +32,7 @@ our $NUM = 5;
 # Here, "$NUM" returns to "5" which is the "original value"
 </pre>
 
-Package variables modified by local are restored at the end of <a href="/blog/20110128130016.html"> scope</a>.
+Package variables modified by local are restored at the end of <a href="/blog/20110128130016.html">scope</a>.
 
 If initialization is not performed, the initial value of the variable value will be an undefined value.
 
@@ -46,7 +40,7 @@ If initialization is not performed, the initial value of the variable value will
 local $NUM;
 </pre>
 
-local is for package variables declared with <a href="/blog/20080308120495.html"> our</a>. Note that it is not available for lexical variables declared by <a href="/blog/20080307120491.html"> my</a>.
+local is for package variables declared with <a href="/blog/20080308120495.html">our</a>. Note that it is not available for lexical variables declared by <a href="/blog/20080307120491.html">my</a>.
 
 <pre>
 # Compile error
@@ -54,7 +48,7 @@ my $num;
 local $num;
 </pre>
 
-However, no exception occurs for <a href="/blog/20161012147627.html"> array</a> values ​​and <a href="/blog/20161013147635.html"> hash</a> values.
+However, no exception occurs for <a href="/blog/20161012147627.html">array</a> values ​​and <a href="/blog/20161013147635.html">hash</a> values.
 
 <pre>
 my @nums = (1, 2, 3);
@@ -66,9 +60,9 @@ local $score{math};
 
 <h3> local for special variables </h3>
 
-The most common use of local in Perl is for <a href="/blog/20161102147817.html"> special variables</a> such as "$/", "%ENV" and "@ARGV".
+The most common use of local in Perl is for <a href="/blog/20161102147817.html">special variables</a> such as "$/", "%ENV" and "@ARGV".
 
-local targets package variables, but special variables actually belong to the <a href="/blog/20100419127089.html"> package</a> called main.
+local targets package variables, but special variables actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
 
 So you can use local for special variables as well.
 
@@ -80,7 +74,7 @@ local @ARGV;
 
 <h3> Use my for variable declaration </h3>
 
-Since <a href="/blog/20160225145640.html"> Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variables by lcoal. Try to use "my" for almost all variable declarations.
+Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variables by lcoal. Try to use "my" for almost all variable declarations.
 
 <pre>
 # Variable declaration
@@ -142,11 +136,11 @@ open my $fh,'<', $file
 my $content = do {local $/; <$fh>};
 </pre>
 
-The <a href="/blog/20090208123289.html"> do block</a> returns the last evaluated value.
+The <a href="/blog/20090208123289.html">do block</a> returns the last evaluated value.
 
-local undefined the <a href="/blog/20161102147817.html"> special variable</a> "$/" that represents a line break in the file.
+local undefined the <a href="/blog/20161102147817.html">special variable</a> "$/" that represents a line break in the file.
 
-This causes the <a href="/blog/20080722121673.html"> file input operator</a> "<$fh>" to return the contents of the entire file.
+This causes the <a href="/blog/20080722121673.html">file input operator</a> "<$fh>" to return the contents of the entire file.
 
 And when the scope ends, "$/" returns to its original state.
 

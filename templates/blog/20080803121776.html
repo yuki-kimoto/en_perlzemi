@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop = "name"> File input / output </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20110212130370.html">      <span itemprop = "name">File input / output </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
 <h2> Write a filter program that can specify options </h2>
@@ -21,7 +15,7 @@
 
 Let's write a filter program that can specify options with command line arguments. You can specify the position of the column to be cut out and the delimiter as options.
 
-Use the <a href="/blog/20100123126425.html"> while statement</a> and the line input operator to read the line.
+Use the <a href="/blog/20100123126425.html">while statement</a> and the line input operator to read the line.
 
 <pre>
 use strict;
@@ -61,7 +55,7 @@ while (<>) {
 }
 </pre>
 
-(Reference) <a href="/blog/20100827127859.html"> Regular expression</a>
+(Reference) <a href="/blog/20100827127859.html">Regular expression</a>
 
 The following is a file for reading.
 
@@ -79,13 +73,13 @@ rika: 38: France
 use Getopt::Long;
 </pre>
 
-<a href="/blog/20100514127696.html"> Getopt::Long</a> makes it easy to specify command line options. To specify command line options:
+<a href="/blog/20100514127696.html">Getopt::Long</a> makes it easy to specify command line options. To specify command line options:
 
 If you're not sure about command line arguments, see the following articles first.
 
 <ul>
   <li>
-    <a href="/blog/20080108132865.html"> Handle command line arguments</a>
+    <a href="/blog/20080108132865.html">Handle command line arguments</a>
   </li>
 </ul>
 
@@ -141,7 +135,7 @@ For more information on while loop processing, see the following article.
 
 <ul>
   <li>
-    <a href="/blog/20170521149524.html"> Iterative processing using for statement and while statement</a>
+    <a href="/blog/20170521149524.html">Iterative processing using for statement and while statement</a>
   </li>
 </ul>
 
@@ -151,7 +145,7 @@ For more information on while loop processing, see the following article.
 chomp;
 </pre>
 
-<a href="/blog/20080226120403.html"> chomp function</a> If you omit the argument, the target that works is <a href="/blog/20161102147817.html"> special variable</a> "$_ Will be. There are many other functions in Perl that act on $_ if you omit the argument.
+<a href="/blog/20080226120403.html">chomp function</a> If you omit the argument, the target that works is <a href="/blog/20161102147817.html">special variable</a> "$_ Will be. There are many other functions in Perl that act on $_ if you omit the argument.
 
 <h4> (3) -Specify -1 as the third argument of the -2 split function </h4>
 
@@ -159,7 +153,7 @@ chomp;
 split(/ $sep /, $_, -1)
 </pre>
 
-If the third argument of <a href="/blog/20080301120434.html"> split function</a> is omitted and the end of the element is blank, the last empty string will be ignored. (It was pointed out by Mr. huta.)
+If the third argument of <a href="/blog/20080301120434.html">split function</a> is omitted and the end of the element is blank, the last empty string will be ignored. (It was pointed out by Mr. huta.)
 
 <pre>
 taro, 10,
@@ -185,4 +179,4 @@ Will be acquired. To solve this, you can make the last empty string recognized b
 my $item = (split(/ $sep /, $_, -1)) [$col -1];
 </pre>
 
-Since split returns a list, <a href="/blog/20080216120316.html"> array slice</a> gets only the specified elements.
+Since split returns a list, <a href="/blog/20080216120316.html">array slice</a> gets only the specified elements.

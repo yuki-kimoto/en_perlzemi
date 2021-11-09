@@ -1,25 +1,19 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop = "name"> Syntax / Grammar </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161022147731.html">        <span itemprop = "name">Syntax / Grammar </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
 <h2> Destructor - DESTROY </h2>
 
 
 
-Perl is a programming language with <a href="/blog/20131010138141.html"> reference counting GC</a>. The object is freed when the reference count reaches zero.
+Perl is a programming language with <a href="/blog/20131010138141.html">reference counting GC</a>. The object is freed when the reference count reaches zero.
 
 By implementing a method called DESTROY, the destructor can be executed when the reference count reaches 0.
 
@@ -32,9 +26,9 @@ sub DESTROY {
 
 <h3> Close the file handle with a destructor </h3>
 
-For example, suppose you have a File class that represents a file. The File class stores the file handle opened by the <a href="/blog/20080718121643.html"> open function</a> in the fh field.
+For example, suppose you have a File class that represents a file. The File class stores the file handle opened by the <a href="/blog/20080718121643.html">open function</a> in the fh field.
 
-Suppose you want to close this using the <a href="/blog/20160312145776.html"> close function</a> when you open the object.
+Suppose you want to close this using the <a href="/blog/20160312145776.html">close function</a> when you open the object.
 
 In such a case, write the destructor as follows:
 
@@ -68,7 +62,7 @@ package main;
 }
 </pre>
 
-Reference: <a href="/blog/20161030147778.html"> Object Oriented</a>, <a href="/blog/20100430127089.html"> Carp Module</a>, <a href="/blog/ 20110128130016.html "> Scope</a>, <a href="/blog/20100419127089.html"> main package</a>
+Reference: <a href="/blog/20161030147778.html">Object Oriented</a>, <a href="/blog/20100430127089.html">Carp Module</a>, <a href="/blog/ 20110128130016.html">Scope</a>, <a href="/blog/20100419127089.html">main package</a>
 
 When I run this script, it says "DESTROY", which I put in to make sure the destructor is running. The destructor is running and the file handle is closed.
 

@@ -1,14 +1,9 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-      <span itemprop = "name"> Perl </span>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop = "name">Perl </span>
 </a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop = "name"> Mojolicious </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20140319139520.html">      <span itemprop = "name">Mojolicious </span>
 </a>
     <meta itemprop = "position" content = "2" />
   </li>
@@ -37,13 +32,13 @@ HTML format.
 
 </html>
 </pre>
-In HTML, documents are described using tags surrounded by "<" and ">". HTML documents start with "<html>" and end with "</html>". Write meta information such as the title of the HTML document between "<head>" and "</head>". Describe the content of the document displayed on the screen between "<doby>" and "</body>".
+In HTML, documents are described using tags surrounded by "<" and">". HTML documents start with "<html>" and end with "</html>". Write meta information such as the title of the HTML document between "<head>" and "</head>". Describe the content of the document displayed on the screen between "<doby>" and "</body>".
 
 Remember that <! DOCTYPE html> is called a document type and is written at the beginning for the time being.
 
 <h4> Character reference </h4>
 
-Characters such as "<" and ">" cannot be used as they are in HTML. You can write these characters using a method called character references.
+Characters such as "<" and">" cannot be used as they are in HTML. You can write these characters using a method called character references.
 
 <table>
   <tr>
@@ -209,7 +204,7 @@ Use the hr tag to draw a horizontal line. hr is a block element.
 <h4> Hyperlink a </h4>
 
 <pre>
-<a href="/other.html"> Hyperlink</a>
+<a href="/other.html">Hyperlink</a>
 </pre>
 
 It is a hyperlink. Specify the linked document in href. a is an inline element.
@@ -217,7 +212,7 @@ It is a hyperlink. Specify the linked document in href. a is an inline element.
 If you click it, you will be taken to the hyperlinked page on the same screen. If you want to open the link on a new screen, specify "_blank" for target.
 
 <pre>
-<a href="/other.html" target="_blank"> Hyperlink</a>
+<a href="/other.html" target="_blank">Hyperlink</a>
 </pre>
 
 <h4> Emphasis strong </h4>
@@ -231,8 +226,7 @@ Use it for words you want to emphasize on the page. strong is an inline element.
 <h4> Image img </h4>
 
 <pre>
-<img border = "0" src = "/ images / img001.gif" width = "128" height = "128" alt = "description">
-</pre>
+<img border = "0" src = "/ images / img001.gif" width = "128" height = "128" alt = "description"></pre>
 
 Use the img tag to display the image. Border is added by default, so specify 0 for border. Specify a link to the image in scr. Specify the width of the image in width and the height of the image in height. Describe the description of the image in alt. img is an inline element.
 
@@ -245,13 +239,12 @@ use warnings;
 print "Hello World!";
 </pre>
 
-If you want to write formatted text, use the pre tag. Note that line breaks, spaces, etc. are displayed as they are, but "<" and ">" are interpreted as special characters and must be replaced with "& lt;" and "& gt;".
+If you want to write formatted text, use the pre tag. Note that line breaks, spaces, etc. are displayed as they are, but "<" and">" are interpreted as special characters and must be replaced with "& lt;" and "& gt;".
 
 <h4> Table table, tr, th, td </h4>
 
 <pre>
-<table border = "1" cellspacing = "0">
-  <tr>
+<table border = "1" cellspacing = "0">  <tr>
     <th> First column header </th>
     <th> Second column header </th>
     <th> Third column header </th>
@@ -330,19 +323,17 @@ Use the above tags to create an unordered list. Arrange the li tags inside the u
 <h4> form form </h4>
 
 <pre>
-<form action = "/ register" method = "post">
-  <div> Year: <input type = "text" name = "age"> </div>
-  <div> <input type = "submit" value = "submit"> </div>
+<form action = "/ register" method = "post">  <div> Year: <input type = "text" name = "age"></div>
+  <div> <input type = "submit" value = "submit"></div>
 </form>
 </pre>
 
 To submit a form, you need to describe the elements of the form such as input tag inside the form tag. For action, specify the URL to which the data will be sent. HTTP method is specified for method, but post is generally used when submitting from a form.
 
-<h4> Text box & lt; input type = "text"> </h4>
+<h4> Text box & lt; input type = "text"></h4>
 
 <pre>
-<input type = "text" name = "age">
-</pre>
+<input type = "text" name = "age"></pre>
 
 The text box is a one-line text entry area. Specify "text" for type. Be sure to specify the name because it will be the name of the sent data. The input tag is an inline element.
 
@@ -360,11 +351,10 @@ You can specify the following attributes:
   </li>
 </ul>
 
-<h4> Password input box & lt; input type = "password"> </h4>
+<h4> Password input box & lt; input type = "password"></h4>
 
 <pre>
-<input type = "password" name = "pass">
-</pre>
+<input type = "password" name = "pass"></pre>
 
 This is a password entry box. Specify a name in name.
 
@@ -382,19 +372,17 @@ The following attributes can be specified.
   </li>
 </ul>
 
-<h4> Button & lt; input type = "button"> </h4>
+<h4> Button & lt; input type = "button"></h4>
 
 <pre>
-<input type = "button" value = "press" name = "send">
-</pre>
+<input type = "button" value = "press" name = "send"></pre>
 
 It is a button. Specify "button" for the type of input tag. Let's specify the name because it will be used to identify the button. value will be the text displayed on the button.
 
-<h4> Submit button & lt; input type = "submit"> </h4>
+<h4> Submit button & lt; input type = "submit"></h4>
 
 <pre>
-<input type = "submit" value = "submit">
-</pre>
+<input type = "submit" value = "submit"></pre>
 
 This is the send button. It is used to submit the value of the form. value will be the text displayed on the submit button.
 You can specify the following attributes:
@@ -405,11 +393,10 @@ You can specify the following attributes:
   </li>
 </ul>
 
-<h4> Reset button & lt; input type = "reset"> </h4>
+<h4> Reset button & lt; input type = "reset"></h4>
 
 <pre>
-<input type = "reset" value = "reset">
-</pre>
+<input type = "reset" value = "reset"></pre>
 
 It is a reset button. It is used to reset the value of the form. value will be the text displayed on the reset button.
 
@@ -421,11 +408,10 @@ You can specify the following attributes:
   </li>
 </ul>
 
-<h4> Image button & lt; input type = "image"> </h4>
+<h4> Image button & lt; input type = "image"></h4>
 
 <pre>
-<input type = "image" src = "/ image / dog.png" alt = "dog">
-</pre>
+<input type = "image" src = "/ image / dog.png" alt = "dog"></pre>
 
 It is an image button. src will be the URL of the image. alt is a description of the image.
 
@@ -437,36 +423,30 @@ You can specify the following attributes:
   </li>
 </ul>
 
-<h4> Radio button & lt; input type = "radio"> </h4>
+<h4> Radio button & lt; input type = "radio"></h4>
 
 <pre>
-<input type = "radio" name = "animal" value = "dog" checked = "checked">
-<input type = "radio" name = "animal" value = "cat">
-</pre>
+<input type = "radio" name = "animal" value = "dog" checked = "checked"><input type = "radio" name = "animal" value = "cat"></pre>
 
 Radio buttons are used to have one selected from multiple items. Specify a name in name. Those belonging to the same group should have the same name. Specify a value for value. If checked is set to "checked", that item will be selected.
 
-<h4> Hidden field & lt; input type = "hidden"> </h4>
+<h4> Hidden field & lt; input type = "hidden"></h4>
 
 <pre>
-<input type = "hidden" name = "title" value = "Perl">
-</pre>
+<input type = "hidden" name = "title" value = "Perl"></pre>
 
 It is an invisible field. It is used when there is a value that you want to send without showing it to the user on the browser. For name, specify the name. Specify a value for value.
 
-<h4> checkbox & lt; input type = "checkbox"> </h4>
+<h4> checkbox & lt; input type = "checkbox"></h4>
 
 <pre>
-<input type = "checkbox" name = "animal" value = "dog" checked = "checked">
-<input type = "checkbox" name = "animal" value = "cat">
-</pre>
+<input type = "checkbox" name = "animal" value = "dog" checked = "checked"><input type = "checkbox" name = "animal" value = "cat"></pre>
 
 Check boxes are used to have multiple items selected. For name, specify the name. Those belonging to the same group should have the same name. Specify a value for value. If checked is set to "checked", that item will be selected.
-<h4> File upload & lt; input type = "file"> </h4>
+<h4> File upload & lt; input type = "file"></h4>
 
 <pre>
-<input type = "file" name = "datafile">
-</pre>
+<input type = "file" name = "datafile"></pre>
 
 It is used when you want to upload a file. Specify a name in name. This is not a file name, it is just a name to identify.
 
@@ -481,18 +461,14 @@ The following attributes can be specified.
 Note that when uploading a file, you must specify "multipart / form-data" for the enctype of the form tag.
 
 <pre>
-<form action = "cgi-bin / abc.cgi" method = "post" enctype = "multipart / form-data">
-<input type = "file" name = "datafile">
-<input type = "submit" value = "submit">
-</form>
+<form action = "cgi-bin / abc.cgi" method = "post" enctype = "multipart / form-data"><input type = "file" name = "datafile"><input type = "submit" value = "submit"></form>
 </pre>
 
 <h3> Pull-down menu or list box select </h3>
 
 <pre>
-<select name = "animal">
-  <option value = "dog"> dog </option>
-  <option value = "cat"> cat </option>
+<select name = "animal">  <option value = "dog">dog </option>
+  <option value = "cat">cat </option>
 </select> <
 </pre>
 
@@ -501,11 +477,10 @@ You can create a pull-down menu using the select tag. Specify a name in name. Th
 If size is specified to be larger than 1, it becomes a list box.
 
 <pre>
-<select name = "animal" size = "4">
-  <option value = "1"> cat </option>
-  <option value = "2"> dog </option>
-  <option value = "3"> Turtle </option>
-  <option value = "4"> Lion </option>
+<select name = "animal" size = "4">  <option value = "1">cat </option>
+  <option value = "2">dog </option>
+  <option value = "3">Turtle </option>
+  <option value = "4">Lion </option>
 </select> <
 </pre>
 
@@ -513,7 +488,7 @@ Please also refer to the following explanation for the select element.
 
 <ul>
   <li>
-    <a href="/blog/20110416130621.html"> Summary of select element operations</a>
+    <a href="/blog/20110416130621.html">Summary of select element operations</a>
   </li>
 </ul>
 
@@ -523,8 +498,7 @@ Introducing the tags used in the header part.
 <h4> Character code specification </h4>
 
 <pre>
-<meta http-equiv = "Content-Type" content = "text / html; charset = UTF-8">
-</pre>
+<meta http-equiv = "Content-Type" content = "text / html; charset = UTF-8"></pre>
 
 Use the meta tag to specify the character code to be used in HTML. When using the meta tag, specify "Content-Type" for http-equiv and "text / html; charset = UTF-8" for content. If you do not specify this, the characters may be garbled in the browser.
 Therefore, please describe at the beginning of the head tag. If you use the http-equiv attribute, the browser will use the http-equiv information if there is no Content-Type in the HTTP response header.
@@ -532,7 +506,7 @@ Therefore, please describe at the beginning of the head tag. If you use the http
 <h4> CSS (style sheet) description </h4>
 
 <pre>
-<style type = "text / css"> / * <! [CDATA [* /
+<style type = "text / css">/ * <! [CDATA [* /
 
 / * CSS description * /
 
@@ -552,7 +526,7 @@ Use the link tag to load external CSS. Specify "screen" for media. This is to sp
 <h4> JavaScript description </h4>
 
 <pre>
-<script type = "text / javascript"> // <! [CDATA [
+<script type = "text / javascript">// <! [CDATA [
  
 // JavaScript source code
  
@@ -564,7 +538,7 @@ Use the script tag to write JavaScript. Specify "text / javascript" for type. It
 <h4> Loading external JavaScript </h4>
 
 <pre>
-<script src = "/ js / myapi.js" type = "text / javascript"> </script>
+<script src = "/ js / myapi.js" type = "text / javascript"></script>
 </pre>
 
 Use the script tag to load external JavaScript. Specify the URL of the JavaScript source in src, and specify "text / javascript" in type.
@@ -575,6 +549,5 @@ It was a rush, but I will finish the explanation of HTML.
 
 <hr>
 
-<a href="http://px.a8.net/svt/ejp?a8mat=25TFA7+74LUIA+D8Y+C5VW1" target="_blank">
-<img border = "0" width = "250" height = "250" alt = "" src = "http://www21.a8.net/svt/bgt?aid=130703263431&wid=001&eno=01&mid=s00000001717002043000&mc=1" ></a>
+<a href="http://px.a8.net/svt/ejp?a8mat=25TFA7+74LUIA+D8Y+C5VW1" target="_blank"><img border = "0" width = "250" height = "250" alt = "" src = "http://www21.a8.net/svt/bgt?aid=130703263431&wid=001&eno=01&mid=s00000001717002043000&mc=1"></a>
 <img border = "0" width = "1" height = "1" src = "http://www18.a8.net/0.gif?a8mat=25TFA7+74LUIA+D8Y+C5VW1" alt = "">

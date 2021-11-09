@@ -1,18 +1,12 @@
-<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span></a>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161026147748.html">
-      <span itemprop = "name"> Numerical value </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161026147748.html">      <span itemprop = "name">Numerical value </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
-      <span itemprop = "name"> here </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">here </span>
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
@@ -20,7 +14,7 @@
 
 
 
-To round off, use the <a href="/blog/20081001122296.html"> sprintf function</a>. Specify the format like "% .3g" or "% .5g" if you want to round off by specifying a valid digit, and "% .3f" or "%." If you want to round off by a digit with a decimal point. Specify as 5f ".
+To round off, use the <a href="/blog/20081001122296.html">sprintf function</a>. Specify the format like "% .3g" or "% .5g" if you want to round off by specifying a valid digit, and "% .3f" or "%." If you want to round off by a digit with a decimal point. Specify as 5f ".
 
 <pre>
 # Specify by the number of digits after the decimal point.
@@ -41,14 +35,14 @@ my $num2 = 0.725;
 my $num2_round = sprintf("% .2f", $num2);
 </pre>
 
-0.725 expressed in <a href="/blog/20080826121977.html"> numeric literal</a> is not 0.725 internally. Numerical values ​​that are not expressed in binary are always treated as an approximation 0.72499999999999998 (in my environment) due to internal error.
+0.725 expressed in <a href="/blog/20080826121977.html">numeric literal</a> is not 0.725 internally. Numerical values ​​that are not expressed in binary are always treated as an approximation 0.72499999999999998 (in my environment) due to internal error.
 
 Rounding this to the third decimal place gives 0.724. This is not the expected result.
 
 <h4> Rounding by sprintf is incorrect </h4>
 
 <blockquote>
-<a href="http://d.hatena.ne.jp/end0tknr/20080928/1222581535"> Rounded by perl</a> (<a href="http://d.hatena.ne.jp/end0tknr" / "> end0tknr kipple</a>)
+<a href="http://d.hatena.ne.jp/end0tknr/20080928/1222581535">Rounded by perl</a> (<a href="http://d.hatena.ne.jp/end0tknr" /">end0tknr kipple</a>)
 </blockquote>
 
 It was pointed out that rounding by sprintf should not be done.
