@@ -575,7 +575,7 @@ You can use the <a href="/blog/20100303126967.html"> string list operator</a> to
 Use the <a href="/blog/20080210120265.html"> keys function</a> to get all the keys in the hash.
 
 <pre>
-@ret = keys% hash;
+@ret = keys %hash;
 </pre>
 
 <h4> values ​​</h4>
@@ -583,7 +583,7 @@ Use the <a href="/blog/20080210120265.html"> keys function</a> to get all the ke
 To get all the values ​​of a hashUse the <a href="/blog/20100222126425.html"> values ​​function</a>.
 
 <pre>
-@ret = values% hash;
+@ret = values %hash;
 </pre>
 
 <h4> each </h4>
@@ -591,13 +591,13 @@ To get all the values ​​of a hashUse the <a href="/blog/20100222126425.html"
 Use the <a href="/blog/20080212120283.html"> each function</a> to get the hash key / value pairs in sequence.
 
 <pre>
-($key, $value) = each% hash;
+($key, $value) = each %hash;
 </pre>
 
 Use the <a href="/blog/20100123126425.html"> while statement</a> to process all key / value pairs in sequence.
 
 <pre>
-while (my ($key, $value) = each% hash) {
+while (my ($key, $value) = each %hash) {
   ...
 }
 </pre>
@@ -623,7 +623,7 @@ delete $hash {$key};
 Use the <a href="/blog/20080227120413.html"> reverse function</a> to swap the hash key and value.
 
 <pre>
-% ret = reverse% hash;
+% ret = reverse %hash;
 </pre>
 
 <div id = "file-io"> </div>
@@ -810,7 +810,7 @@ use File::Path'rmtree';
 
 rmtree ($dir, {error => \ my $errors});
 for my $diag (@ $errors) {
-  my ($file, $message) = each% $diag;
+  my ($file, $message) = each %$diag;
   warn "problem unlinking $file: $message\n";
 }
 </pre>

@@ -388,7 +388,7 @@ First, let's output all the elements.
 
 <pre>
 for my $person (@ $persons) {
-  for my $key (keys% $person) {
+  for my $key (keys %$person) {
     my $value = $person-> {$key};
     print "$key: $value\n";
   }
@@ -409,7 +409,7 @@ age: 45
 A Perl hash array is essentially an "array reference" with a "hash reference" as an element. The outer loop dereferences the array like "@ $persons". In the inner loop, the hash key is obtained using the keys function, and the value of the hash corresponding to the key is output. Because the keys function receives a hash, not a hash reference
 
 <pre>
-keys% $person
+keys %$person
 </pre>
 
 You need to dereference it like this.
@@ -418,7 +418,7 @@ One caveat is that the order of the keys obtained with the keys function is inde
 
 <pre>
 for my $person (@ $persons) {
-  for my $key (sort keys% $person) {
+  for my $key (sort keys %$person) {
     my $value = $person-> {$key};
     print "$key: $value\n";
   }
@@ -516,7 +516,7 @@ Let's output all the elements.
 
 <pre>
 # (1) Outer loop
-for my $time(sort keys% $infos) {
+for my $time(sort keys %$infos) {
   print "$time\n";
   
   # (2) Inner loop
@@ -529,7 +529,7 @@ for my $time(sort keys% $infos) {
 (1) An array hash is a hash that has an array as an element, so the outer loop processes the hash. The time is retrieved using the keys function.
 
 <pre>
-sort keys% $infos
+sort keys %$infos
 </pre>
 
 The reason for sorting like this is because we want to output in the order of time.
@@ -570,7 +570,7 @@ Next, let's output all records separated by commas as shown below.
 </pre>
 
 <pre>
-for my $time(sort keys% $infos) {
+for my $time(sort keys %$infos) {
     
   my @rec = ($time, @ {$infos-> {$time}});
   print join(',', @rec). "\n";
@@ -667,7 +667,7 @@ There were 3 accesses at 1:01, with an average response time of 2.1 seconds and 
 Let's output all the elements.
 
 <pre>
-for my $time(sort keys% $infos) {
+for my $time(sort keys %$infos) {
   print "$time\n";
   
   # (2) Inner loop
@@ -716,7 +716,7 @@ Next, let's output the data created above by separating all records with commas 
 </pre>
 
 <pre>
-for my $time(sort keys% $infos) {
+for my $time(sort keys %$infos) {
     
   my @rec = (
     $time,
