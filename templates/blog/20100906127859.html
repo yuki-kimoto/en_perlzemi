@@ -1,86 +1,85 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20100906127859.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20100906127859.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Mojolicious(PSGI)アプリをStarmanでデプロイする</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Deploy the Mojolicious (PSGI) app with Starman </ h2>
 
 
 
-StarmanというPerlのプリフォークサーバを使って、Mojoliciousアプリケーションを起動してみます。Starman本番環境でMojoliciousアプリケーションを運用するのに良い選択肢です。
+Try launching a Mojolicious application using a Perl prefolk server called Starman. It's a good choice for running Mojolicious applications in a Starman production environment.
 
 <pre>
 cpanm Starman
-</pre>
+</ pre>
 
-以下はMojolicious::Liteで記述したPSGIアプリ(hello.pl)です。注意点として「app->start」と「__DATA__」の間にはコメント以外は置いてはいけません。
+The following is a PSGI application (hello.pl) written in Mojolicious :: Lite. Please note that only comments should be placed between "app-> start" and "__DATA__".
 
 <pre>
 use strict;
 use warnings;
 
-use Mojolicious::Lite;
+use Mojolicious :: Lite;
 
-get '/' => 'index';
+get'/' =>'index';
 
-app->start;
+app-> start;
 
 __DATA__
 
 @@ index.html.ep
-<html><body>Hello!</body></html>
-</pre>
+<html> <body> Hello! </ Body> </ html>
+</ pre>
 
-starmanを起動します。
+Start starman.
 
 <pre>
 starman hello.pl
-</pre>
+</ pre>
 
-これで以下にアクセスするとMojoliciousアプリが起動していることが確認できます。
-
-<pre>
-http://localhost:5000/
-</pre>
-
-ポートを指定するには「--port」オプションを使用します。
+Now you can see that the Mojolicious app is running by accessing the following.
 
 <pre>
-starman --port=3000 hello.pl
-</pre>
+http: // localhost: 5000 /
+</ pre>
 
-<h3>本番運用</h3>
-
-本番運用する場合はバックグラウンドで実行をして、サーバ起動と同時にアプリケーションを実行したいと思うことでしょう。そのような場合は次のようにします。rootユーザーで実行してください。
+Use the "--port" option to specify the port.
 
 <pre>
-# サーバーの開始
-su - kimoto -c 'starman --port=3000 --daemonize --pid=/home/kimoto/labo/pid /home/kimoto/labo/app1.pl'
-</pre>
+starman --port = 3000 hello.pl
+</ pre>
 
-suの-cコマンドを使うことで、ユーザーを変更して実行しています。通所はhello.plの所有者で実行すればよいでしょう。--daemonizeオプションで、サーバーをデーモン化できます。--pidオプションで、サーバーのプロセスIDを書き込むファイルを指定します。これはサーバーを停止させるときに必要な情報になります。
+<h3> Production operation </ h3>
 
-サーバーを停止させるにはkillコマンドにプロセスIDを渡します。xargと組み合わせると、ファイルに書かれたプロセスIDをkillに渡すことができます。
+For production operation, you will want to run it in the background and run the application at the same time you start the server. In such a case, do as follows. Please run as root user.
 
 <pre>
-# サーバーの停止
-cat /home/kimoto/labo/pid | xargs kill
-</pre>
+#Start server
+su --kimoto -c'starman --port = 3000 --daemonize --pid = / home / kimoto / labo / pid /home/kimoto/labo/app1.pl'
+</ pre>
 
-Linuxの起動時にMojoliciousアプリケーションを起動したい場合は以下のファイルにサーバーの起動の記述を追加してください。
+I am changing the user and running it by using su's -c command. The office should be run by the owner of hello.pl. You can daemonize the server with the --daemonize option. The --pid option specifies the file to write the process ID of the server. This will be the information you need when you stop the server.
+
+To stop the server, pass the process ID to the kill command. When combined with xarg, you can pass the process ID written in the file to kill.
+
+<pre>
+#Server outage
+cat / home / kimoto / labo / pid | xargs kill
+</ pre>
+
+If you want to start the Mojolicious application when Linux starts, add the description of starting the server to the following file.
 
 <pre>
 /etc/rc.d/rc.local
-</pre>
-
+</ pre>
