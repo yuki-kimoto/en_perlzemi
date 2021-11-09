@@ -29,7 +29,7 @@ To get the calling package name, filename, and line number, call the caller func
 # package name
 my $ package_name = caller;
 
-#Package name, file name, line number, subroutine name
+# Package name, file name, line number, subroutine name
 my ($ package_name, $ file_name, $ line) = caller;
 </pre>
 
@@ -59,7 +59,7 @@ use strict;
 use warnings;
 
 # Get the name of the function you are executing
-#caller
+# caller
 
 print "1: Get the name of the function you are executing. \ N";
 func_name ();
@@ -67,7 +67,7 @@ func_name ();
 sub func_name {
   my $ this_func_name = (caller 0) [3];
   If you specify 0 as the argument of the # caller function
-  #You can get information about your own function.
+  # You can get information about your own function.
   # The function name is in the 4th (element number is 3).
   print $ this_func_name, "\ n";
   print "\ n";

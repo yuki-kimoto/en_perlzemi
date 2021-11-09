@@ -17,7 +17,7 @@ my $ data = {
   passwrod2 =>'secret'
 };
 
-#Create rules
+# Create rules
 my $ rule = $ vc-> create_rule ($ data, $ rule);
 $ rule-> require ('price')-> check ('int')-> message ('price must be number');
 
@@ -33,12 +33,12 @@ $ rule-> require (['password','password2'])-> name ('password_check')
   -> check ('duplication')-> message ('Two password not match')
   -> copy (0);
 
-#Validation
+# Validation
 my $ vresult = $ vc-> validate ($ data, $ rule);
 
-#Check the result
+# Check the result
 if ($ vresult-> is_ok) {
-  #Safe data
+  # Safe data
   my $ safe_data = $ vresult-> data;
 }
 else {
@@ -50,7 +50,7 @@ else {
 Click here for the old grammar for rule creation. It is recommended to write in the new grammar above.
 
 <pre>
-#Create rules (old grammar)
+# Create rules (old grammar)
 my $ rule = [
   price => [
     [int =>'price must be number']
@@ -105,14 +105,14 @@ my $ vc = Validator :: Custom-> new;
 # data
 my $ data = {price => 1200};
 
-#Create rules
+# Create rules
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('price')-> check ('int');
 
-#Validation
+# Validation
 my $ vresult = $ vc-> validate ($ data, $ rule);
 
-#Check the result
+# Check the result
 if ($ vresult-> is_ok) {print "OK \ n"}
 else {print "Not OK \ n"}
 </pre>
@@ -171,7 +171,7 @@ $ rule-> require ('name')-> check ('string');
 Use the validate method for validation.
 
 <pre>
-#Validation
+# Validation
 my $ vresult = $ vc-> validate ($ data, $ rule);
 </pre>
 
@@ -192,7 +192,7 @@ You can check if the validation result is correct with the is_ok method.
 Let's create a rule for validating multiple values.
 
 <pre>
-#Data containing multiple values
+# Data containing multiple values
 my $ data = {price => 1200, title =>'Perl'};
 
 # Rules for validating multiple values
@@ -216,7 +216,7 @@ I was able to express various constraints using the constraints provided by defa
 Here, I will simply register a constraint to check whether the email is in the correct format. Use the <b> register_constraint </b> method to register the constraint.
 
 <pre>
-#Register a constraint to check if Email is in the correct format
+# Register a constraint to check if Email is in the correct format
 $ vc-> register_constraint (
   email => sub {
     my $ value = shift;
@@ -438,7 +438,7 @@ The argument of the in_array constraint function specifies an array reference th
 There are multiple check box values. If you want all of the multiple values ​​to be included in a certain value, write as follows.
 
 <pre>
-#Multiple values
+# Multiple values
 my $ data = {food => ['sushi','cake']};
 
 # rule
@@ -626,7 +626,7 @@ It does not consider whether between is an integer. If you want to apply an inte
 You may want to allow only <strong> ASCII print characters </strong> (hexadecimal numbers 21-7E), such as HTML form passwords. In such cases, use the <strong> ascii </strong> constraint function.
 
 <pre>
-my $ data = {password =>'ajf & $ #-'};
+my $ data = {password =>'ajf & $ # -'};
 my $ rule = $ vc-> create_rule;
 $ rule-> require ('password')-> check ('ascii');
 </pre>
@@ -667,7 +667,7 @@ $ rule-> require (['password1','password2'])-> name ('password_check')
 In a <strong> HTML form </strong>, use the <strong> regex </strong> constraint function if you want to check that it <strong> matches a regular expression </strong>.
 
 <pre>
-#data
+# data
 my $ data = {num => '123'};
 
 # rule
@@ -680,7 +680,7 @@ $ rule-> require ('num')-> check ({'regex' => qr / \ d {0,3} /});
 In a <strong> HTML form </strong>, use the <strong> not_space </strong> constraint function if you want to check that it is <strong> not whitespace </strong>. A space character is a character string that consists only of a space character, a tab character, and a newline character. This includes cases where the string does not exist. It does not include whitespace in Unicode.
 
 <pre>
-#data
+# data
 my $ data = {name =>'Ken'};
 
 # rule
@@ -693,7 +693,7 @@ $ rule-> require ('name')-> check ('not_space');
 In a <strong> HTML form </strong>, use the <strong> not_defined </strong> constraint function if you want to check that the <strong> value is undefined </strong>.
 
 <pre>
-#data
+# data
 my $ data = {name =>'Ken'};
 
 # rule
@@ -706,7 +706,7 @@ $ rule-> require ('name')-> check ('not_defined');
 In a <strong> HTML form </strong>, use the <strong> less_than </strong> constraint function if you want to check that a <strong> number is less than a certain number </strong>.
 
 <pre>
-#data
+# data
 my $ data = {num => 20};
 
 # rule
@@ -719,7 +719,7 @@ $ rule-> require ('num')-> check ({'less_than' => 25});
 In a <strong> HTML form </strong>, use the <strong> int </strong> constraint function if you want to check that it is a <strong> integer </strong>.
 
 <pre>
-#data
+# data
 my $ data = {age => 19};
 
 # rule
@@ -745,7 +745,7 @@ $ rule-> require ('url')-> check ('http_url');
 In a <strong> HTML form </strong>, use the <strong> greater_than </strong> constraint function if you want to check that it is <strong> greater than a certain number </strong>.
 
 <pre>
-#data
+# data
 my $ data = {price => 1000};
 
 # rule

@@ -47,12 +47,12 @@ This is a sample program of the syswrite function. The syswrite function is used
 use strict;
 use warnings;
 
-#Open the file to write
+# Open the file to write
 my $ file ='data.txt';
 open my $ fh,'>', $ file
   or die "Can't open file $ file: $!";
 
-#syswrite function
+# syswrite function
 my $ buffer ='AGTC';
 my $ byte_size = length $ buffer;
 syswrite $ fh, $ buffer, $ byte_size;

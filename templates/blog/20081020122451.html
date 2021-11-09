@@ -47,19 +47,19 @@ sub time_from_str {
   my $ time = {};
   
   # If it matches the format of the time including the date
-  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ #) {
+  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ # ) {
     
-    #Create hash
+    # Create hash
     @ {$ time} {qw / mday mon year hour min sec /}
       = ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6);
     
-    #Hash corresponding to the English notation of the month and the number of the month
+    # Hash corresponding to the English notation of the month and the number of the month
     my% num_of_mon = (
       jan => 0, feb => 1, mar => 2, apr => 3, may => 4, jun => 5,
       jul => 6, aug => 7, sep => 8, oct => 9, nov => 10, dec => 11,
     );
 
-    #Return if the month notation is incorrect
+    # Return if the month notation is incorrect
     $ time-> {mon} = $ num_of_mon {lc ($ time-> {mon})};
     return unless defined $ time-> {mon};
     
@@ -126,19 +126,19 @@ sub time_from_str {
   my $ time = {};
   
   # If it matches the format of the time including the date
-  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ #) {
+  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ # ) {
     
-    #Create hash
+    # Create hash
     @ {$ time} {qw / mday mon year hour min sec /}
       = ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6);
     
-    #Hash corresponding to the English notation of the month and the number of the month
+    # Hash corresponding to the English notation of the month and the number of the month
     my% num_of_mon = (
       jan => 0, feb => 1, mar => 2, apr => 3, may => 4, jun => 5,
       jul => 6, aug => 7, sep => 8, oct => 9, nov => 10, dec => 11,
     );
 
-    #Return if the month notation is incorrect
+    # Return if the month notation is incorrect
     $ time-> {mon} = $ num_of_mon {lc ($ time-> {mon})};
     return unless defined $ time-> {mon};
     

@@ -25,7 +25,7 @@ CSV etc. including line breaks etc. cannot be processed correctly by the followi
 use strict;
 use warnings;
 
-#Argument processing
+# Argument processing
 my $ file = shift;
 
 unless ($ file) {
@@ -36,13 +36,13 @@ unless ($ file) {
 # Parse the file and convert the csv format data to an array of arrays.
 my @recs = parse_file ($ file);
 
-#Output (because it is a two-dimensional array, follow it with for)
+# Output (because it is a two-dimensional array, follow it with for)
 for my $ items (@recs) {
-  Output by connecting with #comma.
+  Output by connecting with # comma.
   print join (',', @ $ items). "\ n";
 }
 
-#Function for file analysis (I just write it back this time ...)
+# Function for file analysis (I just write it back this time ...)
 sub parse_file {
   my $ file = shift;
     
@@ -54,15 +54,15 @@ sub parse_file {
   while (my $ line = <$ fh>) {
     chomp $ line; # Remove line breaks
     
-    #Prepare a reference to the array that stores the data
-    #Separate rows with commas and store in array
-    #split returns an array, so
+    # Prepare a reference to the array that stores the data
+    # Separate rows with commas and store in array
+    # split returns an array, so
     Dereference with # @ $ items
 
     my $ items = [];
     @ $ items = split (/, /, $ line);
 
-    The first argument of the #push function is an array, so @ $ recs
+    The first argument of the # push function is an array, so @ $ recs
     # And dereference.
     push @ $ recs, $ items;
   }
@@ -118,7 +118,7 @@ rika, 38, France
 
 <pre>
 for my $ items (@recs) {
-  Output by connecting with #comma.
+  Output by connecting with # comma.
   print join (',', @ $ items). "\ n";
 }
 </pre>
@@ -140,14 +140,14 @@ sub parse_file {
     # Remove line breaks
     chomp $ line;
     
-    #Prepare a reference to the array that stores the data
-    #Separate rows with commas and store in array
-    #split returns an array, so
+    # Prepare a reference to the array that stores the data
+    # Separate rows with commas and store in array
+    # split returns an array, so
     Dereference with # @ $ items
     my $ items = [];
     @ $ items = split (/, /, $ line);
 
-    Since the first argument of the #push function is an array, dereference it with @ $ recs.
+    Since the first argument of the # push function is an array, dereference it with @ $ recs.
     push @ $ recs, $ items;
   }
   close $ fh;
@@ -188,15 +188,15 @@ while (my $ line = <$ fh>) {
   # Remove line breaks
   chomp $ line;
 
-  #Prepare a reference to the array that stores the data
+  # Prepare a reference to the array that stores the data
   my $ items = [];
 
-  #Separate rows with commas and store in array
-  #split returns an array, so
+  # Separate rows with commas and store in array
+  # split returns an array, so
   Dereference with # @ $ items
   @ $ items = split (/, /, $ line);
 
-  Since the first argument of the #push function is an array, dereference it with @ {$ recs}.
+  Since the first argument of the # push function is an array, dereference it with @ {$ recs}.
   push @ $ recs, $ items;
 }
 </pre>
@@ -260,7 +260,7 @@ chomp $ line;
      my @items;
      @items = split (/, /, $ line);
 
-     Create a reference with [] when #pushing.
+     Create a reference with [] when # pushing.
      push @recs, [@items];
    }
    close $ fh;

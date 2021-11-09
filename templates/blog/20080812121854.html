@@ -45,10 +45,10 @@ my $ file = "sample20080812.txt";
 open (my $ fh, ">", $ file)
   or die "Cannot open $ file: $!";
 
-#Change default output handle
+# Change default output handle
 my $ oldfh = select $ fh;
 
-#Enable command buffering.
+# Enable command buffering.
 $ | = 1;
 
 # Reselect to the original filehandle.
@@ -78,10 +78,10 @@ Command buffering is used to avoid this.
 <h4> (1) Enable command buffering </h4>
 
 <pre>
-#Change default output handle
+# Change default output handle
 my $ oldfh = select $ fh;
 
-#Enable command buffering.
+# Enable command buffering.
 $ | = 1;
 
 # Reselect to the original filehandle.

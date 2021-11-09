@@ -61,7 +61,7 @@ use utf8;
 use FindBin;
 use PDF :: API2;
 
-#Product data (book)
+# Product data (book)
 my $ books = [
   {
     name =>'Book 1',
@@ -96,7 +96,7 @@ my $ tax_disp = price_disp ($ tax);
 my $ price_total = $ price_total_no_tax + $ tax;
 my $ price_total_disp = price_disp ($ price_total);
 
-#PDF
+# PDF
 my $ pdf = PDF :: API2-> new;
 
 # Paper size A4 setting
@@ -107,19 +107,19 @@ my @page_size_infos = $ pdf-> mediabox;
 my $ page_width = $ page_size_infos [2];
 my $ page_height = $ page_size_infos [3];
 
-#Page margin
+# Page margin
 my $ page_top_margin = 48;
 my $ page_bottom_margin = 48;
 my $ page_left_margin = 49;
 my $ page_right_margin = 49;
 
-#Loading TrueType fonts that support Japanese-normal fonts and bold fonts
+# Loading TrueType fonts that support Japanese-normal fonts and bold fonts
 my $ true_type_font_file = "$ FindBin :: Bin / AozoraMinchoRegular.ttf";
 my $ font = $ pdf-> ttfont ($ true_type_font_file);
 my $ true_type_font_bold_file = "$ FindBin :: Bin / AozoraMincho-bold.ttf";
 my $ font_bold = $ pdf-> ttfont ($ true_type_font_bold_file);
 
-#Font size-default
+# Font size-default
 my $ font_size_default = 10;
 
 # Start drawing x coordinate
@@ -128,25 +128,25 @@ my $ render_start_x = $ page_left_margin;
 # Start drawing y coordinate
 my $ render_start_y = $ page_height - 1- $ page_top_margin;
 
-#End of drawing x coordinate
+# End of drawing x coordinate
 my $ render_end_x = $ page_width - 1- $ page_right_margin;
 
 # Drawing end y coordinate
 my $ render_end_y = $ page_bottom_margin;
 
-#The layout has a table structure
+# The layout has a table structure
 # Set the minimum unit of height and width, the minimum unit of width is divided into 100
 my $ unit_height = 14;
 my $ unit_width = ($ render_end_x-$ render_start_x) / 100;
 
-#Text drawing padding
+# Text drawing padding
 my $ text_bottom_padding = 3;
 my $ text_left_padding = 3;
 
 # Width of recipient company column
 my $ receive_company_end_tds_count = 55;
 
-#Start position of billing company column
+# Start position of billing company column
 my $ send_company_start_tds_count = 66.5;
 
 # Color list
@@ -156,16 +156,16 @@ my $ color_black ='# 000';
 my $ line_width_basic = 0.3;
 my $ line_width_bold = 2;
 
-#Page
+# Page
 my $ page = $ pdf-> page;
 
-#Graphic drawing
+# Graphic drawing
 my $ gfx = $ page-> gfx;
 
-#Text drawing
+# Text drawing
 my $ text = $ page-> text;
 
-#Current line
+# Current line
 my $ cur_row = 0;
 
 # Top thick line
@@ -175,7 +175,7 @@ $ gfx-> linewidth (10);
 $ gfx-> stroke;
 $ cur_row + = 1.5;
 
-#Application date
+# Application date
 $ text-> translate ($ render_end_x, $ render_start_y-$ unit_height * $ cur_row + $ text_bottom_padding);
 $ text-> font ($ font, $ font_size_default);
 $ text-> strokecolor ($ color_black);
@@ -187,10 +187,10 @@ $ gfx-> linewidth ($ line_width_basic);
 $ gfx-> stroke;
 $ cur_row + = 2;
 
-#Save logo start position
+# Save logo start position
 my $ cur_logo_row = $ cur_row - 1.5;
 
-#Invoice title
+# Invoice title
 $ text-> translate ($ render_start_x, $ render_start_y-$ unit_height * $ cur_row + $ text_bottom_padding);
 $ text-> font ($ font_bold, 20);
 $ text-> text ('invoice');
@@ -199,7 +199,7 @@ $ cur_row + = 3;
 # Save the start position in the right column
 my $ cur_right_row = $ cur_row + 1;
 
-#Delivery company name
+# Delivery company name
 my $ receive_company_name ='XXXXX Co., Ltd.';
 $ text-> translate ($ render_start_x, $ render_start_y-$ unit_height * $ cur_row + $ text_bottom_padding);
 $ text-> font ($ font, $ font_size_default);
@@ -215,7 +215,7 @@ $ gfx-> linewidth ($ line_width_basic);
 $ gfx-> stroke;
 $ cur_row + = 4;
 
-#subject
+# subject
 my $ subject_label ='Subject:';
 $ text-> translate ($ render_start_x, $ render_start_y-$ unit_height * $ cur_row + $ text_bottom_padding);
 $ text-> font ($ font, $ font_size_default);
@@ -251,7 +251,7 @@ $ gfx-> linewidth ($ line_width_basic);
 $ gfx-> stroke;
 $ cur_row + = 2.8;
 
-#Billing message
+# Billing message
 $ text-> translate ($ render_start_x, $ render_start_y-$ unit_height * $ cur_row + $ text_bottom_padding);
 $ text-> font ($ font, $ font_size_default);
 $ text-> text ('We will charge you as below.');
@@ -284,7 +284,7 @@ $ gfx-> linewidth ($ line_width_basic);
 $ gfx-> stroke;
 $ cur_row + = 0.5;
 
-#Insert company logo
+# Insert company logo
 my $ logo_image_file = "$ FindBin :: Bin / logo.png";
 my $ logo_image_object = $ pdf-> image_png ($ logo_image_file);
 my $ logo_image_width = 60;
@@ -384,7 +384,7 @@ $ gfx-> poly (
 $ gfx-> strokecolor ('# bbb');
 $ gfx-> stroke;
 
-#Quotation heading background
+# Quotation heading background
 $ gfx-> rectxy (
   $ render_start_x, $ render_start_y-$ unit_height * $ cur_row,
   $ render_end_x, $ render_start_y-$ unit_height * ($ cur_row + 1)
@@ -392,7 +392,7 @@ $ gfx-> rectxy (
 $ gfx-> fillcolor ('# eee');
 $ gfx-> fill;
 
-#Quotation heading top decoration thick line
+# Quotation heading top decoration thick line
 $ gfx-> move ($ render_start_x, $ render_start_y-$ unit_height * $ cur_row);
 $ gfx-> hline ($ render_end_x);
 $ gfx-> linewidth ($ line_width_bold);
@@ -412,7 +412,7 @@ $ text-> font ($ font, $ font_size_default);
 $ text-> text ('No.');
 $ cur_column_units_count + = $ no_units_count;
 
-#Item
+# Item
 my $ name_units_count = 34;
 $ text-> translate ($ render_start_x + $ cur_column_units_count * $ unit_width + ($ name_units_count * $ unit_width / 2), $ render_start_y-$ unit_height * $ cur_row + $ text_bottom_padding);
 $ text-> font ($ font, $ font_size_default);
@@ -444,11 +444,11 @@ $ cur_row ++;
 
 my $ rows_count = 25;
 
-#Drawing the frame of each item
+# Drawing the frame of each item
 for (my $ row = 0; $ row <$ rows_count; $ row ++) {
   my $ book = $ books-> [$ row];
   
-  #Lines are painted alternately
+  # Lines are painted alternately
   if ($ row% 2 == 1) {
     $ gfx-> rectxy (
       $ render_start_x,
@@ -471,7 +471,7 @@ for (my $ row = 0; $ row <$ rows_count; $ row ++) {
   }
   $ cur_column_units_count + = $ no_units_count;
 
-  #Item
+  # Item
   $ gfx-> poly (
     $ render_start_x + $ cur_column_units_count * $ unit_width,
     $ render_start_y-$ unit_height * $ cur_row,
@@ -556,7 +556,7 @@ for (my $ row = 0; $ row <$ rows_count; $ row ++) {
   $ cur_row ++;
 }
 
-#Quotation heading under decoration thick line (draw at this position to write on the gray vertical line)
+# Quotation heading under decoration thick line (draw at this position to write on the gray vertical line)
 $ gfx-> move ($ render_start_x, $ render_start_y-$ unit_height * $ header_bottom_line_row);
 $ gfx-> hline ($ render_end_x);
 $ gfx-> linewidth ($ line_width_bold);

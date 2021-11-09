@@ -1,7 +1,7 @@
 nt; filename = pictures.csv');
   $ headers-> content_type ('text / csv; charset = UTF-8');
   
-  #Render data
+  # Render data
   return $ self-> render (data => $ content);
 };
 app-> start;
@@ -31,7 +31,7 @@ sub register {
   my $ r = $ app-> route;
   $ r-> get ('/ viewer', sub {
      my $ self = shift;
-     #Specify template class
+     # Specify template class
      return $ self-> render (template_class => __PACKAGE__);
   });
 }
@@ -66,7 +66,7 @@ get'/ sizeunknowndata' => sub {
   open my $ fh,'<', $ file
     or die "Error";
 
-  #Write chunk
+  # Write chunk
   $ self-> res-> headers-> content_type ('application / gzip');
   $ self-> res-> headers-> content_disposition (qq / attachment; filename = "$ file" /);
   my $ cb;
@@ -124,7 +124,7 @@ You may want to show the error page to the user if something goes wrong with uni
 get'/' => sub {
   my $ sefl = shift;
   
-  #Draw exception (error) page
+  # Draw exception (error) page
   if (...) {
     return $ self-> reply-> exception;
   }

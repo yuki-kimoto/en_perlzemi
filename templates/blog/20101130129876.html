@@ -124,10 +124,10 @@ sub func {
 "@ _" Is an array, but you can also access this array directly.
 
 <pre>
-#First argument
+# First argument
 $ _ [0]
 
-#Second argument
+# Second argument
 $ _ [1]
 </pre>
 
@@ -141,7 +141,7 @@ You can pass an array to a subroutine.
 # Passing side
 my $ num_total = sum (@nums);
 
-#Recipient
+# Recipient
 sub sum {
   my @nums = @_;
   # process
@@ -156,7 +156,7 @@ You can also pass a hash to the subroutine. On the receiving side, @_ will be as
 # Passing side
 my $ examin_total = sum_examin (% examin);
 
-#Recipient
+# Recipient
 sub sum_examin {
   my% examin = @_;
   # process
@@ -200,7 +200,7 @@ What if I want to put both an array and a hash in a subroutine? In such cases, y
 # Passing side
 my $ max_num = summary ([1, 2, 3], {how =>'max'});
 
-#Recipient
+# Recipient
 sub summary {
   my ($ nums, $ option) = @_;
   # process                            
@@ -403,7 +403,7 @@ The caller checks the return value.
 my $ ret = foo ();
 
 unless (defined $ ret) {
-  #Error handling
+  # Error handling
 }
 </pre>
 
@@ -449,7 +449,7 @@ eval {
 };
 
 if (my $ error = $ @) {
-  #Error handling
+  # Error handling
 }
 </pre>
 
@@ -506,7 +506,7 @@ print'Hello';
 You may or may not use parentheses for functions imported from the module.
 
 <pre>
-#Functions imported from module
+# Functions imported from module
 use Carp'croak';
 croak'Error';
 </pre>
@@ -514,7 +514,7 @@ croak'Error';
 Parentheses are required if the function definition is after the position where the function is used.
 
 <pre>
-#Parentheses are required if the function definition is at the end
+# Parentheses are required if the function definition is at the end
 func ();
 
 sub func {
@@ -552,10 +552,10 @@ To get the arguments of the calling function, call the caller function in the DB
 <pre>
 sub a2 {
   {
-    #Change to DB package
+    # Change to DB package
     package DB;
     
-    When you call the #caller function in list context
+    When you call the # caller function in list context
     my @c = caller 1;
     
     Arguments are stored in # @DB :: args

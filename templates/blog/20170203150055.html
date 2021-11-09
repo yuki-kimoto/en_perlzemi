@@ -59,7 +59,7 @@ void mylib_print ();
 C ++ source file. mylib_print is a function that outputs the string "mylib_cpp". Note that the file name extension is ".cpp".
 
 <pre>
-#include <iostream>
+# include <iostream>
 
 void mylib_print () {
   std :: cout << "mylib_cpp \ n";
@@ -73,12 +73,12 @@ Save the header and source files and place them in the same directory where the 
 Let's write an XS file. I am calling mylib_print.
 
 <pre>
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
+# include "EXTERN.h"
+# include "perl.h"
+# include "XSUB.h"
 
-#include "ppport.h"
-#include "mylib.h"
+# include "ppport.h"
+# include "mylib.h"
 
 MODULE = SomeModule PACKAGE = SomeModule
 
@@ -106,7 +106,7 @@ WriteMakefile (
     NAME =>'SomeModule',
     VERSION_FROM =>'lib / SomeModule.pm', # finds $ VERSION
     PREREQ_PM => {}, # e.g., Module :: Name => 1.1
-    ($]> = 5.005? ## Add these new keywords supported since 5.005
+    ($]> = 5.005? # # Add these new keywords supported since 5.005
       (ABSTRACT_FROM =>'lib / SomeModule.pm', # retrieve abstract from module
        AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
     LIBS => [''], # e.g.,'-lm'

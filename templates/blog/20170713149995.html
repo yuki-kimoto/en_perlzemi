@@ -15,9 +15,9 @@ It seems that quite a lot of MXNet features are available from Perl. If you are 
 If you have a library, you can do artificial intelligence programming even in Perl. It's amazing! It seems that GPU can also be used!
 
 <pre>
-## Convolutional NN for recognizing hand-written digits in MNIST dataset
-## It's considered "Hello, World" for Neural Networks
-## For more info about the MNIST problem please refer to http://neuralnetworksanddeeplearning.com/chap1.html
+# # Convolutional NN for recognizing hand-written digits in MNIST dataset
+# # It's considered "Hello, World" for Neural Networks
+# # For more info about the MNIST problem please refer to http://neuralnetworksanddeeplearning.com/chap1.html
  
 use strict;
 use warnings;
@@ -28,7 +28,7 @@ use Test :: More tests => 1;
 # symbol net
 my $ batch_size = 100;
  
-### model
+# ## model
 my $ data = mx-> symbol-> Variable ('data');
 my $ conv1 = mx-> symbol-> Convolution (data => $ data, name =>'conv1', num_filter => 32, kernel => [3,3], stride => [2,2]);
 my $ bn1 = mx-> symbol-> BatchNorm (data => $ conv1, name => "bn1");

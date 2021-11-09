@@ -45,14 +45,14 @@ my $ exit_value = $? >> 8;
 To see if a core dump has occurred
 
 <pre>
-#Whether a core dump has occurred
+# Whether a core dump has occurred
 my $ dumped_core = $? & 128;
 </pre>
 
 will do. Since 128 is 10000000 when converted to a binary number, the bit product is 0 except for the 8th bit. To see the signal number that killed the child process
 
 <pre>
-#Signal number that terminated the child process
+# Signal number that terminated the child process
 my $ signal_num = $? & 127;
 </pre>
 
@@ -99,7 +99,7 @@ if ($ pid) {
   print "whether the child process has terminated: $ is_finished \ n";
 }
 else {
-  #Wait 2 seconds in child process
+  # Wait 2 seconds in child process
   sleep 2;
   print "child process \ n";
   die;

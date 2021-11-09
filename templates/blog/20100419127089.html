@@ -29,7 +29,7 @@ A feature called namespaces in other languages ​​is called <strong> packages
 Use <strong> package </strong> to declare a package.
 
 <pre>
-#Package declaration
+# Package declaration
 package Package name;
 </pre>
 
@@ -43,7 +43,7 @@ package SomeModule;
 Package names can be multi-tiered. Connect individual parts with "::".
 
 <pre>
-#Multi-level package name
+# Multi-level package name
 package File :: Basename;
 package Class :: Accessor :: Fast;
 </pre>
@@ -51,7 +51,7 @@ package Class :: Accessor :: Fast;
 You can get the package to which you currently belong with __PACKAGE__.
 
 <pre>
-#The name of the package to which it currently belongs
+# The name of the package to which it currently belongs
 __PACKAGE__
 </pre>
 
@@ -60,7 +60,7 @@ __PACKAGE__
 In Perl, there is no such thing as not belonging to a package. It belongs to a package called main while no package declaration is made. If you want to return to the default namespace, specify main for the package name.
 
 <pre>
-#Return to default namespace
+# Return to default namespace
 package main;
 </pre>
 
@@ -69,13 +69,13 @@ package main;
 Package variables and subroutines always belong to a particular package. This corresponds to Mr. Tatsuya Yamada (name part) explained at the beginning.
 
 <pre>
-#Package variables and subroutines belong to a package
+# Package variables and subroutines belong to a package
 package SomeModule;
 
-A variable called $ VAR that belongs to the #package SomeModule
+A variable called $ VAR that belongs to the # package SomeModule
 our $ VAR;
 
-#Subroutine called func belonging to package SomeModule
+# Subroutine called func belonging to package SomeModule
 sub func {
   ...
 }
@@ -92,7 +92,7 @@ SomeModule :: func ();
 This is a sample that calls a function with a fully qualified name.
 
 <pre>
-#Call a function with a fully qualified name
+# Call a function with a fully qualified name
 use File :: Basename;
 File :: Basename :: basename ('xxx / yyy.txt');
 </pre>

@@ -52,7 +52,7 @@ So, as long as you use it in combination with while, the first writing is fine.
 The line input operator "<>" with nothing between "<" and ">" is specially called the <strong> diamond operator </strong>. If the file handle is omitted, it can be read line by line from the standard input and the file name specified by the <a href="/blog/20080108132865.html"> command line argument</a>.
 
 <pre>
-#Diamond operator
+# Diamond operator
 my $ line = <>;
 </pre>
 
@@ -67,7 +67,7 @@ while (my $ line = <>) {
 The advantage of using the diamond operator is that you can easily write a "program that can receive the output of other programs from standard input". This is the same behavior as common UNIX utilities such as cat, sed, awk, grep, etc.
 
 <pre>
-#Receive file name from command line argument
+# Receive file name from command line argument
 script.pl file.txt
 
 # Receive the output of other programs from standard input using pipes
@@ -131,7 +131,7 @@ while (my $ line = readline $ fh) {
     chomp $ line;
     
     Something to do with # $ line.
-    #Export to standard output.
+    # Export to standard output.
     print $ line, "\ n";
 
     # Repeat reading one line until the file reaches EOF (END OF FILE).

@@ -291,7 +291,7 @@ I compared the array and the array reference. It's easy to misunderstand, so let
 # arrangement
 $ numbers [0]
 
-#Array reference
+# Array reference
 $ numbers_ref-> [0]
 </pre>
 
@@ -316,7 +316,7 @@ Array references are also explained in detail on the following pages.
 A <strong> list </strong> is a representation of a sequence of multiple values. Lists and arrays are different. Lists are notations, while arrays are variables.
 
 <pre>
-#List
+# List
 ('a', case:
 
   break; b','c','d')
@@ -325,7 +325,7 @@ A <strong> list </strong> is a representation of a sequence of multiple values. 
 Lists can be assigned to arrays.
 
 <pre>
-#Assignment to array
+# Assignment to array
 my @array = ('a','b','c','d');
 </pre>
 
@@ -371,7 +371,7 @@ You can use the "<strong> grep function </strong>" to retrieve only the elements
 Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $ _, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
 
 <pre>
-#Conversion of all elements of the array
+# Conversion of all elements of the array
 @mapped = map {conversion} @array;
 </pre>
 
@@ -427,7 +427,7 @@ my @values ​​= @array ['m','n', ...]
 Understanding "multidimensional data structures" that combine "arrays", "hashes" and "references" is essential to becoming an intermediate player.
 
 <pre>
-#Hash array
+# Hash array
 my $ people = [
   {name =>'Kimoto', age => 36},
   {name =>'Tanaka', age => 20}
@@ -455,12 +455,12 @@ print'array: @numbers = ('. join (',', @numbers). ") \ n \ n";
 Apply # grep.
 my $ saerch_number = 3;
 if (grep {$ _ == $ saerch_number} @numbers) {
-  #If the element to be searched is found, the inside of the if statement will be true.
+  # If the element to be searched is found, the inside of the if statement will be true.
   print "1: $ saerch_number exists. \ N";
 }
 
 # 2: Remove duplicates from array (order is not guaranteed)
-The #hash key has the property of not allowing duplication.
+The # hash key has the property of not allowing duplication.
 my% no_duplicate_hash;
 for my $ number (@numbers) {
   $ no_duplicate_hash {$ number} ++;
@@ -565,8 +565,8 @@ print "\ @ numbers = (", join (',', @numbers), ") \ n";
 # Array reference (dereference and pass to function)
 push @ $ numbers_ref, 4;
 
-The #sort function returns an array, so use an anonymous array []
-#Recreating an array reference.
+The # sort function returns an array, so use an anonymous array []
+# Recreating an array reference.
 $ numbers_ref = [sort {$ b <=> $ a} @ $ numbers_ref];
 print "\ @ \ $ numbers_ref =", join (',', @ $ numbers_ref), ") \ n \ n";
 </pre>

@@ -25,7 +25,7 @@ Readability is a bit low because we are actively using a feature called hash sli
 use strict;
 use warnings;
 
-#Argument processing
+# Argument processing
 my $ file = shift;
 
 unless ($ file) {
@@ -39,13 +39,13 @@ my $ headers = ['name','age','country'];
 # The header key is also passed as an argument.
 my @recs = parse_file ($ file, $ headers);
 
-#Output (because it is an array of hashes, follow it with for)
+# Output (because it is an array of hashes, follow it with for)
 for my $ items (@recs) {
   # Concatenate using hash slices
   print join (',', @ {$ items} {@ $ headers}). "\ n";
 }
 
-#Function for file analysis (I just write it back this time ...)
+# Function for file analysis (I just write it back this time ...)
 sub parse_file {
   my ($ file, $ headers) = @_;
   
@@ -58,13 +58,13 @@ sub parse_file {
       # Remove line breaks
       chomp $ line;
       
-      #Prepare a reference to the hash that stores the data
-      #Header using hash slice
+      # Prepare a reference to the hash that stores the data
+      # Header using hash slice
       Assign to the key corresponding to #
       my $ items = {};
       @ {$ items} {@ $ headers} = split (',', $ line);
 
-      Since the first argument of the #push function is an array, dereference it with @ $ recs.
+      Since the first argument of the # push function is an array, dereference it with @ $ recs.
       push @ $ recs, $ items;
     }
     close $ fh;
@@ -183,13 +183,13 @@ while (my $ line = <$ fh>) {
   # Remove line breaks
   chomp $ line;
 
-  #Prepare a reference to the hash that stores the data
+  # Prepare a reference to the hash that stores the data
   my $ items = {};
-  #Header using hash slice
+  # Header using hash slice
   Assign to the key corresponding to #
   @ {$ items} {@ $ headers} = split (',', $ line);
 
-  The first argument of the #push function is an array, so @ $ recs
+  The first argument of the # push function is an array, so @ $ recs
   # And dereference.
   push @ $ recs, $ items;
 }
@@ -198,7 +198,7 @@ while (my $ line = <$ fh>) {
 <h4> (4) -1 Prepare a reference to the hash </h4>
 
 <pre>
-my $ items = {}; #Prepare a reference to the hash that stores the data
+my $ items = {}; # Prepare a reference to the hash that stores the data
 </pre>
 
 Prepare a reference to the hash you want to have in the array.

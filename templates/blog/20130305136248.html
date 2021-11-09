@@ -76,7 +76,7 @@ You can access the attribute values ​​by defining an accessor.
 # Value setting
 $ obj-> foo (1);
 
-#Get value
+# Get value
 my $ foo = $ obj-> foo;
 </pre>
 
@@ -443,7 +443,7 @@ $ obj_p-> method1;
 
 Returns # 2
 my $ obj_q = Q-> new;
-$ obj_q-> method1; #Return value is 2
+$ obj_q-> method1; # Return value is 2
 </pre>
 
 If you want to call a method of the base class from a subclass, use the SUPER pseudo-class.
@@ -455,7 +455,7 @@ use Object :: Simple -base;
 sub method1 {
   my $ self = shift;
   
-  Call method1 of P using the #SUPER pseudo-class
+  Call method1 of P using the # SUPER pseudo-class
   my $ value = $ self-> SUPER :: method1 (@ _);
   
   return 2 + $ value;
@@ -468,7 +468,7 @@ new can be overridden. For example, if you want to initialize the object, overri
 sub new {
   my $ self = shift-> SUPER :: new (@_);
   
-  #Initialization process
+  # Initialization process
   
   return $ self;
 }

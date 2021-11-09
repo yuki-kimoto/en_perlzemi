@@ -181,7 +181,7 @@ To specify the precision with the number of decimal places, use the format speci
 It can also be combined with other formats.
 
 <pre>
-#Round to the third decimal place with a character width of 10 that fills the left-justified space
+# Round to the third decimal place with a character width of 10 that fills the left-justified space
 $ formatted [2] = sprintf ("<% -10.3f>", 0.45674);
 </pre>
 
@@ -253,7 +253,7 @@ my @formated;
 'A' in II code
 $ formatted [1] = sprintf ("1:% c", 65);
 
-#Interpreted as a string
+# Interpreted as a string
 $ formatted [2] = sprintf ("2:% s", '00002');
 
 # Interpreted as a signed integer
@@ -322,13 +322,13 @@ $ formatted [2] = sprintf ("2:% -5s", 1);
 # 0 fill
 $ formatted [3] = sprintf ("3:% 05s", 1);
 
-#Ignored if the specified character length is exceeded
+# Ignored if the specified character length is exceeded
 $ formatted [4] = sprintf ("4:% 5d", 123456);
 
-Other than #% s is OK.
+Other than # % s is OK.
 $ formatted [5] = sprintf ("5:% 5d", 1);
 
-Other than #% s is OK.
+Other than # % s is OK.
 $ formatted [6] = sprintf ("6:% 5g", 1.23);
 
 for my $ i (1 .. 6) {
@@ -382,11 +382,11 @@ use warnings;
 printf "(1) Specify the precision with the number of digits after the decimal point. \ N";
 my @formated;
 # With precision up to 3 decimal places
-#Format.
+# Format.
 $ formatted [1] = sprintf ("% .3f", 0.45674);
 print $ formatted [1]. "\ n \ n";
 
-#Round to the third decimal place with a character width of 10 that fills the left-justified space
+# Round to the third decimal place with a character width of 10 that fills the left-justified space
 print "(2) Combine with other formats. \ N";
 $ formatted [2] = sprintf ("<% -10.3f>", 0.45674);
 print $ formatted [2]. "\ n";
@@ -402,7 +402,7 @@ use warnings;
 
 printf "(1) Specify the precision by the number of significant digits. \ N";
 
-#Format with a precision of 3 significant digits.
+# Format with a precision of 3 significant digits.
 my $ formatted = sprintf ("% .3g", 45.674);
 print $ formatted. "\ n";
 </pre>

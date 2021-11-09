@@ -55,7 +55,7 @@ Unicode Semantics (1);
 To get the desktop window, use the GetDesktopWindow function. A desktop window is a window that shows the entire desktop.
 
 <pre>
-#Get desktop window
+# Get desktop window
 my $ desktop_win = GetDesktopWindow ();
 </pre>
 
@@ -103,10 +103,10 @@ my $ win;
   my $ browser_name ='Chrome';
   for my $ win (GetChildWindows ($ desktop_win)) {
 
-    #Window name
+    # Window name
     my $ win_text = GetWindowText ($ win);
 
-    #Browser name
+    # Browser name
     if ($ win_text = ~ / \ b $ browser_name \ b /) {
       if ($ win_text = ~ / Perl Club /) {
         push @browser_wins, $ win;
@@ -125,16 +125,16 @@ my $ win;
 <!-
 
 <h4> Keyboard input </h4>
-    #Go to Console tab
+    # Go to Console tab
     SendKeys ('^]');
 
-    Go to #Elements tab
+    Go to # Elements tab
     SendKeys ('^ [');
     
     # Move to the tag below
     SendKeys ('{DOWN}');
 
-    #Move to the tag above (body can be selected
+    # Move to the tag above (body can be selected
     SendKeys ('{UP}');
 
 SendKeys ('^ c');
@@ -168,7 +168,7 @@ use Win32 :: Clipboard;
 First create a clipboard object.
 
 <pre>
-#Clipboard object creation
+# Clipboard object creation
 my $ clip = Win32 :: Clipboard-> new;
 </pre>
 
@@ -177,7 +177,7 @@ my $ clip = Win32 :: Clipboard-> new;
 Save the Perl string with the Set method. It is assumed that the Perl source code is written in UTF-8 and "use utf8;" is written. When saving a character string from the Perl side to the Windows clipboard, encode it in cp932 and pass it. This is because the character code of the text on the Windows clipboard is cp932.
 
 <pre>
-#Save string to clipboard
+# Save string to clipboard
 $ clip-> Set (encode ('cp932', $ string));
 </pre>
 

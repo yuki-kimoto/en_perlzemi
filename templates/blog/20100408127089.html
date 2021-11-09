@@ -22,24 +22,24 @@
 The <strong> File :: Copy </strong> module allows you to move and copy files.
 
 <pre>
-#Loading modules and importing functions
+# Loading modules and importing functions
 use File :: Copy qw / copy move /;
 </pre>
 
 You can copy the file with the copy function and move the file with the move function. There is a standard function to move files called the rename function, but it does not support moving across file systems. If you want to move files, it's a good idea to use File :: Copy's move. Move can also be used when moving directories.
 
 <pre>
-#File copy
+# File copy
 copy ($ from, $ to);
 
-#Move file
+# Move file
 move ($ from, $ to)
 </pre>
 
 This is a sample to copy a file. Error processing is performed in case the file copy fails (* 1). Make sure to include the OS error message "$!" In the error message.
 
 <pre>
-#File copy
+# File copy
 my $ from ='xxx';
 my $ to ='yyy';
 
@@ -50,7 +50,7 @@ copy ($ from, $ to)
 This is a sample to move files. Performs error handling in case the file move fails. Make sure to include the OS error message "$!" In the error message.
 
 <pre>
-#Move file
+# Move file
 my $ from ='xxx';
 my $ to ='yyy';
 

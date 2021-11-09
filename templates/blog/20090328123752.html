@@ -36,7 +36,7 @@ my $ result = $ file_path-> cat_path ('a','b');
 
 print "Result: $ result \ n";
 
-#Class used by user
+# Class used by user
 package FilePath;
 
 sub new {
@@ -65,7 +65,7 @@ sub cat_path {
   return $ str1. $ Self-> delimiter. $ Str2;
 }
 
-#For Unix
+# For Unix
 package FilePath :: Unix;
 use base'FilePath :: Base';
 
@@ -73,7 +73,7 @@ use base'FilePath :: Base';
 sub delimiter {return'/'}
 
 
-#For Windows
+# For Windows
 package FilePath :: Windows;
 use base'FilePath :: Base';
 

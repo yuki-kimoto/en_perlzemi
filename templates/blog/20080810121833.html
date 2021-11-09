@@ -30,14 +30,14 @@ use Fcntl qw (: seek);
 # Rewrite the file contents by random access.
 my $ file = "data_20080810.txt";
 
-#Open in read / write mode (not very secure)
+# Open in read / write mode (not very secure)
 open (my $ fh, "+ <", $ file)
   or die "Cannot open $ file";
 
 # 16 bytes
 my $ len_rec = 16;
 
-#Beginning of record
+# Beginning of record
 my $ pos_name = 0;
 
 # Fixed length 8 bytes
@@ -50,7 +50,7 @@ my $ pos_age = 8;
 my $ len_age = 8;
 
 # This time, add 1 to the age of peko.
-#peko is on the second record. Age is the 8th byte from the beginning of the record
+# peko is on the second record. Age is the 8th byte from the beginning of the record
 my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
 
 # Move the position of the file pointer to the position of Peco's age
@@ -75,7 +75,7 @@ elsif ($ len_read! = $ len_age) {
 # Add 1 to age
 $ age ++;
 
-When #read, the file pointer advances by the amount read, so return it to the original position.
+When # read, the file pointer advances by the amount read, so return it to the original position.
 seek ($ fh, $ pos_peko_age, SEEK_SET)
   or die "Cannnot seek: $ file: $!";
 
@@ -83,7 +83,7 @@ seek ($ fh, $ pos_peko_age, SEEK_SET)
 printf $ fh "% 08s", $ age
   or die "Cannot print: $ file: $!";
 
-#Close file
+# Close file
 close $ fh
   or die "Cannot close $ file: $!";
 </pre>
@@ -109,7 +109,7 @@ Import the symbols associated with the seek function from the Fcntl module. Thre
 # 16 bytes
 my $ len_rec = 16;
 
-#Beginning of record
+# Beginning of record
 my $ pos_name = 0;
 
 # Fixed length 8 bytes
@@ -122,7 +122,7 @@ my $ pos_age = 8;
 my $ len_age = 8;
 
 # This time, add 1 to the age of peko.
-#peko is on the second record. Age is the 8th byte from the beginning of the record
+# peko is on the second record. Age is the 8th byte from the beginning of the record
 my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
 </pre>
 
@@ -212,7 +212,7 @@ If the number of bytes read is insufficient, error handling is performed for eac
 <h4> (5) Move to the write position with the seek function </h4>
 
 <pre>
-When #read, the file pointer advances by the amount read, so return it to the original position.
+When # read, the file pointer advances by the amount read, so return it to the original position.
 seek ($ fh, $ pos_peko_age, SEEK_SET)
   or die "Cannnot seek: $ file: $!";
 </pre>

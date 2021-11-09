@@ -21,7 +21,7 @@ use File :: Temp'temp file';
 
 use Mojolicious :: Lite;
 
-#render CGI
+# render CGI
 app-> hook (before_dispatch => sub {
   my $ c = shift;
   
@@ -33,7 +33,7 @@ app-> hook (before_dispatch => sub {
     my $ method = $ c-> req-> method;
     my $ script_name = $ c-> app-> home-> rel_file ("public / $ path");
     
-    #CGI Environment variable
+    # CGI Environment variable
     local $ ENV {AUTH_TYPE} ='';
     local $ ENV {CONTENT_LENGTH} = $ req-> headers-> content_length;
     local $ ENV {CONTENT_TYPE} = $ req-> headers-> content_type;
@@ -57,7 +57,7 @@ app-> hook (before_dispatch => sub {
       die "Invalid script name";
     }
     
-    #Run CGI script
+    # Run CGI script
     my $ output;
     if ($ method eq'GET') {
       # GET requst
@@ -68,7 +68,7 @@ app-> hook (before_dispatch => sub {
       }
     }
     elsif ($ method eq'POST') {
-      #POST request
+      # POST request
       my $ body = $ req-> body;
       my ($ in_fh, $ in_file) = tempfile;
       print $ in_fh $ body;
@@ -81,10 +81,10 @@ app-> hook (before_dispatch => sub {
       unlink $ in_file;
     }
     
-    #Header part and body part
+    # Header part and body part
     my ($ header_part, $ body_part) = split ("\ n \ n", $ output, 2);
     
-    #Response
+    # Response
     my $ res = Mojo :: Message :: Response-> new;
     while (! $ Res-> is_finished) {
       $ res-> parse ($ header_part);

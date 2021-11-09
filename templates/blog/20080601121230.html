@@ -28,7 +28,7 @@ use File :: Find'find';
 use File :: Copy'copy';
 use Cwd'getcwd';
 
-#Preparation (Creating directories and files)
+# Preparation (Creating directories and files)
 my $ top_dir = "dir_20080601_$$";
 my @dirs = (
   "$ top_dir / dir1", "$ top_dir / dir1 / dir1_1", "$ top_dir / dir1 / dir1_2",
@@ -55,7 +55,7 @@ print "Preparation: $ top_dir has been created. \ N \ n";
 print "1: Copy directory recursively. \ N";
 
 my $ cur_dir = getcwd ();
-#File :: Find internally repeats chdir, so
+# File :: Find internally repeats chdir, so
 # Create a copy destination directory name with an absolute path.
 my $ dir_copy_to = "$ cur_dir / dir_20080601_ $ {$} _ cp";
 
@@ -64,17 +64,17 @@ print "$ top_dir has been copied to $ dir_copy_to. \ N";
 
 # Function for recursive copying
 sub recursive_copy {
-  #Copy source file or directory
+  # Copy source file or directory
   my $ file_from = $ _;
 
-  #The top directory of the copy source
+  # The top directory of the copy source
   # In the top directory of the copy destination
   # Replace.
   my $ file_to = $ File :: Find :: name;
-  $ file_to = ~ s # ^ $ top_dir # $ dir_copy_to #;
+  $ file_to = ~ s # ^ $ top_dir # $ dir_copy_to # ;
                                         
   if (-d $ file_from) {
-    The #directory cannot be copied, so create it with the same name.
+    The # directory cannot be copied, so create it with the same name.
     mkdir $ file_to
       or die "Unable to create $ file_to. \ N";
   }
@@ -94,17 +94,17 @@ find (\ & recursive_copy, $ top_dir);
 
 # Function for recursive copying
 sub recursive_copy {
-  #Copy source file or directory
+  # Copy source file or directory
   my $ file_from = $ _;
 
-  #The top directory of the copy source
+  # The top directory of the copy source
   # In the top directory of the copy destination
   # Replace.
   my $ file_to = $ File :: Find :: name;
-  $ file_to = ~ s # ^ $ top_dir # $ dir_copy_to #;
+  $ file_to = ~ s # ^ $ top_dir # $ dir_copy_to # ;
                                         
   if (-d $ file_from) {
-    The #directory cannot be copied, so create it with the same name.
+    The # directory cannot be copied, so create it with the same name.
     mkdir $ file_to
       or die "Unable to create $ file_to. \ N";
   }

@@ -78,7 +78,7 @@ Please refer to the following for a detailed explanation of local.
 
 <h3> Multi-line comment </h3>
 
-There is no multi-line comment syntax, so it's a bit disappointing, but the comment is only #. If you want to comment on multiple lines while debugging, you can comment out by interpreting it as a document.
+There is no multi-line comment syntax, so it's a bit disappointing, but the comment is only # . If you want to comment on multiple lines while debugging, you can comment out by interpreting it as a document.
 
 <pre>
 = pod
@@ -99,7 +99,7 @@ Different sigils are completely different variables.
 # arrangement
 my @ids;
 
-#Scalar
+# Scalar
 my $ ids;
 </pre>
 The above variable has the name ids, but it's a completely different variable.
@@ -116,7 +116,7 @@ perldoc -v $.
 
 In Perl you can use-> to make method calls.
 <pre>
-#Method call
+# Method call
 SomeClass-> method ('a','b');
 $ obj-> method ('a','b');
 </pre>
@@ -130,7 +130,7 @@ sub method {
   my ($ class, $ arg1, $ arg2) = @_;
 }
 
-#For object methods
+# For object methods
 sub method {
   my ($ self, $ arg1, $ arg2) = @_;
 }
@@ -349,7 +349,7 @@ use vars'VAR';
 
 <h3> Operators starting with q that you want to remember </h3>
 
-  Operators starting with q are difficult to remember, so I will summarize them. You can also use //, {}, ##, ||, etc. as the enclosing characters.
+  Operators starting with q are difficult to remember, so I will summarize them. You can also use //, {}, # #, ||, etc. as the enclosing characters.
 
 q is a single quote operator. It is the same as single quote except that single quote can be used.
 
@@ -404,7 +404,7 @@ Also, the return value does not need a return if it is the last evaluation.
 sub func1 {
   my $ arg = shift;
 
-  #return may or may not match.
+  # return may or may not match.
   $ arg;
 }
 </pre>
@@ -496,13 +496,13 @@ A data structure in which names such as variables and subroutines are registered
 Each function has an iterator internally, so if you use it only once, the iterator will stay advanced.
 
 <pre>
-#Iterator stays advanced.
+# Iterator stays advanced.
 my ($ key, $ value) = each% hash;
 </pre>
 Activating the keys function resets the iterator, but that's not a good idea.
 
 <pre>
-#Reset iterator
+# Reset iterator
 keys% hash;
 </pre>
 

@@ -22,14 +22,14 @@
 The <strong> File :: Spec </strong> module allows you to do portable processing on filenames. For example, you can create a file name using an OS-specific file name delimiter.
 
 <pre>
-#Load module
+# Load module
 use File :: Spec;
 </pre>
 
 The File :: Spec method is implemented as a class method and is called in the following format.
 
 <pre>
-#Class method call
+# Class method call
 File :: Spec-> $ method;
 </pre>
 
@@ -40,14 +40,14 @@ File :: Spec-> $ method;
 Use catfile to create filenames from individual parts. $ file is "xxx \ yyy \ zzz" for Windows and "xxx / yyy / zzz" for Unix. OS-specific delimiters are used to create filenames.
 
 <pre>
-#Create file name
+# Create file name
 my $ file = File :: Spec-> catfile ('xxx','yyy','zzz');
 </pre>
 
 It can also be used to concatenate directory names and file names. You do not need to be aware of the presence of delimiters such as "/" and "\" at the end of the directory name.
 
 <pre>
-#Concatenate directory name and file name
+# Concatenate directory name and file name
 my $ dir ='xxx / yyy /';
 my $ file ='zzz';
 

@@ -24,7 +24,7 @@ You can use the <strong> CPAN </strong> module to install the module from <a hre
 You can install the module by running the cpan command on the command line.
 
 <pre>
-#Install module
+# Install module
 cpan module name
 </pre>
 
@@ -52,7 +52,7 @@ Recent cpan sets everything automatically, but if it's a bit older, there are so
 This item determines from which mirror site to install. CPAN has mirror sites around the world, so choose the closest mirror site.
 
 <pre>
-#CPAN Mirror Selection
+# CPAN Mirror Selection
 
 First, pick a nearby continent and country (you can pick several of
 each, separated by spaces, or none if you just want to keep your
@@ -95,7 +95,7 @@ Select as many URLs as you like [] 5
 
 If you want to reconfigure cpan, use the "o conf init" command in the cpan shell.
 <pre>
-#Reconfigure (cpan shell)
+# Reconfigure (cpan shell)
 o conf init
 </pre>
 
@@ -129,14 +129,14 @@ List of # cpan settings
 The setting items can be changed.
 
 <pre>
-#Change settings (cpan shell)
+# Change settings (cpan shell)
 o conf build_cache 200
 </pre>
 
 The items you set are valid only while the cpan shell is running. You need to do a commit to save your settings.
 
 <pre>
-#Save settings (cpan shell)
+# Save settings (cpan shell)
 o conf commit
 </pre>
 
@@ -184,7 +184,7 @@ o conf ftp_proxy http_proxy = http: //proxy.you.com: 8000 /
 Also, even though only HTTP connection is allowed to the outside, if the urllist contains the ftp URL, the connection will fail. Include one of the URLs below at the beginning of your urllist.
 
 <pre>
-#When installing with HTTP connection
+# When installing with HTTP connection
 http://ftp.nara.wide.ad.jp/pub/CPAN/
 http://ftp.jaist.ac.jp/pub/CPAN/
 http://ftp.riken.jp/lang/CPAN/
@@ -219,7 +219,7 @@ Q. Can I see the module installation history?
 A. The installation history is recorded in a document called perllocal.
 
 <pre>
-#View installation history
+# View installation history
 perldoc perllocal
 </pre>
 
@@ -250,7 +250,7 @@ Q. I just want the name of the list of installed modules.
 A. Use the following script. ExtUtils :: Installed is available.
 
 <pre>
-#List of installed module names
+# List of installed module names
 use ExtUtils :: Installed;
 print join "\ n", ExtUtils :: Installed-> new-> modules;
 </pre>
@@ -259,7 +259,7 @@ Q. How can I install the modules in a new environment?
 A. Feed cpan the file created above. It's a good idea to combine it with xargs.
 
 <pre>
-#Install all CPAN modules together
+# Install all CPAN modules together
 cat installed.txt | xargs cpan
 </pre>
 
@@ -271,7 +271,7 @@ It has a structure like "author name / module name-version.tar.gz".
 You can find this out on "cpan -a".
 
 <pre>
-#View installed modules and distribution names
+# View installed modules and distribution names
 cpan -a
 </pre>
 

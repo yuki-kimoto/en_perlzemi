@@ -48,13 +48,13 @@ Specify the character code of the byte string in the first argument of the decod
 <pre>
 use Encode'decode';
 
-#External input (command line argument)
+# External input (command line argument)
 my $ str = shift;
 
-#Convert byte string (external input) to internal string (when $ str is UTF-8)
+# Convert byte string (external input) to internal string (when $ str is UTF-8)
 $ str = decode ('UTF-8', $ str);
 
-#Convert byte string (external input) to internal string (when $ str is Shift_JIS)
+# Convert byte string (external input) to internal string (when $ str is Shift_JIS)
 $ str = decode ('Shift_JIS', $ str);
 </pre>
 
@@ -142,7 +142,7 @@ Save the source code in UTF-8. If it is not saved in UTF-8, you will get a warni
 The explanation is given in the case of UTF-8, but in the case of Windows, it is necessary to specify cp932 in the encode function and decode function. cp932 stands for "Windows-31J" which is the character code of Windows. Try passing the string "This is Japanese" as a command line argument.
 
 <pre>
-#Try the effect of converting to an internal string
+# Try the effect of converting to an internal string
 use strict;
 use warnings;
 
@@ -155,13 +155,13 @@ my $ str1 = shift;
 # UTF-8 byte string decoded to internal string
 $ str1 = decode ('UTF-8', $ str1);
 
-#String literal (because utf8 pragma is valid, it becomes an internal string)
+# String literal (because utf8 pragma is valid, it becomes an internal string)
 my $ str2 = "Japanese";
 
 # You can count characters correctly by converting to an internal string
 print length $ str2, "\ n"; # 3
 
-#Regular expressions can be used correctly between internal strings
+# Regular expressions can be used correctly between internal strings
 if ($ str1 = ~ / $ str2 /) {
   print "Match! \ N";
 }
@@ -181,7 +181,7 @@ In Perl, the character code conversion process is as follows by combining the de
 # Convert UTF-8 byte string to internal string
 $ str = decode ('UTF-8', $ str);
 
-#Convert internal string to Shift_JIS byte string
+# Convert internal string to Shift_JIS byte string
 $ str = encode ('Shift_JIS', $ str);
 </pre>
 The diagram is as follows.
@@ -192,7 +192,7 @@ UTF-8 byte string-> internal string-> Shift_JIS byte string
 This is a bit annoying, so we have a function called from_to.The first argument is a byte string, the second argument is the character code before conversion, and the third argument is the character code after conversion. Note that unlike the enocde and decode functions, the byte string itself specified in the first argument is converted.
 
 <pre>
-#Character code conversion
+# Character code conversion
 use Encode'from_to';
 
 # $ str itself is converted

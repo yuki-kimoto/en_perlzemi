@@ -27,19 +27,19 @@ my $ pdf = PDF :: API2-> new;
 
 my $ page = $ pdf-> page;
 
-#Load core font
+# Load core font
 my $ font = $ pdf-> corefont ('Helvetica');
 
-#Get a content object that represents the text
+# Get a content object that represents the text
 my $ text = $ page-> text ();
 
-#Set font
+# Set font
 $ text-> font ($ font, 11);
 
 # Set drawing position (origin is lower left. By default, page width is 612 units and height is 792 units)
 $ text-> translate (30, 750);
 
-#Draw text
+# Draw text
 $ text-> text ('Hello World!');
 
 my $ pdf_file ='text_core_font.pdf';
@@ -54,7 +54,7 @@ $ pdf-> saveas ($ pdf_file);
 In PDF :: API2, get the font object that represents the font using the corefont method or ttfont method. Here, we are drawing using the corefont object.
 
 <pre>
-#Load core font
+# Load core font
 my $ font = $ pdf-> corefont ('Helvetica');
 </pre>
 
@@ -65,7 +65,7 @@ Use the corefont method to get the core font. Please note that corefont cannot d
 In PDF :: API2, the content object that represents the text is obtained using the text method of the page object. Here, a content object that represents text is called a text object. This is a PDF :: API2 :: Content object.
 
 <pre>
-#Get a content object that represents the text
+# Get a content object that represents the text
 my $ text = $ page-> text ();
 </pre>
 
@@ -74,7 +74,7 @@ my $ text = $ page-> text ();
 In PDF :: API2, set the font with the font method of the text object.
 
 <pre>
-#Set font
+# Set font
 $ text-> font ($ font, 11);
 </pre>
 
@@ -96,7 +96,7 @@ Please note that you cannot set page margins, number of lines of text, etc., and
 PDF :: API2 draws text with the text method of the text object.
 
 <pre>
-#Draw text
+# Draw text
 $ text-> text ('Hello World!');
 </pre>
 
@@ -109,15 +109,15 @@ Note that the text is written on the font baseline.
 To set the font color, set the stroke color and fill color. Please note that there is no method that allows you to specify the font color directly.
 
 <pre>
-#Set font color-color name
+# Set font color-color name
 $ text-> strokecolor ('red');
 $ text-> fillcolor ('red');
 
-#Set font color - RGB
+# Set font color - RGB
 $ text-> strokecolor ('red');
 $ text-> fillcolor ('red');
 
-#Set font color - CMYK
+# Set font color - CMYK
 $ text-> strokecolor ('% FF000000');
 $ text-> fillcolor ('% FF000000');
 </pre>
@@ -135,10 +135,10 @@ The behavior of PDF :: API2 is that the first defined content object is drawn fi
 If you create a graphic content object after you create a text content object, the text will be erased graphically. So be sure to create the graphic content object first and the text content object later.
 
 <pre>
-#Generate graphic content object first
+# Generate graphic content object first
 my $ gfx = $ page-> gfx;
 
-#Generate text content object next
+# Generate text content object next
 my $ text = $ page-> text;
 
 # Mistakes (Pit Pit, Graphic Text Disappears)
@@ -156,10 +156,10 @@ my $ text = $ page-> text;
 $ text-> strokecolor ('# 000');
 $ text-> fillcolor ('# 000');
 
-#Draw background
+# Draw background
 # ...
 
-#Draw text
+# Draw text
 $ text-> text ('Hello');
 <pre>
 
@@ -181,7 +181,7 @@ $ text-> text ('Hello World!', -Underline =>'auto');
 To use bold in the core font, specify the font for bold.
 
 <pre>
-#Load core font
+# Load core font
 my $ font = $ pdf-> corefont ('Helvetica-Bold');
 </pre>
 
@@ -201,7 +201,7 @@ $ text-> font ($ font, $ font_size + 1);
 Use the charspace method to set the character spacing. The default is 0.
 
 <pre>
-#Set character spacing
+# Set character spacing
 $ text-> charspace (1);
 </pre>
 
@@ -262,11 +262,11 @@ my $ text_height = $ font_size;
 There is a little space between the lines. The line height is the height of the text plus the width between the lines. If the font size (text height) is 11 and the line spacing is 2, the line height is 13.
 
 <pre>
-#Font size (text height)
+# Font size (text height)
 my $ font_size = 16;
 my $ text_height = $ font_size;
 
-#Line spacing
+# Line spacing
 my $ line_margin = 2;
 
 # Line height
@@ -315,10 +315,10 @@ In the explanation here, it is assumed that all the margins on the top, bottom, 
 # Margin on page
 my $ page_top_margin = 36;
 
-#Page bottom margin
+# Page bottom margin
 my $ page_bottom_margin = 36;
 
-#Page left margin
+# Page left margin
 my $ page_left_margin = 36;
 
 # Page right margin
@@ -353,10 +353,10 @@ my $ render_start_x = 0;
 # Start drawing y coordinate
 my $ render_start_y = $ page_height - 1;
 
-#End of drawing x coordinate
+# End of drawing x coordinate
 my $ render_end_x = $ page_width - 1;
 
-#End of drawing y coordinate = 0;
+# End of drawing y coordinate = 0;
 my $ render_end_y = 0;
 </pre>
 
@@ -369,7 +369,7 @@ my $ render_start_x = $ page_left_margin;
 # Start drawing y coordinate
 my $ render_start_y = $ page_height - 1- $ page_top_margin;
 
-#End of drawing x coordinate
+# End of drawing x coordinate
 my $ render_end_x = $ page_width - 1- $ page_right_margin;
 
 # Drawing end y coordinate
@@ -389,14 +389,14 @@ use PDF :: API2;
 
 my $ pdf = PDF :: API2-> new;
 
-#Load core font
+# Load core font
 my $ font = $ pdf-> corefont ('Helvetica-Bold');
 my $ font_size = 11;
 
-#Text height
+# Text height
 my $ text_height = $ font_size;
 
-#Line spacing
+# Line spacing
 my $ line_margin = 2;
 
 # Line height
@@ -405,12 +405,12 @@ my $ line_height = $ text_height + $ line_margin;
 # Default global setting for paper size (to get paper size)
 $ pdf-> mediabox (undef);
 
-#Page height and width
+# Page height and width
 my @page_size_infos = $ pdf-> mediabox;
 my $ page_width = $ page_size_infos [2];
 my $ page_height = $ page_size_infos [3];
 
-#Page margin
+# Page margin
 my $ page_top_margin = 36;
 my $ page_bottom_margin = 36;
 my $ page_left_margin = 36;
@@ -422,29 +422,29 @@ my $ render_start_x = $ page_left_margin;
 # Start drawing y coordinate
 my $ render_start_y = $ page_height - 1- $ page_top_margin;
 
-#End of drawing x coordinate
+# End of drawing x coordinate
 my $ render_end_x = $ page_width - 1- $ page_right_margin;
 
 # Drawing end y coordinate
 my $ render_end_y = $ page_bottom_margin;
 
-#Message (1000 repeats of the same message)
+# Message (1000 repeats of the same message)
 my $ message ='Hello World!' X 1000;
 
 # Newline return x Save coordinates
 my $ new_line_left_x = $ render_start_x;
 
-#Current drawing position
+# Current drawing position
 my $ cur_render_x = $ render_start_x;
 my $ cur_render_y = $ render_start_y;
 
-#Create page
+# Create page
 my $ page = $ pdf-> page;
 
-#Get a content object that represents the text
+# Get a content object that represents the text
 my $ text = $ page-> text ();
 
-#Font settings
+# Font settings
 $ text-> font ($ font, $ font_size);
 
 # Move to drawing start position
@@ -468,20 +468,20 @@ while ($ message = ~ / (.) / G) {
     $ cur_render_x = $ render_start_x;
     $ cur_render_y = $ render_start_y;
     
-    #Create page
+    # Create page
     $ page = $ pdf-> page;
 
-    #Get a content object that represents the text
+    # Get a content object that represents the text
     $ text = $ page-> text ();
 
-    #Font settings
+    # Font settings
     $ text-> font ($ font, $ font_size);
 
     # Move to drawing start position
     $ text-> translate ($ cur_render_x, $ cur_render_y);
   }
   
-  #Draw characters
+  # Draw characters
   $ text-> text ($ char);
   
   # Update drawing position
@@ -629,7 +629,7 @@ use PDF :: API2;
 
 my $ pdf = PDF :: API2-> new;
 
-#Reading TrueType fonts that support Japanese
+# Reading TrueType fonts that support Japanese
 my $ true_type_font_file = "$ FindBin :: Bin / AozoraMinchoRegular.ttf";
 my $ font = $ pdf-> ttfont ($ true_type_font_file);
 my $ true_type_font_bold_file = "$ FindBin :: Bin / AozoraMincho-bold.ttf";
@@ -637,10 +637,10 @@ my $ font_bold = $ pdf-> ttfont ($ true_type_font_bold_file);
 
 my $ font_size = 11;
 
-#Text height
+# Text height
 my $ text_height = $ font_size;
 
-#Line spacing
+# Line spacing
 my $ line_margin = 2;
 
 # Line height
@@ -649,12 +649,12 @@ my $ line_height = $ text_height + $ line_margin;
 # Default global setting for paper size (to get paper size)
 $ pdf-> mediabox (undef);
 
-#Page height and width
+# Page height and width
 my @page_size_infos = $ pdf-> mediabox;
 my $ page_width = $ page_size_infos [2];
 my $ page_height = $ page_size_infos [3];
 
-#Page margin
+# Page margin
 my $ page_top_margin = 36;
 my $ page_bottom_margin = 36;
 my $ page_left_margin = 36;
@@ -666,29 +666,29 @@ my $ render_start_x = $ page_left_margin;
 # Start drawing y coordinate
 my $ render_start_y = $ page_height - 1- $ page_top_margin;
 
-#End of drawing x coordinate
+# End of drawing x coordinate
 my $ render_end_x = $ page_width - 1- $ page_right_margin;
 
 # Drawing end y coordinate
 my $ render_end_y = $ page_bottom_margin;
 
-#Message (1000 repeats of the same message)
+# Message (1000 repeats of the same message)
 my $ message ='Hello world. 'x 1000;
 
 # Newline return x Save coordinates
 my $ new_line_left_x = $ render_start_x;
 
-#Current drawing position
+# Current drawing position
 my $ cur_render_x = $ render_start_x;
 my $ cur_render_y = $ render_start_y;
 
-#Create page
+# Create page
 my $ page = $ pdf-> page;
 
-#Get a content object that represents the text
+# Get a content object that represents the text
 my $ text = $ page-> text ();
 
-#Font settings
+# Font settings
 $ text-> font ($ font, $ font_size);
 
 # Move to drawing start position
@@ -712,20 +712,20 @@ while ($ message = ~ / (.) / G) {
     $ cur_render_x = $ render_start_x;
     $ cur_render_y = $ render_start_y;
     
-    #Create page
+    # Create page
     $ page = $ pdf-> page;
 
-    #Get a content object that represents the text
+    # Get a content object that represents the text
     $ text = $ page-> text ();
 
-    #Font settings
+    # Font settings
     $ text-> font ($ font, $ font_size);
 
     # Move to drawing start position
     $ text-> translate ($ cur_render_x, $ cur_render_y);
   }
   
-  #Bold world
+  # Bold world
   if ($ char eq'world' || $ char eq'world') {
     $ text-> font ($ font_bold, $ font_size);
   }
@@ -733,7 +733,7 @@ while ($ message = ~ / (.) / G) {
     $ text-> font ($ font, $ font_size);
   }
 
-  #Draw characters
+  # Draw characters
   $ text-> text ($ char);
   
   # Update drawing position

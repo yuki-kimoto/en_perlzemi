@@ -79,7 +79,7 @@ When executing at the command prompt, a script called sample.pl is passed to a p
 In UNIX, you can execute a Perl script by directly specifying the file name, such as ./sample.pl, by giving execute permission to the file. (./ Means the current directory. The description sample.pl cannot be executed due to UNIX specifications.)
 
 <pre>
-#! / usr / bin / perl
+# ! / usr / bin / perl
 </pre>
 
 Is a request to the OS to execute this file with the program / usr / bin / perl if this file has execute permission.
@@ -748,10 +748,10 @@ S_IRWXO S_IROTH S_IWOTH S_IXOTH
 # Setuid Setgid Stickiness SaveText constants
 S_ISUID S_ISGID S_ISVTX S_ISTXT
 
-#File type constants
+# File type constants
 S_IFREG S_IFDIR S_IFLNK S_IFBLK S_IFCHR S_IFIFO S_IFSOCK S_IFWHT S_ENFMT
 
-A function that plays the same role as the #file operator
+A function that plays the same role as the # file operator
 S_ISREG ($ mode) S_ISDIR ($ mode) S_ISLNK ($ mode)
 S_ISBLK ($ mode) S_ISCHR ($ mode) S_ISFIFO ($ mode) S_ISSOCK ($ mode)
 </pre>
@@ -771,8 +771,8 @@ use Fcntl': mode';
 
 my $ file = shift || die "Usage: $ 0 file \ n";
 
-The third element of the return value of the #stat function is the file
-#Permission information
+The third element of the return value of the # stat function is the file
+# Permission information
 print "Get file permissions. \ N";
 my $ mode = (stat $ file) [2];
 

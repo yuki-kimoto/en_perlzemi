@@ -34,16 +34,16 @@ use Imager;
 
 my $ img = Imager-> new;
 
-#Load image
+# Load image
 $ img-> read (file =>'example.jpg')
   or die $ img-> errstr;
 
-#Font
+# Font
 my $ font = Imager :: Font-> new (
   file =>'/usr/share/fonts/ja/TrueType/kochi-gothic-subst.ttf'
 );
 
-#Drawing a string
+# Drawing a string
 $ img-> string (
   x => 50,
   y => 50,
@@ -54,7 +54,7 @@ $ img-> string (
   color =>'# 000000',
 ) or die $ img-> errstr;
 
-#Save image
+# Save image
 $ img-> write (file =>'new_example.jpg')
   or die $ img-> errstr;
 </pre>

@@ -66,11 +66,11 @@ I will create an XS file. Let's add a function called foo that displays "foo" to
 First of all, when you open the XS file, you should see something like the following.
 
 <pre>
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
+# include "EXTERN.h"
+# include "perl.h"
+# include "XSUB.h"
 
-#include "ppport.h"
+# include "ppport.h"
 
 
 MODULE = SomeModule PACKAGE = SomeModule
@@ -81,11 +81,11 @@ The first thing to remember is that the "MODULE = SomeModule PACKAGE = SomeModul
 Let's write it. Add "MODULE = SomeModule :: Util PACKAGE = SomeModule :: Util". Then define bar in XS. Also, define foo in the section "MODULE = SomeModule PACKAGE = SomeModule".
 
 <pre>
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
+# include "EXTERN.h"
+# include "perl.h"
+# include "XSUB.h"
 
-#include "ppport.h"
+# include "ppport.h"
 
 MODULE = SomeModule :: Util PACKAGE = SomeModule :: Util
 

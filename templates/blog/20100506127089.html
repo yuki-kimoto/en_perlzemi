@@ -26,23 +26,23 @@ The standard module has a simple profiler, the <strong> Devel :: DProf module </
 Creating a profile is easy. When the following command is executed, a file that outputs the profile information "tmon.out" is created in the current directory.
 
 <pre>
-#Create profile information
+# Create profile information
 perl -d: DProf target.pl
 </pre>
 
 To display "tmon.out" in an easy-to-read format, execute the dprofpp command.
 <pre>
-#Display profile in easy-to-read format
+# Display profile in easy-to-read format
 dprofpp
 </pre>
 
 Then, it will be output in the following easy-to-read format.
 <pre>
-#Profile
+# Profile
 Total Elapsed Time = 1.171916 Seconds
   User + System Time = 1.171916 Seconds
 Exclusive Times
-% Time ExclSec CumulS #Calls sec / call Csec / c Name
+% Time ExclSec CumulS # Calls sec / call Csec / c Name
  78.6 0.922 0.922 2 0.4610 0.4610 main :: func2
  18.6 0.218 0.218 1 0.2180 0.2180 main :: func1
  1.37 0.016 0.016 5 0.0032 0.0032 main :: BEGIN
@@ -83,7 +83,7 @@ The meaning of each item is as follows. It is displayed from the top in the orde
 
   <tr>
     <td>
-      #Calls
+      # Calls
     </td>
     <td>
       Routine call count

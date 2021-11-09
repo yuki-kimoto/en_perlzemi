@@ -122,12 +122,12 @@ This is a sample that specifies the open mode in detail.
 use strict;
 use warnings;
 
-#Module for specifying open mode with a symbol
+# Module for specifying open mode with a symbol
 use Fcntl;
 
-my $ file = shift; #Specify the file name.
+my $ file = shift; # Specify the file name.
 
-#Create the file if it doesn't exist and open it in write mode
+# Create the file if it doesn't exist and open it in write mode
 sysopen (my $ fh, $ file, O_WRONLY | O_EXCL | O_CREAT)
   or die "Couldn't open $ file: $!";
 close ($ fh);

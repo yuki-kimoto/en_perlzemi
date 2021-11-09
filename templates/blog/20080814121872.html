@@ -31,12 +31,12 @@ use Fcntl qw /: DEFAULT: flock: seek /;
 # Be careful as it will be overwritten
 my $ file = "data_20080814.txt";
 
-#Open in read / write mode (not very secure)
+# Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
 sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
   or die "Cannot open $ file: $!";
 
-#Exclusive lock (exclusive lock because it reads and writes)
+# Exclusive lock (exclusive lock because it reads and writes)
 flock ($ fh, LOCK_EX)
   or die "Cannot lock $ file: $!";
 
@@ -46,7 +46,7 @@ if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
 
 $ cnt ++;
 
-#Move the file pointer to the beginning
+# Move the file pointer to the beginning
 seek ($ fh, 0, SEEK_SET)
   or die "Cannot seek $ file: $!";
 
@@ -143,7 +143,7 @@ As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and
 <h4> (2) If the file does not exist, create it and open it in read / write mode </h4>
 
 <pre>
-#Open in read / write mode (not very secure)
+# Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
 sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
   or die "Cannot open $ file: $!";
@@ -154,7 +154,7 @@ In sysopen, specify O_RDWR and O_CREAT for the open flags.
 <h4> (3) Exclusive lock is performed with the flock function </h4>
 
 <pre>
-#Exclusive lock (exclusive lock because it reads and writes)
+# Exclusive lock (exclusive lock because it reads and writes)
 flock ($ fh, LOCK_EX)
   or die "Cannot lock $ file: $!";
 </pre>
@@ -172,7 +172,7 @@ if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
 
 $ cnt ++;
 
-#Move the file pointer to the beginning
+# Move the file pointer to the beginning
 seek ($ fh, 0, SEEK_SET)
   or die "Cannot seek $ file: $!";
 

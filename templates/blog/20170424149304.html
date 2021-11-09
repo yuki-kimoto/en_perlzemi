@@ -32,7 +32,7 @@ To send an email: It's easy to create in the form of a multipart message and att
 <pre>
 use MIME :: Lite;
 
-#Create multipart message
+# Create multipart message
 my $ msg = MIME :: Lite-> new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
@@ -41,13 +41,13 @@ my $ msg = MIME :: Lite-> new (
   Type =>'multipart / mixed'
 );
 
-#Add text
+# Add text
 $ msg-> attach (
   Type =>'TEXT',
   Data => "Here's the GIF file you wanted"
 );
 
-#Add image
+# Add image
 $ msg-> attach (
   Type =>'image / gif',
   Path =>'aaa000123.gif',
@@ -55,7 +55,7 @@ $ msg-> attach (
   Disposition =>'attachment'
 );
 
-#Send email
+# Send email
 $ msg-> send;
 </pre>
 
@@ -97,7 +97,7 @@ use utf8;
 use MIME :: Lite;
 use Encode'encode';
 
-#Create multipart message
+# Create multipart message
 my $ msg = MIME :: Lite-> new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
@@ -106,13 +106,13 @@ my $ msg = MIME :: Lite-> new (
   Type =>'multipart / mixed'
 );
 
-#Add text
+# Add text
 $ msg-> attach (
   Type =>'TEXT',
   Data => encode ('ISO-2022-JP','text of email body'),
 );
 
-#Add image
+# Add image
 $ msg-> attach (
   Type =>'image / gif',
   Path =>'aaa000123.gif',
@@ -120,7 +120,7 @@ $ msg-> attach (
   Disposition =>'attachment'
 );
 
-#Send email "
+# Send email "
 $ msg-> send;
 </pre>
 
@@ -133,7 +133,7 @@ use utf8;
 use MIME :: Lite;
 use Encode'encode';
 
-#Create multipart message
+# Create multipart message
 my $ msg = MIME :: Lite-> new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
@@ -142,13 +142,13 @@ my $ msg = MIME :: Lite-> new (
   Type =>'multipart / mixed'
 );
 
-#Add text
+# Add text
 $ msg-> attach (
   Type =>'TEXT',
   Data => encode ('UTF-8','text of email body'),
 );
 
-#Add image
+# Add image
 $ msg-> attach (
   Type =>'image / gif',
   Path =>'aaa000123.gif',
@@ -156,7 +156,7 @@ $ msg-> attach (
   Disposition =>'attachment'
 );
 
-#Send email "
+# Send email "
 $ msg-> send;
 </pre>
 

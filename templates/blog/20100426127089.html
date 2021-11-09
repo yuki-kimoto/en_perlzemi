@@ -22,10 +22,10 @@
 The <strong> Exporter </strong> module allows you to export a function from a module.
 
 <pre>
-#Package declaration
+# Package declaration
 package Your Module;
 
-Inherit #Exporter
+Inherit # Exporter
 use Exporter'import';
 
 # Write the function to export
@@ -34,7 +34,7 @@ our @EXPORT = qw / func1 func2 /;
 # Write an exportable function
 our @EXPORT_OK = qw / func3 func4 /;
 
-#Function
+# Function
 sub func1 {...}
 sub func2 {...}
 sub func3 {...}
@@ -72,10 +72,10 @@ sub import {
   First argument of # use (YourModule in this example)
   my $ class = shift;
 
-  #Caller's package (main in this example)
+  # Caller's package (main in this example)
   my $ caller = caller;
 
-  #Export function
+  # Export function
   no strict'refs';
   foreach my $ func (@ {"$ {class} :: EXPORT"}) {
       * {"$ {caller} :: $ func"} = \ & {"$ {class} :: $ func"};

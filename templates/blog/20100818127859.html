@@ -28,7 +28,7 @@ It seems that XS is easy to understand if you understand the correspondence betw
 <h4> Output to standard output </h4>
 
 <pre>
-#Perl
+# Perl
 print "Hello";
 
 # XS
@@ -40,7 +40,7 @@ PerlIO_printf is a function that corresponds to printf in the C standard library
 <h4> String </h4>
 
 <pre>
-#Perl
+# Perl
 my $ str = "Hello";
 
 # XS
@@ -56,11 +56,11 @@ The C language API is often omitted, so it's difficult to remember, but I have t
 <h4> Numerical value </h4>
 
 <pre>
-#Unsigned integer
+# Unsigned integer
 # Perl
 my $ num = 1;
 
-#XS
+# XS
 SV * sv_num = newSVuv (5);
 </pre>
 
@@ -69,7 +69,7 @@ SV * sv_num = newSVuv (5);
 # Perl
 my $ num = -1;
 
-#XS
+# XS
 SV * sv_num = newSViv (-1);
 </pre>
 
@@ -78,7 +78,7 @@ SV * sv_num = newSViv (-1);
 # Perl
 my $ num = 1.14;
 
-#XS
+# XS
 SV * sv_num = newSVnv (1.14);
 </pre>
 
@@ -121,7 +121,7 @@ The first argument of the SvPV_nolen function is an SV * type variable. The leng
 <h4> File input / output </h4>
 
 <pre>
-#Perl
+# Perl
 sub print_line {
   my $ file = shift;
   
@@ -135,7 +135,7 @@ sub print_line {
   close $ fh;
 }
 
-#XS
+# XS
 SV *
 print_line (...)
   PPCODE:
@@ -311,7 +311,7 @@ When writing XS, I will try to write it like this for a while. The XS grammar is
 Creating an array of hashes.
 
 <pre>
-#The simplest Perl notation
+# The simplest Perl notation
 sub return_array_of_hash {
     
   my $ people = [
@@ -373,14 +373,14 @@ AV * is an array and HV * is a hash. newAV creates an empty array. newHV creates
 Based on gfx's advice, I rewrote the creation of the hash array. The principle of always making it mortal immediately after creating SV *, AV *, HV *, when creating a character string, do not specify the number of characters when setting the hash element, for the array or hash element If you do, you have to increase the reference count by one. After that, I defined a macro that can be written as consistently and simply as possible. I don't know.
 
 <pre>
-#define new_mAV () (AV *) sv_2mortal ((SV *) newAV ())
-#define new_mHV () (HV *) sv_2mortal ((SV *) newHV ())
-#define new_mSVpvs (s) sv_2mortal (newSVpvs (s))
-#define new_mSVuv (u) sv_2mortal (newSVuv (u))
-#define new_mSViv (i) sv_2mortal (newSViv (i))
-#define new_mSVnv (n) sv_2mortal (newSVnv (n))
-#define new_mRV (sv) sv_2mortal (newRV_inc ((SV *) sv))
-#define set (e) SvREFCNT_inc (e)
+# define new_mAV () (AV *) sv_2mortal ((SV *) newAV ())
+# define new_mHV () (HV *) sv_2mortal ((SV *) newHV ())
+# define new_mSVpvs (s) sv_2mortal (newSVpvs (s))
+# define new_mSVuv (u) sv_2mortal (newSVuv (u))
+# define new_mSViv (i) sv_2mortal (newSViv (i))
+# define new_mSVnv (n) sv_2mortal (newSVnv (n))
+# define new_mRV (sv) sv_2mortal (newRV_inc ((SV *) sv))
+# define set (e) SvREFCNT_inc (e)
 
 MODULE = ExtModule PACKAGE = ExtModule
 

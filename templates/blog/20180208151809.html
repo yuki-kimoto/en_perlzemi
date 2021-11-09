@@ -26,7 +26,7 @@ A data structure called <b> hash reference </b> frequently appears in Perl. This
 A hash reference is a reference to a <a href="/blog/20161013147635.html"> hash</a>. A reference means to point. You can use the reference generator "\" on a hash to create a hash reference.
 
 <pre>
-#Create a hash reference
+# Create a hash reference
 my% score = (math => 68, english => 90);
 my $ score_ref = \% score;
 </pre>
@@ -50,7 +50,7 @@ Let's see the difference between hashes and hash references from here.
 The hash is copied in its entirety by assignment, but the hash reference is not copied.
 
 <pre>
-#Hash is the value copied
+# Hash is the value copied
 my% score1 = (math => 68, english => 90);
 my% score2 =% score1;
 
@@ -91,7 +91,7 @@ Note that the hash reference is generated using the anonymous hash generator "{}
 This notation appears frequently in Perl source code. It is important to read from the source code whether it is a hash or a hash reference.
 
 <pre>
-#Hash
+# Hash
 my% score = (math => 68, english => 90);
 
 # Hash reference
@@ -107,7 +107,7 @@ To do this, perform an operation called <b> dereference </b>.
 <pre>
 my $ score_ref = {math => 68, english => 90};
 
-#Dereference
+# Dereference
 my% score =% {$ score_ref};
 </pre>
 
@@ -124,7 +124,7 @@ my% score =% $ score_ref;
 <a href="/blog/20080210120265.html"> keys function</a>, <a href="/blog/20100222126425.html"> values ​​function</a>, <a href="/blog/20080212120283. Hash-related functions such as the html "> each function</a> take a hash as an argument. So be aware that if you want to pass a hash reference, you need to dereference it.
 
 <pre>
-#Dereference and pass to standard function
+# Dereference and pass to standard function
 keys% $ hash;
 values% $ hash;
 each% $ hash;
@@ -148,7 +148,7 @@ If the arrow operator is used, it is a hash reference. If not, it's a hash. Plea
 # Get hash value
 my $ score_math = $ score {math};
 
-#Set hash value
+# Set hash value
 $ score {math} = 67;
 </pre>
 

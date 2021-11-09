@@ -55,14 +55,14 @@ sub cat_path {
 }
 
 
-#For Unix
+# For Unix
 package FilePath :: Unix;
 use base'FilePath :: Base';
 
 # Unix delimiter
 sub delimiter {return'/'}
 
-#For Windows
+# For Windows
 package FilePath :: Windows;
 use base'FilePath :: Base';
 
@@ -136,7 +136,7 @@ If you create an object of the FilePath :: Base class, cat_file will fail if you
 
 <pre>
 my $ file_path_base = FilePath :: Base-> new;
-$ file_path_base-> cat_file ('a','b'); #Failure!
+$ file_path_base-> cat_file ('a','b'); # Failure!
 </pre>
 
 A class that implements the delimiter method that inherits the FilePath :: Base class will be created and meaningful.

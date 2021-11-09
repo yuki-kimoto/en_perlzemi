@@ -30,19 +30,19 @@ use strict;
 use warnings;
 use Fcntl qw /: DEFAULT: flock: seek /;
 
-#File for lock (create if not)
+# File for lock (create if not)
 my $ lock_file = "lock";
 sysopen (my $ lock_fh, $ lock_file, O_RDONLY | O_CREAT)
   or die "Cannot open $ lock_file: $!";
 
-#Exclusive lock for lock file (exclusive lock because it is read and written)
+# Exclusive lock for lock file (exclusive lock because it is read and written)
 flock ($ lock_fh, LOCK_EX)
   or die "Cannot lock $ lock_file: $!";
 
-#Be careful as it will be overwritten
+# Be careful as it will be overwritten
 my $ file = "data_20080815.txt";
 
-#Open in read / write mode (not very secure)
+# Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
 sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
   or die "Cannot open $ file: $!";
@@ -53,7 +53,7 @@ if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
 
 $ cnt ++;
 
-#Move the file pointer to the beginning
+# Move the file pointer to the beginning
 seek ($ fh, 0, SEEK_SET)
   or die "Cannot seek $ file: $!";
 
@@ -103,7 +103,7 @@ The script is repeatedly executed using the <a href="/blog/20100123126425.html">
 <h4> (1) Create a lock file </h4>
 
 <pre>
-#Lock file (Note that it will be overwritten)
+# Lock file (Note that it will be overwritten)
 my $ lock_file = "lock";
 sysopen (my $ lock_fh, $ lock_file, O_RDONLY | O_CREAT)
   or die "Cannot open $ lock_file: $!";
@@ -116,7 +116,7 @@ Create a file for the lock.
 The lock file is locked using the <a href="/blog/20080814121872.html"> flock function</a>.
 
 <pre>
-#Exclusive lock for lock file (exclusive lock because it is read and written)
+# Exclusive lock for lock file (exclusive lock because it is read and written)
 flock ($ lock_fh, LOCK_EX)
   or die "Cannot lock $ lock_file: $!";
 </pre>

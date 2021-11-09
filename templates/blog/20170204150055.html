@@ -51,8 +51,8 @@ Let's create a class in C ++. Create a header file and a source file.
 This is a header file. Declares constructors, methods and class methods. This is done to understand the difference between calling regular methods and class methods. The file name is "MyClass.h".
 
 <pre>
-#ifndef MYCLASS_INCLUDE
-#define MYCLASS_INCLUDE
+# ifndef MYCLASS_INCLUDE
+# define MYCLASS_INCLUDE
 class MyClass {
   
   public: public:
@@ -66,7 +66,7 @@ class MyClass {
   // class method
   static void print_static ();
 };
-#endif
+# endif
 
 </pre>
 
@@ -76,8 +76,8 @@ What starts with "#ifndef" is what is called an include guard. The header file n
 
 C ++ source file. Implements constructors, methods, and class methods. In the source file, you need to read the header file to resolve the symbol MyClass. The file name is "MyClass_src.cpp". This is because if you name it "MyClass.cpp", the compiled name will be "MyClass.o", because it will overlap with the compiled name "MyClass.o" of the XS file "MyClass.xs". ..
 <pre>
-#include <iostream>
-#include "MyClass.h"
+# include <iostream>
+# include "MyClass.h"
 
 // constructor
 MyClass :: MyClass () {}
@@ -101,15 +101,15 @@ Save the header and source files and place them in the same directory where the 
 Let's write an XS file.
 
 <pre>
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
+# include "EXTERN.h"
+# include "perl.h"
+# include "XSUB.h"
 
-#include "ppport.h"
-#include "MyClass.h"
+# include "ppport.h"
+# include "MyClass.h"
 
-#define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
-#define XS_PTR_TO_OBJ (x, class) \
+# define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
+# define XS_PTR_TO_OBJ (x, class) \
   sv_bless (\
     sv_2mortal (\
       newRV_inc (\
@@ -166,8 +166,8 @@ void DESTORY (...)
 Let me explain a little. Below are macros that convert Perl objects (SV * type) to C (or C ++) pointers and macros that convert C (or C ++) pointers to Perl objects (SV * type).
 
 <pre>
-#define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
-#define XS_PTR_TO_OBJ (x, class) \
+# define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
+# define XS_PTR_TO_OBJ (x, class) \
   sv_bless (\
     sv_2mortal (\
       newRV_inc (\
@@ -259,7 +259,7 @@ WriteMakefile (
     NAME =>'MyClass',
     VERSION_FROM =>'lib / MyClass.pm', # finds $ VERSION
     PREREQ_PM => {}, # e.g., Module :: Name => 1.1
-    ($]> = 5.005? ## Add these new keywords supported since 5.005
+    ($]> = 5.005? # # Add these new keywords supported since 5.005
       (ABSTRACT_FROM =>'lib / MyClass.pm', # retrieve abstract from module
        AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
     LIBS => [''], # e.g.,'-lm'

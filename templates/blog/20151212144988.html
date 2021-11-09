@@ -37,7 +37,7 @@ Validator :: Custom - HTML form validation, concise and flexible
   my $ price = '19.23';
   my $ favorite = ['001', '002'];
   
-  #Create validation object
+  # Create validation object
   my $ validation = $ vc-> validation;
   
   # Check that "ID" is an integer
@@ -76,7 +76,7 @@ Validator :: Custom - HTML form validation, concise and flexible
     $ validation-> add_failed (favorite =>'favorite is invalid');
   }
   
-  #Check if the validation result is correct
+  # Check if the validation result is correct
   if ($ validation-> is_valid) {
     # ...
   }
@@ -209,10 +209,10 @@ Use the <b> is_valid </b> method to check that all input data is correct.
 <pre>
   # Make sure the validation results are correct
   if($ validation-> is_valid) {
-    #Success
+    # Success
   }
   else {
-    #Failure
+    # Failure
   }
 </pre>
 
@@ -703,7 +703,7 @@ http_url
 <pre>
   $ vc-> add_check (http_url => sub {
     my ($ vc, $ value, $ arg) = @_;
-    return defined $ value && $ value = ~ / ^ s? https ?: \ / \ / [-_.! ~ *'() A-zA-Z0-9; \ /?: ​​\ @ & = + \ $, % #] + $ /? 1: 0;
+    return defined $ value && $ value = ~ / ^ s? https ?: \ / \ / [-_.! ~ *'() A-zA-Z0-9; \ /?: ​​\ @ & = + \ $, % # ] + $ /? 1: 0;
   });
 </pre>
 
@@ -717,7 +717,7 @@ decimal
     
     my $ digits_tmp = $ arg;
     
-    #Digit
+    # Digit
     my $ digits;
     if (defined $ digits_tmp) {
       if (ref $ digits_tmp eq'ARRAY') {
@@ -746,7 +746,7 @@ decimal
       $ re = qr / ^ [0-9] + (\. [0-9] *)? $ /;
     }
     
-    #Check value
+    # Check value
     if ($ value = ~ / $ re /) {
       return 1;
     }

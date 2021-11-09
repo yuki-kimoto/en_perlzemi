@@ -22,7 +22,7 @@
 You can use <strong> Archive :: Tar </strong> to extract or create a tar file.
 
 <pre>
-#Loading modules and creating objects
+# Loading modules and creating objects
 use Archive :: Tar;
 my $ tar = Archive :: Tar-> new;
 </pre>
@@ -46,7 +46,7 @@ $ tar-> extract;
 To create a tar file, add the file with the <strong> add_files </strong> method and then write to the tar file with the <strong> write </strong> method. After changing the current directory, add the file name with add_files with a relative path.
 
 <pre>
-#Create tar file
+# Create tar file
 my $ curdir ='/ somedir';
 chdir $ curdir
   or die qq / Can't change directory "$ curdir": $! /;
@@ -58,7 +58,7 @@ $ tar-> write ('archive.tar');
 You can also create a tar file compressed in gzip format. When compressing to gzip format, specify a value from 2 to 9 indicating the compression ratio in the second argument. The larger the number, the higher the compression ratio.
 
 <pre>
-#Create tar.gz file
+# Create tar.gz file
 $ tar-> write ('archive.tar.gz', 9);
 </pre>
 
@@ -74,28 +74,28 @@ $ tar-> extract ('xxx.txt','dir / yyy.txt');
 Use the <strong> list_files </strong> method to find out which files are contained in the tar file.
 
 <pre>
-#Get the list of files contained in the tar file
+# Get the list of files contained in the tar file
 my @files = $ tar-> list_files;
 </pre>
 
 Use the <strong> remove </strong> method to remove the specified file from the tar file.
 
 <pre>
-#Remove the specified file from the tar file
+# Remove the specified file from the tar file
 $ tar-> remove ('xxx.txt');
 </pre>
 
 Use the <strong> rename </strong> method to rename the file contained in the tar file.
 
 <pre>
-#Rename the file contained in the tar file
+# Rename the file contained in the tar file
 $ tar-> rename ('from.txt','to.txt');
 </pre>
 
 You can use the <strong> clear method </strong> to clear the information in the tar file in memory.
 
 <pre>
-#Clear tar file information in memory
+# Clear tar file information in memory
 $ tar-> clear;
 </pre>
 
@@ -105,7 +105,7 @@ Q. Is it possible to specify a directory and make all the files contained in it 
 A. There is no such method, so you need to devise it. Use the File :: Find module, which can search all files recursively. This is a sample to create a tar file from all the files (including the top directory itself) contained under the directory named top.
 
 <pre>
-#Specify a directory to create a tar file from all files under it
+# Specify a directory to create a tar file from all files under it
 use File :: Find'find';
 use Archive :: Tar;
 

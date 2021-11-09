@@ -24,7 +24,7 @@
 You can use the mk_accessors method to generate accessors. Inherit Class :: Accessor :: Fast and call mk_accesors () from the package name.
 
 <pre>
-#Generation of accessor
+# Generation of accessor
 package Your Class;
 use base'Class :: Accessor :: Fast';
 
@@ -41,14 +41,14 @@ use warnings;
 
 use base'Class :: Accessor :: Fast';
 
-#Accessor
+# Accessor
 __PACKAGE __-> mk_accessors (qw / x y /);
 
-#Constructor
+# Constructor
 sub new {
     my $ class = shift;
     
-    #Attribute
+    # Attribute
     my $ args = ref $ _ [0] eq'HASH'? $ _ [0]: {@_};
     
     Override # new ()

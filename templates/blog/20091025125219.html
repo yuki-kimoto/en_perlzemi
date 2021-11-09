@@ -374,7 +374,7 @@ $ ret = @array;
 Use $ # array to get the last element number of the array.
 
 <pre>
-$ ret = $ #array;
+$ ret = $ # array;
 </pre>
 
 <h4> shift </h4>
@@ -862,10 +862,10 @@ In the case of the file name /a/b/c.txt, / a / b corresponds to the directory na
 You can use the <a href="/blog/20100820127859.html"> file test operator</a> to check the existence of a file or directory.
 
 <pre>
-#Check the existence of normal files
+# Check the existence of normal files
 $ ret = -f $ file;
 
-#Check the existence of the directory
+# Check the existence of the directory
 $ ret = -d $ dir;
 </pre>
 
@@ -1156,12 +1156,12 @@ To receive this option, write:
 <pre>
 use Getopt :: Long'GetOptions';
 
-#Set default value
+# Set default value
 my $ data ='file.dat';
 my $ length = 24;
 my $ verbose;
 
-#Receive value from command line option
+# Receive value from command line option
 # (Numeric value,String, boolean value)
 GetOptions (
   'length = i'=> \ $ length,
@@ -1191,10 +1191,10 @@ my $ path = $ url-> path;
 # URL query string settings
 $ url-> query_form (name =>'taro', age => 13);
 
-#URL query string name = taro & age = 13
+# URL query string name = taro & age = 13
 my $ query = $ url-> query;
 
-#Get URL as a string http://www.perl.com/index.html?name=taro&age=13
+# Get URL as a string http://www.perl.com/index.html?name=taro&age=13
 my $ url_str = $ url-> as_string;
 </pre>
 
@@ -1247,11 +1247,11 @@ If you want to do FTP, use <a href="/blog/20091115124667.html"> Net :: FTP modul
 <pre>
 use Net :: FTP;
 
-#Specify the host name (or IP address) to connect to the FTP server
+# Specify the host name (or IP address) to connect to the FTP server
 my $ ftp = Net :: FTP-> new ($ host)
   or die "Cannot connect to $ host: $ @";
 
-#Login by specifying user name and password
+# Login by specifying user name and password
 $ ftp-> login ($ user, $ password)
   or die "Cannot login", $ ftp-> message;
 

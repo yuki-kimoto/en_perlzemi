@@ -105,13 +105,13 @@ use Encode'encode';
 
 my $ file = "aiueo";
 
-#For Windows
+# For Windows
 open my $ fh,'<', encode ('cp932', $ file);
 
-#For Linux
+# For Linux
 open my $ fh,'<', encode ('UTF-8', $ file);
 
-#For Mac OS X
+# For Mac OS X
 use Encode :: UTF8Mac;
 open my $ fh,'<', encode ('' utf-8-mac'', $ file);
 </pre>
@@ -166,7 +166,7 @@ For a detailed explanation of <a href="/blog/20100411127089.html"> exception han
 If you open the file in read mode, you can read the contents from the file.
 
 <pre>
-#Open in read mode
+# Open in read mode
 my $ file ='data.txt';
 open my $ fh,'<', $ file
   or die qq / Can't open file "$ file": $! /;
@@ -175,7 +175,7 @@ open my $ fh,'<', $ file
 Use the <a href="/blog/20080722121673.html"> line input operator</a> to read the file line by line.
 
 <pre>
-#Line input operator
+# Line input operator
 <File handle>
 </pre>
 
@@ -208,7 +208,7 @@ Especially when writing to a file, the contents written to the file are complete
 Next, let's write to the file. To write to a file, first open the file in write mode ">".
 
 <pre>
-#Open in additional write mode
+# Open in additional write mode
 my $ file ='data.txt';
 open my $ fh,'>', $ file
   or die qq / Can't open file "$ file": $! /;
@@ -240,7 +240,7 @@ You can see that the string "Hello" is written in data.txt.
 Let's do additional writing to the file. To write to a file, first open the file in the additional write mode ">>".
 
 <pre>
-#Open in write mode
+# Open in write mode
 my $ file ='data.txt';
 open my $ fh,'>>', $ file
   or die qq / Can't open file "$ file": $! /;
@@ -311,7 +311,7 @@ A line feed code is a special character string that represents the end of a line
 It is as follows when it is described as a character string of Perl. You can write characters in hexadecimal with the notation "\ x".
 
 <pre>
-#Windows line feed code
+# Windows line feed code
 my $ ln_win = "\ x0D \ x0A";
 
 # Unix line feed code
@@ -323,7 +323,7 @@ my $ ln_unix = "\ x0A";
 When the line input operator "<file handle>" finds an input record separator, it retrieves the position immediately after it as one line. The input record separator is set to a variable called "$ /", which is "0D 0A" on Windows and "0A" on Unix.
 
 <pre>
-#Input record separator on Windows
+# Input record separator on Windows
 $ / = "\ x0D \ x0A";
 
 # Unix input record separator
@@ -349,12 +349,12 @@ Characters output by <h4> \ n </h4>
 Consider editing a Windwos file on Unix. Since it is on Unix, "0D 0A" is assigned to the default input record separator "$ /", and "0D 0A" is output for the escape sequence \ n. The line feed code of the file edited in Windows is "0D 0A", and it is necessary to correspond to this.
 
 <pre>
-#File open
+# File open
 my $ file ='data.txt';
 open my $ fh,'<', $ file
   or die qq / Can't open file "$ file": $! /;
 
-#Read file
+# Read file
 {
   # Line feed code
   my $ ln = "\ x0D0A"

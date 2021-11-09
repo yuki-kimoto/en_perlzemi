@@ -728,7 +728,7 @@ Perl_yyparse (pTHX_ int gramtype) {
   // ...
   
   /* Parsing
-  #include "perly.act"
+  # include "perly.act"
   
   // ...
 }
@@ -780,16 +780,16 @@ aTHX_ will be expanded to the current thread when the thread is enabled and Perl
 
 <pre>
 // perl.h
-#define aTHX_ aTHX,
-#define aTHX my_perl
+# define aTHX_ aTHX,
+# define aTHX my_perl
 </pre>
 
 If the thread is not enabled, it will be expanded as follows and will do nothing.
 
 <pre>
 // perl.h
-#define aTHX
-#define aTHX_
+# define aTHX
+# define aTHX_
 </pre>
 
 <h3> Expected abbreviations </h3>
@@ -819,13 +819,13 @@ Mounting.
 
 <pre>
 // handy.h
-#define Safefree (d) safefree (MEM_LOG_FREE ((Malloc_t) (d)))
+# define Safefree (d) safefree (MEM_LOG_FREE ((Malloc_t) (d)))
 
 // per.h
-#define safefree safesysfree
+# define safefree safesysfree
 
 // embed.h
-#define safesysfree Perl_safesysfree
+# define safesysfree Perl_safesysfree
 
 // util.h
 Free_t
@@ -840,7 +840,7 @@ Perl_safesysfree (Malloc_t where)
 
 
 //iperlsys.h
-#define PerlMem_free (buf) free ((buf))
+# define PerlMem_free (buf) free ((buf))
 </pre>
 
 <h3> SvREFCNT_dec is performed when freeing the memory of SV type variable. </h3>
@@ -879,7 +879,7 @@ parl_parse calls parse_body. It analyzes command line options, opens the script,
 
 <pre>
 // embed.h
-#define parse_body (a, b) S_parse_body (aTHX_ a, b)
+# define parse_body (a, b) S_parse_body (aTHX_ a, b)
 
 // perl.c
 STATIC void *
@@ -956,10 +956,10 @@ XPVNV is assigned to SV type sv_any. It represents a number.
 
 <pre>
 // sv.c
-#define new_XPVNV () new_body_allocated (SVt_PVNV)
+# define new_XPVNV () new_body_allocated (SVt_PVNV)
 
 // sv.c
-#define new_body_allocated (sv_type) \
+# define new_body_allocated (sv_type) \
     (void *) ((char *) S_new_body (aTHX_ sv_type) \
 - body_by_type [sv_type] .offset)
 
@@ -973,7 +973,7 @@ S_new_body (pTHX_ const svtype sv_type)
 }
 
 // sv.c
-#define new_body_inline (xpv, sv_type) \
+# define new_body_inline (xpv, sv_type) \
     STMT_START {\
 void ** const r3wt = & PL_body_roots [sv_type]; \
 xpv = (PTR_TBL_ENT_t *) (* ((void **) (r3wt)) \
@@ -1003,11 +1003,11 @@ typedef struct STRUCT_SV SV;
 
 // perl.h
 / * SGI's <sys / sema.h> has struct sv * /
-#if defined (__sgi)
-#define STRUCT_SV perl_sv
-#else
-#define STRUCT_SV sv
-#endif
+# if defined (__sgi)
+# define STRUCT_SV perl_sv
+# else
+# define STRUCT_SV sv
+# endif
 
 // sv.h
 struct STRUCT_SV {/ * struct sv {* /
@@ -1017,13 +1017,13 @@ struct STRUCT_SV {/ * struct sv {* /
 
 // sv.h
 / * start with 2 sv-head building blocks * /
-#define _SV_HEAD (ptrtype) \
+# define _SV_HEAD (ptrtype) \
     ptrtype sv_any; / * pointer to body * / \
     U32 sv_refcnt; / * how many references to us * / \
     U32 sv_flags / * what we are * /
 
 // sv.h
-#define _SV_HEAD_UNION \
+# define _SV_HEAD_UNION \
     union {\
 char * svu_pv; / * pointer to malloced string * / \
 IV svu_iv; \
@@ -1087,23 +1087,23 @@ By default, it's a good idea to follow the source code, imagining that only one 
 The declaration dVar sometimes comes up, but I don't think you need to be aware of it.
 
 <pre>
-#ifdef PERL_GLOBAL_STRUCT
-#define dVAR pVAR = (struct perl_vars *) PERL_GET_VARS ()
-#else
-#define dVAR dNOOP
-#endif
+# ifdef PERL_GLOBAL_STRUCT
+# define dVAR pVAR = (struct perl_vars *) PERL_GET_VARS ()
+# else
+# define dVAR dNOOP
+# endif
 
-#define pVAR struct perl_vars * my_vars PERL_UNUSED_DECL
+# define pVAR struct perl_vars * my_vars PERL_UNUSED_DECL
 </pre>
 
 PERL_GLOBAL_STRUCT is defined from the source code only when the OS is symbian. If so, for most operating systems, dVAR is dNOOP, which means that dNOOP does nothing, so dVar does nothing.
 
 <pre>
 // symbian / PerlApp.cpp:
-#define PERL_GLOBAL_STRUCT
+# define PERL_GLOBAL_STRUCT
 
 // symbian / PerlBase.h:
-#define PERL_GLOBAL_STRUCT
+# define PERL_GLOBAL_STRUCT
 </pre>
 
 <h3> System call wrappers are described in iperlsys.h </h3>
@@ -1134,10 +1134,10 @@ perl_alloc just allocates memory and initializes with 0.
     Helper-like functions are often found in util.c
   </li>
   <li>
-    Since there are many special customizations in #ifdef, skip it for the time being
+    Since there are many special customizations in # ifdef, skip it for the time being
   </li>
   <li>
-    Read inside #ifndef, read after #else in #ifdef ~ #else ~
+    Read inside # ifndef, read after # else in # ifdef ~ # else ~
   </li>
   <li>
     Forget the thread description in your code
@@ -1189,10 +1189,10 @@ struct op {
 };
 
 // op.h
-#ifdef BASEOP_DEFINITION
-#define BASEOP BASEOP_DEFINITION
-#else
-#define BASEOP \
+# ifdef BASEOP_DEFINITION
+# define BASEOP BASEOP_DEFINITION
+# else
+# define BASEOP \
     OP * op_next; \
     OP * _OP_SIBPARENT_FIELDNAME; \
     OP * (* op_ppaddr) (pTHX); \
@@ -1207,7 +1207,7 @@ struct op {
     PERL_BITFIELD16 op_spare: 1; \
     U8 op_flags; \
     U8 op_private;
-#endif
+# endif
 
 / *
  * The fields of BASEOP are:
@@ -1270,7 +1270,7 @@ In the description of embedvar.h and intrpvar.h, yy_parser is given the name PL_
 
 <pre>
 // embedvar.h
-#define PL_parser (vTHX-> Iparser)
+# define PL_parser (vTHX-> Iparser)
 
 // intrpvar.h
 PERLVAR (I, parser, yy_parser *) / * current parser state * /
@@ -1407,7 +1407,7 @@ PADNAME
 typedef struct padname PADNAME;
 
 // //
-#define _PADNAME_BASE \
+# define _PADNAME_BASE \
     char * xpadn_pv; \
     HV * xpadn_ourstash; \
     union {\
@@ -1434,9 +1434,9 @@ ANY is a data structure that can be assigned anything.
 // perl.h
 typedef union any ANY;
 
-#ifdef UNION_ANY_DEFINITION
+# ifdef UNION_ANY_DEFINITION
 UNION_ANY_DEFINITION;
-#else
+# else
 union any {
     void * any_ptr;
     I32 any_i32;
@@ -1448,7 +1448,7 @@ union any {
     void (* any_dptr) (void *);
     void (* any_dxptr) (pTHX_ void *);
 };
-#endif
+# endif
 </pre>
 
 <h3> Be aware of whether the data structure is intended for arrays or pointers </h3>
@@ -1466,7 +1466,7 @@ STMT_START and STMT_END are mechanisms to safely execute statements in macros. Y
 <pre>
 // A mechanism for safely executing a macro by wrapping the body of the macro in a do-while loop.
 
-#define SWAP (x, y) \
+# define SWAP (x, y) \
   do {\
     tmp = x; \
     x = y; \
@@ -1481,8 +1481,8 @@ PoisonNew is filled with one pattern. Think of it as memset.
 
 <pre>
 // handy.h
-#define PoisonNew (d, n, t) PoisonWith (d, n, t, 0xAB)
-#define PoisonWith (d, n, t, b) (MEM_WRAP_CHECK_ (n, t) (void) memset ((char *) (d), (U8) (b), (n) * sizeof (t)))
+# define PoisonNew (d, n, t) PoisonWith (d, n, t, 0xAB)
+# define PoisonWith (d, n, t, b) (MEM_WRAP_CHECK_ (n, t) (void) memset ((char *) (d), (U8) (b), (n) * sizeof (t)))
 </pre>
 <h3> Renew stands for realloc </h3>
 
@@ -1490,9 +1490,9 @@ Renew stands for realloc. It will also check if the memory to be secured does no
 
 <pre>
 // handy.h
-#define Renew (v, n, t) \
+# define Renew (v, n, t) \
 (v = (MEM_WRAP_CHECK_ (n, t) (t *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
-#define Renewc (v, n, t, c) \
+# define Renewc (v, n, t, c) \
 (v = (MEM_WRAP_CHECK_ (n, t) (c *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
 
 </pre>
@@ -1543,20 +1543,20 @@ Variable names starting with PL_ are interpreted variables. A variable that hold
 
 <pre>
 // embedvar.h
-#if defined (MULTIPLICITY)
+# if defined (MULTIPLICITY)
 / * cases 2 and 3 above * /
 
-#if defined (PERL_IMPLICIT_CONTEXT)
-#define vTHX aTHX
+# if defined (PERL_IMPLICIT_CONTEXT)
+# define vTHX aTHX
 # else
-#define vTHX PERL_GET_INTERP
+# define vTHX PERL_GET_INTERP
 # endif
 
-#define PL_AboveLatin1 (vTHX-> IAboveLatin1)
-#define PL_Argv (vTHX-> IArgv)
-#define PL_Cmd (vTHX-> ICmd)
-#define PL_DBcontrol (vTHX-> IDBcontrol)
-#define PL_DBcv (vTHX-> IDBcv)
+# define PL_AboveLatin1 (vTHX-> IAboveLatin1)
+# define PL_Argv (vTHX-> IArgv)
+# define PL_Cmd (vTHX-> ICmd)
+# define PL_DBcontrol (vTHX-> IDBcontrol)
+# define PL_DBcv (vTHX-> IDBcv)
 
 </pre>
 
@@ -1564,7 +1564,7 @@ To explore further, see what "aTHX" looks like.
 
 <pre>
 // perl.h
-#define aTHX my_perl
+# define aTHX my_perl
 
 // perl.h
 PerlInterpreter * my_perl;
@@ -1588,26 +1588,26 @@ This is code that is optimized when the condition is false, and is semantically 
 
 <pre>
 // perl.h
-#define UNLIKELY (cond) EXPECT (cBOOL (cond), FALSE)
+# define UNLIKELY (cond) EXPECT (cBOOL (cond), FALSE)
 
 // perl.h
-#ifdef HAS_BUILTIN_EXPECT
-#define EXPECT (expr, val) __builtin_expect (expr, val)
-#else
-#define EXPECT (expr, val) (expr)
-#endif
+# ifdef HAS_BUILTIN_EXPECT
+# define EXPECT (expr, val) __builtin_expect (expr, val)
+# else
+# define EXPECT (expr, val) (expr)
+# endif
 
 // handy.h
-#define cBOOL (cbool) ((cbool)? (Bool) 1: (bool) 0)
+# define cBOOL (cbool) ((cbool)? (Bool) 1: (bool) 0)
 
 // handy.h
-#ifndef HAS_BOOL
-#ifdef bool
+# ifndef HAS_BOOL
+# ifdef bool
 # undef bool
 # endif
-#define bool char
-#define HAS_BOOL 1
-#endif
+# define bool char
+# define HAS_BOOL 1
+# endif
 </pre>
 
 If you write "__builtin_expect (A, B)", it will be hint information that A is expected to be a constant B.

@@ -42,7 +42,7 @@ In such a case, write the destructor as follows:
 package File;
 use Carp'croak';
 
-#Constructor
+# Constructor
 sub new {
   my ($ class, $ file) = @_;
   
@@ -54,7 +54,7 @@ sub new {
   return bless $ self, $ class;
 }
 
-#Destructor
+# Destructor
 sub DESTROY {
   my $ self = shift;
   print "DESTROY";

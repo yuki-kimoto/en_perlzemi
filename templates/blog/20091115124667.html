@@ -49,13 +49,13 @@ Here, we will briefly explain the procedure for connecting to an FTP server and 
 Let's write a simple sample to actually download the file.
 
 <pre>
-#Load module
+# Load module
 use Net :: FTP;
 
-#Connect to FTP server (host name or IP address is OK)
+# Connect to FTP server (host name or IP address is OK)
 my $ ftp = Net :: FTP-> new ('somehost');
 
-#Login by specifying user name and password
+# Login by specifying user name and password
 $ ftp-> login ('user','password');
 
 Download the file using the command # get to get the file
@@ -200,7 +200,7 @@ The dir command is OS dependent. You can get the output result by executing "ls 
 Delete the directory.
 
 <pre>
-#Delete directory
+# Delete directory
 $ ftp-> rmdir ($ dir)
 </pre>
 
@@ -209,7 +209,7 @@ $ ftp-> rmdir ($ dir)
 Create a directory. If the second argument is true, the directory will be created recursively.
 
 <pre>
-#Create directory
+# Create directory
 $ ftp-> mkdir ($ dir)
 
 # Recursively create directories
@@ -296,15 +296,15 @@ See the Net :: FTP documentation for a complete list of methods.
 In fact, the first sample omitted error handling to briefly explain how to use Net :: FTP. Net :: FTP does not throw an exception when a command fails, so you need to handle the error yourself. Adding error handling to the first sample gives:
 
 <pre>
-#Connect to FTP server
+# Connect to FTP server
 my $ ftp = Net :: FTP-> new ('somehost')
   or die "Cannot connect to'$ host': $!";
 
-#Login
+# Login
 $ ftp-> login ('user','password')
   or die "Cannot login'$ host: $ user: $ password':". $ ftp-> message;
 
-#Download
+# Download
 $ ftp-> get ('/ dir / somefile');
   or die "FTP command fail:". $ ftp-> message;
 
@@ -331,11 +331,11 @@ my $ ftp = Net :: FTP-> new ('somehost')
 If an error occurs after connecting, you can get the details of the error with $ ftp-> message. Make sure to include this error message in the error message.
 
 <pre>
-#Login
+# Login
 $ ftp-> login ('user','password')
   or die "Cannot login'$ host: $ user: $ password:'". $ ftp-> message;
 
-#Download
+# Download
 $ ftp-> get ('/ dir / somefile');
   or die "FTP command fail:". $ ftp-> message;
 </pre>

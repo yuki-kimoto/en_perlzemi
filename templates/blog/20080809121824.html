@@ -29,10 +29,10 @@ The following is a sample for safe reading and writing. You need to do a thoroug
 use strict;
 use warnings;
 
-#Used to rename the file.
+# Used to rename the file.
 use File :: Copy;
 
-#Be careful about the specified file as it will be edited and written back.
+# Be careful about the specified file as it will be edited and written back.
 my $ infile = shift;
 
 # temporary file. As much as possible to other processes
@@ -43,7 +43,7 @@ my $ tmpfile = "tmp $$";
 open (my $ infh, "<", $ infile)
   or die "Cannot open $ infile: $!";
 
-#Open a temporary file for export.
+# Open a temporary file for export.
 open (my $ tmpfh, ">", $ tmpfile)
   or die "Cannot open $ tmpfile: $!";
     

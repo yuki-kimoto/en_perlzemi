@@ -111,7 +111,7 @@ If you want to limit it to the ASCII range, read the instructions below.
 Perl 5.14 introduces the "a" option, which limits the character class to the ASCII range only.
 
 <pre>
-#Match only numbers in the ASCII range.
+# Match only numbers in the ASCII range.
 $ str = ~ / \ d + / a;
 </pre>
 
@@ -122,7 +122,7 @@ Perl also has character classes that represent ASCII ranges. This method is anot
 For example, in the ASCII range, character classes that match alphabets and numbers can be expressed as follows.
 
 <pre>
-Character classes that match alphabets and numbers in the #ASCII range
+Character classes that match alphabets and numbers in the # ASCII range
 \ p {PosixAlnum}
 </pre>
 
@@ -176,7 +176,7 @@ if ($ str = ~ / [abcde] /) {
   print "Match \ n";
 }
 
-#Match with web service user ID (a-zA-Z0-9_)
+# Match with web service user ID (a-zA-Z0-9_)
 my $ user_id ='kimoto_yuki089';
 my $ user_id_invalid ='abc & cde';
 if ($ user_id = ~ / ^ \ p {PosixWord} + $ /) {print "user_is valid \ n";
@@ -185,7 +185,7 @@ unless ($ user_id_invalid = ~ / ^ \ p {PosixWord} + $ /) {
    print "user_id_invalid is invalid \ n";
 }
 
-#Match a web service password (a non-blank visible character in the ASCII range)
+# Match a web service password (a non-blank visible character in the ASCII range)
 my $ password ='Ufy | & 123_';
 my $ passowrd_invalid1 ='abc def';
 my $ passowrd_invalid2 ='abc a';

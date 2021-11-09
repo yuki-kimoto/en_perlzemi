@@ -38,9 +38,9 @@ use warnings;
     return $ var;
   }
 }
-#Because it is referenced by the var subroutine even after the scope ends
+# Because it is referenced by the var subroutine even after the scope ends
 # $ var continues to exist.
-Only the #var subroutine can see $ var.
+Only the # var subroutine can see $ var.
 
 print "1: The simplest closure \ n";
 print var (), "\ n";
@@ -199,7 +199,7 @@ if ($ sign_inversion-> (-2)) {
 
 # Function generator that generates closures to see if the sign is only inverted
 sub create_sign_checker {
-  #Initialized when you create a closure.
+  # Initialized when you create a closure.
   my $ num1 = shift;
     
   return sub {
@@ -228,12 +228,12 @@ sub create_sign_checker {
 # Generate closures. (Initialize the variable referenced by the closure with 1)
 my $ sign_inversion = create_sign_checker (1);
 
-#Call closure
+# Call closure
 $ sign_inversion-> (-2);
 
 # Function generator to generate closures
 sub create_sign_checker {
-  #Initialized when you create a closure.
+  # Initialized when you create a closure.
   my $ num1 = shif
 t;
     
@@ -378,14 +378,14 @@ As you can see, classes and closures are very similar. Next time, I will explain
 <h4> Visual image of classes and closures </h4>
 
 <pre>
-## class
+# # class
 | - -- - Class - -- - |
 | ・ Data |
 | ・ Data manipulation functions |
 | - -- -- -- -- -- - |
 
 
-## Closure
+# # Closure
 | - -- Closure - -- |
 | ・ Data |
 | ・ Data manipulation functions |

@@ -33,18 +33,18 @@ use Getopt :: Long'GetOptions';
 # Write Unix-like filter programming.
 # This time, it is a filter program that extracts the first column of comma-separated character strings.
 
-#Default value if no command line option is specified
+# Default value if no command line option is specified
 my $ col = 1;
 my $ sep =',';
 
-#Receive command line options
+# Receive command line options
 GetOptions (
   'col = i'=> \ $ col,
   'sep = s'=> \ $ sep,
 );
 
-A character with a special meaning was specified in a regular expression such as #.
-#Escape the string to work correctly even if
+A character with a special meaning was specified in a regular expression such as # .
+# Escape the string to work correctly even if
 $ sep = quotemeta ($ sep);
 
 # Special line input operator
@@ -54,7 +54,7 @@ while (<>) {
   
   The third argument of # split, -1, is when the last column is an empty string.
   # Also specified to work correctly
-  The #split function returns a list, so only the parts you need
+  The # split function returns a list, so only the parts you need
   # Get by array slice
   my $ item = (split (/ $ sep /, $ _, -1)) [$ col -1];
   print $ item. "\ n";
@@ -90,13 +90,13 @@ If you're not sure about command line arguments, see the following articles firs
 </ul>
 
 <pre>
-#Specification method 1 (- name val format)
+# Specification method 1 (- name val format)
 perl script name - col 1 - sep: filename
 
-#Specification method 2 (- name = val format)
+# Specification method 2 (- name = val format)
 perl script name - col = 1 - sep =: file name
 
-#Specification method 3 (abbreviated form)
+# Specification method 3 (abbreviated form)
 perl script name -c1 -s: file name
 </pre>
 
@@ -107,11 +107,11 @@ The GetOption function is a function that makes it easy to receive command line 
 Below is a sample of how to write.
 
 <pre>
-#Default value if no command line option is specified
+# Default value if no command line option is specified
 my $ col = 1;
 my $ sep =',';
 
-#Receive command line options
+# Receive command line options
 GetOptions (
   'col = i'=> \ $ col,
   'sep = s'=> \ $ sep,

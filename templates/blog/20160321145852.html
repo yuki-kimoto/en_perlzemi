@@ -26,7 +26,7 @@
 Perl can have multiple interpreters. Perl will generate an interpreter and begin interpreting the source code. Normally, one interpreter is enough, but if you want to keep multiple interpreters in a C language program, you can generate multiple interpreters.
 
 <pre>
-#Multiple interpreters
+# Multiple interpreters
 Perl-Interpreter 1
      |
      - Interpreter 2
@@ -62,7 +62,7 @@ Let's take a look at the PERLVAR macro. There is a definition in "perl.h".
 
 <pre>
 /*perl.h */
-#define PERLVAR (prefix, var, type) type prefix ## var;
+# define PERLVAR (prefix, var, type) type prefix # # var;
 </pre>
 
 I think that few people who have used the C language define definition have seen the symbol "##". You can combine strings using "##".
@@ -78,7 +78,7 @@ SV ** Icurpad;
 However, this variable is rarely used in Perl source code. It is often accessed with the variable name "PL_stacksp". It is defined in "embedvar.h".
 
 <pre>
-#define PL_stack_sp (vTHX-> Istack_sp)
+# define PL_stack_sp (vTHX-> Istack_sp)
 </pre>
 
 When actually reading the source code, if you see the variable name "PL_stack_sp", you first guess that this is an interpreter variable. Then open "interpvar.h" and check if there is a definition like "PERLVAR (I, stack_sp, SV **)".
@@ -88,11 +88,11 @@ When actually reading the source code, if you see the variable name "PL_stack_sp
 Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled. The description is in "perl.h".
 
 <pre>
-#if! defined (MULTIPLICITY)
+# if! defined (MULTIPLICITY)
 START_EXTERN_C
 # include "intrpvar.h"
 END_EXTERN_C
-#endif
+# endif
 </pre>
 
 <h3> vTHX is the current interpreter </h3>
@@ -100,13 +100,13 @@ END_EXTERN_C
 vTHX is an interpreter. Under "MULTIPLICITY", "vTHX" expands to "aTHX" and "PERL_GET_INTERP", but in general Perl, read as "PERL_IMPLICIT_CONTEXT" is defined. In other words, let's think that it will be expanded to "aTHX".
 
 <pre>
-#if defined (MULTIPLICITY)
+# if defined (MULTIPLICITY)
 / * cases 2 and 3 above * /
 
-#if defined (PERL_IMPLICIT_CONTEXT)
-#define vTHX aTHX
+# if defined (PERL_IMPLICIT_CONTEXT)
+# define vTHX aTHX
 # else
-#define vTHX PERL_GET_INTERP
+# define vTHX PERL_GET_INTERP
 # endif
 </pre>
 
@@ -114,7 +114,7 @@ Furthermore, in "perl.h", "aTXH" is expanded to "my_perl".
 
 <pre>
 /*perl.h */
-#define aTHX my_perl
+# define aTHX my_perl
 </pre>
 
 "My_perl" is a variable that represents the current interpreter and is defined in "perl_main.c".

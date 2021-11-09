@@ -75,10 +75,10 @@ my $ data = pdl [
 Get # element as PDL variable (1D 2 rank-2D 3 rank)
 my $ data_1_2 = $ data (1, 2);
 
-#Get the element value itself
+# Get the element value itself
 my $ data_1_2_raw = $ data-> at (1, 2);
 
-#Set element.
+# Set element.
 $ data (1, 2). = 20;
 </pre>
 
@@ -94,21 +94,21 @@ my $ data_sliced1 = $ data (1: 2, 2);
 To set multiple elements:
 
 <pre>
-#Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
+# Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
 $ data (1: 2, 2). = pdl [21, 22];
 </pre>
 
 Of course, it is possible to acquire not only the first dimension but also multiple elements in the second dimension.
 
 <pre>
-#Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
+# Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
 my $ data_sliced2 = $ data (2, 0: 1);
 </pre>
 
 To set multiple elements in the second dimension:
 
 <pre>
-#Setting of multiple elements (1D 3 ranks, 2D 1-2 ranks)
+# Setting of multiple elements (1D 3 ranks, 2D 1-2 ranks)
 $ data (2, 0: 1). = pdl [
   [30],
   [31]
@@ -118,10 +118,10 @@ $ data (2, 0: 1). = pdl [
 You can also acquire and set multiple ranks in multiple dimensions in the same way.
 
 <pre>
-#Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
+# Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
 my $ data_sliced3 = $ data (1: 2, 0: 1);
 
-#Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
+# Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
 $ data (1: 2, 0: 1). = pdl [
   [40, 41],
   [42, 43]
@@ -150,33 +150,33 @@ my $ data = pdl [
 Get # element as PDL variable (1D 2 rank, 2D 3 rank)
 my $ data_1_2 = $ data (1, 2);
 
-#Get the element value itself
+# Get the element value itself
 my $ data_1_2_raw = $ data-> at (1, 2);
 
 print "$ data_1_2 \ n";
 print "$ data_1_2_raw \ n";
 
-#Set element.
+# Set element.
 $ data (1, 2). = 20;
 
 print "$ data \ n";
 
-#Get multiple elements (1D 2 to 3 ranks, 2D 2 ranks)
+# Get multiple elements (1D 2 to 3 ranks, 2D 2 ranks)
 my $ data_sliced1 = $ data (1: 2, 1);
 
 print "$ data_sliced1 \ n";
 
-#Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
+# Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
 $ data (1: 2, 2). = pdl [21, 22];
 
 print "$ data \ n";
 
-#Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
+# Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
 my $ data_sliced2 = $ data (2, 0: 1);
 
 print "$ data_sliced2 \ n";
 
-#Setting of multiple elements (1D 3 rank, 2D 1-2 rank)
+# Setting of multiple elements (1D 3 rank, 2D 1-2 rank)
 $ data (2, 0: 1). = pdl [
   [30],
   [31]
@@ -184,12 +184,12 @@ $ data (2, 0: 1). = pdl [
 
 print "$ data \ n";
 
-#Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
+# Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
 my $ data_sliced3 = $ data (1: 2, 0: 1);
 
 print "$ data_sliced3 \ n";
 
-#Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
+# Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
 $ data (1: 2, 0: 1). = pdl [
   [40, 41],
   [42, 43]
@@ -228,7 +228,7 @@ print "$ data_ones \ n";
 The PDL defines a value of null. Use the null method to initialize with null. null is defined in PDL :: Core.
 
 <pre>
-Initialize with #null
+Initialize with # null
 my $ data_null = pdl-> null;
 </pre>
 
@@ -263,7 +263,7 @@ Initialize with # 1 (1D has 2 ranks, 2D has 3 ranks)
 my $ data_ones = pdl-> ones (2, 3);
 print "$ data_ones \ n";
 
-Initialize with #null
+Initialize with # null
 my $ data_null = pdl-> null;
 print "$ data_null \ n";
 

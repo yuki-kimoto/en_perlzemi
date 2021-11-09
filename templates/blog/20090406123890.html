@@ -85,7 +85,7 @@ use strict;
 use warnings;
 use Socket;
 
-#Client
+# Client
 # 1. Creating a socket
 my $ sock;
 socket ($ sock, PF_INET, SOCK_STREAM, getprotobyname ('tcp'))
@@ -101,7 +101,7 @@ my $ packed_remote_host = inet_aton ($ remote_host)
 # Port number to connect to
 my $ remote_port = 9000;
 
-#Pack the host name and port number
+# Pack the host name and port number
 my $ sock_addr = sockaddr_in ($ remote_port, $ packed_remote_host)
   or die "Cannot pack $ remote_host: $ remote_port: $!";
 
@@ -138,7 +138,7 @@ use strict;
 use warnings;
 use Socket;
 
-#Server
+# Server
 
 # 1. Creating a reception socket
 
@@ -165,7 +165,7 @@ my $ sock_client; # Socket for communication with client
 while (accept ($ sock_client, $ sock_receive)) {
   my $ content;
   
-  #Reading data from the client
+  # Reading data from the client
   while (my $ line = <$ sock_client>) {
     $ content. = $ line;
   }
@@ -385,7 +385,7 @@ my $ packed_remote_host = inet_aton ($ remote_host)
 # Port number to connect to
 my $ remote_port = 9000;
 
-#Pack the host name and port number
+# Pack the host name and port number
 my $ sock_addr = sockaddr_in ($ remote_port, $ packed_remote_host)
   or die "Cannot pack $ remote_host: $ remote_port: $!";
 </pre>
@@ -443,7 +443,7 @@ Port numbers can be used from 0 to 65535. However, 0 to 1023 are common port num
 Next, you need to group the port number and IP address together using the sockaddr_in function.
 
 <pre>
-#Pack the host name and port number
+# Pack the host name and port number
 my $ sock_addr = sockaddr_in ($ remote_port, $ packed_remote_host)
   or die "Cannot pack $ remote_host: $ remote_port: $!";
 </pre>

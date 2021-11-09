@@ -30,7 +30,7 @@ This is a sample to convert <a href="/blog/20161003147558.html"> string</a> in c
 use strict;
 use warnings;
 
-#Name, age, origin
+# Name, age, origin
 my $ text = <<'EOS';
 tora, 24, Japan
 rika,12,USA
@@ -127,7 +127,7 @@ This is a sample to convert a csv format string to an array of <a href="/blog/20
 use strict;
 use warnings;
 
-#Name, age, origin
+# Name, age, origin
 my $ text = <<'EOS';
 tora, 24, Japan
 rika,12,USA
@@ -327,7 +327,7 @@ print join (',', @nums). "(Initial state) \ n";
 my @sorted_nums_descend = bubble_sort_descend (@nums);
 print join (',', @sorted_nums_descend). "(Last state) \ n";
 
-#Bubble sort subroutine. (Ascending order)
+# Bubble sort subroutine. (Ascending order)
 sub bubble_sort_ascend {
   my @nums = @_;
   if (@nums <2) {
@@ -336,24 +336,24 @@ sub bubble_sort_ascend {
   
   my $ change_cnt = @nums - 1;
 
-  #If you have an array a with n elements
+  # If you have an array a with n elements
   # At first, do n - one exchange.
   # a [0] and a [1], a [1] and a [2], ...., a [n-2] and a [n-1]
 
   # 2nd time, n - 2 exchanges
   # a [0] and a [1], a [1] and a [2], ...., a [n-3] and a [n-2]
 
-  #Finally
+  # Finally
   # Swap a [0] and a [1].
 
-  In #bubble sort, the maximum value is set every time the exchange goes around.
+  In # bubble sort, the maximum value is set every time the exchange goes around.
   # It will be confirmed, so every time the exchange goes around
   # Decrease the number of exchanges by 1.
                        
   while ($ change_cnt> 0) {
     for my $ i (0 .. $ change_cnt - 1) {
        
-     #If you are bigger than the next number, replace it,
+     # If you are bigger than the next number, replace it,
      # If you are smaller, do nothing.
      # By doing this, the last element becomes the maximum.
      if ($ nums [$ i]> $ nums [$ i + 1]) {
@@ -367,7 +367,7 @@ sub bubble_sort_ascend {
   return @nums;
 }
 
-#Bubble sort subroutine. (Descending order)
+# Bubble sort subroutine. (Descending order)
 sub bubble_sort_descend {
   my @nums = @_;
   if (@nums <2) {
@@ -447,7 +447,7 @@ else {
 sub bubble_sort {
   my ($ nums, $ opt) = @_;
   
-  #Error handling
+  # Error handling
   my @nums;
   Check if # $ nums is an array reference.
   if (defined $ nums) {

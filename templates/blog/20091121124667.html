@@ -298,10 +298,10 @@ use warnings;
 
 use DBI;
 
-#Connect to database in memory
+# Connect to database in memory
 my $ dbh = DBI-> connect ("dbi: SQLite: dbname =: memory:");
 
-#Create table
+# Create table
 my $ create_table = <<'EOS';
 create table book (
   title,
@@ -311,7 +311,7 @@ EOS
 
 $ dbh-> do ($ create_table);
 
-Execution of #insert statement
+Execution of # insert statement
 $ dbh-> do ("insert into book (title, author) values ​​('Perl','taro');");
 $ dbh-> do ("insert into book (title, author) values ​​('C ++','taro');");
 $ dbh-> do ("insert into book (title, author) values ​​('Python','ken');");
@@ -320,10 +320,10 @@ $ dbh-> do ("insert into book (title, author) values ​​('Java','mamoru');");
 Execution of # update statement
 $ dbh-> do ("update book set title ='Ruby' where author ='mamoru'");
 
-Execution of #delete statement
+Execution of # delete statement
 $ dbh-> do ("delete from book where author ='ken';");
 
-Execution of #select statement
+Execution of # select statement
 my $ sth = $ dbh-> prepare ("select * from book;");
 $ sth-> execute;
 
@@ -333,7 +333,7 @@ while (my @row = $ sth-> fetchrow_array) {
   print join (',', @row), "\ n";
 }
 
-#Database disconnection
+# Database disconnection
 $ dbh-> disconnect;
 </pre>
 

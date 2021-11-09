@@ -117,7 +117,7 @@ That's why it's named h2xs (that is, it means "C header file to XS"), but it can
 
 Run h2xs with the following options to create an XS module.
 <pre>
-#Creating an XS module
+# Creating an XS module
 h2xs -A -n SomeModule
 </pre>
 "-A" is an option that omits the auto-loading function. When creating an XS module, the autoloading function is usually omitted. Specify the name of the XS module with "-n".
@@ -183,11 +183,11 @@ How to write Makefile.PL is explained in detail below.
 Now try opening SomeModule.xs first. The following template should be generated.
 
 <pre>
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
+# include "EXTERN.h"
+# include "perl.h"
+# include "XSUB.h"
 
-#include "ppport.h"
+# include "ppport.h"
 
 
 MODULE = SomeModule PACKAGE = SomeModule
@@ -196,7 +196,7 @@ MODULE = SomeModule PACKAGE = SomeModule
 You can write C language at the beginning of the XS file. "#Include" EXTERN.h "" is a C language description. For those who have never written C language, I will explain a little. "#Include" is for including other files into the source code. In C language, instructions starting with # are called directives and are instructions for the preprocessor. A preprocessor is a program that makes changes to the source code according to the directives before compiling the source code.
 
 <pre>
-#include "EXTERN.h"
+# include "EXTERN.h"
 </pre>
 
 The description means that the C language header file EXTERN.h is included in the source code.
@@ -289,7 +289,7 @@ The Perl types in XS are explained in detail below, so please refer to them.
 As explained so far, in order to use it from a Perl module, it was necessary to process the XS file with xsubpp, compile the C language source file, and create a dynamic link library. However, this process can be automated by a program called make. Makefile.PL will generate a makefile that automates this task. So just run the following command:
 
 <pre>
-#Generate makefile
+# Generate makefile
 perl Makefile.PL
 
 # xsubpp processing and compilation

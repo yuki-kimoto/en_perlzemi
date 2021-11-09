@@ -188,7 +188,7 @@ The following four methods depend on the locale. For example, day_name might be 
 abbr is an abbreviation for abbreviation (abbreviation).
 
 <pre>
-#Month name
+# Month name
 my $ month_name = $ dt-> month_name;
 
 # Month abbreviation (same as month name if there is no abbreviation)
@@ -766,10 +766,10 @@ $ dt-> add (hours => 1);
 Addition of # minutes
 $ dt-> add (minutes => 1);
 
-#Addition of seconds
+# Addition of seconds
 $ dt-> add (seconds => 1);
 
-#Add all together
+# Add all together
 $ dt-> add (years => 1, months => 1, days => 1, hours => 1, minutes => 1, seconds => 1);
 </pre>
 
@@ -793,7 +793,7 @@ $ dt-> subtract (hours => 1);
 Subtraction of # minutes
 $ dt-> subtract (minutes => 1);
 
-#Second subtraction
+# Second subtraction
 $ dt-> subtract (seconds => 1);
 </pre>
 
@@ -826,13 +826,13 @@ $ duration-> months;
 # Day 
 $ duration-> days;
 
-#Time
+# Time
 $ duration-> hours;
 
 # Min
 $ duration-> minutes;
 
-#Seconds
+# Seconds
 $ duration-> seconds;
 </pre>
 
@@ -917,7 +917,7 @@ Convert to # UTC
 $ dt-> set_time_zone ('UTC');
 
 # Calculate the date.
-#Return to the original time zone.
+# Return to the original time zone.
 $ dt-> set_time_zone ($ user_tz);
 print $ dt-> datetime;
 </pre>
@@ -941,13 +941,13 @@ If you create a DateTime object with new, the default timezone will be the float
 How to get the previous month and the next month using DateTime. (But I'm a little unsure)
 
 <pre>
-#Current year and month
+# Current year and month
 my $ current_dt = DateTime-> now (time_zone =>'local');
   
 # Previous month
 my $ prev_dt = $ current_dt-> clone-> add (months => -1, end_of_month =>'limit');
 
-#Next month
+# Next month
 my $ next_dt = $ current_dt-> clone-> add (months => 1, end_of_month =>'limit');
 </pre>
 
@@ -966,7 +966,7 @@ use strict;
 use warnings;
 use DateTime;
 
-#Initialization of DateTime object
+# Initialization of DateTime object
 # (Use the same year, not the year elapsed since 1900.)
 # (Month counts from 1 instead of 0. 10 is his October.)
 my $ dt = DateTime-> new (
@@ -1059,7 +1059,7 @@ use strict;
 use warnings;
 use DateTime;
 
-#Create date information from epoch seconds.
+# Create date information from epoch seconds.
 my $ epoch = 1225589752;
 my $ dt = DateTime-> from_epoch (epoch => $ epoch);
 
@@ -1109,7 +1109,7 @@ use DateTime :: TimeZone;
 # (1) Creating a timezone object
 my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
 
-#When automatically acquiring the time zone from the OS settings
+# When automatically acquiring the time zone from the OS settings
 # my $ time_zone = DateTime :: TimeZone-> new (name =>'local');
                                                      
 # (2) Use of timezone object
@@ -1128,7 +1128,7 @@ use Encode;
 print "(1) Print the month name and day of the week name in Japanese. \ N";
 my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 
-#Month name
+# Month name
 my $ month_name = $ dt-> month_name;
 
 # Month abbreviation (same as month name if there is no abbreviation)
@@ -1177,7 +1177,7 @@ if ($ ^ O eq'MSWin32') {$ encode_to ='s
 hift-jis'}
 else {$ encode_to ='utf8'}
 
-#Generation of locale
+# Generation of locale
 print "(1) DateTime :: Locale object \ n";
 my $ locale = DateTime :: Locale-> load ('ja');
 my $ dt = DateTime-> now (locale => $ locale, time_zone =>'local');
@@ -1399,7 +1399,7 @@ Addition of # minutes
 my $ dt_next_minutes = $ dt-> clone;
 $ dt_next_minutes-> add (minutes => 1);
 
-#Addition of seconds
+# Addition of seconds
 my $ dt_next_second = $ dt-> clone;
 $ dt_next_second-> add (seconds => 1);
 
@@ -1477,7 +1477,7 @@ use strict;
 use warnings;
 use DateTime;
 
-#DateTime Subtraction between objects
+# DateTime Subtraction between objects
 my $ dt1 = DateTime-> new (
   year => 2000,
   month => 2,

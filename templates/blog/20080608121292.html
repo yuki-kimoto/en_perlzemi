@@ -36,20 +36,20 @@ The context evaluated as a scalar is called a scalar context, and the context ev
 As an example, the <a href="/blog/20081009122357.html"> localtime function</a> returns a string that displays the date / time in the scalar context, and the date / time information in the list context. Is listed and returned.
 
 <pre>
-#Scalar context
+# Scalar context
 $ date_string = localtime;
 
-#List context
+# List context
 @date_info = localtime;
 </pre>
 
 To give another example, an array returns the number of arrays in a scalar context and a list of elements in a list context.
 
 <pre>
-#Scalar context
+# Scalar context
 $ count = @values;
 
-#List context
+# List context
 @elements = @values;
 </pre>
 
@@ -152,17 +152,17 @@ This is a sample to understand the scalar context and list context.
 use strict;
 use warnings;
 
-#Scalar context and list context
+# Scalar context and list context
 
 print "1: Know the meaning of the context with the localtime function. \ N";
 my $ scalar;
 my @list;
 
-#Since the left side is scalar, it is for scalar
+# Since the left side is scalar, it is for scalar
 The return value of # is returned.
 $ scalar = localtime;
                       
-#The left side is an array, so it's for a list
+# The left side is an array, so it's for a list
 The return value of # is returned.
 @list = localtime;
 

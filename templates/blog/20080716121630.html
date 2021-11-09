@@ -31,11 +31,11 @@ It's called a function generator according to its general name, but in Perl term
 <h4> Creating and calling a function generator </h4>
 
 <pre>
-#Call
+# Call
 my $ func = func_generator ();
 $ func-> ();
 
-#Definition
+# Definition
 sub func_generator {
 
   my $ func = sub {
@@ -53,7 +53,7 @@ When you call the function generator (func_generator ()), you can get a referenc
 <h4> Generate multiple subroutines that are slightly different </h4>
 
 <pre>
-#Function generator call
+# Function generator call
 my $ create_safe_msg = message_factory ("is safe.");
 my $ create_danger_msg = message_factory ("is danger.");
 
@@ -143,7 +143,7 @@ my% numbers = (
 );
 
 for my $ num (keys% numbers) {
-  #Repeat reference to anonymous subroutine
+  # Repeat reference to anonymous subroutine
   my $ code = sub {
     # Returns the return value corresponding to the name of the number
     return $ numbers {$ num};
@@ -151,7 +151,7 @@ for my $ num (keys% numbers) {
   
   # Remove restrictions on symbolic references
   no strict'refs';
-  Name an anonymous subroutine using a #type glob.
+  Name an anonymous subroutine using a # type glob.
   * {$ num} = $ code;
 }
 </pre>
@@ -174,14 +174,14 @@ BEGIN {
   );
 
   for my $ num (keys% numbers) {
-    #Repeat reference to anonymous subroutine
+    # Repeat reference to anonymous subroutine
     my $ code = sub {
       return $ numbers {$ num}; # Returns the return value corresponding to the name of the number
     };
    
     # Remove restrictions on symbolic references
     no strict'refs';
-    Name an anonymous subroutine using a #type glob.
+    Name an anonymous subroutine using a # type glob.
     * {$ num} = $ code;
   }
 }
@@ -209,7 +209,7 @@ my $ func = func_generator ();
 $ func-> ();
 print "\ n";
 
-#Function generator
+# Function generator
 sub func_generator {
 
   my $ func = sub {
@@ -227,7 +227,7 @@ my $ create_danger_msg = m
 essage_factory ("is danger.");
 
 print "Subroutine generated with'is safe'\ n";
-#Dereference and call
+# Dereference and call
 my $ safe_msg1 = $ create_safe_msg-> ("cat");
 my $ safe_msg2 = $ create_safe_msg-> ("dog");
 
@@ -241,7 +241,7 @@ print "$ {danger_msg1} \ n $ {danger_msg2} \ n \ n";
 
 # Function generator that creates a subroutine that allows you to specify the message to convey
 sub message_factory {
-  You can dynamically change the generated subroutine by the argument of #function generator.
+  You can dynamically change the generated subroutine by the argument of # function generator.
   my $ message = shift;
 
   return sub {
@@ -260,7 +260,7 @@ use strict;
 use warnings;
 
 # Determine the name of the subroutine at run time.
-This can be achieved by using #type globs and anonymous subroutines.
+This can be achieved by using # type globs and anonymous subroutines.
 
 print "1: Name the anonymous subroutine. \ N";
 * sum = sub {
@@ -295,7 +295,7 @@ This is a sample using a function template.
 use strict;
 use warnings;
 
-#Function template
+# Function template
 
 print "1: Dynamically create multiple subroutines using function templates. \ N";
 
@@ -309,7 +309,7 @@ my% numbers = (
 );
 
 for my $ num (keys% numbers) {
-  #Repeat reference to anonymous subroutine
+  # Repeat reference to anonymous subroutine
   my $ code = sub {
     # Returns the return value corresponding to the name of the number
     return $ numbers {$ num};
@@ -317,7 +317,7 @@ for my $ num (keys% numbers) {
   
   # Remove restrictions on symbolic references
   no strict'refs';
-  Name an anonymous subroutine using a #type glob.
+  Name an anonymous subroutine using a # type glob.
   * {$ num} = $ code;
 }
 

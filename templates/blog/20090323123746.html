@@ -35,7 +35,7 @@ Let's find something in common. First, every part has a position and size.
 Consider implementing a component that does not use inheritance.
 
 <pre>
-#Menu bar class
+# Menu bar class
 package MenuBar;
 sub new {...}
 sub x {...}
@@ -57,7 +57,7 @@ sub height {...}
 # Write other methods.
 sub method_for_toolbar {...}
 
-#Button class
+# Button class
 package Button;
 sub new {...}
 sub x {...}
@@ -79,14 +79,14 @@ Inheritance is a mechanism that removes such duplication.
 Let's rewrite the class with inheritance. Please take a look.
 
 <pre>
-#Component class
+# Component class
 package Component;
 sub x {...}
 sub y {...}
 sub width {...}
 sub height {...}
 
-#Menu bar class
+# Menu bar class
 package MenuBar;
 use base'Component';
 
@@ -100,7 +100,7 @@ use base'Component';
 sub new {...}
 sub method_for_toolbar {...}
 
-#Button class
+# Button class
 package Button;
 use base'Component';
 

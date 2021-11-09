@@ -28,17 +28,17 @@ use warnings;
 # Use an HTTP client to get information from the web.
 use LWP :: UserAgent;
 
-#Since the feed is given in XML, parse it with XML :: Simple.
+# Since the feed is given in XML, parse it with XML :: Simple.
 use XML :: Simple;
 
-#Google Calendar Data API URL (URL to get Japanese holidays)
+# Google Calendar Data API URL (URL to get Japanese holidays)
 my $ feed_base
   ='http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
 
 # Start date including this date
 my $ start_date = '2007-01-01';
 
-#End date not including this date
+# End date not including this date
 my $ end_date = '2008-01-01';
 
 # Maximum number of feeds
@@ -62,7 +62,7 @@ else {
 
 # Parse XML
 my $ xml_parser = XML :: Simple-> new;
-#XML :: Change parser for those who don't have SAX
+# XML :: Change parser for those who don't have SAX
 $ XML :: Simple :: PREFERRED_PARSER ='XML :: Parser';
 my $ holidays_data = $ xml_parser-> XMLin ($ holidays_xml);
 
@@ -117,7 +117,7 @@ Concatenate the query string with the specified conditions to the above source U
 # Start date including this date
 my $ start_date = '2007-01-01';
 
-#End date not including this date
+# End date not including this date
 my $ end_date = '2008-01-01';
 
 # Maximum number of feeds
@@ -171,7 +171,7 @@ for my $ key (keys% {$ holidays_data-> {'entry'}}) {
 After the XML transformation, you can access the data as follows.
 
 <pre>
-#Holiday dates
+# Holiday dates
 $ holidays_data-> {'entry'} {URL as an identifier} {'gd: when'} {startTime};
 
 # Holiday name

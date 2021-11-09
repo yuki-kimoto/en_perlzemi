@@ -44,7 +44,7 @@ my $ image_object = $ pdf-> image_jpeg ($ image_file);
 To read a PNG file in PDF :: API2, use the image_png method. Returns a resource object that represents the PNG image.
 
 <pre>
-#Create a resource object that represents a PNG image
+# Create a resource object that represents a PNG image
 my $ image_file ='/path/image.png';
 my $ image_object = $ pdf-> image_png ($ image_file);
 </pre>
@@ -56,7 +56,7 @@ If you get the error "Unsupported Interlace", you need to turn off the PNG inter
 In PDF :: API2, use the image_gif method to read a GIF file. Returns a resource object that represents the GIF image.
 
 <pre>
-#Create a resource object that represents a GIF image
+# Create a resource object that represents a GIF image
 my $ image_file ='/path/image.gif';
 my $ image_object = $ pdf-> image_gif ($ image_file);
 </pre>
@@ -66,7 +66,7 @@ my $ image_object = $ pdf-> image_gif ($ image_file);
 Create a content object to insert the image. This is a PDF :: API2 :: Content object.
 
 <pre>
-#Content object needed to insert an image
+# Content object needed to insert an image
 my $ gfx = $ page-> gfx;
 </pre>
 
@@ -75,13 +75,13 @@ my $ gfx = $ page-> gfx;
 In PDF :: API2, use the image method of the content object to insert an image file.
 
 <pre>
-#Insert image at specified position
+# Insert image at specified position
 $ gfx-> image ($ image_object, $ x, $ y);
 
-#Insert image at the specified position. Specify width and height
+# Insert image at the specified position. Specify width and height
 $ gfx-> image ($ image_object, $ x, $ y, $ width, $ height);
 
-#Insert image at the specified position. Specify scale (1.5x, etc.)
+# Insert image at the specified position. Specify scale (1.5x, etc.)
 $ gfx-> image ($ image_object, $ x, $ y, $ scale);
 </pre>
 
@@ -102,14 +102,14 @@ my $ pdf = PDF :: API2-> new;
 
 my $ page = $ pdf-> page;
 
-#Create a resource object that represents a PNG image
+# Create a resource object that represents a PNG image
 my $ image_file = "$ FindBin :: Bin / rokkaku.png";
 my $ image_object = $ pdf-> image_png ($ image_file);
 
-#Content object needed to insert an image
+# Content object needed to insert an image
 my $ gfx = $ page-> gfx;
 
-#Insert image at specified position
+# Insert image at specified position
 my $ x = 50;
 my $ y = 500;
 $ gfx-> image ($ image_object, $ x, $ y);

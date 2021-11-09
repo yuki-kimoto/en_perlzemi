@@ -22,7 +22,7 @@
 You can use <strong> Getopt :: Long </strong> to handle options for <a href="/blog/20080108132865.html"> command line arguments</a>.
 
 <pre>
-#Loading modules and importing functions
+# Loading modules and importing functions
 use Getopt :: Long'GetOptions';
 </pre>
 
@@ -36,9 +36,9 @@ perl script.pl - enable_cache - max_clients = 5 - type = single config.init
 You can easily handle such command line options using the <strong> GetOptions function </strong>.
 
 <pre>
-Handling command line argument options with #GetOptions
+Handling command line argument options with # GetOptions
 
-#Set default value
+# Set default value
 my $ enable_cache;
 my $ max_clients = 5;
 my $ type ='prefork';
@@ -74,17 +74,17 @@ For "Option name = Type", specify the option name and value type. If the option 
 # Integer
 'max_clients = i'=> \ $ max_clients
 
-#String
+# String
 'type = s'=> \ $ type
 </pre>
 
 For "Variables to save", specify a reference for scalar variables. Set the default value first and pass it as a reference to the GetOptions argument.
 
 <pre>
-#Set default value
+# Set default value
 my $ max_clients = 5;
 
-#Specify a scalar variable reference in the argument
+# Specify a scalar variable reference in the argument
 GetOptions (
   'max_clients = i'=> \ $ max_clients,
 );

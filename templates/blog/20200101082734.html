@@ -48,13 +48,13 @@ First of all, let's draw a basic shape with PDF :: API2 as a basis for creating 
 First of all, create a content object for the graphic. You can create a content object for graphics by calling the gfx method from the page object. This is a PDF :: API2 :: Content object.
 
 <pre>
-#Generate PDF object
+# Generate PDF object
 my $ pdf = PDF :: API2-> new;
 
-#Create page
+# Create page
 my $ page = $ pdf-> page;
 
-#Generate content objects for graphics
+# Generate content objects for graphics
 my $ gfx = $ page-> gfx;
 </pre>
 
@@ -77,7 +77,7 @@ my $ end_x = 300;
 my $ end_y = 300;
 $ gfx-> line ($ end_x, $ end_y);
 
-#Draw a line
+# Draw a line
 $ gfx-> stroke;
 </pre>
 
@@ -124,24 +124,24 @@ use utf8;
 
 use PDF :: API2;
 
-#Generate PDF object
+# Generate PDF object
 my $ pdf = PDF :: API2-> new;
 
 my $ page = $ pdf-> page;
 
 my $ gfx = $ page-> gfx;
 
-#Point P1
+# Point P1
 my $ x1 = 100;
 my $ y1 = 100;
 $ gfx-> move ($ x1, $ y1);
 
-#Point P2
+# Point P2
 my $ x2 = 300;
 my $ y2 = 300;
 $ gfx-> line ($ x2, $ y2);
 
-#Point P3
+# Point P3
 my $ x3 = 500;
 my $ y3 = 100;
 $ gfx-> line ($ x3, $ y3);
@@ -149,7 +149,7 @@ $ gfx-> line ($ x3, $ y3);
 # Return to point P1
 $ gfx-> line ($ x1, $ y1);
 
-#Draw a line
+# Draw a line
 $ gfx-> stroke;
 
 my $ pdf_file ='render_tri.pdf';
@@ -167,26 +167,26 @@ use utf8;
 
 use PDF :: API2;
 
-#Generate PDF object
+# Generate PDF object
 my $ pdf = PDF :: API2-> new;
 
 my $ page = $ pdf-> page;
 
 my $ gfx = $ page-> gfx;
 
-#Point P1
+# Point P1
 my ($ x1, $ y1) = (100, 100);
 
-#Point P2
+# Point P2
 my ($ x2, $ y2) = (300, 300);
 
-#Point P3
+# Point P3
 my ($ x3, $ y3) = (500, 100);
 
 Draw triangles at once with # poly method
 $ gfx-> poly ($ x1, $ y1, $ x2, $ y2, $ x3, $ y3, $ x1, $ y1);
 
-#Draw a line
+# Draw a line
 $ gfx-> stroke;
 
 my $ pdf_file ='render_tri.pdf';
@@ -198,7 +198,7 @@ $ pdf-> saveas ($ pdf_file);
 You can fill it by enclosing it in a path. Use the fill method to fill. The default fill color is black. Note that fill must be called before the stroke.
 
 <pre>
-#Fill (before stroke)
+# Fill (before stroke)
 $ gfx-> fill;
 
 # Draw a line
@@ -208,7 +208,7 @@ $ gfx-> stroke;
 There is also a fillstroke method that fills and draws lines at the same time.
 
 <pre>
-#Fill and draw a line
+# Fill and draw a line
 $ gfx-> fillstroke;
 </pre>
 
@@ -220,10 +220,10 @@ The fill color can be set with the fillcolor method. Call it before filling. The
 # Set the fill color (color name)
 $ gfx-> fillcolor ('red');
 
-#Set fill color (RGB)
+# Set fill color (RGB)
 $ gfx-> fillcolor ('# 0123ab');
 
-#Set fill color (CMYK)
+# Set fill color (CMYK)
 $ gfx-> fillcolor ('% FF000000');
 </pre>
 
@@ -240,16 +240,16 @@ use utf8;
 
 use PDF :: API2;
 
-#Generate PDF object
+# Generate PDF object
 my $ pdf = PDF :: API2-> new;
 
-#Create page
+# Create page
 my $ page = $ pdf-> page;
 
-#Generate content objects for graphics
+# Generate content objects for graphics
 my $ gfx = $ page-> gfx;
 
-#Point P1
+# Point P1
 my $ x1 = 100;
 my $ y1 = 100;
 
@@ -257,7 +257,7 @@ my $ y1 = 100;
 my $ x3 = 300;
 my $ y3 = 300;
 
-#Draw a rectangle
+# Draw a rectangle
 $ gfx-> rectxy ($ x1, $ y1, $ x3, $ y3);
 
 # Make the line color a little lighter than black
@@ -344,45 +344,45 @@ So, let's create a table by simply drawing lines vertically and horizontally.
 <pre>
 use PDF :: API2;
 
-#Generate PDF object
+# Generate PDF object
 my $ pdf = PDF :: API2-> new;
 
 # Default global setting for paper size (to get paper size)
 $ pdf-> mediabox (undef);
 
-#Page height and width
+# Page height and width
 my @page_size_infos = $ pdf-> mediabox;
 my $ page_width = $ page_size_infos [2];
 my $ page_height = $ page_size_infos [3];
 
-#Item height
+# Item height
 my $ item_height = 25;
 
 # Number of rows
 my $ rows_count = 20;
 
-#Width of each item
+# Width of each item
 my $ name_width = 230;
 my $ unit_price_width = 80;
 my $ count_width = 80;
 my $ price_width = 80;
 my $ table_width = $ name_width + $ unit_price_width + $ count_width + $ price_width;
 
-#Table height
+# Table height
 my $ table_height = $ item_height * $ rows_count;
 
-#Starting point of the table
+# Starting point of the table
 
-#Table outer frame
+# Table outer frame
 my $ table_start_x = 50;
 my $ table_start_y = $ page_height - 50;
 my $ table_other_side_x = $ table_start_x + $ table_width;
 my $ table_other_side_y = $ table_start_y-$ table_height;
 
-#Create page
+# Create page
 my $ page = $ pdf-> page;
 
-#Generate content objects for graphics
+# Generate content objects for graphics
 my $ gfx = $ page-> gfx;
 
 # Draw the upper line
@@ -396,7 +396,7 @@ $ gfx-> line ($ table_start_x, $ table_start_y-$ table_height);
 my $ cur_x = $ table_start_x;
 my $ cur_y = $ table_start_y;
 
-#Drawing the frame of each item
+# Drawing the frame of each item
 for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   
   # Name frame (right and bottom)
@@ -420,14 +420,14 @@ for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
   $ cur_x + = $ count_width;
 
-  #Price frame (right and bottom)
+  # Price frame (right and bottom)
   $ gfx-> move ($ cur_x + $ price_width, $ cur_y);
   $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
   $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
   $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
   $ cur_x + = $ price_width;
   
-  #To the next line
+  # To the next line
   $ cur_x = $ table_start_x;
   $ cur_y-= $ item_height;
 }
@@ -468,48 +468,48 @@ use utf8;
 
 use PDF :: API2;
 
-#Generate PDF object
+# Generate PDF object
 my $ pdf = PDF :: API2-> new;
 
 # Default global setting for paper size (to get paper size)
 $ pdf-> mediabox (undef);
 
-#Page height and width
+# Page height and width
 my @page_size_infos = $ pdf-> mediabox;
 my $ page_width = $ page_size_infos [2];
 my $ page_height = $ page_size_infos [3];
 
-#Item height
+# Item height
 my $ item_height = 25;
 
 # Number of rows
 my $ rows_count = 20;
 
-#Width of each item
+# Width of each item
 my $ name_width = 230;
 my $ unit_price_width = 80;
 my $ count_width = 80;
 my $ price_width = 80;
 my $ table_width = $ name_width + $ unit_price_width + $ count_width + $ price_width;
 
-#Table height
+# Table height
 my $ table_height = $ item_height * $ rows_count;
 
-#Starting point of the table
+# Starting point of the table
 
-#Table outer frame
+# Table outer frame
 my $ table_start_x = 50;
 my $ table_start_y = $ page_height - 50;
 my $ table_other_side_x = $ table_start_x + $ table_width;
 my $ table_other_side_y = $ table_start_y-$ table_height;
 
-#Create page
+# Create page
 my $ page = $ pdf-> page;
 
-#Generate content objects for graphics
+# Generate content objects for graphics
 my $ gfx = $ page-> gfx;
 
-#Generate content object for text
+# Generate content object for text
 my $ text = $ page-> text;
 my $ font = $ pdf-> corefont ('Helvetica');
 my $ font_bold = $ pdf-> corefont ('Helvetica-Bold');
@@ -550,19 +550,19 @@ my $ cur_y = $ table_start_y;
 my $ item_padding_top = 17;
 my $ item_padding_left = 5;
 
-#Drawing the frame of each item
+# Drawing the frame of each item
 for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   
   my $ book_index = $ column - 1;
   
   # Name frame (right and bottom)
-  #Heading
+  # Heading
   $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
   if ($ column == 0) {
     $ text-> font ($ font_bold, $ font_size);
     $ text-> text ('Name');
   }
-  #Item
+  # Item
   else {
     $ text-> font ($ font, $ font_size);
     if ($ book_index <$ books_length) {
@@ -581,7 +581,7 @@ for (my $ column = 0; $ column <$ rows_count; $ column ++) {
     $ text-> font ($ font_bold, $ font_size);
     $ text-> text ('Unit');
   }
-  #Item
+  # Item
   else {
     $ text-> font ($ font, $ font_size);
     if ($ book_index <$ books_length) {
@@ -595,13 +595,13 @@ for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   $ cur_x + = $ unit_price_width;
 
   # Quantity frame (right and bottom)
-  #Heading
+  # Heading
   $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
   if ($ column == 0) {
     $ text-> font ($ font_bold, $ font_size);
     $ text-> text ('Count');
   }
-  #Item
+  # Item
   else {
     $ text-> font ($ font, $ font_size);
     if ($ book_index <$ books_length) {
@@ -614,14 +614,14 @@ for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
   $ cur_x + = $ count_width;
 
-  #Price frame (right and bottom)
-  #Heading
+  # Price frame (right and bottom)
+  # Heading
   $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
   if ($ column == 0) {
     $ text-> font ($ font_bold, $ font_size);
     $ text-> text ('Pirce');
   }
-  #Item
+  # Item
   else {
     $ text-> font ($ font, $ font_size);
     if ($ book_index <$ books_length) {
@@ -634,7 +634,7 @@ for (my $ column = 0; $ column <$ rows_count; $ column ++) {
   $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
   $ cur_x + = $ price_width;
   
-  #To the next line
+  # To the next line
   $ cur_x = $ table_start_x;
   $ cur_y-= $ item_height;
 }

@@ -52,10 +52,10 @@ Now let's write an automated test program using Perl's module for automated test
 use strict;
 use warnings;
 
-#Specify the number of tests
+# Specify the number of tests
 use Test :: More tests => 2;
 
-Check if the test was successful with the #ok function. This test succeeds.
+Check if the test was successful with the # ok function. This test succeeds.
 my $ num1 = 1;
 ok ($ num1 == 1);
 
@@ -79,7 +79,7 @@ use Test :: More tests => 2;
 The first argument of the ok function describes the conditions under which the test will succeed.
 
 <pre>
-Check if the test was successful with the #ok function. This test succeeds.
+Check if the test was successful with the # ok function. This test succeeds.
 my $ num1 = 1;
 ok ($ num1 == 1);
 
@@ -100,7 +100,7 @@ ok 1 - Test1
 not ok 2 - Test2
 # Failed test'Test2'
 # at b.pl line 9.
-#Looks like you failed 1 test of 2.
+# Looks like you failed 1 test of 2.
 </pre>
 
 <h3> Test subroutines </h3>
@@ -114,7 +114,7 @@ use warnings;
 use Test :: More tests => 2;
 
 
-#Collision of lexical variables declared by my does not occur when creating a scope in test units.
+# Collision of lexical variables declared by my does not occur when creating a scope in test units.
 # sum exam
 {
   my $ num1 = 1;
@@ -125,13 +125,13 @@ use Test :: More tests => 2;
   ok ($ total == 3,'sum');
 }
 
-#double exam
+# double exam
 {
   my $ num1 = 1;
   
   my $ double = double ($ num1);
     
-  #Failure!
+  # Failure!
   ok ($ double == 2,'double');
 }
 
@@ -186,13 +186,13 @@ As you write a lot of tests, variable name collisions become more frequent. To a
   ok ($ total == 3,'sum');
 }
 
-#double exam
+# double exam
 {
   my $ num1 = 1;
   
   my $ double = double ($ num1);
   
-  ok ($ double == 2,'double'); #Failed!
+  ok ($ double == 2,'double'); # Failed!
 }
 </pre>
 
@@ -205,7 +205,7 @@ ok 1 - sum
 not ok 2 - double
 # Failed test'double'
 # at - line 25.
-#Looks like you failed 1 test of 2.
+# Looks like you failed 1 test of 2.
 </pre>
 
 
@@ -303,7 +303,7 @@ use lib "$ FindBin :: Bin / ../ lib";
 use Test :: More tests => 1;
 use SomeModule;
 
-#double exam
+# double exam
 {
   my $ num1 = 1;
   
@@ -341,7 +341,7 @@ t \ sum ....... ok
 t \ double ....
 t \ double .... NOK 1/1 # Failed test'double'
 # at t \ double.t line 13.
-#Looks like you failed 1 test of 1.
+# Looks like you failed 1 test of 1.
 t \ double .... dubius
         Test returned status 1 (wstat 256, 0x100)
 DIED. FAILED test 1
@@ -647,10 +647,10 @@ like ($ @, qr / error /);
 If you want to see the warning, use a signal handler and do the following:
 
 <pre>
-#Preparing to assign a warning message
+# Preparing to assign a warning message
 my $ warn;
 
-#Handler called when a warning occurs
+# Handler called when a warning occurs
 local $ SIG {__ WARN__} = sub {
   $ warn = shift;
 };

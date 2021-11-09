@@ -24,10 +24,10 @@ otsune introduced <a href="http://www.otsune.com/bsd/tips/usercpaninstall.html">
 <h3> Sakura Internet server cpan installation procedure </h3>
 
 <pre>
-#Create a directory for the library
+# Create a directory for the library
 mkdir -p ~ / local
 
-#Create a CPAN config file
+# Create a CPAN config file
 echo no | cpan
 
 Rewrite the configuration file MyConfig.pm for the # cpan command
@@ -35,11 +35,11 @@ Rewrite the configuration file MyConfig.pm for the # cpan command
 perl-~ / .cpan / CPAN / MyConfig.pm> ~ / .cpan / CPAN / MyConfig.pm.edit
 while (<>) {
     if (/ ^ \ s * \}; /) {
-        print q #'make_install_arg' => qq [SITEPREFIX = $ ENV {HOME} / local], #, "\ n",
-              q #'makepl_arg' => qq [INSTALLDIRS = site LIB = $ ENV {HOME} / local / lib / perl5 PREFIX = $ ENV {HOME} / local], #, "\ n",
-              q #'mbuildpl_arg' => qq [./Build - install_base $ ENV {HOME} / local], #, "\ n",
-              q #'urllist' => [q [ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/], q [ftp://ftp.ring.gr.jp/pub/ lang / perl / CPAN /]], #, "\ n",
-              q #}; #, "\ n";
+        print q # 'make_install_arg' => qq [SITEPREFIX = $ ENV {HOME} / local], # , "\ n",
+              q # 'makepl_arg' => qq [INSTALLDIRS = site LIB = $ ENV {HOME} / local / lib / perl5 PREFIX = $ ENV {HOME} / local], # , "\ n",
+              q # 'mbuildpl_arg' => qq [./Build - install_base $ ENV {HOME} / local], # , "\ n",
+              q # 'urllist' => [q [ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/], q [ftp://ftp.ring.gr.jp/pub/ lang / perl / CPAN /]], # , "\ n",
+              q # }; # , "\ n";
     }
     elsif (! / ^ \ s *'make_install_arg' / &&
         ! / ^ \ s *'makepl_arg' / &&
@@ -74,7 +74,7 @@ source ~ / .cshrc
 Update to the latest version of # cpan
 cpan -i Bundle :: CPAN
 
-#The installation will start and you will be asked if you want to install the dependent modules as well, so press Enter. (A little long)
+# The installation will start and you will be asked if you want to install the dependent modules as well, so press Enter. (A little long)
 </pre>
 
 You can now use cpan.

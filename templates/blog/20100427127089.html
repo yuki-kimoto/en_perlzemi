@@ -22,14 +22,14 @@
 You can use the <strong> JSON module </strong> to parse JSON data. JSON is a language for describing data and can represent data structures such as arrays and hashes. JSON is just a string, so it's portable. It is often used when exchanging data with other programming languages.
 
 <pre>
-#Loading modules and importing functions
+# Loading modules and importing functions
 use JSON qw / encode_json decode_json /;
 </pre>
 
 Use the <strong> decode_json function </strong> to convert JSON to a Perl data structure.
 
 <pre>
-#Convert JSON to Perl data structures
+# Convert JSON to Perl data structures
 my $ json_in ='[{"name": "Ken", "age": 19}, {"name": "Ken", "age": 25}]';
 
 my $ data = decode_json ($ json_in);
@@ -38,7 +38,7 @@ my $ data = decode_json ($ json_in);
 This translates into a Perl data structure that looks like this:
 
 <pre>
-#JSON
+# JSON
 '[{" name ":" Ken "," age ": 19}, {" name ":" Ken "," age ": 25}]'
 </pre>
 ▼
@@ -59,7 +59,7 @@ This translates into a Perl data structure that looks like this:
 Conversely, use the <strong> encode_json function </strong> to convert Perl data structures to JSON.
 
 <pre>
-#Convert Perl data structures to JSON
+# Convert Perl data structures to JSON
 my $ json_out = encode_json ($ data);
 </pre>
 
@@ -93,7 +93,7 @@ The conversion from top left to bottom right is done by decode_json, and the con
 For example, it is easy to make a mistake, but if you write the following, it will not work. (Since Japanese is handled in the script, the utf8 pragma is enabled and the script is saved in UTF-8.)
 
 <pre>
-#Common mistakes when dealing with Japanese. decode_json needs to receive UTF-8 byte string
+# Common mistakes when dealing with Japanese. decode_json needs to receive UTF-8 byte string
 use utf8;
 use JSON'decode_json';
 
@@ -112,7 +112,7 @@ use Encode'encode_utf8';
 
 my $ json ='{"name": "Masuda"}';
 
-#Convert to UTF-8 byte string
+# Convert to UTF-8 byte string
 $ json = encode_utf8 ($ json);
 
 my $ data = decode_json ($ json);

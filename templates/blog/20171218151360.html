@@ -74,7 +74,7 @@ To write binary data, set the filehandle to binary mode using the <a href="/blog
 # Packed binary data
 my $ packed = pack ("l3", 7, 8, 9);
 
-#Open file
+# Open file
 open my $ fh,'<', $ file
   or die "Can't open $ file: $!";
 
@@ -84,7 +84,7 @@ binmode $ fh;
 # Write binary data
 print $ fh $ data;
 
-#Close file
+# Close file
 close $ fh;
 </pre>
 
@@ -96,7 +96,7 @@ The conversion from big endian to little endian can be done using "N" and "V". T
 # Big endian value to Perl value
 my $ value = unpack ('N1', $ value_big);
 
-#Perl value to little endian
+# Perl value to little endian
 my $ value_litte = pack ('V1', $ value);
 </pre>
 
