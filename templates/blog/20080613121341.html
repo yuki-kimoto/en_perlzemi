@@ -18,7 +18,7 @@
 
 Perl has a symbol table that programmers can reference and make changes to. Perl is more flexible and adaptable than other languages, but one of the features that makes it so powerful is the symbol table.
 
-The symbol table is just a hash named%main ::. From the hash%main ::, you can see all the subroutines and package variables of the script being executed. (Excluding lexical variables)
+The symbol table is just a hash named%main::. From the hash%main::, you can see all the subroutines and package variables of the script being executed. (Excluding lexical variables)
 
 <h3> Take a peek at the contents of the symbol table </h3>
 
@@ -56,16 +56,16 @@ print "1: Take a peek at the symbol table\n";
 require Data::Dumper;
 The print # symbol table is just a hash.
 What belongs to the # main package
-You can refer to it with the name # %main ::.
-Data::Dumper-> Dump ([\%main ::], [qw (* main ::)]), "\n";
+You can refer to it with the name # %main::.
+Data::Dumper-> Dump ([\%main::], [qw (* main::)]), "\n";
 
 print "2: View the contents of num and func in the main package.\n";
 print $main::{num}, "\n";
-You can also use::as an alias for # main ::.
-print $:: {num}, "\n";
+You can also use::as an alias for # main::.
+print $::{num}, "\n";
 
 print $main::{func}, "\n";
-print $:: {func}, "\n\n";
+print $::{func}, "\n\n";
 
 print "3: Get the contents of the variable from the symbol table.\n";
 Extract the scalar variable from'* main::num' with # ${}.

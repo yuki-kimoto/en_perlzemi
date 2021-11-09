@@ -760,8 +760,8 @@ You can use the x option to ignore whitespace in regular expressions. You will a
 my $time = '03: 02: 56';
 my $regex = qr /
   (\ d {2}) # hour
-::  (\ d {2}) # min
-::  (\ d {2}) # seconds
+::(\ d {2}) # min
+::(\ d {2}) # seconds
 / x;
 
 if ($time = ~ / $regex /) {
