@@ -1,56 +1,55 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>unless文</h2>
+  </ li>
+</ ol>
+<h2> unless statement </ h2>
 
 
 
-条件が満たされなかった場合の処理を記述するには<strong>unless</strong>を使用します。
+Use <strong> unless </ strong> to describe what to do if the condition is not met.
 
 <pre>
 # unless
-unless (条件) {
-  # 条件が満たされなかった場合の処理
+unless (condition) {
+  # What to do if the conditions are not met
 }
-</pre>
+</ pre>
 
-unlessのサンプルです。条件を満たさなかった場合にプログラムを終了する処理です。
+This is a sample unless. This is the process to terminate the program when the conditions are not met.
 
 <pre>
-# 条件を満たさなかった場合にプログラムを終了
-my $num;
-unless (defined $num) {
+# Exit the program if the conditions are not met
+my $ num;
+unless (defined $ num) {
   die "The number must be defined";
 }
-</pre>
+</ pre>
 
-これはif文と否定演算子を使用して書くこともできます。Perlではunlessが好んで使用される傾向があります。
+It can also be written using the if statement and the negation operator. Perl tends to prefer unless.
 
 <pre>
-# if文と否定演算を使って表現
-if (! defined $num) {
+Expressed using #if statement and negation operation
+if (! defined $ num) {
   die "The number must be defined";
 }
-</pre>
+</ pre>
 
-unlessを後置することもできます。
+You can also add unless.
 
 <pre>
-# 後置のunless
-die "The number must be defined" unless defined $num;
-</pre>
-
+# Postfix unless
+die "The number must be defined" unless defined $ num;
+</ pre>

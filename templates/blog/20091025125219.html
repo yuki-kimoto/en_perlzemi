@@ -1,1277 +1,1277 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
   <li>
-    よく使う関数・モジュール
-  </li>
-</ol>
-<h2>よく使用する関数・標準モジュール一覧</h2>
+    Frequently used functions / modules
+  </ li>
+</ ol>
+<h2> List of frequently used functions / standard modules </ h2>
 
 
 
-よく使用する関数・標準モジュールの一覧です。これらの関数を覚えておけば、Perlをより便利なものにすることができます。詳細な解説は避け、簡単なサンプルを紹介しています。戻り値のあるものについては$retという記号で表しています。　
+This is a list of frequently used functions and standard modules. Remembering these functions can make Perl more useful. I avoid detailed explanations and introduce simple samples. Those with a return value are represented by the symbol $ ret. Twice
 
-また、よく使用する特殊変数、標準モジュールについても、解説しています。各項目から、関数の詳細にもリンクしていますので、便利にご利用ください。
+It also explains frequently used special variables and standard modules. Each item also links to the details of the function, so please use it conveniently.
 
 <ol>
   <li>
-    <a href="#math">数学関数</a>
-  </li>
+    <a href="#math"> math functions </a>
+  </ li>
   <li>
-    <a href="#string">文字列操作</a>
-  </li>
+    <a href="#string"> String manipulation </a>
+  </ li>
   <li>
-    <a href="#array">配列操作</a>
-  </li>
+    <a href="#array"> Array operation </a>
+  </ li>
   <li>
-    <a href="#hash">ハッシュ操作</a>
-  </li>
+    <a href="#hash"> hash operation </a>
+  </ li>
   <li>
-    <a href="#file-io">ファイル入出力</a>
-  </li>
+    <a href="#file-io"> File I / O </a>
+  </ li>
   <li>
-    <a href="#file-directory">ファイル・ディレクトリ操作</a>
-  </li>
+    <a href="#file-directory"> File directory operations </a>
+  </ li>
   <li>
-    <a href="#date-time">時刻・時間</a>
-  </li>
+    <a href="#date-time"> Time / Time </a>
+  </ li>
   <li>
-    <a href="#other">その他の重要な関数</a>
-  </li>
+    <a href="#other"> Other important functions </a>
+  </ li>
   <li>
-    <a href="#function-search">関数とモジュールのドキュメントの調べ方</a>
-  </li>
+    <a href="#function-search"> How to search function and module documentation </a>
+  </ li>
   <li>
-    <a href="#special-variable">よく使用する特殊変数</a>
-  </li>
+    <a href="#special-variable"> Frequently used special variables </a>
+  </ li>
   <li>
-    <a href="#standard-module">よく使用する標準モジュール</a>
-  </li>
-</ol>
+    <a href="#standard-module"> Frequently used standard modules </a>
+  </ li>
+</ ol>
 
-<div id="math"></div>
-<h3>数学関数</h3>
+<div id = "math"> </ div>
+<h3> Mathematical functions </ h3>
 
-<h4>abs</h4>
+<h4> abs </ h4>
 
-絶対値を求めるには<a href="/blog/20080912122145.html">abs関数</a>を使用します。
-
-<pre>
-$ret = abs $num;
-</pre>
-
-abs(-3)は3になります。
-
-<h4>sqrt</h4>
-
-正の平方根を求めるには、<a href="/blog/20080630121483.html">sqrt関数</a>を使います。
+Use the <a href="/blog/20080912122145.html"> abs function </a> to find the absolute value.
 
 <pre>
-$ret = sqrt $num;
-</pre>
+$ ret = abs $ num;
+</ pre>
 
-sqrt(4)は2になります。
+abs (-3) will be 3.
 
-<h4>int</h4>
+<h4> sqrt </ h4>
 
-小数点を含む数値の整数部を取り出すには<a href="/blog/20080923122214.html">int関数</a>を使用します。
-
-<pre>
-$ret = int $num;
-</pre>
-
-int(1.5)は1に、int(-1.5)は-1になります。
-
-<h4>ceil(POSIX)</h4>
-
-小数点を切り上げるには、POSIXモジュールの<a href="/blog/20080924122227.html">ceil関数</a>を使用します。
+To find the positive square root, use the <a href="/blog/20080630121483.html"> sqrt function </a>.
 
 <pre>
-use POSIX 'ceil';
-$ret = ceil $num;
-</pre>
+$ ret = sqrt $ num;
+</ pre>
 
-<h4>floor(POSIX)</h4>
+sqrt (4) will be 2.
 
-小数点を切り下げるには、POSIXモジュールの<a href="/blog/20090430122227.html">floor関数</a>を使用します。
+<h4> int </ h4>
 
-<pre>
-use POSIX 'floor';
-$ret = floor $num;
-</pre>
-
-<h4>rand</h4>
-
-乱数を生成するには<a href="/blog/20080906122079.html">rand関数</a>を使用します。引数で指定した数より小さい数値がランダムで生成されます。
+Use the <a href="/blog/20080923122214.html"> int function </a> to retrieve the integer part of a number that includes a decimal point.
 
 <pre>
-$ret = rand $num;
-</pre>
+$ ret = int $ num;
+</ pre>
 
-<h4>looks_like_number(Scalar::Util)</h4>
+int (1.5) becomes 1 and int (-1.5) becomes -1.
 
-数値であるかどうかの判定を行うにはScalar::Utilモジュールの<a href="/blog/20090501124313.html">looks_like_number関数</a>を使用します。
+<h4> ceil (POSIX) </ h4>
 
-<pre>
-use Scalar::Util 'looks_like_number'; 
-$ret = looks_like_number $num;
-</pre>
-
-<div id="string"></div>
-<h3>2 文字列操作</h3>
-
-<h4>join</h4>
-
-区切り文字を指定して文字列を連結するには<a href="/blog/20081007122338.html">join関数</a>を使用します。
+To round up the decimal point, use the POSIX module's <a href="/blog/20080924122227.html"> ceil function </a>.
 
 <pre>
-$ret = join(',', @array);
-</pre>
+use POSIX'ceil';
+$ ret = ceil $ num;
+</ pre>
 
-第1引数は、区切り文字です。この例では区切り文字としてカンマを指定しています。第2引数以降で与えられた文字列が区切り文字で連結されます。
+<h4> floor (POSIX) </ h4>
 
-<h4>length</h4>
-
-文字列の長さを取得するには、<a href="/blog/20080926122245.html">length関数</a>を使用します。
-
-<pre>
-$ret = length $str;
-</pre>
-
-<h4>substr</h4>
-
-指定した位置の文字を抽出・置換するには<a href="/blog/20080224120386.html">substr関数</a>を使用します。
-
-[A]指定した位置の文字を抽出する
+To round down the decimal point, use the <a href="/blog/20090430122227.html"> floor function </a> of the POSIX module.
 
 <pre>
-$ret = substr($str, 2, 4);
-</pre>
+use POSIX'floor';
+$ ret = floor $ num;
+</ pre>
 
-第1引数は対象の文字列です。第2引数は抽出したい文字列の開始位置です。第3引数は抽出したい文字列の長さです。
+<h4> rand </ h4>
 
-[B]指定した位置の文字列を置換する
-
-<pre>
-substr($str, 0, 2, $replace);
-</pre>
-
-指定した位置の文字列を置換するには、第4引数に置換後の文字列を指定します。この例では$strの先頭から2文字が$replaceで置き換わります。
-
-<h4>index</h4>
-
-文字列を検索するには<a href="/blog/20080225120395.html">index関数</a>を使用します。
+Use the <a href="/blog/20080906122079.html"> rand function </a> to generate random numbers. A number smaller than the number specified by the argument is randomly generated.
 
 <pre>
-$ret = index($str, $search);
-</pre>
+$ ret = rand $ num;
+</ pre>
 
-第1引数には検索対象の文字列、第2引数には検索したい文字列を指定します。戻り値には文字列が見つかった位置が返却されます。見つからなかった場合は-1が返却されます。
+<h4> looks_like_number (Scalar :: Util) </ h4>
 
-<pre>
-$ret = index($str, $search, $pos);
-</pre>
-
-第3引数に検索開始位置を指定することができます。
-
-<h4>rindex</h4>
-
-文字列の末尾から文字列を検索するには<a href="/blog/20100321126967.html">rindex関数</a>を使用します。
+Use the <a href="/blog/20090501124313.html"> looks_like_number function </a> of the Scalar :: Util module to determine if it is a number.
 
 <pre>
-$ret = rindex($str, $search);
-</pre>
+use Scalar :: Util'looks_like_number';
+$ ret = looks_like_number $ num;
+</ pre>
 
-<h4>split</h4>
+<div id = "string"> </ div>
+<h3> 2 String manipulation </ h3>
 
-区切り文字で文字列を分割するには<a href="/blog/20080301120434.html">split関数</a>を使用します。
+<h4> join </ h4>
 
-<pre>
-@ret = split(/,/, $str);
-</pre>
-
-第1引数には区切り文字を正規表現で指定します。第2引数には分割したい文字列を指定します。戻り値は分割された文字列の配列です。
-
-<h4>reverse</h4>
-
-文字列の順序を逆順にするには<a href="/blog/20080227120413.html">reverse関数</a>を使用します。
+Use the <a href="/blog/20081007122338.html"> join function </a> to concatenate strings by specifying a delimiter.
 
 <pre>
-$ret = reverse $str;
-</pre>
+$ ret = join (',', @array);
+</ pre>
 
-またreverse関数は配列に対して使用すると配列の順序を逆順にします。
+The first argument is the delimiter. In this example, a comma is specified as the delimiter. The character strings given in the second and subsequent arguments are concatenated with a delimiter.
 
-<h4>uc</h4>
+<h4> length </ h4>
 
-文字列を大文字に変換するには<a href="/blog/20080903122057.html">uc関数</a>を使用します。
-
-<pre>
-$ret = uc $str;
-</pre>
-
-<h4>ucfirst</h4>
-
-文字列の先頭だけを大文字に変換するには<a href="/blog/20100325127089.html">ucfirst関数</a>を使用します。
+To get the length of the string, use the <a href="/blog/20080926122245.html"> length function </a>.
 
 <pre>
-$ret = ucfirst $str;
-</pre>
+$ ret = length $ str;
+</ pre>
 
-<h4>lc</h4>
+<h4> substr </ h4>
 
-文字列を小文字に変換するには<a href="/blog/20100326127089.html">lc関数</a>を使用します。
+Use the <a href="/blog/20080224120386.html"> substr function </a> to extract and replace the characters at the specified position.
 
-<pre>
-$ret = lc $str;
-</pre>
-
-<h4>lcfirst</h4>
-
-文字列の先頭だけを小文字に変換するには<a href="/blog/20100327127089.html">lcfirst関数</a>を使用します。
+[A] Extract the character at the specified position
 
 <pre>
-$ret = lcfirst $str;
-</pre>
+$ ret = substr ($ str, 2, 4);
+</ pre>
 
-<h4>sprintf</h4>
+The first argument is the target string. The second argument is the start position of the string you want to extract. The third argument is the length of the string you want to extract.
 
- 書式を指定した文字列を作成するには<a href="/blog/20081001122296.html">sprintf関数</a>を使用します。
-
-<pre>
-$ret = sprintf($format, @strs);
-</pre>
-
-第1引数は書式を表現した文字列です。第2引数以降は書式指定子の部分に埋め込まれる文字列です。
-
-<span style="font-weight:bold;">[A]書式指定のサンプル</span>
-
-$numを整数として解釈して8桁でフォーマットします。8桁に満たない部分は0で埋められます。
+[B] Replace the character string at the specified position
 
 <pre>
-$ret = sprintf("%08d", $num);
-</pre>
+substr ($ str, 0, 2, $ replace);
+</ pre>
 
-$numを浮動少数点と解釈して小数点2桁で丸めます。
+To replace the character string at the specified position, specify the replaced character string in the 4th argument. In this example, the first two characters of $ str are replaced by $ replace.
 
-<pre>
-$ret = sprintf("%.2f", $num);
-</pre>
+<h4> index </ h4>
 
-<span style="font-weight:bold;">[B]書式指定子一覧</span>
-<pre>
-%c 数値をASCIIコードに対応する文字に変換
-%s 引数を文字列として解釈
-%d 引数を符号付整数として解釈
-%u 引数を符号なし整数として解釈
-%o 正数を8進文字列に変換
-%x 正数を16進文字列に変換(小文字表記)
-%X 正数を16進文字列に変換(大文字表記)
-%b 正数を2進文字列に変換 
-%f 引数を浮動少数点として解釈
-%e 引数を浮動小数点として解釈(指数表記(小文字)でフォーマット)
-%E 引数を浮動小数点として解釈(指数表記(大文字)でフォーマット)
-%g 引数を浮動小数点として解釈(指数表記(小文字)でフォーマット。末尾の0は削除される)
-%G 引数を浮動少数点として解釈(指数表記(大文字)でフォーマット。末尾の0は削除される)
-%p 引数に与えられた変数のメモリ上のアドレスに変換 
-</pre>
-
-<h4>chomp</h4>
-
-末尾の改行を取り除くには<a href="/blog/20080226120403.html">chomp関数</a>を使用します。
+Use the <a href="/blog/20080225120395.html"> index function </a> to search for a string.
 
 <pre>
-chomp $str
-</pre>
+$ ret = index ($ str, $ search);
+</ pre>
 
-<h4>クォート演算子「q」</h4>
-
-シングルクォートの中でシングルクォートをエスケープしないで使用したい場合は<a href="/blog/20100304126967.html">クォート演算子</a>を使用します。
+In the first argument, specify the character string to be searched, and in the second argument, specify the character string you want to search. The position where the character string is found is returned as the return value. If not found, -1 will be returned.
 
 <pre>
-q(aaa'bbb)
-</pre>
+$ ret = index ($ str, $ search, $ pos);
+</ pre>
 
-機能はシングルクォートで囲んだ場合と同じです。変数展開は行われません。
+You can specify the search start position in the third argument.
 
-<pre>
-# これと同じ
-'aaa\'bbb'
-</pre>
+<h4> rindex </ h4>
 
-<h4>ダブルクォート演算子「qq」</h4>
-
-ダブルクォートの中でダブルクォートをエスケープしないで使用したい場合は<a href="/blog/20100305126967.html">ダブルクォート演算子</a>を使用します。
+Use the <a href="/blog/20100321126967.html"> rindex function </a> to search for a string from the end of the string.
 
 <pre>
-qq(aaa"bbb)
-</pre>
+$ ret = rindex ($ str, $ search);
+</ pre>
 
-機能はダブルクォートで囲んだ場合と同じです。変数展開が行われます。
+<h4> split </ h4>
 
-<pre>
-# これと同じ
-"aaa\"bbb" 
-</pre>
-
-<h4>quotemeta</h4>
-
-正規表現の中で使用される特別な文字列をエスケープするには<a href="/blog/20100329127089.html">quotemeta関数</a>を使用します。
+Use the <a href="/blog/20080301120434.html"> split function </a> to split the string by the delimiter.
 
 <pre>
-$ret = quotemeta $str;
-</pre>
+@ret = split (/, /, $ str);
+</ pre>
 
-<h4>chr</h4>
+Specify the delimiter as a regular expression in the first argument. In the second argument, specify the character string you want to split. The return value is an array of split strings.
 
-数値を対応するASCII文字に変換するには<a href="/blog/20080928122260.html">chr関数</a>を使用します。
+<h4> reverse </ h4>
 
-<pre>
-$ret = chr $num;
-</pre>
-
-<h4>ord</h4>
-
-ASCIIコードの文字を内部表現である数値に変換するには<a href="/blog/20080929122278.html">ord関数</a>を使用します。
+Use the <a href="/blog/20080227120413.html"> reverse function </a> to reverse the order of the strings.
 
 <pre>
-$ret = ord $char;
-</pre>
+$ ret = reverse $ str;
+</ pre>
 
-<h4>oct</h4>
+Also, when used on an array, the reverse function reverses the order of the array.
 
-8進文字列を対応する数値に変換するには<a href="/blog/20171027150945.html">oct関数</a>を使用します。
+<h4> uc </ h4>
 
-<pre>
-$ret = oct $octal;
-</pre>
-
-<h4>hex</h4>
-
-16進文字列を対応する数値に変換するには<a href="/blog/20171026150980.html">hex関数</a>を使用します。
+Use the <a href="/blog/20080903122057.html"> uc function </a> to convert the string to uppercase.
 
 <pre>
-$ret = hex $hex;
-</pre>
+$ ret = uc $ str;
+</ pre>
 
-<div id="array"></div>
-<h3>3 配列操作</h3>
+<h4> ucfirst </ h4>
 
-<h4>配列の個数の取得</h4>
-
-配列の個数を取得するには<a href="/blog/20080608121292.html">スカラーコンテキスト</a>で配列を評価します。
+Use the <a href="/blog/20100325127089.html"> ucfirst function </a> to convert only the beginning of a string to uppercase.
 
 <pre>
-$ret = @array;
-</pre>
+$ ret = ucfirst $ str;
+</ pre>
 
-<h4>配列の最後の要素番号</h4>
+<h4> lc </ h4>
 
-配列の最後の要素番号を取得するには$#arrayとします。
-
-<pre>
-$ret = $#array;
-</pre>
-
-<h4>shift</h4>
-
-配列の先頭の要素を取り出すには<a href="/blog/20100104126425.html">shift関数</a>を使用します。
+Use the <a href="/blog/20100326127089.html"> lc function </a> to convert the string to lowercase.
 
 <pre>
-$ret = shift @array;
-</pre>
+$ ret = lc $ str;
+</ pre>
 
-<h4>unshift</h4>
+<h4> lcfirst </ h4>
 
-配列の先頭に要素を追加するには<a href="/blog/20100105126425.html">unshift関数</a>を使用します。
-
-<pre>
-unshift(@array, @items);
-</pre>
-
-<h4>pop</h4>
-
-配列の末尾の要素を取り出すには<a href="/blog/20100107126425.html">pop関数</a>を使用します。
+Use the <a href="/blog/20100327127089.html"> lcfirst function </a> to convert only the beginning of a string to lowercase.
 
 <pre>
-$ret = pop @array;
-</pre>
+$ ret = lcfirst $ str;
+</ pre>
 
-<h4>push</h4>
+<h4> sprintf </ h4>
 
-配列の末尾に要素を追加するには<a href="/blog/20100106126425.html">push関数</a>を使用します。
-
-<pre>
-push(@array, @items);
-</pre>
-
-<h4>splice</h4>
-
-配列に対する複数の要素の操作を行うには<a href="/blog/20080127120141.html">splice関数</a>を使用します。
-
-<span style="font-weight:bold;">[A]複数の要素を取り出す</span>
-複数の要素を取り出すことができます。
+ Use the <a href="/blog/20081001122296.html"> sprintf function </a> to create a formatted string.
 
 <pre>
-@ret = splice(@array, $pos, $size)
-</pre>
+$ ret = sprintf ($ format, @strs);
+</ pre>
 
-第1引数に対象の配列、第2引数に開始位置、第3引数に抜き出したいサイズを指定します。
+The first argument is a string that represents the format. The second and subsequent arguments are the character strings embedded in the format specifier part.
 
-<span style="font-weight:bold;">[B]複数の要素を置換する</span>
-複数の要素を置換することができます。
+<span style = "font-weight: bold;"> [A] Formatting sample </ span>
 
-<pre>
-splice(@array, $pos, $size, @items);
-</pre>
-
-第4引数に置き換えたい配列を指定します。
-
-<h4>配列スライス</h4>
-
-配列から複数の要素を取得するには<a href="/blog/20080216120316.html">配列スライス</a>を使用します。
+Interpret $ num as an integer and format it with 8 digits. Parts less than 8 digits are padded with 0s.
 
 <pre>
-@ret= @array[0, 1, 3];
-</pre>
-この例では@arrayの0,1,3番目の要素が@retに代入されます。
+$ ret = sprintf ("% 08d", $ num);
+</ pre>
 
-<h4>grep</h4>
-
-条件にマッチした要素だけを取り出したい場合は<a href="/blog/20100119126425.html">grep関数</a>を使用します。
+Interpret $ num as a floating point and round it to two decimal places.
 
 <pre>
-@ret = grep { 条件 } @array; 
-</pre>
+$ ret = sprintf ("% .2f", $ num);
+</ pre>
 
-3より大きい値を抜き出すサンプルです。
+<span style = "font-weight: bold;"> [B] List of format specifiers </ span>
+<pre>
+% c Convert numbers to characters corresponding to ASCII code
+Interpret the% s argument as a string
+Interpret the% d argument as a signed integer
+Interpret the% u argument as an unsigned integer
+% o Convert positive numbers to octal strings
+% x Convert positive numbers to hexadecimal strings (lowercase notation)
+% X Convert positive numbers to hexadecimal strings (uppercase)
+% b Convert positive numbers to binary strings
+Interpret the% f argument as a floating point
+Interpret% e argument as floating point (formatted in exponential notation (lowercase))
+Interpret% E argument as floating point (formatted in exponential notation (uppercase))
+Interpret% g argument as floating point (formatted in exponential notation (lowercase), trailing 0s removed)
+Interpret the% G argument as a floating point number (finger)Formatted in number notation (uppercase). The trailing 0 is removed)
+Translated to the in-memory address of the variable given in the% p argument
+</ pre>
+
+<h4> chomp </ h4>
+
+Use the <a href="/blog/20080226120403.html"> chomp function </a> to remove the trailing newline.
 
 <pre>
-@ret = grep { $_ > 3 } @array; 
-</pre>
+chomp $ str
+</ pre>
 
-配列の要素は順番に$_に代入されます。$_ > 3 を満たすものだけが@retに代入されます。
+<h4> Quart operator "q" </ h4>
 
-<h4>map</h4>
-
-配列のすべての要素を処理するには<a href="/blog/20100118126425.html">map関数</a>を使用します。
+If you want to use single quotes without escaping them, use <a href="/blog/20100304126967.html"> quote operator </a>.
 
 <pre>
-@ret = map { 要素の操作 } @array; 
-</pre>
+q (aaa'bbb)
+</ pre>
 
-すべての要素を2倍するサンプルです。
-
-<pre>
-@ret = map { $_ * 2 } @array; 
-</pre>
-
-配列の要素は順番に$_に代入されます。$_ * 2 の結果が@retに代入されます。
-
-<h4>max(List::Util)</h4>
-
-配列の要素の最大値を求めるには<a href="/blog/20080114120030.html">List::Utilモジュール</a>のmax関数を使用します。
+The function is the same as when enclosed in single quotes. No variable expansion is done.
 
 <pre>
-use List::Util 'max';
-$ret = max @array;
-</pre>
+# Same as this
+'aaa \'bbb'
+</ pre>
 
-<h4>min(List::Util)</h4>
+<h4> Double quote operator "qq" </ h4>
 
-配列の要素の最小値を求めるには<a href="/blog/20080114120030.html">List::Utilモジュール</a>のmin関数を使用します。
-
-<pre>
-use List::Util 'min';
-$ret = min @array;
-</pre>
-
-<h4>sum(List::Util)</h4>
-
-配列の要素の合計を求めるには<a href="/blog/20080114120030.html">List::Utilモジュール</a>のsum関数を使用します。
+If you want to use double quotes without escaping them, use <a href="/blog/20100305126967.html"> double quote operator </a>.
 
 <pre>
-use List::Util 'sum';
-$ret = sum @array;
-</pre>
+qq (aaa "bbb)
+</ pre>
 
-<h4>sort</h4>
-
-配列の要素を並び替えるには<a href="/blog/20100110126528.html">sort関数</a>を使用します。
+The function is the same as when enclosed in double quotes. Variable expansion is performed.
 
 <pre>
-@ret = sort { 並び替える条件 } @array;
-</pre>
+# Same as this
+"aaa \" bbb "
+</ pre>
 
-<span style="font-weight:bold;">[A]数値で比較して昇順で並び替える</span>
-数値で比較して昇順で並び替えるサンプルです。
+<h4> quotemeta </ ​​h4>
 
-<pre>
-@ret = sort { $a <=> $b } @array;
-</pre>
-
-数値で比較するには<=>を使用します。昇順で並べかえる場合は$a <=> $b とします。
-
-<span style="font-weight:bold;">[B]数値で比較して降順で並び替える</span>
-数値で比較して降順で並び替えるサンプルです。
+Use the <a href="/blog/20100329127089.html"> quotemeta function </a> to escape special strings used in regular expressions.
 
 <pre>
-@ret = sort { $b <=> $a } @array;
-</pre>
+$ ret = quotemeta $ str;
+</ pre>
 
-数値で比較するには<=>を使用します。降順で並べかえる場合は$b <=> $a とします。
+<h4> chr </ h4>
 
-<span style="font-weight:bold;">[C]辞書順で比較して昇順で並び替える</span>
-辞書順で比較して昇順で並び替えるサンプルです。
-
-<pre>
-@ret = sort { $a cmp $b } @array;
-</pre>
-
-辞書順で比較するにはcmpを使用します。昇順で並べかえる場合は$a cmp $b とします。
-
-<span style="font-weight:bold;">[D]辞書順で比較して降順で並び替える</span>
-辞書順で比較して降順で並び替えるサンプルです。
+Use the <a href="/blog/20080928122260.html"> chr function </a> to convert a number to the corresponding ASCII character.
 
 <pre>
-@ret = sort { $b cmp $a } @array;
-</pre>
+$ ret = chr $ num;
+</ pre>
 
-辞書順で比較するにはcmpを使用します。降順で並べかえる場合は$b cmp $a とします。
+<h4> ord </ h4>
 
-<h4>shuffle(List::Util)</h4>
-
-配列をランダムに並べ替えるには<a href="/blog/20080114120030.html">List::Utilモジュール</a>のshuffle関数を使用します。
+Use the <a href="/blog/20080929122278.html"> ord function </a> to convert ASCII code characters to numbers, which is an internal representation.
 
 <pre>
-use List::Util 'shuffle';
+$ ret = ord $ char;
+</ pre>
+
+<h4> oct </ h4>
+
+Use the <a href="/blog/20171027150945.html"> oct function </a> to convert an octal string to the corresponding number.
+
+<pre>
+$ ret = oct $ octal;
+</ pre>
+
+<h4> hex </ h4>
+
+Use the <a href="/blog/20171026150980.html"> hex function </a> to convert a hexadecimal string to the corresponding number.
+
+<pre>
+$ ret = hex $ hex;
+</ pre>
+
+<div id = "array"> </ div>
+<h3> 3 Array manipulation </ h3>
+
+<h4> Get the number of arrays </ h4>
+
+To get the number of arrays, evaluate the arrays in <a href="/blog/20080608121292.html"> scalar context </a>.
+
+<pre>
+$ ret = @array;
+</ pre>
+
+<h4> Last element number in the array </ h4>
+
+Use $ # array to get the last element number of the array.
+
+<pre>
+$ ret = $ #array;
+</ pre>
+
+<h4> shift </ h4>
+
+Use the <a href="/blog/20100104126425.html"> shift function </a> to retrieve the first element of the array.
+
+<pre>
+$ ret = shift @array;
+</ pre>
+
+<h4> unshift </ h4>
+
+Use the <a href="/blog/20100105126425.html"> unshift function </a> to add an element to the beginning of the array.
+
+<pre>
+unshift (@array, @items);
+</ pre>
+
+<h4> pop </ h4>
+
+Use the <a href="/blog/20100107126425.html"> pop function </a> to retrieve the last element of the array.
+
+<pre>
+$ ret = pop @array;
+</ pre>
+
+<h4> push </ h4>
+
+Use the <a href="/blog/20100106126425.html"> push function </a> to add an element to the end of the array.
+
+<pre>
+push (@array, @items);
+</ pre>
+
+<h4> splice </ h4>
+
+Use the <a href="/blog/20080127120141.html"> splice function </a> to work with multiple elements on an array.
+
+<span style = "font-weight: bold;"> [A] Extract multiple elements </ span>
+You can retrieve multiple elements.
+
+<pre>
+@ret = splice (@array, $ pos, $ size)
+</ pre>
+
+Specify the target array in the first argument, the start position in the second argument, and the size you want to extract in the third argument.
+
+<span style = "font-weight: bold;"> [B] Replace multiple elements </ span>
+You can replace multiple elements.
+
+<pre>
+splice (@array, $ pos, $ size, @items);
+</ pre>
+
+Specify the array you want to replace with the 4th argument.
+
+<h4> Array slice </ h4>
+
+Use <a href="/blog/20080216120316.html"> Array Slice </a> to get multiple elements from an array.
+
+<pre>
+@ret = @array [0, 1, 3];
+</ pre>
+In this example, the 0th, 1st, and 3rd elements of @array are assigned to @ret.
+
+<h4> grep </ h4>
+
+If you want to retrieve only the elements that match the conditions, use the <a href="/blog/20100119126425.html"> grep function </a>.
+
+<pre>
+@ret = grep {condition} @array;
+</ pre>
+
+This is a sample to extract a value larger than 3.
+
+<pre>
+@ret = grep {$ _> 3} @array;
+</ pre>
+
+The elements of the array are sequentially assigned to $ _. Only those that satisfy $ _> 3 will be assigned to @ret.
+
+<h4> map </ h4>
+
+Use the <a href="/blog/20100118126425.html"> map function </a> to process all the elements of the array.
+
+<pre>
+@ret = map {element manipulation} @array;
+</ pre>
+
+This is a sample that doubles all the elements.
+
+<pre>
+@ret = map {$ _ * 2} @array;
+</ pre>
+
+The elements of the array are sequentially assigned to $ _. The result of $ _ * 2 is assigned to @ret.
+
+<h4> max (List :: Util) </ h4>
+
+To find the maximum value of an array element, use the max function of the <a href="/blog/20080114120030.html"> List :: Util module </a>.
+
+<pre>
+use List :: Util'max';
+$ ret = max @array;
+</ pre>
+
+<h4> min (List :: Util) </ h4>
+
+To find the minimum value of an array element, use the min function of the <a href="/blog/20080114120030.html"> List :: Util module </a>.
+
+<pre>
+use List :: Util'min';
+$ ret = min @array;
+</ pre>
+
+<h4> sum (List :: Util) </ h4>
+
+Use the sum function of the <a href="/blog/20080114120030.html"> List :: Util module </a> to sum the elements of the array.
+
+<pre>
+use List :: Util'sum';
+$ ret = sum @array;
+</ pre>
+
+<h4> sort </ h4>
+
+Use the <a href="/blog/20100110126528.html"> sort function </a> to sort the elements of the array.
+
+<pre>
+@ret = sort {sorting conditions} @array;
+</ pre>
+
+<span style = "font-weight: bold;"> [A] Compare numerically and sort in ascending order </ span>
+This is a sample that compares numerically and sorts in ascending order.
+
+<pre>
+@ret = sort {$ a <=> $ b} @array;
+</ pre>
+
+Use <=> to compare numerically. To sort in ascending order, use $ a <=> $ b.
+
+<span style = "font-weight: bold;"> [B] Compare numerically and sort in descending order </ span>
+This is a sample that compares numerically and sorts in descending order.
+
+<pre>
+@ret = sort {$ b <=> $ a} @array;
+</ pre>
+
+Use <=> to compare numerically. To sort in descending order, use $ b <=> $ a.
+
+<span style = "font-weight: bold;"> [C] Compare in dictionary order and sort in ascending order </ span>
+This is a sample that compares in dictionary order and sorts in ascending order.
+
+<pre>
+@ret = sort {$ a cmp $ b} @array;
+</ pre>
+
+Use cmp to compare in lexicographical order. If you want to sort in ascending order, use $ a cmp $ b.
+
+<span style = "font-weight: bold;"> [D] Compare in dictionary order and sort in descending order </ span>
+This is a sample that compares in dictionary order and sorts in descending order.
+
+<pre>
+@ret = sort {$ b cmp $ a} @array;
+</ pre>
+
+Use cmp to compare in lexicographical order. If you want to sort in descending order, use $ b cmp $ a.
+
+<h4> shuffle (List :: Util) </ h4>
+
+To sort the array randomly, use the shuffle function of the <a href="/blog/20080114120030.html"> List :: Util module </a>.
+
+<pre>
+use List :: Util'shuffle';
 @ret = shuffle @array;
-</pre>
+</ pre>
 
-<h4>reverse</h4>
+<h4> reverse </ h4>
 
-配列の要素を逆順にするには<a href="/blog/20080227120413.html">reverse関数</a>を使用します。
+Use the <a href="/blog/20080227120413.html"> reverse function </a> to reverse the elements of the array.
 
 <pre>
 @ret = reverse @array;
-</pre>
+</ pre>
 
-<h4>文字列リスト演算子</h4>
+<h4> String list operator </ h4>
 
-<a href="/blog/20100303126967.html">文字列リスト演算子</a>を使えばカンマやクォートなしで文字列のリストを表現できます。
+You can use the <a href="/blog/20100303126967.html"> string list operator </a> to represent a list of strings without commas or quotes.
 <pre>
-@array = qw(cat dob mouse);
-</pre>
+@array = qw (cat dob ​​mouse);
+</ pre>
 
-<div id="hash"></div>
-<h3>4 ハッシュ操作</h3>
+<div id = "hash"> </ div>
+<h3> 4 Hash operation </ h3>
 
-<h4>keys</h4>
+<h4> keys </ h4>
 
-ハッシュのすべてのキーを取得するには<a href="/blog/20080210120265.html">keys関数</a>を使用します。
-
-<pre>
-@ret = keys %hash;
-</pre>
-
-<h4>values</h4>
-
-ハッシュのすべての値を取得するには<a href="/blog/20100222126425.html">values関数</a>を使用します。
+Use the <a href="/blog/20080210120265.html"> keys function </a> to get all the keys in the hash.
 
 <pre>
-@ret = values %hash;
-</pre>
+@ret = keys% hash;
+</ pre>
 
-<h4>each</h4>
+<h4> values ​​</ h4>
 
-ハッシュのキーと値のペアを順に取得するには<a href="/blog/20080212120283.html">each関数</a>を使用します。
-
-<pre>
-($key, $value) = each %hash;
-</pre>
-
-すべてのキーと値のペアを順に処理するためには<a href="/blog/20100123126425.html">while文</a>を使用します。
+To get all the values ​​of a hashUse the <a href="/blog/20100222126425.html"> values ​​function </a>.
 
 <pre>
-while (my ($key, $value) = each %hash) {
+@ret = values% hash;
+</ pre>
+
+<h4> each </ h4>
+
+Use the <a href="/blog/20080212120283.html"> each function </a> to get the hash key / value pairs in sequence.
+
+<pre>
+($ key, $ value) = each% hash;
+</ pre>
+
+Use the <a href="/blog/20100123126425.html"> while statement </a> to process all key / value pairs in sequence.
+
+<pre>
+while (my ($ key, $ value) = each% hash) {
   ...
 }
-</pre>
+</ pre>
 
-<h4>exists</h4>
+<h4> exists </ h4>
 
-ハッシュのキーの存在を確認するには<a href="/blog/20080213120291.html">exists関数</a>を使用します。
-
-<pre>
-$ret = exists($hash{$key});
-</pre>
-
-<h4>delete</h4>
-
-ハッシュのキーを削除するには<a href="/blog/20080214120300.html">delete関数</a>を使用します。
+Use the <a href="/blog/20080213120291.html"> exists function </a> to check for the existence of the hash key.
 
 <pre>
-delete $hash{$key};
-</pre>
+$ ret = exists ($ hash {$ key});
+</ pre>
 
-<h4>reverse</h4>
+<h4> delete </ h4>
 
-ハッシュのキーと値を入れ替えるには<a href="/blog/20080227120413.html">reverse関数</a>を使用します。
-
-<pre>
-%ret = reverse %hash;
-</pre>
-
-<div id="file-io"></div>
-<h3>5 ファイル入出力</h3>
-
-<h4>open</h4>
-
-ファイルをオープンするには<a href="/blog/20080718121643.html">open関数</a>を使用します。
+Use the <a href="/blog/20080214120300.html"> delete function </a> to delete the hash key.
 
 <pre>
-open(my $fh, "<", $file)
-  or die "Cannot open $file: $!";
-</pre>
+delete $ hash {$ key};
+</ pre>
 
-ファイルオープンが成功した場合は$fhにファイルハンドルが代入されます。($fhを宣言すると同時にopen関数に渡しています。)
+<h4> reverse </ h4>
 
-ファイルオープンが失敗した場合のエラー処理は必ず行う必要があります。
-
-<span style="font-weight:bold;">[A]オープンモード</span>
-よく使用されるオープンモードの一覧です。
+Use the <a href="/blog/20080227120413.html"> reverse function </a> to swap the hash key and value.
 
 <pre>
-読み込み <
-書き込み >
-追加書き込み >>
-</pre>
+% ret = reverse% hash;
+</ pre>
 
-<h4>close</h4>
+<div id = "file-io"> </ div>
+<h3> 5 File input / output </ h3>
 
-ファイルハンドルをクローズするには<a href="/blog/20160312145776.html">close関数</a>を使用します。
+<h4> open </ h4>
 
-<pre>
-close $fh;
-</pre>
-
-<h4>ファイル入力演算子</h4>
-
-ファイルから1行を読み込むには<a href="/blog/20080722121673.html">ファイル入力演算子</a>を使用します。
+Use the <a href="/blog/20080718121643.html"> open function </a> to open the file.
 
 <pre>
-$line = <$fh>;
-</pre>
+open (my $ fh, "<", $ file)
+  or die "Cannot open $ file: $!";
+</ pre>
 
-通常は<a href="/blog/20100123126425.html">while文</a>と一緒に使用します。
+If the file is opened successfully, the file handle is assigned to $ fh. (Declaring $ fh and passing it to the open function at the same time.)
+
+It is necessary to handle the error when the file open fails.
+
+<span style = "font-weight: bold;"> [A] Open mode </ span>
+A list of commonly used open modes.
 
 <pre>
-while (my $line = <$fh>) {
+Read <
+Write>
+Additional writing >>
+</ pre>
+
+<h4> close </ h4>
+
+Use the <a href="/blog/20160312145776.html"> close function </a> to close the file handle.
+
+<pre>
+close $ fh;
+</ pre>
+
+<h4> File input operator </ h4>
+
+Use the <a href="/blog/20080722121673.html"> file input operator </a> to read a line from a file.
+
+<pre>
+$ line = <$ fh>;
+</ pre>
+
+Usually used with <a href="/blog/20100123126425.html"> while statement </a>.
+
+<pre>
+while (my $ line = <$ fh>) {
   ...
 }
-</pre>
+</ pre>
 
-<span style="font-weight:bold;">[A]すべての行を配列に読み込む</span>
-すべての行を配列に読み込むにはリストコンテキストでダイヤモンド演算子を使用します。
-
-<pre>
-@lines = <$fh>;
-</pre>
-
-<h4>fileno</h4>
-
-ファイルディスクリプタを取得するには<a href="/blog/20160314145796.html">fileno関数</a>を使用します。
+<span style = "font-weight: bold;"> [A] Read all rows into an array </ span>
+Use the diamond operator in the list context to read all rows into the array.
 
 <pre>
-$ret = fileno $fh;
-</pre>
+@lines = <$ fh>;
+</ pre>
 
-<h4>opendir</h4>
+<h4> fileno </ h4>
 
-ディレクトリをオープンするには<a href="/blog/20171002150691.html">opendir関数</a>を使用します。
-
-<pre>
-opendir(my $dh, $dir)
-  or die "Cannot open $dir: $!";
-</pre>
-
-$dhにオープンされたディレクトリハンドルが代入されます。ディレクトリオープンが失敗した場合のエラー処理は必ず行う必要があります。
-
-<h4>closedir</h4>
-
-ディレクトリハンドルをクローズするには<a href="/blog/20171001150694.html">closedir</a>関数を使用します。
+Use the <a href="/blog/20160314145796.html"> fileno function </a> to get the file descriptor.
 
 <pre>
-closedir $dh;
-</pre>
+$ ret = fileno $ fh;
+</ pre>
 
-<h4>readdir</h4>
+<h4> opendir </ h4>
 
-ディレクトリの中のファイル名を1つずつ読みこむには<a href="/blog/20171003150703.html">readdir関数</a>を使用します。
-
-<pre>
-$file = readdir $dh;
-</pre>
-
-通常は<a href="/blog/20100123126425.html">while文</a>と一緒に使用します。
+Use the <a href="/blog/20171002150691.html"> opendir function </a> to open the directory.
 
 <pre>
-while (my $file = readdir $dh) {
+opendir (my $ dh, $ dir)
+  or die "Cannot open $ dir: $!";
+</ pre>
+
+The opened directory handle is assigned to $ dh. It is necessary to handle the error when the directory open fails.
+
+<h4> closeddir </ h4>
+
+Use the <a href="/blog/20171001150694.html"> closedir </a> function to close the directory handle.
+
+<pre>
+closedir $ dh;
+</ pre>
+
+<h4> readdir </ h4>
+
+Use the <a href="/blog/20171003150703.html"> readdir function </a> to read the filenames in the directory one by one.
+
+<pre>
+$ file = readdir $ dh;
+</ pre>
+
+Usually used with <a href="/blog/20100123126425.html"> while statement </a>.
+
+<pre>
+while (my $ file = readdir $ dh) {
   ...
 }
-</pre>
+</ pre>
 
-<div id="file-directory"></div>
-<h3>6 ファイル・ディレクトリ操作</h3>
+<div id = "file-directory"> </ div>
+<h3> 6 File / directory operations </ h3>
 
-<h4>unlink</h4>
+<h4> unlink </ h4>
 
-ファイルを削除するには<a href="/blog/20080520121125.html">unlink関数</a>を使用します。
-
-<pre>
-unlink $file
-  or die "Cannot remove $file: $!";
-</pre>
-
-<h4>copy(File::Copy)</h4>
-
-ファイルをコピーするには<a href="/blog/20100408127089.html">File::Copy</a>モジュールのcopy関数を使用します。
+Use the <a href="/blog/20080520121125.html"> unlink function </a> to delete the file.
 
 <pre>
-use File::Copy 'copy';
-copy($file_from, $file_to)
-  or die "Cannot copy $file_from to $file_to: $!";
-</pre>
+unlink $ file
+  or die "Cannot remove $ file: $!";
+</ pre>
 
-<h4>move(File::Copy)</h4>
+<h4> copy (File :: Copy) </ h4>
 
-ファイルを移動するには<a href="/blog/20100408127089.html">File::Copy</a>モジュールのmove関数を使用します。
-
-<pre>
-use File::Copy 'copy';
-move($file_from, $file_to)
-  or die "Cannot move $file_from to $file_to: $!";
-</pre>
-
-<h4>chdir</h4>
-
-カレントディレクトリを変更するには<a href="/blog/20080528121197.html">chdir関数</a>を取得します。
+To copy a file, use the copy function of the <a href="/blog/20100408127089.html"> File :: Copy </a> module.
 
 <pre>
-chdir $dir
-  or die "Cannot change directory $dir: $!";
-</pre>
+use File :: Copy'copy';
+copy ($ file_from, $ file_to)
+  or die "Cannot copy $ file_from to $ file_to: $!";
+</ pre>
 
-<h4>mkdir</h4>
+<h4> move (File :: Copy) </ h4>
 
-ディレクトリを作成するには<a href="/blog/20080523121155.html">mkdir関数</a>を使用します。
-
-<pre>
-mkdir $dir
-  or die "Cannot create directory $dir: $!";
-</pre>
-
-<h4>rmdir</h4>
-
-ディレクトリを削除するには<a href="/blog/20080526121181.html">rmdir関数</a>を使用します。
+To move a file, use the move function of the <a href="/blog/20100408127089.html"> File :: Copy </a> module.
 
 <pre>
-rmdir $dir
-  or die "Cannot remove directory $dir: $!";
-</pre>
+use File :: Copy'copy';
+move ($ file_from, $ file_to)
+  or die "Cannot move $ file_from to $ file_to: $!";
+</ pre>
 
-<h4>mkpath(File::Path)</h4>
+<h4> chdir </ h4>
 
-複数階層のディレクトリを作成するには<a href="/blog/20100409127089.html">File::Path</a>モジュールのmkpath関数を使用します。
+To change the current directory, get the <a href="/blog/20080528121197.html"> chdir function </a>.
 
 <pre>
-use File::Path 'mkpath';
+chdir $ dir
+  or die "Cannot change directory $ dir: $!";
+</ pre>
+
+<h4> mkdir </ h4>
+
+Use the <a href="/blog/20080523121155.html"> mkdir function </a> to create the directory.
+
+<pre>
+mkdir $ dir
+  or die "Cannot create directory $ dir: $!";
+</ pre>
+
+<h4> rmdir </ h4>
+
+Use the <a href="/blog/20080526121181.html"> rmdir function </a> to delete the directory.
+
+<pre>
+rmdir $ dir
+  or die "Cannot remove directory $ dir: $!";
+</ pre>
+
+<h4> mkpath (File :: Path) </ h4>
+
+To create a multi-level directory, use the mkpath function of the <a href="/blog/20100409127089.html"> File :: Path </a> module.
+
+<pre>
+use File :: Path'mkpath';
 eval {
-  mkpath $dir
+  mkpath $ dir
 };
 
-if ($@) {
-  die "Cannot create $dir: $@";
+if ($ @) {
+  die "Cannot create $ dir: $ @";
 }
-</pre>
+</ pre>
 
-mkpathが失敗した場合は例外が発生するので、evalブロックでキャッチします。例外が発生した場合のエラーの内容は$@に格納されます。
+If mkpath fails, an exception will be thrown, so catch it with the eval block. The content of the error when an exception occurs is stored in $ @.
 
-<h4>rmtree(File::Path)</h4>
+<h4> rmtree (File :: Path) </ h4>
 
-中にファイルを含むディレクトリを削除したい場合は<a href="/blog/20100409127089.html">File::Pathモジュール</a>のrmtree関数を使用します。
+If you want to delete the directory that contains the files inside, use the rmtree function of the <a href="/blog/20100409127089.html"> File :: Path module </a>.
 
 <pre>
-use File::Path 'rmtree';
+use File :: Path'rmtree';
 
-rmtree($dir, {error => \my $errors});
-for my $diag (@$errors) {
-  my ($file, $message) = each %$diag;
-  warn "problem unlinking $file: $message\n";
+rmtree ($ dir, {error => \ my $ errors});
+for my $ diag (@ $ errors) {
+  my ($ file, $ message) = each% $ diag;
+  warn "problem unlinking $ file: $ message \ n";
 }
-</pre>
+</ pre>
 
-第1引数には削除したいディレクトリを指定します。最後の引数にはオプションを指定できます。この例ではエラーの内容を取得するようにしています。
+In the first argument, specify the directory you want to delete. You can specify options for the last argument. In this example, I am trying to get the content of the error.
 
-<h4>getcwd(Cwd)</h4>
+<h4> getcwd (Cwd) </ h4>
 
-カレントディレクトリを取得するには<a href="/blog/20100527127859.html">Cwdモジュール</a>のgetcwd関数を使用します。
-
-<pre>
-use Cwd 'getcwd';
-$ret = getcwd;
-</pre>
-
-<h4>chmod</h4>
-
-ファイルのパーミッションを変更するには<a href="/blog/20080821121933.html">chmod関数</a>を使用します。
+To get the current directory, use the getcwd function of the <a href="/blog/20100527127859.html"> Cwd module </a>.
 
 <pre>
-chmod($permission, $file)
-  or die "Cannot change permission $file: $!";
-</pre>
+use Cwd'getcwd';
+$ ret = getcwd;
+</ pre>
 
-<h4>basename(File::Basename)</h4>
+<h4> chmod </ h4>
 
-ファイルのベース名を取り出すには<a href="/blog/20100225126425.html">File::Basenameモジュール</a>のbasename関数を使用します。
-
-<pre>
-use File::Basename 'basename';
-$ret = basename $file;
-</pre>
-
-/a/b/c.txt というファイル名の場合はc.txtがベース名に当たります。
-
-<h4>dirname(File::Basename)</h4>
-
-ファイルが含まれるディレクトリ名を取得するには<a href="/blog/20100225126425.html">File::Basenameモジュール</a>のdirname関数を使用します。
+Use the <a href="/blog/20080821121933.html"> chmod function </a> to change the file permissions.
 
 <pre>
-use File::Basename 'dirname';
-$ret = dirname $file;
-</pre>
+chmod ($ permission, $ file)
+  or die "Cannot change permission $ file: $!";
+</ pre>
 
-/a/b/c.txt というファイル名の場合は/a/bがディレクトリ名に当たります。
+<h4> basename (File :: Basename) </ h4>
 
-<h4>ファイルテスト演算子</h4>
-
-<a href="/blog/20100820127859.html">ファイルテスト演算子</a>を使用するとファイルやディレクトリの存在確認を行うことができます。
+To retrieve the base name of a file, use the basename function of the <a href="/blog/20100225126425.html"> File :: Basename module </a>.
 
 <pre>
-# 通常ファイルの存在確認
-$ret = -f $file;
+use File :: Basename'basename';
+$ ret = basename $ file;
+</ pre>
 
-# ディレクトリの存在確認 
-$ret = -d $dir;
-</pre>
+If the file name is /a/b/c.txt, c.txt is the base name.
 
-通常は条件文と一緒に使用されます。
+<h4> dirname (File :: Basename) </ h4>
+
+To get the name of the directory that contains the file, use the dirname function of the <a href="/blog/20100225126425.html"> File :: Basename module </a>.
 
 <pre>
-if (-f $file) {
+use File :: Basename'dirname';
+$ ret = dirname $ file;
+</ pre>
+
+In the case of the file name /a/b/c.txt, / a / b corresponds to the directory name.
+
+<h4> FileStrike operator </ h4>
+
+You can use the <a href="/blog/20100820127859.html"> file test operator </a> to check the existence of a file or directory.
+
+<pre>
+#Check the existence of normal files
+$ ret = -f $ file;
+
+#Check the existence of the directory
+$ ret = -d $ dir;
+</ pre>
+
+Usually used with conditional statements.
+
+<pre>
+if (-f $ file) {
   ...
 }
-</pre>
+</ pre>
 
-<span style="font-weight:bold;">[A]よく使用されるファイル演算子一覧</span>
-
-<pre>
--e  ファイルが存在するかの確認(ディレクトリも含む)
--f  ファイルが通常ファイルかどうかを確認
--d  ディレクトリが存在するかを確認
--r  読み込み可能かどうかの確認
--w  書き込み可能かどうかの確認
--x  実行可能かどうかの確認
--M  最終更新から経過した日数を取得
--A  最終アクセスから経過した日数を取得
--s  ファイサイズを取得(単位はバイト)
-</pre>
-
-<div id="date-time"></div>
-<h3>7 時刻・時間</h3>
-
-<h4>time</h4>
-
-エポック時から現在までの経過秒を取得するには<a href="/blog/20081008122347.html">time関数</a>を使用します。
+<span style = "font-weight: bold;"> [A] List of commonly used file operators </ span>
 
 <pre>
-$ret = time;
-</pre>
+-e Check if the file exists (including the directory)
+-f Check if the file is a regular file
+-d Check if the directory exists
+-r Check if it can be read
+-w Check if writable
+-x Check if it is executable
+-M Get the number of days that have passed since the last update
+-A Get the number of days that have passed since the last access
+-s Get phi size (unit is bytes)
+</ pre>
 
-エポック時とは1970年1月1日のことです。
+<div id = "date-time"> </ div>
+<h3> 7 Time / Time </ h3>
 
-<h4>localtime</h4>
+<h4> time </ h4>
 
-現在の日付と時刻を取得するには<a href="/blog/20081009122357.html">localtime関数</a>を使用します。
-
-<pre>
-($sec, $min, $hour, $mday, $mon, $year, $wday) = localtime;
-$year += 1900;
-$mon += 1;
-</pre>
-
-先頭から「秒、分、時、日、月、年、曜日」の順になります。年は1900年からの経過年ですので、取得した年に1900を加える必要があります。月は0から始まりますので、実際の月を取得するには1を加える必要があります。
-
-<h4>timelocal(Time::Local)</h4>
-
-日付と時刻の情報からエポック時からの経過秒を取得するには<a href="/blog/20081014122416.html">Time::Localモジュールのtimelocal関数</a>を使用します。
+Use the <a href="/blog/20081008122347.html"> time function </a> to get the elapsed seconds from the epoch to the present.
 
 <pre>
-use Time::Local 'timelocal';
-$ret = timelocal($sec, $min, $hour, $mday, $mon, $year);
-</pre>
+$ ret = time;
+</ pre>
 
-<h4>sleep</h4>
+The epoch time is January 1, 1970.
 
-スリープするには<a href="/blog/20170522149546.html">sleep関数</a>を使用します。スリープする時間は秒で指定します。
+<h4> localtime </ h4>
 
-<pre>
-sleep $sec;
-</pre>
-
-スリープするとプログラムはその間停止します。
-
-<h4>usleep(Time::HiRes)</h4>
-
-マイクロ秒単位でスリープするには<a href="/blog/20180309152509.html">Time::HiRes</a>モジュールのusleep関数を使用します。
+Use the <a href="/blog/20081009122357.html"> localtime function </a> to get the current date and time.
 
 <pre>
-use Time::HiRes 'usleep';
-usleep $microsec;
-</pre>
+($ sec, $ min, $ hour, $ mday, $ mon, $ year, $ wday) = localtime;
+$ year + = 1900;
+$ mon + = 1;
+</ pre>
 
-<div id="other"></div>
-<h3>8 その他の重要な関数</h3>
+From the beginning, the order is "seconds, minutes, hours, days, months, years, days of the week". The year is an elapsed year from 1900, so you need to add 1900 to the year you acquired it. Months start at 0, so you need to add 1 to get the actual month.
 
-<h4>defined</h4>
+<h4> timelocal (Time :: Local) </ h4>
 
-値が定義されているかを確認するには<a href="/blog/20100219126425.html">defined関数</a>を使用します。
-
-<pre>
-$ret = defined($val);
-</pre>
-
-<h4>kill</h4>
-
-プロセスにシグナルを送るにはkill関数を使用します。
+To get the elapsed seconds since the epoch from the date and time information, use the <a href="/blog/20081014122416.html"> Time :: Local module's timelocal function </a>.
 
 <pre>
-kill($signal_number, $child_process_id);
-</pre>
+use Time :: Local'timelocal';
+$ ret = timelocal ($ sec, $ min, $ hour, $ mday, $ mon, $ year);
+</ pre>
 
-<h4>caller</h4>
+<h4> sleep </ h4>
 
-呼び出し元の関数の情報を取得するにはcaller関数を使用します。
-
-<pre>
-($package, $filename, $line, $subroutine) = caller(0);
-</pre>
-
-引数には何階層上の呼び出し元の情報を取得するかを指定します。戻り値は順にパッケージ名、ファイル名、行番号、サブルーチン名になります。
-
-<h4>getpwuid</h4>
-
-実行ユーザ名を取得するには<a href="/blog/20101222130016.html">getpwuid関数</a>を使用します。
+Use the <a href="/blog/20170522149546.html"> sleep function </a> to sleep. The sleep time is specified in seconds.
 
 <pre>
-$ret= getpwuid($>);
-</pre>
+sleep $ sec;
+</ pre>
 
-第1引数にはユーザIDを指定します。実行ユーザIDは$>という特殊変数に格納されているのでこれを指定します。
+When it sleeps, the program will stop during that time.
 
-<h4>hostname(Sys::Hostname)</h4>
+<h4> usleep (Time :: HiRes) </ h4>
 
-ホスト名を取得するには<a href="/blog/20100522127696.html">Sys::Hostnameモジュール</a>のhostname関数を使用します。
-
-<pre>
-use Sys::Hostname 'hostname';
-$ret = hostname;
-</pre>
-
-<h4>die</h4>
-
-エラーメッセージを表示してプログラムを終了するには<a href="/blog/20100212126425.html">die関数</a>を使用します。
+To sleep in microseconds, use the usleep function of the <a href="/blog/20180309152509.html"> Time :: HiRes </a> module.
 
 <pre>
-die $message;
-</pre>
+use Time :: HiRes'usleep';
+usleep $ microsec;
+</ pre>
 
-<h4>warn</h4>
+<div id = "other"> </ div>
+<h3> 8 Other important functions </ h3>
 
-警告メッセージを表示するには<a href="/blog/20100213126425.html">warn関数</a>を使用します。
+<h4> defined </ h4>
+
+Use the <a href="/blog/20100219126425.html"> defined function </a> to see if the value is defined.
 
 <pre>
-warn $message;
-</pre>
+$ ret = defined ($ val);
+</ pre>
 
-<h4>evalブロック</h4>
+<h4> kill </ h4>
 
-例外をキャッチするにはevalブロックを使用します。(<a href="/blog/20100411127089.html">例外処理</a>を参照)
+Use the kill function to signal the process.
+
+<pre>
+kill ($ signal_number, $ child_process_id);
+</ pre>
+
+<h4> caller </ h4>
+
+Use the caller function to get information about the calling function.
+
+<pre>
+($ package, $ filename, $ line, $ subroutine) = caller (0);
+</ pre>
+
+In the argument, specify how many layers the caller information should be acquired. The return value will be the package name, file name, line number, and subroutine name in that order.
+
+<h4> getpwuid </ h4>
+
+Use the <a href="/blog/20101222130016.html"> getpwuid function </a> to get the execution username.
+
+<pre>
+$ ret = getpwuid ($>);
+</ pre>
+
+Specify the user ID in the first argument. The execution user ID is stored in a special variable called $>, so specify this.
+
+<h4> hostname (Sys :: Hostname) </ h4>
+
+To get the hostname, use the hostname function in the <a href="/blog/20100522127696.html"> Sys :: Hostname module </a>.
+
+<pre>
+use Sys :: Hostname'hostname';
+$ ret = hostname;
+</ pre>
+
+<h4> die </ h4>
+
+Use the <a href="/blog/20100212126425.html"> die function </a> to display an error message and exit the program.
+
+<pre>
+die $ message;
+</ pre>
+
+<h4> warn </ h4>
+
+Use the <a href="/blog/20100213126425.html"> warn function </a> to display the warning message.
+
+<pre>
+warn $ message;
+</ pre>
+
+<h4> eval block </ h4>
+
+Use the eval block to catch exceptions. (See <a href="/blog/20100411127089.html"> Exception Handling </a>)
 
 <pre>
 eval {
-  例外が発生する可能性のある処理
+  Processing that may cause an exception
 };
 
-if ($@) {
-  例外が発生した場合の処理
+if ($ @) {
+  What to do if an exception occurs
 }
-</pre>
+</ pre>
 
-例外が発生した場合は$@にエラーの内容が設定されます。
+If an exception occurs, the content of the error is set in $ @.
 
-<h4>__PACKAGE__</h4>
+<h4> __PACKAGE__ </ h4>
 
-現在のパッケージ名は__PACKAGE__で取得することができます。
-
-<pre>
-$ret = __PACKAGE__;
-</pre>
-
-<h4>__LINE__</h4>
-
-スクリプト上の行番号は__LINE__で取得することができます。
+You can get the current package name with __PACKAGE__.
 
 <pre>
-$ret = __LINE__;
-</pre>
+$ ret = __PACKAGE__;
+</ pre>
 
-<h4>__FILE__</h4>
+<h4> __LINE__ </ h4>
 
-スクリプトのファイル名は__FILE__で取得することができます。
-
-<pre>
-$ret = __FILE__;
-</pre>
-
-<div id="function-search"></div>
-<h3>9 関数とモジュールのドキュメントの調べ方</h3>
-
-関数のドキュメントは
+You can get the line number on the script with __LINE__.
 
 <pre>
-perldoc -f 関数名
-</pre>
+$ ret = __LINE__;
+</ pre>
 
-で見ることができます。
+<h4> __FILE__ </ h4>
 
-モジュールのドキュメントは
-
-<pre>
-perldoc モジュール名
-</pre>
-
-で見ることができます。
-
-ドキュメントをファイルに出力したい場合はリダイレクトを使用するとよいでしょう。
+You can get the script file name with __FILE__.
 
 <pre>
-perldoc -f 関数名 > ファイル名
-</pre>
+$ ret = __FILE__;
+</ pre>
 
-<div id="special-variable"></div>
-<h3>10 よく使用する特殊変数</h3>
+<div id = "function-search"> </ div>
+<h3> 9 How to look up function and module documentation </ h3>
 
-<pre>
-$.    読み込んでいるファイルの行番号
-$$    プロセスID
-$>    実行ユーザID
-$)    実行グループID
-$0    実行しているプログラム名
-$^O   OS名
-$^T   プログラムが起動した時刻
-@INC  モジュールの検索パス
-%INC  読み込まれているモジュールの情報
-%ENV  環境変数
-%SIG  シグナルハンドラ
-@ARGV コマンドライン引数
-@_    サブルーチンの引数
-$!    OSのエラー
-$@    evalのエラー
-</pre>
-
-<div id="standard-module"></div>
-<h3>11 よく使用するモジュール</h3>
-
-<h4>File::Spec</h4>
-
-<a href="/blog/20100412127089.html">File::Specモジュール</a>を使用すればOSに応じたファイル名を作成することができます。
+Function documentation
 
 <pre>
-use File::Spec;
-my $file_name = File::Spec->catfile( 'dir', 'file.txt' );
-</pre>
+perldoc -f function name
+</ pre>
 
-Windows系のOSでは、$file_nameは dir\file.txt になり、Unix系のOSではファイル名は dir/file.txtになります。
+You can see it at.
 
-<h4>FindBin</h4>
+The module documentation is
 
-<a href="/blog/20100524127696.html">FindBin</a>モジュールを使用すれば、実行しているスクリプトが存在するディレクトリ名を取得することができます。
+<pre>
+perldoc module name
+</ pre>
+
+You can see it at.
+
+If you want to output the document to a file, you can use redirection.
+
+<pre>
+perldoc -f function name> file name
+</ pre>
+
+<div id = "special-variable"> </ div>
+<h3> 10 Frequently used special variables </ h3>
+
+<pre>
+$. Line number of the file being read
+$$ Process ID
+$> Execution user ID
+$) Execution group ID
+$ 0 Name of the program being executed
+$ ^ O OS name
+$ ^ T Time when the program started
+@INC module search path
+% INC Information on loaded modules
+% ENV environment variable
+% SIG signal handler
+@ARGV command line arguments
+@_ Subroutine arguments
+$! OS error
+$ @ Eval error
+</ pre>
+
+<div id = "standard-module"> </ div>
+<h3> 11 Frequently used modules </ h3>
+
+<h4> File :: Spec </ h4>
+
+You can use <a href="/blog/20100412127089.html"> File :: Spec module </a> to create a file name according to the OS.
+
+<pre>
+use File :: Spec;
+my $ file_name = File :: Spec-> catfile ('dir','file.txt');
+</ pre>
+
+On Windows operating systems, $ file_name is dir \ file.txt, and on Unix operating systems, the file name is dir / file.txt.
+
+<h4> FindBin </ h4>
+
+You can use the <a href="/blog/20100524127696.html"> FindBin </a> module to get the name of the directory where the script you are running is located.
 
 <pre>
 use FindBin;
-my $script_dir = $FindBin::Bin;
-</pre>
+my $ script_dir = $ FindBin :: Bin;
+</ pre>
 
-$FindBin::Bin に実行しているスクリプトが存在するディレクトリ名が格納されます。
+$ FindBin :: Bin contains the name of the directory where the script you are running is located.
 
-<h4>lib</h4>
+<h4> lib </ h4>
 
-<a href="/blog/20100525127859.html">libモジュール</a>を使用すればモジュールの検索パスを追加することができます。
-
-<pre>
-use lib qw/. lib/;
-</pre>
-
-カレントディレクトリとカレントディレクトリのlibディレクトリをモジュールの検索パスに追加する例です。
-
-<h4>Carp</h4>
-
-呼び出し元から見た観点でエラーを報告するには<a href="/blog/20100430127089.html">Carpモジュール</a>を使用します。croakをdieの代わりに、carpをwarnの代わりに使用します。
+You can add a module search path using the <a href="/blog/20100525127859.html"> lib module </a>.
 
 <pre>
-use Carp qw/croak carp/;
+use lib qw /. lib /;
+</ pre>
 
-# dieと同じ
-croak($message);
+This is an example of adding the current directory and the lib directory of the current directory to the module search path.
 
-# warnと同じ
-carp($message);
-</pre>
+<h4> Carp </ h4>
 
-<h4>Get::Options</h4>
-
-<a href="/blog/20080108132865.html">コマンドライン引数</a>でオプションを受け取りたい場合は<a href="/blog/20100514127696.html">Get::Optionsモジュール</a>を使用します。たとえば次のようなオプションを受け取りたいとします。
+Use the <a href="/blog/20100430127089.html"> Carp module </a> to report an error from the caller's perspective. Use croak instead of die and carp instead of warn.
 
 <pre>
-perl script_name --length=100 --file=test.txt --verbose
-</pre>
+use Carp qw / croak carp /;
 
-このオプションを受け取るためには以下のように記述します。
+Same as # die
+croak ($ ​​message);
+
+Same as # warn
+carp ($ message);
+</ pre>
+
+<h4> Get :: Options </ h4>
+
+If you want to receive options with <a href="/blog/20080108132865.html"> command line arguments </a>, use <a href="/blog/20100514127696.html"> Get :: Options module </a> To use. For example, suppose you want to receive the following options:
 
 <pre>
-use Getopt::Long 'GetOptions';
+perl script_name --length = 100 --file = test.txt --verbose
+</ pre>
 
-# デフォルト値の設定
-my $data   = 'file.dat';
-my $length = 24;
-my $verbose;
+To receive this option, write:
 
-# コマンドラインオプションから値を受け取る
-# (数値, 文字列, 真偽値)
-GetOptions(
-  'length=i' => \$length,
-  'file=s' => \$data,
-  'verbose' => \$verbose
+<pre>
+use Getopt :: Long'GetOptions';
+
+#Set default value
+my $ data ='file.dat';
+my $ length = 24;
+my $ verbose;
+
+#Receive value from command line option
+# (Numeric value,String, boolean value)
+GetOptions (
+  'length = i'=> \ $ length,
+  'file = s'=> \ $ data,
+  'verbose' => \ $ verbose
 );
-</pre>
+</ pre>
 
-<h4>URI</h4>
+<h4> URI </ h4>
 
-URLの操作を便利に扱うにはURIモジュールを使用します。
+Use the URI module to handle URL operations conveniently.
 
 <pre>
 use URI;
 
-my $url = URI->new('http://www.perl.com/index.html');
+my $ url = URI-> new ('http://www.perl.com/index.html');
 
-# URLのスキーマ名 http
-my $scheme = $url->scheme;
+# URL schema name http
+my $ schema = $ url-> schema;
 
-# URLのホスト名 www.perl.com
-my $host = $url->host;
+# URL host name www.perl.com
+my $ host = $ url-> host;
 
-# URLのパスの部分 /index.html
-my $path = $url->path;
+# URL path part /index.html
+my $ path = $ url-> path;
 
-# URLのクエリ文字列の設定
-$url->query_form(name => 'taro', age => 13);
+# URL query string settings
+$ url-> query_form (name =>'taro', age => 13);
 
-# URLのクエリ文字列 name=taro&age=13
-my $query = $url->query;
+#URL query string name = taro & age = 13
+my $ query = $ url-> query;
 
-# URLを文字列で取得 http://www.perl.com/index.html?name=taro&age=13
-my $url_str = $url->as_string;
-</pre>
+#Get URL as a string http://www.perl.com/index.html?name=taro&age=13
+my $ url_str = $ url-> as_string;
+</ pre>
 
-<h4>Data::Dumper</h4>
+<h4> Data :: Dumper </ h4>
 
-配列やハッシュの内容を出力するには<a href="/blog/20080208120248.html">Data::Dumperモジュール</a>を使用します。
-
-<pre>
-use Data::Dumper;
-my $hash = {a => 1, b => 2};
-print Data::Dumper->Dump([$hash], ['$hash']);
-</pre>
-
-<h4>XML::Simple</h4>
-
-XMLをPerlのデータ構造に変換するには<a href="/blog/20100424127089.html">XML::Simpleモジュール</a>を使用します。
+Use the <a href="/blog/20080208120248.html"> Data :: Dumper module </a> to output the contents of an array or hash.
 
 <pre>
-use XML::Simple;
-my $xml = XML::Simple->new;
-my $hash = $xml->XMLin($xml_file);
-</pre>
+use Data :: Dumper;
+my $ hash = {a => 1, b => 2};
+print Data :: Dumper-> Dump ([$ hash], ['$ hash']);
+</ pre>
 
-XMLinメソッドでXMLファイルを解析してPerlのデータ構造に変換することができます。
+<h4> XML :: Simple </ h4>
 
-<h4>LWP::UserAgent</h4>
-
-インターネットから情報を取得するにはLWP::UserAgentモジュールを使用します。
+Use the <a href="/blog/20100424127089.html"> XML :: Simple module </a> to convert XML to a Perl data structure.
 
 <pre>
-use LWP::UserAgent;
-my $ua = LWP::UserAgent->new;
-my $response = $ua->get($url);
+use XML :: Simple;
+my $ xml = XML :: Simple-> new;
+my $ hash = $ xml-> XMLin ($ xml_file);
+</ pre>
 
-my $content; # 取得した内容
-if ($response->is_success) {
-  $content = $response->content;
+You can parse an XML file with the XMLin method and convert it to a Perl data structure.
+
+<h4> LWP :: UserAgent </ h4>
+
+Use the LWP :: UserAgent module to get information from the internet.
+
+<pre>
+use LWP :: UserAgent;
+my $ ua = LWP :: UserAgent-> new;
+my $ response = $ ua-> get ($ url);
+
+my $ content; # Obtained content
+if ($ response-> is_success) {
+  $ content = $ response-> content;
 }
 else {
-  die($response->status_line);
+  die ($ response-> status_line);
 }
-</pre>
+</ pre>
 
-getメソッドに取得したいページのURLを取得します。HTTP::Responseオブジェクトが返却されますので、is_successメソッドで成功したかどうかを調べます。成功した場合はcontentメソッドで取得したページの内容を取得します。
+Get the URL of the page you want to get in the get method. An HTTP :: Response object will be returned, so check if the is_success method succeeded. If successful, get the content of the page obtained by the content method.
 
-<h4>Net::FTP</h4>
+<h4> Net :: FTP </ h4>
 
-FTPを行いたい場合は<a href="/blog/20091115124667.html">Net::FTPモジュール</a>を使用します。
-
-<pre>
-use Net::FTP;
-
-# ホスト名(あるいはIPアドレス)を指定してFTPサーバに接続
-my $ftp = Net::FTP->new($host)
-  or die "Cannot connect to $host: $@";
-
-# ユーザ名とパスワードを指定してログイン
-$ftp->login($user, $password)
-  or die "Cannot login ", $ftp->message;
-
-# カレントディレクトリの変更
-$ftp->cwd($dir)
-  or die "Cannot change working directory ", $ft
-
-# ファイルの取得
-$ftp->get($file)
-  or die "get failed ", $ftp->message;
-
-# FTPの切断
-$ftp->quit;
-</pre>
-
-<h4>Text::Diff</h4>
-
-ファイル間の差分を調べたい場合は<a href="/blog/20100414127089.html">Text::Diffモジュール</a>を使用します。
+If you want to do FTP, use <a href="/blog/20091115124667.html"> Net :: FTP module </a>.
 
 <pre>
-use Text::Diff 'diff';
-my $diff = diff($file1, $file2);
-</pre>
+use Net :: FTP;
+
+#Specify the host name (or IP address) to connect to the FTP server
+my $ ftp = Net :: FTP-> new ($ host)
+  or die "Cannot connect to $ host: $ @";
+
+#Login by specifying user name and password
+$ ftp-> login ($ user, $ password)
+  or die "Cannot login", $ ftp-> message;
+
+# Change current directory
+$ ftp-> cwd ($ dir)
+  or die "Cannot change working directory", $ ft
+
+# Get file
+$ ftp-> get ($ file)
+  or die "get failed", $ ftp-> message;
+
+# FTP disconnection
+$ ftp-> quit;
+</ pre>
+
+<h4> Text :: Diff </ h4>
+
+If you want to check the difference between files, use <a href="/blog/20100414127089.html"> Text :: Diff module </a>.
+
+<pre>
+use Text :: Diff'diff';
+my $ diff = diff ($ file1, $ file2);
+</ pre>

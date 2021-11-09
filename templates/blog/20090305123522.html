@@ -1,130 +1,129 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>IO::ScalarArray - 標準入力の試験で活躍</h2>
+  </ li>
+</ ol>
+<h2> IO :: ScalarArray --Active in standard input testing </ h2>
 
 
 
-今回は「IO::ScalarArray」を使った標準入力の自動試験について解説します。
+This time, I will explain the automatic test of standard input using "IO :: ScalarArray".
 
-<h3>1. 標準入力にデータを流し込む方法</h3>
+<h3> 1. How to feed data to standard input </ h3>
 
-標準入力 STDINは、入力用のハンドルであって、プログラムの中からここにデータを書き込むことはできません。
+The standard input STDIN is a handle for input, and data cannot be written to it from within the program.
 
-標準入力にデータ流し込むことはできないのですが、擬似的に試験を行うことができます。tie という仕組みを使用すれば標準入力から行を読み込む
+It is not possible to input data to the standard input, but it is possible to perform a simulated test. Read lines from standard input using a mechanism called tie
 
 <pre>
 <STDIN>
-</pre>
+</ pre>
 
-という記述を、データを変数から読み込むという記述に結びつけることができます。( ここでは詳しく解説しませんがkitsさんの<a href="http://www.akatsukinishisu.net/itazuragaki/perl/tie_stdin.html">tieでSTDINを置き換える</a>という記事で方法が解説されています。)
+Can be linked to the description of reading data from a variable. (I won't explain in detail here, but kits's <a href="http://www.akatsukinishisu.net/itazuragaki/perl/tie_stdin.html"> tie replaces STDIN </a> article explains how to do this. It has been.)
 
-<h3>2. IO::ScalarArrayを使用した標準入力の試験</h3>
+<h3> 2. Standard input test using IO :: ScalarArray </ h3>
 
-IO::ScalarArrayは tie の仕組みを利用して、標準入力にデータを流し込むような記述を可能にするモジュールです。以下のように使用します。
+IO :: ScalarArray is a module that uses the tie mechanism to enable descriptions that flow data into standard input. Use it as follows.
 
-まず、標準入力に流し込みたいデータを配列で作成します。標準入力は改行がひとつの区切りですので、データの末尾には改行をつけます。
+First, create an array of the data you want to flow into the standard input. Since the standard input has one line break, add a line break at the end of the data.
 
-それをIO::ScalarArrayのnewに渡して、オブジェクトを作成します。その後、型グロブを利用して、STDIN が $stdin のエイリアスになるようにします。
+Pass it to new in IO :: ScalarArray to create the object. Then use a typeglob to make STDIN an alias for $ stdin.
 
 <pre>
-use IO::ScalarArray;
+use IO :: ScalarArray;
 {
-  my @inputs = ("1\n", "2\n", "3\n");
-  my $stdin = IO::ScalarArray->new(\@inputs);
-  local *STDIN = *$stdin;
-  # 試験の記述
+  my @inputs = ("1 \ n", "2 \ n", "3 \ n");
+  my $ stdin = IO :: ScalarArray-> new (\ @ inputs);
+  local * STDIN = * $ stdin;
+  #Exam description
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20080309120507.html">local</a>
+(Reference) <a href="/blog/20080309120507.html"> local </a>
 
-<h3>3 標準入力の自動試験のサンプル</h3>
+<h3> 3 Standard input automatic test sample </ h3>
 
-対話的に質問をするプログラムの試験です。question関数は、男かどうかをたずねる関数になっています。
+This is a test of a program that asks questions interactively. The question function is a function that asks if you are a man.
 
 <pre>
-use Test::More tests => 1;
+use Test :: More tests => 1;
 use strict;
 use warnings;
 
-use IO::ScalarArray;
+use IO :: ScalarArray;
 
 {
-  my @answers = ("y\n");
-  my $stdin = IO::ScalarArray->new(\@answers);
+  my @answers = ("y \ n");
+  my $ stdin = IO :: ScalarArray-> new (\ @ answers);
   
-  local *STDIN = *$stdin;
+  local * STDIN = * $ stdin;
   
-  my $is_man = question();
-  ok( $is_man, 'He is man');
+  my $ is_man = question ();
+  ok ($ is_man,'He is man');
 }
 
-# 男性かどうかを尋ねる関数
+# Function to ask if you are male
 sub question {
-  print "Are you man?\n";
-  my $answer = <STDIN>;
+  print "Are you man? \ N";
+  my $ answer = <STDIN>;
   
-  chomp $answer;
-  my $is_man;
-  if ($answer eq 'y') { $is_man = 1 }
-  else { $is_man = 0 }
+  chomp $ answer;
+  my $ is_man;
+  if ($ answer eq'y') {$ is_man = 1}
+  else {$ is_man = 0}
   
-  return $is_man;
+  return $ is_man;
 }
-</pre>
+</ pre>
 
-<h3>スカラー入出力を利用する方法</h3>
-Perlのスカラー入出力という機能を利用するサンプルです。
+<h3> How to use scalar input / output </ h3>
+This is a sample that uses Perl's scalar input / output function.
 
 <pre>
-use Test::More tests => 1;
+use Test :: More tests => 1;
 use strict;
 use warnings;
 
 {
-  my $inputs = <<"EOS";
-y\n
-n\n
+  my $ inputs = << "EOS";
+y \ n
+n \ n
 EOS
 
-  # スカラー入出力を利用する方法
-  open my $stdin, "<", \$inputs;
+  #How to use scalar input / output
+  open my $ stdin, "<", \ $ inputs;
   
-  local *STDIN = *$stdin;
+  local * STDIN = * $ stdin;
   
-  my $is_man = question();
-  ok($is_man, 'He is man');
+  my $ is_man = question ();
+  ok ($ is_man,'He is man');
   
-  $is_man = question();
-  ok(!$is_man, 'He is not man');
+  $ is_man = question ();
+  ok (! $ Is_man,'He is not man');
 }
 
-# 男性かどうかを尋ねる関数
+# Function to ask if you are male
 sub question {
-  print "Are you man?\n";
-  my $answer = <STDIN>;
+  print "Are you man? \ N";
+  my $ answer = <STDIN>;
   
-  chomp $answer;
-  my $is_man;
-  if ($answer eq 'y') { $is_man = 1 }
-  else { $is_man = 0 }
+  chomp $ answer;
+  my $ is_man;
+  if ($ answer eq'y') {$ is_man = 1}
+  else {$ is_man = 0}
 
-  return $is_man;
+  return $ is_man;
 }
-</pre>
-
+</ pre>

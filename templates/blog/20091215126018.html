@@ -1,269 +1,269 @@
-<script>location.href="https://mojolicious.perlzemi.com/blog/20091215126018.html";</script>
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<script> location.href = "https://mojolicious.perlzemi.com/blog/20091215126018.html"; </ script>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Mojoliciousのユーティリティ</h2>
+      <span itemprop = "name"> Mojolicious </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Mojolicious Utility </ h2>
 
 
 
 
-Mojoliciousのユーティリティを紹介します。
+Introducing Mojolicious's utilities.
 
-<h3>継承を行う</h3>
+<h3> Inheritance </ h3>
 
-継承を行う場合はbaseモジュールで行うことができますが、少し機能を拡張した継承の方法がMojoliciousには用意されています。機能を拡張した継承を行うには、Mojo::Baseのインポート機能を利用します。
+If you want to inherit, you can do it in the base module, but Mojolicious provides a slightly enhanced inheritance method. To perform extended inheritance, use the import function of Mojo :: Base.
 
 <pre>
-package MyApp::Photoshoot;
-use Mojo::Base 'Mojolicious::Controller';
-</pre>
+package MyApp :: Photoshoot;
+use Mojo :: Base'Mojolicious :: Controller';
+</ pre>
 
-上記の記述はMojolicious::Controllerクラスを継承して、MyApp::Photoshootクラスを作成している例です。
+The above description is an example of creating the MyApp :: Photoshoot class by inheriting the Mojolicious :: Controller class.
 
-Mojo::Baseの継承機能は以下のような追加の機能を提供します。
+The Mojo :: Base inheritance feature provides additional features such as:
 
 <ul>
   <li>
-    「use strict」を自動で行う
-  </li>
+    Automatically perform "use strict"
+  </ li>
   <li>
-    「use warnings」を自動で行う
-  </li>
+    Automatically perform "use warnings"
+  </ li>
   <li>
-    属性を定義するhasメソッドがインポートされる
-  </li>
-</ul>
+    The has method that defines the attribute is imported
+  </ li>
+</ ul>
 
-<h3>アクセッサを定義する</h3>
+<h3> Define accessors </ h3>
 
-アクセッサを定義するにはMojo::Baseクラスのattrメソッドを使用するか、Mojo::Baseの継承機能によってインポートされるhas関数を使用します。アクセッサにはデフォルト値を設定することもできます。
+To define an accessor, use the attr method of the Mojo :: Base class, or use the has function imported by the Mojo :: Base inheritance feature. You can also set default values ​​for accessors.
 
-Mojolicious::Liteの場合はアプリケーションオブジェクトからattrメソッドを呼ぶことでアプリケーションクラスに属性を追加することができます。
+In the case of Mojolicious :: Lite, you can add attributes to the application class by calling the attr method from the application object.
 
 <pre>
-# Mojolicious::Lite
-app->attr(x => 1);
+#Mojolicious :: Lite
+app-> attr (x => 1);
 
-# アクセッサ
-my $x = app->x;
-app->x(3);
-</pre>
+# Accessor
+my $ x = app-> x;
+app-> x (3);
+</ pre>
 
-Mojoliciousの場合はMojo::Baseに継承機能によってインポートされるhas関数を使用します。
+For Mojolicious, use the has function that is imported into Mojo :: Base by the inheritance feature.
 
 <pre>
-# Mojolciious
+#Mojolciious
 
 has x => 1;
 
 sub startup {
-    my $self = shift;
+    my $ self = shift;
     
-    # アクセッサ
-    my $x = $self->x;
-    $self->x(3);
+    # Accessor
+    my $ x = $ self-> x;
+    $ self-> x (3);
 }
-</pre>
+</ pre>
 
-<h3>デフォルト値に関する注意点</h3>
+<h3> Notes on default values ​​</ h3>
 
-デフォルト値が数値と文字列など定数以外の場合は、サブルーチンのリファレンスの戻り値として与える必要があります。これは他のオブジェクトと値を共有しないために必要になるものです。
-
-<pre>
-app->attr(nums => sub { [1, 2, 3] });
-app->attr(person => sub { {name => 'Ken', age => 19} });
-app->attr(dbh => sub { DBI->connect(...) });
-</pre>
-
-<h3>モードを取得・設定する</h3>
-
-モードを取得・設定するにはMojoliciousクラスの<strong>mode</strong>メソッドを使用します。
+If the default values ​​are non-constants, such as numbers and strings, they must be given as the return value of the subroutine reference. This is what you need to avoid sharing values ​​with other objects.
 
 <pre>
-# 使い方
-my $mode = $app->mode;
-$app->mode('test');
+app-> attr (nums => sub {[1, 2, 3]});
+app-> attr (person => sub {{name =>'Ken', age => 19}});
+app-> attr (dbh => sub {DBI-> connect (...)});
+</ pre>
 
-# Mojolicious::Lite
-app->mode;
+<h3> Get / set mode </ h3>
 
-# Mojolicious(from Controller)
-$self->app->mode;
-</pre>
-
-デフォルトのモードはdevelopmentです。hypnotoadでアプリケーションを実行したときはモードはproductionになります。
-
-環境変数を使ってモードを設定することもできます。
+Use the <strong> mode </ strong> method of the Mojolicious class to get and set the mode.
 
 <pre>
-export MOJO_MODE=test
-</pre>
+# How to use
+my $ mode = $ app-> mode;
+$ app-> mode ('test');
 
-<h3>アプリケーションクラスの説明</h3>
+#Mojolicious :: Lite
+app-> mode;
 
-Webアプリケーションの本体を表すクラスについて解説しておきます。ここからの解説ではWebアプリケーション本体を表すクラスをアプリケーションクラスと呼ぶことにします。
+#Mojolicious (from Controller)
+$ self-> app-> mode;
+</ pre>
 
-<h4>アプリケーションクラス</h4>
+The default mode is development. When you run the application with hypnotoad, the mode will be production.
 
-アプリケーションクラスについて理解するためにソースコードを見てみましょう。アプリケーション名はSampleappでです。
+You can also set the mode using environment variables.
+
+<pre>
+export MOJO_MODE = test
+</ pre>
+
+<h3> Application class description </ h3>
+
+I will explain the class that represents the main body of the Web application. In the explanation from here, the class that represents the Web application itself will be called the application class.
+
+<h4> Application class </ h4>
+
+Let's take a look at the source code to understand the application classes. The application name is Sampleapp.
 
 <pre>
 package Sampleapp;
-use Mojo::Base 'Mojolicious';
+use Mojo :: Base'Mojolicious';
 
-# This method will run once at server start
+#This method will run once at server start
 sub startup {
-  my $self = shift;
+  my $ self = shift;
 
-  # Routes
-  my $r = $self->routes;
-  $r->get('/')->to('main#default');
+  #Routes
+  my $ r = $ self-> routes;
+  $ r-> get ('/')-> to ('main # default');
 }
 
 1;
-</pre>
-最初に注目して欲しいのは次の部分です。Mojo::Baseを使うと、クラスを継承することができます。
+</ pre>
+The first thing to notice is the next part. You can use Mojo :: Base to inherit classes.
 
 <pre>
-use Mojo::Base 'Mojolicious';
-</pre>
+use Mojo :: Base'Mojolicious';
+</ pre>
 
-アプリケーションクラスはMojoliciousというクラスを継承して作成されています。つまりMojoliciousで定義されているメソッドをSampleappですべて使用することができるということです。
+The application class is created by inheriting a class called Mojolicious. This means that you can use all the methods defined in Mojolicious in Sampleapp.
 
-またMojoliciousはMojoを継承していますのでSampleappはMojoで定義されているメソッドをすべて利用することができます。
+Also, since Mojolicious inherits Mojo, Sampleapp can use all the methods defined in Mojo.
 
-<h4>アプリケーションの設定 startup</h4>
+<h4> Application settings startup </ h4>
 
-Sampleappの中にはstartupというメソッドが定義されています。このメソッドはアプリケーションが初期化されるときに一回だけ呼ばれます。ですのでアプリケーションに関する設定はこのメソッドの中で行うことになります。ディスパッチの定義などをstartupメソッドに書くことになります。
+A method called startup is defined in Sampleapp. This method is called only once when the application is initialized. Therefore, the settings related to the application will be made in this method. You will write the definition of dispatch etc. in the startup method.
 
 <pre>
 sub startup {
-  my $self = shift;
+  my $ self = shift;
 
-  # Routes
-  my $r = $self->routes;
-  $r->get('/')->to('main#default');
+  #Routes
+  my $ r = $ self-> routes;
+  $ r-> get ('/')-> to ('main # default');
 }
-</pre>
+</ pre>
 
-<h4>アプリケーションクラスでよく使用するメソッド</h4>
+<h4> Methods often used in application classes </ h4>
 
-SampleappはMojoliciousを継承していて、MojoliciousはMojoを継承していますので、それらのメソッドを使用することができます。この中でよく使用するメソッドをいくつか紹介しておきます。
+Sampleapp inherits from Mojolicious, and Mojolicious inherits from Mojo, so you can use those methods. Here are some of the most commonly used methods.
 
-<b>log - ロガーの取得</b>
+<b> log --Getting a logger </ b>
 
-Mojoliciousにはログを設定レベルに応じて出力する機能があります。その機能は「<a href="http://search.cpan.org/dist/Mojo/lib/Mojo/Log.pm">Mojo::Log</a>」というクラスで実装されています。
+Mojolicious has a function to output logs according to the setting level. That feature is implemented in the class "<a href="http://search.cpan.org/dist/Mojo/lib/Mojo/Log.pm"> Mojo :: Log </a>".
 
-アプリケーションクラスはMojo::Logオブジェクトを持っており「log」メソッドで取得することができます。startupメソッドの中では$selfがアプリケーションを表すオブジェクトなのでここからlogを呼ぶことができます。
+The application class has a Mojo :: Log object and can be retrieved with the "log" method. In the startup method, $ self is an object that represents the application, so you can call log from here.
 
 <pre>
 sub startup {
-  my $self = shift;
+  my $ self = shift;
 
-  # ロガーの取得
-  my $log = $self->log;
+  #Getting a logger
+  my $ log = $ self-> log;
     
-  # デバッグレベルでログに出力
-  $log->debug('message');
+  # Output to log at debug level
+  $ log-> debug ('message');
 }
-</pre>
+</ pre>
 
-<b>home - ホームオブジェクトの取得</b>
+<b> home --Get home object </ b>
 
-Mojoliciouにはアプリケーションのホームディレクトリを表現する「Mojo::Home」というクラスがあります。このオブジェクトを取得するには「home」メソッドを使用します。
+Mojoliciou has a class called "Mojo :: Home" that represents the home directory of the application. Use the "home" method to get this object.
 
 <pre>
 sub startup {
-  my $self = shift;
+  my $ self = shift;
 
-  # ホームオブジェクトの取得
-  my $home = $self->home;
+  #Get home object
+  my $ home = $ self-> home;
 }
-</pre>
+</ pre>
 
-<h3>設定ファイルを読み込む</h3>
+<h3> Read the configuration file </ h3>
 
-設定(コンフィグ)ファイルを読み込むにはMojolicious::Plugin::Configを利用します。以下はアプリケーションのホームディレクトリにあるmyapp.confを読み込むサンプルです。
+Use Mojolicious :: Plugin :: Config to read the configuration file. Below is a sample that loads myapp.conf in the application's home directory.
 
 <pre>
-# Mojolicious Lite
-my $conf = plugin('Config', {file => $self->app->home->rel_file('myapp.conf')});
+#Mojolicious Lite
+my $ conf = plugin ('Config', {file => $ self-> app-> home-> rel_file ('myapp.conf')});
 
-# Mojolicious
-my $conf = $self->plugin(
+#Mojolicious
+my $ conf = $ self-> plugin (
   'Config',
-  {file => $self->app->home->rel_file('myapp.conf')}
+  {file => $ self-> app-> home-> rel_file ('myapp.conf')}
 );
-</pre>
+</ pre>
 
-以下は設定ファイルのサンプルです。データベースの情報などを設定ファイルに書いておくことができます。
+Below is a sample configuration file. Database information etc. can be written in the configuration file.
 
 <pre>
 {
-  db_dsn => "DBI:mysql:database=bookshop;",
+  db_dsn => "DBI: mysql: database = bookshop;",
   db_user => "ken",
-  db_password => "FJ5klsd%&"
+  db_password => "FJ5klsd% &"
 }
-</pre>
+</ pre>
 
-<h4>モードに応じた設定ファイルのカスタマイズ</h4>
+<h4> Customize the configuration file according to the mode </ h4>
 
-Mojoliciousではモードに応じて設定ファイルの内容をカスタマイズすることができます。モードに応じた設定は
+Mojolicious allows you to customize the contents of the configuration file according to the mode. The setting according to the mode
 
 <pre>
 myapp.production.conf
-</pre>
+</ pre>
 
-のように
+like
 
 <pre>
-設定ファイル名.モード名.拡張子
-</pre>
+Configuration file name.mode name.extension
+</ pre>
 
-という名前にしたファイルに記述します。
+Write in the file named.
 
-たとえば、データベースのパスワードを本番環境用のものにカスタマイズするには次のようにdb_passwordの値を上書きます。
+For example, to customize the database password for production, overwrite the value of db_password as follows:
 
 <pre>
 # myapp.production.conf
 {
-  db_password => "change!!!!"
+  db_password => "change !!!!"
 }
-</pre>
+</ pre>
 
-<h3>二つの設定ファイルを読み込む</h3>
+<h3> Read two config files </ h3>
 
-ときには設定ファイルを分けて、二つの設定ファイルを読み込みたい場合があると思います。そんなときは、Configプラグインを単純に二回使えばよいだけです。ハッシュのキーが同じ場合は設定が上書かれます。
+Sometimes you may want to separate the config files and read the two config files. In that case, you can simply use the Config plugin twice. If the hash keys are the same, the settings will be overwritten.
 
 <pre>
-$app->plugin(Config => {file => $conf_file1});
-$app->plugin(Config => {file => $conf_file2});
-</pre>
+$ app-> plugin (Config => {file =>$ conf_file1});
+$ app-> plugin (Config => {file => $ conf_file2});
+</ pre>
 
-<h3>ログを世代管理する</h3>
+<h3> Log generation management </ h3>
 
-Mojoliciousを本番環境でhypnotoadで運用した場合は、production.logというログがだんだんと蓄積されていきます。
+When Mojolicious is operated with hypnotoad in the production environment, a log called production.log will be gradually accumulated.
 
-ログを管理するにはCentOSであれば、logrotateを利用するのが簡単です。アプリケーションのあるディレクトリにディレクトリに、logrotateの設定ファイルを配置しましょう。今回はホームディレクトリの下にwebappディレクトリがあるとします。
+If you use CentOS to manage logs, it is easy to use logrotate. Place the logrotate configuration file in the directory where your application is located. This time, suppose you have a webapp directory under your home directory.
 
 <pre>
 cd webapp
 mkdir logrotate
 cd logrotate
 vi logrotate.conf
-</pre>
+</ pre>
 
-以下のように設定ファイルを記述します。1週間に1回、ログファイルをコピーしてローテーションさせる設定にしています。
+Describe the configuration file as follows. It is set to copy and rotate the log file once a week.
 
 <pre>
 /home/ken/webapp/log/production.log {
@@ -272,164 +272,163 @@ vi logrotate.conf
   rotate 12
   missingok
 }
-</pre>
+</ pre>
 
-後はローテーションを実際に実行するコマンドをcrontabに登録しましょう。
+After that, let's register the command that actually executes the rotation in crontab.
 
 <pre>
 crontab -e
-</pre>
+</ pre>
 
-以下の内容を記述します。
+Describe the following contents.
 <pre>
-0 0 * * * /usr/sbin/logrotate -s $HOME/webapp/logrotate/logrotate.status $HOME/webapp/logrotate/logrotate.conf
-</pre>
+0 0 * * * /usr/sbin/logrotate -s $ HOME / webapp / logrotate / logrotate.status $ HOME / webapp / logrotate / logrotate.conf
+</ pre>
 
-<h3>ブラウザのショートカットアイコン(ファビコン)を変更する</h3>
+<h3> Change the browser shortcut icon (favicon) </ h3>
 
-Mojoliciousではデフォルトで雲のマークのファビコンが表示されますが、変更するのは簡単です。
+Mojolicious displays a cloud-marked favicon by default, but it's easy to change.
 
-publicディレクトリ以下に<b>favicon.ico</b>という名前で配置するだけです。
+Just place it under the public directory with the name <b> favicon.ico </ b>.
 
 <pre>
 public
-  - favicon.ico
-</pre>
+  --favicon.ico
+</ pre>
 
-古いファビコンはブラウザにキャッシュされるので確認するときは、ブラウザのキャッシュを削除する必要があるかと思います。
+The old favicon is cached in your browser, so you may need to clear your browser's cache when checking.
 
-またファイル名を指定してファビコンを設置したい場合はHTMLのlinkタグでrelに<b>shortcut icon</b>を指定して以下のようにします。publicディレクトリ以下に<b>example.ico</b>という名前でファビコンを設置しています。
+If you want to set up a favicon by specifying a file name, specify <b> shortcut icon </ b> in rel in the HTML link tag and do as follows. A favicon is installed under the public directory with the name <b> example.ico </ b>.
 
 <pre>
-use Mojolicious::Lite;
+use Mojolicious :: Lite;
 
-get '/' => 'index';
+get'/' =>'index';
 
-app->start;
+app-> start;
 
 __DATA__
 
 @@ index.html.ep
 <html>
   <head>
-    <link rel="shortcut icon" href="<%= url_for '/example.ico' %>">
-    <title>Favicon Example</title>
-  </head>
+    <link rel = "shortcut icon" href = "<% = url_for'/example.ico'%>">
+    <title> Favicon Example </ title>
+  </ head>
   <body>
     Favicon Example
-  </body>
-</html>
-</pre>
+  </ body>
+</ html>
+</ pre>
 
-<h3>Perl5.8.7でMojoliciousを使う方法</h3>
+<h3> How to use Mojolicious with Perl 5.8.7 </ h3>
 
-Cent OSのバージョン5はまだ広く利用されていて、新しいバージョンに移行していくのには、かなりの時間がかかりそうだと僕は思っている。Perlのバージョンは悲しいことに5.8.7。でもうれしいことにPerl5.8.7で実行できるようにMojoliciousをバックポートするプロジェクトがある。
+Version 5 of Cent OS is still widely used and I think it will take a long time to move to the new version. The Perl version is sadly 5.8.7. And the good news is that I have a project that backports Mojolicious so that it can run in Perl 5.8.7.
 
 <ul>
   <li>
-    <big><big><a href="https://github.com/jamadam/mojo-legacy/commits/master">Mojo Legacy</a></big></big>
-  </li>
-</ul>
+    <big> <big> <a href="https://github.com/jamadam/mojo-legacy/commits/master"> Mojo Legacy </a> </ big> </ big>
+  </ li>
+</ ul>
 
-これを利用すれば、ポータビリティの高いWebアプリケーションをMojoliciousを使って書くことができる。
+You can use it to write highly portable web applications using Mojolicious.
 
-<h3>ログを確認する</h3>
+<h3> Check the log </ h3>
 
-Mojoliciousを使って開発をしていると、ソースコードが間違っていたときなどに、どんなエラーが発生しているのかを確認したいときがあります。そんなときはログを確認してみましょう。
+When developing with Mojolicious, there are times when you want to see what kind of error is occurring, such as when the source code is incorrect. In such a case, let's check the log.
 
-スクリプトと同一ディレクトリに<b>log</b>ディレクトリがあれば、そのディレクトリにログが出力され、そうでない場合は、標準エラー出力に内容が出力されます。
+If the <b> log </ b> directory is in the same directory as the script, the log will be output to that directory, otherwise the content will be output to the standard error output.
 
-通常は<b>log</b>ディレクトリを作成しておくのが便利でしょう。
+It is usually convenient to create a <b> log </ b> directory.
 <pre>
-# Mojolicious::Liteの場合
+For #Mojolicious :: Lite
 myapp.pl
-log/
-</pre>
+log /
+</ pre>
 
 <pre>
-# Mojoliciousの場合
-script/myapp
-log/
-</pre>
+For #Mojolicious
+script / myapp
+log /
+</ pre>
 
-<h4>ログの名前</h4>
+<h4> Log name </ h4>
 
-ログはlogディレクトリに出力されますが、ログ名には次のような規則があります。
-
-<pre>
-モード名.log
-</pre>
-
-たとえば<a href="/blog/20120406133367.html">morbo</a>を使って、<b>開発モード</b>でアプリケーションを実行しているときはログ名はdevelopment.logになります。morboで実行したときのデフォルトのモードはdevelopmentだからです。
+The log is output to the log directory, but the log name has the following rules.
 
 <pre>
-log/development.log
-</pre>
+Mode name.log
+</ pre>
 
-また<b>本番環境</b>でhypnotoadを使って実行しているときは、ログ名はproduction.logになります。hypnotoadで実行するときはモード名としてデフォルトでproductionが設定されるからです。
-
-<pre>
-log/production.log
-</pre>
-
-モードを変更するにはmodeメソッド(Mojoliciousクラス)を使用します。
+For example, if you are running your application in <b> development mode </ b> using <a href="/blog/20120406133367.html"> morbo </a>, the log name will be development.log. .. This is because the default mode when running on morbo is development.
 
 <pre>
-# Mojolicious::Liteの例
-app->mode('test');
+log / development.log
+</ pre>
 
-# Mojoliciousの例
+Also, when running with hypnotoad in a <b> production environment </ b>, the log name will be production.log. This is because production is set by default as the mode name when running with hypnotoad.
+
+<pre>
+log / production.log
+</ pre>
+
+Use the mode method (Mojolicious class) to change the mode.
+
+<pre>
+#Mojolicious :: Lite example
+app-> mode ('test');
+
+# Mojolicious example
 sub startup {
-  my $self = shift;
-  $self->mode('test');
+  my $ self = shift;
+  $ self-> mode ('test');
 }
-</pre>
+</ pre>
 
-<h4>Unix/Linuxでのログを確認する便利な方法</h4>
+<h4> A convenient way to check logs on Unix / Linux </ h4>
 
-Unix/Linuxでは<b>tail</b>コマンドを使うとログの確認が便利です。新しくログが出力されたときに、自動的にその内容を表示してくれます。
-
-<pre>
-tail -f log/development.log
-</pre>
-
-<h4>データをダンプする dumper</h4>
-
-Webアプリケーションを作成しているとデータをダンプしてみたいことが良くあります。Mojoliciousでは単純にdieを行えば例外クラスのテンプレートが呼ばれてデータをダンプすることができます。
-
-<strong>dumper</strong>を使って以下のようになります。
+On Unix / Linux, it is convenient to check the log by using the <b> tail </ b> command. When a new log is output, its contents are automatically displayed.
 
 <pre>
-die dumper $data;
-</pre>
+tail -f log / development.log
+</ pre>
 
-<h3>リモートのIPアドレスを取得する</h3>
+<h4> Dump data dumper </ h4>
 
-リモートのIPアドレスを取得するにはMojo::Transactionの<b>remote_address</b>メソッドを使用します。これはCGIの環境変数における<b>リモートホスト(REMOTE_ADDR)</b>に該当するものを取得します。
+When writing a web application, you often want to dump the data. In Mojolicious, you can simply do a die to call the exception class template and dump the data.
 
-<pre>
-# リモートのIPアドレスを取得
-$c->tx->remote_address;
-</pre>
-
-コントローラーオブジェクトからMojo::Transactionオブジェクトを<b>tx</b>メソッドで取得、そこから<b>remote_address</b>メソッドを呼び出し、リモートのIPアドレスを取得します。
-
-<h3>ユーザーエージェント(HTTPヘッダ User-Agent)を取得する</h3>
-
-アクセスしているユーザーエージェント(User-Agent)を取得するには、Mojo::Headerの<b>user_agent</b>メソッドを使用します。
+Using <strong> dumper </ strong>, it looks like this:
 
 <pre>
-# ユーザーエージェントヘッダを取得
-$c->req->headers->user_agent;
-</pre>
+die dumper $ data;
+</ pre>
 
-コントローラーオブジェクトからMojo::Requestオブジェクトを<b>req</b>メソッドで取得、Mojo::Headerオブジェクトを<b>headers</b>メソッドで取得、そこから<b>user_agent</b>メソッドを呼び出します。
+<h3> Get a remote IP address </ h3>
 
-<h3>httpsからのセキュアな接続かどうかを調べる</h3>
-
-接続が、<strong>httpsからのセキュアな接続</strong>かどうかを調べるには<strong>Mojo::Message::Request</strong>クラスの<strong>is_secure</strong>メソッドを使用します。
+To get the remote IP address, use the <b> remote_address </ b> method of Mojo :: Transaction. This gets the CGI environment variable that corresponds to <b> remote host (REMOTE_ADDR) </ b>.
 
 <pre>
-my $secure = $req->is_secure;
-</pre>
+# Get remote IP address
+$ c-> tx-> remote_address;
+</ pre>
 
+Get the Mojo :: Transaction object from the controller object with the <b> tx </ b> method and then call the <b> remote_address </ b> method to get the remote IP address.
+
+<h3> Get user agent (HTTP header User-Agent) </ h3>
+
+To get the accessing user agent (User-Agent), use the <b> user_agent </ b> method of Mojo :: Header.
+
+<pre>
+#Get user agent header
+$ c-> req-> headers-> user_agent;
+</ pre>
+
+Get the Mojo :: Request object from the controller object with the <b> req </ b> method, get the Mojo :: Header object with the <b> headers </ b> method, and from there the <b> user_agent </ b> method call.
+
+<h3> Check if the connection is secure from https </ h3>
+
+Use the <strong> is_secure </ strong> method of the <strong> Mojo :: Message :: Request </ strong> class to find out if the connection is a <strong> secure connection from https </ strong> increase.
+
+<pre>
+my $ secure = $ req-> is_secure;
+</ pre>

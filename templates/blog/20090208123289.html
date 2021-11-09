@@ -1,99 +1,98 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>do - 値を返すブロック、スクリプトの読み込み</h2>
+      <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> do-block that returns a value, load a script </ h2>
 
 
 
-<b>do</b>を使用すると、ブロック構文の場合は、最後に評価された値を返すブロックを作成することができます。文字列構文の場合は、ファイルを名を指定して、スクリプトを読み込むことができます。
-
-<pre>
-# doブロック - 最後の値を返すブロック
-do { ... };
-
-#  do文字列 - スクリプトの読み込み
-do $file_name;
-</pre>
-
-ブロックの構文と、文字列の構文は、機能がまったく異なるので注意してください。それぞれの構文について詳しく解説します。
-
-<h3>最後の値を返すブロック - doブロック</h3>
-
-<b>doブロック</b>を使用すると最後に評価された値を返すブロックを作成することができます。
+You can use <b> do </ b> to create a block that returns the last evaluated value for block syntax. For string syntax, you can specify the name of the file and load the script.
 
 <pre>
-# doブロック
-my $value = do {
+# do block-a block that returns the last value
+do {...};
+
+# do string-load script
+do $ file_name;
+</ pre>
+
+Note that the block syntax and the string syntax have completely different functions. Let's take a closer look at each syntax.
+
+<h3> Block that returns the last value --do block </ h3>
+
+You can use the <b> do block </ b> to create a block that returns the last evaluated value.
+
+<pre>
+# do block
+my $ value = do {
   1;
   2;
   3;
 };
-</pre>
+</ pre>
 
-上のように記述すると3が返され、$valueに3が代入されます。
+If you write as above, 3 will be returned and 3 will be assigned to $ value.
 
-普通にプログラミングするときには、この構文を使う理由は特にありませんが、慣例的に、ファイルの内容を一度に読み込みたい場合は、この構文が利用されます。
+There is no particular reason to use this syntax when programming normally, but it is customary to use this syntax if you want to read the contents of a file all at once.
 
-<h4>ファイルの内容を一度に読み込む</h4>
+<h4> Read the contents of the file at once </ h4>
 
-次の記述によって、ファイルの内容のすべて一度で読み込むことができます。
+The following description allows you to read all the contents of a file at once.
 
 <pre>
-my $content = do { local $/; <$fh> };
-</pre>
+my $ content = do {local $ /; <$ fh>};
+</ pre>
 
-この記述の詳しい解説は以下で行っています。
+A detailed explanation of this description is given below.
 
 <ul>
   <li>
-    <a href="/blog/20180521152690.html">ファイルの内容をすべて読み込む</a>
-  </li>
-</ul>
+    <a href="/blog/20180521152690.html"> Read the entire contents of the file </a>
+  </ li>
+</ ul>
 
-localについては「<a href="/blog/20080309120507.html">local - パッケージ変数を一時的に退避して復元</a>」で解説しています。
+local is explained in "<a href="/blog/20080309120507.html"> local --temporarily save and restore package variables </a>".
 
-<h3>スクリプトの読み込み - do文字列</h3>
+<h3> Loading script --do string </ h3>
 
-<b>do文字列</b>の構文を使うことで、ファイルをPerlのソースコードとして読み込むことができます。
+You can use the <b> do string </ b> syntax to read a file as Perl source code.
 
-よく利用する方法として、設定ファイルをPerlで記述して読み込むことができます。
+A common method is to write the configuration file in Perl and read it.
 
-<h4>設定ファイルをPerlで記述する</h4>
+<h4> Write the configuration file in Perl </ h4>
 
-設定ファイルはPerlで記述するのが便利です。
+It is convenient to write the configuration file in Perl.
 
 <pre>
-my $conf_file = "app.conf";
-my $conf = do $conf_file
-  or die qq/Can't load config file "$conf_file": $!$@/;
-</pre>
+my $ conf_file = "app.conf";
+my $ conf = do $ conf_file
+  or die qq / Can't load config file "$ conf_file": $! $ @ /;
+</ pre>
 
-設定ファイルの内容です。
+The contents of the configuration file.
 
 <pre>
 {
-  name => 'Foo',
+  name =>'Foo',
   number => 9
 }
-</pre>
+</ pre>
 
-ファイルの読み込みか解析に成功しなかった場合は未定義値が返却されます。ファイル名が存在しなかった場合は$!に、Perlのソースコードの読み込みに失敗した場合は$@にエラーの内容が設定されます。
+If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $ @ will be set to the error content.
 
-設定ファイルはXMLやJSONで書くこともできますが、Perlで書くのが一番楽ですね。
+The configuration file can be written in XML or JSON, but it's easiest to write in Perl.
 
-do文字列の構文は、設定を記述したスクリプトを読み込むためだけに、利用するのが良いでしょう。モジュールを読み込みたい場合は、<a href="/blog/20090205123287.html">use</a>か<a href="/blog/20090207123288.html">require</a>を使うようにしましょう。
-
+The do string syntax should only be used to load a script that describes the settings. If you want to load the module, use <a href="/blog/20090205123287.html"> use </a> or <a href="/blog/20090207123288.html"> require </a> ..

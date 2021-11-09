@@ -1,109 +1,109 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>現代的なPerlの記述方法一覧</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> List of modern Perl writing methods </ h2>
 
 
 
-Perl5.8以降における標準的なPerlの書き方を解説します。
+I will explain how to write standard Perl in Perl 5.8 or later.
 
-インターネットで検索するとPerl4のころの古い記述がたくさんあります。また書籍などの多くもPerl4の記法で書かれています。Perl4の記法は複雑になりやすく間違いを生みやすいのでこれからPerlを書く人はPerl5の現代的な記法で記述することを強くお勧めします。 
+If you search the internet, you will find a lot of old descriptions from the time of Perl4. Many books are also written in Perl 4 notation. Perl4 notation can be complicated and error-prone, so it is highly recommended that future Perl writers write in Perl5's modern notation.
 
-<h3>strictプラグマとwarningsプラグマ (必須)</h3>
+<h3> strict pragma and warnings pragma (required) </ h3>
 
-strictプラグマとwarningsプラグマを有効にします。
+Enable the strict and warnings pragmas.
 
 <pre>
 use strict;
 use warnings;
-</pre>
+</ pre>
 
-use strict;とuse warnings;の２行はスクリプトの最初に必ず記述してください。これらはPerlの文法チェックを厳しくするためのものです。面倒だという軽い気持ちでこれを記述しないと後々本当に面倒なことになります。
+Be sure to write the two lines use strict; and use warnings; at the beginning of the script. These are to tighten Perl's grammar checks. If you do not describe this with a light feeling that it is troublesome, it will be really troublesome later.
 
-use strict;とuse warningsを書かなくてもよいのはワンライナーと呼ばれるコマンドラインスクリプトを記述するときだけだという風に考えてください。
+Think of it as the only time you don't have to write use strict; and use warnings when writing a command line script called a one-liner.
 
-<h3>ファイルハンドルにはレキシカル変数を使うこと (本当に特別な用途がない限りは必須)</h3>
+<h3> Use lexical variables for filehandles (required unless you really have a specific purpose) </ h3>
 
-ファイルハンドルには宣言したばかりのレキシカル変数を使います。レキシカル変数を宣言してそれをopen関数の第1引数に指定するとレキシカル変数にファイルハンドルが設定されます。
+Use the lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the lexical variable.
 
 <pre>
-# レキシカル変数
-my $fh;
-my $file = 'file1';
+#Lexical variable
+my $ fh;
+my $ file ='file1';
 
-open $fh, '<', $file
-  or die "Cannot open '$file': $!";
+open $ fh,'<', $ file
+  or die "Cannot open'$ file': $!";
 
-while (my $lien = <$fh>) {
+while (my $ lien = <$ fh>) {
   ...
 }
-</pre>
+</ pre>
 
-レキシカル変数はスコープを持つということと他の関数に引数として渡すことができるという大きな利点があります。古い解説にあるようなFHや*FHなどのシンボルを使わないようにします。
+Lexical variables have the great advantage of having scope and being able to be passed as arguments to other functions. Avoid using symbols such as FH and * FH as in the old commentary.
 
-またレキシカル変数の宣言をopen関数の中にまとめてしまうのがより現代的であるといえるでしょう。
-
-<pre>
-open my $fh, '<', $file
-</pre>
-
-<h3>3引数のopen関数を使う (必須)</h3>
-
-3引数のopen関数を使用するようにします。
-<pre>
-open my $fh, '<', $file
-</pre>
-
-古い解説では2引数のopen関数を解説しているものがありますが使わないようにしましょう。2引数のopen関数はセキュリティ的に脆いので使用してはいけません。
+It would also be more modern to put the declarations of lexical variables together in the open function.
 
 <pre>
-open my $fh, "< $file"; # 2引数のopen関数を使用してはいけない
-</pre>
+open my $ fh,'<', $ file
+</ pre>
 
-これはパイプをオープンするときにも当てはまります。
+<h3> Use open function with 3 arguments (required) </ h3>
+
+Try to use the 3-argument open function.
+<pre>
+open my $ fh,'<', $ file
+</ pre>
+
+Some old explanations explain the two-argument open function, but don't use it. The two-argument open function is vulnerable to security and should not be used.
 
 <pre>
-# ○ (三引数)
-open my $pipe, '-|', 'dir';
+open my $ fh, "<$ file"; # 2 Do not use the open function as an argument
+</ pre>
 
-# × (二引数)
-open my $pipe, 'dir |';
-</pre>
-
-<h3>ファイルオープン時のエラー処理を行う (必須)</h3>
-
-ファイルオープンを行ったときは必ずエラー処理を行うようにします。
+This is also true when opening a pipe.
 
 <pre>
-open my $fh, '<', $file
-  or die "Cannot open '$file': $!";
-</pre>
+# ○ (three arguments)
+open my $ pipe,'-|','dir';
 
-open関数は失敗するとundefを返すのでorを使ってエラー処理を行います。$!にはOSが返したエラーメッセージが含まれているのでユーザに見せるエラーメッセージに含めるようにします。
+# × (two arguments)
+open my $ pipe,'dir |';
+</ pre>
 
-プログラムをエラーメッセージを表示して終了させるにはdie関数を使用します。他のプログラムから見た場合は終了コードは255になります。
+<h3> Perform error handling when opening a file (required) </ h3>
 
-ファイルオープンに限らずプログラムの外部と通信する場合はかならずエラー処理を行うようにします。外部というのはメモリの操作を除くすべてです。ファイルやネットワークなどが外部になります。
-
-<h3>レキシカル変数とサブルーチンの名前には小文字とアンダーバーを使用する (強く推奨)</h3>
-
-「myで宣言されるレキシカル変数」と「サブルーチン」の名前には小文字とアンダーバーを使用します。
+Make sure to handle the error whenever you open the file.
 
 <pre>
-# レキシカル変数
-my $user_name;
-my $search_word;
-my $max_database_connection;
+open my $ fh,'<', $ file
+  or die "Cannot open'$ file': $!";
+</ pre>
 
-# サブルーチン
+If the open function fails, it returns undef, so use or to handle the error. Since $! Contains the error message returned by the OS, include it in the error message shown to the user.
+
+Use the die function to terminate the program with an error message. From the perspective of other programs, the exit code is 255.
+
+Be sure to perform error handling not only when opening a file but also when communicating with the outside of the program. External is everything except memory manipulation. Files, networks, etc. are external.
+
+<h3> Use lowercase letters and underscores in lexical variables and subroutine names (highly recommended) </ h3>
+
+Use lowercase letters and underscores in the names of "lexical variables declared with my" and "subroutines".
+
+<pre>
+#Lexical variable
+my $ user_name;
+my $ search_word;
+my $ max_database_connection;
+
+# Subroutine
 sub parse_data {
   ...
 }
@@ -111,411 +111,408 @@ sub parse_data {
 sub create_table {
   ...
 }
-</pre>
+</ pre>
 
-この記法が良いか悪いかは別にしてCPANにある新しいモジュールのほとんどはこの記法で書かれています。この習慣にしたがっておいたほうがユーザに統一されたインターフェイスを提供できるという点で非常に多くの益があります。
+Whether this notation is good or bad, most of the new modules on CPAN are written in this notation. There are many benefits to following this habit in that it can provide users with a unified interface.
 
-変数の命名方法には別に記事を書いていますのでこちらも参考にしてください。
-<a href="/blog/20081103122562.html">＜変数に適切な名前をつける＞</a>
+I have written a separate article on how to name variables, so please refer to this as well.
+<a href="/blog/20081103122562.html"> <Give the variable a proper name> </a>
 
-サブルーチンの命名方法は原則として「動詞 + 名詞」です。意味がはっきりとわかるものについてはユーザの利便性を考えて「動詞」だけにしても良いかもしれません。ただし後で困ることがあるので「動詞 + 名詞」にしておくのが無難だと思います。
+As a general rule, the naming method for subroutines is "verb + noun". For those whose meaning is clear, it may be possible to use only "verbs" for the convenience of the user. However, I think it is safe to use "verb + noun" because it may cause problems later.
 
-<h3>パッケージ変数には大文字とアンダーバーを使用する (強く推奨)</h3>
+<h3> Use uppercase letters and underscores for package variables (highly recommended) </ h3>
 
-パッケージ変数には大文字とアンダーバーを使用します。
+Use uppercase letters and underscores for package variables.
 
 <pre>
-our $OBJECT_COUNT;
-our $CLASS_INFO;
-</pre>
+our $ OBJECT_COUNT;
+our $ CLASS_INFO;
+</ pre>
 
-<h3>パッケージ変数は使わずにレキシカル変数を使うようにする (必須)</h3>
+<h3> Use lexical variables instead of package variables (required) </ h3>
 
-もしあなたがモジュールの作者でないのであればパッケージ変数を使う機会はありません。もし単体のスクリプトの中でパッケージ変数を使っているとしたらそれは間違った使い方です。myを使ったレキシカル変数に変更しましょう。
+If you are not the author of the module, you will not have the opportunity to use package variables. If you're using a package variable in a single script, that's the wrong way to use it. Let's change it to a lexical variable using my.
 
-<h3>標準的(?)なコードのフォーマットで書く (少し推奨)</h3>
+<h3> Write in standard (?) Code format (slightly recommended) </ h3>
 
-コードの書き方には好き嫌いがあるのですが、Perlベストプラクティスで紹介されている書き方やPerltidyと呼ばれるコード整形ツールが出力する形式にあわせておいたほうが幾分よいと思います。
+I like and dislike how to write code, but I think it's a little better to match it with the writing style introduced in Perl Best Practices and the format output by a code formatting tool called Perltidy.
 
-サンプルとしてMojo::URLのソースコードのリンクを張っておきます。これをまねして書けば覚えられます。
+As a sample, I will link the source code of Mojo :: URL. You can remember it by imitating this.
 
-<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm">＜Mojo::URLのソースコード＞</a>
+<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo :: URL source code> </a>
 
-まねするポイントを少しだけ書いておきます。
+I will write a few points to imitate.
 
-<h4>1. ifやforeach文やサブルーチンなどのスペースの入る位置を見る</h4>
+<h4> 1. Look at the position where spaces such as if and foreach statements and subroutines are inserted </ h4>
 <pre>
-# ifの直後にスペースがあって、()の中にはスペースがないなど
-if ($flg) { 
+There is a space immediately after #if, there is no space in (), etc.
+if ($ flg) {
   ...
 }
-</pre>
+</ pre>
 
-<h4>2. コメントの書き方やスペースの入れ方などを見る</h4>
+<h4> 2. See how to write comments and how to insert spaces </ h4>
 
-コメントの書き方や行のスペースの入れ方などをみましょう。CPANに存在するほとんどのモジュールには親切なコメントがないのですが、個人的は簡潔なコメントをソースコードに書いてくれるとありがたいと思っています。
+Let's see how to write a comment and how to insert a line space. Most modules on CPAN don't have kind comments, but personally I'd appreciate it if you could write some concise comments in the source code.
 
-<h4>3. タブは使わないでインデントの幅はスペースで4(あるいは2)</h4>
+<h4> 3. No tabs, indent width is 4 (or 2) </ h4>
 
-一応これはPerlベストプラクティスでいわれていることです。(最近の僕はスペース2です)。またタブを使いたいという人も中にはいると思いますので、これは個人の好みで。
+For the time being, this is what Perl best practices say. (Recently I'm Space 2). Also, some people may want to use tabs, so this is a personal preference.
 
-<h3>日本語などのマルチバイト文字を適切に扱うためにEncodeモジュールを使用する (強く推奨)</h3>
+<h3> Use the Encode module to properly handle multibyte characters such as Japanese (highly recommended) </ h3>
 
-日本語などのマルチバイト文字を適切に扱うにはEncodeモジュールを使用します。こちらは記事にしましたのでリンクを張っておきます。
+Use the Encode module to properly handle multibyte characters such as Japanese. This is an article, so I will link it.
 
-<a href="/blog/20091118124667.html">＜Encode 日本語などのマルチバイト文字列を適切に処理する＞</a>
+<a href="/blog/20091118124667.html"> <Encode Properly process multi-byte character strings such as Japanese> </a>
 
-古い解説にあるようなJcode.pmやJcode.plを使うような手法は現在では推奨できません。Perl5.8以降はEncodeモジュールを使用するのが標準的で問題が少ない方法です。
+Techniques such as using Jcode.pm or Jcode.pl as in the old commentary are no longer recommended. Starting with Perl 5.8, using the Encode module is the standard and less problematic method.
 
-<h3>デフォルト変数 $_ は使用しない (強く推奨)</h3>
+<h3> Do not use the default variable $ _ (highly recommended) </ h3>
 
-Perlにはデフォルト変数 $_ というものが存在します。デフォルト変数は関数に引数を指定しなかった場合に暗黙的に受け取る変数です。プログラムの中で使用すると可読性が落ちるので使うのは控えましょう。
+Perl has a default variable called $ _. The default variable is a variable that is implicitly received if no argument is given to the function. Please refrain from using it in a program as it will reduce readability.
 
-デフォルト引数を使用するのは次の場合だけです。
+Use the default arguments only if:
 
-<h4>1. ワンライナー</h4>
+<h4> 1. One liner </ h4>
 
-ワンライナーの中では使用してもよいと思います。printの引数や正規表現の対象として$_が利用されています。
-
-<pre>
-# AAAという文字を含む行を取り出すワンライナー
-perl -ne "print if /AAA/";
-</pre>
-
-<h4>2. map関数とgrep関数と後置のfor</h4>
-
-map関数やgrep関数や後置のforには$_ がわたってきますのでこれは利用せざるをえないです。
+I think you can use it in one liner. $ _ Is used as a print argument and a regular expression target.
 
 <pre>
-my @greped_array = grep { $_ =~ /AAA/ } @array;
-my @mapped_array = map  { $_ * 2 } @array;
-print $_ for @array;
-</pre>
+One liner that retrieves lines containing the characters # AAA
+perl -ne "print if / AAA /";
+</ pre>
 
-有名なCPANモジュールの中にはデフォルト変数を使用しているものがありますが個人的には推奨しません。できるだけ明示的であったほうが可読性の高いプログラムになります。
+<h4> 2. map function, grep function and postfix for </ h4>
 
-<h3>foreach文ではレキシカル変数を宣言する (強く推奨)</h3>
-
-Perl5ではforeach文の先頭でレキシカル変数を宣言することができます。
+Since $ _ is passed to the map function, grep function, and postfix for, this must be used.
 
 <pre>
-my @students = ('taro', 'kenji', 'naoya');
-for my $student (@students) {
+my @greped_array = grep {$ _ = ~ / AAA /} @array;
+my @mapped_array = map {$ _ * 2} @array;
+print $ _ for @array;
+</ pre>
+
+Some well-known CPAN modules use default variables, but I personally don't recommend them. A program that is as explicit as possible will be more readable.
+
+<h3> Declare lexical variables in foreach statement (highly recommended) </ h3>
+
+Perl 5 allows you to declare a lexical variable at the beginning of a foreach statement.
+
+<pre>
+my @students = ('taro','kenji','naoya');
+for my $ student (@students) {
   ...
 }
-</pre>
+</ pre>
 
-この例の場合は@studentsの各要素が$studentに入ってきます。$studentはレキシカル変数でforeachのブロックの先頭から終わりまでのスコープを持ちます。
+In this example, each element of @students goes into $ student. $ student is a lexical variable that has a scope from the beginning to the end of the foreach block.
 
-レキシカル変数を省略するような書き方もできますが推奨しません。
+It is possible to omit the lexical variable, but it is not recommended.
 
 <pre>
-# 推奨できない書き方
+# Not recommended writing
 for (@students) {
   ...
 }
-</pre>
+</ pre>
 
-<h3>コマンドライン引数の受け取りかた (参考)</h3>
+<h3> How to receive command line arguments (reference) </ h3>
 
-<a href="/blog/20080108132865.html">コマンドライン引数</a>はこんな感じで受け取るのがよいです。
-
-<pre>
-# コマンドライン引数がひとつの場合
-my $file = shift;
-</pre>
+<a href="/blog/20080108132865.html"> command line arguments </a>It is good to receive it with a feeling.
 
 <pre>
-# コマンドライン引数が複数の場合
-my ($file, $option) = @ARGV;
-</pre>
-
-<h3>サブルーチンの引数の受け取り方 (参考)</h3>
-
-コマンドライン引数の場合と同様になります。
+#When there is one command line argument
+my $ file = shift;
+</ pre>
 
 <pre>
-# 引数がひとつの場合
+#If there are multiple command line arguments
+my ($ file, $ option) = @ARGV;
+</ pre>
+
+<h3> How to receive subroutine arguments (reference) </ h3>
+
+Same as for command line arguments.
+
+<pre>
+#When there is one argument
 sub func {
-  my $file = shift;
+  my $ file = shift;
 }
-</pre>
+</ pre>
 
 <pre>
-# 引数が複数の場合
+#When there are multiple arguments
 sub func {
-  my ($file, $option) = @_;
+  my ($ file, $ option) = @_;
 }
-</pre>
+</ pre>
 
-<h3>日付処理の標準モジュールを使用する (参考)</h3>
+<h3> Use the standard module of date processing (reference) </ h3>
 
-もしPerl5.10以降を使用しているならTime::Pieceというモジュールが標準で添付されており日付処理に使えます。
+If you are using Perl 5.10 or later, a module called Time :: Piece is attached as standard and can be used for date processing.
 
-<a href="/blog/20091105124627.html">＜Time::Piece - 日付・時刻を扱うための標準モジュール＞</a>
+<a href="/blog/20091105124627.html"> <Time :: Piece --Standard module for handling date / time> </a>
 
-またCPANからインストールできる環境であればDataTimeモジュールをインストールするのも良いかもしれません。こちらは高機能ですが少し重いです。
+You may also want to install the DataTime module if you can install it from CPAN. This is highly functional but a little heavy.
 
-<a href="/blog/20090815124848.html">＜日付を汎用的に扱うモジュール DateTime＞</a>
+<a href="/blog/20090815124848.html"> <DateTime, a module that handles dates universally> </a>
 
-それもできないならlocaltimeやTime::Localでがんばります。
+If you can't do that, try localtime or Time :: Local.
 
-<a href="/blog/20090809124848.html">＜Perlでの日付・時刻の扱い＞</a>
+<a href="/blog/20090809124848.html"> <Handling of dates and times in Perl> </a>
 
-<h3>不必要なモジュールの読み込みは行わないこと (必須)</h3>
+<h3> Do not load unnecessary modules (required) </ h3>
 
-他のプログラムのソースコードをコピーしてきた場合にそのプログラムでは使用しないのに余計なモジュールが読み込まれている場合があります。これは後で読んだ人に対していらぬ誤解を招くので必ず削除するように心がけましょう。
+If you have copied the source code of another program, extra modules may be loaded even though you do not use it in that program. Be sure to remove this as it can be misleading to those who read it later.
 
 <pre>
-# 他のプログラムからソースコードをコピーしてきたために
-# 不必要なモジュールの読み込みが残る場合があるので
-# 気をつける
-use File::Spec;
-use File::Basename 'basename'; 
+#Because I copied the source code from another program
+# Unnecessary module loading may remain
+# be careful
+use File :: Spec;
+use File :: Basename'basename';
                                
-</pre>
+</ pre>
 
-<h3>Perlのドキュメントの書き方 (参考)</h3>
+<h3> How to write Perl documentation (reference) </ h3>
 
-仕事で使用する小さなスクリプトの場合はスクリプトの中にドキュメントを埋め込んでおくのがよいと思います。CPANモジュールの場合はソースコードの末尾がドキュメントになりますが、小さなスクリプトの場合は先頭に書いておくと利用者がソースコードを開いたときにぱっとみることができるので便利です。
+For small scripts used at work, it's a good idea to embed the documentation inside the script. In the case of the CPAN module, the end of the source code is the document, but in the case of a small script, it is convenient to write it at the beginning so that the user can see it at a glance when opening the source code.
 
-PerlのドキュメントはPODと呼ばれる記法で書きます。簡単な書き方だけ紹介しておきます。「=head1」というのが見出しになります。「=head1」の右にタイトルを書きます。その下に一行あけて本文を書きます。一行あけるというのには意味があるので注意してください。ドキュメントの終わりは「=cut」という行になります。英語で書いた場合は次のようになります。
+Perl documentation is written in a notation called POD. I will only introduce a simple way to write it. The heading is "= head1". Write the title to the right of "= head1". Write the text with a line below it. Please note that it makes sense to open a line. The end of the document is the line "= cut". If written in English, it will be as follows.
 
 <pre>
-=head1 SCRIPT NAME
+= head1 SCRIPT NAME
 
 SomeScript.pl
 
-=head1 DESCRIPTION
+= head1 DESCRIPTION
 
 This script is used to do ....
 
-=head1 USAGE
+= head1 USAGE
 
 perl SomeScript.pl file1 file2 ...
 
-=cut
+= cut
 
-# ソースコードの始まり
+#Beginning of source code
 use strict;
 use warnings;
 
-</pre>
+</ pre>
 
-ローカルなプロジェクトの場合は同僚にわかりやすく伝えるために日本語で書くのがよいと思います。
+For local projects, I think it's best to write in Japanese to convey it to your colleagues in an easy-to-understand manner.
 
 <pre>
-=head1 スクリプト名
+= head1 script name
 
 SomeScript.pl
 
-=head1 概要
+= head1 overview
 
-～するためのものです。
+It is for
 
-=head1 使用方法
+= head1 How to use
 
 perl SomeScript.pl file1 file2 ...
 
-=cut
+= cut
 
-# ソースコードの始まり
+#Beginning of source code
 use strict;
 use warnings;
 
-</pre>
+</ pre>
 
-<h3>コメントの#の嵐は避ける (推奨)</h3>
+<h3> Avoid the #storm in comments (recommended) </ h3>
 
-よく#だらけのコメントを仕事をしててみるのですが個人的にはお勧めしません。一番の理由は一度そのコメントの記述を行うと後から来た人がそれをまねしないといけないからです。関数ひとつ記述するのにこれをまねしないといけないのかと思うと気持ちが萎えます。またコードの品質を上げるどころか関数を書き換えたときにコメントが追いついていないということが頻繁に起きます。ですのでやめましょう。
+I often work with comments full of #, but I don't personally recommend it. The main reason is that once you write the comment, someone who comes later has to imitate it. It makes me sick when I think that I have to imitate this to write one function. Also, instead of improving the quality of the code, it often happens that the comments are not catching up when the function is rewritten. So let's stop.
 
 <pre>
-#################################################################
-# 関数名     : ほにゃらら                                       #
-# 引数       : 引数1 引数2                                      #
-# 戻り値     : ほにゃらら                                       #
-# 作成日時   : あああああ                                       #
-# 作成者     : ほれほれ                                         #
-# 関数の説明 : いいいいいい                                     #
-# 更新履歴   : その1                                            #
-#            : その2                                            #
-#            : その3                                            #
-#################################################################
+################################################## ###############
+#Function name: Honyara #
+# Arguments: Argument 1 Argument 2 #
+#Return value: Honyara #
+# Created: Ahhhh #
+# Creator: Hore Hore #
+#Function description: Good Good Good #
+#Update history: Part 1 #
+#: Part 2 #
+#: Part 3 #
+################################################## ###############
 sub func {
     
 }
-</pre>
+</ pre>
 
-こちらの書き方をお勧めします。
+We recommend this writing style.
 <pre>
-# 簡単な解説(1行で)
-sub func{
+# Brief commentary (in one line)
+sub func {
     
 }
-</pre>
+</ pre>
 
-<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm">＜Mojo::URLのソースコード＞</a>
-も参考にしてください。
+<a href="http://github.com/kraih/mojo/blob/master/lib/Mojo/URL.pm"> <Mojo :: URL source code> </a>
+Please also refer to.
 
-<h3>文字列リスト演算子 (参考)</h3>
+<h3> String list operator (reference) </ h3>
 
-文字列リスト演算子はよく使用されるので解説しておきます。文字列リスト演算子は文字列の配列を作成するのによく利用されれます。
-
-<pre>
-my @strings = qw/aa bb cc/;
-</pre>
-
-次の記述と同じ意味があります。
+The string list operator is often used, so I will explain it. The string list operator is often used to create an array of strings.
 
 <pre>
-my @strings = ('aa', 'bb', 'cc');
-</pre>
+my @strings = qw / aa bb cc /;
+</ pre>
 
-<h3>モジュールの関数をインポートするときは明示する (強く推奨)</h3>
-
-モジュールで関数をインポートするときは明示するようにしたほうがよいでしょう。ソースコードを読んだ人がその関数はどのモジュールのものなのかを簡単に理解することができます。
-<pre>
-use File::Basename 'basename';
-use File::Copy qw/copy move/;
-use File::Path 'mkpath';
-use Encode qw/encode decode/;
-
-# mkpath関数を使用する。
-mkpath $dir;
-</pre>
-
-もし明示的なインポートの記述がなかった場合はどうなるでしょう。
+It has the same meaning as the following description.
 
 <pre>
-use File::Basename;
-use File::Copy;
-use File::Path;
+my @strings = ('aa','bb','cc');
+</ pre>
+
+<h3> Explicit when importing module functions (highly recommended) </ h3>
+
+It's a good idea to make it explicit when importing functions in a module. A reader of the source code can easily understand which module the function belongs to.
+<pre>
+use File :: Basename'basename';
+use File :: Copy qw / copy move /;
+use File :: Path'mkpath';
+use Encode qw / encode decode /;
+
+Use the #mkpath function.
+mkpath $ dir;
+</ pre>
+
+What if there was no explicit import description?
+
+<pre>
+use File :: Basename;
+use File :: Copy;
+use File :: Path;
 use Encode;
 
-# これはどこからインポートされたかわからない 
-mkpath $dir; 
-</pre>
+# I don't know where this was imported from
+mkpath $ dir;
+</ pre>
 
-このような場合はuseされているすべてのモジュールのドキュメントを読むということになりかねません。あなたは関数がどのモジュールからインポートされたのかを知っているかもしれませんが、ソースコードを読む人には明示的ではありません。ですのでインポートする関数はどんなにあなたにとって明らかに思えても明示的に指定するようにしましょう。
+In such a case, you may end up reading the documentation for all the modules being used. You may know from which module the function was imported, but it's not explicit to anyone reading the source code. So be sure to explicitly specify the function you want to import, no matter how obvious it may seem to you.
 
-(参考)<a href="/blog/20100409127089.html">File::Path</a>、<a href="/blog/20100408127089.html">File::Copy</a>
+(Reference) <a href="/blog/20100409127089.html"> File :: Path </a>, <a href="/blog/20100408127089.html"> File :: Copy </a>
 
-<h3>gotoは使用しない (本当に特別な場合を除いて必須)</h3>
+<h3> Don't use goto (required except in really special cases) </ h3>
 
-Perlには<a href="/blog/20170514149606.html">goto文</a>がありますが使用してはいけません。gotoを使うプログラミングはPerlに限らずもう過去のものです。もしあなたが何らかの理由でgotoを使いたくなった場合代替する手段は必ず用意されていると思ってください。
+Perl has a <a href="/blog/20170514149606.html"> goto statement </a>, but you shouldn't use it. Programming with goto is a thing of the past, not just Perl. If for some reason you want to use goto, be sure to have an alternative.
 
-ループ制御を行いたいなら「last」「next」を使用してください。エラー処理を行いたいならdieを使って例外を投げてください。
+If you want to perform loop control, use "last" and "next". If you want to handle the error, use die to throw the exception.
 
-(gotoを使用しなければならない場面は、無限再帰呼び出しなどで、関数の階層を深くしたくないなどという本当に特殊な場合だけです。)
+(The only time you have to use goto is in a really special case, such as an infinite recursive call, where you don't want to deepen the hierarchy of the function.)
 
-<h3>do ～ whileは使用しない (推奨)</h3>
+<h3> do-while is not used (recommended) </ h3>
 
-do while文で記述できる文は<a href="/blog/20100123126425.html">while文</a>で必ず記述できます。do while文を使ったからといって記述が簡潔になるかといえばそうでもないです。逆に普段使用していない分だけ意図がわかりにくくなると感じます。
+Statements that can be described by the do while statement can always be described by <a href="/blog/20100123126425.html"> while statement </a>. The use of the do while statement does not mean that the description will be concise. On the contrary, I feel that it becomes difficult to understand the intention because I do not use it normally.
 
-do while文で記述できる文はwhile文で必ず記述できるのでwhile文を使うロジックを考えることをお勧めします。
+Statements that can be described by the do while statement can always be described by the while statement, so it is recommended to consider the logic that uses the while statement.
 
-<h3>redoは使用しない (推奨)</h3>
+<h3> Do not use redo (recommended) </ h3>
 
-Perlには<a href="/blog/20170515149615.html">redo文</a>がありますが、redoを使わなくても同じロジックを記述することができます。redoは何回か使用したことがあるのですが、redoを使ったプログラミングはとてもわかりにくくなると感じます。redoを使用しなくても同じロジックは必ず記述できるのでredoを使わないロジックを考えることをお勧めします。
+Perl has a <a href="/blog/20170515149615.html"> redo statement </a>, but you can write the same logic without using redo. I've used redo several times, but I find programming with redo very confusing. Since the same logic can always be written without using redo, it is recommended to consider logic that does not use redo.
 
-<h3>プロトタイプは使用しない (強く推奨)</h3>
+<h3> Do not use prototype (highly recommended) </ h3>
 
-サブルーチンを定義するときにプロトタイプという型を指定できる機能がありますがこれは使用しません。
+There is a feature that allows you to specify a type called prototype when defining a subroutine, but this is not used.
 
 <pre>
-# プロトタイプは使用しないこと
-sub func ($@) {
+# Do not use prototypes
+sub func ($ @) {
   ...
 }
-</pre>
+</ pre>
 
-Perlでは明示的に型を指定しなくてもどのような型の引数も受け取れますし、引数の個数もいくつでもかまいません。ですのでプロトタイプで型を指定したり個数を指定したりする必要はまったくないのです。ですので必ずプロトタイプを指定しないサブルーチンの定義を行いましょう。
+Perl accepts arguments of any type without explicitly specifying the type, and can have any number of arguments. So there is no need to specify the type or number in the prototype. Therefore, be sure to define a subroutine that does not specify a prototype.
 
 <pre>
 sub func {
-  ...    
+  ...
 }
-</pre>
+</ pre>
 
-<h3>エラーを伝えるときはundefを戻り値として返却するのではなくdieを使用する。(推奨)</h3>
+<h3> Use die instead of returning undef as a return value when reporting an error. (Recommended) </ h3>
 
-Perlには例外処理がないと思っている人もいるかもしれません。Javaのような例外オブジェクトというものはありませんが、簡潔な例外機構を備えています。
-
-まずは旧来のエラー処理であった戻り値に<a href="/blog/20100220126425.html">undef</a>を返却する方法を見ます。エラーが発生したときに単独のreturnを記述するとスカラコンテキストの場合はundefがリストコンテキストの場合は空のリスト () が返却されます。
+You might think that Perl has no exception handling. There is no such thing as an exception object like Java, but it does have a concise exception mechanism.First, let's see how to return <a href="/blog/20100220126425.html"> undef </a> to the return value that was the old error handling. If you write a single return when an error occurs, undef is returned for scalar context and an empty list () is returned for list context.
 
 <pre>
-# エラーが発生したときにundefを返却する
+#Return undef when an error occurs
 sub func {
-  my $arg = shift;
+  my $ arg = shift;
   
   ...
   
-  # エラー処理
-  if ($error) {
-    return; 
+  #Error handling
+  if ($ error) {
+    return;
   }
-  # エラーが起こらなかった場合の正しい値
-  return $val;
+  #Correct value if no error occurred
+  return $ val;
 }
-</pre>
-そして関数を呼び出す側でエラー処理を記述します。
+</ pre>
+Then, the error handling is described on the side that calls the function.
 <pre>
-my $val = func();
+my $ val = func ();
 
-# $valが偽値だったらプログラムを終了
-die "Error" unless $val;
-</pre>
+Exit the program if # $ val is a false value
+die "Error" unless $ val;
+</ pre>
 
-この記述の問題点はfuncを使う人が戻り値のチェックを怠るとプログラムは先に進んでしまうということです。
+The problem with this description is that if the func user neglects to check the return value, the program will proceed.
 
-ですので現在的なPerlではエラーを伝えるときにdieを使って例外を投げます。
+So current Perl uses die to throw an exception when reporting an error.
 
 <pre>
-# エラーが発生したときにdieを使って例外を投げる
+# Use die to throw an exception when an error occurs
 sub func {
-  my $arg = shift;
+  my $ arg = shift;
   
-  # なんらかの処理
+  # Some processing
   
-  # dieを使って例外を投げる
-  if ($error) {
+  Use # die to throw an exception
+  if ($ error) {
     die "Error message";
   }
 
-  # エラーが起こらなかった場合の正しい値
-  return $val;
+  #Correct value if no error occurred
+  return $ val;
 }
-</pre>
+</ pre>
 
-このようにするとfuncを呼び出してエラーが発生したときはエラーメッセージを表示してプログラムは終了します。
-
-<pre>
-# エラーが発生した場合はエラーメッセージを表示してプログラムが終了
-func(); 
-</pre>
-
-プログラムを終了させたくない場合は<a href="/blog/20100312126967.html">evalブロック</a>で受けます。これはJavaでいうcatchだと思ってください。エラーが発生した場合は$@という特殊変数にエラーの内容が設定されますので、この変数をチェックすることでエラーが発生したかどうかを調べることができます。
+If you do this, func will be called and if an error occurs, an error message will be displayed and the program will terminate.
 
 <pre>
-eval { func() };
+#If an error occurs, an error message will be displayed and the program will end.
+func ();
+</ pre>
 
-if ($@) {
-  # エラーが発生した場合の処理を記述
+If you don't want to quit the program, use the <a href="/blog/20100312126967.html"> eval block </a>. Think of it as a catch in Java. If an error occurs, the content of the error is set in a special variable called $ @, so you can check this variable to see if an error has occurred.
+
+<pre>
+eval {func ()};
+
+if ($ @) {
+  # Describe the processing when an error occurs
 }
-</pre>
+</ pre>
 
-<h3>コンストラクタの呼び出しではアロー演算子を利用する</h3>
+<h3> Use the arrow operator when calling the constructor </ h3>
 
-コンストラクタの呼び出しはアロー演算子を使用するのがよいでしょう。Perlではコンストラクタと他のメソッドに実質的な違いはありません。
-
-<pre>
-my $obj = SomeClass->new;
-</pre>
-
-間接オブジェクト呼び出しは、将来的には非推奨になる可能性があります。
+It's a good idea to use the arrow operator to call the constructor. In Perl, there is virtually no difference between a constructor and other methods.
 
 <pre>
-# 間接オブジェクト呼び出し
-my $obj = new SomeClass();
-</pre>
+my $ obj = SomeClass-> new;
+</ pre>
 
+Indirect object calls may be deprecated in the future.
+
+<pre>
+# Indirect object call
+my $ obj = new SomeClass ();
+</ pre>

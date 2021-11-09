@@ -1,61 +1,61 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>DateTime - 日付・時刻を汎用的に扱う</h2>
+  </ li>
+</ ol>
+<h2> DateTime --General-purpose handling of dates and times </ h2>
 
 
 
-DateTimeを使用すると、日付と時刻を汎用的に扱うできます。
+DateTime gives you a general idea of ​​dates and times.
 
-これまでは、なんとか標準モジュールで日付を扱おうと記事を書いてきましたが、本当はあまりよくない方法です。日付と時刻というのは例外が多く自分でスクリプトを書くとバグが混入しやすいです。
+So far, I've written articles trying to handle dates with standard modules, but it's not really a good idea. There are many exceptions to the date and time, and if you write your own script, bugs are likely to be mixed in.
 
-このモジュールは便利ですが、汎用的に日付を扱うために依存するモジュールの数が非常に多いです。また日付の計算を早く行うために、一部はC言語で記述されています。このため、Windows環境でのインストールには少し準備が必要です。
+This module is useful, but it relies on a large number of modules to handle dates generically. Also, some of them are written in C language to speed up the calculation of dates. For this reason, a little preparation is required for installation in a Windows environment.
 
-日付・時刻に関する一般的な情報は、以下を参考にしてください。
+For general information on dates and times, please refer to the following.
 
 <ul>
   <li>
-    <a href="/blog/20161123147990.html">Perlで日付・時刻を扱う</a>
-  </li>
-</ul>
+    <a href="/blog/20161123147990.html"> Handling dates and times in Perl </a>
+  </ li>
+</ ul>
 
-<h4>CPANからDateTimeをインストールする</h4>
+<h4> Install DateTime from CPAN </ h4>
 
-コマンドプロンプトで
+At the command prompt
 
 <blockquote>
 cpan DateTime
-</blockquote>
+</ blockquote>
 
-と打ってください。cpanを使用するのがはじめての場合は、cpanの設定の初期化の作業が必要です(たぶん)。何かたずねられたらEnterを押して進めてください(非常に長いです)。
+Please hit. If you're new to cpan, you'll need to initialize the cpan settings (probably). If you are asked something, press Enter to proceed (very long).
 
-cpanの初期設定が終わっている場合は、ダウンロードできます。依存するモジュールをインストールしますかと何回も聞かれるので、ENTERを押して進めます。
+If you've done the initial setup for cpan, you can download it. You will be asked many times if you want to install the dependent modules, so press ENTER to proceed.
 
-最後まで進めば終了です。
+If you proceed to the end, you are done.
 
-Perl 5.10以降はPerlの標準モジュールとしてTime::Pieceを使えるので、Time::Pieceを使うのもよい方法でしょう。Time::Pieceによる時刻の扱いについては「<a href="/blog/20091105124627.html">「Time::Piece」で日付と時刻を扱う</a>」をご覧ください。
+Since Perl 5.10 and later, you can use Time :: Piece as a standard Perl module, so it's a good idea to use Time :: Piece. For the handling of time by Time :: Piece, see "<a href="/blog/20091105124627.html"> Handling date and time by" Time :: Piece "</a>".
 
-<h3>DateTime 初期化と日付・時刻情報の取得</h3>
+<h3> DateTime initialization and acquisition of date / time information </ h3>
 
-汎用的に日付を扱うには、DateTimeモジュールを利用します。
+To handle dates generically, use the DateTime module.
 
 <pre>
 use DateTime;
-my $dt = DateTime->new( 
+my $ dt = DateTime-> new (
   year => 1964,
   month => 10,
   day => 16,
@@ -63,912 +63,913 @@ my $dt = DateTime->new(
   minute => 12,
   second => 47,
 );
-</pre>
+</ pre>
 
-DateTimeモジュールはオブジェクト指向のモジュールです。DateTime->new メソッドでDateTimeオブジェクトを作成します。年と月はそのままの数を指定します。
+The DateTime module is an object-oriented module. Create a DateTime object with the DateTime-> new method. Specify the same number for the year and month.
 
-標準関数のlocaltime関数や標準モジュールのTime::Localのように、年を1900年からの年数で指定したり、月を0から始まる数値で指定したりする必要がありません。
+You don't have to specify the year as a number from 1900 or the month as a number starting from 0, unlike the localtime function in the standard function or the Time :: Local in the standard module.
 
-<h4>日付・時刻情報の取得</h4>
-
-<pre>
-# 時刻情報を取得するGetメソッド
-my $year = $dt->year;
-my $mon = $dt->month;
-my $mday = $dt->day;
-my $wday = $dt->day_of_week;
-my $hour = $dt->hour;
-my $minute = $dt->minute;
-my $second = $dt->second;
-my $yday = $dt->day_of_year;
-my $qtr = $dt->quarter;
-</pre>
-
-上記のメソッドで、年月日、時分秒、曜日、1年で何日目か、4半期で数えていくつ目かなどを取得できます。曜日は月曜日が1,日曜日が7になります。
-
-<h3>現在の日付と時刻を取得する</h3>
-
-現在時刻を表現するDateTimeオブジェクトを作成するにはnowメソッドを使用します。引数で、time_zone にlocalを指定すれば、OSに設定されているはずである自分の国のタイムゾーンになります。
+<h4> Acquisition of date / time information </ h4>
 
 <pre>
-my $dt = DateTime->now(time_zone => 'local');
-</pre>
+# Get method to get time information
+my $ year = $ dt-> year;
+my $ mon = $ dt-> month;
+my $ mday = $ dt-> day;
+my $ wday = $ dt-> day_of_week;
+my $ hour = $ dt-> hour;
+my $ minute = $ dt-> minute;
+my $ second = $ dt-> second;
+my $ yday = $ dt-> day_of_year;
+my $ qtr = $ dt-> quarter;
+</ pre>
 
-タイムゾーンを明示的に指定することもできます。
+With the above method, you can get the date, hour, minute, second, day of the week, the number of days in a year, the number of counts in a quarter, and so on. Monday is 1 and Sunday is 7.
 
-<pre>
-my $dt = DateTime->now(time_zone => 'Asia/Tokyo'); 
-</pre>
+<h3> Get the current date and time </ h3>
 
-タイムゾーンを明示的に指定するほうが、localを指定するより速度がやや遅いらしいです。ただし、明示的に指定すると移植性が損なわれます。
-
-引数を指定しなかった場合はUTC(協定世界時)になります。
-
-<pre>
-my $dt = DateTime->now;
-</pre>
-
-<h3>エポック秒から日付情報を作成する</h3>
-
-エポック秒からDateTimeオブジェクトを作成するには from_epochメソッドを使用します。
+Use the now method to create a DateTime object that represents the current time. If you specify local for time_zone in the argument, it will be the time zone of your country that should be set in the OS.
 
 <pre>
-my $dt = DateTime->from_epoch(epoch => $epoch);
-</pre>
+my $ dt = DateTime-> now (time_zone =>'local');
+</ pre>
 
-引数に time_zone を指定しない場合は、UTC(協定世界時)になります。以下のように、 time_zone => 'local' を加えると、ローカル時刻を取得することができます。
-
-<pre>
-my $dt = DateTime->from_epoch( epoch => $epoch, time_zone => 'local' );
-</pre>
-
-<h3>タイムゾーンオブジェクトを作成する</h3>
-
-
-DateTimeはコンストラクタで、タイムゾーンを指定することができます。DateTime::TimeZoneオブジェクトを先に作成しておくと再利用することができます。
+You can also specify the time zone explicitly.
 
 <pre>
-my $time_zone = DateTime::TimeZone->new(name => 'Asia/Tokyo');
-</pre>
+my $ dt = DateTime-> now (time_zone =>'Asia / Tokyo');
+</ pre>
 
-<h4>タイムゾーンオブジェクトの作成</h4>
+It seems that specifying the time zone explicitly is a little slower than specifying local. However, explicit specification impairs portability.
 
-タイムゾーンオブジェクトを作成するには、newメソッドを使用します。引数で、name に タイムゾーン名を指定します。(タイムゾーン名一覧)
-<pre>
-my $time_zone = DateTime::TimeZone->new(name => 'Asia/Tokyo');
-</pre>
-
-<h4>タイムゾーンオブジェクトの自動生成</h4>
-
-以下のように、DateTimeのコンストラクタ(new, nowなど)で、タイムゾーンを指定した場合は、内部で自動的に、DateTime::TimeZoneオブジェクトが作成されます。
+If no argument is specified, it will be UTC (Coordinated Universal Time).
 
 <pre>
-my  $dt = DateTime->now(time_zone => 'Asia/Tokyo');
-</pre>
+my $ dt = DateTime-> now;
+</ pre>
 
-DateTimeオブジェクト作成するたびに、DateTime::TimeZoneオブジェクトが作成されることになります。
+<h3> Create date information from epoch seconds </ h3>
 
-これはコストになりますので、2回以上DateTimeオブジェクトを作成する場合は、最初にDateTime::TimeZoneオブジェクトを作っておくほうがよいです。
-
-<h4>タイムゾーンオブジェクトの利用</h4>
-
-DateTimeのコンストラクタの引数の、time_zone に、作成したDateTime::TimeZoneオブジェクトを指定するだけです。
+Use the from_epoch method to create a DateTime object from epoch seconds.
 
 <pre>
-my $dt1 = DateTime->now(time_zone => $time_zone);
-</pre>
+my $ dt = DateTime-> from_epoch (epoch => $ epoch);
+</ pre>
 
-タイムゾーンの一覧は「<a href="/blog/20081101122558.html">タイムゾーンの一覧</a>」をご覧ください。
-
-
-<h3>月名と曜日名を日本語で出力する ロケールの指定</h3>
-
-日付の表現は国や地域によって表現が異なります。たとえば1月はアメリカではJanuaryと表現します。月曜日はMondayと表現します。国や地域ごとの表現のセットをロケールと呼びます。DateTimeモジュールは、さまざまな国や地域のロケールを指定することができます。
+If you do not specify time_zone as an argument, it will be UTC (Coordinated Universal Time). You can get the local time by adding time_zone =>'local' as shown below.
 
 <pre>
-my $dt = DateTime->now(locale => 'ja');
-</pre>
+my $ dt = DateTime-> from_epoch (epoch => $ epoch, time_zone =>'local');
+</ pre>
 
-日本のロケールは、jaになります。 
+<h3> Create a timezone object </ h3>
 
-<h4>ロケールの指定</h4>
 
-nowメソッドで、現在の時間情報を持つDateTimeオブジェクトが作成されます。引数に、locale を指定することができます。
-
-またtime_zone にlocalを指定することで、ローカル時刻で時間情報が作成されます。
+DateTime is a constructor that allows you to specify the time zone. You can reuse the DateTime :: TimeZone object by creating it first.
 
 <pre>
-my $dt = DateTime->now(locale => 'ja' , time_zone => 'local');
-</pre>
+my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+</ pre>
 
-<h4>ロケールに依存する情報 月名と曜日名</h4>
+<h4> Creating a timezone object </ h4>
 
-下記の4つのメソッドがロケールに依存します。たとえば、day_name は、ロケールが日本の場合は月曜日、ロケールがアメリカ地域のどこかだった場合は、Monday のようになります。
+Use the new method to create a timezone object. In the argument, specify the time zone name in name. (List of time zone names)
+<pre>
+my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+</ pre>
 
-abbr は abbreviation( 省略 ) の略です。
+<h4> Automatic generation of timezone objects </ h4>
+
+As shown below, if you specify the time zone in the DateTime constructor (new, now, etc.), the DateTime :: TimeZone object is automatically created internally.
 
 <pre>
-# 月名
-my $month_name = $dt->month_name;
+my $ dt = DateTime-> now (time_zone =>'Asia / Tokyo');
+</ pre>
 
-# 月の省略名( 省略名がない場合は月名と同じ)
-my $month_abbr = $dt->month_abbr;
+Every time you create a DateTime object, a DateTime :: TimeZone object will be created.
 
-# 曜日名
-my $day_name = $dt->day_name;
+This is a cost, so if you want to create a DateTime object more than once, it's a good idea to create a DateTime :: TimeZone object first.
 
-# 曜日の省略名
-my $day_abbr = $dt->day_abbr;
-</pre>
+<h4> Use of timezone objects </ h4>
 
-<h4>出力するためにエンコードする</h4>
-
-月名や曜日名を取得したとき、そこで使われている文字はUTF-8フラグが立っています。UTF-8フラグが立っているということは、Perlが文字列を内部表現で扱かっているということです。
-
-画面やファイルに出力する時は、UTF-8フラグを落とす必要があります。つまり、エンコードして文字列を内部表現から外部表現に変換する必要があります。
-
-Windowsの人は、Shift-JIS に、それ以外のOSの人は、UTF-8で出力するようにしてあります。
+Just specify the created DateTime :: TimeZone object in time_zone, which is an argument of the DateTime constructor.
 
 <pre>
-# UTF-8フラグが立っているので、エンコードする。
-my $encode_to;
-if ($^O eq 'MSWin32') { $encode_to = 'shift-jis' }
-else { $encode_to = 'utf8' }
+my $ dt1 = DateTime-> now (time_zone => $ time_zone);
+</ pre>
 
-print(
-  encode($encode_to, $month_name) . "\n" .
-  encode($encode_to, $month_abbr) . "\n" .
-  encode($encode_to, $day_name) . "\n" .
-  encode($encode_to, $day_abbr) . "\n"
+See "<a href="/blog/20081101122558.html"> Time Zone List </a>" for a list of time zones.
+
+
+<h3> Specify the locale to output the month name and day of the week name in Japanese </ h3>
+
+The expression of the date differs depending on the country or region. For example, January is expressed as January in the United States. Monday is expressed as Monday. A set of expressions for each country or region is called a locale. The DateTime module allows you to specify locales for different countries and regions.
+
+<pre>
+my $ dt = DateTime-> now (locale =>'ja');
+</ pre>
+
+The Japanese locale is ja.
+
+<h4> Specifying the locale </ h4>
+
+The now method creates a DateTime object with current time information. You can specify locale as an argument.
+
+Also, by specifying local for time_zone, time information is created at the local time.
+
+<pre>
+my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
+</ pre>
+
+<h4> Locale-dependent information Month name and day name </ h4>
+
+The following four methods depend on the locale. For example, day_name might be Monday if the locale is Japan, or Monday if the locale is somewhere in the Americas.
+
+abbr is an abbreviation for abbreviation (abbreviation).
+
+<pre>
+#Month name
+my $ month_name = $ dt-> month_name;
+
+# Month abbreviation (same as month name if there is no abbreviation)
+my $ month_abbr = $ dt-> month_abbr;
+
+# Day of the week name
+my $ day_name = $ dt-> day_name;
+
+# Abbreviated name of the day of the week
+my $ day_abbr = $ dt-> day_abbr;
+</ pre>
+
+<h4> Encode for output </ h4>
+
+When you get the month name or day name, the characters used there are flagged as UTF-8. The fact that the UTF-8 flag is set means that Perl handles strings in an internal representation.
+
+When outputting to a screen or file, it is necessary to turn off the UTF-8 flag. That is, you need to encode and convert the string from an internal representation to an external representation.
+
+Windows people output in Shift-JIS, and other OS people output in UTF-8.
+
+<pre>
+Since the # UTF-8 flag is set, encode it.
+my $ encode_to;
+if ($ ^ O eq'MSWin32') {$ encode_to ='shift-jis'}
+else {$ encode_to ='utf8'}
+print (
+  encode ($ encode_to, $ month_name). "\ n".
+  encode ($ encode_to, $ month_abbr). "\ n".
+  encode ($ encode_to, $ day_name). "\ n".
+  encode ($ encode_to, $ day_abbr). "\ n"
 );
-</pre>
+</ pre>
 
-<h3>ロケール指定のためのクラス</h3>
+<h3> Class for specifying locale </ h3>
 
-DateTimeのコンストラクタの引数でロケール名を指定することができます。
-
-<pre>
-my $locale = DateTime::Locale->load('ja');
-</pre>
-
-DateTimeはコンストラクタの中で、DateTime::Localeオブジェクトを生成しています。そして生成したロケールオブジェクトに基づいて地域や国ごとの日付情報の出力を作ります。
-
-<h4>ロケールオブジェクトの明示的な作成</h4>
+You can specify the locale name in the argument of the DateTime constructor.
 
 <pre>
-my $locale = DateTime::Locale->load('ja');
-</pre>
+my $ locale = DateTime :: Locale-> load ('ja');
+</ pre>
 
-明示的にDateTime::Localeオブジェクトを作成するには、loadメソッドを使用します。loadメソッドは、初回はDateTime::Localeオブジェクトを作成しますが、２回目以降はメモリに保存したDateTime::Localeオブジェクトを再利用します。
+DateTime creates a DateTime :: Locale object in its constructor. Then, based on the generated locale object, it creates an output of date information for each region or country.
 
-プログラム中で'ja'を表現するDateTime::Localeオブジェクトは常に存在しないかたったひとつであるかのどちらかです。このようなオブジェクトをsingleton(シングルトン)と呼びます。DateTime::TimeZoneオブジェクトのように毎回作成されるわけではありません。
-
-<h4>ロケールオブジェクトをコンストラクタに渡す</h4>
-
-ロケールオブジェクトをDateTimeのコンストラクタに渡すには、以下のようにします。
+<h4> Explicit creation of locale object </ h4>
 
 <pre>
-my $dt = DateTime->now(locale => $locale , time_zone => 'local');
-</pre>
+my $ locale = DateTime :: Locale-> load ('ja');
+</ pre>
 
-明示的にロケールオブジェクトを渡すこともできますが、
+To explicitly create a DateTime :: Locale object, use the load method. The load method creates a DateTime :: Locale object the first time, but reuses the DateTime :: Locale object saved in memory from the second time onward.
 
-<pre>
-my $dt = DateTime->now(locale => 'ja' , time_zone => 'local');
-</pre>
+There is always only one DateTime :: Locale object that represents'ja' in your program. Such an object is called a singleton. It is not created every time like the DateTime :: TimeZone object.
 
-のように、文字列で指定するのが楽です。こう書くと、DateTimeのコンストラクタの中で自動的にDateTime::Localeオブジェクトが作成されます。
+<h4> Pass the locale object to the constructor </ h4>
 
-利用できるロケールについては「<a href="/blog/20081107122606.html">利用できるロケール一覧</a>」をご覧ください。
-
-<h3>年月日、時刻情報をまとめて取得する</h3>
-
-DateTimeを使って、日付や時刻の情報を得ることができます。さまざまなフォーマットで取得できます。引数で区切り文字を指定することができます。引数を省略すると、年月日の情報の場合は-で連結され、時刻情報の場合は:で連結されます。
+To pass the locale object to the DateTime constructor:
 
 <pre>
-# 年月日
+my $ dt = DateTime-> now (locale => $ locale, time_zone =>'local');
+</ pre>
+
+You can explicitly pass a locale object, but
+
+<pre>
+my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
+</ pre>
+
+It is easy to specify by a character string like. If you write this, the DateTime :: Locale object will be created automatically in the DateTime constructor.
+
+See "<a href="/blog/20081107122606.html"> List of available locales </a>" for available locales.
+
+<h3> Get all the date and time information </ h3>
+
+You can use DateTime to get date and time information. You can get it in various formats. You can specify the delimiter with the argument. If the argument is omitted, the date information is concatenated with-and the time information is concatenated with :.
+
+<pre>
+# Date
 # yyyy-mm-dd
-my $ymd = $dt->ymd;
+my $ ymd = $ dt-> ymd;
 
-# yyyy/mm/dd
-my $ymd_slash = $dt->ymd('/');
+# yyyy / mm / dd
+my $ ymd_slash = $ dt-> ymd ('/');
 
 # mm-dd-yyyy
-my $mdy = $dt->mdy;
+my $ mdy = $ dt-> mdy;
 
-# mm/dd/yyyy
-my $mdy_slash = $dt->mdy('/');
+# mm / dd / yyyy
+my $ mdy_slash = $ dt-> mdy ('/');
 
 # dd-mm-yyyy
-my $dmy = $dt->dmy;
+my $ dmy = $ dt-> dmy;
 
-# dd/mm/yyyy
-my $dmy_slash = $dt->dmy('/');
+# dd / mm / yyyy
+my $ dmy_slash = $ dt-> dmy ('/');
 
-# 時刻の情報
-# hh:mm:ss
-my $hms = $dt->hms;           
+# Time information
+# hh: mm: ss
+my $ hms = $ dt-> hms;
 
 # hh-mm-ss
-my $hms_hyphen = $dt->hms('-');
+my $ hms_hyphen = $ dt-> hms ('-');
 
-# 年月日と時刻の情報
-my $ymdhms = $dt->datetime;
-</pre>
+# Date and time information
+my $ ymdhms = $ dt-> datetime;
+</ pre>
 
-出力結果
+Output result
 <pre>
-(1)DateTimeの日付・時刻の便利な出力方法
-年月日(ハイフン)   2008-11-14
-年月日(スラッシュ) 2008/11/14
-月日年(ハイフン)   11-14-2008
-月日年(スラッシュ) 11/14/2008
-日月年(ハイフン)   14-11-2008
-日月年(スラッシュ) 14/11/2008
+(1) Convenient output method of DateTime date / time
+Date (hyphen) 2008-11-14
+Date (slash) 2008/11/14
+Month, day, year (hyphen) 11-14-2008
+Month Day Year (Slash) 11/14/2008
+Day Month Year (Hyphen) 14-11-2008
+Day Month Year (Slash) 14/11/2008
 
-時分秒(コロン)     23:48:14
-時分秒(ハイフン)   23-48-14
+Hour, minute and second (colon) 23:48:14
+Hour, minute and second (hyphen) 23-48-14
 
-年月日時分秒       2008-11-14T23:48:14
-</pre>
+Year, month, day, hour, minute, second 2008-11-14T23: 48: 14
+</ pre>
 
-<h3>うるう年の判定 月末日の取得</h3>
+<h3> Judgment of leap year Acquisition of the last day of the month </ h3>
 
-DateTimeはうるう年を判定するメソッド、月末日を取得するメソッドを持っています。
-
-<pre>
-# うるう年かどうか判定
-my $is_leap_year = $dt1->is_leap_year;
-
-# 月末日
-my $dt2 = DateTime->last_day_of_month(year => 2008, month => 11);
-</pre>
-
-<h4>うるう年かどうかを判定する。</h4>
-うるう年かどうかを判定するにはis_leap_yearメソッドを使用します。
-<pre>
-my $is_leap_year = $dt1->is_leap_year;
-</pre>
-
-<h4>月末日を取得する</h4>
-
-月末日を取得するには、last_day_of_monthメソッドを使用します。引数に year と month を指定すると、月末日を表現するDateTimeオブジェクトが返却されます(月末日そのものが返却されるわけではありません)。返却されたDateTimeオブジェクトからからdayメソッドで日付を取得します。
+DateTime has a method to determine the leap year and a method to get the last day.
 
 <pre>
-my $dt2 = DateTime->last_day_of_month(year => 2008, month => 11);
-</pre>
+# Judge whether it is a leap year
+my $ is_leap_year = $ dt1-> is_leap_year;
 
-<h3>日付の書式指定「strftime」メソッド</h3>
+# Last day of the month
+my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
+</ pre>
 
-日付を書式化するためのは<strong>strftime</strong>メソッドを使用します。引数には、書式指定子を渡します。
+<h4> Determine if it is a leap year. </ h4>
+Use the is_leap_year method to determine if it is a leap year.
+<pre>
+my $ is_leap_year = $ dt1-> is_leap_year;
+</ pre>
+
+<h4> Get the last day of the month </ h4>
+
+To get the last day of the month, use the last_day_of_month method. If you specify year and month as arguments, a DateTime object that represents the last day of the month is returned (not the last day of the month itself). Get the date from the returned DateTime object with the day method.
 
 <pre>
-$dt->strftime("%a");
-</pre>
+my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
+</ pre>
 
-以下のように文字列を組み合わせて複数指定することもできます。
+<h3> Date formatting "strftime" method </ h3>
+
+Use the <strong> strftime </ strong> method to format the date. Pass the format specifier as an argument.
 
 <pre>
-$dt->strftime("%Y-%m-%d");
-</pre>
+$ dt-> strftime ("% a");
+</ pre>
 
-<h4>strftime書式指定子一覧</h4>
+You can also specify multiple character strings in combination as shown below.
 
-strftimeの書式指定子一覧です。
+<pre>
+$ dt-> strftime ("% Y-% m-% d");
+</ pre>
+
+<h4> Strftime format specifier list </ h4>
+
+A list of strftime format specifiers.
 
 <table>
   <tr>
     <td>
-      %a
-    </td>
+      % a
+    </ td>
     <td>
-      曜日の省略名
-    </td>
-  </tr>
+      Abbreviated name of the day of the week
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %A
-    </td>
+      % A
+    </ td>
     <td>
-      曜日名
-    </td>
-  </tr>
+      Day of the week name
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %b
-    </td>
+      % b
+    </ td>
     <td>
-      月の省略名
-    </td>
-  </tr>
+      Month abbreviation
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %B
-    </td>
+      % B
+    </ td>
     <td>
-      月名
-    </td>
-  </tr>
+      Month name
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %c
-    </td>
+      % c
+    </ td>
     <td>
-      デフォルトのフォーマット
-    </td>
-  </tr>
+      Default format
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %C
-    </td>
+      % C
+    </ td>
     <td>
-      年の最初の2桁
-    </td>
-  </tr>
+      First two digits of the year
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %d
-    </td>
+      % d
+    </ td>
     <td>
-      日( 01 から 31 )
-    </td>
-  </tr>
+      Day (01-31)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %D
-    </td>
+      % D
+    </ td>
     <td>
-      %m/%d/%y と同じ。月日年
-    </td>
-  </tr>
+      Same as% m /% d /% y. Month day year
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %e
-    </td>
+      % e
+    </ td>
     <td>
-      日( 1 から 31 ) :1桁の数字( 1 ～ 9 )の2桁目はスペースになる。
-    </td>
-  </tr>
+      Day (1 to 31): The second digit of the one-digit number (1 to 9) is a space.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %F
-    </td>
+      % F
+    </ td>
     <td>
-      %Y-%m-%d と同じ( 2008-11-31 など )
-    </td>
-  </tr>
+      Same as% Y-% m-% d (for example, 2008-11-31)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %G
-    </td>
+      % G
+    </ td>
     <td>
-      年( %Yとの違いはよくわからない)
-    </td>
-  </tr>
+      Year (I don't know the difference from% Y)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %g
-    </td>
+      % g
+    </ td>
     <td>
-      年の下2桁 ( 00 ～ 99 )
-    </td>
-  </tr>
+      Last two digits of the year (00-99)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %h
-    </td>
+      % h
+    </ td>
     <td>
-      %b と同じ。月の省略名
-    </td>
-  </tr>
+      Same as% b. Month abbreviation
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %H
-    </td>
+      % H
+    </ td>
     <td>
-      時( 00 から 23 )
-    </td>
-  </tr>
+      Hour (00 to 23)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %I
-    </td>
+      % I
+    </ td>
     <td>
-      時( 01 から 12 ) 12時間表記での時刻
-    </td>
-  </tr>
+      Hours (01 to 12) Time in 12-hour notation
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %j
-    </td>
+      % j
+    </ td>
     <td>
-      年の最初から初めて何日目か。( 001 から 366 )
-    </td>
-  </tr>
+      What day is it for the first time from the beginning of the year? (001 to 366)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %k
-    </td>
+      % k
+    </ td>
     <td>
-      時( 0 から 23 ) : １桁の数字( 0～ 9 )の２桁目はスペースになる。
-    </td>
-  </tr>
+      Hour (0 to 23): The second digit of the one-digit number (0-9) is a space.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %l
-    </td>
+      % l
+    </ td>
     <td>
-      時( 1 から 12 ) 12時間表記での時刻 : １桁の数字( 0～ 9 )の２桁目はスペースになる。
-    </td>
-  </tr>
+      Hour (1 to 12) Time in 12-hour notation: The second digit of the one-digit number (0-9) is a space.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %m
-    </td>
+      % m
+    </ td>
     <td>
-      月の番号( 01 から 12 )
-    </td>
-  </tr>
+      Month number (01-12)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %M
-    </td>
+      % M
+    </ td>
     <td>
-      分( 00 から 59 )
-    </td>
-  </tr>
+      Minutes (00 to 59)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %n
-    </td>
+      % n
+    </ td>
     <td>
-      改行文字
-    </td>
-  </tr>
+      Newline character
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %N
-    </td>
+      % N
+    </ td>
     <td>
-      ミリ秒( %3N と書くとミリ秒を3桁で、 %6Nと書くとミリ秒を6桁で表示 )
-    </td>
-  </tr>
+      Milliseconds (% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %p
-    </td>
+      % p
+    </ td>
     <td>
-      AM か PM
-    </td>
-  </tr>
+      AM or PM
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %P
-    </td>
+      % P
+    </ td>
     <td>
-      am か pm
-    </td>
-  </tr>
+      am or pm
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %r
-    </td>
+      % r
+    </ td>
     <td>
-      %I:%M:%S %p と同じ。( 11:55:23 PM など)
-    </td>
-  </tr>
+      Same as% I:% M:% S% p
+      .. (11:55:23 PM etc.)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %R
-    </td>
+      % R
+    </ td>
     <td>
-      時分( 15:16 など )
-    </td>
-  </tr>
+      Hours and minutes (15:16, etc.)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %s
-    </td>
+      % s
+    </ td>
     <td>
-      エポックからの秒数
-    </td>
-  </tr>
+      Seconds from epoch
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %S
-    </td>
+      % S
+    </ td>
     <td>
-      秒( 00 から 61 )
-    </td>
-  </tr>
+      Seconds (00 to 61)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %t
-    </td>
+      % t
+    </ td>
     <td>
-      タブ文字
-    </td>
-  </tr>
+      Tab character
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %T
-    </td>
+      % T
+    </ td>
     <td>
-      %H:%M:%S と同じ。時分秒( 23:14:03 など )
-    </td>
-  </tr>
+      Same as% H:% M:% S. Hours, minutes and seconds (such as 23:14:03)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %u
-    </td>
+      % u
+    </ td>
     <td>
-      曜日の番号( 1 から 7。 月曜日が1 )
-    </td>
-  </tr>
+      Day of the week number (1 to 7. Monday is 1)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %U
-    </td>
+      % U
+    </ td>
     <td>
-      年の最初から数えて何週目か。( 00 から 53 ) : 年の最初の日曜日を週の最初として数える。最初の日曜日の週が01。その前の週が00。
-    </td>
-  </tr>
+      How many weeks have you counted from the beginning of the year? (00-53): Count the first Sunday of the year as the beginning of the week. The first Sunday week is 01. The week before that was 00.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %V
-    </td>
+      % V
+    </ td>
     <td>
-      年の最初から数えて何週目か。( 01 から 53 ) : 少なくとも4日を持つ週を年の最初の週とする。月曜日を週の最初として数える。
-    </td>
-  </tr>
+      How many weeks have you counted from the beginning of the year? (01-53): Let the week with at least 4 days be the first week of the year. Count Monday as the beginning of the week.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %w
-    </td>
+      % w
+    </ td>
     <td>
-      曜日の番号( 0 から 6。 日曜日が0 )
-    </td>
-  </tr>
+      Day of the week number (0 to 6. Sunday is 0)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %W
-    </td>
+      % W
+    </ td>
     <td>
-      年の最初から数えて何週目か( 00 から 53 )  年の最初の月曜日を週の最初として数える。最初の月曜日の週が01。その前の週が00。
-    </td>
-  </tr>
+      Weeks counting from the beginning of the year (00-53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that was 00.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %x
-    </td>
+      % x
+    </ td>
     <td>
-      日付のデフォルトのフォーマット
-    </td>
-  </tr>
+      Default format for dates
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %X
-    </td>
+      % X
+    </ td>
     <td>
-      時刻のデフォルトのフォーマット
-    </td>
-  </tr>
+      Default format for time
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %y
-    </td>
+      % y
+    </ td>
     <td>
-      年の下の2桁
-    </td>
-  </tr>
+      Last two digits of the year
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %Y
-    </td>
+      % Y
+    </ td>
     <td>
-      年
-    </td>
-  </tr>
+      Year
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %z
-    </td>
+      % z
+    </ td>
     <td>
-      UTC(協定世界時)からのタイムゾーンの時刻のずれ)
-    </td>
-  </tr>
+      Time zone time shift from UTC (Coordinated Universal Time))
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %Z
-    </td>
+      % Z
+    </ td>
     <td>
-      タイムゾーン名
-    </td>
-  </tr>
+      Time zone name
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       %%
-    </td>
+    </ td>
     <td>
-      %
-    </td>
-  </tr>
+      %%
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %{method}
-    </td>
+      % {method}
+    </ td>
     <td>
-      DateTime.pm のメソッドを利用することができる。例 %{ymd}
-    </td>
-  </tr>
+      You can use the methods of DateTime.pm. Example% {ymd}
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h3>日付の足し算</h3>
+<h3> Date addition </ h3>
 
-日付や時刻を加算するには<strong>add</strong>メソッドを使用します。
-
-<pre>
-# 日の加算
-$dt->add(days => 1);
-
-# 月の加算
-$dt->add(months => 1);
-
-# 年の加算
-$dt->add(years => 1);
-
-# 時の加算
-$dt->add(hours => 1);
-
-# 分の加算
-$dt->add(minutes => 1);
-
-# 秒の加算
-$dt->add(seconds => 1);
-
-#まとめて加算
-$dt->add(years => 1, months => 1, days => 1, hours => 1, minutes => 1, seconds => 1);
-</pre>
-
-<h3>日付の引き算</h3>
-
-日付からある期間を減算するには<strong>subtract</strong>メソッドを使用します。
+Use the <strong> add </ strong> method to add dates and times.
 
 <pre>
-# 日の減算
-$dt->subtract(days => 1);
+# Addition of days
+$ dt-> add (days => 1);
 
-# 月の減算
-$dt->subtract(months => 1);
+# Monthly addition
+$ dt-> add (months => 1);
 
-# 年の減算
-$dt->subtract(years => 1);
+# Year addition
+$ dt-> add (years => 1);
 
-# 時の減算
-$dt->subtract(hours => 1);
+# Hour addition
+$ dt-> add (hours => 1);
 
-# 分の減算
-$dt->subtract(minutes => 1);
+Addition of # minutes
+$ dt-> add (minutes => 1);
 
-# 秒の減算
-$dt->subtract(seconds => 1);
-</pre>
+#Addition of seconds
+$ dt-> add (seconds => 1);
 
-日付どうしの引き算を行うこともできます。<strong>-</strong>記号を使って普通に計算するようにできます。(演算子のオーバーロードという機能を使って実現されています。)戻り値は、DateTimeオブジェクトではなくて、期間を表すDateTime::Durationオブジェクトになります。years, months, days メソッドで、期間の年月日を取得できます。
+#Add all together
+$ dt-> add (years => 1, months => 1, days => 1, hours => 1, minutes => 1, seconds => 1);
+</ pre>
 
-<pre>
-my $duration = $dt2 - $dt1;
-</pre>
+<h3> Date subtraction </ h3>
 
-日付の引き算には2種類あります。日付にある期間を引き算(たとえば1ヶ月前)するものと、日付どうしの引き算(たとえば2008年10月10日と2009年3月14日の差)するものがあります。
-
-<h3>期間を表すオブジェクト</h3>
-
-日付と日付の間の期間はDateTime::Durationオブジェクトによって表現されます。DateTimeが日付の情報を表現するのに対して、DateTime::Durationは期間の情報を表現します。日付にある期間を加えたりある期間を引いたりした場合は、addメソッドやsubstructメソッドを使用しましたが、内部的には、DateTime::Durationオブジェクトが作成された上で演算がなされています。
-
-DateTimeオブジェクトどうしの引き算を行うと、戻り値としてDateTime::Durationオブジェクトが返却されます。演算子のオーバーロードという機能が利用されていて、- 記号を使ってDateTimeオブジェクトどうしの引き算を行うことができます。
+Use the <strong> subtract </ strong> method to subtract a period from a date.
 
 <pre>
-my $duration = $dt2 - $dt1;
-</pre>
+# Subtraction of days
+$ dt-> subtract (days => 1);
 
-以下のメソッドで期間の情報を取得できます。
-<pre>
-# 年
-$duration->years;
+# Month subtraction
+$ dt-> subtract (months => 1);
 
-# 月
-$duration->months;
+# Year subtraction
+$ dt-> subtract (years => 1);
 
-# 日 
-$duration->days;
+# Hour subtraction
+$ dt-> subtract (hours => 1);
 
-# 時間
-$duration->hours;
+Subtraction of # minutes
+$ dt-> subtract (minutes => 1);
 
-# 分
-$duration->minutes;
+#Second subtraction
+$ dt-> subtract (seconds => 1);
+</ pre>
 
-# 秒
-$duration->seconds;
-</pre>
-
-注意しないといけないことは、それぞれのメソッドは単独では意味を持たないということです。たとえば、$duration->days は、期間の日数そのものを表しているのではないということです。期間が1ヶ月と30日だとすると、$duration->monthsは1に、$duration->days は30になります。
-
-上記のメソッドは常に正の値を返却するので、どちらの期間が先かという判定を行うことができません。期間の順序を判定するには、<strong>is_positive</strong>, <strong>is_zero</strong>, <strong>is_negative</strong>メソッドを使用します。
-<pre>
-# 日付2 - 日付1が正
-$duration->is_positive
-
-# 日付2 - 日付1が同じ
-$duration->is_zero
-
-# 日付2 - 日付1が負
-$duration->is_negative
-</pre>
-
-期間をある単位で取得するには<strong>in_units</strong>メソッドを使用します。
+You can also subtract dates. You can use the <strong>-</ strong> symbol to make the calculation normal. (This is achieved using a feature called operator overloading.) The return value is a DateTime :: Duration object that represents the period, not a DateTime object. You can get the date of the period with the years, months, days method.
 
 <pre>
-# 期間が1年と15ヶ月の場合は27になる
-my $months = $duration->in_units('months');
+my $ duration = $ dt2- $ dt1;
+</ pre>
 
-# 期間が1年と15ヵ月の場合は2になる 
-my $years = $duration->in_inits('years');
+There are two types of date subtraction. Some subtract the period on a date (for example, one month ago), while others subtract the dates (for example, the difference between October 10, 2008 and March 14, 2009).
 
-# 期間が1年と15ヶ月の場合は( 2, 3 )になります。
-my ($years, $months) = $duration->in_units('years', 'months');
-</pre>
-引数を2つ渡す場合は、<a href="/blog/20080608121292.html">リストコンテキスト</a>で受け取る必要があります。
+<h3> Object representing the period </ h3>
 
-単位で変換可能であるのは以下の4つだけです。
+The period between dates is represented by the DateTime :: Duration object. DateTime represents date information, while DateTime :: Duration represents period information. When adding a certain period to a date or subtracting a certain period, I used the add method and the submit method, but internally, the operation is performed after the DateTime :: Duration object is created.
+
+When subtracting DateTime objects from each other, DateTime :: Duration object is returned as a return value. A feature called operator overloading is used to allow subtraction between DateTime objects using the-symbol.
 
 <pre>
-年と月 (1年は12ヶ月)
-週と日 (1週間は7日)
-時間と分 (1時間は60分 )
-秒とミリ秒 (1秒は1000ミリ秒)
-</pre>
-日と月は相互に変換できません。日数が月によって異なるためです。
-分と秒は相互に変換できそうですが、変換できません。うるう秒の存在によって、1分が61秒になることがあるためです。
+my $ duration = $ dt2- $ dt1;
+</ pre>
 
-<h3>日付計算の注意点</h3>
+You can get the period information with the following method.
+<pre>
+# Year
+$ duration-> years;
 
-日付の計算は不規則な部分があるのでできるだけ単純な方法で済ますほうがよいです。日付計算を複雑にしている原因を含めて、日付計算の注意点について書いておきます。
+# Month
+$ duration-> months;
 
-<h4>フローティングタイムゾーン( floating TimeZone )</h4>
+# Day 
+$ duration-> days;
 
-DateTimeオブジェクトは、new メソッドで作成されて、タイムゾーンが指定されない場合は、デフォルトのタイムゾーンは、フローティングタイムゾーンと呼ばれるものになります。
+#Time
+$ duration-> hours;
 
-フローティングタイムゾーンとは、存在するどのタイムゾーンとも関係がない、うるう秒を考慮しないタイムゾーンのことです。
+# Min
+$ duration-> minutes;
 
-タイムゾーンとうるう秒を考慮する必要がない場合は、フローティングタイムゾーンを用いて計算を行えばもっとも安心だということになります。
+#Seconds
+$ duration-> seconds;
+</ pre>
 
-たとえばログから年月日を取得して、3ヶ月後の年月日を取得したいといった場合、フローティングタイムゾーンで計算して問題はありません。
+It's important to note that each method doesn't make sense on its own. For example, $ duration-> days does not represent the number of days in the period itself. If the duration is 1 month and 30 days, then $ duration-> months will be 1 and $ duration-> days will be 30.
 
-<h4>うるう秒とは</h4>
+The above method always returns a positive value, so it is not possible to determine which period comes first. Use the <strong> is_positive </ strong>, <strong> is_zero </ strong>, <strong> is_negative </ strong> methods to determine the order of the periods.
+<pre>
+# Date 2-Date 1 is positive
+$ duration-> is_positive
 
-時刻は絶対的なものではなくて、地球の自転が1週したときが一日と数えますから、地球の自転が遅れると一日の長さが変わってしまいます。うるう秒とは地球の自転が年々遅れていくために、何年かに一度挿入される秒のことです。
+# Date 2-Same date 1
+$ duration-> is_zero
 
-うるう秒が考慮されているタイムゾーンを用いて、うるう秒が間に挟まるように日付を計算すると、うるう秒が間に挟まらない場合と1秒のずれが生じます。
+# Date 2-Date 1 is negative
+$ duration-> is_negative
+</ pre>
 
-<h4>サマータイムとは</h4>
-
-サマータイムとは1年のある期間だけ時刻を1時間早めるという政策のことです。ある瞬間に時刻を1時間早めるわけですから、1時間時刻が重複してしまいます。普通の時刻が2時だったとしたら、サマータイム変更した直後は1時になるけです。
-
-この日は、1時から2時が重なってしまいます。
-
-だからサマータイムを導入している国では、時刻の計算を行おうとすると非常に複雑なことになってしまいます。
-
-日本の場合はサマータイムがありませんので、サマータイムの影響は考える必要がありません。
-
-<h4>特定のタイムゾーンをUTCに変換する</h4>
-
-日付の計算を単純にするために、特定のタイムゾーンをUTCに変換してから計算します。そして計算が終わった後で、元のタイムゾーンに戻します。
+Use the <strong> in_units </ strong> method to get the duration in certain units.
 
 <pre>
-my $dt = DateTime->new(%user_input, time_zone => $user_tz);
+# 27 if the period is 1 year and 15 months
+my $ months = $ duration-> in_units ('months');
 
-# UTCに変換
-$dt->set_time_zone('UTC');
+# 2 if the period is 1 year and 15 months
+my $ years = $ duration-> in_inits ('years');
 
-# 日付の計算を行う。
-# 元のタイムゾーンに戻す。
-$dt->set_time_zone($user_tz);
-print $dt->datetime;
-</pre>
+# If the period is 1 year and 15 months, it will be (2, 3).
+my ($ years, $ months) = $ duration-> in_units ('years','months');
+</ pre>
+If you pass two arguments, you must receive them in <a href="/blog/20080608121292.html"> list context </a>.
 
-日本の場合はサマータイムがありませんので、ローカル時刻で計算をしても奇妙な結果になることはありません。世界的にはサマータイムを導入している国が結構あるようです。
-
-<h4>特定のタイムゾーンでの計算</h4>
-
-特定のタイムゾーンで計算を行ってもたいていの場合は正しい結果が返ります。ただし、サマータイムが導入されている場合で、サマータイムへの変更の時間帯付近を含む場合は、奇妙な結果が返ります。
-
-上記で解説したように、いったんUTCに変換して計算してから元に戻すのが安全です。
-
-<h4>nowメソッドのデフォルトのタイムゾーン</h4>
-
-nowメソッドで現在時刻を取得することができますが、デフォルトのタイムゾーンはUTCになります。
-
-newでDateTimeオブジェクト作った場合は、デフォルトのタイムゾーンは、フローティングタイムゾーンになります。
-
-<h3>前の月と次の月を取得する方法</h3>
-
-DateTimeを使って、前の月と次の月を取得する方法です。(でも少し自信がない)
+Only the following four can be converted in units.
 
 <pre>
-# 現在の年月
-my $current_dt = DateTime->now(time_zone => 'local');
+Year and month (1 year is 12 months)
+Week and day (7 days a week)
+Hours and minutes (1 hour is 60 minutes)
+Seconds and milliseconds (1 second is 1000 milliseconds)
+</ pre>
+Days and months cannot be converted to each other. This is because the number of days varies from month to month.
+It seems that minutes and seconds can be converted to each other, but they cannot. This is because the presence of leap seconds can make one minute 61 seconds.
+
+<h3> Notes on date calculation </ h3>
+
+The date calculation has irregular parts, so it is better to use the simplest method possible. Here are some things to keep in mind about date calculations, including the causes that complicate date calculations.
+
+<h4> Floating TimeZone </ h4>
+
+If the DateTime object is created with the new method and no time zone is specified, the default time zone will be what is called a floating time zone.
+
+A floating time zone is a time zone that does not consider leap seconds and has nothing to do with any existing time zone.
+
+If you don't need to consider the time zone and leap seconds, it's safest to calculate using the floating time zone.
+
+For example, if you want to get the date from the log and get the date after 3 months, there is no problem in calculating in the floating time zone.
+
+<h4> What is a leap second? </ H4>
+
+The time is not absolute, and the time when the rotation of the earth is one week is counted as one day, so if the rotation of the earth is delayed, the length of the day will change. Leap seconds are seconds that are inserted once every few years because the rotation of the earth is delayed year by year.
+
+If you use a time zone that takes leap seconds into account and calculate the date so that the leap seconds are in between, there will be a one second difference from the case where the leap seconds are not in between.
+
+<h4> What is daylight saving time? </ H4>
+
+Daylight saving time is a policy to advance the time by one hour for a certain period of the year. Because at a certain moment, the time is advanced by one hour.
+, 1 hour time will be duplicated. If the normal time is 2 o'clock, it will be 1 o'clock immediately after changing the daylight saving time.
+
+On this day, 1 o'clock and 2 o'clock overlap.
+
+Therefore, in countries that have introduced daylight saving time, trying to calculate the time becomes very complicated.
+
+In Japan, there is no daylight saving time, so there is no need to consider the effects of daylight saving time.
+
+<h4> Convert a specific timezone to UTC </ h4>
+
+To simplify the date calculation, convert a specific time zone to UTC before calculating. Then, after the calculation is finished, return to the original time zone.
+
+<pre>
+my $ dt = DateTime-> new (% user_input, time_zone => $ user_tz);
+
+Convert to # UTC
+$ dt-> set_time_zone ('UTC');
+
+# Calculate the date.
+#Return to the original time zone.
+$ dt-> set_time_zone ($ user_tz);
+print $ dt-> datetime;
+</ pre>
+
+In Japan, there is no daylight saving time, so even if you calculate with local time, you will not get strange results. It seems that there are quite a few countries in the world that have introduced daylight saving time.
+
+<h4> Calculation in a specific time zone </ h4>
+
+Calculations in a particular time zone usually return correct results. However, if daylight savings time is in place and includes the time zone of the change to daylight savings time, weird results will be returned.
+
+As explained above, it is safe to convert to UTC, calculate and then undo.
+
+<h4> The default timezone for the now method </ h4>
+
+You can get the current time with the now method, but the default timezone is UTC.
+
+If you create a DateTime object with new, the default timezone will be the floating timezone.
+
+<h3> How to get the previous month and the next month </ h3>
+
+How to get the previous month and the next month using DateTime. (But I'm a little unsure)
+
+<pre>
+#Current year and month
+my $ current_dt = DateTime-> now (time_zone =>'local');
   
-# 前の月
-my $prev_dt = $current_dt->clone->add(months => -1, end_of_month => 'limit');
+# Previous month
+my $ prev_dt = $ current_dt-> clone-> add (months => -1, end_of_month =>'limit');
 
-# 次の月
-my $next_dt = $current_dt->clone->add(months => 1, end_of_month => 'limit');
-</pre>
+#Next month
+my $ next_dt = $ current_dt-> clone-> add (months => 1, end_of_month =>'limit');
+</ pre>
 
-「end_of_month => 'limit'」オプションをつけると、日付が1/31日とかでも、正しく日付が取得できる気がします。たとえば1/31に1月を足した結果は、2/28とかになる。
+With the "end_of_month =>'limit'" option, I feel that the date can be obtained correctly even if the date is 1/31. For example, the result of adding January to 1/31 is 2/28.
 
-先の月や次の月にページ遷移したいアプリケーションとかでは便利ではないかと思います。
+I think that it is convenient for applications that want to transition pages to the previous month or the next month.
 
-<h3>サンプルコード</h3>
+<h3> Sample code </ h3>
 
-最後にサンプルコードを掲載しておきます。
+Finally, I will post the sample code.
 
-DateTimeを使ったサンプルです。
+This is a sample using DateTime.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-# DateTimeオブジェクトの初期化
-# (1900年からの経過年ではなく、そのままの年を使用する。)
-# (月は0から数えるのではなくて1から数える。 10 は 10月。)
-my $dt = DateTime->new( 
+#Initialization of DateTime object
+# (Use the same year, not the year elapsed since 1900.)
+# (Month counts from 1 instead of 0. 10 is his October.)
+my $ dt = DateTime-> new (
   year => 1964,
   month => 10,
   day => 16,
@@ -977,146 +978,146 @@ my $dt = DateTime->new(
   second => 47,
 );
 
-# 時刻情報を取得するGetメソッド
-my $year = $dt->year;
-my $mon = $dt->month;
-my $mday = $dt->day;
+# Get method to get time information
+my $ year = $ dt-> year;
+my $ mon = $ dt-> month;
+my $ mday = $ dt-> day;
 
-# 曜日の番号(曜日は1から始まり1は月,7は日になる。)
-my $wday = $dt->day_of_week; 
-my $hour = $dt->hour;
-my $minute = $dt->minute;
-my $second = $dt->second;
-my $yday = $dt->day_of_year;
-my $qtr = $dt->quarter;
+# Day of the week number (day of the week starts with 1 and 1 is the month and 7 is the day)
+my $ wday = $ dt-> day_of_week;
+my $ hour = $ dt-> hour;
+my $ minute = $ dt-> minute;
+my $ second = $ dt-> second;
+my $ yday = $ dt-> day_of_year;
+my $ qtr = $ dt-> quarter;
 
-print "(1)DateTimeの日付・時刻情報\n";
-print(
-  "${year}年${mon}月${mday}日${wday}番目の曜日\n" .
-  "${hour}時${minute}分${second}秒\n" .
-  "${yday}日目(1年で数えて)\n" .
-  "${qtr}期(4半期のうち)\n"
+print "(1) Date / time information of DateTime \ n";
+print (
+  "$ {year} year $ {mon} month $ {mday} day $ {wday} th day \ n".
+  "$ {hour} hours $ {minute} minutes $ {second} seconds \ n".
+  "$ {yday} day (counting in one year) \ n".
+  "$ {qtr} period (out of quarter) \ n"
 );
-</pre>
-実行結果
+</ pre>
+Execution result
 <pre>
-(1)DateTimeの日付・時刻情報
-1964年10月16日 5番目の曜日
-16時12分47秒
-290日目(1年で数えて)
-4期(4半期のうち)
-</pre>
+(1) Date / time information of DateTime
+October 16, 1964 5th day of the week
+16:12:47
+Day 290 (counting in one year)
+4th term (out of 4th half)
+</ pre>
 
-現在の日付と時刻を取得するサンプルです。
+This is a sample to get the current date and time.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-# (1)-1 現在の時刻を取得する( ローカル時間 )
-my $dt = DateTime->now(time_zone => 'local');
+# (1) -1 Get the current time (local time)
+my $ dt = DateTime-> now (time_zone =>'local');
 
-# (1)-2 タイムゾーンを明示的に指定する場合。
-# my $dt = DateTime->now(time_zone => 'Asia/Tokyo');
+# (1) -2 When explicitly specifying the time zone.
+# my $ dt = DateTime-> now (time_zone =>'Asia / Tokyo');
 
-# (1)-3 UTC 協定世界時
-# my $dt = DateTime->now;
+# (1) -3 UTC Coordinated Universal Time
+# my $ dt = DateTime-> now;
 
-# 時刻情報を取得するGetメソッド
-my $year = $dt->year;
-my $mon = $dt->month;
-my $mday = $dt->day;
-my $wday = $dt->day_of_week;
-my $hour = $dt->hour;
-my $minute = $dt->minute;
-my $second = $dt->second;
-my $yday = $dt->day_of_year;
-my $qtr = $dt->quarter;
+# Get method to get time information
+my $ year = $ dt-> year;
+my $ mon = $ dt-> month;
+my $ mday = $ dt-> day;
+my $ wday = $ dt-> day_of_week;
+my $ hour = $ dt-> hour;
+my $ minute = $ dt-> minute;
+my $ second = $ dt-> second;
+my $ yday = $ dt-> day_of_year;
+my $ qtr = $ dt-> quarter;
 
-print "(1)現在の時刻を取得する。\n";
-print(
-  "${year}年${mon}月${mday}日${wday}番目の曜日\n" .
-  "${hour}時${minute}分${second}秒\n" .
-  "${yday}日目(1年で数えて)\n" .
-  "${qtr}期(4半期のうち)\n"
+print "(1) Get the current time. \ N";
+print (
+  "$ {year} year $ {mon} month $ {mday} day $ {wday} th day \ n".
+  "$ {hour} hours $ {minute} minutes $ {second} seconds \ n".
+  "$ {yday} day (counting in one year) \ n".
+  "$ {qtr} period (out of quarter) \ n"
 );
-</pre>
-実行結果
+</ pre>
+Execution result
 <pre>
-(1)現在の時刻を取得する。
-2008年11月2日 7番目の曜日
-8時11分5秒
-307日目(1年で数えて)
-4期(4半期のうち)
-</pre>
+(1) Get the current time.
+November 2, 2008 7th day of the week
+8:11:05
+Day 307 (counting in one year)
+4th term (out of 4th half)
+</ pre>
 
-エポック秒から日付情報を作成するサンプルです。
+This is a sample to create date information from epoch seconds.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-# エポック秒から日付情報を作成する。
-my $epoch = 1225589752;
-my $dt = DateTime->from_epoch( epoch => $epoch );
+#Create date information from epoch seconds.
+my $ epoch = 1225589752;
+my $ dt = DateTime-> from_epoch (epoch => $ epoch);
 
-# 時刻情報を取得するGetメソッド
-my $year = $dt->year;
-my $mon = $dt->month;
-my $mday = $dt->day;
-my $wday = $dt->day_of_week; #曜日の番号(曜日は1から始まり1は月,7は日になる。)
-my $hour = $dt->hour;
-my $minute = $dt->minute;
-my $second = $dt->second;
-my $yday = $dt->day_of_year;
-my $qtr = $dt->quarter;
+# Get method to get time information
+my $ year = $ dt-> year;
+my $ mon = $ dt-> month;
+my $ mday = $ dt-> day;
+my $ wday = $ dt-> day_of_week; # Day of the week number (day of the week starts with 1 and 1 is the month and 7 is the day)
+my $ hour = $ dt-> hour;
+my $ minute = $ dt-> minute;
+my $ second = $ dt-> second;
+my $ yday = $ dt-> day_of_year;
+my $ qtr = $ dt-> quarter;
 
-print "(1)エポック秒から日付情報を作成する。\n";
-print(
-  $year, "年",
-  $mon, "月",
-  $mday, "日 ",
-  $wday, "番目の曜日\n",
-  $hour, "時",
-  $minute, "分",
-  $second, "秒\n",
-  $yday, "日目(1年で数えて)\n",
-  $qtr,"期(4半期のうち)\n"
+print "(1) Create date information from epoch seconds. \ N";
+print (
+  $ year, "year",
+  $ mon, "month",
+  $ mday, "day",
+  $ wday, "third day \ n",
+  $ hour, "hour",
+  $ minute, "minute",
+  $ second, "seconds \ n",
+  $ yday, "Day (counting in one year) \ n",
+  $ qtr, "Period (out of quarter) \ n"
 );
-</pre>
+</ pre>
 
-実行結果
+Execution result
 
 <pre>
-(1)エポック秒から日付情報を作成する。
-2008年11月2日 7番目の曜日
-1時35分52秒
-307日目(1年で数えて)
-4期(4半期のうち)
-</pre>
+(1) Create date information from epoch seconds.
+November 2, 2008 7th day of the week
+1:35:52
+Day 307 (counting in one year)
+4th term (out of 4th half)
+</ pre>
 
-タイムゾーンを指定するサンプルです。
+This is a sample to specify the time zone.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
-use DateTime::TimeZone;
+use DateTime :: TimeZone;
 
-# (1)タイムゾーンオブジェクトの作成
-my $time_zone = DateTime::TimeZone->new(name => 'Asia/Tokyo');
+# (1) Creating a timezone object
+my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
 
-# OSの設定から自動的にタイムゾーンを取得する場合
-# my $time_zone = DateTime::TimeZone->new(name => 'local'); 
+#When automatically acquiring the time zone from the OS settings
+# my $ time_zone = DateTime :: TimeZone-> new (name =>'local');
                                                      
-# (2)タイムゾーンオブジェクトの利用
-my $dt1 = DateTime->now(time_zone => $time_zone);
-my $dt2 = DateTime->now(time_zone => $time_zone); 
-</pre>
+# (2) Use of timezone object
+my $ dt1 = DateTime-> now (time_zone => $ time_zone);
+my $ dt2 = DateTime-> now (time_zone => $ time_zone);
+</ pre>
 
-ロケールを設定するサンプルです。
+This is a sample to set the locale.
 
 <pre>
 use strict;
@@ -1124,358 +1125,360 @@ use warnings;
 use DateTime;
 use Encode;
 
-print "(1)月名と曜日名を日本語で出力する。\n";
-my $dt = DateTime->now(locale => 'ja', time_zone => 'local');
+print "(1) Print the month name and day of the week name in Japanese. \ N";
+my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 
-# 月名
-my $month_name = $dt->month_name;
+#Month name
+my $ month_name = $ dt-> month_name;
 
-# 月の省略名( 省略名がない場合は月名と同じ)
-my $month_abbr = $dt->month_abbr;
+# Month abbreviation (same as month name if there is no abbreviation)
+my $ month_abbr = $ dt-> month_abbr;
 
-# 曜日名
-my $day_name = $dt->day_name;
+# Day of the week name
+my $ day_name = $ dt-> day_name;
 
-# 曜日の省略名
-my $day_abbr = $dt->day_abbr;
+# Abbreviated name of the day of the week
+my $ day_abbr = $ dt-> day_abbr;
 
-# UTF-8フラグが立っているので、エンコードする。
-my $encode_to;
-if ($^O eq 'MSWin32') { $encode_to = 'shift-jis' }
-else { $encode_to = 'utf8' }
+Since the # UTF-8 flag is set, encode it.
+my $ encode_to;
+if ($ ^ O eq'MSWin32') {$ encode_to ='shift-jis'}
+else {$ encode_to ='utf8'}
 
-print(
-  encode($encode_to, $month_name) . "\n" .
-  encode($encode_to, $month_abbr) . "\n" .
-  encode($encode_to, $day_name) . "\n" .
-  encode($encode_to, $day_abbr) . "\n"
+print (
+  encode ($ encode_to, $ month_name). "\ n".
+  encode ($ encode_to, $ month_abbr). "\ n".
+  encode ($ encode_to, $ day_name). "\ n".
+  encode ($ encode_to, $ day_abbr). "\ n"
 );
-</pre>
+</ pre>
 
-出力結果
+Output result
 <pre>
-(1)月の名前と曜日を日本語で出力する。
-11月
-11月
-金曜日
-金
-</pre>
+(1) Output the month name and day of the week in Japanese.
+November
+November
+Friday
+Money
+</ pre>
 
-DateTimeでロケールを指定するサンプルです。
+This is a sample to specify the locale with DateTime.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
-use DateTime::Locale;
+use DateTime :: Locale;
 
-# エンコード用
+# For encoding
 use Encode;
-my $encode_to;
-if ($^O eq 'MSWin32') { $encode_to = 'shift-jis' }
-else { $encode_to = 'utf8' }
+my $ encode_to;
+if ($ ^ O eq'MSWin32') {$ encode_to ='s
+hift-jis'}
+else {$ encode_to ='utf8'}
 
-# ロケールの生成
-print "(1) DateTime::Localeオブジェクト\n";
-my $locale = DateTime::Locale->load('ja'); 
-my $dt = DateTime->now(locale => $locale , time_zone => 'local');
+#Generation of locale
+print "(1) DateTime :: Locale object \ n";
+my $ locale = DateTime :: Locale-> load ('ja');
+my $ dt = DateTime-> now (locale => $ locale, time_zone =>'local');
 
-# 曜日名
-my $day_name = $dt->day_name;
-print encode($encode_to, $day_name) . "\n";
-</pre>
+# Day of the week name
+my $ day_name = $ dt-> day_name;
+print encode ($ encode_to, $ day_name). "\ n";
+</ pre>
 
-日付や時刻を取得するサンプルです。
+This is a sample to get the date and time.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
-use DateTime::TimeZone;
-use DateTime::Locale;
+use DateTime :: TimeZone;
+use DateTime :: Locale;
 
-my $dt = DateTime->now(time_zone => 'local');
+my $ dt = DateTime-> now (time_zone =>'local');
 
-print "(1)DateTimeの日付・時刻の便利な出力方法\n";
-my $ymd = $dt->ymd;
-my $ymd_slash = $dt->ymd('/');
-my $mdy = $dt->mdy;
-my $mdy_slash = $dt->mdy('/');
-my $dmy = $dt->dmy;
-my $dmy_slash = $dt->dmy('/');
-my $hms = $dt->hms;
-my $hms_hyphen = $dt->hms('-');
-my $ymdhms = $dt->datetime;
+print "(1) Convenient output method of DateTime date / time \ n";
+my $ ymd = $ dt-> ymd;
+my $ ymd_slash = $ dt-> ymd ('/');
+my $ mdy = $ dt-> mdy;
+my $ mdy_slash = $ dt-> mdy ('/');
+my $ dmy = $ dt-> dmy;
+my $ dmy_slash = $ dt-> dmy ('/');
+my $ hms = $ dt-> hms;
+my $ hms_hyphen = $ dt-> hms ('-');
+my $ ymdhms = $ dt-> datetime;
 
-print(
-  "年月日(ハイフン)   $ymd\n" .
-  "年月日(スラッシュ) $ymd_slash\n" .
-  "月日年(ハイフン)   $mdy\n" .
-  "月日年(スラッシュ) $mdy_slash\n" .
-  "日月年(ハイフン)   $dmy\n" .
-  "日月年(スラッシュ) $dmy_slash\n\n" .
-  "時分秒(コロン)     $hms\n" .
-  "時分秒(ハイフン)   $hms_hyphen\n\n" .
-  "年月日時分秒       $ymdhms\n"
+print (
+  "Date (hyphen) $ ymd \ n".
+  "Date (slash) $ ymd_slash \ n".
+  "Month, day, year (hyphen) $ mdy \ n".
+  "Month, day, year (slash) $ mdy_slash \ n".
+  "Day / month / year (hyphen) $ dmy \ n".
+  "Day / month / year (slash) $ dmy_slash \ n \ n".
+  "Hour, minute, second (colon) $ hms \ n".
+  "Hour, minute and second (hyphen) $ hms_hyphen \ n \ n".
+  "Year / month / day / hour / minute / second $ ymdhms \ n"
 );
-</pre>
+</ pre>
 
-うるう年の判定、月末日を取得するサンプルです。
-
-<pre>
-use strict;
-use warnings;
-use DateTime;
-
-print "(1)うるう年かどうかを判定する。\n";
-my $dt1 = DateTime->now(time_zone => 'local');
-my $is_leap_year = $dt1->is_leap_year;
-if ($is_leap_year) { print "今年はうるう年です。\n\n" }
-else { print "今年はうるう年ではありません。\n\n" }
-
-print "(2)月末日を取得する。\n";
-my $dt2 = DateTime->last_day_of_month(year => 2008, month => 11);
-print "2008年11月の月末日は" . $dt2->day . "日です。\n";
-</pre>
-
-strftimeメソッドのサンプルです。全書式をサンプルで試しています。
+This is a sample to get the leap year judgment and the last day of the month.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-print "(1)strftime 書式指定一覧\n";
-my $dt = DateTime->now(time_zone => 'local');
+print "(1) Determine if it is a leap year. \ N";
+my $ dt1 = DateTime-> now (time_zone =>'local');
+my $ is_leap_year = $ dt1-> is_leap_year;
+if ($ is_leap_year) {print "This year is a leap year. \ N \ n"}
+else {print "This year is not a leap year. \ N \ n"}
 
-print '%a : 曜日の省略名 : ' . $dt->strftime("%a") . "\n";
-print '%A : 曜日名 : ' . $dt->strftime("%A") . "\n";
-print '%b : 月の省略名 : ' . $dt->strftime("%b") . "\n";
-print '%B : 月名 : ' . $dt->strftime("%B") . "\n";
-print '%c : デフォルトのフォーマット : ' . $dt->strftime("%c") . "\n";
-print '%C : 年の最初の2桁 : ' . $dt->strftime("%C") . "\n";
-print '%d : 日(01 から 31) : ' . $dt->strftime("%d") . "\n";
-print '%D : %m/%d/%y と同じ。月日年 : ' . $dt->strftime("%D") . "\n";
-print '%e : 日(1 から 31) 1桁の数字(1 ～ 9)の2桁目はスペースになる。 : '
-  . $dt->strftime("%e") . "\n";
-print '%F : %Y-%m-%d と同じ(2008-11-31 など) : ' . $dt->strftime("%F") . "\n";
-print '%G : 年(%Yとの違いはよくわからない) : ' . $dt->strftime("%G") . "\n";
-print '%g : 年の下2桁 (00 ～ 99) : ' . $dt->strftime("%g") . "\n";
-print '%h : %b と同じ。月の省略名 : ' . $dt->strftime("%h") . "\n";
-print '%H : 時(00 から 23) : ' . $dt->strftime("%H") . "\n";
-print '%I : 時(01 から 12) 12時間表記での時刻 : ' . $dt->strftime("%I") . "\n";
-print '%j : 年の最初から初めて何日目か。(001 から 366) : '
-  . $dt->strftime("%j") . "\n";
-print '%k : 時(0 から 23) 1桁の数字(0～ 9)の２桁目はスペースになる。 : '
-  . $dt->strftime("%k") . "\n";
-print '%l : 時(1 から 12) 12時間表記での時刻 : ' . $dt->strftime("%l") . "\n";
-print '%m : 月の番号(01 から 12) : ' . $dt->strftime("%m") . "\n";
-print '%M : 分(00 から 59) : ' . $dt->strftime("%M") . "\n";
-print '%n : 改行文字 : ' . $dt->strftime("%n") . "\n";
-print '%N : ミリ秒(%3N と書くとミリ秒を3桁で%6Nと書くとミリ秒を6桁で表示) : '
-  . $dt->strftime("%3N") . "\n";
-print '%p : AM か PM : ' . $dt->strftime("%p") . "\n";
-print '%P : am か pm : ' . $dt->strftime("%P") . "\n";
-print '%r : %I:%M:%S %p と同じ。(11:55:23 PM など) : '
-  . $dt->strftime("%r") . "\n";
-print '%R : 時分(15:16 など) : ' . $dt->strftime("%R") . "\n";
-print '%s : エポックからの秒数 : ' . $dt->strftime("%s") . "\n";
-print '%S : 秒(00 から 61) : ' . $dt->strftime("%S") . "\n";
-print '%t : タブ文字 : ' . $dt->strftime("%t") . "\n";
-print '%T : %H:%M:%S と同じ。時分秒(23:14:03 など) : '
-  . $dt->strftime("%T") . "\n";
-print '%u : 曜日の番号(1 から 7。 月曜日が1) : ' . $dt->strftime("%u") . "\n";
-print '%U : 年の最初から数えて何週目か。(00 から 53) 年の最初の日曜日'
-  . 'を週の最初として数える。最初の日曜日の週が01。その前の週が00。 : '
-  . $dt->strftime("%U") . "\n";
-print '%V : 年の最初から数えて何週目か。(01 から 53) 少なくとも4日を持つ週を'
-  . '年の最初の週とする。月曜日を週の最初として数える。 : '
-  . $dt->strftime("%V") . "\n";
-print '%w : 曜日の番号(0 から 6。 日曜日が0) : ' . $dt->strftime("%w") . "\n";
-print '%W : 年の最初から数えて何週目か(00 から 53)  年の最初の月曜日を週の'
-  . '最初として数える。最初の月曜日の週が01。その前の週が00。 : '
-  . $dt->strftime("%W") . "\n";
-print '%x : 日付のデフォルトのフォーマット : ' . $dt->strftime("%x") . "\n";
-print '%X : 時刻のデフォルトのフォーマット : ' . $dt->strftime("%X") . "\n";
-print '%y : 年の下の2桁 : ' . $dt->strftime("%y") . "\n";
-print '%Y : 年 : ' . $dt->strftime("%Y") . "\n";
-print '%z : UTC(協定世界時)からのタイムゾーンの時刻のずれ) : '
-  . $dt->strftime("%z") . "\n";
-print '%Z : タイムゾーン名 : ' . $dt->strftime("%Z") . "\n";
-print '%% : % : ' . $dt->strftime("%%") . "\n";
-print '%{method} : DateTime.pm のメソッドを利用することができる。例 %{ymd} : '
-  . $dt->strftime("%{ymd}") . "\n";
-</pre>
+print "(2) Get the last day of the month. \ N";
+my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
+print "The last day of November 2008 is". $ Dt2-> day. "The day. \ N";
+</ pre>
 
-実行結果
-
-<pre>
-(1)strftime 書式指定一覧
-%a : 曜日の省略名 : Mon
-%A : 曜日名 : Monday
-%b : 月の省略名 : Nov
-%B : 月名 : November
-%c : デフォルトのフォーマット : Nov 17, 2008 12:09:37 AM
-%C : 年の最初の2桁 : 20
-%d : 日( 01 から 31 ) : 17
-%D : %m/%d/%y と同じ。月日年 : 11/17/08
-%e : 日( 1 から 31 ) 1桁の数字( 1 ～ 9 )の2桁目はスペースになる。 : 17
-%F : %Y-%m-%d と同じ( 2008-11-31 など ) : 2008-11-17
-%G : 年( %Yとの違いはよくわからない) : 2008
-%g : 年の下2桁 ( 00 ～ 99 ) : 08
-%h : %b と同じ。月の省略名 : Nov
-%H : 時( 00 から 23 ) : 00
-%I : 時( 01 から 12 ) 12時間表記での時刻 : 12
-%j : 年の最初から初めて何日目か。( 001 から 366 ) : 322
-%k : 時( 0 から 23 ) 1桁の数字( 0～ 9 )の２桁目はスペースになる。 :  0
-%l : 時( 1 から 12 ) 12時間表記での時刻 1桁の数字( 0～ 9 )の２桁目はスペースになる。 : 12
-%m : 月の番号( 01 から 12 ) : 11
-%M : 分( 00 から 59 ) : 09
-%n : 改行文字 :
-
-%N : ミリ秒( %3N と書くとミリ秒を3桁で、 %6Nと書くとミリ秒を6桁で表示 ) : 000
-%p : AM か PM : AM
-%P : am か pm : am
-%r : %I:%M:%S %p と同じ。( 11:55:23 PM など) : 12:09:37 AM
-%R : 時分( 15:16 など ) : 00:09
-%s : エポックからの秒数 : 1226848177
-%S : 秒( 00 から 61 ) : 37
-%t : タブ文字 :
-%T : %H:%M:%S と同じ。時分秒( 23:14:03 など ) : 00:09:37
-%u : 曜日の番号( 1 から 7。 月曜日が1 ) : 1
-%U : 年の最初から数えて何週目か。( 00 から 53 ) : 年の最初の日曜日を週の最初として数える。最初の日曜日の週が01。その前の
-週が00。 : 46
-%V : 年の最初から数えて何週目か。( 01 から 53 ) : 少なくとも4日を持つ週を年の最初の週とする。月曜日を週の最初として数え
-る。 : 47
-%w : 曜日の番号( 0 から 6。 日曜日が0 ) : 1
-%W : 年の最初から数えて何週目か( 00 から 53 )  年の最初の月曜日を週の最初として数える。最初の月曜日の週が01。その前の週
-が00。 : 46
-%x : 日付のデフォルトのフォーマット : Nov 17, 2008
-%X : 時刻のデフォルトのフォーマット : 12:09:37 AM
-%y : 年の下の2桁 : 08
-%Y : 年 : 2008
-%z : UTC(協定世界時)からのタイムゾーンの時刻のずれ) : +0900
-%Z : タイムゾーン名 : JST
-%% : % : %
-%{method} : DateTime.pm のメソッドを利用することができる。%{ymd} : 2008-11-17
-</pre>
-
-DateTimeを使って、日付や時刻の計算を行うサンプルです。
+This is a sample strftime method. I'm trying all the formats with samples.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-print "(1)-1 日付の足し算\n";
-my $dt = DateTime->now(time_zone => 'local');
+print "(1) strftime format specification list \ n";
+my $ dt = DateTime-> now (time_zone =>'local');
 
-# 日の加算
-my $dt_tommorow = $dt->clone;
-$dt_tommorow->add(days => 1);
+print'% a: Abbreviation for day of the week:'. $ Dt-> strftime ("% a"). "\ n";
+print'% A: Day of the week name:'. $ Dt-> strftime ("% A"). "\ n";
+print'% b: month abbreviation:'. $ dt-> strftime ("% b"). "\ n";
+print'% B: month name:'. $ dt-> strftime ("% B"). "\ n";
+print'% c: default format:'. $ Dt-> strftime ("% c"). "\ n";
+print'% C: First two digits of the year:'. $ Dt-> strftime ("% C"). "\ n";
+print'% d: days (01 to 31):'. $ Dt-> strftime ("% d"). "\ n";
+print'% D: Same as% m /% d /% y. Month Day Year:'. $ Dt-> strftime ("% D"). "\ n";
+print'% e: day (1 to 31) The second digit of the one digit number (1 to 9) is a space. :'
+  . $ dt-> strftime ("% e"). "\ n";
+print'% F: Same as% Y-% m-% d (eg 2008-11-31):'. $ Dt-> strftime ("% F"). "\ n";
+print'% G: Year (I don't know the difference from% Y):'. $ Dt-> strftime ("% G"). "\ n";
+print'% g: Last two digits of the year (00-99):'. $ Dt-> strftime ("% g"). "\ n";
+print'% h: Same as% b. Month abbreviation:'. $ Dt-> strftime ("% h"). "\ n";
+print'% H: Hour (00 to 23):'. $ Dt-> strftime ("% H"). "\ n";
+print'% I: Hour (01 to 12) Time in 12-hour notation:'. $ Dt-> strftime ("% I"). "\ n";
+print'% j: What day is it for the first time in the year? (001 to 366):'
+  . $ dt-> strftime ("% j"). "\ n";
+print'% k: Hour (0 to 23) The second digit of the one digit number (0 to 9) is a space. :'
+  . $ dt-> strftime ("% k"). "\ n";
+print'% l: Hour (1 to 12) Time in 12-hour notation:'. $ Dt-> strftime ("% l"). "\ n";
+print'% m: Month number (01 to 12):'. $ Dt-> strftime ("% m"). "\ n";
+print'% M: Minutes (00 to 59):'. $ Dt-> strftime ("% M"). "\ n";
+print'% n: Newline character:'. $ Dt-> strftime ("% n"). "\ n";
+print'% N: milliseconds (write% 3N will display milliseconds in 3 digits and% 6N will display milliseconds in 6 digits):'
+  . $ dt-> strftime ("% 3N"). "\ n";
+print'% p: AM or PM:'. $ Dt-> strftime ("% p"). "\ n";
+print'% P: am or pm:'. $ Dt-> strftime ("% P"). "\ n";
+print'% r:% I:% M:% S Same as% p. (11:55:23 PM, etc.):'
+  . $ dt-> strftime ("% r"). "\ n";
+print'% R: hours and minutes (15:16, etc.):'. $ Dt-> strftime ("% R"). "\ n";
+print'% s: seconds from epoch:'. $ dt-> strftime ("% s"). "\ n";
+print'% S: seconds (00 to 61):'. $ Dt-> strftime ("% S"). "\ n";
+print'% t: tab character:'. $ Dt-> strftime ("% t"). "\ n";
+print'% T: Same as% H:% M:% S. Hours, minutes and seconds (such as 23:14:03):'
+  . $ dt-> strftime ("% T"). "\ n";
+print'% u: Day of the week number (1 to 7. Monday is 1):'. $ Dt-> strftime ("% u"). "\ n";
+print'% U: How many weeks from the beginning of the year? First Sunday of the year (00-53)'
+  Count'.'As the beginning of the week. The first Sunday week is 01. The week before that was 00. :'
+  . $ dt-> strftime ("% U"). "\ n";
+print'% V: How many weeks from the beginning of the year? (01-53) Weeks with at least 4 days'
+  .'Shall be the first week of the year. Count Monday as the beginning of the week. :'
+  . $ dt-> strftime ("% V"). "\ n";
+print'% w: Day of the week number (0 to 6. Sunday is 0):'. $ Dt-> strftime ("% w"). "\ n";
+print'% W: Weeks counting from the beginning of the year (00-53) The first Monday of the year is the week'
+  .'Count as the first. The first Monday week is 01. The week before that was 00. :'
+  . $ dt-> strftime ("% W"). "\ n";
+print'% x: default date format:'. $ Dt-> strftime ("% x"). "\ n";
+print'% X: Default format for time:'. $ Dt-> strftime ("% X"). "\ n";
+print'% y: last two digits of the year:'. $ Dt-> strftime ("% y"). "\ n";
+print'% Y: Year:'. $ Dt-> strftime ("% Y"). "\ n";
+print'% z: Time zone time shift from UTC (Coordinated Universal Time):'
+  . $ dt-> strftime ("% z"). "\ n";
+print'% Z: timezone name:'. $ Dt-> strftime ("% Z"). "\ n";
+print'%%:%:'. $ Dt-> strftime ("%%"). "\ n";
+print'% {method}: You can use the method of DateTime.pm. Example% {ymd}:'
+  . $ dt-> strftime ("% {ymd}"). "\ n";
+</ pre>
 
-# 月の加算
-my $dt_next_month = $dt->clone;
-$dt_next_month->add(months => 1);
-
-# 年の加算
-my $dt_next_year = $dt->clone;
-$dt_next_year->add(years => 1);
-
-print '現在は' . $dt->date . "です。\n\n";
-print '明日は' . $dt_tommorow->date . "です。\n";
-print '1年後は' . $dt_next_month->date . "です。\n";
-print '1年後は' . $dt_next_year->date . "です。\n\n";
-
-# 時の加算
-print "(1)-2 時刻の加算\n";
-my $dt_next_hour = $dt->clone; 
-$dt_next_hour->add(hours => 1);
-
-# 分の加算
-my $dt_next_minutes = $dt->clone;
-$dt_next_minutes->add(minutes => 1);
-
-# 秒の加算
-my $dt_next_second = $dt->clone;
-$dt_next_second->add(seconds => 1);
-
-print '現在は' . $dt->time . "です。\n\n";
-print '1時間後は' . $dt_next_hour->time . "です。\n";
-print '1分後は' . $dt_next_minutes->time . "です。\n";
-print '1秒後は' . $dt_next_second->time . "です。\n";
-</pre>
-
-実行結果
+Execution result
 
 <pre>
-(1)-1 日付の加算
-現在は2008-11-18です。
+(1) strftime format specification list
+% a: Abbreviation for day of the week: Mon
+% A: Day of the week name: Monday
+% b: Month abbreviation: Nov
+% B: Month name: November
+% c: Default format: Nov 17, 2008 12:09:37 AM
+% C: First two digits of the year: 20
+% d: days (01 to 31): 17
+% D: Same as% m /% d /% y. Date Year: 11/17/08
+% e: Day (1 to 31) The second digit of the one digit number (1 to 9) is a space. : 17
+% F: Same as% Y-% m-% d (for example, 2008-11-31): 2008-11-17
+% G: Year (I don't know the difference from% Y): 2008
+% g: Last 2 digits of year (00-99): 08
+% h: Same as% b. Month abbreviation: Nov
+% H: Hour (00 to 23): 00
+% I: Hour (01 to 12) Time in 12-hour notation: 12
+% j: What day is it for the first time from the beginning of the year? (001 to 366): 322
+% k: Hour (0 to 23) The second digit of the one-digit number (0 to 9) is a space
+NS. : 0
+% l: Hour (1 to 12) Time in 12-hour notation The second digit of the one-digit number (0 to 9) is a space. : 12
+% m: Month number (01 to 12): 11
+% M: Minutes (00 to 59): 09
+% n: Newline character:
 
-明日は2008-11-19です。
-1年後は2008-12-18です。
-1年後は2009-11-18です。
+% N: Milliseconds (Write% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits): 000
+% p: AM or PM: AM
+% P: am or pm: am
+Same as% r:% I:% M:% S% p. (11:55:23 PM etc.): 12:09:37 AM
+% R: Hours and minutes (15:16, etc.): 00:09
+% s: Seconds from Epoch: 1226848177
+% S: Seconds (00 to 61): 37
+% t: tab character:
+Same as% T:% H:% M:% S. Hours, minutes and seconds (such as 23:14:03): 00:09:37
+% u: Day of the week number (1 to 7. Monday is 1): 1
+% U: How many weeks from the beginning of the year? (00-53): Count the first Sunday of the year as the beginning of the week. The first Sunday week is 01. Before that
+The week is 00. : 46
+% V: How many weeks from the beginning of the year? (01-53): Let the week with at least 4 days be the first week of the year. Count Monday as the beginning of the week
+NS. : 47
+% w: Day of the week number (0 to 6. Sunday is 0): 1
+% W: Weeks counting from the beginning of the year (00 to 53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that
+Is 00. : 46
+% x: Default date format: Nov 17, 2008
+% X: Default format for time: 12:09:37 AM
+% y: Last 2 digits of year: 08
+% Y: Year: 2008
+% z: Time zone time shift from UTC (Coordinated Universal Time): +0900
+% Z: Timezone name: JST
+%%:%:%
+% {method}: DateTime.pm method can be used. % {ymd}: 2008-11-17
+</ pre>
 
-(1)-2 時刻の加算
-現在は23:04:06です。
-
-1時間後は00:04:06です。
-1分後は23:05:06です。
-1秒後は23:04:07です。
-</pre>
-
-DateTimeを使って日付の引き算を行うサンプです。
+This is a sample that calculates the date and time using DateTime.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-print "(1) 日付の引き算\n";
-my $dt = DateTime->now(time_zone => 'local');
+print "(1) -1 Addition of dates \ n";
+my $ dt = DateTime-> now (time_zone =>'local');
 
-# 日の減算
-my $dt_yesterday = $dt->clone;
-$dt_yesterday->subtract(days => 1);
+# Addition of days
+my $ dt_tommorow = $ dt-> clone;
+$ dt_tommorow-> add (days => 1);
 
-print '現在の日付は' . $dt->date . "です。\n";
-print '昨日の日付は' . $dt_yesterday->date . "です。\n\n";
+# Monthly addition
+my $ dt_next_month = $ dt-> clone;
+$ dt_next_month-> add (months => 1);
 
-# 加算と減算を組み合わせる。
-my $dt_mix = $dt->clone;
-$dt_mix = $dt_mix->add(months => 1)->subtract(days => 1);
+# Year addition
+my $ dt_next_year = $ dt-> clone;
+$ dt_next_year-> add (years => 1);
 
-print "(2)DateTimeオブジェクト同士の引き算\n";
-my $dt1 = DateTime->new(year => 2000 , month => 2, day => 1);
-my $dt2 = DateTime->new(year => 2003 , month => 3, day => 19);
+print'Currently'. $ Dt-> date. ". \ N \ n";
+print'Tomorrow'. $ Dt_tommorow-> date. ". \ N";
+print '1 year later'. $ Dt_next_month-> date. ". \ N";
+print '1 year later'. $ Dt_next_year-> date. ". \ N \ n";
 
-my $duration = $dt2 - $dt1;
+# Hour addition
+print "(1) -2 Add time \ n";
+my $ dt_next_hour = $ dt-> clone;
+$ dt_next_hour-> add (hours => 1);
 
-print '期間は' . $duration->years . '年と'
-  . $duration->months . 'ヶ月と'
-  . $duration->days . "日\n";
-</pre>
+Addition of # minutes
+my $ dt_next_minutes = $ dt-> clone;
+$ dt_next_minutes-> add (minutes => 1);
 
-実行結果
+#Addition of seconds
+my $ dt_next_second = $ dt-> clone;
+$ dt_next_second-> add (seconds => 1);
+
+print'Currently'. $ Dt-> time. ". \ N \ n";
+print '1 hour later'. $ Dt_next_hour-> time. ". \ N";
+print '1 minute later'. $ Dt_next_minutes-> time. ". \ N";
+print '1 second later'. $ Dt_next_second-> time. ". \ N";
+</ pre>
+
+Execution result
 
 <pre>
-(1) 日付の引き算
-現在の日付は2008-11-18です。
-昨日の日付は2008-11-17です。
+(1) -1 Date addition
+Currently it is 2008-11-18.
 
-(2)DateTimeオブジェクト同士の引き算
-期間は3年と1ヶ月と4日
-</pre>
+Tomorrow is 2008-11-19.
+One year later it will be 2008-12-18.
+One year later it will be 2009-11-18.
 
-期間の情報を取得するサンプルです。
+(1) -2 Time addition
+Currently it is 23:04:06.
+
+One hour later it is 00:04:06.
+One minute later it is 23:05:06.
+One second later it is 23:04:07.
+</ pre>
+
+A sump that subtracts dates using DateTime.
 
 <pre>
 use strict;
 use warnings;
 use DateTime;
 
-# DateTimeオブジェクト同士の引き算
-my $dt1 = DateTime->new(
+print "(1) Date subtraction \ n";
+my $ dt = DateTime-> now (time_zone =>'local');
+
+# Subtraction of days
+my $ dt_yesterday = $ dt-> clone;
+$ dt_yesterday-> subtract (days => 1);
+
+print'The current date is'. $ Dt-> date. ". \ N";
+print'Yesterday's date is'. $ Dt_yesterday-> date. ". \ N \ n";
+
+# Combine addition and subtraction.
+my $ dt_mix = $ dt-> clone;
+$ dt_mix = $ dt_mix-> add (months => 1)-> subtract (days => 1);
+
+print "(2) Subtraction between DateTime objects \ n";
+my $ dt1 = DateTime-> new (year => 2000, month => 2, day => 1);
+my $ dt2 = DateTime-> new (year => 2003, month => 3, day => 19);
+
+my $ duration = $ dt2- $ dt1;
+
+print'Period'. $ Duration-> years.' Years and'
+  . $ duration-> months.'Months and'
+  . $ duration-> days. "Days \ n";
+</ pre>
+
+Execution result
+
+<pre>
+(1) Date subtraction
+The current date is 2008-11-18.
+Yesterday's date is 2008-11-17.
+
+(2) Subtraction between DateTime objects
+The period is 3 years, 1 month and 4 days
+</ pre>
+
+This is a sample to get the period information.
+
+<pre>
+use strict;
+use warnings;
+use DateTime;
+
+#DateTime Subtraction between objects
+my $ dt1 = DateTime-> new (
   year => 2000,
   month => 2,
   day => 1,
@@ -1484,7 +1487,7 @@ my $dt1 = DateTime->new(
   second => 30
 );
 
-my $dt2 = DateTime->new(
+my $ dt2 = DateTime-> new (
   year => 2003,
   month => 3,
   day => 19,
@@ -1493,42 +1496,41 @@ my $dt2 = DateTime->new(
   second => 40
 );
 
-my $duration = $dt2 - $dt1;
+my $ duration = $ dt2- $ dt1;
 
-print "(1) 期間を取得する。\n";
-print "期間は" .$duration->years ."年と"
-  . $duration->months ."ヶ月と"
-  . $duration->days . "日と"
-  . $duration->hours . "時間と"
-  . $duration->minutes . "分と"
-  . $duration->seconds . "秒\n\n";
+print "(1) Get the period. \ N";
+print "Period is". $ Duration-> years. "Year and"
+  . $ duration-> months. "Months and"
+  . $ duration-> days. "Days and"
+  . $ duration-> hours. "Time and"
+  . $ duration-> minutes. "minutes and"
+  . $ duration-> seconds. "Seconds \ n \ n";
 
-print "(2)期間の順序を判定する。\n";
-if ($duration->is_positive) {
-  print "\$dt2は\$dt1より後の日付です。\n";
+print "(2) Determine the order of the periods. \ N";
+if ($ duration-> is_positive) {
+  print "\ $ dt2 is a date after \ $ dt1. \ N";
 }
-elsif ($duration->is_zero) {
-  print "\$dt2は\$dt1と等しいです。\n";
+elsif ($ duration-> is_zero) {
+  print "\ $ dt2 is equal to \ $ dt1. \ N";
 }
-elsif ($duration->is_negative) {
-  print "\$dt2は\$dt1より前の日付です。\n";
+elsif ($ duration-> is_negative) {
+  print "\ $ dt2 is a date before \ $ dt1. \ N";
 }
-print "\n";
+print "\ n";
 
-print "(3)期間を月換算で取得する。\n";
-print '期間は月換算で' . $duration->in_units('months') . "ヶ月です。\n";
-</pre>
+print "(3) Get the period on a monthly basis. \ N";
+print'The period is'. $ Duration-> in_units ('months'). "Months. \ N";
+</ pre>
 
-実行結果
+Execution result
 
 <pre>
-(1) 期間を取得する。
-期間は3年と1ヶ月と4日と11時間と10分と10秒
+(1) Get the period.
+The period is 3 years, 1 month, 4 days, 11 hours, 10 minutes and 10 seconds.
 
-(2)期間の符号を判定する。
-$dt2は$dt1より後の日付です。
+(2) Determine the sign of the period.
+$ dt2 is a date after $ dt1.
 
-(3)期間を月換算で取得する。
-期間は月換算で37ヶ月です。
-</pre>
-
+(3) Obtain the period on a monthly basis.
+The period is 37 months on a monthly basis.
+</ pre>

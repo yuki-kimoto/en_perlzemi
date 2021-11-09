@@ -1,77 +1,76 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>require - モジュールを実行時に読み込む</h2>
+      <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> require --load module at runtime </ h2>
 
 
 
-<strong>実行時にモジュールを読み込む</strong>には<strong>require</strong>を使用します。useがコンパイル時にモジュールを読み込むのに対して、requireは実行時に読み込みます。
-
-<pre>
-# モジュールの読み込み
-require モジュール名
-</pre>
-
-モジュール名は裸の文字列で指定する必要があります。クォートやダブルクォートで囲んだ文字列は受け付けません。また変数も受け付けません。
+Use <strong> require </ strong> to <strong> load modules at runtime </ strong>. Use loads the module at compile time, while require loads it at run time.
 
 <pre>
-# 裸の文字列でモジュール名を指定
+#Load module
+require module name
+</ pre>
+
+The module name must be specified as a bare string. Strings enclosed in quotes or double quotes will not be accepted. It also does not accept variables.
+
+<pre>
+# Specify the module name with a bare string
 require CGI;
-</pre>
+</ pre>
 
-モジュールを読み込むと、完全修飾名を使って、読み込んだモジュールに記述されている関数を使用することができるようになります。
+When you load a module, you can use the functions described in the loaded module with the fully qualified name.
 
 <pre>
 require Carp;
 
-# 完全修飾名でCarpモジュールのcroak関数を使用できる。
-Carp::croak("croak 関数");
-</pre>
+# You can use the carp module's croak function with a fully qualified name.
+Carp :: croak ("croak function");
+</ pre>
 
-モジュールを読み込む場合はuseを使用するのが標準的な方法ですが、requireを使いたい場面が時にはあります。useを使うとコンパイル時にすべてのモジュールが読み込まれてしまいます。そのためモジュールが巨大な場合はコンパイル時に余分な時間がかかってしまいます。
+The standard way to load a module is to use use, but there are times when you want to use require. If you use use, all modules will be loaded at compile time. Therefore, if the module is huge, it will take extra time to compile.
 
-あるモジュールが必須のものでなくて、かつ大きなモジュールの場合は必要に応じてrequireを使って実行時に読み込むことでパフォーマンスへの影響を緩和することができる場合があります。
+If a module is not required and is a large module, you may be able to mitigate the performance impact by loading it at runtime using require as needed.
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-requireを使ったサンプルです。
+This is a sample using require.
 
 <pre>
-# Carpモジュールを読み込む。
+#Load the Carp module.
 require Carp;
-</pre>
+</ pre>
 
-requireは、実行時にモジュールをインポートしてくれます。これが有効なのは、選択的にモジュールをインポートしたい場合です。
+require will import the module at runtime. This is useful if you want to selectively import modules.
 
-たとえば、拡張子に応じて処理したい場合に、csvファイルを解析するモジュールとxmlを解析するモジュールのどちらか一方しか必要ないとします。
+For example, if you want to process according to the extension, you only need one of the modules that parses the csv file and the module that parses the xml.
 
-このようなとき、以下ののように記述すると、読み込むモジュールが少なくてすみます。
+In such a case, if you write as follows, you can load fewer modules.
 
 <pre>
-if ($ext eq '.csv') {
-  require Text::CSV;
+if ($ ext eq'.csv') {
+  require Text :: CSV;
   # ...
 }
-elsif ($ext eq '.xml') {
-  require XML::Simple;
+elsif ($ ext eq'.xml') {
+  require XML :: Simple;
   # ...
 }
-</pre>
+</ pre>
 
-モジュールの読み込みが少ないということは、起動時間が短縮され、メモリの使用が抑えられるということです。useではif文などの条件分岐の中に書かれたとしても、すべてのモジュールがコンパイル時に読み込まれることになります。
-
+Less module loading means faster boot times and less memory usage. With use, all modules will be loaded at compile time, even if they are written in a conditional branch such as an if statement.

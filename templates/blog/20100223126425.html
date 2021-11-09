@@ -1,37 +1,37 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Class::Accessor::Fast - アクセサを簡単に作成する</h2>
+  </ li>
+</ ol>
+<h2> Class :: Accessor :: Fast --Easy to create accessors </ h2>
 
 
 
-<strong>Class::Accessor::Fast</strong>はアクセサを簡単に作成するためのモジュールです。アクセサとはオブジェクトの属性にアクセスするためのメソッドのことです。
+<strong> Class :: Accessor :: Fast </ strong> is a module for easily creating accessors. Accessors are methods for accessing the attributes of an object.
 
-mk_accessorsメソッドを使用してアクセサを生成することができます。Class::Accessor::Fastを継承してパッケージ名からmk_accesors()を呼び出します。
+You can use the mk_accessors method to generate accessors. Inherit Class :: Accessor :: Fast and call mk_accesors () from the package name.
 
 <pre>
-# アクセサの生成
-package YourClass;
-use base 'Class::Accessor::Fast';
+#Generation of accessor
+package Your Class;
+use base'Class :: Accessor :: Fast';
 
-__PACKAGE__->mk_accessors($meth1, $meth2, ...);
-</pre>
+__PACKAGE __-> mk_accessors ($ meth1, $ meth2, ...);
+</ pre>
 
-一般的なクラスのサンプルです。Pointクラスはx()とy()というアクセサを持ちます。Class::Accessor::Fastのnew()はハッシュのリファレンスしか受け取ることしかできないので、ハッシュとハッシュのリファレンスを受け取ることができるようにオーバーライドするのが良いと思います。
+This is a sample of a general class. The Point class has accessors x () and y (). Class :: Accessor :: Fast's new () can only receive hash references, so it's a good idea to override it so that it can receive hashes and hash references.
 
 <pre>
 package Point;
@@ -39,38 +39,37 @@ package Point;
 use strict;
 use warnings;
 
-use base 'Class::Accessor::Fast';
+use base'Class :: Accessor :: Fast';
 
-# アクセサ
-__PACKAGE__->mk_accessors(qw/x y/);
+#Accessor
+__PACKAGE __-> mk_accessors (qw / x y /);
 
-# コンストラクタ
+#Constructor
 sub new {
-    my $class = shift;
+    my $ class = shift;
     
-    # 属性
-    my $args = ref $_[0] eq 'HASH' ? $_[0] : {@_};
+    #Attribute
+    my $ args = ref $ _ [0] eq'HASH'? $ _ [0]: {@_};
     
-    # new()のオーバーライド
-    return $class->SUPER::new({
+    Override # new ()
+    return $ class-> SUPER :: new ({{
         x => 0,
         y => 0,
-        %$args
+        % $ args
     });
 }
-</pre>
+</ pre>
 
-このクラスは次のように使用します。
+Use this class as follows:
 
 <pre>
-my $point = Point->new(x => 1, y => 2);
-$point->x(4);
-$point->y(5);
-</pre>
+my $ point = Point-> new (x => 1, y => 2);
+$ point-> x (4);
+$ point-> y (5);
+</ pre>
 
-<h3>Class::Accessor::Fastに関するFAQ</h3>
+<h3> FAQ about Class :: Accessor :: Fast </ h3>
 
-Q. コンストラクタの引数にハッシュリファレンスではなくハッシュを渡したり、アクセサのデフォルト値を設定したいです。
+Q. I want to pass a hash instead of a hash reference as an argument to the constructor, or set a default value for the accessor.
 
-A. <a href="/blog/20100224126425.html">Object::Simple</a>モジュールでそれらの機能が提供されています。Object::Simpleではコンストラクタにハッシュを渡したり、アクセサのデフォルト値を指定することができます。Class::Accessor::Fastで行いたい場合はサンプルのようにnewをオーバーライドすることで可能になります。
-
+A. The <a href="/blog/20100224126425.html"> Object :: Simple </a> module provides those features. Object :: Simple allows you to pass a hash to the constructor and specify default values ​​for accessors. If you want to do it with Class :: Accessor :: Fast, you can do it by overriding new as shown in the sample.

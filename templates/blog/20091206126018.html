@@ -1,165 +1,163 @@
+<h2> SQL basics learned using SQLite </ h2>
 
-<h2>SQLiteを使用して学ぶSQLの基礎</h2>
+SQL is a query language for inserting and retrieving data into a database. Since the basic writing method of SQL is standardized, you can issue a query to the database with the same description in SQLite, MySQL, Oracle, or PostgreSQL.
 
-SQLはデータベースにデータを挿入したり、データを取得するための問い合わせ言語です。SQLの基本的な書き方については標準化されているのでSQLiteでもMySQLでもOracleでもPostgreSQLでも同じ記述でデータベースに問い合わせを発行することができます。
+<h3> Preparation for executing SQL </ h3>
 
-<h3>SQLを実行するための準備作業</h3>
-
-WindowsでSQLiteを実行するための環境を構築する方法については以下で解説しています。
+The following explains how to build an environment for executing SQLite on Windows.
 
 <blockquote>
-<a href="/blog/20091203126018.html">WindowsへSQLiteをインストールする</a>
-</blockquote>
+<a href="/blog/20091203126018.html"> Install SQLite on Windows </a>
+</ blockquote>
 
-この作業を終えましたら
+When you finish this work
 
 <blockquote>
 sqlite3 test.db
-</blockquote>
+</ blockquote>
 
-とデータベース名を指定してsqlite3を起動してみましょう。データベースがない場合は自動的に作成されます。
+Let's start sqlite3 by specifying the database name. If the database does not exist, it will be created automatically.
 
-<h3>select以外の構文</h3>
+<h3> Syntax other than select </ h3>
 
-SQLで難しいのはselect文です。その他の構文は比較的簡単です。select文を実行する準備もかねてselect文以外で頻繁に使用するSQLを最初に解説します。
+The difficult part in SQL is the select statement. Other syntax is relatively simple. In preparation for executing the select statement, I will first explain the SQL that is frequently used other than the select statement.
 
-<h4>create table - テーブルを作成する</h4>
+<h4> create table --create table </ h4>
 
-テーブルを作成するには「create table」文を使用します。ここでは一番簡単な「create table」文の書式ついてだけ解説します。(「create table」については「create tableでテーブルを定義する(未稿)」を参照してください。)
+Use the "create table" statement to create a table. Here, I will explain only the format of the simplest "create table" statement. (For "create table", see "Defining a table with create table (unpublished)".)
 
 <pre>
-create table テーブル名 (
-  フィールド名1,
-  フィールド名2,
+create table table name (
+  Field name 1,
+  Field name 2,
   ...
 );
-</pre>
- titleとauthorというふたつのフィールドを持つbooksという名前のテーブルを作成するSQLです。
+</ pre>
+ SQL that creates a table named books with two fields, title and author.
 <pre>
 create table books (
   title,
-  author,
+  author, author,
   price
 );
-</pre>
+</ pre>
 
-実際に実行してみてください。SQLの最後のセミコロンは必須です。わすれやすいので忘れないようにしましょう。
+Please try it. The last semicolon in SQL is required. It's easy to forget, so don't forget it.
 
-SQLiteでは作成されたテーブル一覧を表示するためのコマンドが用意されています。次のコマンドを実行して「books」というテーブルが表示されることを確認してください。(先頭にドット(.)があることに注意してください。)
+SQLite provides a command to display the created table list. Run the following command and verify that you see a table called "books". (Note that there is a dot (.) At the beginning.)
 
 <pre>
 .table
-</pre>
+</ pre>
 
-<h3>drop table - テーブルを削除する</h3>
+<h3> drop table --drop the table </ h3>
 
-テーブルを削除するには「drop table」を使用します。
+Use "drop table" to drop a table.
 
 <pre>
-drop table テーブル名;
-</pre>
+drop table table name;
+</ pre>
 
-では先ほど作成した「books」というテーブルを削除してみましょう。
+Now let's delete the table we created earlier called "books".
 
 <pre>
 drop table books;
-</pre>
+</ pre>
 
-「.table」と打ってテーブルが削除されていることを確認しましょう。この後「books」テーブルを使用しますのでもう一度「create table」を使用して作成してください。
+Type ".table" to make sure the table has been deleted. After this, the "books" table will be used, so create it again using "create table".
 
-<h3>insert - レコードの追加</h3>
+<h3> insert --add record </ h3>
 
-テーブルにレコードを挿入するにはinsert文を使用します。
-
-<pre>
-insert into テーブル名 (フィールド名1, フィールド名2, ..) values (値1, 値2, 値3);
-</pre>
-
-「title」が「Good life」、「author」が「Saki」、「price」が「1900」のレコードをテーブルに追加するには次のようなSQLを実行します。データが文字列の場合はシングルクォートで囲むことに注意してください。
+Use the insert statement to insert a record into the table.
 
 <pre>
-insert into books (title, author, price) values ('Good life', 'Saki', 1900);
-</pre>
+insert into table name (field name 1, field name 2, ..) values ​​(value 1, value 2, value 3);
+</ pre>
 
-これで以下のようなレコードがテーブルに追加されます。
+To add a record with "title" of "Good life", "author" of "Saki" and "price" of "1900" to the table, execute the following SQL. Note that if the data is a string, enclose it in single quotes.
 
 <pre>
-+-------------+----------+--------+
-|title        |author    |price   | # これはフィールド名
-+=============+==========+========+
-|Good life    |Saju      |1900    | 
-+-------------+----------+--------+
-</pre>
+insert into books (title, author, price) values ​​('Good life','Saki', 1900);
+</ pre>
 
-select文については詳しくこの後に解説しますがレコードが1行挿入されたことを確かめるためのselect文を実行してみます。
+This will add a record like the one below to the table.
+
+<pre>
++ -------------- + ------------ + -------- +
+| title | author | price | # This is the field name
++ ============= + ========== + ======== +
+| Good life | Saju | 1900 |
++ -------------- + ------------ + -------- +
+</ pre>
+
+I will explain the select statement in detail later, but let's execute the select statement to confirm that one line has been inserted.
 
 <pre>
 select * from books;
-</pre>
+</ pre>
 
-上記のような内容が表示されればinsertは成功しています。(出力されるフォーマットが少し異なります。見やすいフォーマットで表示させる方法についてはselect文のところで解説します)
+If the above content is displayed, insert is successful. (The output format is slightly different. I will explain how to display it in an easy-to-read format in the select statement)
 
-この後のためにもう少しレコードを挿入してみましょう。
-
-<pre>
-insert into books (title, author, price) values ('Simple is good', 'Mai', 2000);
-insert into books (title, author, price) values ('Good morning', 'Kenta', 3000);
-</pre>
-
-<h3>レコードの更新 update</h3>
-
-テーブルにあるデータを更新するにはupdate文を使用します。一般的にはwhere区で検索条件を指定して更新対象を絞ります。select文のところで解説しますが、where区には複数の条件を指定することもできます。
+Let's insert a few more records for the rest of this.
 
 <pre>
-update テーブル名 set フィールド名1 = 値1, フィール名2 = 値2, .. where 検索するフィールド名 = 値
-</pre>
+insert into books (title, author, price) values ​​('Simple is good','Mai', 2000);
+insert into books (title, author, price) values ​​('Good morning','Kenta', 3000);
+</ pre>
 
-「author」が「taro」であるレコードのtitleの値をRubyに変更するSQLは次のようになります。
+<h3> Record update update </ h3>
 
-<pre>
-update books set title = 'Ruby' where author = 'taro'
-</pre>
-
-doを使ってupdate文を実行してみましょう。
+Use the update statement to update the data in the table. Generally, you can narrow down the update target by specifying the search conditions in the where section. As explained in the select statement, multiple conditions can be specified in the where section.
 
 <pre>
-my $update = "update books set title = 'Ruby' where author = 'taro'";
-$dbh->do($update);
-</pre>
+update table name set field name 1 = value 1, feel name 2 = value 2, .. where to search field name = value
+</ pre>
 
-先ほどのレコードは更新され次のようになります。
-
-<pre>
-+--------+----------+
-|title   |author    | # ヘッダ(これはテーブルを作成したときにできる)
-+--------+----------+
-|Ruby    |taro      | # レコード(update文で更新されたレコード)
-+--------+----------+
-</pre>
-
-<h3>レコードの削除 delete</h3>
-
-レコードを削除するにはdelete文を使用します。一般的にはwhere区で検索条件を指定して削除対象を絞ります。
+The SQL to change the title value of a record whose "author" is "taro" to Ruby is as follows.
 
 <pre>
-delete from テーブル名 where 検索するフィールド名 = 値
-</pre>
+update books set title ='Ruby' where author ='taro'
+</ pre>
 
-「author」が「taro」であるレコードを削除するSQLは次のようになります。
-
-<pre>
-delete from books where author = 'taro';
-</pre>
-
-doを使ってdelete文を実行してみましょう。
+Let's execute the update statement using do.
 
 <pre>
-my $delete = "delete from books where author = 'taro';";
-$dbh->do($delete);
-</pre>
+my $ update = "update books set title ='Ruby' where author ='taro'";
+$ dbh-> do ($ update);
+</ pre>
 
-レコードが削除されます。
+The previous record is updated and looks like this:
+
+<pre>
++ -------- + ---------- +
+| title | author | # header (this can be done when you create the table)
++ -------- + ---------- +
+| Ruby | taro | # record (record updated by update statement)
++ -------- + ---------- +
+</ pre>
+
+<h3> Delete record delete </ h3>
+
+Use the delete statement to delete a record. Generally, the search condition is specified in the where section to narrow down the deletion target.
+
+<pre>
+delete from table name where field name to search = value
+</ pre>
+
+The SQL to delete a record whose "author" is "taro" looks like this:
+
+<pre>
+delete from books where author ='taro';
+</ pre>
+
+Let's execute a delete statement using do.
+
+<pre>
+my $ delete = "delete from books where author ='taro';";
+$ dbh-> do ($ delete);
+</ pre>
+
+The record will be deleted.
 
 <hr>
-<a href="/blog/20091205126018.html">SQLiteで学ぶデータベースの基礎へ</a>
-
+<a href="/blog/20091205126018.html"> To the basics of databases learned with SQLite </a>

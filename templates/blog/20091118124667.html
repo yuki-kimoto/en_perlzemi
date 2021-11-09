@@ -1,267 +1,266 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Encodeモジュール - 日本語などのマルチバイト文字列を適切に処理する</h2>
+  </ li>
+</ ol>
+<h2> Encode module-Properly handles multi-byte character strings such as Japanese </ h2>
 
 
 
-日本語などのマルチバイト文字をPerlで適切に扱うにはEncodeモジュールを使用します。次の3つのことを覚えておけば多くの場合適切に日本語を扱うことができます。
+Use the Encode module to properly handle multibyte characters such as Japanese in Perl. In many cases, you can handle Japanese properly if you remember the following three things.
 
 <ol>
   <li>
-    外部から入力された文字列はEncodeモジュールのdecode関数でデコードする
-  </li>
+    The character string input from the outside is decoded by the decode function of the Encode module.
+  </ li>
   <li>
-    外部へ出力する文字列はEncodeモジュールのencode関数でエンコードする
-  </li>
+    The character string to be output to the outside is encoded by the encode function of the Encode module.
+  </ li>
   <li>
-    ソースコードはUTF-8で保存しutf8プラグマを有効にする
-  </li>
-</ol>
+    Save the source code in UTF-8 and enable the utf8 pragma
+  </ li>
+</ ol>
 
-<h3>この解説での用語</h3>
+<h3> Terms in this commentary </ h3>
 
-この解説では外部から入力された文字列のことを「<span style="font-weight:bold;">バイト文字列</span>」と呼ぶことにします。Perlの内部表現に変換された文字列を「<span style="font-weight:bold;">内部文字列</span>」と呼ぶことにします。また「バイト文字列」が特定の文字コードで記述されている場合は「UTF-8バイト文字列」「Shift_JISバイト文字列」などと呼ぶことにします。
+In this explanation, the character string input from the outside is called "<span style =" font-weight: bold; "> byte character string </ span>". Let's call the string converted to Perl's internal representation "<span style =" font-weight: bold; "> internal string </ span>". If the "byte character string" is described in a specific character code, it will be called "UTF-8 byte character string" or "Shift_JIS byte character string".
 
-プログラミングで日本語を扱う場合にその文字列がバイト文字列であるのか内部文字列であるのかを明確に区別する必要があります。内部文字列とバイト文字列の変換に関してはプログラムが責任を持つというのがPerlで多言語を扱うときのルールです。この方法は少し手間がかかりますが、上記の3つのルールを覚えておけばよいだけなので仕組みとしてはとてもシンプルです。
+When dealing with Japanese in programming, it is necessary to clearly distinguish whether the character string is a byte character string or an internal character string. The rule when dealing with multiple languages ​​in Perl is that the program is responsible for converting between internal and byte strings. This method is a little tricky, but the mechanism is very simple as you only have to remember the above three rules.
 
-<h3>外部から入力された文字列は必ずデコードする</h3>
+<h3> Be sure to decode the character string input from the outside </ h3>
 
-外部から入力された文字列は必ずEncodeモジュールのdecode関数を使用してデコードします。デコードとは「バイト文字列」を「内部文字列」に変換する処理のことをいいます。マルチバイト文字列を扱う場合はdecode関数を使用して必ず内部文字列に変換します。
+Character strings input from the outside are always decoded using the decode function of the Encode module. Decoding is the process of converting a "byte character string" to an "internal character string". When dealing with multibyte strings, be sure to use the decode function to convert them to internal strings.
 
-decode関数の第1引数にはバイト文字列の文字コード、第2引数にはバイト文字列を指定します。戻り値は内部文字列になります。
-
-<pre>
-use Encode 'decode';
-
-# 外部からの入力(コマンドライン引数)
-my $str = shift;
-
-# バイト文字列(外部からの入力)を内部文字列に変換($strがUTF-8の場合)
-$str = decode('UTF-8', $str);
-
-# バイト文字列(外部からの入力)を内部文字列に変換($strがShift_JISの場合)
-$str = decode('Shift_JIS', $str);
-</pre>
-
-外部から入力される文字列というのは「コマンドライン引数」「ファイル」「標準入力」「環境変数」などです。外部からの入力はすべてバイト文字列であると考えてください。
+Specify the character code of the byte string in the first argument of the decode function, and specify the byte string in the second argument. The return value will be an internal string.
 
 <pre>
-$str = decode('UTF-8', $str);
-</pre>
+use Encode'decode';
 
-を図式的に表現すると以下のようになります。
+#External input (command line argument)
+my $ str = shift;
 
-<pre>
-                「UTF-8バイト文字列」を「内部文字列」に変換
-UTF-8バイト文字列                 --->                 内部文字列
-</pre>
+#Convert byte string (external input) to internal string (when $ str is UTF-8)
+$ str = decode ('UTF-8', $ str);
 
-decode関数の第1引数の意味は勘違いしやすい部分です。バイト文字列が実際にはどの文字コードでエンコーディングされているかを指定します。
+#Convert byte string (external input) to internal string (when $ str is Shift_JIS)
+$ str = decode ('Shift_JIS', $ str);
+</ pre>
 
-<h3>外部へ出力する文字列は必ずエンコードすること</h3>
-
-外部へ出力する文字列はEncodeモジュールのencode関数を使用してエンコードします。エンコードとは「内部文字列」から「バイト文字列」に変換する処理のことをいいます。
-
-encode関数の第1引数にはどの文字コードに変換するかを指定します。第2引数には内部文字列を指定します。
+Character strings input from the outside are "command line arguments", "files", "standard input", "environment variables", etc. Think of all external input as byte strings.
 
 <pre>
-use Encode 'encode';
+$ str = decode ('UTF-8', $ str);
+</ pre>
 
-# 内部文字列をUTF-8バイト文字列に変換する場合
-$str = encode('UTF-8', $str);
-
-# 内部文字列をShift_JISバイト文字列に変換する場合
-$str = encode('Shift_JIS', $str);
-</pre>
-
-decode関数を使用して内部文字列に変換した文字列を出力する場合は必ずencode関数でバイト文字列に戻す必要があります。どのタイミングでencode関数を使って変換を行うかといえば出力するぎりぎりのところです。プログラムの中ではできるだけ遅いタイミングまで内部文字列を保つようにします。
+Is expressed graphically as follows.
 
 <pre>
-$str = encode('UTF-8', $str);
-</pre>
+                Convert "UTF-8 byte string" to "internal string"
+UTF-8 byte string ---> internal string
+</ pre>
 
-を図式的に表現すると以下のようになります。
+The meaning of the first argument of the decode function is easy to misunderstand. Specifies which character code the byte string is actually encoded in.
 
-<pre>
-                「内部文字列」を「UTF-8バイト文字列」に変換
-内部文字列                 --->                 UTF-8バイト文字列
-</pre>
+<h3> Be sure to encode the character string to be output to the outside </ h3>
 
-<h3>ソースコードはUTF-8で保存しutf8プラグマを有効にすること</h3>
+The character string to be output to the outside is encoded using the encode function of the Encode module. Encoding is the process of converting an "internal character string" to a "byte character string".
 
-マルチバイト文字を扱う上でもうひとつ気にする必要があるのはソースコードの中に記述する文字列です。もし日本語などのマルチバイト文字をソースコードの中で記述する必要があるならソースコードはUTF-8で保存してください。その上でutf8プラグマを有効にします。
+The first argument of the encode function specifies which character code to convert. Specify the internal character string in the second argument.
 
 <pre>
-# ソースコードはUTF-8として保存
-# utf8プラグマを有効にする
+use Encode'encode';
+
+# When converting an internal string to a UTF-8 byte string
+$ str = encode ('UTF-8', $ str);
+
+# When converting an internal string to a Shift_JIS byte string
+$ str = encode ('Shift_JIS', $ str);
+</ pre>
+
+Whenever you use the decode function to output a string converted to an internal string, you must use the encode function to convert it back to a byte string. When to convert using the encode function is just before the output. Try to keep the internal string as late as possible in your program.
+
+<pre>
+$ str = encode ('UTF-8', $ str);
+</ pre>
+
+Is expressed graphically as follows.
+
+<pre>
+                Convert "internal string" to "UTF-8 byte string"
+Internal string ---> UTF-8 byte string
+</ pre>
+
+<h3> Save the source code in UTF-8 and enable the utf8 pragma </ h3>
+
+Another thing to worry about when dealing with multibyte characters is the character string described in the source code. If you need to write multi-byte characters such as Japanese in the source code, save the source code in UTF-8. Then enable the utf8 pragma.
+
+<pre>
+# Save source code as UTF-8
+# utf8 Enable pragma
 use utf8;
 
-my $str = "日本語などを書く。";
-</pre>
+my $ str = "Write Japanese etc.";
+</ pre>
 
-ソースコードの中に書かれた文字列のことを文字列リテラルと呼びます。覚えておいて欲しいことは文字列リテラルの文字コードはソースコードの文字コードと同じになります。ソースコードをUTF-8で保存すれば文字列リテラルはUTF-8バイト文字列となり、Shift_JISで保存すれば文字列リテラルはShift_JISバイト文字列となります。
+A string written in the source code is called a string literal. Keep in mind that the character code of a string literal will be the same as the character code of the source code. If you save the source code in UTF-8, the string literal will be a UTF-8 byte string, and if you save it in Shift_JIS, the string literal will be a Shift_JIS byte string.
 
-特定の文字コードで保存する方法はエディタによって異なります。参考にWindowsのメモ帳の場合を説明します。これがわかれば他のテキストエディタでも理解できると思います。
+How to save with a specific character code depends on the editor. For reference, the case of Windows Notepad is explained. If you understand this, you can understand it with other text editors.
 
 <blockquote>
-「ファイル」→「名前をつけて保存」→「文字コード」→「UTF-8」を選択。
-</blockquote>
+Select "File"-> "Save As"-> "Character Code"-> "UTF-8".
+</ blockquote>
 
-utf8プラグマというのはソースコードに書かれたUTF-8バイト文字列を内部文字列に変換する効果があります。つまりソースコードをUTF-8で保存してutf8プラグマを有効にすれば文字列リテラルは内部文字列に変換されます。
+The utf8 pragma has the effect of converting a UTF-8 byte string written in the source code into an internal string. So if you save the source code in UTF-8 and enable the utf8 pragma, string literals will be converted to internal strings.
 
-utf8プラグマの効果を図式的に表すと次のようになります。decode関数と効果が良く似ています。
+The effect of the utf8 pragma is graphically represented as follows. The effect is very similar to the decode function.
 
 <pre>
                                 use utf8
-UTF-8バイト文字列                 --->                 内部文字列
-</pre>
+UTF-8 byte string ---> internal string
+</ pre>
 
-最初に述べた次の3つのことを守りさえすれば文字コードで悩むことはだいぶ少なくなると思います。文字コードで悩んだらまずこの原則に戻ってみてください。
+As long as you follow the following three things mentioned at the beginning, you will have less trouble with character codes. If you are worried about the character code, please go back to this principle first.
 
-<h3>内部文字列に変換することの意味</h3>
+<h3> Meaning of converting to an internal string </ h3>
 
-それでは実際に内部文字列に変換した効果をみてみましょう。Perlが正しく文字列を扱えていることがわかると思います。<a href="/blog/20080926122245.html">length関数</a>は正しい長さを返してくれますし、<a href="/blog/20100827127859.html">正規表現</a>が正しく動きます。
+Let's see the effect of actually converting it to an internal character string. You can see that Perl handles strings correctly. The <a href="/blog/20080926122245.html"> length function </a> returns the correct length, and the <a href="/blog/20100827127859.html"> regular expression </a> It works correctly.
 
-ソースコードはUTF-8で保存してください。UTF-8で保存されていない場合は「Malformed UTF-8 character」などという警告がでます。
+Save the source code in UTF-8. If it is not saved in UTF-8, you will get a warning such as "Malformed UTF-8 character".
 
-解説はUTF-8の場合で行いますがWindowsの場合はencode関数やdecode関数にcp932を指定する必要があります。cp932というのはWindowsの文字コードである「Windows-31J」を表すものです。コマンドライン引数には「これは日本語です。」という文字列を渡してみてください。
+The explanation is given in the case of UTF-8, but in the case of Windows, it is necessary to specify cp932 in the encode function and decode function. cp932 stands for "Windows-31J" which is the character code of Windows. Try passing the string "This is Japanese" as a command line argument.
 
 <pre>
-# 内部文字列に変換した効果を試す
+#Try the effect of converting to an internal string
 use strict;
 use warnings;
 
 use utf8;
-use Encode qw/encode decode/;
+use Encode qw / encode decode /;
 
-# コマンドライン引数(UTF-8バイト文字列)
-my $str1 = shift;
+# Command line argument (UTF-8 byte string)
+my $ str1 = shift;
 
-# UTF-8バイト文字列を内部文字列にデコード
-$str1 = decode('UTF-8', $str1);
+# UTF-8 byte string decoded to internal string
+$ str1 = decode ('UTF-8', $ str1);
 
-# 文字列リテラル (utf8プラグマが有効なので内部文字列になる)
-my $str2 = "日本語";
+#String literal (because utf8 pragma is valid, it becomes an internal string)
+my $ str2 = "Japanese";
 
-# 内部文字列に変換すると正しく文字を数えることができる
-print length $str2, "\n"; # 3
+# You can count characters correctly by converting to an internal string
+print length $ str2, "\ n"; # 3
 
-# 内部文字列どうしであれば正しく正規表現を使用できる
-if ($str1 =~ /$str2/) {
-  print "Match!\n";
+#Regular expressions can be used correctly between internal strings
+if ($ str1 = ~ / $ str2 /) {
+  print "Match! \ N";
 }
 
-# 出力する直前に内部文字列をバイト文字列にエンコード
-$str1 = encode('UTF-8', $str1);
-$str2 = encode('UTF-8', $str2);
+# Encode the internal string into a byte string just before outputting
+$ str1 = encode ('UTF-8', $ str1);
+$ str2 = encode ('UTF-8', $ str2);
 
-print "'$str1' is match '$str2'\n";
-</pre>
+print "'$ str1' is match'$ str2'\ n";
+</ pre>
 
-<h3>文字コードの変換</h3>
+<h3> Character code conversion </ h3>
 
-文字コードの変換処理はPerlではdecode関数とencode関数を組み合わせて次のようにします。いったん内部文字列に変換する必要があります。次の例はUTF-8バイト文字列をShift_JISバイト文字列に変換する例です。
-
-<pre>
-# UTF-8バイト文字列を内部文字列に変換
-$str = decode('UTF-8', $str);
-
-# 内部文字列をShift_JISバイト文字列に変換
-$str = encode('Shift_JIS', $str);
-</pre>
-図式すると次のようになります。
-<pre>
-UTF-8バイト文字列  -->  内部文字列  -->  Shift_JISバイト文字列
-</pre>
-
-これは少々面倒なので、from_toという関数が用意されています。第1引数はバイト文字列、第2引数は変換前の文字コード、第3引数は変換後の文字コードです。enocdeやdecode関数とは異なり第1引数に指定したバイト文字列自体が変換されることに注意してください。
+In Perl, the character code conversion process is as follows by combining the decode function and encode function. You need to convert it to an internal string once. The following example converts a UTF-8 byte string to a Shift_JIS byte string.
 
 <pre>
-# 文字コードの変換
-use Encode 'from_to';
+# Convert UTF-8 byte string to internal string
+$ str = decode ('UTF-8', $ str);
 
-# $str自体が変換される
-from_to($str, 'UTF-8', 'Shift_JIS');
-</pre>
+#Convert internal string to Shift_JIS byte string
+$ str = encode ('Shift_JIS', $ str);
+</ pre>
+The diagram is as follows.
+<pre>
+UTF-8 byte string-> internal string-> Shift_JIS byte string
+</ pre>
 
-<h3>ファイル名として指定する文字列</h3>
+This is a bit annoying, so we have a function called from_to.The first argument is a byte string, the second argument is the character code before conversion, and the third argument is the character code after conversion. Note that unlike the enocde and decode functions, the byte string itself specified in the first argument is converted.
 
-openやunlinkなどの関数にファイル名を指定するときは、OSのバイト文字列に変換して指定する必要があります。
+<pre>
+#Character code conversion
+use Encode'from_to';
+
+# $ str itself is converted
+from_to ($ str,'UTF-8','Shift_JIS');
+</ pre>
+
+<h3> Character string specified as the file name </ h3>
+
+When specifying a file name for a function such as open or unlink, it must be converted to an OS byte string.
 
 <pre>
 use strict;
 use warnings;
 use utf8;
-use Encode 'encode';
+use Encode'encode';
 
-my $file = 'あいう.txt';
-open my $fh, '<', encode('cp932', $file)
-  or die "Can't open " . encode('cp932', $file) . ":$!";
-</pre>
+my $ file ='Ah.txt';
+open my $ fh,'<', encode ('cp932', $ file)
+  or die "Can't open". encode ('cp932', $ file). ": $!";
+</ pre>
 
-ファイル名を扱う関数に渡す直前でエンコードするのがポイントです。これはファイル名を扱う関数をたくさん扱う場合は少し面倒ですので、ファイル名をOSの文字コードに変換する関数を作っておくと便利です。
+The point is to encode just before passing it to the function that handles the file name. This is a little troublesome when dealing with many functions that handle file names, so it is convenient to create a function that converts the file name to the character code of the OS.
 
-またエラーメッセージを自動OSの文字コードに変換するためにbinmode関数を使って標準エラー出力のエンコーディングを指定しておくと便利です。
+It is also convenient to specify the standard error output encoding using the binmode function to convert the error message to the character code of the automatic OS.
 
 <pre>
 use warnings;
 use utf8;
 
-use Encode qw/encode decode/;
-my $enc = 'cp932';
-binmode STDERR, ":encoding($enc)";
-sub d($) { decode($enc, shift) }
-sub e($) { encode($enc, shift) }
+use Encode qw / encode decode /;
+my $ enc ='cp932';
+binmode STDERR, ": encoding ($ enc)";
+sub d ($) {decode ($ enc, shift)}
+sub e ($) {encode ($ enc, shift)}
 
-my $file = 'あいう.txt';
-open my $fh, '<', e$file
-  or die qq/Can't open "$file": $!/;
-</pre>
+my $ file ='Ah.txt';
+open my $ fh,'<', e $ file
+  or die qq / Can't open "$ file": $! /;
+</ pre>
 
-これできわめて簡潔にPerlの文字コードを扱うことができるようになりました。
+Now you can handle Perl character codes very simply.
 
-<h3>文字列に関するその他の注意点</h3>
+<h3> Other notes about strings </ h3>
 
-<h4>内部文字列とバイト文字列の連結は避ける</h4>
+<h4> Avoid concatenating internal and byte strings </ h4>
 
-内部文字列とバイト文字列を連結は避けましょう。この場合はバイト文字列は自動的に内部文字列へと変換されるのですが、その変換は文字化けの原因になります。すべて内部文字列に変換してから連結を行いましょう。
+Avoid concatenating internal and byte strings. In this case, the byte string is automatically converted to an internal string, but that conversion causes garbled characters. Let's convert everything to an internal string before concatenating.
 
-<h4>内部文字列かバイト文字列かの識別は正確にはできない</h4>
+<h4> It is not possible to accurately distinguish between an internal string and a byte string </ h4>
 
-Perlではプログラムの中でその文字列がバイト文字列なのか内部文字列なのかを正確に識別する方法がありません。内部文字列かバイト文字列かを識別するためにutf8::is_utf8メソッドを使用することはできません。utf8::is_utf8メソッドはUTF8フラグが立っているかどうかを判別できるだけで、内部文字列かバイト文字列かを判定することはできないのです。
+Perl has no way in your program to pinpoint whether a string is a byte string or an internal string. You cannot use the utf8 :: is_utf8 method to identify whether it is an internal string or a byte string. The utf8 :: is_utf8 method can only determine if the UTF8 flag is set, not an internal string or a byte string.
 
-ですから、おそらくこうなっているだろうという推測には利用できますが、内部文字列かバイト文字列かをプログラム内で確定させるための判定には使えませんので注意してください。UTF8フラグが立っていた場合は必ず内部文字列です。UTF8フラグが立っていない場合は内部文字列かバイト文字列です。
+So, while you can use it to speculate that this is probably the case, be aware that it can't be used to determine in-program whether it's an internal string or a byte string. Whenever the UTF8 flag is set, it is an internal string. If the UTF8 flag is not set, it is an internal string or a byte string.
 
-<h4>モジュールとの連携</h4>
+<h4> Cooperation with modules </ h4>
 
-モジュールのある関数が引数として内部文字列を受け取るかバイト文字列を受け取るかはモジュールの作成者の意図によります。関数の戻り値についても同じです。バイト文字列を返すか、内部文字列を返すかは作成者の意図によります。必ずドキュメントを読んでください。
+Whether a function in a module accepts an internal string or a byte string as an argument depends on the intention of the module creator. The same is true for the return value of a function. It is up to the author to decide whether to return a byte string or an internal string. Be sure to read the documentation.
 
-これはPerlでプログラムをする上でプログラマが特に大変だと思う点のひとつだと思います。けれども単に否定せずに「後方互換性の維持」「シンプルな変換規則」「文字列の正確で適切な扱い」というその他の大きな恩恵にあずかっているということを思いだしてみてください。他の言語と比べてもPerlは文字列の扱いをかなりよくやっていると思います。
+I think this is one of the things programmers find particularly difficult when programming in Perl. But don't just deny it, remember that you're benefiting from the other big benefits of "maintaining backwards compatibility," "simple conversion rules," and "correct and proper handling of strings." I think Perl handles strings pretty well compared to other languages.
 
-その他のプログラミング言語の実装を見てもわかると思いますが、文字コードの扱いは何かとのトレードオフになっています。それくらい扱うのが難しい分野です。
+As you can see from the implementation of other programming languages, there is a trade-off with the handling of character codes. It's a difficult field to deal with.
 
-<h3>内部文字列について</h3>
+<h3> About internal strings </ h3>
 
-内部文字列がどのようなものかについては意識しないほうがよいでしょう。プログラムを作成する上で意識する必要も特にありません。それでも知りたいという方は次の解説がわかりやすいです。
+You shouldn't be aware of what the internal strings look like. You don't have to be aware of it when creating a program. If you still want to know, the following explanation is easy to understand.
 
 <ul>
   <li>
-    <a href="http://d.hatena.ne.jp/dayflower/20080219/1203493616">UTF8 フラグあれこれ(daily dayflower)</a>
-  </li>
-</ul>
-
+    <a href="http://d.hatena.ne.jp/dayflower/20080219/1203493616"> UTF8 flag this and that (daily dayflower) </a>
+  </ li>
+</ ul>

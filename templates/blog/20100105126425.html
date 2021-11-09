@@ -1,36 +1,72 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-        <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>unshift関数 - 配列の先頭に要素を追加</h2>
+        <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> shift </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> shift function-get the beginning of the array </ h2>
 
 
 
-<strong>unshift関数</strong>を使用すると、<a href="/blog/20161012147627.html">配列</a>の先頭に要素を追加することができます。
+Use the <strong> shift function </ strong> to get the first element of the <strong> array </ strong>. Note that the first element is truncated and is no longer in the original array.
 
 <pre>
-unshift @array, $value;
-</pre>
+$ ret = shift @array;
+</ pre>
 
-unshift関数のサンプルです。@numsが(1, 2, 3)であった場合は@numsは(0, 1, 2, 3)になります。
+<h3> Sample </ h3>
+
+This is a sample shift function. If @nums is (1, 2, 3), 1 is assigned to $ first and @nums is (2, 3).
+
+<pre>
+my @nums = (1, 2, 3);
+my $ first = shift @nums;
+</ pre>
+
+
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/blog/20161004147558.html">
+        <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> unshift function-add element to the beginning of the array </ h2>
+
+
+
+You can use the <strong> unshift function </ strong> to add an element to the beginning of a <a href="/blog/20161012147627.html"> array </a>.
+
+<pre>
+unshift @array, $ value;
+</ pre>
+
+This is a sample of the unshift function. If @nums was (1, 2, 3) then @nums would be (0, 1, 2, 3).
 
 <pre>
 my @nums = (1, 2, 3);
 unshift @nums, 0;
-</pre>
-
-
+</ pre>

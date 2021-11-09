@@ -1,71 +1,70 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop="name">オブジェクト指向</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Object Oriented </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">package</span>
-    <meta itemprop="position" content="4" />
-  </li>
-</ol>
-<h2>クラスの作成 - package</h2>
+      <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> package </ span>
+    <meta itemprop = "position" content = "4" />
+  </ li>
+</ ol>
+<h2> Create class --package </ h2>
 
 
 
-クラスを作成方法を解説します。
+I will explain how to create a class.
 
-<h3>1. クラスを作成するにはパッケージ宣言を行う。</h3>
+<h3> 1. Make a package declaration to create a class. </ h3>
 
-Perlではクラスを作る特別な構文はありません。<b>パッケージ宣言</b>をすることでクラスを作成します。
-
-<pre>
-package Book;
-</pre>
-
-これで、Bookクラスが出来上がります。
-
-<h3>2. クラスの雛形 コンストラクタとアクセッサ</h3>
-
-もの型クラスの場合の雛形はこんな感じです。オブジェクトを作成するための<b>コンストラクタ</b>とオブジェクトのフィールドにアクセスするための<b>アクセッサ</b>から構成されます。
+There is no special syntax for creating classes in Perl. Create a class by making a <b> package declaration </ b>.
 
 <pre>
 package Book;
+</ pre>
 
-sub new { # コンストラクタの実装 }
+This completes the Book class.
 
-sub title { # アクセッサの実装 }
-sub author { # アクセッサの実装 }
-</pre>
+<h3> 2. Class template constructor and accessor </ h3>
 
-ひと型クラスの場合はこんな感じです。
+The template for the monotype class looks like this. It consists of a <b> constructor </ b> for creating the object and a <b> accessor </ b> for accessing the fields of the object.
 
 <pre>
-package FileParser;
+package Book;
 
-sub new { # コンストラクタの実装 }
+sub new {# Constructor implementation}
 
-sub encoding { # アクセッサの実装 }
-sub err_raise { # アクセッサの実装 }
+sub title {# Implementation of accessor}
+sub author {# Implementation of accessor}
+</ pre>
+
+In the case of a human type class, it looks like this.
+
+<pre>
+package File Parser;
+
+sub new {# Constructor implementation}
+
+sub encoding {# Implementation of accessor}
+sub err_raise {# Implementation of accessor}
 
 sub parse {
-  # ファイルを解析するメソッドの実装
+  #Implementation of method to parse file
 }
 
-</pre>
+</ pre>
 
-この形からクラスはスタートします。では、次回はコンストラクタの実装を解説します。
-
+The class starts from this form. Next time, I will explain the implementation of the constructor.

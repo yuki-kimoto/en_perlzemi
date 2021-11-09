@@ -1,63 +1,62 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop="name">オブジェクト指向</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">継承の仕組み</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>継承の仕組み</h2>
+      <span itemprop = "name"> Object Oriented </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Inheritance mechanism </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Inheritance mechanism </ h2>
 
 
 
-Perlにおける継承の仕組みを解説します。
+I will explain the mechanism of inheritance in Perl.
 
-<h3>1. 継承の仕組み</h3>
+<h3> 1. Inheritance mechanism </ h3>
 
-継承の仕組みは上位クラスに対してメソッドの探索をしているということです。前回のコードをもう一度見てみましょう。
+The inheritance mechanism is that the method is searched for the upper class. Let's take a look at the previous code again.
 
 <pre>
 use strict;
 use warnings;
 
-# コンポーネントクラス
+#Component class
 package Component;
-sub x { return 5 }
+sub x {return 5}
 
 
-# ボタンクラス
+#Button class
 package Button;
-# 継承の記述
+# Inheritance description
 our @ISA = ('Component');
 
-sub new { bless {}, 'Button' }
+sub new {bless {},'Button'}
 
 package main;
-# ボタンクラスを使用する
-my $button = Button->new;
-print $button->x;
-</pre>
+# Use button class
+my $ button = Button-> new;
+print $ button-> x;
+</ pre>
 
-Buttonクラスには、x というメソッドがないのに、 x というメソッドを呼び出しているのでした。これは、@ISA = ('Component')という記述で継承しているからだと解説しました。
-でも実は本当はメソッドの探索が行われているだけです。
+The Button class didn't have a method called x, but it was calling a method called x. I explained that this is because it inherits with the description @ISA = ('Component').
+But in reality, it's just a method search.
 
-<h3>2. メソッド探索のアルゴリズム</h3>
+<h3> 2. Method search algorithm </ h3>
 
-以下がメソッド探索のアルゴリズムです。
+The following is the method search algorithm.
 
 <blockquote>
-自分のパッケージ(この例の場合は Button) に x メソッドがあれば、それを呼び出す。もしなければ、 @ISA に含まれるパッケージ(この例では Component) の x メソッドを呼び出す。
-</blockquote>
+If your package (Button in this example) has an x ​​method, call it. If not, call the x method of the package (Component in this example) contained in @ISA.
+</ blockquote>
 
-これを最上位のスーパークラスまで繰り返します。これが、Perlにおける継承の実装です。
-
+Repeat this until the top superclass. Here is the implementation of inheritance in Perl.

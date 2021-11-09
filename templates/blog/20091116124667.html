@@ -1,916 +1,916 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlモジュール徹底解説</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Perl module thorough explanation </ h2>
 
-Perlのモジュールについての解説です。Perlでいうモジュールとは良く使う機能や便利な機能をプログラムで利用するための仕組みです。
+A description of Perl modules. A module in Perl is a mechanism for using frequently used functions and convenient functions in a program.
 
-Perlの基本文法を覚えたらいろいろなモジュールを使ってみましょう。モジュールを組み合わせると複雑な問題を簡単に解決したり、業務の自動化に役立ったりします。
+Once you've learned the basic Perl grammar, try using different modules. By combining modules, you can easily solve complex problems and help automate operations.
 
-また<a href="http://search.cpan.org/">CPAN</a>と呼ばれるモジュールの配布サイトでは役立つたくさんのモジュールが有志によって登録されており無料で利用することができます。cpanコマンドの使い方については<a href="/blog/20100504127089.html">CPANモジュールの解説</a>を参考にしてください。
+Also, on the module distribution site called <a href="http://search.cpan.org/"> CPAN </a>, many useful modules are registered by volunteers and can be used free of charge. See <a href="/blog/20100504127089.html"> CPAN Module Description </a> for how to use the cpan command.
 
-<h4>モジュールの作成方法</h4>
+<h4> How to create a module </ h4>
 
-「パッケージ」などのモジュール作成のための基礎知識を知りたい場合は「<a href="/blog/20161130148051.html">モジュールの基礎</a>」を参考にしてください。実際にモジュールを自分で作成してみたい方は<a href="/blog/20090513124489.html">Module::Starterモジュール</a>を使って、モジュールのひな型を作成するのが早道です。
+If you want to know the basic knowledge for creating modules such as "packages", please refer to "<a href="/blog/20161130148051.html"> Module basics </a>". If you want to actually create a module yourself, it is a quick way to create a module template using <a href="/blog/20090513124489.html"> Module :: Starter module </a>.
 
-<h4>モジュールの存在確認</h4>
+<h4> Module existence confirmation </ h4>
 
-特定のモジュールが存在しているかどうかを知りたい場合は、perldocコマンドでドキュメントがあるかを調べてみるのが一番早い方法です。
+If you want to know if a particular module exists, the quickest way is to check for documentation with the perldoc command.
 
 <pre>
-# perldocコマンド
+# perldoc command
 perldoc Mojolicious
-</pre>
+</ pre>
 
-モジュールがインストールされている場所を知りたい場合は「-l」オプションを使用してください。パスが表示されます。
+If you want to know where the module is installed, use the "-l" option. The path is displayed.
 
 <pre>
 perldoc -l Mojolicious
-</pre>
+</ pre>
 
-モジュールのバージョンを知りたい場合は「-m」オプションを使って、モジュールファイルを実際に見てみるのが一番よいです。
+If you want to know the module version, it is best to actually look at the module file using the "-m" option.
 
 <pre>
 perldoc -m Mojolicious
-</pre>
+</ pre>
 
-バージョンが指定されているパッケージ変数を探してください。
+Look for the package variable for which the version is specified.
 
 <pre>
-our $VERSION  = '7.25';
-</pre>
+our $ VERSION = '7.25';
+</ pre>
 
-<h4>モジュールの読み込みパス</h4>
+<h4> Module loading path </ h4>
 
-モジュールの読み込みパスの追加方法については、以下を参考にしてください。
+Please refer to the following for how to add the module loading path.
 
 <ul>
-  <li><a href="/blog/20200617111016.html">PERL5LIB環境変数を使ってモジュールの検索パスを追加する</a></li>
-  <li><a href="/blog/20100525127859.html">lib - モジュールの検索パスを追加</a></li>
-</ul>
+  <li> <a href="/blog/20200617111016.html"> Add a module search path using the PERL5LIB environment variable </a> </ li>
+  <li> <a href="/blog/20100525127859.html"> lib --Added module search path </a> </ li>
+</ ul>
 
-<h3>標準モジュール</h3>
+<h3> Standard module </ h3>
 
-「標準モジュール」はPerlをインストールしたときに最初から利用できるモジュールのことです。「標準モジュール」だけでも結構たくさんのことがでてしまいます。
-
-<table>
-  <tr>
-    <td>
-      <b>モジュール名</b>
-    </td>
-    <td>
-      <b>説明</b>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20130912137895.html">strict</a>
-    </td>
-    <td>
-      文法を厳格にする
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="/blog/20130916137930.html">warnings</a>
-    </td>
-    <td>
-      警告を出力する
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100514127696.html">Getopt::Long</a>
-    </td>
-    <td>
-      コマンドライン引数のオプションを処理する
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100510127696.html">Archive::Tar</a>
-    </td>
-    <td>
-      tarファイルの展開と作成(v5.10以降)
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100527127859.html">Cwd</a>
-    </td>
-    <td>
-      カレントディレクトリのパスを取得する
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100225126425.html">File::Basename</a>
-    </td>
-    <td>
-      ファイルのベース名とディレクトリ名の取得
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100408127089.html">File::Copy</a>
-    </td>
-    <td>
-      ファイルの移動とコピー
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100409127089.html">File::Path</a>
-    </td>
-    <td>
-      複数階層のディレクトリの作成と削除
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100412127089.html">File::Spec</a>
-    </td>
-    <td>
-      ファイル名に対する移植性のある処理
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100413127089.html">File::Temp</a>
-    </td>
-    <td>
-      一時ファイルの作成
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20080530121229.html">File::Find</a>
-    </td>
-    <td>
-      ファイルの検索
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100524127696.html">FindBin</a>
-    </td>
-    <td>
-      スクリプトが存在するディレクトリのパスの取得
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20091118124667.html">Encode</a>
-    </td>
-    <td>
-      日本語などのマルチバイト文字列を適切に処理する
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100528127859.html">utf8</a>
-    </td>
-    <td>
-      ソースコード内の文字列を内部文字列に変換
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100430127089.html">Carp</a>
-    </td>
-    <td>
-      モジュールの呼び出し元の観点で例外を発生させる
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100525127859.html">lib</a>
-    </td>
-    <td>
-      モジュールの検索パスの追加
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20091105124627.html">Time::Piece</a>
-    </td>
-    <td>
-      日付・時刻を扱うための標準モジュール(v5.10からコアモジュール)
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20081014122416.html">Time::Local</a>
-    </td>
-    <td>
-      localtime,gmtimeの逆返還
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100425127089.html">base</a>
-    </td>
-    <td>
-      クラスの継承
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20080208120248.html">Data::Dumper</a>
-    </td>
-    <td>
-      変数の内容を出力する
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100509127696.html">Benchmark</a>
-    </td>
-    <td>
-      ベンチマーク(性能比較)を行う
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100427127089.html">JSON</a>
-    </td>
-    <td>
-      JSONデータの解析
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100516127696.html">MIME::Base64</a>
-    </td>
-    <td>
-      Base64形式へのエンコード
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100517127696.html">MIME::QuotedPrint</a>
-    </td>
-    <td>
-      quoted-printable形式へのエンコード
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100501127089.html">Digest::MD5</a>
-    </td>
-    <td>
-      MD5値を求める
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100502127089.html">Digest::SHA</a>
-    </td>
-    <td>
-      各種SHA値を求める　(v5.10以降)
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100523127696.html">Storable</a>
-    </td>
-    <td>
-      データのシリアライズ化
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100317126967.html">Scalar::Util</a>
-    </td>
-    <td>
-      スカラ値に関するユーティリティ
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20080114120030.html">List::Util</a>
-    </td>
-    <td>
-      配列に対するさまざまな操作
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20080703121510.html">Hash::Uti</a>
-    </td>
-    <td>
-      ハッシュのキーの制限
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100522127696.html">Sys::Hostname</a>
-    </td>
-    <td>
-      ホスト名の取得
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20091115124667.html">Net::FTP</a>
-    </td>
-    <td>
-      FTPクライアント
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100519127696.html">Net::Ping</a>
-    </td>
-    <td>
-      リモートホストの生存確認
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100426127089.html">Exporter</a>
-    </td>
-    <td>
-      関数のエクスポート
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100504127089.html">CPAN</a>
-    </td>
-    <td>
-      CPANからモジュールをインストールする
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100226126425.html">Pod::Usage</a>
-    </td>
-    <td>
-      PODドキュメントの出力
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20110613130982.html">Errno</a>
-    </td>
-    <td>
-      システムのエラー番号をあらわす定数
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20100315126967.html">POSIX</a>
-    </td>
-    <td>
-      POSIXで定義された関数
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <a href="/blog/20080925122245.html">Math::BigInt</a><br><a href="/blog/20080925122245.html">Math::BigFloat</a>
-    </td>
-    <td>
-      大きな数の計算
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="/blog/20200115082029.html">Class::Struct</a>
-    </td>
-    <td>
-      オブジェクト指向を提供するコアモジュール
-    </td>
-  </tr>
-
-</table>
-
-<h3>CPANモジュール解説</h3>
-
-Perlでは無料のモジュールをCPANから簡単にインストールして使用することができます。
-
-<b>Web開発</b>
+A "standard module" is a module that is available from the beginning when you install Perl. There are quite a lot of things that can be done with just the "standard module".
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20140319139520.html">Mojolicious</a>
-    </td>
+      <b> Module name </ b>
+    </ td>
     <td>
-      Webフレームワーク
-    </td>
-  </tr>
+      <b> Explanation </ b>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <a href="/blog/20130731137527.html">Mojolicious::Plugin::AutoRoute</a>
-    </td>
+      <a href="/blog/20130912137895.html"> strict </a>
+    </ td>
     <td>
-      めんどうなルートを自動的に生成
-    </td>
-  </tr>
+      Make grammar strict
+    </ td>
+  </ tr>
   <tr>
     <td>
-      <a href="/blog/20200729183827.html">Amazon::S3::Thin</a>
-    </td>
+      <a href="/blog/20130916137930.html"> warnings </a>
+    </ td>
     <td>
-      薄くて、軽量、低レベル操作ができるAmazon S3クライアント
-    </td>
-  </tr>
-</table>
+      Output a warning
+    </ td>
+  </ tr>
 
+  <tr>
+    <td>
+      <a href="/blog/20100514127696.html"> Getopt :: Long </a>
+    </ td>
+    <td>
+      Handle command line argument options
+    </ td>
+  </ tr>
 
-<b>メール送信</b>
+  <tr>
+    <td>
+      <a href="/blog/20100510127696.html"> Archive :: Tar </a>
+    </ td>
+    <td>
+      Extract and create tar file (v5.10 or later)
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100527127859.html"> Cwd </a>
+    </ td>
+    <td>
+      Get the path of the current directory
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100225126425.html"> File :: Basename </a>
+    </ td>
+    <td>
+      Get the base name and directory name of the file
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100408127089.html"> File :: Copy </a>
+    </ td>
+    <td>
+      Move and copy files
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100409127089.html"> File :: Path </a>
+    </ td>
+    <td>
+      Creating and deleting multi-level directories
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100412127089.html"> File :: Spec </a>
+    </ td>
+    <td>
+      Portable processing for filenames
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100413127089.html"> File :: Temp </a>
+    </ td>
+    <td>
+      Creating a temporary file
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20080530121229.html"> File :: Find </a>
+    </ td>
+    <td>
+      File search
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100524127696.html"> FindBin </a>
+    </ td>
+    <td>
+      Get the path of the directory where the script resides
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20091118124667.html"> Encode </a>
+    </ td>
+    <td>
+      Properly handle multi-byte character strings such as Japanese
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100528127859.html"> utf8 </a>
+    </ td>
+    <td>
+      Convert strings in source code to internal strings
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100430127089.html"> Carp </a>
+    </ td>
+    <td>
+      Raise an exception from the perspective of the module caller
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100525127859.html"> lib </a>
+    </ td>
+    <td>
+      Add module search path
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20091105124627.html"> Time :: Piece </a>
+    </ td>
+    <td>
+      Standard module for handling date / time (core module from v5.10)
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20081014122416.html"> Time :: Local </a>
+    </ td>
+    <td>
+      Reverse return of localtime and gmtime
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100425127089.html"> base </a>
+    </ td>
+    <td>
+      Class inheritance
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20080208120248.html"> Data :: Dumper </a>
+    </ td>
+    <td>
+      Output the contents of the variable
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100509127696.html"> Benchmark </a>
+    </ td>
+    <td>
+      Benchmark (performance comparison)
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100427127089.html"> JSON </a>
+    </ td>
+    <td>
+      Parsing JSON data
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100516127696.html"> MIME :: Base64 </a>
+    </ td>
+    <td>
+      Encoding to Base64 format
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100517127696.html"> MIME :: QuotedPrint </ a>
+    </ td>
+    <td>
+      Encoding to quoted-printable format
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100501127089.html"> Digest :: MD5 </a>
+    </ td>
+    <td>
+      Find the MD5 value
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100502127089.html"> Digest :: SHA </a>
+    </ td>
+    <td>
+      Find various SHA values ​​(v5.10 or later)
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100523127696.html"> Storable </a>
+    </ td>
+    <td>
+      Data serialization
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100317126967.html"> Scalar :: Util </a>
+    </ td>
+    <td>
+      Utility for scalar values
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20080114120030.html"> List :: Util </a>
+    </ td>
+    <td>
+      Various operations on arrays
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20080703121510.html"> Hash :: Uti </a>
+    </ td>
+    <td>
+      Hash key restrictions
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100522127696.html"> Sys :: Hostname </a>
+    </ td>
+    <td>
+      Get host name
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20091115124667.html"> Net :: FTP </a>
+    </ td>
+    <td>
+      FTP client
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100519127696.html"> Net :: Ping </a>
+    </ td>
+    <td>
+      Confirmation of the existence of the remote host
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100426127089.html"> Exporter </a>
+    </ td>
+    <td>
+      Function export
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100504127089.html"> CPAN </a>
+    </ td>
+    <td>
+      Install modules from CPAN
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100226126425.html"> Pod :: Usage </a>
+    </ td>
+    <td>
+      Output of POD document
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20110613130982.html"> Errno </a>
+    </ td>
+    <td>
+      A constant that represents the system error number
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20100315126967.html"> POSIX </a>
+    </ td>
+    <td>
+      Functions defined in POSIX
+    </ td>
+  </ tr>
+
+  <tr>
+    <td>
+      <a href="/blog/20080925122245.html"> Math :: BigInt </a> <br> <a href="/blog/20080925122245.html"> Math :: BigFloat </a>
+    </ td>
+    <td>
+      Calculation of large numbers
+    </ td>
+  </ tr>
+  <tr>
+    <td>
+      <a href="/blog/20200115082029.html"> Class :: Struct </a>
+    </ td>
+    <td>
+      Core module that provides object orientation
+    </ td>
+  </ tr>
+
+</ table>
+
+<h3> CPAN module commentary </ h3>
+
+Perl makes it easy to install and use free modules from CPAN.
+
+<b> Web development </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20170424149304.html">MIME::Lite</a>
-    </td>
+      <a href="/blog/20140319139520.html"> Mojolicious </a>
+    </ td>
     <td>
-      メールを簡単に送信
-    </td>
-  </tr>
-
-</table>
-
-<b>開発環境</b>
-<table>
-  <tr>
-    <td>
-      <a href="/blog/20110220130464.html">perlbrew</a>
-    </td>
-    <td>
-      ユーザー環境にPerlをインストールする
-    </td>
-  </tr>
+      Web framework
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <a href="/blog/20101027127859.html">cpanm</a>
-    </td>
+      <a href="/blog/20130731137527.html"> Mojolicious :: Plugin :: AutoRoute </a>
+    </ td>
     <td>
-      CPANインストール
-    </td>
-  </tr>
+      Automatically generate troublesome routes
+    </ td>
+  </ tr>
+  <tr>
+    <td>
+      <a href="/blog/20200729183827.html"> Amazon :: S3 :: Thin </a>
+    </ td>
+    <td>
+      Thin, lightweight, low-level Amazon S3 client
+    </ td>
+  </ tr>
+</ table>
 
-</table>
 
-<b>オブジェクト指向</b>
+<b> Send email </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20100223126425.html">Class::Accessor::Fast</a>
-    </td>
+      <a href="/blog/20170424149304.html"> MIME :: Lite </a>
+    </ td>
     <td>
-      アクセサの作成
-    </td>
-  </tr>
+      Send email easily
+    </ td>
+  </ tr>
+
+</ table>
+
+<b> Development environment </ b>
+<table>
+  <tr>
+    <td>
+      <a href="/blog/20110220130464.html"> perlbrew </a>
+    </ td>
+    <td>
+      Install Perl in your environment
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <a href="/blog/20100224126425.html">Object::Simple</a>
-    </td>
+      <a href="/blog/20101027127859.html"> cpanm </a>
+    </ td>
     <td>
-      デフォルト値つきのアクセサの作成(<a href="/blog/20160912147368.html">日本語訳</a>)
-    </td>
-  </tr>
+      CPAN installation
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>ユーティリティ</b>
+<b> Object-oriented </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20130930138050.html">DDP</a>
-    </td>
+      <a href="/blog/20100223126425.html"> Class :: Accessor :: Fast </a>
+    </ td>
     <td>
-      データをわかりやすく出力する
-    </td>
-  </tr>
+      Creating accessors
+    </ td>
+  </ tr>
+
   <tr>
     <td>
-      <a href="/blog/20200212001942.html">D</a>
-    </td>
+      <a href="/blog/20100224126425.html"> Object :: Simple </a>
+    </ td>
     <td>
-      データをエンコードし標準エラー出力へダンプ
-    </td>
-  </tr>
-</table>
+      Creating accessors with default values ​​(<a href="/blog/20160912147368.html"> Japanese translation </a>)
+    </ td>
+  </ tr>
 
-<b>データベース</b>
+</ table>
+
+<b> Utility </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20110401130559.html">DBIx::Custom</a>
-    </td>
+      <a href="/blog/20130930138050.html"> DDP </a>
+    </ td>
     <td>
-      データベース簡単操作
-    </td>
-  </tr>
-
+      Output data in an easy-to-understand manner
+    </ td>
+  </ tr>
   <tr>
     <td>
-      <a href="/blog/20111101132239.html">MySQL::Diff</a>
-    </td>
+      <a href="/blog/20200212001942.html"> D </a>
+    </ td>
     <td>
-      MySQLの差分を表示
-    </td>
-  </tr>
+      Encode data and dump to standard error
+    </ td>
+  </ tr>
+</ table>
 
-</table>
-
-<b>日付</b>
+<b> Database </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20090815124848.html">DateTime</a>
-    </td>
+      <a href="/blog/20110401130559.html"> DBIx :: Custom </a>
+    </ td>
     <td>
-      日付の汎用的な処理
-    </td>
-  </tr>
+      Easy database operation
+    </ td>
+  </ tr>
 
-</table>
+  <tr>
+    <td>
+      <a href="/blog/20111101132239.html"> MySQL :: Diff </a>
+    </ td>
+    <td>
+      View MySQL diffs
+    </ td>
+  </ tr>
 
-<b>統計解析</b>
+</ table>
+
+<b> date </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20121214135538.html">PDL</a>
-    </td>
+      <a href="/blog/20090815124848.html"> DateTime </a>
+    </ td>
     <td>
-      統計解析
-    </td>
-  </tr>
+      General-purpose processing of dates
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>画像編集</b>
+<b> Statistical analysis </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20110820131832.html">Imager</a>
-    </td>
+      <a href="/blog/20121214135538.html"> PDL </a>
+    </ td>
     <td>
-      画像編集
-    </td>
-  </tr>
+      Statistical analysis
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>CSV</b>
+<b> Image editing </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20110627131112.html">Text::CSV::Encoded</a>
-    </td>
+      <a href="/blog/20110820131832.html"> Imager </a>
+    </ td>
     <td>
-      日本語を含んだCSVファイルを取り扱う
-    </td>
-  </tr>
+      edit a picture
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>テキスト差分</b>
-<table>
-  <tr>
-    <td>
-      <a href="/blog/20100414127089.html">Text::Diff</a>
-    </td>
-    <td>
-      テキストの差分確認
-    </td>
-  </tr>
-
-</table>
-
-<b>XML</b>
+<b> CSV </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20100424127089.html">XML::Simple</a>
-    </td>
+      <a href="/blog/20110627131112.html"> Text :: CSV :: Encoded </a>
+    </ td>
     <td>
-      シンプルなXMLパーサ
-    </td>
-  </tr>
+      Handles CSV files containing Japanese
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>HTMLバリデーション</b>
+<b> Text diff </ b>
+<table>
+  <tr>
+    <td>
+      <a href="/blog/20100414127089.html"> Text :: Diff </a>
+    </ td>
+    <td>
+      Check text differences
+    </ td>
+  </ tr>
+
+</ table>
+
+<b> XML </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20151212144988.html">Validator::Custom</a>
-    </td>
+      <a href="/blog/20100424127089.html"> XML :: Simple </a>
+    </ td>
     <td>
-      HTMLフォームの検証
-    </td>
-  </tr>
+      Simple XML parser
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>ページング</b>
+<b> HTML validation </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20110527130888.html">Data::Page</a>
-    </td>
+      <a href="/blog/20151212144988.html"> Validator :: Custom </a>
+    </ td>
     <td>
-      ページング処理の支援
-    </td>
-  </tr>
+      HTML form validation
+    </ td>
+  </ tr>
 
-  <tr>
-    <td>
-      <a href="/blog/20131118138474.html">Data::Page::Navigation</a>
-    </td>
-    <td>
-      ページのナビゲーションの作成
-    </td>
-  </tr>
+</ table>
 
-</table>
-
-<b>モジュール作成</b>
+<b> Paging </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20090513124489.html">Module::Starter</a>
-    </td>
+      <a href="/blog/20110527130888.html"> Data :: Page </a>
+    </ td>
     <td>
-      モジュールの雛形を作成する
-    </td>
-  </tr>
+      Support for paging processing
+    </ td>
+  </ tr>
 
-</table>
+  <tr>
+    <td>
+      <a href="/blog/20131118138474.html"> Data :: Page :: Navigation </a>
+    </ td>
+    <td>
+      Creating page navigation
+    </ td>
+  </ tr>
 
-<b>性能解析</b>
+</ table>
+
+<b> Module creation </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20100507127089.html">Devel::NYTProf</a>
-    </td>
+      <a href="/blog/20090513124489.html"> Module :: Starter </a>
+    </ td>
     <td>
-      使いやすいプロファイラ
-    </td>
-  </tr>
+      Create a module template
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>ソースコード整形</b>
+<b> Performance analysis </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20130326136427.html">perltidy</a>
-    </td>
+      <a href="/blog/20100507127089.html"> Devel :: NYTProf </a>
+    </ td>
     <td>
-      ソースコードの整形
-    </td>
-  </tr>
+      Easy-to-use profiler
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>ping</b>
+<b> Source code formatting </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20100520127696.html">Net::Ping::External</a>
-    </td>
+      <a href="/blog/20130326136427.html"> perltidy </a>
+    </ td>
     <td>
-      pingコマンドの実行
-    </td>
-  </tr>
+      Source code formatting
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<b>試験</b>
+<b> ping </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20090305123522.html">IO::ScalarArray</a>
-    </td>
+      <a href="/blog/20100520127696.html"> Net :: Ping :: External </a>
+    </ td>
     <td>
-      標準入力の自動試験
-    </td>
-  </tr>
+      Executing the ping command
+    </ td>
+  </ tr>
 
-  <tr>
-    <td>
-      <a href="/blog/20090304123521.html">IO::Capture</a>
-    </td>
-    <td>
-      標準出力、標準エラー出力の自動試験
-    </td>
-  </tr>
+</ table>
 
-</table>
-
-<b>FFI</b>
+<b> Exam </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20121207135484.html">FFI::Raw</a>
-    </td>
+      <a href="/blog/20090305123522.html"> IO :: ScalarArray </a>
+    </ td>
     <td>
-      ダイナミックライブラリ内の関数を呼び出す
-    </td>
-  </tr>
+      Automatic test of standard input
+    </ td>
+  </ tr>
 
-</table>
+  <tr>
+    <td>
+      <a href="/blog/20090304123521.html"> IO :: Capture </a>
+    </ td>
+    <td>
+      Automatic test of standard output and standard error output
+    </ td>
+  </ tr>
 
-<b>三角関数</b>
+</ table>
+
+<b> FFI </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20080918122175.html">Math::Trig</a>
-    </td>
+      <a href="/blog/20121207135484.html"> FFI :: Raw </a>
+    </ td>
     <td>
-      さまざまな三角関数
-    </td>
-  </tr>
-</table>
+      Call a function in a dynamic library
+    </ td>
+  </ tr>
 
-<b>Webスクレイピング</b>
+</ table>
+
+<b> Trigonometric functions </ b>
 
 <table>
   <tr>
     <td>
-      <a href="/blog/20210105145700.html">Selenium::Remote::Driver</a>
-    </td>
+      <a href="/blog/20080918122175.html"> Math :: Trig </a>
+    </ td>
     <td>
-      JavaScript対応のWebスクレイピング
-    </td>
-  </tr>
+      Various trigonometric functions
+    </ td>
+  </ tr>
+</ table>
+
+<b> Web scraping </ b>
+
+<table>
   <tr>
     <td>
-      <a href="/blog/20210107090920.html">Selenium::Chrome</a>
-    </td>
+      <a href="/blog/20210105145700.html"> Selenium :: Remote :: Driver </a>
+    </ td>
     <td>
-      Chomeを使ったJavaScript対応のWebスクレイピング
-    </td>
-  </tr>
-</table>
+      JavaScript-enabled web scraping
+    </ td>
+  </ tr>
+  <tr>
+    <td>
+      <a href="/blog/20210107090920.html"> Selenium :: Chrome </a>
+    </ td>
+    <td>
+      JavaScript-enabled web scraping using Chome
+    </ td>
+  </ tr>
+</ table>
 
-<h3>Perlモジュール紹介</h3>
+<h3> Perl module introduction </ h3>
 
-ここでは詳しく解説できなかったモジュールについても以下で紹介していますので、ご覧ください。
+Please see below for the modules that could not be explained in detail here.
 
 <ul>
   <li>
-    <a href="/blog/20170922150608.html">Perlモジュール紹介</a>
-  </li>
-</ul>
+    <a href="/blog/20170922150608.html"> Perl module introduction </a>
+  </ li>
+</ ul>
 
-<h3>非推奨のモジュール</h3>
+<h3> Deprecated modules </ h3>
 
-非推奨のモジュール。
+Deprecated module.
 
 <table>
   <tr>
     <td>
-      <b>モジュール名</b>
-    </td>
+      <b> Module name </ b>
+    </ td>
     <td>
-      <b>説明</b>
-    </td>
-  </tr>
+      <b> Explanation </ b>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       cgi-lib.pl
-    </td>
+    </ td>
     <td>
-      とても古いです。変わりにCGI.pmを使いましょう
-    </td>
-  </tr>
+      It's very old. Use CGI.pm instead
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <a href="/blog/20100506127089.html">Devel::DProf</a>
-    </td>
+      <a href="/blog/20100506127089.html"> Devel :: DProf </a>
+    </ td>
     <td>
-      シンプルなプロファイラ(性能解析ツール)ですがバグが多いので、コアモジュールから取り除かれる予定
-    </td>
-  </tr>
+      It is a simple profiler (performance analysis tool), but it has many bugs, so it will be removed from the core module.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       encoding
-    </td>
+    </ td>
     <td>
-      公式に非推奨。ソースコードはUTF-8で保存して、utf8プラグマを使いましょう
-    </td>
-  </tr>
+      Officially deprecated. Save the source code in UTF-8 and use the utf8 pragma
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       jcode.pl
-    </td>
+    </ td>
     <td>
-      とても古いです。文字列を扱うにはEncodeモジュールを使用します
-    </td>
-  </tr>
+      It's very old. Use the Encode module to work with strings
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       Jcode
-    </td>
+    </ td>
     <td>
-      公式に非推奨。文字列を扱うにはEncodeモジュールを使用します
-    </td>
-  </tr>
+      Officially deprecated. Use the Encode module to work with strings
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       bytes
-    </td>
+    </ td>
     <td>
-      公式に非推奨。実際にEncodeモジュールのencode関数でエンコードしてから長さを調べるようにします
-    </td>
-  </tr>
+      Officially deprecated. Actually encode with the encode function of the Encode module and then check the length
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       vars
-    </td>
+    </ td>
     <td>
-      古い。ourでパッケージ変数を宣言するのと同じ効果を持ちます。今ならourを使ってパッケージ変数を宣言しましょう
-    </td>
-  </tr>
+      old. It has the same effect as declaring a package variable in our. Now let's declare the package variable using our
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      Class::ISA
-    </td>
+      Class :: ISA
+    </ td>
     <td>
-      公式に非推奨。コアモジュールから取り除かれます
-    </td>
-  </tr>
+      Officially deprecated. Removed from core module
+    </ td>
+  </ tr>
 
-</table>
+</ table>

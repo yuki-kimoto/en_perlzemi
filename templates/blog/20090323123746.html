@@ -1,134 +1,133 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop="name">オブジェクト指向</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">継承とは</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>継承とは</h2>
+      <span itemprop = "name"> Object Oriented </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> What is inheritance? </ Span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> What is inheritance? </ H2>
 
 
 
-オブジェクト指向のひとつの特徴に継承があります。
+Inheritance is one of the object-oriented features.
 
-<h3>1. 継承の例としてWinwodsのアプリケーションの部品を考える</h3>
+<h3> 1. Consider Winwods application components as an example of inheritance </ h3>
 
-わかりやすい継承のたとえとしてWindowsのアプリケーションについて考えて見ましょう。Windowsのアプリケーションは、だいたい同じ形をしています。上部にタイトルバーがあります、その下にメニューバーがあって、その下にツールバーがあってという具合です。メニューバーの中にはメニューがあります。ツールバーの中にはボタンがあります。
+Consider a Windows application as a straightforward analogy to inheritance. Windows applications have roughly the same shape. There's a title bar at the top, a menu bar below it, a toolbar below it, and so on. There is a menu in the menu bar. There are buttons inside the toolbar.
 
-このすべてに共通のものは何でしょうか? メニュー、ツールバー、メニューアイテム、ボタンに共通なものは何でしょうか。
+What do all this have in common? What do menus, toolbars, menu items, and buttons have in common?
 
-共通するものを探してみましょう。まず、すべての部品は位置と大きさを持ちます。
+Let's find something in common. First, every part has a position and size.
 
-<h3>2. 継承を使用しないクラスを作成する</h3>
+<h3> 2. Create a class that does not use inheritance </ h3>
 
-継承を使用しない部品の実装を考えて見ましょう。
+Consider implementing a component that does not use inheritance.
 
 <pre>
-# メニューバークラス
+#Menu bar class
 package MenuBar;
-sub new { ... }
-sub x { ... }
-sub y { ... }
-sub width { ... }
-sub height{ ... }
+sub new {...}
+sub x {...}
+sub y {...}
+sub width {...}
+sub height {...}
 
-# その他のメソッドを書く。
-sub method_for_menubar { ... }
+# Write other methods.
+sub method_for_menubar {...}
 
-# ツールバークラス
+# Toolbar class
 package ToolBar;
-sub new { ... }
-sub x { ... }
-sub y { ... }
-sub width { ... }
-sub height { ... }
+sub new {...}
+sub x {...}
+sub y {...}
+sub width {...}
+sub height {...}
 
-# その他のメソッドを書く。
-sub method_for_toolbar{ ... }
+# Write other methods.
+sub method_for_toolbar {...}
 
-# ボタンクラス
+#Button class
 package Button;
-sub new { ... }
-sub x { ... }
-sub y { ... }
-sub width { ... }
-sub height { ... }
+sub new {...}
+sub x {...}
+sub y {...}
+sub width {...}
+sub height {...}
 
-# その他のメソッドを書く。
-sub method_for_button{ ... }
+# Write other methods.
+sub method_for_button {...}
 
-</pre>
+</ pre>
 
-このように3つのクラスを書きましたが、すべてのクラスは、x,y,width,height というアクセッサを共通して持っています。これってどうにかしたいですよね。
+I wrote three classes like this, but all of them have the common accessors x, y, width, and height. I want to do something about this.
 
-このような重複を取り除いてくれる仕組みが継承です。
+Inheritance is a mechanism that removes such duplication.
 
-<h3>3. 継承を使ってクラスを書き直す</h3>
+<h3> 3. Rewrite class with inheritance </ h3>
 
-継承を使ってクラスを書き直しましょう。少し眺めてください。
+Let's rewrite the class with inheritance. Please take a look.
 
 <pre>
-# コンポーネントクラス
+#Component class
 package Component;
-sub x { ... }
-sub y { ... }
-sub width { ... }
-sub height { ... }
+sub x {...}
+sub y {...}
+sub width {...}
+sub height {...}
 
-# メニューバークラス
+#Menu bar class
 package MenuBar;
-use base 'Component';
+use base'Component';
 
-sub new { ... }
-sub method_for_menubar { ... }
+sub new {...}
+sub method_for_menubar {...}
 
-# ツールバークラス
+# Toolbar class
 package ToolBar;
-use base 'Component';
+use base'Component';
 
-sub new { ... }
-sub method_for_toolbar { ... }
+sub new {...}
+sub method_for_toolbar {...}
 
-# ボタンクラス
+#Button class
 package Button;
-use base 'Component';
+use base'Component';
 
-sub new { ... }
-sub method_for_button { ... }
-</pre>
+sub new {...}
+sub method_for_button {...}
+</ pre>
 
-継承の方法は後々解説するとして、Component クラスに、x,y,width,height というメソッドをくくりだせたことがわかると思います。
+As I will explain the inheritance method later, you can see that the methods x, y, width, and height have been added to the Component class.
 
-Componentはスーパークラスと呼ばれ、Componentを継承したクラスは、x,y,width,height というメソッドを呼び出すことができます。
+Component is called a superclass, and classes that inherit from Component can call methods x, y, width, height.
 
-継承の考え方にはさまざまなものがあると思いますが、個人的には継承の役割は<b>共通部分をくくりだす</b>ことであると考えています。
+I think there are various ways of thinking about inheritance, but I personally think that the role of inheritance is to <b> create common parts </ b>.
 
-比喩的な解釈を促進するために数学の式を書いておきます。
+I will write mathematical formulas to facilitate figurative interpretation.
 
 <pre>
-pa + pb + pc = p(a + b + c)
-</pre>
+pa + pb + pc = p (a + b + c)
+</ pre>
 
-左と右は式として等価ですが、３回の重複するpの記述が１回に減っています。継承の本質的な役割が理解できない場合はこの式を思い出してください。
+The left and right are equivalent as expressions, but the description of three overlapping ps is reduced to one. If you don't understand the essential role of inheritance, remember this formula.
 
-継承とは、共通部分をくくりだして、コードの記述の重複を取り除くための機能なのです。
+Inheritance is a function that pulls out common parts and eliminates duplication of code writing.
 
-<h3>4. 一般的に思われがちなこと</h3>
+<h3> 4. What is commonly thought of </ h3>
 
-一般的には継承のイメージは、クラスの拡張としてとらえられているかもしれません。けれどもある実装済みのクラスを拡張するために継承を使うことは、それほどありません。
+In general, the image of inheritance may be seen as an extension of a class. But it's rare to use inheritance to extend an implemented class.
 
-継承されることを予定されるクラスを設計して、それを継承するという場合がほとんどだと思います。
+In most cases, you design a class that you plan to inherit and then inherit it.
 
-つまり、継承を予定されるクラスに、共通の機能をくくりだしておくということです。
-
+In other words, the common functions should be created in the classes that are planned to be inherited.

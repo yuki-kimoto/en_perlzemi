@@ -1,122 +1,122 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>IO::Capture - 標準出力・標準エラー出力をキャプチャ</h2>
+  </ li>
+</ ol>
+<h2> IO :: Capture --Capture standard output / standard error output </ h2>
 
-標準出力を試験した場合がときどきあります。対話的なプログラミングを作成したり、print をソースコードの中で使用している関数を試験したい場合などです。
+Occasionally I have tested standard output. For example, if you want to create interactive programming or test a function that uses print in your source code.
 
-標準出力を取得するには、<a href="http://search.cpan.org/dist/IO-Capture/lib/IO/Capture.pm">IO::Capture</a>というモジュール使用します。標準出力が取得できれば、いつもどおりの自動試験を行うだけです。
+To get the standard output, use the module <a href="http://search.cpan.org/dist/IO-Capture/lib/IO/Capture.pm"> IO :: Capture </a> increase. If you can get the standard output, just perform the automatic test as usual.
 
-IO::Captureは標準モジュールではないので、
-
-<pre>
-cpan IO::Capture
-</pre>
-
-でインストールします。
-
-<h3>1. 標準出力をキャプチャする</h3>
-
-標準出力を取得するには、IO::Capture::Stdoutモジュールを使用します。IO::Captureモジュールをインストールすると一緒についてきます。
-
-startメソッドでキャプチャ開始、stopメソッドでキャプチャ終了です。そのあとに、readメソッドを呼び出すと、キャプチャした標準出力を取得できます。
+IO :: Capture is not a standard module, so
 
 <pre>
-use IO::Capture::Stdout;
+cpan IO :: Capture
+</ pre>
 
-my $capture = IO::Capture::Stdout->new;
-$capture->start;
+Install with.
+
+<h3> 1. Capture standard output </ h3>
+
+To get standard output, use the IO :: Capture :: Stdout module. It comes with the installation of the IO :: Capture module.
+
+The start method starts the capture, and the stop method ends the capture. You can then call the read method to get the captured standard output.
+
+<pre>
+use IO :: Capture :: Stdout;
+
+my $ capture = IO :: Capture :: Stdout-> new;
+$ capture-> start;
 print "aaa";
-$capture->stop;
-my $stdout = $capture->read;
-</pre>
+$ capture-> stop;
+my $ stdout = $ capture-> read;
+</ pre>
 
-複数回の標準出力を取得したい場合は以下のように記述できます。
+If you want to get the standard output multiple times, you can write as follows.
 
 <pre>
-$capture->start;
+$ capture-> start;
 print "aaa";
 print "bbb";
-$capture->stop;
-my @stdout = $capture->read;
-</pre>
+$ capture-> stop;
+my @stdout = $ capture-> read;
+</ pre>
 
-リストコンテキストで、readを呼び出すと、("aaa", "bbb") が取得できます。
+In the list context, you can get ("aaa", "bbb") by calling read.
 
-<h4>標準の機能だけを使って標準出力をキャプチャする方法</h4>
+<h4> How to capture standard output using only standard features </ h4>
 
-モジュールを使わないで、標準の機能だけを使って標準出力をキャプチャする方法も存在したので、記述しておきます。
+There was also a way to capture standard output using only standard features without using modules, so I'll describe it here.
 
-open関数で、STDOUTの出力先を切り替える方法です。
+This is a method to switch the output destination of STDOUT with the open function.
 
 <pre>
-my $stdout;
+my $ stdout;
 
-# STDOUTのキャプチャを開始
-open my $temp, '>&', STDOUT;
+Start capturing # STDOUT
+open my $ temp,'> &', STDOUT;
 close STDOUT;
-open STDOUT, '>', \$stdout;
+open STDOUT,'>', \ $ stdout;
 
 print "hoge";
 
-# STDOUTのキャプチャを終了
+# STDOUT capture finished
 close STDOUT;
-open STDOUT, '>&', $temp;
-close $temp;
+open STDOUT,'> &', $ temp;
+close $ temp;
 
-print $stdout; # "hoge"が出力
-</pre>
+print $ stdout; # "hoge" is output
+</ pre>
 
 
-<h3>2. 標準エラー出力をキャプチャする</h3>
+<h3> 2. Capture standard error output </ h3>
 
-IO::Capture::Stderr を使って同じようにできます。
+You can do the same with IO :: Capture :: Stderr.
 
 <pre>
-use IO::Capture::Stderr;
+use IO :: Capture :: Stderr;
 
-my $capture = IO::Capture::Stderr->new;
-$capture->start;
+my $ capture = IO :: Capture :: Stderr-> new;
+$ capture-> start;
 print STDERR "aaa";
-$capture->stop;
-my $stderr = $capture->read;
-</pre>
+$ capture-> stop;
+my $ stderr = $ capture-> read;
+</ pre>
 
-<h4>標準の機能だけを使って標準エラー出力をキャプチャする方法</h4>
+<h4> How to capture standard error using only standard features </ h4>
 
-モジュールを使わないで、標準の機能だけを使って標準エラー出力をキャプチャする方法も存在したので、記述しておきます。
+There was also a way to capture standard error output using only standard features without using modules, so I will describe it here.
 
-open関数で、STDERRの出力先を切り替える方法です。
+This is a method to switch the output destination of STDERR with the open function.
 
 <pre>
-my $stderr;
+my $ stderr;
 
 # Start capture STDERR
-open my $temp, '>&', STDERR;
+open my $ temp,'> &', STDERR;
 close STDERR;
-open STDERR, '>', \$stderr;
+open STDERR,'>', \ $ stderr;
 
 print STDERR "hoge";
 
 # End capture STDERR
 close STDERR;
-open STDERR, '>&', $temp;
-close $temp;
+open STDERR,'> &', $ temp;
+close $ temp;
 
 
-print $stderr; # "hoge" が出力
-</pre>
+print $ stderr; # "hoge" is output
+</ pre>

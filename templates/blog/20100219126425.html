@@ -1,143 +1,143 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>defined関数 - 値が定義されているかを確認する</h2>
+  </ li>
+</ ol>
+<h2> defined function-check if the value is defined </ h2>
 
 
 
-値が定義されているかを確認するには<strong>defined関数</strong>を使用します。
-
-<pre>
-# 値が定義されているかの確認
-$is_defined = defined $value;
-</pre>
-
-<h3>定義されているとは</h3>
-
-defined関数で判定できる定義されている値とはなんでしょうか。考えてみましょう。
-
-変数宣言した場合は、代入による初期化を行わなかった場合は未定義となります。
+Use the <strong> defined function </ strong> to see if the value is defined.
 
 <pre>
-# 宣言直後は未定義
-my $value;
-</pre>
+#Check if the value is defined
+$ is_defined = defined $ value;
+</ pre>
 
-値を代入すると、値が定義されている状態になります。
+<h3> What is defined </ h3>
 
-<pre>
-# 値を代入したので定義されている状態になる
-$value = 5;
-</pre>
+What is the defined value that can be determined by the defined function? Let's think about it.
 
-<a href="/blog/20100220126425.html">undef関数</a>を使って、未定義値が代入されると値は未定義になります。
+If a variable is declared, it will be undefined if initialization by assignment is not performed.
 
 <pre>
-# undefを代入すると未定義になる
-$value = undef;
-</pre>
+# Undefined immediately after declaration
+my $ value;
+</ pre>
 
-<h3>真偽値との違いは?</h3>
+When you assign a value, the value is defined.
 
-defined関数で判定できる「定義されている/定義されていない」というのは「真/偽」という概念とは異なることに注意してください。定義されているとは未定義値ではないということです。
+<pre>
+Since the # value is assigned, it will be in the defined state.
+$ value = 5;
+</ pre>
 
-一方、真であるというのはPerlにおける偽の値ではないということです。真偽値については以下の記事を参考にしてください。
+If an undefined value is assigned using the <a href="/blog/20100220126425.html"> undef function </a>, the value becomes undefined.
+
+<pre>
+Substituting #undef makes it undefined
+$ value = undef;
+</ pre>
+
+<h3> What is the difference from the boolean value? </ H3>
+
+Note that the "defined / undefined" that can be determined by the defined function is different from the concept of "true / false". Defined means that it is not an undefined value.
+
+True, on the other hand, is not a false value in Perl. Please refer to the following article for the boolean value.
 
 <ul>
   <li>
-    <a href="/blog/20080323120628.html">真偽値</a>
-  </li>
-</ul>
+    <a href="/blog/20080323120628.html"> Boolean value </a>
+  </ li>
+</ ul>
 
-<h3>「ハッシュの値が定義されている」と「キーが存在している」のとの違いは?</h3>
+<h3> What is the difference between "hash value defined" and "key exists"? </ H3>
 
-<a href="/blog/20080213120291.html">exists関数</a>を使うとハッシュのキーが存在しているかどうかを確認することができます。キーが存在していることと、値が定義されていることは異なることです。
+You can use the <a href="/blog/20080213120291.html"> exists function </a> to check if the hash key exists. The existence of the key is different from the defined value.
 
-defined関数による判定とexists関数による判定の結果は異なることがあります。
+The result of the judgment by the defined function and the judgment by the exists function may be different.
 
-次のような場合は、値は未定義だけれど、ハッシュのキーは存在しているといえます。
+In the following cases, the value is undefined, but the hash key exists.
 
 <pre>
-my %scores;
+my% scores;
 
-# キーは存在するが、値は未定義
-$scores{math} = undef;
-</pre>
+# Key exists, but value is undefined
+$ scores {math} = undef;
+</ pre>
 
-<h3>配列とハッシュへのdefine関数は廃止予定</h3>
+<h3> Define functions for arrays and hashes are deprecated </ h3>
 
-配列とハッシュは宣言されると未定義値にはならずに、空リストが代入されます。
+Arrays and hashes are not undefined values ​​when declared, but are assigned an empty list.
 
 <pre>
 my @nums;
-my %scores;
-</pre>
+my% scores;
+</ pre>
 
-これは以下と同じです。
+This is the same as:
 
 <pre>
 my @nums = ();
-my %scores = ();
-</pre>
+my% scores = ();
+</ pre>
 
-配列やハッシュに対するdefined関数に使用は廃止予定となっています。代わりに単純に空リストであるかどうかをチェックしてください。
-
-<pre>
-if (@nums) { ... }
-if (%scores) { ... }
-</pre>
-
-<h3>便利なDefined-or演算子</h3>
-
-値が未定義だった場合に右辺を代入できる<a href="/blog/20120702134129.html">Defined-or演算子</a>という便利な演算子があるので紹介しておきます。
+Its use for defined functions for arrays and hashes is deprecated. Instead, simply check if it's an empty list.
 
 <pre>
-my $num;
+if (@nums) {...}
+if (% scores) {...}
+</ pre>
 
-# 未定義だったら「defined-or演算」を使って3を代入
-$num //= 3;
-</pre>
+<h3> Convenient Defined-or operator </ h3>
 
-<h3>サンプル</h3>
+There is a convenient operator called <a href="/blog/20120702134129.html"> Defined-or operator </a> that allows you to assign the right-hand side if the value is undefined.
 
-defined関数を使って定義されているかどうかを確認するサンプルです。
+<pre>
+my $ num;
+
+#If undefined, substitute 3 using "defined-or operation"
+$ num // = 3;
+</ pre>
+
+<h3> Sample </ h3>
+
+This is a sample to check if it is defined using the defined function.
 
 <pre>
 use strict;
 use warnings;
 
-my $num = 3;
+my $ num = 3;
 
-if (defined $num) {
-  print "Defined\n";
+if (defined $ num) {
+  print "Defined \ n";
 }
 else {
-  print "Not defined\n";
+  print "Not defined \ n";
 }
-</pre>
+</ pre>
 
-定義されていないことが主要なロジックであった場合は<a href="/blog/20100125126425.html">unless</a>と組み合わせるのも読みやすいです。
+It's also easy to read in combination with <a href="/blog/20100125126425.html"> unless </a> if undefined was the main logic.
 
 <pre>
 use strict;
 use warnings;
 
-my $num;
-unless (defined $num) {
-  print "Not defined\n";
+my $ num;
+unless (defined $ num) {
+  print "Not defined \ n";
 }
-</pre>
+</ pre>

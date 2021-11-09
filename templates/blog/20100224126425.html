@@ -1,125 +1,125 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Object::Simple - Mojo::Base互換のアクセサを生成</h2>
+  </ li>
+</ ol>
+<h2> Object :: Simple --Generate Mojo :: Base compatible accessor </ h2>
 
 
 
-デフォルト値つきのアクセサを作成するには<strong>Object::Simple</strong>を使用します。Object::SimpleはMojoliciousのMojo::Baseと高いレベルで互換性があります。
+Use <strong> Object :: Simple </ strong> to create an accessor with a default value. Object :: Simple is highly compatible with Mojolicious's Mojo :: Base.
 
 <pre>
 package Point;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 has x => 1;
 has y => 1;
 
 package main;
 
-my $point = Point->new;
-print $point->x;
+my $ point = Point-> new;
+print $ point-> x;
 
 1;
-</pre>
+</ pre>
 
-useするときに-baseを指定すると、Object::Simpleを継承することができます。Object::Simpleはnewメソッドを持ちます。またアクセッサを定義するためのhasというメソッドがインポートされます。またstrictとwarningsが自動的に有効になります。
+You can inherit Object :: Simple by specifying -base when using. Object :: Simple has a new method. It also imports a method called has for defining accessors. Also, strict and warnings are automatically enabled.
 
-<h3>一般的なクラスのサンプル</h3>
+<h3> General class sample </ h3>
 
-一般的なクラスのサンプルです。Pointクラスはxとyというアクセッサを持ちます。またclearというxとyを0に初期化するメソッドを持ちます。
+This is a sample of a general class. The Point class has accessors x and y. It also has a method called clear that initializes x and y to 0.
 
 <pre>
 package Point;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 has x => 0;
 has y => 0;
 
 sub clear {
-  my $self = shift;
+  my $ self = shift;
     
-  $self->x(0);
-  $self->y(0);
+  $ self-> x (0);
+  $ self-> y (0);
 }
 
 1;
-</pre>
+</ pre>
 
-Pointクラスは次のように使用します。コンストラクタnewはObject::Simpleから継承したものです。
-
-<pre>
-my $point = Point->new(x => 4, y => 6);
-
-$point->x(1);
-$point->y(2);
-
-my $x = $point->x;
-my $y = $point->y;
-
-$point->clear;
-</pre>
-
-<h3>Object::Simpleの使い方</h3>
-
-属性を定義する方法がいくつかあります。
-
-<h4>複数の属性を一度に定義</h4>
+Use the Point class as follows: The constructor new is inherited from Object :: Simple.
 
 <pre>
-# デフォルト値なし
-has ['x', 'y'];
+my $ point = Point-> new (x => 4, y => 6);
 
-# デフォルト値あり
-has ['x', 'y'] => 0;
-</pre>
+$ point-> x (1);
+$ point-> y (2);
 
-配列のリファレンスをhasの第一引数に指定すると複数のアクセッサを一度に定義できます。
+my $ x = $ point-> x;
+my $ y = $ point-> y;
 
-<h4>デフォルト値の指定</h4>
+$ point-> clear;
+</ pre>
+
+<h3> How to use Object :: Simple </ h3>
+
+There are several ways to define attributes.
+
+<h4> Define multiple attributes at once </ h4>
 
 <pre>
-# 定数
+#No default value
+has ['x','y'];
+
+#With default value
+has ['x','y'] => 0;
+</ pre>
+
+You can define multiple accessors at once by specifying the array reference as the first argument of has.
+
+<h4> Specify default value </ h4>
+
+<pre>
+#Constant
 has foo => 1;
 
-# 配列のリファレンス
-has foo => sub { [] };
+# Array reference
+has foo => sub {[]};
 
-# ハッシュのリファレンス
-has bar => sub { {} };
+# Hash reference
+has bar => sub {{}};
 
-# オブジェクト
-has baz => sub { LWP::UserAgent->new };
-</pre>
+# object
+has baz => sub {LWP :: UserAgent-> new};
+</ pre>
 
-配列のリファレンス、ハッシュのリファレンス、オブジェクトなどをデフォルト値に設定するときはsub { }で囲んで遅延評価する必要があります。
+When setting array references, hash references, objects, etc. to default values, you need to enclose them in sub {} for lazy evaluation.
 
-<h4>すべてのアクセサを一度に定義</h4>
+<h4> Define all accessors at once </ h4>
 
 <pre>
-has [qw/foo bar baz/],
+has [qw / foo bar baz /],
     some => 1,
-    other => sub { 5 };
-</pre>
+    other => sub {5};
+</ pre>
 
-すべてのアクセサの定義を一度に行うこともできます。
+You can also define all accessors at once.
 
-<h3>継承のサンプル</h3>
+<h3> Inheritance sample </ h3>
 
-Pointクラスを継承したPoint3Dクラスを作成するサンプルです。
+This is a sample to create a Point3D class that inherits the Point class.
 
 <pre>
 package Point3D;
@@ -128,37 +128,36 @@ use Point -base;
 has z => 0;
 
 sub clear {
-  my $self = shift;
-  $self->SUPER::clear();
-  $self->z(0);
+  my $ self = shift;
+  $ self-> SUPER :: clear ();
+  $ self-> z (0);
 }
 
 1;
-</pre>
+</ pre>
 
-<h3>コンストラクタのオーバーライド</h3>
+<h3> Constructor override </ h3>
 
-コンストラクタnew()をオブジェクトの初期化や引数の加工のためにオーバーライドすることができます。
-
-<pre>
-# オブジェクトの初期化のためのnew()のオーバーライド
-sub new {
-  my $self = shift->SUPER::new(@_);
-  
-  # Initialization
-  
-  return $self;
-}
-</pre>
+You can override the constructor new () for object initialization and argument processing.
 
 <pre>
-# 引数の加工のためのnew()のオーバーライド
+#Override new () for object initialization
 sub new {
-  my $self = shift;
+  my $ self = shift-> SUPER :: new (@_);
   
-  $self->SUPER::new(x => $_[0], y => $_[1]);
+  #Initialization
   
-  return $self;
+  return $ self;
 }
-</pre>
+</ pre>
 
+<pre>
+# Override new () for argument processing
+sub new {
+  my $ self = shift;
+  
+  $ self-> SUPER :: new (x => $ _ [0], y => $ _ [1]);
+  
+  return $ self;
+}
+</ pre>

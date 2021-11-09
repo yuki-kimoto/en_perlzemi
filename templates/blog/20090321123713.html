@@ -1,92 +1,91 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop="name">オブジェクト指向</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">アクセサ</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>アクセサを生成する</h2>
+      <span itemprop = "name"> Object Oriented </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> accessor </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Generate accessor </ h2>
 
 
 
-今回はアクセッサを作成してみましょう。
+Let's create an accessor this time.
 
-<h3>1. アクセッサとは何か?</h3>
+<h3> 1. What is an accessor? </ H3>
 
-オブジェクト指向では<b>データを直接いじって</b>は駄目です。オブジェクト指向ではオブジェクトに対するアクセスは<b>公開されたメソッド</b>を通じて行うのが正しい作法だからです。
-
-<pre>
-my $book = Book->new;
-
-# 駄目!
-$book->{title} = 'aaa';
-</pre>
-
-データをいじる場合は、アクセッサを通じて行います。アクセッサとは、<b>データを変更したり取得したりするためのメソッド</b>のことを言います。
-
-以下のようにアクセッサを使ってデータに値を設定するのが正しい作法です。
+You can't <b> directly mess with data </ ​​b> in object-oriented programming. This is because in object-oriented programming, it is correct to access objects through <b> exposed methods </ b>.
 
 <pre>
-my $book = Book->new;
-$book->title('aaa');
-</pre>
-クラスを作成する側は、アクセッサを作成して公開する義務があります。
+my $ book = Book-> new;
 
-<h3>2. アクセッサの作成</h3>
+#No!
+$ book-> {title} ='aaa';
+</ pre>
 
-では早速アクセッサを作成してみましょう。Perlでは、値を取得するのにも、値を設定するのも同じアクセッサを使って行うというのが一般的です。
+If you want to mess with the data, do it through the accessor. An accessor is a <b> method for modifying or retrieving data </ ​​b>.
 
-(Perlベストプラスティスという本では、設定のためのアクセッサと取得するためのアクセッサは分けるべきだと書いてありますが、CPANなどの実際で見ると、アクセッサはひとつだけ作ることが好まれているようです。)
+The correct way to set a value in the data is to use an accessor as shown below.
+
+<pre>
+my $ book = Book-> new;
+$ book-> title ('aaa');
+</ pre>
+The creator of the class is obliged to create and publish the accessor.
+
+<h3> 2. Creating an accessor </ h3>
+
+Now let's create an accessor. In Perl, it's common to use the same accessor to get and set a value.
+
+(The book Perl Best Plastis says that the accessor for setting and the accessor for getting should be separated, but in practice such as CPAN, it seems that it is preferable to make only one accessor. is.)
 
 <pre>
 sub title {
-  my $self = shift;
+  my $ self = shift;
   if (@_) {
-    $self->{title} = $_[0];
+    $ self-> {title} = $ _ [0];
   }
-  return $self->{title};
+  return $ self-> {title};
 }
-</pre>
+</ pre>
 
-$self には、オブジェクトが入ってきます。それで、@_に値があった場合は、$_[0] を $self->{title} に設定しています。
+The object is in $ self. So, if @_ has a value, I set $ _ [0] to $ self-> {title}.
 
-最後の行で$self->{title} を返却しています。
+The last line returns $ self-> {title}.
 
-<h3>3. 値が設定された場合は、古い値を返却するアクセッサを作成する</h3>
+<h3> 3. If a value is set, create an accessor that returns the old value </ h3>
 
-上記のアクセッサのほかに、値が設定された場合に<b>古い値を返却</b>するように実装しているアクセッサも一般的です。
+In addition to the above accessors, it is also common to implement an accessor that <b> returns the old value </ b> when a value is set.
 
 <pre>
-my $book = Book->new(title => 'aaa');
-my $old_val = $book->title('bbb');
-</pre>
+my $ book = Book-> new (title =>'aaa');
+my $ old_val = $ book-> title ('bbb');
+</ pre>
 
-古い値を返すアクセッサは以下のように作成します。
+Create an accessor that returns the old value as follows:
 
 <pre>
 sub title {
-  my $self = shift;
+  my $ self = shift;
   if (@_) {
-    my $old = $self->{title};
-    $self->{title} = $_[0];
-    return $old;
+    my $ old = $ self-> {title};
+    $ self-> {title} = $ _ [0];
+    return $ old;
   }
   else {
-    return $self->{ title };
+    return $ self-> {title};
   }
 }
-</pre>
+</ pre>
 
-これで、コンストラクタとアクセッサの解説が終わりました。後は好きなメソッドを追加していけばよいだけですね。
-
+This concludes the discussion of constructors and accessors. All you have to do now is add your favorite methods.

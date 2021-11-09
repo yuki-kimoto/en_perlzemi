@@ -1,365 +1,365 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
 
-<h2>Perlって何ができるの? - Ruby, Python, PHPとの比較も</h2>
+<h2> What can Perl do? --Comparison with Ruby, Python, PHP </ h2>
 
-「Perlって何ができるの?」たくさんのプログラミング言語が登場して、どのプログラミング言語を選択すればよいか、悩んでおられる方もおられると思います。Perlでどんなことができるのか、答えるコンテンツを作成しました。
+"What can Perl do?" Many programming languages ​​have appeared, and you may be wondering which programming language to choose. I've created content that answers what you can do with Perl.
 
-<h3>検索・置換などの正規表現を使ったテキスト処理が得意</h3>
+<h3> Good at text processing using regular expressions such as search / replace </ h3>
 
-Perlは検索や置換などのテキスト処理が得意なスクリプト言語です。<a href="/blog/20100827127859.html">正規表現</a>が言語に組み込まれており、簡単に検索や置換のプログラムを記述することができます。
+Perl is a scripting language that excels at text processing such as search and replace. <a href="/blog/20100827127859.html"> Regular expressions </a> are built into the language, making it easy to write search and replace programs.
 
 <pre>
-# すべての「banana」を「orange」に置換
-$message =~ s/banana/orange/g;
-</pre>
+# Replace all "banana" with "orange"
+$ message = ~ s / banana / orange / g;
+</ pre>
 
-テキスト処理の処理速度は高速です。処理内容によりますが、体感的には、低価格でレンタルできるLinuxサーバーで、10万行のテキストを1秒程度で処理できます。
+The processing speed of text processing is high. It depends on the processing content, but the experience is that a Linux server that can be rented at a low price can process 100,000 lines of text in about 1 second.
 
 <ul>
   <li>
-    <a href="/blog/20100827127859.html">実践で役立つPerl正規表現</a>
-  </li>
-</ul>
+    <a href="/blog/20100827127859.html"> Perl regular expressions useful in practice </a>
+  </ li>
+</ ul>
 
-Perlの正規表現は、そのオリジナリティと有用性で広く知られており、Linuxのgrepコマンドの「-P」オプションとして使うこともできます。
-
-<pre>
-# Linuxのgrepコマンドの「-P」オプションでPerlの正規表現が使える
-grep -P '(foo|bar)$' file
-</pre>
-
-正規表現が、組み込まれているプログラミング言語には、Perlの他に、Rubyがあります。
-
-<h3>型を意識しなくてよいので簡単に書ける</h3>
-
-Perlでは、文字列と数値の型を意識しなくてよいので簡単に書けます。<a href="/blog/20080108132865.html">コマンドライン引数</a>で、<a href="/blog/20161003147558.html">文字列</a>として数値を取得した場合を考えてみます。Perlでは型を意識せず、そのまま計算ができます。
+Perl regular expressions are widely known for their originality and usefulness, and can also be used as the "-P" option of the Linux grep command.
 
 <pre>
-# コマンドライン引数
-my ($num1, $num2) = @ARGV;
+# You can use Perl regular expressions with the "-P" option of the Linux grep command
+grep -P'(foo | bar) $'file
+</ pre>
 
-# 型を意識せずに計算
-my $total = $num1 + $num2;
-</pre>
+In addition to Perl, Ruby is another programming language that incorporates regular expressions.
 
-<h3>コピーアンドペーストが簡単に書ける</h3>
+<h3> Easy to write because you don't have to be aware of the type </ h3>
 
-Perlは、コピーアンドペーストが簡単に書けるように工夫されています。コピーアンドペーストがやりやすいと、元のデータを、誤って編集してしまうリスクを減らすことができますし、なにより簡単です。
+In Perl, you don't have to be aware of the types of strings and numbers, so it's easy to write. Consider the case where <a href="/blog/20080108132865.html"> command line argument </a> gets a number as <a href="/blog/20161003147558.html"> string </a> to watch. In Perl, you can calculate as it is without being aware of the type.
 
-<h4>文字列リスト演算子</h4>
+<pre>
+# Command line arguments
+my ($ num1, $ num2) = @ARGV;
 
-<a href="/blog/20080222120369.html">文字列リスト演算子</a>を使用すると、空白区切りの文字列を、簡単に<a href="https://perlzemi.com/blog/20161012147627.html">配列</a>にできます。
+#Calculate without being aware of the type
+my $ total = $ num1 + $ num2;
+</ pre>
 
-たとえば、以下のようなテキストを、すぐに配列にしたいとします。
+<h3> Easy to copy and paste </ h3>
+
+Perl is designed to make copy and paste easy to write. Easy copy and paste reduces the risk of accidentally editing the original data, and above all, it's easy.
+
+<h4> String list operator </ h4>
+
+<a href="/blog/20080222120369.html"> String list operator </a> makes it easy to <a href="https://perlzemi.com/blog/" delimited strings. 20161012147627.html "> array </a> can be.
+
+For example, suppose you want the following text to be an array right away.
 
 <pre>
 cat
 dog
 mouse
-</pre>
+</ pre>
 
-文字列リスト演算子を使うと、コピーアンドペーストで、すぐに配列にできます。
+You can use the string list operator to quickly copy and paste into an array.
 
 <pre>
-my @animals = qw(
+my @animals = qw (
 cat
 dog
 mouse
-); 
-</pre>
+);
+</ pre>
 
-<h4>データセクション</h4>
+<h4> Data section </ h4>
 
-データセクションという機能を使うと、コピーアンドペーストで、1行づつ読み込むことができます。
+You can copy and paste line by line using a feature called the data section.
 
 <pre>
-たとえば、以下のようなテキストを、1行づつ処理したいとします。
+For example, suppose you want to process the following text line by line:
 
 <pre>
 Hello World
 Perl Book
 Web Development
-</pre>
+</ pre>
 
-データセクションを使うと、コピーアンドペーストで、すぐに1行づつ処理ができます。
+The data section allows you to copy and paste, line by line, right away.
 
 <pre>
-while (my $line = <DATA>) {
-  # 1行づつ処理
+while (my $ line = <DATA>) {
+  # Process line by line
 }
 
 __DATA__
 Hello World
 Perl Book
 Web Development
-</pre>
+</ pre>
 
-<h4>囲み文字の変更</h4>
+<h4> Change the enclosing character </ h4>
 
-Perlでは、<a href="/blog/20100305126967.html">ダブルクォート演算子</a>や<a href="/blog/20100304126967.html">クォート演算子</a>を使って文字列の囲み文字を変更したり、「m」の表記を使って、正規表現の囲み文字を変更できます。このため元のデータの方を変更せずに、コピーペーストできます。
+In Perl, use the <a href="/blog/20100305126967.html"> double quote operator </a> and the <a href="/blog/20100304126967.html"> quote operator </a> to describe a string. You can change the enclosing character or use the "m" notation to change the enclosing character in regular expressions. Therefore, you can copy and paste the original data without changing it.
 
 <pre>
-# ダブルクォート演算子
-my $name = qq(aaa"bbb);
+#Double quote operator
+my $ name = qq (aaa "bbb);
 
-# クォート演算子
-my $name = q(aaa'bbb);
+#Quart operator
+my $ name = q (aaa'bbb);
 
-# 正規表現パターンマッチでmを使って囲み文字を変更
-if ($name =~ m|http://|) {
+# Change the enclosing character using m in regular expression pattern matching
+if ($ name = ~ m | http: // |) {
   # ...
 }
 
-# 正規表現の置換で囲み文字を変更
-$name =~ s|http://||;
-</pre>
+# Change the enclosing character by replacing the regular expression
+$ name = ~ s | http: // ||;
+</ pre>
 
-<h4>正規表現の\Qによるエスケープ</h4>
+<h4> Regular expression escaped by \ Q </ h4>
 
-正規表現による「\Q」によるエスケープを使うと、正規表現文字のことを意識せずに、コピーアンドペーストで、単なる文字列としてマッチさせられます。
+If you use the regular expression "\ Q" escape, you can copy and paste it as a simple string without being aware of the regular expression characters.
 
 <pre>
-my $re = "abc[]...";
+my $ re = "abc [] ...";
 
-if ($name =~ /\Q$re/) {
+if ($ name = ~ / \ Q $ re /) {
   # ...
 }
-</pre>
+</ pre>
 
-<h3>Perlワンライナー</h3>
+<h3> Perl One Liner </ h3>
 
-Perlの「-e」オプションを使うと、Perlのプログラムを、1行のコマンドのように実行できます。これは慣習的にPerlワンライナーと呼ばれます。<a href="https://linux.perlzemi.com/">Linuxサーバー管理</a>・UNIXサーバー管理で威力を発揮します。
-
-<pre>
-# .htmlで終わるファイルを検索して、ファイルの中のすべてのfooをbarに置換
-find * | grep -P '\.html$' | xargs perl -pi -e 's/foo/bar/g';
-</pre>
-
-Perlワンライナーの中では、Perlのすべての機能を使うことができます。また、Linux/UNIXで、Perlは広くインストールされているので、同じ記述で、ポータブルに動かすことができます。
-
-Perlワンライナーについては、以下も参考にしてください。
-
-<ul>
-  <li>
-    <a href="/blog/20161121147982.html">Perlワンライナー - 「-e」オプションの解説</a>
-  </li>
-</ul>
-
-ワンライナーが使いやすいプログラミング言語には、Perlの他に、Rubyがあります。
-
-<h3>Perlの関数を使ってできること</h3>
-
-Perlの関数を使ってできることは、以下の記事で解説しています。
-
-<ul>
-  <li>
-    <a href="/blog/20091025125219.html">よく使用する関数・標準モジュール一覧</a>
-  </li>
-</ul>
-
-Python・Ruby・PHPの関数でも同じようなことができます。
-
-<h3>Perlのモジュールを使ってできること</h3>
-
-Perlのモジュールを使ってできることを、簡単に紹介します。他のプログラミング言語では、ライブラリと呼ばれているものを、Perlではモジュールと呼びます。Perlには、標準で添付されているモジュールとCPANと呼ばれるサイトから無料でインストールできるモジュールがあります。
-
-Perlのモジュールを使ってできることについては、以下のモジュール徹底解説を参考にしてください。
-
-<ul>
-  <li>
-    <a href="/blog/20091116124667.html">モジュール徹底解説</a>
-  </li>
-</ul>
-
-Python・Ruby・PHPのライブラリでも同じようなことができます。
-
-<h3>UNIX/Linuxサーバー管理</h3>
-
-Perlは、歴史的にUNIX/Linuxサーバーとの相性が良いです。Perlワンライナーが自然に使え、UNIX/Linuxで使えるコマンドとの関連性も高いです。ほとんどのUNIX/Linuxサーバーに、Perlがインストールされています。
-
-<ul>
-  <li><a href="https://linux.perlclub.net/">Linuxサーバー管理入門</a></li>
-  <li><a href="https://ubuntu.perlclub.net/">Ubuntu開発環境構築</a></li> 
-  <li><a href="https://git.perlclub.net/">Git入門</a></li>
-</ul>
-
-<h3>Webサイト作成</h3>
-
-Perlはテキスト処理が得意なので、テキストフォーマットであるHTMLの出力も得意です。PerlのWebサイト作成では、Gitと組み合わせた場合に、強い力が発揮できると感じます。
-
-Webサイト作成のためにHTML・CSSを学びたい方は、こちら。Giblogというツールを使って、Webサイトを作る方法も解説しています。
-
-<ul>
-  <li><a href="https://htmlcss.perlclub.net/">HTML・CSS入門</a></li> 
-  <li><a href="https://giblog.perlclub.net">Giblog</a></li>
-</ul>
-
-<h3>Webアプリ開発</h3>
-
-Perlは、HTML・メール本文・Ajax通信で動的なHTMLのコンポーネントを出力するのが得意なので、Webアプリ開発が得意分野です。
-
-Webアプリ開発でHTML・メール本文・Ajax通信で動的なHTMLのコンポーネントを出力する分野は、PHPが広く良く知られ、強い分野ですが、Perl・Rubyの得意分野でもあります。
-
-<ul>
-  <li><a href="https://webapp.perlzemi.com/">Webアプリ開発入門</a></li>
-</ul>
-
-<h3>Perlの強み</h3>
-
-Perlの強みについて、簡単に記述しておきます。
-
-<h4>Linux/UNIXミドルウェアの基盤</h4>
-
-Perlは「<a href="https://git.perlzemi.com/">git</a>」「openssl」「Debian/<a href="https://ubuntu.perlzemi.com/">Ubuntu</a>系Linuxのコマンドラインツール」「mysql、PostgreSQLの周辺ツール」を支えるなどUnix/Linuxでのミドルウェアとして活用されています。
-
-<h4>高いレベルの後方互換性</h4>
-
-Perlは、非常に高いレベルで後方互換性が維持されているので、長い期間にわたって安定性を求められるビジネスの用途に向いています。
-
-<h4>コンパイル作業なしですぐに実行</h4>
-
-プログラムを実行するときにコンパイル作業を行う必要がありません。作ったプログラムはperlコマンドで、すぐに実行できます。
+Perl's "-e" option allows you to run a Perl program like a one-line command. This is customarily called the Perl one-liner. <a href="https://linux.perlzemi.com/"> Linux server management </a> -Effective in UNIX server management.
 
 <pre>
-# Perlプログラムの実行
+Find files ending in # .html and replace all foo in the file with bar
+find * | grep -P'\ .html $'| xargs perl -pi -e's / foo / bar / g';
+</ pre>
+
+Within the Perl one-liner, you can use all the features of Perl. Also, on Linux / UNIX, Perl is widely installed, so you can run it portablely with the same description.
+
+For the Perl one-liner, please also refer to the following.
+
+<ul>
+  <li>
+    <a href="/blog/20161121147982.html"> Perl One Liner-Explanation of the "-e" option </a>
+  </ li>
+</ ul>
+
+In addition to Perl, Ruby is another programming language that is easy to use with One Liner.
+
+<h3> What you can do with Perl functions </ h3>
+
+The following articles explain what you can do with Perl functions.
+
+<ul>
+  <li>
+    <a href="/blog/20091025125219.html"> List of frequently used functions / standard modules </a>
+  </ li>
+</ ul>
+
+You can do the same with Python, Ruby, and PHP functions.
+
+<h3> What you can do with Perl modules </ h3>
+
+Here's a quick introduction to what you can do with Perl modules. What is called a library in other programming languages ​​is called a module in Perl. Perl has modules that come standard with it and modules that you can install for free from a site called CPAN.
+
+For what you can do with Perl modules, please refer to the module thorough explanation below.
+
+<ul>
+  <li>
+    <a href="/blog/20091116124667.html"> Thorough explanation of modules </a>
+  </ li>
+</ ul>
+
+You can do the same with Python, Ruby, and PHP libraries.
+
+<h3> UNIX / Linux server management </ h3>
+
+Perl has historically been a good match for UNIX / Linux servers. Perl one-liner can be used naturally, and it is highly relevant to commands that can be used on UNIX / Linux. Perl is installed on most UNIX / Linux servers.
+
+<ul>
+  <li> <a href="https://linux.perlclub.net/"> Introduction to Linux Server Management </a> </ li>
+  <li> <a href="https://ubuntu.perlclub.net/"> Ubuntu development environment construction </a> </ li>
+  <li> <a href="https://git.perlclub.net/"> Introduction to Git </a> </ li>
+</ ul>
+
+<h3> Website creation </ h3>
+
+Perl is good at text processing, so it is also good at outputting HTML, which is a text format. When creating a Perl website, I feel that it can be very powerful when combined with Git.
+
+Click here if you want to learn HTML / CSS for creating websites. It also explains how to create a website using a tool called Giblog.
+
+<ul>
+  <li> <a href="https://htmlcss.perlclub.net/"> Introduction to HTML / CSS </a> </ li>
+  <li> <a href="https://giblog.perlclub.net"> Giblog </a> </ li>
+</ ul>
+
+<h3> Web application development </ h3>
+
+Perl is good at outputting dynamic HTML components in HTML, email body, and Ajax communication, so it is good at web application development.
+
+PHP is a well-known and strong field in the field of outputting dynamic HTML components in HTML / email body / Ajax communication in web application development, but it is also a specialty field of Perl / Ruby.
+
+<ul>
+  <li> <a href="https://webapp.perlzemi.com/"> Introduction to Web App Development </a> </ li>
+</ ul>
+
+<h3> Perl's strengths </ h3>
+
+Here's a brief description of Perl's strengths.
+
+<h4> Linux / UNIX middleware infrastructure </ h4>
+
+Perl is "<a href="https://git.perlzemi.com/"> git </a>" "openssl" "Debian / <a href="https://ubuntu.perlzemi.com/ "> Ubuntu </a> Linux command line tools" "mysql, PostgreSQL peripheral tools" are supported and used as middleware on Unix / Linux.
+
+<h4> High level backward compatibility </ h4>
+
+Perl is backwards compatible at a very high level, making it suitable for long-term, stable business applications.
+
+<h4> Run immediately without compiling </ h4>
+
+You don't have to compile when you run the program. The created program is a perl command and can be executed immediately.
+
+<pre>
+#Run Perl program
 perl test.pl
-</pre>
+</ pre>
 
-何度も書き直す必要のあるプログラムでは、これは大きな利点です。
+This is a great advantage for programs that need to be rewritten many times.
 
-これは、Python、Ruby、PHPなども含んだ動的型プログラミング言語の特徴です。
+This is a feature of dynamic programming languages, including Python, Ruby, PHP, and more.
 
-<h3>Perlに感じる不安への回答</h3>
+<h3> Answer to Perl's anxiety </ h3>
 
-PerlについてWeb検索をしていて、Perlに対して不安を持たれた方もおられると思います。記事の表現に、問題があるとは考えますが、一般的に感じる不安を想像して、記述しておきます。
+You may be worried about Perl when you're doing a web search for Perl. I think there is a problem with the expression of the article, but Imagine the anxiety that you generally feel and describe it.
 
-<h4>Perlの保守性・可読性は低いのですか?</h4>
+<h4> Is Perl maintainable and readable? </ H4>
 
-他のWebサイトでは、Perlの保守性・可読性が低く、Pythonの保守性・可読性が高いという内容をお見かけになったこともあるかと思います。
+You may have seen Perl on other websites with low maintainability and readability, and Python with high maintainability and readability.
 
-実際には、可読性に関する実証的な研究はされておらず、極めて主観的に、各プログラミング言語のユーザーが、可読性の高さを、主張するような状況にあります。
+In reality, no empirical research on readability has been done, and users of each programming language are in a situation where they claim readability very subjectively.
 
-Perlゼミは、こう記述しておきます。
+The Perl seminar describes it as follows.
 
-現代的な記述方法とされている方法でPerlを書いた場合、Perlの可読性は比較的良く、書きやすさと読みやすさのバランスが取れています。
-
-<ul>
-  <li>
-    <a href="/blog/20091120124667.html">現代的なPerlの記述方法</a>
-  </li>
-</ul>
-
-プログラミング言語には、可読性に関して、一長一短の部分があります。
-
-たとえば、Perlでは、配列とハッシュの多次元データ構造を表現するためにリファレンスと呼ばれるデータ構造を読み書きできる必要があります。PythonやRubyでは、すべてリファレンスとして扱われるため統一感があります。
+When you write Perl in what is considered a modern way of writing, Perl's readability is relatively good, balancing writeability and readability.
 
 <ul>
   <li>
-    <a href="/blog/20100930127859.html">リファレンスと多次元データ構造</a>
-  </li>
-</ul>
+    <a href="/blog/20091120124667.html"> Modern Perl writing method </a>
+  </ li>
+</ ul>
 
-一方、プログラミングの構造を表現するためPerlのスコープは非常によく実装されています。スコープをうまく使った場合には、Perlの可読性を高めます。
+Programming languages ​​have their advantages and disadvantages when it comes to readability.
+
+For example, Perl needs to be able to read and write data structures called references to represent multidimensional data structures of arrays and hashes. In Python and Ruby, everything is treated as a reference, so there is a sense of unity.
 
 <ul>
   <li>
-    <a href="/blog/20110128130016.html">Perlのスコープ</a>
-  </li>
-</ul>
+    <a href="/blog/20100930127859.html"> References and multidimensional data structures </a>
+  </ li>
+</ ul>
 
-<h4>Perlでオブジェクト指向はできないのですか?</h4>
+Perl scopes, on the other hand, are very well implemented to represent the structure of programming. If you use scopes well, you can improve Perl's readability.
 
-Perlでは、2021年現在、オブジェクト指向を実現する機能はあるのですが、さまざまな事情で、簡潔に表現できるクラス構文が導入されていません。
+<ul>
+  <li>
+    <a href="/blog/20110128130016.html"> Perl scope </a>
+  </ li>
+</ ul>
 
-Perlで、クラスを書くには、一般的に、以下のような表記になります。
+<h4> Is Perl not object-oriented? </ H4>
+
+As of 2021, Perl has the ability to be object-oriented, but for various reasons it hasn't introduced a concise class syntax.
+
+In Perl, writing a class is generally written as follows.
 
 <pre>
 package Point;
 
-# アクセサ
-sub x { shift->{x} }
-sub y { shift->{y} }
+#Accessor
+sub x {shift-> {x}}
+sub y {shift-> {y}}
 
-# コンストラクタ
+#Constructor
 sub new {
-  my $class = shift;
+  my $ class = shift;
   
-  my $self = {
+  my $ self = {
     @_;
   };
   
-  return bless $self, ref $class || $class;
+  return bless $ self, ref $ class || $ class;
 }
 
 package main;
 
-my $point = Point->new(x => 1, y => 2);
-my $x = $point->x;
-my $y = $point->y;
-</pre>
+my $ point = Point-> new (x => 1, y => 2);
+my $ x = $ point-> x;
+my $ y = $ point-> y;
+</ pre>
 
-生々しさを感じるので、簡単に書くことができるように、近い将来に期待したい部分ですね。
+It feels fresh, so I'd like to expect it in the near future so that I can write it easily.
 
-Ruby、Python、PHPには、クラス構文が存在します。
+Class syntax exists in Ruby, Python, and PHP.
 
-<h4>Perlは人気がないのですか?</h4>
+<h4> Is Perl unpopular? </ H4>
 
-一般の方については、よく存じ上げないのですが、良い動機でPerlを好んで使っておられる方を知っています。
+I'm not familiar with the general public, but I know people who like Perl with good motives.
 
-<h4>PerlはAI・機械学習の分野で後れをとっていますか?</h4>
+<h4> Is Perl lagging behind in the field of AI / machine learning? </ H4>
 
-実務で必要がある場合は、深層学習については、パブリッククラウドのひとつのAmazon AWSで、PerlのAIライブラリ<a href="https://deeplearning.perlzemi.com/blog/20201118093000.html">AI::MXNet</a>が公式にサポートされています。
+For deep learning, if you need it in practice, on Amazon AWS, one of the public clouds, Perl's AI library <a href="https://deeplearning.perlzemi.com/blog/20201118093000.html"> AI: : MXNet </a> is officially supported.
 
-<h3>Perlプログラミングをお試し</h3>
+<h3> Try Perl programming </ h3>
 
-Perlで何ができるのかを、ひとつ試してみましょう。データセクションを使った、Perlのサンプルコードを動かしてみましょう。「,」カンマ区切りデータを「|」区切りに変換するPerlプログラムです。
+Let's try one thing you can do with Perl. Let's run Perl's sample code using the data section. A Perl program that converts "," comma-separated data to "|" -separated data.
 
-以下のコードをリンク先で、貼り付けて「Save for 30 days & run」のボタンをクリックしてみてください。
+Paste the code below at the link and click the "Save for 30 days & run" button.
 
 <pre>
 use strict;
 use warnings;
 
-# 「,」カンマ区切りデータを「|」区切りに変換する
-while (my $line = <DATA>) {
-    chomp $line;
-    my @items = split(/,/, $line);
-    my $new_line = join('|', @items);
-    print "$new_line\n";
+# Convert comma-separated data to "|" delimited
+while (my $ line = <DATA>) {
+    chomp $ line;
+    my @items = split (/, /, $ line);
+    my $ new_line = join ('|', @items);
+    print "$ new_line \ n";
 }
 
 __DATA__
-1,Web Development,2000
-2,Perl Tutorial,1500
-</pre>
+1, Web Development, 2000
+2, Perl Tutorial, 1500
+</ pre>
 
-<a href="https://perlbanjo.com/">プログラムを試す</a>
+<a href="https://perlbanjo.com/"> Try the program </a>
 
-入力は「__DATA__」以下に書かれているデータです。
-
-<pre>
-1,Web Development,2000
-2,Perl Tutorial,1500
-</pre>
-
-Perlを実行すると出力結果は、以下のようになります。
+The input is the data written under "__DATA__".
 
 <pre>
-1|Web Development|2000
-2|Perl Tutorial|1500
-</pre>
+1, Web Development, 2000
+2, Perl Tutorial, 1500
+</ pre>
 
-<h3>結びに</h3>
+When you run Perl, the output will look like this:
 
-ここまで長くなりましたが、Perlを学習して、Perlを楽しんで、Perlを使って仕事を楽にしてもらえればサイト運営者として幸いです。
+<pre>
+1 | Web Development | 2000
+2 | Perl Tutorial | 1500
+</ pre>
+
+<h3> To conclude </ h3>
+
+It's been a long time, but I hope you'll learn Perl, enjoy Perl, and make your work easier with Perl as a publisher.

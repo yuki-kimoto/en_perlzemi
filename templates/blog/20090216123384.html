@@ -1,71 +1,70 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161126148016.html">
-      <span itemprop="name">ファイル操作</span>
+      <span itemprop = "name"> File operations </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span>
+      <span itemprop = "name"> Module </ span>
     </a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100412127089.html">
-      <span itemprop="name">File::Spec</span>
+      <span itemprop = "name"> File :: Spec </ span>
     </a>
-    <meta itemprop="position" content="4" />
-  </li>
-</ol>
-<h2>ファイル名を実行環境のOSでのファイル名に変換する</h2>
+    <meta itemprop = "position" content = "4" />
+  </ li>
+</ ol>
+<h2> Convert the file name to the file name in the OS of the execution environment </ h2>
 
 
 
-OSに依存しないファイル名]を作成するにはFile::Spec->catfile を使えばよいのでした。今回は、あるファイル表現を実行環境のOSのファイル名に変換する方法を解説します。設定ファイルなどでファイル名を指定するときは、Unixでのファイル表現を使う場合が多いです。
-
-<pre>
-# Unixでのファイル表現
-dir1/dir2/file.txt
-</pre>
-
-Windows上でこのUnixのファイル表現ををWindowsのファイル表現に変換したいとします。以下のようにするのが簡単です。
-
-File::Specの、<b>splitdirメソッドで、$unix_pathを個別の部分に分解します。それを、catfileメソッドでつなげます。</b>catfileは、分解されたファイル名を\で結合してくれます。
+You could use File :: Spec-> catfile to create an OS-independent filename. This time, I will explain how to convert a certain file representation to the file name of the OS of the execution environment. When specifying a file name in a configuration file, etc., the file representation in Unix is ​​often used.
 
 <pre>
-use File::Spec;
-my $unix_path = 'dir1/dir2/file.txt';
-my $windows_path = File::Spec->catfile(File::Spec->splitdir($unix_path));
-</pre>
+#File representation on Unix
+dir1 / dir2 / file.txt
+</ pre>
 
-<h3>実行可能なサンプル</h3>
+Suppose you want to convert this Unix file representation to a Windows file representation on Windows. It's easy to do the following:
+
+The <b> splitdir method of File :: Spec splits $ unix_path into individual parts. Connect it with the catfile method. </ b> catfile will combine the decomposed filenames with \.
+
+<pre>
+use File :: Spec;
+my $ unix_path ='dir1 / dir2 / file.txt';
+my $ windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($ unix_path));
+</ pre>
+
+<h3> Executable sample </ h3>
 
 <pre>
 use strict;
 use warnings;
 
-use File::Spec;
-my $unix_path = 'dir1/dir2/file.txt';
-my $windows_path = File::Spec->catfile(File::Spec->splitdir($unix_path));
+use File :: Spec;
+my $ unix_path ='dir1 / dir2 / file.txt';
+my $ windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($ unix_path));
 
-print "1. ウインドウズのファイルパスに変換\n";
-print $windows_path, "\n";
-</pre>
+print "1. Convert to Windows file path \ n";
+print $ windows_path, "\ n";
+</ pre>
 
-<h3>Windowsでの出力結果</h3>
+<h3> Output result on Windows </ h3>
 
 <pre>
-1. ウインドウズのファイルパスに変換
-dir1\dir2\file.txt
-</pre>
-
+1. Convert to Windows file path
+dir1 \ dir2 \ file.txt
+</ pre>

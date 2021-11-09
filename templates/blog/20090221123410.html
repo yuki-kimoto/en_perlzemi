@@ -1,671 +1,672 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">試験</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Test::More - 自動テストのためのテストプログラムを書く</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Exam </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Test :: More --Write a test program for automated testing </ h2>
 
 
 
-CPANにあるPerlモジュールのほぼすべてには、プログラムを試験するためのプログラムが、添付されています。プログラムだけではなくって、プログラムを試験するためのプログラムも一緒についてくるんです。これを、自動試験と呼びます。プログラムをひとつひとつ手で実行しなくても、自動試験のプログラムを実行するだけで、プログラムが正しく動くかどうかを確認できます。
+Almost every Perl module on CPAN comes with a program to test your program. Not only the program, but also the program for testing the program comes with it. This is called an automatic test. Instead of running each program by hand, you can just run the automated test program and see if it works properly.
 
-Perlでは、標準モジュールである<strong>Test::More</strong>を使って自動試験のプログラムを書くのが便利です。ここでは、自動試験の利点と、Test::Moreによる自動試験の記述方法を解説します。
+In Perl, it's convenient to write automated test programs using the standard module <strong> Test :: More </ strong>. Here, we will explain the advantages of automated tests and how to write automated tests with Test :: More.
 
-<h3>自動試験の利点</h3>
+<h3> Advantages of automated testing </ h3>
 
-<h4>1.リグレッションテストが簡単にできる。</h4>
+<h4> 1. Regression test can be done easily. </ h4>
 
-リグレッションテストは、退行試験とも呼ばれ、プログラムに機能を追加したときに元の機能が正しく動くことを確認する試験のことです。自動試験を作成しておけば、プログラムに機能を追加した後に、自動試験が成功することを確かめればよいだけです。
+The regression test, also known as the regression test, is a test that confirms that the original function works properly when a function is added to the program. Once you have created an automated test, you only have to make sure that the automated test succeeds after you add functionality to your program.
 
-<h4>2.リファクタリングができる</h4>
+<h4> 2. Can be refactored </ h4>
 
-リファクタリングとはコードをきれいにすることです。汎用性、可読性があがるようにコードを書き直す行為をいいます。　汚れたコードをほうっておくのはよくありません。変化に対応しなければならないプログラムの場合は、機能の追加を行いやすいようなコーディングを心がける必要があります。
+Refactoring is about cleaning up your code. The act of rewriting the code to improve versatility and readability. It is not good to leave a dirty code. For programs that need to adapt to change, you need to code to make it easier to add features.
 
-自動試験を作成しておけば、機能を損なうことなく、リファクタリングを行うことができます。
+Creating an automated test allows you to refactor without compromising functionality.
 
-<h3>自動試験の注意点</h3>
+<h3> Notes on automatic testing </ h3>
 
-<h4>1.コード自体の良い悪いはわからない。</h4>
+<h4> 1. I don't know whether the code itself is good or bad. </ h4>
 
-自動試験は、機能を見るための試験です。そのコードが汎用性があるとか、きちんとサブルーチンにまとまっているとか、可読性が高いとか、そのような部分を判断することができません。インスペクション、コードリーディングなどと組み合わせればよりよいと思います。
+An automated test is a test to see the function. I can't tell if the code is versatile, if it's neatly organized into subroutines, or if it's highly readable. I think it would be better to combine it with inspection, code reading, etc.
 
-<h4>2.目視による確認もあわせて行う</h4>
+<h4> 2. Visual confirmation is also performed </ h4>
 
-自動試験は完璧な試験ではありません。自動試験の書き間違えが発生します。勘違いで自動試験が行われていなかったとか、試験自体が間違えていたということもあります。
+Automatic exams are not perfect exams. There will be a mistake in writing the automatic test. It is also possible that the automatic test was not conducted due to a misunderstanding, or that the test itself was wrong.
 
-試験の間違いをなくすこつは、なるべく多角的な観点から試験をすることです。ですので、自動試験を書くときは、デバッガを使って、実際の動きを確認することを平行して行うことをお奨めします。プログラムの内部が意図したとおりに動いていることを確認しましょう。
+The key to eliminating test mistakes is to test from as many perspectives as possible. Therefore, when writing an automated test, it is recommended that you use a debugger to check the actual movement in parallel. Make sure that the inside of the program is working as intended.
 
-正しい試験を一度書くことができれば、後は、自動で確認できます。
+Once you have written the correct exam, you can check it automatically.
 
-<h3>自動試験の簡単なサンプル</h3>
+<h3> Simple sample of automatic test </ h3>
 
-では早速、Perlの自動試験のためのモジュールTest::Moreを使って自動試験のプログラムを書いてみましょう。
+Now let's write an automated test program using Perl's module for automated tests Test :: More.
 
 <pre>
 use strict;
 use warnings;
 
-# テスト数を指定する
-use Test::More tests => 2; 
+#Specify the number of tests
+use Test :: More tests => 2;
 
-# ok 関数で試験が成功したかを確認。この試験は成功する。
-my $num1 = 1;
-ok($num1 == 1); 
+Check if the test was successful with the #ok function. This test succeeds.
+my $ num1 = 1;
+ok ($ num1 == 1);
 
-# この試験は失敗する
-my $num2 = 2;
-ok($num2 == 1);
-</pre>
+# This exam fails
+my $ num2 = 2;
+ok ($ num2 == 1);
+</ pre>
 
-自動試験のスクリプトの解説です。
+A description of the automated test script.
 
-<h4>1. 試験の数を指定する。</h4>
+<h4> 1. Specify the number of exams. </ h4>
 
-Test::Moreをuseするときはテストの数を指定します。
-
-<pre>
-use Test::More tests => 2;
-</pre>
-
-<h4>2. ok関数で試験の結果をチェック</h4>
-
-ok関数の第1引数は、試験が成功する条件を記述します。
+When using Test :: More, specify the number of tests.
 
 <pre>
-# ok 関数で試験が成功したかを確認。この試験は成功する。
-my $num1 = 1;
-ok($num1 == 1); 
+use Test :: More tests => 2;
+</ pre>
 
-# この試験は失敗する
-my $num2 = 2;
-ok($num2 == 1);
-</pre>
+<h4> 2. Check the test result with the ok function </ h4>
 
-この記述は「$num1が1と等しいなら試験は成功」「$num2と1が等しいなら試験は成功」と読むことができます。
+The first argument of the ok function describes the conditions under which the test will succeed.
 
-<h4>3. 試験結果</h4>
+<pre>
+Check if the test was successful with the #ok function. This test succeeds.
+my $ num1 = 1;
+ok ($ num1 == 1);
 
-上記のサンプルの試験の結果は以下のようになります。1つ目の試験は成功、2つ目の試験は失敗したことがわかると思います。
+# This exam fails
+my $ num2 = 2;
+ok ($ num2 == 1);
+</ pre>
+
+This statement can be read as "If $ num1 is equal to 1, the test is successful" and "If $ num2 is equal to 1, the test is successful".
+
+<h4> 3. Test results </ h4>
+
+The test results of the above sample are as follows. You can see that the first exam was successful and the second exam was unsuccessful.
 
 <pre>
 1..2
-ok 1 - Test1
-not ok 2 - Test2
-#   Failed test 'Test2'
-#   at b.pl line 9.
-# Looks like you failed 1 test of 2.
-</pre>
+ok 1 --Test1
+not ok 2 --Test2
+# Failed test'Test2'
+# at b.pl line 9.
+#Looks like you failed 1 test of 2.
+</ pre>
 
-<h3>サブルーチンを試験する</h3>
+<h3> Test subroutines </ h3>
 
-では、もうひとつ簡単なサンプルを見てみましょう。二つの数を合計するsumという関数と数を2倍するdoubleという関数を試験します。double関数は2倍するはずが間違って3倍していて自動試験が失敗するようにしてあります。
+Let's take a look at another simple sample. Test a function called sum that sums two numbers and a function called double that doubles the numbers. The double function is supposed to be doubled, but it is mistakenly tripled so that the automated test fails.
 
 <pre>
 use strict;
 use warnings;
 
-use Test::More tests => 2;
+use Test :: More tests => 2;
 
 
-# 試験単位でスコープを作成するとmyで宣言したレキシカル変数の衝突が起きない。
-# sumの試験
+#Collision of lexical variables declared by my does not occur when creating a scope in test units.
+# sum exam
 {
-  my $num1 = 1;
-  my $num2 = 2;
+  my $ num1 = 1;
+  my $ num2 = 2;
   
-  my $total = sum($num1, $num2);
+  my $ total = sum ($ num1, $ num2);
   
-  ok($total == 3, 'sum');
+  ok ($ total == 3,'sum');
 }
 
-# doubleの試験
+#double exam
 {
-  my $num1 = 1;
+  my $ num1 = 1;
   
-  my $double = double($num1);
+  my $ double = double ($ num1);
     
-  # 失敗!
-  ok($double == 2, 'double'); 
+  #Failure!
+  ok ($ double == 2,'double');
 }
 
-# 二つの数を合計するサブルーチン
+# Subroutine that sums two numbers
 sub sum {
-  my ($num1, $num2) = @_;
-  return $num1 + $num2;
+  my ($ num1, $ num2) = @_;
+  return $ num1 + $ num2;
 }
 
-# 数を2倍するサブルーチン
+# Subroutine that doubles the number
 sub double {
-  my $num = shift;
+  my $ num = shift;
 
-  # 2倍しなければならないのに、間違って3倍してしまった!
-  return $num * 3
+  # I had to double it, but I accidentally tripled it!
+  return $ num * 3
 }
-</pre>
+</ pre>
 
-<h4>1. サブルーチンの自動試験</h4>
+<h4> 1. Automatic subroutine test </ h4>
 
-自動試験をサブルーチンごとに行います。今回のサンプルでは、sumというサブルーチンを試験しています。
+Performs an automatic test for each subroutine. In this sample, we are testing a subroutine called sum.
 
 <pre>
 {
-  my $num1 = 1;
-  my $num2 = 2;
+  my $ num1 = 1;
+  my $ num2 = 2;
   
-  my $total = sum($num1, $num2);
+  my $ total = sum ($ num1, $ num2);
   
-  ok($total == 3, 'sum');
+  ok ($ total == 3,'sum');
 }
 
-# 二つの数を合計するサブルーチン
+# Subroutine that sums two numbers
 sub sum {
-  my ($num1, $num2) = @_;
-  return $num1 + $num2;
+  my ($ num1, $ num2) = @_;
+  return $ num1 + $ num2;
 }
-</pre>
+</ pre>
 
-<h4>2. 試験単位にスコープを作成する。</h4>
+<h4> 2. Create a scope for each test unit. </ h4>
 
-試験をたくさん書いていくと、変数名の衝突が頻繁に起こるようになってきます。これを避けるために、{ } でスコープを作成して、その中にひとつひとつ試験を書いていきます。
+As you write a lot of tests, variable name collisions become more frequent. To avoid this, create a scope with {} and write each test in it.
 
 <pre>
-# sumの試験
+# sum exam
 {
-  my $num1 = 1;
-  my $num2 = 2;
+  my $ num1 = 1;
+  my $ num2 = 2;
   
-  my $total = sum( $num1, $num2 );
+  my $ total = sum ($ num1, $ num2);
   
-  ok( $total == 3, 'sum' );
+  ok ($ total == 3,'sum');
 }
 
-# doubleの試験
+#double exam
 {
-  my $num1 = 1;
+  my $ num1 = 1;
   
-  my $double = double($num1);
+  my $ double = double ($ num1);
   
-  ok($double == 2, 'double'); # 失敗!
+  ok ($ double == 2,'double'); #Failed!
 }
-</pre>
+</ pre>
 
-<h4>3. 試験結果</h4>
+<h4> 3. Test results </ h4>
 
-試験結果を見てみましょう。double関数は間違って、3倍する関数になっていますので、2番目の試験が失敗します。
-
-<pre>
-ok 1 - sum
-not ok 2 - double
-#   Failed test 'double'
-#   at - line 25.
-# Looks like you failed 1 test of 2.
-</pre>
-
-
-<h3>自動試験のレイアウト</h3>
-
-上記のスクリプトは、ひとつのファイルの中で行いましたが、自動試験のディレクトトリの一般的なレイアウトを紹介します。自動試験のディレクトリのレイアウトは以下のようになります。SomeModule.pmというモジュールを試験することを想定します。
+Let's take a look at the test results. The double function is wrongly a function that triples, so the second test fails.
 
 <pre>
-SomeModule/ 
+ok 1 --sum
+not ok 2 --double
+# Failed test'double'
+# at --line 25.
+#Looks like you failed 1 test of 2.
+</ pre>
+
+
+<h3> Automatic test layout </ h3>
+
+The above script was done in one file, but I'll show you the general layout of the automated test directory. The layout of the automated test directory is as follows. Suppose you want to test a module called SomeModule.pm.
+
+<pre>
+SomeModule /
     |
-    |---- lib/
-    |      |
-    |      |----SomeModule.pm
+    | ---- lib /
+    | |
+    | | ---- SomeModule.pm
     |
     |
-    |----- t/
+    | ----- t /
            |
-           |---- sum.t
+           | ---- sum.t
            |
-           |---- double.t
-</pre>
+           | ---- double.t
+</ pre>
 
-モジュール自体は、libというディレクトリの中に格納します。自動試験のプログラムは、t という名前のディレクトリの中に格納します。自動試験のプログラムの拡張子は .t にします。
+The module itself is stored in a directory called lib. The automated test program is stored in a directory named t. The extension of the automated test program should be .t.
 
-レイアウトに絶対的な決まりはありませんが、Perlの自動試験を便利にしてくれるモジュールの多くがこのレイアウトを想定しているので、このレイアウトにしましょう。
+There are no absolute rules for the layout, but many modules that make Perl's automated testing useful assume this layout, so let's do it.
 
-<h4>モジュールのサンプル</h4>
+<h4> Module sample </ h4>
 
-試験をするためのモジュールのサンプルです。「SomeModule.pm」という名前で保存して、「lib」の中に格納します。
+This is a sample module for testing. Save it as "SomeModule.pm" and store it in "lib".
 
 <pre>
 package SomeModule;
 use strict;
 use warnings;
 
-# 二つの数を合計する関数
+# A function that sums two numbers
 sub sum {
-  my ($num1, $num2) = @_;
-  return $num1 + $num2;
+  my ($ num1, $ num2) = @_;
+  return $ num1 + $ num2;
 }
 
-# 数を2倍するサブルーチン
+# Subroutine that doubles the number
 sub double {
-  my $num = shift;
+  my $ num = shift;
 
-  # 2倍しなければならないのに、間違って3倍してしまった!
-  return $num * 3
+  # I had to double it, but I accidentally tripled it!
+  return $ num * 3
 }
 
 1;
-</pre>
+</ pre>
 
-モジュールの最後の行は真の値を返す必要があります。忘れやすいので注意しましょう。
+The last line of the module should return a true value. Be careful as it is easy to forget.
 
-<h4>試験スクリプト</h4>
+<h4> Test script </ h4>
 
-自動試験のサンプルです。
+This is a sample of automatic test.
 
-<h4>sum.t</h4>
+<h4> sum.t </ h4>
 
 <pre>
 use strict;
 use warnings;
 
-# モジュールの検索パスを追加
+# Add module search path
 use FindBin;
-use lib "$FindBin::Bin/../lib";
+use lib "$ FindBin :: Bin / ../ lib";
 
-use Test::More tests => 1;
+use Test :: More tests => 1;
 use SomeModule;
 
-# sumの試験
+# sum exam
 {
-  my $num1 = 1;
-  my $num2 = 2;
+my $ num1 = 1;
+  my $ num2 = 2;
   
-  my $total = SomeModule::sum($num1, $num2);
+  my $ total = SomeModule :: sum ($ num1, $ num2);
   
-  ok($total == 3, 'sum');
+  ok ($ total == 3,'sum');
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20100524127696.html">FindBin</a>
+(Reference) <a href="/blog/20100524127696.html"> FindBin </a>
 
-<h4>double.t</h4>
+<h4> double.t </ h4>
 
 <pre>
 use strict;
 use warnings;
 
-# モジュールの検索パスを追加
+# Add module search path
 use FindBin;
-use lib "$FindBin::Bin/../lib";
+use lib "$ FindBin :: Bin / ../ lib";
 
-use Test::More tests => 1;
-use SomeModule; 
+use Test :: More tests => 1;
+use SomeModule;
 
-# doubleの試験
+#double exam
 {
-  my $num1 = 1;
+  my $ num1 = 1;
   
-  my $double = SomeModule::double($num1);
+  my $ double = SomeModule :: double ($ num1);
   
-  ok($double == 2, 'double');
+  ok ($ double == 2,'double');
 }
 
-</pre>
+</ pre>
 
-<h4>自動試験の実行</h4>
+<h4> Execution of automatic test </ h4>
 
-自動試験を実行して見ましょう。自動試験を行うには、まずSomoModuleの中に移動します。そして、次のコマンドを実行してみましょう。
+Let's run an automated test. To do an automated test, first go inside the Somo Module. Then run the following command:
 
 <pre>
-perl t/sum.t
-</pre>
+perl t / sum.t
+</ pre>
 
-試験を実行することができます。
+You can run the exam.
 
-<h3>proveスクリプトですべての自動試験を実行する</h3>
+<h3> Run all automated tests with prove script </ h3>
 
-自動試験のプログラムが増えてくると一つ一つ自動試験を実行するのは非常に面倒です。Perlには<strong>prove</strong>というすべての自動試験を実行してくれる便利なスクリプトがあります。
+As the number of automated test programs increases, it is very troublesome to perform automated tests one by one. Perl has a handy script called <strong> prove </ strong> that runs all the automated tests.
 
 <pre>
 prove t
-</pre>
+</ pre>
 
-proveを使うと、すべての自動試験を実行してくれるのでとても便利です。
+prove is very useful because it will perform all the automated tests for you.
 
-proveの実行結果は以下のようになります。ひとつめの試験が成功して、二つ目の試験が失敗していることが確認できます。
+The execution result of prove is as follows. You can see that the first test was successful and the second test was unsuccessful.
 
 <pre>
-t\sum.......ok
-t\double....
-t\double....NOK 1/1#   Failed test 'double'
-#   at t\double.t line 13.
-# Looks like you failed 1 test of 1.
-t\double....dubious
+t \ sum ....... ok
+t \ double ....
+t \ double .... NOK 1/1 # Failed test'double'
+# at t \ double.t line 13.
+#Looks like you failed 1 test of 1.
+t \ double .... dubius
         Test returned status 1 (wstat 256, 0x100)
 DIED. FAILED test 1
         Failed 1/1 tests, 0.00% okay
-Failed Test   Stat Wstat Total Fail  List of Failed
------------------------------------------------------------------------------
-t\double.t    1   256     1    1  1
+Failed Test Stat Wstat Total Fail List of Failed
+-------------------------------------------------- ---------------------------
+t \ double.t 1 256 1 1 1
 Failed 1/2 test scripts. 1/2 subtests failed.
-Files=2, Tests=2,  0 wallclock secs ( 0.00 cusr +  0.00 csys =  0.00 CPU)
+Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
 Failed 1/2 test programs. 1/2 subtests failed.
-</pre>
+</ pre>
 
-double関数が間違っていますので数値を2倍するように修正すると、以下のようにすべての試験が成功します。
+The double function is wrong, so if you modify it to double the number, all the tests will succeed as below.
 
 <pre>
-t\sum.......ok
-t\double....ok
+t \ sum ....... ok
+t \ double .... ok
 All tests successful.
-Files=2, Tests=2,  0 wallclock secs ( 0.00 cusr +  0.00 csys =  0.00 CPU)
-</pre>
+Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
+</ pre>
 
-<h3>Test::Moreの関数</h3>
+<h3> Test :: More function </ h3>
 
-これまでは「ok関数」だけを使って、試験を作成してきましたが、Test::Moreモジュールには、たくさんの便利な関数があります。
+So far, we've used only the "ok function" to create tests, but the Test :: More module has a lot of useful functions.
 
-真偽値、数値、文字列、オブジェクトの中身などを試験するには、以下の関数を使用します。
+To test booleans, numbers, strings, object contents, etc., use the following functions.
 
 <table>
   <tr>
     <td>
-      関数
-    </td>
+      function
+    </ td>
     <td>
-      解説
-    </td>
-  </tr>
+      Commentary
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       is
-    </td>
+    </ td>
     <td>
-      eqを使っての文字列が等しいことを確認。整数の数値比較はこれでもOK
-    </td>
-  </tr>
+      Make sure the strings are equal using eq. Numerical comparison of integers is still OK
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       isnt
-    </td>
+    </ td>
     <td>
-      neを使って文字列が等しくないことを確認。整数の数値比較はこれでもOK
-    </td>
-  </tr>
+      Use ne to make sure the strings are not equal. Numerical comparison of integers is still OK
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       like
-    </td>
+    </ td>
     <td>
-      文字列が<a href="/blog/20100827127859.html">正規表現</a>にマッチすることを確認
-    </td>
-  </tr>
+      Make sure the string matches <a href="/blog/20100827127859.html"> regular expression </a>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      unlike
-    </td>
+      unlike unlike
+    </ td>
     <td>
-      文字列が正規表現にマッチしないことを確認
-    </td>
-  </tr>
+      Make sure the string doesn't match the regular expression
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       cmp_ok
-    </td>
+    </ td>
     <td>
-      ==, <, >, <=, >=, gt, lt, などPerlの演算子を指定して比較
-    </td>
-  </tr>
+      Compare by specifying Perl operators such as ==, <,>, <=,> =, gt, lt, etc.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       is_deeply
-    </td>
+    </ td>
     <td>
-      配列の配列など複雑なデータ構造の比較に用いる
-    </td>
-  </tr>
+      Used for comparing complex data structures such as arrays of arrays
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>is関数とisnt関数</h4>
+<h4> is and isnt functions </ h4>
 
-<strong>is関数</strong>は文字列が等しいことを試験します。<strong>isnt関数</strong>は文字列が等しくないことを試験します。
-
-<pre>
-is($str, 3);
-isnt($str, 5);
-</pre>
-
-第1引数は、試験を行いたい値です。第2引数は予想される結果です。
-
-is と isnt は、eq と ne を使用するので文字列としての比較になります。(たとえば "12.0" と 12 は異なります。) 数値を比較する場合で文字列として比較しても問題ないような場合は、 is と isnt を使っても良いです。
-
-それ以外の場合は、 cmp_ok という関数を使用します。
-
-<h4>like関数とunlike関数</h4>
-
-<strong>like関数</strong>は文字列が正規表現にマッチすることを試験します。<strong>unlike関数</strong>は正規表現にマッチしない</strong>ことを試験します。
+The <strong> is function </ strong> tests that the strings are equal. The <strong> isnt function </ strong> tests that the strings are not equal.
 
 <pre>
-like( $str, qr/\w+/);
-unlike( $str, qr/\w+/);
-</pre>
+is ($ str, 3);
+isnt ($ str, 5);
+</ pre>
 
-第1引数は試験したい値です。第2引数は、<strong>正規表現のリファレンス</strong>です。
+The first argument is the value you want to test. The second argument is the expected result.
 
-第2引数は、qr/\w+/ という正規表現のリファレンスになっていることに注意してください。これを '\w+' や、 /\w+/ のようにすると、試験がうまくいきません。
+is and isnt use eq and ne, so they are compared as strings. (For example, "12.0" and 12 are different.) If you want to compare numbers and it's okay to compare them as strings, you can use is and isnt.
 
-<h4>cmp_ok関数</h4>
+Otherwise, use a function called cmp_ok.
 
-<strong>cmp_ok関数</strong>を使うと任意の比較演算子を使って試験ができます。
+<h4> like and dislike functions </ h4>
 
-<pre>
-cmp_ok( $num, '<', 3); 
-</pre>
-
-第1引数、第3引数は比較したい値です。第2引数は比較演算子です。「=」「<」「<=」「>=」「>」「eq」「ne」「gt」「lt」「ge」「le」など、すべての比較演算子が使用できます。
-
-<h4>is_deeply関数</h4>
-
-<strong>is_deeply関数</strong>を使うと、配列のリファレンスやハッシュのリファレンスなどの複雑なデータ構造の試験を行うことができます。これはとても便利です。
+The <strong> like function </ strong> tests that the string matches the regular expression. The <strong> dislike function </ strong> tests that it doesn't match the regular expression </ strong>.
 
 <pre>
-is_deeply($hash_ref, {a => 1, b => 2});
-</pre>
+like ($ str, qr / \ w + /);
+unlike ($ str, qr / \ w + /);
+</ pre>
 
-第1引数は、試験をしたい値です。第2引数は、予想される結果です。
+The first argument is the value you want to test. The second argument is a <strong> regular expression reference </ strong>.
 
-次に、モジュールの読み込み、クラスの定義などを試験するための関数を紹介します。
+Note that the second argument is a reference to the regular expression qr / \ w + /. If you change this to'\ w +'or / \ w + /, the test will not work.
+
+<h4> cmp_ok function </ h4>
+
+The <strong> cmp_ok function </ strong> allows you to test using any comparison operator.
+
+<pre>
+cmp_ok ($ num,'<', 3);
+</ pre>
+
+The first and third arguments are the values ​​you want to compare. The second argument is the comparison operator. All comparison operators such as "=", "<", "<=", "> =", ">", "eq", "ne", "gt", "lt", "ge", and "le" can be used.
+
+<h4> is_deeply function </ h4>
+
+You can use the <strong> is_deeply function </ strong> to test complex data structures such as array references and hash references. This is very convenient.
+
+<pre>
+is_deeply ($ hash_ref, {a => 1, b => 2});
+</ pre>
+
+The first argument is the value you want to test. The second argument is the expected result.
+
+Next, I will introduce a function for testing module loading, class definition, etc.
 
 <table>
   <tr>
     <td>
       can_ok
-    </td>
+    </ td>
     <td>
-      クラスがあるメソッドを持つかどうかの確認
-    </td>
-  </tr>
+      Check if the class has a method
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       isa_ok
-    </td>
+    </ td>
     <td>
-      オブジェクトが継承しているクラスの確認、リファレンスの種類の確認
-    </td>
-  </tr>
+      Check the class inherited by the object, check the reference type
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       require_ok
-    </td>
+    </ td>
     <td>
-      モジュールがrequireできることを確認
-    </td>
-  </tr>
+      Make sure the module can be required
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       use_ok
-    </td>
+    </ td>
     <td>
-      モジュールがuseできることを確認
-    </td>
-  </tr>
+      Make sure the module can be used
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>can_ok関数</h4>
+<h4> can_ok function </ h4>
 
-<strong>can_ok関数</strong>は、あるクラスがあるメソッドを持っていることを確かめるための試験に使用します。
-
-<pre>
-can_ok('Book', 'title', 'author', 'price', 'to_string', 'clone');
-</pre>
-
-これは、Bookクラスが、title, author, price, to_string, clone というメソッド持っていることを確認するための試験です。
-
-<h4>isa_ok関数</h4>
-
-<strong>isa_ok</strong>はあるオブジェクトがあるクラスを継承していることを確かめるための試験に使用します。
+The <strong> can_ok function </ strong> is used for testing to make sure a class has a method.
 
 <pre>
-my $comic = Comic->new;
-isa_ok($comic, 'Book');
-</pre>
+can_ok ('Book','title','author','price','to_string','clone');
+</ pre>
 
-これは、$comicオブジェクトがBookクラスを継承していることを確かめるための試験です。
-以下のように自分自身のクラスを指定しても試験は成功します。
+This is a test to make sure that the Book class has methods title, author, price, to_string, clone.
 
-<pre>
-isa_ok($comic, 'Comic');
-</pre>
+<h4> isa_ok function </ h4>
 
-また、オブジェクトではなくて、リファレンスがどのような種類ものものであるかの試験にも対応しています。
+<strong> isa_ok </ strong> is used for testing to ensure that an object inherits a class.
 
 <pre>
-my $ary_ref = [];
-isa_ok($array_ref, 'ARRAY');
-</pre>
+my $ comic = Comic-> new;
+isa_ok ($ comic,'Book');
+</ pre>
 
-<h4>require_ok関数</h4>
-
-<strong>require_ok関数</strong>はモジュールがrequireできることを確認するための試験に使用します。
-
-<pre>
-require_ok('Book');
-</pre>
-
-これは、Bookモジュールがrequireできることを確認する試験です。require_okの使い道ですが、自分が配布したいモジュールが、別のモジュールに依存している場合、そのモジュールが存在することを確認する場合などに利用できます。
-
-<h4>use_ok関数</h4>
-
-<strong>use_ok関数</strong>はモジュールがuseできることを確認するための試験に使用します。
+This is a test to make sure that the $ comic object inherits from the Book class.
+The exam will also succeed if you specify your own class as follows:
 
 <pre>
-BEGIN{ use_ok('Some::Module') }
-</pre>
+isa_ok ($ comic,'Comic');
+</ pre>
 
-<h3>FAQ</h3>
-
-<h4>試験結果にわかりやすいコメントを表示することはできますか</h4>
-
-<strong>note関数</strong>を使用すると、試験結果にコメントを表示することができます。
+It also supports testing what kind of reference it is, not an object.
 
 <pre>
-note 'some test';
-</pre>
+my $ ary_ref = [];
+isa_ok ($ array_ref,'ARRAY');
+</ pre>
 
-<h4>試験の数を記述するのがめんどくさいです</h4>
+<h4> require_ok function </ h4>
 
-「no_plan」あるいは「done_testing」を使用します。
-
-<pre>
-use Test::More 'no_plan';
-</pre>
+The <strong> require_ok function </ strong> is used for testing to ensure that a module can be required.
 
 <pre>
-use Test::More;
+require_ok ('Book');
+</ pre>
 
-# 試験を書く
+This is a test to make sure the Book module can be required. It is a usage of require_ok, but it can be used when the module you want to distribute depends on another module, or when you want to confirm that the module exists.
+
+<h4> use_ok function </ h4>
+
+The <strong> use_ok function </ strong> is used for testing to verify that the module can be used.
+
+<pre>
+BEGIN {use_o
+
+k ('Some :: Module')}
+</ pre>
+
+<h3> FAQ </ h3>
+
+<h4> Is it possible to display easy-to-understand comments on the test results? </ H4>
+
+You can use the <strong> note function </ strong> to display comments in your test results.
+
+<pre>
+note'some test';
+</ pre>
+
+<h4> It's annoying to describe the number of exams </ h4>
+
+Use "no_plan" or "done_testing".
+
+<pre>
+use Test :: More'no_plan';
+</ pre>
+
+<pre>
+use Test :: More;
+
+# Write an exam
 
 done_testing;
-</pre>
+</ pre>
 
-現在では、done_testingが推奨されています。
+Currently, done_testing is recommended.
 
-まれに、試験が失敗しているのに、通るエッジケースがあるようです。確実性を求めるのであれば、テスト数を記述しましょう。
+In rare cases, there seems to be an edge case that passes even though the test has failed. If you want certainty, write the number of tests.
 
-<h4>一部の試験をスキップしたいです</h4>
+<h4> I want to skip some exams </ h4>
 
-たとえば、特定の環境では、試験をスキップしたいという場合がありますね。次のように記述します。
+For example, in certain environments you may want to skip the exam. Write as follows.
 
 <pre>
-use Test::More;
-if ($^O eq 'MacOS') {
-  plan skip_all => 'Test irrelevant on MacOS';
+use Test :: More;
+if ($ ^ O eq'MacOS') {
+  plan skip_all =>'Test irrelevant on MacOS';
 }
 else {
   plan tests => 42;
 }
-</pre>
+</ pre>
 
-<h4>例外の試験はどのように行いますか。</h4>
+<h4> How do you test for exceptions? </ h4>
 
-例外が起こることを確認したい場合は、次のようにします。
+If you want to see the exception occur, do the following:
 
 <pre>
-# 例外が起こることの確認
-eval { some_func() };
-if ($@) {
-  ok(1);
+# Confirm that an exception occurs
+eval {some_func ()};
+if ($ @) {
+  ok (1);
 }
 else {
-  ok(0);
+  ok (0);
 }
 
-# あるいはエラーメッセージを確認
-eval { some_func() };
-like($@, qr/error/);
-</pre>
+# Or check the error message
+eval {some_func ()};
+like ($ @, qr / error /);
+</ pre>
 
-(参考)<a href="/blog/20100312126967.html">eval</a>
+(Reference) <a href="/blog/20100312126967.html"> eval </a>
 
-<h4>警告の試験はどのように行いますか。</h4>
+<h4> How do you test the warning? </ h4>
 
-警告がでることを確認したい場合は、シグナルハンドラを利用して、次のようにします。
+If you want to see the warning, use a signal handler and do the following:
 
 <pre>
-# 警告メッセージを代入するために準備
-my $warn;
+#Preparing to assign a warning message
+my $ warn;
 
-# 警告が発生したときに呼び出されるハンドラ
-local $SIG{__WARN__} = sub {
-  $warn = shift;
+#Handler called when a warning occurs
+local $ SIG {__ WARN__} = sub {
+  $ warn = shift;
 };
 
-$warn = undef;
-some_func();
-if ($warn) {
-  ok(1);
+$ warn = undef;
+some_func ();
+if ($ warn) {
+  ok (1);
 }
 else {
-  ok(0);
+  ok (0);
 }
-</pre>
+</ pre>
 
-<h3>最後に</h3>
+<h3> Finally </ h3>
 
-Test::Moreを使って自動試験を作成しておくと、自動試験を実行するだけで、プログラムが正しいかどうかを確認できるので便利です。また、CPANモジュールを自分で書くためには、必ず覚える必要があります。
+It is convenient to create an automated test using Test :: More so that you can check whether the program is correct just by running the automated test. Also, in order to write your own CPAN module, you must remember it.
 
-僕が、試験を自動化できるということを知ったときは、そんな便利な方法があったんだと目からうろこでした。みなさんも、便利に利用してみてください。
-
+When I learned that the exam could be automated, I was struck by the fact that there was such a convenient way. Everyone, please use it conveniently.

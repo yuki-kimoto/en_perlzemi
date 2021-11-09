@@ -1,139 +1,138 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span>
+      <span itemprop = "name"> Perl </ span>
     </a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20140319139520.html">
-      <span itemprop="name">Mojolicious</span>
+      <span itemprop = "name"> Mojolicious </ span>
     </a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Webアプリケーションの雛形の作成</h2>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Creating a Web application template </ h2>
 
 
 
-Mojoliciousでは最低限必要な雛形を自動的に生成してくれます。雛形の作成方法と作成されたWebアプリケーションの雛形について解説を行います。
+Mojolicious will automatically generate the minimum required template. I will explain how to create a template and the template of the created Web application.
 
-<h3>Webアプリケーションの雛形の作成</h3>
+<h3> Creating a Web application template </ h3>
 
-Webアプリケーションの雛形を作成するにはmojo直下のディレクトリに移動して次のコマンドを実行します。アプケーション名は先頭が大文字でその後の文字は小文字にしておくのが良い習慣であると思われます。(「TestApp」のような名前はあまりよくなく、「Testapp」のような名前がよいと思います。)
-
-<pre>
-# Windowsの場合
-perl script\mojo generate app Webアプリケーション名
-
-# Unix系OSの場合
-perl script/mojo generate app Webアプリケーション名
-</pre>
-
-ではSampleappという名前のWebアプリケーション名で雛形を作成してみましょう。
+To create a web application template, change to the directory directly under mojo and execute the following command. It seems to be a good practice to keep the application name in uppercase and the letters after it in lowercase. (Names like "TestApp" aren't very good, I think names like "Testapp" are good.)
 
 <pre>
-# Windowsの場合
-perl script\mojolicious generate app Sampleapp
+#For Windows
+perl script \ mojo generate app web application name
 
-# Unix系OSの場合
-perl script/mojolicious generate app Sampleapp
-</pre>
+# For Unix-like OS
+perl script / mojo generate app web application name
+</ pre>
 
-作成されたファイルの一覧が画面に出力されます。
-
-<pre>
-  [mkdir] C:\Download\mojo\sampleapp\script
-  [write] C:\Download\mojo\sampleapp\script\sampleapp
-  [chmod] sampleapp/script/sampleapp 744
-  [mkdir] C:\Download\mojo\sampleapp\lib
-  [write] C:\Download\mojo\sampleapp\lib\Sampleapp.pm
-  [mkdir] C:\Download\mojo\sampleapp\lib\Sampleapp
-  [write] C:\Download\mojo\sampleapp\lib\Sampleapp\Example.pm
-  [mkdir] C:\Download\mojo\sampleapp\t
-  [write] C:\Download\mojo\sampleapp\t\basic.t
-  [mkdir] C:\Download\mojo\sampleapp\log
-  [mkdir] C:\Download\mojo\sampleapp\public
-  [write] C:\Download\mojo\sampleapp\public\index.html
-  [mkdir] C:\Download\mojo\sampleapp\templates
-  [write] C:\Download\mojo\sampleapp\templates\not_found.html.ep
-  [exist] C:\Download\mojo\sampleapp\templates
-  [write] C:\Download\mojo\sampleapp\templates\exception.html.ep
-  [mkdir] C:\Download\mojo\sampleapp\templates\layouts
-  [write] C:\Download\mojo\sampleapp\templates\layouts\default.html.ep
-  [mkdir] C:\Download\mojo\sampleapp\templates\example
-  [write] C:\Download\mojo\sampleapp\templates\example\welcome.html.ep
-</pre>
-
-<h3>作成された各ディレクトリの役割</h3>
-
-「Sampleapp」という名前を指定した場合はmojo配下に「sampleapp」というディレクトリができます。sampleapp以下のファイルを編集してWebアプリケーションを作成してゆくことになります。全体の概要をつかむために各ディレクトリの役割を解説しておきます。
+Now let's create a template with the web application name named Sampleapp.
 
 <pre>
-sampleapp -+
-           |-lib       アプリケーションを格納する
-           |-log       エラーや警告ログを格納する
-           |-public    静的なファイル(HTML, CSS, JavaScript)を格納する
-           |-script    HTTPサーバの起動スクリプトなどを格納する
-           |-t         Webアプリケーションの試験を格納する
-           |-templates HTMLのテンプレートを格納する
-</pre>
+#For Windows
+perl script \ mojolicious generate app Sample app
 
-簡単にファイルの解説を行います。
+# For Unix-like OS
+perl script / mojolicious generate app Sample app
+</ pre>
 
-<h4>lib - アプリケーションを格納するディレクトリ</h4>
-
-libディレクトリはアプリケーションを格納します。アプリケーションというのはMojoliciousではPerlで書かれたモジュールのことです。ですので.pmファイルがlibディレクトリ以下に格納されることになります。
-
-lib配下のファイルを図示するとデフォルトでは次のようになっています。
+A list of created files will be output to the screen.
 
 <pre>
-lib -+
-     |- Sampleapp.pm
-     |- Sampleapp/ -+
-                    |- Example.pm
-</pre>
+  [mkdir] C: \ Download \ mojo \ sampleapp \ script
+  [write] C: \ Download \ mojo \ sampleapp \ script \ sampleapp
+  [chmod] sampleapp / script / sampleapp 744
+  [mkdir] C: \ Download \ mojo \ sampleapp \ lib
+  [write] C: \ Download \ mojo \ sampleapp \ lib \ Sampleapp.pm
+  [mkdir] C: \ Download \ mojo \ sampleapp \ lib \ Sampleapp
+  [write] C: \ Download \ mojo \ sampleapp \ lib \ Sampleapp \ Example.pm
+  [mkdir] C: \ Download \ mojo \ sampleapp \ t
+  [write] C: \ Download \ mojo \ sampleapp \ t \ basic.t
+  [mkdir] C: \ Download \ mojo \ sampleapp \ log
+  [mkdir] C: \ Download \ mojo \ sampleapp \ public
+  [write] C: \ Download \ mojo \ sampleapp \ public \ index.html
+  [mkdir] C: \ Download \ mojo \ sampleapp \ templates
+  [write] C: \ Download \ mojo \ sampleapp \ templates \ not_found.html.ep
+  [exist] C: \ Download \ mojo \ sampleapp \ templates
+  [write] C: \ Download \ mojo \ sampleapp \ templates \ exception.html.ep
+  [mkdir] C: \ Download \ mojo \ sampleapp \ templates \ layouts
+  [write] C: \ Download \ mojo \ sampleapp \ templates \ layouts \ default.html.ep
+  [mkdir] C: \ Download \ mojo \ sampleapp \ templates \ example
+  [write] C: \ Download \ mojo \ sampleapp \ templates \ example \ welcome.html.ep
+</ pre>
 
-Sampleapp.pmはアプリケーション本体を表すクラスです。この中でアプリケーションに関する設定や、URLごとにおける処理の分岐などの記述を行います。
+<h3> Role of each created directory </ h3>
 
-Sampleappディレクトリ以下にはコントローラになるクラスなどが配置されます。コントローラクラスとはURLに対応する処理を記述するクラスのことです。コントローラはURLに対応する処理を記述するものだと覚えておきましょう。(よくいわれるMVCのCにあたるものです)
-
-<h4>log - エラーや警告ログを格納する</h4>
-
-Mojoliciousのメッセージはlogディレクトリ以下のdevelopment.logというファイルに出力されます。何かエラーが出たときはこのログをみます。
-
-<h4>public - 静的なファイル(HTML, CSS, JavaScript)を格納する</h4>
-
-このディレクトリにはHTMLファイル、CSS、JavaScriptなどの静的なファイルを格納します。
-
-<h4>script - HTTPサーバの起動スクリプトなどを格納する</h4>
-
-script以下にはHTTPサーバを起動するスクリプトなどが配置されます。Mojoliciousでは試験などに便利なようにHTTPサーバが実装されています。このHTTPサーバを起動することによってApacheなどのHTTPサーバがなくてもWebアプリケーションを実行することができます。
-
-<h4>t - Webアプリケーションの試験を格納する</h4>
-
-t以下にはWebアプリケーションの試験を格納します。Webアプリケーションの試験は一般的には面倒ですが、MojolicousではTest::Mojoというテスティングフレームワークがあるので簡単にテストを行うことができます。
-
-<h4>templates - HTMLのテンプレートを格納する</h4>
-
-Mojoliciousには標準のテンプレートエンジンとしてMojo::Templateがあります。これはMVCのVに該当するものです。Mojo::Templateを使用すればリクエストに応じてHTMLを動的に生成することができます。Mojo::TemplateはHTML::TemplateやTemplate-Toolkitと異なりPerlの構文をテンプレートの中で利用できるのが特徴です。
-
-Mojoliciousのテンプレートの拡張子は「.ep」になっています。templatesのディレクトリ構成をもう少しだけ詳しく見てみましょう。以下のようになっています。
+If you specify the name "Sampleapp", a directory called "sampleapp" will be created under mojo. You will create a web application by editing the files under sampleapp. I will explain the role of each directory to get an overall overview.
 
 <pre>
-templates + example -+
-          |          |- welcome.html.ep - HTMLのボディ用のテンプレート
+sampleapp-+
+           | -stores the lib application
+           | -log Store error and warning logs
+           | -public Store static files (HTML, CSS, JavaScript)
+           | -script Stores HTTP server startup scripts, etc.
+           | -t Store web application exams
+           | -templates Store HTML templates
+</ pre>
+
+I will briefly explain the file.
+
+<h4> lib --directory to store applications </ h4>
+
+The lib directory stores applications. An application is a module written in Perl in Mojolicious. Therefore, the .pm file will be stored under the lib directory.
+
+The default files under lib are as follows.
+
+<pre>
+lib-+
+     | -Sampleapp.pm
+     | -Sampleapp /-+
+                    |-Example.pm
+</ pre>
+
+Sampleapp.pm is a class that represents the application itself. In this, the settings related to the application and the branching of processing for each URL are described.
+
+Classes that will be controllers are placed under the Sampleapp directory. The controller class is a class that describes the process corresponding to the URL. Remember that the controller describes the process that corresponds to the URL. (It corresponds to C of MVC which is often called)
+
+<h4> log --Store error and warning logs </ h4>
+
+Mojolicious messages are output to a file called development.log under the log directory. If you get any error, look at this log.
+
+<h4> public --Store static files (HTML, CSS, JavaScript) </ h4>
+
+This directory contains static files such as HTML files, CSS, and JavaScript.
+
+<h4> script --Stores HTTP server startup scripts, etc. </ h4>
+
+Below the script, the script that starts the HTTP server is placed. Mojolicious implements an HTTP server for convenience such as testing. By starting this HTTP server, you can run the web application without an HTTP server such as Apache.
+
+<h4> t --Store web application exams </ h4>
+
+The test of the Web application is stored under t. Testing web applications is generally a hassle, but Mojolicous has a testing framework called Test :: Mojo that makes it easy to test.
+
+<h4> templates --Store HTML templates </ h4>
+
+Mojolicious has Mojo :: Template as a standard template engine. This corresponds to V in MVC. You can use Mojo :: Template to dynamically generate HTML on request. Unlike HTML :: Template and Template-Toolkit, Mojo :: Template is characterized by being able to use Perl syntax in templates.
+
+The Mojolicious template has a ".ep" extension. Let's take a closer look at the directory structure of templates. It is as follows.
+
+<pre>
+templates + example-+
+          | |-welcome.html.ep --Templates for HTML bodies
           |
-          + layouts -+
-          |          |- default.html.ep - HTMLヘッダ用のテンプレート
+          + layouts-+
+          | |-default.html.ep --Templates for HTML headers
           |
           + exception.html.ep
           |
           + not_found.html.ep
-</pre>
+</ pre>
 
-layoutsというディレクトリがあることに注目してください。これは一般的にHTMLのヘッダ用のテンプレートとして利用されます。exsample/welcome.html.epというのは「Exsample」というコントローラの「welcome」というアクションに対応するテンプレートになります。アクションについては後ほど解説します。
+Notice that there is a directory called layouts. This is commonly used as a template for HTML headers. exsample / welcome.html.ep is a template corresponding to the action "welcome" of the controller "Exsample". I will explain the action later.
 
-exceptions.html.epというのは例外用のテンプレートです。Mojoliciousではこのテンプレートを使用してエラーメッセージが画面にわかりやすく表示されるので開発がとても行いやすいです。not_found.html.epはページが見つからなかった場合に利用されるテンプレートです。
-
+exceptions.html.ep is a template for exceptions. Mojolicious uses this template to display error messages on the screen in an easy-to-understand manner, which makes development very easy. not_found.html.ep is a template used when a page is not found.

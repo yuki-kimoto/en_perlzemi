@@ -1,102 +1,101 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-      <span itemprop="name">オブジェクト指向</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">コンストラクタの作成</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>コンストラクタの作成</h2>
+      <span itemprop = "name"> Object Oriented </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Create constructor </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Creating a constructor </ h2>
 
 
 
-前回は以下のようなクラスの雛形を作成しました。
+Last time, I created the following class template.
 
 <pre>
 package Book;
 
-sub new { # コンストラクタの実装 }
+sub new {# Constructor implementation}
 
-sub title { # アクセッサの実装 }
-sub author { # アクセッサの実装 }
+sub title {# Implementation of accessor}
+sub author {# Implementation of accessor}
 
-</pre>
+</ pre>
 
-<h3>1. コンストラクタとは</h3>
+<h3> 1. What is a constructor? </ H3>
 
-<b>オブジェクトはクラスを元に生成</b>されます。オブジェクトとは何かとかクラスとは何かということは少し忘れて、「オブジェクトはクラスを元に生成される」ということを覚えてください。
+<b> Objects are created based on the class </ b>. Forget a little about what an object is and what a class is, and remember that "objects are created from a class".
 
-そしてコンストラクタとはオブジェクトを生成するメソッドのことです。コンストラクタを作成すれば
-
-<pre>
-my $book = Book->new;
-</pre>
-
-という記述でオブジェクトを作成できるようになります。
-
-コンストラクタ名には慣習的に<b>new</b>という名前が使用されます。ですが、コンストラクタはnewという名前に必ずしましょう(なぜならあなたのモジュールを使う人はコンストラクタ名がnewであることを期待するからです)
-
-<h3>2. 一番簡単なコンストラクタの実装</h3>
-
-ではコンストラクタを実装してみましょう。以下が一番簡単なコンストラクタの実装になります。でも一番簡単といっても少し難しいのです。
+And a constructor is a method that creates an object. If you create a constructor
 
 <pre>
-sub new { 
-    my $class = shift;
-    my $self = {};
-    return bless $self, $class;
+my $ book = Book-> new;
+</ pre>
+
+You will be able to create an object with the description.
+
+The name <b> new </ b> is customarily used for the constructor name. But be sure to name the constructor new (because those who use your module expect the constructor name to be new)
+
+<h3> 2. Implementation of the simplest constructor </ h3>
+
+Now let's implement the constructor. Below is the simplest constructor implementation. But the easiest is a little difficult.
+
+<pre>
+sub new {
+    my $ class = shift;
+    my $ self = {};
+    return bless $ self, $ class;
 }
-</pre>
+</ pre>
 
-以下の呼び出し
-
-<pre>
-my $book = Book->new;
-</pre>
-
-を行ったとき、 $class には、何が代入されるでしょうか?
-
-答えは、<b>Book</b> です。コンストラクタnewは第1引数として<b>クラス名</b>を受け取ります。
-
-<h3>3. ハッシュのリファレンスを準備する</h3>
+Call the following
 
 <pre>
-  my $self = {};
-</pre>
+my $ book = Book-> new;
+</ pre>
 
-の行は何をしているのでしょうか?
+What will be assigned to $ class when you do?
 
-実はこれは<b>オブジェクトが所有するデータ</b>なのです。重要なのでもう一度いいます。<b>オブジェクトはデータを所有</b>します。そして、一般的には、<b>ハッシュのリファレンス</b>がデータとして選択されます。
+The answer is <b> Book </ b>. The constructor new takes a <b> class name </ b> as the first argument.
 
-(本当に本当のことをいえば、オブジェクトはデータそのものです。ややこしくならないために最初はオブジェクトはデータを所有すると覚えてください。)
-
-<h3>4. データとクラスを結びつける</h3>
-
-最後の行
+<h3> 3. Prepare a hash reference </ h3>
 
 <pre>
-return bless $self, $class;
-</pre>
+  my $ self = {};
+</ pre>
 
-には、bless という関数があります。
+What is the line doing?
 
-bless関数は、第1引数にデータ、第2引数にクラス名を受け取って、データとクラスを結び付けます。
+This is actually <b> object-owned data </ ​​b>. It's important, so I'll say it again. The <b> object owns the data </ ​​b>. And, in general, the <b> hash reference </ b> is selected as the data.
 
-オブジェクトは、<b>データとクラスを結びつけ</b>て生み出されるのです。そして、結びつけたものを呼び出しもとに返却してあげます。
+(To tell the truth, the object is the data itself. Remember that the object owns the data at first so it doesn't get confusing.)
 
-<h3>5. Perlでのオブジェクトとは何か?</h3>
+<h3> 4. Connect data to class </ h3>
 
-Perlのオブジェクトとは、<b>クラスに結び付けられたデータ</b>のことです。それ以上の意味もそれ以下の意味もありません。
+Last line
 
-そしてこのように作ったオブジェクトは、他の言語で使用されるオブジェクトと遜色ない機能を発揮します。
+<pre>
+return bless $ self, $ class;
+</ pre>
 
+Has a function called bless.
+
+The bless function takes data in the first argument and the class name in the second argument, and connects the data and the class.
+
+Objects are created by <b> connecting data and classes </ b>. Then, I will return the tied one to the caller.
+
+<h3> 5. What are objects in Perl? </ H3>
+
+A Perl object is the data associated with a <b> class </ b>. It doesn't mean anything more or less.
+
+And the objects created in this way perform as well as the objects used in other languages.
