@@ -614,7 +614,7 @@ Mizuho Bank Shiba Branch
 Ordinary account 34521xx
 Perl club
 EOS
-for my $line (split / \ n /, $furikomi_disp) {
+for my $line (split /\n /, $furikomi_disp) {
   $text-> translate ($render_start_x, $render_start_y-$unit_height * $cur_row + $text_bottom_padding);
   $text-> font ($font, $font_size_default);
   $text-> text ($line);
@@ -632,7 +632,7 @@ $gfx-> stroke;
 my $bikou_disp = << "EOS";
 Please pay by the last day of the month following the delivery date.
 EOS
-for my $line (split / \ n /, $bikou_disp) {
+for my $line (split /\n /, $bikou_disp) {
   $text-> translate ($render_start_x, $render_start_y-$unit_height * $cur_row + $text_bottom_padding);
   $text-> font ($font, $font_size_default);
   $text-> text ($line);

@@ -21,7 +21,7 @@ First, I will explain the iterative syntax <b> for statement </b>. Take a look a
 
 <pre>
 for (my $i = 0; $i <10; $i++) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -56,7 +56,7 @@ Let's look at the first example again. Notice the part "my $i = 0".
 
 <pre>
 for (my $i = 0; $i <10; $i++) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -92,7 +92,7 @@ The for statement repeatedly executes the block while the looping condition is m
 
 <pre>
 for (my $i = 0; $i <10; $i++) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -130,7 +130,7 @@ In the loop variable update part, you can change the value of the loop variable 
 
 <pre>
 for (my $i = 0; $i <10; $i++) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -142,7 +142,7 @@ What if this part is "$i + = 2"? This is a <a href="/blog/20161005147566.html"> 
 
 <pre>
 for (my $i = 0; $i <10; $i + = 2) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -168,7 +168,7 @@ Next, let's look at a program that outputs from "9" to "0" for the first time.
 
 <pre>
 for (my $i = 9; $i> = 0; $i- ) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -195,7 +195,7 @@ Next, I will skip two and output from "9" to "1".
 
 <pre>
 for (my $i = 9; $i> = 0; $i-= 2) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -220,7 +220,7 @@ I will write a sample program that loops from "0" to "10", but outputs only when
 <pre>
 for (my $i = 0; $i <10; $i++) {
   if ($i% 3 == 0) {
-    print "$i \ n";
+    print "$i\n";
   }
 }
 </pre>
@@ -263,7 +263,7 @@ my $i = 0;
 
 while ($i <10) {
   
-  print "$i \ n";
+  print "$i\n";
   
   $i++;
 }
@@ -298,7 +298,7 @@ my $i = 0;
 
 while ($i <10) {
   
-  print "$i \ n";
+  print "$i\n";
   
   # Update loop variable
   $i++;
@@ -309,7 +309,7 @@ The above while statement sample corresponds to the following for statement.
 
 <pre>
 for (my $i = 0; $i <10; $i++) {
-  print "$i \ n";
+  print "$i\n";
 }
 </pre>
 
@@ -323,7 +323,7 @@ The <b> foreach statement </b> can be used to process the elements of the <a hre
 my @animals = ('Cat','Dog','Mouse');
 
 foreach my $animal (@animals) {
-  print "$animal \ n";
+  print "$animal\n";
 }
 </pre>
 
@@ -343,7 +343,7 @@ In Perl, the foreach statement is an alias for the for statement, and you can al
 my @animals = ('Cat','Dog','Mouse');
 
 for my $animal (@animals) {
-  print "$animal \ n";
+  print "$animal\n";
 }
 </pre>
 
@@ -353,7 +353,7 @@ Looking at how to write Perl these days, I think I tend to always use for rather
 
 <pre>
 for my $num (3 .. 6) {
-  print "$num \ n";
+  print "$num\n";
 }
 </pre>
 
@@ -367,7 +367,7 @@ for my $num (@nums) {
   if ($num == 5) {
     next; next;
   }
-  print "$num \ n";
+  print "$num\n";
 }
 </pre>
 
@@ -391,7 +391,7 @@ for my $num (@nums) {
   if ($num == 6) {
     last;
   }
-  print "$num \ n";
+  print "$num\n";
 }
 </pre>
 
@@ -416,7 +416,7 @@ First of all, think about whether you can write using foreach. Foreach is the ea
 my @animals = ('Cat','Dog','Mouse');
 
 foreach my $animal (@animals) {
-  print "$animal \ n";
+  print "$animal\n";
 }
 </pre>
 
@@ -426,7 +426,7 @@ Or write as follows using the alias for.
 my @animals = ('Cat','Dog','Mouse');
 
 for my $animal (@animals) {
-  print "$animal \ n";
+  print "$animal\n";
 }
 </pre>
 
@@ -441,7 +441,7 @@ my @animals = ('Cat','Dog','Mouse');
 
 for (my $i = 0; $i <@animals; $i++) {
   my $animal = $animals [$i];
-  print "$i: $animal \ n";
+  print "$i: $animal\n";
 }
 </pre>
 
@@ -483,7 +483,7 @@ Use a while statement to write the process such as ending when the array is extr
 my @animals = ('Cat','Dog','Mouse');
 
 while (my $animal = pop @animals) {
-  print "$animal \ n";
+  print "$animal\n";
 }
 </pre>
 
@@ -535,7 +535,7 @@ for my $student (@ $students) {
   my $name = $student-> {name};
   my $age = $student-> {age};
   
-  print "Name: $name, Age: $age \ n";
+  print "Name: $name, Age: $age\n";
 }
 </pre>
 
@@ -602,7 +602,7 @@ Below is a sample that outputs all the elements of the array. The elements of th
 
 <pre>
 my @values ​​= (3, 4, 5);
-print "$_ \ n" for @values;
+print "$_\n" for @values;
 </pre>
 
 For readability, it's a good idea to always use a regular for statement.

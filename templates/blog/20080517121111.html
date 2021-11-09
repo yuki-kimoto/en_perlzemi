@@ -43,21 +43,21 @@ use File::Basename'fileparse';
 my $file_unix ='dir1 / dir2 / base_name.txt';
 my $file_win ='dir1 \\ dir2 \\ base_name.txt';
                                
-print "1: Extract the directory name and base name from the file name. \ N";
+print "1: Extract the directory name and base name from the file name.\n";
 my ($base_name, $dir) = fileparse $file_unix;
-print "For Unix \ n".
-  "\ $dir = $dir \ n".
-  "\ $base_name = $base_name \ n \ n";
+print "For Unix\n".
+  "\ $dir = $dir\n".
+  "\ $base_name = $base_name\n\n";
 
 ($base_name, $dir) = fileparse $file_win;
-print "For Windows \ n".
-  "\ $dir = $dir \ n".
-  "\ $base_name = $base_name \ n \ n";
+print "For Windows\n".
+  "\ $dir = $dir\n".
+  "\ $base_name = $base_name\n\n";
       
-print "2: Extract only the base name. \ N";
+print "2: Extract only the base name.\n";
 # In the array slice, extract only the 0th of the list.
 my $base_name_only = (fileparse $file_unix) [0];
-print "\ $base_name_only = $base_name_only \ n \ n";
+print "\ $base_name_only = $base_name_only\n\n";
 </pre>
 Execution result
 <pre>

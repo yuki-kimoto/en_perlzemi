@@ -35,11 +35,11 @@ Rewrite the configuration file MyConfig.pm for the # cpan command
 perl-~ / .cpan / CPAN / MyConfig.pm> ~ / .cpan / CPAN / MyConfig.pm.edit
 while (<>) {
     if (/ ^ \ s * \}; /) {
-        print q # 'make_install_arg' => qq [SITEPREFIX = $ENV {HOME} / local], # , "\ n",
-              q # 'makepl_arg' => qq [INSTALLDIRS = site LIB = $ENV {HOME} / local / lib / perl5 PREFIX = $ENV {HOME} / local], # , "\ n",
-              q # 'mbuildpl_arg' => qq [./Build - install_base $ENV {HOME} / local], # , "\ n",
-              q # 'urllist' => [q [ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/], q [ftp://ftp.ring.gr.jp/pub/ lang / perl / CPAN /]], # , "\ n",
-              q # }; # , "\ n";
+        print q # 'make_install_arg' => qq [SITEPREFIX = $ENV {HOME} / local], # , "\n",
+              q # 'makepl_arg' => qq [INSTALLDIRS = site LIB = $ENV {HOME} / local / lib / perl5 PREFIX = $ENV {HOME} / local], # , "\n",
+              q # 'mbuildpl_arg' => qq [./Build - install_base $ENV {HOME} / local], # , "\n",
+              q # 'urllist' => [q [ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/], q [ftp://ftp.ring.gr.jp/pub/ lang / perl / CPAN /]], # , "\n",
+              q # }; # , "\n";
     }
     elsif (! / ^ \ s *'make_install_arg' / &&
         ! / ^ \ s *'makepl_arg' / &&

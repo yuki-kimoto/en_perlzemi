@@ -49,10 +49,10 @@ for my $file (@files) {
     or die "Unable to create $file .: $!";
   close $fh;
 }
-print "Preparation: $top_dir has been created. \ N \ n";
+print "Preparation: $top_dir has been created.\n\n";
 
 # Recursive directory copy sample
-print "1: Copy directory recursively. \ N";
+print "1: Copy directory recursively.\n";
 
 my $cur_dir = getcwd ();
 # File::Find internally repeats chdir, so
@@ -60,7 +60,7 @@ my $cur_dir = getcwd ();
 my $dir_copy_to = "$cur_dir / dir_20080601_ ${$} _ cp";
 
 find (\ & recursive_copy, $top_dir);
-print "$top_dir has been copied to $dir_copy_to. \ N";
+print "$top_dir has been copied to $dir_copy_to.\n";
 
 # Function for recursive copying
 sub recursive_copy {
@@ -76,11 +76,11 @@ sub recursive_copy {
   if (-d $file_from) {
     The # directory cannot be copied, so create it with the same name.
     mkdir $file_to
-      or die "Unable to create $file_to. \ N";
+      or die "Unable to create $file_to.\n";
   }
   else {
     copy $file_from, $file_to
-      or die "Unable to copy $file_from to $file_to. \ N";
+      or die "Unable to copy $file_from to $file_to.\n";
   }
 }
 </pre>
@@ -106,11 +106,11 @@ sub recursive_copy {
   if (-d $file_from) {
     The # directory cannot be copied, so create it with the same name.
     mkdir $file_to
-      or die "Unable to create $file_to. \ N";
+      or die "Unable to create $file_to.\n";
   }
   else {
     copy $file_from, $file_to
-      or die "Unable to copy $file_from to $file_to. \ N";
+      or die "Unable to copy $file_from to $file_to.\n";
   }
 }
 </pre>

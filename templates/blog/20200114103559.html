@@ -81,8 +81,8 @@ There is a character class defined in Perl. "\ D" is a predefined character clas
    \ S Non-whitespace character
    \ h Horizontal whitespace
    \ H Non-horizontal whitespace character
-   \ N Non-line feed (if not followed by'{NAME}'; experimental; in character class
-           Illegal; equivalent to [^ \ n]; similar to'.' Without / s)
+  \n Non-line feed (if not followed by'{NAME}'; experimental; in character class
+           Illegal; equivalent to [^\n]; similar to'.' Without / s)
    \ v Vertical whitespace
    \ V Non-vertical whitespace
    \ R General line breaks (?> \ V | \ x0D \ x0A)
@@ -173,16 +173,16 @@ use utf8;
 # Use character class
 my $str ='Hello';
 if ($str = ~ / [abcde] /) {
-  print "Match \ n";
+  print "Match\n";
 }
 
 # Match with web service user ID (a-zA-Z0-9_)
 my $user_id ='kimoto_yuki089';
 my $user_id_invalid ='abc & cde';
-if ($user_id = ~ / ^ \ p {PosixWord} + $/) {print "user_is valid \ n";
+if ($user_id = ~ / ^ \ p {PosixWord} + $/) {print "user_is valid\n";
 }
 unless ($user_id_invalid = ~ / ^ \ p {PosixWord} + $/) {
-   print "user_id_invalid is invalid \ n";
+   print "user_id_invalid is invalid\n";
 }
 
 # Match a web service password(a non-blank visible character in the ASCII range)
@@ -190,12 +190,12 @@ my $password ='Ufy | & 123_';
 my $passowrd_invalid1 ='abc def';
 my $passowrd_invalid2 ='abc a';
 if ($password = ~ / ^ \ p {PosixGraph} + $/) {
-   print "password is valid \ n";
+   print "password is valid\n";
 }
 unless ($passowrd_invalid1 = ~ / ^ \ p {PosixGraph} + $/) {
-   print "passowrd_invalid1 is inalid \ n";
+   print "passowrd_invalid1 is inalid\n";
 }
 unless ($passowrd_invalid2 = ~ / ^ \ p {PosixGraph} + $/) {
-   print "passowrd_invalid2 is inalid \ n";
+   print "passowrd_invalid2 is inalid\n";
 }
 </pre>

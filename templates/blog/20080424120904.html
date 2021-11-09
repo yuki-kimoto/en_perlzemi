@@ -61,7 +61,7 @@ use warnings;
 # Get the name of the function you are executing
 # caller
 
-print "1: Get the name of the function you are executing. \ N";
+print "1: Get the name of the function you are executing.\n";
 func_name ();
 
 sub func_name {
@@ -69,24 +69,24 @@ sub func_name {
   If you specify 0 as the argument of the # caller function
   # You can get information about your own function.
   # The function name is in the 4th (element number is 3).
-  print $this_func_name, "\ n";
-  print "\ n";
+  print $this_func_name, "\n";
+  print "\n";
 }
 
-print "2: Get the function name without the package name. \ N";
+print "2: Get the function name without the package name.\n";
 func_name_none_package ();
 
 sub func_name_none_package {
   my $this_func_name = (caller 0) [3];
   $this_func_name = ~ s /. *:: //;
-  print $this_func_name, "\ n \ n";
+  print $this_func_name, "\n\n";
 }
 
-print "3: Make function name acquisition into a subroutine. \ N";
+print "3: Make function name acquisition into a subroutine.\n";
 test1 ();
 
 sub test1 {
-  print get_func_name (). "\ n";
+  print get_func_name (). "\n";
 }
 
 sub get_func_name {

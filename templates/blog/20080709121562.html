@@ -56,7 +56,7 @@ use warnings;
 # AUTOLOAD subroutine
 # ・ If defined, it will be called when the name of the subroutine cannot be found.
 
-print "1: AUTOLOAD calls a non-existent function \ n";
+print "1: AUTOLOAD calls a non-existent function\n";
 
 # When you call a function that is not defined anywhere.
 aaaaiiiii (1, 2);
@@ -69,8 +69,8 @@ sub AUTOLOAD {
 
   # You can receive the function name and arguments.
   my (@arg) = @_;
-  print "AUTOLOAD has been called. \ N";
-  print "The function you tried to call is $AUTOLOAD. \ N";
-  print "The argument is" .join(',', @arg). ". \ N";
+  print "AUTOLOAD has been called.\n";
+  print "The function you tried to call is $AUTOLOAD.\n";
+  print "The argument is" .join(',', @arg). ".\n";
 }
 </pre>

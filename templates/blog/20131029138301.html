@@ -153,28 +153,28 @@ my $data_1_2 = $data (1, 2);
 # Get the element value itself
 my $data_1_2_raw = $data-> at (1, 2);
 
-print "$data_1_2 \ n";
-print "$data_1_2_raw \ n";
+print "$data_1_2\n";
+print "$data_1_2_raw\n";
 
 # Set element.
 $data (1, 2). = 20;
 
-print "$data \ n";
+print "$data\n";
 
 # Get multiple elements (1D 2 to 3 ranks, 2D 2 ranks)
 my $data_sliced1 = $data (1: 2, 1);
 
-print "$data_sliced1 \ n";
+print "$data_sliced1\n";
 
 # Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
 $data (1: 2, 2). = pdl [21, 22];
 
-print "$data \ n";
+print "$data\n";
 
 # Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
 my $data_sliced2 = $data (2, 0: 1);
 
-print "$data_sliced2 \ n";
+print "$data_sliced2\n";
 
 # Setting of multiple elements (1D 3 rank, 2D 1-2 rank)
 $data (2, 0: 1). = pdl [
@@ -182,12 +182,12 @@ $data (2, 0: 1). = pdl [
   [31]
 ];;
 
-print "$data \ n";
+print "$data\n";
 
 # Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
 my $data_sliced3 = $data (1: 2, 0: 1);
 
-print "$data_sliced3 \ n";
+print "$data_sliced3\n";
 
 # Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
 $data (1: 2, 0: 1). = pdl [
@@ -220,7 +220,7 @@ Use the ones method to specify the number of ranks in multiple dimensions and in
 <pre>
 Initialize with # 1 (1D has 2 ranks, 2D has 3 ranks)
 my $data_ones = pdl-> ones (2, 3);
-print "$data_ones \ n";
+print "$data_ones\n";
 </pre>
 
 <h4> Initialize with null </h4>
@@ -257,23 +257,23 @@ use PDL;
 
 Initialize with # 0 (1D has 2 ranks, 2D has 3 ranks)
 my $data_zeros = pdl-> zeros (2, 3);
-print "$data_zeros \ n";
+print "$data_zeros\n";
 
 Initialize with # 1 (1D has 2 ranks, 2D has 3 ranks)
 my $data_ones = pdl-> ones (2, 3);
-print "$data_ones \ n";
+print "$data_ones\n";
 
 Initialize with # null
 my $data_null = pdl-> null;
-print "$data_null \ n";
+print "$data_null\n";
 
 Initialize with # 0-19
 my $data_seq = pdl-> sequence (20);
-print "$data_seq \ n";
+print "$data_seq\n";
 
 Initialize with # 0-14 (1D 3 ranks, 2D 5 ranks)
 my $data_seq2 = pdl-> sequence (3, 5);
-print "$data_seq2 \ n";
+print "$data_seq2\n";
 </pre>
 
 
@@ -459,9 +459,9 @@ my $data = pdl [
 
 # Sum calculation to reduce one-dimensional rank
 my $data_sumover1 = $data-> sumover;
-print "$data_sumover \ n";
+print "$data_sumover\n";
 
 # Sum calculation to reduce 2D rank
 my $data_sumover2 = $data-> xchg (0, 1)-> sumover;
-print "$data_sumover2 \ n";
+print "$data_sumover2\n";
 </pre>

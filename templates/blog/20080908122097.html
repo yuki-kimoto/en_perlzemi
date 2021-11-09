@@ -44,8 +44,8 @@ By fixing the initial value given to srand, it is possible to generate reproduci
 use strict;
 use warnings;
 
-print "(1) Generate reproducible random numbers. \ N";
-print "Generation of random number sequence (1st time) \ n";
+print "(1) Generate reproducible random numbers.\n";
+print "Generation of random number sequence (1st time)\n";
 
 # Used to initialize random number generation algorithm (seed means seed)
 my $seed = 12314;
@@ -53,17 +53,17 @@ my $seed = 12314;
 # Initialize random number generation algorithm
 srand $seed;
 for my $i (1 .. 10) {
-  print "$i times:". Int (rand 100). "\ n";
+  print "$i times:". Int (rand 100). "\n";
 }
-print "\ n";
+print "\n";
 
 
-print "Generate random number sequence (2nd time) \ n";
+print "Generate random number sequence (2nd time)\n";
 
 # Initialize random number generation algorithm
 srand $seed;
 for my $i (1 .. 10) {
-  print "$i times:". Int (rand 100). "\ n";
+  print "$i times:". Int (rand 100). "\n";
 }
-print "\ n";
+print "\n";
 </pre>

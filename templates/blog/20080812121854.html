@@ -54,8 +54,8 @@ $| = 1;
 # Reselect to the original filehandle.
 select $oldfh;
 
-print $fh "Write without delay \ n";
-print "Written at this point. Size is". -S $file. "Bytes. \ N";
+print $fh "Write without delay\n";
+print "Written at this point. Size is". -S $file. "Bytes.\n";
 sleep 3;
 
 close $fh or die "Cannot close $file";

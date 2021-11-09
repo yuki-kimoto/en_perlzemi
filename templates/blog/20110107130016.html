@@ -77,12 +77,12 @@ get'/' => sub {
             open my $write_fh,'>','cpanm'
               or die qq {Can't open "cpanm" for write: $!};
             
-            print $write_fh join("\ n", @cpanm);
+            print $write_fh join("\n", @cpanm);
             
             close $write_fh;
             
             my $output = `perl cpanm - local-lib = $home / perl5 $module 2> & 1`;
-            push @output, split / \ n /, $output;
+            push @output, split /\n /, $output;
         };
         
         return $self-> render (error => $@) if $@;

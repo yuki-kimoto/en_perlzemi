@@ -45,35 +45,35 @@ use warnings;
 # -s filename
 # Units are bytes.
 
-print "1: Get the size of the file. -S \ n";
+print "1: Get the size of the file. -S\n";
 my $file = "a.txt";
 if (-f $file) {
   my $file_size = -s $file;
-  print "The file size of $file is $file_size bytes. \ N \ n";
+  print "The file size of $file is $file_size bytes.\n\n";
 }
-else {print "$file did not exist. \ N \ n"}
+else {print "$file did not exist.\n\n"}
 </pre>
 
 <pre>
 use strict;
 use warnings;
 
-print "2: Stop printing when the file size exceeds a certain byte. \ N";
+print "2: Stop printing when the file size exceeds a certain byte.\n";
 
 my $file = "output_$$. txt";
 if (-e $file) {
-  die "$file exists. \ N";
+  die "$file exists.\n";
 }
 
 open my $fh, ">", $file
   or die "File open error: $!";
 
 while (-s $file <1_000_000) {
-  my $string = ('a' x 99). "\ n";
+  my $string = ('a' x 99). "\n";
   print $fh $string;
 }
 
-print "The file size of $file after output is". -S $file. "Bytes. \ N";
+print "The file size of $file after output is". -S $file. "Bytes.\n";
 
 close $fh;
 </pre>

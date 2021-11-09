@@ -86,22 +86,22 @@ die "Cannot fork: $!" unless defined $pid;
 if ($pid) {
   # Wait for the child process to finish.
   wait;
-  print "Parent process (child process ID: $pid) \ n \ n";
+  print "Parent process (child process ID: $pid)\n\n";
   my $exit_value = $? >> 8;
   my $dumped_core = $? & 128;
   my $signal_num = $? & 127;
   
   my $is_finished = WIFEXITED ($?);
  
-  print "Exit code of child process: $exit_value \ n";
-  print "whether a core dump has occurred: $dumped_core \ n";
-  print "Signal that terminated the child process: $signal_num \ n";
-  print "whether the child process has terminated: $is_finished \ n";
+  print "Exit code of child process: $exit_value\n";
+  print "whether a core dump has occurred: $dumped_core\n";
+  print "Signal that terminated the child process: $signal_num\n";
+  print "whether the child process has terminated: $is_finished\n";
 }
 else {
   # Wait 2 seconds in child process
   sleep 2;
-  print "child process \ n";
+  print "child process\n";
   die;
 }
 </pre>

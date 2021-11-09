@@ -40,14 +40,14 @@ my $file = "sample_20080520_$$. txt";
 sysopen(my $fh, $file, O_CREAT | O_WRONLY | O_EXCL)
   or die "Unable to create $file .: $!";
 close($fh);
-print "Preparation:'$file' has been created. \ N \ n";
+print "Preparation:'$file' has been created.\n\n";
 
-print "1: Delete the file. \ N";
+print "1: Delete the file.\n";
 if (unlink $file) {
-  print "'$file' has been deleted. \ N";
+  print "'$file' has been deleted.\n";
 }
 else {
-  print "'$file' could not be deleted. \ N";
+  print "'$file' could not be deleted.\n";
 }
 </pre>
 

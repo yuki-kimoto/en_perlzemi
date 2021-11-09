@@ -41,8 +41,8 @@ mkdir $dir1
   or die "Unable to create $dir1.: $!";
 mkdir $dir2
   or die "Unable to create $dir2.: $!";
-print "Preparation: $dir1 and $dir2 have been created. \ N \ n";
-print "1: Delete hierarchical directories at once. \ N";
+print "Preparation: $dir1 and $dir2 have been created.\n\n";
+print "1: Delete hierarchical directories at once.\n";
 
 {
   # To catch the warning, use the __WARN__ signal
@@ -59,7 +59,7 @@ print "1: Delete hierarchical directories at once. \ N";
     # Move to the above sub {} and exit with die.
     rmtree ($dir1);
                    
-    print "$dir1 has been deleted. \ N";
+    print "$dir1 has been deleted.\n";
   }
 }
 </pre>

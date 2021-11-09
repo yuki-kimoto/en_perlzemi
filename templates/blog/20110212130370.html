@@ -223,7 +223,7 @@ print file handle string
 Note that there is no comma between the filehandle and the string (one of the confusing and error-prone parts of Perl).
 
 <pre>
-my $str = "Hello \ n";
+my $str = "Hello\n";
 print $fh $str;
 </pre>
 
@@ -249,7 +249,7 @@ open my $fh,'>>', $file
 Use the print function to write a string to a file.
 
 <pre>
-my $str = "Hello \ n";
+my $str = "Hello\n";
 print $fh $str;
 </pre>
 
@@ -340,13 +340,13 @@ chomp string;
 
 That is, you can change the line breaks that you remove by changing the input record separator.
 
-Characters output by <h4> \ n </h4>
+Characters output by <h4>\n </h4>
 
-\ n represents a newline as a code, but in Windows it is a sequence of characters "0D 0A" in hexadecimal, and in Unix it is "0A". This is a constant and cannot be changed.
+\n represents a newline as a code, but in Windows it is a sequence of characters "0D 0A" in hexadecimal, and in Unix it is "0A". This is a constant and cannot be changed.
 
 <h4> Edit Windows files on Unix </h4>
 
-Consider editing a Windwos file on Unix. Since it is on Unix, "0D 0A" is assigned to the default input record separator "$/", and "0D 0A" is output for the escape sequence \ n. The line feed code of the file edited in Windows is "0D 0A", and it is necessary to correspond to this.
+Consider editing a Windwos file on Unix. Since it is on Unix, "0D 0A" is assigned to the default input record separator "$/", and "0D 0A" is output for the escape sequence\n. The line feed code of the file edited in Windows is "0D 0A", and it is necessary to correspond to this.
 
 <pre>
 # File open
@@ -375,7 +375,7 @@ open my $fh,'<', $file
 }
 </pre>
 
-If you don't mind changing the line feed code that is output, it is better to output \ n.
+If you don't mind changing the line feed code that is output, it is better to output\n.
 
 <h3> File read / write approach </h3>
 

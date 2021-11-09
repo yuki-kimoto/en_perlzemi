@@ -42,7 +42,7 @@ my @recs = parse_file ($file, $headers);
 # Output (because it is an array of hashes, follow it with for)
 for my $items (@recs) {
   # Concatenate using hash slices
-  print join(',', @ {$items} {@ $headers}). "\ n";
+  print join(',', @ {$items} {@ $headers}). "\n";
 }
 
 # Function for file analysis (I just write it back this time ...)
@@ -115,7 +115,7 @@ rika, 38, France
 
 <pre>
 for my $items (@recs) {
-  print join(',', @ {$items} {@ $headers}). "\ n";
+  print join(',', @ {$items} {@ $headers}). "\n";
 }
 </pre>
 

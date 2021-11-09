@@ -48,20 +48,20 @@ use warnings;
 
 use File::Spec;
 
-print "1: Create an OS-independent file name. \ N";
+print "1: Create an OS-independent file name.\n";
 # On Unix, it becomes lib / test1.t,
 # On Windows, it is lib \ test1.t.
 my $file_name = File::Spec-> catfile ('t','test1.t');
-print "\ $file_name = $file_name \ n \ n";
+print "\ $file_name = $file_name\n\n";
 
-print "2: Shows an OS-independent" directory one level higher ". \ n ";
+print "2: Shows an OS-independent" directory one level higher ".\n ";
 my $up_dir = File::Spec-> updir;
-print "\ $up_dir = $up_dir \ n \ n";
+print "\ $up_dir = $up_dir\n\n";
 
-print "3: Create a directory named lib, one level above this script. \ N";
+print "3: Create a directory named lib, one level above this script.\n";
 use FindBin;
 my $lib_dir = File::Spec-> catfile ($FindBin::Bin, File::Spec-> updir,'lib');
-print "\ $lib_dir = $lib_dir \ n \ n";
+print "\ $lib_dir = $lib_dir\n\n";
 </pre>
 
 (Reference) <a href="/blog/20100524127696.html"> FindBin</a>

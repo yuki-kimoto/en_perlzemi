@@ -159,18 +159,18 @@ $str1 = decode ('UTF-8', $str1);
 my $str2 = "Japanese";
 
 # You can count characters correctly by converting to an internal string
-print length $str2, "\ n"; # 3
+print length $str2, "\n"; # 3
 
 # Regular expressions can be used correctly between internal strings
 if ($str1 = ~ / $str2 /) {
-  print "Match! \ N";
+  print "Match!\n";
 }
 
 # Encode the internal string into a byte string just before outputting
 $str1 = encode ('UTF-8', $str1);
 $str2 = encode ('UTF-8', $str2);
 
-print "'$str1' is match'$str2'\ n";
+print "'$str1' is match'$str2'\n";
 </pre>
 
 <h3> Character code conversion </h3>

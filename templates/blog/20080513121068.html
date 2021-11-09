@@ -46,17 +46,17 @@ Reuse the result of the # file operator (or stat).
 # Preparation
 my $file ='a.txt';
 unless (-f $file) {
-  die "$file does not exist. \ N"; # Check for file existence
+  die "$file does not exist.\n"; # Check for file existence
 }
 
-print "1: Check if the file is old and has a large file size \ n";
+print "1: Check if the file is old and has a large file size\n";
 my $size = 1_000_000;
 my $from_last_access = 90;
 
 if (-s $file> $size && -A _> $from_last_access) {
   # You can use _ for the second file test.
   print "$file is greater than $size bytes,".
-    "It's been over $from_last_access days since last access. \ N \ n";
+    "It's been over $from_last_access days since last access.\n\n";
 }
-else {print "$file did not meet the condition. \ N"}
+else {print "$file did not meet the condition.\n"}
 </pre>

@@ -122,7 +122,7 @@ Let's output the elements of the array in order with the for statement.
 
 <pre>
 for (my $i = 0; $i <@nums; $i++) {
-  print $nums [$i], "\ n";
+  print $nums [$i], "\n";
 }
 </pre>
 
@@ -130,7 +130,7 @@ Let's output the elements of the array in order with the foreach statement.
 
 <pre>
 foreach my $num (@nums) {
-  print $num, "\ n";
+  print $num, "\n";
 }
 </pre>
 
@@ -449,14 +449,14 @@ use strict;
 use warnings;
 
 my @numbers = (1, 2, 3, 3, 4, 5, 6, 6, 6, 7, 8);
-print'array: @numbers = ('. join(',', @numbers). ") \ n \ n";
+print'array: @numbers = ('. join(',', @numbers). ")\n\n";
 
 # 1: Check if the array contains the specified element.
 Apply # grep.
 my $saerch_number = 3;
 if (grep {$_ == $saerch_number} @numbers) {
   # If the element to be searched is found, the inside of the if statement will be true.
-  print "1: $saerch_number exists. \ N";
+  print "1: $saerch_number exists.\n";
 }
 
 # 2: Remove duplicates from array (order is not guaranteed)
@@ -468,12 +468,12 @@ for my $number (@numbers) {
 
 # Get a list of hash keys
 my @no_duplicate_numbers = keys% no_duplicate_hash;
-print '2: @no_duplicate_numbers = ('. join(',', @no_duplicate_numbers). ") \ N \ n";
+print '2: @no_duplicate_numbers = ('. join(',', @no_duplicate_numbers). ")\n\n";
 
 # 3: Count the number of overlapping elements in the array (continued above)
-print "3: Number of elements \ n";
+print "3: Number of elements\n";
 for my $key (sort keys% no_duplicate_hash) {
-  print "$key contains $no_duplicate_hash {$key}. \ N";
+  print "$key contains $no_duplicate_hash {$key}.\n";
 }
 </pre>
 
@@ -486,23 +486,23 @@ use strict;
 use warnings;
 
 my @numbers = (1, 2, 3, 4, 5, 6, 7, 8);
-print "array: \ @numbers =", join(',', @numbers). ") \ N \ n";
+print "array: \ @numbers =", join(',', @numbers). ")\n\n";
 
 # 1: Array reference If you put \ before @, it becomes an array reference.
 my $numbers_ref1 = \ @ numbers;
 
 You can revert to the original array by prefixing the # array reference with @.
 # This is called a dereference.
-print "array: \ @ \ $numbers_ref1 =" .join(',', @ $numbers_ref1), ") \ n";
+print "array: \ @ \ $numbers_ref1 =" .join(',', @ $numbers_ref1), ")\n";
 
 # 2: However, I usually don't write it like the above.
 # Make a direct array reference using something called an anonymous array ([]).
 my $numbers_ref2 = [1, 2, 3, 4];
-print "array: \ $numbers_ref2 =", join(',', @ $numbers_ref2). "] \ N \ n";
+print "array: \ $numbers_ref2 =", join(',', @ $numbers_ref2). "]\n\n";
 
 # 3: Access the elements of the array. ($array_ref-> [element number])
-print "\ $numbers_ref2-> [0] = $numbers_ref2-> [0] \ n";
-print "\ $numbers_ref2-> [1] = $numbers_ref2-> [1] \ n";
+print "\ $numbers_ref2-> [0] = $numbers_ref2-> [0]\n";
+print "\ $numbers_ref2-> [1] = $numbers_ref2-> [1]\n";
 </pre>
 
 Execution result
@@ -525,42 +525,42 @@ use strict;
 use warnings;
 
 my @numbers = (1, 2, 3);
-print "array: \ @numbers =", join(',', @numbers), ") \ n \ n";
+print "array: \ @numbers =", join(',', @numbers), ")\n\n";
 
 my $numbers_ref = [1, 2, 3];
 
 # 1. Element reference
-print "1. Element reference \ n";
-print "\ $numbers [0] =", $numbers [0], "\ n";
+print "1. Element reference\n";
+print "\ $numbers [0] =", $numbers [0], "\n";
 
 # Array reference
-print "\ $numbers_ref-> [0] =", $numbers_ref-> [0], "\ n";
-print "\ n";
+print "\ $numbers_ref-> [0] =", $numbers_ref-> [0], "\n";
+print "\n";
 
 # 2. Processing of each element
-print "2. Processing of each element \ n";
+print "2. Processing of each element\n";
 
 # arrangement
 print "\ @ numbers =";
 for my $number (@numbers) {
   print $number. ",";
 }
-print "\ n";
+print "\n";
 
 # Array reference (dereference it to the for statement)
 print "\ @ {\ $numbers_ref} =";
 for my $number (@ $numbers_ref) {
   print $number. ","
 }
-print "\ n \ n";
+print "\n\n";
 
 # 3. How to use the function
-print "3. How to use the function \ n";
+print "3. How to use the function\n";
 
 # arrangement
 push @numbers, 4;
 @numbers = sort {$b <=> $a} @numbers;
-print "\ @ numbers = (", join(',', @numbers), ") \ n";
+print "\ @ numbers = (", join(',', @numbers), ")\n";
 
 # Array reference (dereference and pass to function)
 push @ $numbers_ref, 4;
@@ -568,7 +568,7 @@ push @ $numbers_ref, 4;
 The # sort function returns an array, so use an anonymous array []
 # Recreating an array reference.
 $numbers_ref = [sort {$b <=> $a} @ $numbers_ref];
-print "\ @ \ $numbers_ref =", join(',', @ $numbers_ref), ") \ n \ n";
+print "\ @ \ $numbers_ref =", join(',', @ $numbers_ref), ")\n\n";
 </pre>
 
 Execution result

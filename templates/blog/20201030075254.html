@@ -28,7 +28,7 @@ Here are the escape sequences that can be used in double-quoted strings.
 
 <h3> Escape sequence corresponding to ASCII code </h3>
 
-Frequently used ones are line breaks "\ n" and tabs "\ t".
+Frequently used ones are line breaks "\n" and tabs "\ t".
 
 <table>
   <tr> <th> Escape <br> Sequence </th> <th> Code <br> Point <br> Decimal </th> <th> Code <br> Point <br> Hexadecimal </th> < th> ASCII </th> <th> meaning </th> </tr>
@@ -36,7 +36,7 @@ Frequently used ones are line breaks "\ n" and tabs "\ t".
   <tr> <td> \ b </td> <td> 8 </td> <td> 08 </td> <td> BS </td> <td> Backspace </td> </tr>
   <tr> <td> \ e </td> <td> 27 </td> <td> 1B </td> <td> ESC </td> <td> Escape Sequence </td> </tr>
   <tr> <td> \ f </td> <td> 12 </td> <td> 0C </td> <td> FF </td> <td> form feed </td> </tr>
-  <tr> <td> \ n </td> <td> 10 </td> <td> 0A </td> <td> LF </td> <td> Line feed </td> </tr>
+  <tr> <td>\n </td> <td> 10 </td> <td> 0A </td> <td> LF </td> <td> Line feed </td> </tr>
   <tr> <td> \ r </td> <td> 13 </td> <td> 0D </td> <td> CR </td> <td> Carriage return </td> </tr>
   <tr> <td> \ t </td> <td> 9 </td> <td> 09 </td> <td> TAB </td> <td> Tab </td> </tr>
 </table>
@@ -45,7 +45,7 @@ This is a sample using the escape sequence of tabs and line breaks.
 
 <pre>
 # Use tabs and line breaks
-my $line = "ID \ tName \ tPrice \ n";
+my $line = "ID \ tName \ tPrice\n";
 </pre>
 
 <h3> Occasional escape sequences </h3>
@@ -58,19 +58,19 @@ I also sometimes use escape sequences that represent double quotes "\" "and back
   <tr> <td> \\ </td> <td> \ </td> </tr>
 </table>
 
-<h3> Notes on line break "\ n" </h3>
+<h3> Notes on line break "\n" </h3>
 
-There is one caveat regarding line breaks "\ n".
+There is one caveat regarding line breaks "\n".
 
-In the source code of the program, "\ n" is a single character and represents "LF" in ASCII code and "0A" in hexadecimal. This matches the Linx / Unix line feed code.
+In the source code of the program, "\n" is a single character and represents "LF" in ASCII code and "0A" in hexadecimal. This matches the Linx / Unix line feed code.
 
 One thing to keep in mind is that Perl's I / O layer automatically converts to OS line feed code when outputting to standard output or files.
 
-"\ N" is converted to a two-character line feed code "0D 0A" on Windows. On Unix / Linux / macOS, it is "0A" without conversion.
+"\n" is converted to a two-character line feed code "0D 0A" on Windows. On Unix / Linux / macOS, it is "0A" without conversion.
 
 <pre>
 # "0D 0A" on Windows, "0A" on Unix / Linux / Mac
-print "Hello \ n";
+print "Hello\n";
 </pre>
 
 To avoid this conversion, use escape sequences that directly specify the ASCII code. How to specify the ASCII code directly is explained below.

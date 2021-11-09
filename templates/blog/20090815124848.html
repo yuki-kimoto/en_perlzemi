@@ -215,10 +215,10 @@ my $encode_to;
 if ($^ O eq'MSWin32') {$encode_to ='shift-jis'}
 else {$encode_to ='utf8'}
 print(
-  encode ($encode_to, $month_name). "\ n".
-  encode ($encode_to, $month_abbr). "\ n".
-  encode ($encode_to, $day_name). "\ n".
-  encode ($encode_to, $day_abbr). "\ n"
+  encode ($encode_to, $month_name). "\n".
+  encode ($encode_to, $month_abbr). "\n".
+  encode ($encode_to, $day_name). "\n".
+  encode ($encode_to, $day_abbr). "\n"
 );
 </pre>
 
@@ -991,12 +991,12 @@ my $second = $dt-> second;
 my $yday = $dt-> day_of_year;
 my $qtr = $dt-> quarter;
 
-print "(1) Date / time information of DateTime \ n";
+print "(1) Date / time information of DateTime\n";
 print(
-  "${year} year ${mon} month ${mday} day ${wday} th day \ n".
-  "${hour} hours ${minute} minutes ${second} seconds \ n".
-  "${yday} day (counting in one year) \ n".
-  "${qtr} period (out of quarter) \ n"
+  "${year} year ${mon} month ${mday} day ${wday} th day\n".
+  "${hour} hours ${minute} minutes ${second} seconds\n".
+  "${yday} day (counting in one year)\n".
+  "${qtr} period (out of quarter)\n"
 );
 </pre>
 Execution result
@@ -1035,12 +1035,12 @@ my $second = $dt-> second;
 my $yday = $dt-> day_of_year;
 my $qtr = $dt-> quarter;
 
-print "(1) Get the current time. \ N";
+print "(1) Get the current time.\n";
 print(
-  "${year} year ${mon} month ${mday} day ${wday} th day \ n".
-  "${hour} hours ${minute} minutes ${second} seconds \ n".
-  "${yday} day (counting in one year) \ n".
-  "${qtr} period (out of quarter) \ n"
+  "${year} year ${mon} month ${mday} day ${wday} th day\n".
+  "${hour} hours ${minute} minutes ${second} seconds\n".
+  "${yday} day (counting in one year)\n".
+  "${qtr} period (out of quarter)\n"
 );
 </pre>
 Execution result
@@ -1074,17 +1074,17 @@ my $second = $dt-> second;
 my $yday = $dt-> day_of_year;
 my $qtr = $dt-> quarter;
 
-print "(1) Create date information from epoch seconds. \ N";
+print "(1) Create date information from epoch seconds.\n";
 print(
   $year, "year",
   $mon, "month",
   $mday, "day",
-  $wday, "third day \ n",
+  $wday, "third day\n",
   $hour, "hour",
   $minute, "minute",
-  $second, "seconds \ n",
-  $yday, "Day (counting in one year) \ n",
-  $qtr, "Period (out of quarter) \ n"
+  $second, "seconds\n",
+  $yday, "Day (counting in one year)\n",
+  $qtr, "Period (out of quarter)\n"
 );
 </pre>
 
@@ -1125,7 +1125,7 @@ use warnings;
 use DateTime;
 use Encode;
 
-print "(1) Print the month name and day of the week name in Japanese. \ N";
+print "(1) Print the month name and day of the week name in Japanese.\n";
 my $dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 
 # Month name
@@ -1146,10 +1146,10 @@ if ($^ O eq'MSWin32') {$encode_to ='shift-jis'}
 else {$encode_to ='utf8'}
 
 print(
-  encode ($encode_to, $month_name). "\ n".
-  encode ($encode_to, $month_abbr). "\ n".
-  encode ($encode_to, $day_name). "\ n".
-  encode ($encode_to, $day_abbr). "\ n"
+  encode ($encode_to, $month_name). "\n".
+  encode ($encode_to, $month_abbr). "\n".
+  encode ($encode_to, $day_name). "\n".
+  encode ($encode_to, $day_abbr). "\n"
 );
 </pre>
 
@@ -1178,13 +1178,13 @@ hift-jis'}
 else {$encode_to ='utf8'}
 
 # Generation of locale
-print "(1) DateTime::Locale object \ n";
+print "(1) DateTime::Locale object\n";
 my $locale = DateTime::Locale-> load ('ja');
 my $dt = DateTime-> now (locale => $locale, time_zone =>'local');
 
 # Day of the week name
 my $day_name = $dt-> day_name;
-print encode ($encode_to, $day_name). "\ n";
+print encode ($encode_to, $day_name). "\n";
 </pre>
 
 This is a sample to get the date and time.
@@ -1198,7 +1198,7 @@ use DateTime::Locale;
 
 my $dt = DateTime-> now (time_zone =>'local');
 
-print "(1) Convenient output method of DateTime date / time \ n";
+print "(1) Convenient output method of DateTime date / time\n";
 my $ymd = $dt-> ymd;
 my $ymd_slash = $dt-> ymd ('/');
 my $mdy = $dt-> mdy;
@@ -1210,15 +1210,15 @@ my $hms_hyphen = $dt-> hms ('-');
 my $ymdhms = $dt-> datetime;
 
 print(
-  "Date (hyphen) $ymd \ n".
-  "Date (slash) $ymd_slash \ n".
-  "Month, day, year (hyphen) $mdy \ n".
-  "Month, day, year (slash) $mdy_slash \ n".
-  "Day / month / year (hyphen) $dmy \ n".
-  "Day / month / year (slash) $dmy_slash \ n \ n".
-  "Hour, minute, second (colon) $hms \ n".
-  "Hour, minute and second (hyphen) $hms_hyphen \ n \ n".
-  "Year / month / day / hour / minute / second $ymdhms \ n"
+  "Date (hyphen) $ymd\n".
+  "Date (slash) $ymd_slash\n".
+  "Month, day, year (hyphen) $mdy\n".
+  "Month, day, year (slash) $mdy_slash\n".
+  "Day / month / year (hyphen) $dmy\n".
+  "Day / month / year (slash) $dmy_slash\n\n".
+  "Hour, minute, second (colon) $hms\n".
+  "Hour, minute and second (hyphen) $hms_hyphen\n\n".
+  "Year / month / day / hour / minute / second $ymdhms\n"
 );
 </pre>
 
@@ -1229,15 +1229,15 @@ use strict;
 use warnings;
 use DateTime;
 
-print "(1) Determine if it is a leap year. \ N";
+print "(1) Determine if it is a leap year.\n";
 my $dt1 = DateTime-> now (time_zone =>'local');
 my $is_leap_year = $dt1-> is_leap_year;
-if ($is_leap_year) {print "This year is a leap year. \ N \ n"}
-else {print "This year is not a leap year. \ N \ n"}
+if ($is_leap_year) {print "This year is a leap year.\n\n"}
+else {print "This year is not a leap year.\n\n"}
 
-print "(2) Get the last day of the month. \ N";
+print "(2) Get the last day of the month.\n";
 my $dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
-print "The last day of November 2008 is". $Dt2-> day. "The day. \ N";
+print "The last day of November 2008 is". $Dt2-> day. "The day.\n";
 </pre>
 
 This is a sample strftime method. I'm trying all the formats with samples.
@@ -1247,66 +1247,66 @@ use strict;
 use warnings;
 use DateTime;
 
-print "(1) strftime format specification list \ n";
+print "(1) strftime format specification list\n";
 my $dt = DateTime-> now (time_zone =>'local');
 
-print'% a: Abbreviation for day of the week:'. $Dt-> strftime("% a"). "\ n";
-print'% A: Day of the week name:'. $Dt-> strftime("% A"). "\ n";
-print'% b: month abbreviation:'. $dt-> strftime("% b"). "\ n";
-print'% B: month name:'. $dt-> strftime("% B"). "\ n";
-print'% c: default format:'. $Dt-> strftime("% c"). "\ n";
-print'% C: First two digits of the year:'. $Dt-> strftime("% C"). "\ n";
-print'% d: days (01 to 31):'. $Dt-> strftime("% d"). "\ n";
-print'% D: Same as% m /% d /% y. Month Day Year:'. $Dt-> strftime("% D"). "\ n";
+print'% a: Abbreviation for day of the week:'. $Dt-> strftime("% a"). "\n";
+print'% A: Day of the week name:'. $Dt-> strftime("% A"). "\n";
+print'% b: month abbreviation:'. $dt-> strftime("% b"). "\n";
+print'% B: month name:'. $dt-> strftime("% B"). "\n";
+print'% c: default format:'. $Dt-> strftime("% c"). "\n";
+print'% C: First two digits of the year:'. $Dt-> strftime("% C"). "\n";
+print'% d: days (01 to 31):'. $Dt-> strftime("% d"). "\n";
+print'% D: Same as% m /% d /% y. Month Day Year:'. $Dt-> strftime("% D"). "\n";
 print'% e: day (1 to 31) The second digit of the one digit number (1 to 9) is a space. :'
-  . $dt-> strftime("% e"). "\ n";
-print'% F: Same as% Y-% m-% d (eg 2008-11-31):'. $Dt-> strftime("% F"). "\ n";
-print'% G: Year (I don't know the difference from% Y):'. $Dt-> strftime("% G"). "\ n";
-print'% g: Last two digits of the year (00-99):'. $Dt-> strftime("% g"). "\ n";
-print'% h: Same as% b. Month abbreviation:'. $Dt-> strftime("% h"). "\ n";
-print'% H: Hour (00 to 23):'. $Dt-> strftime("% H"). "\ n";
-print'% I: Hour (01 to 12) Time in 12-hour notation:'. $Dt-> strftime("% I"). "\ n";
+  . $dt-> strftime("% e"). "\n";
+print'% F: Same as% Y-% m-% d (eg 2008-11-31):'. $Dt-> strftime("% F"). "\n";
+print'% G: Year (I don't know the difference from% Y):'. $Dt-> strftime("% G"). "\n";
+print'% g: Last two digits of the year (00-99):'. $Dt-> strftime("% g"). "\n";
+print'% h: Same as% b. Month abbreviation:'. $Dt-> strftime("% h"). "\n";
+print'% H: Hour (00 to 23):'. $Dt-> strftime("% H"). "\n";
+print'% I: Hour (01 to 12) Time in 12-hour notation:'. $Dt-> strftime("% I"). "\n";
 print'% j: What day is it for the first time in the year? (001 to 366):'
-  . $dt-> strftime("% j"). "\ n";
+  . $dt-> strftime("% j"). "\n";
 print'% k: Hour (0 to 23) The second digit of the one digit number (0 to 9) is a space. :'
-  . $dt-> strftime("% k"). "\ n";
-print'% l: Hour (1 to 12) Time in 12-hour notation:'. $Dt-> strftime("% l"). "\ n";
-print'% m: Month number (01 to 12):'. $Dt-> strftime("% m"). "\ n";
-print'% M: Minutes (00 to 59):'. $Dt-> strftime("% M"). "\ n";
-print'% n: Newline character:'. $Dt-> strftime("% n"). "\ n";
+  . $dt-> strftime("% k"). "\n";
+print'% l: Hour (1 to 12) Time in 12-hour notation:'. $Dt-> strftime("% l"). "\n";
+print'% m: Month number (01 to 12):'. $Dt-> strftime("% m"). "\n";
+print'% M: Minutes (00 to 59):'. $Dt-> strftime("% M"). "\n";
+print'% n: Newline character:'. $Dt-> strftime("% n"). "\n";
 print'% N: milliseconds (write% 3N will display milliseconds in 3 digits and% 6N will display milliseconds in 6 digits):'
-  . $dt-> strftime("% 3N"). "\ n";
-print'% p: AM or PM:'. $Dt-> strftime("% p"). "\ n";
-print'% P: am or pm:'. $Dt-> strftime("% P"). "\ n";
+  . $dt-> strftime("% 3N"). "\n";
+print'% p: AM or PM:'. $Dt-> strftime("% p"). "\n";
+print'% P: am or pm:'. $Dt-> strftime("% P"). "\n";
 print'% r:% I:% M:% S Same as% p. (11:55:23 PM, etc.):'
-  . $dt-> strftime("% r"). "\ n";
-print'% R: hours and minutes (15:16, etc.):'. $Dt-> strftime("% R"). "\ n";
-print'% s: seconds from epoch:'. $dt-> strftime("% s"). "\ n";
-print'% S: seconds (00 to 61):'. $Dt-> strftime("% S"). "\ n";
-print'% t: tab character:'. $Dt-> strftime("% t"). "\ n";
+  . $dt-> strftime("% r"). "\n";
+print'% R: hours and minutes (15:16, etc.):'. $Dt-> strftime("% R"). "\n";
+print'% s: seconds from epoch:'. $dt-> strftime("% s"). "\n";
+print'% S: seconds (00 to 61):'. $Dt-> strftime("% S"). "\n";
+print'% t: tab character:'. $Dt-> strftime("% t"). "\n";
 print'% T: Same as% H:% M:% S. Hours, minutes and seconds (such as 23:14:03):'
-  . $dt-> strftime("% T"). "\ n";
-print'% u: Day of the week number (1 to 7. Monday is 1):'. $Dt-> strftime("% u"). "\ n";
+  . $dt-> strftime("% T"). "\n";
+print'% u: Day of the week number (1 to 7. Monday is 1):'. $Dt-> strftime("% u"). "\n";
 print'% U: How many weeks from the beginning of the year? First Sunday of the year (00-53)'
   Count'.'As the beginning of the week. The first Sunday week is 01. The week before that was 00. :'
-  . $dt-> strftime("% U"). "\ n";
+  . $dt-> strftime("% U"). "\n";
 print'% V: How many weeks from the beginning of the year? (01-53) Weeks with at least 4 days'
   .'Shall be the first week of the year. Count Monday as the beginning of the week. :'
-  . $dt-> strftime("% V"). "\ n";
-print'% w: Day of the week number (0 to 6. Sunday is 0):'. $Dt-> strftime("% w"). "\ n";
+  . $dt-> strftime("% V"). "\n";
+print'% w: Day of the week number (0 to 6. Sunday is 0):'. $Dt-> strftime("% w"). "\n";
 print'% W: Weeks counting from the beginning of the year (00-53) The first Monday of the year is the week'
   .'Count as the first. The first Monday week is 01. The week before that was 00. :'
-  . $dt-> strftime("% W"). "\ n";
-print'% x: default date format:'. $Dt-> strftime("% x"). "\ n";
-print'% X: Default format for time:'. $Dt-> strftime("% X"). "\ n";
-print'% y: last two digits of the year:'. $Dt-> strftime("% y"). "\ n";
-print'% Y: Year:'. $Dt-> strftime("% Y"). "\ n";
+  . $dt-> strftime("% W"). "\n";
+print'% x: default date format:'. $Dt-> strftime("% x"). "\n";
+print'% X: Default format for time:'. $Dt-> strftime("% X"). "\n";
+print'% y: last two digits of the year:'. $Dt-> strftime("% y"). "\n";
+print'% Y: Year:'. $Dt-> strftime("% Y"). "\n";
 print'% z: Time zone time shift from UTC (Coordinated Universal Time):'
-  . $dt-> strftime("% z"). "\ n";
-print'% Z: timezone name:'. $Dt-> strftime("% Z"). "\ n";
-print'%%:%:'. $Dt-> strftime("%%"). "\ n";
+  . $dt-> strftime("% z"). "\n";
+print'% Z: timezone name:'. $Dt-> strftime("% Z"). "\n";
+print'%%:%:'. $Dt-> strftime("%%"). "\n";
 print'%{method}: You can use the method of DateTime.pm. Example%{ymd}:'
-  . $dt-> strftime("%{ymd}"). "\ n";
+  . $dt-> strftime("%{ymd}"). "\n";
 </pre>
 
 Execution result
@@ -1370,7 +1370,7 @@ use strict;
 use warnings;
 use DateTime;
 
-print "(1) -1 Addition of dates \ n";
+print "(1) -1 Addition of dates\n";
 my $dt = DateTime-> now (time_zone =>'local');
 
 # Addition of days
@@ -1385,13 +1385,13 @@ $dt_next_month-> add (months => 1);
 my $dt_next_year = $dt-> clone;
 $dt_next_year-> add (years => 1);
 
-print'Currently'. $Dt-> date. ". \ N \ n";
-print'Tomorrow'. $Dt_tommorow-> date. ". \ N";
-print '1 year later'. $Dt_next_month-> date. ". \ N";
-print '1 year later'. $Dt_next_year-> date. ". \ N \ n";
+print'Currently'. $Dt-> date. ".\n\n";
+print'Tomorrow'. $Dt_tommorow-> date. ".\n";
+print '1 year later'. $Dt_next_month-> date. ".\n";
+print '1 year later'. $Dt_next_year-> date. ".\n\n";
 
 # Hour addition
-print "(1) -2 Add time \ n";
+print "(1) -2 Add time\n";
 my $dt_next_hour = $dt-> clone;
 $dt_next_hour-> add (hours => 1);
 
@@ -1403,10 +1403,10 @@ $dt_next_minutes-> add (minutes => 1);
 my $dt_next_second = $dt-> clone;
 $dt_next_second-> add (seconds => 1);
 
-print'Currently'. $Dt-> time. ". \ N \ n";
-print '1 hour later'. $Dt_next_hour-> time. ". \ N";
-print '1 minute later'. $Dt_next_minutes-> time. ". \ N";
-print '1 second later'. $Dt_next_second-> time. ". \ N";
+print'Currently'. $Dt-> time. ".\n\n";
+print '1 hour later'. $Dt_next_hour-> time. ".\n";
+print '1 minute later'. $Dt_next_minutes-> time. ".\n";
+print '1 second later'. $Dt_next_second-> time. ".\n";
 </pre>
 
 Execution result
@@ -1434,21 +1434,21 @@ use strict;
 use warnings;
 use DateTime;
 
-print "(1) Date subtraction \ n";
+print "(1) Date subtraction\n";
 my $dt = DateTime-> now (time_zone =>'local');
 
 # Subtraction of days
 my $dt_yesterday = $dt-> clone;
 $dt_yesterday-> subtract (days => 1);
 
-print'The current date is'. $Dt-> date. ". \ N";
-print'Yesterday's date is'. $Dt_yesterday-> date. ". \ N \ n";
+print'The current date is'. $Dt-> date. ".\n";
+print'Yesterday's date is'. $Dt_yesterday-> date. ".\n\n";
 
 # Combine addition and subtraction.
 my $dt_mix = $dt-> clone;
 $dt_mix = $dt_mix-> add (months => 1)-> subtract (days => 1);
 
-print "(2) Subtraction between DateTime objects \ n";
+print "(2) Subtraction between DateTime objects\n";
 my $dt1 = DateTime-> new (year => 2000, month => 2, day => 1);
 my $dt2 = DateTime-> new (year => 2003, month => 3, day => 19);
 
@@ -1456,7 +1456,7 @@ my $duration = $dt2- $dt1;
 
 print'Period'. $Duration-> years.' Years and'
   . $duration-> months.'Months and'
-  . $duration-> days. "Days \ n";
+  . $duration-> days. "Days\n";
 </pre>
 
 Execution result
@@ -1498,28 +1498,28 @@ my $dt2 = DateTime-> new (
 
 my $duration = $dt2- $dt1;
 
-print "(1) Get the period. \ N";
+print "(1) Get the period.\n";
 print "Period is". $Duration-> years. "Year and"
   . $duration-> months. "Months and"
   . $duration-> days. "Days and"
   . $duration-> hours. "Time and"
   . $duration-> minutes. "minutes and"
-  . $duration-> seconds. "Seconds \ n \ n";
+  . $duration-> seconds. "Seconds\n\n";
 
-print "(2) Determine the order of the periods. \ N";
+print "(2) Determine the order of the periods.\n";
 if ($duration-> is_positive) {
-  print "\ $dt2 is a date after \ $dt1. \ N";
+  print "\ $dt2 is a date after \ $dt1.\n";
 }
 elsif ($duration-> is_zero) {
-  print "\ $dt2 is equal to \ $dt1. \ N";
+  print "\ $dt2 is equal to \ $dt1.\n";
 }
 elsif ($duration-> is_negative) {
-  print "\ $dt2 is a date before \ $dt1. \ N";
+  print "\ $dt2 is a date before \ $dt1.\n";
 }
-print "\ n";
+print "\n";
 
-print "(3) Get the period on a monthly basis. \ N";
-print'The period is'. $Duration-> in_units ('months'). "Months. \ N";
+print "(3) Get the period on a monthly basis.\n";
+print'The period is'. $Duration-> in_units ('months'). "Months.\n";
 </pre>
 
 Execution result

@@ -57,7 +57,7 @@ This is a sample that outputs the elements of the array in order.
 # Output array elements in order
 my @nums = (3, 4, 5);
 foreach my $num (@nums) {
-  print "$num \ n";
+  print "$num\n";
 }
 </pre>
 
@@ -67,7 +67,7 @@ This is a sample that outputs the elements of an array in order when the data st
 # Output array elements in sequence (array reference)
 my $nums = [3, 4, 5];
 foreach my $num (@ $nums) {
-  print "$num \ n";
+  print "$num\n";
 }
 </pre>
 
@@ -81,7 +81,7 @@ my $data = [
 ];;
 
 foreach my $record(@ $data) {
-  print join("\ t", @ $record). "\ n";
+  print join("\ t", @ $record). "\n";
 }
 </pre>
 
@@ -96,7 +96,7 @@ my $people = [
 
 foreach my $person (@ $persons) {
   my @record = ($person-> {name}, $person-> {age});
-  print join("\ t", @record). "\ n";
+  print join("\ t", @record). "\n";
 }
 </pre>
 
@@ -106,25 +106,25 @@ Here are some samples of foreach.
 use strict;
 use warnings;
 
-print "[1] \ n";
+print "[1]\n";
 my @persons = ('tom','taro','sinji');
 foreach my $person (@persons) {
-  print $person, "\ n";
+  print $person, "\n";
 }
-print "\ n";
+print "\n";
 
-print "[2] \ n";
+print "[2]\n";
 my @numbers = (1, 2, 3);
 foreach my $number (@numbers) {
   Since what is passed to # $number is an alias for the element, you can change the value of the array itself.
   $number = $number * 2;
 }
-print "\ @ numbers = (", join(',', @numbers), ") \ n \ n";
+print "\ @ numbers = (", join(',', @numbers), ")\n\n";
 
-print "[3] \ n";
+print "[3]\n";
 foreach my $index(0 .. $# persons) {
   # When you want to use the element number, pass the element number without passing the element of the array itself.
-  print "\ $persons [$index] = $persons [$index] \ n";
+  print "\ $persons [$index] = $persons [$index]\n";
 }
 </pre>
 Execution result

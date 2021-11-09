@@ -44,7 +44,7 @@ Pass it to new in IO::ScalarArray to create the object. Then use a typeglob to m
 <pre>
 use IO::ScalarArray;
 {
-  my @inputs = ("1 \ n", "2 \ n", "3 \ n");
+  my @inputs = ("1\n", "2\n", "3\n");
   my $stdin = IO::ScalarArray-> new (\ @ inputs);
   local * STDIN = * $stdin;
   # Exam description
@@ -65,7 +65,7 @@ use warnings;
 use IO::ScalarArray;
 
 {
-  my @answers = ("y \ n");
+  my @answers = ("y\n");
   my $stdin = IO::ScalarArray-> new (\ @ answers);
   
   local * STDIN = * $stdin;
@@ -76,7 +76,7 @@ use IO::ScalarArray;
 
 # Function to ask if you are male
 sub question {
-  print "Are you man? \ N";
+  print "Are you man?\n";
   my $answer = <STDIN>;
   
   chomp $answer;
@@ -98,8 +98,8 @@ use warnings;
 
 {
   my $inputs = << "EOS";
-y \ n
-n \ n
+y\n
+n\n
 EOS
 
   # How to use scalar input / output
@@ -116,7 +116,7 @@ EOS
 
 # Function to ask if you are male
 sub question {
-  print "Are you man? \ N";
+  print "Are you man?\n";
   my $answer = <STDIN>;
   
   chomp $answer;

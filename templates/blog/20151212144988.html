@@ -435,7 +435,7 @@ Validator::Custom has the following default filter functions: All filter functio
   my $new_value = $vc-> filter ($value,'trim');
 </pre>
 
-Remove the leading and trailing blanks. Note that it removes Unicode whitespace as well as ASCII whitespace [\ t \ n \ r \ f].
+Remove the leading and trailing blanks. Note that it removes Unicode whitespace as well as ASCII whitespace [\ t\n \ r \ f].
 
 Filtering example:
 
@@ -672,7 +672,7 @@ Convert datetime string to Time::Piece object:
     The <b> in_array </b> constraint function has been renamed to the <b> in </b> check function.
   </li>
   <li>
-    The <b> trim </b> filter function now removes unicode strings as well as [\ t \ n \ r \ f].
+    The <b> trim </b> filter function now removes unicode strings as well as [\ t\n \ r \ f].
   </li>
   <li>
     The <b> decimal </b> constraint function has been renamed to the <b> number </b> check function for simplification.
@@ -694,7 +694,7 @@ space
 <pre>
   $vc-> add_check (space => sub {
     my ($vc, $value, $arg) = @_;
-    return defined $value && $value = ~'^ [\ t \ n \ r \ f] * $'? 1: 0;
+    return defined $value && $value = ~'^ [\ t\n \ r \ f] * $'? 1: 0;
   });
 </pre>
 
@@ -768,8 +768,8 @@ trim_collapse
     
     return undef unless defined $value;
     
-    $value = ~ s / [\ t \ n \ r \ f] + / / g;
-    $value= ~ s / ^ [\ t \ n \ r \ f] * (. *?) [\ T \ n \ r \ f] * $/ $1 / ms;
+    $value = ~ s / [\ t\n \ r \ f] + / / g;
+    $value= ~ s / ^ [\ t\n \ r \ f] * (. *?) [\ T\n \ r \ f] * $/ $1 / ms;
 
     return $value;
   });
@@ -783,7 +783,7 @@ trim_lead
     
     return undef unless defined $value;
 
-    $value = ~ s / ^ [\ t \ n \ r \ f] + (. *) $/ $1 / ms;
+    $value = ~ s / ^ [\ t\n \ r \ f] + (. *) $/ $1 / ms;
 
     return $value;
   });
@@ -797,7 +797,7 @@ trim_trail
     
     return undef unless defined $value;
 
-    $value = ~ s / ^ (. *?) [\ T \ n \ r \ f] + $/ $1 / ms;
+    $value = ~ s / ^ (. *?) [\ T\n \ r \ f] + $/ $1 / ms;
 
     return $value;
   });

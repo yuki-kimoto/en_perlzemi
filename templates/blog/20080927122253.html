@@ -37,17 +37,17 @@ use warnings;
 
 # Create a password
 Create two random characters consisting of # [./0-9A-Za-z] as salt
-print "(1) Create a digest from the password. \ N";
+print "(1) Create a digest from the password.\n";
 my $passwd ='secret';
 my $salt = join''. ('.','/', 0 .. 9,'A' ..'Z','a' ..'z') [rand 64, rand 64];
              
 my $digest = crypt($passwd, $salt);
-print "$digest \ n \ n";
+print "$digest\n\n";
 
 
-print "(2) Password verification. \ N";
+print "(2) Password verification.\n";
 if (crypt($passwd, $digest) eq $digest) {
-  print "Password matched. \ N";
+  print "Password matched.\n";
 }
 </pre>
 

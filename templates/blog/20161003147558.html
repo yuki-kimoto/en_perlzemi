@@ -46,13 +46,13 @@ When creating a string, enclose it in single quotes or double quotes, but if you
 
 <a href="/blog/20201028075254.html"> Escape sequence</a> is <a href="/blog/20201027075254.html"> string enclosed in single quotes</a> and <a href= "/blog/20201026075254.html"> Double quoted strings</a> are special characters that can be used.
 
-For example, you can use the <b> line break "\ n" </b> or the <b> tab "\ t" </b>. Line breaks and tabs are invisible characters, but they can be represented using escape sequences.
+For example, you can use the <b> line break "\n" </b> or the <b> tab "\ t" </b>. Line breaks and tabs are invisible characters, but they can be represented using escape sequences.
 
 This is a <a href="/blog/20201030075254.html"> double quote string escape sequence</a>.
 
 <pre>
 # new line
-my $str1 = "Hello \ n";
+my $str1 = "Hello\n";
 
 # Tab character
 my $str2 = "Cat \ tDog";
@@ -403,7 +403,7 @@ Perl has a built-in <b> regular expression </b> feature in the language for sear
 For example, if you want to know that the string contains the string "dog", you can write:
 
 <pre>
-my $message = "It is my dog ​​\ n";
+my $message = "It is my dog ​​\n";
 
 if ($message = ~ / dog /) {
   ...
@@ -419,7 +419,7 @@ Regular expressions must be enclosed in the symbol "//".
 You can also use regular expressions to make substitutions. If you rewrite "dog" to "cat", write as follows.
 
 <pre>
-my $message = "It is my dog ​​\ n";
+my $message = "It is my dog ​​\n";
 
 $message = ~ s / dog / cat /;
 </pre>

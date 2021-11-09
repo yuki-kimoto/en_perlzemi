@@ -37,7 +37,7 @@ rika,12,USA
 kenta, 25, Chinese
 EOS
 
-print "1: Convert a csv format string to an array of arrays. \ N";
+print "1: Convert a csv format string to an array of arrays.\n";
 my $people = parse ($text);
 
 require Data::Dumper;
@@ -45,7 +45,7 @@ print Data::Dumper-> Dump ([$persons], ['$perlsons']);
 
 sub parse {
   my $text = shift;
-  my @lines = split("\ n", $text);
+  my @lines = split("\n", $text);
   
   my $items_list = [];
   for my $line (@lines) {
@@ -134,7 +134,7 @@ rika,12,USA
 kenta, 25, Chinese
 EOS
 
-print "1: Convert a csv format string to an array of hashes. \ N";
+print "1: Convert a csv format string to an array of hashes.\n";
 my $headers = ['name','age','country'];
 
 my $people = parse ($text, $headers);
@@ -145,7 +145,7 @@ print Data::Dumper-> Dump ([$persons], ['$perlsons']);
 sub parse {
   my ($text, $headers) = @_;
   
-  my @lines = split("\ n", $text);
+  my @lines = split("\n", $text);
   
   my $items_hash_list = [];
   foreach my $line (@lines) {
@@ -245,10 +245,10 @@ use warnings;
 
 my @nums = (1, 2, 3);
 
-print "1: Subroutine for finding maximum and minimum values ​​\ n";
-print "(". join(',', @nums). ") \ n";
-print "maximum value:". Max (@nums). "\ n";
-print "Minimum:". Min (@nums). "\ n";
+print "1: Subroutine for finding maximum and minimum values ​​\n";
+print "(". join(',', @nums). ")\n";
+print "maximum value:". Max (@nums). "\n";
+print "Minimum:". Min (@nums). "\n";
 
 sub max {
   my @nums = @_;
@@ -317,15 +317,15 @@ use warnings;
 
 my @nums = (5, 2, 7, 3, 4);
 
-print "1: Subroutine that sorts in ascending order by bubble sort \ n";
-print join(',', @nums). "(Initial state) \ n";
+print "1: Subroutine that sorts in ascending order by bubble sort\n";
+print join(',', @nums). "(Initial state)\n";
 my @sorted_nums_ascend = bubble_sort_ascend (@nums);
-print join(',', @sorted_nums_ascend). "(Last state) \ n \ n";
+print join(',', @sorted_nums_ascend). "(Last state)\n\n";
 
-print "2: Subroutine that sorts in descending order by bubble sort \ n";
-print join(',', @nums). "(Initial state) \ n";
+print "2: Subroutine that sorts in descending order by bubble sort\n";
+print join(',', @nums). "(Initial state)\n";
 my @sorted_nums_descend = bubble_sort_descend (@nums);
-print join(',', @sorted_nums_descend). "(Last state) \ n";
+print join(',', @sorted_nums_descend). "(Last state)\n";
 
 # Bubble sort subroutine. (Ascending order)
 sub bubble_sort_ascend {
@@ -358,7 +358,7 @@ sub bubble_sort_ascend {
      # By doing this, the last element becomes the maximum.
      if ($nums [$i]> $nums [$i + 1]) {
        ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
-       print join(',', @nums). "(Snap) \ n";
+       print join(',', @nums). "(Snap)\n";
      }
     }
     $change_cnt-;
@@ -380,7 +380,7 @@ sub bubble_sort_descend {
     for my $i (0 .. $change_cnt - 1) {
      if ($nums [$i] <$nums [$i + 1]) {
        ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
-       print join(',', @nums). "(Snap) \ n";
+       print join(',', @nums). "(Snap)\n";
      }
     }
     $change_cnt-;
@@ -423,24 +423,24 @@ use strict;
 use warnings;
 
 my @nums = (5,2,7,3,4);
-print "1: Subroutine that selects descending order and ascending order and sorts bubbles \ n";
-print join(',', @nums). "(Initial state) \ n";
+print "1: Subroutine that selects descending order and ascending order and sorts bubbles\n";
+print join(',', @nums). "(Initial state)\n";
 
 my @sorted_nums_ascend = bubble_sort(\ @ nums, {order =>'ascend'});
 my @sorted_nums_descend = bubble_sort(\ @ nums, {order =>'descend'});
 
 if (@sorted_nums_ascend) {
-  print join(',', @sorted_nums_ascend). "(Ascending order) \ n";
+  print join(',', @sorted_nums_ascend). "(Ascending order)\n";
 }
 else {
-  print "\ @sorted_nums_ascend is an empty list. \ N";
+  print "\ @sorted_nums_ascend is an empty list.\n";
 }
 
 if (@sorted_nums_descend) {
-  print join(',', @sorted_nums_descend). "(Descending) \ n \ n";
+  print join(',', @sorted_nums_descend). "(Descending)\n\n";
 }
 else {
-  print "\ @ sorted_nums_descend is an empty list. \ n \ n";
+  print "\ @ sorted_nums_descend is an empty list.\n\n";
 }
 
 # Subroutine that selects descending order and ascending order to sort bubbles
@@ -543,7 +543,7 @@ If $opt-> {order} is not specified, it is a kind way to specify the default valu
 # Last bubble sort
 if ($nums [$i] <$nums [$i + 1]) {
   ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
-  print join(',', @nums). "(Snap) \ n";
+  print join(',', @nums). "(Snap)\n";
 }
 
 # This bubble sort

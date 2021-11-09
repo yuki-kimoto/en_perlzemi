@@ -141,11 +141,11 @@ for my $file (@files) {
     or die "Unable to create $file .: $!";
   close $fh;
 }
-print "Preparation: $top_dir has been created. \ N \ n";
+print "Preparation: $top_dir has been created.\n\n";
 
 # File::Find sample
 
-print "1: Recursively print all file names (base names). \ N";
+print "1: Recursively print all file names (base names).\n";
 # In the first argument, write the processing you want to do for each file
 # Pass a reference to the subroutine.
 find (\ & print_file_name, $top_dir);
@@ -155,21 +155,21 @@ sub print_file_name {
   # The file name used as the base point is stored.
   # $File::Find::dir is currently scanning
   # The directory name is stored.
-  print "$_ ($File::Find::dir) \ n";
+  print "$_ ($File::Find::dir)\n";
 }
-print "\ n";
+print "\n";
 
-print "2: Recursively print all file names (full path). \ N";
+print "2: Recursively print all file names (full path).\n";
 find (\ & print_file_full_name, $top_dir);
 
 sub print_file_full_name {
   In # $_, the directory you are currently scanning
   # The file name used as the base point is stored.
-  print $File::Find::name, "\ n";
+  print $File::Find::name, "\n";
 }
-print "\ n";
+print "\n";
 
-print "3: Scan directories in return order \ n";
+print "3: Scan directories in return order\n";
 finddepth (\ & print_file_full_name, $top_dir);
 </pre>
 Execution result

@@ -26,7 +26,7 @@ use warnings;
 
 use Time::Local'timelocal';
 
-print "(1) Check if the date exists. \ N";
+print "(1) Check if the date exists.\n";
 # Perl treats the time as the number of years since 1900
 Draw # 1900.
 my $year = 2008 -1900;
@@ -48,19 +48,19 @@ $mon ++;
 
 # $@ Is set when an exception occurs.
 if ($@) {
-  print "$year year $mon month $mday day does not exist. \ N \ n";
+  print "$year year $mon month $mday day does not exist.\n\n";
 }
 else {
-  print "$year year $mon month $mday day exists. \ N \ n";
+  print "$year year $mon month $mday day exists.\n\n";
 }
 
 
-print "(2) Make date judgment a function. \ N";
+print "(2) Make date judgment a function.\n";
 if (day_exist ($year, $mon, $mday)) {
-  print "$year year $mon month $mday day exists. \ N";
+  print "$year year $mon month $mday day exists.\n";
 }
 else {
-  print "$year year $mon month $mday day does not exist. \ N";
+  print "$year year $mon month $mday day does not exist.\n";
 }
 
 # Function to determine if a date exists
@@ -114,10 +114,10 @@ eval {
 };
 
 if ($@) {
-  print "$year year $mon month $mday day does not exist. \ N \ n";
+  print "$year year $mon month $mday day does not exist.\n\n";
 }
 else {
-  print "$year year $mon month $mday day exists. \ N \ n";
+  print "$year year $mon month $mday day exists.\n\n";
 }
 </pre>
 

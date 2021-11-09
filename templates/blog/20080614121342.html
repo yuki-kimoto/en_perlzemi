@@ -77,7 +77,7 @@ sub num {
 
 require Data::Dumper;
 
-print "1-1: Access variables from the symbol table. \ N";
+print "1-1: Access variables from the symbol table.\n";
 Enclosed in # ${}, a scalar entry
 my $num_from_symbol = ${$main::{num}};
 Array entries, enclosed in # @ {}
@@ -88,13 +88,13 @@ my %num_from_symbol =%{$main::{num}};
 print Data::Dumper-> Dump ([$num_from_symbol], ['* num_from_symbol']);
 print Data::Dumper-> Dump ([\ @ num_from_symbol], ['* num_from_symbol']);
 print Data::Dumper-> Dump ([\% num_from_symbol], ['* num_from_symbol']);
-print "\ n";
+print "\n";
 
-print "1-2: Call a subroutine from the symbol table. \ N";
+print "1-2: Call a subroutine from the symbol table.\n";
 my $ret_from_symbol = & {$main::{num}};
-print "\ $ret_from_symbol = $ret_from_symbol \ n \ n";
+print "\ $ret_from_symbol = $ret_from_symbol\n\n";
 
-print "2-1: Access the variable from the typeglob. \ N";
+print "2-1: Access the variable from the typeglob.\n";
 my $num_from_typedglob = ${* main::num}; Enclosed in # ${} is a scalar entry
 my @num_from_typedglob = @ {* main::num}; If you enclose it with # @ {}, the array entry will be
 my %num_from_typedglob =%{* main::num}; # %{} is a hash entry
@@ -102,9 +102,9 @@ my %num_from_typedglob =%{* main::num}; # %{} is a hash entry
 print Data::Dumper-> Dump ([$num_from_typedglob], ['* num_from_typedglob']);
 print Data::Dumper-> Dump ([\ @ num_from_typedglob], ['* num_from_typedglob']);
 print Data::Dumper-> Dump ([\% num_from_typedglob], ['* num_from_typedglob']);
-print "\ n";
+print "\n";
 
-print "2-2: Call a subroutine from a typeglob. \ N";
+print "2-2: Call a subroutine from a typeglob.\n";
 my $ret_from_typedglob = & {* main::num};
-print "\ $ret_from_typedglob = $ret_from_typedglob \ n \ n";
+print "\ $ret_from_typedglob = $ret_from_typedglob\n\n";
 </pre>

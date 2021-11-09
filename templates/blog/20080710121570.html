@@ -42,8 +42,8 @@ use warnings;
 # $var continues to exist.
 Only the # var subroutine can see $var.
 
-print "1: The simplest closure \ n";
-print var (), "\ n";
+print "1: The simplest closure\n";
+print var (), "\n";
 </pre>
 
 <h4> Closure definition </h4>
@@ -107,7 +107,7 @@ use strict;
 use warnings;
 
 # Generate a timer.
-print "1: Generate closure with function generator (timer). \ N";
+print "1: Generate closure with function generator (timer).\n";
 my $timer1 = create_timer ();
 sleep 1;
 # Generate another timer after 1 second
@@ -117,10 +117,10 @@ my $timer2 = create_timer ();
 sleep 1;
 
 print'$timer1 elapsed seconds:';
-print $timer1-> (), "\ n";
+print $timer1-> (), "\n";
 
 print'$timer2 elapsed seconds:';
-print $timer2-> (), "\ n \ n";
+print $timer2-> (), "\n\n";
 
 
 # Function generator that generates closures that know the elapsed time
@@ -189,12 +189,12 @@ use strict;
 use warnings;
 
 # Pass it as an argument to the function generator.
-print "1: Initialize the variable referenced by the closure. \ N";
+print "1: Initialize the variable referenced by the closure.\n";
 my $sign_inversion = create_sign_checker (1);
 
 if ($sign_inversion-> (-2)) {
   # If the sign is inverted
-  print "-2 has the sign inverted when viewed from 1. \ n";
+  print "-2 has the sign inverted when viewed from 1.\n";
 }
 
 # Function generator that generates closures to see if the sign is only inverted
@@ -336,10 +336,10 @@ sub count {
 package main;
 my $cnt = Counter-> new (10);
 
-print "1: Class-based counter implementation \ n";
-print "Before counting:", $cnt-> count, "\ n";
+print "1: Class-based counter implementation\n";
+print "Before counting:", $cnt-> count, "\n";
 $cnt-> add_count;
-print "after counting:", $cnt-> count, "\ n \ n";
+print "after counting:", $cnt-> count, "\n\n";
 </pre>
 
 <h4> Implement the counter with closures </h4>
@@ -367,10 +367,10 @@ sub make_counter {
 
 my $cnt = make_counter (10);
 
-print "2: Implementation of counters with closures \ n";
-print "Before counting:". $Cnt-> {count}-> (). "\ n";
+print "2: Implementation of counters with closures\n";
+print "Before counting:". $Cnt-> {count}-> (). "\n";
 $cnt-> {add_count}-> ();
-print "after counting:". $Cnt-> {count}-> (). "\ n";
+print "after counting:". $Cnt-> {count}-> (). "\n";
 </pre>
 
 As you can see, classes and closures are very similar. Next time, I will explain the code.
