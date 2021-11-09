@@ -667,7 +667,7 @@ for my $time(sort keys %$infos) {
   print "$time\n";
   
   # (2) Inner loop
-  for my $name (sort keys%{$infos->{$time}}) {
+  for my $name (sort keys %{$infos->{$time}}) {
     my $value = $infos->{$time}{$name};
     print "$name: $value\n";
   }
@@ -679,7 +679,7 @@ for my $time(sort keys %$infos) {
 (2) The inner loop is a hash. Even in the inner loop
 
 <pre>
-keys%{$infos->{$time}}
+keys %{$infos->{$time}}
 </pre>
 
 The hash key is taken out like this.
