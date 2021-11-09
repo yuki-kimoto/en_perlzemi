@@ -1,7 +1,7 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span> </a>
+        <span itemprop = "name"> Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   & # 8250;
@@ -18,7 +18,7 @@ A list of Perl special variables. Special variables are global variables that ar
 
 <h4> @ARGV --command line arguments </h4>
 
-<a href="/blog/20080108132865.html"> command line argument </a> is assigned to "@ARGV".
+<a href="/blog/20080108132865.html"> command line argument</a> is assigned to "@ARGV".
 
 <pre>
 @ARGV
@@ -26,7 +26,7 @@ A list of Perl special variables. Special variables are global variables that ar
 
 <h4> @ _ --Subroutine arguments </h4>
 
-The <a href="/blog/20180523152759.html"> argument </a> of the <a href="/blog/20101130129876.html"> subroutine </a> is assigned to "@ _".
+The <a href="/blog/20180523152759.html"> argument</a> of the <a href="/blog/20101130129876.html"> subroutine</a> is assigned to "@ _".
 
 <pre>
 @_
@@ -34,7 +34,7 @@ The <a href="/blog/20180523152759.html"> argument </a> of the <a href="/blog/201
 
 <h4> $ 1, $ 2, $ 3, ... --Regex captured string </h4>
 
-For "$ 1", "$ 2" and "$ 3", use <a href="/blog/20100827127859.html"> regular expression </a> to <a href="/blog/20180524152759.html"> capture </a> The specified character string is assigned.
+For "$ 1", "$ 2" and "$ 3", use <a href="/blog/20100827127859.html"> regular expression</a> to <a href="/blog/20180524152759.html"> capture</a> The specified character string is assigned.
 
 <pre>
 $ 1;
@@ -44,9 +44,9 @@ $ 3;
 
 <h4> $ _ --Default variable </h4>
 
-"$ _" Is called <a href="/blog/20180118151628.html"> default variable </a>. It's best to refrain from using default arguments yourself for readability, but some standard functions use default variables, so there are a few things to keep in mind.
+"$ _" Is called <a href="/blog/20180118151628.html"> default variable</a>. It's best to refrain from using default arguments yourself for readability, but some standard functions use default variables, so there are a few things to keep in mind.
 
-At a minimum, <a href="/blog/20100118126425.html"> map function </a>, <a href="/blog/20100119126425.html"> grep function </a>, <a href="/blog" /20170521149524.html "> Postscript for </a> often uses" $ _ ", so keep in mind.
+At a minimum, <a href="/blog/20100118126425.html"> map function</a>, <a href="/blog/20100119126425.html"> grep function</a>, <a href="/blog" /20170521149524.html "> Postscript for</a> often uses" $ _ ", so keep in mind.
 
 <b> map function </b>
 
@@ -68,7 +68,7 @@ $ _ for @elements;
 
 <h4>% ENV --Getting and setting environment variables </h4>
 
-You can access <a href="/blog/20180510152716.html"> environment variables </a> with a special variable called <strong>% ENV </strong>.
+You can access <a href="/blog/20180510152716.html"> environment variables</a> with a special variable called <strong>% ENV </strong>.
 
 <pre>
 % ENV
@@ -79,7 +79,7 @@ Environment variables can be set freely, but they are valid only in that process
 
 <h4> $ 0 --Get program name </h4>
 
-Use the <strong> special variable "$ 0" </strong> to <a href="/blog/20180509152716.html"> get the program name </a>.
+Use the <strong> special variable "$ 0" </strong> to <a href="/blog/20180509152716.html"> get the program name</a>.
 
 <pre>
 $ 0;
@@ -89,7 +89,7 @@ Gets the name when the program was started. In other words, if you specify a pro
 
 <h4> @INC-List of module search paths </h4>
 
-<a href="/blog/20180508152716.html"> List of module search paths </a> is assigned to a special variable called <strong> @ INC </strong>.
+<a href="/blog/20180508152716.html"> List of module search paths</a> is assigned to a special variable called <strong> @ INC </strong>.
 
 <pre>
 @INC
@@ -103,7 +103,7 @@ The module search path is the directory that Perl searches to load the module. M
 use lib'./lib';
 </pre>
 
-You can add the search path to @INC at compile time by using the <a href="/blog/20100525127859.html"> lib </a> module.
+You can add the search path to @INC at compile time by using the <a href="/blog/20100525127859.html"> lib</a> module.
 
 <b> Add the module search path directly to the beginning of @INC </b>
 
@@ -111,11 +111,11 @@ You can add the search path to @INC at compile time by using the <a href="/blog/
 unshift @ INC,'./lib2';
 </pre>
 
-Add it directly to the beginning with <a href="/blog/20100105126425.html"> unshift function </a>. It is better to use use lib than this way. The advantage of using use lib is that it adds a search path at compile time, makes it more readable, and adds an architectural path as well.
+Add it directly to the beginning with <a href="/blog/20100105126425.html"> unshift function</a>. It is better to use use lib than this way. The advantage of using use lib is that it adds a search path at compile time, makes it more readable, and adds an architectural path as well.
 
 <h4>% INC --Check loaded modules </h4>
 
-To find out <a href="/blog/20180529152759.html"> loaded modules </a>, look at the variable <strong>% INC </strong>.
+To find out <a href="/blog/20180529152759.html"> loaded modules</a>, look at the variable <strong>% INC </strong>.
 
 <pre>
 % INC
@@ -123,11 +123,11 @@ To find out <a href="/blog/20180529152759.html"> loaded modules </a>, look at th
 
 The% INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported.
 
-It has nothing to do with @INC, which stores the module's search path. @INC and% INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function </a> to retrieve only the keys.
+It has nothing to do with @INC, which stores the module's search path. @INC and% INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function</a> to retrieve only the keys.
 
 <h4> $ ^ O --Get OS name </h4>
 
-To get the <a href="/blog/20180527152759.html"> OS name </a>, use the special variable <strong> $ ^ O </strong>.
+To get the <a href="/blog/20180527152759.html"> OS name</a>, use the special variable <strong> $ ^ O </strong>.
 
 <pre>
 $ ^ O
@@ -185,7 +185,7 @@ The value of "$ ^ O" in each OS is summarized.
       epoc
     </td>
     <td>
-       <a href="http://sudo.com/index.php/archive/mobilephone/nokia/epoc-os"> EPOC OS (probably) </a>
+       <a href="http://sudo.com/index.php/archive/mobilephone/nokia/epoc-os"> EPOC OS (probably)</a>
     </td>
   </tr>
 
@@ -285,7 +285,7 @@ The value of "$ ^ O" in each OS is summarized.
 
 <h4> $$ --Get process ID </h4>
 
-Use the special variable "<strong> $$ </strong>" to <a href="/blog/20180520152690.html"> get the process ID </a>.
+Use the special variable "<strong> $$ </strong>" to <a href="/blog/20180520152690.html"> get the process ID</a>.
 
 <pre>
 $$
@@ -295,7 +295,7 @@ The process ID is the unique knowledge of the process by the OS.To separate it, 
 
 <h4> $ ^ T --Get the process start time </h4>
 
-<a href="/blog/20180526152759.html"> To get the process start time </a>, use the special variable "<strong> $ ^ T </strong>".
+<a href="/blog/20180526152759.html"> To get the process start time</a>, use the special variable "<strong> $ ^ T </strong>".
 
 <pre>
 $ ^ T
@@ -305,7 +305,7 @@ The time is obtained in epoch seconds (seconds from 00:00:00 on January 1, 1970)
 
 <h4> $? --Child process exit status </h4>
 
-Use "$?" To get the <a href="/blog/20180525152759.html"> exit status of the child process </a>.
+Use "$?" To get the <a href="/blog/20180525152759.html"> exit status of the child process</a>.
 
 <pre>
 $?
@@ -315,7 +315,7 @@ If wait waits for the child process to terminate, $? Contains multiple values, i
 
 <h3> List of all special variables </h3>
 
-Below is a list of special variables. See the <a href="http://perldoc.jp/docs/perl/5.20.1/perlvar.pod"> official document "perlvar" </a> for more information.
+Below is a list of special variables. See the <a href="http://perldoc.jp/docs/perl/5.20.1/perlvar.pod"> official document "perlvar"</a> for more information.
 
 <table>
   <tr>
@@ -871,7 +871,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
       $ @
     </td>
     <td>
-      If you catch an exception with <a href="/blog/20100312126967.html"> eval </a>, its contents will be saved.
+      If you catch an exception with <a href="/blog/20100312126967.html"> eval</a>, its contents will be saved.
     </td>
   </tr>
 

@@ -1,13 +1,13 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span> </a>
+        <span itemprop = "name"> Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161102147817.html">
-        <span itemprop = "name"> Special variables </span> </a>
+        <span itemprop = "name"> Special variables </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   & # 8250;
@@ -30,7 +30,7 @@ Let's first look at some examples where default variables are used.
 
 <h4> grep function </h4>
 
-Each element of the array passed to the <a href="/blog/20100119126425.html"> grep function </a> is assigned to the default variable.
+Each element of the array passed to the <a href="/blog/20100119126425.html"> grep function</a> is assigned to the default variable.
 
 <pre>
 my @ values2 = grep {$ _ eq'cat'} @ values1;
@@ -42,7 +42,7 @@ This is easy to understand if you think of it as expressing the English pronoun 
 
 <h4> map function </h4>
 
-Each element of the array passed to the <a href="/blog/20100118126425.html"> map function </a> is assigned to the default variable.
+Each element of the array passed to the <a href="/blog/20100118126425.html"> map function</a> is assigned to the default variable.
 
 <pre>
 my @ values2 = map {lc $ _} @ values1;
@@ -68,7 +68,7 @@ print "$ _ \ n" for @values;
 
 <h4> When the diamond operator is used alone in the while statement </h4>
 
-<a href="/blog/20100123126425.html"> while statement </a> <a href="http://d.hatena.ne.jp/perlcodesample/comment/20080722/1216737340"> Diamond operator < If you use / a> alone, each line is assigned to the default argument in turn.
+<a href="/blog/20100123126425.html"> while statement</a> <a href="http://d.hatena.ne.jp/perlcodesample/comment/20080722/1216737340"> Diamond operator < If you use / a> alone, each line is assigned to the default argument in turn.
 
 <pre>
 while (<>) {
@@ -80,11 +80,11 @@ This usage above is the usage of default variables that you often see.
 
 <h3> Implicit arguments in standard functions </h3>
 
-Some <a href="/blog/20161004147558.html"> Perl standard functions </a> use default variables as implicit arguments if you omit the arguments.
+Some <a href="/blog/20161004147558.html"> Perl standard functions</a> use default variables as implicit arguments if you omit the arguments.
 
 This is a bad way to avoid writing it yourself, as it will reduce readability.
 
-For example, if you omit the argument in the <a href="/blog/20100326127089.html"> lc function </a>, the default variable becomes the implicit argument.
+For example, if you omit the argument in the <a href="/blog/20100326127089.html"> lc function</a>, the default variable becomes the implicit argument.
 
 <pre>
 my @ values2 = map {lc} @ values1;
@@ -100,7 +100,7 @@ If the argument is omitted in the standard function, suspect that an implicit ar
 
 <h3> Implicit target in regular expression </h3>
 
-If the left side of the <a href="/blog/20100827127859.html"> regular expression </a> pattern matching operator is omitted, the default variable will be used.
+If the left side of the <a href="/blog/20100827127859.html"> regular expression</a> pattern matching operator is omitted, the default variable will be used.
 
 <pre>
 for (@values) {

@@ -1,12 +1,12 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span> </a>
+        <span itemprop = "name"> Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   & # 8250;
   <li>
-    <span itemprop = "name"> here </span> </a>
+    <span itemprop = "name"> here </span></a>
   </li>
 </ol>
 <h2> Conditional branching by if statement </h2>
@@ -23,7 +23,7 @@ I will explain the basics of conditional branching.
 
 <h4> if statement </h4>
 
-Use <a href="/blog/20080317120577.html"> if statement </a> to do conditional branching in Perl. First, let's write a simple conditional branch. This is an if statement that outputs "OK" when the value of the variable is "5".
+Use <a href="/blog/20080317120577.html"> if statement</a> to do conditional branching in Perl. First, let's write a simple conditional branch. This is an if statement that outputs "OK" when the value of the variable is "5".
 
 <pre>
 my $ num = 5;
@@ -50,7 +50,7 @@ Also check that "OK" is not displayed when you change the contents of the variab
 
 <h4> if ～ else statement </h4>
 
-By using <a href="/blog/20080320120602.html"> if ～ else statement </a>, you can write the process to be executed when the condition is true and the process to be executed when the condition is false.
+By using <a href="/blog/20080320120602.html"> if ～ else statement</a>, you can write the process to be executed when the condition is true and the process to be executed when the condition is false.
 
 <pre>
 #if statement
@@ -65,7 +65,7 @@ else {
 
 <h4> if ～ elsif statement </h4>
 
-You can use <a href="/blog/20080320120602.html"> if ～ elsif statement </a> to describe multiple conditions.
+You can use <a href="/blog/20080320120602.html"> if ～ elsif statement</a> to describe multiple conditions.
 
 <pre>
 # if ～ elsif
@@ -311,7 +311,7 @@ See below for a detailed explanation of Perl's comparison operators.
 
 <ul>
   <li>
-    <a href="/blog/20080318120585.html"> Perl comparison operator </a>
+    <a href="/blog/20080318120585.html"> Perl comparison operator</a>
   </li>
 </ul>
 
@@ -330,7 +330,7 @@ There are four false values ​​in Perl:
       1
     </td>
     <td>
-      <a href="/blog/20100220126425.html"> undef </a>
+      <a href="/blog/20100220126425.html"> undef</a>
     </td>
     <td>
       Undefined value
@@ -433,7 +433,7 @@ my $ object = XML :: Simple-> new;
 
 Notice that the string "" 0.0 "" is true.
 
-<b> <a href="/blog/20100308126967.html"> list </a> </b> with elements
+<b> <a href="/blog/20100308126967.html"> list</a> </b> with elements
 
 <pre>
 (0)
@@ -486,7 +486,7 @@ See below for more information on Perl booleans.
 
 <ul>
   <li>
-    <a href="/blog/20080323120628.html"> Perl truth value </a>
+    <a href="/blog/20080323120628.html"> Perl truth value</a>
   </li>
 </ul>
 
@@ -614,7 +614,7 @@ Please refer to the following articles for a detailed explanation of logical ope
 
 <ul>
   <li>
-    <a href="/blog/20100816136168.html"> List of Perl logical operators </a>
+    <a href="/blog/20100816136168.html"> List of Perl logical operators</a>
   </li>
 </ul>
 
@@ -624,7 +624,7 @@ Learn about some of the more unusual conditionals that are often used in Perl.
 
 <h4> unless statement </h4>
 
-<a href="/blog/20100125126425.html"> unless statement </a> can write the same processing as when the condition is denied by the if statement.
+<a href="/blog/20100125126425.html"> unless statement</a> can write the same processing as when the condition is denied by the if statement.
 
 <pre>
 Execute block if # $ num is not true
@@ -643,7 +643,7 @@ if (! $ num) {
 
 When should the unless statement be used if the meanings are the same? That is when you want to strengthen your feelings of "otherwise". The feeling that unless is "otherwise" stands out.
 
-For example, if the error checking process is the main process, writing the following is more noticeable than writing using "if" and "!". It is a process to execute a block when a value is not defined using <a href="/blog/20100219126425.html"> define function </a>.
+For example, if the error checking process is the main process, writing the following is more noticeable than writing using "if" and "!". It is a process to execute a block when a value is not defined using <a href="/blog/20100219126425.html"> define function</a>.
 
 <pre>
 unless (defined $ num) {
@@ -653,9 +653,9 @@ unless (defined $ num) {
 
 <h4> Write the branch in the failed process with or </h4>
 
-Perl often customarily writes conditional branching using the <a href="/blog/20100816136168.html"> logical operator or </a>.
+Perl often customarily writes conditional branching using the <a href="/blog/20100816136168.html"> logical operator or</a>.
 
-In a typical example, "or" will appear in the error handling when the <a href="/blog/20080718121643.html"> open function </a> fails.
+In a typical example, "or" will appear in the error handling when the <a href="/blog/20080718121643.html"> open function</a> fails.
 
 If the open function fails and returns a false value, the processing after the "or" is performed.
 
@@ -678,13 +678,13 @@ $ num1 = 1 if! defined $ num1;
 $ num2 = 1 unless defined $ num2;
 </pre>
 
-This is more accurately called the <a href="/blog/20080324120637.html"> if modifier </a> and the <a href="/blog/20080324120637.html"> unless modifier </a>.
+This is more accurately called the <a href="/blog/20080324120637.html"> if modifier</a> and the <a href="/blog/20080324120637.html"> unless modifier</a>.
 
 If it is a conditional branch that can be written in one line, it can also be written using the postfix if and unless.
 
 The biggest merit of postfix if and unless is that unlike normal if and unless, it does not create a scope, so processing is faster. Normally you don't need to be aware of it, but if you really want to gain speed, it will be a little faster.
 
-I often use it with <a href="/blog/20170513149580.html"> next statement </a> and <a href="/blog/20170527149589.html"> last statement </a>.
+I often use it with <a href="/blog/20170513149580.html"> next statement</a> and <a href="/blog/20170527149589.html"> last statement</a>.
 
 <pre>
 for my $ num (@nums) {
@@ -698,7 +698,7 @@ for my $ num (@nums) {
 
 <h4> Ternary operator </h4>
 
-Perl has an operator called <a href="/blog/20080325120646.html"> ternary operator </a>.
+Perl has an operator called <a href="/blog/20080325120646.html"> ternary operator</a>.
 
 You can use the ternary operator to change the value to be returned depending on the conditions.
 
@@ -738,7 +738,7 @@ Since "$ flag" is "2", "Mouse" is assigned to "$ animal". When using ternary ope
 
 <h4> Set default values ​​with special assignment operators "|| =" and "// =" </h4>
 
-Perl has a commonly used default value setting method. It is a way to use the <a href="/blog/20161005147566.html"> special assignment operator </a> "|| =" or "// =".
+Perl has a commonly used default value setting method. It is a way to use the <a href="/blog/20161005147566.html"> special assignment operator</a> "|| =" or "// =".
 
 <pre>
 # If "$ x" is false, set "$ x" to 5.
@@ -762,15 +762,15 @@ Please refer to the following article for repetitive sentences.
 
 <ul>
    <li>
-     <a href="/blog/20100123126425.html"> while statement </a>
+     <a href="/blog/20100123126425.html"> while statement</a>
    </li>
    <li>
-     <a href="/blog/20080327120662.html"> for statement </a>
+     <a href="/blog/20080327120662.html"> for statement</a>
    </li>
    <li>
-     <a href="/blog/20080328120673.html"> foreach statement </a>
+     <a href="/blog/20080328120673.html"> foreach statement</a>
    </li>
    <li>
-     <a href="/blog/20080329120687.html"> last and next </a>
+     <a href="/blog/20080329120687.html"> last and next</a>
    </li>
 </ul>

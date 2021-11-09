@@ -1,13 +1,13 @@
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop = "name"> Perl </span> </a>
+        <span itemprop = "name"> Perl </span></a>
     <meta itemprop = "position" content = "1" />
   </li>
   & # 8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop = "name"> Subroutine </span> </a>
+        <span itemprop = "name"> Subroutine </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
   & # 8250;
@@ -24,7 +24,7 @@ Here are some examples to help you learn with concrete examples of subroutines.
 
 <h3> Convert a csv format string to an array of arrays </h3>
 
-This is a sample to convert <a href="/blog/20161003147558.html"> string </a> in csv format to an array of arrays.
+This is a sample to convert <a href="/blog/20161003147558.html"> string</a> in csv format to an array of arrays.
 
 <pre>
 use strict;
@@ -88,7 +88,7 @@ rika,12,USA
 kenta, 25, Chinese
 EOS
 </pre>
-See <a href="/blog/20080619121405.html"> Here Document </a>.
+See <a href="/blog/20080619121405.html"> Here Document</a>.
 
 <h4> (2) Subroutine call </h4>
 
@@ -103,7 +103,7 @@ Pass an argument called $ text to a subroutine called parse. This will cause a p
 <pre>
 push @ $ items_list, [@items];
 </pre>
-The <a href="/blog/20100107126425.html"> push function </a> requires an array as the first argument. Dereference and pass an array with @ $ items_list.
+The <a href="/blog/20100107126425.html"> push function</a> requires an array as the first argument. Dereference and pass an array with @ $ items_list.
 The push function requests a list after the second argument, but do not pass an array as @items. And finally,
 <pre>
 [tora, 24, Japan, rika, 12, USA, kenta, 25, Chinese]
@@ -117,11 +117,11 @@ Will be created. Create a reference to the array as [@items] and push it.
 wantarray? return @ $ items_list: $ items_list;
 </pre>
 
-You can use the <a href="/blog/20080610121319.html"> wantarray function </a> to return the return value depending on the context. (Currently I don't recommend want array)
+You can use the <a href="/blog/20080610121319.html"> wantarray function</a> to return the return value depending on the context. (Currently I don't recommend want array)
 
 <h3> Convert csv format string to hash array </h3>
 
-This is a sample to convert a csv format string to an array of <a href="/blog/20161013147635.html"> hash </a>.
+This is a sample to convert a csv format string to an array of <a href="/blog/20161013147635.html"> hash</a>.
 
 <pre>
 use strict;
@@ -213,7 +213,7 @@ for my $ line (@lines) {
 }
 </pre>
 
-Use <a href="/blog/20080215120307.html"> hash slice </a> to create the hash corresponding to the header.
+Use <a href="/blog/20080215120307.html"> hash slice</a> to create the hash corresponding to the header.
 
 <pre>
 @items_hash {@ $ headers} = @items;
@@ -309,7 +309,7 @@ Initially, $ max_num is an undefined value, so if it is an undefined value, $ nu
 
 <h3> Bubble sort </h3>
 
-This is a sample for bubble sort. Sorting is done using <a href="/blog/20100123126425.html"> while statement </a> and for statement.
+This is a sample for bubble sort. Sorting is done using <a href="/blog/20100123126425.html"> while statement</a> and for statement.
 
 <pre>
 use strict;
@@ -509,7 +509,7 @@ elsif ($ order eq'descend') {
 my @sorted_nums_ascend = bubble_sort (\ @ nums, {order =>'ascend'});
 </pre>
 
-I want to pass an array and a hash, so I'll use a reference. In actual programming, options are often passed in <a href="/blog/20180208151809.html"> hash reference </a>.
+I want to pass an array and a hash, so I'll use a reference. In actual programming, options are often passed in <a href="/blog/20180208151809.html"> hash reference</a>.
 
 <h4> (2) Error handling </h4>
 
@@ -524,9 +524,9 @@ if (defined $ nums) {
 else {return}
 </pre>
 
-If the first argument is not defined, <a href="/blog/20171111151040.html"> return </a> will end the process. If the first argument is defined but the first argument is not a reference to the array, return ends the process.
+If the first argument is not defined, <a href="/blog/20171111151040.html"> return</a> will end the process. If the first argument is defined but the first argument is not a reference to the array, return ends the process.
 
-If the variable has an invalid state, do not continue processing. For fatal errors, you may want to use the <a href="/blog/20100212126425.html"> die function </a> to throw an exception.
+If the variable has an invalid state, do not continue processing. For fatal errors, you may want to use the <a href="/blog/20100212126425.html"> die function</a> to throw an exception.
 
 <h4> (3) Set the default value </h4>
 
