@@ -22,7 +22,7 @@
 You can use <strong> here document </strong> to describe multiple <a href="/blog/20161003147558.html"> strings</a> in an easy-to-understand manner.
 
 <pre>
-my $ text = <<'EOS';
+my $text = <<'EOS';
 aaaa
 iiii
 uuuu
@@ -40,12 +40,12 @@ The part called EOS can be any character string. This sample uses EOS to mean "E
 If you change <<'EOS' to << "EOS", you can <a href="/blog/20180228151982.html"> variable expansion</a> in the here document.
 
 <pre>
-my $ message ='Hello';
+my $message ='Hello';
 
 # Variable expandable here document
-my $ text = << "EOS";
+my $text = << "EOS";
 aaaa
-$ message
+$message
 iiii
 uuuu
 EOS
@@ -54,9 +54,9 @@ EOS
 Even if you omit the double quotes as shown below, the variable will be expanded, but it is recommended to enclose it in double quotes so that you can clearly understand the meaning.
 
 <pre>
-my $ text = << EOS;
+my $text = << EOS;
 aaaa
-$ message
+$message
 iiii
 uuuu
 EOS
@@ -73,20 +73,20 @@ use warnings;
 # Here document
 
 print "1: Use here document. (No variable expansion) \ n";
-my $ text_no_expand = <<'EOS';
+my $text_no_expand = <<'EOS';
 aaaa
 iiii
 uuuu
 EOS
 
-print "$ text_no_expand \ n";
+print "$text_no_expand \ n";
 
 print "2: Use here document. (With variable expansion) \ n";
-my $ str = "eeee";
-my $ text_expand = << "EOS";
-$ str
+my $str = "eeee";
+my $text_expand = << "EOS";
+$str
 oooo
 EOS
 
-print "$ text_expand \ n";
+print "$text_expand \ n";
 </pre>

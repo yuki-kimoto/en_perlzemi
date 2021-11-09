@@ -40,12 +40,12 @@ dir1 / dir2 / file.txt
 
 Suppose you want to convert this Unix file representation to a Windows file representation on Windows. It's easy to do the following:
 
-The <b> splitdir method of File :: Spec splits $ unix_path into individual parts. Connect it with the catfile method. </b> catfile will combine the decomposed filenames with \.
+The <b> splitdir method of File :: Spec splits $unix_path into individual parts. Connect it with the catfile method. </b> catfile will combine the decomposed filenames with \.
 
 <pre>
 use File :: Spec;
-my $ unix_path ='dir1 / dir2 / file.txt';
-my $ windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($ unix_path));
+my $unix_path ='dir1 / dir2 / file.txt';
+my $windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($unix_path));
 </pre>
 
 <h3> Executable sample </h3>
@@ -55,11 +55,11 @@ use strict;
 use warnings;
 
 use File :: Spec;
-my $ unix_path ='dir1 / dir2 / file.txt';
-my $ windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($ unix_path));
+my $unix_path ='dir1 / dir2 / file.txt';
+my $windows_path = File :: Spec-> catfile (File :: Spec-> splitdir ($unix_path));
 
 print "1. Convert to Windows file path \ n";
-print $ windows_path, "\ n";
+print $windows_path, "\ n";
 </pre>
 
 <h3> Output result on Windows </h3>

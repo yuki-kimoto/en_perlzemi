@@ -41,7 +41,7 @@ PerlIO_printf is a function that corresponds to printf in the C standard library
 
 <pre>
 # Perl
-my $ str = "Hello";
+my $str = "Hello";
 
 # XS
 SV * sv_str = newSVpv ("Hello", 0);
@@ -58,7 +58,7 @@ The C language API is often omitted, so it's difficult to remember, but I have t
 <pre>
 # Unsigned integer
 # Perl
-my $ num = 1;
+my $num = 1;
 
 # XS
 SV * sv_num = newSVuv (5);
@@ -67,7 +67,7 @@ SV * sv_num = newSVuv (5);
 <pre>
 # Integer
 # Perl
-my $ num = -1;
+my $num = -1;
 
 # XS
 SV * sv_num = newSViv (-1);
@@ -76,7 +76,7 @@ SV * sv_num = newSViv (-1);
 <pre>
 # Numerical value
 # Perl
-my $ num = 1.14;
+my $num = 1.14;
 
 # XS
 SV * sv_num = newSVnv (1.14);
@@ -90,7 +90,7 @@ In XS, Perl's <a href="/blog/20100220126425.html"> undef</a> is represented by &
 
 <pre>
 # Perl
-my $ val = undef;
+my $val = undef;
 
 # XS
 SV * sv_val = & PL_sv_undef;
@@ -102,7 +102,7 @@ Use the <b> SvOK </b> function to see if a value of type SV * is defined. This i
 
 <pre>
 # Perl
-if (defined $ val) {...}
+if (defined $val) {...}
 
 # XS
 if (SvOK (sv_val)) {...}
@@ -123,16 +123,16 @@ The first argument of the SvPV_nolen function is an SV * type variable. The leng
 <pre>
 # Perl
 sub print_line {
-  my $ file = shift;
+  my $file = shift;
   
-  open my $ fh,'<', $ file
-    or die $ !;
+  open my $fh,'<', $file
+    or die $!;
   
-  while (my $ line = <$ fh>) {
-    print $ line;
+  while (my $line = <$fh>) {
+    print $line;
   }
   
-  close $ fh;
+  close $fh;
 }
 
 # XS
@@ -190,7 +190,7 @@ AV * av_nums = newAV ();
 Substitution.
 <pre>
 # Perl
-$ nums [0] = 1;
+$nums [0] = 1;
 
 # XS
 av_store (av_nums, 0, newSVuv (1));
@@ -200,7 +200,7 @@ Get the element. Since av_fetch returns a pointer to SV *, you need to remove th
 
 <pre>
 # Perl
-my $ num = $ nums [0];
+my $num = $nums [0];
 
 # XS
 SV ** const sv_num_ptr = av_fetch (nums, 0, FALSE);
@@ -211,7 +211,7 @@ The size of the array.
 
 <pre>
 # Perl
-my $ count = @nums;
+my $count = @nums;
 
 # XS (Note that a value 1 smaller than the length is returned due to historical reasons)
 int count = av_len (nums) + 1;
@@ -231,7 +231,7 @@ pop function.
 
 <pre>
 # Perl
-my $ num = pop @nums;
+my $num = pop @nums;
 
 # XS
 SV * sv_num = av_pop (av_nums);
@@ -241,7 +241,7 @@ shift function.
 
 <pre>
 # Perl
-my $ num = shift @nums;
+my $num = shift @nums;
 
 # XS
 SV * sv_num = av_shift (av_nums);
@@ -276,7 +276,7 @@ How to write in XS corresponding to the operation of <a href="/blog/201610131476
 
 <pre>
 # Perl
-exists $ hash {"key"};
+exists $hash {"key"};
 
 # XS
 hv_exists (hash, "key", strlen ("key"));
@@ -314,12 +314,12 @@ Creating an array of hashes.
 # The simplest Perl notation
 sub return_array_of_hash {
     
-  my $ people = [
+  my $people = [
       {name =>'Ken', age => 19},
       {name =>'Taro', age => 16}
   ];;
   
-  return $ people;
+  return $people;
 }
 
 # How to write XS Perl notation corresponding
@@ -328,13 +328,13 @@ sub return_array_of_hash {
   my @persons;
  
   my% person1;
-  $ person1 {name} ='Ken';
-  $ person1 {age} = 19;
+  $person1 {name} ='Ken';
+  $person1 {age} = 19;
   push @ peoples, \% person1;
   
   my% person2;
-  $ person2 {name} ='Taro';
-  $ person2 {age} = 26;
+  $person2 {name} ='Taro';
+  $person2 {age} = 26;
   push @persons, \% person2;
   
   return \ @persons;
@@ -420,7 +420,7 @@ SV * return_array_of_hash ()
 
 <pre>
 # Perl
-my $ str = "abc";
+my $str = "abc";
 
 # XS
 SV * sv_str = newSVpv ("abc", 0);
@@ -430,7 +430,7 @@ SV * sv_str = newSVpv ("abc", 0);
 
 <pre>
 # Perl
-my $ str2 = $ str1;
+my $str2 = $str1;
 
 # XS
 SV * sv_str2 = newSV (sv_str1);
@@ -440,7 +440,7 @@ SV * sv_str2 = newSV (sv_str1);
 
 <pre>
 # Perl
-my $ length = length $ str;
+my $length = length $str;
 
 # XS
 STRLEN sv_length = sv_len (sv_str);
@@ -450,8 +450,8 @@ STRLEN sv_length = sv_len (sv_str);
 
 <pre>
 # Perl
-my $ str = "abc";
-$ str. = "de";
+my $str = "abc";
+$str. = "de";
 
 # XS
 SV * sv_str = newSVpv ("abc", 0);
@@ -462,9 +462,9 @@ sv_catpv (sv_str, "de");
 
 <pre>
 # Perl
-my $ num1 = 1;
-my $ num2 = 2;
-my $ str = "$ num1 and $ num2";
+my $num1 = 1;
+my $num2 = 2;
+my $str = "$num1 and $num2";
 
 # XS
 int num1 = 1;
@@ -476,10 +476,10 @@ SV * sv_str = newSVpvf ("% d and% d", num1, num2);
 
 <pre>
 # Perl
-my $ num1 = 1;
-my $ num2 = 2;
-my $ str = "abc";
-$ str. = "$ num1 and $ num2";
+my $num1 = 1;
+my $num2 = 2;
+my $str = "abc";
+$str. = "$num1 and $num2";
 
 # XS
 int num1 = 1;
@@ -494,9 +494,9 @@ Use <strong> sv_cmp </strong> if you want to compare strings that are SVs.
 
 <pre>
 # perl
-if ($ str1 lt $ str2) {...}
-if ($ str1 eq $ str2) {...}
-if ($ str1 gt $ str2) {...}
+if ($str1 lt $str2) {...}
+if ($str1 eq $str2) {...}
+if ($str1 gt $str2) {...}
 
 # XS
 if (sv_cmp (sv_str1, sv_str2) <0) {...}
@@ -525,7 +525,7 @@ To get the package variable, write:
 
 <pre>
 # Perl
-$ Foo :: bar;
+$Foo :: bar;
 @Foo :: bar;
 % Foo :: bar;
 
@@ -543,7 +543,7 @@ Introducing a function that creates a package variable in XS. Specify "GV_ADD" i
 
 <pre>
 # Perl
-our $ Foo :: bar;
+our $Foo :: bar;
 our @Foo :: bar;
 our% Foo :: bar;
 
@@ -563,7 +563,7 @@ To use <a href="/blog/20100827127859.html"> regular expressions</a> in XS, you m
 
 <pre>
 # Perl
-my $ re = qr / [0-9] + /;
+my $re = qr / [0-9] + /;
 
 # XS (the second argument of pregcomp is a regular expression flag)
 SV * sv_re_str = newSVpv ("[0-9] +", 0);
@@ -583,7 +583,7 @@ You can specify the regular expression flag as the second argument of pregcomp.
 
 <pre>
 # Perl
-my $ re = qr / abc / im;
+my $re = qr / abc / im;
 
 # XS
 SV * sv_re_str = newSVpv ("[0-9] +", 0);
@@ -675,8 +675,8 @@ Use the <b> Perl_reg_numbered_buff_fetch </b> function to fetch the matched stri
 
 <pre>
 # Perl
-my $ match1 = $ 1;
-my $ match2 = $ 2;
+my $match1 = $1;
+my $match2 = $2;
 
 # XS
 SV * sv_match1 = newSVpv ("", 0);
@@ -696,8 +696,8 @@ Create an object. Be sure to make it mortal.
 
 <pre>
 # Perl
-my $ self = {};
-bless $ self, "MyClass";
+my $self = {};
+bless $self, "MyClass";
 
 # XS
 SV * sv_self = sv_2mortal (new_RV_inc (sv_2mortal ((SV *) newHV ()));

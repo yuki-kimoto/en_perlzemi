@@ -26,7 +26,7 @@ You can use <b> do </b> to create a block that returns the last evaluated value 
 do {...};
 
 # do string-load script
-do $ file_name;
+do $file_name;
 </pre>
 
 Note that the block syntax and the string syntax have completely different functions. Let's take a closer look at each syntax.
@@ -37,14 +37,14 @@ You can use the <b> do block </b> to create a block that returns the last evalua
 
 <pre>
 # do block
-my $ value = do {
+my $value = do {
   1;
   2;
   3;
 };
 </pre>
 
-If you write as above, 3 will be returned and 3 will be assigned to $ value.
+If you write as above, 3 will be returned and 3 will be assigned to $value.
 
 There is no particular reason to use this syntax when programming normally, but it is customary to use this syntax if you want to read the contents of a file all at once.
 
@@ -53,7 +53,7 @@ There is no particular reason to use this syntax when programming normally, but 
 The following description allows you to read all the contents of a file at once.
 
 <pre>
-my $ content = do {local $ /; <$ fh>};
+my $content = do {local $/; <$fh>};
 </pre>
 
 A detailed explanation of this description is given below.
@@ -77,9 +77,9 @@ A common method is to write the configuration file in Perl and read it.
 It is convenient to write the configuration file in Perl.
 
 <pre>
-my $ conf_file = "app.conf";
-my $ conf = do $ conf_file
-  or die qq / Can't load config file "$ conf_file": $! $ @ /;
+my $conf_file = "app.conf";
+my $conf = do $conf_file
+  or die qq / Can't load config file "$conf_file": $! $@ /;
 </pre>
 
 The contents of the configuration file.
@@ -91,7 +91,7 @@ The contents of the configuration file.
 }
 </pre>
 
-If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $ @ will be set to the error content.
+If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $@ will be set to the error content.
 
 The configuration file can be written in XML or JSON, but it's easiest to write in Perl.
 

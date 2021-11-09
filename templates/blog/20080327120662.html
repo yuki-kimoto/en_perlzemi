@@ -42,8 +42,8 @@ This is a sample that outputs the elements of the array in order.
 <pre>
 # Process array elements in sequence
 my @nums = (3, 4, 5);
-for (my $ i = 0; $ i <@nums; $ i ++) {
-  print "$ i:". $ Nums [$ i]. "\ n";
+for (my $i = 0; $i <@nums; $i ++) {
+  print "$i:". $Nums [$i]. "\ n";
 }
 </pre>
 
@@ -51,9 +51,9 @@ This is a sample that outputs the elements of an array in order when the data st
 
 <pre>
 # Process array elements in sequence (array reference)
-my $ nums = [3, 4, 5];
-for (my $ i = 0; $ i <@ $ nums; $ i ++) {
-  print "$ i:". $ Nums-> [$ i]. "\ n";
+my $nums = [3, 4, 5];
+for (my $i = 0; $i <@ $nums; $i ++) {
+  print "$i:". $Nums-> [$i]. "\ n";
 }
 </pre>
 
@@ -61,14 +61,14 @@ This is a sample that outputs all the elements of a two-dimensional array in ord
 
 <pre>
 # Output all elements of 2D array
-my $ data = [
+my $data = [
   ['a', 1],
   ['b', 2]
 ];;
 
-for (my $ i = 0; $ i <@ $ data; $ i ++) {
-  for (my $ k = 0; $ k <@ {$ data-> [$ i]}; $ k ++) {
-    print "($ i, $ k):". $ Data-> [$ i]-> [$ k]. "\ n";
+for (my $i = 0; $i <@ $data; $i ++) {
+  for (my $k = 0; $k <@ {$data-> [$i]}; $k ++) {
+    print "($i, $k):". $Data-> [$i]-> [$k]. "\ n";
   }
 }
 </pre>
@@ -77,13 +77,13 @@ This is a sample that outputs the values ​​contained in the two-dimensional 
 
 <pre>
 # Output 2D array line by row, separated by tabs
-my $ data = [
+my $data = [
   ['a', 1],
   ['b', 2]
 ];;
 
-for (my $ i = 0; $ i <@ $ data; $ i ++) {
-  print join ("\ t", @ {$ data-> [$ i]}). "\ n";
+for (my $i = 0; $i <@ $data; $i ++) {
+  print join ("\ t", @ {$data-> [$i]}). "\ n";
 }
 
 Here are some samples of the for statement.
@@ -93,17 +93,17 @@ use strict;
 use warnings;
 
 print "[1] \ n";
-for (my $ i = 0; $ i <5; $ i ++) {
-  # Add 1 at a time, and when $ val reaches 5, exit the loop.
-  print "$ i \ n";
+for (my $i = 0; $i <5; $i ++) {
+  # Add 1 at a time, and when $val reaches 5, exit the loop.
+  print "$i \ n";
 }
 print "\ n";
 
 print "[2] \ n";
 my @chars = qw / a b c d e /;
-for (my $ i = 0; $ i <@chars; $ i ++) {
-  # @chars (array size) is 5, so when $ index becomes 5, it exits the loop.
-  print "$ chars [$ i] \ n";
+for (my $i = 0; $i <@chars; $i ++) {
+  # @chars (array size) is 5, so when $index becomes 5, it exits the loop.
+  print "$chars [$i] \ n";
 }
 print "\ n";
 </pre>

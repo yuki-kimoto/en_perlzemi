@@ -22,14 +22,14 @@
 To open a <strong> file </strong>, use the <strong> open function </strong>. The first argument is a variable for assigning the acquired file handle, the second argument is open mode, and the third argument is the file name. Returns true if the file was opened successfully, false if it failed.
 
 <pre>
-$ ret = open ($ fh, $ mode, $ file);
+$ret = open ($fh, $mode, $file);
 </pre>
 
 When opening a file, the following is a common way to write it. Learn other ways based on this.
 
 <pre>
-open (my $ fh, "<", $ file)
-  or die "Can't open $ file: $!";
+open (my $fh, "<", $file)
+  or die "Can't open $file: $!";
 </pre>
 
 "<" Means open mode, and when reading a file, specify "<".
@@ -115,8 +115,8 @@ As I will explain in detail later, this method is extremely dangerous. To do it 
 When you open the file, you also need to handle the exception. If the file fails to open, there is no point in moving on to the subsequent processing, so use the die function to terminate the program. The cause of the file opening failure is assigned to "$!", So include that in the error message as well.
 
 <pre>
-open (my $ fh, "<", $ file)
-  or die "Can't open $ file: $!";
+open (my $fh, "<", $file)
+  or die "Can't open $file: $!";
 </pre>
 
 <h3> Open two arguments-not recommended </h3>
@@ -125,7 +125,7 @@ Older source code may use a two-argument open function, but now it is recommende
 
 <pre>
 # 2 Argument open function is deprecated
-open ($ fh, "<$ file");
+open ($fh, "<$file");
 </pre>
 
 <h3> Sample </h3>
@@ -137,10 +137,10 @@ use strict;
 use warnings;
 
 # Pass the name of an existing file as an argument.
-my $ file = shift;
+my $file = shift;
 
-open (my $ fh2, "<", $ file)
-  or die "Can't open file $ file: $!";
+open (my $fh2, "<", $file)
+  or die "Can't open file $file: $!";
 </pre>
 
 <h3> Related articles </h3>

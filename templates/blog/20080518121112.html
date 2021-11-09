@@ -22,7 +22,7 @@ To extract the extension from the file name, specify the extension with the seco
 
 <pre>
 use File :: Basename;
-my ($ base_name, $ dir, $ suffix) = fileparse ($ file_txt,'.txt');
+my ($base_name, $dir, $suffix) = fileparse ($file_txt,'.txt');
 </pre>
 
 You can retrieve the extension by specifying the extension name in the second argument of the fileparse function of the File :: Basename module.
@@ -31,8 +31,8 @@ You can also use <a href="/blog/20100827127859.html"> regular expression</a> to 
 
 <pre>
 use File :: Basename;
-my $ regex_suffix = qr / \. [^ \.] + $ /;
-my $ suffix_txt = (fileparse ($ file_txt, $ regex_suffix)) [2];
+my $regex_suffix = qr / \. [^ \.] + $/;
+my $suffix_txt = (fileparse ($file_txt, $regex_suffix)) [2];
 </pre>
 
 This regular expression retrieves the extension after the last appearing. If you want to match with an extension after the first appearing., Use the regular expression "qw (\ .. + $)".
@@ -47,26 +47,26 @@ use warnings;
 use File :: Basename'fileparse';
 
 # Extract the extension from the file name.
-my $ file_txt ='dir1 / dir2 / base_name.txt';
-my $ file_log ='dir1 / dir2 / base_name.log';
-my $ file_bak ='dir1 / dir2 / base_name.log.bak';
+my $file_txt ='dir1 / dir2 / base_name.txt';
+my $file_log ='dir1 / dir2 / base_name.log';
+my $file_bak ='dir1 / dir2 / base_name.log.bak';
 
 print "1: Extract the extension from the file name. (Specify the extension name) \ n";
-my ($ base_name, $ dir, $ suffix) = fileparse ($ file_txt,'.txt');
-print "\ $ dir = $ dir \ n",
-  "\ $ base_name = $ base_name \ n",
-  "\ $ suffix = $ suffix \ n \ n";
+my ($base_name, $dir, $suffix) = fileparse ($file_txt,'.txt');
+print "\ $dir = $dir \ n",
+  "\ $base_name = $base_name \ n",
+  "\ $suffix = $suffix \ n \ n";
 
 print "2: Extract the extension from the file name. (Specify the extension name pattern) \ n";
-my $ regex_suffix = qr / \. [^ \.] + $ /;
+my $regex_suffix = qr / \. [^ \.] + $/;
 
-my $ suffix_txt = (fileparse $ file_txt, $ regex_suffix) [2];
-my $ suffix_log = (fileparse $ file_log, $ regex_suffix) [2];
-my $ suffix_bak = (fileparse $ file_bak, $ regex_suffix) [2];
+my $suffix_txt = (fileparse $file_txt, $regex_suffix) [2];
+my $suffix_log = (fileparse $file_log, $regex_suffix) [2];
+my $suffix_bak = (fileparse $file_bak, $regex_suffix) [2];
 
-print "\ $ suffix_txt = $ suffix_txt \ n",
-  "\ $ suffix_log = $ suffix_log \ n",
-  "\ $ suffix_bak = $ suffix_bak \ n";
+print "\ $suffix_txt = $suffix_txt \ n",
+  "\ $suffix_log = $suffix_log \ n",
+  "\ $suffix_bak = $suffix_bak \ n";
 </pre>
 
 Execution result
@@ -75,12 +75,12 @@ Execution result
 1: Create a file.
 C: \ Users \ kimoto \ labo> perl a.pl
 1: Extract the extension from the file name. (Specify the extension name)
-$ dir = dir1 / dir2 /
-$ base_name = base_name
-$ suffix = .txt
+$dir = dir1 / dir2 /
+$base_name = base_name
+$suffix = .txt
 
 2: Extract the extension from the file name. (Specify the extension name pattern)
-$ suffix_txt = .txt
-$ suffix_log = .log
-$ suffix_bak = .bak
+$suffix_txt = .txt
+$suffix_log = .log
+$suffix_bak = .bak
 </pre>

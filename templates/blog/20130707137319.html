@@ -26,7 +26,7 @@ We will write about the advantages of hash-based object-oriented programming.
 Hash-based object-oriented programming has much better performance in constructor generation.
 
 <pre>
-my $ obj = SomeClass-> new;
+my $obj = SomeClass-> new;
 </pre>
 
 This is because the received value is simply stored in a hash and blessed. You might think of performance, but when it comes to large frameworks, the constructor generation process uses an extremely large number of times, and it is sometimes slowed down here.
@@ -41,10 +41,10 @@ That's because all you have to do is change the accessor call to access to the h
 
 <pre>
 # Method call
-$ self-> title;
+$self-> title;
 
 # Hash access
-$ self-> {title}
+$self-> {title}
 </pre>
 
 If you were writing in mop, you wouldn't be able to do this.
@@ -86,11 +86,11 @@ For example, suppose you want to override a constructor in a subclass. Hash-base
 
 <pre>
 sub new {
-  my $ self = shift-> SUERP :: new (@_);
+  my $self = shift-> SUERP :: new (@_);
 
   # Gonyo Gonyo
 
-  return $ self;
+  return $self;
 }
 </pre>
 

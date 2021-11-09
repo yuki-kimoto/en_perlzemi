@@ -3,20 +3,20 @@
 How can I read the contents of a file in bulk with Perl? By convention, the contents of a file are often read at once, with the following description:
 
 <pre>
-my $ file ='a.txt';
-open my $ fh,'<', $ file
-  or die "Can't open $ file: $!";
+my $file ='a.txt';
+open my $fh,'<', $file
+  or die "Can't open $file: $!";
 
 # Read the contents of the file at once
-my $ content = do {local $ /; <$ fh>};
+my $content = do {local $/; <$fh>};
 </pre>
 
 The <a href="/blog/20090208123289.html"> do block</a> returns the last evaluated value.
 
-local undefined the <a href="/blog/20161102147817.html"> special variable</a> "$ /" that represents a line break in the file.
+local undefined the <a href="/blog/20161102147817.html"> special variable</a> "$/" that represents a line break in the file.
 
-This causes the <a href="/blog/20080722121673.html"> file input operator</a> "<$ fh>" to return the contents of the entire file.
+This causes the <a href="/blog/20080722121673.html"> file input operator</a> "<$fh>" to return the contents of the entire file.
 
-And when the scope ends, "$ /" returns to its original state.
+And when the scope ends, "$/" returns to its original state.
 
 Keep in mind that Perl, which doesn't have a standard function to read a file at once, may read the entire contents of the file in this way.

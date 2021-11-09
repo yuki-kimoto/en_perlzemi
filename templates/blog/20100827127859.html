@@ -46,13 +46,13 @@ Pattern matching is an operation to check whether a set of characters represente
 
 <pre>
 # Pattern matching
-$ str = ~ / regular expression /
+$str = ~ / regular expression /
 </pre>
 
 The pattern matching operator is "= ~". Regular expressions must be enclosed in slashes "/". Returns true if there is a match, false if there is no match. Pattern matching is often used in combination with if statements.
 
 <pre>
-if ($ str = ~ / regular expression /) {
+if ($str = ~ / regular expression /) {
   # What to do if there is a match
 }
 </pre>
@@ -68,9 +68,9 @@ Regular expression: "a {1,3}"
 The script is as follows.
 
 <pre>
-my $ str ='This string is aa.';
+my $str ='This string is aa.';
 
-if ($ str = ~ / a {1,3} /) {
+if ($str = ~ / a {1,3} /) {
   print "Match \ n";
 }
 </pre>
@@ -80,7 +80,7 @@ if ($ str = ~ / a {1,3} /) {
 On the other hand, there is also an operator "! ~" That means that the pattern does not match.
 
 <pre>
-$ str! ~ / Regular expression /
+$str! ~ / Regular expression /
 </pre>
 
 <h4> Get the matched string </h4>
@@ -93,12 +93,12 @@ String: "This string is aar 1"
 Regular expression: (a {1,3}) ([pqr] 1)
 </pre>
 
-The script looks like this: <a href="/blog/20161102147817.html"> Special variables</a> The parts enclosed in parentheses are assigned to "$ 1" and "$ 2" in order.
+The script looks like this: <a href="/blog/20161102147817.html"> Special variables</a> The parts enclosed in parentheses are assigned to "$1" and "$2" in order.
 
 <pre>
-my $ str ='This string is aar1';
-if ($ str = ~ / (a ​​{1,3}) ([pqr] 1) /) {
-  print "Get $ 1 and $ 2";
+my $str ='This string is aar1';
+if ($str = ~ / (a ​​{1,3}) ([pqr] 1) /) {
+  print "Get $1 and $2";
 }
 </pre>
 
@@ -134,8 +134,8 @@ This string is aa - -> This string is bb
 The script looks like this:
 
 <pre>
-my $ str ='This string is aa';
-$ str = ~ s / a {1,3} / bb /;
+my $str ='This string is aa';
+$str = ~ s / a {1,3} / bb /;
 </pre>
 
 Only one is replaced. For example, if you have the string "This string is aa aaa", the above replacement will result in "This string is bb aaa" and only the first matching string will be replaced.
@@ -150,8 +150,8 @@ Target string = ~ s / regular expression / replaced string / g;
 The script that replaces all the matched strings looks like this:
 
 <pre>
-my $ str ='This string is aa aaa';
-$ str = ~ s / a {1,3} / bb / g;
+my $str ='This string is aa aaa';
+$str = ~ s / a {1,3} / bb / g;
 </pre>
 
 The output of the replaced character string is as follows.
@@ -275,7 +275,7 @@ You can also match the "." To any character, including newlines. If you want the
 
 <pre>
 Match # . To any character, including newlines
-$ str = ~ /./s;
+$str = ~ /./s;
 </pre>
 
 <h4> Number "\ d" </h4>
@@ -364,7 +364,7 @@ qqqabc-> abc $
 rrrabc
 </pre>
 
-When combined with the m option, $ changes to mean the end of a line. Use "\ z" if you want to represent the end of a string when using the m option. "\ Z" always represents the end of the string regardless of the existence of the option.
+When combined with the m option, $changes to mean the end of a line. Use "\ z" if you want to represent the end of a string when using the m option. "\ Z" always represents the end of the string regardless of the existence of the option.
 
 <h4> Word character boundaries </h4>
 
@@ -576,7 +576,7 @@ To make a regular expression character mean a normal character, you need to add 
 If you use <a href="/blog/20100329127089.html"> quotemeta function</a>, it will automatically escape the entire string.
 
 <pre>
-my $ regex = quotemeta ('.txt');
+my $regex = quotemeta ('.txt');
 </pre>
 
 You can also use the special regular expression character \ Q for escaping. The characters from \ Q to \ E are escaped. If there is no \ E, the target is up to the end of the regular expression.
@@ -619,14 +619,14 @@ s | aaa | bbb |
 Regular expressions can be referenced using the <a href="/blog/20080419120860.html"> qr operator</a>. You can use it as a regular expression reference and assign it to a variable, including regular expression options.
 
 <pre>
-my $ regex = qr / (\ d +) / sm;
+my $regex = qr / (\ d +) / sm;
 </pre>
 
 This can also be used in regular pattern matching.
 
 <pre>
-my $ num = 34;
-if ($ num = ~ / $ regex /) {
+my $num = 34;
+if ($num = ~ / $regex /) {
    
 }
 </pre>
@@ -712,7 +712,7 @@ Regular expression options are specified at the end of the regular expression. I
 You can replace everything that matches by specifying the g option.
 
 <blockquote>
-$ message2 = ~ s / yah / yes / g;
+$message2 = ~ s / yah / yes / g;
 </blockquote>
 
 We've already covered m, s, and g, so we'll cover the remaining options.
@@ -722,7 +722,7 @@ We've already covered m, s, and g, so we'll cover the remaining options.
 You can use the <strong> m </strong> option to match "^" and "$" to the beginning and end of a line.
 
 <pre>
-$ message = ~ / ^ i / m
+$message = ~ / ^ i / m
 </pre>
 
 <h4> s Match "." To line breaks s option </h4>
@@ -730,7 +730,7 @@ $ message = ~ / ^ i / m
 You can use the <strong> s </strong> option to match a "line break" to a ".".
 
 <pre>
-$ message = ~ / ^ i / s
+$message = ~ / ^ i / s
 </pre>
 
 <h4> i Case sensitiveMatch without </h4>
@@ -750,7 +750,7 @@ The e option allows you to use an expression as the result of the replacement.
 The following sample is a sample that doubles the matched number.
 
 <pre>
-s / (\ d +) / $ 1 * 2 / e;
+s / (\ d +) / $1 * 2 / e;
 </pre>
 
 <h4> x Ignore whitespace in regular expressions </h4>
@@ -758,8 +758,8 @@ s / (\ d +) / $ 1 * 2 / e;
 You can use the x option to ignore whitespace in regular expressions. You will also be able to write comments. If space is not important, you can use the x option to write the regular expression more clearly.
 
 <pre>
-my $ time = '03: 02: 56';
-my $ regex = qr /
+my $time = '03: 02: 56';
+my $regex = qr /
   (\ d {2}) # hour
   ::
   (\ d {2}) # min
@@ -767,10 +767,10 @@ my $ regex = qr /
   (\ d {2}) # seconds
 / x;
 
-if ($ time = ~ / $ regex /) {
-  my $ hour = $ 1;
-  my $ minute = $ 2;
-  my $ second = $ 3;
+if ($time = ~ / $regex /) {
+  my $hour = $1;
+  my $minute = $2;
+  my $second = $3;
 }
 </pre>
 
@@ -781,13 +781,13 @@ If you want to use the blank itself, escape the blank like "\".
 The regular expression option "o" allows variable expansion to be done only once. This will improve performance because it doesn't re-evaluate the regular expression, but it's also prone to bugs, so use it as needed.
 
 <pre>
-my $ regex = "a pen";
+my $regex = "a pen";
 for (1 .. 10) {
-  $ message = ~ / $ regex / o;
+  $message = ~ / $regex / o;
 }
 </pre>
 
-With the o option, variable expansion is done only the first time. In other words, from the second time of the loop, / a pen / is used as it is without the variable expansion of / $ regex / → / a pen /.
+With the o option, variable expansion is done only the first time. In other words, from the second time of the loop, / a pen / is used as it is without the variable expansion of / $regex / → / a pen /.
 
 <h3> Shortest match </h3>
 

@@ -24,11 +24,11 @@ But the lack of mold is really great. The lack of a mold frees you from a lot of
 First and foremost, you can assign a value of any type as long as the variable has no type. In other words, when you receive it, you don't have to be aware of what type of value you receive.
 
 <pre>
-my $ str ='Hello';
-my $ num = 1;
-my $ nums = [1, 2, 3];
-my $ person = {age => 2, name =>'taro'};
-my $ ua = LWP :: UserAgent-> new;
+my $str ='Hello';
+my $num = 1;
+my $nums = [1, 2, 3];
+my $person = {age => 2, name =>'taro'};
+my $ua = LWP :: UserAgent-> new;
 </pre>
 
 Whether it's a string, a number, an array, an associative array, or an object, you don't have to be aware of it.
@@ -37,7 +37,7 @@ Whether it's a string, a number, an array, an associative array, or an object, y
 
 The lack of variable types makes the amount of description very short.
 <pre>
-my $ ua = LWP :: UserAgent-> new;
+my $ua = LWP :: UserAgent-> new;
 </pre>
 
 If the variable had a type, it would look like this (Java example):
@@ -54,7 +54,7 @@ Untyped variables are more resistant to source code changes. For example, even i
 
 <pre>
 # clinet can be ClientA type or ClientB type
-my $ ua = $ c-> client;
+my $ua = $c-> client;
 </pre>
 
 <h3> No need to overload functions </h3>
@@ -63,12 +63,12 @@ Languages ​​that have variable types have different types, but if you want t
 
 <pre>
 sub sum {
-  my $ value = shift;
+  my $value = shift;
   
-  if (if $ value is type A) {
+  if (if $value is type A) {
   
   }
-  elsif (if $ value is type B) {
+  elsif (if $value is type B) {
   
   }
 }
@@ -94,29 +94,29 @@ I think there is a criticism that if a variable has no type, it is not possible 
 When reading a scripting language, it's usually easy to see what values ​​it contains by reading contextually. For example, suppose a variable is used as follows.
 
 <pre>
-$ nums-> [3];
+$nums-> [3];
 </pre>
 
-$ nums is an array (reference to).
+$nums is an array (reference to).
 
 <pre>
-$ ages-> {age};
+$ages-> {age};
 </pre>
 
-$ ages is a hash (reference to).
+$ages is a hash (reference to).
 
 <pre>
-my $ ua = LWP :: UserAgent-> new;
+my $ua = LWP :: UserAgent-> new;
 </pre>
 
-$ ua contains a value of type LWP :: UserAgent.
+$ua contains a value of type LWP :: UserAgent.
 
 <pre>
-my $ c = Client-> new;
-my $ ua = $ c-> ua;
+my $c = Client-> new;
+my $ua = $c-> ua;
 </pre>
 
-What is $ ua? You can find out what the ua method of the Client class is returning.
+What is $ua? You can find out what the ua method of the Client class is returning.
 
 If you read it like this and get used to reading the scripting language, you shouldn't have any problems.
 

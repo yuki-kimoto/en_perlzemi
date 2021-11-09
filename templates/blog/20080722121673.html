@@ -22,7 +22,7 @@
 Use the <strong> line input operator "<>" </strong> to read <strong> files line by line </strong>. When there are no more lines to read, undef is returned.
 
 <pre>
-my $ line = <$ fh>;
+my $line = <$fh>;
 </pre>
 
 Note that unlike other operators, you put the filehandle between "<" and ">".
@@ -30,7 +30,7 @@ Note that unlike other operators, you put the filehandle between "<" and ">".
 Usually used in combination with <a href="/blog/20100123126425.html"> while statement</a> to read lines repeatedly.
 
 <pre>
-while (my $ line = <$ fh>) {
+while (my $line = <$fh>) {
   # ...
 }
 </pre>
@@ -40,7 +40,7 @@ If you think about it as above, you may feel that it will not work properly if a
 But don't worry. This is because the file operator is interpreted as follows only when used in combination with while.
 
 <pre>
-while (defined (my $ line = <$ fh>)) {
+while (defined (my $line = <$fh>)) {
   # ...
 }
 </pre>
@@ -53,13 +53,13 @@ The line input operator "<>" with nothing between "<" and ">" is specially calle
 
 <pre>
 # Diamond operator
-my $ line = <>;
+my $line = <>;
 </pre>
 
 You can easily read a single line from a file using the diamond operator. Reads line by line from the file given by standard input and command line arguments.
 
 <pre>
-while (my $ line = <>) {
+while (my $line = <>) {
   ...
 }
 </pre>
@@ -83,8 +83,8 @@ This is a sample that outputs the received line as it is.
 use strict;
 use warnings;
 
-while (my $ line = <>) {
-  print $ line;
+while (my $line = <>) {
+  print $line;
 }
 </pre>
 
@@ -93,7 +93,7 @@ while (my $ line = <>) {
 You can populate an array with all rows by evaluating the row input operator in a list context. However, be aware that if the file is large, it will use a lot of memory.
 
 <pre>
-my @lines = <$ fh>
+my @lines = <$fh>
 </pre>
 
 <h3> Import all the contents of the file </h3>
@@ -101,10 +101,10 @@ my @lines = <$ fh>
 To capture the entire contents of a file, it is common to write something like this:
 
 <pre>
-my $ content = do {local $ /; <$ fh>};
+my $content = do {local $/; <$fh>};
 </pre>
 
-"$ /" Is the line delimiter. If you leave this undefined, the line input operator will populate the entire contents of the file. I'm using <a href="/blog/20080309120507.html"> local</a> to temporarily undefine it. The do block returns the last evaluated value. So, with this description, you can read the contents of the file at once.
+"$/" Is the line delimiter. If you leave this undefined, the line input operator will populate the entire contents of the file. I'm using <a href="/blog/20080309120507.html"> local</a> to temporarily undefine it. The do block returns the last evaluated value. So, with this description, you can read the contents of the file at once.
 
 <h3> Sample </h3>
 
@@ -115,62 +115,62 @@ use strict;
 use warnings;
 
 # File read
-# readline $ fh
-# <$ fh>
+# readline $fh
+# <$fh>
 
 # File name you want to read
-my $ file = shift;
+my $file = shift;
 
-open (my $ fh, "<", $ file)
-  or die "Cannot open $ file: $!";
+open (my $fh, "<", $file)
+  or die "Cannot open $file: $!";
 
 print "1: General description of file read \ n";
 Read one line with the # readline function.
-while (my $ line = readline $ fh) {
+while (my $line = readline $fh) {
     Remove line breaks with # chomp function
-    chomp $ line;
+    chomp $line;
     
-    Something to do with # $ line.
+    Something to do with # $line.
     # Export to standard output.
-    print $ line, "\ n";
+    print $line, "\ n";
 
     # Repeat reading one line until the file reaches EOF (END OF FILE).
 }
 
-close $ fh;
+close $fh;
 </pre>
 
 <h3> Code explanation </h3>
 
 <h4> (1) Read 1-line file </h4>
 <pre>
-while (my $ line = readline $ fh) {
+while (my $line = readline $fh) {
     # process ...
 }
 </pre>
-To read the file line by line, use the readline function. $ fh is the filehandle opened by the open function. Repeat reading one line with a while statement to read to the end of the file.
+To read the file line by line, use the readline function. $fh is the filehandle opened by the open function. Repeat reading one line with a while statement to read to the end of the file.
 
-It may seem strange to read one line at the position where the conditional statement of the while loop is written, but such a description is possible. With the description my $ line = readline $ fh, I declare a lexical variable called $ line and assign the read line to $ line. $ line is valid only inside a while loop and is not visible from the outside.
+It may seem strange to read one line at the position where the conditional statement of the while loop is written, but such a description is possible. With the description my $line = readline $fh, I declare a lexical variable called $line and assign the read line to $line. $line is valid only inside a while loop and is not visible from the outside.
 
-When the end of the file is reached, the readline function returns undef and $ line is assigned undef. Since $ line is undef, the while statement ends.
+When the end of the file is reached, the readline function returns undef and $line is assigned undef. Since $line is undef, the while statement ends.
 
 <h4> (2) Remove line breaks with chomp function </h4>
 
 <pre>
-while (my $ line = readline $ fh) {
-  chomp $ line;
+while (my $line = readline $fh) {
+  chomp $line;
   # process ...
 }
 </pre>
 
 Line breaks are often unnecessary after reading a line, so use the chomp function to remove the line breaks.
 
-<h4> (3) Another way to write readline <$ fh> </h4>
+<h4> (3) Another way to write readline <$fh> </h4>
 
 <pre>
-while (my $ line = <$ fh>) {
+while (my $line = <$fh>) {
   # process ...
 }
 </pre>
 
-In Perl, putting a filehandle inside <> has the same meaning as readline $ fh. Use this if you prefer a simple description.
+In Perl, putting a filehandle inside <> has the same meaning as readline $fh. Use this if you prefer a simple description.

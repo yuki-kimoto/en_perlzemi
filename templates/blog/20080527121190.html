@@ -21,7 +21,7 @@ Use the <strong> rmtree </strong> of the <a href="/blog/20100409127089.html"> Fi
 
 <pre>
 use File :: Path'rmtree';
-rmtree $ dir;
+rmtree $dir;
 </pre>
 
 <h3> Sample </h3>
@@ -35,13 +35,13 @@ use File :: Path'rmtree';
 
 # Delete the directory
 # Preparation (creating a directory)
-my $ dir1 = "dir_20080527_ $$";
-my $ dir2 = "$ dir1 / dir2";
-mkdir $ dir1
-  or die "Unable to create $ dir1.: $!";
-mkdir $ dir2
-  or die "Unable to create $ dir2.: $!";
-print "Preparation: $ dir1 and $ dir2 have been created. \ N \ n";
+my $dir1 = "dir_20080527_ $$";
+my $dir2 = "$dir1 / dir2";
+mkdir $dir1
+  or die "Unable to create $dir1.: $!";
+mkdir $dir2
+  or die "Unable to create $dir2.: $!";
+print "Preparation: $dir1 and $dir2 have been created. \ N \ n";
 print "1: Delete hierarchical directories at once. \ N";
 
 {
@@ -49,17 +49,17 @@ print "1: Delete hierarchical directories at once. \ N";
   # There is no choice but to use a signal handler to capture.
   # (For old rmtree implementations)
   # The content of the warning is stored in the first argument.
-  local $ SIG {__ WARN__} = sub {
-    my $ msg = shift;
-    die "$ msg";
+  local $SIG {__ WARN__} = sub {
+    my $msg = shift;
+    die "$msg";
   };
 
-  if (-d $ dir1) {
+  if (-d $dir1) {
     If warn is called in the # rmtree function,
     # Move to the above sub {} and exit with die.
-    rmtree ($ dir1);
+    rmtree ($dir1);
                    
-    print "$ dir1 has been deleted. \ N";
+    print "$dir1 has been deleted. \ N";
   }
 }
 </pre>

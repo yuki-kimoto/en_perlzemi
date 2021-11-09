@@ -27,10 +27,10 @@ To get the calling package name, filename, and line number, call the caller func
 
 <pre>
 # package name
-my $ package_name = caller;
+my $package_name = caller;
 
 # Package name, file name, line number, subroutine name
-my ($ package_name, $ file_name, $ line) = caller;
+my ($package_name, $file_name, $line) = caller;
 </pre>
 
 <h4> How to get the information of the higher hierarchy? </H4>
@@ -39,11 +39,11 @@ To get the information of the higher hierarchy, give the caller function an argu
 
 <pre>
     # 0 1 2 3 4
- my ($ package, $ filename, $ line, $ subroutine, $ hasargs,
+ my ($package, $filename, $line, $subroutine, $hasargs,
 
     # 5 6 7 8 9 10
-    $ wantarray, $ evaltext, $ is_require, $ hints, $ bitmask, $ hinthash)
-  = caller ($ i);
+    $wantarray, $evaltext, $is_require, $hints, $bitmask, $hinthash)
+  = caller ($i);
 </pre>
 
 You can also get additional subroutine names and so on.
@@ -65,11 +65,11 @@ print "1: Get the name of the function you are executing. \ N";
 func_name ();
 
 sub func_name {
-  my $ this_func_name = (caller 0) [3];
+  my $this_func_name = (caller 0) [3];
   If you specify 0 as the argument of the # caller function
   # You can get information about your own function.
   # The function name is in the 4th (element number is 3).
-  print $ this_func_name, "\ n";
+  print $this_func_name, "\ n";
   print "\ n";
 }
 
@@ -77,9 +77,9 @@ print "2: Get the function name without the package name. \ N";
 func_name_none_package ();
 
 sub func_name_none_package {
-  my $ this_func_name = (caller 0) [3];
-  $ this_func_name = ~ s /. *:: //;
-  print $ this_func_name, "\ n \ n";
+  my $this_func_name = (caller 0) [3];
+  $this_func_name = ~ s /. *:: //;
+  print $this_func_name, "\ n \ n";
 }
 
 print "3: Make function name acquisition into a subroutine. \ N";
@@ -92,9 +92,9 @@ sub test1 {
 sub get_func_name {
   If 1 is specified as the argument of the # caller function
   # You can get the information of the calling function.
-  my $ this_func_name = (caller 1) [3];
-  $ this_func_name = ~ s /. *:: //;
-  return $ this_func_name;
+  my $this_func_name = (caller 1) [3];
+  $this_func_name = ~ s /. *:: //;
+  return $this_func_name;
 }
 </pre>
 

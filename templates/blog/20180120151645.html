@@ -5,19 +5,19 @@ Perl allows you to change the enclosing character of a regular expression.
 <a href="/blog/20100827127859.html"> Regular expression</a> could be written as follows by combining pattern matching operators.
 
 <pre>
-$ string = ~ / cat /
+$string = ~ / cat /
 </pre>
 
 But now, suppose you want to match the path of a URL, for example. You can escape the slash and write:
 
 <pre>
-$ string = ~ / \ / foo \ / bar \ / baz /
+$string = ~ / \ / foo \ / bar \ / baz /
 </pre>
 
 Isn't it a little difficult to read? In Perl, there is a way to change the regular expression enclosing character "/" to another enclosing character. Write as follows.
 
 <pre>
-$ string = ~ m | / foo / bar / baz |
+$string = ~ m | / foo / bar / baz |
 </pre>
 
 Prefix it with an "m" to change the enclosing character to something else. The following combinations can be used as enclosing characters.

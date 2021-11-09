@@ -30,28 +30,28 @@ The File :: Spec method is implemented as a class method and is called in the fo
 
 <pre>
 # Class method call
-File :: Spec-> $ method;
+File :: Spec-> $method;
 </pre>
 
 <h3> method </h3>
 
 <h4> catfile </h4>
 
-Use catfile to create filenames from individual parts. $ file is "xxx \ yyy \ zzz" for Windows and "xxx / yyy / zzz" for Unix. OS-specific delimiters are used to create filenames.
+Use catfile to create filenames from individual parts. $file is "xxx \ yyy \ zzz" for Windows and "xxx / yyy / zzz" for Unix. OS-specific delimiters are used to create filenames.
 
 <pre>
 # Create file name
-my $ file = File :: Spec-> catfile ('xxx','yyy','zzz');
+my $file = File :: Spec-> catfile ('xxx','yyy','zzz');
 </pre>
 
 It can also be used to concatenate directory names and file names. You do not need to be aware of the presence of delimiters such as "/" and "\" at the end of the directory name.
 
 <pre>
 # Concatenate directory name and file name
-my $ dir ='xxx / yyy /';
-my $ file ='zzz';
+my $dir ='xxx / yyy /';
+my $file ='zzz';
 
-my $ file_abs = File :: Spec-> catfile ($ dir, $ file);
+my $file_abs = File :: Spec-> catfile ($dir, $file);
 </pre>
 
 <h4> splitdir </h4>
@@ -70,7 +70,7 @@ You may want to create a file name with the delimiter "/" even on Windows. To ac
 <pre>
 # Concatenate file names with "/"
 use File :: Spec :: Unix;
-my $ file = File :: Spec :: Unix-> catfile ('xxx','yyy','zzz');
+my $file = File :: Spec :: Unix-> catfile ('xxx','yyy','zzz');
 </pre>
 
 <h3> Supplement </h3>

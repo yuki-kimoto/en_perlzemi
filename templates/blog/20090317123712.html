@@ -39,7 +39,7 @@ sub author {# Implementation of accessor}
 And a constructor is a method that creates an object. If you create a constructor
 
 <pre>
-my $ book = Book-> new;
+my $book = Book-> new;
 </pre>
 
 You will be able to create an object with the description.
@@ -52,26 +52,26 @@ Now let's implement the constructor. Below is the simplest constructor implement
 
 <pre>
 sub new {
-    my $ class = shift;
-    my $ self = {};
-    return bless $ self, $ class;
+    my $class = shift;
+    my $self = {};
+    return bless $self, $class;
 }
 </pre>
 
 Call the following
 
 <pre>
-my $ book = Book-> new;
+my $book = Book-> new;
 </pre>
 
-What will be assigned to $ class when you do?
+What will be assigned to $class when you do?
 
 The answer is <b> Book </b>. The constructor new takes a <b> class name </b> as the first argument.
 
 <h3> 3. Prepare a hash reference </h3>
 
 <pre>
-  my $ self = {};
+  my $self = {};
 </pre>
 
 What is the line doing?
@@ -85,7 +85,7 @@ This is actually <b> object-owned data </​​b>. It's important, so I'll say i
 Last line
 
 <pre>
-return bless $ self, $ class;
+return bless $self, $class;
 </pre>
 
 Has a function called bless.

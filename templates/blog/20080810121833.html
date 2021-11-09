@@ -28,64 +28,64 @@ Used to use the option to specify the position of # seek
 use Fcntl qw (: seek);
 
 # Rewrite the file contents by random access.
-my $ file = "data_20080810.txt";
+my $file = "data_20080810.txt";
 
 # Open in read / write mode (not very secure)
-open (my $ fh, "+ <", $ file)
-  or die "Cannot open $ file";
+open (my $fh, "+ <", $file)
+  or die "Cannot open $file";
 
 # 16 bytes
-my $ len_rec = 16;
+my $len_rec = 16;
 
 # Beginning of record
-my $ pos_name = 0;
+my $pos_name = 0;
 
 # Fixed length 8 bytes
-my $ len_name = 8;
+my $len_name = 8;
 
 # 8th byte from the beginning
-my $ pos_age = 8;
+my $pos_age = 8;
 
 # Fixed length 8 bytes
-my $ len_age = 8;
+my $len_age = 8;
 
 # This time, add 1 to the age of peko.
 # peko is on the second record. Age is the 8th byte from the beginning of the record
-my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
+my $pos_peko_age = 1 * $len_rec + $pos_age;
 
 # Move the position of the file pointer to the position of Peco's age
-seek ($ fh, $ pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $ file: $!";
+seek ($fh, $pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $file: $!";
 
-Load peko's age into # $ age
-my $ age;
+Load peko's age into # $age
+my $age;
 
 # Number of bytes read
-my $ len_read;
-$ len_read = read ($ fh, $ age, $ len_age);
+my $len_read;
+$len_read = read ($fh, $age, $len_age);
 
-if (! defined $ len_read) {
-  die "Cannot read $ file: $!";
+if (! defined $len_read) {
+  die "Cannot read $file: $!";
 }
-elsif ($ len_read! = $ len_age) {
-  die "Read only $ len_read bytes";
+elsif ($len_read! = $len_age) {
+  die "Read only $len_read bytes";
 }
 
 
 # Add 1 to age
-$ age ++;
+$age ++;
 
 When # read, the file pointer advances by the amount read, so return it to the original position.
-seek ($ fh, $ pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $ file: $!";
+seek ($fh, $pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $file: $!";
 
 # Write to file
-printf $ fh "% 08s", $ age
-  or die "Cannot print: $ file: $!";
+printf $fh "% 08s", $age
+  or die "Cannot print: $file: $!";
 
 # Close file
-close $ fh
-  or die "Cannot close $ file: $!";
+close $fh
+  or die "Cannot close $file: $!";
 </pre>
 
 The following is the data to read. It is the data that three records (name 8 bytes, age 8 bytes) are lined up. Save it as data_20080810.txt.
@@ -107,23 +107,23 @@ Import the symbols associated with the seek function from the Fcntl module. Thre
 
 <pre>
 # 16 bytes
-my $ len_rec = 16;
+my $len_rec = 16;
 
 # Beginning of record
-my $ pos_name = 0;
+my $pos_name = 0;
 
 # Fixed length 8 bytes
-my $ len_name = 8;
+my $len_name = 8;
 
 # 8th byte from the beginning
-my $ pos_age = 8;
+my $pos_age = 8;
 
 # Fixed length 8 bytes
-my $ len_age = 8;
+my $len_age = 8;
 
 # This time, add 1 to the age of peko.
 # peko is on the second record. Age is the 8th byte from the beginning of the record
-my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
+my $pos_peko_age = 1 * $len_rec + $pos_age;
 </pre>
 
 For fixed-length files, you can specify the byte position directly. As mentioned above, it is convenient to define the length of one record, the position from the beginning of each data and the number of bytes, when specifying the position.
@@ -132,8 +132,8 @@ For fixed-length files, you can specify the byte position directly. As mentioned
 <pre>
 # Move the position of the file pointer to the position of Peco's age
 
-seek ($ fh, $ pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $ file: $!";
+seek ($fh, $pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $file: $!";
 </pre>
 
 You can use the seek function to move the file pointer to the specified byte position. Think of a file pointer as a variable that remembers the byte position of the current file.
@@ -188,24 +188,24 @@ If the seek function fails, it returns undef and sets $! To the error content.
 <h4> (4) Read the data with the read function </h4>
 
 <pre>
-Load peko's age into # $ age
-my $ age;
+Load peko's age into # $age
+my $age;
 
 # Number of bytes read
-my $ len_read;
-$ len_read = read ($ fh, $ age, $ len_age);
+my $len_read;
+$len_read = read ($fh, $age, $len_age);
 
-if (! defined $ len_read) {
-  die "Cannot read $ file: $!";
+if (! defined $len_read) {
+  die "Cannot read $file: $!";
 }
-elsif ($ len_read! = $ len_age) {
-  die "Read only $ len_read bytes";
+elsif ($len_read! = $len_age) {
+  die "Read only $len_read bytes";
 }
 </pre>
 
 By using the read function, only the specified number of bytes can be read from the file. The first argument is the open filehandle, the second argument is the scalar variable that stores the read data, and the third argument is the number of bytes to read.
 
-The return value of the read function is the number of bytes actually read. In case of read error, undef is returned and the error content is set in $ !.
+The return value of the read function is the number of bytes actually read. In case of read error, undef is returned and the error content is set in $!.
 
 If the number of bytes read is insufficient, error handling is performed for each read error.
 
@@ -213,8 +213,8 @@ If the number of bytes read is insufficient, error handling is performed for eac
 
 <pre>
 When # read, the file pointer advances by the amount read, so return it to the original position.
-seek ($ fh, $ pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $ file: $!";
+seek ($fh, $pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $file: $!";
 </pre>
 
 The read function advances the position of the file pointer by the amount read. To write to the same position again, call the seek function again.
@@ -222,8 +222,8 @@ The read function advances the position of the file pointer by the amount read. 
 <h4> (6) Write to a file </h4>
 
 <pre>
-printf $ fh "% 08s", $ age
-  or die "Cannot print: $ file: $!";
+printf $fh "% 08s", $age
+  or die "Cannot print: $file: $!";
 </pre>
 
 Writing is done by specifying the format with the <a href="/blog/20170326149148.html"> printf function</a>. By specifying% 08s, it means that "in an 8-digit character string, the part less than 8 digits is filled with 0".

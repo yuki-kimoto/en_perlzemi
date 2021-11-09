@@ -28,8 +28,8 @@ require Carp;
 Since require has such a specification, the argument is recognized as a file name. Therefore, to specify the module name as a variable and read it, write as follows.
 
 <pre>
-my $ module = "Carp";
-eval "require $ module;";
+my $module = "Carp";
+eval "require $module;";
 </pre>
 
-If you give a character string to <a href="/blog/20100312126967.html"> eval</a>, the executable statement in the character string will be executed. "require $ module;" is variable-expanded to require Carp ;. This will be executed by eval and the module will be loaded.
+If you give a character string to <a href="/blog/20100312126967.html"> eval</a>, the executable statement in the character string will be executed. "require $module;" is variable-expanded to require Carp ;. This will be executed by eval and the module will be loaded.

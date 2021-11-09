@@ -26,7 +26,7 @@ You can use "my" to declare a "lexical variable".
 
 <pre>
 # Declaration of scalar variables
-my $ num;
+my $num;
 
 # Declaration of array variables
 my @nums;
@@ -51,7 +51,7 @@ Use <strong> our </strong> to declare package variables.
 
 <pre>
 # Declaration of scalar variables
-our $ NUM;
+our $NUM;
 
 # Declaration of array variables
 our @NUMS;
@@ -73,11 +73,11 @@ See the following article for "declaring package variables" using "our".
 You can use "local" to temporarily save a package variable and restore it at the end of scope.
 
 <pre>
-our $ NUM = 5;
+our $NUM = 5;
 {
-  local $ NUM = 3;
+  local $NUM = 3;
 }
-# Here, "$ NUM" returns to "5" which is the "original value"
+# Here, "$NUM" returns to "5" which is the "original value"
 </pre>
 
 For "save and restore values" by "local", see the following article.
@@ -120,13 +120,13 @@ Typical scalar values ​​are as follows.
 <b> Sample of assignment of scalar value to scalar variable </b>
 
 <pre>
-my $ scalar;
-$ scalar = "one"; # string
-$ scalar = 2; # number
-$ scalar = [3, 4, 5]; # Reference to array
-$ scalar = {x => 6}; # Reference to hash
-$ scalar = sub {return 7}; # Reference to subroutine
-$ scalar = undef; # undefined value
+my $scalar;
+$scalar = "one"; # string
+$scalar = 2; # number
+$scalar = [3, 4, 5]; # Reference to array
+$scalar = {x => 6}; # Reference to hash
+$scalar = sub {return 7}; # Reference to subroutine
+$scalar = undef; # undefined value
 </pre>
 
 <h4> "Array variable" - stores multiple values ​​</h4>
@@ -187,12 +187,12 @@ For example, for a lexical variable declared with my, the scope is from "{" to "
 <pre>
 {
   # Declare here
-  my $ num = 3;
+  my $num = 3;
 }
 # I can't see from here
 </pre>
 
-The value saved in "$ num" disappears from the memory when the scope by "{...}" ends, and the variable itself called $ num disappears.
+The value saved in "$num" disappears from the memory when the scope by "{...}" ends, and the variable itself called $num disappears.
 
 See the following articles for more information on variable scope and lifetime.
 

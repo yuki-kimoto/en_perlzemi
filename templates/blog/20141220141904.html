@@ -29,11 +29,11 @@ Let me explain a little more about the reference counting method. For Perl varia
 
 <pre>
 {
-  The reference count for # $ str is 1.
-  my $ str ='Hello';
+  The reference count for # $str is 1.
+  my $str ='Hello';
   
-  The reference count for # $ str is 2. $ str_ref reference count is 1
-  my $ str_ref = \ $ str;
+  The reference count for # $str is 2. $str_ref reference count is 1
+  my $str_ref = \ $str;
 }
 </pre>
 
@@ -43,18 +43,18 @@ The above code describes what happens when you get out of scope.
 
 <pre>
 {
-  The reference count for # $ str is 1.
-  my $ str ='Hello';
+  The reference count for # $str is 1.
+  my $str ='Hello';
   
-  The reference count for # $ str is 2. $ str_ref reference count is 1
-  my $ str_ref = \ $ str;
+  The reference count for # $str is 2. $str_ref reference count is 1
+  my $str_ref = \ $str;
 }
-The reference count of # $ str_ref is decremented by 1 to 0.
-# $ str_ref is freed because the reference count of $ str_ref is now 0.
-Now that # $ str_ref has been released, the reference count for $ str has gone from 2 to 1.
-The reference count of # $ str is decremented by 1 to 0.
-# $ str is freed because the reference count of $ str is 0.
-# ('Hello' is contained inside $ str, which is also released)
+The reference count of # $str_ref is decremented by 1 to 0.
+# $str_ref is freed because the reference count of $str_ref is now 0.
+Now that # $str_ref has been released, the reference count for $str has gone from 2 to 1.
+The reference count of # $str is decremented by 1 to 0.
+# $str is freed because the reference count of $str is 0.
+# ('Hello' is contained inside $str, which is also released)
 </pre>
 
 Following this process, the memory is released.

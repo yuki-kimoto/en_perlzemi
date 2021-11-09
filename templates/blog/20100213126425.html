@@ -24,17 +24,17 @@ Use the <strong> warn function </strong> to output a <strong> warning </strong>.
 # Output warning
 
 # With line number
-warn $ message;
+warn $message;
 
 # No line number
-warn "$ message \ n";
+warn "$message \ n";
 </pre>
 
 What warn actually does is print a message to standard error. Same as the following print statement, except that it contains line numbers and raises the "__WANR__" signal. Warn may be used if you want to output a message to standard error even if it does not mean a warning.
 
 <pre>
 The meaning of # warn is almost the same as the output to standard error output.
-perl STDERR $ message;
+perl STDERR $message;
 </pre>
 
 <h3> Catch the warning </h3>
@@ -44,7 +44,7 @@ You can catch the warning. When warn is executed, __WARN__ signal is generated, 
 <pre>
 # Catch the warning
 
-$ SIG {__ WARN__} = sub {
+$SIG {__ WARN__} = sub {
     # Process you want to execute
 };
 

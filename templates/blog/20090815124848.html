@@ -55,7 +55,7 @@ To handle dates generically, use the DateTime module.
 
 <pre>
 use DateTime;
-my $ dt = DateTime-> new (
+my $dt = DateTime-> new (
   year => 1964,
   month => 10,
   day => 16,
@@ -73,15 +73,15 @@ You don't have to specify the year as a number from 1900 or the month as a numbe
 
 <pre>
 # Get method to get time information
-my $ year = $ dt-> year;
-my $ mon = $ dt-> month;
-my $ mday = $ dt-> day;
-my $ wday = $ dt-> day_of_week;
-my $ hour = $ dt-> hour;
-my $ minute = $ dt-> minute;
-my $ second = $ dt-> second;
-my $ yday = $ dt-> day_of_year;
-my $ qtr = $ dt-> quarter;
+my $year = $dt-> year;
+my $mon = $dt-> month;
+my $mday = $dt-> day;
+my $wday = $dt-> day_of_week;
+my $hour = $dt-> hour;
+my $minute = $dt-> minute;
+my $second = $dt-> second;
+my $yday = $dt-> day_of_year;
+my $qtr = $dt-> quarter;
 </pre>
 
 With the above method, you can get the date, hour, minute, second, day of the week, the number of days in a year, the number of counts in a quarter, and so on. Monday is 1 and Sunday is 7.
@@ -91,13 +91,13 @@ With the above method, you can get the date, hour, minute, second, day of the we
 Use the now method to create a DateTime object that represents the current time. If you specify local for time_zone in the argument, it will be the time zone of your country that should be set in the OS.
 
 <pre>
-my $ dt = DateTime-> now (time_zone =>'local');
+my $dt = DateTime-> now (time_zone =>'local');
 </pre>
 
 You can also specify the time zone explicitly.
 
 <pre>
-my $ dt = DateTime-> now (time_zone =>'Asia / Tokyo');
+my $dt = DateTime-> now (time_zone =>'Asia / Tokyo');
 </pre>
 
 It seems that specifying the time zone explicitly is a little slower than specifying local. However, explicit specification impairs portability.
@@ -105,7 +105,7 @@ It seems that specifying the time zone explicitly is a little slower than specif
 If no argument is specified, it will be UTC (Coordinated Universal Time).
 
 <pre>
-my $ dt = DateTime-> now;
+my $dt = DateTime-> now;
 </pre>
 
 <h3> Create date information from epoch seconds </h3>
@@ -113,13 +113,13 @@ my $ dt = DateTime-> now;
 Use the from_epoch method to create a DateTime object from epoch seconds.
 
 <pre>
-my $ dt = DateTime-> from_epoch (epoch => $ epoch);
+my $dt = DateTime-> from_epoch (epoch => $epoch);
 </pre>
 
 If you do not specify time_zone as an argument, it will be UTC (Coordinated Universal Time). You can get the local time by adding time_zone =>'local' as shown below.
 
 <pre>
-my $ dt = DateTime-> from_epoch (epoch => $ epoch, time_zone =>'local');
+my $dt = DateTime-> from_epoch (epoch => $epoch, time_zone =>'local');
 </pre>
 
 <h3> Create a timezone object </h3>
@@ -128,14 +128,14 @@ my $ dt = DateTime-> from_epoch (epoch => $ epoch, time_zone =>'local');
 DateTime is a constructor that allows you to specify the time zone. You can reuse the DateTime :: TimeZone object by creating it first.
 
 <pre>
-my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+my $time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
 </pre>
 
 <h4> Creating a timezone object </h4>
 
 Use the new method to create a timezone object. In the argument, specify the time zone name in name. (List of time zone names)
 <pre>
-my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+my $time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
 </pre>
 
 <h4> Automatic generation of timezone objects </h4>
@@ -143,7 +143,7 @@ my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
 As shown below, if you specify the time zone in the DateTime constructor (new, now, etc.), the DateTime :: TimeZone object is automatically created internally.
 
 <pre>
-my $ dt = DateTime-> now (time_zone =>'Asia / Tokyo');
+my $dt = DateTime-> now (time_zone =>'Asia / Tokyo');
 </pre>
 
 Every time you create a DateTime object, a DateTime :: TimeZone object will be created.
@@ -155,7 +155,7 @@ This is a cost, so if you want to create a DateTime object more than once, it's 
 Just specify the created DateTime :: TimeZone object in time_zone, which is an argument of the DateTime constructor.
 
 <pre>
-my $ dt1 = DateTime-> now (time_zone => $ time_zone);
+my $dt1 = DateTime-> now (time_zone => $time_zone);
 </pre>
 
 See "<a href="/blog/20081101122558.html"> Time Zone List</a>" for a list of time zones.
@@ -166,7 +166,7 @@ See "<a href="/blog/20081101122558.html"> Time Zone List</a>" for a list of time
 The expression of the date differs depending on the country or region. For example, January is expressed as January in the United States. Monday is expressed as Monday. A set of expressions for each country or region is called a locale. The DateTime module allows you to specify locales for different countries and regions.
 
 <pre>
-my $ dt = DateTime-> now (locale =>'ja');
+my $dt = DateTime-> now (locale =>'ja');
 </pre>
 
 The Japanese locale is ja.
@@ -178,7 +178,7 @@ The now method creates a DateTime object with current time information. You can 
 Also, by specifying local for time_zone, time information is created at the local time.
 
 <pre>
-my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
+my $dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 </pre>
 
 <h4> Locale-dependent information Month name and day name </h4>
@@ -189,16 +189,16 @@ abbr is an abbreviation for abbreviation (abbreviation).
 
 <pre>
 # Month name
-my $ month_name = $ dt-> month_name;
+my $month_name = $dt-> month_name;
 
 # Month abbreviation (same as month name if there is no abbreviation)
-my $ month_abbr = $ dt-> month_abbr;
+my $month_abbr = $dt-> month_abbr;
 
 # Day of the week name
-my $ day_name = $ dt-> day_name;
+my $day_name = $dt-> day_name;
 
 # Abbreviated name of the day of the week
-my $ day_abbr = $ dt-> day_abbr;
+my $day_abbr = $dt-> day_abbr;
 </pre>
 
 <h4> Encode for output </h4>
@@ -211,14 +211,14 @@ Windows people output in Shift-JIS, and other OS people output in UTF-8.
 
 <pre>
 Since the # UTF-8 flag is set, encode it.
-my $ encode_to;
-if ($ ^ O eq'MSWin32') {$ encode_to ='shift-jis'}
-else {$ encode_to ='utf8'}
+my $encode_to;
+if ($^ O eq'MSWin32') {$encode_to ='shift-jis'}
+else {$encode_to ='utf8'}
 print (
-  encode ($ encode_to, $ month_name). "\ n".
-  encode ($ encode_to, $ month_abbr). "\ n".
-  encode ($ encode_to, $ day_name). "\ n".
-  encode ($ encode_to, $ day_abbr). "\ n"
+  encode ($encode_to, $month_name). "\ n".
+  encode ($encode_to, $month_abbr). "\ n".
+  encode ($encode_to, $day_name). "\ n".
+  encode ($encode_to, $day_abbr). "\ n"
 );
 </pre>
 
@@ -227,7 +227,7 @@ print (
 You can specify the locale name in the argument of the DateTime constructor.
 
 <pre>
-my $ locale = DateTime :: Locale-> load ('ja');
+my $locale = DateTime :: Locale-> load ('ja');
 </pre>
 
 DateTime creates a DateTime :: Locale object in its constructor. Then, based on the generated locale object, it creates an output of date information for each region or country.
@@ -235,7 +235,7 @@ DateTime creates a DateTime :: Locale object in its constructor. Then, based on 
 <h4> Explicit creation of locale object </h4>
 
 <pre>
-my $ locale = DateTime :: Locale-> load ('ja');
+my $locale = DateTime :: Locale-> load ('ja');
 </pre>
 
 To explicitly create a DateTime :: Locale object, use the load method. The load method creates a DateTime :: Locale object the first time, but reuses the DateTime :: Locale object saved in memory from the second time onward.
@@ -247,13 +247,13 @@ There is always only one DateTime :: Locale object that represents'ja' in your p
 To pass the locale object to the DateTime constructor:
 
 <pre>
-my $ dt = DateTime-> now (locale => $ locale, time_zone =>'local');
+my $dt = DateTime-> now (locale => $locale, time_zone =>'local');
 </pre>
 
 You can explicitly pass a locale object, but
 
 <pre>
-my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
+my $dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 </pre>
 
 It is easy to specify by a character string like. If you write this, the DateTime :: Locale object will be created automatically in the DateTime constructor.
@@ -267,32 +267,32 @@ You can use DateTime to get date and time information. You can get it in various
 <pre>
 # Date
 # yyyy-mm-dd
-my $ ymd = $ dt-> ymd;
+my $ymd = $dt-> ymd;
 
 # yyyy / mm / dd
-my $ ymd_slash = $ dt-> ymd ('/');
+my $ymd_slash = $dt-> ymd ('/');
 
 # mm-dd-yyyy
-my $ mdy = $ dt-> mdy;
+my $mdy = $dt-> mdy;
 
 # mm / dd / yyyy
-my $ mdy_slash = $ dt-> mdy ('/');
+my $mdy_slash = $dt-> mdy ('/');
 
 # dd-mm-yyyy
-my $ dmy = $ dt-> dmy;
+my $dmy = $dt-> dmy;
 
 # dd / mm / yyyy
-my $ dmy_slash = $ dt-> dmy ('/');
+my $dmy_slash = $dt-> dmy ('/');
 
 # Time information
 # hh: mm: ss
-my $ hms = $ dt-> hms;
+my $hms = $dt-> hms;
 
 # hh-mm-ss
-my $ hms_hyphen = $ dt-> hms ('-');
+my $hms_hyphen = $dt-> hms ('-');
 
 # Date and time information
-my $ ymdhms = $ dt-> datetime;
+my $ymdhms = $dt-> datetime;
 </pre>
 
 Output result
@@ -317,16 +317,16 @@ DateTime has a method to determine the leap year and a method to get the last da
 
 <pre>
 # Judge whether it is a leap year
-my $ is_leap_year = $ dt1-> is_leap_year;
+my $is_leap_year = $dt1-> is_leap_year;
 
 # Last day of the month
-my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
+my $dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
 </pre>
 
 <h4> Determine if it is a leap year. </h4>
 Use the is_leap_year method to determine if it is a leap year.
 <pre>
-my $ is_leap_year = $ dt1-> is_leap_year;
+my $is_leap_year = $dt1-> is_leap_year;
 </pre>
 
 <h4> Get the last day of the month </h4>
@@ -334,7 +334,7 @@ my $ is_leap_year = $ dt1-> is_leap_year;
 To get the last day of the month, use the last_day_of_month method. If you specify year and month as arguments, a DateTime object that represents the last day of the month is returned (not the last day of the month itself). Get the date from the returned DateTime object with the day method.
 
 <pre>
-my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
+my $dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
 </pre>
 
 <h3> Date formatting "strftime" method </h3>
@@ -342,13 +342,13 @@ my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
 Use the <strong> strftime </strong> method to format the date. Pass the format specifier as an argument.
 
 <pre>
-$ dt-> strftime ("% a");
+$dt-> strftime ("% a");
 </pre>
 
 You can also specify multiple character strings in combination as shown below.
 
 <pre>
-$ dt-> strftime ("% Y-% m-% d");
+$dt-> strftime ("% Y-% m-% d");
 </pre>
 
 <h4> Strftime format specifier list </h4>
@@ -752,25 +752,25 @@ Use the <strong> add </strong> method to add dates and times.
 
 <pre>
 # Addition of days
-$ dt-> add (days => 1);
+$dt-> add (days => 1);
 
 # Monthly addition
-$ dt-> add (months => 1);
+$dt-> add (months => 1);
 
 # Year addition
-$ dt-> add (years => 1);
+$dt-> add (years => 1);
 
 # Hour addition
-$ dt-> add (hours => 1);
+$dt-> add (hours => 1);
 
 Addition of # minutes
-$ dt-> add (minutes => 1);
+$dt-> add (minutes => 1);
 
 # Addition of seconds
-$ dt-> add (seconds => 1);
+$dt-> add (seconds => 1);
 
 # Add all together
-$ dt-> add (years => 1, months => 1, days => 1, hours => 1, minutes => 1, seconds => 1);
+$dt-> add (years => 1, months => 1, days => 1, hours => 1, minutes => 1, seconds => 1);
 </pre>
 
 <h3> Date subtraction </h3>
@@ -779,28 +779,28 @@ Use the <strong> subtract </strong> method to subtract a period from a date.
 
 <pre>
 # Subtraction of days
-$ dt-> subtract (days => 1);
+$dt-> subtract (days => 1);
 
 # Month subtraction
-$ dt-> subtract (months => 1);
+$dt-> subtract (months => 1);
 
 # Year subtraction
-$ dt-> subtract (years => 1);
+$dt-> subtract (years => 1);
 
 # Hour subtraction
-$ dt-> subtract (hours => 1);
+$dt-> subtract (hours => 1);
 
 Subtraction of # minutes
-$ dt-> subtract (minutes => 1);
+$dt-> subtract (minutes => 1);
 
 # Second subtraction
-$ dt-> subtract (seconds => 1);
+$dt-> subtract (seconds => 1);
 </pre>
 
 You can also subtract dates. You can use the <strong>-</strong> symbol to make the calculation normal. (This is achieved using a feature called operator overloading.) The return value is a DateTime :: Duration object that represents the period, not a DateTime object. You can get the date of the period with the years, months, days method.
 
 <pre>
-my $ duration = $ dt2- $ dt1;
+my $duration = $dt2- $dt1;
 </pre>
 
 There are two types of date subtraction. Some subtract the period on a date (for example, one month ago), while others subtract the dates (for example, the difference between October 10, 2008 and March 14, 2009).
@@ -812,55 +812,55 @@ The period between dates is represented by the DateTime :: Duration object. Date
 When subtracting DateTime objects from each other, DateTime :: Duration object is returned as a return value. A feature called operator overloading is used to allow subtraction between DateTime objects using the-symbol.
 
 <pre>
-my $ duration = $ dt2- $ dt1;
+my $duration = $dt2- $dt1;
 </pre>
 
 You can get the period information with the following method.
 <pre>
 # Year
-$ duration-> years;
+$duration-> years;
 
 # Month
-$ duration-> months;
+$duration-> months;
 
 # Day 
-$ duration-> days;
+$duration-> days;
 
 # Time
-$ duration-> hours;
+$duration-> hours;
 
 # Min
-$ duration-> minutes;
+$duration-> minutes;
 
 # Seconds
-$ duration-> seconds;
+$duration-> seconds;
 </pre>
 
-It's important to note that each method doesn't make sense on its own. For example, $ duration-> days does not represent the number of days in the period itself. If the duration is 1 month and 30 days, then $ duration-> months will be 1 and $ duration-> days will be 30.
+It's important to note that each method doesn't make sense on its own. For example, $duration-> days does not represent the number of days in the period itself. If the duration is 1 month and 30 days, then $duration-> months will be 1 and $duration-> days will be 30.
 
 The above method always returns a positive value, so it is not possible to determine which period comes first. Use the <strong> is_positive </strong>, <strong> is_zero </strong>, <strong> is_negative </strong> methods to determine the order of the periods.
 <pre>
 # Date 2-Date 1 is positive
-$ duration-> is_positive
+$duration-> is_positive
 
 # Date 2-Same date 1
-$ duration-> is_zero
+$duration-> is_zero
 
 # Date 2-Date 1 is negative
-$ duration-> is_negative
+$duration-> is_negative
 </pre>
 
 Use the <strong> in_units </strong> method to get the duration in certain units.
 
 <pre>
 # 27 if the period is 1 year and 15 months
-my $ months = $ duration-> in_units ('months');
+my $months = $duration-> in_units ('months');
 
 # 2 if the period is 1 year and 15 months
-my $ years = $ duration-> in_inits ('years');
+my $years = $duration-> in_inits ('years');
 
 # If the period is 1 year and 15 months, it will be (2, 3).
-my ($ years, $ months) = $ duration-> in_units ('years','months');
+my ($years, $months) = $duration-> in_units ('years','months');
 </pre>
 If you pass two arguments, you must receive them in <a href="/blog/20080608121292.html"> list context</a>.
 
@@ -911,15 +911,15 @@ In Japan, there is no daylight saving time, so there is no need to consider the 
 To simplify the date calculation, convert a specific time zone to UTC before calculating. Then, after the calculation is finished, return to the original time zone.
 
 <pre>
-my $ dt = DateTime-> new (% user_input, time_zone => $ user_tz);
+my $dt = DateTime-> new (% user_input, time_zone => $user_tz);
 
 Convert to # UTC
-$ dt-> set_time_zone ('UTC');
+$dt-> set_time_zone ('UTC');
 
 # Calculate the date.
 # Return to the original time zone.
-$ dt-> set_time_zone ($ user_tz);
-print $ dt-> datetime;
+$dt-> set_time_zone ($user_tz);
+print $dt-> datetime;
 </pre>
 
 In Japan, there is no daylight saving time, so even if you calculate with local time, you will not get strange results. It seems that there are quite a few countries in the world that have introduced daylight saving time.
@@ -942,13 +942,13 @@ How to get the previous month and the next month using DateTime. (But I'm a litt
 
 <pre>
 # Current year and month
-my $ current_dt = DateTime-> now (time_zone =>'local');
+my $current_dt = DateTime-> now (time_zone =>'local');
   
 # Previous month
-my $ prev_dt = $ current_dt-> clone-> add (months => -1, end_of_month =>'limit');
+my $prev_dt = $current_dt-> clone-> add (months => -1, end_of_month =>'limit');
 
 # Next month
-my $ next_dt = $ current_dt-> clone-> add (months => 1, end_of_month =>'limit');
+my $next_dt = $current_dt-> clone-> add (months => 1, end_of_month =>'limit');
 </pre>
 
 With the "end_of_month =>'limit'" option, I feel that the date can be obtained correctly even if the date is 1/31. For example, the result of adding January to 1/31 is 2/28.
@@ -969,7 +969,7 @@ use DateTime;
 # Initialization of DateTime object
 # (Use the same year, not the year elapsed since 1900.)
 # (Month counts from 1 instead of 0. 10 is his October.)
-my $ dt = DateTime-> new (
+my $dt = DateTime-> new (
   year => 1964,
   month => 10,
   day => 16,
@@ -979,24 +979,24 @@ my $ dt = DateTime-> new (
 );
 
 # Get method to get time information
-my $ year = $ dt-> year;
-my $ mon = $ dt-> month;
-my $ mday = $ dt-> day;
+my $year = $dt-> year;
+my $mon = $dt-> month;
+my $mday = $dt-> day;
 
 # Day of the week number (day of the week starts with 1 and 1 is the month and 7 is the day)
-my $ wday = $ dt-> day_of_week;
-my $ hour = $ dt-> hour;
-my $ minute = $ dt-> minute;
-my $ second = $ dt-> second;
-my $ yday = $ dt-> day_of_year;
-my $ qtr = $ dt-> quarter;
+my $wday = $dt-> day_of_week;
+my $hour = $dt-> hour;
+my $minute = $dt-> minute;
+my $second = $dt-> second;
+my $yday = $dt-> day_of_year;
+my $qtr = $dt-> quarter;
 
 print "(1) Date / time information of DateTime \ n";
 print (
-  "$ {year} year $ {mon} month $ {mday} day $ {wday} th day \ n".
-  "$ {hour} hours $ {minute} minutes $ {second} seconds \ n".
-  "$ {yday} day (counting in one year) \ n".
-  "$ {qtr} period (out of quarter) \ n"
+  "${year} year ${mon} month ${mday} day ${wday} th day \ n".
+  "${hour} hours ${minute} minutes ${second} seconds \ n".
+  "${yday} day (counting in one year) \ n".
+  "${qtr} period (out of quarter) \ n"
 );
 </pre>
 Execution result
@@ -1016,31 +1016,31 @@ use warnings;
 use DateTime;
 
 # (1) -1 Get the current time (local time)
-my $ dt = DateTime-> now (time_zone =>'local');
+my $dt = DateTime-> now (time_zone =>'local');
 
 # (1) -2 When explicitly specifying the time zone.
-# my $ dt = DateTime-> now (time_zone =>'Asia / Tokyo');
+# my $dt = DateTime-> now (time_zone =>'Asia / Tokyo');
 
 # (1) -3 UTC Coordinated Universal Time
-# my $ dt = DateTime-> now;
+# my $dt = DateTime-> now;
 
 # Get method to get time information
-my $ year = $ dt-> year;
-my $ mon = $ dt-> month;
-my $ mday = $ dt-> day;
-my $ wday = $ dt-> day_of_week;
-my $ hour = $ dt-> hour;
-my $ minute = $ dt-> minute;
-my $ second = $ dt-> second;
-my $ yday = $ dt-> day_of_year;
-my $ qtr = $ dt-> quarter;
+my $year = $dt-> year;
+my $mon = $dt-> month;
+my $mday = $dt-> day;
+my $wday = $dt-> day_of_week;
+my $hour = $dt-> hour;
+my $minute = $dt-> minute;
+my $second = $dt-> second;
+my $yday = $dt-> day_of_year;
+my $qtr = $dt-> quarter;
 
 print "(1) Get the current time. \ N";
 print (
-  "$ {year} year $ {mon} month $ {mday} day $ {wday} th day \ n".
-  "$ {hour} hours $ {minute} minutes $ {second} seconds \ n".
-  "$ {yday} day (counting in one year) \ n".
-  "$ {qtr} period (out of quarter) \ n"
+  "${year} year ${mon} month ${mday} day ${wday} th day \ n".
+  "${hour} hours ${minute} minutes ${second} seconds \ n".
+  "${yday} day (counting in one year) \ n".
+  "${qtr} period (out of quarter) \ n"
 );
 </pre>
 Execution result
@@ -1060,31 +1060,31 @@ use warnings;
 use DateTime;
 
 # Create date information from epoch seconds.
-my $ epoch = 1225589752;
-my $ dt = DateTime-> from_epoch (epoch => $ epoch);
+my $epoch = 1225589752;
+my $dt = DateTime-> from_epoch (epoch => $epoch);
 
 # Get method to get time information
-my $ year = $ dt-> year;
-my $ mon = $ dt-> month;
-my $ mday = $ dt-> day;
-my $ wday = $ dt-> day_of_week; # Day of the week number (day of the week starts with 1 and 1 is the month and 7 is the day)
-my $ hour = $ dt-> hour;
-my $ minute = $ dt-> minute;
-my $ second = $ dt-> second;
-my $ yday = $ dt-> day_of_year;
-my $ qtr = $ dt-> quarter;
+my $year = $dt-> year;
+my $mon = $dt-> month;
+my $mday = $dt-> day;
+my $wday = $dt-> day_of_week; # Day of the week number (day of the week starts with 1 and 1 is the month and 7 is the day)
+my $hour = $dt-> hour;
+my $minute = $dt-> minute;
+my $second = $dt-> second;
+my $yday = $dt-> day_of_year;
+my $qtr = $dt-> quarter;
 
 print "(1) Create date information from epoch seconds. \ N";
 print (
-  $ year, "year",
-  $ mon, "month",
-  $ mday, "day",
-  $ wday, "third day \ n",
-  $ hour, "hour",
-  $ minute, "minute",
-  $ second, "seconds \ n",
-  $ yday, "Day (counting in one year) \ n",
-  $ qtr, "Period (out of quarter) \ n"
+  $year, "year",
+  $mon, "month",
+  $mday, "day",
+  $wday, "third day \ n",
+  $hour, "hour",
+  $minute, "minute",
+  $second, "seconds \ n",
+  $yday, "Day (counting in one year) \ n",
+  $qtr, "Period (out of quarter) \ n"
 );
 </pre>
 
@@ -1107,14 +1107,14 @@ use DateTime;
 use DateTime :: TimeZone;
 
 # (1) Creating a timezone object
-my $ time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
+my $time_zone = DateTime :: TimeZone-> new (name =>'Asia / Tokyo');
 
 # When automatically acquiring the time zone from the OS settings
-# my $ time_zone = DateTime :: TimeZone-> new (name =>'local');
+# my $time_zone = DateTime :: TimeZone-> new (name =>'local');
                                                      
 # (2) Use of timezone object
-my $ dt1 = DateTime-> now (time_zone => $ time_zone);
-my $ dt2 = DateTime-> now (time_zone => $ time_zone);
+my $dt1 = DateTime-> now (time_zone => $time_zone);
+my $dt2 = DateTime-> now (time_zone => $time_zone);
 </pre>
 
 This is a sample to set the locale.
@@ -1126,30 +1126,30 @@ use DateTime;
 use Encode;
 
 print "(1) Print the month name and day of the week name in Japanese. \ N";
-my $ dt = DateTime-> now (locale =>'ja', time_zone =>'local');
+my $dt = DateTime-> now (locale =>'ja', time_zone =>'local');
 
 # Month name
-my $ month_name = $ dt-> month_name;
+my $month_name = $dt-> month_name;
 
 # Month abbreviation (same as month name if there is no abbreviation)
-my $ month_abbr = $ dt-> month_abbr;
+my $month_abbr = $dt-> month_abbr;
 
 # Day of the week name
-my $ day_name = $ dt-> day_name;
+my $day_name = $dt-> day_name;
 
 # Abbreviated name of the day of the week
-my $ day_abbr = $ dt-> day_abbr;
+my $day_abbr = $dt-> day_abbr;
 
 Since the # UTF-8 flag is set, encode it.
-my $ encode_to;
-if ($ ^ O eq'MSWin32') {$ encode_to ='shift-jis'}
-else {$ encode_to ='utf8'}
+my $encode_to;
+if ($^ O eq'MSWin32') {$encode_to ='shift-jis'}
+else {$encode_to ='utf8'}
 
 print (
-  encode ($ encode_to, $ month_name). "\ n".
-  encode ($ encode_to, $ month_abbr). "\ n".
-  encode ($ encode_to, $ day_name). "\ n".
-  encode ($ encode_to, $ day_abbr). "\ n"
+  encode ($encode_to, $month_name). "\ n".
+  encode ($encode_to, $month_abbr). "\ n".
+  encode ($encode_to, $day_name). "\ n".
+  encode ($encode_to, $day_abbr). "\ n"
 );
 </pre>
 
@@ -1172,19 +1172,19 @@ use DateTime :: Locale;
 
 # For encoding
 use Encode;
-my $ encode_to;
-if ($ ^ O eq'MSWin32') {$ encode_to ='s
+my $encode_to;
+if ($^ O eq'MSWin32') {$encode_to ='s
 hift-jis'}
-else {$ encode_to ='utf8'}
+else {$encode_to ='utf8'}
 
 # Generation of locale
 print "(1) DateTime :: Locale object \ n";
-my $ locale = DateTime :: Locale-> load ('ja');
-my $ dt = DateTime-> now (locale => $ locale, time_zone =>'local');
+my $locale = DateTime :: Locale-> load ('ja');
+my $dt = DateTime-> now (locale => $locale, time_zone =>'local');
 
 # Day of the week name
-my $ day_name = $ dt-> day_name;
-print encode ($ encode_to, $ day_name). "\ n";
+my $day_name = $dt-> day_name;
+print encode ($encode_to, $day_name). "\ n";
 </pre>
 
 This is a sample to get the date and time.
@@ -1196,29 +1196,29 @@ use DateTime;
 use DateTime :: TimeZone;
 use DateTime :: Locale;
 
-my $ dt = DateTime-> now (time_zone =>'local');
+my $dt = DateTime-> now (time_zone =>'local');
 
 print "(1) Convenient output method of DateTime date / time \ n";
-my $ ymd = $ dt-> ymd;
-my $ ymd_slash = $ dt-> ymd ('/');
-my $ mdy = $ dt-> mdy;
-my $ mdy_slash = $ dt-> mdy ('/');
-my $ dmy = $ dt-> dmy;
-my $ dmy_slash = $ dt-> dmy ('/');
-my $ hms = $ dt-> hms;
-my $ hms_hyphen = $ dt-> hms ('-');
-my $ ymdhms = $ dt-> datetime;
+my $ymd = $dt-> ymd;
+my $ymd_slash = $dt-> ymd ('/');
+my $mdy = $dt-> mdy;
+my $mdy_slash = $dt-> mdy ('/');
+my $dmy = $dt-> dmy;
+my $dmy_slash = $dt-> dmy ('/');
+my $hms = $dt-> hms;
+my $hms_hyphen = $dt-> hms ('-');
+my $ymdhms = $dt-> datetime;
 
 print (
-  "Date (hyphen) $ ymd \ n".
-  "Date (slash) $ ymd_slash \ n".
-  "Month, day, year (hyphen) $ mdy \ n".
-  "Month, day, year (slash) $ mdy_slash \ n".
-  "Day / month / year (hyphen) $ dmy \ n".
-  "Day / month / year (slash) $ dmy_slash \ n \ n".
-  "Hour, minute, second (colon) $ hms \ n".
-  "Hour, minute and second (hyphen) $ hms_hyphen \ n \ n".
-  "Year / month / day / hour / minute / second $ ymdhms \ n"
+  "Date (hyphen) $ymd \ n".
+  "Date (slash) $ymd_slash \ n".
+  "Month, day, year (hyphen) $mdy \ n".
+  "Month, day, year (slash) $mdy_slash \ n".
+  "Day / month / year (hyphen) $dmy \ n".
+  "Day / month / year (slash) $dmy_slash \ n \ n".
+  "Hour, minute, second (colon) $hms \ n".
+  "Hour, minute and second (hyphen) $hms_hyphen \ n \ n".
+  "Year / month / day / hour / minute / second $ymdhms \ n"
 );
 </pre>
 
@@ -1230,14 +1230,14 @@ use warnings;
 use DateTime;
 
 print "(1) Determine if it is a leap year. \ N";
-my $ dt1 = DateTime-> now (time_zone =>'local');
-my $ is_leap_year = $ dt1-> is_leap_year;
-if ($ is_leap_year) {print "This year is a leap year. \ N \ n"}
+my $dt1 = DateTime-> now (time_zone =>'local');
+my $is_leap_year = $dt1-> is_leap_year;
+if ($is_leap_year) {print "This year is a leap year. \ N \ n"}
 else {print "This year is not a leap year. \ N \ n"}
 
 print "(2) Get the last day of the month. \ N";
-my $ dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
-print "The last day of November 2008 is". $ Dt2-> day. "The day. \ N";
+my $dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
+print "The last day of November 2008 is". $Dt2-> day. "The day. \ N";
 </pre>
 
 This is a sample strftime method. I'm trying all the formats with samples.
@@ -1248,65 +1248,65 @@ use warnings;
 use DateTime;
 
 print "(1) strftime format specification list \ n";
-my $ dt = DateTime-> now (time_zone =>'local');
+my $dt = DateTime-> now (time_zone =>'local');
 
-print'% a: Abbreviation for day of the week:'. $ Dt-> strftime ("% a"). "\ n";
-print'% A: Day of the week name:'. $ Dt-> strftime ("% A"). "\ n";
-print'% b: month abbreviation:'. $ dt-> strftime ("% b"). "\ n";
-print'% B: month name:'. $ dt-> strftime ("% B"). "\ n";
-print'% c: default format:'. $ Dt-> strftime ("% c"). "\ n";
-print'% C: First two digits of the year:'. $ Dt-> strftime ("% C"). "\ n";
-print'% d: days (01 to 31):'. $ Dt-> strftime ("% d"). "\ n";
-print'% D: Same as% m /% d /% y. Month Day Year:'. $ Dt-> strftime ("% D"). "\ n";
+print'% a: Abbreviation for day of the week:'. $Dt-> strftime ("% a"). "\ n";
+print'% A: Day of the week name:'. $Dt-> strftime ("% A"). "\ n";
+print'% b: month abbreviation:'. $dt-> strftime ("% b"). "\ n";
+print'% B: month name:'. $dt-> strftime ("% B"). "\ n";
+print'% c: default format:'. $Dt-> strftime ("% c"). "\ n";
+print'% C: First two digits of the year:'. $Dt-> strftime ("% C"). "\ n";
+print'% d: days (01 to 31):'. $Dt-> strftime ("% d"). "\ n";
+print'% D: Same as% m /% d /% y. Month Day Year:'. $Dt-> strftime ("% D"). "\ n";
 print'% e: day (1 to 31) The second digit of the one digit number (1 to 9) is a space. :'
-  . $ dt-> strftime ("% e"). "\ n";
-print'% F: Same as% Y-% m-% d (eg 2008-11-31):'. $ Dt-> strftime ("% F"). "\ n";
-print'% G: Year (I don't know the difference from% Y):'. $ Dt-> strftime ("% G"). "\ n";
-print'% g: Last two digits of the year (00-99):'. $ Dt-> strftime ("% g"). "\ n";
-print'% h: Same as% b. Month abbreviation:'. $ Dt-> strftime ("% h"). "\ n";
-print'% H: Hour (00 to 23):'. $ Dt-> strftime ("% H"). "\ n";
-print'% I: Hour (01 to 12) Time in 12-hour notation:'. $ Dt-> strftime ("% I"). "\ n";
+  . $dt-> strftime ("% e"). "\ n";
+print'% F: Same as% Y-% m-% d (eg 2008-11-31):'. $Dt-> strftime ("% F"). "\ n";
+print'% G: Year (I don't know the difference from% Y):'. $Dt-> strftime ("% G"). "\ n";
+print'% g: Last two digits of the year (00-99):'. $Dt-> strftime ("% g"). "\ n";
+print'% h: Same as% b. Month abbreviation:'. $Dt-> strftime ("% h"). "\ n";
+print'% H: Hour (00 to 23):'. $Dt-> strftime ("% H"). "\ n";
+print'% I: Hour (01 to 12) Time in 12-hour notation:'. $Dt-> strftime ("% I"). "\ n";
 print'% j: What day is it for the first time in the year? (001 to 366):'
-  . $ dt-> strftime ("% j"). "\ n";
+  . $dt-> strftime ("% j"). "\ n";
 print'% k: Hour (0 to 23) The second digit of the one digit number (0 to 9) is a space. :'
-  . $ dt-> strftime ("% k"). "\ n";
-print'% l: Hour (1 to 12) Time in 12-hour notation:'. $ Dt-> strftime ("% l"). "\ n";
-print'% m: Month number (01 to 12):'. $ Dt-> strftime ("% m"). "\ n";
-print'% M: Minutes (00 to 59):'. $ Dt-> strftime ("% M"). "\ n";
-print'% n: Newline character:'. $ Dt-> strftime ("% n"). "\ n";
+  . $dt-> strftime ("% k"). "\ n";
+print'% l: Hour (1 to 12) Time in 12-hour notation:'. $Dt-> strftime ("% l"). "\ n";
+print'% m: Month number (01 to 12):'. $Dt-> strftime ("% m"). "\ n";
+print'% M: Minutes (00 to 59):'. $Dt-> strftime ("% M"). "\ n";
+print'% n: Newline character:'. $Dt-> strftime ("% n"). "\ n";
 print'% N: milliseconds (write% 3N will display milliseconds in 3 digits and% 6N will display milliseconds in 6 digits):'
-  . $ dt-> strftime ("% 3N"). "\ n";
-print'% p: AM or PM:'. $ Dt-> strftime ("% p"). "\ n";
-print'% P: am or pm:'. $ Dt-> strftime ("% P"). "\ n";
+  . $dt-> strftime ("% 3N"). "\ n";
+print'% p: AM or PM:'. $Dt-> strftime ("% p"). "\ n";
+print'% P: am or pm:'. $Dt-> strftime ("% P"). "\ n";
 print'% r:% I:% M:% S Same as% p. (11:55:23 PM, etc.):'
-  . $ dt-> strftime ("% r"). "\ n";
-print'% R: hours and minutes (15:16, etc.):'. $ Dt-> strftime ("% R"). "\ n";
-print'% s: seconds from epoch:'. $ dt-> strftime ("% s"). "\ n";
-print'% S: seconds (00 to 61):'. $ Dt-> strftime ("% S"). "\ n";
-print'% t: tab character:'. $ Dt-> strftime ("% t"). "\ n";
+  . $dt-> strftime ("% r"). "\ n";
+print'% R: hours and minutes (15:16, etc.):'. $Dt-> strftime ("% R"). "\ n";
+print'% s: seconds from epoch:'. $dt-> strftime ("% s"). "\ n";
+print'% S: seconds (00 to 61):'. $Dt-> strftime ("% S"). "\ n";
+print'% t: tab character:'. $Dt-> strftime ("% t"). "\ n";
 print'% T: Same as% H:% M:% S. Hours, minutes and seconds (such as 23:14:03):'
-  . $ dt-> strftime ("% T"). "\ n";
-print'% u: Day of the week number (1 to 7. Monday is 1):'. $ Dt-> strftime ("% u"). "\ n";
+  . $dt-> strftime ("% T"). "\ n";
+print'% u: Day of the week number (1 to 7. Monday is 1):'. $Dt-> strftime ("% u"). "\ n";
 print'% U: How many weeks from the beginning of the year? First Sunday of the year (00-53)'
   Count'.'As the beginning of the week. The first Sunday week is 01. The week before that was 00. :'
-  . $ dt-> strftime ("% U"). "\ n";
+  . $dt-> strftime ("% U"). "\ n";
 print'% V: How many weeks from the beginning of the year? (01-53) Weeks with at least 4 days'
   .'Shall be the first week of the year. Count Monday as the beginning of the week. :'
-  . $ dt-> strftime ("% V"). "\ n";
-print'% w: Day of the week number (0 to 6. Sunday is 0):'. $ Dt-> strftime ("% w"). "\ n";
+  . $dt-> strftime ("% V"). "\ n";
+print'% w: Day of the week number (0 to 6. Sunday is 0):'. $Dt-> strftime ("% w"). "\ n";
 print'% W: Weeks counting from the beginning of the year (00-53) The first Monday of the year is the week'
   .'Count as the first. The first Monday week is 01. The week before that was 00. :'
-  . $ dt-> strftime ("% W"). "\ n";
-print'% x: default date format:'. $ Dt-> strftime ("% x"). "\ n";
-print'% X: Default format for time:'. $ Dt-> strftime ("% X"). "\ n";
-print'% y: last two digits of the year:'. $ Dt-> strftime ("% y"). "\ n";
-print'% Y: Year:'. $ Dt-> strftime ("% Y"). "\ n";
+  . $dt-> strftime ("% W"). "\ n";
+print'% x: default date format:'. $Dt-> strftime ("% x"). "\ n";
+print'% X: Default format for time:'. $Dt-> strftime ("% X"). "\ n";
+print'% y: last two digits of the year:'. $Dt-> strftime ("% y"). "\ n";
+print'% Y: Year:'. $Dt-> strftime ("% Y"). "\ n";
 print'% z: Time zone time shift from UTC (Coordinated Universal Time):'
-  . $ dt-> strftime ("% z"). "\ n";
-print'% Z: timezone name:'. $ Dt-> strftime ("% Z"). "\ n";
-print'%%:%:'. $ Dt-> strftime ("%%"). "\ n";
+  . $dt-> strftime ("% z"). "\ n";
+print'% Z: timezone name:'. $Dt-> strftime ("% Z"). "\ n";
+print'%%:%:'. $Dt-> strftime ("%%"). "\ n";
 print'% {method}: You can use the method of DateTime.pm. Example% {ymd}:'
-  . $ dt-> strftime ("% {ymd}"). "\ n";
+  . $dt-> strftime ("% {ymd}"). "\ n";
 </pre>
 
 Execution result
@@ -1371,42 +1371,42 @@ use warnings;
 use DateTime;
 
 print "(1) -1 Addition of dates \ n";
-my $ dt = DateTime-> now (time_zone =>'local');
+my $dt = DateTime-> now (time_zone =>'local');
 
 # Addition of days
-my $ dt_tommorow = $ dt-> clone;
-$ dt_tommorow-> add (days => 1);
+my $dt_tommorow = $dt-> clone;
+$dt_tommorow-> add (days => 1);
 
 # Monthly addition
-my $ dt_next_month = $ dt-> clone;
-$ dt_next_month-> add (months => 1);
+my $dt_next_month = $dt-> clone;
+$dt_next_month-> add (months => 1);
 
 # Year addition
-my $ dt_next_year = $ dt-> clone;
-$ dt_next_year-> add (years => 1);
+my $dt_next_year = $dt-> clone;
+$dt_next_year-> add (years => 1);
 
-print'Currently'. $ Dt-> date. ". \ N \ n";
-print'Tomorrow'. $ Dt_tommorow-> date. ". \ N";
-print '1 year later'. $ Dt_next_month-> date. ". \ N";
-print '1 year later'. $ Dt_next_year-> date. ". \ N \ n";
+print'Currently'. $Dt-> date. ". \ N \ n";
+print'Tomorrow'. $Dt_tommorow-> date. ". \ N";
+print '1 year later'. $Dt_next_month-> date. ". \ N";
+print '1 year later'. $Dt_next_year-> date. ". \ N \ n";
 
 # Hour addition
 print "(1) -2 Add time \ n";
-my $ dt_next_hour = $ dt-> clone;
-$ dt_next_hour-> add (hours => 1);
+my $dt_next_hour = $dt-> clone;
+$dt_next_hour-> add (hours => 1);
 
 Addition of # minutes
-my $ dt_next_minutes = $ dt-> clone;
-$ dt_next_minutes-> add (minutes => 1);
+my $dt_next_minutes = $dt-> clone;
+$dt_next_minutes-> add (minutes => 1);
 
 # Addition of seconds
-my $ dt_next_second = $ dt-> clone;
-$ dt_next_second-> add (seconds => 1);
+my $dt_next_second = $dt-> clone;
+$dt_next_second-> add (seconds => 1);
 
-print'Currently'. $ Dt-> time. ". \ N \ n";
-print '1 hour later'. $ Dt_next_hour-> time. ". \ N";
-print '1 minute later'. $ Dt_next_minutes-> time. ". \ N";
-print '1 second later'. $ Dt_next_second-> time. ". \ N";
+print'Currently'. $Dt-> time. ". \ N \ n";
+print '1 hour later'. $Dt_next_hour-> time. ". \ N";
+print '1 minute later'. $Dt_next_minutes-> time. ". \ N";
+print '1 second later'. $Dt_next_second-> time. ". \ N";
 </pre>
 
 Execution result
@@ -1435,28 +1435,28 @@ use warnings;
 use DateTime;
 
 print "(1) Date subtraction \ n";
-my $ dt = DateTime-> now (time_zone =>'local');
+my $dt = DateTime-> now (time_zone =>'local');
 
 # Subtraction of days
-my $ dt_yesterday = $ dt-> clone;
-$ dt_yesterday-> subtract (days => 1);
+my $dt_yesterday = $dt-> clone;
+$dt_yesterday-> subtract (days => 1);
 
-print'The current date is'. $ Dt-> date. ". \ N";
-print'Yesterday's date is'. $ Dt_yesterday-> date. ". \ N \ n";
+print'The current date is'. $Dt-> date. ". \ N";
+print'Yesterday's date is'. $Dt_yesterday-> date. ". \ N \ n";
 
 # Combine addition and subtraction.
-my $ dt_mix = $ dt-> clone;
-$ dt_mix = $ dt_mix-> add (months => 1)-> subtract (days => 1);
+my $dt_mix = $dt-> clone;
+$dt_mix = $dt_mix-> add (months => 1)-> subtract (days => 1);
 
 print "(2) Subtraction between DateTime objects \ n";
-my $ dt1 = DateTime-> new (year => 2000, month => 2, day => 1);
-my $ dt2 = DateTime-> new (year => 2003, month => 3, day => 19);
+my $dt1 = DateTime-> new (year => 2000, month => 2, day => 1);
+my $dt2 = DateTime-> new (year => 2003, month => 3, day => 19);
 
-my $ duration = $ dt2- $ dt1;
+my $duration = $dt2- $dt1;
 
-print'Period'. $ Duration-> years.' Years and'
-  . $ duration-> months.'Months and'
-  . $ duration-> days. "Days \ n";
+print'Period'. $Duration-> years.' Years and'
+  . $duration-> months.'Months and'
+  . $duration-> days. "Days \ n";
 </pre>
 
 Execution result
@@ -1478,7 +1478,7 @@ use warnings;
 use DateTime;
 
 # DateTime Subtraction between objects
-my $ dt1 = DateTime-> new (
+my $dt1 = DateTime-> new (
   year => 2000,
   month => 2,
   day => 1,
@@ -1487,7 +1487,7 @@ my $ dt1 = DateTime-> new (
   second => 30
 );
 
-my $ dt2 = DateTime-> new (
+my $dt2 = DateTime-> new (
   year => 2003,
   month => 3,
   day => 19,
@@ -1496,30 +1496,30 @@ my $ dt2 = DateTime-> new (
   second => 40
 );
 
-my $ duration = $ dt2- $ dt1;
+my $duration = $dt2- $dt1;
 
 print "(1) Get the period. \ N";
-print "Period is". $ Duration-> years. "Year and"
-  . $ duration-> months. "Months and"
-  . $ duration-> days. "Days and"
-  . $ duration-> hours. "Time and"
-  . $ duration-> minutes. "minutes and"
-  . $ duration-> seconds. "Seconds \ n \ n";
+print "Period is". $Duration-> years. "Year and"
+  . $duration-> months. "Months and"
+  . $duration-> days. "Days and"
+  . $duration-> hours. "Time and"
+  . $duration-> minutes. "minutes and"
+  . $duration-> seconds. "Seconds \ n \ n";
 
 print "(2) Determine the order of the periods. \ N";
-if ($ duration-> is_positive) {
-  print "\ $ dt2 is a date after \ $ dt1. \ N";
+if ($duration-> is_positive) {
+  print "\ $dt2 is a date after \ $dt1. \ N";
 }
-elsif ($ duration-> is_zero) {
-  print "\ $ dt2 is equal to \ $ dt1. \ N";
+elsif ($duration-> is_zero) {
+  print "\ $dt2 is equal to \ $dt1. \ N";
 }
-elsif ($ duration-> is_negative) {
-  print "\ $ dt2 is a date before \ $ dt1. \ N";
+elsif ($duration-> is_negative) {
+  print "\ $dt2 is a date before \ $dt1. \ N";
 }
 print "\ n";
 
 print "(3) Get the period on a monthly basis. \ N";
-print'The period is'. $ Duration-> in_units ('months'). "Months. \ N";
+print'The period is'. $Duration-> in_units ('months'). "Months. \ N";
 </pre>
 
 Execution result
@@ -1529,7 +1529,7 @@ Execution result
 The period is 3 years, 1 month, 4 days, 11 hours, 10 minutes and 10 seconds.
 
 (2) Determine the sign of the period.
-$ dt2 is a date after $ dt1.
+$dt2 is a date after $dt1.
 
 (3) Obtain the period on a monthly basis.
 The period is 37 months on a monthly basis.

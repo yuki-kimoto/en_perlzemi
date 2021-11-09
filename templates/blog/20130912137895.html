@@ -41,27 +41,27 @@ The first is the effect of <strong> forcing variable declaration </strong>. In P
 use strict;
 
 # Variable is declared and used, so no error occurs
-my $ num;
-$ num = 1
+my $num;
+$num = 1
 </pre>
 
 <pre>
 use strict;
 
 # I am using it without declaring it, so an error occurs
-$ num2 = 2
+$num2 = 2
 </pre>
 
 In the second case, the program exits without running with an error message similar to the following:
 
 <pre>
-Global symbol "$ num2" requires explicit package name at a.pl line 4.
+Global symbol "$num2" requires explicit package name at a.pl line 4.
 </pre>
 
 Since it is written in English, I will translate it.
 
 <pre>
-The global symbol "$ num2" requires an explicit package name. 4th line.
+The global symbol "$num2" requires an explicit package name. 4th line.
 </pre>
 
 If you see this message, it's almost certain that you're using an undeclared variable. Now that you know the line number, look at that line number and check that the variable name is correct and that you have declared the variable in advance.
@@ -74,14 +74,14 @@ The strict pragma <strong> prohibits the use of unquoted strings </strong>. In f
 use strict;
 
 # Since the string is quoted, no error occurs
-my $ str ='abcde';
+my $str ='abcde';
 </pre>
 
 <pre>
 use strict;
 
 # An error occurs because the string is quoted
-my $ str = abcde;
+my $str = abcde;
 </pre>
 
 In the second case, the program exits without running with an error message similar to the following:
@@ -109,15 +109,15 @@ See the script below.
 <pre>
 # Addition function
 sub total {
-  my ($ num1, $ num2) = @_;
+  my ($num1, $num2) = @_;
   
-  return $ num1 + $ num2;
+  return $num1 + $num2;
 }
 
 # Refer to function and execute with symbolic reference
-my $ num = & {'total'} (1 + 2);
+my $num = & {'total'} (1 + 2);
 
-print $ num;
+print $num;
 </pre>
 
 There is a function called tatal in this script. Instead of calling "total (1 + 2)", it is called as "& {'total'} (1 + 2)" by referring to the function in the symbolic reference.

@@ -25,10 +25,10 @@ This is unlikely to be a problem when exporting to a local file. The problem ari
 
 If block buffering is performed at this time, it may happen that you intended to send data to the other party but did not send it. It remains in its own write buffer.
 
-One way to solve this is to change block buffering to command buffering. To enable command buffering <a href="/blog/20161102147817.html"> Special variables</a> Set "<strong> $ | </strong>" to <b> 1 </b> To do.
+One way to solve this is to change block buffering to command buffering. To enable command buffering <a href="/blog/20161102147817.html"> Special variables</a> Set "<strong> $| </strong>" to <b> 1 </b> To do.
 
 <pre>
-$ | = 1;
+$| = 1;
 </pre>
 
 <h3> Sample </h3>
@@ -40,25 +40,25 @@ use strict;
 use warnings;
 
 # File for writing (Note that it will be overwritten)
-my $ file = "sample20080812.txt";
+my $file = "sample20080812.txt";
 
-open (my $ fh, ">", $ file)
-  or die "Cannot open $ file: $!";
+open (my $fh, ">", $file)
+  or die "Cannot open $file: $!";
 
 # Change default output handle
-my $ oldfh = select $ fh;
+my $oldfh = select $fh;
 
 # Enable command buffering.
-$ | = 1;
+$| = 1;
 
 # Reselect to the original filehandle.
-select $ oldfh;
+select $oldfh;
 
-print $ fh "Write without delay \ n";
-print "Written at this point. Size is". -S $ file. "Bytes. \ N";
+print $fh "Write without delay \ n";
+print "Written at this point. Size is". -S $file. "Bytes. \ N";
 sleep 3;
 
-close $ fh or die "Cannot close $ file";
+close $fh or die "Cannot close $file";
 </pre>
 
 (Reference) <a href="/blog/20170522149546.html"> sleep function</a>, <a href="/blog/20080718121643.html"> open function</a>, <a href="/blog" /20160312145776.html"> close function</a>, <a href="/blog/20100212126425.html"> die function</a>
@@ -79,19 +79,19 @@ Command buffering is used to avoid this.
 
 <pre>
 # Change default output handle
-my $ oldfh = select $ fh;
+my $oldfh = select $fh;
 
 # Enable command buffering.
-$ | = 1;
+$| = 1;
 
 # Reselect to the original filehandle.
-select $ oldfh;
+select $oldfh;
 </pre>
 
-Command buffering is enabled by setting the special variable $ | to 1. It should be noted here that the operation for $ | is the operation for the "default output destination".
+Command buffering is enabled by setting the special variable $| to 1. It should be noted here that the operation for $| is the operation for the "default output destination".
 
 The "default output destination" is the output destination when the file handle is omitted in the print function. The default output destination is STDOUT.
 
-To enable command buffering for writes to $ fh, change the "default destination" with the select function, then set the value of $ | to 1.
+To enable command buffering for writes to $fh, change the "default destination" with the select function, then set the value of $| to 1.
 
-The select function returns the current default output destination, so save it, manipulate $ |, and then restore it.
+The select function returns the current default output destination, so save it, manipulate $|, and then restore it.

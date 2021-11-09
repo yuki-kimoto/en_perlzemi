@@ -15,22 +15,22 @@ my @records = (
   '5 11:00:00 ooo',
 );
 
-my $ start_time = '08: 00: 00';
+my $start_time = '08: 00: 00';
 
 # This time is not included
-my $ end_time = '11: 00: 00';
+my $end_time = '11: 00: 00';
 
-for my $ record (@records) {
+for my $record (@records) {
   
   # Cut out the time
-  if ($ record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
+  if ($record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
     # You can compare as a character string by matching the format.
     # '7: 00: 00'-> '07: 00: 00'
-    my $ time = sprintf ("% 02s:% 02s:% 02s", $ 1, $ 2, $ 3);
+    my $time = sprintf ("% 02s:% 02s:% 02s", $1, $2, $3);
     
     # Cut out the records included from the start time to the end time.
-    if ($ time ge $ start_time && $ time lt $ end_time) {
-      print $ record. "\ n";
+    if ($time ge $start_time && $time lt $end_time) {
+      print $record. "\ n";
     }
   }
 }
@@ -50,11 +50,11 @@ Execution result
 Use the sprintf function to format the time. By adjusting the length of the character string to the same length, it is possible to compare with the character string.
 
 <pre>
-if ($ record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
-  my $ time = sprintf ("% 02s:% 02s:% 02s", $ 1, $ 2, $ 3);
+if ($record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
+  my $time = sprintf ("% 02s:% 02s:% 02s", $1, $2, $3);
   
-  if ($ time ge $ start_time && $ time lt $ end_time) {
-    print $ record. "\ n";
+  if ($time ge $start_time && $time lt $end_time) {
+    print $record. "\ n";
   }
 }
 </pre>
@@ -64,8 +64,8 @@ if ($ record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
 ge and lt are operators that compare which comes first in the dictionary order of strings. ge is an abbreviation for greater than or equel and lt is an abbreviation for lower than.
 
 <pre>
-if ($ time ge $ start_time && $ time lt $ end_time) {
-  print $ record. "\ n";
+if ($time ge $start_time && $time lt $end_time) {
+  print $record. "\ n";
 }
 </pre>
 

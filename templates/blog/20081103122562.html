@@ -48,22 +48,22 @@ Proper variable names make it easier to convey your intentions.
 
 <pre>
 # This variable stores the sum of something
-my $ total;
+my $total;
 
 # This variable represents some offset.
-my $ offset;
+my $offset;
 
 # This variable represents the maximum number of clients
-my $ max_client
+my $max_client
 </pre>
 
 <h4> (b) When variables have no meaning </h4>
 
 <pre>
 # I don't know anything
-my $ p;
-my $ q;
-my $ k;
+my $p;
+my $q;
+my $k;
 </pre>
 
 The only concern for computers is whether variable names can be distinguished, but for humans it is important what the variable names mean.
@@ -73,9 +73,9 @@ The only concern for computers is whether variable names can be distinguished, b
 Do not use uppercase letters in variable names, only lowercase letters. Use underscores at word joints.
 
 <pre>
-my $ user_name;
-my $ search_word;
-my $ max_database_connection;
+my $user_name;
+my $search_word;
+my $max_database_connection;
 </pre>
 
 This is a Perl convention, not compulsory, but if you're writing code in Perl, you'll probably want to keep it. I think there is less confusion for the user.
@@ -91,7 +91,7 @@ I think that how detailed the variable name should be based on whether the meani
 <pre>
 sub sum {
   # Represents the total value
-  my $ total;
+  my $total;
 }
 </pre>
 
@@ -102,17 +102,17 @@ For example, if you had a function that added odd sums and even sums, give each 
 <pre>
 sub sum {
   # Odd sum
-  my $ odd_total;
+  my $odd_total;
   
   # Even sum
-  my $ even_total
+  my $even_total
 }
 </pre>
 
-<h4> (c) If you can clearly understand the intention with the for statement, you can use a short variable name such as $ i </h4>
+<h4> (c) If you can clearly understand the intention with the for statement, you can use a short variable name such as $i </h4>
 
 <pre>
-for my $ i (0 .. @nums - 1) {
+for my $i (0 .. @nums - 1) {
   ...
 }
 </pre>
@@ -120,9 +120,9 @@ for my $ i (0 .. @nums - 1) {
 <h4> (d) If there is a possibility that the intention may be difficult to understand in the for statement, use a variable name that can distinguish the meaning </h4>
 
 <pre>
-my $ data_table = [[1, 2, 3], [2, 4, 6]];
-for my $ row_num (0 .. @ $ data_table - 1) {
-  for my $ colon_num (0 .. @ {$ data_table [$ row_num]} ―― 1) {
+my $data_table = [[1, 2, 3], [2, 4, 6]];
+for my $row_num (0 .. @ $data_table - 1) {
+  for my $colon_num (0 .. @ {$data_table [$row_num]} ―― 1) {
     ...
   }
 }
@@ -135,9 +135,9 @@ You may omit anything that makes sense by convention. If the variable scope is n
 <h4> Variable names that can be understood even if omitted </h4>
 
 <pre>
-my $ num; # number
-my $ len; # length;
-my $ char; # charactor;
+my $num; # number
+my $len; # length;
+my $char; # charactor;
 </pre>
 
 <h3> (5) Naming method for variables that represent boolean values ​​</h3>
@@ -146,22 +146,22 @@ Here are some examples of variable names that represent boolean values.
 
 <pre>
 # Safe (is + adjective)
-my $ is_safe;
+my $is_safe;
 
 # Switched on (noun + preposition)
-my $ switch_on;
+my $switch_on;
 
 # Loading request (noun + present participle)
-my $ request_loading;
+my $request_loading;
 
 # Writing is complete (noun + past participle)
-my $ write_done;
+my $write_done;
 
 # Check successful (noun + noun)
-my $ check_success;
+my $check_success;
 
 # The state is ok. (Noun + noun)
-my $ status_ok;
+my $status_ok;
 </pre>
 
 <h3> (6) Sequence naming method </h3>
@@ -171,7 +171,7 @@ If you want to name the array, add an s at the end.
 How to add # s to the end
 my @members;
 
-for my $ member (@members) {
+for my $member (@members) {
   # ...
 }
 </pre>

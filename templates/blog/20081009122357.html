@@ -24,10 +24,10 @@ You can use the <strong> localtime function </strong> to get the current date an
 # Seconds Minutes Hours Day Months Years of the week Beginning of the year or daylight saving time
 Apply # et al.
 # Elapsed days
-my ($ sec, $ min, $ hour, $ mday, $ mon, $ year, $ wday, $ yday, $ isdst) = localtime;
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime;
 
 # Time string
-my $ localtime = localtime;
+my $localtime = localtime;
 </pre>
 
 <a href="/blog/20180530152777.html"> List context</a>, date / time element information, <a href="/blog/20180531152777.html"> Scalar context</a> When used in, you can get the character string that represents the date and time.
@@ -69,22 +69,22 @@ print "(1) Get the current date and time (local time). \ N";
 # Seconds Minutes Hours Day Months Years of the week Beginning of the year or daylight saving time
 Apply # et al.
 # Elapsed days
-my ($ sec, $ min, $ hour, $ mday, $ mon, $ year, $ wday, $ yday, $ isdst) = localtime;
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime;
 
 The # localtime function returns the year counted from 1900.
-$ year + = 1900;
+$year + = 1900;
 
 # Month starts from 0, so add 1 to display it.
-$ mon ++;
+$mon ++;
 
 # Sunday will be 0.
 my @day_of_week = qw / Sun Mon Tue Wed Thu Fri Sat /;
 
-print "Currently $ year year $ mon month $ mday day $ hour hour $ min minute $ sec second.";
-print "Day of the week". $ Day_of_week [$ wday]. "Day of the week. \ N \ n";
-print "$ yday days have passed counting in one year. \ N \ n";
+print "Currently $year year $mon month $mday day $hour hour $min minute $sec second.";
+print "Day of the week". $Day_of_week [$wday]. "Day of the week. \ N \ n";
+print "$yday days have passed counting in one year. \ N \ n";
 
-if ($ isdst) {
+if ($isdst) {
   print "Currently daylight saving time is applied. \ N \ n";
 }
 else {
@@ -92,28 +92,28 @@ else {
 }
 
 print "(2) Get the current date (local time) as a string. \ N";
-my $ date_str = localtime;
-print $ date_str. "\ n";
+my $date_str = localtime;
+print $date_str. "\ n";
 </pre>
 
 <h4> Get the current date and time (local time) </h4>
 
 <pre>
-my ($ sec, $ min, $ hour, $ mday, $ mon, $ year, $ wday, $ yday, $ isdst) = localtime;
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime;
 </pre>
 
 Use the <a href="http://perldoc.perl.org/functions/localtime.html"> localtime function</a> to get the current date and time. The localtime function is the reverse of the order when the Japanese wanted to get the time. The order is "seconds, minutes, hours, days, months, and years" from the beginning.
 
-The year is an elapsed year from 1900, so you need to add 1900 to the $ year you got.
+The year is an elapsed year from 1900, so you need to add 1900 to the $year you got.
 
 <pre>
-$ year + = 1900;
+$year + = 1900;
 </pre>
 
 The month starts at 0. For example, January is 0 and February is 1, so you need to add 1.
 
 <pre>
-$ mon ++;
+$mon ++;
 </pre>
 
 The day of the week starts at 0 and 0 is Sunday. Monday is 1, Tuesday is 2, and so on. To display the day of the week, create an array that associates the subscripts of the array with the day of the week.
@@ -122,12 +122,12 @@ The day of the week starts at 0 and 0 is Sunday. Monday is 1, Tuesday is 2, and 
 my @day_of_week = qw / Sun Mon Tue Wed Thu Fri Sat /;
 </pre>
 
-$ yday is the number of days since the beginning of the year. $ isdst is whether or not daylight saving time is applied.
+$yday is the number of days since the beginning of the year. $isdst is whether or not daylight saving time is applied.
 
 <h4> Get the current date (local time) as a string </h4>
 
 <pre>
-my $ date_str = localtime;
+my $date_str = localtime;
 </pre>
 
 To get a string representation of the time, evaluate the return value of the localtime function in a scalar context.

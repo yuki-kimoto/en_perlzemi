@@ -76,9 +76,9 @@ Now let's connect to the database. Use the DBI module's connect method to connec
 
 <pre>
 use DBI;
-my $ database ='test.db';
-my $ data_source = "dbi: SQLite: dbname = $ database";
-my $ dbh = DBI-> connect ($ data_source);
+my $database ='test.db';
+my $data_source = "dbi: SQLite: dbname = $database";
+my $dbh = DBI-> connect ($data_source);
 </pre>
 
 You should now have a file called test.db in your current directory.
@@ -88,7 +88,7 @@ You should now have a file called test.db in your current directory.
 Let's remember here the process of disconnecting the database that is paired with the database connection. Use disconnect to disconnect the database.
 
 <pre>
-$ dbh-> disconnect;
+$dbh-> disconnect;
 </pre>
 
 It is wise to disconnect when you no longer need to connect to the database.
@@ -126,14 +126,14 @@ create table book (
 Now let's actually create a table using the do method.
 
 <pre>
-my $ create_table = <<'EOS';
+my $create_table = <<'EOS';
 create table book (
   title,
   author
 )
 EOS
 
-$ dbh-> do ($ create_table);
+$dbh-> do ($create_table);
 </pre>
 
 You now have a table named book.
@@ -149,8 +149,8 @@ drop table table name
 Let's drop the table using do.
 
 <pre>
-my $ drop_table = "drop table book";
-$ dbh-> do ($ drop_table);
+my $drop_table = "drop table book";
+$dbh-> do ($drop_table);
 </pre>
 
 <h3> Add record insert </h3>
@@ -170,8 +170,8 @@ insert into book (title, author) values ​​('Perl','taro');
 Let's execute an insert statement using do. Please wait until the select statement is explained a little further to confirm whether it has been inserted.
 
 <pre>
-my $ insert = "insert into book (title, author) values ​​('Perl','taro');";
-$ dbh-> do ($ insert);
+my $insert = "insert into book (title, author) values ​​('Perl','taro');";
+$dbh-> do ($insert);
 </pre>
 
 This will add a record like the one below to the table.
@@ -201,8 +201,8 @@ update book set title ='Ruby' where author ='taro'
 Let's execute the update statement using do.
 
 <pre>
-my $ update = "update book set title ='Ruby' where author ='taro'";
-$ dbh-> do ($ update);
+my $update = "update book set title ='Ruby' where author ='taro'";
+$dbh-> do ($update);
 </pre>
 
 The previous record is updated and looks like this:
@@ -232,8 +232,8 @@ delete from book where author ='taro';
 Let's execute a delete statement using do.
 
 <pre>
-my $ delete = "delete from book where author ='taro';";
-$ dbh-> do ($ delete);
+my $delete = "delete from book where author ='taro';";
+$dbh-> do ($delete);
 </pre>
 
 The record will be deleted.
@@ -257,21 +257,21 @@ Execution of select statement cannot be done with do. To execute the select stat
 Now let's actually execute the select statement.
 
 <pre>
-my $ select = "select * from book;";
-my $ sth = $ dbh-> prepare ($ select);
-$ sth-> execute;
+my $select = "select * from book;";
+my $sth = $dbh-> prepare ($select);
+$sth-> execute;
 </pre>
 
 You can now execute the select statement. The next thing you need to do is actually get each row by an operation called fetch. To fetch a row and assign it to an array, use a method called fetchrow_array from the statement handle.
 
 <pre>
-$ sth-> fetchrow_array;
+$sth-> fetchrow_array;
 </pre>
 
 This is usually repeated using a <a href="/blog/20100123126425.html"> while statement</a> until you get all the rows.
 
 <pre>
-while (my @row = $ sth-> fetchrow_array) {
+while (my @row = $sth-> fetchrow_array) {
   ...
 }
 </pre>
@@ -283,7 +283,7 @@ SQLite allows you to create a database in memory. You don't need to specify a fi
 To create a database in memory, specify ": ​​memory:" as the database name of the data source.
 
 <pre>
-my $ dbh = DBI-> connect ("dbi: SQLite: dbname =: memory:");
+my $dbh = DBI-> connect ("dbi: SQLite: dbname =: memory:");
 </pre>
 
 You can now connect to the database in memory.
@@ -299,42 +299,42 @@ use warnings;
 use DBI;
 
 # Connect to database in memory
-my $ dbh = DBI-> connect ("dbi: SQLite: dbname =: memory:");
+my $dbh = DBI-> connect ("dbi: SQLite: dbname =: memory:");
 
 # Create table
-my $ create_table = <<'EOS';
+my $create_table = <<'EOS';
 create table book (
   title,
   author
 )
 EOS
 
-$ dbh-> do ($ create_table);
+$dbh-> do ($create_table);
 
 Execution of # insert statement
-$ dbh-> do ("insert into book (title, author) values ​​('Perl','taro');");
-$ dbh-> do ("insert into book (title, author) values ​​('C ++','taro');");
-$ dbh-> do ("insert into book (title, author) values ​​('Python','ken');");
-$ dbh-> do ("insert into book (title, author) values ​​('Java','mamoru');");
+$dbh-> do ("insert into book (title, author) values ​​('Perl','taro');");
+$dbh-> do ("insert into book (title, author) values ​​('C ++','taro');");
+$dbh-> do ("insert into book (title, author) values ​​('Python','ken');");
+$dbh-> do ("insert into book (title, author) values ​​('Java','mamoru');");
 
 Execution of # update statement
-$ dbh-> do ("update book set title ='Ruby' where author ='mamoru'");
+$dbh-> do ("update book set title ='Ruby' where author ='mamoru'");
 
 Execution of # delete statement
-$ dbh-> do ("delete from book where author ='ken';");
+$dbh-> do ("delete from book where author ='ken';");
 
 Execution of # select statement
-my $ sth = $ dbh-> prepare ("select * from book;");
-$ sth-> execute;
+my $sth = $dbh-> prepare ("select * from book;");
+$sth-> execute;
 
 # Fetch each row
-while (my @row = $ sth-> fetchrow_array) {
+while (my @row = $sth-> fetchrow_array) {
   # Output each line
   print join (',', @row), "\ n";
 }
 
 # Database disconnection
-$ dbh-> disconnect;
+$dbh-> disconnect;
 </pre>
 
 You will get output similar to the following:
@@ -352,7 +352,7 @@ No username or password is required to connect to the database created by SQLite
 To connect using DBI with a username and password: Specify the user name in the second argument and the password in the third argument.
 
 <pre>
-my $ dbh = DBI-> connect ($ data_source, $ user, $ password);
+my $dbh = DBI-> connect ($data_source, $user, $password);
 </pre>
 
 <h3> Standard settings for DBI options </h3>
@@ -360,7 +360,7 @@ my $ dbh = DBI-> connect ($ data_source, $ user, $ password);
 In DBI, you can specify DBI options in the 4th argument of the connect method.
 
 <pre>
-DBI-> connect ($ data_source, $ user, $ password, {opt1 => $ val1, opt2 => $ val2, ..});
+DBI-> connect ($data_source, $user, $password, {opt1 => $val1, opt2 => $val2, ..});
 </pre>
 
 DBI's default behavior is to print a warning to standard error if an error occurs.
@@ -383,10 +383,10 @@ DBI also has an option called AutoCommit. This is an option that decides whether
 
 Therefore, when connecting to the database based on this, it may be better to write as follows.
 <pre>
-my $ dbh = DBI-> connect (
-  $ data_source,
-  $ user,
-  $ password,
+my $dbh = DBI-> connect (
+  $data_source,
+  $user,
+  $password,
   {
     RaiseError => 1,
     PrintError => 0,
@@ -398,8 +398,8 @@ my $ dbh = DBI-> connect (
 If you don't need a username or password and just want to specify options, do the following:
 
 <pre>
-my $ dbh = DBI-> connect (
-  $ data_source,
+my $dbh = DBI-> connect (
+  $data_source,
   undef,
   undef,
   {

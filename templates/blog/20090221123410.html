@@ -56,12 +56,12 @@ use warnings;
 use Test :: More tests => 2;
 
 Check if the test was successful with the # ok function. This test succeeds.
-my $ num1 = 1;
-ok ($ num1 == 1);
+my $num1 = 1;
+ok ($num1 == 1);
 
 # This exam fails
-my $ num2 = 2;
-ok ($ num2 == 1);
+my $num2 = 2;
+ok ($num2 == 1);
 </pre>
 
 A description of the automated test script.
@@ -80,15 +80,15 @@ The first argument of the ok function describes the conditions under which the t
 
 <pre>
 Check if the test was successful with the # ok function. This test succeeds.
-my $ num1 = 1;
-ok ($ num1 == 1);
+my $num1 = 1;
+ok ($num1 == 1);
 
 # This exam fails
-my $ num2 = 2;
-ok ($ num2 == 1);
+my $num2 = 2;
+ok ($num2 == 1);
 </pre>
 
-This statement can be read as "If $ num1 is equal to 1, the test is successful" and "If $ num2 is equal to 1, the test is successful".
+This statement can be read as "If $num1 is equal to 1, the test is successful" and "If $num2 is equal to 1, the test is successful".
 
 <h4> 3. Test results </h4>
 
@@ -117,36 +117,36 @@ use Test :: More tests => 2;
 # Collision of lexical variables declared by my does not occur when creating a scope in test units.
 # sum exam
 {
-  my $ num1 = 1;
-  my $ num2 = 2;
+  my $num1 = 1;
+  my $num2 = 2;
   
-  my $ total = sum ($ num1, $ num2);
+  my $total = sum ($num1, $num2);
   
-  ok ($ total == 3,'sum');
+  ok ($total == 3,'sum');
 }
 
 # double exam
 {
-  my $ num1 = 1;
+  my $num1 = 1;
   
-  my $ double = double ($ num1);
+  my $double = double ($num1);
     
   # Failure!
-  ok ($ double == 2,'double');
+  ok ($double == 2,'double');
 }
 
 # Subroutine that sums two numbers
 sub sum {
-  my ($ num1, $ num2) = @_;
-  return $ num1 + $ num2;
+  my ($num1, $num2) = @_;
+  return $num1 + $num2;
 }
 
 # Subroutine that doubles the number
 sub double {
-  my $ num = shift;
+  my $num = shift;
 
   # I had to double it, but I accidentally tripled it!
-  return $ num * 3
+  return $num * 3
 }
 </pre>
 
@@ -156,18 +156,18 @@ Performs an automatic test for each subroutine. In this sample, we are testing a
 
 <pre>
 {
-  my $ num1 = 1;
-  my $ num2 = 2;
+  my $num1 = 1;
+  my $num2 = 2;
   
-  my $ total = sum ($ num1, $ num2);
+  my $total = sum ($num1, $num2);
   
-  ok ($ total == 3,'sum');
+  ok ($total == 3,'sum');
 }
 
 # Subroutine that sums two numbers
 sub sum {
-  my ($ num1, $ num2) = @_;
-  return $ num1 + $ num2;
+  my ($num1, $num2) = @_;
+  return $num1 + $num2;
 }
 </pre>
 
@@ -178,21 +178,21 @@ As you write a lot of tests, variable name collisions become more frequent. To a
 <pre>
 # sum exam
 {
-  my $ num1 = 1;
-  my $ num2 = 2;
+  my $num1 = 1;
+  my $num2 = 2;
   
-  my $ total = sum ($ num1, $ num2);
+  my $total = sum ($num1, $num2);
   
-  ok ($ total == 3,'sum');
+  ok ($total == 3,'sum');
 }
 
 # double exam
 {
-  my $ num1 = 1;
+  my $num1 = 1;
   
-  my $ double = double ($ num1);
+  my $double = double ($num1);
   
-  ok ($ double == 2,'double'); # Failed!
+  ok ($double == 2,'double'); # Failed!
 }
 </pre>
 
@@ -243,16 +243,16 @@ use warnings;
 
 # A function that sums two numbers
 sub sum {
-  my ($ num1, $ num2) = @_;
-  return $ num1 + $ num2;
+  my ($num1, $num2) = @_;
+  return $num1 + $num2;
 }
 
 # Subroutine that doubles the number
 sub double {
-  my $ num = shift;
+  my $num = shift;
 
   # I had to double it, but I accidentally tripled it!
-  return $ num * 3
+  return $num * 3
 }
 
 1;
@@ -272,19 +272,19 @@ use warnings;
 
 # Add module search path
 use FindBin;
-use lib "$ FindBin :: Bin / ../ lib";
+use lib "$FindBin :: Bin / ../ lib";
 
 use Test :: More tests => 1;
 use SomeModule;
 
 # sum exam
 {
-my $ num1 = 1;
-  my $ num2 = 2;
+my $num1 = 1;
+  my $num2 = 2;
   
-  my $ total = SomeModule :: sum ($ num1, $ num2);
+  my $total = SomeModule :: sum ($num1, $num2);
   
-  ok ($ total == 3,'sum');
+  ok ($total == 3,'sum');
 }
 </pre>
 
@@ -298,18 +298,18 @@ use warnings;
 
 # Add module search path
 use FindBin;
-use lib "$ FindBin :: Bin / ../ lib";
+use lib "$FindBin :: Bin / ../ lib";
 
 use Test :: More tests => 1;
 use SomeModule;
 
 # double exam
 {
-  my $ num1 = 1;
+  my $num1 = 1;
   
-  my $ double = SomeModule :: double ($ num1);
+  my $double = SomeModule :: double ($num1);
   
-  ok ($ double == 2,'double');
+  ok ($double == 2,'double');
 }
 
 </pre>
@@ -440,8 +440,8 @@ To test booleans, numbers, strings, object contents, etc., use the following fun
 The <strong> is function </strong> tests that the strings are equal. The <strong> isnt function </strong> tests that the strings are not equal.
 
 <pre>
-is ($ str, 3);
-isnt ($ str, 5);
+is ($str, 3);
+isnt ($str, 5);
 </pre>
 
 The first argument is the value you want to test. The second argument is the expected result.
@@ -455,8 +455,8 @@ Otherwise, use a function called cmp_ok.
 The <strong> like function </strong> tests that the string matches the regular expression. The <strong> dislike function </strong> tests that it doesn't match the regular expression </strong>.
 
 <pre>
-like ($ str, qr / \ w + /);
-unlike ($ str, qr / \ w + /);
+like ($str, qr / \ w + /);
+unlike ($str, qr / \ w + /);
 </pre>
 
 The first argument is the value you want to test. The second argument is a <strong> regular expression reference </strong>.
@@ -468,7 +468,7 @@ Note that the second argument is a reference to the regular expression qr / \ w 
 The <strong> cmp_ok function </strong> allows you to test using any comparison operator.
 
 <pre>
-cmp_ok ($ num,'<', 3);
+cmp_ok ($num,'<', 3);
 </pre>
 
 The first and third arguments are the values ​​you want to compare. The second argument is the comparison operator. All comparison operators such as "=", "<", "<=", "> =", ">", "eq", "ne", "gt", "lt", "ge", and "le" can be used.
@@ -478,7 +478,7 @@ The first and third arguments are the values ​​you want to compare. The seco
 You can use the <strong> is_deeply function </strong> to test complex data structures such as array references and hash references. This is very convenient.
 
 <pre>
-is_deeply ($ hash_ref, {a => 1, b => 2});
+is_deeply ($hash_ref, {a => 1, b => 2});
 </pre>
 
 The first argument is the value you want to test. The second argument is the expected result.
@@ -539,22 +539,22 @@ This is a test to make sure that the Book class has methods title, author, price
 <strong> isa_ok </strong> is used for testing to ensure that an object inherits a class.
 
 <pre>
-my $ comic = Comic-> new;
-isa_ok ($ comic,'Book');
+my $comic = Comic-> new;
+isa_ok ($comic,'Book');
 </pre>
 
-This is a test to make sure that the $ comic object inherits from the Book class.
+This is a test to make sure that the $comic object inherits from the Book class.
 The exam will also succeed if you specify your own class as follows:
 
 <pre>
-isa_ok ($ comic,'Comic');
+isa_ok ($comic,'Comic');
 </pre>
 
 It also supports testing what kind of reference it is, not an object.
 
 <pre>
-my $ ary_ref = [];
-isa_ok ($ array_ref,'ARRAY');
+my $ary_ref = [];
+isa_ok ($array_ref,'ARRAY');
 </pre>
 
 <h4> require_ok function </h4>
@@ -613,7 +613,7 @@ For example, in certain environments you may want to skip the exam. Write as fol
 
 <pre>
 use Test :: More;
-if ($ ^ O eq'MacOS') {
+if ($^ O eq'MacOS') {
   plan skip_all =>'Test irrelevant on MacOS';
 }
 else {
@@ -628,7 +628,7 @@ If you want to see the exception occur, do the following:
 <pre>
 # Confirm that an exception occurs
 eval {some_func ()};
-if ($ @) {
+if ($@) {
   ok (1);
 }
 else {
@@ -637,7 +637,7 @@ else {
 
 # Or check the error message
 eval {some_func ()};
-like ($ @, qr / error /);
+like ($@, qr / error /);
 </pre>
 
 (Reference) <a href="/blog/20100312126967.html"> eval</a>
@@ -648,16 +648,16 @@ If you want to see the warning, use a signal handler and do the following:
 
 <pre>
 # Preparing to assign a warning message
-my $ warn;
+my $warn;
 
 # Handler called when a warning occurs
-local $ SIG {__ WARN__} = sub {
-  $ warn = shift;
+local $SIG {__ WARN__} = sub {
+  $warn = shift;
 };
 
-$ warn = undef;
+$warn = undef;
 some_func ();
-if ($ warn) {
+if ($warn) {
   ok (1);
 }
 else {

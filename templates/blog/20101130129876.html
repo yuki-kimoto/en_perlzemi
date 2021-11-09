@@ -30,17 +30,17 @@ As a simple subroutine, let's define a subroutine named total that finds the sum
 <pre>
 sub total {
   # (1) Receiving arguments
-  my ($ num1, $ num2) = @_;
+  my ($num1, $num2) = @_;
 
   # (2) Processing
-  my $ total = $ num1 + $ num2;
+  my $total = $num1 + $num2;
 
   # (3) Return value
-  return $ total;
+  return $total;
 }
 </pre>
 
-(1) The argument is stored in the variable "<strong> @ _ </strong>". I've reassigned the variables $ num1 and $ num2 to give the arguments descriptive names. (2) The two values ​​are totaled. (3) The return value can be returned using the <a href="/blog/20171111151040.html"> return function</a>.
+(1) The argument is stored in the variable "<strong> @ _ </strong>". I've reassigned the variables $num1 and $num2 to give the arguments descriptive names. (2) The two values ​​are totaled. (3) The return value can be returned using the <a href="/blog/20171111151040.html"> return function</a>.
 
 <h3> Subroutine call </h3>
 
@@ -57,23 +57,23 @@ use strict;
 use warnings;
 
 # (1) Value to be passed as an argument
-my $ num1 = 1;
-my $ num2 = 2;
+my $num1 = 1;
+my $num2 = 2;
 
 # (2) Subroutine call
-my $ total = total ($ num1, $ num2);
+my $total = total ($num1, $num2);
 
 # (3) Subroutine definition
 sub total {
-  my ($ num1, $ num2) = @_;
+  my ($num1, $num2) = @_;
 
-  my $ total = $ num1 + $ num2;
+  my $total = $num1 + $num2;
 
-  return $ total;
+  return $total;
 }
 </pre>
 
-(1) This is the value to be passed to the argument. (2) This is a subroutine call. The return value is assigned to $ total. The result of adding 1 and 2 is returned, so $ total is 3. (3) Subroutine definitions can also be placed under the call. This is because the subroutine definition is read at compile time.
+(1) This is the value to be passed to the argument. (2) This is a subroutine call. The return value is assigned to $total. The result of adding 1 and 2 is returned, so $total is 3. (3) Subroutine definitions can also be placed under the call. This is because the subroutine definition is read at compile time.
 
 <h3> Subroutine arguments </h3>
 
@@ -85,7 +85,7 @@ A common way to receive a single argument is to use the shift function.
 
 <pre>
 sub func {
-  my $ arg = shift;
+  my $arg = shift;
 }
 </pre>
 
@@ -93,7 +93,7 @@ When you call the shift function in a subroutine, "@_" is the implicit argument 
 
 <pre>
 sub func {
-  my $ arg = shift @_;
+  my $arg = shift @_;
 }
 </pre>
 
@@ -105,11 +105,11 @@ A commonly used method when receiving multiple arguments is list assignment.
 
 <pre>
 sub func {
-  my ($ arg1, $ arg2) = @_;
+  my ($arg1, $arg2) = @_;
 }
 </pre>
 
-The first element of @_ is assigned to $ arg1 and the second element is assigned to $ arg2.
+The first element of @_ is assigned to $arg1 and the second element is assigned to $arg2.
 
 If the arguments are of the same type, they should be received in an array.
 
@@ -125,10 +125,10 @@ sub func {
 
 <pre>
 # First argument
-$ _ [0]
+$_ [0]
 
 # Second argument
-$ _ [1]
+$_ [1]
 </pre>
 
 This style of writing reduces readability and is recommended not to be used unless performance is absolutely necessary.
@@ -139,7 +139,7 @@ You can pass an array to a subroutine.
 
 <pre>
 # Passing side
-my $ num_total = sum (@nums);
+my $num_total = sum (@nums);
 
 # Recipient
 sub sum {
@@ -154,7 +154,7 @@ You can also pass a hash to the subroutine. On the receiving side, @_ will be as
 
 <pre>
 # Passing side
-my $ examin_total = sum_examin (% examin);
+my $examin_total = sum_examin (% examin);
 
 # Recipient
 sub sum_examin {
@@ -174,7 +174,7 @@ my @ array2;
 func (\ @ array1, \ @ array2);
 
 sub func {
-  my ($ array1, $ array2) = @_;
+  my ($array1, $array2) = @_;
 }
 </pre>
 
@@ -198,11 +198,11 @@ What if I want to put both an array and a hash in a subroutine? In such cases, y
 
 <pre>
 # Passing side
-my $ max_num = summary ([1, 2, 3], {how =>'max'});
+my $max_num = summary ([1, 2, 3], {how =>'max'});
 
 # Recipient
 sub summary {
-  my ($ nums, $ option) = @_;
+  my ($nums, $option) = @_;
   # process                            
 }
 </pre>
@@ -217,11 +217,11 @@ func ({name =>'Ken', age => 19});
 
 sub func {
   # Convert to hash reference as needed
-  my $ arg = ref $ _ [0] eq'HASH'? $ _ [0]: {@_};
+  my $arg = ref $_ [0] eq'HASH'? $_ [0]: {@_};
 }
 </pre>
 
-If the argument is a hash reference, it is assigned as it is, and if it is a hash, it is converted to a hash reference. $ _ [0] is the first element of the argument @_.
+If the argument is a hash reference, it is assigned as it is, and if it is a hash, it is converted to a hash reference. $_ [0] is the first element of the argument @_.
 
 <h3> Typical pattern of how to receive arguments </h3>
 
@@ -232,7 +232,7 @@ Here is a typical pattern of how to receive arguments.
 search ('aiueo','eo', 2);
 
 sub search {
-  my ($ str, $ search, $ offset) = @_;
+  my ($str, $search, $offset) = @_;
 }
 </pre>
 
@@ -256,7 +256,7 @@ Receive it in a list and assign it to an array.
 search_file ('file','apple','dog');
 
 sub search_file {
-  my ($ file, @search_list) = @_;
+  my ($file, @search_list) = @_;
 }
 </pre>
 
@@ -269,7 +269,7 @@ search_arg_hash (str =>'aiueo', search =>'eo', offset => 2);
 
 sub search_arg_hash {
   my% arg = @_;
-  my ($ str, $ search, $ offset) = @arg {'str','search','offset'};
+  my ($str, $search, $offset) = @arg {'str','search','offset'};
 }
 </pre>
 
@@ -283,8 +283,8 @@ It is not always necessary to reassign the hash to the scalar, but it is often e
 parse_file ('in_file', out_file =>'out_file', search_path =>'dir');
 
 sub parse_file {
-  my ($ in_file,% opt) = @_;
-  my ($ out_file, $ search_path) = @opt {'out_file','search_path'};
+  my ($in_file,% opt) = @_;
+  my ($out_file, $search_path) = @opt {'out_file','search_path'};
   return;
 }
 </pre>
@@ -299,9 +299,9 @@ Basically, the scalar value is returned as the return value of the subroutine.
 
 <pre>
 sub func {
-  my $ name ='Ken';
+  my $name ='Ken';
 
-  return $ name;
+  return $name;
 }
 </pre>
 
@@ -328,16 +328,16 @@ Array references and hash references are also scalar values, so they can be retu
 <pre>
 # Returns an array reference as a return value
 sub func {
-  my $ nums = [1, 2, 3];
+  my $nums = [1, 2, 3];
 
-  return $ nums;
+  return $nums;
 }
 
 # Returns a hash reference as a return value
 sub func {
-  my $ score = {math => 100, english => 90};
+  my $score = {math => 100, english => 90};
 
-  return $ score;
+  return $score;
 }
 </pre>
 
@@ -360,9 +360,9 @@ You may want to specify a default value for the subroutine argument. In such a c
 
 <pre>
 sub num {
-  my $ num = shift;
-  unless (defined $ num) {
-    $ num = 0;
+  my $num = shift;
+  unless (defined $num) {
+    $num = 0;
   }
 }
 </pre>
@@ -371,8 +371,8 @@ Since Perl 5.10 introduced a convenient "defined-or operator", you can also writ
 
 <pre>
 sub num {
-  my $ num = shift;
-  $ num // = 0;
+  my $num = shift;
+  $num // = 0;
 }
 </pre>
 
@@ -387,11 +387,11 @@ The easiest way is to return "undef" when the subroutine fails. Returns undef wi
 <pre>
 sub foo {
   
-  my $ error;
+  my $error;
   
   # ...
   
-  if ($ error)
+  if ($error)
     return;
   }
 }
@@ -400,9 +400,9 @@ sub foo {
 The caller checks the return value.
 
 <pre>
-my $ ret = foo ();
+my $ret = foo ();
 
-unless (defined $ ret) {
+unless (defined $ret) {
   # Error handling
 }
 </pre>
@@ -414,11 +414,11 @@ The recommended method is to throw an exception when an error occurs. Use the di
 <pre>
 sub foo {
   
-  my $ error;
+  my $error;
   
   # ...
   
-  if ($ error)
+  if ($error)
     die "Error";
   }
 }
@@ -431,11 +431,11 @@ use Carp'croak';
 
 sub foo {
   
-  my $ error;
+  my $error;
   
   # ...
   
-  if ($ error)
+  if ($error)
     croak "Error";
   }
 }
@@ -448,12 +448,12 @@ eval {
   foo ();
 };
 
-if (my $ error = $ @) {
+if (my $error = $@) {
   # Error handling
 }
 </pre>
 
-When an exception occurs, the content of the error is stored in the <a href="/blog/20161102147817.html"> special variable</a> called "$ @". Since "$ @" may be overwritten by a global variable, it is recommended to assign it to a lexical variable immediately.
+When an exception occurs, the content of the error is stored in the <a href="/blog/20161102147817.html"> special variable</a> called "$@". Since "$@" may be overwritten by a global variable, it is recommended to assign it to a lexical variable immediately.
 
 For a detailed explanation of exception handling, see "<a href="/blog/20100411127089.html"> Perl's" Exception Handling "Mechanism-Error Notification and Detection</a>".
 

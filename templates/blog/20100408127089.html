@@ -30,32 +30,32 @@ You can copy the file with the copy function and move the file with the move fun
 
 <pre>
 # File copy
-copy ($ from, $ to);
+copy ($from, $to);
 
 # Move file
-move ($ from, $ to)
+move ($from, $to)
 </pre>
 
 This is a sample to copy a file. Error processing is performed in case the file copy fails (* 1). Make sure to include the OS error message "$!" In the error message.
 
 <pre>
 # File copy
-my $ from ='xxx';
-my $ to ='yyy';
+my $from ='xxx';
+my $to ='yyy';
 
-copy ($ from, $ to)
-  or die "Can't copy \" $ from \ "to \" $ to \ ": $!";
+copy ($from, $to)
+  or die "Can't copy \" $from \ "to \" $to \ ": $!";
 </pre>
 
 This is a sample to move files. Performs error handling in case the file move fails. Make sure to include the OS error message "$!" In the error message.
 
 <pre>
 # Move file
-my $ from ='xxx';
-my $ to ='yyy';
+my $from ='xxx';
+my $to ='yyy';
 
-move ($ from, $ to)
-  or die "Can't move \" $ from \ "to \" $ to \ ": $!";
+move ($from, $to)
+  or die "Can't move \" $from \ "to \" $to \ ": $!";
 </pre>
 
 The file copy will fail if the file does not exist, or if the destination directory does not have write permissions.

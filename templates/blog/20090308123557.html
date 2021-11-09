@@ -27,13 +27,13 @@ In object-oriented programming, <strong> objects are not "things". There are two
 A "thing" type object is an object that represents a <strong> "thing" </strong>. The following is this object, but it has title and price as attributes.
 
 <pre>
-my $ book = Book-> new (title =>'a', price => 2300);
+my $book = Book-> new (title =>'a', price => 2300);
 </pre>
 
 Such "things" type objects are constructors that set <strong> book properties such as titles and prices </strong>. You can think of a "thing" type object as something very close to a <strong> hash </strong>. Monotype objects represent structured data.
 
 <pre>
-my $ book = {title =>'a', price => 2300};
+my $book = {title =>'a', price => 2300};
 </pre>
 
 <h3> 2. "Human" type object </h3>
@@ -42,15 +42,15 @@ A "human" type object is an object that represents <strong> "human" </strong>. B
 
 After that, a method called parse that parses the file will be called.
 <pre>
-my $ file_parser = FileParser-> new (encoding =>'utf8', err_raise => 1);
-$ file_parser-> parse ($ file);
+my $file_parser = FileParser-> new (encoding =>'utf8', err_raise => 1);
+$file_parser-> parse ($file);
 </pre>
 
 Such "human" objects often specify in the constructor the options used by subsequent <strong> methods </strong>. Think of a "human" object as something very close to a <strong> function </strong>.
 
 <pre>
-my $ opt = {encoding =>'utf8', err_raise => 1};
-parse_file ($ file, $ opt);
+my $opt = {encoding =>'utf8', err_raise => 1};
+parse_file ($file, $opt);
 </pre>
 
 <h3> 3. Class design guidelines </h3>

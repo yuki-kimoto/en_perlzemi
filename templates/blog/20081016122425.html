@@ -22,21 +22,21 @@ use strict;
 use warnings;
 
 print "(1) Get the last day of the month. \ N";
-my $ end_of_month_200802 = end_of_month (2008, 2);
-print "The last day of February 2008 is $ end_of_month_200802. \ N";
+my $end_of_month_200802 = end_of_month (2008, 2);
+print "The last day of February 2008 is $end_of_month_200802. \ N";
 
 # A function that finds the last day of the month.
 sub end_of_month {
-  my ($ year, $ month) = @_;
-  return if! $ year ||! $ month;
+  my ($year, $month) = @_;
+  return if! $year ||! $month;
 
   # Time :: Local :: timelocal function takes an elapsed year from 1900 as an argument
   Since it is taken to # , subtract 1900.
-  $ year-= 1900;
+  $year-= 1900;
 
   # Time :: Local :: timelocal function starts from 0 like 0 in January and 1 in February
   # Takes the month that starts as an argument, so subtract 1.
-  $ month-;
+  $month-;
 
   # These four candidates for the end of the month
   my @days = (31, 30, 29, 28);
@@ -44,13 +44,13 @@ sub end_of_month {
   # Used for checking the existence of dates.
   require Time :: Local;
   
-  for my $ day (@days) {
+  for my $day (@days) {
     eval {
       # If you specify a non-existent day, an exception will be thrown.
-      Time :: Local :: timelocal (0, 0, 0, $ day, $ month, $ year);
+      Time :: Local :: timelocal (0, 0, 0, $day, $month, $year);
     };
     # Date that exists if no exception occurs.
-    return $ day unless $ @;
+    return $day unless $@;
   }
   return;
 }
@@ -77,12 +77,12 @@ We will check from the 31st to the 28th. If you specify a date that does not exi
 <pre>
 require Time :: Local;
   
-for my $ day (@days) {
+for my $day (@days) {
   eval {
     # If you specify a non-existent day, an exception will be thrown.
-    Time :: Local :: timelocal (0, 0, 0, $ day, $ month, $ year);
+    Time :: Local :: timelocal (0, 0, 0, $day, $month, $year);
   };
   # Date that exists if no exception occurs.
-  return $ day unless $ @;
+  return $day unless $@;
 }
 </pre>

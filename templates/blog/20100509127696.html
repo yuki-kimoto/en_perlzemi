@@ -30,7 +30,7 @@ You can get the performance information of each function by executing the <stron
 
 <pre>
 # Performance comparison
-my $ result = timethese ($ count, {
+my $result = timethese ($count, {
   name1 => sub {
     # Process you want to execute 1
   },
@@ -42,35 +42,35 @@ my $ result = timethese ($ count, {
   },
 });
 
-cmpthese $ result;
+cmpthese $result;
 </pre>
 
 This is a sample for benchmarking. It is necessary to increase the number of executions to some extent to improve accuracy. This sample has been run 10000 times.
 
 <pre>
 # Benchmark sample
-my $ result = timethese (10000, {
+my $result = timethese (10000, {
   loop1 => sub {
-    my $ i = 0;
-    while ($ i <1500) {
-      $ i ++;
+    my $i = 0;
+    while ($i <1500) {
+      $i ++;
     }
   },
   loop2 => sub {
-    my $ i = 0;
-    while ($ i <1000) {
-      $ i ++;
+    my $i = 0;
+    while ($i <1000) {
+      $i ++;
     }
   },
   loop3 => sub {
-    my $ i = 0;
-    while ($ i <500) {
-      $ i ++;
+    my $i = 0;
+    while ($i <500) {
+      $i ++;
     }
   },
 });
 
-cmpthese $ result;
+cmpthese $result;
 </pre>
 
 The output result is as follows. It can be confirmed that loop3 is nearly 3 times faster than loop1.

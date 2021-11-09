@@ -28,7 +28,7 @@ A hash reference is a reference to a <a href="/blog/20161013147635.html"> hash</
 <pre>
 # Create a hash reference
 my% score = (math => 68, english => 90);
-my $ score_ref = \% score;
+my $score_ref = \% score;
 </pre>
 
 Note that the hash reference is assigned to the <a href="/blog/20161107147852.html"> scalar variable</a>.
@@ -38,7 +38,7 @@ Let's write an image of the hash reference below.
 <pre>
 # image
                       % score
-$ score_ref - -- --> (math => 68, english => 90)
+$score_ref - -- --> (math => 68, english => 90)
 </pre>
 
 A hash reference represents "what points to a hash" rather than the hash itself.
@@ -56,8 +56,8 @@ my% score2 =% score1;
 
 # Hash reference does not copy value
 my% score1 = (math => 68, english => 90);
-my $ score_ref1 = \% score1;
-my $ score_ref2 = $ score_ref1;
+my $score_ref1 = \% score1;
+my $score_ref2 = $score_ref1;
 </pre>
 
 Below is an image. In the case of a hash, the entire contents are copied, whereas in the hash reference, the reference itself is copied, not the contents.
@@ -67,15 +67,15 @@ Below is an image. In the case of a hash, the entire contents are copied, wherea
 % score1% score2
 (math => 68, english => 90) (math => 68, english => 90)
 
-$ score_ref1 - -- -- -- ->
-$ score_ref2 - -- -- -- -> (math => 68, english => 90)
+$score_ref1 - -- -- -- ->
+$score_ref2 - -- -- -- -> (math => 68, english => 90)
 </pre>
 
 When passing to <a href="/blog/20101130129876.html"> subroutine</a>, it is more efficient to pass a hash reference because the contents are not copied.
 
 <pre>
 # Pass the hash reference to the subroutine
-my_func ($ score_ref1);
+my_func ($score_ref1);
 </pre>
 
 <h3> Anonymous hash generator </h3>
@@ -83,7 +83,7 @@ my_func ($ score_ref1);
 Hash references can be created using the reference generator "\", but this is a bit tricky. An operator called <a href="/blog/20170926150643.html"> anonymous hash generator</a> is defined to quickly create a hash reference.
 
 <pre>
-my $ score_ref = {math => 68, english => 90};
+my $score_ref = {math => 68, english => 90};
 </pre>
 
 Note that the hash reference is generated using the anonymous hash generator "{}", whereas the normal hash is created with "()".
@@ -95,7 +95,7 @@ This notation appears frequently in Perl source code. It is important to read fr
 my% score = (math => 68, english => 90);
 
 # Hash reference
-my $ score = {math => 68, english => 90};
+my $score = {math => 68, english => 90};
 </pre>
 
 <h3> Dereference </h3>
@@ -105,10 +105,10 @@ I used a reference generator to generate a hash reference. Now let's extract the
 To do this, perform an operation called <b> dereference </b>.
 
 <pre>
-my $ score_ref = {math => 68, english => 90};
+my $score_ref = {math => 68, english => 90};
 
 # Dereference
-my% score =% {$ score_ref};
+my% score =% {$score_ref};
 </pre>
 
 Dereferences can be made using the notation "% {hash reference}".
@@ -116,7 +116,7 @@ Dereferences can be made using the notation "% {hash reference}".
 If the hash reference is a scalar variable, you can omit the "{}".
 
 <pre>
-my% score =% $ score_ref;
+my% score =% $score_ref;
 </pre>
 
 <h4> Pass as an argument to a standard function </h4>
@@ -125,9 +125,9 @@ my% score =% $ score_ref;
 
 <pre>
 # Dereference and pass to standard function
-keys% $ hash;
-values% $ hash;
-each% $ hash;
+keys% $hash;
+values% $hash;
+each% $hash;
 </pre>
 
 <h3> Extract the hash value from the hash reference </h3>
@@ -136,20 +136,20 @@ You can use the arrow operator "->" to retrieve the hash value from the hash ref
 
 <pre>
 # Get the hash value from the hash reference
-my $ score_math = $ score_ref-> {math};
+my $score_math = $score_ref-> {math};
 
 # Set the hash value from the hash reference
-$ score_ref-> {math} = 67;
+$score_ref-> {math} = 67;
 </pre>
 
 If the arrow operator is used, it is a hash reference. If not, it's a hash. Please be able to read this well in the source code.
 
 <pre>
 # Get hash value
-my $ score_math = $ score {math};
+my $score_math = $score {math};
 
 # Set hash value
-$ score {math} = 67;
+$score {math} = 67;
 </pre>
 
 It's important to look closely, as it depends on whether it's a hash or a hash reference, with or without the arrow operator.
@@ -159,7 +159,7 @@ It's important to look closely, as it depends on whether it's a hash or a hash r
 Array references are as often used as hash references.
 
 <pre>
-my $ nums_ref = [1, 3, 5];
+my $nums_ref = [1, 3, 5];
 </pre>
 
 Array references are described in detail below.

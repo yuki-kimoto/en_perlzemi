@@ -22,7 +22,7 @@
 You can use the unpack function to restore the data packed in binary format with the <a href="/blog/20171218151360.html"> pack function</a>.
 
 <pre>
-my @values ​​= unpack ($ format, $ packed);
+my @values ​​= unpack ($format, $packed);
 </pre>
 
 The first argument is the format.
@@ -36,9 +36,9 @@ As for the return value, the restored data is returned as an array.
 If the three integers are packed in a signed 32-bit binary format, use the unpack function to restore them as follows:
 
 <pre>
-my $ packed = pack ("l3", 7, 8, 9);
+my $packed = pack ("l3", 7, 8, 9);
 
-my @values ​​= unpack ("l3", $ packed);
+my @values ​​= unpack ("l3", $packed);
 </pre>
 
 @values ​​will be a <a href="/blog/20161012147627.html"> array</a> called (7, 8, 9).
@@ -48,9 +48,9 @@ my @values ​​= unpack ("l3", $ packed);
 If the three floating point numbers are packed in a double precision floating point double binary format, restore them as follows:
 
 <pre>
-my $ packed = pack ("d3", 0.5, 1.2, 5.4);
+my $packed = pack ("d3", 0.5, 1.2, 5.4);
 
-my @values ​​= unpack ("d3", $ packed);
+my @values ​​= unpack ("d3", $packed);
 </pre>
 
 <h4> Endian conversion </h4>

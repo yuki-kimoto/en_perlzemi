@@ -28,8 +28,8 @@ print "Hello World!";
 You can also assign a string to a variable and then pass it to the print function. This method is recommended when actually writing a program. It is a method to create one character string and then pass it to the print function.
 
 <pre>
-my $ message = "Hello World!";
-print $ message;
+my $message = "Hello World!";
+print $message;
 </pre>
 
 You can also pass a <a href="/blog/20100308126967.html"> list</a> or an array to the print function. The character strings are concatenated and output. When actually writing a program, the above method is recommended over this method.
@@ -100,10 +100,10 @@ Standard error output is for errors. For a detailed explanation of standard erro
 You can also change the output destination of the print function to a file. In that case, open the file with <a href="/blog/20080718121643.html"> open function</a>, create a file handle, and specify the file handle with the print function.
 
 <pre>
-my $ file = "output.txt";
-open my $ fh,'>', $ file
-  or die "Can't open \" $ file \ ": $!";
-print $ fh "Hello";
+my $file = "output.txt";
+open my $fh,'>', $file
+  or die "Can't open \" $file \ ": $!";
+print $fh "Hello";
 </pre>
 
 "Hello" is output to a file called "output.txt".
@@ -121,8 +121,8 @@ If you want to specify the format like the C language printf function, use <a hr
 printf "Number% d", 3;
 
 # sprintf function
-my $ string = sprintf ("Number% d", 3);
-print $ string;
+my $string = sprintf ("Number% d", 3);
+print $string;
 </pre>
 
 <h3> Technique to output to a file by redirect </h3>

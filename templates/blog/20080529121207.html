@@ -118,7 +118,7 @@ my @normal_files = glob "*";
 # If you want to do complicated things, use "*"
 # Get all the files and then
 Sort by # grep.
-@normal_files = grep {-f $ _} @normal_files;
+@normal_files = grep {-f $_} @normal_files;
 print join ("\ n", @normal_files). "\ n \ n";
 </pre>
 
@@ -162,12 +162,12 @@ So, instead of using the glob function, it's a good idea to create a function th
 
 <pre>
 sub get_files {
-  my $ dir = shift;
+  my $dir = shift;
   
-  opendir my $ dh, $ dir
-    or die qq / Can't open directory "$ dir": $! /;
+  opendir my $dh, $dir
+    or die qq / Can't open directory "$dir": $! /;
   
-  my @dirs = map {"$ dir / $ _"} grep {$ _ ne'.' && $ _ ne' ..'} readdir $ dh;
+  my @dirs = map {"$dir / $_"} grep {$_ ne'.' && $_ ne' ..'} readdir $dh;
   
   return @dirs;
 }

@@ -93,7 +93,7 @@ Use <b> && </b> to represent the conjunction "A and B".
 
 <pre>
 # Greater than 1 and less than 4
-if ($ num> 1 && $ num <4) {
+if ($num> 1 && $num <4) {
   ...
 }
 </pre>
@@ -104,8 +104,8 @@ Use <b> &#x7c; &#x7c; </b> to represent the conjunction "A or B". True if at lea
 
 <pre>
 # 'dog' or'cat'
-if ($ pet eq'dog' || $ pet eq'cat') {
-  print "\ $ pet is either'dog'or'cat'. \ N \ n";
+if ($pet eq'dog' || $pet eq'cat') {
+  print "\ $pet is either'dog'or'cat'. \ N \ n";
 }
 </pre>
 
@@ -114,8 +114,8 @@ if ($ pet eq'dog' || $ pet eq'cat') {
 Use <b>! </B> to represent the negation of "not A".
 
 <pre>
-# $ num is not true
-if (! $ num) {
+# $num is not true
+if (! $num) {
   ...
 }
 </pre>
@@ -126,7 +126,7 @@ You can also use <b> and </b> to represent the conjunction "A and B". The priori
 
 <pre>
 # Greater than 1 and less than 4
-if ($ num> 1 and $ num <4) {
+if ($num> 1 and $num <4) {
   ...
 }
 </pre>
@@ -137,8 +137,8 @@ You can also use <b> or </b> to represent the conjunction "A or B". The priority
 
 <pre>
 # 'dog' or'cat'
-if ($ pet eq'dog' or $ pet eq'cat') {
-  print "\ $ pet is either'dog'or'cat'. \ N \ n";
+if ($pet eq'dog' or $pet eq'cat') {
+  print "\ $pet is either'dog'or'cat'. \ N \ n";
 }
 </pre>
 
@@ -147,8 +147,8 @@ if ($ pet eq'dog' or $ pet eq'cat') {
 You can also use <b> not </b> to represent the negation of "not A". The priority is lower than "!". It is recommended to use "!" Instead of "not" for denial.
 
 <pre>
-# $ num is not true
-if (not $ num) {
+# $num is not true
+if (not $num) {
   ...
 }
 </pre>
@@ -159,7 +159,7 @@ When using in if statement, unless statement, <a href="/blog/20100123126425.html
 
 <pre>
 # Logical operator
-if ($ var1 && $ var2 || $ var3) {
+if ($var1 && $var2 || $var3) {
   ...
 }
 </pre>
@@ -167,7 +167,7 @@ if ($ var1 && $ var2 || $ var3) {
 "&&" has a higher priority than "||". If you want to change the priority, use parentheses "()".
 
 <pre>
-if ($ var1 && ($ var2 || $ var3)) {
+if ($var1 && ($var2 || $var3)) {
   ...
 }
 </pre>
@@ -177,24 +177,24 @@ if ($ var1 && ($ var2 || $ var3)) {
 Perl logical operators stop evaluation when the evaluation is decided. for example
 
 <pre>
-$ var1 && $ var2
+$var1 && $var2
 </pre>
 
-If $ var1 is false, it is determined that "$ var1 & amp; & amp; $ var2" is false, so the evaluation ends there.
+If $var1 is false, it is determined that "$var1 & amp; & amp; $var2" is false, so the evaluation ends there.
 
 <pre>
-$ var1 || $ var2
+$var1 || $var2
 </pre>
 
-If $ var1 is true, then "$ var1 || $ var2" is determined to be true, and the evaluation ends there.
+If $var1 is true, then "$var1 || $var2" is determined to be true, and the evaluation ends there.
 
 Use <h3> or as a conditional branch </h3>
 
 Taking advantage of these properties, or is often used for conditional branching. For example, if the <a href="/blog/20080718121643.html"> open function</a> fails, write as follows.
 
 <pre>
-open my $ fh,'<', $ file
-  or die qq / Can't open file "$ file": $! /;
+open my $fh,'<', $file
+  or die qq / Can't open file "$file": $! /;
 </pre>
 
 If the open function succeeds, true is returned and the right-hand side of or is not executed. If the open function fails, undef is returned, so <a href="/blog/20100212126425.html"> die</a> on the right side is executed and the program ends.
@@ -226,20 +226,20 @@ use warnings;
 
 # AND, OR, negation
 print "1. Logical product (A and B) \ n";
-my $ num = 3;
-if ($ num> 1 && $ num <4) {
-  print "\ $ num is greater than 1 and less than 4 \ n \ n";
+my $num = 3;
+if ($num> 1 && $num <4) {
+  print "\ $num is greater than 1 and less than 4 \ n \ n";
 }
 
 print "2. OR (A or B) \ n";
-my $ pet ='dog';
-if ($ pet eq'dog' || $ pet eq'cat') {
-  print "\ $ pet is either'dog'or'cat'. \ N \ n";
+my $pet ='dog';
+if ($pet eq'dog' || $pet eq'cat') {
+  print "\ $pet is either'dog'or'cat'. \ N \ n";
 }
 
 print "3. Negation (not A) \ n";
-my $ num0 = 0;
-if (! $ num0) {
-  print "! \ $ Num is true \ n";
+my $num0 = 0;
+if (! $num0) {
+  print "! \ $Num is true \ n";
 }
 </pre>

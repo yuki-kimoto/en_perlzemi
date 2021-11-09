@@ -30,9 +30,9 @@ Use the <strong> decode_json function </strong> to convert JSON to a Perl data s
 
 <pre>
 # Convert JSON to Perl data structures
-my $ json_in ='[{"name": "Ken", "age": 19}, {"name": "Ken", "age": 25}]';
+my $json_in ='[{"name": "Ken", "age": 19}, {"name": "Ken", "age": 25}]';
 
-my $ data = decode_json ($ json_in);
+my $data = decode_json ($json_in);
 </pre>
 
 This translates into a Perl data structure that looks like this:
@@ -60,7 +60,7 @@ Conversely, use the <strong> encode_json function </strong> to convert Perl data
 
 <pre>
 # Convert Perl data structures to JSON
-my $ json_out = encode_json ($ data);
+my $json_out = encode_json ($data);
 </pre>
 
 <h3> Handling of Japanese in JSON module </h3>
@@ -97,12 +97,12 @@ For example, it is easy to make a mistake, but if you write the following, it wi
 use utf8;
 use JSON'decode_json';
 
-my $ json ='{"name": "Masuda"}';
+my $json ='{"name": "Masuda"}';
 
-my $ data = decode_json ($ json);
+my $data = decode_json ($json);
 </pre>
 
-The reason this doesn't work is that $ json has already been converted to an internal string because the utf8 pragma is enabled. This doesn't work because decode_json takes a byte string as an argument. You need to convert it to a UTF-8 byte string with the encode_utf8 function of the Encode module.
+The reason this doesn't work is that $json has already been converted to an internal string because the utf8 pragma is enabled. This doesn't work because decode_json takes a byte string as an argument. You need to convert it to a UTF-8 byte string with the encode_utf8 function of the Encode module.
 
 <pre>
 # Correct example when dealing with Japanese
@@ -110,12 +110,12 @@ use utf8;
 use JSON'decode_json';
 use Encode'encode_utf8';
 
-my $ json ='{"name": "Masuda"}';
+my $json ='{"name": "Masuda"}';
 
 # Convert to UTF-8 byte string
-$ json = encode_utf8 ($ json);
+$json = encode_utf8 ($json);
 
-my $ data = decode_json ($ json);
+my $data = decode_json ($json);
 </pre>
 
 <h3> Read the JSON written in the file </h3>
@@ -126,21 +126,21 @@ Since the JSON module does not have a function to read a file, I will describe h
 # Sample to read JSON from file
 use JSON'decode_json';
 
-my $ file = shift;
+my $file = shift;
 
-my $ data = decode_json (get_content ($ file));
+my $data = decode_json (get_content ($file));
 
 # Function to get the contents of a file
 sub get_content {
-  my $ file = shift;
+  my $file = shift;
 
-  open my $ fh,'<', $ file
-    or die "Can't open file \" $ file \ ": $!";
+  open my $fh,'<', $file
+    or die "Can't open file \" $file \ ": $!";
   
-  my $ content = do {local $ /; <$ fh>};
+  my $content = do {local $/; <$fh>};
  
-  close $ fh;
+  close $fh;
 
-  return $ content;
+  return $content;
 }
 </pre>

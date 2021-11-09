@@ -18,7 +18,7 @@
 <h2> map function-transformation of all elements of an array </h2>
 
 
-Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $ _, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
+Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $_, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
 
 <pre>
 # Conversion of all elements of the array
@@ -31,7 +31,7 @@ This is a sample that doubles all elements using map. If @nums is (1, 2, 3) then
 <pre>
 # Double all elements
 my @nums = (1, 2, 3);
-my @doubled = map {$ _ * 2} @nums;
+my @doubled = map {$_ * 2} @nums;
 </pre>
 
 This is a sample that deletes the first string of all elements using map. If @strs is ('& nbsp; & nbsp; a','& nbsp; & nbsp; b','& nbsp; & nbsp; & nbsp; c'), then @trimed is ('a','b','c') Become.
@@ -39,7 +39,7 @@ This is a sample that deletes the first string of all elements using map. If @st
 <pre>
 # Excluding leading blanks
 my @strs = ('a','b','c');
-my @trimed = map {$ _ = ~ s / ^ \ s + //; $ _} @strs;
+my @trimed = map {$_ = ~ s / ^ \ s + //; $_} @strs;
 </pre>
 
 You can also convert one element into two elements. If @keys is ('a','b','c') then @mapped is (a => 1, b => 1, c => 1).
@@ -47,7 +47,7 @@ You can also convert one element into two elements. If @keys is ('a','b','c') th
 <pre>
 # Convert to two elements
 my @keys = ('a','b','c');
-my @mapped = map {$ _ => 1} @keys;
+my @mapped = map {$_ => 1} @keys;
 </pre>
 
 What can be written on the map can also be written on the foreach statement. Maps are often used in Perl because they are simpler to write.
@@ -56,8 +56,8 @@ What can be written on the map can also be written on the foreach statement. Map
 # for
 my @nums = (1, 2, 3);
 my @doubled;
-for my $ num (@nums) {
-  push @doubled, $ num * 2;
+for my $num (@nums) {
+  push @doubled, $num * 2;
 }
 </pre>
 

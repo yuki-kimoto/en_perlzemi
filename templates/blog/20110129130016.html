@@ -1,8 +1,8 @@
-th-> execute ($ i, $ title);
+th-> execute ($i, $title);
       }
     }
 });
-cmpthese ($ result);
+cmpthese ($result);
 </pre>
 
 Benchmark results are slightly lower than those using raw DBI. Compared to using a normal insert, there is a difference of nearly 10 times, so I think it is better to use it when performing a large number of inserts at the same time.
@@ -19,7 +19,7 @@ raw 278 / s 1147% 31% -
 If your database supports bulk inserts, you can do bulk inserts. Currently available for MySQL and PostgreSQL. You can use the database function to insert multiple data at once, so you can expect even higher speeds.
 
 <pre>
-$ dbi-> insert ($ params, table =>'book', bulk_insert => 1);
+$dbi-> insert ($params, table =>'book', bulk_insert => 1);
 </pre>
 
 <b> Benchmark with bulk_insert in MySQL </b>
@@ -33,55 +33,55 @@ use Benchmark qw / timethese cmpthese /;
 
 use DBIx :: Custom;
 
-my $ dbi = DBIx :: Custom-> connect (dsn =>'dbi: mysql: database = usertest',
+my $dbi = DBIx :: Custom-> connect (dsn =>'dbi: mysql: database = usertest',
 user =>'root', connector => 1);
 
 # Performance comparison
-my $ result = timethese (100, {
+my $result = timethese (100, {
   normal => sub {
-    $ dbi-> connector-> txn (sub {
-      $ dbi-> delete_all (table =>'book');
-      for my $ i (1 .. 100) {
-        my $ param = {id => $ i, title =>'Perl'};
-        $ dbi-> insert ($ param, table =>'book');
+    $dbi-> connector-> txn (sub {
+      $dbi-> delete_all (table =>'book');
+      for my $i (1 .. 100) {
+        my $param = {id => $i, title =>'Perl'};
+        $dbi-> insert ($param, table =>'book');
       }
     });
   },
   multiple => sub {
-    $ dbi-> connector-> txn (sub {
-      $ dbi-> delete_all (table =>'book');
+    $dbi-> connector-> txn (sub {
+      $dbi-> delete_all (table =>'book');
       my @params;
-      for my $ i (1 .. 100) {
-        push @params, {id => $ i, title =>'Perl'};
+      for my $i (1 .. 100) {
+        push @params, {id => $i, title =>'Perl'};
       }
-      $ dbi-> insert (\ @ params, table =>'book');
+      $dbi-> insert (\ @ params, table =>'book');
     });
   },
   bulk_insert => sub {
-    $ dbi-> connector-> txn (sub {
-      $ dbi-> delete_all (table =>'book');
+    $dbi-> connector-> txn (sub {
+      $dbi-> delete_all (table =>'book');
       my @params;
-      for my $ i (1 .. 100) {
-        push @params, {id => $ i, title =>'Perl'};
+      for my $i (1 .. 100) {
+        push @params, {id => $i, title =>'Perl'};
       }
-      $ dbi-> insert (\ @ params, table =>'book', bulk_insert => 1);
+      $dbi-> insert (\ @ params, table =>'book', bulk_insert => 1);
     });
   },
   raw => sub {
-    $ dbi-> connector-> txn (sub {
-      $ dbi-> delete_all (table =>'book');
-      my $ sth;
-      for my $ i (1 .. 100) {
-        $ sth || = $ dbi-> dbh-> prepare ('insert into book (id, title) values ​​(?,?)');
-        my $ id = $ i;
-        my $ title ='Perl';
-        $ sth-> execute ($ i, $ title);
+    $dbi-> connector-> txn (sub {
+      $dbi-> delete_all (table =>'book');
+      my $sth;
+      for my $i (1 .. 100) {
+        $sth || = $dbi-> dbh-> prepare ('insert into book (id, title) values ​​(?,?)');
+        my $id = $i;
+        my $title ='Perl';
+        $sth-> execute ($i, $title);
       }
     });
   }
 });
 
-cmpthese ($ result);
+cmpthese ($result);
 </pre>
 
 Benchmark results show that using bulk_insert gives about 5 times the normal performance of a normal insert.

@@ -28,7 +28,7 @@
 Use the file test operator "-M" to <b> get the number of days elapsed since the last update </b>.
 
 <pre>
--M $ file
+-M $file
 </pre>
 
 <h4> Sample program </h4>
@@ -40,13 +40,13 @@ use strict;
 use warnings;
 
 # Get the number of days that have passed since the last update.
-# -M $ file
+# -M $file
 
 print "1: Get the number of days that have passed since the last update. \ N";
-my $ file = "a.txt";
-if (-e $ file) {
-  my $ from_last_modify = -M $ file;
-  print "$ from_last_modify days have passed since the last update. \ N";
+my $file = "a.txt";
+if (-e $file) {
+  my $from_last_modify = -M $file;
+  print "$from_last_modify days have passed since the last update. \ N";
 }
-else {print "$ file does not exist. \ N"}
+else {print "$file does not exist. \ N"}
 </pre>

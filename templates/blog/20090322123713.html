@@ -33,42 +33,42 @@ use warnings;
 
 # Constructor
 sub new {
-  my $ proto = shift;
-  my $ class = ref $ proto || $ proto;
-  my $ self = {};
-  bless $ self, $ class;
+  my $proto = shift;
+  my $class = ref $proto || $proto;
+  my $self = {};
+  bless $self, $class;
     
-  $ self-> init (@_);
-  return $ self;
+  $self-> init (@_);
+  return $self;
 }
 
 # Object initialization
 sub init {
-  my ($ self, @args) = @_;
+  my ($self, @args) = @_;
   # Additional processing
 }
 
 # Accessor
 sub title {
-  my $ self = shift;
+  my $self = shift;
   if (@_) {
-    my $ old = $ self-> {title};
-    return $ self-> {title} = $ _ [0];
+    my $old = $self-> {title};
+    return $self-> {title} = $_ [0];
   }
   else {
-    return $ self-> {title};
+    return $self-> {title};
   }
 }
 
 
 sub author {
-  my $ self = shift;
+  my $self = shift;
   if (@_) {
-    my $ old = $ self-> {author};
-    return $ self-> {author} = $ _ [0];
+    my $old = $self-> {author};
+    return $self-> {author} = $_ [0];
   }
   else {
-    return $ self-> {author};
+    return $self-> {author};
   }
 }
 

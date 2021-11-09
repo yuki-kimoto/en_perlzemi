@@ -17,18 +17,18 @@
 
 
 
-To copy a file, use the <strong> copy </strong> function of the <a href="/blog/20100408127089.html"> File :: Copy</a> module. If it succeeds, it returns true, and if it fails, it returns false. If the copy function fails, the details of the error are stored in $ !.
+To copy a file, use the <strong> copy </strong> function of the <a href="/blog/20100408127089.html"> File :: Copy</a> module. If it succeeds, it returns true, and if it fails, it returns false. If the copy function fails, the details of the error are stored in $!.
 
 <pre>
 use File :: Copy'copy';
-copy $ file, $ copy_name;
+copy $file, $copy_name;
 </pre>
 
 You can also copy the file into a directory.
 
 <pre>
 use File :: Copy'copy';
-copy $ file, $ dir;
+copy $file, $dir;
 </pre>
 
 <h3> Sample </h3>
@@ -42,34 +42,34 @@ use Fcntl;
 use File :: Copy'copy';
 
 # Copy the file.
-my $ file = "sample_20080521_$$. txt";
-my $ dir = "dir_20080521_ $$";
+my $file = "sample_20080521_$$. txt";
+my $dir = "dir_20080521_ $$";
 
 # Prepare files and directories
-sysopen (my $ fh, $ file, O_WRONLY | O_CREAT | O_EXCL)
-  or die "Unable to create $ file .: $!";
-close $ fh;
-print "Preparation:'$ file' has been created. \ N";
+sysopen (my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
+  or die "Unable to create $file .: $!";
+close $fh;
+print "Preparation:'$file' has been created. \ N";
 
-mkdir $ dir
-  or die "Unable to create $ dir.: $!";
-print "Preparation:'$ dir' has been created. \ N \ n";
+mkdir $dir
+  or die "Unable to create $dir.: $!";
+print "Preparation:'$dir' has been created. \ N \ n";
 
 print "1. Copy the file. \ N";
-my $ copy_name = "$ file.copy";
-if (copy $ file, $ copy_name) {
-  print "$ file has been copied to $ copy_name. \ N \ n";
+my $copy_name = "$file.copy";
+if (copy $file, $copy_name) {
+  print "$file has been copied to $copy_name. \ N \ n";
 }
 else {
-  warn "Unable to copy $ file to $ copy_name. $!";
+  warn "Unable to copy $file to $copy_name. $!";
 }
 
 print "2. Copy the file to a directory. \ N";
-if (copy $ file, $ dir) {
-  print "$ file has been copied to $ dir. \ n \ n";
+if (copy $file, $dir) {
+  print "$file has been copied to $dir. \ n \ n";
 }
 else {
-  warn "Unable to copy $ file to $ dir .: $!";
+  warn "Unable to copy $file to $dir .: $!";
 }
 </pre>
 

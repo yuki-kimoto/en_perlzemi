@@ -93,8 +93,8 @@ use v5.16;
 
 In other words, "use v5.14" expects Perl 5.14 to work, and "use v5.16" expects Perl 5.16 to work.
 
-<h4> $ [is no longer disabled under use v5.16. </h4>
-$ [Now is no longer valid under use v5.16.
+<h4> $[is no longer disabled under use v5.16. </h4>
+$[Now is no longer valid under use v5.16.
 
 <h4> Fixed a memory leak in a regular expression named capture </h4>
 
@@ -103,7 +103,7 @@ A memory leak in the following code has been fixed. This has been around since P
 <pre>
     for (1..10_000_000) {
         if ("foo" = ~ / (foo | (? <capture> bar))? /) {
-            my $ capture = $ + {capture}
+            my $capture = $+ {capture}
         }
     }
     system "ps -o rss $$"'

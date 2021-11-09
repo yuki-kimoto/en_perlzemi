@@ -36,13 +36,13 @@ Use the lexical variable you just declared for the filehandle. Declaring a lexic
 
 <pre>
 # Lexical variable
-my $ fh;
-my $ file ='file1';
+my $fh;
+my $file ='file1';
 
-open $ fh,'<', $ file
-  or die "Cannot open'$ file': $!";
+open $fh,'<', $file
+  or die "Cannot open'$file': $!";
 
-while (my $ lien = <$ fh>) {
+while (my $lien = <$fh>) {
   ...
 }
 </pre>
@@ -52,30 +52,30 @@ Lexical variables have the great advantage of having scope and being able to be 
 It would also be more modern to put the declarations of lexical variables together in the open function.
 
 <pre>
-open my $ fh,'<', $ file
+open my $fh,'<', $file
 </pre>
 
 <h3> Use open function with 3 arguments (required) </h3>
 
 Try to use the 3-argument open function.
 <pre>
-open my $ fh,'<', $ file
+open my $fh,'<', $file
 </pre>
 
 Some old explanations explain the two-argument open function, but don't use it. The two-argument open function is vulnerable to security and should not be used.
 
 <pre>
-open my $ fh, "<$ file"; # 2 Do not use the open function as an argument
+open my $fh, "<$file"; # 2 Do not use the open function as an argument
 </pre>
 
 This is also true when opening a pipe.
 
 <pre>
 # ○ (three arguments)
-open my $ pipe,'-|','dir';
+open my $pipe,'-|','dir';
 
 # × (two arguments)
-open my $ pipe,'dir |';
+open my $pipe,'dir |';
 </pre>
 
 <h3> Perform error handling when opening a file (required) </h3>
@@ -83,8 +83,8 @@ open my $ pipe,'dir |';
 Make sure to handle the error whenever you open the file.
 
 <pre>
-open my $ fh,'<', $ file
-  or die "Cannot open'$ file': $!";
+open my $fh,'<', $file
+  or die "Cannot open'$file': $!";
 </pre>
 
 If the open function fails, it returns undef, so use or to handle the error. Since $! Contains the error message returned by the OS, include it in the error message shown to the user.
@@ -99,9 +99,9 @@ Use lowercase letters and underscores in the names of "lexical variables declare
 
 <pre>
 # Lexical variable
-my $ user_name;
-my $ search_word;
-my $ max_database_connection;
+my $user_name;
+my $search_word;
+my $max_database_connection;
 
 # Subroutine
 sub parse_data {
@@ -125,8 +125,8 @@ As a general rule, the naming method for subroutines is "verb + noun". For those
 Use uppercase letters and underscores for package variables.
 
 <pre>
-our $ OBJECT_COUNT;
-our $ CLASS_INFO;
+our $OBJECT_COUNT;
+our $CLASS_INFO;
 </pre>
 
 <h3> Use lexical variables instead of package variables (required) </h3>
@@ -146,7 +146,7 @@ I will write a few points to imitate.
 <h4> 1. Look at the position where spaces such as if and foreach statements and subroutines are inserted </h4>
 <pre>
 There is a space immediately after # if, there is no space in (), etc.
-if ($ flg) {
+if ($flg) {
   ...
 }
 </pre>
@@ -167,15 +167,15 @@ Use the Encode module to properly handle multibyte characters such as Japanese. 
 
 Techniques such as using Jcode.pm or Jcode.pl as in the old commentary are no longer recommended. Starting with Perl 5.8, using the Encode module is the standard and less problematic method.
 
-<h3> Do not use the default variable $ _ (highly recommended) </h3>
+<h3> Do not use the default variable $_ (highly recommended) </h3>
 
-Perl has a default variable called $ _. The default variable is a variable that is implicitly received if no argument is given to the function. Please refrain from using it in a program as it will reduce readability.
+Perl has a default variable called $_. The default variable is a variable that is implicitly received if no argument is given to the function. Please refrain from using it in a program as it will reduce readability.
 
 Use the default arguments only if:
 
 <h4> 1. One liner </h4>
 
-I think you can use it in one liner. $ _ Is used as a print argument and a regular expression target.
+I think you can use it in one liner. $_ Is used as a print argument and a regular expression target.
 
 <pre>
 One liner that retrieves lines containing the characters # AAA
@@ -184,12 +184,12 @@ perl -ne "print if / AAA /";
 
 <h4> 2. map function, grep function and postfix for </h4>
 
-Since $ _ is passed to the map function, grep function, and postfix for, this must be used.
+Since $_ is passed to the map function, grep function, and postfix for, this must be used.
 
 <pre>
-my @greped_array = grep {$ _ = ~ / AAA /} @array;
-my @mapped_array = map {$ _ * 2} @array;
-print $ _ for @array;
+my @greped_array = grep {$_ = ~ / AAA /} @array;
+my @mapped_array = map {$_ * 2} @array;
+print $_ for @array;
 </pre>
 
 Some well-known CPAN modules use default variables, but I personally don't recommend them. A program that is as explicit as possible will be more readable.
@@ -200,12 +200,12 @@ Perl 5 allows you to declare a lexical variable at the beginning of a foreach st
 
 <pre>
 my @students = ('taro','kenji','naoya');
-for my $ student (@students) {
+for my $student (@students) {
   ...
 }
 </pre>
 
-In this example, each element of @students goes into $ student. $ student is a lexical variable that has a scope from the beginning to the end of the foreach block.
+In this example, each element of @students goes into $student. $student is a lexical variable that has a scope from the beginning to the end of the foreach block.
 
 It is possible to omit the lexical variable, but it is not recommended.
 
@@ -222,12 +222,12 @@ for (@students) {
 
 <pre>
 # When there is one command line argument
-my $ file = shift;
+my $file = shift;
 </pre>
 
 <pre>
 # If there are multiple command line arguments
-my ($ file, $ option) = @ARGV;
+my ($file, $option) = @ARGV;
 </pre>
 
 <h3> How to receive subroutine arguments (reference) </h3>
@@ -237,14 +237,14 @@ Same as for command line arguments.
 <pre>
 # When there is one argument
 sub func {
-  my $ file = shift;
+  my $file = shift;
 }
 </pre>
 
 <pre>
 # When there are multiple arguments
 sub func {
-  my ($ file, $ option) = @_;
+  my ($file, $option) = @_;
 }
 </pre>
 
@@ -381,7 +381,7 @@ use File :: Path'mkpath';
 use Encode qw / encode decode /;
 
 Use the # mkpath function.
-mkpath $ dir;
+mkpath $dir;
 </pre>
 
 What if there was no explicit import description?
@@ -393,7 +393,7 @@ use File :: Path;
 use Encode;
 
 # I don't know where this was imported from
-mkpath $ dir;
+mkpath $dir;
 </pre>
 
 In such a case, you may end up reading the documentation for all the modules being used. You may know from which module the function was imported, but it's not explicit to anyone reading the source code. So be sure to explicitly specify the function you want to import, no matter how obvious it may seem to you.
@@ -424,7 +424,7 @@ There is a feature that allows you to specify a type called prototype when defin
 
 <pre>
 # Do not use prototypes
-sub func ($ @) {
+sub func ($@) {
   ...
 }
 </pre>
@@ -444,24 +444,24 @@ You might think that Perl has no exception handling. There is no such thing as a
 <pre>
 # Return undef when an error occurs
 sub func {
-  my $ arg = shift;
+  my $arg = shift;
   
   ...
   
   # Error handling
-  if ($ error) {
+  if ($error) {
     return;
   }
   # Correct value if no error occurred
-  return $ val;
+  return $val;
 }
 </pre>
 Then, the error handling is described on the side that calls the function.
 <pre>
-my $ val = func ();
+my $val = func ();
 
-Exit the program if # $ val is a false value
-die "Error" unless $ val;
+Exit the program if # $val is a false value
+die "Error" unless $val;
 </pre>
 
 The problem with this description is that if the func user neglects to check the return value, the program will proceed.
@@ -471,17 +471,17 @@ So current Perl uses die to throw an exception when reporting an error.
 <pre>
 # Use die to throw an exception when an error occurs
 sub func {
-  my $ arg = shift;
+  my $arg = shift;
   
   # Some processing
   
   Use # die to throw an exception
-  if ($ error) {
+  if ($error) {
     die "Error message";
   }
 
   # Correct value if no error occurred
-  return $ val;
+  return $val;
 }
 </pre>
 
@@ -492,12 +492,12 @@ If you do this, func will be called and if an error occurs, an error message wil
 func ();
 </pre>
 
-If you don't want to quit the program, use the <a href="/blog/20100312126967.html"> eval block</a>. Think of it as a catch in Java. If an error occurs, the content of the error is set in a special variable called $ @, so you can check this variable to see if an error has occurred.
+If you don't want to quit the program, use the <a href="/blog/20100312126967.html"> eval block</a>. Think of it as a catch in Java. If an error occurs, the content of the error is set in a special variable called $@, so you can check this variable to see if an error has occurred.
 
 <pre>
 eval {func ()};
 
-if ($ @) {
+if ($@) {
   # Describe the processing when an error occurs
 }
 </pre>
@@ -507,12 +507,12 @@ if ($ @) {
 It's a good idea to use the arrow operator to call the constructor. In Perl, there is virtually no difference between a constructor and other methods.
 
 <pre>
-my $ obj = SomeClass-> new;
+my $obj = SomeClass-> new;
 </pre>
 
 Indirect object calls may be deprecated in the future.
 
 <pre>
 # Indirect object call
-my $ obj = new SomeClass ();
+my $obj = new SomeClass ();
 </pre>

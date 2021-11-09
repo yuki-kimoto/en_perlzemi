@@ -22,14 +22,14 @@
 You can use the <strong> length function </strong> to get the length of the <a href="/blog/20161003147558.html"> string</a>.
 
 <pre>
-$ ret = length $ str;
+$ret = length $str;
 </pre>
 
 For example, the string "abcde" has a length of 5.
 
 <pre>
 # String length is 5
-my $ length = length'abcde';
+my $length = length'abcde';
 </pre>
 
 <h4> Get the correct length of a Japanese string </h4>
@@ -57,11 +57,11 @@ use warnings;
 use Encode'decode';
 
 Get UTF-8 encoded string from # argument
-my $ bytes = shift;
+my $bytes = shift;
 
 # Get the length of the string
-my $ string = decode ('UTF-8', $ bytes);
-my $ length = length $ string;
+my $string = decode ('UTF-8', $bytes);
+my $length = length $string;
 </pre>
 
 <h4> length cannot get the length of the array </h4>
@@ -72,7 +72,7 @@ To get the length of the array, you need to evaluate the array in scalar context
 
 <pre>
 # Number of arrays
-my $ count = @nums;
+my $count = @nums;
 </pre>
 
 For a detailed explanation of the scalar context, see the following articles.
@@ -88,7 +88,7 @@ For a detailed explanation of the scalar context, see the following articles.
 Lengths less than Perl 5.10 will warn you when you pass an undefined value. So, if you want to write length in a general-purpose module, write as follows and the warning will not appear.
 
 <pre>
-my $ has_length = defined $ foo && length $ foo;
+my $has_length = defined $foo && length $foo;
 </pre>
 
 Make sure it is defined before passing it to the length function.
@@ -96,7 +96,7 @@ Make sure it is defined before passing it to the length function.
 On the other hand, if it is Perl 5.12 or higher, it means that it is defined and has a length, so it can be multiplied by one length function.
 
 <pre>
-my $ has_length = length $ foo;
+my $has_length = length $foo;
 </pre>
 
 If you're using the latest Perl in your business application, it's simple to write as above.
@@ -107,6 +107,6 @@ This is a sample to get the length of a string using the length function.
 
 <pre>
 # Get the length of the string
-my $ message = "I like peace";
-my $ length = length $ message;
+my $message = "I like peace";
+my $length = length $message;
 </pre>

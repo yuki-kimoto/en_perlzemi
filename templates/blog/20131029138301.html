@@ -29,7 +29,7 @@ To represent multidimensional data, use the pdl function as follows:
 <pre>
 use PDL;
 
-my $ data = pdl [
+my $data = pdl [
   [one two Three],
   [4, 5, 6],
   [7, 8, 9],
@@ -65,7 +65,7 @@ use PDL;
 use PDL :: NiceSlice;
 
 # data
-my $ data = pdl [
+my $data = pdl [
   [one two Three],
   [4, 5, 6],
   [7, 8, 9],
@@ -73,13 +73,13 @@ my $ data = pdl [
 ];;
 
 Get # element as PDL variable (1D 2 rank-2D 3 rank)
-my $ data_1_2 = $ data (1, 2);
+my $data_1_2 = $data (1, 2);
 
 # Get the element value itself
-my $ data_1_2_raw = $ data-> at (1, 2);
+my $data_1_2_raw = $data-> at (1, 2);
 
 # Set element.
-$ data (1, 2). = 20;
+$data (1, 2). = 20;
 </pre>
 
 <h4> Get multiple elements, set multiple elements </h4>
@@ -88,28 +88,28 @@ You can also get and set multiple elements for a PDL variable. In the following 
 
 <pre>
 # Acquisition of multiple elements (1D 2-3 ranks, 2D 3 ranks)
-my $ data_sliced1 = $ data (1: 2, 2);
+my $data_sliced1 = $data (1: 2, 2);
 </pre>
 
 To set multiple elements:
 
 <pre>
 # Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
-$ data (1: 2, 2). = pdl [21, 22];
+$data (1: 2, 2). = pdl [21, 22];
 </pre>
 
 Of course, it is possible to acquire not only the first dimension but also multiple elements in the second dimension.
 
 <pre>
 # Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
-my $ data_sliced2 = $ data (2, 0: 1);
+my $data_sliced2 = $data (2, 0: 1);
 </pre>
 
 To set multiple elements in the second dimension:
 
 <pre>
 # Setting of multiple elements (1D 3 ranks, 2D 1-2 ranks)
-$ data (2, 0: 1). = pdl [
+$data (2, 0: 1). = pdl [
   [30],
   [31]
 ];;
@@ -119,10 +119,10 @@ You can also acquire and set multiple ranks in multiple dimensions in the same w
 
 <pre>
 # Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
-my $ data_sliced3 = $ data (1: 2, 0: 1);
+my $data_sliced3 = $data (1: 2, 0: 1);
 
 # Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
-$ data (1: 2, 0: 1). = pdl [
+$data (1: 2, 0: 1). = pdl [
   [40, 41],
   [42, 43]
 ];;
@@ -140,7 +140,7 @@ use PDL;
 use PDL :: NiceSlice;
 
 # data
-my $ data = pdl [
+my $data = pdl [
   [one two Three],
   [4, 5, 6],
   [7, 8, 9],
@@ -148,54 +148,54 @@ my $ data = pdl [
 ];;
 
 Get # element as PDL variable (1D 2 rank, 2D 3 rank)
-my $ data_1_2 = $ data (1, 2);
+my $data_1_2 = $data (1, 2);
 
 # Get the element value itself
-my $ data_1_2_raw = $ data-> at (1, 2);
+my $data_1_2_raw = $data-> at (1, 2);
 
-print "$ data_1_2 \ n";
-print "$ data_1_2_raw \ n";
+print "$data_1_2 \ n";
+print "$data_1_2_raw \ n";
 
 # Set element.
-$ data (1, 2). = 20;
+$data (1, 2). = 20;
 
-print "$ data \ n";
+print "$data \ n";
 
 # Get multiple elements (1D 2 to 3 ranks, 2D 2 ranks)
-my $ data_sliced1 = $ data (1: 2, 1);
+my $data_sliced1 = $data (1: 2, 1);
 
-print "$ data_sliced1 \ n";
+print "$data_sliced1 \ n";
 
 # Setting of multiple elements (1D 2-3 ranks, 2D 3 ranks)
-$ data (1: 2, 2). = pdl [21, 22];
+$data (1: 2, 2). = pdl [21, 22];
 
-print "$ data \ n";
+print "$data \ n";
 
 # Get multiple elements (1D 3 ranks, 2D 1-2 ranks)
-my $ data_sliced2 = $ data (2, 0: 1);
+my $data_sliced2 = $data (2, 0: 1);
 
-print "$ data_sliced2 \ n";
+print "$data_sliced2 \ n";
 
 # Setting of multiple elements (1D 3 rank, 2D 1-2 rank)
-$ data (2, 0: 1). = pdl [
+$data (2, 0: 1). = pdl [
   [30],
   [31]
 ];;
 
-print "$ data \ n";
+print "$data \ n";
 
 # Get multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
-my $ data_sliced3 = $ data (1: 2, 0: 1);
+my $data_sliced3 = $data (1: 2, 0: 1);
 
-print "$ data_sliced3 \ n";
+print "$data_sliced3 \ n";
 
 # Setting of multiple elements (1D 2-3 ranks, 2D 1-2 ranks)
-$ data (1: 2, 0: 1). = pdl [
+$data (1: 2, 0: 1). = pdl [
   [40, 41],
   [42, 43]
 ];;
 
-print "$ data";
+print "$data";
 </pre>
 
 <h3> Data initialization </h3>
@@ -210,7 +210,7 @@ Use the zeros method to specify a multidimensional rank number and initialize it
 use PDL;
 
 Initialize with # 0 (1D has 2 ranks, 2D has 3 ranks)
-my $ data_zeros = pdl-> sequence (2, 3);
+my $data_zeros = pdl-> sequence (2, 3);
 </pre>
 
 <h4> Initialize with 1 </h4>
@@ -219,8 +219,8 @@ Use the ones method to specify the number of ranks in multiple dimensions and in
 
 <pre>
 Initialize with # 1 (1D has 2 ranks, 2D has 3 ranks)
-my $ data_ones = pdl-> ones (2, 3);
-print "$ data_ones \ n";
+my $data_ones = pdl-> ones (2, 3);
+print "$data_ones \ n";
 </pre>
 
 <h4> Initialize with null </h4>
@@ -229,7 +229,7 @@ The PDL defines a value of null. Use the null method to initialize with null. nu
 
 <pre>
 Initialize with # null
-my $ data_null = pdl-> null;
+my $data_null = pdl-> null;
 </pre>
 
 <h4> Initialize from 1 to n </h4>
@@ -238,14 +238,14 @@ Use the <strong> sequence </strong> method to <strong> initialize with a value b
 
 <pre>
 Initialize with # 0-19
-my $ data_seq = pdl-> sequence (20);
+my $data_seq = pdl-> sequence (20);
 </pre>
 
 You can also specify multiple dimensions.
 
 <pre>
 Initialize with # 0-14 (1D 3 ranks, 2D 5 ranks)
-my $ data_seq2 = pdl-> sequence (3, 5);
+my $data_seq2 = pdl-> sequence (3, 5);
 </pre>
 
 <h4> Sample </h4>
@@ -256,24 +256,24 @@ This is a sample that can be executed.
 use PDL;
 
 Initialize with # 0 (1D has 2 ranks, 2D has 3 ranks)
-my $ data_zeros = pdl-> zeros (2, 3);
-print "$ data_zeros \ n";
+my $data_zeros = pdl-> zeros (2, 3);
+print "$data_zeros \ n";
 
 Initialize with # 1 (1D has 2 ranks, 2D has 3 ranks)
-my $ data_ones = pdl-> ones (2, 3);
-print "$ data_ones \ n";
+my $data_ones = pdl-> ones (2, 3);
+print "$data_ones \ n";
 
 Initialize with # null
-my $ data_null = pdl-> null;
-print "$ data_null \ n";
+my $data_null = pdl-> null;
+print "$data_null \ n";
 
 Initialize with # 0-19
-my $ data_seq = pdl-> sequence (20);
-print "$ data_seq \ n";
+my $data_seq = pdl-> sequence (20);
+print "$data_seq \ n";
 
 Initialize with # 0-14 (1D 3 ranks, 2D 5 ranks)
-my $ data_seq2 = pdl-> sequence (3, 5);
-print "$ data_seq2 \ n";
+my $data_seq2 = pdl-> sequence (3, 5);
+print "$data_seq2 \ n";
 </pre>
 
 
@@ -284,7 +284,7 @@ PDL allows you to calculate multiple elements at once. See the data below.
 <pre>
 use PDL;
 
-my $ data = pdl [
+my $data = pdl [
   [one two Three],
   [4, 5, 6],
   [7, 8, 9],
@@ -307,7 +307,7 @@ Use the <strong> sumover </strong> method to find the sum. someover is implement
 
 <pre>
 # Sum calculation to reduce one-dimensional rank
-my $ data_sumover1 = $ data-> sumover;
+my $data_sumover1 = $data-> sumover;
 </pre>
 
 Use the sumover method when the contained value is an integer type. For floating point, use dsomeover instead.
@@ -324,7 +324,7 @@ In the above example, the sum operation is performed to reduce the one-dimension
 
 <pre>
 # Sum calculation to reduce 2D rank
-my $ data_sumover2 = $ data-> xchg (0, 1)-> sumover;
+my $data_sumover2 = $data-> xchg (0, 1)-> sumover;
 </pre>
 
 You can get the following data.
@@ -450,7 +450,7 @@ use strict;
 use warnings;
 use PDL;
 
-my $ data = pdl [
+my $data = pdl [
   [one two Three],
   [4, 5, 6],
   [7, 8, 9],
@@ -458,10 +458,10 @@ my $ data = pdl [
 ];;
 
 # Sum calculation to reduce one-dimensional rank
-my $ data_sumover1 = $ data-> sumover;
-print "$ data_sumover \ n";
+my $data_sumover1 = $data-> sumover;
+print "$data_sumover \ n";
 
 # Sum calculation to reduce 2D rank
-my $ data_sumover2 = $ data-> xchg (0, 1)-> sumover;
-print "$ data_sumover2 \ n";
+my $data_sumover2 = $data-> xchg (0, 1)-> sumover;
+print "$data_sumover2 \ n";
 </pre>

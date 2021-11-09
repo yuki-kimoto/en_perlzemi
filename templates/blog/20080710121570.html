@@ -33,14 +33,14 @@ use warnings;
 # The simplest closure
 {
   # Variable generation
-  my $ var = 5;
+  my $var = 5;
   sub var {
-    return $ var;
+    return $var;
   }
 }
 # Because it is referenced by the var subroutine even after the scope ends
-# $ var continues to exist.
-Only the # var subroutine can see $ var.
+# $var continues to exist.
+Only the # var subroutine can see $var.
 
 print "1: The simplest closure \ n";
 print var (), "\ n";
@@ -48,9 +48,9 @@ print var (), "\ n";
 
 <h4> Closure definition </h4>
 
-The condition for being a closure is that the subroutine references a lexical variable that is out of its scope. (In this example, var refers to $ var outside its scope.)
+The condition for being a closure is that the subroutine references a lexical variable that is out of its scope. (In this example, var refers to $var outside its scope.)
 
-The definition of closure is ambiguous depending on the person and the situation. The var subroutine is sometimes called a closure, and the "environment containing the variable $ var referenced by the var subroutine" is sometimes called a closure.
+The definition of closure is ambiguous depending on the person and the situation. The var subroutine is sometimes called a closure, and the "environment containing the variable $var referenced by the var subroutine" is sometimes called a closure.
 
 When creating a subroutine, I wrote that I should always take a variable as an argument and not refer to an out-of-scope variable, but closures are one exception.
 
@@ -67,18 +67,18 @@ Please refer to the following article for the scope of Perl.
 <pre>
 {
   # Variable generation
-  my $ var = 5;
+  my $var = 5;
   sub var {
-    return $ var;
+    return $var;
   }
 }
 </pre>
 
-Since $ var is referenced in the var subroutine, it is not deleted from memory when the scope ends. (Lexical variables are destroyed from memory when they are out of scope and are not referenced anywhere.)
+Since $var is referenced in the var subroutine, it is not deleted from memory when the scope ends. (Lexical variables are destroyed from memory when they are out of scope and are not referenced anywhere.)
 
-When the scope ends, $ var is no longer visible outside the scope. (The var subroutine is not affected by the scope and is visible from outside the scope.)
+When the scope ends, $var is no longer visible outside the scope. (The var subroutine is not affected by the scope and is visible from outside the scope.)
 
-Only the var subroutine can see $ var. After the scope is finished, the value of $ var can only be accessed through the var subroutine.
+Only the var subroutine can see $var. After the scope is finished, the value of $var can only be accessed through the var subroutine.
 
 <h4> Closure image </h4>
 
@@ -108,31 +108,31 @@ use warnings;
 
 # Generate a timer.
 print "1: Generate closure with function generator (timer). \ N";
-my $ timer1 = create_timer ();
+my $timer1 = create_timer ();
 sleep 1;
 # Generate another timer after 1 second
-my $ timer2 = create_timer ();
+my $timer2 = create_timer ();
 
 # Stop for 1 second
 sleep 1;
 
-print'$ timer1 elapsed seconds:';
-print $ timer1-> (), "\ n";
+print'$timer1 elapsed seconds:';
+print $timer1-> (), "\ n";
 
-print'$ timer2 elapsed seconds:';
-print $ timer2-> (), "\ n \ n";
+print'$timer2 elapsed seconds:';
+print $timer2-> (), "\ n \ n";
 
 
 # Function generator that generates closures that know the elapsed time
 sub create_timer {
   # time () is the time when the function generator was called
-  my $ time = time ();
+  my $time = time ();
   
   return sub {
     # time () is the generated subroutine
-    # The time it was called. time ()-with $ time
+    # The time it was called. time ()-with $time
     # You can know the elapsed time.
-    return time ()-$ time;
+    return time ()-$time;
   }
 }
 </pre>
@@ -142,26 +142,26 @@ sub create_timer {
 <pre>
 sub create_timer {
   # time () is the time when the function generator was called
-  my $ time = time ();
+  my $time = time ();
 
   # time () is the generated subroutine
-  # The time it was called. time ()-with $ time
+  # The time it was called. time ()-with $time
   # You can know the elapsed time.
   return sub {
-    return time ()-$ time;
+    return time ()-$time;
   }
 }
 </pre>
 
 A function generator is a subroutine that creates a suboutin. You can use the function generator to generate multiple closures.
 
-Each generated closure has its own data. In this example, the value of $ time is created in memory for each closure. The return value is a reference to the subroutine. This is because Perl does not allow the subroutine itself to be the return value.
+Each generated closure has its own data. In this example, the value of $time is created in memory for each closure. The return value is a reference to the subroutine. This is because Perl does not allow the subroutine itself to be the return value.
 
 <h4> Call a function generator to create a closure </h4>
 
 <pre>
-my $ timer1 = create_timer ();
-my $ timer2 = create_timer ();
+my $timer1 = create_timer ();
+my $timer2 = create_timer ();
 </pre>
 
 The return value serves as a reference to the subroutine. This subroutine is a closure and has its own environment (variables referenced in the subroutine and the definition of the subroutine) in memory.
@@ -169,7 +169,7 @@ The return value serves as a reference to the subroutine. This subroutine is a c
 <h4> Call closure </h4>
 
 <pre>
-$ timer1-> ();
+$timer1-> ();
 </pre>
 
 Now that we have a reference to the subroutine, we dereference it and call it.
@@ -190,9 +190,9 @@ use warnings;
 
 # Pass it as an argument to the function generator.
 print "1: Initialize the variable referenced by the closure. \ N";
-my $ sign_inversion = create_sign_checker (1);
+my $sign_inversion = create_sign_checker (1);
 
-if ($ sign_inversion-> (-2)) {
+if ($sign_inversion-> (-2)) {
   # If the sign is inverted
   print "-2 has the sign inverted when viewed from 1. \ n";
 }
@@ -200,17 +200,17 @@ if ($ sign_inversion-> (-2)) {
 # Function generator that generates closures to see if the sign is only inverted
 sub create_sign_checker {
   # Initialized when you create a closure.
-  my $ num1 = shift;
+  my $num1 = shift;
     
   return sub {
     # Argument when calling the closure.
-    my $ num2 = shift;
+    my $num2 = shift;
     
-    if ($ num1 * $ num2> 0) {
+    if ($num1 * $num2> 0) {
       # If not flipped
       return 0;
     }
-    elsif ($ num1 * $ num2 <0) {
+    elsif ($num1 * $num2 <0) {
       # If flipped
       return 1;
     }
@@ -226,21 +226,21 @@ sub create_sign_checker {
 
 <pre>
 # Generate closures. (Initialize the variable referenced by the closure with 1)
-my $ sign_inversion = create_sign_checker (1);
+my $sign_inversion = create_sign_checker (1);
 
 # Call closure
-$ sign_inversion-> (-2);
+$sign_inversion-> (-2);
 
 # Function generator to generate closures
 sub create_sign_checker {
   # Initialized when you create a closure.
-  my $ num1 = shif
+  my $num1 = shif
 t;
     
   # Closure definition
   return sub {
     # Argument when calling the closure.
-    my $ num2 = shift;
+    my $num2 = shift;
     # ...
   }
 }
@@ -300,7 +300,7 @@ What you should be aware of here is that classes and closures are actually the s
 
 <ol>
   <li>
-    Closures do not have a class name. By calling new my $ ins = Class-> new ;, instead of creating an instance, create an instance in the form of my $ ins = closure_maker () ;.
+    Closures do not have a class name. By calling new my $ins = Class-> new ;, instead of creating an instance, create an instance in the form of my $ins = closure_maker () ;.
   </li>
   <li>
     Closures cannot be inherited. It cannot be inherited like a class.
@@ -317,29 +317,29 @@ use warnings;
 
 package Counter;
 sub new {
-  my $ class = shift;
-  my $ self = {};
-  $ self-> {cnt} = shift;
-  bless $ self, $ class;
+  my $class = shift;
+  my $self = {};
+  $self-> {cnt} = shift;
+  bless $self, $class;
 }
 
 sub add_count {
-  my $ self = shift;
-  $ self-> {cnt} ++;
+  my $self = shift;
+  $self-> {cnt} ++;
 }
 
 sub count {
-  my $ self = shift;
-  return $ self-> {cnt};
+  my $self = shift;
+  return $self-> {cnt};
 }
 
 package main;
-my $ cnt = Counter-> new (10);
+my $cnt = Counter-> new (10);
 
 print "1: Class-based counter implementation \ n";
-print "Before counting:", $ cnt-> count, "\ n";
-$ cnt-> add_count;
-print "after counting:", $ cnt-> count, "\ n \ n";
+print "Before counting:", $cnt-> count, "\ n";
+$cnt-> add_count;
+print "after counting:", $cnt-> count, "\ n \ n";
 </pre>
 
 <h4> Implement the counter with closures </h4>
@@ -350,27 +350,27 @@ use warnings;
 
 # Closure
 sub make_counter {
-  my $ self = {};
-  $ self-> {cnt} = shift;
+  my $self = {};
+  $self-> {cnt} = shift;
    
   # Closures implement methods using references to subroutines.
-  my $ funcs = {};
-  $ funcs-> {add_count} = sub {
-    $ self-> {cnt} ++;
+  my $funcs = {};
+  $funcs-> {add_count} = sub {
+    $self-> {cnt} ++;
   };
    
-   $ funcs-> {count} = sub {
-     return $ self-> {cnt};
+   $funcs-> {count} = sub {
+     return $self-> {cnt};
    };
-   return $ funcs;
+   return $funcs;
 }
 
-my $ cnt = make_counter (10);
+my $cnt = make_counter (10);
 
 print "2: Implementation of counters with closures \ n";
-print "Before counting:". $ Cnt-> {count}-> (). "\ n";
-$ cnt-> {add_count}-> ();
-print "after counting:". $ Cnt-> {count}-> (). "\ n";
+print "Before counting:". $Cnt-> {count}-> (). "\ n";
+$cnt-> {add_count}-> ();
+print "after counting:". $Cnt-> {count}-> (). "\ n";
 </pre>
 
 As you can see, classes and closures are very similar. Next time, I will explain the code.

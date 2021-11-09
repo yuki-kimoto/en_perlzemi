@@ -29,39 +29,39 @@ use warnings;
 use Fcntl qw /: DEFAULT: flock: seek /;
 
 # Be careful as it will be overwritten
-my $ file = "data_20080814.txt";
+my $file = "data_20080814.txt";
 
 # Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
-sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
-  or die "Cannot open $ file: $!";
+sysopen (my $fh, $file, O_RDWR | O_CREAT)
+  or die "Cannot open $file: $!";
 
 # Exclusive lock (exclusive lock because it reads and writes)
-flock ($ fh, LOCK_EX)
-  or die "Cannot lock $ file: $!";
+flock ($fh, LOCK_EX)
+  or die "Cannot lock $file: $!";
 
-my $ cnt;
-$ cnt = <$ fh>;
-if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
+my $cnt;
+$cnt = <$fh>;
+if (! Defined $cnt && $!) {Die "Cannot read $file: $!";}
 
-$ cnt ++;
+$cnt ++;
 
 # Move the file pointer to the beginning
-seek ($ fh, 0, SEEK_SET)
-  or die "Cannot seek $ file: $!";
+seek ($fh, 0, SEEK_SET)
+  or die "Cannot seek $file: $!";
 
 # write in.
-print {$ fh} $ cnt
-  or die "Cannot Write $ file: $!";
+print {$fh} $cnt
+  or die "Cannot Write $file: $!";
 
 # Truncate the file to write size
-truncate ($ fh, length $ cnt);
+truncate ($fh, length $cnt);
 
 The file lock is released at the time of # close.
-close $ fh
-  or die "Cannot close $ file: $!";
+close $fh
+  or die "Cannot close $file: $!";
 
-print "Current count: $ cnt \ n";
+print "Current count: $cnt \ n";
 </pre>
 
 A script that repeats the above script at random time intervals. Save it as write_loop_20080814.pl.
@@ -72,15 +72,15 @@ use warnings;
 use FindBin;
 use Time :: HiRes'usleep';
 
-my $ script = "$ FindBin :: Bin / sample_20080814.pl";
+my $script = "$FindBin :: Bin / sample_20080814.pl";
 
 while (1) {
   # Repeat the above script.
-  system ("perl $ script");
+  system ("perl $script");
 
   # Random number less than 100,000 (1 second)
-  my $ random = rand 1000_000;
-  usleep $ random;
+  my $random = rand 1000_000;
+  usleep $random;
 }
 </pre>
 
@@ -145,8 +145,8 @@ As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and
 <pre>
 # Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
-sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
-  or die "Cannot open $ file: $!";
+sysopen (my $fh, $file, O_RDWR | O_CREAT)
+  or die "Cannot open $file: $!";
 </pre>
 
 In sysopen, specify O_RDWR and O_CREAT for the open flags.
@@ -155,8 +155,8 @@ In sysopen, specify O_RDWR and O_CREAT for the open flags.
 
 <pre>
 # Exclusive lock (exclusive lock because it reads and writes)
-flock ($ fh, LOCK_EX)
-  or die "Cannot lock $ file: $!";
+flock ($fh, LOCK_EX)
+  or die "Cannot lock $file: $!";
 </pre>
 
 This time, we will use an exclusive lock (write lock) because we will read the data, count it up, and write it back. To perform an exclusive lock, specify LOCK_EX in the second argument of the flock function. If you just want to read, specify LOCK_SH.
@@ -166,22 +166,22 @@ Note that the first argument is an open filehandle, not a file. When all process
 <h4> (4) Count up and write </h4>
 
 <pre>
-my $ cnt;
-$ cnt = <$ fh>;
-if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
+my $cnt;
+$cnt = <$fh>;
+if (! Defined $cnt && $!) {Die "Cannot read $file: $!";}
 
-$ cnt ++;
+$cnt ++;
 
 # Move the file pointer to the beginning
-seek ($ fh, 0, SEEK_SET)
-  or die "Cannot seek $ file: $!";
+seek ($fh, 0, SEEK_SET)
+  or die "Cannot seek $file: $!";
 
 # write in.
-print {$ fh} $ cnt
-  or die "Cannot Write $ file: $!";
+print {$fh} $cnt
+  or die "Cannot Write $file: $!";
 
 # Truncate the file to write size
-truncate ($ fh, length $ cnt);
+truncate ($fh, length $cnt);
 </pre>
 
 Read from the file and count up if there are no errors. Since the file pointer is advanced at the time of reading, use the seek function to return it to the beginning. Write with the print function and truncate to the written size with the truncate function. (This time, the numbers are just going up, so there is no need for truncate.)
@@ -190,8 +190,8 @@ Read from the file and count up if there are no errors. Since the file pointer i
 
 <pre>
 The file lock is released at the time of # close.
-close $ fh
-  or die "Cannot close $ file: $!";
+close $fh
+  or die "Cannot close $file: $!";
 </pre>
 
 Calling the close function unlocks the file.
@@ -202,15 +202,15 @@ Calling the close function unlocks the file.
 use FindBin;
 use Time :: HiRes'usleep';
 
-my $ script = "$ FindBin :: Bin / sample_20080814.pl";
+my $script = "$FindBin :: Bin / sample_20080814.pl";
 
 while (1) {
   # Repeat the above script.
-  system ("perl $ script");
+  system ("perl $script");
 
   # Random number less than 100,000 (1 second)
-  my $ random = rand 1000_000;
-  usleep $ random;
+  my $random = rand 1000_000;
+  usleep $random;
 }
 </pre>
 

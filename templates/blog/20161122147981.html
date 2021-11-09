@@ -74,17 +74,17 @@ Use the <strong> connect </strong> method to connect to the MySQL server.
 
 <pre>
 use DBI;
-my $ dbh = DBI-> connect ("DBI: mysql: $ database", $ user, $ password);
+my $dbh = DBI-> connect ("DBI: mysql: $database", $user, $password);
 </pre>
 
 To connect to a remote MySQL server, specify the host name
 
 <pre>
 use DBI;
-my $ dbh = DBI-> connect (
-  "DBI: mysql: $ database: $ hostname",
-  $ user,
-  $ password
+my $dbh = DBI-> connect (
+  "DBI: mysql: $database: $hostname",
+  $user,
+  $password
 );
 </pre>
 To do.
@@ -93,10 +93,10 @@ You can also specify the port number.
 
 <pre>
 use DBI;
-my $ dbh = DBI-> connect (
-  "DBI: mysql: $ database: $ hostname: $ port",
-  $ user,
-  $ password
+my $dbh = DBI-> connect (
+  "DBI: mysql: $database: $hostname: $port",
+  $user,
+  $password
 );
 </pre>
 
@@ -108,7 +108,7 @@ Use the database handle to interact with the MySQL server.
 If the database name is incorrect, the password is incorrect, or the database cannot be connected for some reason, undef will be returned in the return value. The content of the error at that time is
 
 <pre>
-$ DBI :: errstr;
+$DBI :: errstr;
 </pre>
 
 You can get it at. err is a number and errstr is the content of the error.
@@ -117,11 +117,11 @@ Since the database is a system outside the program, error handling is essential.
 
 <pre>
 use DBI;
-my $ dbh = DBI-> connect (
-  "DBI: mysql: $ database: $ hostname",
-  $ user,
-  $ password
-) or die "cannot connect to MySQL: $ DBI :: errstr";
+my $dbh = DBI-> connect (
+  "DBI: mysql: $database: $hostname",
+  $user,
+  $password
+) or die "cannot connect to MySQL: $DBI :: errstr";
 </pre>
 
 <h3> Convert current time to MySQL datetime type </h3>
@@ -132,10 +132,10 @@ Use the localtime and strftime functions to convert the current time to a MySQL 
 use POSIX'strftime';
 
 # MySQL datetime type (datetime type)
-my $ current_datetime = strftime ("% Y-% m-% d% H:% M:% S", localtime);
+my $current_datetime = strftime ("% Y-% m-% d% H:% M:% S", localtime);
 
 # MySQL date type (date type)
-my $ current_date = strftime ("% Y-% m-% d", localtime);
+my $current_date = strftime ("% Y-% m-% d", localtime);
 </pre>
 
 <h3> Extract "database definition difference" with "MySQL :: Diff" module </h3>

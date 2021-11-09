@@ -29,13 +29,13 @@ The sample below is exactly what was written on the site, but is a sample that c
 <pre>
 use FFI :: Raw;
 
-my $ cos = FFI :: Raw-> new (
+my $cos = FFI :: Raw-> new (
   'libm.so','cos',
   FFI :: Raw :: double, # return value
   FFI :: Raw :: double # argument 1
 );
 
-print $ cos-> call (2.0);
+print $cos-> call (2.0);
 </pre>
 
 The first argument is the dynamic library name. In C language, the file name corresponding to the dynamic library <b> m </b> is <b> libm.so </b>.
@@ -58,13 +58,13 @@ There is <a href="https://metacpan.org/pod/FFI :: Platypus"> FFI :: Platypus</a>
 use FFI :: Platypus 1.00;
  
 # for all new code you should use api => 1
-my $ ffi = FFI :: Platypus-> new (api => 1);
-$ ffi-> lib (undef); # search libc
+my $ffi = FFI :: Platypus-> new (api => 1);
+$ffi-> lib (undef); # search libc
  
 # call dynamically
-$ ffi-> function (puts => ['string'] =>'int')-> call ("hello world");
+$ffi-> function (puts => ['string'] =>'int')-> call ("hello world");
  
 # attach as a xsub and call (much faster)
-$ ffi-> attach (puts => ['string'] =>'int');
+$ffi-> attach (puts => ['string'] =>'int');
 puts ("hello world");
 </pre>

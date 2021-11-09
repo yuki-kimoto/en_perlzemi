@@ -39,21 +39,21 @@ So you need to shift $? To the right by 8 bits to get the exit status.
 
 <pre>
 # Get exit status
-my $ exit_value = $? >> 8;
+my $exit_value = $? >> 8;
 </pre>
 
 To see if a core dump has occurred
 
 <pre>
 # Whether a core dump has occurred
-my $ dumped_core = $? & 128;
+my $dumped_core = $? & 128;
 </pre>
 
 will do. Since 128 is 10000000 when converted to a binary number, the bit product is 0 except for the 8th bit. To see the signal number that killed the child process
 
 <pre>
 # Signal number that terminated the child process
-my $ signal_num = $? & 127;
+my $signal_num = $? & 127;
 </pre>
 
 will do. Since 127 is a binary number and is 01111111, the lower 7 bits can be obtained by taking the bit product.
@@ -66,7 +66,7 @@ Use the <b> WIFEXITED </b> function to see if the child process has terminated.
 
 <pre>
 use POSIX q (: sys_wait_h);
-my $ is_finished = WIFEXITED ($?);
+my $is_finished = WIFEXITED ($?);
 </pre>
 
 <h4> Sample to see the exit status of the child process </h4>
@@ -79,24 +79,24 @@ use warnings;
 
 use POSIX qw (: sys_wait_h);
 
-my $ pid = fork;
+my $pid = fork;
 
-die "Cannot fork: $!" unless defined $ pid;
+die "Cannot fork: $!" unless defined $pid;
 
-if ($ pid) {
+if ($pid) {
   # Wait for the child process to finish.
   wait;
-  print "Parent process (child process ID: $ pid) \ n \ n";
-  my $ exit_value = $? >> 8;
-  my $ dumped_core = $? & 128;
-  my $ signal_num = $? & 127;
+  print "Parent process (child process ID: $pid) \ n \ n";
+  my $exit_value = $? >> 8;
+  my $dumped_core = $? & 128;
+  my $signal_num = $? & 127;
   
-  my $ is_finished = WIFEXITED ($?);
+  my $is_finished = WIFEXITED ($?);
  
-  print "Exit code of child process: $ exit_value \ n";
-  print "whether a core dump has occurred: $ dumped_core \ n";
-  print "Signal that terminated the child process: $ signal_num \ n";
-  print "whether the child process has terminated: $ is_finished \ n";
+  print "Exit code of child process: $exit_value \ n";
+  print "whether a core dump has occurred: $dumped_core \ n";
+  print "Signal that terminated the child process: $signal_num \ n";
+  print "whether the child process has terminated: $is_finished \ n";
 }
 else {
   # Wait 2 seconds in child process

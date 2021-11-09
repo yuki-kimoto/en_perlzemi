@@ -42,10 +42,10 @@ script.pl FILE
 use Pod :: Usage'pod2usage';
 
 # Command line arguments
-my $ file = shift;
+my $file = shift;
 
 # If there is no argument, display SYNOPSIS and exit the program
-pod2usage () unless $ file;
+pod2usage () unless $file;
 </pre>
 
 If there is no <a href="/blog/20080108132865.html"> command line argument</a>, the following will be displayed and the program will terminate.
@@ -69,9 +69,9 @@ use Pod :: Usage'pod2usage';
 use Getopt :: Long'GetOptions';
 
 # Analysis of command line options
-my $ force;
-GetOptions ('force' => \ $ force) or pod2usage;
+my $force;
+GetOptions ('force' => \ $force) or pod2usage;
 
-my $ file = shift;
-pod2usage unless $ file;
+my $file = shift;
+pod2usage unless $file;
 </pre>

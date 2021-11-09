@@ -39,19 +39,19 @@ You can easily handle such command line options using the <strong> GetOptions fu
 Handling command line argument options with # GetOptions
 
 # Set default value
-my $ enable_cache;
-my $ max_clients = 5;
-my $ type ='prefork';
+my $enable_cache;
+my $max_clients = 5;
+my $type ='prefork';
 
 # Optional processing
 GetOptions (
-  'enable_cache' => \ $ enable_cache,
-  'max_clients = i'=> \ $ max_clients,
-  'type = s'=> \ $ type
+  'enable_cache' => \ $enable_cache,
+  'max_clients = i'=> \ $max_clients,
+  'type = s'=> \ $type
 );
 
 Receives non-option arguments
-my $ conf_file = shift;
+my $conf_file = shift;
 </pre>
 
 How to use the GetOptions function.
@@ -69,24 +69,24 @@ For "Option name = Type", specify the option name and value type. If the option 
 
 <pre>
 # Authenticity value
-'enable_cache' => \ $ enable_cache
+'enable_cache' => \ $enable_cache
 
 # Integer
-'max_clients = i'=> \ $ max_clients
+'max_clients = i'=> \ $max_clients
 
 # String
-'type = s'=> \ $ type
+'type = s'=> \ $type
 </pre>
 
 For "Variables to save", specify a reference for scalar variables. Set the default value first and pass it as a reference to the GetOptions argument.
 
 <pre>
 # Set default value
-my $ max_clients = 5;
+my $max_clients = 5;
 
 # Specify a scalar variable reference in the argument
 GetOptions (
-  'max_clients = i'=> \ $ max_clients,
+  'max_clients = i'=> \ $max_clients,
 );
 </pre>
 

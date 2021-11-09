@@ -28,8 +28,8 @@ Statement if condition;
 This is a sample using the if modifier. <a href="/blog/20100827127859.html"> Regular expression</a> is used to move to the next line if the beginning is "#".
 
 <pre>
-for my $ line (@lines) {
-  next if $ line = ~ / ^ # /;
+for my $line (@lines) {
+  next if $line = ~ / ^ # /;
 }
 </pre>
 
@@ -44,7 +44,7 @@ The advantage of the if modifier over the normal <a href="/blog/20161023147731.h
 There is an unless modifier that can be followed in the same way as the if modifier.
 
 <pre>
-$ num1 = 1 unless defined $ num1;
+$num1 = 1 unless defined $num1;
 </pre>
 
 The unless modifier is explained in detail below.
@@ -71,10 +71,10 @@ my @lines = (
   '2nd line'
 );
 
-for my $ line (@lines) {
+for my $line (@lines) {
   If # starts with # , go to the next line
-  next if $ line = ~ / ^ # /;
-  print $ line, "\ n";
+  next if $line = ~ / ^ # /;
+  print $line, "\ n";
 }
 print "\ n";
 </pre>

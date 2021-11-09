@@ -29,58 +29,58 @@ use File :: Copy'copy';
 use Cwd'getcwd';
 
 # Preparation (Creating directories and files)
-my $ top_dir = "dir_20080601_$$";
+my $top_dir = "dir_20080601_$$";
 my @dirs = (
-  "$ top_dir / dir1", "$ top_dir / dir1 / dir1_1", "$ top_dir / dir1 / dir1_2",
-  "$ top_dir / dir2",
+  "$top_dir / dir1", "$top_dir / dir1 / dir1_1", "$top_dir / dir1 / dir1_2",
+  "$top_dir / dir2",
 );
-for my $ dir (@dirs) {
-  eval {mkpath $ dir};
+for my $dir (@dirs) {
+  eval {mkpath $dir};
   if (@!) {die "@!"}
 }
 
 my @files = (
-  "$ top_dir / top.txt", "$ top_dir / dir1 / 1.txt",
-  "$ top_dir / dir1 / dir1_1 / 1_1.txt", "$ top_dir / dir1 / dir1_2 / 1_2.txt",
-  "$ top_dir / dir2 / 2.txt"
+  "$top_dir / top.txt", "$top_dir / dir1 / 1.txt",
+  "$top_dir / dir1 / dir1_1 / 1_1.txt", "$top_dir / dir1 / dir1_2 / 1_2.txt",
+  "$top_dir / dir2 / 2.txt"
 );
-for my $ file (@files) {
-  sysopen (my $ fh, $ file, O_WRONLY | O_CREAT | O_EXCL)
-    or die "Unable to create $ file .: $!";
-  close $ fh;
+for my $file (@files) {
+  sysopen (my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
+    or die "Unable to create $file .: $!";
+  close $fh;
 }
-print "Preparation: $ top_dir has been created. \ N \ n";
+print "Preparation: $top_dir has been created. \ N \ n";
 
 # Recursive directory copy sample
 print "1: Copy directory recursively. \ N";
 
-my $ cur_dir = getcwd ();
+my $cur_dir = getcwd ();
 # File :: Find internally repeats chdir, so
 # Create a copy destination directory name with an absolute path.
-my $ dir_copy_to = "$ cur_dir / dir_20080601_ $ {$} _ cp";
+my $dir_copy_to = "$cur_dir / dir_20080601_ ${$} _ cp";
 
-find (\ & recursive_copy, $ top_dir);
-print "$ top_dir has been copied to $ dir_copy_to. \ N";
+find (\ & recursive_copy, $top_dir);
+print "$top_dir has been copied to $dir_copy_to. \ N";
 
 # Function for recursive copying
 sub recursive_copy {
   # Copy source file or directory
-  my $ file_from = $ _;
+  my $file_from = $_;
 
   # The top directory of the copy source
   # In the top directory of the copy destination
   # Replace.
-  my $ file_to = $ File :: Find :: name;
-  $ file_to = ~ s # ^ $ top_dir # $ dir_copy_to # ;
+  my $file_to = $File :: Find :: name;
+  $file_to = ~ s # ^ $top_dir # $dir_copy_to # ;
                                         
-  if (-d $ file_from) {
+  if (-d $file_from) {
     The # directory cannot be copied, so create it with the same name.
-    mkdir $ file_to
-      or die "Unable to create $ file_to. \ N";
+    mkdir $file_to
+      or die "Unable to create $file_to. \ N";
   }
   else {
-    copy $ file_from, $ file_to
-      or die "Unable to copy $ file_from to $ file_to. \ N";
+    copy $file_from, $file_to
+      or die "Unable to copy $file_from to $file_to. \ N";
   }
 }
 </pre>
@@ -90,27 +90,27 @@ sub recursive_copy {
 <h3> Recursively copy multi-level directories </h3>
 
 <pre>
-find (\ & recursive_copy, $ top_dir);
+find (\ & recursive_copy, $top_dir);
 
 # Function for recursive copying
 sub recursive_copy {
   # Copy source file or directory
-  my $ file_from = $ _;
+  my $file_from = $_;
 
   # The top directory of the copy source
   # In the top directory of the copy destination
   # Replace.
-  my $ file_to = $ File :: Find :: name;
-  $ file_to = ~ s # ^ $ top_dir # $ dir_copy_to # ;
+  my $file_to = $File :: Find :: name;
+  $file_to = ~ s # ^ $top_dir # $dir_copy_to # ;
                                         
-  if (-d $ file_from) {
+  if (-d $file_from) {
     The # directory cannot be copied, so create it with the same name.
-    mkdir $ file_to
-      or die "Unable to create $ file_to. \ N";
+    mkdir $file_to
+      or die "Unable to create $file_to. \ N";
   }
   else {
-    copy $ file_from, $ file_to
-      or die "Unable to copy $ file_from to $ file_to. \ N";
+    copy $file_from, $file_to
+      or die "Unable to copy $file_from to $file_to. \ N";
   }
 }
 </pre>

@@ -28,7 +28,7 @@
 To get the number of days that have passed since the last access, use the file test operator "-A".
 
 <pre>
--A $ file
+-A $file
 </pre>
 
 <h4> Sample program </h4>
@@ -40,13 +40,13 @@ use strict;
 use warnings;
 
 # Get the number of days that have passed since the last access (read).
-# -A $ file
+# -A $file
 
 print "1: Get the number of days that have passed since the last access. \ N";
-my $ file = "a.txt";
-if (-e $ file) {
-  my $ from_last_access = -A $ file;
-  print "$ from_last_access days have passed since the last access. \ N";
+my $file = "a.txt";
+if (-e $file) {
+  my $from_last_access = -A $file;
+  print "$from_last_access days have passed since the last access. \ N";
 }
-else {print "$ file does not exist. \ N"}
+else {print "$file does not exist. \ N"}
 </pre>

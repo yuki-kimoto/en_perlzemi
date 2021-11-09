@@ -22,7 +22,7 @@
 You can use the <b> sysread function </b> to read a file from a file with a specified number of bytes.
 
 <pre>
-sysread $ fh, $ buffer, $ byte_size;
+sysread $fh, $buffer, $byte_size;
 </pre>
 
 The first argument is the file handle, the second argument is the scalar variable that stores the read data, and the third argument is the byte size.
@@ -48,15 +48,15 @@ use strict;
 use warnings;
 
 # Open the file to read
-my $ file ='data.txt';
-open my $ fh,'<', $ file
-  or die "Can't open file $ file: $!";
+my $file ='data.txt';
+open my $fh,'<', $file
+  or die "Can't open file $file: $!";
 
 # sysread function
-my $ buffer;
-my $ byte_size = 8;
-sysread $ fh, $ buffer, $ byte_size;
+my $buffer;
+my $byte_size = 8;
+sysread $fh, $buffer, $byte_size;
 
 # Output the read data
-print $ buffer;
+print $buffer;
 </pre>

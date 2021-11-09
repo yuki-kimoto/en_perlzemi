@@ -70,15 +70,15 @@ In the import method of Exporter, the process of exporting the function to the c
 <pre>
 sub import {
   First argument of # use (YourModule in this example)
-  my $ class = shift;
+  my $class = shift;
 
   # Caller's package (main in this example)
-  my $ caller = caller;
+  my $caller = caller;
 
   # Export function
   no strict'refs';
-  foreach my $ func (@ {"$ {class} :: EXPORT"}) {
-      * {"$ {caller} :: $ func"} = \ & {"$ {class} :: $ func"};
+  foreach my $func (@ {"${class} :: EXPORT"}) {
+      * {"${caller} :: $func"} = \ & {"${class} :: $func"};
   }
 }
 </pre>

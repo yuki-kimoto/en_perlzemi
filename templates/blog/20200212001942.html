@@ -12,21 +12,21 @@ use utf8;
 use D;
  
 # Prepare the data (reference) including the decoded string
-my $ data = [{name =>'a'}, {name =>'i'}];
+my $data = [{name =>'a'}, {name =>'i'}];
  
 # Encode the reference data (UTF-8) and dump it to standard error output.
-du $ data;
+du $data;
 
 # Encode the reference data (cp932) and dump it to standard error output.
-dw $ data;
+dw $data;
 
 # Dump to standard error without encoding reference data.
-dn $ data;
+dn $data;
 
 # A handy Oneliner example.
-use D; du $ data;
-use D; dw $ data;
-use D; dn $ data;
+use D; du $data;
+use D; dw $data;
+use D; dn $data;
 
 # This is an output sample of the du function.
 [
@@ -49,7 +49,7 @@ The <li> dustr and dwstr functions encode all strings in the reference data. </l
 <li> Data :: Dump the data using Dumper's Dump function. </li>
 <li> Outputs the line number and file name to the standard error. </li>
 <li> Sort by hash key of dumped data. </li>
-<li> Unlike the default of Data :: Dumper, it does not output'$ VAR1 ='. </li>
+<li> Unlike the default of Data :: Dumper, it does not output'$VAR1 ='. </li>
 </ul>
 
 <h3> Function </h3>
@@ -61,15 +61,15 @@ This function will be exported.
 
 <pre>
 use D;
-my $ data = [{name =>'a'}, {name =>'i'}];
-du $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+du $data;
 </pre>
 
 The example below uses a one-liner. It can be used with all functions.
 
 <pre>
-my $ data = [{name =>'a'}, {name =>'i'}];
-use D; du $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+use D; du $data;
 </pre>
 
 <h4> dw function </h4>
@@ -79,8 +79,8 @@ This function will be exported.
 
 <pre>
 use D;
-my $ data = [{name =>'a'}, {name =>'i'}];
-dw $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+dw $data;
 </pre>
 
 <h4> dn function </h4>
@@ -90,8 +90,8 @@ This function will be exported.
 
 <pre>
 use D;
-my $ data = [{name =>'a'}, {name =>'i'}];
-dn $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+dn $data;
 </pre>
 
 <h4> duster function </h4>
@@ -102,8 +102,8 @@ The following example gets a UTF-8 encoded string.
 
 <pre>
 use D;
-my $ data = [{name =>'a'}, {name =>'i'}];
-my $ str = dustr $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+my $str = dustr $data;
 </pre>
 
 <h4> dwstr function </h4>
@@ -114,8 +114,8 @@ The following example is getting a cp932 encoded string.
 
 <pre>
 use D;
-my $ data = [{name =>'a'}, {name =>'i'}];
-my $ str = dwstr $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+my $str = dwstr $data;
 </pre>
 
 <h4> dnstr function </h4>
@@ -126,8 +126,8 @@ The following example is getting an unencoded string.
 
 <pre>
 use D;
-my $ data = [{name =>'a'}, {name =>'i'}];
-my $ str = dnstr $ data;
+my $data = [{name =>'a'}, {name =>'i'}];
+my $str = dnstr $data;
 </pre>
 
 <h3> Bug report </h3>

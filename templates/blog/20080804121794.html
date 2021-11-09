@@ -21,7 +21,7 @@
 You can specify the open mode in detail using the <strong> sysopen </strong> function. <a href="/blog/20080718121643.html"> open function</a> open mode You can use it when you want to do more than that.
 
 <pre>
-sysopen (my $ fh, $ file, O_WRONLY | O_EXCL | O_CREAT)
+sysopen (my $fh, $file, O_WRONLY | O_EXCL | O_CREAT)
 </pre>
 
 Perl's sysopen is a function equivalent to C's fopen. Specify the file handle in the first argument, the file name in the second argument, and the open flag in the third argument. If you want, you can specify the permission in octal as the 4th argument, and the default permission is 0666.
@@ -125,10 +125,10 @@ use warnings;
 # Module for specifying open mode with a symbol
 use Fcntl;
 
-my $ file = shift; # Specify the file name.
+my $file = shift; # Specify the file name.
 
 # Create the file if it doesn't exist and open it in write mode
-sysopen (my $ fh, $ file, O_WRONLY | O_EXCL | O_CREAT)
-  or die "Couldn't open $ file: $!";
-close ($ fh);
+sysopen (my $fh, $file, O_WRONLY | O_EXCL | O_CREAT)
+  or die "Couldn't open $file: $!";
+close ($fh);
 </pre>

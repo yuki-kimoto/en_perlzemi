@@ -29,13 +29,13 @@ A generic constructor should take into account not only when it is called from a
 When called by the class
 
 <pre>
-my $ book = Book-> new;
+my $book = Book-> new;
 </pre>
 
 When called from an object
 
 <pre>
-my $ book2 = $ book-> new
+my $book2 = $book-> new
 </pre>
 
 Corresponds to both.
@@ -46,17 +46,17 @@ Another guideline is to separate the constructor and initialization process. I w
 The following is a general-purpose constructor template.
 <pre>
 sub new {
-  my $ proto = shift;
-  my $ class = ref $ proto || $ proto;
-  my $ self = {};
-  bless $ self, $ class;
+  my $proto = shift;
+  my $class = ref $proto || $proto;
+  my $self = {};
+  bless $self, $class;
   
-  $ self-> init (@ _);
-  return $ self;
+  $self-> init (@ _);
+  return $self;
 }
 
 sub init {
-  my ($ self, @args) = @_;
+  my ($self, @args) = @_;
   # Additional processing
 }
 </pre>
@@ -65,25 +65,25 @@ sub init {
 
 I think this part is difficult to understand.
 <pre>
-  my $ proto = shift;
-  my $ class = ref $ proto || $ proto;
+  my $proto = shift;
+  my $class = ref $proto || $proto;
 </pre>
-What this does is that if $ proto is an object, use the <a href="/blog/20090318123712.html"> ref function</a> to retrieve the associated class name. increase.
+What this does is that if $proto is an object, use the <a href="/blog/20090318123712.html"> ref function</a> to retrieve the associated class name. increase.
 
 If not, I'm trying to just use the class name. If a string (class name) is passed to the <a href="/blog/20090318123712.html"> ref function</a>, a false value will be returned and the right side of || will be executed.
 
-That's why $ class will contain the class name, whether it's called by the class name or by an object.
+That's why $class will contain the class name, whether it's called by the class name or by an object.
 
 <h3> 4. Separate initialization process </h3>
 
 The following part separates the initialization process. If you want to initialize, create the object first with the bless function. Then call the init method from that object.
 
-It's a little confusing, but let's get used to it. To call a method of the same class, you need to call it from an object, the blessed $ self.
+It's a little confusing, but let's get used to it. To call a method of the same class, you need to call it from an object, the blessed $self.
 
 <pre>
-  my $ self = {};
-  bless $ self, $ class;
-  $ self-> init (@ _);
+  my $self = {};
+  bless $self, $class;
+  $self-> init (@ _);
 </pre>
 
 <h3> 5. Why do you need to create it this way? </H3>

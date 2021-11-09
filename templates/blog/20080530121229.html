@@ -23,7 +23,7 @@ You can use <strong> File :: Find </strong> to process all files recursively.
 
 <pre>
 use File :: Find;
-find (\ & process, $ top_dir);
+find (\ & process, $top_dir);
 
 sub process {
   # What you want to do
@@ -41,7 +41,7 @@ If you want to scan without changing the current directory, you can use the "no_
 In this case, specify "wanted" as the reference to the subroutine.
 
 <pre>
-find ({wanted => \ & process, no_chdir => 1}, $ top_dir);
+find ({wanted => \ & process, no_chdir => 1}, $top_dir);
 </pre>
 
 <h3> Variables that can be used in the processing description </h3>
@@ -52,7 +52,7 @@ find ({wanted => \ & process, no_chdir => 1}, $ top_dir);
       Current current directory
     </td>
     <td>
-      $ File :: Find :: dir
+      $File :: Find :: dir
     </td>
   </tr>
 
@@ -61,7 +61,7 @@ find ({wanted => \ & process, no_chdir => 1}, $ top_dir);
       Current file name (base name)
     </td>
     <td>
-      $ _
+      $_
     </td>
   </tr>
 
@@ -70,7 +70,7 @@ find ({wanted => \ & process, no_chdir => 1}, $ top_dir);
       Current file name (absolute path)
     </td>
     <td>
-      $ File :: Find :: name
+      $File :: Find :: name
     </td>
   </tr>
 
@@ -82,7 +82,7 @@ In the sub process, you can get the current directory and the file name to be pr
 <h3> Find scan order (going order) </h3>
 
 <pre>
-(1) $ top_dir |-(2) top.txt
+(1) $top_dir |-(2) top.txt
              |
              |-(3) dir1 |-(4) 1.txt
              | |-(5) dir1_1 |-(6) 1_1.txt
@@ -96,7 +96,7 @@ Scan in what is commonly referred to as the destination order. In the case of th
 <h3> Finddepth scanning order (returning order) </h3>
 
 <pre>
-(10) $ top_dir |-(1) top.txt
+(10) $top_dir |-(1) top.txt
               |
               |-(7) dir1 |-(2) 1.txt
               | |-(4) dir1_1 |-(3) 1_1.txt
@@ -121,56 +121,56 @@ use File :: Find;
 # Process all files recursively.
 
 # Create directories and files
-my $ top_dir = "dir_20080530_$$";
+my $top_dir = "dir_20080530_$$";
 my @dirs = (
-  "$ top_dir / dir1", "$ top_dir / dir1 / dir1_1", "$ top_dir / dir1 / dir1_2",
-  "$ top_dir / dir2",
+  "$top_dir / dir1", "$top_dir / dir1 / dir1_1", "$top_dir / dir1 / dir1_2",
+  "$top_dir / dir2",
 );
-for my $ dir (@dirs) {
-  eval {mkpath $ dir};
+for my $dir (@dirs) {
+  eval {mkpath $dir};
   if (@!) {die "@!"}
 }
 
 my @files = (
-  "$ top_dir / top.txt", "$ top_dir / dir1 / 1.txt",
-  "$ top_dir / dir1 / dir1_1 / 1_1.txt", "$ top_dir / dir1 / dir1_2 / 1_2.txt",
-  "$ top_dir / dir2 / 2.txt"
+  "$top_dir / top.txt", "$top_dir / dir1 / 1.txt",
+  "$top_dir / dir1 / dir1_1 / 1_1.txt", "$top_dir / dir1 / dir1_2 / 1_2.txt",
+  "$top_dir / dir2 / 2.txt"
 );
-for my $ file (@files) {
-  sysopen (my $ fh, $ file, O_WRONLY | O_CREAT | O_EXCL)
-    or die "Unable to create $ file .: $!";
-  close $ fh;
+for my $file (@files) {
+  sysopen (my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
+    or die "Unable to create $file .: $!";
+  close $fh;
 }
-print "Preparation: $ top_dir has been created. \ N \ n";
+print "Preparation: $top_dir has been created. \ N \ n";
 
 # File :: Find sample
 
 print "1: Recursively print all file names (base names). \ N";
 # In the first argument, write the processing you want to do for each file
 # Pass a reference to the subroutine.
-find (\ & print_file_name, $ top_dir);
+find (\ & print_file_name, $top_dir);
                                      
 sub print_file_name {
-  In # $ _, the directory you are currently scanning
+  In # $_, the directory you are currently scanning
   # The file name used as the base point is stored.
-  # $ File :: Find :: dir is currently scanning
+  # $File :: Find :: dir is currently scanning
   # The directory name is stored.
-  print "$ _ ($ File :: Find :: dir) \ n";
+  print "$_ ($File :: Find :: dir) \ n";
 }
 print "\ n";
 
 print "2: Recursively print all file names (full path). \ N";
-find (\ & print_file_full_name, $ top_dir);
+find (\ & print_file_full_name, $top_dir);
 
 sub print_file_full_name {
-  In # $ _, the directory you are currently scanning
+  In # $_, the directory you are currently scanning
   # The file name used as the base point is stored.
-  print $ File :: Find :: name, "\ n";
+  print $File :: Find :: name, "\ n";
 }
 print "\ n";
 
 print "3: Scan directories in return order \ n";
-finddepth (\ & print_file_full_name, $ top_dir);
+finddepth (\ & print_file_full_name, $top_dir);
 </pre>
 Execution result
 <pre>

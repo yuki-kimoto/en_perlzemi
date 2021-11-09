@@ -23,7 +23,7 @@ You can use the <b> backticks operator </b> to run another process and get the s
 
 <pre>
 # Backticks operator
-my $ output = `$ cmd`;
+my $output = `$cmd`;
 </pre>
 
 It's pretty similar to the <a href="/blog/20180124151680.html"> system function</a>. The system function returns an exit status, while the backticks operator returns the standard output of the process.
@@ -33,10 +33,10 @@ It's pretty similar to the <a href="/blog/20180124151680.html"> system function<
 As an example of the backticks operator, let's execute the Linux ls command that displays the contents of the current directory.
 
 <pre>
-my $ output = `ls`;
+my $output = `ls`;
 </pre>
 
-$ output shows a list of current directories.
+$output shows a list of current directories.
 
 <pre>
 a.pl gperl module-starter.txt not_important_project ringowiki static-perl.tar
@@ -64,11 +64,11 @@ You can also know the error status in more detail.
 $? Is a 16-bit value, and the exit status of the child process is stored in the upper 8 bits. You can get the exit status by shifting to the right 8 bits.
 
 <pre>
-my $ output = `ls`;
+my $output = `ls`;
 
 # Check the exit status of the child process
-my $ status = $? >> 8;
-if ($ status! = 0) {
+my $status = $? >> 8;
+if ($status! = 0) {
   # Error handling
 }
 </pre>
@@ -89,11 +89,11 @@ This is a sample backticks operator.
 use strict;
 use warnings;
 
-my $ output = `ls -l`;
+my $output = `ls -l`;
 
 if ($?) {
   die "Command error";
 }
 
-print "$ output \ n";
+print "$output \ n";
 </pre>

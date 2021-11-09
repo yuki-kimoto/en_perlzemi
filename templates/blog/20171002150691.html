@@ -29,11 +29,11 @@ Specify an undefined variable for the directory handle. Use the <b> opendir </b>
 
 <pre>
 # Directory name
-my $ dir ='study';
+my $dir ='study';
 
 # Open directory
-opendir my $ dh, $ dir
-  or die "Can't open directory $ dir: $!"
+opendir my $dh, $dir
+  or die "Can't open directory $dir: $!"
 </pre>
 
 An undefined variable is specified in the first argument, but <a href="/blog/20161107147852.html"> variable declaration by my</a> is performed at the same time. The second argument specifies the directory name.
@@ -62,11 +62,11 @@ The directory handle is automatically released when the <a href="/blog/201101281
 <pre>
 {
   # Directory name
-  my $ dir ='study';
+  my $dir ='study';
 
   # Open directory
-  opendir my $ dh, $ dir
-    or die "Can't open directory $ dir: $!"
+  opendir my $dh, $dir
+    or die "Can't open directory $dir: $!"
 }
 
 # The directory handle is automatically closed when the scope ends
@@ -75,5 +75,5 @@ The directory handle is automatically released when the <a href="/blog/201101281
 If you want to explicitly close the directory handle, use the <a href="/blog/20171001150694.html"> closedir function</a>.
 
 <pre>
-closedir $ dh;
+closedir $dh;
 </pre>

@@ -31,7 +31,7 @@ Some feature additions in Perl 5.26. I will pick up something that seems conveni
 Indentable <a href="/blog/20080619121405.html"> Here Document</a> syntax has been added. This seems convenient.
 
 <pre>
-my $ message = << ~ EOS;
+my $message = << ~ EOS;
   Hello
   World
   EOS
@@ -74,13 +74,13 @@ The use of named captures for <a href="/blog/20100827127859.html"> regular expre
 </pre>
 
 <pre>
-my $ foo = "I am Tom" ;;
-if ($ a = ~ m / (? <name>. +) $ /) {
-  my $ name = $ {^ CAPTURE} {name};
+my $foo = "I am Tom" ;;
+if ($a = ~ m / (? <name>. +) $/) {
+  my $name = ${^ CAPTURE} {name};
 }
 </pre>
 
-It was a little confusing to refer to with "$ + {name}", so I think this is a good addition.
+It was a little confusing to refer to with "$+ {name}", so I think this is a good addition.
 
 <h3> Performance improvements </h3>
 
@@ -102,8 +102,8 @@ Improved performance for readline, which reads files from lines, and the "<>" op
 Assigning a reference to another variable is faster.
 
 <pre>
-my $ obj1 = SomeModule-> new;
-my $ obj2 = $ obj1;
+my $obj1 = SomeModule-> new;
+my $obj2 = $obj1;
 </pre>
 
 <h4> Improved performance of split function </h4>
@@ -147,9 +147,9 @@ It has been deprecated since 5.16, but is no longer allowed in Perl 5.26.
 / \ {/;
 </pre>
 
-<h4> $ {^ ENCODING} feature removed </h4>
+<h4> ${^ ENCODING} feature removed </h4>
 
-The encoding pragma was deprecated in Perl 5.18, but with this release the encoding pragma no longer works out of the box. This is because the $ {^ ENCODING} variable, which was internally connected to the encoding pragma, has been removed.
+The encoding pragma was deprecated in Perl 5.18, but with this release the encoding pragma no longer works out of the box. This is because the ${^ ENCODING} variable, which was internally connected to the encoding pragma, has been removed.
 
 Write the source code in UTF-8 and use the utf8 pragma.
 

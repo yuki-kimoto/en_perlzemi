@@ -56,7 +56,7 @@ To get the desktop window, use the GetDesktopWindow function. A desktop window i
 
 <pre>
 # Get desktop window
-my $ desktop_win = GetDesktopWindow ();
+my $desktop_win = GetDesktopWindow ();
 </pre>
 
 <h4> Get a list of child windows </h4>
@@ -65,10 +65,10 @@ In order to perform automatic operation of the web browser, it is necessary to g
 
 <pre>
 # Get a list of child windows
-my @windows = GetChildWindows ($ desktop_win);
+my @windows = GetChildWindows ($desktop_win);
 
 # Loop child window
-for my $ window (@windows) {
+for my $window (@windows) {
   
 }
 </pre>
@@ -79,7 +79,7 @@ Use the GetWindowText function to get the text of the window.
 
 <pre>
 # Get the text of the window
-my $ win_text = GetWindowText ($ win);
+my $win_text = GetWindowText ($win);
 </pre>
 
 The text in the window can vary depending on the browser type. In what I checked with Google Chrome, it was "Window title-Application name" as shown below.
@@ -94,31 +94,31 @@ If you want to create a web browser automatic operation robot, you need to get t
 
 <pre>
 # Get the target window (Perl Club-Google Chrome)
-my $ win;
+my $win;
 {
-  my $ desktop_win = GetDesktopWindow ();
-  die "Oops!" if GetParent ($ desktop_win)! = 0;
+  my $desktop_win = GetDesktopWindow ();
+  die "Oops!" if GetParent ($desktop_win)! = 0;
 
   my @browser_wins;
-  my $ browser_name ='Chrome';
-  for my $ win (GetChildWindows ($ desktop_win)) {
+  my $browser_name ='Chrome';
+  for my $win (GetChildWindows ($desktop_win)) {
 
     # Window name
-    my $ win_text = GetWindowText ($ win);
+    my $win_text = GetWindowText ($win);
 
     # Browser name
-    if ($ win_text = ~ / \ b $ browser_name \ b /) {
-      if ($ win_text = ~ / Perl Club /) {
-        push @browser_wins, $ win;
+    if ($win_text = ~ / \ b $browser_name \ b /) {
+      if ($win_text = ~ / Perl Club /) {
+        push @browser_wins, $win;
       }
     }
   }
 
-  my $ browser_wins_count = @browser_wins;
-  unless ($ browser_wins_count == 1) {
+  my $browser_wins_count = @browser_wins;
+  unless ($browser_wins_count == 1) {
     die "Must be open one window");
   }
-  $ win = $ browser_wins [0];
+  $win = $browser_wins [0];
 }
 </pre>
 
@@ -141,10 +141,10 @@ SendKeys ('^ c');
   SendKeys ('^ l');
   SendKeys ('^ v');
   SendKeys ('{ENTER}');
-  SendKeys ('{TAB}' x $ baibai_bukken_search_button_tab_press_count);
+  SendKeys ('{TAB}' x $baibai_bukken_search_button_tab_press_count);
   SendKeys ('^ v');
     SendKeys ('{LEFT}');
-  SendKeys ('{RIGHT}' x $ bukken_search_results_pagenation_forword_right_count_max);
+  SendKeys ('{RIGHT}' x $bukken_search_results_pagenation_forword_right_count_max);
   SendKeys ('{F12}');
     SendKeys ('^]');
     SendKeys ('^ [');
@@ -169,7 +169,7 @@ First create a clipboard object.
 
 <pre>
 # Clipboard object creation
-my $ clip = Win32 :: Clipboard-> new;
+my $clip = Win32 :: Clipboard-> new;
 </pre>
 
 <h4> Save Perl string to clipboard </h4>
@@ -178,7 +178,7 @@ Save the Perl string with the Set method. It is assumed that the Perl source cod
 
 <pre>
 # Save string to clipboard
-$ clip-> Set (encode ('cp932', $ string));
+$clip-> Set (encode ('cp932', $string));
 </pre>
 
 <h4> Extract Perl string from clipboard </h4>
@@ -187,8 +187,8 @@ By specifying "CF_UNICODETEXT" in the argument of the GetAs method, it can be ob
 
 <pre>
 # Fetch a Perl string from the clipboard
-my $ string = $ CLIP-> GetAs (CF_UNICODETEXT);
-$ text = Encode :: decode ("UTF16-LE", $ string);
+my $string = $CLIP-> GetAs (CF_UNICODETEXT);
+$text = Encode :: decode ("UTF16-LE", $string);
 </pre>
 
 <h4> Paste the contents of the clipboard to the form part </h4>

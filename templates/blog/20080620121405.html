@@ -31,29 +31,29 @@ use strict;
 use warnings;
 
 # Name, age, origin
-my $ text = <<'EOS';
+my $text = <<'EOS';
 tora, 24, Japan
 rika,12,USA
 kenta, 25, Chinese
 EOS
 
 print "1: Convert a csv format string to an array of arrays. \ N";
-my $ people = parse ($ text);
+my $people = parse ($text);
 
 require Data :: Dumper;
-print Data :: Dumper-> Dump ([$ persons], ['$ perlsons']);
+print Data :: Dumper-> Dump ([$persons], ['$perlsons']);
 
 sub parse {
-  my $ text = shift;
-  my @lines = split ("\ n", $ text);
+  my $text = shift;
+  my @lines = split ("\ n", $text);
   
-  my $ items_list = [];
-  for my $ line (@lines) {
-    my @items = split (',', $ line);
-    push @ $ items_list, [@items];
+  my $items_list = [];
+  for my $line (@lines) {
+    my @items = split (',', $line);
+    push @ $items_list, [@items];
   }
   
-  wantarray? return @ $ items_list: $ items_list;
+  wantarray? return @ $items_list: $items_list;
 }
 </pre>
 
@@ -82,7 +82,7 @@ sub parse {
 <h4> (1) For those who do not understand here documents. </h4>
 
 <pre>
-my $ text = <<'EOS';
+my $text = <<'EOS';
 tora, 24, Japan
 rika,12,USA
 kenta, 25, Chinese
@@ -93,17 +93,17 @@ See <a href="/blog/20080619121405.html"> Here Document</a>.
 <h4> (2) Subroutine call </h4>
 
 <pre>
-my $ people = parse ($ text);
+my $people = parse ($text);
 </pre>
 
-Pass an argument called $ text to a subroutine called parse. This will cause a parse to be executed and its return value will be assigned to $ person.
+Pass an argument called $text to a subroutine called parse. This will cause a parse to be executed and its return value will be assigned to $person.
 
 <h4> (3) How to create an array of arrays </h4>
 
 <pre>
-push @ $ items_list, [@items];
+push @ $items_list, [@items];
 </pre>
-The <a href="/blog/20100107126425.html"> push function</a> requires an array as the first argument. Dereference and pass an array with @ $ items_list.
+The <a href="/blog/20100107126425.html"> push function</a> requires an array as the first argument. Dereference and pass an array with @ $items_list.
 The push function requests a list after the second argument, but do not pass an array as @items. And finally,
 <pre>
 [tora, 24, Japan, rika, 12, USA, kenta, 25, Chinese]
@@ -114,7 +114,7 @@ Will be created. Create a reference to the array as [@items] and push it.
 <h4> (4) Selectively return the return value </h4>
 
 <pre>
-wantarray? return @ $ items_list: $ items_list;
+wantarray? return @ $items_list: $items_list;
 </pre>
 
 You can use the <a href="/blog/20080610121319.html"> wantarray function</a> to return the return value depending on the context. (Currently I don't recommend want array)
@@ -128,36 +128,36 @@ use strict;
 use warnings;
 
 # Name, age, origin
-my $ text = <<'EOS';
+my $text = <<'EOS';
 tora, 24, Japan
 rika,12,USA
 kenta, 25, Chinese
 EOS
 
 print "1: Convert a csv format string to an array of hashes. \ N";
-my $ headers = ['name','age','country'];
+my $headers = ['name','age','country'];
 
-my $ people = parse ($ text, $ headers);
+my $people = parse ($text, $headers);
 
 require Data :: Dumper;
-print Data :: Dumper-> Dump ([$ persons], ['$ perlsons']);
+print Data :: Dumper-> Dump ([$persons], ['$perlsons']);
 
 sub parse {
-  my ($ text, $ headers) = @_;
+  my ($text, $headers) = @_;
   
-  my @lines = split ("\ n", $ text);
+  my @lines = split ("\ n", $text);
   
-  my $ items_hash_list = [];
-  foreach my $ line (@lines) {
-    my @items = split (',', $ line);
+  my $items_hash_list = [];
+  foreach my $line (@lines) {
+    my @items = split (',', $line);
     
     my% items_hash = ();
-    @items_hash {@ $ headers} = @items;
+    @items_hash {@ $headers} = @items;
     
-    push @ $ items_hash_list, {% items_hash};
+    push @ $items_hash_list, {% items_hash};
   }
   
-  wantarray? return @ $ items_hash_list: $ items_hash_list;
+  wantarray? return @ $items_hash_list: $items_hash_list;
 }
 </pre>
 
@@ -193,44 +193,44 @@ Converts text to an array of arrays.
 
 <h4> (1) Subroutine call </h4>
 <pre>
-my $ people = parse ($ text, $ headers);
+my $people = parse ($text, $headers);
 </pre>
 
-Pass the arguments $ text and $ header to a subroutine called parse. By passing the header together, you don't have to write the header name in the subroutine.
+Pass the arguments $text and $header to a subroutine called parse. By passing the header together, you don't have to write the header name in the subroutine.
 
 If you write the header name in the subroutine, the subroutine and the header name will be tightly coupled and the versatility of the subroutine will be lost. By giving the header name as an argument, this subroutine can be used for any csv format string.
 
 <h4> (2) How to create an array of hashes </h4>
 
 <pre>
-for my $ line (@lines) {
-  my @items = split (',', $ line);
+for my $line (@lines) {
+  my @items = split (',', $line);
     
   my% items_hash = ();
-  @items_hash {@ $ headers} = @items;
+  @items_hash {@ $headers} = @items;
     
-  push @ $ items_hash_list, {% items_hash};
+  push @ $items_hash_list, {% items_hash};
 }
 </pre>
 
 Use <a href="/blog/20080215120307.html"> hash slice</a> to create the hash corresponding to the header.
 
 <pre>
-@items_hash {@ $ headers} = @items;
+@items_hash {@ $headers} = @items;
 
 # Same meaning as below
 @items_hash {('name','age','country') = ('tora', 24,'Japan');
 
 # When disassembled
-$ items_hash {name} ='tora';
-$ items_hash {age} = 24;
-$ items_hash {contry} ='Japan';
+$items_hash {name} ='tora';
+$items_hash {age} = 24;
+$items_hash {contry} ='Japan';
 </pre>
 
 Using hash slices in this way eliminates the need to write iterations.
 
 <pre>
-push @ $ items_hash_list, {% items_hash};
+push @ $items_hash_list, {% items_hash};
 </pre>
 
 The push function requests a list after the second argument, but do not pass a hash as% items_hash. Then finally create a reference to the hash as {% items_hash} and push it.
@@ -252,33 +252,33 @@ print "Minimum:". Min (@nums). "\ n";
 
 sub max {
   my @nums = @_;
-my $ max_num;
-  for my $ num (@nums) {
-    if (! defined $ max_num) {
-      $ max_num = $ num;
+my $max_num;
+  for my $num (@nums) {
+    if (! defined $max_num) {
+      $max_num = $num;
     }
     else {
-      if ($ num> $ max_num) {
-        $ max_num = $ num;
+      if ($num> $max_num) {
+        $max_num = $num;
       }
     }
   }
-  return $ max_num;
+  return $max_num;
 }
 
 sub min {
-  my $ min_num;
-  for my $ num (@nums) {
-    if (! defined $ min_num) {
-      $ min_num = $ num;
+  my $min_num;
+  for my $num (@nums) {
+    if (! defined $min_num) {
+      $min_num = $num;
     }
     else {
-      if ($ num <$ min_num) {
-        $ min_num = $ num;
+      if ($num <$min_num) {
+        $min_num = $num;
       }
     }
   }
-  return $ min_num;
+  return $min_num;
 }
 </pre>
 
@@ -288,24 +288,24 @@ sub min {
 sub max {
   my @nums = @_;
   
-  my $ max_num;
-  for my $ num (@nums) {
-    if (! defined $ max_num) {
-      $ max_num = $ num;
+  my $max_num;
+  for my $num (@nums) {
+    if (! defined $max_num) {
+      $max_num = $num;
     }
     else {
-      if ($ num> $ max_num) {
-        $ max_num = $ num;
+      if ($num> $max_num) {
+        $max_num = $num;
       }
     }
   }
-  return $ max_num;
+  return $max_num;
 }
 </pre>
 
-A subroutine that takes an array as input and outputs the maximum value. The one that is assumed to be the maximum value is assigned to the variable and left. You can see that the last remaining $ max_num is the maximum value. It is a unique way of thinking about programming that is different from mathematics.
+A subroutine that takes an array as input and outputs the maximum value. The one that is assumed to be the maximum value is assigned to the variable and left. You can see that the last remaining $max_num is the maximum value. It is a unique way of thinking about programming that is different from mathematics.
 
-Initially, $ max_num is an undefined value, so if it is an undefined value, $ num is assigned to $ max_num without comparison.
+Initially, $max_num is an undefined value, so if it is an undefined value, $num is assigned to $max_num without comparison.
 
 <h3> Bubble sort </h3>
 
@@ -334,7 +334,7 @@ sub bubble_sort_ascend {
     return @nums;
   }
   
-  my $ change_cnt = @nums - 1;
+  my $change_cnt = @nums - 1;
 
   # If you have an array a with n elements
   # At first, do n - one exchange.
@@ -350,18 +350,18 @@ sub bubble_sort_ascend {
   # It will be confirmed, so every time the exchange goes around
   # Decrease the number of exchanges by 1.
                        
-  while ($ change_cnt> 0) {
-    for my $ i (0 .. $ change_cnt - 1) {
+  while ($change_cnt> 0) {
+    for my $i (0 .. $change_cnt - 1) {
        
      # If you are bigger than the next number, replace it,
      # If you are smaller, do nothing.
      # By doing this, the last element becomes the maximum.
-     if ($ nums [$ i]> $ nums [$ i + 1]) {
-       ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
+     if ($nums [$i]> $nums [$i + 1]) {
+       ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
        print join (',', @nums). "(Snap) \ n";
      }
     }
-    $ change_cnt-;
+    $change_cnt-;
   }
   
   return @nums;
@@ -374,16 +374,16 @@ sub bubble_sort_descend {
     return @nums;
   }
   
-  my $ change_cnt = @nums - 1;
+  my $change_cnt = @nums - 1;
                        
-  while ($ change_cnt> 0) {
-    for my $ i (0 .. $ change_cnt - 1) {
-     if ($ nums [$ i] <$ nums [$ i + 1]) {
-       ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
+  while ($change_cnt> 0) {
+    for my $i (0 .. $change_cnt - 1) {
+     if ($nums [$i] <$nums [$i + 1]) {
+       ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
        print join (',', @nums). "(Snap) \ n";
      }
     }
-    $ change_cnt-;
+    $change_cnt-;
   }
   
   return @nums;
@@ -445,27 +445,27 @@ else {
 
 # Subroutine that selects descending order and ascending order to sort bubbles
 sub bubble_sort {
-  my ($ nums, $ opt) = @_;
+  my ($nums, $opt) = @_;
   
   # Error handling
   my @nums;
-  Check if # $ nums is an array reference.
-  if (defined $ nums) {
-   if (ref $ nums eq'ARRAY') {
-     @nums = @ $ nums
+  Check if # $nums is an array reference.
+  if (defined $nums) {
+   if (ref $nums eq'ARRAY') {
+     @nums = @ $nums
    }
    else {return}
   }
   else {return}
   
-  my $ order ='ascend';
-  Check if # $ opt is a hash reference
-  if (defined $ opt) {
-    if (ref $ opt eq'HASH') {
-      Substitute if # $ opt-> {order} is a true value.
-      $ order = $ opt-> {order} if $ opt-> {order};
+  my $order ='ascend';
+  Check if # $opt is a hash reference
+  if (defined $opt) {
+    if (ref $opt eq'HASH') {
+      Substitute if # $opt-> {order} is a true value.
+      $order = $opt-> {order} if $opt-> {order};
       
-      unless ($ order eq'ascend' || $ order eq'descend') {
+      unless ($order eq'ascend' || $order eq'descend') {
         return;
       }
     }
@@ -477,26 +477,26 @@ sub bubble_sort {
     return @nums;
   }
   
-  my $ change_cnt = @nums - 1;
+  my $change_cnt = @nums - 1;
                        
-  while ($ change_cnt> 0) {
-    for my $ i (0 .. $ change_cnt - 1) {
+  while ($change_cnt> 0) {
+    for my $i (0 .. $change_cnt - 1) {
       # To select ascending or descending order, you only have to rewrite this part from the last time.
-      my $ is_change;
-      if ($ order eq'ascend') {
-        # In ascending order, exchange if $ nums [$ i]> $ nums [$ i + 1]
-        $ is_change = $ nums [$ i]> $ nums [$ i + 1];
+      my $is_change;
+      if ($order eq'ascend') {
+        # In ascending order, exchange if $nums [$i]> $nums [$i + 1]
+        $is_change = $nums [$i]> $nums [$i + 1];
       }
-elsif ($ order eq'descend') {
-        # In descending order, exchange if $ nums [$ i] <$ nums [$ i + 1]
-        $ is_change = $ nums [$ i] <$ nums [$ i + 1];
+elsif ($order eq'descend') {
+        # In descending order, exchange if $nums [$i] <$nums [$i + 1]
+        $is_change = $nums [$i] <$nums [$i + 1];
       }
 
-      if ($ is_change) {
-        ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
+      if ($is_change) {
+        ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
       }
     }
-    $ change_cnt-;
+    $change_cnt-;
   }
   
   return @nums;
@@ -515,9 +515,9 @@ I want to pass an array and a hash, so I'll use a reference. In actual programmi
 
 <pre>
 my @nums;
-if (defined $ nums) {
-  if (ref $ nums eq'ARRAY') {
-    @nums = @ $ nums;
+if (defined $nums) {
+  if (ref $nums eq'ARRAY') {
+    @nums = @ $nums;
   }
   else {return}
 }
@@ -531,35 +531,35 @@ If the variable has an invalid state, do not continue processing. For fatal erro
 <h4> (3) Set the default value </h4>
 
 <pre>
-my $ order ='ascend';
-$ order = $ opt-> {order} if $ opt-> {order};
+my $order ='ascend';
+$order = $opt-> {order} if $opt-> {order};
 </pre>
 
-If $ opt-> {order} is not specified, it is a kind way to specify the default value instead of returning it with an error. Overwrite only if $ opt-> {order} exists.
+If $opt-> {order} is not specified, it is a kind way to specify the default value instead of returning it with an error. Overwrite only if $opt-> {order} exists.
 
 <h4> (4) Select ascending and descending algorithms </h4>
 
 <pre>
 # Last bubble sort
-if ($ nums [$ i] <$ nums [$ i + 1]) {
-  ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
+if ($nums [$i] <$nums [$i + 1]) {
+  ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
   print join (',', @nums). "(Snap) \ n";
 }
 
 # This bubble sort
-my $ is_change;
-if ($ order eq'ascend') {
-  $ is_change = $ nums [$ i]> $ nums [$ i + 1];
+my $is_change;
+if ($order eq'ascend') {
+  $is_change = $nums [$i]> $nums [$i + 1];
 }
-elsif ($ order eq'descend') {
-  $ is_change = $ nums [$ i] <$ nums [$ i + 1];
+elsif ($order eq'descend') {
+  $is_change = $nums [$i] <$nums [$i + 1];
 }
 
-if ($ is_change) {
-  ($ nums [$ i], $ nums [$ i + 1]) = ($ nums [$ i + 1], $ nums [$ i]);
+if ($is_change) {
+  ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
 }
 </pre>
 
-In the case of ascend, the judgment is $ nums [$ i]> $ nums [$ i + 1], and in the case of descend, the judgment is $ nums [$ i] <$ nums [$ i + 1]. It's good.
+In the case of ascend, the judgment is $nums [$i]> $nums [$i + 1], and in the case of descend, the judgment is $nums [$i] <$nums [$i + 1]. It's good.
 
 Rather than thinking about such an algorithm all at once from the beginning, it is easier to see if it is made separately and modified by focusing only on the differences as in this case.

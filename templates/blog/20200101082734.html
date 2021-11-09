@@ -49,13 +49,13 @@ First of all, create a content object for the graphic. You can create a content 
 
 <pre>
 # Generate PDF object
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
 # Create page
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
 # Generate content objects for graphics
-my $ gfx = $ page-> gfx;
+my $gfx = $page-> gfx;
 </pre>
 
 <h4> Draw a line </h4>
@@ -68,17 +68,17 @@ No lines are actually drawn yet. To actually draw the line, call the stroke meth
 
 <pre>
 # Setting the start point of the line
-my $ start_x = 100;
-my $ start_y = 100;
-$ gfx-> move ($ start_x, $ start_y);
+my $start_x = 100;
+my $start_y = 100;
+$gfx-> move ($start_x, $start_y);
 
 # Set the end point of the line
-my $ end_x = 300;
-my $ end_y = 300;
-$ gfx-> line ($ end_x, $ end_y);
+my $end_x = 300;
+my $end_y = 300;
+$gfx-> line ($end_x, $end_y);
 
 # Draw a line
-$ gfx-> stroke;
+$gfx-> stroke;
 </pre>
 
 When drawing figures in PDF :: API2, remember the feeling of connecting paths and drawing.
@@ -89,7 +89,7 @@ The line thickness can be set with the linewidth method. Call it before you stro
 
 <pre>
 # Line thickness setting
-$ gfx-> linewidth (3);
+$gfx-> linewidth (3);
 </pre>
 
 The line width is the same for the settings when drawing circles and polygons.
@@ -100,13 +100,13 @@ The line color can be set with the strokecolor method. Call it before you stroke
 
 <pre>
 # Set the line color (color name)
-$ gfx-> strokecolor ('red');
+$gfx-> strokecolor ('red');
 
 # Set line color (RGB)
-$ gfx-> strokecolor ('# 0123ab');
+$gfx-> strokecolor ('# 0123ab');
 
 # Set line color (CMYK)
-$ gfx-> strokecolor ('% FF000000');
+$gfx-> strokecolor ('% FF000000');
 </pre>
 
 The line color is the same for the settings when drawing circles and polygons.
@@ -125,35 +125,35 @@ use utf8;
 use PDF :: API2;
 
 # Generate PDF object
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
-my $ gfx = $ page-> gfx;
+my $gfx = $page-> gfx;
 
 # Point P1
-my $ x1 = 100;
-my $ y1 = 100;
-$ gfx-> move ($ x1, $ y1);
+my $x1 = 100;
+my $y1 = 100;
+$gfx-> move ($x1, $y1);
 
 # Point P2
-my $ x2 = 300;
-my $ y2 = 300;
-$ gfx-> line ($ x2, $ y2);
+my $x2 = 300;
+my $y2 = 300;
+$gfx-> line ($x2, $y2);
 
 # Point P3
-my $ x3 = 500;
-my $ y3 = 100;
-$ gfx-> line ($ x3, $ y3);
+my $x3 = 500;
+my $y3 = 100;
+$gfx-> line ($x3, $y3);
 
 # Return to point P1
-$ gfx-> line ($ x1, $ y1);
+$gfx-> line ($x1, $y1);
 
 # Draw a line
-$ gfx-> stroke;
+$gfx-> stroke;
 
-my $ pdf_file ='render_tri.pdf';
-$ pdf-> saveas ($ pdf_file);
+my $pdf_file ='render_tri.pdf';
+$pdf-> saveas ($pdf_file);
 </pre>
 
 <a href="/examples/pdf/render_tri.pdf"> Output triangle</a>
@@ -168,29 +168,29 @@ use utf8;
 use PDF :: API2;
 
 # Generate PDF object
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
-my $ gfx = $ page-> gfx;
+my $gfx = $page-> gfx;
 
 # Point P1
-my ($ x1, $ y1) = (100, 100);
+my ($x1, $y1) = (100, 100);
 
 # Point P2
-my ($ x2, $ y2) = (300, 300);
+my ($x2, $y2) = (300, 300);
 
 # Point P3
-my ($ x3, $ y3) = (500, 100);
+my ($x3, $y3) = (500, 100);
 
 Draw triangles at once with # poly method
-$ gfx-> poly ($ x1, $ y1, $ x2, $ y2, $ x3, $ y3, $ x1, $ y1);
+$gfx-> poly ($x1, $y1, $x2, $y2, $x3, $y3, $x1, $y1);
 
 # Draw a line
-$ gfx-> stroke;
+$gfx-> stroke;
 
-my $ pdf_file ='render_tri.pdf';
-$ pdf-> saveas ($ pdf_file);
+my $pdf_file ='render_tri.pdf';
+$pdf-> saveas ($pdf_file);
 </pre>
 
 <h4> Fill </h4>
@@ -199,17 +199,17 @@ You can fill it by enclosing it in a path. Use the fill method to fill. The defa
 
 <pre>
 # Fill (before stroke)
-$ gfx-> fill;
+$gfx-> fill;
 
 # Draw a line
-$ gfx-> stroke;
+$gfx-> stroke;
 </pre>
 
 There is also a fillstroke method that fills and draws lines at the same time.
 
 <pre>
 # Fill and draw a line
-$ gfx-> fillstroke;
+$gfx-> fillstroke;
 </pre>
 
 <h4> Set the fill color </h4>
@@ -218,13 +218,13 @@ The fill color can be set with the fillcolor method. Call it before filling. The
 
 <pre>
 # Set the fill color (color name)
-$ gfx-> fillcolor ('red');
+$gfx-> fillcolor ('red');
 
 # Set fill color (RGB)
-$ gfx-> fillcolor ('# 0123ab');
+$gfx-> fillcolor ('# 0123ab');
 
 # Set fill color (CMYK)
-$ gfx-> fillcolor ('% FF000000');
+$gfx-> fillcolor ('% FF000000');
 </pre>
 
 <h3> Draw a rectangle </h3>
@@ -241,36 +241,36 @@ use utf8;
 use PDF :: API2;
 
 # Generate PDF object
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
 # Create page
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
 # Generate content objects for graphics
-my $ gfx = $ page-> gfx;
+my $gfx = $page-> gfx;
 
 # Point P1
-my $ x1 = 100;
-my $ y1 = 100;
+my $x1 = 100;
+my $y1 = 100;
 
 # Diagonal point opposite P3
-my $ x3 = 300;
-my $ y3 = 300;
+my $x3 = 300;
+my $y3 = 300;
 
 # Draw a rectangle
-$ gfx-> rectxy ($ x1, $ y1, $ x3, $ y3);
+$gfx-> rectxy ($x1, $y1, $x3, $y3);
 
 # Make the line color a little lighter than black
-$ gfx-> strokecolor ('# 333');
+$gfx-> strokecolor ('# 333');
 
 # Make the background color very light gray
-$ gfx-> fillcolor ('# eee');
+$gfx-> fillcolor ('# eee');
 
 # Fill the rectangle and draw a line
-$ gfx-> fillstroke;
+$gfx-> fillstroke;
 
-my $ pdf_file ='basic_rect.pdf';
-$ pdf-> saveas ($ pdf_file);
+my $pdf_file ='basic_rect.pdf';
+$pdf-> saveas ($pdf_file);
 </pre>
 
 This is a sample that can draw a rectangle that can be executed as it is.
@@ -345,101 +345,101 @@ So, let's create a table by simply drawing lines vertically and horizontally.
 use PDF :: API2;
 
 # Generate PDF object
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
 # Default global setting for paper size (to get paper size)
-$ pdf-> mediabox (undef);
+$pdf-> mediabox (undef);
 
 # Page height and width
-my @page_size_infos = $ pdf-> mediabox;
-my $ page_width = $ page_size_infos [2];
-my $ page_height = $ page_size_infos [3];
+my @page_size_infos = $pdf-> mediabox;
+my $page_width = $page_size_infos [2];
+my $page_height = $page_size_infos [3];
 
 # Item height
-my $ item_height = 25;
+my $item_height = 25;
 
 # Number of rows
-my $ rows_count = 20;
+my $rows_count = 20;
 
 # Width of each item
-my $ name_width = 230;
-my $ unit_price_width = 80;
-my $ count_width = 80;
-my $ price_width = 80;
-my $ table_width = $ name_width + $ unit_price_width + $ count_width + $ price_width;
+my $name_width = 230;
+my $unit_price_width = 80;
+my $count_width = 80;
+my $price_width = 80;
+my $table_width = $name_width + $unit_price_width + $count_width + $price_width;
 
 # Table height
-my $ table_height = $ item_height * $ rows_count;
+my $table_height = $item_height * $rows_count;
 
 # Starting point of the table
 
 # Table outer frame
-my $ table_start_x = 50;
-my $ table_start_y = $ page_height - 50;
-my $ table_other_side_x = $ table_start_x + $ table_width;
-my $ table_other_side_y = $ table_start_y-$ table_height;
+my $table_start_x = 50;
+my $table_start_y = $page_height - 50;
+my $table_other_side_x = $table_start_x + $table_width;
+my $table_other_side_y = $table_start_y-$table_height;
 
 # Create page
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
 # Generate content objects for graphics
-my $ gfx = $ page-> gfx;
+my $gfx = $page-> gfx;
 
 # Draw the upper line
-$ gfx-> move ($ table_start_x, $ table_start_y);
-$ gfx-> line ($ table_start_x + $ table_width, $ table_start_y);
+$gfx-> move ($table_start_x, $table_start_y);
+$gfx-> line ($table_start_x + $table_width, $table_start_y);
 
 # Draw the line on the left
-$ gfx-> move ($ table_start_x, $ table_start_y);
-$ gfx-> line ($ table_start_x, $ table_start_y-$ table_height);
+$gfx-> move ($table_start_x, $table_start_y);
+$gfx-> line ($table_start_x, $table_start_y-$table_height);
 
-my $ cur_x = $ table_start_x;
-my $ cur_y = $ table_start_y;
+my $cur_x = $table_start_x;
+my $cur_y = $table_start_y;
 
 # Drawing the frame of each item
-for (my $ column = 0; $ column <$ rows_count; $ column ++) {
+for (my $column = 0; $column <$rows_count; $column ++) {
   
   # Name frame (right and bottom)
-  $ gfx-> move ($ cur_x + $ name_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
-  $ cur_x + = $ name_width;
+  $gfx-> move ($cur_x + $name_width, $cur_y);
+  $gfx-> line ($cur_x + $name_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $name_width, $cur_y-$item_height);
+  $cur_x + = $name_width;
 
   # Unit price frame (right and bottom)
-  $ gfx-> move ($ cur_x + $ unit_price_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
-  $ cur_x + = $ unit_price_width;
+  $gfx-> move ($cur_x + $unit_price_width, $cur_y);
+  $gfx-> line ($cur_x + $unit_price_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $unit_price_width, $cur_y-$item_height);
+  $cur_x + = $unit_price_width;
 
   # Quantity frame (right and bottom)
-  $ gfx-> move ($ cur_x + $ count_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
-  $ cur_x + = $ count_width;
+  $gfx-> move ($cur_x + $count_width, $cur_y);
+  $gfx-> line ($cur_x + $count_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $count_width, $cur_y-$item_height);
+  $cur_x + = $count_width;
 
   # Price frame (right and bottom)
-  $ gfx-> move ($ cur_x + $ price_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
-  $ cur_x + = $ price_width;
+  $gfx-> move ($cur_x + $price_width, $cur_y);
+  $gfx-> line ($cur_x + $price_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $price_width, $cur_y-$item_height);
+  $cur_x + = $price_width;
   
   # To the next line
-  $ cur_x = $ table_start_x;
-  $ cur_y-= $ item_height;
+  $cur_x = $table_start_x;
+  $cur_y-= $item_height;
 }
 
 # Make the line color a little lighter than black
-$ gfx-> strokecolor ('# 333');
+$gfx-> strokecolor ('# 333');
 
 # Fill the rectangle and draw a line
-$ gfx-> stroke;
+$gfx-> stroke;
 
-my $ pdf_file ='table.pdf';
-$ pdf-> saveas ($ pdf_file);
+my $pdf_file ='table.pdf';
+$pdf-> saveas ($pdf_file);
 </pre>
 
 You have completed a table with no information.
@@ -469,55 +469,55 @@ use utf8;
 use PDF :: API2;
 
 # Generate PDF object
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
 # Default global setting for paper size (to get paper size)
-$ pdf-> mediabox (undef);
+$pdf-> mediabox (undef);
 
 # Page height and width
-my @page_size_infos = $ pdf-> mediabox;
-my $ page_width = $ page_size_infos [2];
-my $ page_height = $ page_size_infos [3];
+my @page_size_infos = $pdf-> mediabox;
+my $page_width = $page_size_infos [2];
+my $page_height = $page_size_infos [3];
 
 # Item height
-my $ item_height = 25;
+my $item_height = 25;
 
 # Number of rows
-my $ rows_count = 20;
+my $rows_count = 20;
 
 # Width of each item
-my $ name_width = 230;
-my $ unit_price_width = 80;
-my $ count_width = 80;
-my $ price_width = 80;
-my $ table_width = $ name_width + $ unit_price_width + $ count_width + $ price_width;
+my $name_width = 230;
+my $unit_price_width = 80;
+my $count_width = 80;
+my $price_width = 80;
+my $table_width = $name_width + $unit_price_width + $count_width + $price_width;
 
 # Table height
-my $ table_height = $ item_height * $ rows_count;
+my $table_height = $item_height * $rows_count;
 
 # Starting point of the table
 
 # Table outer frame
-my $ table_start_x = 50;
-my $ table_start_y = $ page_height - 50;
-my $ table_other_side_x = $ table_start_x + $ table_width;
-my $ table_other_side_y = $ table_start_y-$ table_height;
+my $table_start_x = 50;
+my $table_start_y = $page_height - 50;
+my $table_other_side_x = $table_start_x + $table_width;
+my $table_other_side_y = $table_start_y-$table_height;
 
 # Create page
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
 # Generate content objects for graphics
-my $ gfx = $ page-> gfx;
+my $gfx = $page-> gfx;
 
 # Generate content object for text
-my $ text = $ page-> text;
-my $ font = $ pdf-> corefont ('Helvetica');
-my $ font_bold = $ pdf-> corefont ('Helvetica-Bold');
-my $ font_size = 11;
-$ text-> font ($ font, $ font_size);
-my $ text_height = $ font_size;
+my $text = $page-> text;
+my $font = $pdf-> corefont ('Helvetica');
+my $font_bold = $pdf-> corefont ('Helvetica-Bold');
+my $font_size = 11;
+$text-> font ($font, $font_size);
+my $text_height = $font_size;
 
-my $ books = [
+my $books = [
   {
     name =>'Book1',
     unit_price => 1000,
@@ -534,119 +534,119 @@ my $ books = [
     count => 5,
   }
 ];;
-my $ books_length = @ $ books;
+my $books_length = @ $books;
 
 # Draw the upper line
-$ gfx-> move ($ table_start_x, $ table_start_y);
-$ gfx-> line ($ table_start_x + $ table_width, $ table_start_y);
+$gfx-> move ($table_start_x, $table_start_y);
+$gfx-> line ($table_start_x + $table_width, $table_start_y);
 
 # Draw the line on the left
-$ gfx-> move ($ table_start_x, $ table_start_y);
-$ gfx-> line ($ table_start_x, $ table_start_y-$ table_height);
+$gfx-> move ($table_start_x, $table_start_y);
+$gfx-> line ($table_start_x, $table_start_y-$table_height);
 
-my $ cur_x = $ table_start_x;
-my $ cur_y = $ table_start_y;
+my $cur_x = $table_start_x;
+my $cur_y = $table_start_y;
 
-my $ item_padding_top = 17;
-my $ item_padding_left = 5;
+my $item_padding_top = 17;
+my $item_padding_left = 5;
 
 # Drawing the frame of each item
-for (my $ column = 0; $ column <$ rows_count; $ column ++) {
+for (my $column = 0; $column <$rows_count; $column ++) {
   
-  my $ book_index = $ column - 1;
+  my $book_index = $column - 1;
   
   # Name frame (right and bottom)
   # Heading
-  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
-  if ($ column == 0) {
-    $ text-> font ($ font_bold, $ font_size);
-    $ text-> text ('Name');
+  $text-> translate ($cur_x + $item_padding_left, $cur_y-$item_padding_top);
+  if ($column == 0) {
+    $text-> font ($font_bold, $font_size);
+    $text-> text ('Name');
   }
   # Item
   else {
-    $ text-> font ($ font, $ font_size);
-    if ($ book_index <$ books_length) {
-      $ text-> text ($ books-> [$ book_index] {name});
+    $text-> font ($font, $font_size);
+    if ($book_index <$books_length) {
+      $text-> text ($books-> [$book_index] {name});
     }
   }
-  $ gfx-> move ($ cur_x + $ name_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ name_width, $ cur_y-$ item_height);
-  $ cur_x + = $ name_width;
+  $gfx-> move ($cur_x + $name_width, $cur_y);
+  $gfx-> line ($cur_x + $name_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $name_width, $cur_y-$item_height);
+  $cur_x + = $name_width;
 
   # Unit price frame (right and bottom)
-  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
-  if ($ column == 0) {
-    $ text-> font ($ font_bold, $ font_size);
-    $ text-> text ('Unit');
+  $text-> translate ($cur_x + $item_padding_left, $cur_y-$item_padding_top);
+  if ($column == 0) {
+    $text-> font ($font_bold, $font_size);
+    $text-> text ('Unit');
   }
   # Item
   else {
-    $ text-> font ($ font, $ font_size);
-    if ($ book_index <$ books_length) {
-      $ text-> text ($ books-> [$ book_index] {unit_price});
+    $text-> font ($font, $font_size);
+    if ($book_index <$books_length) {
+      $text-> text ($books-> [$book_index] {unit_price});
     }
   }
-  $ gfx-> move ($ cur_x + $ unit_price_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ unit_price_width, $ cur_y-$ item_height);
-  $ cur_x + = $ unit_price_width;
+  $gfx-> move ($cur_x + $unit_price_width, $cur_y);
+  $gfx-> line ($cur_x + $unit_price_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $unit_price_width, $cur_y-$item_height);
+  $cur_x + = $unit_price_width;
 
   # Quantity frame (right and bottom)
   # Heading
-  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
-  if ($ column == 0) {
-    $ text-> font ($ font_bold, $ font_size);
-    $ text-> text ('Count');
+  $text-> translate ($cur_x + $item_padding_left, $cur_y-$item_padding_top);
+  if ($column == 0) {
+    $text-> font ($font_bold, $font_size);
+    $text-> text ('Count');
   }
   # Item
   else {
-    $ text-> font ($ font, $ font_size);
-    if ($ book_index <$ books_length) {
-      $ text-> text ($ books-> [$ book_index] {count});
+    $text-> font ($font, $font_size);
+    if ($book_index <$books_length) {
+      $text-> text ($books-> [$book_index] {count});
     }
   }
-  $ gfx-> move ($ cur_x + $ count_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ count_width, $ cur_y-$ item_height);
-  $ cur_x + = $ count_width;
+  $gfx-> move ($cur_x + $count_width, $cur_y);
+  $gfx-> line ($cur_x + $count_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $count_width, $cur_y-$item_height);
+  $cur_x + = $count_width;
 
   # Price frame (right and bottom)
   # Heading
-  $ text-> translate ($ cur_x + $ item_padding_left, $ cur_y-$ item_padding_top);
-  if ($ column == 0) {
-    $ text-> font ($ font_bold, $ font_size);
-    $ text-> text ('Pirce');
+  $text-> translate ($cur_x + $item_padding_left, $cur_y-$item_padding_top);
+  if ($column == 0) {
+    $text-> font ($font_bold, $font_size);
+    $text-> text ('Pirce');
   }
   # Item
   else {
-    $ text-> font ($ font, $ font_size);
-    if ($ book_index <$ books_length) {
-      $ text-> text ($ books-> [$ book_index] {unit_price} * $ books-> [$ book_index] {count});
+    $text-> font ($font, $font_size);
+    if ($book_index <$books_length) {
+      $text-> text ($books-> [$book_index] {unit_price} * $books-> [$book_index] {count});
     }
   }
-  $ gfx-> move ($ cur_x + $ price_width, $ cur_y);
-  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
-  $ gfx-> move ($ cur_x, $ cur_y-$ item_height);
-  $ gfx-> line ($ cur_x + $ price_width, $ cur_y-$ item_height);
-  $ cur_x + = $ price_width;
+  $gfx-> move ($cur_x + $price_width, $cur_y);
+  $gfx-> line ($cur_x + $price_width, $cur_y-$item_height);
+  $gfx-> move ($cur_x, $cur_y-$item_height);
+  $gfx-> line ($cur_x + $price_width, $cur_y-$item_height);
+  $cur_x + = $price_width;
   
   # To the next line
-  $ cur_x = $ table_start_x;
-  $ cur_y-= $ item_height;
+  $cur_x = $table_start_x;
+  $cur_y-= $item_height;
 }
 
 # Make the line color a little lighter than black
-$ gfx-> strokecolor ('# 333');
+$gfx-> strokecolor ('# 333');
 
 # Fill the rectangle and draw a line
-$ gfx-> stroke;
+$gfx-> stroke;
 
-my $ pdf_file ='table_items.pdf';
-$ pdf-> saveas ($ pdf_file);
+my $pdf_file ='table_items.pdf';
+$pdf-> saveas ($pdf_file);
 </pre>
 
 <a href="/examples/pdf/table_items.pdf"> Table with output result items</a>

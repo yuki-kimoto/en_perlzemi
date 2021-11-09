@@ -22,12 +22,12 @@
 Using "<strong> _ </strong>" <a href="/blog/20100820127859.html"> file test operator</a>, or <a href="/blog/20080512121060.html"> stat You can reuse the result of the function</a>.
 
 <pre>
-if (-s $ file> $ size && -A _> $ from_last_access) {
+if (-s $file> $size && -A _> $from_last_access) {
   ...
 }
 </pre>
 
-You get the size with -s $ file, but behind the scenes you call stat. At that time, information other than size is also saved internally. You can use _ to reuse the file information obtained in the first file test.
+You get the size with -s $file, but behind the scenes you call stat. At that time, information other than size is also saved internally. You can use _ to reuse the file information obtained in the first file test.
 
 The only meaning of using _ is performance. You must make a system call to the OS to get information about the file. System calls are generally costly. If you use _, the file information that you have already obtained will be used, so the second system call will be omitted.
 
@@ -44,19 +44,19 @@ use warnings;
 Reuse the result of the # file operator (or stat).
 
 # Preparation
-my $ file ='a.txt';
-unless (-f $ file) {
-  die "$ file does not exist. \ N"; # Check for file existence
+my $file ='a.txt';
+unless (-f $file) {
+  die "$file does not exist. \ N"; # Check for file existence
 }
 
 print "1: Check if the file is old and has a large file size \ n";
-my $ size = 1_000_000;
-my $ from_last_access = 90;
+my $size = 1_000_000;
+my $from_last_access = 90;
 
-if (-s $ file> $ size && -A _> $ from_last_access) {
+if (-s $file> $size && -A _> $from_last_access) {
   # You can use _ for the second file test.
-  print "$ file is greater than $ size bytes,".
-    "It's been over $ from_last_access days since last access. \ N \ n";
+  print "$file is greater than $size bytes,".
+    "It's been over $from_last_access days since last access. \ N \ n";
 }
-else {print "$ file did not meet the condition. \ N"}
+else {print "$file did not meet the condition. \ N"}
 </pre>

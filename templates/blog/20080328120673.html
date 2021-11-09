@@ -29,7 +29,7 @@
 Use <strong> foreach </strong> to process each element of the <strong> array in turn </strong>. Perl prefers to use <a href="/blog/20100123126425.html"> while statement</a>.
 
 <pre>
-foreach my $ item (@array) {
+foreach my $item (@array) {
   ...
 }
 </pre>
@@ -37,7 +37,7 @@ foreach my $ item (@array) {
 Also, in Perl, foreach is another name for for, so you can use for instead of foreach. I think this is more concise.
 
 <pre>
-for my $ item (@array) {
+for my $item (@array) {
   ...
 }
 </pre>
@@ -56,8 +56,8 @@ This is a sample that outputs the elements of the array in order.
 <pre>
 # Output array elements in order
 my @nums = (3, 4, 5);
-foreach my $ num (@nums) {
-  print "$ num \ n";
+foreach my $num (@nums) {
+  print "$num \ n";
 }
 </pre>
 
@@ -65,9 +65,9 @@ This is a sample that outputs the elements of an array in order when the data st
 
 <pre>
 # Output array elements in sequence (array reference)
-my $ nums = [3, 4, 5];
-foreach my $ num (@ $ nums) {
-  print "$ num \ n";
+my $nums = [3, 4, 5];
+foreach my $num (@ $nums) {
+  print "$num \ n";
 }
 </pre>
 
@@ -75,13 +75,13 @@ foreach my $ num (@ $ nums) {
 
 <pre>
 # Output the values ​​contained in the 2D array in tabs for each line
-my $ data = [
+my $data = [
   ['a', 1],
   ['b', 2]
 ];;
 
-foreach my $ record (@ $ data) {
-  print join ("\ t", @ $ record). "\ n";
+foreach my $record (@ $data) {
+  print join ("\ t", @ $record). "\ n";
 }
 </pre>
 
@@ -89,13 +89,13 @@ This is a sample that outputs the values ​​contained in the hash array for e
 
 <pre>
 # Outputs the values ​​contained in the hash array, tab-separated line by line
-my $ people = [
+my $people = [
   {name =>'Ken', age => 19},
   {name =>'Taro', age => 32}
 ];;
 
-foreach my $ person (@ $ persons) {
-  my @record = ($ person-> {name}, $ person-> {age});
+foreach my $person (@ $persons) {
+  my @record = ($person-> {name}, $person-> {age});
   print join ("\ t", @record). "\ n";
 }
 </pre>
@@ -108,23 +108,23 @@ use warnings;
 
 print "[1] \ n";
 my @persons = ('tom','taro','sinji');
-foreach my $ person (@persons) {
-  print $ person, "\ n";
+foreach my $person (@persons) {
+  print $person, "\ n";
 }
 print "\ n";
 
 print "[2] \ n";
 my @numbers = (1, 2, 3);
-foreach my $ number (@numbers) {
-  Since what is passed to # $ number is an alias for the element, you can change the value of the array itself.
-  $ number = $ number * 2;
+foreach my $number (@numbers) {
+  Since what is passed to # $number is an alias for the element, you can change the value of the array itself.
+  $number = $number * 2;
 }
 print "\ @ numbers = (", join (',', @numbers), ") \ n \ n";
 
 print "[3] \ n";
-foreach my $ index (0 .. $ # persons) {
+foreach my $index (0 .. $# persons) {
   # When you want to use the element number, pass the element number without passing the element of the array itself.
-  print "\ $ persons [$ index] = $ persons [$ index] \ n";
+  print "\ $persons [$index] = $persons [$index] \ n";
 }
 </pre>
 Execution result
@@ -138,7 +138,7 @@ sinji
 @numbers = (2,4,6)
 
 [3]
-$ people [0] = tom
-$ persons [1] = taro
-$ persons [2] = sinji
+$people [0] = tom
+$persons [1] = taro
+$persons [2] = sinji
 </pre>

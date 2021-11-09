@@ -10,19 +10,19 @@ use Time :: Local'timelocal';
 print "(1) Find the date n days later \ n";
 
 # 2 days later
-my $ n = 2;
+my $n = 2;
 
 # Convert the date to seconds and add it.
-my $ sec_from_epoch = time + (60 * 60 * 24 * $ n);
+my $sec_from_epoch = time + (60 * 60 * 24 * $n);
 
 # Convert seconds to date and time
-my ($ sec, $ min, $ hour, $ mday, $ month, $ year)
-  = localtime ($ sec_from_epoch);
+my ($sec, $min, $hour, $mday, $month, $year)
+  = localtime ($sec_from_epoch);
 
-$ month ++;
-$ year + = 1900;
+$month ++;
+$year + = 1900;
 
-print "$ n days later is $ year year $ month month $ mday day $ hour hour $ min minutes $ sec seconds. \ N";
+print "$n days later is $year year $month month $mday day $hour hour $min minutes $sec seconds. \ N";
 </pre>
 
 Execution result
@@ -40,10 +40,10 @@ When dealing with time, convert it to seconds before handling it. You can get th
 
 <pre>
 # 2 days later
-my $ n = 2;
+my $n = 2;
 
 # Convert the date to seconds and add it.
-my $ sec_from_epoch = time + (60 * 60 * 24 * $ n);
+my $sec_from_epoch = time + (60 * 60 * 24 * $n);
 </pre>
 
 If you want to get two days after a particular date, first use the timelocal function of the Time :: Local module to find the number of seconds since the epoch on a particular date.
@@ -54,10 +54,10 @@ After that, the procedure is the same as above.
 use Time :: Local'timelocal';
 
 # March 31, 2000
-my $ year = 2000 - 1900;
-my $ mon = 3 -1;
-my $ mday = 31;
-my $ sec_from_epoch = timelocal (0, 0, 0, $ mday, $ mon, $ year);
+my $year = 2000 - 1900;
+my $mon = 3 -1;
+my $mday = 31;
+my $sec_from_epoch = timelocal (0, 0, 0, $mday, $mon, $year);
 </pre>
 
 <h4> Convert seconds to date and time </h4>
@@ -66,11 +66,11 @@ Convert seconds to date and time using the localtime function.
 
 <pre>
 # Convert seconds to date and time
-my ($ sec, $ min, $ hour, $ mday, $ month, $ year)
-  = localtime ($ sec_from_epoch);
+my ($sec, $min, $hour, $mday, $month, $year)
+  = localtime ($sec_from_epoch);
 
-$ month ++;
-$ year + = 1900;
+$month ++;
+$year + = 1900;
 </pre>
 
 <hr>

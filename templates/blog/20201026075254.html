@@ -27,13 +27,13 @@
 A <b> double-quoted string </b> is a string enclosed in double-quoted "" ". <a href="/blog/20180228151982.html"> Variable expansion</a> and <a href="/blog/20201030075254.html"> Double quote string escape sequences such as line breaks and tabs</a> The feature is that you can use a>.
 
 <pre>
-my $ name = "Yuki Kimoto";
+my $name = "Yuki Kimoto";
 
 # Use variable expansion and newline characters
-my $ message = "I'm $ name \ n";
+my $message = "I'm $name \ n";
 
 # "I'm Yuki Kimoto" is displayed. With line breaks
-print $ message;
+print $message;
 </pre>
 
 <h3> What is variable expansion? </H3>
@@ -41,19 +41,19 @@ print $ message;
 Variable expansion is a function that allows you to expand the contents of a variable in a character string.
 
 <pre>
-my $ name = "Yuki Kimoto";
+my $name = "Yuki Kimoto";
 
 # Use variable expansion and newline characters
-my $ message = "I'm $ name \ n";
+my $message = "I'm $name \ n";
 </pre>
 
 If you want to clarify the delimiter of the variable name, you can specify it by enclosing the variable name excluding the sigil "$" with "{}".
 
 <pre>
-my $ name = "Yuki Kimoto";
+my $name = "Yuki Kimoto";
 
 # Specify variable name
-my $ message = "I'm $ {name} _foo \ n";
+my $message = "I'm ${name} _foo \ n";
 </pre>
 
 Details are explained in the article on variable expansion.
@@ -80,8 +80,8 @@ Some escape sequences allow you to write the ASCII code itself by starting with 
 
 <pre>
 # Specify ASCII code directly to express line breaks
-my $ message = "Hello \ x0D \ x0A";
-print $ message;
+my $message = "Hello \ x0D \ x0A";
+print $message;
 </pre>
 
 The above example is a sample that expresses the line feed code in the HTTP protocol because it is an ASCII hexadecimal sequence of "D" and "A". The 0 after the "\ x" is not required, but it is included according to the convention of representing ASCII codes in 2-digit hexadecimal numbers.
@@ -97,12 +97,12 @@ You can read more about it in the Double Quote String Escape Sequence article.
 Variable expansion and escape sequences of double-quoted strings can be used as they are in regular expression literals.
 
 <pre>
-my $ name = "Yuki Kimoto";
+my $name = "Yuki Kimoto";
 
-my $ message = "I'm Yuki Kimoto \ tHello";
+my $message = "I'm Yuki Kimoto \ tHello";
 
 # You can use variable expansion and escape sequences in regular expression literals
-if ($ message = ~ / $ name \ t /) {
+if ($message = ~ / $name \ t /) {
   
 }
 </pre>

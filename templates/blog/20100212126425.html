@@ -24,27 +24,27 @@ Use the <strong> die function </strong> to display a <strong> error message and 
 # Display an error message and exit the program
 
 # With line number
-die $ message;
+die $message;
 
 # No line number
-die "$ message \ n";
+die "$message \ n";
 </pre>
 
-This is a sample that displays the usage and terminates the program when the argument does not exist. $ 0 is the script name.
+This is a sample that displays the usage and terminates the program when the argument does not exist. $0 is the script name.
 
 <pre>
 Exit the program if the # argument does not exist
-my $ file = shift;
-die "Usage: $ 0 [file]" unless $ file;
+my $file = shift;
+die "Usage: $0 [file]" unless $file;
 </pre>
 
 This is a sample to terminate the program when the file open fails.
 
 <pre>
 # Quit the program if file open fails
-my $ file ='a.txt';
-open my $ fh,'<', $ file
-  or die "Can't open file \" $ file \ ": $!";
+my $file ='a.txt';
+open my $fh,'<', $file
+  or die "Can't open file \" $file \ ": $!";
 </pre>
 
 The exit status is 0 if the program exits successfully. If you exit the program with die, the exit status will be a non-zero value. The exit status of die is determined by the following rules.
@@ -59,7 +59,7 @@ The exit status is 0 if the program exits successfully. If you exit the program 
 
 Languages ​​such as Java provide a mechanism called exceptions. Perl provides a concise exception handling mechanism that uses die and <a href="/blog/20100312126967.html"> eval</a> blocks.
 
-Use die to throw an exception. Use "eval {}" to catch the exception. Use $ @ to determine if an exception has occurred. If an exception occurs, an error message will be set in $ @.
+Use die to throw an exception. Use "eval {}" to catch the exception. Use $@ to determine if an exception has occurred. If an exception occurs, an error message will be set in $@.
 
 <pre>
 # Exception handling flow
@@ -67,7 +67,7 @@ eval {
   Processing that terminates programs that use # die
 };
 
-if ($ @) {
+if ($@) {
   # Exception handling
 }
 </pre>
@@ -75,13 +75,13 @@ if ($ @) {
 A simple sample of exception handling.
 <pre>
 # Exception handling
-my $ num;
+my $num;
 eval {
-  die "Number is undefined." unless defined $ num;
+  die "Number is undefined." unless defined $num;
 };
 
-if ($ @) {
-  die "Catch and throw again $ @";
+if ($@) {
+  die "Catch and throw again $@";
 }
 </pre>
 

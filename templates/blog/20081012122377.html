@@ -29,25 +29,25 @@ use warnings;
 print "(1) Determine the leap year. \ N";
 my @years = (1900, 2000, 2003, 2004);
 
-for my $ year (@years) {
-  if (is_leap_year ($ year)) {
-    print "$ year is a leap year. \ N";
+for my $year (@years) {
+  if (is_leap_year ($year)) {
+    print "$year is a leap year. \ N";
   }
   else {
-    print "$ year year is not a leap year. \ N";
+    print "$year year is not a leap year. \ N";
   }
 }
 
 # A function that determines a leap year.
 sub is_leap_year {
-  my $ year = shift;
+  my $year = shift;
 
   If it is not divisible by # 4, it is not a leap year.
-  return if $ year% 4;
+  return if $year% 4;
 
   # If it is not divisible by 100 and not divisible by 400
   # Not a leap year.
-  return if! ($ year% 100) && ($ year% 400);
+  return if! ($year% 100) && ($year% 400);
 
   # Other than that, it is a leap year.
   return 1;
@@ -58,7 +58,7 @@ sub is_leap_year {
 The leap year determination method is as follows.
 First, determine if it is divisible by 4. Being divisible by 4 is a prerequisite for a leap year. If it is not divisible by 4, it is not a leap year.
 <pre>
-return if $ year% 4;
+return if $year% 4;
 </pre>
 
 Only those that are divisible by 4 in the above judgment are left. In the sample example, (1900, 2000, 2003, 2004) remains (1900, 2000, 2004).
@@ -66,7 +66,7 @@ Only those that are divisible by 4 in the above judgment are left. In the sample
 Next, make a judgment that "it is divisible by 100 and not divisible by 400". Those that meet this condition are not leap years. The 1900 meets this requirement.
 
 <pre>
-return if! ($ year% 100) && ($ year% 400);
+return if! ($year% 100) && ($year% 400);
 </pre>
 
 With the above judgment, (2000, 2004) remains. These are leap years.

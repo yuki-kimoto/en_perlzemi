@@ -21,7 +21,7 @@ To extract the directory name and base name from the file name, use the <strong>
 
 <pre>
 use File :: Basename'fileparse';
-my ($ base_name, $ dir) = fileparse $ file;
+my ($base_name, $dir) = fileparse $file;
 </pre>
 
 You can use the fileparse function of the File :: Basename module to separate the file name from the directory name and the base name. Note that the 0th in the list of return values ​​is the base name and the 1st is the directory name, which is the reverse of the original order.
@@ -40,38 +40,38 @@ use warnings;
 
 use File :: Basename'fileparse';
 
-my $ file_unix ='dir1 / dir2 / base_name.txt';
-my $ file_win ='dir1 \\ dir2 \\ base_name.txt';
+my $file_unix ='dir1 / dir2 / base_name.txt';
+my $file_win ='dir1 \\ dir2 \\ base_name.txt';
                                
 print "1: Extract the directory name and base name from the file name. \ N";
-my ($ base_name, $ dir) = fileparse $ file_unix;
+my ($base_name, $dir) = fileparse $file_unix;
 print "For Unix \ n".
-  "\ $ dir = $ dir \ n".
-  "\ $ base_name = $ base_name \ n \ n";
+  "\ $dir = $dir \ n".
+  "\ $base_name = $base_name \ n \ n";
 
-($ base_name, $ dir) = fileparse $ file_win;
+($base_name, $dir) = fileparse $file_win;
 print "For Windows \ n".
-  "\ $ dir = $ dir \ n".
-  "\ $ base_name = $ base_name \ n \ n";
+  "\ $dir = $dir \ n".
+  "\ $base_name = $base_name \ n \ n";
       
 print "2: Extract only the base name. \ N";
 # In the array slice, extract only the 0th of the list.
-my $ base_name_only = (fileparse $ file_unix) [0];
-print "\ $ base_name_only = $ base_name_only \ n \ n";
+my $base_name_only = (fileparse $file_unix) [0];
+print "\ $base_name_only = $base_name_only \ n \ n";
 </pre>
 Execution result
 <pre>
 1: Extract the directory name and base name from the file name.
 For Unix
-$ dir = dir1 / dir2 /
-$ base_name = base_name.txt
+$dir = dir1 / dir2 /
+$base_name = base_name.txt
 
 For Windows
-$ dir = dir1 \ dir2 \
-$ base_name = base_name.txt
+$dir = dir1 \ dir2 \
+$base_name = base_name.txt
 
 2: Extract only the base name.
-$ base_name_only = base_name.txt
+$base_name_only = base_name.txt
 </pre>
 
 <hr>

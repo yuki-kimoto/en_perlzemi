@@ -15,21 +15,21 @@ Multiple string concatenation has been sped up. This is because it is now proces
 Code like the following will be accelerated.
 
 <pre>
-    $ s. = "a = $ a b = $ b \ n"
+    $s. = "a = $a b = $b \ n"
 </pre>
 
 
 For example, on an x86_64 system, the following string concatenation code is four times faster.
 
 <pre>
-    my $ s;
-    my $ a = "ab \ x {100} cde";
-    my $ b = "fghij";
-    my $ c = "\ x {101} klmn";
+    my $s;
+    my $a = "ab \ x {100} cde";
+    my $b = "fghij";
+    my $c = "\ x {101} klmn";
 
-    for my $ i (1..10_000_000) {
-        $ s = "\ x {100} wxyz";
-        $ s. = "foo = $ a bar = $ b baz = $ c";
+    for my $i (1..10_000_000) {
+        $s = "\ x {100} wxyz";
+        $s. = "foo = $a bar = $b baz = $c";
     }
 </pre>
 
@@ -60,8 +60,8 @@ Perl 5.26 couldn't be installed on Cent OS 5, but Perl 5.28 allows it to be inst
 The position of the attribute in the experimental subroutine signature has changed.
 
 <pre>
-Before change sub foo ($ foo, $ bar): attr;
-After change sub foo: attr ($ foo, $ bar)
+Before change sub foo ($foo, $bar): attr;
+After change sub foo: attr ($foo, $bar)
 </pre>
 
 <h3> Incompatible changes </h3>
@@ -70,9 +70,9 @@ After change sub foo: attr ($ foo, $ bar)
 
 A compiler that can compile C89 is now required to compile Perl. It's not C99 or C11, so don't get me wrong.
 
-<h4> Setting the value to $ {^ ENCODING} is invalid </h4>
+<h4> Setting the value to ${^ ENCODING} is invalid </h4>
 
-Please note if anyone has set $ {^ ENCODING} in the past.
+Please note if anyone has set ${^ ENCODING} in the past.
 
 <h4> The sort algorithm by the sort pragma can no longer be specified </h4>
 

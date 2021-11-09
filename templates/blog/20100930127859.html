@@ -34,13 +34,13 @@ Creating an array reference. References are created using the "\" symbol.
 
 <pre>
 my @nums = (1, 2, 3);
-my $ nums = \ @nums;
+my $nums = \ @nums;
 </pre>
 
-"Reference" means "what you point to." $ nums points to @nums.
+"Reference" means "what you point to." $nums points to @nums.
 
 <pre>
-$ nums - -> @nums
+$nums - -> @nums
 </pre>
 
 <h4> Creating an anonymous array reference </h4>
@@ -48,13 +48,13 @@ $ nums - -> @nums
 Creating an anonymous array reference. "[]" Is called an anonymous array generator.
 
 <pre>
-my $ nums = [1, 2, 3];
+my $nums = [1, 2, 3];
 </pre>
 
-$ nums points to an array called "(1, 2, 3)" that has no name.
+$nums points to an array called "(1, 2, 3)" that has no name.
 
 <pre>
-$ nums - -> (1, 2, 3)
+$nums - -> (1, 2, 3)
 </pre>
 
 It's easy to think of the anonymous array reference description as a simple way to create an array reference. The anonymous array generator eliminates the need to create an array to create an array reference.
@@ -62,10 +62,10 @@ It's easy to think of the anonymous array reference description as a simple way 
 <pre>
 # Creating an array reference
 my @nums = (1, 2, 3);
-my $ nums = \ @nums;
+my $nums = \ @nums;
 
 # Abbreviated notation above
-my $ nums = [1, 2, 3];
+my $nums = [1, 2, 3];
 </pre>
 
 In Perl, the appearance of both arrays and array references is one reason why the code is hard to read. It is important to read the code with a clear distinction between "array" and "array reference".
@@ -75,27 +75,27 @@ In Perl, the appearance of both arrays and array references is one reason why th
 To retrieve an array from an array reference, you need to do the <a href="/blog/20180301151991.html"> dereference</a> operation. Use "@ {}" to dereference the array.
 
 <pre>
-my @nums = @ {$ nums};
+my @nums = @ {$nums};
 </pre>
 
 You can also omit the parentheses as follows:
 
 <pre>
-my @nums = @ $ nums;
+my @nums = @ $nums;
 </pre>
 
 You can dereference and then get the elements of the array, but that's a bit inconvenient. Perl provides a way to get elements directly from an array reference. Use the arrow operator "->" to retrieve an element from an array reference.
 
 <pre>
-my $ first = $ nums-> [0];
-my $ second = $ nums-> [1];
+my $first = $nums-> [0];
+my $second = $nums-> [1];
 </pre>
 
 Compare with the case of getting the elements of the array as follows. The difference is whether or not there is an arrow operator.
 
 <pre>
-my $ first = $ nums [0];
-my $ second = $ nums [1];
+my $first = $nums [0];
+my $second = $nums [1];
 </pre>
 
 When programming in Perl, always be aware of whether it's an array or an array reference.
@@ -134,7 +134,7 @@ my @persons = (\ @ person1, \ @ person2);
 Also, as the simplest notation, the outer array is also used as a reference, and it is common to write as follows.
 
 <pre>
-my $ people = [
+my $people = [
   ['Ken','Japan', 19],
   ['Taro','USA', 45]
 ];;
@@ -147,25 +147,25 @@ The above notation is the most common representation of a two-dimensional array 
 Let's access the elements of the array of the created array. This is an array reference that has an array reference as an element, so you can access it as follows:
 
 <pre>
-my $ name1 = $ people-> [0]-> [0];
-my $ country1 = $ people-> [0]-> [1];
-my $ age1 = $ people-> [0]-> [2];
+my $name1 = $people-> [0]-> [0];
+my $country1 = $people-> [0]-> [1];
+my $age1 = $people-> [0]-> [2];
 
-my $ name2 = $ people-> [1]-> [0];
-my $ country2 = $ persons-> [1]-> [1];
-my $ age2 = $ persons-> [1]-> [2];
+my $name2 = $people-> [1]-> [0];
+my $country2 = $persons-> [1]-> [1];
+my $age2 = $persons-> [1]-> [2];
 </pre>
 
 The point is to use the arrow operator twice. In Perl, you can omit the second and subsequent arrow operators, so you can also write:
 
 <pre>
-my $ name1 = $ people-> [0] [0];
-my $ country1 = $ people-> [0] [1];
-my $ age1 = $ people-> [0] [2];
+my $name1 = $people-> [0] [0];
+my $country1 = $people-> [0] [1];
+my $age1 = $people-> [0] [2];
 
-my $ name2 = $ people-> [1] [0];
-my $ country2 = $ persons-> [1] [1];
-my $ age2 = $ persons-> [1] [2];
+my $name2 = $people-> [1] [0];
+my $country2 = $persons-> [1] [1];
+my $age2 = $persons-> [1] [2];
 </pre>
 
 <h3> Two-dimensional array loop processing </h3>
@@ -176,9 +176,9 @@ Let's loop through a two-dimensional array.
 First, let's output all the elements.
 
 <pre>
-for my $ person (@ $ persons) {
-  for my $ column (@ $ person) {
-    print "$ column \ n";
+for my $person (@ $persons) {
+  for my $column (@ $person) {
+    print "$column \ n";
   }
 }
 </pre>
@@ -193,7 +193,7 @@ USA
 45
 </pre>
 
-Perl's two-dimensional array is essentially an array reference that has an array reference as an element. So if you want to loop, you need to dereference and retrieve the array. This means that you need to dereference the outer loop as "@ $ persons" and the inner loop as "@ $ person".
+Perl's two-dimensional array is essentially an array reference that has an array reference as an element. So if you want to loop, you need to dereference and retrieve the array. This means that you need to dereference the outer loop as "@ $persons" and the inner loop as "@ $person".
 
 <h4> Output all records separated by commas </h4>
 
@@ -207,8 +207,8 @@ Taro, USA, 45
 You can use the <a href="/blog/20081007122338.html"> join function</a> to join the records with the specified string. You don't need to write the inner loop.
 
 <pre>
-for my $ person (@ $ persons) {
-  print join (',', @ $ person). "\ n";
+for my $person (@ $persons) {
+  print join (',', @ $person). "\ n";
 }
 </pre>
 
@@ -224,7 +224,7 @@ Taro, USA, 45
 We'll use the open function to read the file, but this time let's use a single diamond operator to simplify the reading: In combination with <a href="/blog/20100123126425.html"> while statement</a>, you can read each line of the file received as an argument.
 
 <pre>
-while (my $ line = <>) {
+while (my $line = <>) {
   ...
 }
 </pre>
@@ -238,21 +238,21 @@ perl script.pl persons.txt
 Now let's create a two-dimensional array from a comma-separated file.
 
 <pre>
-my $ people = [];
-while (my $ line = <>) {
-  chomp $ line;
-  my @person = split (',', $ line);
-  push @ $ persons, \ @person;
+my $people = [];
+while (my $line = <>) {
+  chomp $line;
+  my @person = split (',', $line);
+  push @ $persons, \ @person;
 }
 </pre>
 chomp is a function that removes line breaks. Use the split function to decompose a string with the specified delimiter to create an array. Note that the first argument of the push function is an array.
 
-You need to dereference and pass it like "@ $ persons". Also, the elements added by push must be an array reference. Generate an array reference like "\ @ person" and specify it as the second argument of the push function.
+You need to dereference and pass it like "@ $persons". Also, the elements added by push must be an array reference. Generate an array reference like "\ @ person" and specify it as the second argument of the push function.
 
 The created two-dimensional array is as follows.
 
 <pre>
-my $ people = [
+my $people = [
   ['Ken','Japan', '19'],
   ['Taro','USA', '45']
 ];;
@@ -263,7 +263,7 @@ my $ people = [
 This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the character string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
 
 <pre>
-print join ("\ t", @ $ person). "\ n";
+print join ("\ t", @ $person). "\ n";
 </pre>
 
 <h3> Hash reference </h3>
@@ -284,13 +284,13 @@ Creating a hash reference. References are created using the "\" symbol.
 
 <pre>
 my% person = (name =>'Ken', age => 19);
-my $ person = \% person;
+my $person = \% person;
 </pre>
 
-"Reference" means "what you point to." $ person points to% person.
+"Reference" means "what you point to." $person points to% person.
 
 <pre>
-$ person - ->% person
+$person - ->% person
 </pre>
 
 <h4> Creating an anonymous hash reference </h4>
@@ -298,13 +298,13 @@ $ person - ->% person
 Creating an anonymous hash reference. "{}" Is called an anonymous hash generator.
 
 <pre>
-my $ person = {name =>'Ken', age => 19};
+my $person = {name =>'Ken', age => 19};
 </pre>
 
-$ person points to the hash "(name =>'Ken', age => 19)" which has no name.
+$person points to the hash "(name =>'Ken', age => 19)" which has no name.
 
 <pre>
-$ person - -> (name =>'Ken', age => 19)
+$person - -> (name =>'Ken', age => 19)
 </pre>
 
 It's easy to think of the anonymous hash reference description as a simple way to create a hash reference. Anonymous hash generators eliminate the need to create a hash to create a hash reference.
@@ -312,10 +312,10 @@ It's easy to think of the anonymous hash reference description as a simple way t
 <pre>
 # Creating a hash reference
 my% person = (name =>'Ken', age => 19);
-my $ person = \% person;
+my $person = \% person;
 
 # Abbreviated notation above
-my $ person = {name =>'Ken', age => 19};
+my $person = {name =>'Ken', age => 19};
 </pre>
 
 In Perl, the appearance of both hashes and hash references is one reason why the code is hard to read. It is important to read the code with a clear distinction between "hash" and "hash reference".
@@ -325,27 +325,27 @@ In Perl, the appearance of both hashes and hash references is one reason why the
 To retrieve a hash from a hash reference, you need to do something called dereference. Use "% {}" for hash dereference.
 
 <pre>
-my% person =% {$ person};
+my% person =% {$person};
 </pre>
 
 You can also omit the parentheses as follows:
 
 <pre>
-my% person =% $ person;
+my% person =% $person;
 </pre>
 
 You can dereference and then get the hash element, but that's a bit inconvenient. Perl provides a way to get an element from a hash reference. Use the arrow operator "->" to retrieve an element from a hash reference.
 
 <pre>
-my $ name = $ person-> {name};
-my $ age = $ person-> {age};
+my $name = $person-> {name};
+my $age = $person-> {age};
 </pre>
 
 Compare with the case of getting the hash element as follows. The difference is whether or not there is an arrow operator.
 
 <pre>
-my $ name = $ person {name};
-my $ age = $ person {age};
+my $name = $person {name};
+my $age = $person {age};
 </pre>
 
 When programming in Perl, always be aware of whether it's a hash or a hash reference.
@@ -372,7 +372,7 @@ my @persons = (\% person1, \% person2);
 Also, as the simplest notation, the outer array is also used as a reference, and it is common to write as follows.
 
 <pre>
-my $ people = [
+my $people = [
   {name =>'Ken', country =>'Japan', age => 19},
   {name =>'Taro', country =>'USA', age => 45}
 ];;
@@ -387,10 +387,10 @@ Let's loop through an array of hashes.
 First, let's output all the elements.
 
 <pre>
-for my $ person (@ $ persons) {
-  for my $ key (keys% $ person) {
-    my $ value = $ person-> {$ key};
-    print "$ key: $ value \ n";
+for my $person (@ $persons) {
+  for my $key (keys% $person) {
+    my $value = $person-> {$key};
+    print "$key: $value \ n";
   }
 }
 </pre>
@@ -406,10 +406,10 @@ name: Taro
 age: 45
 </pre>
 
-A Perl hash array is essentially an "array reference" with a "hash reference" as an element. The outer loop dereferences the array like "@ $ persons". In the inner loop, the hash key is obtained using the keys function, and the value of the hash corresponding to the key is output. Because the keys function receives a hash, not a hash reference
+A Perl hash array is essentially an "array reference" with a "hash reference" as an element. The outer loop dereferences the array like "@ $persons". In the inner loop, the hash key is obtained using the keys function, and the value of the hash corresponding to the key is output. Because the keys function receives a hash, not a hash reference
 
 <pre>
-keys% $ person
+keys% $person
 </pre>
 
 You need to dereference it like this.
@@ -417,10 +417,10 @@ You need to dereference it like this.
 One caveat is that the order of the keys obtained with the keys function is indefinite. So if you want to determine the order of the output, use the sort function to sort the keys.
 
 <pre>
-for my $ person (@ $ persons) {
-  for my $ key (sort keys% $ person) {
-    my $ value = $ person-> {$ key};
-    print "$ key: $ value \ n";
+for my $person (@ $persons) {
+  for my $key (sort keys% $person) {
+    my $value = $person-> {$key};
+    print "$key: $value \ n";
   }
 }
 </pre>
@@ -437,11 +437,11 @@ Taro, USA, 45
 You can use the join function to join records with a specified string. Set the output value to an array called @rec and then join with the join function. You don't need to write the inner loop.
 
 <pre>
-for my $ person (@ $ persons) {
+for my $person (@ $persons) {
   my @rec = (
-    $ person-> {name},
-    $ person-> {country},
-    $ person-> {age}
+    $person-> {name},
+    $person-> {country},
+    $person-> {age}
   );
     
   print join (',', @rec). "\ n";
@@ -460,32 +460,32 @@ Taro, USA, 45
 Now let's create an array of hashes from a comma separated file. Reading a file uses a single diamond operator, as described in Array Arrays.
 
 <pre>
-my $ people = [];
-while (my $ line = <>) {
+my $people = [];
+while (my $line = <>) {
 
   # (1) Delete line breaks
-  chomp $ line;
+  chomp $line;
   
   # (2) Make an array of comma-separated strings
-  my @rec = split (',', $ line);
+  my @rec = split (',', $line);
   
   # (3) Create a hash reference
-  my $ person = {};
-  $ person-> {name} = $ rec [0];
-  $ person-> {country} = $ rec [1];
-  $ person-> {age} = $ rec [2];
+  my $person = {};
+  $person-> {name} = $rec [0];
+  $person-> {country} = $rec [1];
+  $person-> {age} = $rec [2];
     
   # (4) Added to array reference
-  push @ $ persons, $ person;
+  push @ $persons, $person;
 }
 </pre>
 
-(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the character string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@ $ persons".
+(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the character string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@ $persons".
 
 The resulting array of hashes looks like this:
 
 <pre>
-my $ people = [
+my $people = [
   {name =>'Ken', country =>'Japan', age => '19'},
   {name =>'Taro', country =>'USA', age => '45'}
 ];;
@@ -501,7 +501,7 @@ Creating an array hash. Let's assume a scene where hourly aggregation is perform
 
 <pre>
 # Time => [Number, average response time, maximum response time]
-my $ infos = {
+my $infos = {
   '01: 01'=> [3, 2.1, 4.6],
   '01: 02'=> [5, 4.1, 7.4],
   '01: 03'=> [6, 3.5, 5.7]
@@ -516,12 +516,12 @@ Let's output all the elements.
 
 <pre>
 # (1) Outer loop
-for my $ time (sort keys% $ infos) {
-  print "$ time \ n";
+for my $time (sort keys% $infos) {
+  print "$time \ n";
   
   # (2) Inner loop
-  for my $ column (@ {$ infos-> {$ time}}) {
-    print "$ column \ n";
+  for my $column (@ {$infos-> {$time}}) {
+    print "$column \ n";
   }
 }
 </pre>
@@ -529,7 +529,7 @@ for my $ time (sort keys% $ infos) {
 (1) An array hash is a hash that has an array as an element, so the outer loop processes the hash. The time is retrieved using the keys function.
 
 <pre>
-sort keys% $ infos
+sort keys% $infos
 </pre>
 
 The reason for sorting like this is because we want to output in the order of time.
@@ -537,7 +537,7 @@ The reason for sorting like this is because we want to output in the order of ti
 (2) The inner loop is an array. The inner array is
 
 <pre>
-@ {$ infos-> {$ time}}
+@ {$infos-> {$time}}
 </pre>
 
 You can take it out like this.
@@ -570,9 +570,9 @@ Next, let's output all records separated by commas as shown below.
 </pre>
 
 <pre>
-for my $ time (sort keys% $ infos) {
+for my $time (sort keys% $infos) {
     
-  my @rec = ($ time, @ {$ infos-> {$ time}});
+  my @rec = ($time, @ {$infos-> {$time}});
   print join (',', @rec). "\ n";
 }
 </pre>
@@ -598,25 +598,25 @@ Now consider creating an array hash from a comma-separated file. Suppose you hav
 From such a file, let's create a hash of an array with "number of cases per time", "total response time", and "maximum response time" as data. The total response time is saved because the average response time can be calculated later by "Total response time / number of cases".
 
 <pre>
-my $ infos = {};
-while (my $ line = <>) {
-  chomp $ line;
+my $infos = {};
+while (my $line = <>) {
+  chomp $line;
   
   # (1) Get time and response time
-  my ($ time, $ res_time) = split (',', $ line);
+  my ($time, $res_time) = split (',', $line);
   
   # (2) Array reference for storing data at each time
-  $ infos-> {$ time} || = [];
+  $infos-> {$time} || = [];
   
   # (3) Total number of cases
-  $ infos-> {$ time} [0] ++;
+  $infos-> {$time} [0] ++;
   
   # (4) Total response time
-  $ infos-> {$ time} [1] + = $ res_time;
+  $infos-> {$time} [1] + = $res_time;
 
   # (5) Maximum response time
-  $ infos-> {$ time} [2] = $ res_time
-    if! defined $ infos-> {$ time} [2] || $ res_time> $ infos-> {$ time} [2];
+  $infos-> {$time} [2] = $res_time
+    if! defined $infos-> {$time} [2] || $res_time> $infos-> {$time} [2];
 }
 </pre>
 
@@ -625,7 +625,7 @@ while (my $ line = <>) {
 You can hash an array like this:
 
 <pre>
-my $ infos = {
+my $infos = {
     '01: 03'=> [
          Four,
          20, 20,
@@ -653,7 +653,7 @@ Next, I will explain about "hash of hash".
 Creating a hash of hashes. Imagine what you're doing when you're doing hourly aggregation.
 
 <pre>
-my $ infos = {
+my $infos = {
   '01:01' => {count => 3, ave_time => 2.1, max_time => 4.6},
   '01:02' => {count => 5, ave_time => 4.1, max_time => 7.4},
   '01: 03'=> {count => 6, ave_time => 3.5, max_time => 5.7}
@@ -667,13 +667,13 @@ There were 3 accesses at 1:01, with an average response time of 2.1 seconds and 
 Let's output all the elements.
 
 <pre>
-for my $ time (sort keys% $ infos) {
-  print "$ time \ n";
+for my $time (sort keys% $infos) {
+  print "$time \ n";
   
   # (2) Inner loop
-  for my $ name (sort keys% {$ infos-> {$ time}}) {
-    my $ value = $ infos-> {$ time} {$ name};
-    print "$ name: $ value \ n";
+  for my $name (sort keys% {$infos-> {$time}}) {
+    my $value = $infos-> {$time} {$name};
+    print "$name: $value \ n";
   }
 }
 </pre>
@@ -683,7 +683,7 @@ for my $ time (sort keys% $ infos) {
 (2) The inner loop is a hash. Even in the inner loop
 
 <pre>
-keys% {$ infos-> {$ time}}
+keys% {$infos-> {$time}}
 </pre>
 
 The hash key is taken out like this.
@@ -716,13 +716,13 @@ Next, let's output the data created above by separating all records with commas 
 </pre>
 
 <pre>
-for my $ time (sort keys% $ infos) {
+for my $time (sort keys% $infos) {
     
   my @rec = (
-    $ time,
-    $ infos-> {$ time} {count},
-    $ infos-> {$ time} {ave_time},
-    $ infos-> {$ time} {max_time}
+    $time,
+    $infos-> {$time} {count},
+    $infos-> {$time} {ave_time},
+    $infos-> {$time} {max_time}
   );
   print join (',', @rec). "\ n";
 }
@@ -749,26 +749,26 @@ Now consider creating a hash of hashes from a comma-separated file. Suppose you 
 From such a file, let's create a hash of a hash with the total number of cases per time, the total response time, and the maximum response time as data. The total response time is saved because the average response time can be calculated by "Total response time / number of cases".
 
 <pre>
-my $ infos = {};
-while (my $ line = <>) {
-  chomp $ line;
+my $infos = {};
+while (my $line = <>) {
+  chomp $line;
   
   # (1) Get time and response time
-  my ($ time, $ res_time) = split (',', $ line);
+  my ($time, $res_time) = split (',', $line);
   
   # (2) Array reference for storing data at each time
-  $ infos-> {$ time} || = {};
+  $infos-> {$time} || = {};
   
   # (3) Total number of cases
-  $ infos-> {$ time} {count} ++;
+  $infos-> {$time} {count} ++;
   
   # (4) Total response time
-  $ infos-> {$ time} {total_time} + = $ res_time;
+  $infos-> {$time} {total_time} + = $res_time;
 
   # (5) Maximum response time
-  $ infos-> {$ time} {max_time} = $ res_time
-    if! defined $ infos-> {$ time} {max_time}
-      || $ res_time> $ infos-> {$ time} {max_time};
+  $infos-> {$time} {max_time} = $res_time
+    if! defined $infos-> {$time} {max_time}
+      || $res_time> $infos-> {$time} {max_time};
 }
 </pre>
 
@@ -777,7 +777,7 @@ while (my $ line = <>) {
 You can hash the following hashes.
 
 <pre>
-my $ infos = {
+my $infos = {
     '01: 03'=> {
         'max_time' => 9,
         'count' => 4,

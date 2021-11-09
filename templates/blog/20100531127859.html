@@ -15,7 +15,7 @@
 
 
 
-Perl uses die to raise an exception. This corresponds to throw in the Java language. Use <a href="/blog/20100312126967.html"> eval</a> to catch the exception. This is equivalent to catch in the Java language. Whether or not an exception has occurred can be determined by whether a message is set in $ @.
+Perl uses die to raise an exception. This corresponds to throw in the Java language. Use <a href="/blog/20100312126967.html"> eval</a> to catch the exception. This is equivalent to catch in the Java language. Whether or not an exception has occurred can be determined by whether a message is set in $@.
 
 <pre>
 # Perl exception handling
@@ -24,7 +24,7 @@ eval {
   # Exception-raising process
 }
 
-if ($ @) {
+if ($@) {
   
 }
 </pre>

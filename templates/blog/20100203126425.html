@@ -22,7 +22,7 @@ Use the <strong> bless function </strong> to create a <strong> object </strong>.
 
 <pre>
 # Create object
-$ obj = bless $ data, $ class;
+$obj = bless $data, $class;
 </pre>
 
 This is a sample constructor. I am creating an object by associating a class name with a hash reference.
@@ -30,13 +30,13 @@ This is a sample constructor. I am creating an object by associating a class nam
 <pre>
 # Constructor
 sub new {
-  my $ class = shift;
+  my $class = shift;
 
-  my $ self = {};
+  my $self = {};
     
-  bless $ self, $ class;
+  bless $self, $class;
 
-  return $ self;
+  return $self;
 }
 </pre>
 
@@ -45,12 +45,12 @@ This is a sample of a general constructor. Argument processing, processing corre
 <pre>
 # General constructor
 sub new {
-  my $ proto = shift;
+  my $proto = shift;
 
-  my $ class = ref $ proto || $ proto;
+  my $class = ref $proto || $proto;
 
-  my $ self = ref $ _ [0] eq'HASH'? $ _ [0]: {@_};
+  my $self = ref $_ [0] eq'HASH'? $_ [0]: {@_};
 
-  return bless $ self, $ class;
+  return bless $self, $class;
 }
 </pre>

@@ -37,7 +37,7 @@ As an example, the <a href="/blog/20081009122357.html"> localtime function</a> r
 
 <pre>
 # Scalar context
-$ date_string = localtime;
+$date_string = localtime;
 
 # List context
 @date_info = localtime;
@@ -47,7 +47,7 @@ To give another example, an array returns the number of arrays in a scalar conte
 
 <pre>
 # Scalar context
-$ count = @values;
+$count = @values;
 
 # List context
 @elements = @values;
@@ -70,7 +70,7 @@ Here are some places that are evaluated as scalar contexts.
 Assignment to <a href="/blog/20161107147852.html"> scalar variable</a> is a scalar context. When the array is evaluated in scalar context, it returns the length of the array.
 
 <pre>
-my $ num = @values;
+my $num = @values;
 </pre>
 
 <b> Comparison operator term </b>
@@ -78,14 +78,14 @@ my $ num = @values;
 The left and right terms of <a href="/blog/20080318120585.html"> comparison operator</a> are scalar contexts.
 
 <pre>
-$ x <@values
-$ x == @values
+$x <@values
+$x == @values
 </pre>
 
 I often see it in the loop of <a href="/blog/20170521149524.html"> for statement</a>.
 
 <pre>
-for (my $ i = 0; $ i <@nums; $ i ++) {
+for (my $i = 0; $i <@nums; $i ++) {
   ...
 }
 </pre>
@@ -155,19 +155,19 @@ use warnings;
 # Scalar context and list context
 
 print "1: Know the meaning of the context with the localtime function. \ N";
-my $ scalar;
+my $scalar;
 my @list;
 
 # Since the left side is scalar, it is for scalar
 The return value of # is returned.
-$ scalar = localtime;
+$scalar = localtime;
                       
 # The left side is an array, so it's for a list
 The return value of # is returned.
 @list = localtime;
 
 print "formatted date \ n in scalar context",
-  "'$ scalar' \ n \ n";
+  "'$scalar' \ n \ n";
 
 print "In list context, a list of date and time values ​​\ n".
   join (',', @list). "\ n \ n";

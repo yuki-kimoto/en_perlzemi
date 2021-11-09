@@ -20,7 +20,7 @@
 Create a file. Open the file in write mode. Perl doesn't have a function just to create a file. To create the file, use the write mode of the <a href="/blog/20080718121643.html"> open function</a>.
 
 <pre>
-open my $ fh, ">", $ file;
+open my $fh, ">", $file;
 </pre>
 
 <h3> Sample </h3>
@@ -31,17 +31,17 @@ This is a sample to create a file.
 use strict;
 use warnings;
 
-# Create a file. open my $ fh, ">", $ file
+# Create a file. open my $fh, ">", $file
 
 print "1: Create a file.";
-my $ file = "sample_20080519_ $$. txt"; # $$ is the process ID
+my $file = "sample_20080519_ $$. txt"; # $$is the process ID
 
-if (-e $ file) {
-  die "$ file already exists.";
+if (-e $file) {
+  die "$file already exists.";
 }
 else {
-  open my $ fh, ">", $ file
-    or die "Unable to open $ file in write mode .: $!";
-  close $ fh;
+  open my $fh, ">", $file
+    or die "Unable to open $file in write mode .: $!";
+  close $fh;
 }
 </pre>

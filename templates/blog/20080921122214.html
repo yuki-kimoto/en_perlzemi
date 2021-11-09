@@ -25,7 +25,7 @@ Since computers use binary numbers internally, errors occur in the calculation p
 Use the <a href="/blog/20081001122296.html"> sprintf function</a> to round the digits.
 
 <pre>
-sprintf ("% .5g", $ num1);
+sprintf ("% .5g", $num1);
 </pre>
 
 "% .5g" is a format specification that rounds a floating point number to 5 significant digits.
@@ -38,23 +38,23 @@ This is a sample to compare floating point numbers.
 use strict;
 use warnings;
 
-my $ num1 = 1;
-my $ num2;
+my $num1 = 1;
+my $num2;
 
 Add # 0.1 10 times
-for my $ i (1 .. 10) {
-  $ num2 + = 0.1;
+for my $i (1 .. 10) {
+  $num2 + = 0.1;
 }
 
 print "(1) There is an error. \ N";
-if ($ num1! = $ num2) {
-  print'$ num1 and $ num2 are not equal'. "\ n \ n";
+if ($num1! = $num2) {
+  print'$num1 and $num2 are not equal'. "\ n \ n";
 }
 
 print "(2) -1 Floating point rounded to 5 decimal places and compared (equal). \ N";
-my $ num1_cut5 = sprintf ("% .5g", $ num1);
-my $ num2_cut5 = sprintf ("% .5g", $ num2);
+my $num1_cut5 = sprintf ("% .5g", $num1);
+my $num2_cut5 = sprintf ("% .5g", $num2);
 
-print $ num1_cut5. "\ n";
-print $ num2_cut5. "\ n";
+print $num1_cut5. "\ n";
+print $num2_cut5. "\ n";
 </pre>

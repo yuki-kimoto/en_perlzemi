@@ -21,7 +21,7 @@ Perl is a scripting language that excels at text processing such as search and r
 
 <pre>
 # Replace all "banana" with "orange"
-$ message = ~ s / banana / orange / g;
+$message = ~ s / banana / orange / g;
 </pre>
 
 The processing speed of text processing is high. It depends on the processing content, but the experience is that a Linux server that can be rented at a low price can process 100,000 lines of text in about 1 second.
@@ -47,10 +47,10 @@ In Perl, you don't have to be aware of the types of strings and numbers, so it's
 
 <pre>
 # Command line arguments
-my ($ num1, $ num2) = @ARGV;
+my ($num1, $num2) = @ARGV;
 
 # Calculate without being aware of the type
-my $ total = $ num1 + $ num2;
+my $total = $num1 + $num2;
 </pre>
 
 <h3> Easy to copy and paste </h3>
@@ -95,7 +95,7 @@ Web Development
 The data section allows you to copy and paste, line by line, right away.
 
 <pre>
-while (my $ line = <DATA>) {
+while (my $line = <DATA>) {
   # Process line by line
 }
 
@@ -111,18 +111,18 @@ In Perl, use the <a href="/blog/20100305126967.html"> double quote operator</a> 
 
 <pre>
 # Double quote operator
-my $ name = qq (aaa "bbb);
+my $name = qq (aaa "bbb);
 
 # Quart operator
-my $ name = q (aaa'bbb);
+my $name = q (aaa'bbb);
 
 # Change the enclosing character using m in regular expression pattern matching
-if ($ name = ~ m | http: // |) {
+if ($name = ~ m | http: // |) {
   # ...
 }
 
 # Change the enclosing character by replacing the regular expression
-$ name = ~ s | http: // ||;
+$name = ~ s | http: // ||;
 </pre>
 
 <h4> Regular expression escaped by \ Q </h4>
@@ -130,9 +130,9 @@ $ name = ~ s | http: // ||;
 If you use the regular expression "\ Q" escape, you can copy and paste it as a simple string without being aware of the regular expression characters.
 
 <pre>
-my $ re = "abc [] ...";
+my $re = "abc [] ...";
 
-if ($ name = ~ / \ Q $ re /) {
+if ($name = ~ / \ Q $re /) {
   # ...
 }
 </pre>
@@ -293,20 +293,20 @@ sub y {shift-> {y}}
 
 # Constructor
 sub new {
-  my $ class = shift;
+  my $class = shift;
   
-  my $ self = {
+  my $self = {
     @_;
   };
   
-  return bless $ self, ref $ class || $ class;
+  return bless $self, ref $class || $class;
 }
 
 package main;
 
-my $ point = Point-> new (x => 1, y => 2);
-my $ x = $ point-> x;
-my $ y = $ point-> y;
+my $point = Point-> new (x => 1, y => 2);
+my $x = $point-> x;
+my $y = $point-> y;
 </pre>
 
 It feels fresh, so I'd like to expect it in the near future so that I can write it easily.
@@ -332,11 +332,11 @@ use strict;
 use warnings;
 
 # Convert comma-separated data to "|" delimited
-while (my $ line = <DATA>) {
-    chomp $ line;
-    my @items = split (/, /, $ line);
-    my $ new_line = join ('|', @items);
-    print "$ new_line \ n";
+while (my $line = <DATA>) {
+    chomp $line;
+    my @items = split (/, /, $line);
+    my $new_line = join ('|', @items);
+    print "$new_line \ n";
 }
 
 __DATA__

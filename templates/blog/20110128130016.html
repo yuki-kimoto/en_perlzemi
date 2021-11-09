@@ -39,14 +39,14 @@ Lexical variables declared within a scope (variables declared with my) can only 
 
 <pre>
 {
-  my $ num = 1;
+  my $num = 1;
 
   # Can be referenced
-  print $ num;
+  print $num;
 }
 
 # Cannot be referenced at this position
-print $ num;
+print $num;
 </pre>
 
 <h4> Package variables </h4>
@@ -57,17 +57,17 @@ Package variables declared inside a scope (variables declared with our) can be r
 package Foo;
 
 {
-  our $ NUM = 1;
+  our $NUM = 1;
 
   # Can be referenced by part name
-  print $ NUM;
+  print $NUM;
 }
 
 # Cannot be referenced by partial name
-print $ NUM;
+print $NUM;
 
 # Can be referenced by fully qualified name
-print $ Foo :: NUM;
+print $Foo :: NUM;
 </pre>
 
 Keep in mind that once a package variable is created, it exists to the end of the program and can be referenced by its fully qualified name from anywhere in the program.
@@ -79,17 +79,17 @@ You can use <a href="/blog/20080309120507.html"> local</a> to temporarily change
 <pre>
 package Foo;
 
-our $ NUM = 1;
+our $NUM = 1;
 
 {
-  local $ NUM = 2;
+  local $NUM = 2;
 
   # 2 is output
-  print $ NUM;
+  print $NUM;
 }
 
 # Return to 1 at this position
-print $ NUM;
+print $NUM;
 </pre>
 
 Use local only for temporary changes to the value of package variables, and don't use it for variable declarations as it used to be.
@@ -118,17 +118,17 @@ If you want the subroutine to have scope, assign an anonymous subroutine (which 
 
 <pre>
 {
-  my $ foo = sub {...};
+  my $foo = sub {...};
 
   # Can be called
-  $ foo-> ();
+  $foo-> ();
 }
 
 # Cannot be called from this position
-$ foo-> ();
+$foo-> ();
 </pre>
 
-At the end of the scope, the subroutine reference assigned to $ foo is released. Note that the subroutine itself is not freed. sub {...} is parsed and placed in memory at compile time.
+At the end of the scope, the subroutine reference assigned to $foo is released. Note that the subroutine itself is not freed. sub {...} is parsed and placed in memory at compile time.
 
 <h3> Scope in if and while statements </h3>
 
@@ -183,46 +183,46 @@ There are some cases where you have a scope, though it is not declared inside th
 The lexical variable declared in the conditional part of if has the scope of if.
 
 <pre>
-if (my $ num = 1) {
+if (my $num = 1) {
   # Can be referenced
-  print $ num;
+  print $num;
 }
 
 # Cannot be referenced at this position
-print $ num;
+print $num;
 </pre>
 
 Since there is no scope for the postfixed if in the first place, it does not have a scope.
 
 <pre>
-Statement if my $ num = 1;
+Statement if my $num = 1;
 
 # Can be referenced
-print $ num;
+print $num;
 </pre>
 
 The same is true for unless statements and <a href="/blog/20100123126425.html"> while statements</a>.
 
 <pre>
 # unless
-unless (my $ num = 1) {
+unless (my $num = 1) {
   # Can be referenced
-  print $ num;
+  print $num;
 }
 
 # Cannot be referenced
-print $ num;
+print $num;
 </pre>
 
 <pre>
 # while
-while (my $ num = 1) {
+while (my $num = 1) {
   # Can be referenced
-  print $ num;
+  print $num;
 }
 
 # Cannot be referenced
-print $ num;
+print $num;
 </pre>
 
 <h4> for condition part </h4>
@@ -230,13 +230,13 @@ print $ num;
 The lexical variable declared in the condition part of for has the scope of for.
 
 <pre>
-for (my $ i = 0; $ i <@nums; $ i ++) {
+for (my $i = 0; $i <@nums; $i ++) {
   # Can be referenced
-  print $ i;
+  print $i;
 }
 
 # Cannot be referenced
-print $ i;
+print $i;
 </pre>
 
 <h4> variable assignment part of for </h4>
@@ -244,13 +244,13 @@ print $ i;
 The lexical variable declared in the variable assignment part of for has the scope of for.
 
 <pre>
-for my $ num (@nums) {
+for my $num (@nums) {
   # Can be referenced
-  print $ num;
+  print $num;
 }
 
 # Cannot be referenced
-print $ num;
+print $num;
 </pre>
 
 <h4> At the end </h4>

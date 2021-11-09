@@ -57,19 +57,19 @@ use warnings;
 print "1: Return scalar or list depending on context \ n";
 my @nums = (1, 2, 3, 4, 5);
 my @odd_nums = grep_odd_nums (@nums);
-my $ odd_nums_cnt = grep_odd_nums (@nums);
+my $odd_nums_cnt = grep_odd_nums (@nums);
 
 print "In 1-5, the odd numbers are", join (',', @odd_nums). ". \ N";
-print "The odd number is $ odd_nums_cnt. \ N \ n";
+print "The odd number is $odd_nums_cnt. \ N \ n";
 
 # Subroutine that returns an odd list
 sub grep_odd_nums {
   my @nums = @_;
   my @odd_nums;
   
-  for my $ num (@nums) {
-    if ($ num% 2 == 1) {
-      push @odd_nums, $ num;
+  for my $num (@nums) {
+    if ($num% 2 == 1) {
+      push @odd_nums, $num;
     }
   }
 

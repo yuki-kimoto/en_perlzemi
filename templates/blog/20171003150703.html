@@ -31,15 +31,15 @@ Let's write a sample program that gets the directory handle with the opendir fun
 
 <pre>
 # Directory name
-my $ dir ='study';
+my $dir ='study';
 
 # Open directory
-opendir my $ dh, $ dir
-  or die "Can't open directory $ dir: $!";
+opendir my $dh, $dir
+  or die "Can't open directory $dir: $!";
 
 # Read all files
-while (my $ file = readdir $ dh) {
-  print "$ file \ n";
+while (my $file = readdir $dh) {
+  print "$file \ n";
 }
 </pre>
 
@@ -58,9 +58,9 @@ Normally, I don't think you need "." Or "..". So use <a href="/blog/200803291206
 
 <pre>
 # Read all files
-while (my $ file = readdir $ dh) {
-  next if $ file eq'.' || $ file eq' ..';
-  print "$ file \ n";
+while (my $file = readdir $dh) {
+  next if $file eq'.' || $file eq' ..';
+  print "$file \ n";
 }
 </pre>
 
@@ -70,9 +70,9 @@ If you want to make the file list <a href="/blog/20161012147627.html"> array</a>
 
 <pre>
 my @files;
-while (my $ file = readdir $ dh) {
-  next if $ file eq'.' || $ file eq' ..';
-  push @files, $ file;
+while (my $file = readdir $dh) {
+  next if $file eq'.' || $file eq' ..';
+  push @files, $file;
 }
 </pre>
 

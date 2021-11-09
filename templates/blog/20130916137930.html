@@ -37,20 +37,20 @@ A warning is displayed if you use an undefined value. In the following script, t
 use warnings;
 
 # Use undefined value
-my $ str;
-print $ str;
+my $str;
+print $str;
 </pre>
 
 You will see a warning similar to the following:
 
 <pre>
-Use of uninitialized value $ str in print at a.pl line 6
+Use of uninitialized value $str in print at a.pl line 6
 </pre>
 
 Since it is in English, I will translate it.
 
 <pre>
-I am using the undefined value $ str in print. 6th line.
+I am using the undefined value $str in print. 6th line.
 </pre>
 
 If you get a warning that you are using undefined, it means that the variable is left unassigned. In other words, there is a mistake in the script. Let's modify the script so that this warning does not appear.
@@ -64,8 +64,8 @@ use warnings;
 use utf8;
 
 # String is not encoded
-my $ str ='Hello';
-print $ str;
+my $str ='Hello';
+print $str;
 </pre>
 
 You will see a warning similar to the following:
@@ -88,8 +88,8 @@ use utf8;
 use Encode'encode';
 
 # String is not encoded
-my $ str ='Hello';
-print encode ('UTF-8', $ str);
+my $str ='Hello';
+print encode ('UTF-8', $str);
 </pre>
 
 <h3> Subroutines have been redefined </h3>

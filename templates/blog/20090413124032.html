@@ -25,7 +25,7 @@ You can use the <b> fork </b> function to <b> branch a process into two </b>. On
 The fork function takes no arguments. The return value will be the process ID of the branched child process if the branched process is the parent process. 0 for child processes. If fork fails, undef is returned.
 
 <pre>
-my $ pid = fork;
+my $pid = fork;
 </pre>
 
 <h3> Consider the return value of fork </h3>
@@ -33,16 +33,16 @@ my $ pid = fork;
 For the parent process, for the child process, there are three ways to think about fork failure.
 
 <pre>
-my $ pid = fork;
+my $pid = fork;
 
 If # fork fails
-die "Cannot fork: $!" unless defined $ pid;
+die "Cannot fork: $!" unless defined $pid;
 
-if ($ pid) {
-  # For parent process ($ pid is assigned the process ID of the child process)
+if ($pid) {
+  # For parent process ($pid is assigned the process ID of the child process)
 }
 else {
-  # For child processes 0 is assigned to $ pid
+  # For child processes 0 is assigned to $pid
 }
 </pre>
 
@@ -72,12 +72,12 @@ You can use a technique called fork-exec to replace a branched child process wit
 use strict;
 use warnings;
 
-my $ pid = fork;
+my $pid = fork;
 
-die "Cannot fork: $!" unless defined $ pid;
+die "Cannot fork: $!" unless defined $pid;
 
-if ($ pid) {
-  print "parent process (child process ID: $ pid) \ n";
+if ($pid) {
+  print "parent process (child process ID: $pid) \ n";
 }
 else {
   print "child process \ n";

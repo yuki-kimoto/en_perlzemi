@@ -26,14 +26,14 @@ XML is a common format for writing data in text files. It can be used when writi
 <pre>
 # Load module and create object
 use XML :: Simple;
-my $ xml = XML :: Simple-> new;
+my $xml = XML :: Simple-> new;
 </pre>
 
 Use the <strong> XMLin method </strong> to read the XML file. XML is transformed into Perl data structures (multidimensional hashes and arrays).
 
 <pre>
 # XML file parsing
-my $ data = $ xml-> XMLin ('conf.xml');
+my $data = $xml-> XMLin ('conf.xml');
 </pre>
 
 This is a sample XML of the configuration file. Imagine an application that edits multiple logs on multiple systems. Save the file in UTF-8.
@@ -67,7 +67,7 @@ This is a sample XML of the configuration file. Imagine an application that edit
 This file is converted to the following data structure.
 ▼
 <pre>
-$ conf = {
+$conf = {
   'log-types' => {
     'cpu' => {
       'to-dir' =>'edit / cpu',
@@ -108,8 +108,8 @@ Since it is converted to an internal character string, if you want to output it,
 <pre>
 # When outputting, convert from internal character string to byte character string
 use Encode'encode';
-my $ conf = $ xml-> XMLin ('japanese.xml');
-print encode ('UTF-8', $ conf-> {name});
+my $conf = $xml-> XMLin ('japanese.xml');
+print encode ('UTF-8', $conf-> {name});
 </pre>
 
 <h3> XML :: Simple options </h3>
@@ -118,7 +118,7 @@ XML :: Simple allows you to specify options in the constructor arguments.
 
 <pre>
 # Option
-my $ xml = XML :: Simple-> new (ForceArray => 1);
+my $xml = XML :: Simple-> new (ForceArray => 1);
 </pre>
 
 The following two options may be used frequently.

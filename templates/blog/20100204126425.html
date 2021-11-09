@@ -21,25 +21,25 @@
 Use the <strong> binmode function </strong> to change the filehandle to <strong> binary mode </strong>. Binary mode is a mode that does not automatically convert line breaks when inputting / outputting files. Binary files such as images and videos must be input and output in binary mode.
 
 <pre>
-binmode $ fh;
+binmode $fh;
 </pre>
 
 This is a sample to read an image file.
 
 <pre>
 # Read image file
-my $ file ='picture.png';
+my $file ='picture.png';
 
-open my $ fh,'<', $ file
-  or die "Cannot open'$ file': $!";
+open my $fh,'<', $file
+  or die "Cannot open'$file': $!";
 
-binmode $ fh;
+binmode $fh;
 
-my $ size = -s $ file;
+my $size = -s $file;
 
-my $ read = read ($ fh, my $ buffer, $ size, 0);
+my $read = read ($fh, my $buffer, $size, 0);
 
-die "Cannot read'$ file': $!" unless defined $ read;
+die "Cannot read'$file': $!" unless defined $read;
 
-close $ fh;
+close $fh;
 </pre>

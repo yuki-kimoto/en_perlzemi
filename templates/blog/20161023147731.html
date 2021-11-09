@@ -26,8 +26,8 @@ I will explain the basics of conditional branching.
 Use <a href="/blog/20080317120577.html"> if statement</a> to do conditional branching in Perl. First, let's write a simple conditional branch. This is an if statement that outputs "OK" when the value of the variable is "5".
 
 <pre>
-my $ num = 5;
-if ($ num == 5) {
+my $num = 5;
+if ($num == 5) {
   print "OK \ n";
 }
 </pre>
@@ -42,7 +42,7 @@ if (condition) {
 
 <b> == </b> is a comparison operator that returns true if the numbers are equal.
 
-In the case of this example, "$ num == 5" returns true because the variable contains 5.
+In the case of this example, "$num == 5" returns true because the variable contains 5.
 
 And since the condition is true, the contents of the following blocks are executed.
 
@@ -54,8 +54,8 @@ By using <a href="/blog/20080320120602.html"> if ～ else statement</a>, you can
 
 <pre>
 # if statement
-my $ num = 5;
-if ($ num == 5) {
+my $num = 5;
+if ($num == 5) {
   print "OK \ n";
 }
 else {
@@ -69,16 +69,16 @@ You can use <a href="/blog/20080320120602.html"> if ～ elsif statement</a> to d
 
 <pre>
 # if ～ elsif
-my $ num = 5;
-if ($ num == 5) {
+my $num = 5;
+if ($num == 5) {
   print "Number is 5 \ n";
 }
-elsif ($ num == 7) {
+elsif ($num == 7) {
   print "Number is 7 \ n";
 }
 </pre>
 
-In the above case, if "$ num" is 5, "Number is 5" is displayed, and if "$ num" is 7, "Number is 7" is displayed.
+In the above case, if "$num" is 5, "Number is 5" is displayed, and if "$num" is 7, "Number is 7" is displayed.
 
 Note that in C and Java it is "else if", but in Perl it is "els if".
 
@@ -86,14 +86,14 @@ You can specify multiple elsifs.
 
 <pre>
 # Multiple elsif
-my $ num = 5;
-if ($ num == 5) {
+my $num = 5;
+if ($num == 5) {
   print "Number is 5 \ n";
 }
-elsif ($ num == 7) {
+elsif ($num == 7) {
   print "Number is 7 \ n";
 }
-elsif ($ num == 9) {
+elsif ($num == 9) {
   print "Number is 9 \ n";
 }
 </pre>
@@ -103,14 +103,14 @@ elsif can also be used in combination with else. Be sure to write else at the en
 
 <pre>
 # elseif and else combination
-my $ num = 5;
-if ($ num == 5) {
+my $num = 5;
+if ($num == 5) {
   print "Number is 5 \ n";
 }
-elsif ($ num == 7) {
+elsif ($num == 7) {
   print "Number is 7 \ n";
 }
-elsif ($ num == 9) {
+elsif ($num == 9) {
   print "Number is 9 \ n";
 }
 else {
@@ -272,14 +272,14 @@ Please note that this is what makes it different from other languages.
 
 <pre>
 # Numerical comparison
-my $ num = 4;
-if ($ num <6) {
+my $num = 4;
+if ($num <6) {
   ...
 }
 
 # String comparison
-my $ animal ='Cat':
-if ($ animal eq'Dog') {
+my $animal ='Cat':
+if ($animal eq'Dog') {
   ...
 }
 </pre>
@@ -291,17 +291,17 @@ For example, when comparing "1" and "03" numerically, "1" is interpreted as "1" 
 However, when comparing the character strings of "1" and "03", it is judged from the first character, and "1" and "0" are larger for "1" because the character code is larger for "1".
 
 <pre>
-my $ num1 = '1';
-my $ num2 = '03';
+my $num1 = '1';
+my $num2 = '03';
 
 # Numerical comparison
-if ($ num1> $ num2) {
+if ($num1> $num2) {
   # Not executed
   print "OK 1 \ n";
 }
 
 # String comparison
-if ($ num1 gt $ num2) {
+if ($num1 gt $num2) {
   # Be executed
   print "OK 2 \ n";
 }
@@ -425,9 +425,9 @@ Everything is true except what is false above. For example, the following is tru
 <b> Reference or object </b>
 
 <pre>
-my $ nums = [1, 2, 3];
-my $ scores = {};
-my $ object = XML :: Simple-> new;
+my $nums = [1, 2, 3];
+my $scores = {};
+my $object = XML :: Simple-> new;
 </pre>
 
 
@@ -456,8 +456,8 @@ if ("13") {
   # Be executed
 }
 
-my $ object = XML :: Simple-> new;
-if ($ object) {
+my $object = XML :: Simple-> new;
+if ($object) {
   # Be executed
 }
 </pre>
@@ -564,10 +564,10 @@ So far, we've only looked at a single condition, but you can use logical operato
 
 <h4> Logical product (A and B) </h4>
 
-For example, to express the condition that the variable "$ num" is "greater than 1 and less than 5", use <b> && </b> and write as follows.
+For example, to express the condition that the variable "$num" is "greater than 1 and less than 5", use <b> && </b> and write as follows.
 
 <pre>
-if ($ num> 1 && $ num <5) {
+if ($num> 1 && $num <5) {
   ...
 }
 </pre>
@@ -576,10 +576,10 @@ And has the same meaning, but the priority of the operator is low, and it is cus
 
 <h4> OR (A or B) </h4>
 
-Next, to express the condition that the variable "$ num" is "less than 1 or greater than 5", use <b> || </b> and write as follows.
+Next, to express the condition that the variable "$num" is "less than 1 or greater than 5", use <b> || </b> and write as follows.
 
 <pre>
-if ($ num <1 || $ num> 5) {
+if ($num <1 || $num> 5) {
   ...
 }
 </pre>
@@ -588,10 +588,10 @@ Or has the same meaning, but the priority of the operator is low, and it is cust
 
 <h4> Negation (not A) </h4>
 
-To express the condition that the variable "$ num" is "not true", we can use <b>! </B> to write:
+To express the condition that the variable "$num" is "not true", we can use <b>! </B> to write:
 
 <pre>
-if (! $ num)) {
+if (! $num)) {
   ...
 }
 </pre>
@@ -603,7 +603,7 @@ Not has the same meaning, but the operator priority is low, and it seems that it
 Logical operators can be used in combination. You can control the join order of operators by using parentheses.
 
 <pre>
-if ($ num> 10 || (($ num> -3 && $ num <6) &&! ($ Num == 0))) {
+if ($num> 10 || (($num> -3 && $num <6) &&! ($Num == 0))) {
   ...
 }
 </pre>
@@ -627,8 +627,8 @@ Learn about some of the more unusual conditionals that are often used in Perl.
 <a href="/blog/20100125126425.html"> unless statement</a> can write the same processing as when the condition is denied by the if statement.
 
 <pre>
-Execute block if # $ num is not true
-unless ($ num) {
+Execute block if # $num is not true
+unless ($num) {
   ...
 }
 </pre>
@@ -636,7 +636,7 @@ unless ($ num) {
 It has exactly the same meaning as the following if statement.
 
 <pre>
-if (! $ num) {
+if (! $num) {
   ...
 }
 </pre>
@@ -646,7 +646,7 @@ When should the unless statement be used if the meanings are the same? That is w
 For example, if the error checking process is the main process, writing the following is more noticeable than writing using "if" and "!". It is a process to execute a block when a value is not defined using <a href="/blog/20100219126425.html"> define function</a>.
 
 <pre>
-unless (defined $ num) {
+unless (defined $num) {
   ...
 }
 </pre>
@@ -660,8 +660,8 @@ In a typical example, "or" will appear in the error handling when the <a href="/
 If the open function fails and returns a false value, the processing after the "or" is performed.
 
 <pre>
-open (my $ fh, "<", $ file)
-  or die "Can't open $ file: $!";
+open (my $fh, "<", $file)
+  or die "Can't open $file: $!";
 </pre>
 
 The main processing is written first, and the auxiliary error processing is written later using or. One of the interesting things about Perl is that you can write programming in a natural language-like expression like this.
@@ -672,10 +672,10 @@ In Perl, if and unless can be written after the process.
 
 <pre>
 # Postfix if
-$ num1 = 1 if! defined $ num1;
+$num1 = 1 if! defined $num1;
 
 # Postfix unless
-$ num2 = 1 unless defined $ num2;
+$num2 = 1 unless defined $num2;
 </pre>
 
 This is more accurately called the <a href="/blog/20080324120637.html"> if modifier</a> and the <a href="/blog/20080324120637.html"> unless modifier</a>.
@@ -687,12 +687,12 @@ The biggest merit of postfix if and unless is that unlike normal if and unless, 
 I often use it with <a href="/blog/20170513149580.html"> next statement</a> and <a href="/blog/20170527149589.html"> last statement</a>.
 
 <pre>
-for my $ num (@nums) {
-  last if! defined $ num;
+for my $num (@nums) {
+  last if! defined $num;
 }
 
-for my $ num (@nums) {
-  next if! defined $ num;
+for my $num (@nums) {
+  next if! defined $num;
 }
 </pre>
 
@@ -709,13 +709,13 @@ Condition? Value 1: Value 2
 
 If the condition is true, the value 1 is returned, and if false, the value 2 is returned.
 
-In the following example, "Cat" is assigned to "$ animal" when "$ flag" is true, and "Dog" is assigned to "$ animal" when it is false.
+In the following example, "Cat" is assigned to "$animal" when "$flag" is true, and "Dog" is assigned to "$animal" when it is false.
 
 <pre>
-my $ flag = 1;
+my $flag = 1;
 
 # Ternary operator
-my $ animal = $ flag?'Cat':'Dog';
+my $animal = $flag?'Cat':'Dog';
 </pre>
 
 You can do the same with conditional branching using if, but you can write it concisely using the ternary operator.
@@ -725,27 +725,27 @@ You can do the same with conditional branching using if, but you can write it co
 Multiple ternary operators can be used in layers, and can be written in a way that corresponds to "if ~ elsif ~ else".
 
 <pre>
-my $ flag = 2;
+my $flag = 2;
 
-my $ animal =
-    $ flag == 0?'Cat'
-  : $ flag == 1?'Dog'
-  : $ flag == 2?'Mouse'
+my $animal =
+    $flag == 0?'Cat'
+  : $flag == 1?'Dog'
+  : $flag == 2?'Mouse'
   :'Cow';
 </pre>
 
-Since "$ flag" is "2", "Mouse" is assigned to "$ animal". When using ternary operators in layers, it is recommended to write them in multiple lines for easy viewing.
+Since "$flag" is "2", "Mouse" is assigned to "$animal". When using ternary operators in layers, it is recommended to write them in multiple lines for easy viewing.
 
 <h4> Set default values ​​with special assignment operators "|| =" and "// =" </h4>
 
 Perl has a commonly used default value setting method. It is a way to use the <a href="/blog/20161005147566.html"> special assignment operator</a> "|| =" or "// =".
 
 <pre>
-# If "$ x" is false, set "$ x" to 5.
-$ x || = 5;
+# If "$x" is false, set "$x" to 5.
+$x || = 5;
 
-# Set 7 to "$ y" if "$ x" is undefined
-$ y // =7;
+# Set 7 to "$y" if "$x" is undefined
+$y // =7;
 </pre>
 
 For "A || = B", if "A" is false, the content of "B" is assigned to "A".

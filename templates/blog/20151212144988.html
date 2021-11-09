@@ -29,75 +29,75 @@ Validator :: Custom - HTML form validation, concise and flexible
 
 <pre>
   use Validator :: Custom;
-  my $ vc = Validator :: Custom-> new;
+  my $vc = Validator :: Custom-> new;
   
   # Input data
-  my $ id = 1;
-  my $ name ='Ken Suzuki';
-  my $ price = '19.23';
-  my $ favorite = ['001', '002'];
+  my $id = 1;
+  my $name ='Ken Suzuki';
+  my $price = '19.23';
+  my $favorite = ['001', '002'];
   
   # Create validation object
-  my $ validation = $ vc-> validation;
+  my $validation = $vc-> validation;
   
   # Check that "ID" is an integer
-  if (! $ vc-> check ($ id,'int')) {
+  if (! $vc-> check ($id,'int')) {
     # Add message on failure
-    $ validation-> add_failed (id =>'id must be integer');
+    $validation-> add_failed (id =>'id must be integer');
   }
   
   # Check that the "name" has a length
-  if (! (length $ name)) {
-    $ validation-> add_failed (name =>'name must have length');
+  if (! (length $name)) {
+    $validation-> add_failed (name =>'name must have length');
   }
   # Check that the length of the "name" is less than 30
-  elsif (! (length $ name <30)) {
-    $ validation-> add_failed (name =>'name is too long');
+  elsif (! (length $name <30)) {
+    $validation-> add_failed (name =>'name is too long');
   }
   
   # Filter "price" to remove left and right blanks
-  $ price = $ vc-> filter ($ price,'trim');
+  $price = $vc-> filter ($price,'trim');
 
   # Check that "Price" is a number with two decimal places
-  if (! $ vc-> check ($ price ,,'number', {decimal_part_max => 2})) {
+  if (! $vc-> check ($price ,,'number', {decimal_part_max => 2})) {
     # Set default value if validation fail
-    $ price = 20.25;
+    $price = 20.25;
   }
   
   # Filter each value of "Favorites" using the "trim" filter function
-  $ favorite = $ vc-> filter_each ($ favorite,'trim');
+  $favorite = $vc-> filter_each ($favorite,'trim');
   
   # Check that "Favorites" have at least one value
-  if (@ $ favorite == 0) {
-    $ validation-> add_failed (favorite =>'favorite must be selected more than one');
+  if (@ $favorite == 0) {
+    $validation-> add_failed (favorite =>'favorite must be selected more than one');
   }
   # Check that "Favorites" is one of "001", "002", and "003"
-  elsif (! ($ vc-> check_each ($ favorite,'in', ['001', '002', '003']))) {
-    $ validation-> add_failed (favorite =>'favorite is invalid');
+  elsif (! ($vc-> check_each ($favorite,'in', ['001', '002', '003']))) {
+    $validation-> add_failed (favorite =>'favorite is invalid');
   }
   
   # Check if the validation result is correct
-  if ($ validation-> is_valid) {
+  if ($validation-> is_valid) {
     # ...
   }
   else {
     
     # Check which parameter failed
-    unless ($ validation-> is_valid ('name')) {
+    unless ($validation-> is_valid ('name')) {
       # ...
     }
     
     # Get the names of all failed parameters
-    my $ failed = $ validation-> failed;
+    my $failed = $validation-> failed;
 
     # Get message for one failed parameter
-    my $ name_message = $ validation-> message ('name');
+    my $name_message = $validation-> message ('name');
     
     # Get messages for all failed parameters
-    my $ messages = $ validation-> messages;
+    my $messages = $validation-> messages;
     
     # Get the names and messages of all failed parameters as a hash reference
-    my $ messages_h = $ validation-> messages_to_hash;
+    my $messages_h = $validation-> messages_to_hash;
   }
 </pre>
 
@@ -134,7 +134,7 @@ First, use the <b> new </b> method to create a Validator :: Custom object.
 
 <pre>
   use Validator :: Custom;
-  my $ vc = Validator :: Custom-> new;
+  my $vc = Validator :: Custom-> new;
 </pre>
 
 <b> 2. Preparation of input data for validation </b>
@@ -142,10 +142,10 @@ First, use the <b> new </b> method to create a Validator :: Custom object.
 Next, prepare the input data.
 
 <pre>
-  my $ id = 1;
-  my $ name ='Ken Suzuki';
-  my $ price = '19.23';
-  my $ favorite = ['001', '002'];
+  my $id = 1;
+  my $name ='Ken Suzuki';
+  my $price = '19.23';
+  my $favorite = ['001', '002'];
 </pre>
 
 <b> 3. Creating a validation object </b>
@@ -153,7 +153,7 @@ Next, prepare the input data.
 Then use the <b> validation </b> method to create a new validation object.
 
 <pre>
-  my $ validation = $ vc-> validation;
+  my $validation = $vc-> validation;
 </pre>
 
 this is,
@@ -163,9 +163,9 @@ A <a href="/blog/20151210144988.html"> Validator :: Custom :: Validation</a> obj
 
 <pre>
   # Check that "ID" is an integer
-  if (! $ vc-> check ($ id,'int')) {
+  if (! $vc-> check ($id,'int')) {
     # Add message on failure
-    $ validation-> add_failed (id =>'id must be integer');
+    $validation-> add_failed (id =>'id must be integer');
   }
 </pre>
 
@@ -175,26 +175,26 @@ If the check is unsuccessful, give the name and message of the failing parameter
 
 <pre>
   # Filter "price" to remove left and right blanks
-  $ price = $ vc-> filter ($ price,'trim');
+  $price = $vc-> filter ($price,'trim');
 </pre>
 
 You can use the <b> trim </b> filter function to remove the left and right spaces.
 
 <pre>
   # Filter each value of "Favorites" using the "trim" filter function
-  $ favorite = $ vc-> filter_each ($ favorite,'trim');
+  $favorite = $vc-> filter_each ($favorite,'trim');
 </pre>
 
 You can use the <b> filter_each </b> method to filter each value of "Favorites".
 
 <pre>
   # Check that "Favorites" have at least one value
-  if (@ $ favorite == 0) {
-    $ validation-> add_failed (favorite =>'favorite must be selected more than one');
+  if (@ $favorite == 0) {
+    $validation-> add_failed (favorite =>'favorite must be selected more than one');
   }
   # Check that "Favorites" is one of "001", "002", and "003"
-  elsif (! ($ vc-> check_each ($ favorite,'in', ['001', '002', '003']))) {
-    $ validation-> add_failed (favorite =>'favorite is invalid');
+  elsif (! ($vc-> check_each ($favorite,'in', ['001', '002', '003']))) {
+    $validation-> add_failed (favorite =>'favorite is invalid');
   }
 </pre>
 
@@ -208,7 +208,7 @@ Use the <b> is_valid </b> method to check that all input data is correct.
 
 <pre>
   # Make sure the validation results are correct
-  if($ validation-> is_valid) {
+  if($validation-> is_valid) {
     # Success
   }
   else {
@@ -220,7 +220,7 @@ If you want to check if one input data is correct, use the <b> is_valid </b> met
 
 <pre>
   # Check which parameter failed
-  unless ($ validation-> is_valid ('name')) {
+  unless ($validation-> is_valid ('name')) {
     # ...
   }
 </pre>
@@ -229,28 +229,28 @@ You can use the <b> failed </b> method to get the names of all parameters that f
 
 <pre>
   # Get the names of all parameters that failed validation
-  my $ failed = $ validation-> failed;
+  my $failed = $validation-> failed;
 </pre>
 
 You can use the <b> message </b> method to get the message of the parameter that failed validation.
 
 <pre>
   # Get message for parameters that failed validation
-  my $ name_message = $ validation-> message ('name');
+  my $name_message = $validation-> message ('name');
 </pre>
 
 You can use the <b> messages </b> method to get messages for all parameters that failed validation.
 
 <pre>
   # Get messages for all parameters that failed validation
-  my $ messages = $ validation-> messages;
+  my $messages = $validation-> messages;
 </pre>
 
 You can use the <b> messages_to_hash </b> method to get the names and messages of all parameters that failed validation in hash-reference format.
 
 <pre>
   # Get the names and messages of all failed parameters as a hash reference
-  my $ messages_h = $ validation-> messages_to_hash;
+  my $messages_h = $validation-> messages_to_hash;
 </pre>
 
 Please also refer to <a href="/blog/20151210144988.html"> Validator :: Custom :: Validation</a>.
@@ -262,15 +262,15 @@ Please also refer to <a href="/blog/20151210144988.html"> Validator :: Custom ::
 If you want, you can add the check function yourself using the <b> add_check </b> method.
 
 <pre>
-  $ vc-> add_check (
+  $vc-> add_check (
     telephone => sub {
-      my ($ vc, $ value, $ arg) = @_;
+      my ($vc, $value, $arg) = @_;
       
-      my $ is_valid;
-      if ($ value = ~ / ^ [\ d-] + $ /) {
-        $ is_valid = 1;
+      my $is_valid;
+      if ($value = ~ / ^ [\ d-] + $/) {
+        $is_valid = 1;
       }
-      return $ is_valid;
+      return $is_valid;
     }
   );
 </pre>
@@ -284,13 +284,13 @@ The check function must return a true or false value.
 If you want, you can add the filter function yourself using the <b> add_filter </b> method.
 
 <pre>
-  $ vc-> add_filter (
+  $vc-> add_filter (
     to_upper_case => sub {
-      my ($ vc, $ value, $ arg) = @_;
+      my ($vc, $value, $arg) = @_;
       
-      my $ new_ $ value = uc $ value;
+      my $new_ $value = uc $value;
                   
-      return $ new_value;
+      return $new_value;
     }
   );
 </pre>
@@ -306,8 +306,8 @@ Validator :: Custom has the following default check functions: All check functio
 <h4> int </h4>
 
 <pre>
-  my $ value = 19;
-  my $ is_valid = $ vc-> check ($ value,'int');
+  my $value = 19;
+  my $is_valid = $vc-> check ($value,'int');
 </pre>
 
 Check if it is an integer value.
@@ -329,13 +329,13 @@ Illegal value example
 If you also want to check the range of values, you can write:
 
 <pre>
-  my $ is_valid = $ vc-> check ($ value,'int') && $ value> 0;
+  my $is_valid = $vc-> check ($value,'int') && $value> 0;
 </pre>
 
 <h4> number </h4>
 
 <pre>
-  my $ is_valid = $ vc-> check ($ value,'number');
+  my $is_valid = $vc-> check ($value,'number');
 </pre>
 
 Checks if the value is a number. Numbers mean integers and decimals.
@@ -362,7 +362,7 @@ Illegal value example:
 You can also use the <b> decimal_part_max </b> option to specify the maximum number of decimal places.
 
 <pre>
-  my $ is_valid = $ vc-> check ($ value,'number', {decimal_part_max => 3});
+  my $is_valid = $vc-> check ($value,'number', {decimal_part_max => 3});
 </pre>
 
 Example of correct value:
@@ -383,7 +383,7 @@ Illegal value example:
 <h4> ascii_graphic </h4>
 
 <pre>
-  my $ is_valid = $ vc-> check ($ value,'ascii');
+  my $is_valid = $vc-> check ($value,'ascii');
 </pre>
 
 Check if the value is an ASCII graphic character (hexadecimal "21-7e"). Generally, it is used to check the characters of the password.
@@ -404,8 +404,8 @@ Illegal value example:
 <h4> in </h4>
 
 <pre>
-  my $ value = '001';
-  my $ is_valid = $ vc-> check ($ value,'in', ['001', '002', '003']);
+  my $value = '001';
+  my $is_valid = $vc-> check ($value,'in', ['001', '002', '003']);
 </pre>
 
 Checks if the value is one of several given values.
@@ -432,7 +432,7 @@ Validator :: Custom has the following default filter functions: All filter funct
 <h4> trim </h4>
 
 <pre>
-  my $ new_value = $ vc-> filter ($ value,'trim');
+  my $new_value = $vc-> filter ($value,'trim');
 </pre>
 
 Remove the leading and trailing blanks. Note that it removes Unicode whitespace as well as ASCII whitespace [\ t \ n \ r \ f].
@@ -447,7 +447,7 @@ Filtering example:
 <h4> remove_blank </h4>
 
 <pre>
-  my $ new_values ​​= $ vc-> filter ($ values,'remove_blank');
+  my $new_values ​​= $vc-> filter ($values,'remove_blank');
 </pre>
 
 Removes empty and undefined characters from the array reference.
@@ -466,7 +466,7 @@ Validator :: Custom inherits all the methods of <a href="http://search.cpan.org/
 <h4> new </h4>
 
 <pre>
-  my $ vc = Validator :: Custom-> new;
+  my $vc = Validator :: Custom-> new;
 </pre>
 
 Create a new Validator :: Custom object.
@@ -474,7 +474,7 @@ Create a new Validator :: Custom object.
 <h4> add_check </h4>
 
 <pre>
-  $ vc-> add_check (int => sub {...});
+  $vc-> add_check (int => sub {...});
 </pre>
 
 Add a check function.
@@ -482,13 +482,13 @@ Add a check function.
 sample:
 
 <pre>
-  $ vc-> add_check (
+  $vc-> add_check (
     int => sub {
-      my ($ vc, $ value, $ arg) = @_;
+      my ($vc, $value, $arg) = @_;
       
-      my $ is_valid = $ value = ~ / ^ \-? [\ D] + $ /;
+      my $is_valid = $value = ~ / ^ \-? [\ D] + $/;
       
-      return $ is_valid;
+      return $is_valid;
     }
   );
 </pre>
@@ -498,7 +498,7 @@ The check function takes three arguments. The first argument is the Validator ::
 <h4> add_filter </h4>
 
 <pre>
-  $ vc-> add_filter (trim => sub {...});
+  $vc-> add_filter (trim => sub {...});
 </pre>
 
 Add a filter function.
@@ -506,14 +506,14 @@ Add a filter function.
 sample:
 
 <pre>
-  $ vc-> add_filter (
+  $vc-> add_filter (
     trim => sub {
-      my ($ vc, $ value, $ arg) = @_;
+      my ($vc, $value, $arg) = @_;
       
-      $ value = ~ s / ^ \ s + //;
-      $ value = ~ s / \ s + $ //;
+      $value = ~ s / ^ \ s + //;
+      $value = ~ s / \ s + $//;
       
-      return $ value;
+      return $value;
     }
   );
 </pre>
@@ -525,8 +525,8 @@ The filter function should return the result of the filter.
 <h4> check </h4>
 
 <pre>
-  my $ is_valid = $ vc-> check ($ value,'int');
-  my $ is_valid = $ vc-> check ($ value,'int', $ arg);
+  my $is_valid = $vc-> check ($value,'int');
+  my $is_valid = $vc-> check ($value,'int', $arg);
 </pre>
 
 Execute the check function.
@@ -536,8 +536,8 @@ The first argument is the value to check. The second argument is the name of the
 <h4> check_each </h4>
 
 <pre>
-  my $ is_valid = $ vc-> check_each ($ values,'int');
-  my $ is_valid = $ vc-> check_each ($ values,'int', $ arg);
+  my $is_valid = $vc-> check_each ($values,'int');
+  my $is_valid = $vc-> check_each ($values,'int', $arg);
 </pre>
 
 Executes the check function on all elements of the array reference. If one or more values ​​are invalid, the <b> check_each </b> method returns a fake value.
@@ -547,8 +547,8 @@ The first argument is the value to check. This should be an array reference. The
 <h4> filter </h4>
 
 <pre>
-  my $ new_value = $ vc-> filter ($ value,'trim');
-  my $ new_value = $ vc-> filter ($ value,'trim', $ arg);
+  my $new_value = $vc-> filter ($value,'trim');
+  my $new_value = $vc-> filter ($value,'trim', $arg);
 </pre>
 
 Execute the filter function.
@@ -558,8 +558,8 @@ The first argument is the value to filter. The second argument is the name of th
 <h4> filter_each </h4>
 
 <pre>
-  my $ new_values ​​= $ vc-> filter_each ($ values,'trim');
-  my $ new_values ​​= $ vc-> filter_each ($ values,'trim', $ arg);
+  my $new_values ​​= $vc-> filter_each ($values,'trim');
+  my $new_values ​​= $vc-> filter_each ($values,'trim', $arg);
 </pre>
 
 Executes the filter function on all elements of the array reference.
@@ -573,22 +573,22 @@ Here are some samples for validation.
 Password check:
 
 <pre>
-  my $ password ='abc';
-  my $ password2 ='abc';
+  my $password ='abc';
+  my $password2 ='abc';
   
-  my $ validation = $ vc-> validation;
+  my $validation = $vc-> validation;
   
-  if (! length $ password) {
-    $ validation-> add_failed (password =>'password must have length');
+  if (! length $password) {
+    $validation-> add_failed (password =>'password must have length');
   }
-  elsif (! $ vc-> check ($ password,'ascii')) {
-    $ validation-> add_failed (password =>'password contains invalid characters');
+  elsif (! $vc-> check ($password,'ascii')) {
+    $validation-> add_failed (password =>'password contains invalid characters');
   }
-  elsif ($ password ne $ password2) {
-    $ validation-> add_failed (password => "two passwords don't match");
+  elsif ($password ne $password2) {
+    $validation-> add_failed (password => "two passwords don't match");
   }
   
-  if ($ validation-> is_valid) {
+  if ($validation-> is_valid) {
     # ...
   }
   else {
@@ -599,19 +599,19 @@ Password check:
 At least one check box is selected. Specific value.
 
 <pre>
-  my $ favorite = ['001', '002'];
+  my $favorite = ['001', '002'];
 
-  my $ validation = $ vc-> validation;
+  my $validation = $vc-> validation;
   
-  if (@ $ favorite == 0) {
+  if (@ $favorite == 0) {
 
-    $ validation-> add_failed (favorite =>'favorite must be selected at least 1');
+    $validation-> add_failed (favorite =>'favorite must be selected at least 1');
   }
-  elsif (! $ V c-> check ($ favorite,'in', ['001', '002', '003'])) {
-    $ validation-> add_failed (favorite =>'favorite have invalid value');
+  elsif (! $V c-> check ($favorite,'in', ['001', '002', '003'])) {
+    $validation-> add_failed (favorite =>'favorite have invalid value');
   }
   
-  if ($ validation-> is_valid) {
+  if ($validation-> is_valid) {
     # ...
   }
   else {
@@ -622,18 +622,18 @@ At least one check box is selected. Specific value.
 Convert date string to Time :: Piece object:
 
 <pre>
-  my $ date = '2014/05/16';
+  my $date = '2014/05/16';
   
-  my $ validation = $ vc-> validation;
+  my $validation = $vc-> validation;
   
-  my $ date_tp;
-  if (! length $ datetime) {
-    $ validation-> add_failed (date =>'date must have length');
+  my $date_tp;
+  if (! length $datetime) {
+    $validation-> add_failed (date =>'date must have length');
   }
   else {
-    eval {$ date_tp = Time :: Piece-> strptime ($ date,'% Y /% m /% d')};
-    if (! $ date_tp) {
-      $ validation-> add_failed (date =>'date value is invalid');
+    eval {$date_tp = Time :: Piece-> strptime ($date,'% Y /% m /% d')};
+    if (! $date_tp) {
+      $validation-> add_failed (date =>'date value is invalid');
     }
   }
 </pre>
@@ -641,18 +641,18 @@ Convert date string to Time :: Piece object:
 Convert datetime string to Time :: Piece object:
 
 <pre>
-  my $ datetime = '2014/05/16 12:30:40';
+  my $datetime = '2014/05/16 12:30:40';
   
-  my $ validation = $ vc-> validation;
+  my $validation = $vc-> validation;
   
-  my $ datetime_tp;
-  if (! length $ datetime) {
-    $ validation-> add_failed (datetime =>'datetime must have length');
+  my $datetime_tp;
+  if (! length $datetime) {
+    $validation-> add_failed (datetime =>'datetime must have length');
   }
   else {
-    eval {$ datetime_tp = Time :: Piece-> strptime ($ datetime,'% Y /% m /% d% H:% M:% S')};
-    if (! $ Datetime_tp) {
-      $ validation-> add_failed (datetime =>'datetime value is invalid');
+    eval {$datetime_tp = Time :: Piece-> strptime ($datetime,'% Y /% m /% d% H:% M:% S')};
+    if (! $Datetime_tp) {
+      $validation-> add_failed (datetime =>'datetime value is invalid');
     }
   }
 </pre>
@@ -692,62 +692,62 @@ I will show you some samples.
 space
 
 <pre>
-  $ vc-> add_check (space => sub {
-    my ($ vc, $ value, $ arg) = @_;
-    return defined $ value && $ value = ~'^ [\ t \ n \ r \ f] * $'? 1: 0;
+  $vc-> add_check (space => sub {
+    my ($vc, $value, $arg) = @_;
+    return defined $value && $value = ~'^ [\ t \ n \ r \ f] * $'? 1: 0;
   });
 </pre>
 
 http_url
 
 <pre>
-  $ vc-> add_check (http_url => sub {
-    my ($ vc, $ value, $ arg) = @_;
-    return defined $ value && $ value = ~ / ^ s? https ?: \ / \ / [-_.! ~ *'() A-zA-Z0-9; \ /?: ​​\ @ & = + \ $, % # ] + $ /? 1: 0;
+  $vc-> add_check (http_url => sub {
+    my ($vc, $value, $arg) = @_;
+    return defined $value && $value = ~ / ^ s? https ?: \ / \ / [-_.! ~ *'() A-zA-Z0-9; \ /?: ​​\ @ & = + \ $, % # ] + $/? 1: 0;
   });
 </pre>
 
 decimal
 
 <pre>
-  $ vc-> add_check (decimal => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_check (decimal => sub {
+    my ($vc, $value, $arg) = @_;
 
-    return undef unless defined $ value;
+    return undef unless defined $value;
     
-    my $ digits_tmp = $ arg;
+    my $digits_tmp = $arg;
     
     # Digit
-    my $ digits;
-    if (defined $ digits_tmp) {
-      if (ref $ digits_tmp eq'ARRAY') {
-        $ digits = $ digits_tmp;
+    my $digits;
+    if (defined $digits_tmp) {
+      if (ref $digits_tmp eq'ARRAY') {
+        $digits = $digits_tmp;
       }
       else {
-        $ digits = [$ digits_tmp, undef];
+        $digits = [$digits_tmp, undef];
       }
     }
     else {
-      $ digits = [undef, undef];
+      $digits = [undef, undef];
     }
     
     # Regex
-    my $ re;
-    if (defined $ digits-> [0] && defined $ digits-> [1]) {
-      $ re = qr / ^ [0-9] {1, $ digits-> [0]} (\. [0-9] {0, $ digits-> [1]})? $ /;
+    my $re;
+    if (defined $digits-> [0] && defined $digits-> [1]) {
+      $re = qr / ^ [0-9] {1, $digits-> [0]} (\. [0-9] {0, $digits-> [1]})? $/;
     }
-    elsif (defined $ digits-> [0]) {
-      $ re = qr / ^ [0-9] {1, $ digits-> [0]} (\. [0-9] *)? $ /;
+    elsif (defined $digits-> [0]) {
+      $re = qr / ^ [0-9] {1, $digits-> [0]} (\. [0-9] *)? $/;
     }
-    elsif (defined $ digits-> [1]) {
-      $ re = qr / ^ [0-9] + (\. [0-9] {0, $ digits-> [1]})? $ /;
+    elsif (defined $digits-> [1]) {
+      $re = qr / ^ [0-9] + (\. [0-9] {0, $digits-> [1]})? $/;
     }
     else {
-      $ re = qr / ^ [0-9] + (\. [0-9] *)? $ /;
+      $re = qr / ^ [0-9] + (\. [0-9] *)? $/;
     }
     
     # Check value
-    if ($ value = ~ / $ re /) {
+    if ($value = ~ / $re /) {
       return 1;
     }
     else {
@@ -763,100 +763,100 @@ I will show you some samples.
 trim_collapse
 
 <pre>
-  $ vc-> add_filter (trim_collapse => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_collapse => sub {
+    my ($vc, $value, $arg) = @_;
     
-    return undef unless defined $ value;
+    return undef unless defined $value;
     
-    $ value = ~ s / [\ t \ n \ r \ f] + / / g;
-    $ value= ~ s / ^ [\ t \ n \ r \ f] * (. *?) [\ T \ n \ r \ f] * $ / $ 1 / ms;
+    $value = ~ s / [\ t \ n \ r \ f] + / / g;
+    $value= ~ s / ^ [\ t \ n \ r \ f] * (. *?) [\ T \ n \ r \ f] * $/ $1 / ms;
 
-    return $ value;
+    return $value;
   });
 </pre>
 
 trim_lead
 
 <pre>
-  $ vc-> add_filter (trim_lead => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_lead => sub {
+    my ($vc, $value, $arg) = @_;
     
-    return undef unless defined $ value;
+    return undef unless defined $value;
 
-    $ value = ~ s / ^ [\ t \ n \ r \ f] + (. *) $ / $ 1 / ms;
+    $value = ~ s / ^ [\ t \ n \ r \ f] + (. *) $/ $1 / ms;
 
-    return $ value;
+    return $value;
   });
 </pre>
 
 trim_trail
 
 <pre>
-  $ vc-> add_filter (trim_trail => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_trail => sub {
+    my ($vc, $value, $arg) = @_;
     
-    return undef unless defined $ value;
+    return undef unless defined $value;
 
-    $ value = ~ s / ^ (. *?) [\ T \ n \ r \ f] + $ / $ 1 / ms;
+    $value = ~ s / ^ (. *?) [\ T \ n \ r \ f] + $/ $1 / ms;
 
-    return $ value;
+    return $value;
   });
 </pre>
 
 trim_uni
 
 <pre>
-  $ vc-> add_filter (trim_uni => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_uni => sub {
+    my ($vc, $value, $arg) = @_;
     
-    return undef unless defined $ value;
+    return undef unless defined $value;
 
-    $ value = ~ s / ^ \ s * (. *?) \ S * $ / $ 1 / ms;
+    $value = ~ s / ^ \ s * (. *?) \ S * $/ $1 / ms;
 
-    return $ value;
+    return $value;
   });
 </pre>
 
 trim_uni_collapse
 
 <pre>
-  $ vc-> add_filter (trim_uni_collapse => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_uni_collapse => sub {
+    my ($vc, $value, $arg) = @_;
 
-    return undef unless defined $ value;
+    return undef unless defined $value;
     
-    $ value = ~ s / \ s + / / g;
-    $ value = ~ s / ^ \ s * (. *?) \ S * $ / $ 1 / ms;
+    $value = ~ s / \ s + / / g;
+    $value = ~ s / ^ \ s * (. *?) \ S * $/ $1 / ms;
 
-    return $ value;
+    return $value;
   });
 </pre>
 
 trim_uni_lead
 
 <pre>
-  $ vc-> add_filter (trim_uni_lead => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_uni_lead => sub {
+    my ($vc, $value, $arg) = @_;
     
-    return undef unless defined $ value;
+    return undef unless defined $value;
     
-    $ value = ~ s / ^ \ s + (. *) $ / $ 1 / ms;
+    $value = ~ s / ^ \ s + (. *) $/ $1 / ms;
     
-    return $ value;
+    return $value;
   });
 </pre>
 
 trim_uni_trail
 
 <pre>
-  $ vc-> add_filter (trim_uni_trail => sub {
-    my ($ vc, $ value, $ arg) = @_;
+  $vc-> add_filter (trim_uni_trail => sub {
+    my ($vc, $value, $arg) = @_;
     
-    return undef unless defined $ value;
+    return undef unless defined $value;
 
-    $ value = ~ s / ^ (. *?) \ S + $ / $ 1 / ms;
+    $value = ~ s / ^ (. *?) \ S + $/ $1 / ms;
 
-    return $ value;
+    return $value;
   });
 </pre>
 
@@ -896,20 +896,20 @@ To determine that it is <strong> Hiragana </strong> and </strong> Katakana </str
 
 <pre>
 # Hiragana
-$ vc-> add_check (
+$vc-> add_check (
   hiragana => sub {
-    my ($ vc, $ value) = @_;
-    my $ is_valid = $ value = ~ / ^ \ p {InHiragana} + $ /;
-    return $ is_valid;
+    my ($vc, $value) = @_;
+    my $is_valid = $value = ~ / ^ \ p {InHiragana} + $/;
+    return $is_valid;
   }
 );
 
 # Katakana
-$ vc-> add_check (
+$vc-> add_check (
   katakana => sub {
-    my ($ vc, $ value) = @_;
-    my $ is_valid = $ value = ~ / ^ \ p {InKatakana} + $ /
-    return $ is_valid;
+    my ($vc, $value) = @_;
+    my $is_valid = $value = ~ / ^ \ p {InKatakana} + $/
+    return $is_valid;
   }
 );
 </pre>
@@ -921,10 +921,10 @@ Email validation is not provided as a default check function. If necessary, it i
 <pre>
 use Email :: Valid :: Loose;
 
-$ vc-> add_check (
+$vc-> add_check (
   email => sub {
-    my ($ vc, $ value) = @_;
-    return Email :: Valid :: Loose-> address ($ value);
+    my ($vc, $value) = @_;
+    return Email :: Valid :: Loose-> address ($value);
   }
 );
 </pre>

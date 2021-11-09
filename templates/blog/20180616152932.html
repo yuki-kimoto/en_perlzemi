@@ -22,7 +22,7 @@
 You can use the <b> syswrite function </b> to write a specified number of bytes to a file.
 
 <pre>
-syswrite $ fh, $ buffer, $ byte_size;
+syswrite $fh, $buffer, $byte_size;
 </pre>
 
 The first argument is the file handle, the second argument is the scalar variable that is the data to write, and the third argument is the byte size.
@@ -48,12 +48,12 @@ use strict;
 use warnings;
 
 # Open the file to write
-my $ file ='data.txt';
-open my $ fh,'>', $ file
-  or die "Can't open file $ file: $!";
+my $file ='data.txt';
+open my $fh,'>', $file
+  or die "Can't open file $file: $!";
 
 # syswrite function
-my $ buffer ='AGTC';
-my $ byte_size = length $ buffer;
-syswrite $ fh, $ buffer, $ byte_size;
+my $buffer ='AGTC';
+my $byte_size = length $buffer;
+syswrite $fh, $buffer, $byte_size;
 </pre>

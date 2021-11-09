@@ -22,7 +22,7 @@
 The <b> pack function </b> packs the data into various binary formats.
 
 <pre>
-my $ packed = pack ($ format, @values);
+my $packed = pack ($format, @values);
 </pre>
 
 The first argument specifies the binary data format.
@@ -36,7 +36,7 @@ The return value is the packed data.
 As an example, to pack three integers into a signed 32-bit binary format:
 
 <pre>
-my $ packed = pack ("l3", 7, 8, 9);
+my $packed = pack ("l3", 7, 8, 9);
 </pre>
 
 First, 7, 8 and 9 are Perl data. Pack this into a signed 32-bit binary format.
@@ -53,7 +53,7 @@ In this example, we are passing a list as an argument, but you can also pass a <
 
 <pre>
 my @values ​​= (7, 8, 9);
-my $ packed = pack ("l3", @values);
+my $packed = pack ("l3", @values);
 </pre>
 
 <h4> Pack floating point into signed double binary format </h4>
@@ -61,7 +61,7 @@ my $ packed = pack ("l3", @values);
 Let's pack the three floating point numbers into a double precision floating point double binary format.
 
 <pre>
-my $ packed = pack ("d3", 0.5, 1.2, 5.4);
+my $packed = pack ("d3", 0.5, 1.2, 5.4);
 </pre>
 
 Double-precision floating point numbers can be packed with the symbol "d".
@@ -72,20 +72,20 @@ To write binary data, set the filehandle to binary mode using the <a href="/blog
 
 <pre>
 # Packed binary data
-my $ packed = pack ("l3", 7, 8, 9);
+my $packed = pack ("l3", 7, 8, 9);
 
 # Open file
-open my $ fh,'<', $ file
-  or die "Can't open $ file: $!";
+open my $fh,'<', $file
+  or die "Can't open $file: $!";
 
 # Change to binary mode
-binmode $ fh;
+binmode $fh;
 
 # Write binary data
-print $ fh $ data;
+print $fh $data;
 
 # Close file
-close $ fh;
+close $fh;
 </pre>
 
 <h4> To change endianness </h4>
@@ -94,10 +94,10 @@ The conversion from big endian to little endian can be done using "N" and "V". T
 
 <pre>
 # Big endian value to Perl value
-my $ value = unpack ('N1', $ value_big);
+my $value = unpack ('N1', $value_big);
 
 # Perl value to little endian
-my $ value_litte = pack ('V1', $ value);
+my $value_litte = pack ('V1', $value);
 </pre>
 
 <h4> How to restore packed data </​​h4>

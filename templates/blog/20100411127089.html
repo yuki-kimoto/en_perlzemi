@@ -21,7 +21,7 @@ Use the die function to raise an exception. When die is executed, the program wi
 
 <pre>
 # Raise an exception
-die $ message;
+die $message;
 </pre>
 
 Let's write a sample that raises an exception. I am trying to raise an exception if the value is not a positive integer in the function. The program will display a message and exit.
@@ -31,10 +31,10 @@ Let's write a sample that raises an exception. I am trying to raise an exception
 is_int ('a');
 
 sub is_int {
-  my $ num = shift;
+  my $num = shift;
   
   # Throw an exception if the value is not a positive integer
-  die "\" $ num \ "must be number" unless $ num = ~ / ^ \ d + $ /;
+  die "\" $num \ "must be number" unless $num = ~ / ^ \ d + $/;
 }
 </pre>
 
@@ -46,10 +46,10 @@ You can catch an exception if you don't want the program to terminate when the c
 eval {Handling that raises an exception};
 </pre>
 
-When an exception occurs, the message specified by the die function is stored in a special variable called $ @. Write the processing when an exception occurs using this $ @.
+When an exception occurs, the message specified by the die function is stored in a special variable called $@. Write the processing when an exception occurs using this $@.
 
 <pre>
-if ($ @) {
+if ($@) {
     # What to do if an exception occurs
 }
 </pre>
@@ -63,15 +63,15 @@ This is a sample to catch the exception that occurred in the is_int function.
 eval {is_int ('a')};
 
 # What to do if an exception occurs
-if ($ @) {
-  print "Exception occur: $ @";
+if ($@) {
+  print "Exception occur: $@";
 }
 
 sub is_int {
-  my $ num = shift;
+  my $num = shift;
   
   # Throw an exception if the value is not a positive integer
-  die "\" $ num \ "must be number." unless $ num = ~ / ^ \ d + $ /;
+  die "\" $num \ "must be number." unless $num = ~ / ^ \ d + $/;
 }
 </pre>
 

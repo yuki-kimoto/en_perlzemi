@@ -29,24 +29,24 @@ use utf8;
 
 use Text :: CSV :: Encoded;
 
-my $ file = shift;
+my $file = shift;
 
-my $ encoding ='UTF-8';
-my $ csv = Text :: CSV :: Encoded-> new ({{
-  encoding_in => $ encoding,
-  encoding_out => $ encoding
+my $encoding ='UTF-8';
+my $csv = Text :: CSV :: Encoded-> new ({{
+  encoding_in => $encoding,
+  encoding_out => $encoding
 });
 
-open my $ fh, "<", $ file
-  or die "Can't open $ file: $!";
+open my $fh, "<", $file
+  or die "Can't open $file: $!";
 
-while (my $ fields = $ csv-> getline ($ fh)) {
+while (my $fields = $csv-> getline ($fh)) {
 
   # Edit data (here, put the word edit in the first field)
-  $ fields-> [0]. ='Edit';
+  $fields-> [0]. ='Edit';
   
   # Output field data
-  $ csv-> print (* STDOUT, $ fields);
+  $csv-> print (* STDOUT, $fields);
   
   # Output line breaks
   print "\ n";

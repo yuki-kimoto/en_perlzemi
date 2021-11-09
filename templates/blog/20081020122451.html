@@ -25,33 +25,33 @@ use warnings;
 
 # Difference is 2 seconds Calculate this
 print "(1) Find the time difference (time includes date) \ n";
-my $ time_str1 = '30 / Sep / 2006: 23: 59: 59';
-my $ time_str2 = '01 / Oct / 2006: 00: 00: 01';
+my $time_str1 = '30 / Sep / 2006: 23: 59: 59';
+my $time_str2 = '01 / Oct / 2006: 00: 00: 01';
 
 
 # Converts a string representation of time into a hash of time information, including dates.
-my $ time1 = time_from_str ($ time_str1);
-my $ time2 = time_from_str ($ time_str2);
+my $time1 = time_from_str ($time_str1);
+my $time2 = time_from_str ($time_str2);
 
 # Convert time information hash to seconds to calculate elapsed seconds
-my $ sec_interval = time_to_sec ($ time2) - time_to_sec ($ time1);
+my $sec_interval = time_to_sec ($time2) - time_to_sec ($time1);
 
-print "Time difference is $ sec_interval seconds. \ N";
+print "Time difference is $sec_interval seconds. \ N";
 
 
 # A function that converts a string representation of time into a hash that represents time information
 sub time_from_str {
-  my $ time_str = shift;
-  return unless $ time_str;
+  my $time_str = shift;
+  return unless $time_str;
   
-  my $ time = {};
+  my $time = {};
   
   # If it matches the format of the time including the date
-  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ # ) {
+  if ($time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
     
     # Create hash
-    @ {$ time} {qw / mday mon year hour min sec /}
-      = ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6);
+    @ {$time} {qw / mday mon year hour min sec /}
+      = ($1, $2, $3, $4, $5, $6);
     
     # Hash corresponding to the English notation of the month and the number of the month
     my% num_of_mon = (
@@ -60,45 +60,45 @@ sub time_from_str {
     );
 
     # Return if the month notation is incorrect
-    $ time-> {mon} = $ num_of_mon {lc ($ time-> {mon})};
-    return unless defined $ time-> {mon};
+    $time-> {mon} = $num_of_mon {lc ($time-> {mon})};
+    return unless defined $time-> {mon};
     
-    $ time-> {year}-= 1900;
+    $time-> {year}-= 1900;
     
-    return wantarray?% $ time: $ time;
+    return wantarray?% $time: $time;
   }
   return;
 }
 
 # Function to convert time to seconds
 sub time_to_sec {
-  my $ time;
-  if (ref $ _ [0] eq'HASH') {
-    $ time = shift;
+  my $time;
+  if (ref $_ [0] eq'HASH') {
+    $time = shift;
   }
   else {
-    % $ time = @_;
+    % $time = @_;
   }
   
-  return unless defined $ time-> {sec};
-  return unless defined $ time-> {min};
-  return unless defined $ time-> {hour};
-  return unless defined $ time-> {mday};
-  return unless defined $ time-> {mon};
-  return unless defined $ time-> {year};
+  return unless defined $time-> {sec};
+  return unless defined $time-> {min};
+  return unless defined $time-> {hour};
+  return unless defined $time-> {mday};
+  return unless defined $time-> {mon};
+  return unless defined $time-> {year};
   
   Convert to seconds using the # Time :: Local module
   require Time :: Local;
-  my $ sec = Time :: Local :: timelocal (
-    $ time-> {sec},
-    $ time-> {min},
-    $ time-> {hour},
-    $ time-> {mday},
-    $ time-> {mon},
-    $ time-> {year},
+  my $sec = Time :: Local :: timelocal (
+    $time-> {sec},
+    $time-> {min},
+    $time-> {hour},
+    $time-> {mday},
+    $time-> {mon},
+    $time-> {year},
   );
   
-  return $ sec;
+  return $sec;
 }
 </pre>
 
@@ -120,17 +120,17 @@ After cutting out the date and time with a regular expression, the English name 
 
 <pre>
 sub time_from_str {
-  my $ time_str = shift;
-  return unless $ time_str;
+  my $time_str = shift;
+  return unless $time_str;
   
-  my $ time = {};
+  my $time = {};
   
   # If it matches the format of the time including the date
-  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ # ) {
+  if ($time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
     
     # Create hash
-    @ {$ time} {qw / mday mon year hour min sec /}
-      = ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6);
+    @ {$time} {qw / mday mon year hour min sec /}
+      = ($1, $2, $3, $4, $5, $6);
     
     # Hash corresponding to the English notation of the month and the number of the month
     my% num_of_mon = (
@@ -139,12 +139,12 @@ sub time_from_str {
     );
 
     # Return if the month notation is incorrect
-    $ time-> {mon} = $ num_of_mon {lc ($ time-> {mon})};
-    return unless defined $ time-> {mon};
+    $time-> {mon} = $num_of_mon {lc ($time-> {mon})};
+    return unless defined $time-> {mon};
     
-    $ time-> {year}-= 1900;
+    $time-> {year}-= 1900;
     
-    return wantarray?% $ time: $ time;
+    return wantarray?% $time: $time;
   }
   return;
 }
@@ -159,36 +159,36 @@ Others are the same as "<a href="/blog/20081018122442.html"> Find the time diffe
 
 <pre>
 # Convert time information hash to seconds to calculate elapsed seconds
-my $ sec_interval = time_to_sec ($ time2) - time_to_sec ($ time1);
+my $sec_interval = time_to_sec ($time2) - time_to_sec ($time1);
 
 # Function to convert time to seconds
 sub time_to_sec {
-  my $ time;
-  if (ref $ _ [0] eq'HASH') {
-    $ time = shift;
+  my $time;
+  if (ref $_ [0] eq'HASH') {
+    $time = shift;
   }
   else {
-    % $ time = @_;
+    % $time = @_;
   }
   
-  return unless defined $ time-> {sec};
-  return unless defined $ time-> {min};
-  return unless defined $ time-> {hour};
-  return unless defined $ time-> {mday};
-  return unless defined $ time-> {mon};
-  return unless defined $ time-> {year};
+  return unless defined $time-> {sec};
+  return unless defined $time-> {min};
+  return unless defined $time-> {hour};
+  return unless defined $time-> {mday};
+  return unless defined $time-> {mon};
+  return unless defined $time-> {year};
   
   Convert to seconds using the # Time :: Local module
   require Time :: Local;
-  my $ sec = Time :: Local :: timelocal (
-    $ time-> {sec},
-    $ time-> {min},
-    $ time-> {hour},
-    $ time-> {mday},
-    $ time-> {mon},
-    $ time-> {year},
+  my $sec = Time :: Local :: timelocal (
+    $time-> {sec},
+    $time-> {min},
+    $time-> {hour},
+    $time-> {mday},
+    $time-> {mon},
+    $time-> {year},
   );
   
-  return $ sec;
+  return $sec;
 }
 </pre>

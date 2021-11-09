@@ -23,10 +23,10 @@ Let's create a string first. Use <b> single quotes </b> or <b> double quotes </b
 
 <pre>
 # Create a string with single quotes
-my $ str1 ='Hello';
+my $str1 ='Hello';
 
 # Create a string with double quotes
-my $ str2 = "Hello";
+my $str2 = "Hello";
 </pre>
 
 <h4> When enclosed in double quotes </h4>
@@ -52,10 +52,10 @@ This is a <a href="/blog/20201030075254.html"> double quote string escape sequen
 
 <pre>
 # new line
-my $ str1 = "Hello \ n";
+my $str1 = "Hello \ n";
 
 # Tab character
-my $ str2 = "Cat \ tDog";
+my $str2 = "Cat \ tDog";
 </pre>
 
 Frequently used escape sequences are line breaks and tabs, so be sure to remember these two.
@@ -64,7 +64,7 @@ The "\" symbol is used for escaping. If you want to express the symbol "\" itsel
 
 <pre>
 # Express "\"-let it be "\\"
-my $ str1 = "Hello \\ World"
+my $str1 = "Hello \\ World"
 </pre>
 
 <b> If you want to use single quotes or double quotes </b>
@@ -73,14 +73,14 @@ If you want to use single quotes in a string enclosed in single quotes, use <a h
 
 <pre>
 # Use single quotes
-my $ str1 ='Kimoto \'s cat';
+my $str1 ='Kimoto \'s cat';
 </pre>
 
 If you want to use double quotes in a string enclosed in double quotes, use escape sequences.
 
 <pre>
 # Use double quotes
-my $ str2 = "Can't open \" foo.txt \ ".";
+my $str2 = "Can't open \" foo.txt \ ".";
 </pre>
 
 <h4> Variable expansion </h4>
@@ -88,10 +88,10 @@ my $ str2 = "Can't open \" foo.txt \ ".";
 <b> Variable expansion </b> is a function that allows variables to be used in a string enclosed in double quotes. The string contained in the variable is expanded.
 
 <pre>
-my $ str1 = "Dog";
+my $str1 = "Dog";
 
 # Variable expansion-Variables are expanded as "I have Dog"
-my $ str2 = "I have $ str1";
+my $str2 = "I have $str1";
 </pre>
 
 Variable expansion is a very useful feature of Perl, so let's use it more and more.
@@ -103,29 +103,29 @@ When using variable expansion, I think that sometimes variable expansion fails, 
 For example, a variable may be followed by an "underscore" or "Japanese".
 
 <pre>
-my $ str1 = "Dog";
+my $str1 = "Dog";
 
-# I want to expand $ str1, but the variable name is interpreted as "$ str1_Foo"
-my $ str2 = "I have $ str1_Foo";
+# I want to expand $str1, but the variable name is interpreted as "$str1_Foo"
+my $str2 = "I have $str1_Foo";
 
-# I want to expand $ str1, but the variable name is interpreted as "$ str1 aiueo"
-my $ str3 = "I have $ str1 AIUEO";
+# I want to expand $str1, but the variable name is interpreted as "$str1 aiueo"
+my $str3 = "I have $str1 AIUEO";
 </pre>
 
-In such cases, you can use the notation "$ {variable name}" to specify the variable name.
+In such cases, you can use the notation "${variable name}" to specify the variable name.
 
 <pre>
-$ {Variable name}
+${Variable name}
 </pre>
 
 In the previous example, writing the following would work.
 
 <pre>
-my $ str1 = "Dog";
+my $str1 = "Dog";
 
-my $ str2 = "I have $ {str1} _Foo";
+my $str2 = "I have ${str1} _Foo";
 
-my $ str3 = "I have $ {str1} AIUEO";
+my $str3 = "I have ${str1} AIUEO";
 </pre>
 
 <h4> Concatenation of strings </h4>
@@ -133,25 +133,25 @@ my $ str3 = "I have $ {str1} AIUEO";
 Next, let's concatenate the strings. Use the <a href="/blog/20080221120361.html"> string concatenation operator "."</a> to concatenate strings.
 
 <pre>
-my $ str1 ='I have a'.'pen';
+my $str1 ='I have a'.'pen';
 </pre>
 
 The above example concatenates strings enclosed in quotes, but you can also use variables.
 
 <pre>
-my $ str3 = $ str1. $ Str2;
+my $str3 = $str1. $Str2;
 </pre>
 
 The string concatenation operator can also be used in combination with the assignment operator as follows:
 
 <pre>
-$ str1. = $ str2;
+$str1. = $str2;
 </pre>
 
-This is the same as the following writing. It means that "$ str2" is concatenated after "$ str1" and assigned to "$ str1". It's a common writing style, so keep it in mind.
+This is the same as the following writing. It means that "$str2" is concatenated after "$str1" and assigned to "$str1". It's a common writing style, so keep it in mind.
 
 <pre>
-$ str1 = $ str1. $ Str2;
+$str1 = $str1. $Str2;
 </pre>
 
 <h4> String output </h4>
@@ -159,8 +159,8 @@ $ str1 = $ str1. $ Str2;
 Use the <a href="/blog/20170404149131.html"> print function</a> to print the string to the screen.
 
 <pre>
-my $ message ='Hello';
-print $ message;
+my $message ='Hello';
+print $message;
 </pre>
 
 <h3> String processing tricks </h3>
@@ -218,7 +218,7 @@ When running on a Windows OS, remove the "CR + LF" which is a line break in Wind
 To ensure that line breaks are removed, it's a good idea to use the following <a href="/blog/20100827127859.html"> regular expression</a>.
 
 <pre>
-$ str = ~ s / \ x0D? \ X0A? $ //;
+$str = ~ s / \ x0D? \ X0A? $//;
 </pre>
 
 I'll talk more about regular expressions later.
@@ -235,10 +235,10 @@ You can easily do this with the <b> join function </b>.
 my @animals = ('Cat','Dog','Mouse');
 
 # Create CSV data "Cat, Dog, Mouse"
-my $ csv = join (',', @animals);
+my $csv = join (',', @animals);
 
 # Create TSV data "Cat Dog Mouse"
-my $ tsv = join ("\ t", @animals);
+my $tsv = join ("\ t", @animals);
 </pre>
 
 Please refer to the following article for the join function.
@@ -256,25 +256,25 @@ In the above, I explained how to create CSV data and TSV data, but on the contra
 In such cases, you can use the <b> split function </b> to create an array with specific characters as delimiters.
 
 <pre>
-my $ csv ='Cat, Dog, Mouse';
+my $csv ='Cat, Dog, Mouse';
 
 Create an array by specifying # comma. ('Cat','Dog','Mouse')
-my @animals = split (/, /, $ csv);
+my @animals = split (/, /, $csv);
 </pre>
 
 A sample for TSV data is also included.
 
 <pre>
-my $ tsv = "Cat \ tDog \ tMouse";
-my @animals = split (/ \ t /, $ csv);
+my $tsv = "Cat \ tDog \ tMouse";
+my @animals = split (/ \ t /, $csv);
 </pre>
 
 A regular expression can be specified directly as the first argument of the split function. For example, use the regular expression "one or more blanks"You can
 
 <pre>
 # Make an array of data separated by one or more spaces
-my $ data = "Cat Dog Mouse";
-my @animals = split (/ +/, $ csv);
+my $data = "Cat Dog Mouse";
+my @animals = split (/ +/, $csv);
 </pre>
 
 I'll talk more about regular expressions later.
@@ -293,7 +293,7 @@ Use the <b> length function </b> to get the length of the string.
 
 <pre>
 # Get the length of the string
-my $ length = length "ABCDE";
+my $length = length "ABCDE";
 </pre>
 
 See below for a detailed explanation of the length function.
@@ -310,10 +310,10 @@ You can use the <b> sprintf function </b> if you want to specify the number of d
 
 <pre>
 # Fill the left with 0 with 3 digits and it becomes "Code is 013"
-my $ str1 = sprintf ("Code is% 03d", 13);
+my $str1 = sprintf ("Code is% 03d", 13);
 
 # Display up to 3 decimal places "Number is 0.146"
-my $ str2 = sprintf ("Number is% .3f", 0.145677);
+my $str2 = sprintf ("Number is% .3f", 0.145677);
 </pre>
 
 See below for a detailed explanation of formatting.
@@ -330,7 +330,7 @@ Perl has a syntax called <b> here-document </b> that makes it easy to create mul
 
 <pre>
 # Here document
-my $ message = << EOS;
+my $message = << EOS;
 If you want to write
 multiple lines,
 you can use here document
@@ -351,7 +351,7 @@ If you want to write a here document from the indented position, write as follow
 
 <pre>
         # Here document
-        my $ message = << EOS;
+        my $message = << EOS;
 If you want to write
 multiple lines,
 you can use here document
@@ -363,7 +363,7 @@ EOS
 If you write your here document as follows, you can use escape sequences and special characters as if you were enclosing it in double quotes.
 
 <pre>
-my $ message = << EOS;
+my $message = << EOS;
 ...
 EOS
 </pre>
@@ -371,7 +371,7 @@ EOS
 or
 
 <pre>
-my $ message = << "EOS";
+my $message = << "EOS";
 ...
 EOS
 </pre>
@@ -381,7 +381,7 @@ Note that the example below encloses the EOS in double quotes. If you do not enc
 To do the same as if you enclose it in single quotes, write:
 
 <pre>
-my $ message = <<'EOS';
+my $message = <<'EOS';
 ...
 EOS
 </pre>
@@ -403,9 +403,9 @@ Perl has a built-in <b> regular expression </b> feature in the language for sear
 For example, if you want to know that the string contains the string "dog", you can write:
 
 <pre>
-my $ message = "It is my dog ​​\ n";
+my $message = "It is my dog ​​\ n";
 
-if ($ message = ~ / dog /) {
+if ($message = ~ / dog /) {
   ...
 }
 </pre>
@@ -419,9 +419,9 @@ Regular expressions must be enclosed in the symbol "//".
 You can also use regular expressions to make substitutions. If you rewrite "dog" to "cat", write as follows.
 
 <pre>
-my $ message = "It is my dog ​​\ n";
+my $message = "It is my dog ​​\ n";
 
-$ message = ~ s / dog / cat /;
+$message = ~ s / dog / cat /;
 </pre>
 
 You can replace with the syntax <b> "s / string to replace / string after replacement /" </b>.
@@ -468,7 +468,7 @@ Save the source code in UTF-8 on Windows, Mac or Linux. Then specify the <b> utf
 # utf8 Specify pragma
 use utf8;
 
-my $ message ='Hello';
+my $message ='Hello';
 </pre>
 
 Remember this as a convention first.
@@ -479,13 +479,13 @@ Now the length function and regular expressions will work correctly for the stri
 # utf8 Specify pragma
 use utf8;
 
-my $ message ='Hello';
+my $message ='Hello';
 
 The # length function works correctly. 5 is returned.
-my $ length = length $ message;
+my $length = length $message;
 
 # Regular expressions work correctly
-if ($ message = ~ / day /) {
+if ($message = ~ / day /) {
   ...;
 }
 </pre>
@@ -520,10 +520,10 @@ use utf8;
 use Encode'decode';
 
 # Read file
-while (my $ line = <>) {
-  $ line = decode ('cp932', $ line);
+while (my $line = <>) {
+  $line = decode ('cp932', $line);
   
-  if ($ line = ~ / Tanaka /) {
+  if ($line = ~ / Tanaka /) {
     print "OK";
   }
 }
@@ -552,8 +552,8 @@ Strings received from outside are not just files, but anything that is read from
 Therefore, even if Japanese is received as a command line argument, it will always be decoded.
 
 <pre>
-my $ name = $ ARGV [0];
-$ name = decode ('cp932', $ name);
+my $name = $ARGV [0];
+$name = decode ('cp932', $name);
 </pre>
 
 <h4> Encode the character string to be output to the outside </h4>
@@ -568,10 +568,10 @@ For example, if you want to output in UTF-8, write as follows.<pre>
 use utf8;
 use Encode'encode';
 
-my $ message ='aiueo';
+my $message ='aiueo';
 
 # Encode before output
-print encode ('UTF-8', $ message);
+print encode ('UTF-8', $message);
 </pre>
 
 <b> When specifying a file name </b>
@@ -584,11 +584,11 @@ To open a file with a Japanese name: If the error message has a Japanese file na
 use utf8;
 use Encode'encode';
 
-my $ file ='test.txt';
+my $file ='test.txt';
 
 # Open a file with a Japanese name
-open my $ fh,'<', encode ('cp932', $ file)
-  or die encode ('cp932', "Can't open file \" $ file \ ": $!");
+open my $fh,'<', encode ('cp932', $file)
+  or die encode ('cp932', "Can't open file \" $file \ ": $!");
 </pre>
 
 I think this is a little annoying. If you use it often, I think that subroutines and modularization are one of the ways to make it easier.

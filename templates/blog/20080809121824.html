@@ -33,30 +33,30 @@ use warnings;
 use File :: Copy;
 
 # Be careful about the specified file as it will be edited and written back.
-my $ infile = shift;
+my $infile = shift;
 
 # temporary file. As much as possible to other processes
 # Make the process ID ($$) a temporary file name so that it does not overlap
 # use.
-my $ tmpfile = "tmp $$";
+my $tmpfile = "tmp $$";
 
-open (my $ infh, "<", $ infile)
-  or die "Cannot open $ infile: $!";
+open (my $infh, "<", $infile)
+  or die "Cannot open $infile: $!";
 
 # Open a temporary file for export.
-open (my $ tmpfh, ">", $ tmpfile)
-  or die "Cannot open $ tmpfile: $!";
+open (my $tmpfh, ">", $tmpfile)
+  or die "Cannot open $tmpfile: $!";
     
 while (1) {
-    my $ line;
+    my $line;
 
     # Make sure to avoid read errors
-    undef $ !;
+    undef $!;
     # In case of error or EOF, undef is returned
-    unless (defined ($ line = <$ infh>)) {
+    unless (defined ($line = <$infh>)) {
       if ($!) {
         # In case of error
-        die "Error read $ infh: $!";
+        die "Error read $infh: $!";
       }
       else {
         # For EOF
@@ -66,23 +66,23 @@ while (1) {
     
     if ($. == 1) {
       # Combine the letters update: at the beginning of the file only on the first line
-      $ line = "update:". $ line;
+      $line = "update:". $line;
     }
     
     # Make sure to avoid write errors
-    print $ tmpfh $ line
-      or die "Error Writing $ tmpfile: $!";
+    print $tmpfh $line
+      or die "Error Writing $tmpfile: $!";
 }
 
-close $ infh;
+close $infh;
 
 Surely avoid # close errors
-close $ tmpfh
-  or die "Error closing $ tmpfile";
+close $tmpfh
+  or die "Error closing $tmpfile";
 
 # Change the temporary file name to the original file name.
-File :: Copy :: move ($ tmpfile, $ infile)
-  or die "Cannot move $ tmpfile to $ infile";
+File :: Copy :: move ($tmpfile, $infile)
+  or die "Cannot move $tmpfile to $infile";
 </pre>
 
 I'm using a <a href="/blog/20100123126425.html"> while statement</a> to safely read the rows in order.
@@ -113,19 +113,19 @@ This will preserve the contents of the original file until the third file is ren
 <h3> (1) Creating a temporary file name for writing </h3>
 
 <pre>
-my $ tmpfile = "tmp $$";
+my $tmpfile = "tmp $$";
 </pre>
 
-Make sure that the temporary file name includes the process ID ($ $). By making it a convention to include the process ID ($) in the temporary file name, you can avoid conflicting temporary files with other processes (unless the convention is broken. )
+Make sure that the temporary file name includes the process ID ($$). By making it a convention to include the process ID ($) in the temporary file name, you can avoid conflicting temporary files with other processes (unless the convention is broken. )
 
 <h3> (2) Open both read file and temporary write file </h3>
 
 <pre>
-open (my $ infh, "<", $ infile)
-  or die "Cannot open $ infile: $!";
+open (my $infh, "<", $infile)
+  or die "Cannot open $infile: $!";
 
-open (my $ tmpfh, ">", $ tmpfile)
-  or die "Cannot open $ tmpfile: $!";
+open (my $tmpfh, ">", $tmpfile)
+  or die "Cannot open $tmpfile: $!";
 </pre>
 
 The input file is opened in read mode ("<") and the temporary file for writing is opened in write mode (">").
@@ -133,9 +133,9 @@ The input file is opened in read mode ("<") and the temporary file for writing i
 <h3> (3) File reading error check </h3>
 
 <pre>
-    unless (defined ($ line = <$ infh>)) {
+    unless (defined ($line = <$infh>)) {
       if ($!) {
-        die "Error read $ infh: $!";
+        die "Error read $infh: $!";
       }
       else {
          last;
@@ -148,8 +148,8 @@ If an error occurs at the end of the loading, we will exit the while loop. Then,
 <h3> (4) Error checking when writing a file </h3>
 
 <pre>
-    print $ tmpfh $ line
-      or die "Error Writing $ tmpfile: $!";
+    print $tmpfh $line
+      or die "Error Writing $tmpfile: $!";
 </pre>
 
 If an error occurs during aile writing, the original file may be overwritten with incorrect content. To prevent this from happening, you need to code to make sure you avoid write errors.
@@ -157,11 +157,11 @@ If an error occurs during aile writing, the original file may be overwritten wit
 <h3> (5) Error checking when closing a file </h3>
 
 <pre>
-close $ infh;
+close $infh;
 
 Surely avoid # close error
-close $ tmpfh
-  or die "Error closing $ tmpfile";
+close $tmpfh
+  or die "Error closing $tmpfile";
 </pre>
 
 Although omitting the error check for closing the read file does not cause a serious problem, it is necessary to perform the error check for the written file.
@@ -176,8 +176,8 @@ So if close fails, the buffer will be left unflushed and you will not be able to
 
 <pre>
 # Change the temporary file name to the original file name.
-File :: Copy :: move ($ tmpfile, $ infile)
-  or die "Cannot move $ tmpfile to $ infile";
+File :: Copy :: move ($tmpfile, $infile)
+  or die "Cannot move $tmpfile to $infile";
 </pre>
 
 (Reference) <a href="/blog/20100212126425.html"> die function</a>

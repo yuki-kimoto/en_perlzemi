@@ -17,8 +17,8 @@ The content described in the data section can be read using a special file handl
 
 <pre>
 
-while (my $ line = <DATA>) {
-  print "$ line";
+while (my $line = <DATA>) {
+  print "$line";
 }
 
 __DATA__
@@ -39,9 +39,9 @@ use strict;
 use warnings;
 
 # Change comma to tab
-while (my $ line = <DATA>) {
-  chomp $ line;
-  my @items = split (/, /, $ line);
+while (my $line = <DATA>) {
+  chomp $line;
+  my @items = split (/, /, $line);
   
   print join ("\ t", @items). "\ n";
 }

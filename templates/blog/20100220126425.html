@@ -26,18 +26,18 @@ undef
 undef (variable)
 </pre>
 
-Set the undefined value as follows. The value of the variable "$ name" becomes undefined.
+Set the undefined value as follows. The value of the variable "$name" becomes undefined.
 
 <pre>
-$ name = "Kimoto";
-$ name = undef;
+$name = "Kimoto";
+$name = undef;
 </pre>
 
 You can also undefine the value of a variable by passing the variable as an argument of the undef function as follows.
 
 <pre>
-$ name = "Kimoto";
-undef $ name;
+$name = "Kimoto";
+undef $name;
 </pre>
 
 You can also use the undef function for arrays and hashes.
@@ -55,7 +55,7 @@ undef% score;
 You can use the <a href="/blog/20100219126425.html"> defined function</a> to determine if it is an undefined value. Returns true if defined, false if undefined.
 
 <pre>
-if (defined $ name) {
+if (defined $name) {
   ...
 }
 </pre>
@@ -63,7 +63,7 @@ if (defined $ name) {
 It's also a good idea to write using unless to handle cases where the value is undefined.
 
 <pre>
-unless (defined $ name) {
+unless (defined $name) {
   # What to do if undefined
 }
 </pre>
@@ -91,9 +91,9 @@ However, in Perl, lexical variables automatically free memory at the end of scop
 
 <pre>
 {
-  my $ num = 5;
+  my $num = 5;
 }
-# At the end of scope, "$ num" memory is freed
+# At the end of scope, "$num" memory is freed
 </pre>
 
 However, even after the scope ends, the memory may not be released due to closures. In such cases, you can explicitly use undef to free memory.
@@ -115,10 +115,10 @@ use strict;
 use warnings;
 
 # Set undefined value for variable
-my $ name = "Kimoto";
-$ name = undef;
+my $name = "Kimoto";
+$name = undef;
 
-if (defined $ name) {
+if (defined $name) {
   print "Defined";
 }
 else {

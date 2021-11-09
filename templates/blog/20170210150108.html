@@ -44,7 +44,7 @@ clean => {FILES => "* .xyz foo"}
 </pre>
 
 <pre>
-realclean => {FILES =>'$ (INST_ARCHAUTODIR) /*.xyz'}
+realclean => {FILES =>'$(INST_ARCHAUTODIR) /*.xyz'}
 </pre>
 
 Please note that in FILES, it is necessary to describe the file name according to the make syntax rules.
@@ -75,13 +75,13 @@ WriteMakefile (
     DEFINE =>'',
     INC =>'-I.',
     # OBJECT option
-    OBJECT =>'SomeModule $ (OBJ_EXT)'
+    OBJECT =>'SomeModule $(OBJ_EXT)'
 );
 </pre>
 
 Specify that "SomeModule.xs" should be named "SomeModule.c" in the XS option. This is an instruction to xsubpp to convert the XS file to a C source file.
 
-However, this is not enough, and you also need to describe the C language file name to be compiled (this is described by the object name). Specify it with the OBJECT option. The "$ (OBJ_EXT)" part is like a special make variable and is replaced with ".o".
+However, this is not enough, and you also need to describe the C language file name to be compiled (this is described by the object name). Specify it with the OBJECT option. The "$(OBJ_EXT)" part is like a special make variable and is replaced with ".o".
 
 If you write like this, "SomeModule.c" will be compiled. It's complicated.
 
@@ -107,7 +107,7 @@ WriteMakefile (
     AUTHOR =>'Yuki Kimoto <kimoto.yuki@gmail.com>',
     VERSION_FROM =>'lib / Rstats.pm',
     ABSTRACT_FROM =>'lib / Rstats.pm',
-    ($ ExtUtils :: MakeMaker :: VERSION> = 6.3002
+    ($ExtUtils :: MakeMaker :: VERSION> = 6.3002
       ? ('LICENSE'=>' perl')
       : ()),
     PL_FILES => {},
@@ -125,7 +125,7 @@ WriteMakefile (
     LIBS => [''],
     DEFINE =>'',
     INC =>'-I.',
-    OBJECT =>'$ (O_FILES)',
+    OBJECT =>'$(O_FILES)',
 );
 </pre>
 
@@ -167,8 +167,8 @@ If this is not specified, the dependency will not be resolved correctly when mak
 How can I store C / C ++ language source files in a different directory when writing an XS? You can do that if you write Makefile.PL well. Write the WriteMakefile options in Makefile.PL as follows:
 
 <pre>
-    C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],OBJECT =>'$ (O_FILES)',
-    DEFINE =>'-o $ @'
+    C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],OBJECT =>'$(O_FILES)',
+    DEFINE =>'-o $@'
 </pre>
 
 This is the case when the module name is Rstats and the source file directory is "Rstats_lib / src". It is assumed that a file called Rstats.xs is located at the top "/". The source file type is a C ++ source file.
@@ -216,20 +216,20 @@ use ExtUtils :: MakeMaker;
 use Config;
 
 # C ++ compiler
-my $ cpp_compilers = {
+my $cpp_compilers = {
   gcc =>'g ++',
   clang =>'clang ++',
   CC =>'CC'
 };
-my $ cc = $ cpp_compilers-> {$ Config {ccname}};
-my $ ld = $ cc;
+my $cc = $cpp_compilers-> {$Config {ccname}};
+my $ld = $cc;
 
 WriteMakefile (
     NAME =>'Rstats',
     AUTHOR =>'Yuki Kimoto <kimoto.yuki@gmail.com>',
     VERSION_FROM =>'lib / Rstats.pm',
     ABSTRACT_FROM =>'lib / Rstats.pm',
-    ($ ExtUtils :: MakeMaker :: VERSION> = 6.3002
+    ($ExtUtils :: MakeMaker :: VERSION> = 6.3002
       ? ('LICENSE'=>' perl')
       : ()),
     PL_FILES => {},
@@ -248,15 +248,15 @@ WriteMakefile (
     },
     dist => {COMPRESS =>'gzip -9f', SUFFIX =>'gz',},
     clean => {FILES =>'Rstats-*'},
-    CC => $ cc,
+    CC => $cc,
     OPTIMIZE =>'-O3',
-    LD => $ ld,
+    LD => $ld,
     LIBS => [],
     DEFINE =>'',
     INC =>'-I. -I./Rstats_lib/include',
     C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],
-    OBJECT =>'$ (O_FILES)',
-    DEFINE =>'-o $ @'
+    OBJECT =>'$(O_FILES)',
+    DEFINE =>'-o $@'
 );
 </pre>
 
@@ -266,8 +266,8 @@ I think it is difficult to understand as it is, so I will explain the options of
 
 <pre>
     C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],
-    OBJECT =>'$ (O_FILES)',
-    DEFINE =>'-o $ @'
+    OBJECT =>'$(O_FILES)',
+    DEFINE =>'-o $@'
 </pre>
 
 First, write all the source code required for compilation with the option "C". "Rstats.c" corresponds to "Rstats.xs". I am using the glog function to get the cpp file under "Rstats_lib / src". If it was C language, the options in this part would be as follows.
@@ -283,12 +283,12 @@ Internally, the file specified by the "C" option is stored in a variable called 
 What does the "DEFINE" option describe?
 
 <pre>
-  DEFINE =>'-o $ @'
+  DEFINE =>'-o $@'
 </pre>
 
 This is changing the output location of the object file. You can add gcc arguments using the option "DEFINE". And you can change the output destination of the object file by using the "-o" option of gcc.
 
-What is "$ @"? This is a Makefile syntax rule for variables to which the target name is automatically assigned. Since the target name is the object file name, if you write it like this, the object file will be output in the same directory as the source code file.
+What is "$@"? This is a Makefile syntax rule for variables to which the target name is automatically assigned. Since the target name is the object file name, if you write it like this, the object file will be output in the same directory as the source code file.
 
 <h4> Linker targeting </h4>
 
@@ -296,9 +296,9 @@ Finally, you need to describe the targeting of the linker. You need to tell the 
 
 To do this, specify:
 <pre>
-    OBJECT =>'$ (O_FILES)',
+    OBJECT =>'$(O_FILES)',
 </pre>
 
-The list of object file names was in a variable called "O_FILES". To expand "O_FILES", write "$ (O_FILES)".
+The list of object file names was in a variable called "O_FILES". To expand "O_FILES", write "$(O_FILES)".
 
 The "OBJECT" option will then be automatically set to an option called "LDFROM" and passed to the linker.

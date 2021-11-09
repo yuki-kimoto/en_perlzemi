@@ -106,28 +106,28 @@ Please also refer to the following articles for Perl booleans.
 Use <a href="/blog/20161023147731.html"> if statement</a> for a sample program that compares the numbers assigned to <a href="/blog/20161107147852.html"> variables</a> I will write it.
 
 <pre>
-my $ num1 = 4;
-my $ num2 = 3;
+my $num1 = 4;
+my $num2 = 3;
 
-if ($ num1> $ num2) {
+if ($num1> $num2) {
   print "Left is big";
 }
 </pre>
 
-In this program, $ num1 is assigned 4 and $ num2 is assigned 3. Since $ num1 is greater than $ num2, the condition is true and the inside of the block is executed.
+In this program, $num1 is assigned 4 and $num2 is assigned 3. Since $num1 is greater than $num2, the condition is true and the inside of the block is executed.
 
 <h4> Used in the conditional part of the ternary operator </h4>
 
 Let's use the comparison operator in the conditional part of the <a href="/blog/20080325120646.html"> ternary operator</a>.
 
 <pre>
-my $ num1 = 4;
-my $ num2 = 3;
+my $num1 = 4;
+my $num2 = 3;
 
-my $ message = $ num1> $ num2? "OK": "Not OK";
+my $message = $num1> $num2? "OK": "Not OK";
 </pre>
 
-Since $ num1 is larger than $ num2, true is returned and "OK" is assigned to $ message.
+Since $num1 is larger than $num2, true is returned and "OK" is assigned to $message.
 
 <h3> String comparison operator </h3>
 
@@ -206,10 +206,10 @@ In dictionary order comparison, the size of the character code is compared one c
 This is a sample that uses the string comparison operator in the conditional part of the if statement.
 
 <pre>
-my $ str1 = "1";
-my $ str2 = "02";
+my $str1 = "1";
+my $str2 = "02";
 
-if ($ num1 gt $ num2) {
+if ($num1 gt $num2) {
   print "Left is big";
 }
 </pre>
@@ -219,13 +219,13 @@ if ($ num1 gt $ num2) {
 Logical operators allow you to use them in a combination of comparison operators.
 
 <pre>
-# $ num1 is greater than 1 and less than 5
-if ($ num1> 1 && $ num1 <5) {
+# $num1 is greater than 1 and less than 5
+if ($num1> 1 && $num1 <5) {
   ...
 }
 
-# $ num1 is less than 1 or greater than 5
-if ($ num1 <1 || $ num1> 5) {
+# $num1 is less than 1 or greater than 5
+if ($num1 <1 || $num1> 5) {
   ...
 }
 </pre>
@@ -243,8 +243,8 @@ Logical operators are explained here.
 Perl's string comparison operator "eq" is used when a string matches perfectly, but there are times when you want to know a partial match of a string. In that case, use regular expressions.
 
 <pre>
-If # $ str1 contains "Cat"
-if ($ str1 = ~ / Cat /) {
+If # $str1 contains "Cat"
+if ($str1 = ~ / Cat /) {
   ...
 }
 </pre>
@@ -267,15 +267,15 @@ use warnings;
 
 # Numerical comparison and dictionary order comparison
 print "1: Compare numerical comparison and dictionary order comparison \ n";
-my $ num1 = "1";
-my $ num2 = "02";
+my $num1 = "1";
+my $num2 = "02";
 
-if ($ num1 <$ num2) {
-  print "$ num1 is less than $ num2 when compared numerically \ n";
+if ($num1 <$num2) {
+  print "$num1 is less than $num2 when compared numerically \ n";
 }
 
-if ($ num1 gt $ num2) {
-  print "Compare in lexicographical order, $ num1 is greater than $ num2 \ n";
+if ($num1 gt $num2) {
+  print "Compare in lexicographical order, $num1 is greater than $num2 \ n";
 }
 
 </pre>

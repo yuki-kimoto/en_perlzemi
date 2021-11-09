@@ -16,14 +16,14 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Default variable $ _ </h2>
+<h2> Default variable $_ </h2>
 
 
 
 There is a default variable in Perl.
 
 <pre>
-$ _
+$_
 </pre>
 
 Let's first look at some examples where default variables are used.
@@ -33,10 +33,10 @@ Let's first look at some examples where default variables are used.
 Each element of the array passed to the <a href="/blog/20100119126425.html"> grep function</a> is assigned to the default variable.
 
 <pre>
-my @ values2 = grep {$ _ eq'cat'} @ values1;
+my @ values2 = grep {$_ eq'cat'} @ values1;
 </pre>
 
-"$ _" Is the default variable, and each element of @ values1 is assigned in order.
+"$_" Is the default variable, and each element of @ values1 is assigned in order.
 
 This is easy to understand if you think of it as expressing the English pronoun "it".
 
@@ -45,7 +45,7 @@ This is easy to understand if you think of it as expressing the English pronoun 
 Each element of the array passed to the <a href="/blog/20100118126425.html"> map function</a> is assigned to the default variable.
 
 <pre>
-my @ values2 = map {lc $ _} @ values1;
+my @ values2 = map {lc $_} @ values1;
 </pre>
 
 <h4> When the declaration of a lexical variable is omitted in for </h4>
@@ -54,7 +54,7 @@ If for omits the declaration of a lexical variable, each element of the array is
 
 <pre>
 for (@values) {
-  print "$ _ \ n";
+  print "$_ \ n";
 }
 </pre>
 
@@ -63,7 +63,7 @@ for (@values) {
 If you use the trailing for, each element of the array is assigned to the default variable.
 
 <pre>
-print "$ _ \ n" for @values;
+print "$_ \ n" for @values;
 </pre>
 
 <h4> When the diamond operator is used alone in the while statement </h4>
@@ -72,7 +72,7 @@ print "$ _ \ n" for @values;
 
 <pre>
 while (<>) {
-  print "$ _ \ n";
+  print "$_ \ n";
 }
 </pre>
 
@@ -93,7 +93,7 @@ my @ values2 = map {lc} @ values1;
 This has the same meaning as if you explicitly wrote the default arguments.
 
 <pre>
-my @ values2 = map {lc $ _} @ values1;
+my @ values2 = map {lc $_} @ values1;
 </pre>
 
 If the argument is omitted in the standard function, suspect that an implicit argument is being used.
@@ -112,6 +112,6 @@ This has the same meaning as if you explicitly wrote the default variable.
 
 <pre>
 for (@values) {
-  $ _ = ~ s / cat / dog /;
+  $_ = ~ s / cat / dog /;
 }
 </pre>

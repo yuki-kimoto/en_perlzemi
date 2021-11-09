@@ -21,7 +21,7 @@
 You can also use the <strong> getc </strong> function to read character by character.
 
 <pre>
-my $ c = getc $ fh;
+my $c = getc $fh;
 </pre>
 
 <h3> Sample </h3>
@@ -34,16 +34,16 @@ use warnings;
 
 # 1 character reading
 # File name you want to read
-my $ file = shift;
+my $file = shift;
 
 print "1: Read character by character. \ N";
-open (my $ fh, "<", $ file)
-  or die "Cannot open $ file: $!";
+open (my $fh, "<", $file)
+  or die "Cannot open $file: $!";
 
 # Use the getc function to read one character at a time.
-while (defined (my $ c = getc $ fh)) {
-  print $ c;
+while (defined (my $c = getc $fh)) {
+  print $c;
 }
 
-close $ fh;
+close $fh;
 </pre>

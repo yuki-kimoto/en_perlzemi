@@ -30,42 +30,42 @@ The Defined-or operator returns the lvalue if the lvalue is defined, and returns
 
 <pre>
 # The right side is substituted
-my $ value = undef //'default'; # 'default'
+my $value = undef //'default'; # 'default'
 
 # The left side is substituted
-my $ value = 0 //'default'; # 0
-my $ value ='' //'default'; # ''''
-my $ value ='foo' //'default'; # 'foo'
+my $value = 0 //'default'; # 0
+my $value ='' //'default'; # ''''
+my $value ='foo' //'default'; # 'foo'
 </pre>
 
 This is very useful for defining a default value if no value is given.
 
 <pre>
-my $ name = $ opts {name} //'Ken';
+my $name = $opts {name} //'Ken';
 </pre>
 
 You can also write <b> // = </b>.
 
 <pre>
-$ value // ='default';
+$value // ='default';
 </pre>
 
-Only if $ value is undefined will $ value be assigned'default'.
+Only if $value is undefined will $value be assigned'default'.
 
 <h3> What did you do before Perl 5.10 </h3>
 
 Previously, in order to do this, you had to use the <a href="/blog/20100219126425.html"> defined function</a> to write:
 
 <pre>
-$ value ='default' unless defined $ value;
+$value ='default' unless defined $value;
 </pre>
 
 Also, since this writing method is verbose, many people used the <b> || </b> operator to write as follows.
 
 <pre>
-$ value || ='default';
+$value || ='default';
 </pre>
 
-However, this way of writing introduced a potential bug to the application because'default' was assigned even if $ value was 0 or an empty string.
+However, this way of writing introduced a potential bug to the application because'default' was assigned even if $value was 0 or an empty string.
 
 With the introduction of the Defined-or operator, I'm happy that I don't have to worry about the description between the above two.

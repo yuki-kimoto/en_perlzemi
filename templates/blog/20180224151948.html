@@ -29,23 +29,23 @@ Using the <b> increment operator </b>, the <a href="/blog/20161026147748.html"> 
 
 <pre>
 # Increment (postfix)
-$ num ++;
+$num ++;
 
 # Increment (prefix)
-++ $ num;
+++ $num;
 </pre>
 
 The increment operator has the same meaning as the following description using the <a href="/blog/20180219151904.html"> addition operator</a>.
 
 <pre>
-$ num = $ num + 1;
+$num = $num + 1;
 </pre>
 
 The increment operator is often used in <a href="/blog/20161022147731.html"> for statements</a>.
 
 <pre>
-for (my $ i = 0; $ i <10; $ i ++) {
-  print "$ i \ n";
+for (my $i = 0; $i <10; $i ++) {
+  print "$i \ n";
 }
 </pre>
 
@@ -60,16 +60,16 @@ Prefix increments and postfix increments have the same meaning when used alone, 
 For prefix increments, the incremented value is returned.
 
 <pre>
-my $ num1 = 0;
-my $ num2 = ++ $ num;
+my $num1 = 0;
+my $num2 = ++ $num;
 </pre>
 
-"$ Num1" is incremented to 1. This value of 1 is returned and assigned to "$ num2".
+"$Num1" is incremented to 1. This value of 1 is returned and assigned to "$num2".
 
 I explained in the case of assignment, but I will also give an example of passing a value to <a href="/blog/20101130129876.html"> subroutine</a>. The fun is passed a <b> incremented value </b>.
 
 <pre>
-func (++ $ i);
+func (++ $i);
 </pre>
 
 <h4> Postfix increment </h4>
@@ -77,18 +77,18 @@ func (++ $ i);
 For prefix increments, the value before the increment is returned.
 
 <pre>
-my $ num1 = 0;
-my $ num2 = $ i ++;
+my $num1 = 0;
+my $num2 = $i ++;
 </pre>
 
-"$ Num1" is incremented to 1, but the value before the increment, 0, is assigned to $ num2.
+"$Num1" is incremented to 1, but the value before the increment, 0, is assigned to $num2.
 
-The above two have different values ​​in $ k. In the first case, $ k contains 1. In the second case, $ k will be 0.
+The above two have different values ​​in $k. In the first case, $k contains 1. In the second case, $k will be 0.
 
 I explained in the case of assignment, but I will also give an example of passing a value to a subroutine. The fun is passed <b> the value before it was incremented </b>.
 
 <pre>
-func ($ i ++);
+func ($i ++);
 </pre>
 
 <h3> Decrement operator </h3>

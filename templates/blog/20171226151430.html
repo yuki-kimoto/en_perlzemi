@@ -51,14 +51,14 @@ For example, the second number from the left, "20220", is the process ID. This w
 
 <h3> Get signal number </h3>
 
-A list of signals can be found by loading the Config module and using "$ Config {sig_name}".
+A list of signals can be found by loading the Config module and using "$Config {sig_name}".
 
 <pre>
 use Config;
 
 use Data :: Dumper;
 
-print Dumper $ Config {sig_name};
+print Dumper $Config {sig_name};
 </pre>
 
 This number is the signal number because it is arranged in order from the first.
@@ -68,7 +68,7 @@ This number is the signal number because it is arranged in order from the first.
 Signal number 0 is a special number that allows the target process to check if it can receive the signal.
 
 <pre>
-my $ success = kill (0, process ID);
+my $success = kill (0, process ID);
 </pre>
 
 This can be used to check if the child process is actually alive.

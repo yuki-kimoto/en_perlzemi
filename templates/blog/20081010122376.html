@@ -26,10 +26,10 @@ Use the <strong> gmtime function </strong> to get the current date and time in C
 # Seconds Minutes Hours Day Months Years of the week Beginning of the year or daylight saving time
 Apply # et al.
 # Elapsed days
-my ($ sec, $ min, $ hour, $ mday, $ mon, $ year, $ wday, $ yday, $ isdst) = gmtime;
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = gmtime;
 
 # Time string
-my $ localtime = gmtime;
+my $localtime = gmtime;
 </pre>
 
 If you want to get the local time, use <a href="/blog/20081009122357.html"> localtime function</a>.
@@ -58,22 +58,22 @@ print "(1) Get the current date and time (Coordinated Universal Time). \ N";
 # Seconds Minutes Hours Day Months Years of the week Beginning of the year or daylight saving time
 Apply # et al.
 # Elapsed days
-my ($ sec, $ min, $ hour, $ mday, $ mon, $ year, $ wday, $ yday, $ isdst) = gmtime;
+my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = gmtime;
 
 The # localtime function returns the year counted from 1900.
-$ year + = 1900;
+$year + = 1900;
 
 # Month starts from 0, so add 1 to display it.
-$ mon ++;
+$mon ++;
 
 # Sunday will be 0.
 my @day_of_week = qw / Sun Mon Tue Wed Thu Fri Sat /;
 
-print "Currently $ year year $ mon month $ mday day $ hour hour $ min minute $ sec second.";
-print "Day of the week". $ Day_of_week [$ wday]. "Day of the week. \ N \ n";
-print "$ yday days have passed counting in one year. \ N \ n";
+print "Currently $year year $mon month $mday day $hour hour $min minute $sec second.";
+print "Day of the week". $Day_of_week [$wday]. "Day of the week. \ N \ n";
+print "$yday days have passed counting in one year. \ N \ n";
 
-if ($ isdst) {
+if ($isdst) {
   print "Currently daylight saving time is applied. \ N \ n";
 }
 else {
@@ -81,6 +81,6 @@ else {
 }
 
 print "(2) Get the current date (Coordinated Universal Time) as a string. \ N";
-my $ date_str = gmtime;
-print $ date_str. "\ n";
+my $date_str = gmtime;
+print $date_str. "\ n";
 </pre>

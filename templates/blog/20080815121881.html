@@ -31,47 +31,47 @@ use warnings;
 use Fcntl qw /: DEFAULT: flock: seek /;
 
 # File for lock (create if not)
-my $ lock_file = "lock";
-sysopen (my $ lock_fh, $ lock_file, O_RDONLY | O_CREAT)
-  or die "Cannot open $ lock_file: $!";
+my $lock_file = "lock";
+sysopen (my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
+  or die "Cannot open $lock_file: $!";
 
 # Exclusive lock for lock file (exclusive lock because it is read and written)
-flock ($ lock_fh, LOCK_EX)
-  or die "Cannot lock $ lock_file: $!";
+flock ($lock_fh, LOCK_EX)
+  or die "Cannot lock $lock_file: $!";
 
 # Be careful as it will be overwritten
-my $ file = "data_20080815.txt";
+my $file = "data_20080815.txt";
 
 # Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
-sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
-  or die "Cannot open $ file: $!";
+sysopen (my $fh, $file, O_RDWR | O_CREAT)
+  or die "Cannot open $file: $!";
 
-my $ cnt;
-$ cnt = <$ fh>;
-if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
+my $cnt;
+$cnt = <$fh>;
+if (! Defined $cnt && $!) {Die "Cannot read $file: $!";}
 
-$ cnt ++;
+$cnt ++;
 
 # Move the file pointer to the beginning
-seek ($ fh, 0, SEEK_SET)
-  or die "Cannot seek $ file: $!";
+seek ($fh, 0, SEEK_SET)
+  or die "Cannot seek $file: $!";
 
 # write in.
-print {$ fh} $ cnt
-  or die "Cannot Write $ file: $!";
+print {$fh} $cnt
+  or die "Cannot Write $file: $!";
 
 # Truncate the file to write size
-truncate ($ fh, length $ cnt);
+truncate ($fh, length $cnt);
 
-close $ fh
-  or die "Cannot close $ file: $!";
+close $fh
+  or die "Cannot close $file: $!";
 
 The file lock is released at the time of # close.
-close $ lock_fh
-  or die "Cannot close $ lock_file: $!";
+close $lock_fh
+  or die "Cannot close $lock_file: $!";
 
-print "Current count: $ cnt \ n";
+print "Current count: $cnt \ n";
 </pre>
 
 (Reference) <a href="/blog/20080804121794.html"> sysopen function</a>, <a href="/blog/20080814121872.html"> flock function</a>, <a href="/blog" /20180310152509.html"> Fcntl</a>
@@ -83,14 +83,14 @@ use strict;
 use warnings;
 use FindBin;
 
-my $ script = "$ FindBin :: Bin / sample_20080815.pl";
+my $script = "$FindBin :: Bin / sample_20080815.pl";
 
 while (1) {
-  system ("perl $ script");
+  system ("perl $script");
   
   Random number less than # 1
-  my $ random = rand 1;
-  sleep $ random;
+  my $random = rand 1;
+  sleep $random;
 }
 </pre>
 
@@ -104,9 +104,9 @@ The script is repeatedly executed using the <a href="/blog/20100123126425.html">
 
 <pre>
 # Lock file (Note that it will be overwritten)
-my $ lock_file = "lock";
-sysopen (my $ lock_fh, $ lock_file, O_RDONLY | O_CREAT)
-  or die "Cannot open $ lock_file: $!";
+my $lock_file = "lock";
+sysopen (my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
+  or die "Cannot open $lock_file: $!";
 </pre>
 
 Create a file for the lock.
@@ -117,8 +117,8 @@ The lock file is locked using the <a href="/blog/20080814121872.html"> flock fun
 
 <pre>
 # Exclusive lock for lock file (exclusive lock because it is read and written)
-flock ($ lock_fh, LOCK_EX)
-  or die "Cannot lock $ lock_file: $!";
+flock ($lock_fh, LOCK_EX)
+  or die "Cannot lock $lock_file: $!";
 </pre>
 
 Only the process that can lock this file should access the file to be updated. Following this lock, open the file to be updated and update the file.
@@ -127,8 +127,8 @@ Only the process that can lock this file should access the file to be updated. F
 
 <pre>
 The file lock is released at the time of # close.
-close $ lock_fh
-  or die "Cannot close $ lock_file: $!";
+close $lock_fh
+  or die "Cannot close $lock_file: $!";
 </pre>
 
 The lock is released by closing the lock file.

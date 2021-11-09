@@ -93,7 +93,7 @@ foo (...)
 
 <h3> Modify Makefile.PL </h3>
 
-Next, let's modify Makefile.PL a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$ (O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
+Next, let's modify Makefile.PL a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$(O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
 
 Then change the compiler and linker to "g ++". The compiler can be set with the "CC" option, and the linker can be set with the "LD".
 
@@ -104,7 +104,7 @@ use warnings;
 
 WriteMakefile (
     NAME =>'SomeModule',
-    VERSION_FROM =>'lib / SomeModule.pm', # finds $ VERSION
+    VERSION_FROM =>'lib / SomeModule.pm', # finds $VERSION
     PREREQ_PM => {}, # e.g., Module :: Name => 1.1
     ($]> = 5.005? # # Add these new keywords supported since 5.005
       (ABSTRACT_FROM =>'lib / SomeModule.pm', # retrieve abstract from module
@@ -112,7 +112,7 @@ WriteMakefile (
     LIBS => [''], # e.g.,'-lm'
     DEFINE =>'', # e.g.,'-DHAVE_SOMETHING'
     INC =>'-I.', # e.g.,'-I. -I / usr / include / other'
-    OBJECT =>'$ (O_FILES)', # link all the C files too
+    OBJECT =>'$(O_FILES)', # link all the C files too
     CC =>'g ++',
     LD =>'g ++',
 );

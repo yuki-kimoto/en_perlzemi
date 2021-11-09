@@ -44,19 +44,19 @@ The first difference is in the linguistic sense. Arrays are variables and lists 
 
 The second is that the values ​​are different when evaluated in <a href="/blog/20080608121292.html"> scalar context</a>.
 
-Take a look at the following code. What do you think about "$ num1" and "$ num2"?
+Take a look at the following code. What do you think about "$num1" and "$num2"?
 
 <pre>
 # Evaluate list in scalar context
-my $ num1 = (5, 6, 7);
+my $num1 = (5, 6, 7);
 
 # Evaluate arrays in scalar context
 my @nums = (5, 6, 7);
-my $ num2 = @nums;
+my $num2 = @nums;
 
 </pre>
 
-The answer is that "$ num1" becomes "7" and $ num2 becomes "3".
+The answer is that "$num1" becomes "7" and $num2 becomes "3".
 
 In a scalar context, evaluating a list returns the "last value in the list", and evaluating an array returns the "number of arrays".
 
@@ -76,18 +76,18 @@ It has exactly the same meaning as a regular list, only the notation is differen
 You can assign a list by using the list on the left side. You can assign multiple values ​​to multiple variables.
 
 <pre>
-my ($ var1, $ var2) = (3, 5);
+my ($var1, $var2) = (3, 5);
 </pre>
 
 List by receiving <a href="/blog/20080108132865.html"> command line arguments</a> and receiving arguments in <a href="/blog/20101130129876.html"> subroutine</a> You can use assignment.
 
 <pre>
 # Receiving command line arguments
-my ($ var1, $ var2) = @ARGV;
+my ($var1, $var2) = @ARGV;
 
 # Receiving arguments in a subroutine
 sub foo {
-  my ($ var1, $ var2) = @_;
+  my ($var1, $var2) = @_;
   ...
 }
 </pre>

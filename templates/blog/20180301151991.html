@@ -26,7 +26,7 @@ A dereference is the opposite of creating a <a href="/blog/20100930127859.html">
 Use "@ {}" to dereference the <a href="/blog/20180214151861.html"> array reference</a>.
 
 <pre>
-my @array = @ {$ array_ref};
+my @array = @ {$array_ref};
 </pre>
 
 Please be aware that a new <a href="/blog/20161012147627.html"> array</a> is not created, but the entity is being retrieved.
@@ -34,25 +34,25 @@ Please be aware that a new <a href="/blog/20161012147627.html"> array</a> is not
 If the inside of "@ {}" is a simple <a href="/blog/20161107147852.html"> variable</a>, you can omit "{}".
 
 <pre>
-my @array = @ $ array_ref;
+my @array = @ $array_ref;
 </pre>
 
 This is a sample program that dereferences an array reference.
 
 <pre>
 # Array reference
-my $ nums_ref = [1, 2, 3];
+my $nums_ref = [1, 2, 3];
 
 # Dereference
-my @nums = @ $ nums_ref;
+my @nums = @ $nums_ref;
 </pre>
 
 <a href="/blog/20161004147558.html"> standard functions</a> that perform Perl array operations must pass an array, not an array reference. In this case, dereference it and pass it to the function.
 
 <pre>
-my $ nums = [1, 2, 3];
+my $nums = [1, 2, 3];
 
-my $ num = shift @ $ nums;
+my $num = shift @ $nums;
 </pre>
 
 <ul>
@@ -78,7 +78,7 @@ my $ num = shift @ $ nums;
 Use "% {}" to dereference the <a href="/blog/20180208151809.html"> hash reference</a>.
 
 <pre>
-my% hash =% {$ hash_ref};
+my% hash =% {$hash_ref};
 </pre>
 
 Please be aware that a new <a href="/blog/20161013147635.html"> hash</a> is not created, but the entity is being retrieved.
@@ -86,25 +86,25 @@ Please be aware that a new <a href="/blog/20161013147635.html"> hash</a> is not 
 If the inside of "% {}" is a simple variable, "{}" can be omitted.
 
 <pre>
-my% hash =% $ hash_ref;
+my% hash =% $hash_ref;
 </pre>
 
 This is a sample program that dereferences the hash reference.
 
 <pre>
 # Hash reference
-my $ score_ref = {math => 19, english => 89};
+my $score_ref = {math => 19, english => 89};
 
 # Dereference
-my% score =% $ score_ref;
+my% score =% $score_ref;
 </pre>
 
 Standard Perl hashing functions should pass a hash, not a hash reference. In this case, dereference it and pass it to the function.
 
 <pre>
-my $ score = {math => 89, english => 45};
+my $score = {math => 89, english => 45};
 
-my @keys = keys% $ score;
+my @keys = keys% $score;
 </pre>
 
 <ul>
@@ -127,16 +127,16 @@ my @keys = keys% $ score;
 
 <h4> Dereference scalar variable reference </h4>
 
-Use "$ {}" to dereference the <a href="/blog/20161107147852.html"> scalar variable</a> reference.
+Use "${}" to dereference the <a href="/blog/20161107147852.html"> scalar variable</a> reference.
 
 <pre>
-my $ scalar = $ {$ scalar_ref};
+my $scalar = ${$scalar_ref};
 </pre>
 
-If the inside of "$ {}" is a simple variable, "{}" can be omitted.
+If the inside of "${}" is a simple variable, "{}" can be omitted.
 
 <pre>
-my $ scalar = $$ scalar_ref;
+my $scalar = $$scalar_ref;
 
 </pre>
 
@@ -144,12 +144,12 @@ This is a sample program that dereferences the scalar reference.
 
 <pre>
 # Scalar reference
-my $ string1 = "Hello";
+my $string1 = "Hello";
 
-my $ string_ref = \ $ string;
+my $string_ref = \ $string;
 
 # Dereference
-my $ string2 = $$ string_ref;
+my $string2 = $$string_ref;
 </pre>
 
 <h4> Can I dereference other references? </H4>

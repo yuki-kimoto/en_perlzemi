@@ -1,8 +1,8 @@
 nt; filename = pictures.csv');
-  $ headers-> content_type ('text / csv; charset = UTF-8');
+  $headers-> content_type ('text / csv; charset = UTF-8');
   
   # Render data
-  return $ self-> render (data => $ content);
+  return $self-> render (data => $content);
 };
 app-> start;
 </pre>
@@ -16,7 +16,7 @@ You can name the file using the Content-Disposition header. Let's also specify t
 You can specify <strong> template_class </strong> as an argument of the render method for the class that describes the template when drawing.
 
 <pre>
-$ c-> render (template_class => $ class);
+$c-> render (template_class => $class);
 </pre>
 
 This is very useful if you want to write the template directly in a plugin etc. Mojolicious plugins are very flexible and allow you to write and incorporate the web application itself.
@@ -26,13 +26,13 @@ package Mojolicious :: Plugin :: Viewer;
 use Mojo :: Base'Mojolicious :: Plugin';
 
 sub register {
-  my ($ self, $ app, $ conf) = @_;
+  my ($self, $app, $conf) = @_;
   
-  my $ r = $ app-> route;
-  $ r-> get ('/ viewer', sub {
-     my $ self = shift;
+  my $r = $app-> route;
+  $r-> get ('/ viewer', sub {
+     my $self = shift;
      # Specify template class
-     return $ self-> render (template_class => __PACKAGE__);
+     return $self-> render (template_class => __PACKAGE__);
   });
 }
 
@@ -60,32 +60,32 @@ This can be achieved by combining a method called write_chunk and a callback.
 
 <pre>
 get'/ sizeunknowndata' => sub {
-  my $ self = shift;
+  my $self = shift;
 
-  my $ file ='foo.tar.gz';
-  open my $ fh,'<', $ file
+  my $file ='foo.tar.gz';
+  open my $fh,'<', $file
     or die "Error";
 
   # Write chunk
-  $ self-> res-> headers-> content_type ('application / gzip');
-  $ self-> res-> headers-> content_disposition (qq / attachment; filename = "$ file" /);
-  my $ cb;
-  $ cb = sub {
-    my $ c = shift;
-    my $ size = 500 * 1024;
-    my $ length = sysread ($ fh, my $ buffer, $ size);
-    unless (defined $ length) {
-      close $ fh;
-      undef $ cb;
+  $self-> res-> headers-> content_type ('application / gzip');
+  $self-> res-> headers-> content_disposition (qq / attachment; filename = "$file" /);
+  my $cb;
+  $cb = sub {
+    my $c = shift;
+    my $size = 500 * 1024;
+    my $length = sysread ($fh, my $buffer, $size);
+    unless (defined $length) {
+      close $fh;
+      undef $cb;
       return;
     }
-    $ c-> write_chunk ($ buffer, $ cb);
+    $c-> write_chunk ($buffer, $cb);
   };
-  $ self-> $ cb;
+  $self-> $cb;
 };
 </pre>
 
-When there is no more data to read, close the filehandle, undefine $ cb and remove the reference.
+When there is no more data to read, close the filehandle, undefine $cb and remove the reference.
 
 <h4> Addendum </h4>
 
@@ -100,14 +100,14 @@ Use <strong> reply-> not_found </strong> to draw a 404 Not found page (the page 
 
 <pre>
 get'/' => sub {
-  my $ sefl = shift;
+  my $sefl = shift;
   
   If you want to draw a page with # 404 not found
   if (...) {
-    return $ self-> reply-> not_found;
+    return $self-> reply-> not_found;
   }
 
-  $ self-> render;
+  $self-> render;
 }
 </pre>
 
@@ -122,14 +122,14 @@ You may want to show the error page to the user if something goes wrong with uni
 
 <pre>
 get'/' => sub {
-  my $ sefl = shift;
+  my $sefl = shift;
   
   # Draw exception (error) page
   if (...) {
-    return $ self-> reply-> exception;
+    return $self-> reply-> exception;
   }
 
-  $ self-> render;
+  $self-> render;
 }
 </pre>
 
@@ -148,14 +148,14 @@ use Mojo :: JSON :: XS;
 
 Replace handler for drawing # json
 app-> renderer-> add_handler (json => sub {
-  my ($ self, $ c, $ output, $ options) = @_;
-  $$ output = Mojo :: JSON :: XS-> new-> encode ($ options-> {json});
+  my ($self, $c, $output, $options) = @_;
+  $$output = Mojo :: JSON :: XS-> new-> encode ($options-> {json});
 });
 
 get'/' => sub {
-  my $ self = shift;
+  my $self = shift;
   
-  $ self-> render (json => {name =>'kimoto'});
+  $self-> render (json => {name =>'kimoto'});
 };
 
 app-> start;

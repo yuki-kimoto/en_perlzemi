@@ -26,22 +26,22 @@ A scalar variable reference points to a scalar variable.
 To create a scalar variable reference:
 
 <pre>
-my $ str = "Hello";
-my $ str_ref = \ $ str;
+my $str = "Hello";
+my $str_ref = \ $str;
 </pre>
 
 <h4> Dereference scalar variable reference </h4>
 
-Use "$ {}" to dereference the scalar variable reference.
+Use "${}" to dereference the scalar variable reference.
 
 <pre>
-my $ str = $ {$ str_ref};
+my $str = ${$str_ref};
 </pre>
 
 Simple variables can be dereferenced by simply prefixing them with "$".
 
 <pre>
-my $ str = $$ str_ref;
+my $str = $$str_ref;
 </pre>
 
 <h3> Is it worth using a scalar variable reference? </H3>
@@ -62,17 +62,17 @@ A frequently used module is <a href="/blog/20100514127696.html"> Getopt :: Long<
 Handling command line argument options with # GetOptions
 
 # Set default value
-my $ enable_cache;
-my $ max_clients = 5;
-my $ type ='prefork';
+my $enable_cache;
+my $max_clients = 5;
+my $type ='prefork';
 
 # Optional processing
 GetOptions (
-  'enable_cache' => \ $ enable_cache,
-  'max_clients = i'=> \ $ max_clients,
-  'type = s'=> \ $ type
+  'enable_cache' => \ $enable_cache,
+  'max_clients = i'=> \ $max_clients,
+  'type = s'=> \ $type
 );
 
 Receives non-option arguments
-my $ conf_file = shift;
+my $conf_file = shift;
 </pre>

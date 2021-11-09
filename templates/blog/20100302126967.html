@@ -23,26 +23,26 @@ Debuggers are really useful, but some people don't even know if they're doing Pe
 I have prepared a simple script for debugging. Save it as debug.pl. We will use this script to explain the debugger.
 
 <pre>
-my $ message ='Hello';
+my $message ='Hello';
 my @nums = (1, 2, 3);
 my% scores = (math => 80, english => 77);
 
-my $ twice = twice (5);
+my $twice = twice (5);
 
 # breakpoint
-$ DB :: single = 1;
+$DB :: single = 1;
 
-for my $ num (@nums) {
+for my $num (@nums) {
     
   # Conditional breakpoints
-  if ($ num == 2) {$ DB :: single = 1}
-  print "$ num \ n";
+  if ($num == 2) {$DB :: single = 1}
+  print "$num \ n";
 }
 
 sub twice {
-  my $ num = shift;
+  my $num = shift;
   
-  return $ num * 2;
+  return $num * 2;
 }
 </pre>
 
@@ -57,7 +57,7 @@ perl -d debug.pl
 When you start the debugger, it stops at the first line.
 
 <pre>
-main :: (a.pl: 4): my $ message ='Hello';
+main :: (a.pl: 4): my $message ='Hello';
 </pre>
 
 Use "q" to exit the debugger.
@@ -107,13 +107,13 @@ Use "s" to run the <strong> script in a single step. </strong> The difference fr
 Encourage one line execution with "n" and advance the script to the line where the subroutine call is.
 
 <pre>
-main :: (a.pl: 8): my $ twice = twice (5);
+main :: (a.pl: 8): my $twice = twice (5);
 </pre>
 
 You can move to the processing inside the subroutine by executing "s" on this line.
 
 <pre>
-main :: twice (a.pl:21): my $ num = shift;
+main :: twice (a.pl:21): my $num = shift;
 </pre>
 
 <h4> c - Run to breakpoint or specified line </h4>
@@ -139,12 +139,12 @@ c
 Will advance to the position next to the breakpoint in the sentence.
 
 <pre>
-main :: (a.pl: 13): for my $ num (@nums) {
+main :: (a.pl: 13): for my $num (@nums) {
 </pre>
 
 <pre>
 # breakpoint
-$ DB :: single = 1;
+$DB :: single = 1;
 </pre>
 
 Is a breakpoint that can be embedded in a script. If you want to see the contents of a variable, set a breakpoint around the line immediately before it, and it is very convenient because you can stop the execution there.
@@ -155,10 +155,10 @@ This section describes display commands.
 
 <h4> p - Display the contents of variables </h4>
 
-<strong> You can display the contents of the variable with "p". </strong> For example, if you want to display a variable called $ message, do as follows.
+<strong> You can display the contents of the variable with "p". </strong> For example, if you want to display a variable called $message, do as follows.
 
 <pre>
-p $ message
+p $message
 </pre>
 
 <h4> x - Expand and display the contents of variables </h4>
@@ -199,7 +199,7 @@ If you execute "v" on the 4th line, the surrounding lines will be displayed as s
 1: use strict;
 2: use warnings;
 3
-4 ==> my $ message ='Hello';
+4 ==> my $message ='Hello';
 5: my @nums = (1, 2, 3);
 6: my% scores = (math => 80, english => 77);
 </pre>
@@ -219,7 +219,7 @@ If you execute "v" many times, the display will move to the lower line. You can 
 The <strong> debugger can execute any Perl statement. </strong> Below is an example of using the defined function to see if a variable is defined.
 
 <pre>
-print defined $ message;
+print defined $message;
 </pre>
 
 Any statement can be executed, which is useful for confirmation.
@@ -233,17 +233,17 @@ Here are some commonly used debugging techniques.
 <strong> Perl allows you to embed breakpoints in your scripts. </strong> If you assign 1 to a variable called single in the DB class (class for the debugger), the process will switch to single-step execution at that position.
 
 <pre>
-$ DB :: single = 1;
+$DB :: single = 1;
 </pre>
 
 This is really convenient, so please use it more and more. Also, don't forget to remove it from the script after you finish the exam.
 
 <h4> Conditional breakpoints </h4>
 
-When debugging, there are times when you want to stop processing and see the contents of variables only under certain conditions. In such a case, use the conditional statement in combination with "$ DB :: single = 1". In this sample, when $ num is 2, the debugger stops at that position.
+When debugging, there are times when you want to stop processing and see the contents of variables only under certain conditions. In such a case, use the conditional statement in combination with "$DB :: single = 1". In this sample, when $num is 2, the debugger stops at that position.
 
 <pre>
-if ($ num == 2) {$ DB :: single = 1}
+if ($num == 2) {$DB :: single = 1}
 </pre>
 
 <h4> Find out where the warning occurred </h4>
@@ -262,8 +262,8 @@ Perl can receive warnings as signals, so you can set the following breakpoints i
 
 <pre>
 # Catch the warning and set a breakpoint
-$ SIG {__ WARN__} = sub {
-    $ DB :: single = 1;
+$SIG {__ WARN__} = sub {
+    $DB :: single = 1;
 };
 </pre>
 
@@ -297,7 +297,7 @@ cpan Term :: ReadLine :: Gnu
 
 Perl's debugger is useful. When you start using a debugger, you will feel that you want to stop at the position you want to see. How can I stop at the position I want to see?
 
-For example, when writing an exam, it is common to go through the same part of the same process multiple times. In such a case, the breakpoint description "$ DB :: single = 1" is not enough to stop it. In the following cases, the breakpoint will be caught when the first total is executed.
+For example, when writing an exam, it is common to go through the same part of the same process multiple times. In such a case, the breakpoint description "$DB :: single = 1" is not enough to stop it. In the following cases, the breakpoint will be caught when the first total is executed.
 
 <pre>
 total (1, 2);
@@ -306,12 +306,12 @@ total (1, 2);
 total (3, 4);
 
 sub total {
-  my ($ num1, $ num2) = @_;
+  my ($num1, $num2) = @_;
   
-  $ DB :: single = 1;
-  my $ total = $ num1 + $ num2;
+  $DB :: single = 1;
+  my $total = $num1 + $num2;
 
-  return $ total;
+  return $total;
 }
 </pre>
 
@@ -321,16 +321,16 @@ Use conditional breakpoints in these cases.
 total (1, 2);
 
 # I want to see only during this process
-$ ENV {a} = 1;
+$ENV {a} = 1;
 total (3, 4);
 
 sub total {
-  my ($ num1, $ num2) = @_;
+  my ($num1, $num2) = @_;
   
-  $ DB :: single = 1 if $ ENV {a};
-  my $ total = $ num1 + $ num2;
+  $DB :: single = 1 if $ENV {a};
+  my $total = $num1 + $num2;
 
-  return $ total;
+  return $total;
 }
 </pre>
 

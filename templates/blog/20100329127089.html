@@ -23,19 +23,19 @@ You can use the <strong> quotemeta function </strong> to treat strings used in <
 
 <pre>
 # Treat regular expression strings as normal characters
-$ ret = quotemeta $ str;
+$ret = quotemeta $str;
 </pre>
 
 This is a sample that pattern matches a character string containing regular expression characters as a normal character string.
 
 <pre>
 # Pattern matching using a character string containing regular expression characters as a normal character string
-my $ message ='This message contains a {2}';
+my $message ='This message contains a {2}';
 
-my $ match = "a {2}";
-$ match = quotemeta $ match;
+my $match = "a {2}";
+$match = quotemeta $match;
 
-if ($ message = ~ / $ match /) {
+if ($message = ~ / $match /) {
   print "Match! \ N";
 }
 </pre>
@@ -44,7 +44,7 @@ quotemeta has the same meaning as the regular expression special character \ Q. 
 
 <pre>
 Express the same meaning as quotemeta using # \ Q
-my $ match = "\ Qa {2}";
+my $match = "\ Qa {2}";
 </pre>
 
 For more information on regular expressions, see <a href="/blog/20100827127859.html"> Practical Perl Regular Expressions Complete Explanation</a>.

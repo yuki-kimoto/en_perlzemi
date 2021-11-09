@@ -16,18 +16,18 @@
 <h2> Move the file Rename the file </h2>
 
 
-To move a file, use the <strong> move </strong> function of the <a href="/blog/20100408127089.html"> File :: Copy</a> module. If it succeeds, it returns true, and if it fails, it returns false. If the move function fails, the details of the error are stored in $ !.
+To move a file, use the <strong> move </strong> function of the <a href="/blog/20100408127089.html"> File :: Copy</a> module. If it succeeds, it returns true, and if it fails, it returns false. If the move function fails, the details of the error are stored in $!.
 
 <pre>
 use File :: Copy'move';
-move ($ file_from, $ file_to);
+move ($file_from, $file_to);
 </pre>
 
 You can also move the file to a directory.
 
 <pre>
 use File :: Copy'move';
-move $ file_from, $ dir;
+move $file_from, $dir;
 </pre>
 
 <h3> Sample </h3>
@@ -41,34 +41,34 @@ use Fcntl;
 use File :: Copy'move';
 
 # Move the file (rename the file)
-my $ file = "sample_20080522_ $$. txt";
-my $ dir = "dir_20080522_ $$";
+my $file = "sample_20080522_ $$. txt";
+my $dir = "dir_20080522_ $$";
 
 # Prepare files and directories
-sysopen (my $ fh, $ file, O_WRONLY | O_CREAT | O_EXCL)
-  or die "Unable to create $ file .: $!";
-close $ fh;
-print "Preparation:'$ file' has been created. \ N";
+sysopen (my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
+  or die "Unable to create $file .: $!";
+close $fh;
+print "Preparation:'$file' has been created. \ N";
 
-mkdir $ dir
-  or die "Unable to create $ dir.: $!";
-print "Preparation:'$ dir' has been created. \ N \ n";
+mkdir $dir
+  or die "Unable to create $dir.: $!";
+print "Preparation:'$dir' has been created. \ N \ n";
 
 print "1: Move the file. \ N";
-my $ move_name = "$ file.move";
-if (move $ file, $ move_name) {
-  print "$ file has been moved to $ move_name. \ N \ n";
+my $move_name = "$file.move";
+if (move $file, $move_name) {
+  print "$file has been moved to $move_name. \ N \ n";
 }
 else {
-  warn "Unable to move $ file to $ move_name. $!";
+  warn "Unable to move $file to $move_name. $!";
 }
 
 print "2; Move the file to the specified directory. \ N";
-if (move $ move_name, $ dir) {
-  print "$ move_name has been moved to $ dir. \ n \ n";
+if (move $move_name, $dir) {
+  print "$move_name has been moved to $dir. \ n \ n";
 }
 else {
-  warn "Unable to move $ move_name to $ dir .: $!";
+  warn "Unable to move $move_name to $dir .: $!";
 }
 </pre>
 

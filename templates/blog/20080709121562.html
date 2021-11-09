@@ -27,13 +27,13 @@ package MyModule;
 
 aaaaiiiii (1, 2);
 
-our $ AUTOLOAD;
+our $AUTOLOAD;
 sub AUTOLOAD {
   # ...
 }
 </pre>
 
-If you define our $ AUROLOAD, you can get the name of the called function.
+If you define our $AUROLOAD, you can get the name of the called function.
 
 <h4> What is autoload used for? </H4>
 
@@ -64,13 +64,13 @@ aaaaiiiii (1, 2);
 # This is called.
 sub AUTOLOAD {
 
-  If you define # $ AUROLOAD, you can get the name of the called function.
-  our $ AUTOLOAD;
+  If you define # $AUROLOAD, you can get the name of the called function.
+  our $AUTOLOAD;
 
   # You can receive the function name and arguments.
   my (@arg) = @_;
   print "AUTOLOAD has been called. \ N";
-  print "The function you tried to call is $ AUTOLOAD. \ N";
+  print "The function you tried to call is $AUTOLOAD. \ N";
   print "The argument is" .join (',', @arg). ". \ N";
 }
 </pre>

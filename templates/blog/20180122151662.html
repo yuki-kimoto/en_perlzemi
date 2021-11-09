@@ -44,27 +44,27 @@ use Carp'croak';
 
 # Constructor
 sub new {
-  my ($ class, $ file) = @_;
+  my ($class, $file) = @_;
   
-  my $ self = {};
-  open my $ fh,'<', $ file
-    or croak "Can't open $ file: $!";
-  $ self-> {fh} = $ fh;
+  my $self = {};
+  open my $fh,'<', $file
+    or croak "Can't open $file: $!";
+  $self-> {fh} = $fh;
   
-  return bless $ self, $ class;
+  return bless $self, $class;
 }
 
 # Destructor
 sub DESTROY {
-  my $ self = shift;
+  my $self = shift;
   print "DESTROY";
-  close $ self-> {fh};
+  close $self-> {fh};
 }
 
 package main;
 
 {
-  my $ file = File-> new ('a.txt');
+  my $file = File-> new ('a.txt');
 }
 </pre>
 

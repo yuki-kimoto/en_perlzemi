@@ -21,7 +21,7 @@
 To get the <strong> file descriptor </strong>, use the <strong> fileno function </strong>. In the argument, specify the open file handle.
 
 <pre>
-$ ret = fileno $ fh;
+$ret = fileno $fh;
 </pre>
 
 A file descriptor is an identifier used by the OS to identify files and standard I / O. This is an integer value.
@@ -35,17 +35,17 @@ use strict;
 use warnings;
 
 # Get filename from command line arguments
-my $ file = shift;
+my $file = shift;
 
 # Open file
-open (my $ fh,'<','file)
-  or die "Can't open file $ file: $!";
+open (my $fh,'<','file)
+  or die "Can't open file $file: $!";
 
 # Get file descriptor
-my $ fileno = fileno $ fh;
+my $fileno = fileno $fh;
 
 # output
-print "$ fileno \ n";
+print "$fileno \ n";
 </pre>
 
 Output result

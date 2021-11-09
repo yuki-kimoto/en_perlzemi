@@ -29,51 +29,51 @@ use Time :: Local'timelocal';
 print "(1) Check if the date exists. \ N";
 # Perl treats the time as the number of years since 1900
 Draw # 1900.
-my $ year = 2008 -1900;
+my $year = 2008 -1900;
 
 # The month starts from 0, so subtract 1 from the month you want to find.
-my $ mon = 10 - 1;
+my $mon = 10 - 1;
 
 # There should be no such day.
-my $ mday = 32;
+my $mday = 32;
 
 # If you specify a day that does not exist, an exception will be thrown, so catch it with eval
 eval {
-  timelocal (0, 0, 0, $ mday, $ mon, $ year);
+  timelocal (0, 0, 0, $mday, $mon, $year);
 };
 
 # Restore
-$ year + = 1900;
-$ mon ++;
+$year + = 1900;
+$mon ++;
 
-# $ @ Is set when an exception occurs.
-if ($ @) {
-  print "$ year year $ mon month $ mday day does not exist. \ N \ n";
+# $@ Is set when an exception occurs.
+if ($@) {
+  print "$year year $mon month $mday day does not exist. \ N \ n";
 }
 else {
-  print "$ year year $ mon month $ mday day exists. \ N \ n";
+  print "$year year $mon month $mday day exists. \ N \ n";
 }
 
 
 print "(2) Make date judgment a function. \ N";
-if (day_exist ($ year, $ mon, $ mday)) {
-  print "$ year year $ mon month $ mday day exists. \ N";
+if (day_exist ($year, $mon, $mday)) {
+  print "$year year $mon month $mday day exists. \ N";
 }
 else {
-  print "$ year year $ mon month $ mday day does not exist. \ N";
+  print "$year year $mon month $mday day does not exist. \ N";
 }
 
 # Function to determine if a date exists
 sub day_exist {
-  my ($ year, $ mon, $ mday) = @_;
-  $ year-= 1900;
-  $ mon-;
+  my ($year, $mon, $mday) = @_;
+  $year-= 1900;
+  $mon-;
     
   require Time :: Local;
   eval {
-    Time :: Local :: timelocal (0, 0, 0, $ mday, $ mon, $ year);
+    Time :: Local :: timelocal (0, 0, 0, $mday, $mon, $year);
   };
-  return $ @? 0: 1;
+  return $@? 0: 1;
 }
 </pre>
 
@@ -90,13 +90,13 @@ You need to take this into account when passing arguments to the timelocal funct
 <pre>
 # Perl treats the time as the number of years since 1900
 Draw # 1900.
-my $ year = 2008 -1900;
+my $year = 2008 -1900;
 
 # The month starts from 0, so subtract 1 from the month you want to find.
-my $ mon = 10 - 1;
+my $mon = 10 - 1;
 
 # There should be no such day.
-my $ mday = 32;
+my $mday = 32;
 </pre>
 
 <h4> Determine if the date exists </h4>
@@ -105,19 +105,19 @@ Use the timelocal function of the Time :: Local module to determine the date.
 
 Since the arguments of the timelocal function must be specified in the order of "seconds, minutes, hours, days, months, and years", 0 is passed as a dummy for seconds, minutes, and hours.
 
-If the date does not exist, the timelocal function throws an exception, so catch it with eval. If an exception occurs, the content will be set in $ @, so the judgment will be made with this.
+If the date does not exist, the timelocal function throws an exception, so catch it with eval. If an exception occurs, the content will be set in $@, so the judgment will be made with this.
 
 <pre>
 use Time :: Local'timelocal';
 eval {
-  timelocal (0, 0, 0, $ mday, $ mon, $ year);
+  timelocal (0, 0, 0, $mday, $mon, $year);
 };
 
-if ($ @) {
-  print "$ year year $ mon month $ mday day does not exist. \ N \ n";
+if ($@) {
+  print "$year year $mon month $mday day does not exist. \ N \ n";
 }
 else {
-  print "$ year year $ mon month $ mday day exists. \ N \ n";
+  print "$year year $mon month $mday day exists. \ N \ n";
 }
 </pre>
 
@@ -127,14 +127,14 @@ Since the judgment method is quite complicated as described above, it is conveni
 
 <pre>
 sub day_exist {
-  my ($ year, $ mon, $ mday) = @_;
-  $ year-= 1900;
-  $ mon-;
+  my ($year, $mon, $mday) = @_;
+  $year-= 1900;
+  $mon-;
     
   require Time :: Local;
   eval {
-    Time :: Local :: timelocal (0, 0, 0, $ mday, $ mon, $ year);
+    Time :: Local :: timelocal (0, 0, 0, $mday, $mon, $year);
   };
-  return $ @? 0: 1;
+  return $@? 0: 1;
 }
 </pre>

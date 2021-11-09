@@ -28,7 +28,7 @@ An array reference is a reference to a <a href="/blog/20161012147627.html"> arra
 <pre>
 # Create array reference
 my @nums = (1, 3, 5);
-my $ nums_ref = \ @nums;
+my $nums_ref = \ @nums;
 </pre>
 
 Note that the array reference is assigned to the <a href="/blog/20161107147852.html"> scalar variable</a>.
@@ -38,7 +38,7 @@ Let's write an image of the array reference below.
 <pre>
 # image
                       @nums
-$ nums_ref - -- --> (1, 3, 5)
+$nums_ref - -- --> (1, 3, 5)
 </pre>
 
 An array reference represents "what points to an array" rather than the array itself.
@@ -56,8 +56,8 @@ my @ nums2 = @ nums1;
 
 # Array reference does not copy values
 my @ nums1 = (1, 3, 5);
-my $ nums_ref1 = \ @ nums1;
-my $ nums_ref2 = $ nums_ref1;
+my $nums_ref1 = \ @ nums1;
+my $nums_ref2 = $nums_ref1;
 </pre>
 
 Below is an image. In the case of an array, the entire contents are copied, whereas in the array reference, the reference itself is copied, not the contents.
@@ -67,15 +67,15 @@ Below is an image. In the case of an array, the entire contents are copied, wher
 @ nums1 @ nums2
 (1, 3, 5) (1, 3, 5)
 
-$ nums_ref1 - -- -- -- ->
-$ nums_ref2 - -- -- -- -> (1, 3, 5)
+$nums_ref1 - -- -- -- ->
+$nums_ref2 - -- -- -- -> (1, 3, 5)
 </pre>
 
 When passing to <a href="/blog/20101130129876.html"> subroutine</a>, it is more efficient to pass an array reference because the contents are not copied.
 
 <pre>
 # Pass an array reference to a subroutine
-my_func ($ nums_ref1);
+my_func ($nums_ref1);
 </pre>
 
 <h3> Anonymous array generator </h3>
@@ -83,7 +83,7 @@ my_func ($ nums_ref1);
 Array references can be created using the reference generator "\", but this is a bit tricky. An operator called <a href="/blog/20170924150634.html"> anonymous array generator</a> is defined to quickly create an array reference.
 
 <pre>
-my $ nums_ref = [1, 3, 5];
+my $nums_ref = [1, 3, 5];
 </pre>
 
 Note that regular arrays are created with "()", whereas array references are created with the anonymous array generator "[]".
@@ -95,7 +95,7 @@ This notation appears frequently in Perl source code. It is important to read fr
 my @nums = (1, 3, 5);
 
 # Array reference
-my $ nums = [1, 3, 5];
+my $nums = [1, 3, 5];
 </pre>
 
 <h3> Dereference </h3>
@@ -105,10 +105,10 @@ I used a reference generator to generate an array reference. Now let's extract t
 To do this, perform an operation called <b> dereference </b>.
 
 <pre>
-my $ nums_ref = [1, 3, 5];
+my $nums_ref = [1, 3, 5];
 
 # Dereference
-my @nums = @ {$ nums_ref};
+my @nums = @ {$nums_ref};
 </pre>
 
 Dereferences can be made using the notation "@ {array reference}".
@@ -116,7 +116,7 @@ Dereferences can be made using the notation "@ {array reference}".
 If the array reference is a scalar variable, you can omit the "{}".
 
 <pre>
-my @nums = @ $ nums_ref;
+my @nums = @ $nums_ref;
 </pre>
 
 <h4> Pass as an argument to a standard function </h4>
@@ -125,10 +125,10 @@ my @nums = @ $ nums_ref;
 
 <pre>
 # Dereference and pass to standard function
-shift @ $ array;
-unshift @ $ array, $ element;
-push @ $ array, $ element;
-pop @ $ array;
+shift @ $array;
+unshift @ $array, $element;
+push @ $array, $element;
+pop @ $array;
 </pre>
 
 <h3> Extract array values ​​from array reference </h3>
@@ -137,20 +137,20 @@ You can use the arrow operator "->" to retrieve an array value from an array ref
 
 <pre>
 # Get array values ​​from array references
-my $ num = $ nums_ref-> [3];
+my $num = $nums_ref-> [3];
 
 # Set array values ​​from array reference
-$ nums_ref-> [3] = 67;
+$nums_ref-> [3] = 67;
 </pre>
 
 If the arrow operator is used, it is an array reference. If not, it's an array. Please be able to read this well in the source code.
 
 <pre>
 # Get array values
-my $ num = $ nums [3];
+my $num = $nums [3];
 
 # Set array values
-$ nums [3] = 67;
+$nums [3] = 67;
 </pre>
 
 It's important to look closely, as it depends on whether it's an array or an array reference, with or without the arrow operator.
@@ -160,7 +160,7 @@ It's important to look closely, as it depends on whether it's an array or an arr
 Hash references are as often used as array references.
 
 <pre>
-my $ score_ref = {math => 78, english => 89};
+my $score_ref = {math => 78, english => 89};
 </pre>
 
 Hash references are explained in detail below.

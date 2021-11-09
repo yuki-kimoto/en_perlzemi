@@ -22,12 +22,12 @@ Perl seminars are created according to the following coding rules. Please refer 
 
 <pre>
 sub parse {
-  my $ str = shift;
+  my $str = shift;
   
-  my $ tree;
+  my $tree;
   ...
 
-  return $ tree;
+  return $tree;
 }
 </pre>
 
@@ -46,21 +46,21 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 <pre>
 my @nums = (2, 4, 5);
 my% ages = (kimoto => 20, ken => 25);
-my $ total = (2 + 3) + 2;
-while ($ num == 2) {...}
-for (my $ i = 4; $ i <5; $ i ++) {...}
+my $total = (2 + 3) + 2;
+while ($num == 2) {...}
+for (my $i = 4; $i <5; $i ++) {...}
 </pre>
 
 <h4> Do not put a space inside the bracket [] </h4>
 
 <pre>
-my $ nums = [2, 4, 5];
+my $nums = [2, 4, 5];
 </pre>
 
 <h4> Do not put spaces inside the hash reference brace {} </h4>
 
 <pre>
-my $ ages = {kimoto => 20, ken => 25};
+my $ages = {kimoto => 20, ken => 25};
 </pre>
 
 <h4> When the subroutine is one line, put a space inside the brace </h4>
@@ -72,8 +72,8 @@ sub ua {LWP :: UserAgent-> new}
 <h4> When the sentence is one line, put a space inside the brace </h4>
 
 <pre>
-if (condition) {$ num = 1}
-else {$ num = 2}
+if (condition) {$num = 1}
+else {$num = 2}
 </pre>
 
 <h4> Do not put a space in front of the comma, put a space behind the comma </h4>
@@ -138,16 +138,16 @@ while (condition) {
 <h4> One space is always available </h4>
 
 <pre>
-my $ num = 1;
-my $ title ='Perl';
-my $ author ='kimoto';
+my $num = 1;
+my $title ='Perl';
+my $author ='kimoto';
 </pre>
 It looks beautiful if you have equal (=), but it is troublesome considering the trouble of correction, so I always keep one space.
 
 <h4> Indent +2 when there are multiple lines </h4>
 
 <pre>
-my $ str ='Hello Hello Hello Hello Hello Hello Hello Hello'
+my $str ='Hello Hello Hello Hello Hello Hello Hello Hello'
   .'Hello Hello Hello Hello Hello Hello Hello Hello Hello'
   . "Hello Hello Hello Hello Hello \ n";
 </pre>
@@ -164,8 +164,8 @@ sub ua {LWP :: UserAgent-> new}
 <h4> Do not add a semicolon; when the statement is on one line </h4>
 
 <pre>
-if (condition) {$ num = 1}
-else {$ num = 2}
+if (condition) {$num = 1}
+else {$num = 2}
 </pre>
 
 <h3> String </h3>
@@ -173,7 +173,7 @@ else {$ num = 2}
 <h4> Use single quotes when the string does not contain variables </h4>
 
 <pre>
-my $ str ='Hello World!';
+my $str ='Hello World!';
 </pre>
 
 <h3> Conditional statement / repeating statement </h3>
@@ -211,21 +211,21 @@ Since foreach is another name for for, we use for which can be written short.
 <h4> Do not put parentheses for functions with one argument </h4>
 
 <pre>
-my $ num = int 5;
-my $ class = ref $ obj;
+my $num = int 5;
+my $class = ref $obj;
 </pre>
 
 <h4> Do not put parentheses on functions and methods that do not require arguments </h4>
 
 <pre>
-my $ time = time;
-my $ ua = LWP :: UserAgent-> new;
+my $time = time;
+my $ua = LWP :: UserAgent-> new;
 </pre>
 
 <h4> Use direct object syntax </h4>
 
 <pre>
-my $ ua = LWP :: UserAgent-> new;
+my $ua = LWP :: UserAgent-> new;
 </pre>
 
 It doesn't use indirect object syntax.
@@ -233,8 +233,8 @@ It doesn't use indirect object syntax.
 exception.
 
 <pre>
-print $ fh "Hello";
-printf $ fh "Hello% d", 3;
+print $fh "Hello";
+printf $fh "Hello% d", 3;
 </pre>
 
 Because it is a very general way of writing.
@@ -274,7 +274,7 @@ use XML :: Simple;
 exception. Use require if you want to load the module at runtime.
 
 <pre>
-if ($ use_agent) {
+if ($use_agent) {
   require LWP :: UserAgent;
 }
 </pre>
@@ -305,7 +305,7 @@ use Carp ();
 <h4> Write comments before expressions </h4>
 <pre>
 # Time
-my $ time = time;
+my $time = time;
 </pre>
 
 <h3> Array / hash </h3>

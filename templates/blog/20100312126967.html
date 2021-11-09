@@ -26,7 +26,7 @@ You can use the <b> eval </b> function to catch exceptions in the case of block 
 eval {...};
 
 # eval string-dynamically execute string
-eval $ string;
+eval $string;
 </pre>
 
 Note that the block syntax and the string syntax have completely different functions. Let's take a closer look at each syntax.
@@ -42,11 +42,11 @@ eval {...};
 
 This plays the same role as the catch syntax for exception handling in Java and elsewhere. If an exception occurs inside the eval block, you can catch the exception and prevent the program from terminating.
 
-The content of the exception is assigned to <a href="/blog/20161102147817.html"> special variable</a> "$ @", so let's check this. It is recommended to save $ @ in a <a href="/blog/20161107147852.html"> variable</a> as it may be overwritten by other processing.
+The content of the exception is assigned to <a href="/blog/20161102147817.html"> special variable</a> "$@", so let's check this. It is recommended to save $@ in a <a href="/blog/20161107147852.html"> variable</a> as it may be overwritten by other processing.
 
 <pre>
-if (my $ error = $ @) {
-  print "$ error \ n";
+if (my $error = $@) {
+  print "$error \ n";
 }
 </pre>
 
@@ -60,11 +60,11 @@ See the following articles for a detailed explanation of Perl's exception handli
 
 <h3> Dynamic execution of strings - eval string </h3>
 
-The one called the eval string is a syntax that dynamically executes a string. If you pass a string to <strong> eval, that string will be executed as a Perl executable statement. </strong> Any errors that occur at runtime are stored in $ @.
+The one called the eval string is a syntax that dynamically executes a string. If you pass a string to <strong> eval, that string will be executed as a Perl executable statement. </strong> Any errors that occur at runtime are stored in $@.
 
 <pre>
 # eval string-dynamically execute string
-eval $ string;
+eval $string;
 </pre>
 
 As an example, you can define a <a href="/blog/20101130129876.html"> subroutine</a> at runtime. The following example defines a subroutine called foo that returns 5 with an eval string and a <a href="/blog/20080614121342.html"> typeglob</a> at runtime. "No string'refs'" temporarily allows symbolic references.

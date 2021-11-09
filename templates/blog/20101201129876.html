@@ -31,12 +31,12 @@ In Perl source code, you'll often see shift functions with no arguments. The mea
 
 <pre>
 sub foo {
-  # Same meaning as "my $ x = shift @ _;"
-  my $ x = shift;
+  # Same meaning as "my $x = shift @ _;"
+  my $x = shift;
 }
 
-# Same meaning as "my $ y = shift @ARGV;"
-my $ y = shift;
+# Same meaning as "my $y = shift @ARGV;"
+my $y = shift;
 </pre>
 
 <h3> Is it possible to handle Japanese in Perl? </H3>
@@ -53,7 +53,7 @@ Jcode.pl and JCode.pm are no longer the recommended methods, so learn about the 
 
 <h3> Does Perl have exception handling? </H3>
 
-Yes. I have. Perl uses the syntax <a href="/blog/20100312126967.html"> eval</a> block. If an exception occurs, the content of the exception will be assigned to the variable <b> $ @ </b>, so check it.
+Yes. I have. Perl uses the syntax <a href="/blog/20100312126967.html"> eval</a> block. If an exception occurs, the content of the exception will be assigned to the variable <b> $@ </b>, so check it.
 
 <pre>
 # Exception handling
@@ -62,7 +62,7 @@ eval {
 }
 
 # What to do if an exception occurs
-if ($ @) {
+if ($@) {
   ...
 }
 </pre>
@@ -152,7 +152,7 @@ So I think Perl is a good language for business use as well.
 
 There are many scripts on the Internet that can be run with Perl4, but now it's safe to say that you don't have to write Perl with Perl4 in mind. Perl5 has a penetration rate of almost 100%, so it's a good idea to write in Perl5 notation, which is maintainable, readable, and flexible. Perl5 has been improved and updated in terms of readability and maintainability.
 
-<h3> I'm not familiar with Sigil "$ @%". </h3>
+<h3> I'm not familiar with Sigil "$@%". </h3>
 
 You'll get used to it after using Perl for a while. The advantage of sigil is that you can visually see that it is a variable. Compared to other languages, I'm not used to Perl, so I think it's hard to read, but as I get used to it, I can visually understand that it's a variable, so it's easier to read. Also, since function names and variable names never collide, you don't have to think about what reserved words are when programming, so you can program without stress.
 
@@ -178,7 +178,7 @@ Scripting languages ​​such as Perl, Ruby, and Python allow you to assign obj
 
 <pre>
 # Perl
-my $ url = URL-> new;
+my $url = URL-> new;
 
 # Java
 URL url = new URL ();

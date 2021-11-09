@@ -26,49 +26,49 @@ use strict;
 use warnings;
 
 # Argument processing
-my $ file = shift;
+my $file = shift;
 
-unless ($ file) {
-    die "Usage: $ 0 file"; # If there is no argument, indicate the usage and exit.
+unless ($file) {
+    die "Usage: $0 file"; # If there is no argument, indicate the usage and exit.
 }
 
 Create a key for each column of # csv
-my $ headers = ['name','age','country'];
+my $headers = ['name','age','country'];
 
 # Parse the file and convert the csv format data to an array of arrays.
 # The header key is also passed as an argument.
-my @recs = parse_file ($ file, $ headers);
+my @recs = parse_file ($file, $headers);
 
 # Output (because it is an array of hashes, follow it with for)
-for my $ items (@recs) {
+for my $items (@recs) {
   # Concatenate using hash slices
-  print join (',', @ {$ items} {@ $ headers}). "\ n";
+  print join (',', @ {$items} {@ $headers}). "\ n";
 }
 
 # Function for file analysis (I just write it back this time ...)
 sub parse_file {
-  my ($ file, $ headers) = @_;
+  my ($file, $headers) = @_;
   
-  open (my $ fh, "<", $ file)
-    or die "Cannot open $ file for read: $!";
+  open (my $fh, "<", $file)
+    or die "Cannot open $file for read: $!";
   
   # Prepare a reference to an array that stores multiple records
-  my $ recs = [];
-    while (my $ line = <$ fh>) {
+  my $recs = [];
+    while (my $line = <$fh>) {
       # Remove line breaks
-      chomp $ line;
+      chomp $line;
       
       # Prepare a reference to the hash that stores the data
       # Header using hash slice
       Assign to the key corresponding to #
-      my $ items = {};
-      @ {$ items} {@ $ headers} = split (',', $ line);
+      my $items = {};
+      @ {$items} {@ $headers} = split (',', $line);
 
-      Since the first argument of the # push function is an array, dereference it with @ $ recs.
-      push @ $ recs, $ items;
+      Since the first argument of the # push function is an array, dereference it with @ $recs.
+      push @ $recs, $items;
     }
-    close $ fh;
-    wantarray? return @ $ recs: return $ recs;
+    close $fh;
+    wantarray? return @ $recs: return $recs;
 }
 </pre>
 
@@ -84,7 +84,7 @@ rika, 38, France
 <h4> (1) Creating an array of hash keys </h4>
 
 <pre>
-my $ headers = ['name','age','country'];
+my $headers = ['name','age','country'];
 </pre>
 
 By using the hash key, we give meaning to what was just an array last time. The first item of the csv file corresponds to name, the second item corresponds to age, and the third item corresponds to country.
@@ -92,7 +92,7 @@ By using the hash key, we give meaning to what was just an array last time. The 
 <h4> (2) Read the file and convert the csv format text to an array of hashes </h4>
 
 <pre>
-my @recs = parse_file ($ file, $ headers);
+my @recs = parse_file ($file, $headers);
 </pre>
 
 parse_file is a self-made function that reads a file and converts csv format text into an array of hashes. The input and output images are as follows.
@@ -114,18 +114,18 @@ rika, 38, France
 <h4> (3) Output an array of hashes </h4>
 
 <pre>
-for my $ items (@recs) {
-  print join (',', @ {$ items} {@ $ headers}). "\ n";
+for my $items (@recs) {
+  print join (',', @ {$items} {@ $headers}). "\ n";
 }
 </pre>
 
-Since it is an array, the outside is a foreach loop. Output $ items, which is a reference to the hash, concatenated with commas with <a href="/blog/20081007122338.html"> join function</a>.
+Since it is an array, the outside is a foreach loop. Output $items, which is a reference to the hash, concatenated with commas with <a href="/blog/20081007122338.html"> join function</a>.
 
 <h4> (3) -1 Explanation of hash slices </h4>
 
-I will explain the esoteric hash slice @ {$ items} {@ $ headers}.
+I will explain the esoteric hash slice @ {$items} {@ $headers}.
 
-First, $ items is a reference to the hash.
+First, $items is a reference to the hash.
 
 <pre>
 {name =>'masao', age => 10, country =>'Japan'}
@@ -133,16 +133,16 @@ First, $ items is a reference to the hash.
 
 It looks like this.
 
-I usually use% $ items to dereference, but I want to dereference it so that hash slices can be used.
+I usually use% $items to dereference, but I want to dereference it so that hash slices can be used.
 
 <pre>
-@ {$ items} {list of hash keys}
+@ {$items} {list of hash keys}
 </pre>
 
 will do.
 
 <pre>
-@ {$ items} {'name','age','country'}
+@ {$items} {'name','age','country'}
 </pre>
 
 If you write
@@ -153,16 +153,16 @@ If you write
 
 Can be obtained.
 
-Also, since ['name','age','country'] is assigned to $ headers, you can get ('name','age','country') by dereferencing @ $ headers. increase.
+Also, since ['name','age','country'] is assigned to $headers, you can get ('name','age','country') by dereferencing @ $headers. increase.
 
 <pre>
-@ {$ items} {@ $ headers}
+@ {$items} {@ $headers}
 </pre>
 
 Is the description
 
 <pre>
-@ {$ items} {'name','age','country'}
+@ {$items} {'name','age','country'}
 </pre>
 Is the same as the description
 <pre>
@@ -170,7 +170,7 @@ Is the same as the description
 </pre>
 Can be obtained.
 <pre>
-join (',', @ {$ items} {@ $ headers})
+join (',', @ {$items} {@ $headers})
 </pre>
 As a result, it is completed by connecting with commas.
 
@@ -179,26 +179,26 @@ As a result, it is completed by connecting with commas.
 I'm using a <a href="/blog/20100123126425.html"> while statement</a> to create a Perl data structure.
 
 <pre>
-while (my $ line = <$ fh>) {
+while (my $line = <$fh>) {
   # Remove line breaks
-  chomp $ line;
+  chomp $line;
 
   # Prepare a reference to the hash that stores the data
-  my $ items = {};
+  my $items = {};
   # Header using hash slice
   Assign to the key corresponding to #
-  @ {$ items} {@ $ headers} = split (',', $ line);
+  @ {$items} {@ $headers} = split (',', $line);
 
-  The first argument of the # push function is an array, so @ $ recs
+  The first argument of the # push function is an array, so @ $recs
   # And dereference.
-  push @ $ recs, $ items;
+  push @ $recs, $items;
 }
 </pre>
 
 <h4> (4) -1 Prepare a reference to the hash </h4>
 
 <pre>
-my $ items = {}; # Prepare a reference to the hash that stores the data
+my $items = {}; # Prepare a reference to the hash that stores the data
 </pre>
 
 Prepare a reference to the hash you want to have in the array.
@@ -206,7 +206,7 @@ Prepare a reference to the hash you want to have in the array.
 <h4> (4) -2 Assign hash slice to corresponding key on the left side </h4>
 
 <pre>
-@ {$ items} {@ $ headers} = split (',', $ line);
+@ {$items} {@ $headers} = split (',', $line);
 </pre>
 
 Same as explained above. Make the left side a hash slice and assign the list divided by the split function to it.

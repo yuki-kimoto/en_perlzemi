@@ -21,15 +21,15 @@
 Use the <strong> chdir function </strong> to <strong> change the current directory </strong>. The current directory of the shell or command prompt is not affected, only the current directory is changed in the Perl program.
 
 <pre>
-chdir $ dir;
+chdir $dir;
 </pre>
 
-This is a sample to change the current directory. Be sure to handle the error in consideration of the case where the directory does not exist. If it fails, the content of the error is stored in $ !.
+This is a sample to change the current directory. Be sure to handle the error in consideration of the case where the directory does not exist. If it fails, the content of the error is stored in $!.
 
 <pre>
-my $ dir ='/ etc';
-chdir $ dir
-  or die "Cannot change working directory $ dir: $!";
+my $dir ='/ etc';
+chdir $dir
+  or die "Cannot change working directory $dir: $!";
 </pre>
 
 <h3> Sample </h3>
@@ -41,17 +41,17 @@ use strict;
 use warnings;
 
 # Change the current directory.
-# chdir $ dir;
+# chdir $dir;
 
 # Preparation (creating a directory)
-my $ dir = "dir_20080528_ $$";
-mkdir $ dir
-  or die "Unable to create $ dir.: $!";
-print "Preparation: $ dir has been created. \ N \ n";
+my $dir = "dir_20080528_ $$";
+mkdir $dir
+  or die "Unable to create $dir.: $!";
+print "Preparation: $dir has been created. \ N \ n";
 
 print "1: Change the current directory. \ N";
-chdir $ dir
-  or die "Unable to change current directory to $ dir .: $!";
+chdir $dir
+  or die "Unable to change current directory to $dir .: $!";
 
-print "The current directory has changed to $ dir.";
+print "The current directory has changed to $dir.";
 </pre>

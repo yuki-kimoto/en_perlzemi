@@ -15,7 +15,7 @@ Keys not specified in the map method will not be mapped. The key b is not mapped
 If you want to change the value a little more flexibly, you can use the subroutine reference. Since the original value can be obtained with the first argument, the new value is returned.
 
 <pre>
-Original key name => [new key name => sub {return'%'. $ _ [0].'%'}]
+Original key name => [new key name => sub {return'%'. $_ [0].'%'}]
 </pre>
 
 <h4> Parameter mapping conditions </h4>
@@ -42,16 +42,16 @@ title => undef
 Use the condition attribute to change this condition. You can set the reference of any subroutine or the strings "length", "defined", and "exists" as special values.
 
 <pre>
-$ mapper-> condition ('length'); # Same as default
-$ mapper-> condition ('defined'); # value is defined
-$ mapper-> condition ('exists'); # key exists
-$ mapper-> condition (sub {defined $ _ [0]}); # Reference to any subroutine
+$mapper-> condition ('length'); # Same as default
+$mapper-> condition ('defined'); # value is defined
+$mapper-> condition ('exists'); # key exists
+$mapper-> condition (sub {defined $_ [0]}); # Reference to any subroutine
 </pre>
 
 It is also possible to set each key individually as follows with the map method.
 
 <pre>
-$ mapper-> map (
+$mapper-> map (
   Old key => [new key => new value, {condtion =>'defined'}],
 );
 </pre>

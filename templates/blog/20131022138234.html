@@ -31,10 +31,10 @@ use warnings;
 use PDL;
 
 # Create data
-my $ nums = pdl [2, 4, 7];
+my $nums = pdl [2, 4, 7];
 
 # Data output
-print $ nums;
+print $nums;
 </pre>
 
 When I run this sample, I get the following output on the screen:
@@ -54,7 +54,7 @@ use PDL;
 After loading the PDL, you can use the pdl function. Use the pdl function to create a PDL variable.
 
 <pre>
-my $ nums = pdl [2, 4, 7];
+my $nums = pdl [2, 4, 7];
 </pre>
 
 <h3> Data acquisition and modification </h3>
@@ -62,8 +62,8 @@ my $ nums = pdl [2, 4, 7];
 The data created by the pdl function is called a PDL variable. Let's get the elements of a one-dimensional PDL variable. Use the <strong> at </strong> method to get the data.
 
 <pre>
-my $ first = $ nums-> at (0);
-my $ second = $ nums-> at (1);
+my $first = $nums-> at (0);
+my $second = $nums-> at (1);
 </pre>
 
 In the above example, we got the value of the element contained in the PDL variable, but we can also get it as a PDL variable.
@@ -74,38 +74,38 @@ There are several ways to get some data as PDL variables, but it's easier to wri
 use PDL :: NiceSlice;
 </pre>
 
-To get an element as a PDL variable, use the notation <strong> $ variable name (element number) </strong>.
+To get an element as a PDL variable, use the notation <strong> $variable name (element number) </strong>.
 
 <pre>
 Get # element as PDL variable
-my $ pdl_first = $ nums (0);
-my $ pdl_second = $ nums (1);
+my $pdl_first = $nums (0);
+my $pdl_second = $nums (1);
 </pre>
 
 These are PDL variables, so if you want to get the element value itself, you can retrieve it with the <strong> at </strong> method.
 
 <pre>
-my $ first = $ pdl_first-> at (0);
-my $ second = $ pdl_second-> at (0);
+my $first = $pdl_first-> at (0);
+my $second = $pdl_second-> at (0);
 </pre>
 
 If you want to change the value of an element, use nice slice notation as well. Use the <strong>. = </Strong> operator. . = Is overridden for assignment, not string concatenation.
 
 <pre>
 # Change the value of the element
-$ nums (0). = 5;
+$nums (0). = 5;
 </pre>
 
-PDL also allows you to cut out multiple parts of a PDL variable as a new PDL variable. Let's cut out the second and third elements. You can cut out a part of the PDL variable by using the notation <strong> $ variable name (n: m) </strong> as follows.
+PDL also allows you to cut out multiple parts of a PDL variable as a new PDL variable. Let's cut out the second and third elements. You can cut out a part of the PDL variable by using the notation <strong> $variable name (n: m) </strong> as follows.
 
 <pre>
-my $ pdl_parts = $ nums (1: 2);
+my $pdl_parts = $nums (1: 2);
 </pre>
 
 You can also assign values ​​to all the elements of the extracted PDL variable.
 
 <pre>
-$ nums (1: 2). = 8;
+$nums (1: 2). = 8;
 </pre>
 
 The feature of PDL is that the same operation can be performed on the set of parts cut out in this way.
@@ -113,7 +113,7 @@ The feature of PDL is that the same operation can be performed on the set of par
 Let's get the length of one-dimensional data. Use the <strong> dims </strong> method to get the length of the data.
 
 <pre>
-my $ length = $ nums-> dims;
+my $length = $nums-> dims;
 </pre>
 
 <h3> Sample </h3>
@@ -128,26 +128,26 @@ use PDL;
 use PDL :: NiceSlice;
 
 # Create data
-my $ nums = pdl [2, 4, 7];
+my $nums = pdl [2, 4, 7];
 
 # Element output
-print $ nums-> at (0). "\ n";
-print $ nums-> at (1). "\ n";
+print $nums-> at (0). "\ n";
+print $nums-> at (1). "\ n";
 
 # Retrieving PDL variables
-my $ pdl_first = $ nums (0);
-my $ pdl_second = $ nums (1);
+my $pdl_first = $nums (0);
+my $pdl_second = $nums (1);
 
 # Substitution
-$ nums (0). = 5;
+$nums (0). = 5;
 
 # Getting multi-element PDL variables
-my $ pdl_parts = $ nums (1: 2);
+my $pdl_parts = $nums (1: 2);
 
 # Assignment to multiple elements retrieved as PDL variable
-$ nums (1: 2). = 8;
+$nums (1: 2). = 8;
 
-print $ nums. "\ n";
+print $nums. "\ n";
 </pre>
 
 <h3> Four arithmetic operations of constants </h3>
@@ -156,27 +156,27 @@ Use the <strong> + </strong> operator to add the same value to all values ​​
 
 <pre>
 use PDL;
-my $ pdl = pdl [1, 1, 2, 2, 2, 3];
-my $ pdl_add = $ pdl + 3;
+my $pdl = pdl [1, 1, 2, 2, 2, 3];
+my $pdl_add = $pdl + 3;
 </pre>
 
 Do the same for <strong> subtraction </strong>, <strong> multiplication </strong>, <strong> division </strong>, <strong> quotient </strong>, and <strong> exponentiation </strong>. can do.
 
 <pre>
 # Subtraction
-my $ pdl_sub = $ pdl - 3;
+my $pdl_sub = $pdl - 3;
 
 # Multiplication
-my $ pdl_product = $ pdl * 3;
+my $pdl_product = $pdl * 3;
 
 # Division
-my $ pdl_div = $ pdl / 3;
+my $pdl_div = $pdl / 3;
 
 # Quotient
-my $ pdl_quotient = $ pdl% 3;
+my $pdl_quotient = $pdl% 3;
 
 # Exponentiation
-my $ pdl_pow = $ pdl + 3;
+my $pdl_pow = $pdl + 3;
 </pre>
 
 Multiplication and division correspond to constant multiples of the vector. Keep in mind that you are doing operations between PDL variables and ordinary values, not operations between PDL variables.
@@ -186,7 +186,7 @@ Multiplication and division correspond to constant multiples of the vector. Keep
 Use the <strong> uniq method </strong> to retrieve the <strong> unique value </strong>.
 
 <pre>
-my $ pdl_uniq = $ pdl-> uniq;
+my $pdl_uniq = $pdl-> uniq;
 </pre>
 
 <h3> Four arithmetic operations between PDL variables </h3>
@@ -195,28 +195,28 @@ To add <strong> PDL variables </strong>, use the <strong> + </strong> operator f
 
 <pre>
 # Addition of PDL variables
-my $ pdl1 = pdl [1, 2, 3];
-my $ pdl2 = pdl [4, 5, 6];
-my $ pdl_add = $ pdl1 + $ pdl2;
+my $pdl1 = pdl [1, 2, 3];
+my $pdl2 = pdl [4, 5, 6];
+my $pdl_add = $pdl1 + $pdl2;
 </pre>
 
 Do the same for <strong> subtraction </strong>, <strong> multiplication </strong>, <strong> division </strong>, <strong> quotient </strong>, and <strong> exponentiation </strong>. can do. Each element is calculated.
 
 <pre>
 # Subtraction
-my $ pdl_sub = $ pdl1-$ pdl2;
+my $pdl_sub = $pdl1-$pdl2;
 
 # Multiplication
-my $ pdl_product = $ pdl1 * $ pdl2;
+my $pdl_product = $pdl1 * $pdl2;
 
 # Division
-my $ pdl_div = $ pdl1 / $ pdl2;
+my $pdl_div = $pdl1 / $pdl2;
 
 # Quotient
-my $ pdl_quotient = $ pdl1% $ pdl2;
+my $pdl_quotient = $pdl1% $pdl2;
 
 # Exponentiation
-my $ pdl_pow = $ pdl1 + $ pdl2;
+my $pdl_pow = $pdl1 + $pdl2;
 </pre>
 
 Addition and subtraction corresponds to addition and subtraction of vectors.
@@ -227,7 +227,7 @@ There is no special way to calculate the dot product. To calculate the <strong> 
 
 <pre>
 # Dot product
-my $ inner_product = ($ pdl1 * $ pdl2)-> sum;
+my $inner_product = ($pdl1 * $pdl2)-> sum;
 </pre>
 
 The result of the dot product is just a value, not a PDL variable.
@@ -243,31 +243,31 @@ use warnings;
 use PDL;
 
 # Addition
-my $ pdl = pdl [1, 1, 2, 2, 2, 3];
-my $ pdl_add = $ pdl + 3;
+my $pdl = pdl [1, 1, 2, 2, 2, 3];
+my $pdl_add = $pdl + 3;
 
 # Subtraction
-my $ pdl_sub = $ pdl - 3;
+my $pdl_sub = $pdl - 3;
 
 # Multiplication
-my $ pdl_product = $ pdl * 3;
+my $pdl_product = $pdl * 3;
 
 # Division
-my $ pdl_div = $ pdl / 3;
+my $pdl_div = $pdl / 3;
 
 # Quotient
-my $ pdl_quotient = $ pdl% 3;
+my $pdl_quotient = $pdl% 3;
 
 # Get unique value
-my $ pdl_uniq = $ pdl-> uniq;
+my $pdl_uniq = $pdl-> uniq;
 
 # Calculation result
-print "$ pdl_add \ n";
-print "$ pdl_sub \ n";
-print "$ pdl_product \ n";
-print "$ pdl_div \ n";
-print "$ pdl_quotient \ n";
-print "$ pdl_uniq \ n";
+print "$pdl_add \ n";
+print "$pdl_sub \ n";
+print "$pdl_product \ n";
+print "$pdl_div \ n";
+print "$pdl_quotient \ n";
+print "$pdl_uniq \ n";
 </pre>
 
 <pre>
@@ -277,33 +277,33 @@ use warnings;
 use PDL;
 
 # Addition of PDL variables
-my $ pdl1 = pdl [1, 2, 3];
-my $ pdl2 = pdl [4, 5, 6];
-my $ pdl_add = $ pdl1 + $ pdl2;
+my $pdl1 = pdl [1, 2, 3];
+my $pdl2 = pdl [4, 5, 6];
+my $pdl_add = $pdl1 + $pdl2;
 
 # Subtraction
-my $ pdl_sub = $ pdl1-$ pdl2;
+my $pdl_sub = $pdl1-$pdl2;
 
 # multiplication
-my $ pdl_product = $ pdl1 * $ pdl2;
+my $pdl_product = $pdl1 * $pdl2;
 
 # Division
-my $ pdl_div = $ pdl1 / $ pdl2;
+my $pdl_div = $pdl1 / $pdl2;
 
 # Quotient
-my $ pdl_quotient = $ pdl1% $ pdl2;
+my $pdl_quotient = $pdl1% $pdl2;
 
 # Exponentiation
-my $ pdl_pow = $ pdl1 + $ pdl2;
+my $pdl_pow = $pdl1 + $pdl2;
 
 # Dot product
-my $ inner_product = ($ pdl1 * $ pdl2)-> sum;
+my $inner_product = ($pdl1 * $pdl2)-> sum;
 
 # Calculation result
-print "$ pdl_add \ n";
-print "$ pdl_sub \ n";
-print "$ pdl_product \ n";
-print "$ pdl_div \ n";
-print "$ pdl_quotient \ n";
-print "$ inner_product \ n";
+print "$pdl_add \ n";
+print "$pdl_sub \ n";
+print "$pdl_product \ n";
+print "$pdl_div \ n";
+print "$pdl_quotient \ n";
+print "$inner_product \ n";
 </pre>

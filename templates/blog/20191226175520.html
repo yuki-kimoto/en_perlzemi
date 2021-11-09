@@ -35,14 +35,14 @@ use warnings;
 use PDF :: API2;
 
 # Create empty PDF information
-my $ pdf = PDF :: API2-> new;
+my $pdf = PDF :: API2-> new;
 
 # Add an empty page
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 
 # Save PDF to file
-my $ pdf_file ='empty.pdf';
-$ pdf-> saveas ($ pdf_file);
+my $pdf_file ='empty.pdf';
+$pdf-> saveas ($pdf_file);
 </pre>
 
 If you can create an empty PDF file, you are successful.
@@ -55,7 +55,7 @@ To open an existing PDF file with PDF :: API2, use the open method.
 
 <pre>
 # Open an existing PDF file
-my $ pdf = PDF :: API2-> open ('some.pdf');
+my $pdf = PDF :: API2-> open ('some.pdf');
 </pre>
 
 <h3> Add a new page </h3>
@@ -64,14 +64,14 @@ Use the page method to add a new page in PDF :: API2. The page created by page i
 
 <pre>
 # Add page to end of PDF document
-my $ page = $ pdf-> page;
+my $page = $pdf-> page;
 </pre>
 
 If you specify an argument, you can insert it on the specified page. Existing pages will be moved backwards.
 
 <pre>
 # Add page to specified page of PDF document
-my $ page = $ pdf-> page (5);
+my $page = $pdf-> page (5);
 </pre>
 
 <h3> Get an existing page </h3>
@@ -80,7 +80,7 @@ To get the page that already exists in PDF :: API2, specify the page number in t
 
 <pre>
 # Get pages that already exist
-my $ page = $ pdf-> openpage ($ page_number);
+my $page = $pdf-> openpage ($page_number);
 </pre>
 
 <h3> Get the number of pages </h3>
@@ -89,7 +89,7 @@ In PDF :: API2, use the pages method to get the number of existing pages.
 
 <pre>
 # Get the number of pages in a PDF document
-my $ pages_count = $ pdf-> pages;
+my $pages_count = $pdf-> pages;
 </pre>
 
 <h3> Set the paper size </h3>
@@ -98,10 +98,10 @@ To set the page paper size in PDF :: API2, use the mediabox method.
 
 <pre>
 # Specified by name
-$ pdf-> mediabox ($ name);
+$pdf-> mediabox ($name);
 
 # Specified by width and height
-$ pdf-> mediabox ($ width, $ height)
+$pdf-> mediabox ($width, $height)
 </pre>
 
 The name that can be specified is the value defined in PDF. Here are some examples that you can specify: This is a global setting, and if you create a new page, the setting will be inherited by the page.
@@ -110,10 +110,10 @@ To specify the paper size for each page, use the page object's mediabox method.
 
 <pre>
 # Specified by name
-$ page-> mediabox ($ name);
+$page-> mediabox ($name);
 
 # Specified by width and height
-$ page-> mediabox ($ width, $ height)
+$page-> mediabox ($width, $height)
 </pre>
 
 
@@ -148,30 +148,30 @@ use PDF :: API2;
 
 # Specified by A4 size
 {
-  my $ pdf = PDF :: API2-> new ();
-  $ pdf-> mediabox ('A4');
-  my $ mediabox = $ pdf-> mediabox;
-  my $ page = $ pdf-> page;
-  my $ pdf_file ='size_a4.pdf';
-  $ pdf-> saveas ($ pdf_file);
+  my $pdf = PDF :: API2-> new ();
+  $pdf-> mediabox ('A4');
+  my $mediabox = $pdf-> mediabox;
+  my $page = $pdf-> page;
+  my $pdf_file ='size_a4.pdf';
+  $pdf-> saveas ($pdf_file);
 }
 
 # Specify by B5 size
 {
-  my $ pdf = PDF :: API2-> new ();
-  $ pdf-> mediabox ('B5');
-  my $ page = $ pdf-> page;
-  my $ pdf_file ='size_b5.pdf';
-  $ pdf-> saveas ($ pdf_file);
+  my $pdf = PDF :: API2-> new ();
+  $pdf-> mediabox ('B5');
+  my $page = $pdf-> page;
+  my $pdf_file ='size_b5.pdf';
+  $pdf-> saveas ($pdf_file);
 }
 
 # PDF unit Width 595, height 842
 {
-  my $ pdf = PDF :: API2-> new ();
-  $ pdf-> mediabox (595, 842);
-  my $ page = $ pdf-> page;
-  my $ pdf_file ='size_595_842.pdf';
-  $ pdf-> saveas ($ pdf_file);
+  my $pdf = PDF :: API2-> new ();
+  $pdf-> mediabox (595, 842);
+  my $page = $pdf-> page;
+  my $pdf_file ='size_595_842.pdf';
+  $pdf-> saveas ($pdf_file);
 }
 </pre>
 
@@ -182,7 +182,7 @@ use PDF :: API2;
 To get the paper size, use the page object's mediabox method with no arguments.
 
 <pre>
-my @page_size_infos = $ page-> mediabox;
+my @page_size_infos = $page-> mediabox;
 </pre>
 
 Note that you must call the page object's mediabox method, not the PDF object, to get information about the actual page paper size.
@@ -210,11 +210,11 @@ Insert an existing PDF file into a new PDF using the import_page method.
 Finally, save the new PDF and you're done.
 
 <pre>
-my $ pdf = PDF :: API2-> new ();
-my $ old = PDF :: API2-> open ('our / old.pdf');
+my $pdf = PDF :: API2-> new ();
+my $old = PDF :: API2-> open ('our / old.pdf');
  
 # Add page 2 from the old PDF as page 1 of the new PDF
-$ pdf-> import_page ($ old, 2);
+$pdf-> import_page ($old, 2);
  
-$ pdf-> saveas ('our / new.pdf');
+$pdf-> saveas ('our / new.pdf');
 </pre>

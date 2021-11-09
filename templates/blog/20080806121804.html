@@ -373,14 +373,14 @@ Bit shift is to shift the arrangement of bits to the left or right. There are tw
 
 <pre>
 # Left bit shift
-$ num << 1;
-$ num << 2;
-$ num << 3;
+$num << 1;
+$num << 2;
+$num << 3;
 
 # Right bit shift
-$ num >> 1;
-$ num >> 2;
-$ num >> 3;
+$num >> 1;
+$num >> 2;
+$num >> 3;
 </pre>
 
 << and >> are bit shift operators. The shift operation is performed only for the specified numerical value.
@@ -607,12 +607,12 @@ sub FLG1 {1;} A subroutine that returns # 1. 1 is 1 in binary.
 A subroutine that returns sub FLG2 {2;} # 2. 2 is 10 in binary.
 A subroutine that returns sub FLG3 {4;} # 4. 4 is 100 in base.
 
-my $ all_flg_on = FLG1 | FLG2 | FLG3;
-printf ("% 03b", $ all_flg_on);
+my $all_flg_on = FLG1 | FLG2 | FLG3;
+printf ("% 03b", $all_flg_on);
 print "\ n \ n";
 
 print "6: Make sure FLG3 is on. \ N";
-if ($ all_flg_on & FLG3) {
+if ($all_flg_on & FLG3) {
   print "FLG3 is turned on. \ N";
 }
 </pre>
@@ -637,12 +637,12 @@ sub FLG1 {1;} A subroutine that returns # 1. 1 is 1 in binary.
 A subroutine that returns sub FLG2 {2;} # 2. 2 is 10 in binary.
 A subroutine that returns sub FLG3 {4;} # 4. 4 is 100 in base.
 
-my $ all_flg_on = FLG1 | FLG2 | FLG3;
-printf ("% 03b", $ all_flg_on);
+my $all_flg_on = FLG1 | FLG2 | FLG3;
+printf ("% 03b", $all_flg_on);
 print "\ n \ n";
 
 print "6: Make sure FLG3 is on. \ N";
-if ($ all_flg_on & FLG3) {
+if ($all_flg_on & FLG3) {
   print "FLG3 is turned on. \ N";
 }
 </pre>
@@ -668,7 +668,7 @@ Use multiples of 2 to prevent the bits from overlapping. In order to use it as a
 <h4> (3) -3 Expression that all flags are turned on </h4>
 
 <pre>
-my $ all_flg_on = FLG1 | FLG2 | FLG3;
+my $all_flg_on = FLG1 | FLG2 | FLG3;
 </pre>
 
 OR the bits you want to turn on.
@@ -676,7 +676,7 @@ OR the bits you want to turn on.
 <h4> (3) -4 Make sure the flag is on </h4>
 
 <pre>
-if ($ all_flg_on & FLG3) {
+if ($all_flg_on & FLG3) {
   # ...
 }
 </pre>
@@ -694,25 +694,25 @@ The following is a sample bit shift operation.
 use strict;
 use warnings;
 
-my $ num = 8;
-print "\ $ num = $ num \ n \ n";
+my $num = 8;
+print "\ $num = $num \ n \ n";
 
 print "1: Left bit shift \ n";
 # Same as 2 times
-print "1 bit left shift:". $ Num << 1. "\ n";
+print "1 bit left shift:". $Num << 1. "\ n";
 Same as # 2 squared
-print "2-bit left shift:". $ Num << 2. "\ n";
+print "2-bit left shift:". $Num << 2. "\ n";
 Same as # 2 cubed
-print "3-bit left shift:". $ Num << 3. "\ n";
+print "3-bit left shift:". $Num << 3. "\ n";
 print "\ n";
 
 print "2: Right bit shift \ n";
 Same as the quotient divided by # 2
-print "1 bit right shift:". $ Num >> 1. "\ n";
+print "1 bit right shift:". $Num >> 1. "\ n";
 Same as the quotient divided by # 2 squared
-print "2-bit right shift:". $ Num >> 2. "\ n";
+print "2-bit right shift:". $Num >> 2. "\ n";
 Same as the quotient of # 2 divided by the cube
-print "3-bit right shift:". $ Num >> 3. "\ n";
+print "3-bit right shift:". $Num >> 3. "\ n";
 print "\ n";
 </pre>
 

@@ -75,14 +75,14 @@ my @numbers = (10, 25, 40, 4, -6);
 To reference the elements of an array: Note that the first character is $, not @. Subscripts start at 0.
 
 <pre>
-$ Array [subscript]
+$Array [subscript]
 </pre>
 
 You can output the first element and the second element as follows:
 
 <pre>
-print $ numbers [0];
-print $ numbers [1];
+print $numbers [0];
+print $numbers [1];
 </pre>
 
 <h4> Array element assignment </h4>
@@ -90,13 +90,13 @@ print $ numbers [1];
 To make an assignment:
 
 <pre>
-$ Array [subscript] = value
+$Array [subscript] = value
 </pre>
 
 Try substituting 20 for the first element.
 
 <pre>
-$ numbers [0] = 20;
+$numbers [0] = 20;
 </pre>
 
 <h4> Number of elements in the array </h4>
@@ -104,7 +104,7 @@ $ numbers [0] = 20;
 To get the number of arrays, evaluate the arrays in a scalar context. I'll explain the scalar context elsewhere, but remember that you can get the number of arrays by assigning an array to a scalar variable at first.
 
 <pre>
-my $ cnt = @nums;
+my $cnt = @nums;
 </pre>
 
 See the following article for a detailed explanation of how to get the number of elements in an array.
@@ -121,16 +121,16 @@ Use a for or foreach statement to process the elements of an array in sequence. 
 Let's output the elements of the array in order with the for statement.
 
 <pre>
-for (my $ i = 0; $ i <@nums; $ i ++) {
-  print $ nums [$ i], "\ n";
+for (my $i = 0; $i <@nums; $i ++) {
+  print $nums [$i], "\ n";
 }
 </pre>
 
 Let's output the elements of the array in order with the foreach statement.
 
 <pre>
-foreach my $ num (@nums) {
-  print $ num, "\ n";
+foreach my $num (@nums) {
+  print $num, "\ n";
 }
 </pre>
 
@@ -155,10 +155,10 @@ You can use functions to add and retrieve elements from the array.
 
 <h4> shift function </h4>
 
-You can use the "shift function" to "get the first element" of an array. If @array was (1, 2, 3), 1 would be assigned to $ first and @array would be (2, 3).
+You can use the "shift function" to "get the first element" of an array. If @array was (1, 2, 3), 1 would be assigned to $first and @array would be (2, 3).
 
 <pre>
-my $ first = shift @array;
+my $first = shift @array;
 </pre>
 
 <ul>
@@ -183,10 +183,10 @@ unshift @array, 5;
 
 <h4> pop function </h4>
 
-You can use the "pop function" to "extract the last element" of an array. If @array is (1, 2, 3), 3 is assigned to $ last and @array becomes (1, 2).
+You can use the "pop function" to "extract the last element" of an array. If @array is (1, 2, 3), 3 is assigned to $last and @array becomes (1, 2).
 
 <pre>
-my $ last = pop @array;
+my $last = pop @array;
 </pre>
 
 <ul>
@@ -215,14 +215,14 @@ Use the sort function to sort the array.
 
 <h4> sort function </h4>
 
-Pass a code block for comparison as the first argument. To sort in ascending order, write $ a before $ b, and to sort in descending order, write $ b before $ a. Use <=> as the comparison operator if you want to compare as a number, and use cmp if you want to compare in lexicographical order.
+Pass a code block for comparison as the first argument. To sort in ascending order, write $a before $b, and to sort in descending order, write $b before $a. Use <=> as the comparison operator if you want to compare as a number, and use cmp if you want to compare in lexicographical order.
 
 <pre>
 # Sort in ascending order
-@sorted = sort {$ a operator $ b} @array;
+@sorted = sort {$a operator $b} @array;
 
 # Sort in descending order
-@sorted = sort {$ b operator $ a} @array;
+@sorted = sort {$b operator $a} @array;
 </pre>
 
 Let's sort the numbers in ascending order. @nums becomes (2, 3, 5, 8).
@@ -230,7 +230,7 @@ Let's sort the numbers in ascending order. @nums becomes (2, 3, 5, 8).
 <pre>
 # Sort by numerical value in ascending order
 my @nums = (5, 8, 3, 2);
-@nums = sort {$ a <=> $ b} @nums;
+@nums = sort {$a <=> $b} @nums;
 </pre>
 
 <ul>
@@ -260,7 +260,7 @@ You can also use the "reverse function" if you want to easily sort in reverse or
 <h4> Creating an array reference </h4>
 
 <pre>
-my $ numbers_ref1 = \ @ numbers;
+my $numbers_ref1 = \ @ numbers;
 </pre>
 
 <span style = "font-weight: bold;"> You can create an array reference by prefixing @ with \.
@@ -268,7 +268,7 @@ my $ numbers_ref1 = \ @ numbers;
 <h4> Create a direct array reference </h4>
 
 <pre>
-my $ numbers_ref2 = [1, 2, 3, 4];
+my $numbers_ref2 = [1, 2, 3, 4];
 </pre>
 
 <span style = "font-weight: bold;"> Enclose the list in [] to serve as an array reference. </span>
@@ -276,7 +276,7 @@ my $ numbers_ref2 = [1, 2, 3, 4];
 <h4> Array element reference </h4>
 
 <pre>
-$ numbers_ref2-> [0]
+$numbers_ref2-> [0]
 </pre>
 
 <span style = "font-weight: bold;"> Array reference-> [element number] </span>
@@ -289,16 +289,16 @@ I compared the array and the array reference. It's easy to misunderstand, so let
 
 <pre>
 # arrangement
-$ numbers [0]
+$numbers [0]
 
 # Array reference
-$ numbers_ref-> [0]
+$numbers_ref-> [0]
 </pre>
 
 <h4> Array reference dereference </h4>
 
 <pre>
-@ $ numbers_ref
+@ $numbers_ref
 </pre>
 
 Dereference when you want to return to an array such as a for statement or a function that takes an array as an argument
@@ -335,14 +335,14 @@ RiSee <a href="/blog/20100308126967.html"> List-A list of multiple values ​​
 
 <h4> splice function </h4>
 
-Use the <strong> splice function </strong> to perform complex operations on <strong> array elements </strong>. You can retrieve and replace multiple elements. If $ length is omitted when fetching multiple elements, the target is from the position of $ pos to the end of the array.
+Use the <strong> splice function </strong> to perform complex operations on <strong> array elements </strong>. You can retrieve and replace multiple elements. If $length is omitted when fetching multiple elements, the target is from the position of $pos to the end of the array.
 
 <pre>
 # Extraction of multiple elements
-@parts = splice @array, $ pos, $ length;
+@parts = splice @array, $pos, $length;
 
 # Multi-element replacement
-splice @array, $ pos, $ length, @replace;
+splice @array, $pos, $length, @replace;
 </pre>
 
 <ul>
@@ -353,7 +353,7 @@ splice @array, $ pos, $ length, @replace;
 
 <h4> grep function </h4>
 
-You can use the "<strong> grep function </strong>" to retrieve only the elements that match the conditions in the array. Each element of @array is passed to the default argument $ _. Only elements that meet the conditional statement will be added to @matched.
+You can use the "<strong> grep function </strong>" to retrieve only the elements that match the conditions in the array. Each element of @array is passed to the default argument $_. Only elements that meet the conditional statement will be added to @matched.
 
 <pre>
 # Extract only the elements that match the conditions
@@ -368,7 +368,7 @@ You can use the "<strong> grep function </strong>" to retrieve only the elements
 
 <h4> map function </h4>
 
-Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $ _, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
+Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $_, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
 
 <pre>
 # Conversion of all elements of the array
@@ -428,7 +428,7 @@ Understanding "multidimensional data structures" that combine "arrays", "hashes"
 
 <pre>
 # Hash array
-my $ people = [
+my $people = [
   {name =>'Kimoto', age => 36},
   {name =>'Tanaka', age => 20}
 ]
@@ -453,17 +453,17 @@ print'array: @numbers = ('. join (',', @numbers). ") \ n \ n";
 
 # 1: Check if the array contains the specified element.
 Apply # grep.
-my $ saerch_number = 3;
-if (grep {$ _ == $ saerch_number} @numbers) {
+my $saerch_number = 3;
+if (grep {$_ == $saerch_number} @numbers) {
   # If the element to be searched is found, the inside of the if statement will be true.
-  print "1: $ saerch_number exists. \ N";
+  print "1: $saerch_number exists. \ N";
 }
 
 # 2: Remove duplicates from array (order is not guaranteed)
 The # hash key has the property of not allowing duplication.
 my% no_duplicate_hash;
-for my $ number (@numbers) {
-  $ no_duplicate_hash {$ number} ++;
+for my $number (@numbers) {
+  $no_duplicate_hash {$number} ++;
 }
 
 # Get a list of hash keys
@@ -472,8 +472,8 @@ print '2: @no_duplicate_numbers = ('. join (',', @no_duplicate_numbers). ") \ N 
 
 # 3: Count the number of overlapping elements in the array (continued above)
 print "3: Number of elements \ n";
-for my $ key (sort keys% no_duplicate_hash) {
-  print "$ key contains $ no_duplicate_hash {$ key}. \ N";
+for my $key (sort keys% no_duplicate_hash) {
+  print "$key contains $no_duplicate_hash {$key}. \ N";
 }
 </pre>
 
@@ -489,31 +489,31 @@ my @numbers = (1, 2, 3, 4, 5, 6, 7, 8);
 print "array: \ @numbers =", join (',', @numbers). ") \ N \ n";
 
 # 1: Array reference If you put \ before @, it becomes an array reference.
-my $ numbers_ref1 = \ @ numbers;
+my $numbers_ref1 = \ @ numbers;
 
 You can revert to the original array by prefixing the # array reference with @.
 # This is called a dereference.
-print "array: \ @ \ $ numbers_ref1 =" .join (',', @ $ numbers_ref1), ") \ n";
+print "array: \ @ \ $numbers_ref1 =" .join (',', @ $numbers_ref1), ") \ n";
 
 # 2: However, I usually don't write it like the above.
 # Make a direct array reference using something called an anonymous array ([]).
-my $ numbers_ref2 = [1, 2, 3, 4];
-print "array: \ $ numbers_ref2 =", join (',', @ $ numbers_ref2). "] \ N \ n";
+my $numbers_ref2 = [1, 2, 3, 4];
+print "array: \ $numbers_ref2 =", join (',', @ $numbers_ref2). "] \ N \ n";
 
-# 3: Access the elements of the array. ($ array_ref-> [element number])
-print "\ $ numbers_ref2-> [0] = $ numbers_ref2-> [0] \ n";
-print "\ $ numbers_ref2-> [1] = $ numbers_ref2-> [1] \ n";
+# 3: Access the elements of the array. ($array_ref-> [element number])
+print "\ $numbers_ref2-> [0] = $numbers_ref2-> [0] \ n";
+print "\ $numbers_ref2-> [1] = $numbers_ref2-> [1] \ n";
 </pre>
 
 Execution result
 <pre>
 Array: @numbers = (1,2,3,4,5,6,7,8)
 
-Array: @ $ numbers_ref1 = (1,2,3,4,5,6,7,8)
-Array: $ numbers_ref2 = [1,2,3,4]
+Array: @ $numbers_ref1 = (1,2,3,4,5,6,7,8)
+Array: $numbers_ref2 = [1,2,3,4]
 
-$ numbers_ref2-> [0] = 1
-$ numbers_ref2-> [1] = 2
+$numbers_ref2-> [0] = 1
+$numbers_ref2-> [1] = 2
 </pre>
 
 <h4> Sample of array and array reference comparison </h4>
@@ -527,14 +527,14 @@ use warnings;
 my @numbers = (1, 2, 3);
 print "array: \ @numbers =", join (',', @numbers), ") \ n \ n";
 
-my $ numbers_ref = [1, 2, 3];
+my $numbers_ref = [1, 2, 3];
 
 # 1. Element reference
 print "1. Element reference \ n";
-print "\ $ numbers [0] =", $ numbers [0], "\ n";
+print "\ $numbers [0] =", $numbers [0], "\ n";
 
 # Array reference
-print "\ $ numbers_ref-> [0] =", $ numbers_ref-> [0], "\ n";
+print "\ $numbers_ref-> [0] =", $numbers_ref-> [0], "\ n";
 print "\ n";
 
 # 2. Processing of each element
@@ -542,15 +542,15 @@ print "2. Processing of each element \ n";
 
 # arrangement
 print "\ @ numbers =";
-for my $ number (@numbers) {
-  print $ number. ",";
+for my $number (@numbers) {
+  print $number. ",";
 }
 print "\ n";
 
 # Array reference (dereference it to the for statement)
-print "\ @ {\ $ numbers_ref} =";
-for my $ number (@ $ numbers_ref) {
-  print $ number. ","
+print "\ @ {\ $numbers_ref} =";
+for my $number (@ $numbers_ref) {
+  print $number. ","
 }
 print "\ n \ n";
 
@@ -559,16 +559,16 @@ print "3. How to use the function \ n";
 
 # arrangement
 push @numbers, 4;
-@numbers = sort {$ b <=> $ a} @numbers;
+@numbers = sort {$b <=> $a} @numbers;
 print "\ @ numbers = (", join (',', @numbers), ") \ n";
 
 # Array reference (dereference and pass to function)
-push @ $ numbers_ref, 4;
+push @ $numbers_ref, 4;
 
 The # sort function returns an array, so use an anonymous array []
 # Recreating an array reference.
-$ numbers_ref = [sort {$ b <=> $ a} @ $ numbers_ref];
-print "\ @ \ $ numbers_ref =", join (',', @ $ numbers_ref), ") \ n \ n";
+$numbers_ref = [sort {$b <=> $a} @ $numbers_ref];
+print "\ @ \ $numbers_ref =", join (',', @ $numbers_ref), ") \ n \ n";
 </pre>
 
 Execution result
@@ -577,16 +577,16 @@ Execution result
 Array: @numbers = (1,2,3)
 
 1. Element reference
-$ numbers [0] = 1
-$ numbers_ref-> [0] = 1
+$numbers [0] = 1
+$numbers_ref-> [0] = 1
 
 2. Processing of each element
 @numbers = 1,2,3,
-@ {$ numbers_ref} = 1,2,3,
+@ {$numbers_ref} = 1,2,3,
 
 3. How to use the function
 @numbers = (4,3,2,1)
-@ $ numbers_ref = (4,3,2,1)
+@ $numbers_ref = (4,3,2,1)
 </pre>
 
 <h3> Column "Perl that incorporates dynamic arrays into language features" </h3>

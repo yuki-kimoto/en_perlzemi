@@ -22,91 +22,91 @@ use strict;
 use warnings;
 
 print "(1) Find the time difference (does not exceed 24 hours) \ n";
-my $ time_str1 = '03: 44: 23';
-my $ time_str2 = '22:34:45';
+my $time_str1 = '03: 44: 23';
+my $time_str2 = '22:34:45';
 
 # Convert the time string representation to a hash of time information.
-my $ time1 = time_from_str ($ time_str1);
-my $ time2 = time_from_str ($ time_str2);
+my $time1 = time_from_str ($time_str1);
+my $time2 = time_from_str ($time_str2);
 
 # Convert time information hash to seconds to calculate elapsed seconds
-my $ sec_interval = time_to_sec ($ time2) - time_to_sec ($ time1);
+my $sec_interval = time_to_sec ($time2) - time_to_sec ($time1);
 
 # Convert elapsed seconds to hash of time representation
-my $ time_interval = sec_to_time ($ sec_interval);
+my $time_interval = sec_to_time ($sec_interval);
 
 # Convert time representation hash to time string representation
-my $ time_interval_str = str_from_time ($ time_interval);
+my $time_interval_str = str_from_time ($time_interval);
 
-print "Time difference is $ time_interval_str. \ N";
+print "Time difference is $time_interval_str. \ N";
 
 # A function that converts a string representation of time into a hash that represents time information
 sub time_from_str {
-  my $ time_str = shift;
-  return unless $ time_str;
+  my $time_str = shift;
+  return unless $time_str;
   
-  my $ time = {};
-  if ($ time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $ /) {
-    @ {$ time} {qw / hour min sec /} = ($ 1, $ 2, $ 3);
-    return wantarray?% $ time: $ time;
+  my $time = {};
+  if ($time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
+    @ {$time} {qw / hour min sec /} = ($1, $2, $3);
+    return wantarray?% $time: $time;
   }
   return;
 }
 
 # A function that converts a hash representing time information into a string representation of time.
 sub str_from_time {
-  my $ time;
-  if (ref $ _ [0] eq'HASH') {
-    $ time = shift;
+  my $time;
+  if (ref $_ [0] eq'HASH') {
+    $time = shift;
   }
   else {
-    % $ time = @_;
+    % $time = @_;
   }
     
-  return unless defined $ time-> {hour};
-  return unless defined $ time-> {min};
-  return unless defined $ time-> {sec};
+  return unless defined $time-> {hour};
+  return unless defined $time-> {min};
+  return unless defined $time-> {sec};
     
-  my $ time_str
-    = sprintf ("% 02s:% 02s:% 02s", @ {$ time} {qw / hour min sec /});
-  return $ time_str;
+  my $time_str
+    = sprintf ("% 02s:% 02s:% 02s", @ {$time} {qw / hour min sec /});
+  return $time_str;
 }
 
 # Function to convert time to seconds
 sub time_to_sec {
-  my $ time;
-  if (ref $ _ [0] eq'HASH') {
-    $ time = shift;
+  my $time;
+  if (ref $_ [0] eq'HASH') {
+    $time = shift;
   }
   else {
-    % $ time = @_;
+    % $time = @_;
   }
     
-  return unless defined $ time-> {hour};
-  return unless defined $ time-> {min};
-  return unless defined $ time-> {sec};
+  return unless defined $time-> {hour};
+  return unless defined $time-> {min};
+  return unless defined $time-> {sec};
   
-  my $ sec = $ time-> {hour} * 3600 +
-            $ time-> {min} * 60 +
-            $ time-> {sec};
+  my $sec = $time-> {hour} * 3600 +
+            $time-> {min} * 60 +
+            $time-> {sec};
   
-  return $ sec;
+  return $sec;
 }
 
 # A function that converts seconds to time.
 sub sec_to_time {
-  my $ sec = int (shift);
-  my $ time = {};
+  my $sec = int (shift);
+  my $time = {};
   
-  $ time-> {hour} = int ($ sec / 3600);
-  $ sec = $ sec% 3600;
+  $time-> {hour} = int ($sec / 3600);
+  $sec = $sec% 3600;
   
-  $ time-> {min} = int ($ sec / 60);
-  $ sec = $ sec% 60;
+  $time-> {min} = int ($sec / 60);
+  $sec = $sec% 60;
   
-  $ time-> {sec} = $ sec;
+  $time-> {sec} = $sec;
   
-  return wantarray?% $ time: $ time;
+  return wantarray?% $time: $time;
 }
 </pre>
 Execution result
@@ -125,33 +125,33 @@ It's common to convert strings to hashes in this way. (Structuring the data incr
 
 <pre>
 # Convert the time string representation to a hash of time information.
-my $ time1 = time_from_str ($ time_str1);
-my $ time2 = time_from_str ($ time_str2);
+my $time1 = time_from_str ($time_str1);
+my $time2 = time_from_str ($time_str2);
 
 # A function that converts a string representation of time into a hash that represents time information
 sub time_from_str {
-  my $ time_str = shift;
-  return unless $ time_str;
+  my $time_str = shift;
+  return unless $time_str;
   
-  my $ time = {};
-  if ($ time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $ /) {
-    @ {$ time} {qw / hour min sec /} = ($ 1, $ 2, $ 3);
-    return wantarray?% $ time: $ time;
+  my $time = {};
+  if ($time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
+    @ {$time} {qw / hour min sec /} = ($1, $2, $3);
+    return wantarray?% $time: $time;
   }
   return;
 }
 </pre>
 
-The following part is a hash slice. It is a form of dereferencing $ time and assigning it as a hash slice. qw is a string list operator.
+The following part is a hash slice. It is a form of dereferencing $time and assigning it as a hash slice. qw is a string list operator.
 
 <pre>
-@ {$ time} {qw / hour min sec /} = ($ 1, $ 2, $ 3);
+@ {$time} {qw / hour min sec /} = ($1, $2, $3);
 </pre>
 
 The return value allows you to select a list and a scalar.
 
 <pre>
-return wantarray?% $ time: $ time;
+return wantarray?% $time: $time;
 </pre>
 
 <h4> Convert the hash of time information to seconds and calculate the elapsed seconds </h4>
@@ -159,27 +159,27 @@ return wantarray?% $ time: $ time;
 The calculation to convert the time to seconds is "hours x 3600 + minutes x 60 + seconds".
 
 <pre>
-my $ sec_interval = time_to_sec ($ time2) - time_to_sec ($ time1);
+my $sec_interval = time_to_sec ($time2) - time_to_sec ($time1);
 
 # Function to convert time to seconds
 sub time_to_sec {
-  my $ time;
-  if (ref $ _ [0] eq'HASH') {
-    $ time = shift;
+  my $time;
+  if (ref $_ [0] eq'HASH') {
+    $time = shift;
   }
   else {
-    % $ time = @_;
+    % $time = @_;
   }
     
-  return unless defined $ time-> {hour};
-  return unless defined $ time-> {min};
-  return unless defined $ time-> {sec};
+  return unless defined $time-> {hour};
+  return unless defined $time-> {min};
+  return unless defined $time-> {sec};
   
-  my $ sec = $ time-> {hour} * 3600 +
-            $ time-> {min} * 60 +
-            $ time-> {sec};
+  my $sec = $time-> {hour} * 3600 +
+            $time-> {min} * 60 +
+            $time-> {sec};
   
-  return $ sec;
+  return $sec;
 }
 </pre>
 
@@ -190,22 +190,22 @@ To convert seconds to time, find the quotient and remainder of seconds divided b
 Then find the quotient and the remainder by dividing the remainder by 60. This quotient is "minutes" and the remainder is "seconds".
 
 <pre>
-my $ time_interval = sec_to_time ($ sec_interval);
+my $time_interval = sec_to_time ($sec_interval);
 
 # A function that converts seconds to time.
 sub sec_to_time {
-  my $ sec = int (shift);
-  my $ time = {};
+  my $sec = int (shift);
+  my $time = {};
   
-  $ time-> {hour} = int ($ sec / 3600);
-  $ sec = $ sec% 3600;
+  $time-> {hour} = int ($sec / 3600);
+  $sec = $sec% 3600;
   
-  $ time-> {min} = int ($ sec / 60);
-  $ sec = $ sec% 60;
+  $time-> {min} = int ($sec / 60);
+  $sec = $sec% 60;
   
-  $ time-> {sec} = $ sec;
+  $time-> {sec} = $sec;
   
-  return wantarray?% $ time: $ time;
+  return wantarray?% $time: $time;
 }
 </pre>
 
@@ -214,24 +214,24 @@ sub sec_to_time {
 Finally, it returns to the string again. Here, I used the sprintf function.
 
 <pre>
-my $ time_interval_str = str_from_time ($ time_interval);
+my $time_interval_str = str_from_time ($time_interval);
 
 # A function that converts a hash representing time information into a string representation of time.
 sub str_from_time {
-  my $ time;
-  if (ref $ _ [0] eq'HASH') {
-    $ time = shift;
+  my $time;
+  if (ref $_ [0] eq'HASH') {
+    $time = shift;
   }
   else {
-    % $ time = @_;
+    % $time = @_;
   }
     
-  return unless defined $ time-> {hour};
-  return unless defined $ time-> {min};
-  return unless defined $ time-> {sec};
+  return unless defined $time-> {hour};
+  return unless defined $time-> {min};
+  return unless defined $time-> {sec};
     
-  my $ time_str
-    = sprintf ("% 02s:% 02s:% 02s", @ {$ time} {qw / hour min sec /});
-  return $ time_str;
+  my $time_str
+    = sprintf ("% 02s:% 02s:% 02s", @ {$time} {qw / hour min sec /});
+  return $time_str;
 }
 </pre>

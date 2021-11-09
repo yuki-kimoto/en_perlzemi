@@ -49,19 +49,19 @@ Specify the character code of the byte string in the first argument of the decod
 use Encode'decode';
 
 # External input (command line argument)
-my $ str = shift;
+my $str = shift;
 
-# Convert byte string (external input) to internal string (when $ str is UTF-8)
-$ str = decode ('UTF-8', $ str);
+# Convert byte string (external input) to internal string (when $str is UTF-8)
+$str = decode ('UTF-8', $str);
 
-# Convert byte string (external input) to internal string (when $ str is Shift_JIS)
-$ str = decode ('Shift_JIS', $ str);
+# Convert byte string (external input) to internal string (when $str is Shift_JIS)
+$str = decode ('Shift_JIS', $str);
 </pre>
 
 Character strings input from the outside are "command line arguments", "files", "standard input", "environment variables", etc. Think of all external input as byte strings.
 
 <pre>
-$ str = decode ('UTF-8', $ str);
+$str = decode ('UTF-8', $str);
 </pre>
 
 Is expressed graphically as follows.
@@ -83,16 +83,16 @@ The first argument of the encode function specifies which character code to conv
 use Encode'encode';
 
 # When converting an internal string to a UTF-8 byte string
-$ str = encode ('UTF-8', $ str);
+$str = encode ('UTF-8', $str);
 
 # When converting an internal string to a Shift_JIS byte string
-$ str = encode ('Shift_JIS', $ str);
+$str = encode ('Shift_JIS', $str);
 </pre>
 
 Whenever you use the decode function to output a string converted to an internal string, you must use the encode function to convert it back to a byte string. When to convert using the encode function is just before the output. Try to keep the internal string as late as possible in your program.
 
 <pre>
-$ str = encode ('UTF-8', $ str);
+$str = encode ('UTF-8', $str);
 </pre>
 
 Is expressed graphically as follows.
@@ -111,7 +111,7 @@ Another thing to worry about when dealing with multibyte characters is the chara
 # utf8 Enable pragma
 use utf8;
 
-my $ str = "Write Japanese etc.";
+my $str = "Write Japanese etc.";
 </pre>
 
 A string written in the source code is called a string literal. Keep in mind that the character code of a string literal will be the same as the character code of the source code. If you save the source code in UTF-8, the string literal will be a UTF-8 byte string, and if you save it in Shift_JIS, the string literal will be a Shift_JIS byte string.
@@ -150,27 +150,27 @@ use utf8;
 use Encode qw / encode decode /;
 
 # Command line argument (UTF-8 byte string)
-my $ str1 = shift;
+my $str1 = shift;
 
 # UTF-8 byte string decoded to internal string
-$ str1 = decode ('UTF-8', $ str1);
+$str1 = decode ('UTF-8', $str1);
 
 # String literal (because utf8 pragma is valid, it becomes an internal string)
-my $ str2 = "Japanese";
+my $str2 = "Japanese";
 
 # You can count characters correctly by converting to an internal string
-print length $ str2, "\ n"; # 3
+print length $str2, "\ n"; # 3
 
 # Regular expressions can be used correctly between internal strings
-if ($ str1 = ~ / $ str2 /) {
+if ($str1 = ~ / $str2 /) {
   print "Match! \ N";
 }
 
 # Encode the internal string into a byte string just before outputting
-$ str1 = encode ('UTF-8', $ str1);
-$ str2 = encode ('UTF-8', $ str2);
+$str1 = encode ('UTF-8', $str1);
+$str2 = encode ('UTF-8', $str2);
 
-print "'$ str1' is match'$ str2'\ n";
+print "'$str1' is match'$str2'\ n";
 </pre>
 
 <h3> Character code conversion </h3>
@@ -179,10 +179,10 @@ In Perl, the character code conversion process is as follows by combining the de
 
 <pre>
 # Convert UTF-8 byte string to internal string
-$ str = decode ('UTF-8', $ str);
+$str = decode ('UTF-8', $str);
 
 # Convert internal string to Shift_JIS byte string
-$ str = encode ('Shift_JIS', $ str);
+$str = encode ('Shift_JIS', $str);
 </pre>
 The diagram is as follows.
 <pre>
@@ -195,8 +195,8 @@ This is a bit annoying, so we have a function called from_to.The first argument 
 # Character code conversion
 use Encode'from_to';
 
-# $ str itself is converted
-from_to ($ str,'UTF-8','Shift_JIS');
+# $str itself is converted
+from_to ($str,'UTF-8','Shift_JIS');
 </pre>
 
 <h3> Character string specified as the file name </h3>
@@ -209,9 +209,9 @@ use warnings;
 use utf8;
 use Encode'encode';
 
-my $ file ='Ah.txt';
-open my $ fh,'<', encode ('cp932', $ file)
-  or die "Can't open". encode ('cp932', $ file). ": $!";
+my $file ='Ah.txt';
+open my $fh,'<', encode ('cp932', $file)
+  or die "Can't open". encode ('cp932', $file). ": $!";
 </pre>
 
 The point is to encode just before passing it to the function that handles the file name. This is a little troublesome when dealing with many functions that handle file names, so it is convenient to create a function that converts the file name to the character code of the OS.
@@ -223,14 +223,14 @@ use warnings;
 use utf8;
 
 use Encode qw / encode decode /;
-my $ enc ='cp932';
-binmode STDERR, ": encoding ($ enc)";
-sub d ($) {decode ($ enc, shift)}
-sub e ($) {encode ($ enc, shift)}
+my $enc ='cp932';
+binmode STDERR, ": encoding ($enc)";
+sub d ($) {decode ($enc, shift)}
+sub e ($) {encode ($enc, shift)}
 
-my $ file ='Ah.txt';
-open my $ fh,'<', e $ file
-  or die qq / Can't open "$ file": $! /;
+my $file ='Ah.txt';
+open my $fh,'<', e $file
+  or die qq / Can't open "$file": $! /;
 </pre>
 
 Now you can handle Perl character codes very simply.

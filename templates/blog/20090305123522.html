@@ -39,14 +39,14 @@ IO :: ScalarArray is a module that uses the tie mechanism to enable descriptions
 
 First, create an array of the data you want to flow into the standard input. Since the standard input has one line break, add a line break at the end of the data.
 
-Pass it to new in IO :: ScalarArray to create the object. Then use a typeglob to make STDIN an alias for $ stdin.
+Pass it to new in IO :: ScalarArray to create the object. Then use a typeglob to make STDIN an alias for $stdin.
 
 <pre>
 use IO :: ScalarArray;
 {
   my @inputs = ("1 \ n", "2 \ n", "3 \ n");
-  my $ stdin = IO :: ScalarArray-> new (\ @ inputs);
-  local * STDIN = * $ stdin;
+  my $stdin = IO :: ScalarArray-> new (\ @ inputs);
+  local * STDIN = * $stdin;
   # Exam description
 }
 </pre>
@@ -66,25 +66,25 @@ use IO :: ScalarArray;
 
 {
   my @answers = ("y \ n");
-  my $ stdin = IO :: ScalarArray-> new (\ @ answers);
+  my $stdin = IO :: ScalarArray-> new (\ @ answers);
   
-  local * STDIN = * $ stdin;
+  local * STDIN = * $stdin;
   
-  my $ is_man = question ();
-  ok ($ is_man,'He is man');
+  my $is_man = question ();
+  ok ($is_man,'He is man');
 }
 
 # Function to ask if you are male
 sub question {
   print "Are you man? \ N";
-  my $ answer = <STDIN>;
+  my $answer = <STDIN>;
   
-  chomp $ answer;
-  my $ is_man;
-  if ($ answer eq'y') {$ is_man = 1}
-  else {$ is_man = 0}
+  chomp $answer;
+  my $is_man;
+  if ($answer eq'y') {$is_man = 1}
+  else {$is_man = 0}
   
-  return $ is_man;
+  return $is_man;
 }
 </pre>
 
@@ -97,33 +97,33 @@ use strict;
 use warnings;
 
 {
-  my $ inputs = << "EOS";
+  my $inputs = << "EOS";
 y \ n
 n \ n
 EOS
 
   # How to use scalar input / output
-  open my $ stdin, "<", \ $ inputs;
+  open my $stdin, "<", \ $inputs;
   
-  local * STDIN = * $ stdin;
+  local * STDIN = * $stdin;
   
-  my $ is_man = question ();
-  ok ($ is_man,'He is man');
+  my $is_man = question ();
+  ok ($is_man,'He is man');
   
-  $ is_man = question ();
-  ok (! $ Is_man,'He is not man');
+  $is_man = question ();
+  ok (! $Is_man,'He is not man');
 }
 
 # Function to ask if you are male
 sub question {
   print "Are you man? \ N";
-  my $ answer = <STDIN>;
+  my $answer = <STDIN>;
   
-  chomp $ answer;
-  my $ is_man;
-  if ($ answer eq'y') {$ is_man = 1}
-  else {$ is_man = 0}
+  chomp $answer;
+  my $is_man;
+  if ($answer eq'y') {$is_man = 1}
+  else {$is_man = 0}
 
-  return $ is_man;
+  return $is_man;
 }
 </pre>

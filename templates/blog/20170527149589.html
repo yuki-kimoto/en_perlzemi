@@ -34,13 +34,13 @@ while (1) {
   }
 }
 
-for (my $ i = 0; $ i <10; $ i ++) {
+for (my $i = 0; $i <10; $i ++) {
   if (condition) {
     last;
   }
 }
 
-foreach my $ animal (@animals) {
+foreach my $animal (@animals) {
   if (condition) {
     last;
   }
@@ -63,9 +63,9 @@ use warnings;
 
 my @chars = qw (z z a b c d e f);
 
-for my $ char (@chars) {
-  last if $ char eq'c';
-  print "$ char \ n";
+for my $char (@chars) {
+  last if $char eq'c';
+  print "$char \ n";
 }
 </pre>
 
@@ -98,20 +98,20 @@ You can use last to escape from a loop, but only the most recent loop block can 
 A program that escapes an infinite loop using a flag and two lasts.
 
 <pre>
-my $ num = 0;
+my $num = 0;
 
 # Escape from multiple loops
 while (1) {
   # Create one flag
-  my $ finish;
+  my $finish;
   while (1) {
-    if ($ num == 10) {
-      $ finish = 1;
+    if ($num == 10) {
+      $finish = 1;
       last;
     }
-    $ num ++;
+    $num ++;
   }
-  if ($ finish) {
+  if ($finish) {
     last;
   }
 }

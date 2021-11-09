@@ -30,15 +30,15 @@ Use the <strong> tempfile </strong> function to create a temporary file. The ret
 
 <pre>
 # Create temporary file
-$ fh = tempfile;
-($ fh, $ filename) = tempfile;
+$fh = tempfile;
+($fh, $filename) = tempfile;
 </pre>
 
 Use the <strong> tempdir </strong> function to create a temporary directory.
 
 <pre>
 # Create temporary directory
-$ dir = tempdir;
+$dir = tempdir;
 </pre>
 
 This is a sample that safely overwrites a file using a temporary file. (* 1)
@@ -48,34 +48,34 @@ This is a sample that safely overwrites a file using a temporary file. (* 1)
 use File :: Temp'temp file';
 use File :: Copy'move';
 
-my $ file = shift;
+my $file = shift;
 
 # Get the contents of the file
-my $ old = get_content ($ file);
+my $old = get_content ($file);
 
 # Add text
-my $ new = $ old. "Add new text";
+my $new = $old. "Add new text";
 
 # Write new content to file
-my ($ tempfh, $ tempfile) = tempfile;
-print $ tempfh $ new;
-close $ tempfh;
+my ($tempfh, $tempfile) = tempfile;
+print $tempfh $new;
+close $tempfh;
 
 # Overwrite new file with old file
-move $ tempfile, $ file
-  or die "Can't move \" $ tempfile \ "to \" $ file \ ": $!";
+move $tempfile, $file
+  or die "Can't move \" $tempfile \ "to \" $file \ ": $!";
 
 sub get_content {
-  my $ file = shift;
+  my $file = shift;
   
-  open my $ fh,'<', $ file
-    or die "Can't open file \" $ file \ ": $!";
+  open my $fh,'<', $file
+    or die "Can't open file \" $file \ ": $!";
   
-  my $ content = join ('', <$ fh>);
+  my $content = join ('', <$fh>);
   
-  close $ fh;
+  close $fh;
   
-  return $ content;
+  return $content;
 }
 </pre>
 

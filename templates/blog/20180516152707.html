@@ -28,7 +28,7 @@
 To <b> get the file size </b>, use the file test operator "-s".
 
 <pre>
--s $ file
+-s $file
 </pre>
 
 The unit of file size is bytes.
@@ -46,12 +46,12 @@ use warnings;
 # Units are bytes.
 
 print "1: Get the size of the file. -S \ n";
-my $ file = "a.txt";
-if (-f $ file) {
-  my $ file_size = -s $ file;
-  print "The file size of $ file is $ file_size bytes. \ N \ n";
+my $file = "a.txt";
+if (-f $file) {
+  my $file_size = -s $file;
+  print "The file size of $file is $file_size bytes. \ N \ n";
 }
-else {print "$ file did not exist. \ N \ n"}
+else {print "$file did not exist. \ N \ n"}
 </pre>
 
 <pre>
@@ -60,22 +60,22 @@ use warnings;
 
 print "2: Stop printing when the file size exceeds a certain byte. \ N";
 
-my $ file = "output_$$. txt";
-if (-e $ file) {
-  die "$ file exists. \ N";
+my $file = "output_$$. txt";
+if (-e $file) {
+  die "$file exists. \ N";
 }
 
-open my $ fh, ">", $ file
+open my $fh, ">", $file
   or die "File open error: $!";
 
-while (-s $ file <1_000_000) {
-  my $ string = ('a' x 99). "\ n";
-  print $ fh $ string;
+while (-s $file <1_000_000) {
+  my $string = ('a' x 99). "\ n";
+  print $fh $string;
 }
 
-print "The file size of $ file after output is". -S $ file. "Bytes. \ N";
+print "The file size of $file after output is". -S $file. "Bytes. \ N";
 
-close $ fh;
+close $fh;
 </pre>
 
 If the file size exceeds 1,000,000 bytes using <a href="/blog/20100123126425.html"> while statement</a>, it is stopped.

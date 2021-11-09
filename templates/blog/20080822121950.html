@@ -733,8 +733,8 @@ I will explain how to check the permissions. To find out the file permissions, u
 
 <pre>
 use Fcntl': mode';
-my $ mode = (stat $ file) [2];
-printf "% 03o \ n", S_IMODE ($ mode);
+my $mode = (stat $file) [2];
+printf "% 03o \ n", S_IMODE ($mode);
 </pre>
 
 Constants and functions that can be bitwise operated.
@@ -752,8 +752,8 @@ S_ISUID S_ISGID S_ISVTX S_ISTXT
 S_IFREG S_IFDIR S_IFLNK S_IFBLK S_IFCHR S_IFIFO S_IFSOCK S_IFWHT S_ENFMT
 
 A function that plays the same role as the # file operator
-S_ISREG ($ mode) S_ISDIR ($ mode) S_ISLNK ($ mode)
-S_ISBLK ($ mode) S_ISCHR ($ mode) S_ISFIFO ($ mode) S_ISSOCK ($ mode)
+S_ISREG ($mode) S_ISDIR ($mode) S_ISLNK ($mode)
+S_ISBLK ($mode) S_ISCHR ($mode) S_ISFIFO ($mode) S_ISSOCK ($mode)
 </pre>
 
 The third mode information returned by the stat function can be retrieved a lot by performing bit operations with the constants defined in Fcntl.
@@ -769,16 +769,16 @@ use warnings;
 # Import constants for file permissions
 use Fcntl': mode';
 
-my $ file = shift || die "Usage: $ 0 file \ n";
+my $file = shift || die "Usage: $0 file \ n";
 
 The third element of the return value of the # stat function is the file
 # Permission information
 print "Get file permissions. \ N";
-my $ mode = (stat $ file) [2];
+my $mode = (stat $file) [2];
 
 Convert to number with # S_IMODE function
-printf "Permissions for $ file (octal display):% 03o \ n", S_IMODE ($ mode);
-printf "$ file permissions (binary display):% 09b \ n", S_IMODE ($ mode);
+printf "Permissions for $file (octal display):% 03o \ n", S_IMODE ($mode);
+printf "$file permissions (binary display):% 09b \ n", S_IMODE ($mode);
 </pre>
 
 <h3> What is a bit mask? </H3>

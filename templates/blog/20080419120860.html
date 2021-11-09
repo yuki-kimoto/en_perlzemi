@@ -23,19 +23,19 @@ You can create a <a href="/blog/20100827127859.html"> regular expression</a> ref
 
 <pre>
 # Regular expression reference
-my $ regex = qr / \ d + / sm;
+my $regex = qr / \ d + / sm;
 </pre>
 
 When performing pattern matching, you can put it in // or use it as it is. I think it's a little easier to see if you put it in //.
 
 <pre>
 Used in # //
-if ($ str = ~ / $ regex /) {
+if ($str = ~ / $regex /) {
   ...
 }
 
 # Use as it is
-if ($ str = ~ $ regex) {
+if ($str = ~ $regex) {
   ...
 }
 </pre>
@@ -60,17 +60,17 @@ use warnings;
 
 You can use # qr // to save the options as well.
 # (The g option cannot be specified.)
-my $ word = "ababab";
-my $ regex = qr / A / i;
+my $word = "ababab";
+my $regex = qr / A / i;
                     
-my $ replace ='c';
+my $replace ='c';
 
-$ word = ~ s / $ regex / $ replace / g;
-print "\ $ word = $ word \ n";
+$word = ~ s / $regex / $replace / g;
+print "\ $word = $word \ n";
 </pre>
 
 Execution result.
 
 <pre>
-$ word = cbcbcb
+$word = cbcbcb
 </pre>

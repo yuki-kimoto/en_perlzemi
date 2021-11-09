@@ -28,12 +28,12 @@ The module that finds pseudo-random numbers by the Mersenne Twister method is <s
 use Math :: Random :: MT qw / rand srand /;
 
 srand time ^ $$;
-my $ num = rand 100
+my $num = rand 100
 </pre>
 
 Used in the same way as the standard Perl modules <a href="/blog/20080906122079.html"> rand function</a> and <a href="/blog/20080908122097.html"> srand function</a> can. When using Math :: Randam :: MT, make sure to call the srand function explicitly.
 
-The <a href="/blog/20081008122347.html"> time function</a> is the time, and $$ is the <a href="/blog/20180520152690.html"> process ID</a>, which is the initial value given to srand. I try to make the values ​​as random as possible.
+The <a href="/blog/20081008122347.html"> time function</a> is the time, and $$is the <a href="/blog/20180520152690.html"> process ID</a>, which is the initial value given to srand. I try to make the values ​​as random as possible.
 
 <h3> Sample </h3>
 
@@ -48,8 +48,8 @@ use Math :: Random :: MT qw / rand srand /;
 print "(1) Generates a random random number. \ N";
 # Give as random an initial value as possible.
 srand time ^ $$;
-for my $ i (1 .. 20) {
-  print "$ i times:". Int (rand 100). "\ n";
+for my $i (1 .. 20) {
+  print "$i times:". Int (rand 100). "\ n";
 }
 print "\ n";
 </pre>

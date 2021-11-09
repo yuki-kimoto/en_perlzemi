@@ -37,7 +37,7 @@ The best part about Perl 5.22 is the performance improvements. Improved performa
 Perl's internal parser can now efficiently parse multi-tier dereferences. This has improved the performance of multi-tier dereferences.
 
 <pre>
-$ scores-> [0] {math};
+$scores-> [0] {math};
 </pre>
 
 <h4> Method call and SUPER pseudo-class performance improvement </h4>
@@ -45,8 +45,8 @@ $ scores-> [0] {math};
 Method calls and SUPER pseudo-classes are pre-parsed and their information cached. This improves the performance of method calls at runtime.
 
 <pre>
-$ obj-> method
-$ obj-> SUPER :: method;
+$obj-> method
+$obj-> SUPER :: method;
 </pre>
 
 <h4> Performance improvement of length function </h4>
@@ -97,8 +97,8 @@ Perl 5.22 adds a new flag for <a href="/blog/20100827127859.html"> regular expre
 I'm using parentheses, but I don't capture them. If you want to capture with the n option, do the following:
 
 <pre>
-"hello" = ~ / (?-n :( hi | hello)) / n; # $ 1 is "hello"
-"hello" = ~ / (? <greet> hi | hello) / n; # $ 1 is "hello", $ + {greet} is also "hello"
+"hello" = ~ / (?-n :( hi | hello)) / n; # $1 is "hello"
+"hello" = ~ / (? <greet> hi | hello) / n; # $1 is "hello", $+ {greet} is also "hello"
 </pre>
 
 When writing complex regular expressions, it might be easier to see them in combination with the n option and a named capture.
@@ -114,9 +114,9 @@ There is a feature called aliases as a feature of Perl, which can now be called 
 <pre>
 use experimental :: refaliasing;
 
-my $ nums = [1, 2, 3];
-my $ nums_alias;
-\ $ nums_alias = \ $ nums;
+my $nums = [1, 2, 3];
+my $nums_alias;
+\ $nums_alias = \ $nums;
 </pre>
 
 <h4> Constant function support </h4>
@@ -124,7 +124,7 @@ my $ nums_alias;
 Constant functions are now supported by the const subroutine attribute. Once the function is executed, its value is saved, and the value is used from the second time onward. This feature is experimental.
 
 <pre>
-my $ value = sub: const {100 * 100};
+my $value = sub: const {100 * 100};
 </pre>
 
 <h4> Double Diamond Operator-Safer Diamond Operator </h4>
@@ -132,7 +132,7 @@ my $ value = sub: const {100 * 100};
 A safer double diamond operator "<< >>" is now supported. Traditional diamond operators use the two-argument open function internally, while double-diamond operators use the three-argument open function.
 
 <pre>
-my $ line = <<>>;
+my $line = <<>>;
 </pre>
 
 <h4> encoding module now has lexical scope </h4>

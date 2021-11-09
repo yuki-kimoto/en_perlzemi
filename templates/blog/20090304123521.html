@@ -38,21 +38,21 @@ The start method starts the capture, and the stop method ends the capture. You c
 <pre>
 use IO :: Capture :: Stdout;
 
-my $ capture = IO :: Capture :: Stdout-> new;
-$ capture-> start;
+my $capture = IO :: Capture :: Stdout-> new;
+$capture-> start;
 print "aaa";
-$ capture-> stop;
-my $ stdout = $ capture-> read;
+$capture-> stop;
+my $stdout = $capture-> read;
 </pre>
 
 If you want to get the standard output multiple times, you can write as follows.
 
 <pre>
-$ capture-> start;
+$capture-> start;
 print "aaa";
 print "bbb";
-$ capture-> stop;
-my @stdout = $ capture-> read;
+$capture-> stop;
+my @stdout = $capture-> read;
 </pre>
 
 In the list context, you can get ("aaa", "bbb") by calling read.
@@ -64,21 +64,21 @@ There was also a way to capture standard output using only standard features wit
 This is a method to switch the output destination of STDOUT with the open function.
 
 <pre>
-my $ stdout;
+my $stdout;
 
 Start capturing # STDOUT
-open my $ temp,'> &', STDOUT;
+open my $temp,'> &', STDOUT;
 close STDOUT;
-open STDOUT,'>', \ $ stdout;
+open STDOUT,'>', \ $stdout;
 
 print "hoge";
 
 # STDOUT capture finished
 close STDOUT;
-open STDOUT,'> &', $ temp;
-close $ temp;
+open STDOUT,'> &', $temp;
+close $temp;
 
-print $ stdout; # "hoge" is output
+print $stdout; # "hoge" is output
 </pre>
 
 
@@ -89,11 +89,11 @@ You can do the same with IO :: Capture :: Stderr.
 <pre>
 use IO :: Capture :: Stderr;
 
-my $ capture = IO :: Capture :: Stderr-> new;
-$ capture-> start;
+my $capture = IO :: Capture :: Stderr-> new;
+$capture-> start;
 print STDERR "aaa";
-$ capture-> stop;
-my $ stderr = $ capture-> read;
+$capture-> stop;
+my $stderr = $capture-> read;
 </pre>
 
 <h4> How to capture standard error using only standard features </h4>
@@ -103,20 +103,20 @@ There was also a way to capture standard error output using only standard featur
 This is a method to switch the output destination of STDERR with the open function.
 
 <pre>
-my $ stderr;
+my $stderr;
 
 # Start capture STDERR
-open my $ temp,'> &', STDERR;
+open my $temp,'> &', STDERR;
 close STDERR;
-open STDERR,'>', \ $ stderr;
+open STDERR,'>', \ $stderr;
 
 print STDERR "hoge";
 
 # End capture STDERR
 close STDERR;
-open STDERR,'> &', $ temp;
-close $ temp;
+open STDERR,'> &', $temp;
+close $temp;
 
 
-print $ stderr; # "hoge" is output
+print $stderr; # "hoge" is output
 </pre>
