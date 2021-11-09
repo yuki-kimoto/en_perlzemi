@@ -82,10 +82,10 @@ In Perl 5.24, forward dereferences are enabled from the beginning. This makes it
 <pre>
 # Forward dereference
 my $nums_ref = [1, 2, 3];
-my @nums = $nums_ref-> @ *; # (1, 2, 3);
+my @nums = $nums_ref-> @*; # (1, 2, 3);
 
 # Array slice with forward dereference
-my @nums_part = $nums_ref-> @ [0, 2]; # (1, 3)
+my @nums_part = $nums_ref-> @[0, 2]; # (1, 3)
 
 my $names_h_ref = {
   ken => 1,
@@ -94,7 +94,7 @@ my $names_h_ref = {
 };
 
 # Hash slice with forward dereference
-my @names_part = $names_h_ref-> @ {'ken','kimoto'}; # (1, 3)
+my @names_part = $names_h_ref-> @{'ken','kimoto'}; # (1, 3)
 
 # Get partial hash using forward dereference
 my %names_h_part = $names_h_ref->%{'ken','kimoto'}; # (ken => 1, kimoto => 3)

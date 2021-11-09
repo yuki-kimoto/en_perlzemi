@@ -200,13 +200,13 @@ The dereference symbol {} can be omitted.
 my @array = @$array_ref;
 
 # Same meaning as below
-my @array = @ {$array_ref};
+my @array = @{$array_ref};
 </pre>
 
 {} Is required if it is not a simple variable.
 
 <pre>
-my @array = @ {$var-> nums};
+my @array = @{$var-> nums};
 </pre>
 
 <h3> How to read the document of the file operator </h3>
@@ -240,7 +240,7 @@ will do.
 The notation of dereferencing a hash reference and hash slicing is very hard to read.
 
 <pre>
-my ($key1, $key2, $key3) = @ {$hash} {qw / key1 key2 key3 /};
+my ($key1, $key2, $key3) = @{$hash} {qw / key1 key2 key3 /};
 </pre>
 
 I think it is better to substitute one by one if possible.
@@ -286,7 +286,7 @@ I prefer.
     $! - OS error message
   </li>
   <li>
-    Exception message when catching an exception with $@ - eval
+    Exception message when catching an exception with $@- eval
   </li>
   <li>
     $?-Child process status
@@ -641,7 +641,7 @@ It is convenient to write the configuration file in Perl. Use <a href="/blog/200
 <pre>
 my $conf_file = "app.conf";
 my $conf = do $conf_file
-  or die qq / Can't load config file "$conf_file": $! $@ /;
+  or die qq / Can't load config file "$conf_file": $! $@/;
 </pre>
 
 The contents of the configuration file.
@@ -653,7 +653,7 @@ The contents of the configuration file.
 }
 </pre>
 
-If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $@ will be set to the error content.
+If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $@will be set to the error content.
 
 For some reason, I used to write configuration files in XML or JSON, but when I think about it, it's easiest to write in Perl.
 

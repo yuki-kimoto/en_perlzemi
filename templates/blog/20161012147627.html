@@ -43,7 +43,7 @@ I will explain the basics of arrays.
 
 <h4> Array declaration </h4>
 
-Use my to declare an array as you would for a scalar variable. Prefix with @ (at sign) to represent the array.
+Use my to declare an array as you would for a scalar variable. Prefix with @(at sign) to represent the array.
 
 <pre>
 my @numbers;
@@ -260,10 +260,10 @@ You can also use the "reverse function" if you want to easily sort in reverse or
 <h4> Creating an array reference </h4>
 
 <pre>
-my $numbers_ref1 = \ @ numbers;
+my $numbers_ref1 = \@numbers;
 </pre>
 
-<span style = "font-weight: bold;"> You can create an array reference by prefixing @ with \.
+<span style = "font-weight: bold;"> You can create an array reference by prefixing @with \.
 
 <h4> Create a direct array reference </h4>
 
@@ -486,14 +486,14 @@ use strict;
 use warnings;
 
 my @numbers = (1, 2, 3, 4, 5, 6, 7, 8);
-print "array: \ @numbers =", join(',', @numbers). ")\n\n";
+print "array: \@numbers =", join(',', @numbers). ")\n\n";
 
 # 1: Array reference If you put \ before @, it becomes an array reference.
-my $numbers_ref1 = \ @ numbers;
+my $numbers_ref1 = \@numbers;
 
 You can revert to the original array by prefixing the # array reference with @.
 # This is called a dereference.
-print "array: \ @ \ $numbers_ref1 =" .join(',', @$numbers_ref1), ")\n";
+print "array: \@\ $numbers_ref1 =" .join(',', @$numbers_ref1), ")\n";
 
 # 2: However, I usually don't write it like the above.
 # Make a direct array reference using something called an anonymous array ([]).
@@ -525,7 +525,7 @@ use strict;
 use warnings;
 
 my @numbers = (1, 2, 3);
-print "array: \ @numbers =", join(',', @numbers), ")\n\n";
+print "array: \@numbers =", join(',', @numbers), ")\n\n";
 
 my $numbers_ref = [1, 2, 3];
 
@@ -541,14 +541,14 @@ print "\n";
 print "2. Processing of each element\n";
 
 # arrangement
-print "\ @ numbers =";
+print "\@numbers =";
 for my $number (@numbers) {
   print $number. ",";
 }
 print "\n";
 
 # Array reference (dereference it to the for statement)
-print "\ @ {\ $numbers_ref} =";
+print "\@{\ $numbers_ref} =";
 for my $number (@$numbers_ref) {
   print $number. ","
 }
@@ -560,7 +560,7 @@ print "3. How to use the function\n";
 # arrangement
 push @numbers, 4;
 @numbers = sort {$b <=> $a} @numbers;
-print "\ @ numbers = (", join(',', @numbers), ")\n";
+print "\@numbers = (", join(',', @numbers), ")\n";
 
 # Array reference (dereference and pass to function)
 push @$numbers_ref, 4;
@@ -568,7 +568,7 @@ push @$numbers_ref, 4;
 The # sort function returns an array, so use an anonymous array []
 # Recreating an array reference.
 $numbers_ref = [sort {$b <=> $a} @$numbers_ref];
-print "\ @ \ $numbers_ref =", join(',', @$numbers_ref), ")\n\n";
+print "\@\ $numbers_ref =", join(',', @$numbers_ref), ")\n\n";
 </pre>
 
 Execution result
@@ -582,7 +582,7 @@ $numbers_ref-> [0] = 1
 
 2. Processing of each element
 @numbers = 1,2,3,
-@ {$numbers_ref} = 1,2,3,
+@{$numbers_ref} = 1,2,3,
 
 3. How to use the function
 @numbers = (4,3,2,1)

@@ -426,21 +426,21 @@ my @nums = (5,2,7,3,4);
 print "1: Subroutine that selects descending order and ascending order and sorts bubbles\n";
 print join(',', @nums). "(Initial state)\n";
 
-my @sorted_nums_ascend = bubble_sort(\ @ nums, {order =>'ascend'});
-my @sorted_nums_descend = bubble_sort(\ @ nums, {order =>'descend'});
+my @sorted_nums_ascend = bubble_sort(\@nums, {order =>'ascend'});
+my @sorted_nums_descend = bubble_sort(\@nums, {order =>'descend'});
 
 if (@sorted_nums_ascend) {
   print join(',', @sorted_nums_ascend). "(Ascending order)\n";
 }
 else {
-  print "\ @sorted_nums_ascend is an empty list.\n";
+  print "\@sorted_nums_ascend is an empty list.\n";
 }
 
 if (@sorted_nums_descend) {
   print join(',', @sorted_nums_descend). "(Descending)\n\n";
 }
 else {
-  print "\ @ sorted_nums_descend is an empty list.\n\n";
+  print "\@sorted_nums_descend is an empty list.\n\n";
 }
 
 # Subroutine that selects descending order and ascending order to sort bubbles
@@ -506,7 +506,7 @@ elsif ($order eq'descend') {
 <h4> (1) Explanation of arguments (options are passed as a reference to the hash) </h4>
 
 <pre>
-my @sorted_nums_ascend = bubble_sort(\ @ nums, {order =>'ascend'});
+my @sorted_nums_ascend = bubble_sort(\@nums, {order =>'ascend'});
 </pre>
 
 I want to pass an array and a hash, so I'll use a reference. In actual programming, options are often passed in <a href="/blog/20180208151809.html"> hash reference</a>.

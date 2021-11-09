@@ -581,16 +581,16 @@ for my $value (@$values) {
 Perl has a <a href="/blog/20100118126425.html"> map function</a> that makes it easy to write transformations of all array elements.
 
 <pre>
-my @ values2 = map {"$_. Txt"} @ values1;
+my @values2 = map {"$_. Txt"} @values1;
 </pre>
 
 This is the same as writing the following in a for statement, but more concisely.
 
 <pre>
-my @ values2;
-for my $value1 (@ values1) {
+my @values2;
+for my $value1 (@values1) {
   my $value2 = "$value1.txt";
-  push @ values2, $value2;
+  push @values2, $value2;
 }
 </pre>
 

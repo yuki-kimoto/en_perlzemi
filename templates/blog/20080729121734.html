@@ -42,7 +42,7 @@ my @recs = parse_file ($file, $headers);
 # Output (because it is an array of hashes, follow it with for)
 for my $items (@recs) {
   # Concatenate using hash slices
-  print join(',', @ {$items} {@$headers}). "\n";
+  print join(',', @{$items} {@$headers}). "\n";
 }
 
 # Function for file analysis (I just write it back this time ...)
@@ -62,7 +62,7 @@ sub parse_file {
       # Header using hash slice
       Assign to the key corresponding to #
       my $items = {};
-      @ {$items} {@$headers} = split(',', $line);
+      @{$items} {@$headers} = split(',', $line);
 
       Since the first argument of the # push function is an array, dereference it with @$recs.
       push @$recs, $items;
@@ -115,7 +115,7 @@ rika, 38, France
 
 <pre>
 for my $items (@recs) {
-  print join(',', @ {$items} {@$headers}). "\n";
+  print join(',', @{$items} {@$headers}). "\n";
 }
 </pre>
 
@@ -123,7 +123,7 @@ Since it is an array, the outside is a foreach loop. Output $items, which is a r
 
 <h4> (3) -1 Explanation of hash slices </h4>
 
-I will explain the esoteric hash slice @ {$items} {@$headers}.
+I will explain the esoteric hash slice @{$items} {@$headers}.
 
 First, $items is a reference to the hash.
 
@@ -136,13 +136,13 @@ It looks like this.
 I usually use% $items to dereference, but I want to dereference it so that hash slices can be used.
 
 <pre>
-@ {$items} {list of hash keys}
+@{$items} {list of hash keys}
 </pre>
 
 will do.
 
 <pre>
-@ {$items} {'name','age','country'}
+@{$items} {'name','age','country'}
 </pre>
 
 If you write
@@ -156,13 +156,13 @@ Can be obtained.
 Also, since ['name','age','country'] is assigned to $headers, you can get ('name','age','country') by dereferencing @$headers. increase.
 
 <pre>
-@ {$items} {@$headers}
+@{$items} {@$headers}
 </pre>
 
 Is the description
 
 <pre>
-@ {$items} {'name','age','country'}
+@{$items} {'name','age','country'}
 </pre>
 Is the same as the description
 <pre>
@@ -170,7 +170,7 @@ Is the same as the description
 </pre>
 Can be obtained.
 <pre>
-join(',', @ {$items} {@$headers})
+join(',', @{$items} {@$headers})
 </pre>
 As a result, it is completed by connecting with commas.
 
@@ -187,7 +187,7 @@ while (my $line = <$fh>) {
   my $items = {};
   # Header using hash slice
   Assign to the key corresponding to #
-  @ {$items} {@$headers} = split(',', $line);
+  @{$items} {@$headers} = split(',', $line);
 
   The first argument of the # push function is an array, so @$recs
   # And dereference.
@@ -206,7 +206,7 @@ Prepare a reference to the hash you want to have in the array.
 <h4> (4) -2 Assign hash slice to corresponding key on the left side </h4>
 
 <pre>
-@ {$items} {@$headers} = split(',', $line);
+@{$items} {@$headers} = split(',', $line);
 </pre>
 
 Same as explained above. Make the left side a hash slice and assign the list divided by the split function to it.

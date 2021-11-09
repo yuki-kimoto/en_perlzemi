@@ -23,15 +23,15 @@ A dereference is the opposite of creating a <a href="/blog/20100930127859.html">
 
 <h4> Dereference array reference </h4>
 
-Use "@ {}" to dereference the <a href="/blog/20180214151861.html"> array reference</a>.
+Use "@{}" to dereference the <a href="/blog/20180214151861.html"> array reference</a>.
 
 <pre>
-my @array = @ {$array_ref};
+my @array = @{$array_ref};
 </pre>
 
 Please be aware that a new <a href="/blog/20161012147627.html"> array</a> is not created, but the entity is being retrieved.
 
-If the inside of "@ {}" is a simple <a href="/blog/20161107147852.html"> variable</a>, you can omit "{}".
+If the inside of "@{}" is a simple <a href="/blog/20161107147852.html"> variable</a>, you can omit "{}".
 
 <pre>
 my @array = @$array_ref;

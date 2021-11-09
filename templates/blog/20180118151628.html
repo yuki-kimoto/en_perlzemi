@@ -33,10 +33,10 @@ Let's first look at some examples where default variables are used.
 Each element of the array passed to the <a href="/blog/20100119126425.html"> grep function</a> is assigned to the default variable.
 
 <pre>
-my @ values2 = grep {$_ eq'cat'} @ values1;
+my @values2 = grep {$_ eq'cat'} @values1;
 </pre>
 
-"$_" Is the default variable, and each element of @ values1 is assigned in order.
+"$_" Is the default variable, and each element of @values1 is assigned in order.
 
 This is easy to understand if you think of it as expressing the English pronoun "it".
 
@@ -45,7 +45,7 @@ This is easy to understand if you think of it as expressing the English pronoun 
 Each element of the array passed to the <a href="/blog/20100118126425.html"> map function</a> is assigned to the default variable.
 
 <pre>
-my @ values2 = map {lc $_} @ values1;
+my @values2 = map {lc $_} @values1;
 </pre>
 
 <h4> When the declaration of a lexical variable is omitted in for </h4>
@@ -87,13 +87,13 @@ This is a bad way to avoid writing it yourself, as it will reduce readability.
 For example, if you omit the argument in the <a href="/blog/20100326127089.html"> lc function</a>, the default variable becomes the implicit argument.
 
 <pre>
-my @ values2 = map {lc} @ values1;
+my @values2 = map {lc} @values1;
 </pre>
 
 This has the same meaning as if you explicitly wrote the default arguments.
 
 <pre>
-my @ values2 = map {lc $_} @ values1;
+my @values2 = map {lc $_} @values1;
 </pre>
 
 If the argument is omitted in the standard function, suspect that an implicit argument is being used.

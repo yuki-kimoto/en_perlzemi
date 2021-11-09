@@ -196,7 +196,7 @@ while (my $line = <$fh>) {
   Dereference with # @$items
   @$items = split(/, /, $line);
 
-  Since the first argument of the # push function is an array, dereference it with @ {$recs}.
+  Since the first argument of the # push function is an array, dereference it with @{$recs}.
   push @$recs, $items;
 }
 </pre>
@@ -237,7 +237,7 @@ The first argument of push receives an array and dereferences it.
 
 <pre>
 Put the data in my @recs rather than push @$recs
-It's like returning @recs or \ @recs at the end.
+It's like returning @recs or \@recs at the end.
 (I feel that the effort of dereference is wasted)
 </pre>
 
@@ -264,6 +264,6 @@ chomp $line;
      push @recs, [@items];
    }
    close $fh;
-   return \ @recs;
+   return \@recs;
 }
 </pre>

@@ -24,9 +24,9 @@ A list of Perl special variables. Special variables are global variables that ar
 @ARGV
 </pre>
 
-<h4> @ _ - Subroutine arguments </h4>
+<h4> @_ - Subroutine arguments </h4>
 
-The <a href="/blog/20180523152759.html"> argument</a> of the <a href="/blog/20101130129876.html"> subroutine</a> is assigned to "@ _".
+The <a href="/blog/20180523152759.html"> argument</a> of the <a href="/blog/20101130129876.html"> subroutine</a> is assigned to "@_".
 
 <pre>
 @_
@@ -89,7 +89,7 @@ Gets the name when the program was started. In other words, if you specify a pro
 
 <h4> @INC-List of module search paths </h4>
 
-<a href="/blog/20180508152716.html"> List of module search paths</a> is assigned to a special variable called <strong> @ INC </strong>.
+<a href="/blog/20180508152716.html"> List of module search paths</a> is assigned to a special variable called <strong> @INC </strong>.
 
 <pre>
 @INC
@@ -108,7 +108,7 @@ You can add the search path to @INC at compile time by using the <a href="/blog/
 <b> Add the module search path directly to the beginning of @INC </b>
 
 <pre>
-unshift @ INC,'./lib2';
+unshift @INC,'./lib2';
 </pre>
 
 Add it directly to the beginning with <a href="/blog/20100105126425.html"> unshift function</a>. It is better to use use lib than this way. The advantage of using use lib is that it adds a search path at compile time, makes it more readable, and adds an architectural path as well.
@@ -590,7 +590,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 |
   <tr>
     <td>
-      @ +
+      @+
     </td>
     <td>
       Offset to the end of the last successful match
@@ -868,8 +868,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $@
-    </td>
+      $@    </td>
     <td>
       If you catch an exception with <a href="/blog/20100312126967.html"> eval</a>, its contents will be saved.
     </td>

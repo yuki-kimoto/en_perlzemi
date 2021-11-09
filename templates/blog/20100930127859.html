@@ -34,7 +34,7 @@ Creating an array reference. References are created using the "\" symbol.
 
 <pre>
 my @nums = (1, 2, 3);
-my $nums = \ @nums;
+my $nums = \@nums;
 </pre>
 
 "Reference" means "what you point to." $nums points to @nums.
@@ -62,7 +62,7 @@ It's easy to think of the anonymous array reference description as a simple way 
 <pre>
 # Creating an array reference
 my @nums = (1, 2, 3);
-my $nums = \ @nums;
+my $nums = \@nums;
 
 # Abbreviated notation above
 my $nums = [1, 2, 3];
@@ -72,10 +72,10 @@ In Perl, the appearance of both arrays and array references is one reason why th
 
 <h3> Array reference dereference </h3>
 
-To retrieve an array from an array reference, you need to do the <a href="/blog/20180301151991.html"> dereference</a> operation. Use "@ {}" to dereference the array.
+To retrieve an array from an array reference, you need to do the <a href="/blog/20180301151991.html"> dereference</a> operation. Use "@{}" to dereference the array.
 
 <pre>
-my @nums = @ {$nums};
+my @nums = @{$nums};
 </pre>
 
 You can also omit the parentheses as follows:
@@ -114,10 +114,10 @@ Let's create a two-dimensional array in Perl. A characteristic of Perl arrays is
 
 <pre>
 # Wrong example of a two-dimensional array
-my @ person1 = ('Ken','Japan', 19);
-my @ person2 = ('Taro','USA', 45);
+my @person1 = ('Ken','Japan', 19);
+my @person2 = ('Taro','USA', 45);
 
-my @persons = (@ person1, @ person2);
+my @persons = (@person1, @person2);
 </pre>
 
 @persons becomes a one-dimensional array of ('Ken','Japan', 19,'Taro','USA', 45).
@@ -125,10 +125,10 @@ my @persons = (@ person1, @ person2);
 Only scalar values ​​can be in the elements of the array. The array reference is a scalar value. So you can have an array reference as an element of the array. Use "\" to create an array reference.
 
 <pre>
-my @ person1 = ('Ken','Japan', 19);
-my @ person2 = ('Taro','USA', 45);
+my @person1 = ('Ken','Japan', 19);
+my @person2 = ('Taro','USA', 45);
 
-my @persons = (\ @ person1, \ @ person2);
+my @persons = (\@person1, \@person2);
 </pre>
 
 Also, as the simplest notation, the outer array is also used as a reference, and it is common to write as follows.
@@ -242,12 +242,12 @@ my $people = [];
 while (my $line = <>) {
   chomp $line;
   my @person = split(',', $line);
-  push @$persons, \ @person;
+  push @$persons, \@person;
 }
 </pre>
 chomp is a function that removes line breaks. Use the split function to decompose a string with the specified delimiter to create an array. Note that the first argument of the push function is an array.
 
-You need to dereference and pass it like "@$persons". Also, the elements added by push must be an array reference. Generate an array reference like "\ @ person" and specify it as the second argument of the push function.
+You need to dereference and pass it like "@$persons". Also, the elements added by push must be an array reference. Generate an array reference like "\@person" and specify it as the second argument of the push function.
 
 The created two-dimensional array is as follows.
 
@@ -520,7 +520,7 @@ for my $time(sort keys %$infos) {
   print "$time\n";
   
   # (2) Inner loop
-  for my $column (@ {$infos-> {$time}}) {
+  for my $column (@{$infos-> {$time}}) {
     print "$column\n";
   }
 }
@@ -537,7 +537,7 @@ The reason for sorting like this is because we want to output in the order of ti
 (2) The inner loop is an array. The inner array is
 
 <pre>
-@ {$infos-> {$time}}
+@{$infos-> {$time}}
 </pre>
 
 You can take it out like this.
@@ -572,7 +572,7 @@ Next, let's output all records separated by commas as shown below.
 <pre>
 for my $time(sort keys %$infos) {
     
-  my @rec = ($time, @ {$infos-> {$time}});
+  my @rec = ($time, @{$infos-> {$time}});
   print join(',', @rec). "\n";
 }
 </pre>

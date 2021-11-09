@@ -87,7 +87,7 @@ get'/' => sub {
         
         return $self-> render (error => $@) if $@;
         
-        $self-> render (output => \ @ output);
+        $self-> render (output => \@output);
     }
     elsif ($module) {
         $self-> stash (error =>'Enter module name correctly');
@@ -102,7 +102,7 @@ app-> start;
 
 __DATA__
 
-@@ index.html.ep
+@@index.html.ep
 <html>
   <head>
     <meta http-equiv = "Content-type" content = "text / html; charset = UTF-8">

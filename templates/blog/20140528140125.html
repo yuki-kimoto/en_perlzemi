@@ -68,13 +68,13 @@ Array slices and hash slices can now be written in a new notation.
 use feature'postderef';
 
 # Array slice
-my ($title, $author) = $array_ref-> @ [0, 1];
+my ($title, $author) = $array_ref-> @[0, 1];
 
 # Hash slice
-my ($title, $author) = $hash_ref-> @ {'title','author'};
+my ($title, $author) = $hash_ref-> @{'title','author'};
 </pre>
 
-The notation "$aref-> @ *" has also been added, but I personally thought that the notation "$aref-> @ *" would not be necessary. If you want to take the whole thing, it would be enough if you could do "@$aref".
+The notation "$aref-> @*" has also been added, but I personally thought that the notation "$aref-> @*" would not be necessary. If you want to take the whole thing, it would be enough if you could do "@$aref".
 
 Slice notation is easy to understand and convenient.
 
