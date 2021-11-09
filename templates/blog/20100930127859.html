@@ -204,7 +204,7 @@ You can use the <a href="/blog/20081007122338.html">join function</a> to join th
 
 <pre>
 for my $person (@$persons) {
-  print join(',', @$person). "\n";
+  print join(',', @$person) . "\n";
 }
 </pre>
 
@@ -259,7 +259,7 @@ my $people = [
 This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the character string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
 
 <pre>
-print join("\t", @$person). "\n";
+print join("\t", @$person) . "\n";
 </pre>
 
 <h3> Hash reference </h3>
@@ -440,7 +440,7 @@ for my $person (@$persons) {
     $person->{age}
   );
     
-  print join(',', @rec). "\n";
+  print join(',', @rec) . "\n";
 }
 </pre>
 
@@ -569,7 +569,7 @@ Next, let's output all records separated by commas as shown below.
 for my $time(sort keys %$infos) {
     
   my @rec = ($time, @{$infos->{$time}});
-  print join(',', @rec). "\n";
+  print join(',', @rec) . "\n";
 }
 </pre>
 
@@ -720,7 +720,7 @@ for my $time(sort keys %$infos) {
     $infos->{$time}{ave_time},
     $infos->{$time}{max_time}
   );
-  print join(',', @rec). "\n";
+  print join(',', @rec) . "\n";
 }
 </pre>
 

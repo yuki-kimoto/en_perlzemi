@@ -30,7 +30,7 @@ for my $record(@records) {
     
     # Cut out the records included from the start time to the end time.
     if ($time ge $start_time && $time lt $end_time) {
-      print $record. "\n";
+      print $record . "\n";
     }
   }
 }
@@ -54,7 +54,7 @@ if ($record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
   my $time = sprintf("% 02s:% 02s:% 02s", $1, $2, $3);
   
   if ($time ge $start_time && $time lt $end_time) {
-    print $record. "\n";
+    print $record . "\n";
   }
 }
 </pre>
@@ -65,7 +65,7 @@ ge and lt are operators that compare which comes first in the dictionary order o
 
 <pre>
 if ($time ge $start_time && $time lt $end_time) {
-  print $record. "\n";
+  print $record . "\n";
 }
 </pre>
 

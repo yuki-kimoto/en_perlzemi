@@ -62,7 +62,7 @@ open my $fh,">", $file
   or die "File open error: $!";
 
 while (-s $file <1_000_000) {
-  my $string = ('a' x 99). "\n";
+  my $string = ('a' x 99) . "\n";
   print $fh $string;
 }
 

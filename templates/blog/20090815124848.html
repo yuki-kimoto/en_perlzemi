@@ -210,10 +210,10 @@ my $encode_to;
 if ($^ O eq'MSWin32') {$encode_to ='shift-jis'}
 else {$encode_to ='utf8'}
 print(
-  encode ($encode_to, $month_name). "\n".
-  encode ($encode_to, $month_abbr). "\n".
-  encode ($encode_to, $day_name). "\n".
-  encode ($encode_to, $day_abbr). "\n"
+  encode ($encode_to, $month_name) . "\n".
+  encode ($encode_to, $month_abbr) . "\n".
+  encode ($encode_to, $day_name) . "\n".
+  encode ($encode_to, $day_abbr) . "\n"
 );
 </pre>
 
@@ -1141,10 +1141,10 @@ if ($^ O eq'MSWin32') {$encode_to ='shift-jis'}
 else {$encode_to ='utf8'}
 
 print(
-  encode ($encode_to, $month_name). "\n".
-  encode ($encode_to, $month_abbr). "\n".
-  encode ($encode_to, $day_name). "\n".
-  encode ($encode_to, $day_abbr). "\n"
+  encode ($encode_to, $month_name) . "\n".
+  encode ($encode_to, $month_abbr) . "\n".
+  encode ($encode_to, $day_name) . "\n".
+  encode ($encode_to, $day_abbr) . "\n"
 );
 </pre>
 
@@ -1179,7 +1179,7 @@ my $dt = DateTime->now (locale => $locale, time_zone =>'local');
 
 # Day of the week name
 my $day_name = $dt->day_name;
-print encode ($encode_to, $day_name). "\n";
+print encode ($encode_to, $day_name) . "\n";
 </pre>
 
 This is a sample to get the date and time.
@@ -1245,63 +1245,63 @@ use DateTime;
 print "(1) strftime format specification list\n";
 my $dt = DateTime->now (time_zone =>'local');
 
-print'%a: Abbreviation for day of the week:'. $Dt->strftime("%a"). "\n";
-print'%A: Day of the week name:'. $Dt->strftime("%A"). "\n";
-print'%b: month abbreviation:'. $dt->strftime("%b"). "\n";
-print'%B: month name:'. $dt->strftime("%B"). "\n";
-print'%c: default format:'. $Dt->strftime("%c"). "\n";
-print'%C: First two digits of the year:'. $Dt->strftime("%C"). "\n";
-print'%d: days (01 to 31):'. $Dt->strftime("%d"). "\n";
-print'%D: Same as%m /%d /%y. Month Day Year:'. $Dt->strftime("%D"). "\n";
+print'%a: Abbreviation for day of the week:'. $Dt->strftime("%a") . "\n";
+print'%A: Day of the week name:'. $Dt->strftime("%A") . "\n";
+print'%b: month abbreviation:'. $dt->strftime("%b") . "\n";
+print'%B: month name:'. $dt->strftime("%B") . "\n";
+print'%c: default format:'. $Dt->strftime("%c") . "\n";
+print'%C: First two digits of the year:'. $Dt->strftime("%C") . "\n";
+print'%d: days (01 to 31):'. $Dt->strftime("%d") . "\n";
+print'%D: Same as%m /%d /%y. Month Day Year:'. $Dt->strftime("%D") . "\n";
 print'%e: day (1 to 31) The second digit of the one digit number (1 to 9) is a space. :'
-  . $dt->strftime("%e"). "\n";
-print'%F: Same as%Y-%m-%d (eg 2008-11-31):'. $Dt->strftime("%F"). "\n";
-print'%G: Year (I don't know the difference from%Y):'. $Dt->strftime("%G"). "\n";
-print'%g: Last two digits of the year (00-99):'. $Dt->strftime("%g"). "\n";
-print'%h: Same as%b. Month abbreviation:'. $Dt->strftime("%h"). "\n";
-print'%H: Hour (00 to 23):'. $Dt->strftime("%H"). "\n";
-print'%I: Hour (01 to 12) Time in 12-hour notation:'. $Dt->strftime("%I"). "\n";
+  . $dt->strftime("%e") . "\n";
+print'%F: Same as%Y-%m-%d (eg 2008-11-31):'. $Dt->strftime("%F") . "\n";
+print'%G: Year (I don't know the difference from%Y):'. $Dt->strftime("%G") . "\n";
+print'%g: Last two digits of the year (00-99):'. $Dt->strftime("%g") . "\n";
+print'%h: Same as%b. Month abbreviation:'. $Dt->strftime("%h") . "\n";
+print'%H: Hour (00 to 23):'. $Dt->strftime("%H") . "\n";
+print'%I: Hour (01 to 12) Time in 12-hour notation:'. $Dt->strftime("%I") . "\n";
 print'%j: What day is it for the first time in the year? (001 to 366):'
-  . $dt->strftime("%j"). "\n";
+  . $dt->strftime("%j") . "\n";
 print'%k: Hour (0 to 23) The second digit of the one digit number (0 to 9) is a space. :'
-  . $dt->strftime("%k"). "\n";
-print'%l: Hour (1 to 12) Time in 12-hour notation:'. $Dt->strftime("%l"). "\n";
-print'%m: Month number (01 to 12):'. $Dt->strftime("%m"). "\n";
-print'%M: Minutes (00 to 59):'. $Dt->strftime("%M"). "\n";
-print'%n: Newline character:'. $Dt->strftime("%n"). "\n";
+  . $dt->strftime("%k") . "\n";
+print'%l: Hour (1 to 12) Time in 12-hour notation:'. $Dt->strftime("%l") . "\n";
+print'%m: Month number (01 to 12):'. $Dt->strftime("%m") . "\n";
+print'%M: Minutes (00 to 59):'. $Dt->strftime("%M") . "\n";
+print'%n: Newline character:'. $Dt->strftime("%n") . "\n";
 print'%N: milliseconds (write% 3N will display milliseconds in 3 digits and% 6N will display milliseconds in 6 digits):'
-  . $dt->strftime("% 3N"). "\n";
-print'%p: AM or PM:'. $Dt->strftime("%p"). "\n";
-print'%P: am or pm:'. $Dt->strftime("%P"). "\n";
+  . $dt->strftime("% 3N") . "\n";
+print'%p: AM or PM:'. $Dt->strftime("%p") . "\n";
+print'%P: am or pm:'. $Dt->strftime("%P") . "\n";
 print'%r:%I:%M:%S Same as%p. (11:55:23 PM, etc.):'
-  . $dt->strftime("%r"). "\n";
-print'%R: hours and minutes (15:16, etc.):'. $Dt->strftime("%R"). "\n";
-print'%s: seconds from epoch:'. $dt->strftime("%s"). "\n";
-print'%S: seconds (00 to 61):'. $Dt->strftime("%S"). "\n";
-print'%t: tab character:'. $Dt->strftime("%t"). "\n";
+  . $dt->strftime("%r") . "\n";
+print'%R: hours and minutes (15:16, etc.):'. $Dt->strftime("%R") . "\n";
+print'%s: seconds from epoch:'. $dt->strftime("%s") . "\n";
+print'%S: seconds (00 to 61):'. $Dt->strftime("%S") . "\n";
+print'%t: tab character:'. $Dt->strftime("%t") . "\n";
 print'%T: Same as%H:%M:%S. Hours, minutes and seconds (such as 23:14:03):'
-  . $dt->strftime("%T"). "\n";
-print'%u: Day of the week number (1 to 7. Monday is 1):'. $Dt->strftime("%u"). "\n";
+  . $dt->strftime("%T") . "\n";
+print'%u: Day of the week number (1 to 7. Monday is 1):'. $Dt->strftime("%u") . "\n";
 print'%U: How many weeks from the beginning of the year? First Sunday of the year (00-53)'
   Count'.'As the beginning of the week. The first Sunday week is 01. The week before that was 00. :'
-  . $dt->strftime("%U"). "\n";
+  . $dt->strftime("%U") . "\n";
 print'%V: How many weeks from the beginning of the year? (01-53) Weeks with at least 4 days'
   .'Shall be the first week of the year. Count Monday as the beginning of the week. :'
-  . $dt->strftime("%V"). "\n";
-print'%w: Day of the week number (0 to 6. Sunday is 0):'. $Dt->strftime("%w"). "\n";
+  . $dt->strftime("%V") . "\n";
+print'%w: Day of the week number (0 to 6. Sunday is 0):'. $Dt->strftime("%w") . "\n";
 print'%W: Weeks counting from the beginning of the year (00-53) The first Monday of the year is the week'
   .'Count as the first. The first Monday week is 01. The week before that was 00. :'
-  . $dt->strftime("%W"). "\n";
-print'%x: default date format:'. $Dt->strftime("%x"). "\n";
-print'%X: Default format for time:'. $Dt->strftime("%X"). "\n";
-print'%y: last two digits of the year:'. $Dt->strftime("%y"). "\n";
-print'%Y: Year:'. $Dt->strftime("%Y"). "\n";
+  . $dt->strftime("%W") . "\n";
+print'%x: default date format:'. $Dt->strftime("%x") . "\n";
+print'%X: Default format for time:'. $Dt->strftime("%X") . "\n";
+print'%y: last two digits of the year:'. $Dt->strftime("%y") . "\n";
+print'%Y: Year:'. $Dt->strftime("%Y") . "\n";
 print'%z: Time zone time shift from UTC (Coordinated Universal Time):'
-  . $dt->strftime("%z"). "\n";
-print'%Z: timezone name:'. $Dt->strftime("%Z"). "\n";
-print'%%:%:'. $Dt->strftime("%%"). "\n";
+  . $dt->strftime("%z") . "\n";
+print'%Z: timezone name:'. $Dt->strftime("%Z") . "\n";
+print'%%:%:'. $Dt->strftime("%%") . "\n";
 print'%{method}: You can use the method of DateTime.pm. Example%{ymd}:'
-  . $dt->strftime("%{ymd}"). "\n";
+  . $dt->strftime("%{ymd}") . "\n";
 </pre>
 
 Execution result
