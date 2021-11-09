@@ -1,98 +1,96 @@
+<h2> Validator :: Custom :: Validation --Validation result </ h2>
 
-<h2>Validator::Custom::Validation - バリデーションの結果</h2>
+<h3> Name </ h3>
 
-<h3> 名前</h3>
+Validator :: Custom :: Validation --Validation result
 
-Validator::Custom::Validation - バリデーションの結果
-
-<h3> 使い方</h3>
+<h3> How to use </ h3>
 
 <pre>
-  my $validation = $vc->validation;
+  my $ validation = $ vc-> validation;
   
-  $validation->add_failed(title => 'title is invalid');
-  $validation->add_failed(name => 'name is invalid');
+  $ validation-> add_failed (title =>'title is invalid');
+  $ validation-> add_failed (name =>'name is invalid');
   
-  # 正しいか
-  my $is_valid = $validation->is_valid;
-  my $title_is_valid = $validation->is_valid('title');
+  # Is it correct
+  my $ is_valid = $ validation-> is_valid;
+  my $ title_is_valid = $ validation-> is_valid ('title');
   
-  # 失敗したパラメーターの名前
-  my $failed = $validation->failed;
+  # Name of failed parameter
+  my $ failed = $ validation-> failed;
   
-  # メッセージ
-  my $messages = $validation->messages;
-  my $title_message = $validation->message('title');
-  my $messages_h = $validation->messages_to_hash;
-</pre>
+  # message
+  my $ messages = $ validation-> messages;
+  my $ title_message = $ validation-> message ('title');
+  my $ messages_h = $ validation-> messages_to_hash;
+</ pre>
 
 =====
 
-<h3> メソッド</h3>
+<h3> Method </ h3>
 
-Validator::Custom::Validationは<a href="http://search.cpan.org/dist/Object-Simple/lib/Object/Simple.pm">Object::Simple</a>からすべてのメソッドを継承しており、次の新しいメソッドを実装しています。
+Validator :: Custom :: Validation is all methods from <a href="http://search.cpan.org/dist/Object-Simple/lib/Object/Simple.pm"> Object :: Simple </a> It inherits from and implements the following new methods:
 
-<h4> new</h4>
-
-<pre>
-  my $validation = Validator::Custom::Validation->new;
-</pre>
-
-新しいValidator::Custom::Validationオブジェクトを生成します。
-
-一般的にはこのメソッドは利用されません。<a href="/blog/20151212144988.html">Validator::Custom</a>の<b>validation</b>メソッドを使うのがよいでしょう。
+<h4> new </ h4>
 
 <pre>
-  my $validation = $vc->validation;
-</pre>
+  my $ validation = Validator :: Custom :: Validation-> new;
+</ pre>
 
-<h4> is_valid</h4>
+Create a new Validator :: Custom :: Validation object.
 
-<pre>
-  my $is_valid = $validation->is_valid;
-  my $is_valid = $validation->is_valid('title');
-</pre>
-
-バリデーションの結果が正しいかどうかをチェックします。もし名前が与えられた場合は、その名前に対応するパラメータが正しいかどうかをチェックします。
-
-<h4> add_failed</h4>
+Generally this method is not used. It's a good idea to use the <b> validation </ b> method of <a href="/blog/20151212144988.html"> Validator :: Custom </a>.
 
 <pre>
-  $validation->add_failed('title' => 'title is invalid value');
-  $validation->add_failed('title');
-</pre>
+  my $ validation = $ vc-> validation;
+</ pre>
 
-失敗したパラメーターの名前とメッセージを追加します。もし、メッセージが省略されれば、デフォルトのメッセージが自動的に設定されます。
-
-<h4> failed</h4>
+<h4> is_valid </ h4>
 
 <pre>
-  my $failed = $validation->failed;
-</pre>
+  my $ is_valid = $ validation-> is_valid;
+  my $ is_valid = $ validation-> is_valid ('title');
+</ pre>
 
-すべての失敗したパラメーターの名前を取得します。
+Check if the validation result is correct. If given a name, it checks if the parameters corresponding to that name are correct.
 
-<h4> message</h4>
-
-<pre>
-  my $message = $validation->message('title');
-</pre>
-
-名前に対応する失敗のメッセージを取得します。
-
-<h4> messages</h4>
+<h4> add_failed </ h4>
 
 <pre>
-  my $messgaes = $validation->messages;
-</pre>
+  $ validation-> add_failed ('title' =>'title is invalid value');
+  $ validation-> add_failed ('title');
+</ pre>
 
-すべての失敗メッセージを取得します。
+Add the name and message of the failed parameter. If the message is omitted, the default message will be set automatically.
 
-<h4> messages_to_hash</h4>
+<h4> failed </ h4>
 
 <pre>
-  my $messages_h = $validation->messages_to_hash;
-</pre>
+  my $ failed = $ validation-> failed;
+</ pre>
 
-すべての失敗したパラメーター名とメッセージを、ハッシュリファレンスとして取得します。
+Gets the names of all failed parameters.
 
+<h4> message </ h4>
+
+<pre>
+  my $ message = $ validation-> message ('title');
+</ pre>
+
+Gets the failure message that corresponds to the name.
+
+<h4> messages </ h4>
+
+<pre>
+  my $ messgaes = $ validation-> messages;
+</ pre>
+
+Get all failure messages.
+
+<h4> messages_to_hash </ h4>
+
+<pre>
+  my $ messages_h = $ validation-> messages_to_hash;
+</ pre>
+
+Gets all failed parameter names and messages as a hash reference.

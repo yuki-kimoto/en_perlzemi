@@ -1,70 +1,70 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
 
-        <span itemprop="name">ワンライナー</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
+        <span itemprop = "name"> One liner </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
 
-<h2>Perlワンライナー - eオプションの解説</h2>
+<h2> Perl One Liner-Explanation of e Options </ h2>
 
-Perlでは、コマンドラインからPerlのスクリプトを実行することができるワンライナーという機能があります。WindowsではLinuxのような便利なコマンドがないので、Perlのワンライナーを使えば、似たようなことも可能です。Perlでよく利用するワンライナーを紹介します。
+Perl has a feature called Oneliner that allows you to execute Perl scripts from the command line. Windows doesn't have the convenience of commands like Linux, so you can do something similar with Perl's one-liner. Introducing a one-liner that is often used in Perl.
 
-<h3>ワンライナーとは</h3>
+<h3> What is one-liner? </ H3>
 
-コマンドラインから直接実行できる1行Perlスクリプトのこと
+A one-line Perl script that can be executed directly from the command line
 
-<h4>-e</h4>
+<h4> -e </ h4>
 
--eを指定すると、その後に続くPerlスクリプトが直接実行される。
+If -e is specified, subsequent Perl scripts will be executed directly.
 
-<h4>-n</h4>
+<h4> -n </ h4>
 
--nを指定すると、その後に続くPerlスクリプトが<a href="/blog/20100123126425.html">while文</a>で行入力演算子を使った「while(<>){ }」で囲まれたものになります。
+If -n is specified, the subsequent Perl script will be enclosed in "while (<>) {}" using the line input operator in the <a href="/blog/20100123126425.html"> while statement </a>. It will be a script.
 
-<h4>ワンライナー解説</h4>
-
-<pre>
-perl -ne "print if( /search/ )" inputfile.txt > outputfile.txt
-</pre>
-
-この文は以下の、1,2 と同じ。
-
-<h4>1: grep.pl</h4>
+<h4> One-liner commentary </ h4>
 
 <pre>
-# 引数で与えられたファイルの各行が、<>に渡される。
-# <>で受け取った各行は、ループのなかで、$_に渡される。
-# 正規表現//には、$_が暗黙的に利用される
-# printの引数には、暗黙的に$_が利用される。 
-while (<>) {         
-  print if /search/;                   
+perl -ne "print if (/ search /)" inputfile.txt> outputfile.txt
+</ pre>
+
+This sentence is the same as 1 and 2 below.
+
+<h4> 1: grep.pl </ h4>
+
+<pre>
+Each line of the file given by the # argument is passed to <>.
+Each line received by # <> is passed to $ _ in a loop.
+$ _ Is implicitly used for #regular expression //
+$ _ Is implicitly used as the argument of #print.
+while (<>) {
+  print if / search /;
 }
-</pre>
+</ pre>
 
-<h4>2: 実行</h4>
-
-<pre>
-perl grep.pl inputfile.txt > outputfile.txt
-</pre>
-
-<h3>Perlでgrepする 指定した文字列を含む行を抽出</h3>
-
- ワンライナーという機能を使ってPerlで指定した文字列を含む行を抽出してみます。
-
-<h4>grepを実現するワンライナー(コマンドプロンプトから使う)</h4>
+<h4> 2: Execution </ h4>
 
 <pre>
-perl -ne "print if ( /search/ )" inputfile.txt > outputfile.txt
-</pre>
+perl grep.pl inputfile.txt> outputfile.txt
+</ pre>
 
-<h4>inputfile.txt</h4>
+<h3> Extract lines containing the specified string to grep with Perl </ h3>
+
+ Let's use a function called One Liner to extract the line containing the character string specified in Perl.
+
+<h4> One liner to realize grep (used from command prompt) </ h4>
+
+<pre>
+perl -ne "print if (/ search /)" inputfile.txt> outputfile.txt
+</ pre>
+
+<h4> inputfile.txt </ h4>
 
 <pre>
 search1
@@ -73,15 +73,14 @@ search2
 lkjlkjl
 oiuyyiu
 search3
-</pre>
+</ pre>
 
-<h3>Windowsのコマンドプロンプトでcatする</h3>
+<h3> Cat at the Windows command prompt </ h3>
 
-今回はWindowsでLinuxのcatと同じことをするためのワンライナーを紹介します。catコマンドはファイルの内容を結合することができるコマンドです。コマンドプロンプトでcatをするには以下のようにします。
+This time I will introduce a one-liner for doing the same thing as cat on Linux on Windows. The cat command is a command that allows you to combine the contents of files. To cat at the command prompt:
 
 <pre>
-perl -ne "print" file1 file2 file3 > output.txt
-</pre>
+perl -ne "print" file1 file2 file3> output.txt
+</ pre>
 
-ファイルの内容を結合することができました。
-
+I was able to combine the contents of the files.

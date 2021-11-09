@@ -1,310 +1,307 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">ハッシュ</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlのハッシュを理解しよう</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> hash </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Understand Perl hashes </ h2>
 
 
 
-Perlの「ハッシュ」についての解説です。Perlのハッシュは、他の言語でいうところの「連想配列」のことです。
+A description of Perl's "hash". Perl hashes are "associative arrays" in other languages.
 
-配列では、番号を指定して要素を取り出すことができましたが、「連想配列」では、文字列をキーとして指定して、要素を取り出すことができます。
+In an array, you could retrieve an element by specifying a number, but in an "associative array", you can retrieve an element by specifying a character string as a key.
 
-<h3>ハッシュの基礎</h3>
+<h3> Hash basics </ h3>
 
-ハッシュの基礎。ハッシュの宣言と初期化。ハッシュの出力と代入。ハッシュは、文字列を、添え字として、値を取得できる配列だと考えればよい。文字列をキーとして、値を取り出すことができる。
+The basis of hashing. Hash declaration and initialization. Hash output and assignment. You can think of a hash as an array from which you can get a value of a string as a subscript. You can retrieve the value using a character string as a key.
 
-<h4>ハッシュの宣言と初期化</h4>
+<h4> Hash declaration and initialization </ h4>
 
-ハッシュの宣言と初期化は次のようにして行います。
-
-<pre>
-my %fathers = ('Taro' => 'Kenji', 'Naoko' => 'Yoshio');
-#あるいは
-my %fathers = (Taro => 'Kenji', Naoko => 'Yoshio');
-</pre>
-
-変数の接頭辞は<b>パーセント記号</b>です「%」。(キー1 => 値1, キー2 => 値2, ...)。Taroの父親はKenji, Naokoの父親はYoshioと読むことができる
-
-<h4>ハッシュの要素の出力</h4>
+Declaring and initializing the hash is done as follows.
 
 <pre>
-print $mothers{'Taro'};
-</pre>
+my% fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
+#or
+my% fathers = (Taro =>'Kenji', Naoko =>'Yoshio');
+</ pre>
 
-出力する場合は、%ではなくて$ 。単一の要素を扱う場合は$ 。{  }を使ってキーを指定する。( 配列の場合は[ ]でした  )。{} はブラケットと読みます。( [] はブレース。 () はかっこ )
+The variable prefix is ​​<b> percent sign </ b> "%". (Key 1 => Value 1, Key 2 => Value 2, ...). Taro's father can be read as Kenji, Naoko's father as Yoshio
 
-<h3>ハッシュの要素の代入</h3>
+<h4> Hash element output </ h4>
 
 <pre>
-$mothers{'Naoko'} = 'Haruna';
-</pre>
+print $ mothers {'Taro'};
+</ pre>
 
-<h3>ハッシュの各要素の処理</h3>
+When printing, $ instead of%. $ When dealing with a single element. Use {} to specify the key. (In the case of an array, it was []). {} Is read as a bracket. ([] Is brace. () Is parenthesis)
+
+<h3> Hash element assignment </ h3>
+
+<pre>
+$ mothers {'Naoko'} ='Haruna';
+</ pre>
+
+<h3> Processing of each element of hash </ h3>
 
 <ul>
   <li>
-    <a href="/blog/20080210120265.html">ハッシュのすべてのを取得する - keys関数</a><span style="color:red">【重要】</span>
-  </li>
+    <a href="/blog/20080210120265.html"> Get all of the hashes --keys function </a> <span style = "color: red"> [Important] </ span>
+  </ li>
   <li>
-    <a href="/blog/20100222126425.html">ハッシュのすべての値を取得する - values関数</a>
-  </li>
+    <a href="/blog/20100222126425.html"> Get all values ​​of a hash --values ​​function </a>
+  </ li>
   <li>
-    <a href="/blog/20080212120283.html">ハッシュのすべてのキーと値を取得する - each関数</a>
-  </li>
-</ul>
+    <a href="/blog/20080212120283.html"> Get all keys and values ​​of a hash --each function </a>
+  </ li>
+</ ul>
 
-<h3>ハッシュの操作</h3>
+<h3> Hash manipulation </ h3>
 
 <ul>
   <li>
-    <a href="/blog/20080213120291.html">キーの存在を調べる - exists関数</a><span style="color:red">【重要】</span>
-  </li>
+    <a href="/blog/20080213120291.html"> Check for the existence of a key --exists function </a> <span style = "color: red"> [Important] </ span>
+  </ li>
   <li>
-    <a href="/blog/20080214120300.html">ハッシュのキーを削除する - delete関数</a><span style="color:red">【重要】</span>
-  </li>
+    <a href="/blog/20080214120300.html"> Delete hash key --delete function </a> <span style = "color: red"> [Important] </ span>
+  </ li>
   <li>
-    <a href="/blog/20080227120413.html">ハッシュのキーと値を入れ替える reverse関数</a>
-  </li>
+    <a href="/blog/20080227120413.html"> Reverse function that swaps hash keys and values ​​</a>
+  </ li>
   <li>
-    <a href="/blog/20080215120307.html">ハッシュスライス ･･･ ハッシュの複数の値を取り出す</a>
-  </li>
-</ul>
+    <a href="/blog/20080215120307.html"> Hash slice ... Extract multiple values ​​of hash </a>
+  </ li>
+</ ul>
 
-<h3>ハッシュのリファレンス</h3>
+<h3> Hash reference </ h3>
 
-ハッシュのリファレンスは以下のように作ることができます。
+You can create a hash reference as follows:
 
 <pre>
-my $math_scores_ref = \%math_scores;
-</pre>
+my $ math_scores_ref = \% math_scores;
+</ pre>
 
-%の前に \ をつけ、ハッシュへのリファレンスを生成。生成したリファレンスを、スカラー変数 $math_score_href に代入
+Prefix% with \ to generate a reference to the hash. Assign the generated reference to the scalar variable $ math_score_href
 
-<h4>無名ハッシュを使って、直接ハッシュへのリファレンスを作る。</h4>
+<h4> Create a direct hash reference using an anonymous hash. </ h4>
 
 <pre>
-my $math_scores_ref2 = { 
+my $ math_scores_ref2 = {
   Aiko => 89,
   Kenta => 100,
   Taro => 34,
 };
-</pre>
+</ pre>
 
-( ) の代わりに { } を使って、直接ハッシュへのリファレンスを作成できる
+You can use {} instead of () to create a reference to a direct hash
 
-<h4>ハッシュの要素にアクセスする</h4>
-
-<pre>
-$math_scores_ref->{Aiko}
-</pre>
-
-<h4>ハッシュのリファレンスからハッシュを取り出す</h4>
-
-ハッシュのリファレンスからハッシュを取り出すにはデリファレンスを行います。
+<h4> Access the hash element </ h4>
 
 <pre>
-my %hash = %$hash_ref;
-my %hash = %{$hash_ref};
-</pre>
+$ math_scores_ref-> {Aiko}
+</ pre>
 
-ハッシュへのリファレンスをデリファレンスしてハッシュを取り出すこともできます。
+<h4> Extract the hash from the hash reference </ h4>
 
-<pre>
-my %math_scores = %$math_scores;
-</pre>
-
-%$math_scoresでデリファレンスしてハッシュを取り出すことができる。
-
-ひとつの要素しか必要としないときは「->{key}」を使うことができます。
+Dereference to retrieve a hash from a hash reference.
 
 <pre>
-$math_scores->{Taro};
-</pre>
+my% hash =% $ hash_ref;
+my% hash =% {$ hash_ref};
+</ pre>
 
-ハッシュのリファレンスについてはこちらで詳しく解説しています。
+You can also dereference a reference to a hash to retrieve the hash.
+
+<pre>
+my% math_scores =% $ math_scores;
+</ pre>
+
+You can dereference and retrieve hashes with% $ math_scores.
+
+You can use "-> {key}" if you only need one element.
+
+<pre>
+$ math_scores-> {Taro};
+</ pre>
+
+You can read more about hash references here.
 
 <ul>
   <li>
-    <a href="/blog/20180208151809.html">ハッシュのリファレンス</a>
-  </li>
-</ul>
+    <a href="/blog/20180208151809.html"> Hash reference </a>
+  </ li>
+</ ul>
 
-<h3>ハッシュを使った多次元データ構造</h3>
+<h3> Multidimensional data structure using hash </ h3>
 
-ハッシュを使った多次元データ構造については、以下の記事で詳しく解説しています。「配列のハッシュ」「ハッシュの配列」「ハッシュのハッシュ」について学ぶことができます。
+The multidimensional data structure using hashes is explained in detail in the following articles. You can learn about "array hash", "hash array", and "hash hash".
 
 <ul>
   <li>
-    <a href="/blog/20100930127859.html">「配列」と「ハッシュ」で「多次元データ構造」を自由に操る</a>
-  </li>
-</ul>
+    <a href="/blog/20100930127859.html"> Manipulate "multidimensional data structure" freely with "array" and "hash" </a>
+  </ li>
+</ ul>
 
-<h3>コラム「連想配列をハッシュと呼ぶようになったのはPerlのせい」</h3>
+<h3> Column "It's Perl's fault that associative arrays are called hashes" </ h3>
 
-Perlは、連想配列を言語の機能として取り入れるという素晴らしい決定をした。とてつもなく便利だ。これは、大成功で、他のほぼすべてのスクリプト言語は、影響を受けて、言語自体に連想配列を取り入れている。
+Perl has made a great decision to incorporate associative arrays as a feature of the language. It's incredibly convenient. This was a huge success, and almost all other scripting languages ​​have been affected to incorporate associative arrays into the language itself.
 
-連想配列という名前は長かったのか、Perlはそれをハッシュと呼ぶことにした。これは、ハッシュ関数からの連想だね。
+Perhaps the name associative array was long, Perl decided to call it a hash. This is an association from the hash function.
 
-でも、意外とぴったりと、データ構造を表現しているようにも思えるね。
+But, surprisingly, it seems to represent the data structure exactly.
 
-<h3>サンプルコード</h3>
+<h3> Sample code </ h3>
 
-<h4>ハッシュの基礎</h4>
+<h4> Hash basics </ h4>
 
-ハッシュの基礎。ハッシュの宣言と初期化。ハッシュの出力と代入のサンプルです。
+The basis of hashing. Hash declaration and initialization. This is a sample of hash output and assignment.
 
 <pre>
 use strict;
 use warnings;
 
-# ハッシュとは
-# 文字列を、添え字として、値を取得できる配列だと考えればよい。
-# 文字列をキーとして、値を取り出すことができる。
+#What is a hash?
+You can think of the #string as a subscript and an array from which you can get the value.
+You can retrieve the value using the #string as a key.
 
-# ハッシュの宣言と初期化( 変数の接頭辞は、% )
-# ( キー1 => 値1, キー2 => 値2, ... )
-# Taroの父親はKenji, Naokoの父親はYoshioと読む
-my %fathers = ('Taro' => 'Kenji', 'Naoko' => 'Yoshio');
+# Hash declaration and initialization (variable prefix is%)
+# (Key 1 => Value 1, Key 2 => Value 2, ...)
+# Taro's father reads Kenji, Naoko's father reads Yoshio
+my% fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
 
-# よりPerl的な書き方
-# => の左側の''は省略できる
-my %mathers = (Taro => 'Tomoko', Naoko => 'Shizuka');
+# More Perl-like writing
+The'' to the left of # => can be omitted
+my% mathers = (Taro =>'Tomoko', Naoko =>'Shizuka');
 
-# 1: ハッシュの要素出力
-print "1:ハッシュの要素の出力\n";  
-# 出力する場合は、%ではなくて$
-# {} ブラケットを使う 
-print "\$mathers{'Taro'} = ", $mathers{'Taro'}, "\n"; 
-print "\n";
+# 1: Hash element output
+print "1: Hash element output \ n";
+# When outputting, $ instead of%
+# {} Use brackets
+print "\ $ mathers {'Taro'} =", $ mathers {'Taro'}, "\ n";
+print "\ n";
 
-# 2: ハッシュの要素の代入
-print "2:ハッシュの要素の代入\n";
-$mathers{'Naoko'} = 'Haruna';
-print "\$mathers{'Naoko'} = ", $mathers{'Naoko'} . "\n";
-</pre>
-実行結果
+# 2: Hash element assignment
+print "2: Hash element assignment \ n";
+$ mathers {'Naoko'} ='Haruna';
+print "\ $ mathers {'Naoko'} =", $ mathers {'Naoko'}. "\ n";
+</ pre>
+Execution result
 <pre>
-1:ハッシュの要素の出力
-$mothers{'Taro'} = Tomoko
+1: Hash element output
+$ mothers {'Taro'} = Tomoko
 
-2:ハッシュの要素の代入
-$mothers{'Naoko'} = Haruna
-</pre>
+2: Assignment of hash elements
+$ mothers {'Naoko'} = Haruna
+</ pre>
 
-<h4>ハッシュのリファレンス</h4>
+<h4> Hash reference </ h4>
 
-ハッシュのリファレンスを使ったのサンプルです。
+This is a sample using the hash reference.
 
 <pre>
 use strict;
 use warnings;
-use Data::Dumper;
+use Data :: Dumper;
 
-# 生徒の数学の点数
-my %math_scores = ( 
+# Student math scores
+my% math_scores = (
   Aiko => 89,
   Kenta => 100,
   Taro => 34,
 );
 
-# 1:ハッシュのリファレンス %の前に \ をつけ、ハッシュへのリファレンスを生成。
-# 生成したリファレンスを、スカラー変数 $math_scores_ref に代入
-my $math_scores_ref = \%math_scores;
-print "1:  ハッシュのリファレンス\n";
-print Data::Dumper->Dump([$math_scores_ref], ['$math_scores_ref']);
-print "\n\n";
+# 1: Hash reference% is preceded by \ to generate a reference to the hash.
+# Assign the generated reference to the scalar variable $ math_scores_ref
+my $ math_scores_ref = \% math_scores;
+print "1: Hash reference \ n";
+print Data :: Dumper-> Dump ([$ math_scores_ref], ['$ math_scores_ref']);
+print "\ n \ n";
 
-# 2:無名ハッシュ( { } )を使って、直接ハッシュへのリファレンスを作る。
-my $math_scores_ref2 = { 
+# 2: Make a direct hash reference using an anonymous hash ({}).
+my $ math_scores_ref2 = {
   Aiko => 89,
   Kenta => 100,
   Taro => 34,
 };
 
-print "2: 無名ハッシュ\n";
-print Data::Dumper->Dump([$math_scores_ref2], ['$math_scores_ref2']);
-print "\n\n";
+print "2: Anonymous hash \ n";
+print Data :: Dumper-> Dump ([$ math_scores_ref2], ['$ math_scores_ref2']);
+print "\ n \ n";
 
-# 3:ハッシュの要素にアクセスする。($hash_ref->{key})
-print "3: ハッシュの要素にアクセスする。\n";
-print "\$math_scores_ref->{Aiko} = $math_scores_ref->{Aiko}\n";
-print "\$math_scores_ref->{Kenta} = $math_scores_ref->{Kenta}\n";
+# 3: Access the hash element. ($ hash_ref-> {key})
+print "3: Access the hash element. \ N";
+print "\ $ math_scores_ref-> {Aiko} = $ math_scores_ref-> {Aiko} \ n";
+print "\ $ math_scores_ref-> {Kenta} = $ math_scores_ref-> {Kenta} \ n";
 
-</pre>
+</ pre>
 
-実行結果
+Execution result
 <pre>
-1:  ハッシュのリファレンス
-$math_scores_ref = {
-                     'Aiko' => 89,
+1: Hash reference
+$ math_scores_ref = {'Aiko' => 89,
                      'Kenta' => 100,
                      'Taro' => 34
                    };
 
 
-2: 無名ハッシュ
-$math_scores_ref2 = {
+2: Anonymous hash
+$ math_scores_ref2 = {
                       'Aiko' => 89,
                       'Kenta' => 100,
                       'Taro' => 34
                     };
 
 
-3: ハッシュの要素にアクセスする。
-$math_scores_ref->{Aiko} = 89
-$math_scores_ref->{Kenta} = 100
-</pre>
+3: Access the hash element.
+$ math_scores_ref-> {Aiko} = 89
+$ math_scores_ref-> {Kenta} = 100
+</ pre>
 
-<h4>ハッシュのリファレンスのデリファレンス</h4>
+<h4> Hash reference dereference </ h4>
 
-ハッシュのリファレンスをデリファレンスするサンプルです。
+This is a sample to dereference the hash reference.
 
 <pre>
 use strict;
 use warnings;
-use Data::Dumper;
+use Data :: Dumper;
 
-# 生徒の数学の点数
-my $math_scores = {
+# Student math scores
+my $ math_scores = {
   Taro => 89,
   Naoko => 54,
   Kenji => 54
 };
 
-# 1:デリファレンスしてハッシュのすべての要素を出力する
-print "1: デリファレンスしてハッシュのすべての要素を出力する\n";
-for my $key (keys %$math_scores){
-  print "\$math_scores->{$key} = " . $math_scores->{$key} . "\n";
+# 1: Dereference and output all elements of the hash
+print "1: Dereference and print all elements of the hash \ n";
+for my $ key (keys% $ math_scores) {
+  print "\ $ math_scores-> {$ key} =". $ math_scores-> {$ key}. "\ n";
 }
-print "\n";
+print "\ n";
 
-# 2:ひとつの要素を参照するときは、-> 演算子を使う。
-print "2: ひとつのキーを削除\n";
-delete $math_scores->{Taro};
+# 2: Use the-> operator to refer to an element.
+print "2: Delete one key \ n";
+delete $ math_scores-> {Taro};
 
-print Data::Dumper->Dump([$math_scores], ['$math_scores']);
-</pre>
-実行結果
+print Data :: Dumper-> Dump ([$ math_scores], ['$ math_scores']);
+</ pre>
+Execution result
 <pre>
-1: デリファレンスしてハッシュのすべての要素を出力する
-$math_scores->{Kenji} = 54
-$math_scores->{Taro} = 89
-$math_scores->{Naoko} = 54
+1: Dereference and output all elements of the hash
+$ math_scores-> {Kenji} = 54
+$ math_scores-> {Taro} = 89
+$ math_scores-> {Naoko} = 54
 
-2: ひとつのキーを削除
-$math_scores = {
+2: Delete one key
+$ math_scores = {
                  'Kenji' => 54,
                  'Naoko' => 54
                };
-</pre>
-
-
+</ pre>

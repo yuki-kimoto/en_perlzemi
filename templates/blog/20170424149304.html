@@ -1,186 +1,185 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>MIME::Lite - メールを簡単に送信</h2>
+  </ li>
+</ ol>
+<h2> MIME :: Lite-Easily send emails </ h2>
 
 
 
-<b>MIME::Lite</b>モジュールを使えばメールを簡単に送信することができます。
+The <b> MIME :: Lite </ b> module makes it easy to send emails.
 
-MIME::Liteはデフォルトでsenmailコマンドを利用するので<b>sendmail</b>あるいは<b>postfix</b>をインストールしておきましょう。
+MIME :: Lite uses the senmail command by default, so install <b> sendmail </ b> or <b> postfix </ b>.
 
-メールの送信方法にはいくつかの手法がありますが、sendmailコマンドでメールを送信するのが、メールのいろいろな問題に対処するのに簡単だと思います。
+There are several ways to send an email, but I think sending an email with the sendmail command is an easy way to deal with various email issues.
 
-<h3>メールを送信する</h3>
+<h3> Send an email </ h3>
 
-メールを送信するには以下のようにします。マルチパートメッセージという形式で作成して、テキストや画像をアタッチして送信するのが簡単です。
+To send an email: It's easy to create in the form of a multipart message and attach and send text or images.
 
 <pre>
-use MIME::Lite;
+use MIME :: Lite;
 
-# マルチパートメッセージの作成
-my $msg = MIME::Lite->new(
-  From    => 'me@myhost.com',
-  To      => 'you@yourhost.com',
-  Cc      => 'some@other.com, some@more.com',
-  Subject => 'A message with 2 parts...',
-  Type    => 'multipart/mixed'
+#Create multipart message
+my $ msg = MIME :: Lite-> new (
+  From =>'me@myhost.com',
+  To =>'you@yourhost.com',
+  Cc =>'some@other.com, some@more.com',
+  Subject =>'A message with 2 parts ...',
+  Type =>'multipart / mixed'
 );
 
-# テキストを追加
-$msg->attach(
-  Type     => 'TEXT',
-  Data     => "Here's the GIF file you wanted"
+#Add text
+$ msg-> attach (
+  Type =>'TEXT',
+  Data => "Here's the GIF file you wanted"
 );
 
-# 画像を追加
-$msg->attach(
-  Type     => 'image/gif',
-  Path     => 'aaa000123.gif',
-  Filename => 'logo.gif',
-  Disposition => 'attachment'
+#Add image
+$ msg-> attach (
+  Type =>'image / gif',
+  Path =>'aaa000123.gif',
+  Filename =>'logo.gif',
+  Disposition =>'attachment'
 );
 
-# メールを送信
-$msg->send;
-</pre>
+#Send email
+$ msg-> send;
+</ pre>
 
 <ol>
   <li>
-    <b>new</b>メソッドで送信内容を作成します。
-  </li>
+    Create the content to be sent with the <b> new </ b> method.
+  </ li>
   <li>
-    <b>atach</b>メソッドでテキストや画像などのデータを追加します。
-  </li>
+    Add data such as text and images with the <b> atach </ b> method.
+  </ li>
   <li>
-    <b>send</b>メソッドでメールを送信します。
-  </li>
-</ol>
+    Send an email with the <b> send </ b> method.
+  </ li>
+</ ol>
 
-<h3>MIME::Liteで日本語のメールを送る</h3>
+<h3> Send Japanese email with MIME :: Lite </ h3>
 
-MIME::Liteで日本語のメールを送る場合は、エンコーディングについて考える必要があります。
+When sending Japanese emails with MIME :: Lite, you need to think about encoding.
 
-次の二つのことを覚えましょう。
+Remember the following two things.
 
 <ol>
   <li>
-    ヘッダ部分のタイトル(Subject)は<b>MIME-Header-ISO_2022_JP</b>でエンコードします。
-  </li>
+    The title (Subject) of the header part is encoded with <b> MIME-Header-ISO_2022_JP </ b>.
+  </ li>
   <li>
-    本文のテキストデータについては<b>ISO-2022-JP</b>でエンコードします。
-  </li>
-</ol>
+    The text data of the text is encoded in <b> ISO-2022-JP </ b>.
+  </ li>
+</ ol>
 
-UTF-8でのエンコーディングでもたいていの場合はよいかとは思うのですが、上記のエンコーディングを使っておくと安全です。
+I'm wondering if UTF-8 encoding is fine in most cases, but it's safe to use the above encoding.
 
-ソースコードはUTF-8で保存して、先頭では<b>utf8プラグマ</b>を有効にしましょう。
+Save the source code in UTF-8 and enable the <b> utf8 pragma </ b> at the beginning.
 
-上記のサンプルを日本語送信用に書き直すと次のようになります。
-
-<pre>
-use utf8;
-use MIME::Lite;
-use Encode 'encode';
-
-# マルチパートメッセージの作成
-my $msg = MIME::Lite->new(
-  From    => 'me@myhost.com',
-  To      => 'you@yourhost.com',
-  Cc      => 'some@other.com, some@more.com',
-  Subject => encode('MIME-Header-ISO_2022_JP', 'メールタイトル'),
-  Type    => 'multipart/mixed'
-);
-
-# テキストを追加
-$msg->attach(
-  Type     => 'TEXT',
-  Data     => encode('ISO-2022-JP', 'メール本文のテキスト'),
-);
-
-# 画像を追加
-$msg->attach(
-  Type     => 'image/gif',
-  Path     => 'aaa000123.gif',
-  Filename => 'logo.gif',
-  Disposition => 'attachment'
-);
-
-# メールを送信「
-$msg->send;
-</pre>
-
-<h4>UTF-8で送信する場合</h4>
-
-2017年現在は、どうなっているのかはよくわかりませんが、UTF-8で送っちゃう場合も多いような気もしますので、そちらのサンプルも掲載しておきます。
+The above sample can be rewritten for Japanese transmission as follows.
 
 <pre>
 use utf8;
-use MIME::Lite;
-use Encode 'encode';
+use MIME :: Lite;
+use Encode'encode';
 
-# マルチパートメッセージの作成
-my $msg = MIME::Lite->new(
-  From    => 'me@myhost.com',
-  To      => 'you@yourhost.com',
-  Cc      => 'some@other.com, some@more.com',
-  Subject => encode('MIME-Header', 'メールタイトル'),
-  Type    => 'multipart/mixed'
+#Create multipart message
+my $ msg = MIME :: Lite-> new (
+  From =>'me@myhost.com',
+  To =>'you@yourhost.com',
+  Cc =>'some@other.com, some@more.com',
+  Subject => encode ('MIME-Header-ISO_2022_JP','mail title'),
+  Type =>'multipart / mixed'
 );
 
-# テキストを追加
-$msg->attach(
-  Type     => 'TEXT',
-  Data     => encode('UTF-8', 'メール本文のテキスト'),
+#Add text
+$ msg-> attach (
+  Type =>'TEXT',
+  Data => encode ('ISO-2022-JP','text of email body'),
 );
 
-# 画像を追加
-$msg->attach(
-  Type     => 'image/gif',
-  Path     => 'aaa000123.gif',
-  Filename => 'logo.gif',
-  Disposition => 'attachment'
+#Add image
+$ msg-> attach (
+  Type =>'image / gif',
+  Path =>'aaa000123.gif',
+  Filename =>'logo.gif',
+  Disposition =>'attachment'
 );
 
-# メールを送信「
-$msg->send;
-</pre>
+#Send email "
+$ msg-> send;
+</ pre>
 
-Perlの文字コードについてわからない場合はEncodeモジュールの解説記事をご覧ください。
+<h4> When sending in UTF-8 </ h4>
+
+As of 2017, I'm not sure what's going on, but I feel that it's often sent in UTF-8, so I'll post a sample of that as well.
+
+<pre>
+use utf8;
+use MIME :: Lite;
+use Encode'encode';
+
+#Create multipart message
+my $ msg = MIME :: Lite-> new (
+  From =>'me@myhost.com',
+  To =>'you@yourhost.com',
+  Cc =>'some@other.com, some@more.com',
+  Subject => encode ('MIME-Header','mail title'),
+  Type =>'multipart / mixed'
+);
+
+#Add text
+$ msg-> attach (
+  Type =>'TEXT',
+  Data => encode ('UTF-8','text of email body'),
+);
+
+#Add image
+$ msg-> attach (
+  Type =>'image / gif',
+  Path =>'aaa000123.gif',
+  Filename =>'logo.gif',
+  Disposition =>'attachment'
+);
+
+#Send email "
+$ msg-> send;
+</ pre>
+
+If you don't know the character code of Perl, see the explanation article of Encode module.
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html">Encodeモジュール - 日本語などのマルチバイト文字列を適切に処理する</a>
-  </li>
-</ul>
+    <a href="/blog/20091118124667.html"> Encode module-Properly handles multi-byte character strings such as Japanese </a>
+  </ li>
+</ ul>
 
-<h3>FAQ</h3>
+<h3> FAQ </ h3>
 
-MIME::Liteに関するFAQに答えます。
+Answer the FAQ about MIME :: Lite.
 
-<h4>MIME::Liteは非推奨になっているようですが</h4>
+<h4> MIME :: Lite seems to be deprecated </ h4>
 
-MIME::Liteは簡単に使えますが、現在は非推奨になっています。
+MIME :: Lite is easy to use, but is currently deprecated.
 
-MIME::Liteは個人的にはもっとも使いやすいメール送信モジュールですが、コミュニティの意向に従う場合は<a href="http://search.cpan.org/~rjbs/Email-Sender-1.300031/lib/Email/Sender.pm">Email::Sender</a>を使いましょう。
+MIME :: Lite is personally the easiest email sending module to use, but if you follow the community's wishes, <a href="http://search.cpan.org/~rjbs/Email-Sender-1.300031/lib/" Use Email / Sender.pm "> Email :: Sender </a>.
 
-<h4>文字化けが発生します</h4>
+<h4> Garbled characters occur </ h4>
 
-UTF-8で表現できても「ISO-2022-JP」では表現できない文字があることが原因です。
+The cause is that there are characters that can be expressed in UTF-8 but not in "ISO-2022-JP".
 
-このような場合はUTF-8でエンコーディングしてメールを送信するか、UTF-8で表現される文字を「ISO-2022-JP」に変換可能な文字に置換しましょう。
-
+In such a case, encode it in UTF-8 and send an email, or replace the characters expressed in UTF-8 with characters that can be converted to "ISO-2022-JP".

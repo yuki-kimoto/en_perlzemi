@@ -1,136 +1,135 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>next文 - 次の繰り返しの先頭にジャンプする【リンク移転】</h2>
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> next statement-Jump to the beginning of the next iteration [Link transfer] </ h2>
 
 
 
-<a href="/blog/20080329120687.html">next文</a>を使うと次の繰り返しの先頭にジャンプすることができます。これは、C言語やJavaのcontinue文に該当します。
+You can use the <a href="/blog/20080329120687.html"> next statement </a> to jump to the beginning of the next iteration. This corresponds to the continue statement in C or Java.
 
 <pre>
 next
-</pre>
+</ pre>
 
-next文はwhile文やfor文などの繰り返し文の中で使うことができます。
+The next statement can be used in repetitive statements such as while statements and for statements.
 
 <pre>
 while (1) {
-  if (条件) {
-    next;
+  if (condition) {
+    next; next;
   }
 }
 
-for (my $i = 0; $i < 10; $i++) {
-  if (条件) {
-    next;
+for (my $ i = 0; $ i <10; $ i ++) {
+  if (condition) {
+    next; next;
   }
 }
 
-foreach my $animal (@animals) {
-  if (条件) {  
-    next;
+foreach my $ animal (@animals) {
+  if (condition) {
+    next; next;
   }
 }
-</pre>
+</ pre>
 
-特定の条件の時だけ、処理を飛ばしたい場合にnext文を利用することができます。
+You can use the next statement when you want to skip the process only under specific conditions.
 
-<h3>サンプルプログラム</h3>
+<h3> Sample program </ h3>
 
-next文を使ったサンプルプログラムです。
+This is a sample program that uses the next statement.
 
-<h4>特定の文字に一致したときにループの先頭にジャンプ</h4>
+<h4> Jump to the beginning of the loop when a specific character is matched </ h4>
 
-ループ処理の途中で、ある条件の場合に、次のループの先頭にジャンプしたい場合にnext文を利用できます。
+In the middle of loop processing, you can use the next statement when you want to jump to the beginning of the next loop under certain conditions.
 
 <pre>
 use strict;
 use warnings;
 
-my @chars = qw(z z a b c d e f);
+my @chars = qw (z z a b c d e f);
 
-for my $char (@chars){
-  next if $char eq 'z';
-  print "$char\n";
+for my $ char (@chars) {
+  next if $ char eq'z';
+  print "$ char \ n";
 }
-</pre>
+</ pre>
 
-実行結果です。「z」のときだけ、次のループの先頭にジャンプしているので、後ろに続く<a href="/blog/20170404149131.html">print関数</a>が実行されないです。
+This is the execution result. Only when it is "z", it jumps to the beginning of the next loop, so the following <a href="/blog/20170404149131.html"> print function </a> is not executed.
 
 <pre>
 a
-b
+b b
 c
 d
 e
 f
-</pre>
+</ pre>
 
-「qw(z z a b c d e f)」は<a href="/blog/20080222120369.html">文字列リスト演算子</a>です。
+"Qw (z z a b c d e f)" is a <a href="/blog/20080222120369.html"> string list operator </a>.
 
-if文、for文、while文については、以下で詳しく解説していますので、参考にしてください。
+The if statement, for statement, and while statement are explained in detail below, so please refer to them.
 
 <ul>
   <li>
-    <a href="/blog/20161023147731.html">if文を使った条件分岐の構文を覚えよう</a>
-  </li>
+    <a href="/blog/20161023147731.html"> Learn the syntax of conditional branching using if statements </a>
+  </ li>
   <li>
-    <a href="/blog/20170521149524.html">for文、while文を使った繰り返しの処理を覚えよう</a>
-  </li>
-</ul>
+    <a href="/blog/20170521149524.html"> Let's learn the iterative processing using for statement and while statement </a>
+  </ li>
+</ ul>
 
-<h3>正規表現と一緒に使ってみる</h3>
+<h3> Try using it with a regular expression </ h3>
 
-nextと正規表現を組み合わせることも多いです。ひとつサンプルを書いてみます。「ABC」という文字列が含まれていない場合に、出力をスキップするサンプルを書いてみます。条件判定にはunless文を使っています。
+I often combine next with regular expressions. Let's write one sample. Let's write a sample that skips the output if it doesn't contain the string "ABC". The unless statement is used for condition judgment.
 
 <pre>
 use strict;
 use warnings;
 
-my @strings = ('ABC', 'ABCD', 'CDE', 'FGH');
+my @strings = ('ABC','ABCD','CDE','FGH');
 
-for my $string (@strings){
-  next unless $string =~ /ABC/;
-  print "$string\n";
+for my $ string (@strings) {
+  next unless $ string = ~ / ABC /;
+  print "$ string \ n";
 }
-</pre>
+</ pre>
 
-出力結果です。「ABC」が含まれているものだけ出力されます。
+This is the output result. Only those that include "ABC" are output.
 
 <pre>
 ABC
 ABCD
-</pre>
+</ pre>
 
-<h3>関連情報</h3>
+<h3> Related information </ h3>
 
-<h4>last文を使うとループを脱出できる</h4>
+<h4> You can escape the loop using the last statement </ h4>
 
-next文と似たものにlast文があります。last文を使うと、ループを抜けることができます。
+Similar to the next statement is the last statement. You can break out of the loop with the last statement.
 
 <pre>
 last
-</pre>
+</ pre>
 
-last文については、以下の記事を参考にしてください。
+For the last statement, refer to the following article.
 
 <ul>
   <li>
-    <a href="/blog/20170527149589.html">last文 - 繰り返しから抜ける</a>
-  </li>
-</ul>
-
+    <a href="/blog/20170527149589.html"> last sentence --get out of repetition </a>
+  </ li>
+</ ul>

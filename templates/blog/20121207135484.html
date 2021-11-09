@@ -1,70 +1,70 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
+  </ li>
+</ ol>
 
-<h2>FFI::Raw - C言語の関数をPerlから直接呼び出す</h2>
+<h2> FFI :: Raw --Call C ++ functions directly from Perl </ h2>
 
-PerlにはC言語を呼び出すための方法として基本的なものでかつ、汎用的に利用できるものとして<a href="/blog/20100809127859.html">XS言語</a>というものが用意されています。
+Perl provides <a href="/blog/20100809127859.html"> XS language </a> as a basic and general-purpose method for calling C language. increase.
 
-でもXS言語を書くのは一苦労です。C言語で書かれたライブラリをPerlから簡単に呼び出すことができると便利ですね。
+But writing the XS language is a pain. It would be nice to be able to easily call a library written in C from Perl.
 
-libffiというC言語のライブラリを他の言語から呼び出す仕組みがあるのですが、これのPerl実装のひとつがFFI::Rawです。CPANから簡単にインストールできます。
+There is a mechanism to call a C language library called libffi from another language, and one of the Perl implementations of this is FFI :: Raw. Easy to install from CPAN.
 
-以下のサンプルは、サイトに書かれていたものそのままですが、<b>m</b>というライブラリの<b>cos</b>という関数を呼び出しているサンプルです。
+The sample below is exactly what was written on the site, but is a sample that calls a function called <b> cos </ b> in a library called <b> m </ b>.
 
 <pre>
-use FFI::Raw;
+use FFI :: Raw;
 
-my $cos = FFI::Raw->new(
-  'libm.so', 'cos',
-  FFI::Raw::double, # 戻り値
-  FFI::Raw::double  # 引数1
+my $ cos = FFI :: Raw-> new (
+  'libm.so','cos',
+  FFI :: Raw :: double, # return value
+  FFI :: Raw :: double # argument 1
 );
 
-print $cos->call(2.0);
-</pre>
+print $ cos-> call (2.0);
+</ pre>
 
-第一引数はダイナミックライブラリ名です。C言語では<b>m</b>というダイナミックライブラリに対応するファイル名は<b>libm.so</b>になります。
+The first argument is the dynamic library name. In C language, the file name corresponding to the dynamic library <b> m </ b> is <b> libm.so </ b>.
 
-ドキュメントにライブラリの検索パスの記述はないですが、<b>/lib</b>と<b>/usr/lib</b>におかれているものが検索対象だと思われます。
+There is no description of the library search path in the documentation, but it seems that the ones in <b> / lib </ b> and <b> / usr / lib </ b> are the search targets.
 
-ライブラリの検索パスを追加するには、「環境変数 LD_LIBRARY_PATHを設定する方法」と「/etc/ld.so.confに追加する方法」があるようです。
+There seems to be "how to set the environment variable LD_LIBRARY_PATH" and "how to add it to /etc/ld.so.conf" to add the search path of the library.
 
-第二引数は関数名です。第三引数は戻り値の型、第四引数以降は、引数の型になります。
+The second argument is the function name. The third argument is the return type, and the fourth and subsequent arguments are the argument types.
 
-<h3>他のPerlのFFIモジュール</h3>
+<h3> Other Perl FFI modules </ h3>
 
-他のPerlのFFIモジュールの紹介です。
+Introducing other Perl FFI modules.
 
-<h4>FFI::Platypus</h4>
+<h4> FFI :: Platypus </ h4>
 
-FFIのPerlのモジュールとして<a href="https://metacpan.org/pod/FFI::Platypus">FFI::Platypus</a>があります。FFI::Platypusは、FFIの機能が豊富で、メンテナンスも継続的にされているようです。
+There is <a href="https://metacpan.org/pod/FFI :: Platypus"> FFI :: Platypus </a> as a Perl module of FFI. FFI :: Platypus has a lot of FFI features and seems to be under continuous maintenance.
 
 <pre>
-use FFI::Platypus 1.00;
+use FFI :: Platypus 1.00;
  
 # for all new code you should use api => 1
-my $ffi = FFI::Platypus->new( api => 1 );
-$ffi->lib(undef); # search libc
+my $ ffi = FFI :: Platypus-> new (api => 1);
+$ ffi-> lib (undef); # search libc
  
 # call dynamically
-$ffi->function( puts => ['string'] => 'int' )->call("hello world");
+$ ffi-> function (puts => ['string'] =>'int')-> call ("hello world");
  
-# attach as a xsub and call (much faster)
-$ffi->attach( puts => ['string'] => 'int' );
-puts("hello world");
-</pre>
+#attach as a xsub and call (much faster)
+$ ffi-> attach (puts => ['string'] =>'int');
+puts ("hello world");
+</ pre>

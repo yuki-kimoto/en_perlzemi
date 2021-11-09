@@ -1,54 +1,54 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop="name">XS</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> XS </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>XSでC言語の構造体をPerlのオブジェクトとして扱う方法</h2>
+  </ li>
+</ ol>
+<h2> How to treat a C language structure as a Perl object in XS </ h2>
 
 
 
-XSでは、構造体自体をPerlのオブジェクトとして扱うこともできます。C言語の構造体をPerlのオブジェクトとして扱う方法を解説します。
+In XS, you can also treat the structure itself as a Perl object. I will explain how to treat a C language structure as a Perl object.
 
-<h3>h2xsでモジュールを作成</h3>
+<h3> Create a module with h2xs </ h3>
 
-最初にh2xsでXS用のモジュールを作成します。
+First, create a module for XS with h2xs.
 
 <pre>
 h2xs -A -n SomeModule
-</pre>
+</ pre>
 
-こうすると「SomeModule」というディレクトリが作成されます。次のようなファイルとディレクトリが作成されます。
+This will create a directory called "SomeModule". The following files and directories will be created.
 
 <pre>
 Changes
-lib/
+lib /
 Makefile.PL
 MANIFEST
 ppport.h
 README
 SomeModule.xs
-t/
-</pre>
+t /
+</ pre>
 
-<h3>XSファイルの記述</h3>
+<h3> XS file description </ h3>
 
-XSファイルを記述しましょう。構造体のポインタをPTR2INTでsize_t型に変換しています。さらに、size_t型をSV*型に変換し、SV*型をSV*型へのリファレンスに変換し、最後にblessして、オブジェクトに変換しています。
+Let's write an XS file. The pointer of the structure is converted to size_t type by PTR2INT. In addition, size_t type is converted to SV * type, SV * type is converted to SV * type reference, and finally bless is converted to object.
 
-size_t型というのは整数型ですが、アドレスの値はsize_t型で受け取るようにします。
+The size_t type is an integer type, but the address value should be received as the size_t type.
 
-取り出すときは、デリファレンスを行い、SV*に含まれるIVの値を取り出し、INT2PTRで構造体へのポインタに変換しています。
+When retrieving, dereference is performed, the value of IV contained in SV * is fetched, and INT2PTR is converted into a pointer to the structure.
 
 <pre>
 #include "EXTERN.h"
@@ -62,156 +62,155 @@ typedef struct {
   double y;
 } Point;
 
-MODULE = Point		PACKAGE = Point		
+MODULE = Point PACKAGE = Point
 
 void
-new(...)
+new (...)
   PPCODE:
 {
-  // クラス名
-  char* class_name = SvPV_nolen(ST(0));
+  // name of the class
+  char * class_name = SvPV_nolen (ST (0));
   
-  // xとy
-  double x = SvNV(ST(1));
-  double y = SvNV(ST(2));
+  // x and y
+  double x = SvNV (ST (1));
+  double y = SvNV (ST (2));
   
-  // 構造体の作成(ポインタとして作成)
-  Point* point = (Point*)malloc(sizeof(Point));
-  point->x = x;
-  point->y = y;
+  // Create structure (create as pointer)
+  Point * point = (Point *) malloc (sizeof (Point));
+  point-> x = x;
+  point-> y = y;
   
-  // ポインタをsize_t型に変換
-  size_t point_iv = PTR2IV(point);
+  // Convert pointer to size_t type
+  size_t point_iv = PTR2IV (point);
   
-  // size_t型をSV*型に変換
-  SV* point_sv = sv_2mortal(newSViv(point_iv));
+  // Convert size_t type to SV * type
+  SV * point_sv = sv_2mortal (newSViv (point_iv));
   
-  // SV*型のリファレンスを作成
-  SV* point_svrv = sv_2mortal(newRV_inc(point_sv));
+  // Create SV * type reference
+  SV * point_svrv = sv_2mortal (newRV_inc (point_sv));
   
-  // オブジェクトを作成
-  SV* point_obj = sv_bless(point_svrv, gv_stashpv(class_name, 1));
+  // create an object
+  SV * point_obj = sv_bless (point_svrv, gv_stashpv (class_name, 1));
   
-  XPUSHs(point_obj);
-  XSRETURN(1);
+  XPUSHs (point_obj);
+  XSRETURN (1);
 }
 
 void
-x(...)
+x (...)
   PPCODE:
 {
-  // オブジェクトを取得
-  SV* point_obj = ST(0);
+  // get the object
+  SV * point_obj = ST (0);
   
-  // デリファレンス
-  SV* point_sv = SvROK(point_obj) ? SvRV(point_obj) : point_obj;
+  // Dereference
+  SV * point_sv = SvROK (point_obj)? SvRV (point_obj): point_obj;
   
-  // SV*型をsize_t型に変換
-  size_t point_iv = SvIV(point_sv);
+  // Convert SV * type to size_t type
+  size_t point_iv = SvIV (point_sv);
   
-  // size_t型をポインタに変換
-  Point* point = INT2PTR(Point*, point_iv);
+  // Convert size_t type to pointer
+  Point * point = INT2PTR (Point *, point_iv);
   
-  // xを取得
-  double x = point->x;
+  // get x
+  double x = point-> x;
   
-  // xをSV*型に変換
-  SV* x_sv = sv_2mortal(newSVnv(x));
+  // Convert x to SV * type
+  SV * x_sv = sv_2mortal (newSVnv (x));
   
-  XPUSHs(x_sv);
-  XSRETURN(1);
+  XPUSHs (x_sv);
+  XSRETURN (1);
 }
 
 void
-y(...)
+y (...)
   PPCODE:
 {
-  // オブジェクトを取得
-  SV* point_obj = ST(0);
+  // get the object
+  SV * point_obj = ST (0);
   
-  // デリファレンス
-  SV* point_sv = SvROK(point_obj) ? SvRV(point_obj) : point_obj;
+  // Dereference
+  SV * point_sv = SvROK (point_obj)? SvRV (point_obj): point_obj;
   
-  // SV*型をsize_t型に変換
-  size_t point_iv = SvIV(point_sv);
+  // Convert SV * type to size_t type
+  size_t point_iv = SvIV (point_sv);
   
-  // size_t型をポインタに変換
-  Point* point = INT2PTR(Point*, point_iv);
+  // Convert size_t type to pointer
+  Point * point = INT2PTR (Point *, point_iv);
   
-  // xを取得
-  double y = point->y;
+  // get x
+  double y = point-> y;
   
-  // xをSV*型に変換
-  SV* y_sv = sv_2mortal(newSVnv(y));
+  // Convert x to SV * type
+  SV * y_sv = sv_2mortal (newSVnv (y));
   
-  XPUSHs(y_sv);
-  XSRETURN(1);
+  XPUSHs (y_sv);
+  XSRETURN (1);
 }
 
 void
-DESTORY(...)
+DESTORY (...)
   PPCODE:
 {
-  // オブジェクトを取得
-  SV* point_obj = ST(0);
+  // get the object
+  SV * point_obj = ST (0);
   
-  // デリファレンス
-  SV* point_sv = SvROK(point_obj) ? SvRV(point_obj) : point_obj;
+  // Dereference
+  SV * point_sv = SvROK (point_obj)? SvRV (point_obj): point_obj;
   
-  // SV*型をsize_t型に変換
-  size_t point_iv = SvIV(point_sv);
+  // Convert SV * type to size_t type
+  size_t point_iv = SvIV (point_sv);
   
-  // size_t型をポインタに変換
-  Point* point = INT2PTR(Point*, point_iv);
+  // Convert size_t type to pointer
+  Point * point = INT2PTR (Point *, point_iv);
   
-  // Point*を解放
-  free(point);
+  // Release Point *
+  free (point);
   
-  XSRETURN(0);
+  XSRETURN (0);
 }
 
-MODULE = SomeModule		PACKAGE = SomeModule		
-</pre>
+MODULE = SomeModule PACKAGE = SomeModule
+</ pre>
 
-<h3>Pointモジュールの作成</h3>
+<h3> Creating a Point module </ h3>
 
-Point.pmというファイルをlib以下においてください。SomeModuleを読み込んでいるのは、SomeModuleにバインディングの記述があるためにです。
+Please put a file called Point.pm under lib. SomeModule is loaded because SomeModule has a binding description.
 
 <pre>
 package Point;
 use SomeModule;
 
 1;
-</pre>
+</ pre>
 
-<h3>テストスクリプト</h3>
+<h3> Test script </ h3>
 
-テストスクリプトを作成します。これは、XSファイルがあるディレクトリと同じディレクトリにおいてください。
+Create a test script. This should be in the same directory where the XS files are located.
 
 <pre>
 use strict;
 use warnings;
 use Point;
 
-my $point = Point->new(1, 2);
-print $point->x . "\n";
-print $point->y . "\n";
-</pre>
+my $ point = Point-> new (1, 2);
+print $ point-> x. "\ n";
+print $ point-> y. "\ n";
+</ pre>
 
-<h3>コンパイルして実行</h3>
+<h3> Compile and run </ h3>
 
-コンパイルして実行してみましょう。
+Let's compile and run it.
 
 <pre>
 perl Makefile.PL
 make
 perl -Mblib test.pl
-</pre>
+</ pre>
 
-次のように出力されれば成功です。
+If the output is as follows, it is successful.
 
 <pre>
 1
 2
-</pre>
-
+</ pre>

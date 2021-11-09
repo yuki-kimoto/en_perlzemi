@@ -1,28 +1,28 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-        <span itemprop="name">PDL</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>PDLの基礎を学ぼう</h2>
+        <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+        <span itemprop = "name"> PDL </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Learn the basics of PDL </ h2>
 
 
 
-R言語で統計解析を行っている人が、PerlでのPDLを使った統計解析作業を行えるように、PDLの入門を書いてみたいと思います。Perlの統計解析ライブラリであるPDLが使えるようになれば、Excelで行うような複数列のデータの統計処理が行えるようになります。
+I would like to write an introduction to PDL so that people who are doing statistical analysis in R language can perform statistical analysis work using PDL in Perl. If PDL, Perl's statistical analysis library, becomes available, it will be possible to perform statistical processing of multi-column data as in Excel.
 
-まずもっとも簡単な1次元のデータ構造を作成してみましょう。次のコードを見てください。<strong>pdl</strong>関数を利用すると、1次元のデータ構造を作成することができます。
+First, let's create the simplest one-dimensional data structure. Take a look at the following code. You can use the <strong> pdl </ strong> function to create a one-dimensional data structure.
 
 <pre>
 use strict;
@@ -30,245 +30,211 @@ use warnings;
 
 use PDL;
 
-# データの作成
-my $nums = pdl [2, 4, 7];
+#Create data
+my $ nums = pdl [2, 4, 7];
 
-# データの出力
-print $nums;
-</pre>
+#Data output
+print $ nums;
+</ pre>
 
-このサンプルを実行すると、画面には次のように出力されます。
+When I run this sample, I get the following output on the screen:
 
 <pre>
 [2 4 7]
-</pre>
+</ pre>
 
-<h3>PDL変数の作成</h3>
+<h3> Creating PDL variables </ h3>
 
-まずpdl関数を使用するとPDL変数を作成することができます。まずPDLの最低限の機能を利用するためのPDLを読み込みます。
+You can first create a PDL variable using the pdl function. First, load the PDL to use the minimum functions of the PDL.
 
 <pre>
 use PDL;
-</pre>
+</ pre>
 
-PDLを読み込むとpdl関数を使用できるようになります。PDL変数を作成するにはpdl関数を使用します。
-
-<pre>
-my $nums = pdl [2, 4, 7];
-</pre>
-
-<h3>データの取得と変更</h3>
-
-pdl関数で作成されたデータは、PDL変数と呼ばれます。1次元のPDL変数の要素を取得してみましょう。データを取得するには<strong>at</strong>メソッドを使用します。
+After loading the PDL, you can use the pdl function. Use the pdl function to create a PDL variable.
 
 <pre>
-my $first = $nums->at(0);
-my $second = $nums->at(1);
-</pre>
+my $ nums = pdl [2, 4, 7];
+</ pre>
 
-上記の例では、PDL変数に含まれる要素の値を取得しましたけれど、PDL変数として取得することもできます。
+<h3> Data acquisition and modification </ h3>
 
-一部のデータをPDL変数として取得するには、いくつかの方法がありますがナイススライス記法で記述するのが簡単です。ナイススライス記法を記述するためのPDL::NiceSliceモジュールを読みましょう。これはスクリプトの先頭で行っておきます。
-
-<pre>
-use PDL::NiceSlice;
-</pre>
-
-要素をPDL変数として取得するには<strong>$変数名(要素番号)</strong>という記法を使用します。
+The data created by the pdl function is called a PDL variable. Let's get the elements of a one-dimensional PDL variable. Use the <strong> at </ strong> method to get the data.
 
 <pre>
-# 要素をPDL変数として取得
-my $pdl_first = $nums(0);
-my $pdl_second = $nums(1);
-</pre>
+my $ first = $ nums-> at (0);
+my $ second = $ nums-> at (1);
+</ pre>
 
-これらはPDL変数ですから、要素の値自体を取得したければ<strong>at</strong>メソッドで取り出すことができます。
+In the above example, we got the value of the element contained in the PDL variable, but we can also get it as a PDL variable.
 
-<pre>
-my $first = $pdl_first->at(0);
-my $second = $pdl_second->at(0);
-</pre>
-
-要素の値の変更を行う場合はも、ナイススライス記法を使用します。<strong>.=</strong>演算子を使用します。.=は文字列の結合ではなくて、代入のためにオーバーライドされています。
+There are several ways to get some data as PDL variables, but it's easier to write in nice slice notation. Read the PDL :: NiceSlice module for writing nice slice notation. This is done at the beginning of the script.
 
 <pre>
-# 要素の値を変更
-$nums(0) .= 5;
-</pre>
+use PDL :: NiceSlice;
+</ pre>
 
-PDLではPDL変数の複数の部分を新しいPDL変数として切り出すこともできます。二番目と三番目の要素を切り出して見ましょう。次のように<strong>$変数名(n:m)</strong>という記法を利用すると、PDL変数の一部を切り出すことができます。
-
-<pre>
-my $pdl_parts = $nums(1:2);
-</pre>
-
-切り出したPDL変数のすべての要素に値を代入することもできます。
+To get an element as a PDL variable, use the notation <strong> $ variable name (element number) </ strong>.
 
 <pre>
-$nums(1:2) .= 8;
-</pre>
+Get # element as PDL variable
+my $ pdl_first = $ nums (0);
+my $ pdl_second = $ nums (1);
+</ pre>
 
-このように切り出した部分の集合に対して、同じ演算を行うことができるのがPDLの特徴になっています。
-
-1次元のデータの長さを取得してみましょう。データの長さを取得するには<strong>dims</strong>メソッドを使用します。
+These are PDL variables, so if you want to get the element value itself, you can retrieve it with the <strong> at </ strong> method.
 
 <pre>
-my $length = $nums->dims;
-</pre>
+my $ first = $ pdl_first-> at (0);
+my $ second = $ pdl_second-> at (0);
+</ pre>
 
-<h3>サンプル</h3>
+If you want to change the value of an element, use nice slice notation as well. Use the <strong>. = </ Strong> operator. . = Is overridden for assignment, not string concatenation.
 
-実行できるサンプルです。
+<pre>
+#Change the value of the element
+$ nums (0). = 5;
+</ pre>
+
+PDL also allows you to cut out multiple parts of a PDL variable as a new PDL variable. Let's cut out the second and third elements. You can cut out a part of the PDL variable by using the notation <strong> $ variable name (n: m) </ strong> as follows.
+
+<pre>
+my $ pdl_parts = $ nums (1: 2);
+</ pre>
+
+You can also assign values ​​to all the elements of the extracted PDL variable.
+
+<pre>
+$ nums (1: 2). = 8;
+</ pre>
+
+The feature of PDL is that the same operation can be performed on the set of parts cut out in this way.
+
+Let's get the length of one-dimensional data. Use the <strong> dims </ strong> method to get the length of the data.
+
+<pre>
+my $ length = $ nums-> dims;
+</ pre>
+
+<h3> Sample </ h3>
+
+This is a sample that can be executed.
 
 <pre>
 use strict;
 use warnings;
 
 use PDL;
-use PDL::NiceSlice;
+use PDL :: NiceSlice;
 
-# データの作成
-my $nums = pdl [2, 4, 7];
+#Create data
+my $ nums = pdl [2, 4, 7];
 
-# 要素の出力
-print $nums->at(0) . "\n";
-print $nums->at(1) . "\n";
+# Element output
+print $ nums-> at (0). "\ n";
+print $ nums-> at (1). "\ n";
 
-# PDL変数の取り出し
-my $pdl_first = $nums(0);
-my $pdl_second = $nums(1);
+# Retrieving PDL variables
+my $ pdl_first = $ nums (0);
+my $ pdl_second = $ nums (1);
 
-# 代入
-$nums(0) .= 5;
+# Substitution
+$ nums (0). = 5;
 
-# 複数要素のPDL変数の取得
-my $pdl_parts = $nums(1:2);
+#Getting multi-element PDL variables
+my $ pdl_parts = $ nums (1: 2);
 
-# PDL変数として取り出した複数の要素への代入
-$nums(1:2) .= 8;
+#Assignment to multiple elements retrieved as PDL variable
+$ nums (1: 2). = 8;
 
-print $nums . "\n";
-</pre>
+print $ nums. "\ n";
+</ pre>
 
-<h3>定数の四則演算</h3>
+<h3> Four arithmetic operations of constants </ h3>
 
-<strong>PDL変数のすべての値に同じ値を加算する</strong>には<strong>+</strong>演算子を使用します。
+Use the <strong> + </ strong> operator to add the same value to all values ​​of a <strong> PDL variable </ strong>.
 
 <pre>
 use PDL;
-my $pdl = pdl [1, 1, 2, 2, 2, 3];
-my $pdl_add = $pdl + 3;
-</pre>
+my $ pdl = pdl [1, 1, 2, 2, 2, 3];
+my $ pdl_add = $ pdl + 3;
+</ pre>
 
-<strong>引き算</strong>、<strong>掛け算</strong>、<strong>割り算</strong>、<strong>商</strong>、<strong>べき乗</strong>も同じように計算することができます。
-
-<pre>
-# 引き算
-my $pdl_sub = $pdl - 3;
-
-# 掛け算
-my $pdl_product = $pdl * 3;
-
-# 割り算
-my $pdl_div = $pdl / 3;
-
-# 商
-my $pdl_quotient = $pdl % 3;
-
-# べき乗
-my $pdl_pow = $pdl + 3;
-</pre>
-
-掛け算と割り算にによるものは、ベクトルの定数倍に該当します。PDL変数どうしの演算ではなくて、PDL変数と普通の値との演算を行っていることを意識に止めておきましょう。
-
-<h3>ユニークな値を取り出す</h3>
-
-<strong>ユニークな値</strong>を取り出すには<strong>uniqメソッド</strong>を使用します。
+Do the same for <strong> subtraction </ strong>, <strong> multiplication </ strong>, <strong> division </ strong>, <strong> quotient </ strong>, and <strong> exponentiation </ strong>. can do.
 
 <pre>
-my $pdl_uniq = $pdl->uniq;
-</pre>
+# Subtraction
+my $ pdl_sub = $ pdl --3;
 
-<h3>PDL変数どうしの四則演算</h3>
+#Multiplication
+my $ pdl_product = $ pdl * 3;
 
-<strong>PDL変数どうしを加算する</strong>には、PDL変数どうしに対して<strong>+</strong>演算子を使用します。各要素が加算されます。
+#Division
+my $ pdl_div = $ pdl / 3;
 
-<pre>
-# PDL変数どうしの加算
-my $pdl1 = pdl [1, 2, 3];
-my $pdl2 = pdl [4, 5, 6];
-my $pdl_add = $pdl1 + $pdl2;
-</pre>
+#Quotient
+my $ pdl_quotient = $ pdl% 3;
 
-<strong>引き算</strong>、<strong>掛け算</strong>、<strong>割り算</strong>、<strong>商</strong>、<strong>べき乗</strong>も同じように計算することができます。各要素が計算されます。
+#Exponentiation
+my $ pdl_pow = $ pdl + 3;
+</ pre>
 
-<pre>
-# 引き算
-my $pdl_sub = $pdl1 - $pdl2;
+Multiplication and division correspond to constant multiples of the vector. Keep in mind that you are doing operations between PDL variables and ordinary values, not operations between PDL variables.
 
-# 掛け算
-my $pdl_product = $pdl1 * $pdl2;
+<h3> Extract unique values ​​</ h3>
 
-# 割り算
-my $pdl_div = $pdl1 / $pdl2;
-
-# 商
-my $pdl_quotient = $pdl1 % $pdl2;
-
-# べき乗
-my $pdl_pow = $pdl1 + $pdl2;
-</pre>
-
-加減算は、ベクトルの加減算に該当します。
-
-<h3>内積</h3>
-
-内積を計算する特別な方法はありません。<strong>内積</strong>を計算するにはPDL変数どうしの掛け算を行ってから、その和を求めます。
+Use the <strong> uniq method </ strong> to retrieve the <strong> unique value </ strong>.
 
 <pre>
-# 内積
-my $inner_product = ($pdl1 * $pdl2)->sum;
-</pre>
+my $ pdl_uniq = $ pdl-> uniq;
+</ pre>
 
-内積の結果は、PDL変数ではなくって、ただの値になります。
+<h3> Four arithmetic operations between PDL variables </ h3>
 
-<h3>サンプル</h3>
-
-実行できるサンプルです。
+To add <strong> PDL variables </ strong>, use the <strong> + </ strong> operator for PDL variables. Each element is added.
 
 <pre>
-use strict;
-use warnings;
+# Addition of PDL variables
+my $ pdl1 = pdl [1, 2, 3];
+my $ pdl2 = pdl [4, 5, 6];
+my $ pdl_add = $ pdl1 + $ pdl2;
+</ pre>
 
-use PDL;
+Do the same for <strong> subtraction </ strong>, <strong> multiplication </ strong>, <strong> division </ strong>, <strong> quotient </ strong>, and <strong> exponentiation </ strong>. can do. Each element is calculated.
 
-# 足し算
-my $pdl = pdl [1, 1, 2, 2, 2, 3];
-my $pdl_add = $pdl + 3;
+<pre>
+# Subtraction
+my $ pdl_sub = $ pdl1-$ pdl2;
 
-# 引き算
-my $pdl_sub = $pdl - 3;
+#Multiplication
+my $ pdl_product = $ pdl1 * $ pdl2;
 
-# 掛け算
-my $pdl_product = $pdl * 3;
+#Division
+my $ pdl_div = $ pdl1 / $ pdl2;
 
-# 割り算
-my $pdl_div = $pdl / 3;
+#Quotient
+my $ pdl_quotient = $ pdl1% $ pdl2;
 
-# 商
-my $pdl_quotient = $pdl % 3;
+#Exponentiation
+my $ pdl_pow = $ pdl1 + $ pdl2;
+</ pre>
 
-# ユニークな値を取得
-my $pdl_uniq = $pdl->uniq;
+Addition and subtraction corresponds to addition and subtraction of vectors.
 
-# 計算結果
-print "$pdl_add\n";
-print "$pdl_sub\n";
-print "$pdl_product\n";
-print "$pdl_div\n";
-print "$pdl_quotient\n";
-print "$pdl_uniq\n";
-</pre>
+<h3> Dot product </ h3>
+
+There is no special way to calculate the dot product. To calculate the <strong> inner product </ strong>, multiply the PDL variables and then find the sum.
+
+<pre>
+# Dot product
+my $ inner_product = ($ pdl1 * $ pdl2)-> sum;
+</ pre>
+
+The result of the dot product is just a value, not a PDL variable.
+
+<h3> Sample </ h3>
+
+This is a sample that can be executed.
 
 <pre>
 use strict;
@@ -276,35 +242,68 @@ use warnings;
 
 use PDL;
 
-# PDL変数どうしの加算
-my $pdl1 = pdl [1, 2, 3];
-my $pdl2 = pdl [4, 5, 6];
-my $pdl_add = $pdl1 + $pdl2;
+# Addition
+my $ pdl = pdl [1, 1, 2, 2, 2, 3];
+my $ pdl_add = $ pdl + 3;
 
-# 引き算
-my $pdl_sub = $pdl1 - $pdl2;
+# Subtraction
+my $ pdl_sub = $ pdl --3;
 
-# 掛け算
-my $pdl_product = $pdl1 * $pdl2;
+#Multiplication
+my $ pdl_product = $ pdl * 3;
 
-# 割り算
-my $pdl_div = $pdl1 / $pdl2;
+#Division
+my $ pdl_div = $ pdl / 3;
 
-# 商
-my $pdl_quotient = $pdl1 % $pdl2;
+#Quotient
+my $ pdl_quotient = $ pdl% 3;
 
-# べき乗
-my $pdl_pow = $pdl1 + $pdl2;
+# Get unique value
+my $ pdl_uniq = $ pdl-> uniq;
 
-# 内積
-my $inner_product = ($pdl1 * $pdl2)->sum;
+# Calculation result
+print "$ pdl_add \ n";
+print "$ pdl_sub \ n";
+print "$ pdl_product \ n";
+print "$ pdl_div \ n";
+print "$ pdl_quotient \ n";
+print "$ pdl_uniq \ n";
+</ pre>
 
-# 計算結果
-print "$pdl_add\n";
-print "$pdl_sub\n";
-print "$pdl_product\n";
-print "$pdl_div\n";
-print "$pdl_quotient\n";
-print "$inner_product\n";
-</pre>
+<pre>
+use strict;
+use warnings;
 
+use PDL;
+
+# Addition of PDL variables
+my $ pdl1 = pdl [1, 2, 3];
+my $ pdl2 = pdl [4, 5, 6];
+my $ pdl_add = $ pdl1 + $ pdl2;
+
+# Subtraction
+my $ pdl_sub = $ pdl1-$ pdl2;
+
+#multiplication
+my $ pdl_product = $ pdl1 * $ pdl2;
+
+#Division
+my $ pdl_div = $ pdl1 / $ pdl2;
+
+#Quotient
+my $ pdl_quotient = $ pdl1% $ pdl2;
+
+#Exponentiation
+my $ pdl_pow = $ pdl1 + $ pdl2;
+
+# Dot product
+my $ inner_product = ($ pdl1 * $ pdl2)-> sum;
+
+# Calculation result
+print "$ pdl_add \ n";
+print "$ pdl_sub \ n";
+print "$ pdl_product \ n";
+print "$ pdl_div \ n";
+print "$ pdl_quotient \ n";
+print "$ inner_product \ n";
+</ pre>

@@ -1,48 +1,47 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>無名ハッシュ生成子 - ハッシュのリファレンスを作成</h2>
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Anonymous hash generator-create hash reference </ h2>
 
 
 
-Perlには<b>無名ハッシュ生成子</b>「{}」という演算子があります。名前はちょっと難しいですが、実用的には、簡単にハッシュのリファレンスを作成するためのものです。
+Perl has an operator <b> anonymous hash generator </ b> "{}". The name is a bit tricky, but in practice it's an easy way to create a hash reference.
 
-無名ハッシュ生成子を使うと、以下のように簡単に<a href="/blog/20180208151809.html">ハッシュのリファレンス</a>が作成できます。
-
-<pre>
-# 無名ハッシュ生成子
-my $point = {x => 1, y => 2};
-</pre>
-
-もし無名ハッシュ生成子を使わない場合は、次のように書きます。まず<a href="/blog/20161013147635.html">ハッシュ</a>を作成してから、リファレンス生成子を使って、ハッシュのリファレンスを作成します。
+With the anonymous hash generator, you can easily create a <a href="/blog/20180208151809.html"> hash reference </a> as follows:
 
 <pre>
-# 無名ハッシュ生成子を使わない場合
-my %point = (x => 1, y => 2);
-my $point = \%point;
-</pre>
+# Anonymous hash generator
+my $ point = {x => 1, y => 2};
+</ pre>
 
-無名ハッシュ生成子を使うと、上の処理を省略して書くことができるんです。{x => 1, y => 2}を見た時は、上の処理が省略されているという感覚を持つと理解しやすいと思います。
+If you don't want to use an anonymous hash generator, write: First create a <a href="/blog/20161013147635.html"> hash </a> and then use the reference generator to create a hash reference.
 
-<b>どうして「無名ハッシュ生成子」というの?</b>
+<pre>
+# If you don't use an anonymous hash generator
+my% point = (x => 1, y => 2);
+my $ point = \% point;
+</ pre>
 
-無名ハッシュ生成子を使うと「%point」というハッシュを作成する必要がありませんね。つまり、内部的に「%point」に該当する「無名のハッシュ」が作成されているのです。
+If you use an anonymous hash generator, you can omit the above process and write it. When you look at {x => 1, y => 2}, it will be easier to understand if you have the feeling that the above processing is omitted.
 
-きっと、この部分に焦点を当てて命名されたのでしょう。
+<b> Why is it called an "anonymous hash generator"? </ B>
 
-無名ハッシュ生成子に対応して<a href="/blog/20170924150634.html">無名配列生成子</a>というものあります。
+With an anonymous hash generator, you don't have to create a hash called "% point". In other words, an "anonymous hash" that corresponds to "% point" is created internally.
 
+I'm sure it was named with a focus on this part.
+
+There is a <a href="/blog/20170924150634.html"> anonymous array generator </a> that corresponds to the anonymous hash generator.

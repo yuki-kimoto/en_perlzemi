@@ -1,58 +1,58 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20160225145640.html">
-      <span itemprop="name">バージョン情報</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>Perlの最新バージョンPerl 5.26リリース。インデント可能ヒアドキュメント、Unicode 9.0、長いキーのハッシュの性能改善</h2>
+      <span itemprop = "name"> Version information </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> The latest version of Perl, Perl 5.26 released. Indentable Here Documents, Unicode 9.0, Long Key Hash Performance Improvements </ h2>
 
 
 
-2017年5月30日にPerl 5.26がリリースされました! Perlの登場が1987年ですから、ついに30年目を迎えます!
+Perl 5.26 was released on May 30, 2017! Perl was introduced in 1987, so it's finally 30 years!
 
-<h3>機能の追加</h3>
+<h3> Addition of functions </ h3>
 
-Perl 5.26におけるいくつかの機能の追加です。便利そうなものをピックアップしてみます。
+Some feature additions in Perl 5.26. I will pick up something that seems convenient.
 
-<h4>インデント可能ヒアドキュメント</h4>
+<h4> Indentable here document </ h4>
 
-インデント可能<a href="/blog/20080619121405.html">ヒアドキュメント</a>の構文が追加されました。これは便利そうです。
+Indentable <a href="/blog/20080619121405.html"> Here Document </a> syntax has been added. This seems convenient.
 
 <pre>
-my $message = <<~EOS;
+my $ message = << ~ EOS;
   Hello
   World
   EOS
-</pre>
+</ pre>
 
-末尾の文字(ここではEOS)の位置が、左の位置になって、出力結果は以下のようになります。
+The position of the last character (EOS in this case) is the position on the left, and the output result is as follows.
 
 <pre>
 Hello
 World
-</pre>
+</ pre>
 
-エディタで、ソースコードの色付けがうまくできるようになるとさらによい感じです。
+It would be even better if you could color the source code well in the editor.
 
-<h4>Unicode 9.0のサポート</h4>
+<h4> Unicode 9.0 support </ h4>
 
-Unicode 9.0がサポートされました。Unicode 9.0でさらに追加された顔文字などを扱うことができます。
+Unicode 9.0 is supported. It can handle emoticons and other characters added in Unicode 9.0.
 
-<h4>レキシカルサブルーチンの機能が正式なものに</h4>
+<h4> Formal functions of lexical subroutines </ h4>
 
-レキシカル<a href="/blog/20101130129876.html">サブルーチン</a>の機能が正式なものになりました。
+The functionality of the lexical <a href="/blog/20101130129876.html"> subroutine </a> is now official.
 
 <pre>
 {
@@ -60,115 +60,115 @@ Unicode 9.0がサポートされました。Unicode 9.0でさらに追加され�
     ...
   }
   
-  # 現在のスコープだけから呼び出せる。
-  title();
+  # Can be called only from the current scope.
+  title ();
 }
-</pre>
+</ pre>
 
-<h4>正規表現の名前付きキャプチャがわかりやすくなった</h4>
+<h4> Regular expression named captures are easier to understand </ h4>
 
-<a href="/blog/20100827127859.html">正規表現</a>の名前付きキャプチャの利用がわかりやすくなりました。以下のハッシュ変数から、名前付きキャプチャを取り出せます。
-
-<pre>
-%{^CAPTURE}
-</pre>
+The use of named captures for <a href="/blog/20100827127859.html"> regular expressions </a> has become easier to understand. You can retrieve the named capture from the following hash variables.
 
 <pre>
-my $foo = "I am Tom";;
-if ($a =~ m/ (?<name>.+)$/) {
-  my $name = ${^CAPTURE}{name};
+% {^ CAPTURE}
+</ pre>
+
+<pre>
+my $ foo = "I am Tom" ;;
+if ($ a = ~ m / (? <name>. +) $ /) {
+  my $ name = $ {^ CAPTURE} {name};
 }
-</pre>
+</ pre>
 
-「$+{name}」で参照するのは、ちょっとわかりづらかったので、これはいい機能追加だと思います。
+It was a little confusing to refer to with "$ + {name}", so I think this is a good addition.
 
-<h3>パフォーマンスの改善</h3>
+<h3> Performance improvements </ h3>
 
-Perl 5.26におけるパフォーマンスの改善についてピックアップします。
+Pick up on performance improvements in Perl 5.26.
 
-<h4>64bit環境でハッシュのパフォーマンス改善</h4>
+<h4> Hash performance improvement in 64-bit environment </ h4>
 
-よりバランスを取るためにハイブリッド<a href="/blog/20161013147635.html">ハッシュ</a>になりました。
+Now hybrid <a href="/blog/20161013147635.html"> hash </a> for better balance.
 
-16バイト以下の短いキーでは「At A Time Hard」長いキーは「Siphash 1-3」アルゴリズムを使用します。
-とても長いキーではパフォーマンスが大幅に向上します、短いキーでは少しの改善があります。
+Use the "At A Time Hard" algorithm for short keys of 16 bytes or less and the "Siphash 1-3" algorithm for long keys.
+Very long keys will significantly improve performance, short keys will have a small improvement.
 
-<h4>ファイルからの行読み込みの高速化</h4>
+<h4> Faster line reading from file </ h4>
 
-ファイルを行から読み込むreadline、および「<>」演算子のパフォーマンスが向上しました。改行文字の検索方法の実装がより速いものになりました。
+Improved performance for readline, which reads files from lines, and the "<>" operator. The implementation of the newline character search method is now faster.
 
-<h4>リファレンスの代入の高速化</h4>
+<h4> Faster reference assignment </ h4>
 
-他の変数にリファレンスを代入する操作が速くなりました。
+Assigning a reference to another variable is faster.
 
 <pre>
-my $obj1 = SomeModule->new;
-my $obj2 = $obj1;
-</pre>
+my $ obj1 = SomeModule-> new;
+my $ obj2 = $ obj1;
+</ pre>
 
-<h4>split関数のパフォーマンスの改善</h4>
+<h4> Improved performance of split function </ h4>
 
-<a href="/blog/20080301120434.html">split関数</a>がわずかに速くなっています。
+The <a href="/blog/20080301120434.html"> split function </a> is slightly faster.
 
 <pre>
 my @elements = split ...;
-</pre>
+</ pre>
 
-<h4>リスト代入のパフォーマンスの改善</h4>
+<h4> Improved list assignment performance </ h4>
 
-<a href="/blog/20100308126967.html">リスト</a>代入のパフォーマンスが、3倍程度速くなりました。
+<a href="/blog/20100308126967.html"> List </a> Assignment performance is about 3x faster.
 
 <pre>
 my @elements = (1,2,3);
-</pre>
+</ pre>
 
-<h3>後方互換性のない変更</h3>
+<h3> Backwards incompatible changes </ h3>
 
-後方互換性のない変更です。
+This is a backwards incompatible change.
 
-<h4>@INCの末尾にデフォルトで追加されていた「.」が取り除かれました</h4>
+<h4> The "." That was added by default at the end of @INC has been removed </ h4>
 
-Perl 5.26においては、これは、一番大きな影響のある互換性のない変更です。モジュールの読み込みパスにカレントディレクトリがあると、セキュリティ上のリスクがあるため、これを取り除く変更が行われています。
+In Perl 5.26, this is the most impactful and incompatible change. Changes have been made to remove the current directory in the module's loading path, which poses a security risk.
 
-詳しくは以下の記事に書いたのでご覧ください。
+Please see the following article for details.
 
 <ul>
   <li>
-    <a href="/blog/20170410149183.html">Perl 5.26への@INC問題にアップグレード前に対処しておきましょう</a>
-  </li>
-</ul>
+    <a href="/blog/20170410149183.html"> Address @INC issues to Perl 5.26 before upgrading </a>
+  </ li>
+</ ul>
 
-<h4>正規表現の中のエスケープされていない「{」は許可されません</h4>
+<h4> Unescaped "{" in regular expressions is not allowed </ h4>
 
-これは、5.16から廃止予定になっていますが、Perl 5.26で許可されなくなりました。
-
-<pre>
-# 正規表現の中で「{」を使うときは必ずエスケープ
-/\{/;
-</pre>
-
-<h4>${^ENCODING}の機能が取り除かれました</h4>
-
-Perl 5.18でencodingプラグマは、廃止予定になっていましたが、今回のリリースでencodingプラグマは、そのままでは動かなくなりました。encodingプラグマと内部的につながっていた、${^ENCODING}変数が取り除かれたためです。
-
-ソースコードはUTF-8で記述して、utf8プラグマを使うようにしましょう。
-
-もし、どうしてもencodingプラグマを使い続けたい場合は、以下のように「Filter」オプションを追加することで、対処することができます。
+It has been deprecated since 5.16, but is no longer allowed in Perl 5.26.
 
 <pre>
-use encoding "euc-jp", Filter=>1;
-</pre>
+# Whenever you use "{" in a regular expression, escape
+/ \ {/;
+</ pre>
 
-<h3>感想</h3>
+<h4> $ {^ ENCODING} feature removed </ h4>
 
-Perlをわかりやすくする変更や、パフォーマンスの改善は、歓迎です。新しいUnicodeにすぐに対応になるのもとてもよい。
+The encoding pragma was deprecated in Perl 5.18, but with this release the encoding pragma no longer works out of the box. This is because the $ {^ ENCODING} variable, which was internally connected to the encoding pragma, has been removed.
 
-「.」が@INCから取り除かれたのは、かなりのソースコードに影響を与えますが、セキュリティ上の問題を放置し続けることよりは、よい決定だと思います。
+Write the source code in UTF-8 and use the utf8 pragma.
 
-Perl 5.26へのアップグレードは、かなりの注意が必要です。事前に対処しておくのがベストです。モジュールやファイルを読み込むパスは、FindBinモジュールで、絶対パスで設定するようにするのが、よいでしょう。
+If you really want to continue using the encoding pragma, you can deal with it by adding the "Filter" option as shown below.
 
-Perl 5.20までは、安定で、Perl 5.22とPerl 5.24では、内部APIを使っているCoroが動かなくなるという問題が発生しました。現在はPerl 5.22では最新版のCoroは動くようですが、Perl 5.24以降では動きません。Perl 5.26では、「.」が@INCから取り除かれます。
+<pre>
+use encoding "euc-jp", Filter => 1;
+</ pre>
 
-アップグレードの注意は、Coroを利用していないことを確認することと、「.」が@INCに含まれなくなることに対する対応をすることです。
+<h3> Impressions </ h3>
 
-古いPerlを使っている場合は、Perl 5.20まで、まずアップグレードして、さらにそこから、最新版にアップグレードするという流れにすると、問題が起こりにくくてよいんじゃないかと思います。
+Changes that make Perl easier to understand and performance improvements are welcome. It's also great to be ready for the new Unicode soon.
+
+The removal of the "." From @INC has a significant impact on the source code, but I think it's a better decision than leaving the security issues alone.
+
+Upgrading to Perl 5.26 requires a great deal of caution. It is best to deal with it in advance. It is a good idea to set the path to read modules and files in the FindBin module with an absolute path.
+
+It was stable up to Perl 5.20, and in Perl 5.22 and Perl 5.24 there was a problem with Coro using the internal API not working. Currently the latest version of Coro seems to work with Perl 5.22, but not with Perl 5.24 or later. In Perl 5.26, the "." Is removed from @INC.
+
+The precautions for the upgrade are to make sure you are not using Coro and to take action to prevent the "." From being included in @INC.
+
+If you're using an older Perl, upgrade to Perl 5.20 first, then upgrade to the latest version, and you'll be less likely to have problems.

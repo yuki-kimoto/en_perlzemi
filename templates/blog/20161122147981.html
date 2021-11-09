@@ -1,165 +1,164 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20170130148603.html">
-      <span itemprop="name">データベース</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> database </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>MySQLとの連携</h2>
+  </ li>
+</ ol>
+<h2> Cooperation with MySQL </ h2>
 
 
 
 
-Perlで「MySQL」を利用する方法を解説します。
+I will explain how to use "MySQL" in Perl.
 
-<h3>DBIとDBIの解説</h3>
+<h3> Explanation of DBI and DBI </ h3>
 
-まずMySQLを扱う基本的な知識として、DBIとDBIというものについて解説します。プログラムからデータベースに接続する場合は、DBIというものを使用するのが一般的です。また実際のRDBMSとのやりとりは、DBDを通して行われます。
+First, I will explain about DBI and DBI as basic knowledge about dealing with MySQL. When connecting to a database programmatically, it is common to use something called DBI. Also, the actual interaction with the RDBMS is done through the DBD.
 
-<h4>さまざまなRDBMSを利用できる共通のAPI DBI</h4>
+<h4> Common API DBI that can use various RDBMS </ h4>
 
-DBIとは、RDBMS(リレーショナルデータベース管理システム)に依存しないAPIのことです。( DBIは、Database Interface の略 )
+DBI is an API that does not depend on RDBMS (relational database management system). (DBI stands for Database Interface)
 
-RDBMSには、MySQL、Oracle,DB2,Postgre SQLなどがありますが、別々の人が作ったものですので、利用方法は少しづつ異なります。DBIを使用すれば、異なるベータベースに共通の記述で、接続したり、SQLをリクエストしたりできます。
+RDBMS includes MySQL, Oracle, DB2, Postgre SQL, etc., but since they are created by different people, their usage is slightly different. DBI allows you to connect and request SQL with a common description for different beta bases.
 
-<h4>データベースに接続するための関数群 DBI</h4>
+<h4> Functions for connecting to the database DBI </ h4>
 
-Perlに同名のモジュールがあるのでインストールします。
+There is a module with the same name in Perl, so install it.
 
 <pre>
 cpan DBI
-</pre>
+</ pre>
 
-<h4>RDBMSと実際にやり取りを行うドライバ DBD</h4>
+<h4> Driver DBD that actually interacts with the RDBMS </ h4>
 
-DBIは関数を提供しますが、実際は内部でDBDがデータベースとやり取りを行っています。DBDには、MySQL用、PostgreSQL用、Oracle用,SQLite用などさまざまな種類があります。
+DBI provides functions, but in reality DBD interacts with the database internally. There are various types of DBD, such as for MySQL, PostgreSQL, Oracle, and SQLite.
 
-MySQL用のDBDをインストールします。MySQLがインストールされていることが必要です。
-
-<pre>
-cpan DBD::mysql
-</pre>
-
-<h4>DBIとDBDとデータベースサーバのやり取りのイメージ</h4>
-
-DBIというのは、どのデータベースに接続するときも変わりません。DBIはデータベースに依存しないように作られた接続のための関数の集まりだからです。DBDというのが、データベースと実際にデータをやり取りをします。
+Install the DBD for MySQL. MySQL must be installed.
 
 <pre>
-|-----|       |-------------|         |-------------|
-|     |       |             |         |             |
-|     |-------| DBD::mysql  |---------| MySQL       |
-|     |       |             |         |             |
-|     |       |-------------|         |-------------|
-| DBI |              
-|     |       |-------------|         |-------------|
-|     |       |             |         |             |
-|     |-------| DBD::Oracle |---------| Oracle      |
-|     |       |             |         |             |
-|-----|       |-------------|         |-------------|
-</pre>
+cpan DBD :: mysql
+</ pre>
 
-<h3>MySQLサーバーへ接続する</h3>
+<h4> Image of interaction between DBI, DBD and database server </ h4>
 
-MySQLサーバに接続するには<strong>connect</strong>メソッドを使用します。
+DBI does not change when connecting to any database. This is because DBI is a collection of functions for connections that are designed to be database independent. The DBD actually exchanges data with the database.
 
 <pre>
-use DBI;
-my $dbh = DBI->connect("DBI:mysql:$database", $user, $password);
-</pre>
+| ----- | | ------------- | | ------------- |
+| | | | | |
+| | ------- | DBD :: mysql | --------- | MySQL |
+| | | | | |
+| | | ------------- | | ------------- |
+DBI |
+| | | ------------- | | ------------- |
+| | | | | |
+| | ------- | DBD :: Oracle | --------- | Oracle |
+| | | | | |
+| ----- | | ------------- | | ------------- |
+</ pre>
 
-リモートのMySQLサーバに接続するには、ホスト名を指定して
+<h3> Connect to MySQL server </ h3>
+
+Use the <strong> connect </ strong> method to connect to the MySQL server.
 
 <pre>
 use DBI;
-my $dbh = DBI->connect(
-  "DBI:mysql:$database:$hostname",
-  $user,
-  $password
+my $ dbh = DBI-> connect ("DBI: mysql: $ database", $ user, $ password);
+</ pre>
+
+To connect to a remote MySQL server, specify the host name
+
+<pre>
+use DBI;
+my $ dbh = DBI-> connect (
+  "DBI: mysql: $ database: $ hostname",
+  $ user,
+  $ password
 );
-</pre>
-のようにします。
+</ pre>
+To do.
 
-ポート番号も指定することができます。
+You can also specify the port number.
 
 <pre>
 use DBI;
-my $dbh = DBI->connect(
-  "DBI:mysql:$database:$hostname:$port",
-  $user,
-  $password
+my $ dbh = DBI-> connect (
+  "DBI: mysql: $ database: $ hostname: $ port",
+  $ user,
+  $ password
 );
-</pre>
+</ pre>
 
-<h4>データベースハンドル</h4>
-connectメソッドは、データベースの操作に利用するデータベースハンドルというものを戻り値に返却します。
-データベースハンドルを使用して、MySQLサーバとやり取りします。
+<h4> Database handle </ h4>
+The connect method returns a database handle used for database operations as a return value.
+Use the database handle to interact with the MySQL server.
 
-<h4>エラー処理</h4>
-データベース名が間違っていたり、パスワードが間違っていたり、何らかの理由でデータベースに接続できない場合は、戻り値にundefが返却されます。そのときのエラーの内容は、
+<h4> Error handling </ h4>
+If the database name is incorrect, the password is incorrect, or the database cannot be connected for some reason, undef will be returned in the return value. The content of the error at that time is
 
 <pre>
-$DBI::errstr;
-</pre>
+$ DBI :: errstr;
+</ pre>
 
-で取得できます。errは数字、errstrには、エラーの内容が入っています。
+You can get it at. err is a number and errstr is the content of the error.
 
-データベースはプログラムの外部にあるシステムですので、エラー処理は必須です。最初のサンプルでは、エラー処理を行っていませんが必ず、エラー処理を行います。
+Since the database is a system outside the program, error handling is essential. In the first sample, error handling is not performed, but error handling is always performed.
 
 <pre>
 use DBI;
-my $dbh = DBI->connect(
-  "DBI:mysql:$database:$hostname",
-  $user,
-  $password
-) or die "cannot connect to MySQL: $DBI::errstr";
-</pre>
+my $ dbh = DBI-> connect (
+  "DBI: mysql: $ database: $ hostname",
+  $ user,
+  $ password
+) or die "cannot connect to MySQL: $ DBI :: errstr";
+</ pre>
 
-<h3>現在時刻をMySQLの日付時刻型に変換する</h3>
+<h3> Convert current time to MySQL datetime type </ h3>
 
-現在時刻をMySQLの日付時刻型に変換するにはlocaltime関数とstrftime関数を使用します。
+Use the localtime and strftime functions to convert the current time to a MySQL datetime type.
 
 <pre>
-use POSIX 'strftime';
+use POSIX'strftime';
 
-# MySQLの日付時刻型(datetime型)
-my $current_datetime = strftime("%Y-%m-%d %H:%M:%S", localtime);
+# MySQL datetime type (datetime type)
+my $ current_datetime = strftime ("% Y-% m-% d% H:% M:% S", localtime);
 
-# MySQLの日付型(date型)
-my $current_date = strftime("%Y-%m-%d", localtime);
-</pre>
+# MySQL date type (date type)
+my $ current_date = strftime ("% Y-% m-% d", localtime);
+</ pre>
 
-<h3>「MySQL::Diff」モジュールで「データベースの定義の差分」を抽出する</h3>
+<h3> Extract "database definition difference" with "MySQL :: Diff" module </ h3>
 
-MySQLのデータベースの差分から、差分をなくすようなコマンドを自動生成するツールを探していたら<a href="/blog/20111101132239.html">MySQL::Diff</a>モジュールを発見した。このモジュールにはmysqldiffというコマンドラインツールがついているので、通常はこちらを使うのが良いみたい。
+When I was looking for a tool to automatically generate commands that eliminate the differences from the differences in the MySQL database, I found the <a href="/blog/20111101132239.html"> MySQL :: Diff </a> module. This module comes with a command line tool called mysqldiff, so it's usually best to use it.
 
-開発環境と本番環境の差分を埋めるのにとても役立つ。すべての差分を表示してくれるわけではなく、テーブル定義に関する部分だけのようなので、トリガやインデックスについては、自分で設定する必要があるようです。
+Very useful for bridging the gap between development and production environments. It doesn't show all the differences, it seems to be only the part related to the table definition, so it seems that you need to set the trigger and index yourself.
 
-ドキュメントにはオプションの説明がないようなので、--helpコマンドで確認できる。
+The documentation doesn't seem to explain the options, so you can check with the --help command.
 <pre>
 mysqldiff --help
-</pre>
+</ pre>
 
-<h3>DBD::mysqlをインストールするためにはmysql-develが必要</h3>
+<h3> You need mysql-devel to install DBD :: mysql </ h3>
 
-PerlでDBIからMySQLに接続しようと思う場合は<strong>DBD::mysql</strong>というモジュールが必要になります。このモジュールは、C言語のライブラリに依存しており、単独ではインストールが失敗します。。たとえばCent OSなどのRed Hat系のOSであれば<strong>mysql-devel</strong>というパッケージをインストールしておく必要があります。
+If you want to connect to MySQL from DBI with Perl, you need a module called <strong> DBD :: mysql </ strong>. This module depends on the C language library and will fail to install on its own. .. For example, if you have a Red Hat OS such as Cent OS, you need to install the package <strong> mysql-devel </ strong>.
 
 <pre>
 yum -y install mysql-devel
-</pre>
+</ pre>
 
-「mysql-devel」がインストールされるとDBD::mysqlのインストールは成功するようになります。
+Once "mysql-devel" is installed, the DBD :: mysql installation will be successful.
 
 <pre>
-cpan DBD::mysql
-</pre>
-
+cpan DBD :: mysql
+</ pre>

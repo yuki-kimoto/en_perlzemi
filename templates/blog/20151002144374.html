@@ -1,33 +1,32 @@
+<h2> Introduction to Statistical Analysis / Scientific Calculation Rstats </ h2>
 
-<h2>統計解析・科学技術計算 Rstats入門</h2>
+I am currently creating a module called Rstats for statistical analysis and scientific calculation in Perl. The goal of Rstats is to implement the R language, which is a language for statistical analysis and scientific computing, on top of Perl.
 
-Perlで統計解析・科学技術計算をするためのRstatsというモジュールを現在作成しています。Rstatsは、統計解析・科学技術計算のための言語であるR言語を、Perlの上に実装することが目標です。
+Perl is a general-purpose language and is good at text processing. However, on the other hand, I am not good at statistical analysis and scientific calculation. One of the major causes is the absence of easy-to-use modules.
 
-Perlは汎用的な言語であり、テキスト処理が得意な言語です。しかし、一方、統計解析や科学技術計算は得意ではありません。その大きな原因のひとつは使いやすいモジュールの不在です。
+Therefore, we wanted to reduce the burden and enable learning by implementing the functions of the R language, which is familiar in statistical analysis, on Perl.
 
-そこで、みなさんが、統計解析でなじみのあるR言語の機能を、Perlの上で実装することで、負担を減らして、学習できるようにしたいと考えました。
+It seems that it will be a long way to implement, such as the huge amount of implementation, the implementation by fumbling, and the compatibility with the Perl language, so only the basic calculation part is documented first. , I will write it little by little.
 
-実装する量が膨大ということと、手探りで実装していること、Perl言語との相性を考えないといけないなど、長い道のりになりそうですので、基本的な計算の部分だけを、先にドキュメントとして、少しづつ、書いていくことにします。
+I am currently studying physics, mathematics, information engineering, etc. because I think it is necessary to implement Rstats.
 
-僕は現在、Rstatsを実装するために、必要だと考え、物理、数学、情報工学などなどの勉強をしています。
+<h3> Install Rstats </ h3>
 
-<h3>Rstatsのインストール</h3>
-
-Rstatsは、WindowsでもUnixでも簡単にCPANからインストールして利用することができます。Windowsで動かす場合は、ActivePerlかStrawbery Perlをインストールしてください。Perl 5.10.1以上であれば、動かすことができます。
+Rstats can be easily installed and used from CPAN on both Windows and Unix. If you want to run it on Windows, please install ActivePerl or Strawbery Perl. If you have Perl 5.10.1 or higher, you can run it.
 
 <pre>
 cpan Rstats
-</pre>
+</ pre>
 
-あるいはcpanmがインストールされているなら
+Or if cpanm is installed
 
 <pre>
 cpanm Rstats
-</pre>
+</ pre>
 
-<h3>使い方</h3>
+<h3> How to use </ h3>
 
-簡単な使い方。
+Easy to use.
 
 <pre>
 use strict;
@@ -35,51 +34,50 @@ use warnings;
 
 use Rstats;
 
-# ベクトル
-my $x1 = c_(1, 2, 3);
-my $x2 = c_(5, 6, 7);
-my $x3 = -c_(8, 9, 10);
+# vector
+my $ x1 = c_ (1, 2, 3);
+my $ x2 = c_ (5, 6, 7);
+my $ x3 = -c_ (8, 9, 10);
 
-my $x4 = $x1 + ($x2 * $x3);
+my $ x4 = $ x1 + ($ x2 * $ x3);
 
-print $x4;
+print $ x4;
 
-# 1～10までを要素に含むベクトルの作成
-my $x5 = C_('1:10');
-print $x5;
+# Creating a vector containing 1 to 10 in the element
+my $ x5 = C_ ('1:10');
+print $ x5;
 
-# sinを計算
-my $x6 = c_(pi / 4, pi / 2);
-my $x7 = r->sin($x6);
-print $x7;
-</pre>
+Calculate # sin
+my $ x6 = c_ (pi / 4, pi / 2);
+my $ x7 = r-> sin ($ x6);
+print $ x7;
+</ pre>
 
-「<b>c_</b>」関数で、ベクトルを作成することができます。作成したベクトルは、四則演算を行うことができます。
+You can create a vector with the "<b> c_ </ b>" function. The created vector can perform four arithmetic operations.
 
-「<b>C_</b>」関数で、数の並びを自動で作成することができます「'1:10'」という表現で1～10の10個の数を表現できます。
+You can automatically create a sequence of numbers with the "<b> C_ </ b>" function. You can express 10 numbers from 1 to 10 with the expression "'1:10'".
 
-「c_」や「C_」など、関数名の後ろにわざわざアンダーバーが後ろにつけているのは、一文字の関数に関するPerlの制約によります。Perlでは、「-c()」と書いた場合に、c関数のマイナスとは、理解されずに、「-c」というファイル演算子と理解されてしまうからです。これは頻繁に生じる間違いですので、あきらめて「c_」「C_」という関数名にしています。
+The underscore after the function name, such as "c_" or "C_", is due to Perl's restrictions on single-letter functions. This is because in Perl, when you write "-c ()", the minus of the c function is not understood and is understood as the file operator "-c". This is a frequent mistake, so I gave up and named the functions "c_" and "C_".
 
-R言語に対応する関数は、「<b>r</b>」オブジェクトから「r->sin(...)」のように呼び出すことができます。
+Functions corresponding to the R language can be called from the "<b> r </ b>" object as "r-> sin (...)".
 
-出力結果は次のようになります。
+The output result is as follows.
 
 <pre>
 [1] -39 -52 -67
 [1] 1 2 3 4 5 6 7 8 9 10
 [1] 0.707106781186547 1
-</pre>
+</ pre>
 
-<h3>Rstats入門</h3>
+<h3> Introduction to Rstats </ h3>
 
-Rstatsを使って、統計解析・科学技術計算を行うための入門です。基本的なことを解説します。
+This is an introduction to statistical analysis and scientific and technological calculations using Rstats. I will explain the basics.
 
 <ul>
   <li>
-    <a href="/blog/20151003144384.html">簡単な計算を行おう</a>
-  </li>
+    <a href="/blog/20151003144384.html"> Let's do a simple calculation </a>
+  </ li>
   <li>
-    <a href="/blog/20151005144402.html">データの種類を覚えよう</a>
-  </li>
-</ul>
-
+    <a href="/blog/20151005144402.html"> Remember the data type </a>
+  </ li>
+</ ul>

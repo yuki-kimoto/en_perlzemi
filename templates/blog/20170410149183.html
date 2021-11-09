@@ -1,49 +1,47 @@
+<h2> Address @INC issues to Perl 5.26 before upgrading </ h2>
 
-<h2>Perl 5.26への@INC問題にアップグレード前に対処しておきましょう</h2>
+In Perl 5.26, a security issue removes the "." (Current directory) from the module's include path.
 
-Perl 5.26では、セキュリティ上の問題で、モジュールのインクルードパスから「.」(カレントディレクトリ)が取り除かれます。
-
-この問題についてはcharsbarさんの記事が詳しいです。
+Charsbar's article is detailed on this issue.
 
 <ul>
   <li>
-    <a href="http://d.hatena.ne.jp/charsbar/20170318/1489828167"> '.' in @INC問題とその対処法について(2017年3月版)Add Star</a>
-  </li>
-</ul>
+    <a href="http://d.hatena.ne.jp/charsbar/20170318/1489828167">'.' In @INC problem and how to deal with it (March 2017 version) Add Star </a>
+  </ li>
+</ ul>
 
-<h3>Perl 5.26にアップグレードする前にこの問題に対処しておく</h3>
+<h3> Address this issue before upgrading to Perl 5.26 </ h3>
 
-CPANモジュールについては、この問題については対処してくれるようですので、修正の必要があるのは、自社で使っているスクリプトです
+As for the CPAN module, it seems to address this issue, so it's the script you're using that needs to be fixed.
 
-僕の会社でも、古いCGIスクリプトが一部現役で動いていたりします。ちょっと調べてみると、Perl 5.26にアップグレードする前には、スクリプトを一部修正する必要があるようでした。jcode.plやcgi-lib.plが読み込まれているものがちらほらとあります。
+Even in my company, some old CGI scripts are still running. After a little research, it seemed that some scripts needed to be modified before upgrading to Perl 5.26. There are some that have jcode.pl and cgi-lib.pl loaded.
 
-そこで、以下のようにfindといくつかのコマンドを組み合わせて、修正の必要がある箇所を表示できるコマンドを作ってみました。
+So, I tried to make a command that can display the part that needs to be corrected by combining find and some commands as shown below.
 
 <pre>
-find . \( -name \*.pl -or -name \*.pm -or -name \*.cgi \) | xargs grep -e require -e do[^a-zA-Z];
-</pre>
+find. \ (-name \ * .pl -or -name \ * .pm -or -name \ *. cgi \) | xargs grep -e require -e do [^ a-zA-Z];
+</ pre>
 
-Perlスクリプトが存在するディレクトリの一番上の階層で上記のコマンドを実行すると、拡張子が「.pl」「.pm」「.cgi」のスクリプトの中にある「require」と「do」を使っている場所をすべて抽出できます。
+If you execute the above command at the top level of the directory where the Perl script exists, "require" and "do" in the script with the extensions ".pl", ".pm" and ".cgi" will be used. You can extract all the locations where you are.
 
-たとえば以下のような行が出力されるでしょう。
+For example, the following line will be output.
 
 <pre>
 require "mylib.pl";
 do "myconf.pl";
-</pre>
+</ pre>
 
-こういう場所が見つかった場合は、スクリプトの先頭に、次のように追加しましょう。スクリプトが存在するディレクトリの絶対パスが、モジュールのインクルードパスに追加されます。
+If you find such a location, add the following to the beginning of your script: The absolute path of the directory where the script resides is added to the module's include path.
 
 <pre>
 use FindBin;
-use lib $FindBin::Bin;
-</pre>
+use lib $ FindBin :: Bin;
+</ pre>
 
-(参考)<a href="/blog/20100524127696.html">FindBin</a>
+(Reference) <a href="/blog/20100524127696.html"> FindBin </a>
 
-アップグレードしてから対処するよりも、アップグレード前に対処しておくと楽です。
+It's easier to deal with it before the upgrade than to deal with it after upgrading.
 
-<h3>追記</h3>
+<h3> Addendum </ h3>
 
-何回も「.」が@INCの先頭に追加されていると書いてきましたが、<b>「.」が末尾に追加されている</b>の間違いでした。Twitterで指摘をもらいました。
-
+I've written many times that "." Has been added to the beginning of @INC, but it was a mistake that <b> "." Was added to the end </ b>. I got an indication on Twitter.

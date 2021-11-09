@@ -1,75 +1,73 @@
+<h2> I want to write about a modern CGI script using Perl </ h2>
+Someone said, "Is it CGI now?" The word CGI has a biased image, and I think the typical image is <b> "Perl = CGI = old" </ b>. I think that these three are a set and are often talked about negatively.
 
-<h2>Perlを使ったモダンなCGIスクリプトについて書いておきたい</h2>
-「いまさらCGIですか」と誰かがいった。CGIという言葉には、偏ったイメージがついてしまっていて、代表的なイメージは<b>「Perl=CGI=古い」</b>というイメージだと思います。このみっつがセットになっていて、否定的に語られることが多いように思います。
+But if you think about it, PHP, a rental sharing server, runs on CGI. The extension is PHP, but the protocol is CGI. Many people may not understand that very much.
 
-でもよく考えてみればレンタル共有サーバーのPHPはCGIで動いている。拡張子はPHPだけど、プロトコルはCGIだ。ということを、あんまり理解していない人も多いのかも知れない。
+I upload WordPress to a shared rental server, but that's CGI. Although the extension is PHP, it is executed as a CGI script.
 
-WordPressをまるっと共有レンタルサーバーにアップロードするけれど、あれってCGIですね。　拡張子はPHPだけれど、CGIスクリプトとして実行されている。
+The downside of CGI is, in effect, performance, and I think that's the only downside to CGI. So, for example, it is impossible for 100,000 people to access it, but I think that it is often enough for less than 100 people to use it.
 
-CGIの悪い点というのは、実質的にはパフォーマンスで、これだけがCGIの欠点だといえると思います。だからたとえば100000人のアクセスは無理だけど、100人未満で利用する分には、十分という場合も多いかと思います。
+I think it's a nice feature of CGI scripts that it works just by renting a shared rental server and uploading it completely.
 
-CGIスクリプトの特徴である、共有レンタルサーバーを借りてまるっとアップロードするだけで動くというのは、結構うれしい特徴なんじゃないかと思う。
+<h3> Understand the meaning of the word CGI </ h3>
 
-<h3>CGIという言葉の意味を理解する</h3>
+If you are an engineer, you should understand the meaning of the word CGI. The old or Perl image is a falsely disseminated image in the first place, and CGI is a protocol for running web applications.
 
-エンジニアであるならCGIという言葉の意味は理解しておいておいたほうがいいと思う。古いとか、Perlというイメージはそもそも間違って流布されたイメージで、CGIとは、Webアプリケーションを実行するための、ひとつのプロトコルです。
+Do something like "start the process, get the output and return it". Performance is slow because there is a process startup every time. As the scale of the application grows, it may be about 100 times different than the fast method that is not CGI.
 
-「プロセスを起動して、出力をもらって返す」ということをやります。毎回プロセスの起動があるので、パフォーマンスは遅い。アプリケーションの規模が大きくなると、CGIではない速い方法に比べて、100倍くらいは違うのかも。
+<h3> Perl's mainstream is PSGI or an embedded web server </ h3>
 
-<h3>Perlの主流はPSGIか組み込みのWebサーバー</h3>
+Until about five years ago, the mainstream of Perl was mod_perl, and in order to run Perl at high speed, it was common to use mod_perl. But this is hard to use. Of course, if you write it with mod_perl, it will not work as a CGI script.
 
-5年くらい前までは、Perlの主流といえばmod_perlでしたし、Perlを高速に実行するためには、mod_perlを利用するのが普通でした。でもこれは使いにくい。mod_perlで書くと、もちろんCGIスクリプトとしては動かせんません。
+However, recently, a protocol called PSGI has appeared, and if a web framework supports the protocol called PSGI, it has become possible to execute Perl web applications at high speed. Another commonly used method is to run it on the web server of the web framework itself.
 
-けれども最近はPSGIというプロトコルがでてきて、PSGIというプロトコルにWebフレームワークが対応していれば、PerlのWebアプリケーションを高速に実行できるようになりました。またWebフレームワーク自体が持つWebサーバーで実行するという方法もよく利用される方法です。
+<h3> Modern Perl web frameworks allow you to choose the protocol layer </ h3>
 
-<h3>最近のPerlのWebフレームワークはプロトコル層を選択できる</h3>
-
-最近のPerlのWebフレームワークはプロトコル層を選択できます。つまり、上にのせるアプリケーションを書いて、それをPSGIで動かしたり、組み込みのWebサーバーで動かしたり、CGIスクリプトで動かしたりするということが、やりやすくなったということです。
+Modern Perl web frameworks allow you to choose the protocol layer. In other words, it's easier to write an application to put on top and run it with PSGI, a built-in web server, or a CGI script.
 
 <pre>
-        |-組み込みWebサーバー
+        |-Embedded web server
         |
-Web App - PSGI(+PSGIに対応したWebサーバー)
+Web App-PSGI (+ PSGI compatible web server)
         |
-        |-CGI
-</pre>
+        | -CGI
+</ pre>
 
-つまりWebアプリケーションを作成して、ユーザーの側に、CGIで動かしてもらうか、組み込みのWebサーバーで動かしてもらうか、選択してもらうことができるWebアプリケーションを書きやすくなりました。これは、ここ数年のことです。
+In other words, it has become easier to write a web application that allows the user to choose whether to create a web application and run it with CGI or a built-in web server. This is the last few years.
 
-<h3>実際の実装</h3>
+<h3> Actual implementation </ h3>
 
-理論的にはできるだろうなぁと思っていたのですが、実際に実装してみないことにはできるかどうかがわかりません。それで、よし作ろうとCGIと組み込みサーバーに対応したWebアプリを作ってみることにしたのですが、どうやら実現が可能なことがわかりました。
+I thought it would be possible in theory, but I don't know if it can be done without actually implementing it. So, I decided to make a web application that supports CGI and an embedded server, but I found that it was possible.
 
-以下はサクラのレンタルサーバースタンダードで、CGIスクリプトとして実行しているところです。
+The following is Sakura's rental server standard, which is being executed as a CGI script.
 
 <ul>
   <li>
-    <a href="http://perlcodesample.sakura.ne.jp/gitprep.cgi">GitPrep(CGIスクリプト)</a>
-  </li>
+    <a href="http://perlcodesample.sakura.ne.jp/gitprep.cgi"> GitPrep (CGI script) </a>
+  </ li>
   <li>
-    <a href="http://perlcodesample.sakura.ne.jp/webdbviewer.cgi">Web DB Viewer(CGIスクリプト)</a>(もう少しでリリースします)
-  </li>
-</ul>
+    <a href="http://perlcodesample.sakura.ne.jp/webdbviewer.cgi"> Web DB Viewer (CGI script) </a> (will be released soon)
+  </ li>
+</ ul>
 
-CGIだとサンプルを見せるのにも、だたサーバー上に配置しておけばよいだけなのでとても楽です。パーミッションの設定がネックに感じますが、PHPがインストールされているサーバーであれば、自動的にパーミッションを設定してくれるので、意識する必要がありません。
+With CGI, it's very easy to show a sample because you only have to place it on the server. Setting permissions seems to be a bottleneck, but if you have a server with PHP installed, it will set permissions automatically, so you don't have to be aware of it.
 
-このWebアプリケーションは組み込みのWebサーバーを使って起動することもできるので、パフォーマンスが必要になったときは、乗り換えることも容易です。
+This web application can also be launched using a built-in web server, so it's easy to switch when performance is needed.
 
-実装は以下のリポジトリを見ると仕組みを見ることができます。
+You can see how the implementation works by looking at the following repository.
 
 <ul>
   <li>
-    <a href="https://github.com/yuki-kimoto/gitprep">GitPrep(GitHub)</a>
-  </li>
+    <a href="https://github.com/yuki-kimoto/gitprep"> GitPrep (GitHub) </a>
+  </ li>
   <li>
-    <a href="https://github.com/yuki-kimoto/webdbviewer">Web DB Viewer(GitHub)</a>
-  </li>
-</ul>
+    <a href="https://github.com/yuki-kimoto/webdbviewer"> Web DB Viewer (GitHub) </a>
+  </ li>
+</ ul>
 
-<h3>モダンなCGIは十分書くことができる</h3>
+<h3> Modern CGI can be written enough </ h3>
 
-CGIといえば機能が足りないとか古いというイメージですが、上のアプリケーションを見ると、モダンなWebアプリケーションも十分書くことができることがわかります。ユーザーに選択してもらえるように作成しておけば、CGIのシンプルさと、組み込みWebサーバーのパフォーマンスをあわせて提供することができます。
+The image of CGI is that it lacks functionality or is old, but if you look at the application above, you can see that modern web applications can also be written sufficiently. If you create it for your choice, you can combine the simplicity of CGI with the performance of your embedded web server.
 
 <hr>
-<a href="/blog/20130220136137.html">読み物へ</a>
-
+<a href="/blog/20130220136137.html"> To reading material </a>

@@ -1,778 +1,776 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
   <li>
-    <span itemprop="name">here</span></a>
-  </li>
-</ol>
-<h2>if文による条件分岐</h2>
+    <span itemprop = "name"> here </ span> </a>
+  </ li>
+</ ol>
+<h2> Conditional branching by if statement </ h2>
 
 
 
-プログラミングを書いていると条件によって処理を変えたり、同じ処理を繰り返したくなる場合があります。
+When writing programming, you may want to change the process or repeat the same process depending on the conditions.
 
-そのような場合はif文やfor文を使うことによって条件分岐と繰り返しを実現できます。
+In such a case, conditional branching and repetition can be realized by using if and for statements.
 
-<h3>条件分岐の基礎</h3>
+<h3> Basics of conditional branching </ h3>
 
-条件分岐の基礎を解説します。
+I will explain the basics of conditional branching.
 
-<h4>if文</h4>
+<h4> if statement </ h4>
 
-Perlで条件分岐を行うには<a href="/blog/20080317120577.html">if文</a>を使用します。まず最初に簡単な条件分岐を書いてみます。変数の値が「5」の場合に「OK」と出力するif文です。
+Use <a href="/blog/20080317120577.html"> if statement </a> to do conditional branching in Perl. First, let's write a simple conditional branch. This is an if statement that outputs "OK" when the value of the variable is "5".
 
 <pre>
-my $num = 5;
-if ($num == 5) {
-  print "OK\n";
+my $ num = 5;
+if ($ num == 5) {
+  print "OK \ n";
 }
-</pre>
+</ pre>
 
-if文は以下のような構文です。条件が真になったときに、続くブロックの中が実行されます。
+The if statement has the following syntax. When the condition becomes true, the following blocks are executed.
 
 <pre>
-if (条件) {
+if (condition) {
   ...;
 }
-</pre>
+</ pre>
 
-<b>==</b>は比較演算子で、数値が等しい場合に真を返します。
+<b> == </ b> is a comparison operator that returns true if the numbers are equal.
 
-この例の場合は、変数には5が入っているので「$num == 5」は真を返します。
+In the case of this example, "$ num == 5" returns true because the variable contains 5.
 
-そして、条件が真なので、続くブロックの中身が実行されます。
+And since the condition is true, the contents of the following blocks are executed.
 
-変数の内容を「4」などに変えてみると「OK」と表示されないことも確認してみてください。
+Also check that "OK" is not displayed when you change the contents of the variable to "4".
 
-<h4>if～else文</h4>
+<h4> if ～ else statement </ h4>
 
-<a href="/blog/20080320120602.html">if～else文</a>を使うと、条件が真の場合に実行する処理と偽の場合に実行する処理を書くことができます。
+By using <a href="/blog/20080320120602.html"> if ～ else statement </a>, you can write the process to be executed when the condition is true and the process to be executed when the condition is false.
 
 <pre>
-# if文
-my $num = 5;
-if ($num == 5) {
-  print "OK\n";
+#if statement
+my $ num = 5;
+if ($ num == 5) {
+  print "OK \ n";
 }
 else {
-  print "Not OK\n";
+  print "Not OK \ n";
 }
-</pre>
+</ pre>
 
-<h4>if～elsif文</h4>
+<h4> if ～ elsif statement </ h4>
 
-<a href="/blog/20080320120602.html">if～elsif文</a>を使うと、条件を複数記述することができます。
+You can use <a href="/blog/20080320120602.html"> if ～ elsif statement </a> to describe multiple conditions.
 
 <pre>
-# if～elsif
-my $num = 5;
-if ($num == 5) {
-  print "Number is 5\n";
+# if ～ elsif
+my $ num = 5;
+if ($ num == 5) {
+  print "Number is 5 \ n";
 }
-elsif ($num == 7) {
-  print "Number is 7\n";
+elsif ($ num == 7) {
+  print "Number is 7 \ n";
 }
-</pre>
+</ pre>
 
-上記の場合は「$num」が5だった場合は「Number is 5」、「$num」が7だった場合は「Number is 7」と表示されます。
+In the above case, if "$ num" is 5, "Number is 5" is displayed, and if "$ num" is 7, "Number is 7" is displayed.
 
-C言語やJavaでは「else if」ですが、Perlでは「elsif」となっていることに注意してください。
+Note that in C and Java it is "else if", but in Perl it is "els if".
 
-elsifは複数指定することもできます。
-
-<pre>
-# 複数のelsif
-my $num = 5;
-if ($num == 5) {
-  print "Number is 5\n";
-}
-elsif ($num == 7) {
-  print "Number is 7\n";
-}
-elsif ($num == 9) {
-  print "Number is 9\n";
-}
-</pre>
-
-elsifはelseと組み合わせて利用することもできます。elseは必ず最後に記述します。
-
+You can specify multiple elsifs.
 
 <pre>
-# elseifとelseの組み合わせ
-my $num = 5;
-if ($num == 5) {
-  print "Number is 5\n";
+# Multiple elsif
+my $ num = 5;
+if ($ num == 5) {
+  print "Number is 5 \ n";
 }
-elsif ($num == 7) {
-  print "Number is 7\n";
+elsif ($ num == 7) {
+  print "Number is 7 \ n";
 }
-elsif ($num == 9) {
-  print "Number is 9\n";
+elsif ($ num == 9) {
+  print "Number is 9 \ n";
+}
+</ pre>
+
+elsif can also be used in combination with else. Be sure to write else at the end.
+
+
+<pre>
+# elseif and else combination
+my $ num = 5;
+if ($ num == 5) {
+  print "Number is 5 \ n";
+}
+elsif ($ num == 7) {
+  print "Number is 7 \ n";
+}
+elsif ($ num == 9) {
+  print "Number is 9 \ n";
 }
 else {
-  print "Not match\n";
+  print "Not match \ n";
 }
-</pre>
+</ pre>
 
-<h3>比較演算子</h3>
+<h3> Comparison operator </ h3>
 
-if文の条件の中で「==」という記号を使いましたが、これは<b>比較演算子</b>の一つです。
+I used the symbol "==" in the condition of the if statement, which is one of the <b> comparison operators </ b>.
 
-Perlの比較演算子をここで紹介しておきます。Perlには二種類の比較演算子があります。<b>数値比較演算子</b>と<b>文字列比較演算子</b>です。
+Here are the Perl comparison operators. Perl has two types of comparison operators. <b> Numeric comparison operators </ b> and <b> String comparison operators </ b>.
 
-<h4>数値比較演算子</h4>
+<h4> Numeric comparison operator </ h4>
 
-数値比較演算子は、値を数値として比較するときに利用する演算子です。
+Numeric comparison operators are operators used to compare values ​​as numbers.
 
 <table>
   <tr>
     <td>
-      *演算子
-    </td>
+      *operator
+    </ td>
     <td>
-      *意味
-    </td>
-  </tr>
+      *meaning
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A == B
-    </td>
+    </ td>
     <td>
-      AとBは等しい
-    </td>
-  </tr>
+      A and B are equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A != B
-    </td>
+      A! = B
+    </ td>
     <td>
-      AとBは等しくない
-    </td>
-  </tr>
+      A and B are not equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A > B
-    </td>
+      A> B
+    </ td>
     <td>
-      AはBより大きい
-    </td>
-  </tr>
+      A is greater than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A >= B
-    </td>
+      A> = B
+    </ td>
     <td>
-      AはB以上
-    </td>
-  </tr>
+      A is B or higher
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A < B
-    </td>
+      A <B
+    </ td>
     <td>
-      AはBより小さい
-    </td>
-  </tr>
+      A is smaller than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A <= B
-    </td>
+    </ td>
     <td>
-      AはB以下
-    </td>
-  </tr>
+      A is less than or equal to B
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>文字列比較演算子</h4>
+<h4> String comparison operator </ h4>
 
-文字列比較演算子は、文字列を辞書順で比較するときに利用する演算子です。
+The string comparison operator is an operator used to compare strings in lexicographical order.
 
 <table>
   <tr>
     <td>
-      *演算子
-    </td>
+      *operator
+    </ td>
     <td>
-      *意味
-    </td>
-  </tr>
+      *meaning
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A eq B
-    </td>
+    </ td>
     <td>
-      AとBは等しい
-    </td>
-  </tr>
+      A and B are equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A ne B
-    </td>
+    </ td>
     <td>
-      AとBは等しくない
-    </td>
-  </tr>
+      A and B are not equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A gt B
-    </td>
+    </ td>
     <td>
-      AはBより大きい
-    </td>
-  </tr>
+      A is greater than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A ge B
-    </td>
+    </ td>
     <td>
-      AはB以上
-    </td>
-  </tr>
+      A is B or higher
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A lt B
-    </td>
+    </ td>
     <td>
-      AはBより小さい
-    </td>
-  </tr>
+      A is smaller than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A le B
-    </td>
+    </ td>
     <td>
-      AはB以下
-    </td>
-  </tr>
+      A is less than or equal to B
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>数値比較と文字列比較</h4>
+<h4> Numerical comparison and string comparison </ h4>
 
-Perlでは、値を数値として比較したい場合は数値比較演算子を使い、文字列として比較したい場合は文字列比較演算子を使います。
+In Perl, use the numeric comparison operator if you want to compare values ​​as numbers, and the string comparison operator if you want to compare as strings.
 
-この点が他の言語と異なる部分なので注意してください。
+Please note that this is what makes it different from other languages.
 
 <pre>
-# 数値比較
-my $num = 4;
-if ($num < 6) {
+# Numerical comparison
+my $ num = 4;
+if ($ num <6) {
   ...
 }
 
-# 文字列比較
-my $animal = 'Cat':
-if ($animal eq 'Dog') {
+#String comparison
+my $ animal ='Cat':
+if ($ animal eq'Dog') {
   ...
 }
-</pre>
+</ pre>
 
-文字列比較演算子には、大きさを比べるための「gt」「ge」「lt」「le」がありますが、これは辞書順で比較されます。
+String comparison operators include "gt", "ge", "lt", and "le" for comparing sizes, which are compared in lexicographical order.
 
-たとえば「1」と「03」を数値比較した場合は「1」は「1」、「03」は「3」と解釈され「03」の方が大きいです。
+For example, when comparing "1" and "03" numerically, "1" is interpreted as "1" and "03" is interpreted as "3", and "03" is larger.
 
-けれども「1」と「03」を文字列比較した場合は、最初の文字から判定され「1」と「0」は、文字コードが「1」のほうが大きいので「1」のほうが大きくなります。
+However, when comparing the character strings of "1" and "03", it is judged from the first character, and "1" and "0" are larger for "1" because the character code is larger for "1".
 
 <pre>
-my $num1 = '1';
-my $num2 = '03';
+my $ num1 = '1';
+my $ num2 = '03';
 
-# 数値比較
-if ($num1 > $num2) {
-  # 実行されない
-  print "OK 1\n";
+# Numerical comparison
+if ($ num1> $ num2) {
+  # Not executed
+  print "OK 1 \ n";
 }
 
-# 文字列比較
-if ($num1 gt $num2) {
-  # 実行される
-  print "OK 2\n";
+#String comparison
+if ($ num1 gt $ num2) {
+  # Be executed
+  print "OK 2 \ n";
 }
-</pre>
+</ pre>
 
-Perlの比較演算子の詳しい解説については以下をご覧ください。
+See below for a detailed explanation of Perl's comparison operators.
 
 <ul>
   <li>
-    <a href="/blog/20080318120585.html">Perlの比較演算子</a>
-  </li>
-</ul>
+    <a href="/blog/20080318120585.html"> Perl comparison operator </a>
+  </ li>
+</ ul>
 
-<h3>Perlの真偽値</h3>
+<h3> Perl boolean </ h3>
 
-次にPerlの<b>真偽値</b>についてきちんと理解しておきましょう。if文では、条件が真になったときにブロックの中が実行されましたね。偽になったときは実行されませんでした。
-ここでPerlでの真偽値について、正しく理解しておきましょう。
+Next, let's get a good understanding of Perl's <b> boolean </ b>. In the if statement, the inside of the block was executed when the condition became true. It was not executed when it became false.
+Now let's get a good understanding of Perl booleans.
 
-<h4>Perlで偽とされる値</h4>
+<h4> Perl false value </ h4>
 
-Perlで偽とされる値は以下の4つです。
+There are four false values ​​in Perl:
 
 <table>
   <tr>
     <td>
       1
-    </td>
+    </ td>
     <td>
-      <a href="/blog/20100220126425.html">undef</a>
-    </td>
+      <a href="/blog/20100220126425.html"> undef </a>
+    </ td>
     <td>
-      未定義値
-    </td>
-  </tr>
+      Undefined value
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       2
-    </td>
+    </ td>
     <td>
       ""
-    </td>
+    </ td>
     <td>
-      空文字列
-    </td>
-  </tr>
+      Empty string
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       3
-    </td>
+    </ td>
     <td>
       0
-    </td>
+    </ td>
     <td>
       0
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      4
-    </td>
+      Four
+    </ td>
     <td>
       "0"
-    </td>
+    </ td>
     <td>
-      文字列の0
-    </td>
-  </tr>
+      String 0
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-以下のようにif文の条件が偽値の場合は、ブロックの中が実行されません。
+If the condition of the if statement is a false value as shown below, the inside of the block will not be executed.
 
 <pre>
-# 条件が偽の場合は実行されない
+# Not executed if condition is false
 if (undef) {
-  # 実行されない
+  # Not executed
 }
 
 if ("") {
-  # 実行されない
+  # Not executed
 }
 
 if (0) {
-  # 実行されない
+  # Not executed
 }
 
 if ("0") {
-  # 実行されない
+  # Not executed
 }
-</pre>
+</ pre>
 
-<h4>Perlで真とされる値</h4>
+<h4> Perl true value </ h4>
 
-上記で偽とされるもの以外は、すべて真になります。たとえば例を挙げると次のものが真になります。
+Everything is true except what is false above. For example, the following is true:
 
-<b>長さのある文字列</b>
+<b> Long string </ b>
 
 <pre>
 "Cat"
-</pre>
+</ pre>
 
-<b>0以外の数値</b>
+<b> Non-zeroNumerical value </ b>
 
 <pre>
 13
 -3
 1.5
-</pre>
+</ pre>
 
-<b>"0"以外の数値を含む文字列</b>
+<b> A string containing a number other than "0" </ b>
 
 <pre>
 "13"
 "0.1"
 "0.0"
-</pre>
+</ pre>
 
-<b>リファレンスあるいはオブジェクト</b>
+<b> Reference or object </ b>
 
 <pre>
-my $nums = [1, 2, 3];
-my $scores = {};
-my $object = XML::Simple->new;
-</pre>
+my $ nums = [1, 2, 3];
+my $ scores = {};
+my $ object = XML :: Simple-> new;
+</ pre>
 
 
-「"0.0"」という文字列が真になることに注意してください。
+Notice that the string "" 0.0 "" is true.
 
-<b>要素を持つ<a href="/blog/20100308126967.html">リスト</a></b>
+<b> <a href="/blog/20100308126967.html"> list </a> </ b> with elements
 
 <pre>
 (0)
 (1, 2);
-</pre>
+</ pre>
 
-以下のようにif文の条件が真の場合は、ブロックの中が実行されます。
+If the condition of the if statement is true as shown below, the inside of the block is executed.
 
 <pre>
-# 条件が真の場合は実行される
+# Executed if the condition is true
 if ("Cat") {
-  # 実行される
+  # Be executed
 }
 
 if (13) {
-  # 実行される
+  # Be executed
 }
 
 if ("13") {
-  # 実行される
+  # Be executed
 }
 
-my $object = XML::Simple->new;
-if ($object) {
-  # 実行される
+my $ object = XML :: Simple-> new;
+if ($ object) {
+  # Be executed
 }
-</pre>
+</ pre>
 
-<h4>配列をif文の条件に書く場合</h4>
+<h4> When writing an array in the condition of an if statement </ h4>
 
-配列をif文に書くというのはよくあることなので、真偽値としてどう評価されるのかを見ておきましょう。
+It's common to write an array in an if statement, so let's see how it is evaluated as a false value.
 
-配列が要素を持つ場合は、スカラコンテキストで評価され、配列の個数が評価されます。
+If the array has elements, it is evaluated in the scalar context and the number of arrays is evaluated.
 
-配列が要素を持つ場合は、ifブロックが実行され、そうでない場合は、実行されません。
+If the array has elements, the if block will be executed, otherwise it will not be executed.
 
 <pre>
 my @nums = (1, 2);
 if (@nums) {
-  # 実行される
+  # Be executed
 }
 
 my @nums = ();
 if (@nums) {
-  # 実行されない
+  # Not executed
 }
-</pre>
+</ pre>
 
-Perlの真偽値の詳細については以下をご覧ください。
+See below for more information on Perl booleans.
 
 <ul>
   <li>
-    <a href="/blog/20080323120628.html">Perlの真偽値</a>
-  </li>
-</ul>
+    <a href="/blog/20080323120628.html"> Perl truth value </a>
+  </ li>
+</ ul>
 
-<h3>Perlの論理演算子</h3>
+<h3> Perl logical operators </ h3>
 
-次に「AかつB」「AまたはB」「Aではない」ということを表現できる論理演算子を解説します。
+Next, I will explain the logical operators that can express "A and B", "A or B", and "not A".
 
-これまでは、単一の条件だけを見てきましたが、論理演算子を使うことによって複合的な条件や否定を表現することができます。
+So far, we've only looked at a single condition, but you can use logical operators to express complex conditions and negations.
 
 <table>
   <tr>
     <td>
-      *演算子
-    </td>
+      *operator
+    </ td>
     <td>
-      *意味
-    </td>
-  </tr>
+      *meaning
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      &#x7c;&#x7c;
-    </td>
+      & # x7c; & # x7c;
+    </ td>
     <td>
-      論理和
-    </td>
-  </tr>
+      Logical sum
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       &&
-    </td>
+    </ td>
     <td>
-      論理積
-    </td>
-  </tr>
+      Logical AND
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      !
-    </td>
+      !!
+    </ td>
     <td>
-      否定
-    </td>
-  </tr>
+      denial
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       or
-    </td>
+    </ td>
     <td>
-      論理和(&&より優先順位が低い)
-    </td>
-  </tr>
+      OR (lower priority than &&)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       and
-    </td>
+    </ td>
     <td>
-      論理積&&より優先順位が低い)
-    </td>
-  </tr>
+      Lower priority than AND &&)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       not
-    </td>
+    </ td>
     <td>
-      否定(!より優先優位が低い)
-    </td>
-  </tr>
+      Negation (lower priority than!)
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>論理積(A かつ B)</h4>
+<h4> Logical product (A and B) </ h4>
 
-たとえば変数「$num」が「1より大きい、かつ、5より小さい」という条件を表現するには<b>&&</b>を使って次のように書きます。
-
-<pre>
-if ($num > 1 && $num < 5) {
-  ...
-}
-</pre>
-
-andも同じ意味を持ちますが演算子の優先順位が低く、if文の条件部で書く場合は「&&」を使うのが慣習的なPerlの書き方となっています。
-
-<h4>論理和(A または B)</h4>
-
-次に、変数「$num」が「1より小さい、あるいは、5より大きい」という条件を表現するには<b>||</b>を使って次のように書きます。
+For example, to express the condition that the variable "$ num" is "greater than 1 and less than 5", use <b> && </ b> and write as follows.
 
 <pre>
-if ($num < 1 || $num > 5) {
+if ($ num> 1 && $ num <5) {
   ...
 }
-</pre>
+</ pre>
 
-orも同じ意味を持ちますが演算子の優先順位が低く、if文の条件部で書く場合は「||」を使うのが慣習的なPerlの書き方となっています。
+And has the same meaning, but the priority of the operator is low, and it is customary to use "&&" when writing in the conditional part of the if statement.
 
-<h4>否定(Aではない)</h4>
+<h4> OR (A or B) </ h4>
 
-変数「$num」が「真ではない」という条件を表現するには<b>!</b>を使って次のように書けます。
+Next, to express the condition that the variable "$ num" is "less than 1 or greater than 5", use <b> || </ b> and write as follows.
 
 <pre>
-if (!$num)) {
+if ($ num <1 || $ num> 5) {
   ...
 }
-</pre>
+</ pre>
 
-notも同じ意味を持ちますが演算子の優先順位が低く、ソースコードで利用されることは少ないようです。
+Or has the same meaning, but the priority of the operator is low, and it is customary to use "||" when writing in the conditional part of the if statement.
 
-<h4>論理演算子を組み合わせて使う</h4>
+<h4> Negation (not A) </ h4>
 
-論理演算子は組み合わせて使うことができます。括弧を使うことで演算子の結合順序を制御することができます。
+To express the condition that the variable "$ num" is "not true", we can use <b>! </ B> to write:
 
 <pre>
-if ($num > 10 || (($num > -3 && $num < 6) && !($num == 0))) {
+if (! $ num)) {
   ...
 }
-</pre>
+</ pre>
 
-「&&」の結合順序のほうが「||」の結合順序より高く、途中の一部の括弧はプログラム的には意味がありませんが、ソースコードをわかりやすくするために、意味の区切りで、積極的に「()」を使いましょう。
+Not has the same meaning, but the operator priority is low, and it seems that it is rarely used in the source code.
 
-論理演算子の詳細な解説については以下の記事を参考にしてください。
+<h4> Use a combination of logical operators </ h4>
+
+Logical operators can be used in combination. You can control the join order of operators by using parentheses.
+
+<pre>
+if ($ num> 10 || (($ num> -3 && $ num <6) &&! ($ Num == 0))) {
+  ...
+}
+</ pre>
+
+The join order of "&&" is higher than the join order of "||", and some parentheses in the middle are not programmatically meaningful. Let's use "()" for.
+
+Please refer to the following articles for a detailed explanation of logical operators.
 
 <ul>
   <li>
-    <a href="/blog/20100816136168.html">Perlの論理演算子の一覧</a>
-  </li>
-</ul>
+    <a href="/blog/20100816136168.html"> List of Perl logical operators </a>
+  </ li>
+</ ul>
 
-<h3>やや特殊な条件分岐</h3>
+<h3> Slightly special conditional branching </ h3>
 
-Perlでしばしば使われるやや特殊な条件分岐について解説します。
+Learn about some of the more unusual conditionals that are often used in Perl.
 
-<h4>unless文</h4>
+<h4> unless statement </ h4>
 
-<a href="/blog/20100125126425.html">unless文</a>はif文で条件を否定した場合と同じ処理を書くことができます。
+<a href="/blog/20100125126425.html"> unless statement </a> can write the same processing as when the condition is denied by the if statement.
 
 <pre>
-# $numが真でなければブロックを実行
-unless ($num) {
+Execute block if # $ num is not true
+unless ($ num) {
   ...
 }
-</pre>
+</ pre>
 
-次のif文と全く同じ意味になります。
+It has exactly the same meaning as the following if statement.
 
 <pre>
-if (!$num) {
+if (! $ num) {
   ...
 }
-</pre>
+</ pre>
 
-意味が同じならunless文はどういうときに使うんでしょうか。それは「でなければ」という気持ちを強めたいときです。unlessの方が「でなければ」という気持ちが目立ちます。
+When should the unless statement be used if the meanings are the same? That is when you want to strengthen your feelings of "otherwise". The feeling that unless is "otherwise" stands out.
 
-たとえばエラーチェックの処理が主要な処理なのであれば、以下のように書くと「if」と「!」を使って書くより目立ちますね。<a href="/blog/20100219126425.html">define関数</a>を使って値が定義されなかった場合にブロックを実行する処理です。
+For example, if the error checking process is the main process, writing the following is more noticeable than writing using "if" and "!". It is a process to execute a block when a value is not defined using <a href="/blog/20100219126425.html"> define function </a>.
 
 <pre>
-unless (defined $num) {
+unless (defined $ num) {
   ...
 }
-</pre>
+</ pre>
 
-<h4>失敗した処理における分岐をorで書く</h4>
+<h4> Write the branch in the failed process with or </ h4>
 
-Perlには<a href="/blog/20100816136168.html">論理演算子 or</a>を使った条件分岐の処理が慣習的に書かれることが多いです。
+Perl often customarily writes conditional branching using the <a href="/blog/20100816136168.html"> logical operator or </a>.
 
-典型的な例では、<a href="/blog/20080718121643.html">open関数</a>が失敗した場合のエラー処理には「or」が出てきます。
+In a typical example, "or" will appear in the error handling when the <a href="/blog/20080718121643.html"> open function </a> fails.
 
-open関数が失敗して偽値が返された場合に、「or」の後ろの処理が実行されます。
-
-<pre>
-open(my $fh, "<", $file)
-  or die "Can't open $file:$!";
-</pre>
-
-主要な処理を先に書いて、補助的なエラー処理をorを使って、後ろ側に書いています。こんな風に自然言語のような表現でプログラミングが書けるのもPerlの面白いところのひとつです。
-
-<h4>後置のifと後置のunless</h4>
-
-Perlではなんとifとunlessを、処理の後ろに記述することができます。
+If the open function fails and returns a false value, the processing after the "or" is performed.
 
 <pre>
-# 後置のif
-$num1 = 1 if !defined $num1;
+open (my $ fh, "<", $ file)
+  or die "Can't open $ file: $!";
+</ pre>
 
-# 後置のunless
-$num2 = 1 unless defined $num2;
-</pre>
+The main processing is written first, and the auxiliary error processing is written later using or. One of the interesting things about Perl is that you can write programming in a natural language-like expression like this.
 
-これは正確には<a href="/blog/20080324120637.html">if修飾子</a>、<a href="/blog/20080324120637.html">unless修飾子</a>といいます。
+<h4> Postfix if and postfix unless </ h4>
 
-1行で書ける条件分岐であれば、後置のif、unlessを使って書くこともできます。
-
-後置のifとunlessの最大のメリットは、通常のifとunlessと違って、スコープを作成しないので、その分処理が速いということです。通常は意識する必要はありませんが、速度をどうしても稼ぎたいときには、少し早くなります。
-
-僕は<a href="/blog/20170513149580.html">next文</a>や<a href="/blog/20170527149589.html">last文</a>と一緒に使うことが多いです。
+In Perl, if and unless can be written after the process.
 
 <pre>
-for my $num (@nums) {
-  last if !defined $num;
+# Postfix if
+$ num1 = 1 if! defined $ num1;
+
+# Postfix unless
+$ num2 = 1 unless defined $ num2;
+</ pre>
+
+This is more accurately called the <a href="/blog/20080324120637.html"> if modifier </a> and the <a href="/blog/20080324120637.html"> unless modifier </a>.
+
+If it is a conditional branch that can be written in one line, it can also be written using the postfix if and unless.
+
+The biggest merit of postfix if and unless is that unlike normal if and unless, it does not create a scope, so processing is faster. Normally you don't need to be aware of it, but if you really want to gain speed, it will be a little faster.
+
+I often use it with <a href="/blog/20170513149580.html"> next statement </a> and <a href="/blog/20170527149589.html"> last statement </a>.
+
+<pre>
+for my $ num (@nums) {
+  last if! defined $ num;
 }
 
-for my $num (@nums) {
-  next if !defined $num;
+for my $ num (@nums) {
+  next if! defined $ num;
 }
-</pre>
+</ pre>
 
-<h4>三項演算子</h4>
+<h4> Ternary operator </ h4>
 
-Perlには<a href="/blog/20080325120646.html">三項演算子</a>と呼ばれる演算子があります。
+Perl has an operator called <a href="/blog/20080325120646.html"> ternary operator </a>.
 
-三項演算子を使うと、条件によって、返却する値を変えることができます。
-
-<pre>
-# 三項演算子の構文
-条件 ? 値1 : 値2
-</pre>
-
-条件が真の場合は、値1が返り、偽の場合は値2が返ります。
-
-以下の例では「$flag」が真の場合に「$animal」に「Cat」が代入され、偽の場合に「$animal」に「Dog」が代入されます。
+You can use the ternary operator to change the value to be returned depending on the conditions.
 
 <pre>
-my $flag = 1;
+#Ternary operator syntax
+Condition? Value 1: Value 2
+</ pre>
 
-# 3項演算子
-my $animal = $flag ? 'Cat' : 'Dog';
-</pre>
+If the condition is true, the value 1 is returned, and if false, the value 2 is returned.
 
-ifを使った条件分岐でも、同じことができますが、三項演算子を使うと簡潔に書けます。
-
-<b>三項演算子を複数重ねて使う</b>
-
-三項演算子は複数重ねて使うことができ、「if ～ elsif ～ else」に該当する書き方ができます。
+In the following example, "Cat" is assigned to "$ animal" when "$ flag" is true, and "Dog" is assigned to "$ animal" when it is false.
 
 <pre>
-my $flag = 2;
+my $ flag = 1;
 
-my $animal =
-    $flag == 0 ? 'Cat'
-  : $flag == 1 ? 'Dog'
-  : $flag == 2 ? 'Mouse'
-  : 'Cow';
-</pre>
+# Ternary operator
+my $ animal = $ flag?'Cat':'Dog';
+</ pre>
 
-「$flag」が「2」なので「$animal」には「Mouse」が代入されます。三項演算子を重ねて使うときは、見やすいように複数行にして書くのがお勧めです。
+You can do the same with conditional branching using if, but you can write it concisely using the ternary operator.
 
-<h4>特殊な代入演算子「||=」「//=」でデフォルト値を設定</h4>
+<b> Use multiple ternary operators </ b>
 
-Perlにはよく使われるデフォルト値の設定方法があります。それは<a href="/blog/20161005147566.html">特殊な代入演算子</a>である「||=」あるいは「//=」を使う方法です。
+Multiple ternary operators can be used in layers, and can be written in a way that corresponds to "if ~ elsif ~ else".
 
 <pre>
-# もし「$x」が偽ならば「$x」に5を設定
-$x ||= 5;
+my $ flag = 2;
 
-# もし「$x」が未定義であれば「$y」に7を設定
-$y //= 7;
-</pre>
+my $ animal =
+    $ flag == 0?'Cat'
+  : $ flag == 1?'Dog'
+  : $ flag == 2?'Mouse'
+  :'Cow';
+</ pre>
 
-「A ||= B」は、「A」が偽であれば「A」に「B」の内容が代入されます。
+Since "$ flag" is "2", "Mouse" is assigned to "$ animal". When using ternary operators in layers, it is recommended to write them in multiple lines for easy viewing.
 
-「A //= B」は、「A」が未定義であれば「A」に「B」の内容が代入されます。
+<h4> Set default values ​​with special assignment operators "|| =" and "// =" </ h4>
 
-「A //= B」の構文はPerl 5.10で導入されたので、Perl 5.10以降であれば「A //= B」が使用できます。「A ||= B」はバグを生みやすいので、こちらを使用するのがお勧めです。たとえば「A ||= B」だと「A」が「0」の場合に、デフォルト値が設定されてしまいます。
+Perl has a commonly used default value setting method. It is a way to use the <a href="/blog/20161005147566.html"> special assignment operator </a> "|| =" or "// =".
 
-頻繁に使う構文なので覚えてしましょう。
+<pre>
+# If "$ x" is false, set "$ x" to 5.
+$ x || = 5;
 
-<h3>繰り返し文</h3>
+# Set 7 to "$ y" if "$ x" is undefined
+$ y // =7;
+</ pre>
 
-繰り返し文については以下の記事を参考にしてください。
+For "A || = B", if "A" is false, the content of "B" is assigned to "A".
+
+For "A // = B", if "A" is undefined, the contents of "B" will be assigned to "A".
+
+The syntax for "A // = B" was introduced in Perl 5.10, so you can use "A // = B" in Perl 5.10 and later. "A || = B" is prone to bugs, so it is recommended to use it. For example, if "A || = B", the default value will be set when "A" is "0".
+
+Remember this because it's a frequently used syntax.
+
+<h3> Repeat statement </ h3>
+
+Please refer to the following article for repetitive sentences.
 
 <ul>
-  <li>
-    <a href="/blog/20100123126425.html">while文</a>
-  </li>
-  <li>
-    <a href="/blog/20080327120662.html">for文</a>
-  </li>
-  <li>
-    <a href="/blog/20080328120673.html">foreach文</a>
-  </li>
-  <li>
-    <a href="/blog/20080329120687.html">lastとnext</a>
-  </li>
-</ul>
-
-
+   <li>
+     <a href="/blog/20100123126425.html"> while statement </a>
+   </ li>
+   <li>
+     <a href="/blog/20080327120662.html"> for statement </a>
+   </ li>
+   <li>
+     <a href="/blog/20080328120673.html"> foreach statement </a>
+   </ li>
+   <li>
+     <a href="/blog/20080329120687.html"> last and next </a>
+   </ li>
+</ ul>

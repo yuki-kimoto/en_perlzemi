@@ -1,41 +1,39 @@
+<h2> @INC problem, I thought about what kind of danger there is if there is a current directory "." At the beginning of the module path </ h2>
 
-<h2>@INC問題、モジュールパスの先頭にカレントディレクトリ「.」があるとどんな危険があるのか考えてみた</h2>
+In Perl 5.26, the current directory "." Is deleted from the beginning of @INC, which is the module search path. There is an explanation that it is for security measures, but I thought about what kind of situation there is actually danger.
 
-Perl 5.26ではモジュールの検索パスである@INCの先頭からカレントディレクトリ「.」が削除される。セキュリティ対策のためという説明があるのだけれど、実際にどんな場面で危険があるのかということを考えてみた。
+<h3> It is dangerous to change the directory writable by other users to the current directory </ h3>
 
-<h3>他のユーザーが書き込み可能なディレクトリをカレントディレクトリにした場合が危ない</h3>
-
-たとえば次のスクリプト(test.pl)を考えてみよう。
+For example, consider the following script (test.pl).
 
 <pre>
-chdir '/tmp';
+chdir'/ tmp';
 
-require File::Path;
-</pre>
+require File :: Path;
+</ pre>
 
-このスクリプトは「/tmp」というディレクトリにカレントディレクトリをまず変更している。
+This script first changes the current directory to a directory called "/ tmp".
 
-<b>ここで重要なことは「/tmp」というディレクトリは、他のユーザーも読み書きできるということだ。</b>
+<b> The important thing here is that the directory "/ tmp" can be read and written by other users. </ b>
 
-他のユーザーが、書き込み可能であるということは「Find/Path.pm」というファイルを置くことができるということだ。(参考:<a href="/blog/20100409127089.html">File::Path</a>)
+Being writable by other users means that you can put a file called "Find / Path.pm". (Reference: <a href="/blog/20100409127089.html"> File :: Path </a>)
 
-モジュールの読み込みパスの先頭にカレントディレクトリ「.」が存在する場合は、まず最初に、カレントディレクトリに存在するモジュールを読み込もうとする。
+If the current directory "." Exists at the beginning of the module load path, it first tries to load the module that exists in the current directory.
 
-するとこのスクリプトはカレントディレクトリである「/tmp」に存在する「Find/Path.pm」を読もうとする。
+This script then tries to read "Find / Path.pm" which exists in the current directory "/ tmp".
 
-「Find/Path.pm」の中身を、攻撃用のプログラムにすれば「test.pl」は意図せずに「/tmp」の中の「Find/Path.pm」を実行してしまうことになる。
+If the contents of "Find / Path.pm" are made into an attack program, "test.pl" will unintentionally execute "Find / Path.pm" in "/ tmp". ..
 
-これは「信用できない検索パスの脆弱性」という問題のようだ。
+This seems to be a problem of "untrustworthy search path vulnerability".
 
 <ul>
   <li>
-    <a href="https://www.ipa.go.jp/security/fy21/reports/tech1-tg/a_01.html">情報セキュリティ技術動向調査（2009 年上期）「信用できない検索パスの脆弱性」</a>
-  </li>
-</ul>
+    <a href="https://www.ipa.go.jp/security/fy21/reports/tech1-tg/a_01.html"> Information Security Technology Trend Survey (1st half of 2009) "Untrusted Search Path Vulnerability" </a>
+  </ li>
+</ ul>
 
-「/tmp」以外でも他のユーザーが書き込み可能なディレクトリをカレントディレクトリにするようなスクリプトは、この脆弱性を持つといえる。
+Scripts other than "/ tmp" that make a directory writable by other users the current directory can be said to have this vulnerability.
 
-<h3>追記</h3>
+<h3> Addendum </ h3>
 
-何回も「.」が@INCの先頭に追加されていると書いてきましたが、<b>「.」が末尾に追加されている</b>の間違いでした。Twitterで指摘をもらいました。
-
+I've written many times that "." Has been added to the beginning of @INC, but it was a mistake that <b> "." Was added to the end </ b>. I got an indication on Twitter.

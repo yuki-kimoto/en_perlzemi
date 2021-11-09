@@ -1,616 +1,612 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
   <li>
-    <span itemprop="name">here</span></a>
-  </li>
-</ol>
-<h2>for/while文を使った繰り返し処理</h2>
+    <span itemprop = "name"> here </ span> </a>
+  </ li>
+</ ol>
+<h2> Iterative processing using for / while statement </ h2>
 
 
 
-Perlの繰り返しの構文について解説します。繰り返しの構文を覚えるとプログラムの幅がすごく広がります。
+Learn about Perl's iterative syntax. Learning the iterative syntax greatly expands the range of programs.
 
-<h3>for文の基礎</h3>
+<h3> Basics of for statement </ h3>
 
-まず最初に繰り返しの構文である<b>for文</b>について解説します。最初に次のサンプルを見てください。これは、0から9までの数を画面に出力するプログラムです。
+First, I will explain the iterative syntax <b> for statement </ b>. Take a look at the following sample first. This is a program that outputs a number from 0 to 9 on the screen.
 
 <pre>
-for (my $i = 0; $i < 10; $i++) {
-  print "$i\n";
+for (my $ i = 0; $ i <10; $ i ++) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-これの出力結果は以下のようになります。0から9までの数が出力されていますね。
+The output result of this is as follows. The number from 0 to 9 is output.
 
 <pre>
 0
 1
 2
 3
-4
-5
+Four
+Five
 6
 7
 8
 9
-</pre>
+</ pre>
 
-では構文について順番に解説します。for文は以下のような構文になっています。
+Let's explain the syntax in order. The for statement has the following syntax.
 
 <pre>
-for (ループ変数の初期化; ループする条件; ループ変数の更新) {
+for (Initialization of loop variable; Condition to loop; Update of loop variable) {
   ...
 }
-</pre>
+</ pre>
 
-<h4>1. ループ変数の初期化</h4>
+<h4> 1. Initialization of loop variables </ h4>
 
-最初の部分はループ変数の初期化です。この部分でループ変数が最初にどの値で始まるかを決めます。ループ変数というのは、ループ内で利用される変数のことだと思ってください。
+The first part is the initialization of the loop variable. This part determines what value the loop variable starts with first. Think of a loop variable as a variable used within a loop.
 
-最初の例をもう一度見てみましょう。「my $i = 0」という部分に注目してください。
+Let's look at the first example again. Notice the part "my $ i = 0".
 
 <pre>
-for (my $i = 0; $i < 10; $i++) {
-  print "$i\n";
+for (my $ i = 0; $ i <10; $ i ++) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-ループ変数の初期化部分では、変数宣言を同時に行うことができます。「$i」という変数を宣言し「0」で初期化しています。
+In the initialization part of the loop variable, variable declarations can be made at the same time. We declare a variable called "$ i" and initialize it with "0".
 
-この部分を「my $i = 5」とするとどうなるでしょうか。
-
-<pre>
-for (my $i = 5; $i < 10; $i++) { ... }
-</pre>
-
-「$i」が「5」で初期化されるので、出力結果は以下のようになります。
+What if this part is "my $ i = 5"?
 
 <pre>
-5
+for (my $ i = 5; $ i <10; $ i ++) {...}
+</ pre>
+
+Since "$ i" is initialized with "5", the output result will be as follows.
+
+<pre>
+Five
 6
 7
 8
 9
-</pre>
+</ pre>
 
-<h4>2. ループする条件</h4>
+<h4> 2. Looping conditions </ h4>
 
-さて次に、ループする条件について見ていきましょう。
+Now let's look at the conditions for looping.
 
 <pre>
-for (ループ変数の初期化; ループする条件; ループ変数の更新) {
+for (Initialization of loop variable; Condition to loop; Update of loop variable) {
   ...
 }
-</pre>
+</ pre>
 
-for文では、ループする条件が満たされる間、ブロックが繰り返し実行されます。最初の例を見ると「$i」が「10」より小さいという条件になっています。
+The for statement repeatedly executes the block while the looping condition is met. Looking at the first example, the condition is that "$ i" is less than "10".
 
 <pre>
-for (my $i = 0; $i < 10; $i++) {
-  print "$i\n";
+for (my $ i = 0; $ i <10; $ i ++) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-ですので「$i」が「10」より小さい間ブロックが実行されます。
+So the block will be executed while "$ i" is less than "10".
 
-この部分を「$i < 7」とするとどうなるでしょうか。
+What if this part is "$ i <7"?
 
 <pre>
-for (my $i = 0; $i < 7; $i++) { ... }
-</pre>
+for (my $ i = 0; $ i <7; $ i ++) {...}
+</ pre>
 
-出力結果は以下のようになります。「$i」が「7」より小さい間ループするので、「6」まで出力されているのがわかります。
+The output result is as follows. Since "$ i" loops while it is smaller than "7", you can see that it is output up to "6".
 
 <pre>
 0
 1
 2
 3
-4
-5
+Four
+Five
 6
-</pre>
+</ pre>
 
-<h4>3. ループ変数の更新</h4>
+<h4> 3. Update loop variables </ h4>
 
-最後に、ループ変数の更新の部分を解説します。
+Finally, I will explain the update part of the loop variable.
 
 <pre>
-for (ループ変数の初期化; ループする条件; ループ変数の更新) {
+for (Initialization of loop variable; Condition to loop; Update of loop variable) {
   ...
 }
-</pre>
+</ pre>
 
-ループ変数の更新の部分では、次のブロックを実行する前に、ループ変数の値を変えることができます。
-
-<pre>
-for (my $i = 0; $i < 10; $i++) {
-  print "$i\n";
-}
-</pre>
-
-最初の例では「$i++」と書いています。これは<a href="/blog/20180224151948.html">インクリメント</a>と呼ばれ、$iの値を1増やすことができます。
-
-次のループに進む前に「$i」の値が1増えます。つまりループを進むたびに「1」「2」「3」という風に増えていくことになります。
-
-この部分を「$i += 2」とすればどうなるでしょうか。これは<a href="/blog/20161005147566.html">特殊な代入演算子</a>で「$i」の値を「2」増やすことができます。
+In the loop variable update part, you can change the value of the loop variable before executing the next block.
 
 <pre>
-for (my $i = 0; $i < 10; $i += 2) {
-  print "$i\n";
+for (my $ i = 0; $ i <10; $ i ++) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-2づつ増えていきますので、出力結果は以下のようになります。
+In the first example, it is written as "$ i ++". This is called <a href="/blog/20180224151948.html"> increment </a> and you can increment the value of $ i by 1.
+
+The value of "$ i" is incremented by 1 before proceeding to the next loop. In other words, each time you go through the loop, it will increase to "1", "2", "3".
+
+What if this part is "$ i + = 2"? This is a <a href="/blog/20161005147566.html"> special assignment operator </a> that allows you to increment the value of "$ i" by "2".
+
+<pre>
+for (my $ i = 0; $ i <10; $ i + = 2) {
+  print "$ i \ n";
+}
+</ pre>
+
+The output will be as follows, as it will increase by two.
 
 <pre>
 0
 2
-4
+Four
 6
 8
-</pre>
+</ pre>
 
-「0」から始まり「2」ずつ増え「10」より小さい間ループしていることを確認してください。
+Make sure you are looping from "0" to "2" and less than "10".
 
-<h3>for文のサンプルプログラム</h3>
+<h3> For statement sample program </ h3>
 
-繰り返しの構文はいくつかのサンプルを実際に動かしてみると理解が早まると思います。
+I think that the iterative syntax will be easier to understand if you actually run some samples.
 
-<h4>「9」から初めて「0」まで出力する</h4>
+<h4> Output from "9" to "0" for the first time </ h4>
 
-次は「9」から初めて「0」まで出力するプログラムを見てみましょう。
+Next, let's look at a program that outputs from "9" to "0" for the first time.
 
 <pre>
-for (my $i = 9; $i >= 0; $i--) {
-  print "$i\n";
+for (my $ i = 9; $ i> = 0; $ i--) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-「my $i = 9」と初期化されているので「$i」は「9」から始まりますね。条件は「$i >= 0」なので「$i」が「0以上」のとき繰り返されます。最後の「$i--」で、次のループに移る前に「$i」の値をひとつ減らしています。「--」というのは変数の値を「1」減らす<a href="/blog/20180226151973.html">デクリメント演算子</a>です。
+Since it is initialized as "my $ i = 9", "$ i" starts with "9". Since the condition is "$ i> = 0", it is repeated when "$ i" is "0 or more". The final "$ i--" decrements the value of "$ i" by one before moving on to the next loop. "-" Is a <a href="/blog/20180226151973.html"> decrement operator </a> that decrements the value of a variable by "1".
 
-出力結果は以下のようになります。
+The output result is as follows.
 
 <pre>
 9
 8
 7
 6
-5
-4
+Five
+Four
 3
 2
 1
 0
-</pre>
+</ pre>
 
-<h4>ふたつ飛ばしで「9」から初めて「1」まで出力する</h4>
+<h4> Output from "9" to "1" for the first time by skipping two </ h4>
 
-次はふたつ飛ばしで「9」から「1」まで出力してみます。
+Next, I will skip two and output from "9" to "1".
 
 <pre>
-for (my $i = 9; $i >= 0; $i -= 2) {
-  print "$i\n";
+for (my $ i = 9; $ i> = 0; $ i-= 2) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-ループ変数の更新の部分が「$i -= 2」となっているので、次のループに入る前に「$i」の値が「2」小さくなります。
+Since the update part of the loop variable is "$ i-= 2", the value of "$ i" is reduced by "2" before entering the next loop.
 
-出力結果は以下のようになります。
+The output result is as follows.
 
 <pre>
 9
 7
-5
+Five
 3
 1
-</pre>
+</ pre>
 
-<h4>for文とif文を組み合わせる</h4>
+<h4> Combining for and if statements </ h4>
 
-for文とif文を組み合わせてみましょう。for文とif文を組み合わせられるようになるとプログラミングが上達していきます。
+Let's combine the for statement and the if statement. Programming will improve when you can combine for and if statements.
 
-「0」から「10」までループしますが、ループ変数が3の倍数だったときだけ、出力するというサンプルプログラムを書いてみます。
+I will write a sample program that loops from "0" to "10", but outputs only when the loop variable is a multiple of 3.
 
 <pre>
-for (my $i = 0; $i < 10; $i++) {
-  if ($i % 3 == 0) {
-    print "$i\n";
+for (my $ i = 0; $ i <10; $ i ++) {
+  if ($ i% 3 == 0) {
+    print "$ i \ n";
   }
 }
-</pre>
+</ pre>
 
-if文を使った条件分岐の部分について注目してみてください。「$i % 3 == 0」という記述で、「$i」が「3」の倍数であることを確認できます。「3」で割った余りが「0」だった場合に、その数は3の倍数といえるからです。
+Please pay attention to the conditional branching part using the if statement. You can confirm that "$ i" is a multiple of "3" by writing "$ i% 3 == 0". This is because if the remainder after dividing by "3" is "0", that number is a multiple of 3.
 
-剰余演算子については以下の記事を参考にしてください。
+Please refer to the following articles for the modulo operator.
 
 <ul>
   <li>
-    <a href="/blog/20080910122105.html">数値計算を行う演算子</a>
-  </li>
-</ul>
+    <a href="/blog/20080910122105.html"> Operators that perform numerical calculations </a>
+  </ li>
+</ ul>
 
-3の倍数の時だけif文のブロックが実行されるので出力結果は以下のようになります。
+Since the if statement block is executed only when it is a multiple of 3, the output result is as follows.
 
 <pre>
 0
 3
 6
 9
-</pre>
+</ pre>
 
-if文とfor文を組み合わせると、プログラムをうまく制御できるようになります。if文についての詳しい解説は以下の記事を参考にしてください。
+Combining if and for statements gives you better control over your program. Please refer to the following article for a detailed explanation of the if statement.
 
 <ul>
   <li>
-    <a href="/blog/20161023147731.html">if文を使った条件分岐の構文を覚えよう</a>
-  </li>
-</ul>
+    <a href="/blog/20161023147731.html"> Learn the syntax of conditional branching using if statements </a>
+  </ li>
+</ ul>
 
-<h3>while文</h3>
+<h3> while statement </ h3>
 
-次は<a href="/blog/20100123126425.html">while文</a>について学びましょう。while文は、for文と同じようにループを行うための構文です。
+Next, let's learn about <a href="/blog/20100123126425.html"> while statement </a>. The while statement is a syntax for looping like the for statement.
 
-for文と異なるのは、while文は「ループする条件」の部分しか持たないことです。次のサンプルを見てください。
+The difference from the for statement is that the while statement has only the "looping condition" part. Take a look at the following sample.
 
 <pre>
-my $i = 0;
+my $ i = 0;
 
-while ($i < 10) {
+while ($ i <10) {
   
-  print "$i\n";
+  print "$ i \ n";
   
-  $i++;
+  $ i ++;
 }
-</pre>
+</ pre>
 
-これを実行すると「0」から「9」までの数が画面に出力されます。
+When this is executed, the number from "0" to "9" will be output to the screen.
 
 <pre>
 0
 1
 2
 3
-4
-5
+Four
+Five
 6
 7
 8
 9
-</pre>
+</ pre>
 
-「$i < 10」という部分がwhile文でループする条件の部分です。for文と違って、初期化の部分やループ変数の更新の部分は、while文にはありません。
-
-<pre>
-while (ループする条件) { ... }
-</pre>
-
-「ループ変数の初期化」と「ループ変数の更新」の部分は、Perlの文として書く必要があります。
+The part "$ i <10" is the part of the condition that loops in the while statement. Unlike the for statement, the while statement does not have an initialization part or a loop variable update part.
 
 <pre>
-# ループ変数の初期化
-my $i = 0;
+while (condition to loop) {...}
+</ pre>
 
-while ($i < 10) {
+The "Initialize loop variable" and "Update loop variable" parts must be written as Perl statements.
+
+<pre>
+#Initialization of loop variables
+my $ i = 0;
+
+while ($ i <10) {
   
-  print "$i\n";
+  print "$ i \ n";
   
-  # ループ変数の更新
-  $i++;
+  #Update loop variable
+  $ i ++;
 }
-</pre>
+</ pre>
 
-上記のwhile文のサンプルは、次のfor文と対応しています。
+The above while statement sample corresponds to the following for statement.
 
 <pre>
-for (my $i = 0; $i < 10; $i++) {
-  print "$i\n";
+for (my $ i = 0; $ i <10; $ i ++) {
+  print "$ i \ n";
 }
-</pre>
+</ pre>
 
-for文の方がシンプルに書けていますね。ループ変数が必要な場合はfor文の方が書きやすいです。
+The for statement is simpler to write. If you need a loop variable, the for statement is easier to write.
 
-<h3>foreach文</h3>
+<h3> foreach statement </ h3>
 
-<b>foreach文</b>は<a href="/blog/20161012147627.html">配列</a>の要素を順番に処理するときに利用できます。次のサンプルプログラムを見てください。
+The <b> foreach statement </ b> can be used to process the elements of the <a href="/blog/20161012147627.html"> array </a> in sequence. Take a look at the following sample program.
 
 <pre>
-my @animals = ('Cat', 'Dog', 'Mouse');
+my @animals = ('Cat','Dog','Mouse');
 
-foreach my $animal (@animals) {
-  print "$animal\n";
+foreach my $ animal (@animals) {
+  print "$ animal \ n";
 }
-</pre>
+</ pre>
 
-これは('Cat', 'Dog', 'Mouse')という配列の要素を順番出力するプログラムです。出力結果は以下のようになります。
+This is a program that outputs the elements of the array ('Cat','Dog','Mouse') in order. The output result is as follows.
 
 <pre>
 Cat
 Dog
 Mouse
-</pre>
+</ pre>
 
-<h4>for文とforeach文と同じ</h4>
+<h4> Same as for statement and foreach statement </ h4>
 
-Perlでは、foreach文はfor文の別名になっていて、foreachと書くべきところをforと書くこともできます。
-
-<pre>
-my @animals = ('Cat', 'Dog', 'Mouse');
-
-for my $animal (@animals) {
-  print "$animal\n";
-}
-</pre>
-
-最近のPerlの書き方を見ているとforeachよりは常にforを使う傾向があるように思います。短いほうに落ち着くという感じでしょうかね。
-
-<h4>範囲演算子と一緒に使う</h4>
-
-<a href="/blog/20170520149523.html">範囲演算子</a>と一緒に使うこともできます。
+In Perl, the foreach statement is an alias for the for statement, and you can also write for where you should write foreach.
 
 <pre>
-for my $num (3 .. 6) {
-  print "$num\n";
+my @animals = ('Cat','Dog','Mouse');
+
+for my $ animal (@animals) {
+  print "$ animal \ n";
 }
-</pre>
+</ pre>
 
-<h3>next文</h3>
+Looking at how to write Perl these days, I think I tend to always use for rather than foreach. I think it feels like it settles down on the shorter side.
 
-<a href="/blog/20170513149580.html">next文</a>を使うと次の繰り返しの先頭にジャンプすることができます。次のサンプルプログラムを見てください。
+<h4> Use with range operator </ h4>It can also be used with <a href="/blog/20170520149523.html"> range operator </a>.
+
+<pre>
+for my $ num (3 .. 6) {
+  print "$ num \ n";
+}
+</ pre>
+
+<h3> next statement </ h3>
+
+You can use the <a href="/blog/20170513149580.html"> next statement </a> to jump to the beginning of the next iteration. Take a look at the following sample program.
 
 <pre>
 my @nums = (3, 5, 6, 7);
-for my $num (@nums) {
-  if ($num == 5) {
-    next;
+for my $ num (@nums) {
+  if ($ num == 5) {
+    next; next;
   }
-  print "$num\n";
+  print "$ num \ n";
 }
-</pre>
+</ pre>
 
-(3, 5, 6, 7)という配列の要素を出力していますが「$num」が「5」の時だけ次の繰り返しの先頭にジャンプします。出力結果は以下のようになります。
+The elements of the array (3, 5, 6, 7) are output, but only when "$ num" is "5", it jumps to the beginning of the next iteration. The output result is as follows.
 
 <pre>
 3
 6
 7
-</pre>
+</ pre>
 
-「5」の時だけ、ループの先頭にジャンプしているので「print関数」が実行されません。
+Only when it is "5", the "print function" is not executed because it jumps to the beginning of the loop.
 
-<h3>last文</h3>
+<h3> last statement </ h3>
 
-<a href="/blog/20170527149589.html">last文</a>を使うと繰り返しを終了して、for文を脱出することができます。次のサンプルプログラムを見てください。
+You can use the <a href="/blog/20170527149589.html"> last statement </a> to end the iteration and escape the for statement. Take a look at the following sample program.
 
 <pre>
 my @nums = (3, 5, 6, 7);
-for my $num (@nums) {
-  if ($num == 6) {
+for my $ num (@nums) {
+  if ($ num == 6) {
     last;
   }
-  print "$num\n";
+  print "$ num \ n";
 }
-</pre>
+</ pre>
 
-(3, 5, 6, 7)という配列の要素を出力していますが「$num」が「6」の時にループを脱出します。そのため、出力結果は以下のようになります。
+It outputs the elements of the array (3, 5, 6, 7), but exits the loop when "$ num" is "6". Therefore, the output result is as follows.
 
 <pre>
 3
-5
-</pre>
+Five
+</ pre>
 
-ここではforと組み合わせる例を紹介しましたが、nextとforはwhile文の中でも使うことができます。
+I introduced an example of combining with for here, but next and for can also be used in while statements.
 
-<h3>forとwhileとforeachの使い分け</h3>
+<h3> Use for, while, and foreach properly </ h3>
 
-三つの繰り返しの構文について解説しましたが「実際はどうやって使い分けたらいいの」と感じることと思います。そこで、使い分けの指針について書いておきます。
+I explained the syntax of the three iterations, but you may feel that "how do you actually use them properly?" Therefore, I will write a guideline for proper use.
 
-<h4>まずはforeachで書けないか考える</h4>
+<h4> First, think about whether you can write with foreach </ h4>
 
-まず最初にforeachを使って書けないかを考えます。foreachはループを最も簡単に書けるので、foreachで十分なのであれば、foreachを使います。配列の要素を順番に処理するというのは、頻繁にでてきますが、これはforeachで書けます。
+First of all, think about whether you can write using foreach. Foreach is the easiest way to write a loop, so if foreach is enough, use foreach. It's common to process the elements of an array in sequence, but you can write this in foreach.
 
 <pre>
-my @animals = ('Cat', 'Dog', 'Mouse');
+my @animals = ('Cat','Dog','Mouse');
 
-foreach my $animal (@animals) {
-  print "$animal\n";
+foreach my $ animal (@animals) {
+  print "$ animal \ n";
 }
-</pre>
+</ pre>
 
-あるいはエイリアスのforを使って以下のように書きます。
+Or write as follows using the alias for.
 
 <pre>
-my @animals = ('Cat', 'Dog', 'Mouse');
+my @animals = ('Cat','Dog','Mouse');
 
-for my $animal (@animals) {
-  print "$animal\n";
+for my $ animal (@animals) {
+  print "$ animal \ n";
 }
-</pre>
+</ pre>
 
-まずはこの方法で書けないかを検討します。
+First, consider whether you can write this way.
 
-<h4>要素番号が必要なときは通常のfor文</h4>
+<h4> When an element number is required, a normal for statement </ h4>
 
-次に要素番号が必要な場合があるとします。そのときは通常のfor文を使います。次のサンプルプログラムは、要素番号と配列の要素を出力するものになっています。「@animals」をスカラコンテキストで評価すると、配列の長さが取得できることに注意してください。
+Next, suppose you may need the element number. In that case, use the normal for statement. The following sample program outputs the element numbers and array elements. Note that you can get the length of the array by evaluating "@animals" in a scalar context.
 
 <pre>
-my @animals = ('Cat', 'Dog', 'Mouse');
+my @animals = ('Cat','Dog','Mouse');
 
-for (my $i = 0; $i < @animals; $i++) {
-  my $animal = $animals[$i];
-  print "$i : $animal\n";
+for (my $ i = 0; $ i <@animals; $ i ++) {
+  my $ animal = $ animals [$ i];
+  print "$ i: $ animal \ n";
 }
-</pre>
+</ pre>
 
-出力結果は以下のようになります。
-
-<pre>
-0 : Cat
-1 : Dog
-2 : Mouse
-</pre>
-
-<h4>要素番号を増やしていかないような繰り返しはwhile文</h4>
-
-最後に要素番号を増やしていかないような繰り返しであればwhile文を使いましょう。よくあるサンプルをいくつか書いておきます。
-
-<b>1. ファイルから行を読み込む</b>
-
-ファイルから行を読み込む場合はwhile文を使用します。
+The output result is as follows.
 
 <pre>
-while (my $line = <>) {
-  print $line;
+0: Cat
+1: Dog
+2: Mouse
+</ pre>
+
+<h4> While statement for repetition that does not increase the element number </ h4>
+
+Finally, use a while statement if the repetition does not increase the element number. Here are some common samples.
+
+<b> 1. Read a line from a file </ b>
+
+Use a while statement to read a line from a file.
+
+<pre>
+while (my $ line = <>) {
+  print $ line;
 }
-</pre>
+</ pre>
 
-ファイル入出力については以下で詳しく解説しています。
+File I / O is explained in detail below.
 
 <ul>
   <li>
-    <a href="/blog/20110212130370.html">ファイル入出力の基礎</a>
-  </li>
-</ul>
+    <a href="/blog/20110212130370.html"> Basics of file input / output </a>
+  </ li>
+</ ul>
 
-<b>2. 配列をpopする</b>
+<b> 2. Pop an array </ b>
 
-配列をpop関数を使って取り出してなくなったら終わりというような処理はwhile文で書きます。
+Use a while statement to write the process such as ending when the array is extracted using the pop function and disappears.
 
 <pre>
-my @animals = ('Cat', 'Dog', 'Mouse');
+my @animals = ('Cat','Dog','Mouse');
 
-while (my $animal = pop @animals) {
-  print "$animal\n";
+while (my $ animal = pop @animals) {
+  print "$ animal \ n";
 }
-</pre>
+</ pre>
 
-出力結果は以下になります。
+The output result is as follows.
 
 <pre>
 Mouse
 Dog
 Cat
-</pre>
+</ pre>
 
-popされて空になったら、ループが終了します。
+When popped and emptied, the loop ends.
 
-<b>3. 無限ループを書きたい</b>
+<b> 3. I want to write an infinite loop </ b>
 
-無限ループを書きたいときはwhile文を使用します。条件を1にすると、while文をずっと実行され続けます。
+If you want to write an infinite loop, use a while statement. If the condition is set to 1, the while statement will continue to be executed.
 
 <pre>
 while (1) {
-  # 処理
+  # process
 }
-</pre>
+</ pre>
 
-何らかの条件が満たされた場合に、無限ループから脱出したい場合はlastを使いましょう。
+Use last if you want to get out of an infinite loop when some condition is met.
 
 <pre>
 while (1) {
-  # 処理
+  # process
   
-  if ($flag) {
+  if ($ flag) {
     last;
   }
 }
-</pre>
+</ pre>
 
-<h3>多次元データ構造と繰り返し</h3>
+<h3> Multidimensional data structures and iterations </ h3>
 
-最後に多次元データ構造と繰り返しのサンプルプログラムを一つ書いておきます。Perlにおいては、ハッシュの配列というデータ構造を頻繁に使うので、そのサンプルを書いておきます。
+Finally, I will write a multidimensional data structure and a repetitive sample program. In Perl, we often use a data structure called an array of hashes, so I'll write a sample of it.
 
 <pre>
-# ハッシュの配列のサンプルプログラム
-my $students = [
-  {name => 'kimoto', age => 36},
-  {name => 'kana', age => 21},
-  {name => 'jiro', age => 56}
-];
+# Hash array sample program
+my $ students = [
+  {name =>'kimoto', age => 36},
+  {name =>'kana', age => 21},
+  {name =>'jiro', age => 56}
+];;
 
-for my $student (@$students) {
-  my $name = $student->{name};
-  my $age = $student->{age};
+for my $ student (@ $ students) {
+  my $ name = $ student-> {name};
+  my $ age = $ student-> {age};
   
-  print "Name : $name, Age : $age\n";
+  print "Name: $ name, Age: $ age \ n";
 }
-</pre>
+</ pre>
 
-出力結果は以下のようになります。
+The output result is as follows.
 
 <pre>
-Name : kimoto, Age : 36
-Name : kana, Age : 21
-Name : jiro, Age : 56
-</pre>
+Name: kimoto, Age: 36
+Name: kana, Age: 21
+Name: jiro, Age: 56
+</ pre>
 
-ここではまだ一度も解説していない「[]」や「{}」「@$students」「$student->{name}」というものが登場しています。これはリファレンスと呼ばれるPerlの構文です。多次元データ構造の処理については、以下で詳しく解説していますので、参考にしてください。
+Here, "[]", "{}", "@ $ students", and "$ student-> {name}" that have never been explained have appeared. This is a Perl syntax called a reference. The processing of multidimensional data structures is explained in detail below, so please refer to it.
 
 <ul>
   <li>
-    <a href="/blog/20100930127859.html">リファレンスと多次元データ構造</a>
-  </li>
-</ul>
+    <a href="/blog/20100930127859.html"> References and multidimensional data structures </a>
+  </ li>
+</ ul>
 
-<h3>ループを簡単に書くための関数</h3>
+<h3> Functions for writing loops easily </ h3>
 
-<h4>grep関数</h4>
+<h4> grep function </ h4>
 
-Perlには<a href="/blog/20100119126425.html">grep関数</a>というものがあり、配列の要素の中でマッチするものだけを取り出すことができます。
+Perl has a <a href="/blog/20100119126425.html"> grep function </a> that allows you to retrieve only matching elements of an array.
 
 <pre>
-my @matches = grep { $_ > 5 } @values;
-</pre>
+my @matches = grep {$ _> 5} @values;
+</ pre>
 
-これは、for文で次のように書くのと同じですが、より簡潔です。
+This is the same as writing the following in a for statement, but more concisely.
 
 <pre>
 my @matches;
-for my $value (@$values) {
-  if ($value > 5) {
-    push @matches, $value;
+for my $ value (@ $ values) {
+  if ($ value> 5) {
+    push @matches, $ value;
   }
 }
-</pre>
+</ pre>
 
-<h4>map関数</h4>
+<h4> map function </ h4>
 
-Perlには<a href="/blog/20100118126425.html">map関数</a>というものがあり、すべての配列の要素の変換を簡単に書くことができます。
-
-<pre>
-my @values2 = map { "$_.txt" } @values1;
-</pre>
-
-これは、for文で次のように書くのと同じですが、より簡潔です。
+Perl has a <a href="/blog/20100118126425.html"> map function </a> that makes it easy to write transformations of all array elements.
 
 <pre>
-my @values2;
-for my $value1 (@values1) {
-  my $value2 = "$value1.txt";
-  push @values2, $value2;
+my @ values2 = map {"$ _. Txt"} @ values1;
+</ pre>
+
+This is the same as writing the following in a for statement, but more concisely.
+
+<pre>
+my @ values2;
+for my $ value1 (@ values1) {
+  my $ value2 = "$ value1.txt";
+  push @ values2, $ value2;
 }
-</pre>
+</ pre>
 
-<h3>後置のfor - for修飾子</h3>
+<h3> Postfix for-for modifier </ h3>
 
-特殊なforの構文として、forを文の後ろに置くことができるfor修飾子というものがあります。1行でfor文が書ける場合には、この書き方もシンプルです。
+A special for syntax is the for modifier, which allows you to put a for after a statement. If you can write a for statement in one line, this writing method is also simple.
 
-以下は、配列のすべての要素を出力するサンプルです。配列の要素は順番にデフォルト引数である「$_」に代入されます。
+Below is a sample that outputs all the elements of the array. The elements of the array are sequentially assigned to the default argument "$ _".
 
 <pre>
-my @values = (3, 4, 5);
-print "$_\n" for @values;
-</pre>
+my @values ​​= (3, 4, 5);
+print "$ _ \ n" for @values;
+</ pre>
 
-読みやすさを考えると通常のfor文を常に使うようにするのがよいと思います。
+For readability, it's a good idea to always use a regular for statement.
 
-でも実は、後置のforには明らかな利点があります。それは、<b>後置のforはスコープを作らないので、通常のforよりもパフォーマンスがよい</b>ということです。
+But in fact, the postfix for has a clear advantage. That is, the <b> postfix for does not create a scope, so it performs better than a normal for </ b>.
 
-日常の業務で書くほとんどのプログラムにおいては、パフォーマンスが問題にならないでしょう。でも、1行で実行できるもので、速さをどうしても稼ぎたい場合は、後置のforを使うとよいでしょう。
-
-
+Performance shouldn't be an issue for most programs you write in your day-to-day business. However, if you can execute it in one line and you really want to gain speed, you should use the postfix for.

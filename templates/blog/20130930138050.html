@@ -1,50 +1,49 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>DDP - データをわかりやすく出力する</h2>
+  </ li>
+</ ol>
+<h2> DDP --Output data in an easy-to-understand manner </ h2>
 
 
 
-<strong>データをわかりやすく出力するのにDDPというモジュールを利用することができます。</strong> ハッシュや配列が入れ子になった複雑なデータの内容を見るのに便利です。
+You can use a module called DDP to output <strong> data in an easy-to-understand manner. </ strong> Useful for viewing the contents of complex data with nested hashes and arrays.
 
 <pre>
-# データをわかりやすく出力
+# Output data in an easy-to-understand manner
 use DDP;
-p $data;
-</pre>
+p $ data;
+</ pre>
 
-DDPはData::Printerというディストリビューションに含まれているので。Data::Printerをインストールすれば、DDPもインストールされます。
+Because DDP is included in the distribution Data :: Printer. If you install Data :: Printer, DDP will also be installed.
 
-Perlのデータを出力するためのツールとしてコアモジュールとしてData::Dumperがあります。Data::Dumperは次の点で使いにくい部分があります。一つ目は、文字列が内部表現で出力されるので、どのような文字列が含まれているかを、確認しにくということです。もうひとつは、データのダンプはよく使う機能なのに、タイピングが少し長いという点です。
+There is Data :: Dumper as a core module as a tool for outputting Perl data. Data :: Dumper is difficult to use in the following points. The first is that the character string is output as an internal representation, so it is difficult to check what kind of character string is included. The other is that data dumping is a popular feature, but typing is a bit long.
 
-DDPには以下のような特徴があります。
+DDP has the following features.
 
 <ul>
   <li>
-    UTF-8で書かれている文字列を表示することができます
-  </li>
+    You can display strings written in UTF-8
+  </ li>
   <li>
-    pという関数でデータを出力することができます。
-  </li>
-</ul>
+    You can output the data with a function called p.
+  </ li>
+</ ul>
 
-データを出力したい場所で以下のように書くと、一行で書くこともできます。
+You can also write in one line by writing the following in the place where you want to output the data.
 
 <pre>
-use DDP;p $data;
-</pre>
-
+use DDP; p $ data;
+</ pre>

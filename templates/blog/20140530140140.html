@@ -1,54 +1,53 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop="name">読み物</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>ハッシュの変数名は、単数形か複数形か</h2>
+        <span itemprop = "name"> reading material </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Is the hash variable name singular or plural? </ H2>
 
 
 
-スカラ変数は単数形、配列変数は、複数形でよいのですが、ハッシュ変数の場合は、変数名を単数形にすべきか、複数形にすべきか、いつも迷います。つけ方の方針について考えてみます。
+Scalar variables can be singular and array variables can be plural, but in the case of hash variables, I'm always wondering whether the variable name should be singular or plural. Let's think about the policy of how to put it on.
 
-スカラ変数はいつも単数形です。
-
-<pre>
-my $name = 'kimoto';
-</pre>
-
-配列変数はいつも複数形です。
+Scalar variables are always singular.
 
 <pre>
-my @names = ('kimoto', 'tanaka');
-</pre>
+my $ name ='kimoto';
+</ pre>
 
-ハッシュ変数はどうでしょうか。では最初に本の情報を表す場合。本はひとつです。本の中に、本をあらわす情報が入っています。このような場合は、単数形のほうがよいと感じます。
+Array variables are always plural.
 
 <pre>
-my %book = {
+my @names = ('kimoto','tanaka');
+</ pre>
+
+What about hash variables? Then, when expressing the information of the book first. There is only one book. The book contains information that represents the book. In such cases, I feel that the singular is better.
+
+<pre>
+my% book = {
   id => '00000001',
-  title => 'Perl'
+  title =>'Perl'
 }
-my $id = $book{id};
-my $title = $book{title};
-</pre>
+my $ id = $ book {id};
+my $ title = $ book {title};
+</ pre>
 
-次に、名前を指定して、父親の名前を取り出す場合を考えてみましょう。これは、同じ種類で、複数の人の情報が入っています。このような場合は、複数形のほうがよいと感じます。
+Next, let's consider the case of specifying a name and retrieving the father's name. It's the same type and contains information about multiple people. In such cases, I feel that the plural is better.
 
 <pre>
-my %fathers = (
-  ken => 'taro',
-  naoto => 'ichiro'
+my% fathers = (
+  ken =>'taro',
+  naoto =>'ichiro'
 );
-my $father = $fathers{ken};
-</pre>
+my $ father = $ fathers {ken};
+</ pre>
 
-つまり、ハッシュの場合は、変数名を単数形にしたほうが自然な場合と、複数形にしたほうが自然な場合があるということです。
-
+In other words, in the case of hashes, there are cases where it is more natural to make the variable name singular, and there are cases where it is more natural to make it plural.

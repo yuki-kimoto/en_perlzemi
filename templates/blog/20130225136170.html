@@ -1,322 +1,322 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">コーディングルール</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlゼミのコーディングルール</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> coding rules </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Perl seminar coding rules </ h2>
 
 
 
-Perlゼミは、以下のコーディングルールに従って作成されています。参考にどうぞ。
+Perl seminars are created according to the following coding rules. Please refer to it.
 
-<h3>スタイル</h3>
+<h3> Style </ h3>
 
-<h4>インデントはスペースで2</h4>
+<h4> Indent is 2 in space </ h4>
 
 <pre>
 sub parse {
-  my $str = shift;
+  my $ str = shift;
   
-  my $tree;
+  my $ tree;
   ...
 
-  return $tree;
+  return $ tree;
 }
-</pre>
+</ pre>
 
-<h4>1行は79文字以内</h4>
+<h4> One line can be up to 79 characters </ h4>
 
-1行は79文字以内で書いています。
-
-<pre>
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-</pre>
-
-<h3>スペース</h3>
-
-<h4>括弧 () の内側にスペースを入れない</h4>
+One line is written within 79 characters.
 
 <pre>
-my @nums = (2, 4, 5);
-my %ages = (kimoto => 20, ken => 25);
-my $total = (2 + 3) + 2;
-while ($num == 2) { ... }
-for (my $i = 4; $i < 5; $i++) { ... }
-</pre>
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</ pre>
 
-<h4>ブラケット [] の内側にスペースを入れない</h4>
+<h3> Space </ h3>
 
-<pre>
-my $nums = [2, 4, 5];
-</pre>
-
-<h4>ハッシュのリファレンスのブレース {} の内側にスペースを入れない</h4>
-
-<pre>
-my $ages = {kimoto => 20, ken => 25};
-</pre>
-
-<h4>サブルーチンが1行のときはブレースの内側にスペースをひとつ入れる</h4>
-
-<pre>
-sub ua { LWP::UserAgent->new }
-</pre>
-
-<h4>文が1行のときはブレースの内側にスペースをひとつ入れる</h4>
-
-<pre>
-if (条件) { $num = 1 }
-else { $num = 2 }
-</pre>
-
-<h4>カンマの手前はスペースを入れず、カンマの後ろにスペースを入れる</h4>
+<h4> Do not put spaces inside parentheses () </ h4>
 
 <pre>
 my @nums = (2, 4, 5);
-</pre>
+my% ages = (kimoto => 20, ken => 25);
+my $ total = (2 + 3) + 2;
+while ($ num == 2) {...}
+for (my $ i = 4; $ i <5; $ i ++) {...}
+</ pre>
 
-<h4>演算子の左右にはスペースを入れる</h4>
+<h4> Do not put a space inside the bracket [] </ h4>
+
+<pre>
+my $ nums = [2, 4, 5];
+</ pre>
+
+<h4> Do not put spaces inside the hash reference brace {} </ h4>
+
+<pre>
+my $ ages = {kimoto => 20, ken => 25};
+</ pre>
+
+<h4> When the subroutine is one line, put a space inside the brace </ h4>
+
+<pre>
+sub ua {LWP :: UserAgent-> new}
+</ pre>
+
+<h4> When the sentence is one line, put a space inside the brace </ h4>
+
+<pre>
+if (condition) {$ num = 1}
+else {$ num = 2}
+</ pre>
+
+<h4> Do not put a space in front of the comma, put a space behind the comma </ h4>
+
+<pre>
+my @nums = (2, 4, 5);
+</ pre>
+
+<h4> Insert spaces to the left and right of the operator </ h4>
 
 <pre>
 2 + 3
-2 - 3
-2 * 3
-2 / 3
+twenty three
+twenty three
+twenty three
 2 ^ 5
 2 == 3
-2 != 3
-2 < 3
-2 > 3
-'a' . 'b'
-'a' eq 'b'
-'a' ne 'b'
-</pre>
+2! = 3
+2 <3
+2> 3
+'a'.'b'
+'a' eq'b'
+'a' ne'b'
+</ pre>
 
-<h4>if文, unless文, while文, for文の直後にはスペースを入れる</h4>
+<h4> Insert a space immediately after the if statement, unless statement, while statement, and for statement </ h4>
 
-if文, unless文, <a href="/blog/20100123126425.html">while文</a>, for文の直後にはスペースを入れます。
+Insert a space immediately after the if statement, unless statement, <a href="/blog/20100123126425.html"> while statement </a>, for statement.
 
 <pre>
-if (条件) {
+if (condition) {
 
 }
-unless (条件) {
+unless (condition) {
 
 }
-for (条件) {
+for (condition) {
 
 }
-while (条件) {
+while (condition) {
 
 }
-</pre>
+</ pre>
 
-<h4>if, unless, while, forの開きブレース { の手前にはスペースを入れる</h4>
+<h4> If, unless, while, for opening brace {insert a space in front of </ h4>
 
 <pre>
-if (条件) {
+if (condition) {
 
 }
-unless (条件) {
+unless (condition) {
 
 }
-for (条件) {
+for (condition) {
 
 }
-while (条件) {
+while (condition) {
 
 }
-</pre>
+</ pre>
 
-<h4>スペースはいつもひとつ分</h4>
-
-<pre>
-my $num = 1;
-my $title = 'Perl';
-my $author = 'kimoto';
-</pre>
-イコール(=)をそろえるときれいに見えますが、修正の手間を考えるとめんどうなので、スペースはいつもひとつ分にしています。
-
-<h4>複数行になるときは+2のインデントにする</h4>
+<h4> One space is always available </ h4>
 
 <pre>
-my $str = 'Hello Hello Hello Hello Hello Hello Hello Hello Hello '
-  . 'Hello Hello Hello Hello Hello Hello Hello Hello Hello '
-  . "Hello Hello Hello Hello Hello \n";
-</pre>
-文字列の位置でそろえると見やすいですが、空白の修正が手間がかかるので、空白で+2の位置に次の行をつなげるようにしています。
+my $ num = 1;
+my $ title ='Perl';
+my $ author ='kimoto';
+</ pre>
+It looks beautiful if you have equal (=), but it is troublesome considering the trouble of correction, so I always keep one space.
 
-<h3>セミコロン</h3>
-
-<h4>サブルーチンが1行のときはセミコロン ; をつけない</h4>
+<h4> Indent +2 when there are multiple lines </ h4>
 
 <pre>
-sub ua { LWP::UserAgent->new }
-</pre>
+my $ str ='Hello Hello Hello Hello Hello Hello Hello Hello'
+  .'Hello Hello Hello Hello Hello Hello Hello Hello Hello'
+  . "Hello Hello Hello Hello Hello \ n";
+</ pre>
+It is easy to see if it is aligned at the position of the character string, but since it takes time to correct the blank, I try to connect the next line to the +2 position with a blank.
 
-<h4>文が1行のときはセミコロン ; をつけない</h4>
+<h3> Semicolon </ h3>
 
-<pre>
-if (条件) { $num = 1 }
-else { $num = 2 }
-</pre>
-
-<h3>文字列</h3>
-
-<h4>文字列に変数を含まないときはシングルクォートを使う</h4>
+<h4> Do not add a semicolon; when the subroutine is on one line </ h4>
 
 <pre>
-my $str = 'Hello World!';
-</pre>
+sub ua {LWP :: UserAgent-> new}
+</ pre>
 
-<h3>条件文・繰り返し文</h3>
-
-<h4>untilを使わずにwhileを使う</h4>
+<h4> Do not add a semicolon; when the statement is on one line </ h4>
 
 <pre>
-while (条件) {
+if (condition) {$ num = 1}
+else {$ num = 2}
+</ pre>
+
+<h3> String </ h3>
+
+<h4> Use single quotes when the string does not contain variables </ h4>
+
+<pre>
+my $ str ='Hello World!';
+</ pre>
+
+<h3> Conditional statement / repeating statement </ h3>
+
+<h4> Use while without using until </ h4>
+
+<pre>
+while (condition) {
 
 }
-</pre>
+</ pre>
 
-whileですべての条件文が書けて、他の言語でも一般的ですのでuntilは使わないで、whileを使っています。
+Since all conditional statements can be written with while and it is common in other languages, while is used instead of until.
 
-<h4>do ～ whileは使わずにwhileを使う</h4>
+<h4> Use while without do ~ while </ h4>
 
 <pre>
-while (条件) {
+while (condition) {
 
 }
-</pre>
+</ pre>
 
-do ～ whileで書ける文はすべてwhileで書けて、doの中ではnextやlastが使えないという制約があるので、whileを使っています。
+All statements that can be written with do ~ while can be written with while, and there is a restriction that next and last cannot be used in do, so while is used.
 
-<h4>foreachを使わずforを使う</h4>
-
-<pre>
-for (条件) { ... }
-</pre>
-
-foreachはforの別名なので、短く書けるforを使っています。
-
-<h3>モジュール・サブルーチン・メソッド</h3>
-
-<h4>引数がひとつの関数には括弧をつけない</h4>
+<h4> Use for instead of foreach </ h4>
 
 <pre>
-my $num = int 5;
-my $class = ref $obj;
-</pre>
+for (condition) {...}
+</ pre>
 
-<h4>引数が不要な関数やメソッドには括弧をつけない</h4>
+Since foreach is another name for for, we use for which can be written short.
 
-<pre>
-my $time = time;
-my $ua = LWP::UserAgent->new;
-</pre>
+<h3> Modules, Subroutines, Methods </ h3>
 
-<h4>直接オブジェクト構文を使う</h4>
+<h4> Do not put parentheses for functions with one argument </ h4>
 
 <pre>
-my $ua = LWP::UserAgent->new;
-</pre>
+my $ num = int 5;
+my $ class = ref $ obj;
+</ pre>
 
-間接オブジェクト構文は使っていません。
-
-例外。
-
-<pre>
-print $fh "Hello";
-printf $fh "Hello%d", 3;
-</pre>
-
-非常に一般的な書き方になっているため。
-
-<h4>インポートする関数は明示する</h4>
+<h4> Do not put parentheses on functions and methods that do not require arguments </ h4>
 
 <pre>
-use Encode 'encode';
-</pre>
+my $ time = time;
+my $ ua = LWP :: UserAgent-> new;
+</ pre>
 
-例外。インポートの記述を行わないことが非常に一般的な場合。
-
-<pre>
-use Mojolicious::Lite;
-use Time::Piece;
-</pre>
-
-<h4>インポートする関数がひとつのときはシングルクォートで囲う</h4>
+<h4> Use direct object syntax </ h4>
 
 <pre>
-use Encode 'encode';
-</pre>
+my $ ua = LWP :: UserAgent-> new;
+</ pre>
 
-<h4>インポートする関数が複数のときは文字列リスト演算子qw//を利用する</h4>
+It doesn't use indirect object syntax.
 
-<pre>
-use Encode qw/encode decode/;
-</pre>
-
-<h4>モジュールの読み込みにはいつもuseを使う</h4>
+exception.
 
 <pre>
-use LWP::UserAgent;
-use XML::Simple;
-</pre>
+print $ fh "Hello";
+printf $ fh "Hello% d", 3;
+</ pre>
 
-例外。実行時にモジュールを読み込みたい場合はrequireを使う。
+Because it is a very general way of writing.
+
+<h4> Specify the function to import </ h4>
 
 <pre>
-if ($use_agent) {
-  require LWP::UserAgent;
+use Encode'encode';
+</ pre>
+
+exception. When it is very common not to describe the import.
+
+<pre>
+use Mojolicious :: Lite;
+use Time :: Piece;
+</ pre>
+
+<h4> If there is only one function to import, enclose it in single quotes </ h4>
+
+<pre>
+use Encode'encode';
+</ pre>
+
+<h4> Use the string list operator qw // when there are multiple functions to import </ h4>
+
+<pre>
+use Encode qw / encode decode /;
+</ pre>
+
+<h4> Always use use to load modules </ h4>
+
+<pre>
+use LWP :: UserAgent;
+use XML :: Simple;
+</ pre>
+
+exception. Use require if you want to load the module at runtime.
+
+<pre>
+if ($ use_agent) {
+  require LWP :: UserAgent;
 }
-</pre>
+</ pre>
 
-けれども、ほとんどの場合はuseで十分に高速ですのでuseを使っています。
+However, in most cases I use use because it is fast enough.
 
-<h4>関数をインポートしたくない場合は「use モジュール名 ()」を使う</h4>
+<h4> Use "use module name ()" if you don't want to import the function </ h4>
 
 <pre>
 use Carp ();
-</pre>
+</ pre>
 
-<h3>コメント</h3>
+<h3> Comments </ h3>
 
-<h4>コメントのフォーマットは#を一つ書いて、その後ろにひとつのスペースが続いて、その後ろにコメント</h4>
-
-<pre>
-# コメント
-</pre>
-
-<h4>コメントの先頭は、行の先頭か、複数のスペースだけ</h4>
+<h4> The format of the comment is to write one #, followed by a space, and then the comment </ h4>
 
 <pre>
-# コメント
-  # コメント
-</pre>
+# comment
+</ pre>
 
-<h4>式よりもコメントを先に書く</h4>
-<pre>
-# 時間
-my $time = time;
-</pre>
-
-<h3>配列・ハッシュ</h3>
-
-<h4>配列の要素が1行に収まるときは1行で書く</h4>
+<h4> Comments start at the beginning of a line or just multiple spaces </ h4>
 
 <pre>
-my @animals = ('cat', 'dog', 'mouse');
-</pre>
+# comment
+  # comment
+</ pre>
 
-<h4>配列の要素が1行に収まらないときは、各要素を1行ずつに書く</h4>
+<h4> Write comments before expressions </ h4>
+<pre>
+#Time
+my $ time = time;
+</ pre>
+
+<h3> Array / hash </ h3>
+
+<h4> If the elements of the array fit in one line, write in one line </ h4>
+
+<pre>
+my @animals = ('cat','dog','mouse');
+</ pre>
+
+<h4> If the elements of the array do not fit on one line, write each element on one line </ h4>
 
 <pre>
 my @animals = (
@@ -325,26 +325,25 @@ my @animals = (
   'mouse',
   ...
 );
-</pre>
+</ pre>
 
-<h4>ハッシュの要素が1行に収まるときは1行で書く</h4>
-
-<pre>
-my %ages= (kimoto => 32, ken => 25, asuka => 50);
-</pre>
-
-<h4>ハッシュの要素が1行に収まらないときは、各要素を1行ずつに書く</h4>
+<h4> If the hash element fits on one line, write it on one line </ h4>
 
 <pre>
-my %ages= (
+my% ages = (kimoto => 32, ken => 25, asuka => 50);
+</ pre>
+
+<h4> If the hash elements don't fit on one line, write each element on one line </ h4>
+
+<pre>
+my% ages = (
   kimoto => 32,
   ken => 25,
   asuka => 50,
   ...
 );
-</pre>
+</ pre>
 
-<h3>コーディングルールの参考にどうぞ</h3>
+<h3> Please refer to the coding rules </ h3>
 
-これはPerlゼミのコーディングルールです。僕がPerlを書いてきて、こう書けば、一般的で、わかりやすく、美しく、短く書けると感じているものです。よいコーディングのための参考にどうぞ。
-
+This is a Perl seminar coding rule. I've written Perl and feel that it's general, easy to understand, beautiful, and short. Please use it as a reference for good coding.

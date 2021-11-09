@@ -1,255 +1,254 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop="name">読み物</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>変数に型がないということの利点について考える</h2>
+        <span itemprop = "name"> reading material </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Think about the benefits of having no type in a variable </ h2>
 
 
 
-PHPやPerlやRubyやPythonなどのスクリプト言語に対して、変数に型がないということを否定的にとらえる人もいるかと思います。特にC言語やJavaなどの静的言語を使ってきた人にとっては、型がないということが不安材料として目に映ることが多いのではないかと思います。　
+For scripting languages ​​such as PHP, Perl, Ruby, and Python, some people may think that variables have no type. Especially for those who have used static languages ​​such as C and Java, I think that the lack of types is often seen as anxiety. Twice
 
-けれども、型がないということは、本当に素晴らしいことです。型がないことによって、たくさんの面倒から解放されるからです。
+But the lack of mold is really great. The lack of a mold frees you from a lot of hassle.
 
-<h3>どのような型の値でも代入できる</h3>
+<h3> Any type of value can be assigned </ h3>
 
-まず基本的なこととして変数に型がなければどのような型の値でも代入できるということです。つまり、受け取るときに、どのような型の値を受け取るのかを意識する必要がありません。
-
-<pre>
-my $str = 'Hello';
-my $num = 1;
-my $nums = [1, 2, 3];
-my $person = {age => 2, name => 'taro'};
-my $ua = LWP::UserAgent->new;
-</pre>
-
-文字列であろうと、数値であろうと、配列であろうと、連想配列であろうと、オブジェクトであろうと、それを意識する必要がありません。
-
-<h3>記述量がとても短くなる</h3>
-
-変数の型がないことによって記述量がとても短くなります。
-<pre>
-my $ua = LWP::UserAgent->new;
-</pre>
-
-もし変数に型があれば、次のようになるでしょう(Javaの例)。
+First and foremost, you can assign a value of any type as long as the variable has no type. In other words, when you receive it, you don't have to be aware of what type of value you receive.
 
 <pre>
-LWP::UserAgent ua = new LWP::UserAgent();
-</pre>
+my $ str ='Hello';
+my $ num = 1;
+my $ nums = [1, 2, 3];
+my $ person = {age => 2, name =>'taro'};
+my $ ua = LWP :: UserAgent-> new;
+</ pre>
 
-型推論で解決できるという意見があるかもしれませんが、型推論は不完全だと思います。まず右辺で型が明示されていない場合に使えないので、右辺に型がない場合は、結局型を書かないといけないからです。また型推論はソースコードのコンパイルの時間を遅くしてしまいます。ソースコードが大きくなってきた場合に、すばやく書いて、すばやく実行結果をもらうことができなくなります。また統合開発環境での、メソッドの自動補完の機能の実装が少し難しくなります。
+Whether it's a string, a number, an array, an associative array, or an object, you don't have to be aware of it.
 
-<h3>変数に型がないと変更に強い</h3>
+<h3> The amount of description becomes very short </ h3>
 
-変数に型がないとソースコードの変更に強くなります。たとえば右辺の返す型に変更があったとしても、受け取る側のソースコードを変更する必要はありません。
+The lack of variable types makes the amount of description very short.
+<pre>
+my $ ua = LWP :: UserAgent-> new;
+</ pre>
+
+If the variable had a type, it would look like this (Java example):
 
 <pre>
-# clinetはClientA型でもClientB型でもよい
-my $ua = $c->client;
-</pre>
+LWP :: UserAgent ua = new LWP :: UserAgent ();
+</ pre>
 
-<h3>関数のオーバーロードが不要になる</h3>
+Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all. Type inference also slows down the time it takes to compile source code. When the source code becomes large, you will not be able to write it quickly and get the execution result quickly. It also makes it a little more difficult to implement the method auto-completion feature in an integrated development environment.
 
-変数の型を持つ言語は、型が異なるのだが、処理としては同一の処理を行いたい場合には、オーバーロードという機能を使う必要があります。変数の型がなければ、オーバーロードの機能は必要ではなく、ただ単にif文で分岐すればよいだけなのでとても楽です。
+<h3> Variables are resistant to change if they have no type </ h3>
+
+Untyped variables are more resistant to source code changes. For example, even if the return type on the right side changes, there is no need to change the source code on the receiving side.
+
+<pre>
+#clinet can be ClientA type or ClientB type
+my $ ua = $ c-> client;
+</ pre>
+
+<h3> No need to overload functions </ h3>
+
+Languages ​​that have variable types have different types, but if you want to perform the same processing, you need to use a function called overloading. If you don't have a variable type, you don't need the overload function, you just have to branch with an if statement, which is very easy.
 
 <pre>
 sub sum {
-  my $value = shift;
+  my $ value = shift;
   
-  if ($valueがA型なら) {
+  if (if $ value is type A) {
   
   }
-  elsif ($valueがB型なら) {
+  elsif (if $ value is type B) {
   
   }
 }
-</pre>
+</ pre>
 
-変数に型がないことによって、関数の重複を減らすことができるという大きなメリットがあります。
+The lack of types in variables has the great advantage of reducing function duplication.
 
-<h3>複数の型を受け取りたいときに、インターフェースを実装する必要がない</h3>
+<h3> No need to implement an interface when you want to receive multiple types </ h3>
 
-Javaで大きなの労力といえば、インターフェースの仕組みを覚えて、実装することでしょう。複数の型を受け取りたい変数を作成したい場合は、まずインターフェースを実装することになります。
+The big effort in Java is to learn and implement how the interface works. If you want to create a variable that wants to accept multiple types, you'll first implement the interface.
 
-けれども、変数に型がなければ、インターフェースという仕組みは不要です。変数に型がないことによって、クラスの実装が重複がなくとてもシンプルになります。
+However, if the variable has no type, there is no need for an interface mechanism. The lack of types in variables makes class implementations very simple with no duplication.
 
-<h3>C++のテンプレートのような機能も必要がない</h3>
+<h3> No need for features like C ++ templates </ h3>
 
-関数の引数が配列を受け取る場合を考えてみてください。そして、配列に含まれている変数の型が、定まっていない場合を考えます。また配列自体が、普通の配列なのか、動的配列なのか、特殊なリストなのかということがわからない場合についても考えてみてください。変数に型があると、このようなたくさんのことを個別に考えて、うまくインターフェースを実装したり、C++のテンプレートのような複雑でデバッグしにくい機能を使ったりしなければなりません。
+Consider the case where the function argument receives an array. Then, suppose that the type of the variable contained in the array is not fixed. Also consider if you don't know if the array itself is a regular array, a dynamic array, or a special list. When a variable has a type, you have to think about many of these things individually, implement the interface well, or use complex, hard-to-debug features like C ++ templates.
 
-けれども、変数に型がなければ、そもそもこのような問題に直面することがありません。関数で受け取った後に、必要に応じて、if文で型を判定すればよいだけだからです。ですから、変数に型がないことによって、関数やメソッドの実装が重複なく簡単に書けます。
+But if a variable doesn't have a type, you won't face this problem in the first place. After receiving it in the function, you just have to determine the type with the if statement if necessary. Therefore, the lack of types in variables makes it easy to write function and method implementations without duplication.
 
-<h3>変数に型がないとどのような型の値が代入されているかわからないという批判に答える</h3>
+<h3> Answer the criticism that you don't know what type of value is assigned to a variable if it doesn't have a type. </ H3>
 
-変数に型がないとどのような型の値が代入されているかわからないという批判があるかと思います。可読性の問題です。でも、僕は型のない言語の可読性が低いと感じたことはないです。それは、そもそも静的言語を読むときとは、違う読み方をしているからだと思います。
-スクリプト言語を読むときには、文脈を追って読むとどんな値が入っているかが、たいていはすぐにわかります。たとえば変数が次のような使われ方をしているとします。
-
-<pre>
-$nums->[3];
-</pre>
-
-$numsは配列(へのリファレンス)です。
+I think there is a criticism that if a variable has no type, it is not possible to know what type of value is assigned. It's a readability issue. But I've never felt that untyped languages ​​aren't readable. I think that's because it's read differently than when reading a static language in the first place.
+When reading a scripting language, it's usually easy to see what values ​​it contains by reading contextually. For example, suppose a variable is used as follows.
 
 <pre>
-$ages->{age};
-</pre>
+$ nums-> [3];
+</ pre>
 
-$agesはハッシュ(へのリファレンス)です。
-
-<pre>
-my $ua = LWP::UserAgent->new;
-</pre>
-
-$uaにはLWP::UserAgent型の値が入っています。
+$ nums is an array (reference to).
 
 <pre>
-my $c = Client->new;
-my $ua = $c->ua;
-</pre>
+$ ages-> {age};
+</ pre>
 
-$uaってなんだろう? Clientクラスのuaメソッドが何を返しているかを調べればわかるな。
+$ ages is a hash (reference to).
 
-こんな風に読んでいってスクリプト言語を読むことに慣れてしまえば、何の問題もないと思います。
+<pre>
+my $ ua = LWP :: UserAgent-> new;
+</ pre>
 
-<h3>変数に型がないことのメリットは重複を少なくソースコードがかけること</h3>
+$ ua contains a value of type LWP :: UserAgent.
 
-変数に型がないことのメリットは重複を少なくソースコードがかけることです。変数の型を意識しなくてもよいということは、それを利用するクラスや関数、メソッドも、利用するときに、型を意識する必要がないということです。これは重複の少ない保守性の高いプログラムを書くときにとても役に立ちます。
+<pre>
+my $ c = Client-> new;
+my $ ua = $ c-> ua;
+</ pre>
 
-スクリプト言語は保守性が低いといわれますが、そもそも根拠はないと思います。静的言語はインターフェースやクラスをそのたびに実装しなければならないので、修正や変更が行いづらいです。その点では、保守性は低いといえます。
+What is $ ua? You can find out what the ua method of the Client class is returning.
 
-もう型のない言語は終わった、これからはハイブリッド型の言語の時代だという論評もときどき聞かれますが、その人は、型がないことのメリットを理解していないように思います。たぶんその人は、ソースコード上の見栄えという面しか理解していないんじゃないかと思います。
+If you read it like this and get used to reading the scripting language, you shouldn't have any problems.
 
-<h3>変数に型がないことのデメリットはないのか</h3>
+<h3> The advantage of having no type in a variable is that there is less duplication and the source code is applied </ h3>
 
-あげるとすれば、パフォーマンスです。値の型が事前にわかっていれば、数値演算は圧倒的に速くなります。それが整数であることがわかっていれば、それを前提に計算ができるので、数値計算のパフォーマンスは、静的言語が圧倒的によいです。
+The advantage of having no type in a variable is that the source code has less duplication. The fact that you don't have to be aware of the type of a variable means that you don't have to be aware of the type when you use the classes, functions, and methods that use it. This is very useful when writing maintainable programs with few duplicates.
 
-でもパフォーマンスが問題にならない局面では、スクリプト言語を利用するのがよいと思います。
+Scripting languages ​​are said to be less maintainable, but I don't think there is any basis in the first place. Static languages ​​are difficult to modify or change because you have to implement interfaces and classes each time. In that respect, maintainability is low.
 
-もうひとつは、メソッドや関数名の補完の実装がうまくできないので、統合開発環境には頼れないということですね。スクリプト言語を書く場合は、まるっとたくさん暗記して、統合開発環境に頼らないのが、開発効率がよいと思います。
+It's sometimes commented that the untyped language is over, and it's time for a hybrid language, but I don't think that person understands the benefits of having no type. Maybe that person only understands how it looks in the source code.
 
-<h3>はてなブックマークコメントへの返信</h3>
+<h3> Is there a disadvantage that variables have no type? </ H3>
 
-<blockquote>
-型がないことのデメリット：型があれば静的にコンピューターが発見できるバグを発見できないので人間様がやる必要がある というのはあると思う
-(nkgt_chkonkさん)
-</blockquote>
+Performance is one of them. Numerical operations can be overwhelmingly faster if the value type is known in advance. If you know that it is an integer, you can calculate on that assumption, so the performance of numerical calculation is overwhelmingly better in static languages.
 
-これはコンパイル時に、コンパイルエラーがわかるという意味だと思います。でもスクリプト言語というのは、コンパイルと一緒に実行してしまいます。すると、バグがその時に見つかるので、バグの発見しやすさは変わらないと思います。
+But when performance isn't an issue, I think it's best to use a scripting language.
 
-<blockquote>
-いくらなんでもポジティブすぎるのでは…！
-(gfxさん)
-</blockquote>
+The other is that you can't rely on the integrated development environment because you can't implement method and function name completion well. When writing a scripting language, I think that development efficiency is good if you memorize a lot and do not rely on the integrated development environment.
 
-ポジティブすぎる箇所を教えてください。
+<h3> Reply to Hatena Bookmark Comment </ h3>
 
 <blockquote>
-工ｴｴｪｪ(´д｀)ｪｪｴｴ工
-(choplinさん)
-</blockquote>
+Disadvantages of not having a type: If there is a type, he can't find bugs that can be found statically by a computer, so I think he has to do it.
+(nkgt_chkonk)
+</ blockquote>
 
-工ｴｴｪｪ(´д｀)ｪｪｴｴ工となる箇所を教えてください。
-
-<blockquote>
-一人で把握出来る規模のものを一人で作って保守していた頃は同じことを考えていた気がする
-(Dolpenさん)
-</blockquote>
+I think this means that you will see a compile error when you compile. But the scripting language runs along with the compilation. Then, the bug will be found at that time, so I think that the ease of finding the bug will not change.
 
 <blockquote>
-大規模になったとき動的言語の型がないデメリットを実感すると思う
-(t2y-1979さん)
-</blockquote>
+No matter how positive it is ...!
+(gfx)
+</ blockquote>
 
-大規模になってくると、保守できなくなるという発想は、そもそも間違いだと思います。Cookpad、Github、mixi、はてな、faccbook、amazon、みんな動的な型を持つスクリプト言語を使って、大規模サイトを作っています。そう思うのは、思い込みや、プロジェクト管理の問題ではないかな。
-
-<blockquote>
-型がない言語、書いた人間のマインドモデルに依存しすぎるので、よっぽど優れたマインドモデル持ってないと辛い
-(mizchiさん)
-</blockquote>
-
-それは静的な型がソースコードの中に見えれば、マインドモデルに依存しないといっているように聞こえます。静的な型を持つ言語で書いても、ひどいソースコードはたくさんあります。
+Please tell me where it is too positive.
 
 <blockquote>
-冗長に書くことでコンパイル時にそれらの間に矛盾がないか部分的ながらチェックできるのが静的型システムの一つの利点なんです
-(nakag0711さん)
-</blockquote>
+Engineering (´д ｀) Engineering
+(choplin)
+</ blockquote>
 
-なんでみんな、コンパイル時、コンパイル時って呪文のようにとなえるの? 一回プログラム実行したらわかるんじゃないのかなと思う。
-
-<blockquote>
-実行時までエラーが判明しないというのは、アプリケーションの質を高める阻害要因になりかねないのですよ。
-(mohnoさん)
-</blockquote>
-
-プログラムを一回実行したらいいだけじゃないの。というよりも、もし統合開発環境使っているのだったら、コンパイルと実行は、同時じゃないのかなと思う。
+Please tell me the part that will be the work (´д ｀) work.
 
 <blockquote>
-変態整数型仕様(変数に型があるくせに代入時エラーもなく暗黙に型変換しやがる)のせいで阿鼻叫喚が絶えない，あの酷い言語に聞かせてやりたい．
-</blockquote>
-
-どの言語のことかわからないです。
-
-<blockquote>
-変更に強い/弱いの考え方がズレてないか？
-</blockquote>
-
-ずれてないです。たとえば、インターフェースを作成して、実クラスにメソッドをひとつ追加しようと思うと、インターフェースにも重複して変更を加えないといけないです。動的な型を持っていれば、そこを修正する必要がないので、変更に強いんです。
+I feel like I was thinking about the same thing when I was making and maintaining something that I could grasp by myself.
+(Dolpen)
+</ blockquote>
 
 <blockquote>
-PythonとRubyは同列に並べるがPHPは入れないところに謎の序列を感じた / 型推論のある言語をマジメに使ったことがあるとは思えない / 大規模になると、LLでも型を明示してIDEの補完を活用した方が断然生産性上がるよ
-</blockquote>
+When it comes to large scale, you will realize the disadvantage of having no dynamic language type.
+(t2y-1979)
+</ blockquote>
 
-PHPを抜いたことには深い意図はないです。PHPはデプロイのしやすさ、Webに特化した関数がコアに初めから入っているので、利用しやすいという点ではWebプログラミングをしやすい言語だと思っています。型推論に関しては、僕の認識が甘かったです。LLでも型を明示するということの意味は、ちょっとわからないです。
-
-<blockquote>
-爆釣ですなぁ。自分もJavaやってからRuby始めたころは、こんな感想だった。いいんじゃない、いろんな言語のよい所わかるのは。次はscalaあたりに手を付けてみると全然違う世界が広がると思う。
-(kabisukeさん)
-</blockquote>
-
-釣ってないです。普段どおり、普通に書いたら、ブックマークいっぱいついちゃっただけです。　
+I think that the idea that maintenance becomes impossible when the scale becomes large is a mistake in the first place. Cookpad, Github, mixi, Hatena, faccbook, amazon, all use scripting languages ​​with dynamic types to create large sites. I think that's a matter of belief or project management.
 
 <blockquote>
-「一回プログラム実行したらわかる」 一度携帯電話のプログラム書いてみろ「110番に緊急呼している最中に月が変わってプリペイド契約が切れその瞬間に緊急地震速報がきた」みたいなのとかテストできんの?
-(naoya2kさん)
-</blockquote>
+It depends too much on the untyped language and the human mind model that I wrote, so it's painful if I don't have a very good mind model.
+(Mizchi)
+</ blockquote>
 
-これはもっと試験の一般的な問題だと思います。静的な型でそのプログラムを作ったから安全ということとはぜんぜん関係がないと思います。
-
-<blockquote>
-そもそもPHPもPerlもRubyもPythonも型はあるんだけど、明示して宣言しないだけで。
-(rokujyouhitomaさん)
-</blockquote>
-
-このお話は、内部的な値の型について議論しているのではなくって、変数が型を要求しないので、どんな型を持つ値でも代入できるメリットについて書いています。
+It sounds like it doesn't depend on the mind model if the static types are visible in the source code. Even if you write it in a language with static types, there is a lot of terrible source code.
 
 <blockquote>
-一回実行したらわかる、というのがおかしい。Perlにまともなカバレッジ分析ツールがあるのなら使ってみれば、一回では済まないことがわかるはず。
-(tproさん)
-</blockquote>
-一回実行したらわかるということの意味は、その部分を一回実行したら、バグが判明するという意味です。カバレッジをすべて通すという意味ではないです。カバレッジの問題は、また別問題です。分岐が正しいかというのは、そもそも静的な型付けをある言語が持っているかということとは全然別のはなしです。
+One of the advantages of static type systems is that you can write redundantly so that you can partially check for inconsistencies between them at compile time.
+(nakag0711)
+</ blockquote>
+
+Why do everyone think of compile time as a spell at compile time? I wonder if you can understand it once you run the program.
 
 <blockquote>
-これはPerlユーザーに背中から刺されるレベル
-(Nkznさん)
-</blockquote>
+Not knowing the error until run time can be a hindrance to improving the quality of your application.
+(Mr. mohno)
+</ blockquote>
 
-内容がないですね。
+One programYou don't just have to do it once. Rather, if you're using an integrated development environment, I think compiling and executing at the same time.
 
-<h3>追記</h3>
-以下は勘違いしていました。
 <blockquote>
-型推論で解決できるという意見があるかもしれませんが、型推論は不完全だと思います。まず右辺で型が明示されていない場合に使えないので、右辺に型がない場合は、結局型を書かないといけないからです。
-</blockquote>
-型推論はもっと多くの場合うまく型を推論してくれるようです。型推論に対する利点の議論は取り下げます。
+I want to tell that terrible language that the screaming annoyance is constant because of the metamorphic integer type specification (the variable has a type, but there is no error at the time of assignment and the type is implicitly converted).
+</ blockquote>
 
-でもそんなに的外れな議論はしていないと考えていますよ。
+I don't know which language.
 
+<blockquote>
+Is there a difference in the way of thinking that is strong / weak against change?
+</ blockquote>
+
+It's not out of alignment. For example, if you create an interface and want to add a method to your real class, you'll have to make duplicate changes to the interface as well. If you have a dynamic type, you don't have to modify it, so it's resistant to changes.
+
+<blockquote>
+Python and Ruby are lined up in the same line, but I felt a mysterious order where PHP could not be entered / I do not think that I have used a language with type inference seriously / When it becomes large, LL also specifies the type It's definitely more productive to use the complement of the IDE.
+</ blockquote>
+
+There is no deep intention to pull out PHP. PHP is a language that is easy to use for web programming because it is easy to deploy and has web-specific functions in the core from the beginning. When it comes to type inference, I wasn't aware of it. I don't understand the meaning of specifying the type even in LL.
+
+<blockquote>
+It's a bomb fishing. When I started Ruby after doing Java, I had this impression. It's not good, I know the good points of various languages. Next time, I think that a completely different world will spread if you try to touch scala.
+(kabisuke)
+</ blockquote>
+
+I haven't caught it. As usual, when I wrote it normally, I just got a lot of bookmarks. Twice
+
+<blockquote>
+"Once you run the program, you'll understand." Write the program for your mobile phone once. You can't test something like "The month changed while you were making an emergency call to 110, the prepaid contract expired, and the Earthquake Early Warning came at that moment." of?
+(naoya2k)
+</ blockquote>
+
+I think this is a more general exam question. I think it has nothing to do with safety because I made the program with a static type.
+
+<blockquote>
+In the first place, PHP, Perl, Ruby, and Python all have types, but you just don't explicitly declare them.
+(rokujyouhitoma)
+</ blockquote>
+
+This story isn't discussing the types of internal values, but rather the benefits of being able to assign a value of any type because the variable doesn't require a type.
+
+<blockquote>
+It is strange that you can understand it once you execute it. If Perl has a decent coverage analysis tool, you can use it and you'll find that it's not a one-time job.
+(tpro)
+</ blockquote>
+The fact that you can see it once you run it means that you can find a bug by running that part once. It doesn't mean to go through all the coverage. Coverage issues are another issue. Whether the branch is correct is completely different from whether a language has static typing in the first place.
+
+<blockquote>
+This is the level that Perl users will stab from their backs
+(Mr. Nkzn)
+</ blockquote>
+
+There is no content.
+
+<h3> Addendum </ h3>
+The following was misunderstood.
+<blockquote>
+Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all.
+</ blockquote>
+Type inference seems to infer types better in many cases. We will withdraw the discussion of the benefits of type inference.
+
+But I don't think we're having such an irrelevant discussion.

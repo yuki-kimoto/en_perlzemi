@@ -1,76 +1,76 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop="name">XS</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> XS </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>C++のライブラリをXSから利用する方法</h2>
+  </ li>
+</ ol>
+<h2> How to use C ++ library from XS </ h2>
 
 
 
-PerlのXSでは<b>C++</b>で書かれたライブラリを呼び出すこともできます。コンパイラとリンカに、C++用の「g++」を指定するだけです。
+Perl's XS also allows you to call libraries written in <b> C ++ </ b>. Just specify "g ++" for C ++ for the compiler and linker.
 
-<h3>h2xsでモジュールを作成</h3>
+<h3> Create a module with h2xs </ h3>
 
-最初にh2xsでXS用のモジュールを作成します。
+First, create a module for XS with h2xs.
 
 <pre>
 h2xs -A -n SomeModule
-</pre>
+</ pre>
 
-こうすると「SomeModule」というディレクトリが作成されます。次のようなファイルとディレクトリが作成されます。
+This will create a directory called "SomeModule". The following files and directories will be created.
 
 <pre>
 Changes
-lib/
+lib /
 Makefile.PL
 MANIFEST
 ppport.h
 README
 SomeModule.xs
-t/
-</pre>
+t /
+</ pre>
 
-<h3>C++のライブラリの作成</h3>
+<h3> Creating a C ++ library </ h3>
 
-C++のライブラリを作成しましょう。ヘッダファイルとソースファイルを作成します。
+Let's create a C ++ library. Create a header file and a source file.
 
-<b>mylib.h</b>
+<b> mylib.h </ b>
 
-ヘッダファイルです。mylib_printを宣言しています。
+This is a header file. Declaring mylib_print.
 
 <pre>
-void mylib_print();
-</pre>
+void mylib_print ();
+</ pre>
 
-<b>mylib.cpp</b>
+<b> mylib.cpp </ b>
 
-C++のソースファイルです。mylib_printは「mylib_cpp」という文字列を出力する関数です。ファイル名の拡張子が「.cpp」であることに注意してください。
+C ++ source file. mylib_print is a function that outputs the string "mylib_cpp". Note that the file name extension is ".cpp".
 
 <pre>
 #include <iostream>
 
-void mylib_print() {
-  std::cout << "mylib_cpp\n";
+void mylib_print () {
+  std :: cout << "mylib_cpp \ n";
 }
-</pre>
+</ pre>
 
-ヘッダファイルとソースファイルは保存して、XSファイルが存在するディレクトリと同じディレクトリに配置してください。
+Save the header and source files and place them in the same directory where the XS files are located.
 
-<h3>XSファイルの記述</h3>
+<h3> XS file description </ h3>
 
-XSファイルを記述しましょう。mylib_printを呼び出しています。
+Let's write an XS file. I am calling mylib_print.
 
 <pre>
 #include "EXTERN.h"
@@ -80,47 +80,47 @@ XSファイルを記述しましょう。mylib_printを呼び出しています�
 #include "ppport.h"
 #include "mylib.h"
 
-MODULE = SomeModule		PACKAGE = SomeModule		
+MODULE = SomeModule PACKAGE = SomeModule
 
 void
-foo(...)
+foo (...)
   PPCODE:
 {
-  mylib_print();
-  XSRETURN(0);
+  mylib_print ();
+  XSRETURN (0);
 }
-</pre>
+</ pre>
 
-<h3>Makefile.PLの修正</h3>
+<h3> Modify Makefile.PL </ h3>
 
-次にMakefile.PLを少し修正しましょう。一番下の「OBJECT」オプションがデフォルトではコメントアウトされているので、コメントを取り除きます。「$(O_FILES)」という設定をすれば、カレントディレクトリのすべてのC言語のソースファイルとC++のソースファイルがコンパイルの対象になります。
+Next, let's modify Makefile.PL a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$ (O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
 
-そしてコンパイラとリンカを「g++」に変更します。コンパイラは「CC」オプション、リンカは「LD」で設定できます。
+Then change the compiler and linker to "g ++". The compiler can be set with the "CC" option, and the linker can be set with the "LD".
 
 <pre>
-use ExtUtils::MakeMaker;
+use ExtUtils :: MakeMaker;
 use strict;
 use warnings;
 
-WriteMakefile(
-    NAME              => 'SomeModule',
-    VERSION_FROM      => 'lib/SomeModule.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/SomeModule.pm', # retrieve abstract from module
-       AUTHOR         => 'A. U. Thor <kimoto@sakura.ne.jp>') : ()),
-    LIBS              => [''], # e.g., '-lm'
-    DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
-    INC               => '-I.', # e.g., '-I. -I/usr/include/other'
-    OBJECT            => '$(O_FILES)', # link all the C files too
-    CC =>'g++',
-    LD => 'g++',
+WriteMakefile (
+    NAME =>'SomeModule',
+    VERSION_FROM =>'lib / SomeModule.pm', # finds $ VERSION
+    PREREQ_PM => {}, # e.g., Module :: Name => 1.1
+    ($]> = 5.005? ## Add these new keywords supported since 5.005
+      (ABSTRACT_FROM =>'lib / SomeModule.pm', # retrieve abstract from module
+       AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
+    LIBS => [''], # e.g.,'-lm'
+    DEFINE =>'', # e.g.,'-DHAVE_SOMETHING'
+    INC =>'-I.', # e.g.,'-I. -I / usr / include / other'
+    OBJECT =>'$ (O_FILES)', # link all the C files too
+    CC =>'g ++',
+    LD =>'g ++',
 );
-</pre>
+</ pre>
 
-<h3>テストスクリプト</h3>
+<h3> Test script </ h3>
 
-テストスクリプトを作成します。これは、XSファイルがあるディレクトリと同じディレクトリにおいてください。
+Create a test script. This should be in the same directory where the XS files are located.
 
 <pre>
 use strict;
@@ -128,34 +128,33 @@ use warnings;
 
 use SomeModule;
 
-SomeModule::foo();
-</pre>
+SomeModule :: foo ();
+</ pre>
 
-<h3>コンパイルして実行</h3>
+<h3> Compile and run </ h3>
 
-コンパイルして実行してみましょう。
+Let's compile and run it.
 
 <pre>
 perl Makefile.PL
 make
 perl -Mblib test.pl
-</pre>
+</ pre>
 
-次のように出力されれば成功です。
+If the output is as follows, it is successful.
 
 <pre>
 mylib_cpp
-</pre>
+</ pre>
 
-これで、C++のライブラリをXSファイルから利用することができるようになりました。
+Now you can use the C ++ library from the XS file.
 
-<h3>FAQ</h3>
+<h3> FAQ </ h3>
 
-<h4>XSファイルの中に直接C++を記述することはできますか。</h4>
+<h4> Is it possible to write C ++ directly in the XS file? </ h4>
 
-できます。けれども、Perlのシンボルと衝突してしまうなどの不具合が起こりがちですので、ソースファイルとヘッダファイルに記述するのがよいと思います。
+I can do it. However, it tends to cause problems such as collision with Perl symbols, so I think it is better to describe it in the source file and header file.
 
-<h4>C言語のライブラリとC++のライブラリを混在させて利用することはできますか。</h4>
+<h4> Is it possible to use a mixture of C language libraries and C ++ libraries? </ h4>
 
-C++はC言語のほぼ上位互換なので、C言語のライブラリがg++でコンパイル可能であれば大丈夫だと思います。そうでない場合は、ちょっとわかりません。
-
+C ++ is almost upward compatible with C language, so I think it's okay if the C language library can be compiled with g ++. If not, I'm not sure.

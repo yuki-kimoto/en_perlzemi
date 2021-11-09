@@ -1,150 +1,148 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>warningsモジュール</h2>
+  </ li>
+</ ol>
+<h2> warnings module </ h2>
 
-警告を表示するには<strong>warnings</strong>プラグマを使用します。
-
-<pre>
-use warnings;
-</pre>
-
-Perlにおいては、デフォルトの状態では、警告は表示されず、スクリプトが実行されます。warningsプラグマを使えば、警告を表示させることができます。スクリプトを書く場合は、strictプラグマとあわせて、必ず記述するようにしましょう。
-
-<h3>よく見る警告</h3>
-
-よく見るであろう警告についていくつか解説しておきます。
-
-<h4>未定義値の使用</h4>
-
-未定義値を使用すると警告が表示されます。以下のスクリプトでは、未定義の値をそのままprint関数で出力してしまっています。
+Use the <strong> warnings </ strong> pragma to display warnings.
 
 <pre>
 use warnings;
+</ pre>
 
-# 未定義値を使用
-my $str;
-print $str;
-</pre>
+In Perl, in the default state, no warning is displayed and the script is executed. You can use the warnings pragma to display warnings. When writing a script, be sure to write it together with the strict pragma.
 
-次のような警告が表示されます。
+<h3> Frequently seen warning </ h3>
 
-<pre>
-Use of uninitialized value $str in print at a.pl line 6
-</pre>
+Here are some of the warnings you'll see often.
 
-英語なので翻訳します。
+<h4> Use undefined values ​​</ h4>
+
+A warning is displayed if you use an undefined value. In the following script, the undefined value is output as it is by the print function.
 
 <pre>
-printにおいて未定義値$strを使用しています。6行目。
-</pre>
+use warnings;
 
-未定義を利用しているという内容の警告が発生した場合は、変数に値が代入さないままになっているということです。つまり、スクリプトにミスがあるということです。スクリプトを修正して、この警告が表示されないようにしましょう。
+# Use undefined value
+my $ str;
+print $ str;
+</ pre>
 
-<h3>文字列がエンコードされていない</h3>
+You will see a warning similar to the following:
 
-日本語などのマルチバイト文字を使用するときに、文字列がエンコードされていないことを知らせる警告が表示される場合があります。以下は警告が発生するスクリプトです。
+<pre>
+Use of uninitialized value $ str in print at a.pl line 6
+</ pre>
+
+Since it is in English, I will translate it.
+
+<pre>
+I am using the undefined value $ str in print. 6th line.
+</ pre>
+
+If you get a warning that you are using undefined, it means that the variable is left unassigned. In other words, there is a mistake in the script. Let's modify the script so that this warning does not appear.
+
+<h3> String is not encoded </ h3>
+
+When using multibyte characters such as Japanese, you may see a warning that the string is unencoded. Below is the script that raises the warning.
 
 <pre>
 use warnings;
 use utf8;
 
-# 文字列がエンコードされていない
-my $str = 'こんにちは';
-print $str;
-</pre>
+#String is not encoded
+my $ str ='Hello';
+print $ str;
+</ pre>
 
-次のような警告が表示されます。
+You will see a warning similar to the following:
 
 <pre>
 Wide character in print at a.pl line 7.
-</pre>
+</ pre>
 
-英語なので翻訳します。
+Since it is in English, I will translate it.
 
 <pre>
-ワイド文字が使用されています。7行目。
-</pre>
+Wide characters are used. 7th line.
+</ pre>
 
-これは、文字列がエンコードされずに出力されているということを意味しています。ですから、きちんとエンコードしましょう。
+This means that the string is being output unencoded. So let's encode it properly.
 
 <pre>
 use warnings;
 use utf8;
-use Encode 'encode';
+use Encode'encode';
 
-# 文字列がエンコードされていない
-my $str = 'こんにちは';
-print encode('UTF-8', $str);
-</pre>
+#String is not encoded
+my $ str ='Hello';
+print encode ('UTF-8', $ str);
+</ pre>
 
-<h3>サブルーチンが再定義されている</h3>
+<h3> Subroutines have been redefined </ h3>
 
-サブルーチンを、二回以上定義したときは、サブルーチンが再定義されているという警告が発生します。以下は警告が発生するスクリプトです。
+If you define a subroutine more than once, you will be warned that the subroutine has been redefined. Below is the script that raises the warning.
 
 <pre>
 use warnings;
 
-# サブルーチンの再定義
-sub one { 1 }
-sub one { 1 }
-</pre>
+# Subroutine redefinition
+sub one {1}
+sub one {1}
+</ pre>
 
-次のような警告が表示されます。
+You will see a warning similar to the following:
 
 <pre>
 Subroutine one redefined at a.pl line 5.
-</pre>
+</ pre>
 
-英語なので翻訳します。
-
-<pre>
-サブルーチンoneが再定義されています。5行目。
-</pre>
-
-サブルーチンを再定義しているときは、通常は間違いの可能性が高いのですが、一時的にサブルーチンを置き換えたいという場合がときどき発生します。そのような場合は、この警告を抑止することができます。
+Since it is in English, I will translate it.
 
 <pre>
-no warnings 'redefine';
-</pre>
+Subroutine one has been redefined. 5th line.
+</ pre>
 
-この定義を行うと、サブルーチンの再定義の警告は発生しなくなります。
+When redefining a subroutine, it's usually likely that you've made a mistake, but sometimes you want to temporarily replace the subroutine. In such cases, you can suppress this warning.
+
+<pre>
+no warnings'redefine';
+</ pre>
+
+This definition eliminates the subroutine redefinition warning.
 
 <pre>
 use warnings;
-no warnings 'redefine';
+no warnings'redefine';
 
-# サブルーチンの再定義の警告は発生しない
-sub one { 1 }
-sub one { 1 }
-</pre>
+# Subroutine redefinition warning does not occur
+sub one {1}
+sub one {1}
+</ pre>
 
-サブルーチンの再定義の警告以外の警告も似たような方法で抑止することができますけれど、原則として警告は抑止してはいけません。警告が発生している原因の部分のほうを修正すべきです。
+Warnings other than subroutine redefinition warnings can be suppressed in a similar way, but in principle warnings should not be suppressed. You should fix the part that caused the warning.
 
-<h3>サブルーチンの再定義の警告を抑制する</h3>
+<h3> Suppress subroutine redefinition warnings </ h3>
 
-開発中にバグがあって、急遽修正しないといけないときは、モンキーパッチを当てることがときどきありますね。モンキーパッチというのは、サブルーチンやメソッドの定義を上書きして、正しい動きにしてあげることです。
+If you have a bug during development and need to fix it in a hurry, you will sometimes apply a monkey patch. A monkey patch is to overwrite the definition of a subroutine or method so that it behaves correctly.
 
-でもサブルーチンの再定義を行うと、警告が発生します。この警告を表示しないようにするには<b>warnings</b>プラグマでサブルーチンの再定義の警告をとめるようにコンパイラに指示してあげます。
+But when I redefine the subroutine, I get a warning. To prevent this warning from appearing, use the <b> warnings </ b> pragma to instruct the compiler to stop the subroutine redefinition warning.
 
 <pre>
-no warnings 'redefine';
-</pre>
+no warnings'redefine';
+</ pre>
 
-これで警告が表示されなくなります。これはレキシカルなスコープを持ちます。以下はモジュールのメソッドを上書きするサンプルです。
-
-
+The warning will no longer be displayed. It has a lexical scope. Below is a sample that overrides the module's methods.

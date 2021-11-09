@@ -1,97 +1,95 @@
+<h2> Let's learn the types of data | Introduction to Rstats (statistical analysis / scientific calculation) </ h2>
 
-<h2>データの種類を覚えよう | Rstats入門(統計解析・科学技術計算)</h2>
+Remember the data types available in Rstats. The type of Rstats is the same as the type of R language.
 
-Rstatsで利用できるデータ型を覚えましょう。Rstatsの型は、R言語の型と同じです。
+<h3> NULL --Nothing </ h3>
 
-<h3>NULL - 何もない</h3>
-
-何もないということを表現するのにNULLを使用します。配列の初期化やnames属性などの属性を取り除くときに利用できます。
+Use NULL to indicate that there is nothing. It can be used to initialize an array or remove attributes such as the names attribute.
 
 <pre>
 NULL
-</pre>
+</ pre>
 
-<h3>欠損値 NA</h3>
+<h3> Missing value NA </ h3>
 
-欠損値は<b>NA</b>で表現します。NAというのはデータの欠損を表します。
+Missing values ​​are represented by <b> NA </ b>. NA stands for data loss.
 
 <pre>
 NA
-</pre>
+</ pre>
 
-<h3>非数 - NaN, Inf(不動少数点演算のみ)</h3>
+<h3> Non-number --NaN, Inf (immovable decimal point operation only) </ h3>
 
-NaNは、NAと名前はにていますがまったく異なるものです。NaN不動少数点の演算において、数として表現できないことを意味します。
+NaN, although named NA, is completely different. It means that it cannot be expressed as a number in the calculation of NaN immovable decimal point.
 
 <pre>
 NaN
-</pre>
+</ pre>
 
-たとえば、「0/0」という演算の結果は、数として表現できないので、「NaN」になります。
+For example, the result of the operation "0/0" cannot be expressed as a number, so it becomes "NaN".
 
-また、浮動小数点の演算が、無限大として表現できる場合は「Inf」が返ります。
+Also, if the floating point operation can be expressed as infinity, "Inf" is returned.
 
 =====
 
 <pre>
 Inf
-</pre>
+</ pre>
 
-たとえば「1/0」という演算の結果は「Inf」になります。
+For example, the result of the operation "1/0" is "Inf".
 
-<h3>文字列</h3>
+<h3> String </ h3>
 
-文字列を作成するには、Perlの文字列を<b>「c_」</b>関数の引数に指定します。
-
-<pre>
-c_("abc");
-</pre>
-
-<h3>数値</h3>
-
-数値を作成するには、Perlの数値を<b>「c_」</b>関数の引数に指定します。
+To create a string, specify the Perl string as an argument to the <b> "c_" </ b> function.
 
 <pre>
-c_(34.4);
-</pre>
+c_ ("abc");
+</ pre>
 
-<h3>複素数</h3>
+<h3> Numerical value </ h3>
 
-複素数を表現するには<b>i_</b>を使用します。たとえば「1+2i」という複素数を表現するには「<b>i_</b>」関数を使って次のようにします。
-
-<pre>
-1 + 2*i_
-</pre>
-
-数値の「1」と複素数「1 + 0*i_」は異なるので注意してください。
-
-<h3>論理値</h3>
-
-論理地は「<b>TRUE</b>」と「<b>FALSE</b>」で表現します。
+To create a number, specify the Perl number as an argument to the <b> "c_" </ b> function.
 
 <pre>
-# 真
+c_ (34.4);
+</ pre>
+
+<h3> Complex numbers </ h3>
+
+Use <b> i_ </ b> to represent complex numbers. For example, to express the complex number "1 + 2i", use the "<b> i_ </ b>" function as follows.
+
+<pre>
+1 + 2 * i_
+</ pre>
+
+Please note that the number "1" and the complex number "1 + 0 * i_" are different.
+
+<h3> Logical value </ h3>
+
+The logical ground is expressed by "<b> TRUE </ b>" and "<b> FALSE </ b>".
+
+<pre>
+#True
 TRUE
 
-# 偽
+# Fake
 FALSE
-</pre>
+</ pre>
 
-省略形として<b>T_</b>と<b>F_</b>を使うこともできます。
+You can also use <b> T_ </ b> and <b> F_ </ b> as abbreviations.
 
 <pre>
-# 真
+#True
 T_
 
-# 偽
+# Fake
 F_
-</pre>
+</ pre>
 
-<h3>日付(実装未)</h3>
+<h3> Date (not implemented) </ h3>
 
-日付型が存在しますが、現在は、未実装です。
+There is a date type, but it is not currently implemented.
 
 <hr>
 
-<a href="/blog/20151002144374.html">Rstats入門(統計解析・科学技術計算) </a>
-
+<a href="/blog/20151002144374.html"> Introduction to Rstats (statistical analysis / scientific calculation) </a>

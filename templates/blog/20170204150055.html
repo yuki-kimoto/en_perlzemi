@@ -1,104 +1,104 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop="name">XS</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> XS </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>C++のクラスをXSから利用する方法</h2>
+  </ li>
+</ ol>
+<h2> How to use C ++ classes from XS </ h2>
 
 
 
-XSで<b>C++のクラス</b>を呼び出す方法を学びましょう。これができるようになれば、どんなC++のライブラリでも、Perlにバインディングができるようになると思います。
+Learn how to call <b> C ++ classes </ b> on your XS. If I can do this, I think any C ++ library will be able to bind to Perl.
 
-<h3>h2xsでモジュールを作成</h3>
+<h3> Create a module with h2xs </ h3>
 
-最初に<a href="/blog/20170209150055.html">h2xs</a>でXS用のモジュールを作成します。
+First, create a module for XS with <a href="/blog/20170209150055.html"> h2xs </a>.
 
 <pre>
 h2xs -A -n MyClass
-</pre>
+</ pre>
 
-こうすると「MyClass」というディレクトリが作成されます。次のようなファイルとディレクトリが作成されます。
+This will create a directory called "MyClass". The following files and directories will be created.
 
 <pre>
 Changes
-lib/
+lib /
 Makefile.PL
 MANIFEST
 ppport.h
 README
 MyClass.xs
-t/
-</pre>
+t /
+</ pre>
 
-<h3>C++でクラスの作成</h3>
+<h3> Creating a class in C ++ </ h3>
 
-C++でクラスを作成しましょう。ヘッダファイルとソースファイルを作成します。
+Let's create a class in C ++. Create a header file and a source file.
 
-<b>MyClass.h</b>
+<b> MyClass.h </ b>
 
-ヘッダファイルです。コンストラクタ、メソッド、クラスメソッドを宣言しています。通常のメソッドとクラスメソッドの呼び出し方の違いを理解するために、このような構成にしています。ファイル名は「MyClass.h」です。
+This is a header file. Declares constructors, methods and class methods. This is done to understand the difference between calling regular methods and class methods. The file name is "MyClass.h".
 
 <pre>
 #ifndef MYCLASS_INCLUDE
 #define MYCLASS_INCLUDE
 class MyClass {
   
-  public:
+  public: public:
   
-  // コンストラクタ
-  MyClass();
+  // constructor
+  MyClass ();
   
-  // メソッド
-  void print();
+  // method
+  void print ();
   
-  // クラスメソッド
-  static void print_static();
+  // class method
+  static void print_static ();
 };
 #endif
 
-</pre>
+</ pre>
 
-「#ifndef」で始まっているのは、インクルードガードと呼ばれるものです。ヘッダファイルは、XSファイルと、ソースファイルの2箇所から読み込まれる必要があります。すると、そのままでは、ヘッダファイルが二重に取り込まれて、コンパイルエラーになってしまいます。それを防ぐために、インクルードを行っています。
+What starts with "#ifndef" is what is called an include guard. The header file needs to be read from two places, the XS file and the source file. Then, if it is left as it is, the header file will be imported twice and a compile error will occur. To prevent that, we are including it.
 
-<h3>MyClass_src.cpp</h3>
+<h3> MyClass_src.cpp </ h3>
 
-C++のソースファイルです。コンストラクタ、メソッド、クラスメソッドの実装を行っています。ソースファイルでは、MyClassというシンボルを解決するために、ヘッダファイルを読み込む必要があります。ファイル名は「MyClass_src.cpp」にしてあります。これは「MyClass.cpp」としてしまうと、コンパイル後の名前は「MyClass.o」となりますが、これはXSファイル「MyClass.xs」のコンパイル後の名前「MyClass.o」とかぶってしまうためです。
+C ++ source file. Implements constructors, methods, and class methods. In the source file, you need to read the header file to resolve the symbol MyClass. The file name is "MyClass_src.cpp". This is because if you name it "MyClass.cpp", the compiled name will be "MyClass.o", because it will overlap with the compiled name "MyClass.o" of the XS file "MyClass.xs". ..
 <pre>
 #include <iostream>
 #include "MyClass.h"
 
-// コンストラクタ
-MyClass::MyClass() {}
+// constructor
+MyClass :: MyClass () {}
 
-// メソッド
-void MyClass::print() {
-  std::cout << "MyClass::print\n";
+// method
+void MyClass :: print () {
+  std :: cout << "MyClass :: print \ n";
 }
 
-// クラスメソッド
-void MyClass::print_static() {
-  std::cout << "MyClass::print_static\n";
+// class method
+void MyClass :: print_static () {
+  std :: cout << "MyClass :: print_static \ n";
 }
 
-</pre>
+</ pre>
 
-ヘッダファイルとソースファイルは保存して、XSファイルが存在するディレクトリと同じディレクトリに配置してください。
+Save the header and source files and place them in the same directory where the XS files are located.
 
-<h3>XSファイルの記述</h3>
+<h3> XS file description </ h3>
 
-XSファイルを記述しましょう。
+Let's write an XS file.
 
 <pre>
 #include "EXTERN.h"
@@ -108,172 +108,172 @@ XSファイルを記述しましょう。
 #include "ppport.h"
 #include "MyClass.h"
 
-#define XS_OBJ_TO_PTR(x, type)     (INT2PTR(type, SvROK(x) ? SvIV(SvRV(x)) : SvIV(x)))
-#define XS_PTR_TO_OBJ(x, class) \
-  sv_bless( \
-    sv_2mortal( \
-      newRV_inc( \
-        sv_2mortal( \
-          newSViv(PTR2IV(x)) \
+#define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
+#define XS_PTR_TO_OBJ (x, class) \
+  sv_bless (\
+    sv_2mortal (\
+      newRV_inc (\
+        sv_2mortal (\
+          newSViv (PTR2IV (x)) \
         ) \
       ) \
     ), \
-    gv_stashpv(class, 1) \
+    gv_stashpv (class, 1) \
   );
 
-MODULE = MyClass		PACKAGE = MyClass		
+MODULE = MyClass PACKAGE = MyClass
 
 void
-new(...)
+new (...)
   PPCODE:
 {
-  MyClass* self = new MyClass();
-  SV* self_sv = XS_PTR_TO_OBJ(self, "MyClass");
+  MyClass * self = new MyClass ();
+  SV * self_sv = XS_PTR_TO_OBJ (self, "MyClass");
   
-  XPUSHs(self_sv);
-  XSRETURN(1);
+  XPUSHs (self_sv);
+  XSRETURN (1);
 }
 
 void
-print(...)
+print (...)
   PPCODE:
 {
-  MyClass* self = XS_OBJ_TO_PTR(ST(0), MyClass*);
+  MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   
-  self->print();
-  XSRETURN(0);
+  self-> print ();
+  XSRETURN (0);
 }
 
 void
-print_static(...)
+print_static (...)
   PPCODE:
 {
-  MyClass::print_static();
-  XSRETURN(0);
+  MyClass :: print_static ();
+  XSRETURN (0);
 }
 
-void DESTORY(...)
+void DESTORY (...)
   PPCODE:
 {
-  MyClass* self = XS_OBJ_TO_PTR(ST(0), MyClass*);
+  MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   delete self;
 }
 
-</pre>
+</ pre>
 
-<b>型の変換を行うためのマクロ</b>
+<b> Macro for type conversion </ b>
 
-少し解説をしておきます。以下は、Perlのオブジェクト(SV*型)をC(あるいはC++)のポインタに変換するマクロと、C(あるいはC++)のポインタをPerlのオブジェクト(SV*型)に変換するマクロになっています。
+Let me explain a little. Below are macros that convert Perl objects (SV * type) to C (or C ++) pointers and macros that convert C (or C ++) pointers to Perl objects (SV * type).
 
 <pre>
-#define XS_OBJ_TO_PTR(x, type)     (INT2PTR(type, SvROK(x) ? SvIV(SvRV(x)) : SvIV(x)))
-#define XS_PTR_TO_OBJ(x, class) \
-  sv_bless( \
-    sv_2mortal( \
-      newRV_inc( \
-        sv_2mortal( \
-          newSViv(PTR2IV(x)) \
+#define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
+#define XS_PTR_TO_OBJ (x, class) \
+  sv_bless (\
+    sv_2mortal (\
+      newRV_inc (\
+        sv_2mortal (\
+          newSViv (PTR2IV (x)) \
         ) \
       ) \
     ), \
-    gv_stashpv(class, 1) \
+    gv_stashpv (class, 1) \
   );
-</pre>
+</ pre>
 
-<b>コンストラクタ</b>
+<b> Constructor </ b>
 
-コンストラクタです。newを使ってMyClassをインスタンス化してMyClass*型に代入します。そして、このポンイタを、Perlのオブジェクト変換して、返します。
+It is a constructor. Use new to instantiate MyClass and assign it to the MyClass * type. Then, this Ponita is converted into a Perl object and returned.
 
 <pre>
 void
-new(...)
+new (...)
   PPCODE:
 {
-  MyClass* self = new MyClass();
-  SV* self_sv = XS_PTR_TO_OBJ(self, "MyClass");
+  MyClass * self = new MyClass ();
+  SV * self_sv = XS_PTR_TO_OBJ (self, "MyClass");
   
-  XPUSHs(self_sv);
-  XSRETURN(1);
+  XPUSHs (self_sv);
+  XSRETURN (1);
 }
-</pre>
+</ pre>
 
-<b>メソッド呼び出し</b>
+<b> method call </ b>
 
-メソッドの呼び出しです。
+A method call.
 
 <pre>
 void
-print(...)
+print (...)
   PPCODE:
 {
-  MyClass* self = XS_OBJ_TO_PTR(ST(0), MyClass*);
+  MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   
-  self->print();
-  XSRETURN(0);
+  self-> print ();
+  XSRETURN (0);
 }
-</pre>
+</ pre>
 
-メソッド呼び出しでは、第一引数にはPerlのオブジェクトが渡ってくるので、これをポインタ「MyClass*」に変換します。そして「self->print」としてメソッドを呼び出します。
+In the method call, the Perl object is passed as the first argument, so convert it to the pointer "MyClass *". Then call the method as "self-> print".
 
-<b>クラスメソッドの呼び出し</b>
+<b> Calling class methods </ b>
 
-クラスメソッドの呼び出しです。
+This is a class method call.
 
 <pre>
 void
-print_static(...)
+print_static (...)
   PPCODE:
 {
-  MyClass::print_static();
-  XSRETURN(0);
+  MyClass :: print_static ();
+  XSRETURN (0);
 }
-</pre>
+</ pre>
 
-「MyClass::print_static()」と完全修飾名で呼び出しているだけです。
+I'm just calling "MyClass :: print_static ()" with a fully qualified name.
 
-<b>デストラクタ</b>
+<b> Destructor </ b>
 
-デストラクタです。deleteを使って、メモリの開放を行う必要があります。
+It is a destructor. You need to use delete to free the memory.
 
 <pre>
-void DESTORY(...)
+void DESTORY (...)
   PPCODE:
 {
-  MyClass* self = XS_OBJ_TO_PTR(ST(0), MyClass*);
+  MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   delete self;
 }
-</pre>
+</ pre>
 
-<h3>Makefile.PLの修正</h3>
+<h3> Modify Makefile.PL </ h3>
 
-次に<a href="/blog/20150725143778.html">Makefile.PL</a>を少し修正しましょう。一番下の「OBJECT」オプションがデフォルトではコメントアウトされているので、コメントを取り除きます。「$(O_FILES)」という設定をすれば、カレントディレクトリのすべてのC言語のソースファイルとC++のソースファイルがコンパイルの対象になります。
+Next, let's modify <a href="/blog/20150725143778.html"> Makefile.PL </a> a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$ (O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
 
-そしてコンパイラとリンカを「g++」に変更します。コンパイラは「CC」オプション、リンカは「LD」で設定できます。
+Then change the compiler and linker to "g ++". The compiler can be set with the "CC" option, and the linker can be set with the "LD".
 
 <pre>
-use ExtUtils::MakeMaker;
+use ExtUtils :: MakeMaker;
 use strict;
 use warnings;
 
-WriteMakefile(
-    NAME              => 'MyClass',
-    VERSION_FROM      => 'lib/MyClass.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/MyClass.pm', # retrieve abstract from module
-       AUTHOR         => 'A. U. Thor <kimoto@sakura.ne.jp>') : ()),
-    LIBS              => [''], # e.g., '-lm'
-    DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
-    INC               => '-I.', # e.g., '-I. -I/usr/include/other'
-    OBJECT            => '$(O_FILES)', # link all the C files too
-    CC =>'g++',
-    LD => 'g++',
+WriteMakefile (
+    NAME =>'MyClass',
+    VERSION_FROM =>'lib / MyClass.pm', # finds $ VERSION
+    PREREQ_PM => {}, # e.g., Module :: Name => 1.1
+    ($]> = 5.005? ## Add these new keywords supported since 5.005
+      (ABSTRACT_FROM =>'lib / MyClass.pm', # retrieve abstract from module
+       AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
+    LIBS => [''], # e.g.,'-lm'
+     DEFINE =>'', # e.g.,'-DHAVE_SOMETHING'
+     INC =>'-I.', # e.g.,'-I. -I / usr / include / other'
+     OBJECT =>'$ (O_FILES)', # link all the C files too
+     CC =>'g ++',
+     LD =>'g ++',
 );
-</pre>
+</ pre>
 
-<h3>テストスクリプト</h3>
+<h3> Test script </ h3>
 
-テストスクリプトを作成します。これは、XSファイルがあるディレクトリと同じディレクトリにおいてください。
+Create a test script. This should be in the same directory where the XS files are located.
 
 <pre>
 use strict;
@@ -281,27 +281,200 @@ use warnings;
 
 use MyClass;
 
-my $obj = MyClass->new;
-$obj->print;
-MyClass->print_static;
-</pre>
+my $ obj = MyClass-> new;
+$ obj-> print;
+MyClass-> print_static;
+</ pre>
 
-<h3>コンパイルして実行</h3>
+<h3> Compile and run </ h3>
 
-コンパイルして実行してみましょう。
+Let's compile and run it.
 
 <pre>
 perl Makefile.PL
 make
 perl -Mblib test.pl
-</pre>
+</ pre>
 
-次のように出力されれば成功です。
+If the output is as follows, it is successful.
 
 <pre>
-MyClass::print
-MyClass::print_static
-</pre>
+MyClass :: print
+MyClass :: print_static
+</ pre>
 
-これで、C++のクラスをXSファイルから利用することができるようになりました。
+Now you can use C ++ classes from your XS file.(Returns a pointer to the SV * type)
+    SV ** num_sv_ptr = av_fetch (nums_av, i, FALSE);
+    
+    // Set the value if the element is found, undef if not found
+    SV * num_sv = num_sv_ptr? * num_sv_ptr: & PL_sv_undef;
+    
+    // Convert to type IV
+    IV num = SvIV (num_sv);
+    
+    // Assign to array
+    nums [i] = num;
+    printf ("% d \ n", num);
+  }
+  
+  // Release when no longer needed
+  free (nums);
+  
+  XSRETURN (0);
+}
+</ pre>
 
+<h4> Convert C language array to array reference </ h4>
+
+Converts a C array into a Perl array reference. An array (AV * type) can be created with "newAV ()". If you created the array, it should be mortal. Note that sv_2mortal only accepts SV * types, so we cast it as (SV *). Also note that sv_2mortal returns the SV * type, so we cast it as (AV *).
+
+Use av_push to add elements to the array. I am creating a new SV type value from an IV type value and adding it to the array. When adding an SV * type value as an element of an array, you need to manually increase the reference count. We are using SvREFCNT_inc for this.
+
+You can generate a reference with newRV_inc. Since newRV receives an argument of type SV *, it is cast as (SV *). If you create a reference, you also need to make it mortal with sv_2mortal.
+
+<pre>
+void
+foo (...)
+  PPCODE:
+{
+  // C language array
+  IV nums [] = {1, 2, 3};
+  
+  // Array length
+  size_t nums_len = sizeof nums / sizeof nums [0];
+  
+  // Perl array
+  AV * nums_av = (AV *) sv_2mortal ((SV *) newAV ());
+  
+  // Add to array
+  for (int i = 0; i <nums_len; i ++) {
+    av_push (nums_av, SvREFCNT_inc (sv_2mortal (newSViv (nums [i]))));
+  }
+  
+  // Create an array reference
+  SV * nums_avrv = sv_2mortal (newRV_inc ((SV *) nums_av));
+  
+  XPUSHs (nums_avrv);
+  XSRETURN (1);
+}
+</ pre>
+
+<h4> Convert hash reference to struct </ h4>
+
+I will explain how to convert <a href="/blog/20161013147635.html"> Perl hash </a> to a C language structure.
+
+Declare the structure in the C language section.
+
+<pre>
+typedef struct {
+  double x;
+  double y;
+} Point;
+</ pre>
+
+The following is written in the XS section.
+
+<pre>
+void
+foo (...)
+  PPCODE:
+{
+  SV * point_hvrv = ST (0);
+  HV * point_hv;
+  if (SvROK (point_hvrv)) {
+    // Dereference and convert to HV * type
+    point_hv = (HV *) SvRV (point_hvrv);
+  }
+  else {
+    croak ("first argument must be hash reference");
+  }
+  
+  // Extract the hash element corresponding to x with hv_hetch (returns a pointer to SV * type)
+  SV ** x_sv_ptr = hv_fetch (point_hv, "x", strlen ("x"), 0);
+  
+  // Set the value if the element is found, undef if not found
+  SV * x_sv = x_sv_ptr? * X_sv_ptr: & PL_sv_undef;
+  
+  // Convert to double type
+  double x = SvNV (x_sv);
+  
+  // Use hv_hetch to retrieve the hash element corresponding to y (a pointer to the SV * type is returned)
+  SV ** y_sv_ptr = hv_fetch (point_hv, "y", strlen ("y"), 0);
+  
+  // Set the value if the element is found, undef if not found
+  SV * y_sv = y_sv_ptr? * y_sv_ptr: & PL_sv_undef;
+  
+  // Convert to double type
+  double y = SvNV (y_sv);
+  
+  // Create a pointer to the structure
+  Point * point = (Point *) malloc (sizeof (Point));
+  point-> x = x;
+  point-> y = y;
+  
+  printf ("% f \ n", point-> x);
+  printf ("% f \ n", point-> y);
+  
+  // Release when no longer needed
+  free (point);
+  
+  XSRETURN (0);
+}
+</ pre>
+
+<h4> Convert struct to hash reference </ h4>
+
+Converts the structure to a hash reference.
+
+Declare the structure in the C language section.
+
+<pre>
+typedef struct {
+  double x;
+  double y;
+} Point;
+</ pre>
+
+The following is written in the XS section. Hash is created by "newHV ()". Don't forget to make it mortal. When adding to the hash element, SvREFCNT_inc increments the reference count by one.
+
+<pre>
+void
+foo (...)
+  PPCODE:
+{
+  // Structure
+  Point * point = (Point *) malloc (sizeof (Point));
+  point-> x = 1;
+  point-> y = 2;
+  
+  // Convert value to SV * type
+  SV * x_sv = sv_2mortal (newSVnv (point-> x));
+  SV * y_sv = sv_2mortal (newSVnv (point-> y));
+  
+  // Create hash
+  HV * point_hv = (HV *) sv_2mortal ((SV *) newHV ());
+  
+  // add value to hash
+  hv_store (point_hv, "x", strlen ("x"), SvREFCNT_inc (x_sv), 0);
+  hv_store (point_hv, "y", strlen ("y"), SvREFCNT_inc (y_sv), 0);
+  
+  // Create a hash reference
+  SV * point_hvrv = sv_2mortal (newRV_inc ((SV *) point_hv));
+  
+  // Release the structure
+  free (point);
+  
+  XPUSHs (point_hvrv);
+  XSRETURN (1);
+}
+</ pre>
+
+<h3> To find out XS functions perlapi </ h3>
+
+The functions that create SV type data introduced here can be found in a document called perlapi. Please use the brief explanation of perlapi.
+
+<ul>
+  <li>
+    <a href="/blog/20100818127859.html"> perlapi --API for data manipulation in XS </a>
+  </ li>
+</ ul>

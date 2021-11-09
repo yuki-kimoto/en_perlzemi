@@ -1,38 +1,37 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Encode::UTF8Mac - Mac OS Xのファイル名のエンコーディング</h2>
+  </ li>
+</ ol>
+<h2> Encode :: UTF8Mac --Mac OS X filename encoding </ h2>
 
 
 
-Mac OS XはUTF-8をファイルシステムのエンコーディングとして採用していると思いきや、実は少し異なり、Mac OX X独自の仕様になっています。これを正しく扱うためにはEncode::UTF8Macというモジュールを利用すると簡単です。
+I think Mac OS X uses UTF-8 as the file system encoding, but it's actually a little different, and it's a Mac OX X-specific specification. To handle this correctly, it is easy to use a module called Encode :: UTF8Mac.
 
 <pre>
-use Encode qw/encode decode/;
-use Encode::UTF8Mac;
+use Encode qw / encode decode /;
+use Encode :: UTF8Mac;
 
-# エンコード
-my $byte = encode('utf-8-mac', $string);
+# Encode
+my $ byte = encode ('utf-8-mac', $ string);
 
-# デコード
-my $string = decode('utf-8-mac', $byte);
-</pre>
+#Decode
+my $ string = decode ('utf-8-mac', $ byte);
+</ pre>
 
-useを使ってEncode::UTF8Macを読み込むと、Encodeモジュールのエンコーディングとして<b>utf-8-mac</b>を利用できるようになります。このエンコーディングを利用すれば、Mac OS Xのファイル名を正しく扱うことができます。
+If you use use to load Encode :: UTF8Mac, you will be able to use <b> utf-8-mac </ b> as the encoding for your Encode module. This encoding allows Mac OS X filenames to be handled correctly.
 
-Encode::UTF8Macを利用する方法は、Text::IconvなどのMac OS X独自の方法を利用しないで、標準的なEncodeモジュールを利用できるという点でおすすめです。
-
+The Encode :: UTF8Mac method is recommended because it allows you to use standard Encode modules without using Mac OS X-specific methods such as Text :: Iconv.

@@ -1,67 +1,66 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop="name">読み物</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlのガーベッジコレクション(GC)の特性について</h2>
+        <span itemprop = "name"> reading material </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Perl's garbage collection (GC) characteristics </ h2>
 
 
 
-オブジェクト(変数や値)が必要ではなくなったときに、自動的にメモリ上から解放する仕組みを<strong>ガーベッジコレクション</strong>といいます。ガーベッジというのは、ごみという意味。コレクションというのは集めるという意味です。
+The mechanism that automatically releases objects (variables and values) from memory when they are no longer needed is called <strong> garbage collection </ strong>. Garbage means garbage. Collection means to collect.
 
-<img style="border:1px solid #ddd" src="https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20180907/20180907084205.png">
+<img style = "border: 1px solid #ddd" src = "https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20180907/20180907084205.png">
 
-<h3>Perlのガーベッジコレクションは参照カウント方式</h3>
+<h3> Perl's garbage collection is a reference counting method </ h3>
 
-Perlのガーベッジコレクションは<strong>参照カウント方式</strong>と呼ばれるものです。オブジェクトへの参照が作成されるたびに、参照カウントをひとつ増やします。反対に、オブジェクトの参照が取り除かれたときに、参照カウントをひとつ減らします。参照カウントが0になったタイミングで、そのオブジェクトは解放されます。
+Perl's garbage collection is called the <strong> reference counting method </ strong>. Each time a reference to an object is created, it increments the reference count by one. Conversely, it decrements the reference count by one when the object's reference is removed. The object is released when the reference count reaches 0.
 
-一般論でいえば、参照カウント方式は、実装が単純で高速です。これはPerlのパフォーマンス上のよい特性だといえます。ガーベッジコレクションで、パフォーマンスの問題で悩むという事例をPerlでは聞いたことがないです(今のところ)。
+Generally speaking, the reference counting method is simple and fast to implement. This is a good performance characteristic of Perl. I've never heard of a garbage collection suffering from performance issues in Perl (so far).
 
-次に、オブジェクトが破棄されるタイミングは、参照がなくなったタイミングなので、プログラマーが、オブジェクトの破棄のタイミングを正確に知ることができます。
+Second, the time when the object is destroyed is when the reference is gone, so the programmer knows exactly when the object is destroyed.
 
-たとえばJavaでは、ガーベッジコレクションが世代別CGと呼ばれ、後に解放されるオブジェクトが存在するために、すぐに実行したい後処理をfinalizeに書くことはできません。Perlの場合は、リファレンスカウント方式ですので、デストラクタDESTROYに、処理を記述すれば、参照がなくなったタイミングで処理を実行することができます。
+For example, in Java, garbage collection is called generational CG, and because there are objects that will be released later, it is not possible to write post-processing that you want to execute immediately in finalize. In the case of Perl, it is a reference counting method, so if you describe the process in the destructor DESTROY, you can execute the process when there are no more references.
 
-二番目の特徴は省メモリです。参照がなくなったタイミングで処理がされるので、メモリ上にオブジェクトが残りません。現代ではメモリというのはたくさんつむことができるようになったので、この欠点は昔ほどは、目立たなくなりましたが、メモリ食いなプログラムは、小さなマシンでは、スワップイン、スワップアウトが起こる原因にもなるので、省メモリなほうが、管理しやすいといえるでしょう。
+The second feature is memory saving. Since the processing is performed when the reference disappears, no object remains in the memory. Nowadays, memory can be packed a lot, so this drawback is less noticeable than it used to be, but memory-hungry programs can also cause swap-in and swap-out on small machines. Therefore, it can be said that memory saving is easier to manage.
 
-三つ目は、世代別GCのように、FullGCのタイミングで停止しないことです。世代別GCでは、特定のタイミングで、多くのオブジェクトが解放されるFullGCと呼ばれるものがあります。FullGCの最中は、プログラムがストップします。でもWebアプリなどでは、それほど気にすることはないでしょう(たぶん)。
+The third is that it does not stop at the timing of Full GC like the generational GC. In generational GC, there is something called FullGC in which many objects are released at a specific timing. The program will stop during FullGC. But for web apps, you probably don't care too much (probably).
 
-<h3>参照カウント方式の欠点は相互参照を解決できないこと</h3>
+<h3> The disadvantage of the reference counting method is that cross-references cannot be resolved </ h3>
 
-参照カウント方式の明らかな欠点は、相互参照を解決できないことです。相互に参照されているオブジェクトは、メモリ上から解放されません。オブジェクトが相互参照、または循環参照している場合は、プログラマーが気をつける必要があります。
-
-<pre>
-# 相互参照
-my $hash1 = {};
-my $hash2 = {};
-$hash1->{hash2} = $hash2;
-$hash2->{hash1} = $hash1;
-</pre>
-
-上記のように記述するだけで、相互参照が発生して、このオブジェクトは自動的には解放されません。これは、プログラマーが注意をしていないと、容易に起こります。ですので、相互参照している場合は、プログラマーが自分で、どちらかのオブジェクトの参照を、参照カウントを増やさない、ウィークリファレンスに変更してあげる必要があります。
+The obvious drawback of the reference counting method is that it cannot resolve cross-references. Objects that are referenced to each other are not released from memory. Programmers need to be careful if objects are cross-referenced or circularly referenced.
 
 <pre>
-use Scalar::Util 'weaken';
+# Cross-reference
+my $ hash1 = {};
+my $ hash2 = {};
+$ hash1-> {hash2} = $ hash2;
+$ hash2-> {hash1} = $ hash1;
+</ pre>
 
-# 相互参照
-my $hash1 = {};
-my $hash2 = {};
-$hash1->{hash2} = $hash2;
-$hash2->{hash1} = $hash1;
+Simply writing as above will cause a cross-reference and this object will not be released automatically. This can easily happen if the programmer is not careful. So if you're cross-referencing, you'll have to change the reference to either object to a weak reference that doesn't increase the reference count.
+
+<pre>
+use Scalar :: Util'weaken';
+
+# Cross-reference
+my $ hash1 = {};
+my $ hash2 = {};
+$ hash1-> {hash2} = $ hash2;
+$ hash2-> {hash1} = $ hash1;
 
 
-# 一方を弱い参照にする
-weaken $hash1->{hash2};
-</pre>
+# Make one a weak reference
+weaken $ hash1-> {hash2};
+</ pre>
 
-このようにすると、$hash1か$hash2の参照が0になった時点で、メモリは解放されます。
+This way, memory will be freed when the reference to $ hash1 or $ hash2 reaches zero.
 
-このようにPerlでは、ガーベッジコレクションの実装は、参照カウント方式で、パフォーマンス上の問題に悩まされることが、ほとんどない代わりに、相互参照について、自分で意識しなければならないということを、覚えておきましょう。
-
+Keep in mind that in Perl, garbage collection implementations are reference-counted and rarely suffer from performance issues, but instead you have to be aware of cross-references yourself. Let's go.

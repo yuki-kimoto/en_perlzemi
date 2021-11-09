@@ -1,202 +1,202 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-        <span itemprop="name">PDL</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>PDLにおける「行列」の扱い</h2>
+        <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+        <span itemprop = "name"> PDL </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Handling of "matrix" in PDL </ h2>
 
 
 
 
-PDLにおける「行列」の扱いを解説します。
+I will explain the handling of "matrix" in PDL.
 
-<h3>行列の作成</h3>
+<h3> Creating a matrix </ h3>
 
-行列を作成するには<b>pdl</b>関数を使用します。
+Use the <b> pdl </ b> function to create a matrix.
 
 <pre>
 use PDL;
 
-my $mat = mpdl [
+my $ mat = mpdl [
   [1, 2],
   [3, 4]
-];
-</pre>
+];;
+</ pre>
 
-以下のような行列が作成されます。
+The following matrix is ​​created.
 
 <pre>
 [
  [1 2]
  [3 4]
 ]
-</pre>
+</ pre>
 
-<h3>行列の足し算</h3>
+<h3> Matrix addition </ h3>
 
-行列の足し算を行うには<b>+</b>演算子を使用します。
+Use the <b> + </ b> operator to add matrices.
 
 <pre>
 use PDL;
 
-my $mat1 = pdl [
+my $ mat1 = pdl [
   [1, 2],
   [3, 4]
-];
-my $mat2 = pdl [
+];;
+my $ mat2 = pdl [
   [5, 6],
   [7, 8]
-];
+];;
 
-my $mat_sum = $mat1 + $mat2;
-</pre>
+my $ mat_sum = $ mat1 + $ mat2;
+</ pre>
 
-各要素が足されて以下のような結果になります。
+Each element is added and the result is as follows.
 
 <pre>
 [
- [ 6  8]
+ [6 8]
  [10 12]
 ]
-</pre>
+</ pre>
 
-<h3>行列の引き算</h3>
+<h3> Matrix subtraction </ h3>
 
-行列の足し算を行うには<strong>-</strong>演算子を使用します。
+Use the <strong>-</ strong> operator to add matrices.
 
 <pre>
 use PDL;
 
-my $mat1 = pdl [
+my $ mat1 = pdl [
   [1, 2],
   [3, 4]
-];
+];;
 
-my $mat2 = pdl [
+my $ mat2 = pdl [
   [5, 6],
   [7, 8]
-];
+];;
 
-my $mat_sub = $mat2 - $mat1;
-</pre>
-各要素が引かれて以下のような結果になります。
+my $ mat_sub = $ mat2- $ mat1;
+</ pre>
+Each element is subtracted and the result is as follows.
 
 <pre>
 [
  [4 4]
  [4 4]
 ]
-</pre>
+</ pre>
 
 
-<h3>行列の積</h3>
+<h3> Matrix product </ h3>
 
-行列の積を求めるには<strong>x</strong>演算子を使用します。
+Use the <strong> x </ strong> operator to find the matrix product.
 
 <pre>
 use PDL;
 
-my $mat1 = pdl [
+my $ mat1 = pdl [
   [1, 2],
   [3, 4]
-];
-my $mat2 = pdl [
+];;
+my $ mat2 = pdl [
   [5, 6],
   [7, 8]
-];
+];;
 
-my $mat_multi = $mat1 x $mat2;
-</pre>
+my $ mat_multi = $ mat1 x $ mat2;
+</ pre>
 
-計算された結果は以下のようになります。
+The calculated result is as follows.
 
 <pre>
 [
  [19 22]
  [43 50]
 ]
-</pre>
+</ pre>
 
-<h3>行列の要素を取得する</h3>
+<h3> Get matrix elements </ h3>
 
-行列の要素を取得するには<strong>at</strong>メソッドを使用します。行と列の順番が、通常の行列と異なること、添え字は0から始まることに注意しましょう。
+Use the <strong> at </ strong> method to get the elements of the matrix. Note that the row and column order is different from a regular matrix, and the subscripts start at 0.
 
 <pre>
-$matrix->at(列, 行)
-</pre>
+$ matrix-> at (column, row)
+</ pre>
 
-以下は2×2行列の、2行1列目の値(3)を取得するサンプルです。
+The following is a sample to get the value (3) of the 2nd row and 1st column of the 2x2 matrix.
 
 <pre>
 use PDL;
 
-my $mat = pdl [
+my $ mat = pdl [
   [1, 2],
   [3, 4]
-];
-my $val = $mat->at(0, 1);
-</pre>
+];;
+my $ val = $ mat-> at (0, 1);
+</ pre>
 
-<h3>行列の要素を設定する</h3>
+<h3> Set matrix elements </ h3>
 
-行列の要素を設定するには<strong>ナイススライス</strong>という記法を利用します。ナイススライス記法を使うためには<b>PDL::NiceSlice</b>モジュールを読み込む必要があります。
-
-<pre>
-use PDL;
-use PDL::NiceSlice;
-
-$matrix(列, 行) .= 値
-</pre>
-
-この記法は変数の後ろに括弧が付くという少し特殊な用法です。また<b>.=</b>文字列連結演算とイコールの組み合わせは、値の代入のためにオーバーロードされています。
-
-以下は2×2行列の、2行1列目の値を5に設定するサンプルです。添え字は0から始まることに注意してください。
+To set the elements of a matrix, use the notation <strong> nice slice </ strong>. You need to load the <b> PDL :: NiceSlice </ b> module to use nice slice notation.
 
 <pre>
 use PDL;
-use PDL::NiceSlice;
+use PDL :: NiceSlice;
 
-my $mat = pdl [
+$ matrix (column, row). = Value
+</ pre>
+
+This notation is a bit special, with parentheses after the variable. Also, the <b>. = </ B> string concatenation and equal combination is overloaded for value assignment.
+
+Below is a sample of a 2x2 matrix with the value in the 2nd row and 1st column set to 5. Note that the subscripts start at 0.
+
+<pre>
+use PDL;
+use PDL :: NiceSlice;
+
+my $ mat = pdl [
   [1, 2],
   [3, 4]
-];
-$mat(0, 1) .= 5;
-</pre>
+];;
+$ mat (0, 1). = 5;
+</ pre>
 
-この変数の出力結果は以下のようになります。
+The output of this variable is as follows.
 
 <pre>
 [
  [1 2]
  [5 4]
 ]
-</pre>
+</ pre>
 
-<h3>単位行列を作成する</h3>
+<h3> Create an identity matrix </ h3>
 
-単位行列を作成してみましょう。3×3の単位行列にしてみます。手順は<strong>PDL::Core</strong>の<b>zeroes</b>関数ですべての要素が0の3×3の正方行列を作成します。それから、<b>diagonal</b>メソッドで対角をスライスして1を代入します。引数の(0, 1)は、1次元と2次元という意味です。1次元と2次元の対角を取得という意味になります。
+Let's create an identity matrix. Let's make a 3x3 identity matrix. The procedure is to create a 3x3 square matrix with all zeros in the <b> zeroes </ b> function of <strong> PDL :: Core </ strong>. Then slice the diagonal with the <b> diagonal </ b> method and substitute 1. The argument (0, 1) means 1D and 2D. It means to get the diagonal of 1D and 2D.
 
 <pre>
 use PDL;
 
-my $mat = PDL::Core::zeroes(3, 3);
-$mat->diagonal(0, 1) .= 1;
-</pre>
+my $ mat = PDL :: Core :: zeroes (3, 3);
+$ mat-> diagonal (0, 1). = 1;
+</ pre>
 
-出力結果は以下のようになります。
+The output result is as follows.
 
 <pre>
 [
@@ -204,101 +204,100 @@ $mat->diagonal(0, 1) .= 1;
  [0 1 0]
  [0 0 1]
 ]
-</pre>
+</ pre>
 
-<h3>行列式を求める</h3>
+<h3> Find the determinant </ h3>
 
-行列式を求めるには<b>det</b>メソッドを使用します。
+Use the <b> det </ b> method to find the determinant.
 
 <pre>
 use PDL;
 
-my $mat = pdl [
+my $ mat = pdl [
   [1, 2],
   [3, 4]
-];
+];;
 
-my $det = $mat->det;
-</pre>
+my $ det = $ mat-> det;
+</ pre>
 
-行列式の値は以下のようになります。
+The value of the determinant is as follows.
 
 <pre>
 -2
-</pre>
+</ pre>
 
-<h3>逆行列を求める</h3>
+<h3> Find the inverse matrix </ h3>
 
-逆行列を求めるには<b>inv</b>関数を使用します。
+Use the <b> inv </ b> function to find the inverse matrix.
 
 <pre>
 use PDL;
 
-my $mat = pdl [1, 2], [3, 4];
+my $ mat = pdl [1, 2], [3, 4];
 
-my $mat_inv = inv $mat;
-</pre>
+my $ mat_inv = inv $ mat;
+</ pre>
 
-計算された結果は以下のようになります。
+The calculated result is as follows.
 
 <pre>
 [
- [  -2    1]
- [ 1.5 -0.5]
+ [  -twenty one]
+ [1.5 -0.5]
 ]
-</pre>
+</ pre>
 
-<h3>ベクトル(列ベクトル)を作成する</h3>
+<h3> Create a vector (column vector) </ h3>
 
-ベクトル(列ベクトル)を作成するには次のようにします。
+To create a vector (column vector):
 
 <pre>
 use PDL;
 
-my $vec = pdl [
+my $ vec = pdl [
   [1],
   [2]
-];
-</pre>
+];;
+</ pre>
 
-データの出力結果は以下のようになります。
+The output result of the data is as follows.
 
 <pre>
 [
  [1]
  [2]
 ]
-</pre>
+</ pre>
 
-<h3>一次変換を計算する</h3>
+<h3> Calculate the linear transformation </ h3>
 
 
-一次変換を計算してみましょう。正方行列 × 列ベクトルの演算です。
+Let's calculate the linear transformation. It is an operation of square matrix × column vector.
 
 <pre>
 use PDL;
 
-my $mat = pdl [
+my $ mat = pdl [
   [1, 2],
   [3, 4]
-];
+];;
 
-my $vec = pdl [
-  [5],
+my $ vec = pdl [
+  [Five],
   [6]
-];
+];;
 
-my $result = $mat x $vec;
-</pre>
+my $ result = $ mat x $ vec;
+</ pre>
 
-結果の出力結果は以下のようになります。
+The output result is as follows.
 
 <pre>
 [
  [17]
  [39]
 ]
-</pre>
+</ pre>
 
-t[5, 6]は[ [1, 2], [3,4] ]という2×2行列によってt[17, 39]に変換されました。(tは転置という意味)
-
+t [5, 6] was converted to t [17, 39] by the 2 × 2 matrix [[1, 2], [3, 4]]. (t means transpose)

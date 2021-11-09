@@ -1,47 +1,47 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-        <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-        <span itemprop="name">PDL</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>PDLのインストール</h2>
+        <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+        <span itemprop = "name"> PDL </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Install PDL </ h2>
 
 
 
 
-統計・解析のためのモジュール「PDL」をインストールしてみましょう。
+Let's install the module "PDL" for statistics and analysis.
 
-<h3>Linux/Unix</h3>
+<h3> Linux / Unix </ h3>
 
-cpanかcpanmを使ってインストールするだけです。PDLとPDL::Statsをインストールしておきましょう。
+Just install using cpan or cpanm. Install PDL and PDL :: Stats.
 
 <pre>
 cpan PDL
-cpan PDL::Stats
-</pre>
+cpan PDL :: Stats
+</ pre>
 
-あるいはcpanmをダウンロードして以下のようにします。
+Or download cpanm and do the following:
 
 <pre>
 cpanm PDL
-cpanm PDL::Stats
-</pre>
+cpanm PDL :: Stats
+</ pre>
 
-<h3>Windows(Active Perl + ppm)</h3>
+<h3> Windows (Active Perl + ppm) </ h3>
 
-ActivePerlを使ったWindowsへのインストールにはppmを利用するのが簡単です。まず最初に以下のパッケージをインストールします。
+It is easy to use ppm for installation on Windows using ActivePerl. First of all, install the following packages.
 
 <pre>
 ppm install http://www.sisyphusion.tk/ppm/Astro-FITS-Header.ppd --force
@@ -52,41 +52,40 @@ ppm install http://www.sisyphusion.tk/ppm/Const-Fast.ppd --force
 ppm install http://www.sisyphusion.tk/ppm/File-Map.ppd --force
 ppm install http://www.sisyphusion.tk/ppm/OpenGL.ppd --force
 
-</pre>
+</ pre>
 
-次にPDLをインストールします。
+Then install PDL.
 
 <pre>
 ppm install http://www.sisyphusion.tk/ppm/PDL.ppd --force
 
-</pre>
+</ pre>
 
-インストールを行うと次のようなメッセージが表示されるので、自分の環境でのメッセージを控えておいてください。
+When you install, the following message will be displayed, so make a note of the message in your environment.
 
 <pre>
   In order to utilise the built in proj4 capability set your
-  PROJ_LIB environment variable to C:\Perl\site\lib\PDL\proj_supp
-</pre>
+  PROJ_LIB environment variable to C: \ Perl \ site \ lib \ PDL \ proj_supp
+</ pre>
 
-Enterを押してインストールを完了します。
+Press Enter to complete the installation.
 
-先ほど表示された環境変数の設定を行いましょう。「スタート」->「コンピュータ」->「プロパティ」->「システムの詳細設定」->「環境変数」から環境変数の設定を行うことができます。ユーザーの環境変数に新規にPROJ_LIBを追加して値を先ほど表示された値に設定しましょう。この例では「C:\Perl\site\lib\PDL\proj_supp」です。
+Let's set the environment variables displayed earlier. You can set environment variables from "Start"-> "Computer"-> "Properties"-> "Advanced system settings"-> "Environment variables". Let's add a new PROJ_LIB to the user's environment variable and set the value to the value displayed earlier. In this example, it is "C: \ Perl \ site \ lib \ PDL \ proj_supp".
 
-統計のライブラリであるPDL::Statsもついでにインストールしておきましょう。
+Let's also install PDL :: Stats, which is a library of statistics.
 
 <pre>
 ppm install http://www.sisyphusion.tk/ppm/PDL-Stats.ppd --force
-</pre>
+</ pre>
 
-<h3>WindowsのActivePerlのcpanコマンドでPDLがインストールできない場合の対処</h3>
+<h3> What to do if you can't install PDL with the Windows ActivePerl cpan command </ h3>
 
-僕の場合はWindowsのActivePerlのcpanコマンドでPDLをインストールしようとしましたが、Devel::CheckLibの試験が失敗して、インストールできませんでした。(Perl 5.16.3 + Devel::CheckLib 1.01)
+In my case, I tried to install PDL with the Windows ActivePerl cpan command, but the Devel :: CheckLib test failed and I couldn't install it. (Perl 5.16.3 + Devel :: CheckLib 1.01)
 
-こういう場合はppmと呼ばれるActivePerlのモジュールのインストール機構を利用するとうまくインストールできる場合が多いです。
+In such cases, it is often possible to install successfully by using the ActivePerl module installation mechanism called ppm.
 
 <pre>
 ppm install PDL
-</pre>
+</ pre>
 
-cpanコマンドでインストールできるのが一番望ましいのですが、次善策としてppmと呼ばれるパッケージマネージャを利用できることも覚えておくとよいと思います。
-
+It's best to be able to install it with the cpan command, but it's also worth remembering that a package manager called ppm is available as a workaround.

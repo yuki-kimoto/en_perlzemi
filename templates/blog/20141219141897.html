@@ -1,57 +1,55 @@
+<h2> How to compile Perl itself from source code </ h2>
 
-<h2>Perl自体をソースコードからコンパイルする方法</h2>
-
-Perl自体をソースコードからコンパイルする方法。まず「git clone」でPerlのソースコードをとってくる。
+How to compile Perl itself from source code. First, fetch the Perl source code with "git clone".
 
 <pre>
 git clone http://perl5.git.perl.org/perl.git
-</pre>
+</ pre>
 
-これは、現在の開発版の最新のブランチです。
+This is the latest branch of the current development version.
 
-次にREADMEの中に掲載されている次のコマンドを実行します。
-
-<pre>
-./Configure -des -Dprefix=$HOME/localperl
-</pre>
-
-リリース版だとこのコマンドでMakefileが生成されますが、開発版だと失敗するので次のコマンドを実行します。
+Then execute the following command listed in the README.
 
 <pre>
-./Configure -des -Dusedevel -Dprefix=$HOME/localperl
-</pre>
+./Configure -des -Dprefix = $ HOME / localperl
+</ pre>
 
-次にコンパイルです。makeコマンドを実行します。
+In the release version, this command will generate a Makefile, but in the development version it will fail, so execute the following command.
+
+<pre>
+./Configure -des -Dusedevel -Dprefix = $ HOME / localperl
+</ pre>
+
+Next is compilation. Execute the make command.
 
 <pre>
 make
-</pre>
+</ pre>
 
-次にテストです。
+Next is the test.
 
 <pre>
 make test
-</pre>
+</ pre>
 
-最後にインストール。「$HOME/localperl」にインストールされます。
+Finally installed. It will be installed in "$ HOME / localperl".
 
 <pre>
 make install
-</pre>
+</ pre>
 
-最近僕は、Perlのソースコードをちょっとさわったりするのですが、変更を加えた後に、makeとmake testを走らせるというのは、ちょっと現実的ではない。これは、モジュールの試験も含めて全部やってしまう。
+I've been touching the Perl source code a bit lately, but running make and make test after making changes is a bit unrealistic. This does everything, including testing the module.
 
-そこで、最小限のPerlをコンパイルしたり、最小限のテストを実行する方法が用意されています。
+So there is a way to compile a minimal amount of Perl or run a minimal amount of testing.
 
-次のコマンドで、miniperlと呼ばれる小さなPerlをコンパイルできます。
+You can compile a small Perl called miniperl with the following command:
 
 <pre>
 make miniperl
-</pre>
+</ pre>
 
-次のコマンドで、小さなテストを走らせることができます。
+You can run a small test with the following command:
 
 <pre>
 make minitest
-</pre>
-
+</ pre>

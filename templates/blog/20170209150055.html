@@ -1,186 +1,186 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100809127859.html">
-        <span itemprop="name">XS</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> XS </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>XSモジュールを作成する</h2>
+  </ li>
+</ ol>
+<h2> Create an XS module </ h2>
 
-Perlから呼び出すことのできるように作成したC言語(あるいはC++)の関数のことをエクステンションといいます。一般的にはXSと総称して呼ばれることが多いようですので、XSと呼ぶことにします。XSモジュールを作成してPerlから呼び出すためのモジュールの作成までの流れを書きたいと思います。次のような作業の流れになります。　
+A C language (or C ++) function created so that it can be called from Perl is called an extension. Generally, it seems that it is often collectively called XS, so I will call it XS. I would like to write the flow from creating an XS module to creating a module to call from Perl. The work flow is as follows. Twice
 
 <ol>
   <li>
-    XSファイルの作成
-  </li>
+    Creating an XS file
+  </ li>
   <li>
-    XSファイルからC言語のソースファイルを生成
-  </li>
+    Generate C language source file from XS file
+  </ li>
   <li>
-    C言語のソースファイルからダイナミックリンクライブラリを生成
-  </li>
+    Generate a dynamic link library from a C language source file
+  </ li>
   <li>
-    ダイナミックリンクライブラリを呼び出すためのPerlモジュールの作成
-  </li>
-</ol>
+    Creating a Perl module to call a dynamic link library
+  </ li>
+</ ol>
 
-C言語がまったくわからないという方は、以下の講座をご用意しています。
+If you don't understand C language at all, we offer the following courses.
 
 <ul>
-  <li><a href="https://clanguage.perlclub.net/">Perl XSユーザーのC言語入門</a></li>
-</ul>
+  <li> <a href="https://clanguage.perlclub.net/"> Introduction to C language for Perl XS users </a> </ li>
+</ ul>
 
-<h3>XSモジュール作成の流れ</h3>
+<h3> Flow of XS module creation </ h3>
 
-<h4>XSファイルの作成</h4>
+<h4> Create XS file </ h4>
 
-最初はXSファイルの作成です。拡張子は(.xs)です。ファイルの中にはC言語のソースコードとXSUBが含まれています。XSUBはXS言語で書かれC言語の関数にとてもよく似ています。実質としてはC言語の関数を記述するものだと思ってください。
+The first is to create an XS file. The extension is (.xs). The file contains the C language source code and XSUB. XSUB is written in the XS language and is very similar to C functions. Think of it as writing a C language function in substance.
 
 <pre>
-# C言語セクション(ライブラリの読み込みなど)
+# C language section (such as loading a library)
 ...
 
-# XSUBセクション(XS言語で書かれる)
-戻り値
-関数名
-型
-処理(処理の部分はC言語)
+# XSUB section (written in XS language)
+Return value
+Function name
+Mold
+Processing (the processing part is C language)
 
-戻り値
-関数名
-型
-処理(処理の部分はC言語)
-</pre>
+Return value
+Function name
+Mold
+Processing (the processing part is C language)
+</ pre>
 
-<h4>XSファイルからC言語のソースファイルを生成</h4>
+<h4> Generate C language source file from XS file </ h4>
 
-XSファイルをxsubppと呼ばれるプログラムを使って、C言語のソースファイルに変換します。このときにtypemapと呼ばれる、C言語のPerlの型を相互変換するため定義が利用されます。typemapはExtUtils::MakeMakerモジュールに含まれています。
+Convert the XS file to a C language source file using a program called xsubpp. At this time, a definition called typemap is used to convert the types of Perl in C language to each other. The typemap is included in the ExtUtils :: MakeMaker module.
 
 <pre>
                         xsubpp
-XSファイル + typemap ------------> C言語ソースファイル
-</pre>
+XS file + typemap ------------> C language source file
+</ pre>
 
-XS言語を利用すると、多くの場合C言語とPerlの型の変換の処理を自分で書く必要がありません。xsubppがtypemapファイルを参照して、自動的に変換処理を追加してくれます。変換処理を自分で書くことやtypemapを拡張することもできます。
+With the XS language, you often don't have to write the C and Perl type conversion process yourself. xsubpp will refer to the typemap file and automatically add the conversion process. You can also write the conversion process yourself or extend the typemap.
 
-<h4>ダイナミックリンクライブラリの生成</h4>
+<h4> Dynamic link library generation </ h4>
 
-C言語ソースファイルはCのコンパイラ(gccなど)を使ってコンパイルされ、ダイナミックリンクライブラリ(*.soなど)に変換されます。
-
-<pre>
-                       Cコンパイラ
-C言語ソースファイル  ------------------>   ダイナミックリンクライブラリ
-</pre>
-
-ダイナミックリンクライブラリは動的に呼び出すことが可能なライブラリのことです。通常はこの形式でライブラリは作成されます。
-
-<h4>ダイナミックリンクライブラリを呼び出すためのPerlモジュールの作成</h4>
-
-最後にダイナミックリンクライブラリを呼び出すためのPerlのモジュールを作成します。XSLoaderというモジュールを使うと、ダイナミックリンクライブラリを読み込んで、Perlの関数として、ダイナミックリンクライブラリに書かれた関数を呼び出すことができるようになります。
+C language source files are compiled using a C compiler (such as gcc) and converted to a dynamic link library (such as * .so).
 
 <pre>
-package YourPackage;
+                       C compiler
+C language source file ------------------> Dynamic link library
+</ pre>
+
+A dynamic link library is a library that can be called dynamically. Normally, the library is created in this format.
+
+<h4> Creating a Perl module to call a dynamic link library </ h4>
+
+Finally, create a Perl module to call the dynamic link library. A module called XSLoader allows you to load a dynamic link library and call the functions written in the dynamic link library as Perl functions.
+
+<pre>
+package Your Package;
 use XSLoader;
 
-XSLoader::load 'YourPackage', $YourPackage::VERSION;
-</pre>
+XSLoader :: load'YourPackage', $ YourPackage :: VERSION;
+</ pre>
 
-XSLoaderは@INCに含まれる検索パスのautoというディレクトリの下にあるダイナミックリンクライブラリを読み込みます。ダイナミックリンクライブラリは、Windowsではdll、Linux等ではsoという拡張子です。
+XSLoader loads the dynamic link library under the directory auto in the search path contained in @INC. The dynamic link library has the extension dll on Windows and so on Linux.
 
-<h4>実際にXSモジュールを作成するには</h4>
+<h4> To actually create an XS module </ h4>
 
-上記の流れをしっかりと覚えておきましょう。XSモジュールを作成する場合はどのようなものを作成する場合でも流れは同じです。プログラマが専念する必要があるのはXSファイルの作成です。残りのほとんどの作業は自動化することができますので、簡単なXSモジュールの作成は難しいものではありません。
+Make sure to remember the above flow. When creating an XS module, the flow is the same no matter what you create. All the programmer needs to focus on is creating the XS file. Most of the rest of the work can be automated, so creating a simple XS module is not difficult.
 
-ただし一般的にいえばXSモジュールの作成は難しいものです。「XS言語」「typemap」「Perl API」「make」「Cコンパイラ」「リンカ」「ExtUtils::MakeMaker」などのそれほど簡単ではない周辺知識を大量に必要とするからです。ですから、まず基本きっちり押さえた上で、周辺知識を身につけることが大切です。
+However, generally speaking, creating an XS module is difficult. This is because it requires a large amount of not-so-easy peripheral knowledge such as "XS language", "typemap", "Perl API", "make", "C compiler", "linker", and "ExtUtils :: MakeMaker". Therefore, it is important to first grasp the basics firmly and then acquire peripheral knowledge.
 
-<h3>XSモジュールの作成 - h2xsコマンド</h3>
+<h3> Create XS module --h2xs command </ h3>
 
-XSモジュールを作成するには<b>h2xs</b>というコマンドを使用します。
+Use the command <b> h2xs </ b> to create an XS module.
 
 <pre>
-# h2xsコマンド
-h2xs [オプション] C言語ヘッダファイル
-</pre>
+# h2xs command
+h2xs [optional] C header file
+</ pre>
 
-このコマンドは本来はC言語のヘッダファイルからXSモジュールを作成するものです。
-そのためh2xs(つまり「C言語のヘッダファイル to XS」という意味)という名前がついていますが、単にXSモジュールの雛形を作成するのにも利用できます。
+This command originally creates an XS module from a C header file.
+That's why it's named h2xs (that is, it means "C header file to XS"), but it can also be used to simply create a template for the XS module.
 
-XSモジュールを作成するには次のオプションでh2xsを実行します。
+Run h2xs with the following options to create an XS module.
 <pre>
-# XSモジュールの作成
+#Creating an XS module
 h2xs -A -n SomeModule
-</pre>
-「-A」はオートローディングの機能を省くオプションです。XSモジュールを作成するときは通常オートローディングの機能を省きます。「-n」でXSモジュールの名前を指定します。
+</ pre>
+"-A" is an option that omits the auto-loading function. When creating an XS module, the autoloading function is usually omitted. Specify the name of the XS module with "-n".
 
-このコマンドを実行するとカレントディレクトリに「SomeModule」という名前のディレクトリが作成されます。
+This command creates a directory named "SomeModule" in the current directory.
 
-<h4>モジュールの構成</h4>
+<h4> Module configuration </ h4>
 
-作成されたモジュールは次のような構成になっています。
+The created module has the following structure.
 
 <pre>
 Changes
 SomeModule.xs
-lib - SomeModule.pm
+lib --SomeModule.pm
 Makefile.PL
 MANIFEST
 ppport.h
 README
-t - SomeModule.t
-</pre>
+t --SomeModule.t
+</ pre>
 
-簡単にそれぞれのファイルの役割について解説したいと思います。
-
-<ul>
-  <li>
-    Changes - モジュールの変更履歴を記述します。
-  </li>
-  <li>
-    SomeModule.xs - XSファイル。XS言語でXSUBを記述します。
-  </li>
-  <li>
-    lib - Perlのモジュールが格納されます。このモジュールからC言語で書かれたライブラリが呼び出されます。
-  </li>
-  <li>
-    Makefile.PL - C言語ソースファイルのコンパイルやモジュールのインストールなどのためのmakeファイルを生成するためのPerlスクリプトです。
-  </li>
-  <li>
-    MANIFEST -XSモジュールを配布するときに必要なファイルを記載します。
-  </li>
-  <li>
-    ppport.h - 古いPerlとの互換性を維持するためのC言語ヘッダファイルです。
-  </li>
-  <li>
-    README - モジュールの簡単な説明です。
-  </li>
-  <li>
-    t - テストスクリプトが格納されます。
-  </li>
-</ul>
-
-この中で一番大切なのは「SomeModule.xs」です。最も簡単なXSを書く場合に記述する必要があるのは「SomeModule.xs」だけです。少し難しいことをするためには、Makefile.PLの書き方を覚える必要があります。lib以下に含まれるPerlモジュールのファイルに追加で記述することもあるでしょう。また配布用にパッケージ化するときには、Changes、MANIFEST、READMEを書く必要があります。またテストスクリプトを書くことも必要になります。
-
-Makefile.PLの書き方については以下で詳しく解説しています。
+I would like to briefly explain the role of each file.
 
 <ul>
   <li>
-    <a href="/blog/20150725143778.html">Makefile.PLの書き方 - ExtUtil::MakeMakerを学ぶ</a>
-  </li>
-</ul>
+    Changes --Describes the change history of the module.
+  </ li>
+  <li>
+    SomeModule.xs --XS file. Write XSUB in XS language.
+  </ li>
+  <li>
+    lib --Contains Perl modules. This module calls a library written in C language.
+  </ li>
+  <li>
+    Makefile.PL --A Perl script for generating makefiles for compiling C source files, installing modules, etc.
+  </ li>
+  <li>
+    Describes the files required when distributing the MANIFEST -XS module.
+  </ li>
+  <li>
+    ppport.h --C header file for compatibility with older Perl.
+  </ li>
+  <li>
+    README-A brief description of the module.
+  </ li>
+  <li>
+    t --Stores test scripts.
+  </ li>
+</ ul>
 
-<h4>XSファイルの雛形</h4>
+The most important of these is "SomeModule.xs". When writing the simplest XS, all you need to write is "SomeModule.xs". To do something a little difficult, you need to learn how to write Makefile.PL. It may be added to the Perl module file included under lib. You also need to write the Changes, MANIFEST, and README when packaging for distribution. You will also need to write a test script.
 
-では最初にSomeModule.xsを開いてみてください。次のような雛形が生成されているはずです。
+How to write Makefile.PL is explained in detail below.
+
+<ul>
+  <li>
+    <a href="/blog/20150725143778.html"> How to write Makefile.PL --Learn ExtUtil :: MakeMaker </a>
+  </ li>
+</ ul>
+
+<h4> XS file template </ h4>
+
+Now try opening SomeModule.xs first. The following template should be generated.
 
 <pre>
 #include "EXTERN.h"
@@ -190,133 +190,132 @@ Makefile.PLの書き方については以下で詳しく解説しています。
 #include "ppport.h"
 
 
-MODULE = SomeModule		PACKAGE = SomeModule		
-</pre>
+MODULE = SomeModule PACKAGE = SomeModule
+</ pre>
 
-XSファイルの先頭にはC言語の記述を行うことができます。「#include "EXTERN.h"」などはC言語の記述です。C言語を書いたことがない人のために少し解説をしておきます。「#include」は他のファイルをソースコードに取り込むためのものです。C言語では#から始まる命令はディレクティブと呼ばれ、プリプロセッサに対する命令になります。プリプロセッサとはソースコードをコンパイルする前に、ディレクティブの指定に従ってソースコードに変更を加えるプログラムのことです。
+You can write C language at the beginning of the XS file. "#Include" EXTERN.h "" is a C language description. For those who have never written C language, I will explain a little. "#Include" is for including other files into the source code. In C language, instructions starting with # are called directives and are instructions for the preprocessor. A preprocessor is a program that makes changes to the source code according to the directives before compiling the source code.
 
 <pre>
 #include "EXTERN.h"
-</pre>
+</ pre>
 
-という記述は、EXTERN.hというC言語のヘッダファイルをソースコードの中に取り込むということを意味しています。
-「.h」という拡張子を持つファイルはC言語のヘッダファイルです。ヘッダファイルというのは、C言語の関数の宣言やマクロの定義が記述されているファイルです。C言語のソースコードの中でヘッダに書かれた関数を使用したい場合にインクルードする必要があります。
+The description means that the C language header file EXTERN.h is included in the source code.
+Files with the extension ".h" are C header files. A header file is a file that describes C language function declarations and macro definitions. You need to include it if you want to use the function written in the header in the C language source code.
 
-XSファイルを書く場合に必要になるC言語ヘッダファイルについて簡単に解説しておきます。
+I will briefly explain the C language header file required when writing an XS file.
 
 <ul>
   <li>
-    EXTERN.h - Perlのグローバル変数を参照するために必要なヘッダファイル
-  </li>
+    EXTERN.h --Perl Global VariablesHeader file required to refer to the number
+  </ li>
   <li>
-    perl.h - Perlのヘッダファイル
-  </li>
+    perl.h --Perl header file
+  </ li>
   <li>
-    XSUB.h - XSUBのためのヘッダファイル
-  </li>
+    XSUB.h --Header file for XSUB
+  </ li>
   <li>
-    ppport.h - Perlのバージョン間のAPIの差異を吸収するためのヘッダファイル
-  </li>
-</ul>
+    ppport.h --Header file to absorb API differences between Perl versions
+  </ li>
+</ ul>
 
-次の記述からXS言語での記述が始まります。
+The description in XS language starts from the following description.
 
 <pre>
-MODULE = SomeModule		PACKAGE = SomeModule		
-</pre>
+MODULE = SomeModule PACKAGE = SomeModule
+</ pre>
 
-MODULEはXS言語の始まりと、定義される関数の名前空間を指定するのに使われます。これはPerlのパッケージとは異なるので注意してください。本来C言語というのは名前空間を持たない言語です。簡単な名前の関数を定義したとするならば、衝突してしまうことでしょう。XSファイル内ではXSUBと呼ばれる関数を定義することになりますが、XSUBの関数名はシンプルなものでかまいません。たとえば数値を2倍する関数であれば、twiceという名前でよいでしょう。けれども、これをC言語でそのまま利用したとするならば、名前の衝突が発生するでしょう。そこでこのtwiceという名前の関数はxsubppで処理されるときに「XS_SomeModule_twice」という名前に置き換えられます。衝突しない仕組みを与えるために必要になるのがMODULEです。
+MODULE is used to specify the beginning of the XS language and the namespace of the function to be defined. Please note that this is different from the Perl package. Originally, C language is a language that does not have a namespace. If you had defined a function with a simple name, you would be in conflict. You will define a function called XSUB in the XS file, but the XSUB function name can be simple. For example, if you have a function that doubles a number, you could name it twice. However, if you use this as it is in C language, name conflicts will occur. So this function named twice will be replaced with the name "XS_SomeModule_twice" when processed by xsubpp. MODULE is needed to provide a non-collision mechanism.
 
-PACKAGEはPerlのパッケージ名です。つまりMODULEの記述とPACKAGEの記述でPerlとC言語の関数の間に次のような対応ができることになります。このような対応を作成して、PerlからC言語の関数を呼び出せるようにすることをブートストラップ(bootstrap)するといいます。
+PACKAGE is the Perl package name. In other words, the following correspondence can be made between Perl and C language functions by describing MODULE and PACKAGE. Creating such a correspondence so that Perl can call a C language function is called bootstrap.
 
 <pre>
-Perl                        C言語
-SomeModule::twice    --->    XS_SomeModule_twice
-</pre>
+Perl C language
+SomeModule :: twice ---> XS_SomeModule_twice
+</ pre>
 
-<h4>XSUBの記述</h4>
+<h4> XSUB description </ h4>
 
-ここからはXS言語を記述する部分です。XS言語を使ってXSUBを記述してみましょう。XSUBはXS言語を使った関数の記述で、C言語の関数とよく似ています。以下では受け取った整数を2倍する関数を書いています。
+From here, it is the part that describes the XS language. Let's write XSUB using the XS language. XSUB is a description of a function using the XS language, which is very similar to a function in the C language. Below is a function that doubles the received integer.
 
 <pre>
 void
 twice (...)
   PPCODE:
 {
-  // 引数の個数をチェック
-  if (items != 1) {
-    croak("Usage twice(x)");
+  // Check the number of arguments
+  if (items! = 1) {
+    croak ("Usage twice (x)");
   }
-  // Perlのスカラをintに変換。「ST(0)」は第一引数
-  int x = SvIV(ST(0));
+  // Convert Perl scalar to int. "ST (0)" is the first argument
+  int x = SvIV (ST (0));
   
-  // 2倍を計算
+  // Calculate twice
   int x2 = x * 2;
   
-  // intをPerlのSVに変換して、戻り値に設定。XPUSHsは、戻り値をひとつ積む。
-  XPUSHs(sv_2mortal(newSViv(x2)));
+  // Convert int to Perl SV and set it as return value. XPUSHs stacks one return value.
+  XPUSHs (sv_2mortal (newSViv (x2)));
   
-  // 戻り値の個数を指定してreturn
-  XSRETURN(1);
+  // Specify the number of return values ​​and return
+  XSRETURN (1);
 }
-</pre>
+</ pre>
 
-itemsという変数には引数の個数が代入されているのでチェックに利用できます。croakという関数を使って、エラーメッセージを出力してプログラムを終了することができます。
+Since the number of arguments is assigned to the variable called items, it can be used for checking. You can use a function called croak to print an error message and exit the program.
 
-XSで書かなければいけないことは、型変換という作業につきます。引数で受けとったPerlの型をC言語の型に変換します。それから、C言語による処理を行って、C言語の型を、再びPerlの型に変換します。型変換については、後ほど詳しく解説します。
+What you have to write in XS is the work of type conversion. Converts the Perl type received as an argument to the C language type. Then, it processes in C language and converts the C language type to Perl type again. Type conversion will be explained in detail later.
 
-また以下の形はそのまま覚えてしまいましょう。
+Also, let's just remember the following shapes.
 
 <pre>
 void
-関数名(...)
+Function name (...)
   PPCODE:
 {
   
 }
-</pre>
+</ pre>
 
-XSにおけるPerlの型については以下で詳しく解説しているので、参考にしてください。
+The Perl types in XS are explained in detail below, so please refer to them.
 
 <ul>
   <li>
-    <a href="/blog/20170208150055.html">XSにおけるPerlの型とC言語の型の相互変換</a>
-  </li>
-</ul>
+    <a href="/blog/20170208150055.html"> Mutual conversion between Perl type and C type in XS </a>
+  </ li>
+</ ul>
 
-<h4>コンパイルと実行</h4>
+<h4> Compile and run </ h4>
 
-ここまでで解説したようにPerlのモジュールから利用するためには、XSファイルをxsubppで処理し、C言語ソースファイルをコンパイルして、ダイナミックリンクライブラリを作成する必要がありました。けれどもこの処理はmakeというプログラムによって自動化することができます。Makefile.PLはこの作業を自動化するmakeファイルを生成してくれます。ですから以下のコマンドを実行するだけです。
+As explained so far, in order to use it from a Perl module, it was necessary to process the XS file with xsubpp, compile the C language source file, and create a dynamic link library. However, this process can be automated by a program called make. Makefile.PL will generate a makefile that automates this task. So just run the following command:
 
 <pre>
-# makeファイルの生成
+#Generate makefile
 perl Makefile.PL
 
-# xsubppの処理とコンパイル
+# xsubpp processing and compilation
 make
-</pre>
+</ pre>
 
-成功しない場合はXS言語に間違いがある可能性があります。この作業が終わるとダイナミックリンクライブラリやPerlのモジュールが含まれるblibというディレクトリが生成されます。
+If it does not succeed, there may be a mistake in the XS language. Once this is done, a directory called blib will be created that contains the dynamic link library and Perl modules.
 
-モジュールを呼び出すスクリプトを記述してみましょう。XSファイルがあるディレクトリと同じディレクトリにtest.plというファイルを作成してください。
+Let's write a script that calls the module. Create a file called test.pl in the same directory where the XS file is located.
 
 <pre>
 # test.pl
 use SomeModule;
-print SomeModule::twice(2);
-</pre>
+print SomeModule :: twice (2);
+</ pre>
 
-このスクリプトは次のように実行できます。blibのモジュールを読み込むために、blibというモジュールを-Mオプションを使って読み込む必要があります。
+You can run this script as follows: In order to load a module for blib, you need to load a module called blib with the -M option.
 
 <pre>
-# C言語で書かれた関数を実行
+# Execute a function written in C language
 perl -Mblib test.pl
-</pre>
+</ pre>
 
-出力結果は次のようになりました。
+The output result is as follows.
 <pre>
-4
-</pre>
+Four
+</ pre>
 
-これでXSの基礎を学び終えました。これをアレンジすれば、XSを応用することができます。
-
+This completes the basics of XS. If you arrange this, you can apply XS.

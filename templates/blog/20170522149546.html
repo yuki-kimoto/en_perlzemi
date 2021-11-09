@@ -1,51 +1,51 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>sleep関数 - 指定した時間スリープする</h2>
+  </ li>
+</ ol>
+<h2> sleep function-sleeps for a specified amount of time </ h2>
 
 
 
-<b>sleep関数</b>を使うと、指定した時間スリープすることができます。スリープとはCPU資源を使わずに、プログラムを停止することをいいます。
+You can use the <b> sleep function </ b> to sleep for a specified amount of time. Sleep means stopping a program without using CPU resources.
 
 <pre>
-# 10秒間スリープする
+# Sleep for 10 seconds
 sleep 10;
-</pre>
+</ pre>
 
-<h3>マイクロ秒単位でsleepする</h3>
+<h3> Sleep in microseconds </ h3>
 
-sleep関数は秒単位でしかスリープすることができません。それ以下の秒単位でsleepするには<a href="/blog/20180309152509.html">Time::Hires</a>モジュールの<b>usleep</b>関数を使用します。指定する秒は、マイクロ秒です。マイクロ秒は1秒の「1000分の1」の「1000分の1」です。
+The sleep function can only sleep in seconds. To sleep in seconds less than that, use the <b> usleep </ b> function of the <a href="/blog/20180309152509.html"> Time :: Hires </a> module. The seconds you specify are microseconds. Microseconds are "1/1000" of "1/1000" of 1 second.
 
 <pre>
-use Time::HiRes 'usleep';
+use Time :: HiRes'usleep';
 
-# 300マイクロ秒スリープする
-usleep(300);
-</pre>
+# 300 microseconds sleep
+usleep (300);
+</ pre>
 
-<h3>サンプルプログラム</h3>
+<h3> Sample program </ h3>
 
-sleep関数のサンプルプログラムです。「Hello」と表示した後に3秒スリープし、「World」と表示します。
+This is a sample program of the sleep function. After displaying "Hello", sleep for 3 seconds and display "World".
 
 <pre>
 use strict;
 use warnings;
 
-print "Hello\n";
-sleep(3);
-print "World\n";
-</pre>
+print "Hello \ n";
+sleep (3);
+print "World \ n";
+</ pre>

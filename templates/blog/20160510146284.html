@@ -1,162 +1,162 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20160225145640.html">
-      <span itemprop="name">バージョン情報</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>Perlの最新バージョン 5.24リリース - サブルーチンと数値計算の高速化、Unicode 8.0のサポート、文法機能強化</h2>
+      <span itemprop = "name"> Version information </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Perl latest version 5.24 released-faster subroutines and math, Unicode 8.0 support, grammar enhancements </ h2>
 
 
 
-Perlの最新バージョン<strong>5.24</strong>がリリースされました。今回のリリースでは、Perlのサブルーチンと数値計算の高速がなされています。また、機能面では、Unicode 8.0のサポートがなされました。文法的な強化として、前方デリファレンスの実験的なステータスがはずされています。その他、細かなバグフィックスがなされました。
+The latest version of Perl <strong> 5.24 </ strong> has been released. In this release, Perl's subroutines and numerical calculations are faster. In terms of functionality, Unicode 8.0 is now supported. As a grammatical enhancement, the experimental status of forward dereferences has been removed. Other minor bug fixes have been made.
 
-Perl 5.22に引き続きPerl 5.24では、Perlの内部コードの改善がなされています。パフォーマンスの改善という大きなメリットがありますが、いくつかの副作用もありますので、合わせて、解説します。
+Following Perl 5.22, Perl 5.24 includes improvements to Perl's internal code. Although it has the great advantage of improving performance, it also has some side effects, so I will explain it together.
 
-自分が技術的に不慣れで、安定的なPerlを望むなら、今のところPerl 5.20がおすすめです。技術的に強く、パフォーマンスの改善や新しい機能にチャレンジしたい方は、Perl 5.24にトライしてみてください。
+If you're technically unfamiliar and want a stable Perl, Perl 5.20 is for now. If you're technically strong and want to improve performance or try new features, try Perl 5.24.
 
-以下で、Perl 5.24の変更点を解説します。
+Below are some of the changes in Perl 5.24.
 
 =====
 
-<h3>パフォーマンスの改善</h3>
+<h3> Performance improvements </ h3>
 
-Perl 5.24の最大の変更点は、パフォーマンスの改善です。
+The biggest change in Perl 5.24 is the performance improvement.
 
-<h4>サブルーチン呼び出しの高速化</h4>
+<h4> Speeding up subroutine calls </ h4>
 
-スコープ生成と終了のオーバーヘッドをできる限り減らしたので、ループとブロックが速くなりました。たとえば、以下の空のサブルーチンは、今までの約三倍の速さで実行できます。
-
-<pre>
-sub f{} f();
-</pre>
-
-5.24の変更で、最もうれしいのはこれでしょう。Perlの問題点のひとつにサブルーチン呼び出しが遅いというものがありましたが、これによって、問題のひとつが改善されています。
-
-<h4>大文字、小文字を扱う関数、正規表現のパフォーマンス改善</h4>
-
-中国語のように、大文字小文字の区別がない言語があります。このような言語については、ロジックをスキップすることによって、ucfirst関数や「qr//i」のパフォーマンスが上昇しました。
-
-<h4>substrの高速化</h4>
-
-memchrがサポートされているプラットフォームにおいてsubstrが高速化されました。以下の処理が、7倍程度速くなっています。
+Loops and blocks are faster because we have reduced the overhead of scope creation and termination as much as possible. For example, the following empty subroutine can be executed about three times faster than before.
 
 <pre>
-$s = "a" x 1000 . "wxyz";
-$s =~ /wxyz/ for 1..30000
-</pre>
+sub f {} f ();
+</ pre>
 
-<h4>足し算・引き算・掛け算の高速化</h4>
+This is probably the most pleasing change in 5.24. One of Perl's problems was that subroutine calls were slow, which has improved one of the problems.
 
-Perl 5.8.0において、64bit整数をサポートするために、数値演算が遅くなっていましたが、この遅いロジックが改善さました。Perlは、数値演算が遅いといわれますが、少し改善されました。
+<h4> Uppercase and lowercase functions, regular expression performance improvements </ h4>
 
-<h4>インクリメント・デクリメントの性能の改善</h4>
+Some languages, such as Chinese, are case insensitive. For such languages, skipping the logic improved the performance of the ucfirst function and "qr // i".
 
-Perlのインクリメント・デクリメントの性能が改善されました。ループ処理などが、少し速くなります。
+<h4> Speeding up substr </ h4>
 
-<h3>機能面の強化</h3>
-
-<h4>Unicode 8.0のサポート</h4>
-
-Unicode 8.0がサポートされました。PerlはUnicodeサポートの対応が速いです
-
-<h4>新しい正規表現 \b{lb}</h4>
-
-改行の区切りを表現する新しい正規表現「\b{lb}」が追加されました。
-
-<h4>前方デリファレンスの実験的なステータスがとれました</h4>
-
-Perl 5.24では、前方デリファレンスが、最初から、有効になりました。このおかげで、リファレンスからの、配列スライス、ハッシュスライス、部分ハッシュ取得、部分配列取得の処理が、記述しやすくなっています。
+Substr has been accelerated on platforms that support memchr. The following process is about 7 times faster.
 
 <pre>
-# 前方デリファレンス
-my $nums_ref = [1, 2, 3];
-my @nums = $nums_ref->@*; # (1, 2, 3);
+$ s = "a" x 1000. "wxyz";
+$ s = ~ / wxyz / for 1..30000
+</ pre>
 
-# 前方デリファレンスを使用した配列スライス
-my @nums_part = $nums_ref->@[0, 2]; # (1, 3)
+<h4> Speeding up addition / subtraction / multiplication </ h4>
 
-my $names_h_ref = {
+In Perl 5.8.0, numeric operations were slow to support 64-bit integers, but this slow logic has been improved. Perl is said to be slow in math, but it's a little better.
+
+<h4> Improved performance of increment decrement </ h4>
+
+Perl's increment / decrement performance has been improved. Loop processing etc. will be a little faster.
+
+<h3> Functional enhancement </ h3>
+
+<h4> Unicode 8.0 support </ h4>
+
+Unicode 8.0 is now supported. Perl has fast Unicode support
+
+<h4> New regular expression \ b {lb} </ h4>
+
+A new regular expression "\ b {lb}" has been added to represent line breaks.
+
+<h4> Experimental status of forward dereference has been obtained </ h4>
+
+In Perl 5.24, forward dereferences are enabled from the beginning. This makes it easier to describe the process of array slices, hash slices, partial hash acquisitions, and partial array acquisitions from the reference.
+
+<pre>
+# Forward dereference
+my $ nums_ref = [1, 2, 3];
+my @nums = $ nums_ref-> @ *; # (1, 2, 3);
+
+# Array slice with forward dereference
+my @nums_part = $ nums_ref-> @ [0, 2]; # (1, 3)
+
+my $ names_h_ref = {
   ken => 1,
   taro => 2,
   kimoto => 3
 };
 
-# 前方デリファレンスを使用したハッシュスライス
-my @names_part = $names_h_ref->@{'ken', 'kimoto'}; # (1, 3)
+#Hash slice with forward dereference
+my @names_part = $ names_h_ref-> @ {'ken','kimoto'}; # (1, 3)
 
-# 前方デリファレンスを使用した部分ハッシュ取得
-my %names_h_part = $names_h_ref->%{'ken', 'kimoto'}; # (ken => 1, kimoto => 3)
-</pre>
+# Get partial hash using forward dereference
+my% names_h_part = $ names_h_ref->% {'ken','kimoto'}; # (ken => 1, kimoto => 3)
+</ pre>
 
-<h3>互換性のない変更</h3>
+<h3> Incompatible changes </ h3>
 
-今回のリリースでは、いくつかの実験的な機能が、削除されています。
+Some experimental features have been removed in this release.
 
-<h4>自動デリファレンスの削除</h4>
+<h4> Remove automatic dereferences </ h4>
 
-廃止警告が出されていた、実験的な自動デリファレンスが削除されました。たとえば、以下の処理が動かなくなります。push, pop, shift, unshift, splice, keys, values, eachに、リファレンスを渡すことはできません。
+The experimental automatic dereference that was issuing the obsolete warning has been removed. For example, the following processing will not work. You cannot pass references to push, pop, shift, unshift, splice, keys, values, each.
 
-<h4>レキシカルな$_が廃止されました。</h4>
+<h4> The lexical $ _ has been deprecated. </ h4>
 
-C<my $_>が、Perl 5.10で、実験的に追加されましたが、これが廃止されます。
+C <my $ _> was added experimentally in Perl 5.10, but it's obsolete.
 
-<h4>ネストされた宣言が許可されなくなった</h4>
+<h4> Nested declarations are no longer allowed </ h4>
 
-ネストされた宣言は許可されなくなりました。以下の記述はコンパイルエラーになります。
+Nested declarations are no longer allowed. The following description will result in a compilation error.
 
 <pre>
-my ($x, my($y));
-our (my $x);
-</pre>
+my ($ x, my ($ y));
+our (my $ x);
+</ pre>
 
-<h4>chdir('')は、ホームディレクトに移動できなくなりました</h4>
+<h4> chdir ('') can no longer be moved to home directory </ h4>
 
-chdir('')は、ホームディレクトリに移動できなくなりました。chdir()を使ってください。
+chdir ('') can no longer be moved to your home directory. Use chdir ().
 
-<h3>知られている問題</h3>
+<h3> Known issues </ h3>
 
-Perl 5.24では、内部的な改善のために、保証されない実装を利用している、いくつかのモジュールが、動かなくなっています。これは、現在Perlのコアチームで、議論されているので、経過を見守りましょう。
+In Perl 5.24, some modules that utilize non-guaranteed implementations are stuck due to internal improvements. This is currently being discussed by Perl's core team, so keep an eye on it.
 
 <ul>
   <li>
-    Algorithm::Permute
-  </li>
+    Algorithm :: Permute
+  </ li>
   <li>
     Coro
-  </li>
+  </ li>
   <li>
-    Data::Alias
-  </li>
+    Data :: Alias
+  </ li>
   <li>
     RPerl
-  </li>
+  </ li>
   <li>
-    Scope::Upper
-  </li>
+    Scope :: Upper
+  </ li>
   <li>
     TryCatch
-  </li>
+  </ li>
   <li>
-    lexical::underscore
-  </li>
-</ul>
+    lexical :: underscore
+  </ li>
+</ ul>
 
-最近のPerlは、内部改善が多く行われているので、内部APIに依存した、文法変化形のモジュールに依存することは、リスクが伴っています。
+Perl has a lot of internal improvements these days, so relying on grammatical variants that rely on internal APIs is risky.
 
-<h3>所見</h3>
+<h3> Findings </ h3>
 
-Perlのパフォーマンスが上がることはうれしい変更です。この方向性は、間違ってはいないと思います。このために、内部改善が必要ですが、そのために、いくつかの文法変化形のモジュールが、壊れるという状況になっています。
+It's a nice change to improve Perl's performance. I don't think this direction is wrong. This requires internal improvements, which breaks some grammatical variants.
 
-特に、議論の的としては、Coroの話題が大きいようです。将来的には、コルーチンをPerlコアのほうで、サポートするのがよいと感じました。文法変化形のモジュールが、外部のモジュールとして実装されると、常に壊れる可能性がでてくるからです。
+In particular, the topic of Coro seems to be a big topic for discussion. In the future, I felt it would be better to support coroutines in the Perl core. This is because when a grammatical variant module is implemented as an external module, it can always be broken.

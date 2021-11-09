@@ -1,310 +1,309 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">プロセス間通信</span></a>
-  </li>
-</ol>
-<h2>プロセス間通信</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Interprocess communication </ span> </a>
+  </ li>
+</ ol>
+<h2> Interprocess communication </ h2>
 
 
 
 
-Perlで「プロセス間通信」を行う方法を解説します。
+I will explain how to perform "interprocess communication" in Perl.
 
-<h3>プロセスとは</h3>
+<h3> What is a process </ h3>
 
-プロセスとは、OSから見たリソースの管理の単位のことです。プロセスには、OSに対して一意なプロセスIDが割り当てられます、リソースには、ファイルハンドル、メモリ空間、CPUががあります。ユーザーから見れば、プロセスとは、実行されているひとつのプログラムです。
+A process is a unit of resource management as seen from the OS. Processes are assigned a unique process ID for the OS, resources include file handles, memory space, and CPU. From the user's point of view, a process is a program that is running.
 
-<h4>OSのプロセス管理のイメージ</h4>
+<h4> Image of OS process management </ h4>
 
 <pre>
-   　　 出来事                          OSのプロセス管理のイメージ
-                            |-------------------------------------------------|
-                            | プロセスIDを決定( 3452 )                        |
-|------------------|        |                                                 |
-|プログラム実行開始|------->| メモリ割り当て管理                              |
-|------------------|        |   プロセスのために、一定のメモリ空間を確保し、  |
-                            |   プロセスIDで管理する                          |
-                            |   ( 確保したメモリ領域を,                       |
-                            |     他のプロセスには、干渉させない )            |
-                            |                                                 |
-                            |   実行コードをメモリ上に読み込む。              |
-                            |   静的なデータ領域をメモリ上に確保する。        |
-                            |                                                 |
-                            | CPU割り当て管理                                 |
-                            |   プロセスIDを、CPUの割り当てのスケジュールに   |
-                            |   登録する。                                    |
-                            |-------------------------------------------------|
+   Image of event OS process management
+                            | ------------------------------------------------- |
+                            | Determine process ID (3452) |
+| ------------------ | | |
+| Program execution started | -------> | Memory allocation management |
+| ------------------ | | Reserve a certain amount of memory space for the process, |
+                            | Manage by process ID |
+                            | (The allocated memory area, |
+                            | Do not interfere with other processes) |
+                            | |
+                            | Read the executable code into memory. |
+                            | Allocate a static data area in memory. |
+                            | |
+                            | CPU allocation management |
+                            | Process ID to schedule CPU allocation |
+                            | Register. |
+                            | ------------------------------------------------- |
 
-                            |-------------------------------------------------|
-|------------------|        | プロセスのファイルオープン要求に応じて          |
-|ファイルをオープン|------->| ファイルをオープン                              |
-|------------------|        | プロセスIDで、オープンしたファイルを管理する    |
-                            |-------------------------------------------------|
+                            | ------------------------------------------------- |
+| ------------------ | | In response to process file open request |
+| Open file | -------> | Open file |
+| ------------------ | | Manage open files by process ID |
+                            | ------------------------------------------------- |
 
-                                プロセスとは、OSから見た、メモリ、ファイル、
-                              CPUのスケジューリングの管理の単位です。
+                                A process is a memory, a file, as seen from the OS.
+                              A unit for managing CPU scheduling.
 
-</pre>
+</ pre>
 
-<h4>$$ - プロセスIDを取得する</h4>
+<h4> $$ --Get process ID </ h4>
 
-プロセスIDを取得するには特殊変数「<strong>$$</strong>」を使用します。
+Use the special variable "<strong> $$ </ strong>" to get the process ID.
 
 <pre>
 $$
-</pre>
+</ pre>
 
-プロセスIDとは、OSがプロセスを一意に識別するために、プロセス起動時に割り当てる識別子のことです。
+The process ID is an identifier assigned when the process is started so that the OS can uniquely identify the process.
 
-<h4>$^T - プロセスの開始時刻を取得する </h4>
+<h4> $ ^ T --Get the process start time </ h4>
 
-プロセスの開始時刻を取得するには特殊変数「<strong>$^T</strong>」を使用します。
-
-<pre>
-$^T
-</pre>
-
-時刻は、エポック秒(1970年1月1日0時0分0秒からの秒数) で取得されます。
-
-<h3>fork関数</h3>
-
-<b>fork</b>関数を使用すると<b>プロセスをふたつに分岐</b>することができます。分岐したひとつのプロセスは親プロセス、もうひとつのプロセスは子プロセスになります。
-
-
-fork関数は引数をとりません。戻り値は分岐したプロセスが親プロセスの場合は、分岐した子プロセスのプロセスIDになります。子プロセスの場合は、0になります。forkが失敗した場合はundefが返ります。
+Use the special variable "<strong> $ ^ T </ strong>" to get the start time of the process.
 
 <pre>
-my $pid = fork;
-</pre>
+$ ^ T
+</ pre>
 
-fork関数については「<a href="/blog/20090413124032.html">fork関数</a>」をご覧ください。
+The time is obtained in epoch seconds (seconds from 00:00:00 on January 1, 1970).
 
-<h3>wait関数</h3>
+<h3> fork function </ h3>
 
-forkで分岐させた場合は親プロセスと子プロセスはどちらが先に終了するかはわかりません。今回は親プロセスが子プロセスの終了を待つ方法を解説します。
+You can use the <b> fork </ b> function to <b> branch a process into two </ b>. One forked process is the parent process and the other is the child process.
 
-子プロセスの終了を待つには<b>wait</b>関数を使用します。wait関数は<b>ひとつの子プロセスが終了するまで待機</b>し続けます。戻り値は<b>終了した子プロセスのプロセスID</b>です。子プロセスが何らかの理由で自動的に回収されていた場合は-1が返却されます。
 
-<pre>
-my $pid = wait;
-</pre>
-
-wait関数については「<a href="/blog/20090413124032.html">wait関数</a>」をご覧ください。
-
-<h3>$? - 子プロセスの終了ステータス</h3>
-
-waitで子プロセスの終了を待った場合は、特殊変数「$?」に子プロセスの終了ステータスを含めた複数の値が格納されます。またsystem関数を使って子プロセスを実行した場合にも$?が設定されます。
-
-<h4>子プロセスの終了ステータス***</h4>
-
-$?の解釈の方法はやや複雑です。$?には16ビットの値が設定されます。<b>上位8ビット</b>に子プロセスの終了ステータス</b>が設定されます。<b>下位8ビットの8ビット目</b>には、コアダンプが生成されたかどうか</b>を表します。<b>下位8ビットの7ビット目</b>までは、もしあれば<b>プロセスを終了させたシグナルの番号</b>を表します。
-
-特殊変数「$?」についての詳細は「<a href="http://d.hatena.ne.jp/perlcodesample/20161102">Perlの「特殊変数」の一覧を見る</a>」をご覧ください。
-
-<h3>子プロセスのリソースを解放処理を記述する</h3>
-
-子プロセスのリソースを解放処理するにはwaitpid関数を使って次のような記述を行います。
+The fork function takes no arguments. The return value will be the process ID of the branched child process if the branched process is the parent process. 0 for child processes. If fork fails, undef is returned.
 
 <pre>
-use POSIX 'WNOHANG';
-$SIG{CHLD} = sub { while(waitpid(-1, WNOHANG) > 0) { リソースの解放処理 } }
-</pre>
+my $ pid = fork;
+</ pre>
 
-この記述の意味を理解するのはひと目見ただけでは難しいと思いますので解説します。
+For the fork function, see "<a href="/blog/20090413124032.html"> fork function </a>".
 
-<h4>CHLDシグナル</h4>
+<h3> wait function </ h3>
 
-CHLDシグナルは子プロセスが終了したときに親プロセスに送信されるシグナルです。つまり親プロセスの側でCHLDシグナルをを監視することで、子プロセスが終了した場合に何らかの処理を行うことができます。
+If you branch with fork, you don't know which of the parent and child processes will terminate first. This time, I will explain how the parent process waits for the child process to finish.
+
+Use the <b> wait </ b> function to wait for the child process to terminate. The wait function <b> waits until one child process terminates </ b>. The return value is <b> the process ID of the terminated child process </ b>. If the child process was automatically reclaimed for any reason, -1 will be returned.
 
 <pre>
-$SIG{CHLD} = sub { 子プロセスが終了した場合の処理 }
-</pre>
+my $ pid = wait;
+</ pre>
 
-<h4>waitpid関数</h4>
+For the wait function, see "<a href="/blog/20090413124032.html"> wait function </a>".
 
-waitpid関数は、指定したプロセスIDの子プロセスが状態変化を起こすまで待機します。状態変化というのは次の3つです。
+<h3> $? --Child process exit status </ h3>
+
+If wait waits for the child process to terminate, the special variable "$?" Stores multiple values ​​including the exit status of the child process. $? Is also set when a child process is executed using the system function.
+
+<h4> Exit status of child process *** </ h4>
+
+The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </ b>. The <b> 8th bit of the lower 8 bits </ b> indicates whether a core dump was generated </ b>. The <b> lower 8 bits up to the 7th bit </ b> represent the <b> signal number that terminated the process </ b>, if any.
+
+For more information on the special variable "$?", See "<a href="http://d.hatena.ne.jp/perlcodesample/20161102"> See the list of" special variables "in Perl </a>". Please give me.
+
+<h3> Describe the process of releasing the resource of the child process </ h3>
+
+To release the resources of the child process, use the waitpid function and write the following.
+
+<pre>
+use POSIX'WNOHANG';
+$ SIG {CHLD} = sub {while (waitpid (-1, WNOHANG)> 0) {Resource release process}}
+</ pre>
+
+I think it is difficult to understand the meaning of this description at first glance, so I will explain it.
+
+<h4> CHLD signal </ h4>
+
+The CHLD signal is a signal sent to the parent process when the child process terminates. In other words, by monitoring the CHLD signal on the parent process side, you can do something when the child process terminates.
+
+<pre>
+$ SIG {CHLD} = sub {What to do if a child process terminates}
+</ pre>
+
+<h4> waitpid function </ h4>
+
+The waitpid function waits until the child process with the specified process ID changes state. There are three state changes:
 
 <ol>
   <li>
-    子プロセスが終了した
-  </li>
+    Child process terminated
+  </ li>
   <li>
-    子プロセスが停止した
-  </li>
+    Child process stopped
+  </ li>
   <li>
-    子プロセスが再開した
-  </li>
-</ol>
+    Child process resumed
+  </ li>
+</ ol>
 
-状態変化があった場合は、watipid関数はその子プロセスのプロセスIDを返却します。また子プロセスが終了した場合は、ゾンビ状態にあるプロセスを解放してくれます。ゾンビ状態とは終了はしたがOSのプロセステーブルから取り除かれていない状態のことを言います。
+If there is a state change, the watipid function returns the process ID of its child process. Also, when the child process terminates, it releases the process in the zombie state. A zombie state is a state that has been terminated but has not been removed from the OS process table.
 
-waitpid関数の第一引数は子プロセスのIDですが、-1を指定すると任意の子プロセスの状態変化をひとつ調べることができます。WNOHANGは状態変化のある子プロセスがいなかった場合に、ブロッキングしないようにするオプションです。
+The first argument of the waitpid function is the ID of the child process, but if you specify -1, you can check one state change of any child process. WNOHANG is an option to prevent blocking if there are no child processes with state changes.
 
-waitpidは成功すると、状態が変化した子プロセスのプロセスIDを返します。WNOHANG が指定されていて、指定した子プロセスが一つ以上存在するが、どの子プロセスでも状態変化が起こっていない場合は0を返します。エラーの場合は-1を返します。
+If waitpid succeeds, it returns the process ID of the child process whose state has changed. If WNOHANG is specified and one or more of the specified child processes exist, but no state change has occurred in any of the child processes, 0 is returned. Returns -1 on error.
 
-waitpidの呼び出し部分だけを取り出してみました。
+I tried to extract only the call part of waitpid.
 
 <pre>
-waitpid(-1, WNOHANG)
-</pre>
+waitpid (-1, WNOHANG)
+</ pre>
 
-これを要約してみます。
+Let's summarize this.
 
 <ol>
   <li>
-    子プロセスのどれかに状態変化が起こっていればプロセスID(0より大きい)を返却し、さらにもし子プロセスが終了していれば、ゾンビ状態のプロセスを解放する。(今回はCHLDシグナルのハンドラとして設定しているので、意味としては「子プロセスのどれかが終了していればプロセスIDを返却しゾンビ状態のプロセスを解放する」考えてもよいと思います)
-  </li>
+    If any of the child processes have changed state, the process ID (greater than 0) is returned, and if the child process has terminated, the zombie state process is released. (Since it is set as a handler for the CHLD signal this time, you can think of it as "returning the process ID and releasing the zombie-state process if any of the child processes are terminated")
+  </ li>
   <li>
-    子プロセスが存在しない場合は、エラーとなり-1を返します。
-  </li>
+    If no child process exists, an error will occur and -1 will be returned.
+  </ li>
   <li>
-    指定した子プロセスが一つ以上存在するが、どの子プロセスでも状態変化が起こっていない場合は0を返します。
-  </li>
-</ol>
+    If one or more of the specified child processes exist, but no state change has occurred in any of the child processesReturns 0.
+  </ li>
+</ ol>
 
-それで以下のように戻り値が0より大きいという条件を記述すると、子プロセスのどれかが終了している場合に実行する処理を記述することができます。
+Therefore, if you describe the condition that the return value is greater than 0 as shown below, you can describe the processing to be executed when any of the child processes is terminated.
 
 <pre>
-if (waitpid(-1, WNOHANG) > 0) {
+if (waitpid (-1, WNOHANG)> 0) {
   # ...
 }
-</pre>
+</ pre>
 
-<h4>whileによるループ</h4>
-
-<pre>
-while(waitpid(-1, WNOHANG) > 0) { リソースの解放処理 } 
-</pre>
-
-この部分を見てなぜ<a href="/blog/20100123126425.html">while文</a>が必要なのだろうかと思うかもしれません。ひとつの子プロセスが終了したときにひとつのCHLDシグナルが送信されるのであれば、while文はいらないのではないかと思うのは自然なことです。けれどもシグナルにはひとつの制約があって、ごく短い間に複数の子プロセスが終了してしまった場合には、シグナルは上書きされてしまい、複数の子プロセスが終了しているのにもかかわらず、ひとつのシグナルしか送られないということがありえます。
-このためにwhile文を使って、終了したすべての子プロセスに対して処理を行う必要があります。
-
-<h4>特定の処理が必要ではなく単にゾンビを解放したい場合</h4>
-
-特定のリソース解放の処理が必要ではなく単にゾンビを解放したい場合はシグナルハンドらからwaitpidを呼ばなくても「IGNORE」を設定すれば自動的に行ってくれます。
+<h4> While loop </ h4>
 
 <pre>
-$SIG{CHLD} = 'IGNORE'；
-</pre>
+while (waitpid (-1, WNOHANG)> 0) {Resource release process}
+</ pre>
 
-<h3>他コマンドの出力をパイプを使って読み込む</h3>
+Looking at this part, you may wonder why you need a <a href="/blog/20100123126425.html"> while statement </a>. If one CHLD signal is sent when one child process terminates, it's natural to think that a while statement isn't needed. However, there is one constraint on the signal, and if multiple child processes are terminated in a very short time, the signal will be overwritten and even though multiple child processes are terminated. , It is possible that only one signal can be sent.
+To do this, you need to use a while statement to process all terminated child processes.
 
-他コマンドの出力を読み込むにはパイプという仕組みを利用します。
+<h4> If you don't need any specific action and just want to release the zombies </ h4>
+
+If you don't need to release a specific resource and just want to release a zombie, you can set "IGNORE" without calling waitpid from the signal hands and it will do it automatically.
+
+<pre>
+$ SIG {CHLD} ='IGNORE' ；
+</ pre>
+
+<h3> Read the output of other commands using a pipe </ h3>
+
+A mechanism called a pipe is used to read the output of other commands.
 
 <pre>
 use strict;
 use warnings;
 
-# (1) 他コマンドの出力を読み込むためのパイプをオープン
-open my $pipe, '-|', 'dir'
-  or die qq/Can't open pipe: $!/;
+# (1) Open a pipe to read the output of other commands
+open my $ pipe,'-|','dir'
+  or die qq / Can't open pipe: $! /;
 
-# (2) パイプから読み込み
-while (my $line = <$pipe>) {
-  print $line;
+# (2) Read from pipe
+while (my $ line = <$ pipe>) {
+  print $ line;
 }
 
-close $pipe;
-</pre>
+close $ pipe;
+</ pre>
 
-<h4>(1) 他コマンドの出力を読み込むためのパイプをオープン</h4>
+<h4> (1) Open a pipe to read the output of other commands </ h4>
 
 <pre>
-open my $pipe, '-|', 'dir'
-  or die qq/Can't open pipe: $!/;
-</pre>
+open my $ pipe,'-|','dir'
+  or die qq / Can't open pipe: $! /;
+</ pre>
 
-open関数には特別な利用方法があります。他のコマンドの出力を受け取るパイプをオープンするには、第二引数に「-|」を指定し、第三引数にコマンドを指定します。今回はディレクトリの内容を出力するコマンドである「dir」を指定しています。
+The open function has special uses. To open a pipe that receives the output of other commands, specify "-|" in the second argument and the command in the third argument. This time, "dir", which is a command to output the contents of the directory, is specified.
 
-第二引数の「-|」のハイフンの部分をコマンドに置き換えて、他コマンドの出力がパイプを通って流れてくるところを想像してみてください。
+Imagine replacing the hyphen part of the "-|" in the second argument with a command and the output of another command flowing through the pipe.
 
 <pre>
 dir | perl
-</pre>
+</ pre>
 
-<h4>(2) パイプから読み込み</h4>
+<h4> (2) Read from pipe </ h4>
 
 <pre>
-while (my $line = <$pipe>) {
-  print $line;
+while (my $ line = <$ pipe>) {
+  print $ line;
 }
-</pre>
+</ pre>
 
-パイプから1行づつ読み込んでいます。プログラムからみると、まるでファイルから読み込んでいるように見えることに注目してみてください。
+I'm reading line by line from the pipe. Notice that from the program's point of view, it looks like it's reading from a file.
 
-<h3>パイプを使って出力を他コマンドへ渡す</h3>
+<h3> Pass the output to other commands using a pipe </ h3>
 
-他コマンドへ出力を渡すにはパイプという仕組みを利用します。
+To pass the output to another command, use a mechanism called a pipe.
 
 <pre>
 use strict;
 use warnings;
 
-# (1) 他コマンドへ出力を流し込むためのパイプをオープン
-open my $pipe, '|-', 'more'
-  or die qq/Can't open pipe: $!/;
+# (1) Open a pipe to send output to other commands
+open my $ pipe,'|-','more'
+  or die qq / Can't open pipe: $! /;
 
-# (2) パイプへ書き込み
-print $pipe "Hello world";
+# (2) Write to pipe
+print $ pipe "Hello world";
 
-close $pipe;
-</pre>
+close $ pipe;
+</ pre>
 
-<h4>(1) 他コマンドへ出力を流し込むためのパイプをオープン</h4>
-
-<pre>
-open my $pipe, '|-', 'more'
-  or die qq/Can't open pipe: $!/;
-</pre>
-
-open関数には特別な利用方法があります。他のコマンドの出力を受け取るパイプをオープンするには、第二引数に「|-」を指定し、第三引数にコマンドを指定します。今回はファイルの内容を出力するコマンドである「more」を指定しています。
-
-第二引数の「|-」のハイフンの部分をコマンドに置き換えて、出力がコマンドに流れ込むところをイメージしてみてください。
+<h4> (1) Open a pipe to send output to other commands </ h4>
 
 <pre>
-出力 | more
-</pre>
+open my $ pipe,'|-','more'
+  or die qq / Can't open pipe: $! /;
+</ pre>
 
-<h4>(2) パイプへ書き込み</h4>
+The open function has special uses. To open a pipe that receives the output of other commands, specify "|-" in the second argument and the command in the third argument. This time, "more", which is a command to output the contents of the file, is specified.
 
-<pre>
-print $pipe "Hello world";
-</pre>
-
-パイプに書き込むと出力結果が他コマンドに渡されます。プログラムからみると、まるでファイルに書き込んでいるように見えることに注目してみてください。
-
-<h3>getpwuid関数 - ユーザー情報(ユーザー名)を取得する</h3>
-
-<strong>ユーザー名を取得</strong>するには<a href="/blog/20101222130016.html">getpwuid関数</a>と特殊変数<strong>$></strong>を使って以下のようにします。
+Replace the hyphen part of the second argument "|-" with a command, and imagine the output flowing into the command.
 
 <pre>
-my $user = getpwuid($>);
-</pre>
+Output | more
+</ pre>
 
-getpwuidの引数にユーザーIDを指定するとユーザー名を取得できます。
-
-<h3>getpwnam関数 - ユーザー名からユーザーIDを取得する</h3>
-
-<strong>ユーザー名からユーザーIDを取得</strong>するには<a href="/blog/20130418136633.html">getpwnam関数</a>を使って、次のようにします。
+<h4> (2) Write to pipe </ h4>
 
 <pre>
-# ユーザー名からユーザーIDを取得
-my $uid = (getpwnam 'ken')[2];
-</pre>
+print $ pipe "Hello world";
+</ pre>
 
-<h3>getgrnam関数 - グループ名からグループIDを取得する</h3>
+When writing to a pipe, the output result is passed to another command. Notice that from the program's point of view, it looks like it's writing to a file.
 
+<h3> getpwuid function --get user information (user name) </ h3>
 
-<strong>グループ名からグループIDを取得</strong>するには<a href="/blog/20130417136634.html">getgrnam関数</a>を使って、次のようにします。
+To get the <strong> username </ strong>, use the <a href="/blog/20101222130016.html"> getpwuid function </a> and the special variable <strong> $> </ strong> below will do so.
 
 <pre>
-# グループ名からグループIDを取得
-my $gid = (getgrnam 'devel')[2];
-</pre>
+my $ user = getpwuid ($>);
+</ pre>
 
+You can get the user name by specifying the user ID in the argument of getpwuid.
+
+<h3> getpwnam function-get user ID from username </ h3>
+
+To <strong> get the user ID from the username </ strong>, use the <a href="/blog/20130418136633.html"> getpwnam function </a> and do the following:
+
+<pre>
+# Get user ID from user name
+my $ uid = (getpwnam'ken') [2];
+</ pre>
+
+<h3> getgrnam function --get group ID from group name </ h3>
+
+
+To get the group ID from the <strong> group name </ strong>, use the <a href="/blog/20130417136634.html"> getgrnam function </a> as follows.
+
+<pre>
+#Get group ID from group name
+my $ gid = (getgrnam'devel') [2];
+</ pre>

@@ -1,72 +1,71 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-        <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Defined-or演算子「//」 </h2>
+  </ li>
+</ ol>
+<h2> Defined-or operator "//" </ h2>
 
 
 
-Perl5.10からは、とても便利な<strong>Defined-or演算子</strong>「<b>//</b>」が導入されました。スラッシュが二つ続く演算子です。とっても検索しにくいので、早めに覚えておくのがいいと思います。近年の機能追加では、僕的には一番お勧めの機能ですね。
-
-<pre>
-# Defined-or演算子
-//
-</pre>
-
-Defined-or演算子は、左辺が定義されている場合は、左辺値を返却し、未定義の場合は右辺値を返すという動作をします。
+Starting with Perl 5.10, the very useful <strong> Defined-or operator </ strong> "<b> // </ b>" has been introduced. An operator followed by two slashes. It's very difficult to search, so it's a good idea to remember it early. In recent years, it's the most recommended function for me.
 
 <pre>
-# 右辺が代入される
-my $value = undef // 'default'; # 'default'
+# Defined-or operator
+// //
+</ pre>
 
-# 左辺が代入される
-my $value = 0 // 'default';     # 0
-my $value = '' // 'default';    # ''
-my $value = 'foo' // 'default'; # 'foo'
-</pre>
-
-これは、値が与えられなかった場合のデフォルト値を定義するのにとても便利です。
+The Defined-or operator returns the lvalue if the lvalue is defined, and returns the rvalue if it is undefined.
 
 <pre>
-my $name = $opts{name} // 'Ken';
-</pre>
+#The right side is substituted
+my $ value = undef //'default'; #'default'
 
-また<b>//=</b>という書き方も可能です。
+#The left side is substituted
+my $ value = 0 //'default'; # 0
+my $ value ='' //'default'; #''''
+my $ value ='foo' //'default'; #'foo'
+</ pre>
 
-<pre>
-$value //= 'default';
-</pre>
-
-$valueが未定義だった場合だけ、$valueに'default'が代入されます。
-
-<h3>Perl5.10以前はどうしていたか</h3>
-
-以前はこの書き方を行うためには、<a href="/blog/20100219126425.html">defined関数</a>を使って次のように書く必要がありました。
+This is very useful for defining a default value if no value is given.
 
 <pre>
-$value = 'default' unless defined $value;
-</pre>
+my $ name = $ opts {name} //'Ken';
+</ pre>
 
-またこの書き方は、冗長なので、<b>||</b>演算子を使って次のように書く人も多くいました。
+You can also write <b> // = </ b>.
 
 <pre>
-$value ||= 'default';
-</pre>
+$ value // ='default';
+</ pre>
 
-でもこの書き方は、$valueが0や空文字列だった場合にも'default'が代入されてしまうために、潜在的なバグをアプリケーションにもたらしていました。
+Only if $ value is undefined will $ value be assigned'default'.
 
-Defined-or演算子が導入されたので、上記の二つの間の記述で悩まなくてよくなったのがうれしいですね。
+<h3> What did you do before Perl 5.10 </ h3>
 
+Previously, in order to do this, you had to use the <a href="/blog/20100219126425.html"> defined function </a> to write:
+
+<pre>
+$ value ='default' unless defined $ value;
+</ pre>
+
+Also, since this writing method is verbose, many people used the <b> || </ b> operator to write as follows.
+
+<pre>
+$ value || ='default';
+</ pre>
+
+However, this way of writing introduced a potential bug to the application because'default' was assigned even if $ value was 0 or an empty string.
+
+With the introduction of the Defined-or operator, I'm happy that I don't have to worry about the description between the above two.

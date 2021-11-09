@@ -1,843 +1,842 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">書籍案内</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>【書籍案内】かんたんプログラミングCGI/Perl 木本裕紀著</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Book Guide </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> [Book Guide] Easy Programming CGI / Perl by Yuki Kimoto </ h2>
 
 
 
-技術評論社から「かんたんプログラミング」シリーズとして発売されている書籍のCGI/Perl版です。
+This is the CGI / Perl version of the book released as the "Easy Programming" series by Gijutsu-Hyoronsha.
 
-[asin:4774139289:detail]
+[asin: 4774139289: detail]
 
-この書籍は現時点で、現代的なPerlで記述されている唯一のCGIの本だと思われます。CGIについて書いた、Perlの書籍というのは、Perl4が流行していた時代のあまり推奨されない記述がたくさん含まれている本がほとんどです。
+This book seems to be the only CGI book written in modern Perl at this time. Most Perl books about CGI contain a lot of less recommended descriptions from the time Perl 4 was all the rage.
 
-モダンPerlを意識して書かれているCGIの本はまずないと思われます。
+It seems unlikely that CGI books are written with modern Perl in mind.
 
-CGIの解説については、プロトコルの細部についてではなくて、CGIプロトコルを使ってWebアプリケーションを開発するときに、内部でどのようなことが行われるかということをイメージしやすいような解説になっています。
+The explanation of CGI is not about the details of the protocol, but it is an explanation that makes it easy to imagine what will be done internally when developing a Web application using the CGI protocol. ..
 
-「ブラウザ -> HTTPリクエスト発行 -> Webサーバー -> CGIスクリプト -> HTTPレスポンス生成-> Webサーバー -> ブラウザ」という流れが理解できる解説になっています。
+The explanation is such that you can understand the flow of "browser-> HTTP request issuance-> web server-> CGI script-> HTTP response generation-> web server-> browser".
 
-CGI自体は、処理速度が出ないという理由のために、主流ではなくなってしまいましたが、Webアプリケーションがどのように動いているかを理解する助けとしては、有用だと思います。
+CGI itself is no longer mainstream because it's slow, but I think it's useful as a help in understanding how web applications work.
 
-またさくらのレンタルサーバーでCGIを配置して実際に実行する部分を詳しく解説しています。FFFTPとかの解説も丁寧にしていて、実際にCGIをサーバー上に配置するときに、できるだけつまづかないように考慮が払われています。
+It also explains in detail the part where CGI is placed and actually executed on Sakura's rental server. The explanations such as FFFTP are also polite, and when actually deploying CGI on the server, consideration is given to avoid tripping as much as possible.
 
-この書籍には章を丸まるとって、純粋な「Perl入門」が含まれています。この章はCGIスクリプトとは、関係がないので、モダンPerlの入門書として読んでいただけるかと思います。業務に役だつPerlの第二章ではPerlの基礎を解説していますが、これを丁寧に解説してあると考えていただけるとイメージしやすいのではないかと思います。
+This book contains a pure "Introduction to Perl" with rounded chapters. This chapter has nothing to do with CGI scripts, so you can read it as an introduction to modern Perl. The second chapter of Perl, which is useful for business, explains the basics of Perl, but I think it would be easier to imagine if you think that this is explained carefully.
 
-また本書の中で利用しているサンプルコードをWebから<a href="http://gihyo.jp/book/2009/978-4-7741-3928-9/support">ダウンロード</a>して試すこともできます。
+Also, <a href="http://gihyo.jp/book/2009/978-4-7741-3928-9/support"> download </a> the sample code used in this manual from the Web. You can also try it.
 
-初めての著作なので、いたらないところが、けっこうあり誤字もたくさんあります。
+Since this is my first work, there are quite a few typos and many typographical errors.
 
-<h3>Webフレームワークにチャレンジ</h3>
+<h3> Challenge the web framework </ h3>
 
-CGIスクリプトでWebアプリケーションを書くという手法は、現在では古いものになっています。Webフレームワークを使ってWebアプリケーションにもチャレンジしてみましょう。
+The technique of writing web applications with CGI scripts is now obsolete. Let's challenge a web application using a web framework.
 
-簡単プログラミングCGI/Perlに掲載されたWebアプリケーションのサンプルを、Mojoliciousというフレームワークで書き直してみました。
+Easy programming I rewrote the web application sample published in CGI / Perl with a framework called Mojolicious.
 
 <ul>
   <li>
-    <a href="/blog/20100109126494.html">ひとことメッセージ掲示板(Mojolicious::Liteバージョン)</a>
-  </li>
+    <a href="/blog/20100109126494.html"> A word message board (Mojolicious :: Lite version) </a>
+  </ li>
   <li>
-    <a href="/blog/20100113126494.html">画像掲示板(Mojolicious::Liteバージョン)</a>
-  </li>
+    <a href="/blog/20100113126494.html"> Image board (Mojolicious :: Lite version) </a>
+  </ li>
   <li>
-    <a href="/blog/20100115126494.html">簡易検索アプリケーション(Mojolicious::Liteバージョン)</a>
-  </li>
-</ul>
+    <a href="/blog/20100115126494.html"> Simple search application (Mojolicious :: Lite version) </a>
+  </ li>
+</ ul>
 
-<h3>かんたんプログラミング CGI/Perl 正誤表</h3>
+<h3> Easy programming CGI / Perl errata </ ​​h3>
 
-「かんたんプログラミング CGI/Perl」の正誤表を作成しました。自分で発見したものと教えてもらったものについて記載してあります。かなりの間違いを含んでいます。サンプルコードについてはほとんどは動くと思います。
+We have created an errata for "Easy Programming CGI / Perl". It describes what you discovered and what you were told. It contains a lot of mistakes. I think most of the sample code works.
 
 <table>
   <tr>
     <td>
-      ページ
-    </td>
+      page
+    </ td>
     <td>
-      場所
-    </td>
+      place
+    </ td>
     <td>
-      誤
-    </td>
+      Wrong
+    </ td>
     <td>
-      正
-    </td>
-  </tr>
+      Positive
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P18
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      Accept-Charsetの解説でUTF-8がutf-8になってます
-    </td>
+      UTF-8 is changed to utf-8 in the explanation of Accept-Charset
+    </ td>
     <td>
-      UTF-8が正しいです
-    </td>
-  </tr>
+      UTF-8 is correct
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P24
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      「POSTメソッドで送信されたメッセージボディのデータが～」が重複して記入されています
-    </td>
+      "The data of the message body sent by the POST method is ..." is entered in duplicate.
+    </ td>
     <td>
-      重複を取り除く
-    </td>
-  </tr>
+      Remove duplication
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P31
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      デフォルトでは「I Accept …」にチェックが入っています。
-    </td>
+      By default, "I Accept…" is checked.
+    </ td>
     <td>
-      デフォルトでは「I Accespt …」にチェックが入っていません
-    </td>
-  </tr>
+      By default, "I Accespt…" is not checked
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P34
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      Webアプリケーションは「HTML」「HTTP」「CGI」「Perl」の４つの要素で構成されており、それぞれの知識が必要不可欠です。
-    </td>
+      Web applications are composed of four elements, "HTML", "HTTP", "CGI", and "Perl", and knowledge of each is indispensable.
+    </ td>
     <td>
-      Webアプリケーションは複数の技術で構成されており、「HTML」「HTTP」「CGI」「Perl」について学習する必要があります。
-    </td>
-  </tr>
+      Web applications are made up of multiple technologies that require you to learn about "HTML," "HTTP," "CGI," and "Perl."
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P34
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      HTTPをCGIスクリプトのように書くことはありませんが、記述されている情報をスクリプト内で利用することができます。
-    </td>
+      HTTP is not written like a CGI script, but the information described can be used in the script.
+    </ td>
     <td>
-      HTTPリクエストのヘッダ情報はCGIスクリプト内で利用することができます。
-    </td>
-  </tr>
+      The HTTP request header information can be used in the CGI script.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P34
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      WebサーバからCGIスクリプトへデータを渡す方法を「標準入力」、CGIスクリプトからWebサーバへデータを渡す方法を「標準出力」といいます。
-    </td>
+      The method of passing data from the web server to the CGI script is called "standard input", and the method of passing data from the CGI script to the web server is called "standard output".
+    </ td>
     <td>
-      WebサーバからCGIスクリプトへデータを渡すには「標準入力」を利用し、CGIスクリプトからWebサーバへデータを渡すには「標準出力」を利用します。
-    </td>
-  </tr>
+      Use "standard input" to pass data from the web server to the CGI script, and use "standard output" to pass data from the CGI script to the web server.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P59
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      「8.Perlの実行パスの記述が間違っている」の位置が異なる
-    </td>
+      The position of "8. The description of Perl execution path is incorrect" is different.
+    </ td>
     <td>
-      P056の「7.CGIスクリプトのパーミッション」の直後の位置が正しいです
-    </td>
-  </tr>
+      The position immediately after "7. CGI script permissions" on page 056 is correct.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P62
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      画面に表示するする
-    </td>
+      Display on screen
+    </ td>
     <td>
-      画面に表示する
-    </td>
-  </tr>
+      Display on screen
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P64
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      Unixの拡張したOSやLinux系のOSを含みます
-    </td>
+      Includes Unix extended OS and Linux OS
+    </ td>
     <td>
-      Unixを拡張したOSやLinux系のOSを含みます
-    </td>
-  </tr>
+      Includes Unix-extended OS and Linux-based OS
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P74
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      不等号とは異なり「=」に「等しい」という意味はありません。
-    </td>
+      Unlike the inequality sign, "=" does not mean "equal to".
+    </ td>
     <td>
-      数学の等号記号とは異なり「=」に「等しい」という意味はありません。
-    </td>
-  </tr>
+      Unlike the equal sign in mathematics, "=" does not mean "equal to".
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P75
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      意味がわかる名前にましょう。
-    </td>
+      Use a name that makes sense.
+    </ td>
     <td>
-      意味がわかる名前にしましょう。
-    </td>
-  </tr>
+      Use a name that makes sense.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P79
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      l<という変な記号があります
-    </td>
+      There is a weird sign called l <
+    </ td>
     <td>
-      削除しわすれています
-    </td>
-  </tr>
+      Forgotten to delete
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P83
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      「配列の要素に添え字を使ってアクセスすることができます。～」の位置が間違っています。
-    </td>
+      The position of "You can access the elements of the array using subscripts." Is incorrect.
+    </ td>
     <td>
-      中見出しの「配列の要素」の直後が正しいです。
-    </td>
-  </tr>
+      Immediately after "Array elements" in the middle heading is correct.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P84
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      このように配列変数をスカラ変数に代入することを、スカラコンテキストといいます
-    </td>
+      Assigning an array variable to a scalar variable in this way is called a scalar context.
+    </ td>
     <td>
-      解説が間違っているので、この文は削除するのが正しいです。
-    </td>
-  </tr>
+      This sentence is correct to remove because the description is incorrect.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P86
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      中見出し「配列に配列を追加する」
-    </td>
+      Middle heading "Add an array to an array"
+    </ td>
     <td>
-      「配列に複数の要素を追加する」が正しいです
-    </td>
-  </tr>
+      "Add multiple elements to the array" is correct
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P86
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      ひとつの要素だけでなく、配列の追加にも対応しています
-    </td>
+      It supports not only one element but also the addition of arrays
+    </ td>
     <td>
-      ひとつの要素だけでなく、複数の要素の追加にも対応しています
-    </td>
-  </tr>
+      It supports not only one element but also multiple elements
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P87
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      ソースコード @nums = reverse sort {$b <=> $a} @nums
-    </td>
+      Source code @nums = reverse sort {$ b <=> $ a} @nums
+    </ td>
     <td>
-      reverseはいらないです。@nums = sort {$b <=> $a} @nums が正しいです。
-    </td>
-  </tr>
+      I don't need reverse. @nums = sort {$ b <=> $ a} @nums is correct.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P88
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      ソースコード ($name, $age) = ('Ken', 'Taro')
-    </td>
+      Source code ($ name, $ age) = ('Ken','Taro')
+    </ td>
     <td>
-      ($name, $age) = ('Ken', 18) が正しいです
-    </td>
-  </tr>
+      ($ name, $ age) = ('Ken', 18) is correct
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P85
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      ソースコードのif分に閉じブレースがない
-    </td>
+      There is no closing brace in the if part of the source code
+    </ td>
     <td>
-      閉じブレースを追加
-    </td>
-  </tr>
+      Add closing brace
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P86
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      配列の要素の1番目から2つの要素を取り出す例です。
-    </td>
+      This is an example of extracting the first and second elements of an array.
+    </ td>
     <td>
-      配列の要素の2番目(添え字で1)から2つの要素を取り出す例です。
-    </td>
-  </tr>
+      This is an example of extracting two elements from the second element of the array (1 with a subscript).
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P87
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      配列の要素の1番目の位置から2つの要素を置換する例です。
-    </td>
+      This is an example of replacing two elements from the first position of an element in the array.
+    </ td>
     <td>
-      配列の要素の2番目(添え字で1)から2つの要素を置換する例です。
-    </td>
-  </tr>
+      This is an example of replacing two elements from the second element of the array (1 with a subscript).
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P89
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      ソースコードの最後に「print $animal_join;」が抜けています
-    </td>
+      "Print $ animal_join;" is missing at the end of the source code
+    </ td>
     <td>
-      print $animal_join;を追加
-    </td>
-  </tr>
+      Added print $ animal_join;
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P089
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      joinの解説を行っていないのにjoinを使用しています。
-    </td>
+      I'm using join even though I haven't explained about join.
+    </ td>
     <td>
-      3章5節 「数値演算と文字列操作」で解説されています。
-    </td>
-  </tr>
+      It is explained in Chapter 3, Section 5, "Numerical Arithmetic and String Manipulation".
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P89
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      ソースコード 18行目 my $last_animals = pos;
-    </td>
+      Source code line 18 my $ last_animals = pos;
+    </ td>
     <td>
-      my $last_animals = pop @animals が正しいです
-    </td>
-  </tr>
+      my $ last_animals = pop @animals is correct
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P102
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      その位置が何文字目から始まっているのかを返却します
-    </td>
+      Returns the character number from which the position starts
+    </ td>
     <td>
-      戻り値としてその位置を返却します
-    </td>
-  </tr>
+      Returns that position as a return value
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P091
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      国際標準後
-    </td>
+      After international standard
+    </ td>
     <td>
-      国際標準語
-    </td>
-  </tr>
+      International standard language
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P105
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      >ll というゴミが残っています。
-    </td>
+      There is garbage called> ll.
+    </ td>
     <td>
-      取り除くのが正しいです。
-    </td>
-  </tr>
+      It is correct to remove.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P108
-    </td>
+    </ td>
     <td>
-      上から14行目
-    </td>
+      14th line from the top
+    </ td>
     <td>
-      論理和（何々 かつ 何々）
-    </td>
+      Logical sum (what and what)
+    </ td>
     <td>
-      論理和（何々 または 何々）
-    </td>
-  </tr>
+      OR (what or what)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P110
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      スクリプトの実行方法抜けています
-    </td>
+      How to execute the script is missing
+    </ td>
     <td>
-      引数を指定してスクリプトを実行してみましょう。perl sample_3_6 1 2 を追加するのが正しいです
-    </td>
-  </tr>
+      Let's run the script with arguments. It is correct to add perl sample_3_6 1 2
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P111
-    </td>
+    </ td>
     <td>
-      上から7行目
-    </td>
+      7th line from the top
+    </ td>
     <td>
-      １番目の要素に「0」が
-    </td>
+      "0" is in the first element
+    </ td>
     <td>
-      １番目の要素に「1」が
-    </td>
-  </tr>
+      "1" is the first element
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P111
-    </td>
+    </ td>
     <td>
-      下から3行目
-    </td>
+      3rd line from the bottom
+    </ td>
     <td>
-      $num[0] $num[1]
-    </td>
+      $ num [0] $ num [1]
+    </ td>
     <td>
-      $nums[0] $nums[1]
-    </td>
-  </tr>
+      $ nums [0] $ nums [1]
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P114
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      「$animal」が「cat」の場合には
-    </td>
+      If "$ animal" is "cat"
+    </ td>
     <td>
-      「$animal」が「dog」の場合には
-    </td>
-  </tr>
+      If "$ animal" is "dog"
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P123
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
       samplw_3_8.pl
-    </td>
+    </ td>
     <td>
       sample_3_8.pl
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P145
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      close $fh
-    </td>
+      close $ fh
+    </ td>
     <td>
-      close $fh;
-    </td>
-  </tr>
+      close $ fh;
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P148
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      少し進んだ話題ですが、ぜひ知っておいたほうがよい
-    </td>
+      It's a little advanced topic, but you should definitely know it.
+    </ td>
     <td>
-      少し進んだ話題ですが、ぜひ知っておいたほうがよいことがあります。
-    </td>
-  </tr>
+      It's a little advanced topic, but there are some things you should know.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P157
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
       windwos perl nmake
-    </td>
+    </ td>
     <td>
       windows perl nmake
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P158
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      完結な内容にしましょう
-    </td>
+      Let's make it complete
+    </ td>
     <td>
-      簡潔な内容にしましょう
-    </td>
-  </tr>
+      Let's keep it concise
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P158
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      PerlスクリプトはWebブラウザからではなく、コマンドプロンプトかシェルからスクリプトの存在するディレクトリを指定し、Perlコマンドから実行します
-    </td>
+      Perl scripts are run from Perl commands, specifying the directory where the script resides from a command prompt or shell, not from a web browser.
+    </ td>
     <td>
-      Perlスクリプトはコマンドプロンプトやシェルなどからperlコマンドを使って実行します
-    </td>
-  </tr>
+      Perl scripts are executed using perl commands from a command prompt, shell, etc.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P158
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      変数とは値を納めることができる仕組みのことです。プログラムが終了するまで値を維持でき、繰り返し利用することができます。
-    </td>
+      A variable is a mechanism that can store a value. The value can be maintained until the program ends and can be used repeatedly.
+    </ td>
     <td>
-      「変数には値を代入することができます。」に修正するのが正しいです。変数はプログラムが終了するまで値を維持しているわけではないので。
-    </td>
-  </tr>
+      It is correct to modify it to "Variables can be assigned values." Variables don't hold their value until the end of the program.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P162
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      titleタグの閉じタグのスラッシュ(/)がないです。
-    </td>
+      There is no slash (/) in the closing tag of the title tag.
+    </ td>
     <td>
-      スラッシュがあるのが正しいです。
-    </td>
-  </tr>
+      It is correct to have a slash.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P164
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      titleタグの閉じタグのスラッシュ(/)がないです。
-    </td>
+      There is no slash (/) in the closing tag of the title tag.
+    </ td>
     <td>
-      スラッシュがあるのが正しいです。
-    </td>
-  </tr>
+      It is correct to have a slash.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P165
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      titleタグの閉じタグのスラッシュ(/)がないです。
-    </td>
+      There is no slash (/) in the closing tag of the title tag.
+    </ td>
     <td>
-      スラッシュがあるのが正しいです。
-    </td>
-  </tr>
+      It is correct to have a slash.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P167
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      titleタグの閉じタグのスラッシュ(/)がないです。
-    </td>
+      There is no slash (/) in the closing tag of the title tag.
+    </ td>
     <td>
-      スラッシュがあるのが正しいです。
-    </td>
-  </tr>
+      It is correct to have a slash.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P170
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      titleタグの閉じタグのスラッシュ(/)がないです。
-    </td>
+      There is no slash (/) in the closing tag of the title tag.
+    </ td>
     <td>
-      スラッシュがあるのが正しいです。
-    </td>
-  </tr>
+      It is correct to have a slash.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P173
-    </td>
+    </ td>
     <td>
-      中段
-    </td>
+      Middle row
+    </ td>
     <td>
-      フォームのactionのURLの指定が間違っています。
-    </td>
+      The URL of the action of the form is specified incorrectly.
+    </ td>
     <td>
-      /cgi-bin/simple-form.cgiが正しいです。
-    </td>
-  </tr>
+      /cgi-bin/simple-form.cgi is correct.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P174
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      /var/www/htm
-    </td>
+      / var / www / htm
+    </ td>
     <td>
-      /var/www/html
-    </td>
-  </tr>
+      / var / www / html
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P176
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      受け取った文字列を出力されました。
-    </td>
+      The received character string was output.
+    </ td>
     <td>
-      受け取った文字列が出力されました。
-    </td>
-  </tr>
+      The received character string is output.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P207
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      ソースコード名がない
-    </td>
+      No source code name
+    </ td>
     <td>
       image-bbs.cgi
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 |
   <tr>
     <td>
       P232
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      「出力するデータは必ず～」の見出しが中見出し
-    </td>
+      The heading "The data to be output is always ..." is the middle heading.
+    </ td>
     <td>
-      小見出しになっているのが正しいです
-    </td>
-  </tr>
+      The subheading is correct
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P234
-    </td>
+    </ td>
     <td>
-      上段
-    </td>
+      Upper row
+    </ td>
     <td>
-      実行したプログラムの役割を果たすモジュールがないかを～
-    </td>
+      Is there a module that plays the role of the executed program?
+    </ td>
     <td>
-      実行したいプログラムの役割を果たすモジュールがないかを～
-    </td>
-  </tr>
+      Is there a module that plays the role of the program you want to execute?
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       P235
-    </td>
+    </ td>
     <td>
-      下段
-    </td>
+      Lower row
+    </ td>
     <td>
-      ソースコード ? の部分にtaraを埋め込む
-    </td>
+      Embed tara in the source code?
+    </ td>
     <td>
-      「? の部分にtaroを埋め込む」が正しいです。
-    </td>
-  </tr>
+      "Embed taro in the? Part" is correct.
+    </ td>
+  </ tr>
 
-</table>
-
+</ table>

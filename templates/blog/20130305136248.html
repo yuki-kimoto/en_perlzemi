@@ -1,228 +1,228 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161030147778.html">
-        <span itemprop="name">オブジェクト指向</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">入門</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>オブジェクト指向入門</h2>
+        <span itemprop = "name"> Object Oriented </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Introduction </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Introduction to Object Oriented </ h2>
 
 
 
-Perlで、オブジェクト指向プログラミングをするのは難しい、クラスを作成したり、インスタンス変数を定義したりする方法が直感的にわからないと思う人は多いのではないでしょうか。
+Many people find it difficult to do object-oriented programming in Perl, and don't intuitively know how to create classes or define instance variables.
 
-実は、モジュールの力を借りれば、Perlのオブジェクト指向はとてもわかりやすくなります。今回はObject::Simpleというモジュールを使ってPerlのオブジェクト指向を解説します。
+In fact, with the help of modules, Perl's object orientation is very straightforward. This time, I will explain Perl's object orientation using a module called Object :: Simple.
 
-<h3>Object::Simpleのインストール</h3>
+<h3> Install Object :: Simple </ h3>
 
-Object::Simpleをインストールします。cpanを使えば簡単にモジュールをインストールできます。
+Install Object :: Simple. You can easily install modules using cpan.
 
 <pre>
-cpan Object::Simple
-</pre>
+cpan Object :: Simple
+</ pre>
 
-これで準備が完了です。
+Now you are ready to go.
 
-<h3>クラスの定義</h3>
+<h3> Class definition </ h3>
 
-Perlではクラスの定義は<strong>package</strong>を使って行います。最初に<b>-base</b>フラグを使ってObject::Simpleを継承したクラスを作成します。次の記述は、まずおまじないとして覚えてください。
+In Perl, classes are defined using <strong> package </ strong>. First, use the <b> -base </ b> flag to create a class that inherits from Object :: Simple. Remember the following description as a spell first.
 
 <pre>
 package MyClass;
-use Object::Simple -base;
-</pre>
+use Object :: Simple -base;
+</ pre>
 
-<h3>コンストラクタ</h3>
+<h3> Constructor </ h3>
 
-このようにすると<b>MyClass</b>というクラスを定義できます。コンストラクタ<b>new</b>を使ってクラスからオブジェクトを生成することができます。(このnewはObject::Simpleから継承されたものです。)
+This way you can define a class called <b> MyClass </ b>. You can create an object from a class using the constructor <b> new </ b>. (This new is inherited from Object :: Simple.)
 
 <pre>
-my $obj = MyClass->new;
-</pre>
+my $ obj = MyClass-> new;
+</ pre>
 
-<b>new</b>メソッドは、ハッシュあるいはハッシュのリファレンスを受け取ることができます。
+The <b> new </ b> method can receive a hash or a hash reference.
     
 <pre>
-my $obj = MyClass->new(foo => 1, bar => 2);
-my $obj = MyClass->new({foo => 1, bar => 2});
-</pre>
+my $ obj = MyClass-> new (foo => 1, bar => 2);
+my $ obj = MyClass-> new ({foo => 1, bar => 2});
+</ pre>
 
-これは属性値として設定されます。
+This is set as an attribute value.
 
-<h3>アクセッサ</h3>
+<h3> Accessor </ h3>
 
-次にアクセッサを定義してみましょう。アクセッサとは属性値(インスタンス変数)にアクセスするためのメソッドのことです。アクセッサを定義すれば、属性値にアクセスすることができます。
+Next, let's define an accessor. An accessor is a method for accessing an attribute value (instance variable). You can access the attribute values ​​by defining an accessor.
 
-アクセッサを生成するには<b>has</b>関数を使用します。
-
-<pre>
-has 'foo';
-</pre>
-
-アクセッサを定義すると属性値にアクセスすることができます。
+Use the <b> has </ b> function to generate an accessor.
 
 <pre>
-# 値の設定
-$obj->foo(1);
+has'foo';
+</ pre>
 
-# 値の取得
-my $foo = $obj->foo;
-</pre>
+You can access the attribute values ​​by defining an accessor.
 
-属性値のデフォルトを指定することもできます。
+<pre>
+# Value setting
+$ obj-> foo (1);
+
+#Get value
+my $ foo = $ obj-> foo;
+</ pre>
+
+You can also specify defaults for attribute values.
 
 <pre>
 has foo => 1;
-</pre>
+</ pre>
 
-属性値が設定されていない場合は最初にアクセッサが呼び出されたときに
-デフォルト値が属性値に設定されます。
-
-<pre>
-# デフォルト値の1を取得
-my $default = $obj->foo;
-</pre>
-
-もしリファレンスやオブジェクトをデフォルト値として指定したい場合は、サブルーチンのリファレンスの戻り値にする必要があります。
+When the accessor is first called if the attribute value is not set
+The default value is set to the attribute value.
 
 <pre>
-has foo => sub { [] };
-has foo => sub { {} };
-has foo => sub { MyClass->new };
-</pre>
+# Get the default value of 1
+my $ default = $ obj-> foo;
+</ pre>
 
-複数のアクセッサを一度に生成することもできます。
+If you want to specify a reference or object as the default value, it must be the return value of the subroutine reference.
 
 <pre>
-has [qw/foo bar baz/];
-has [qw/foo bar baz/] => 0;
-</pre>
+has foo => sub {[]};
+has foo => sub {{}};
+has foo => sub {MyClass-> new};
+</ pre>
 
-<h3>継承</h3>
+You can also generate multiple accessors at once.
 
-継承を行うには<b>-base</b>を使います。<b>MyClass</b>を継承した<b>SubClass</b>を作ってみましょう。
+<pre>
+has [qw / foo bar baz /];
+has [qw / foo bar baz /] => 0;
+</ pre>
+
+<h3> Inheritance </ h3>
+
+Use <b> -base </ b> for inheritance. Let's create a <b> SubClass </ b> that inherits from <b> MyClass </ b>.
 
 <pre>
 package MyClass;
-use Object::Simple -base;
-</pre>
+use Object :: Simple -base;
+</ pre>
 
 <pre>
 package SubClass;
 use MyClass -base;
-</pre>
+</ pre>
 
-<h3>スーパークラスのメソッドの呼び出し</h3>
+<h3> Superclass method call </ h3>
 
-<b>SUPER</b>を使って、スーパークラスのメソッドを呼び出すことができます。
+You can use <b> SUPER </ b> to call superclass methods.
 
 <pre>
 package SubClass;
 use MyClass -base;
 
 sub clear {
-  my $self = shift;
+  my $ self = shift;
   
-  $self->SUPER::clear;
+  $ self-> SUPER :: clear;
 }
-</pre>
+</ pre>
 
-<h3>コンストラクタのオーバーライド</h3>
+<h3> Constructor override </ h3>
 
-サブクラスでコンストラクタをオーバーライドしたい場合があると思います。コンストラクタをオーバーライドするには次のようにします。
+You may want to override the constructor in a subclass. To override the constructor:
 
 <pre>
 package MyClass;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 sub new {
-  my $class = shift;
+  my $ class = shift;
   
-  my $self = $class->SUPER::new(@_);
+  my $ self = $ class-> SUPER :: new (@_);
   
-  return $self;
+  return $ self;
 }
-</pre>
+</ pre>
 
-newはコンストラクタなので必ずオブジェクト自身を返すようにします。
+Since new is a constructor, be sure to return the object itself.
 
-<h3>クラスの作成 - 実践編</h3>
+<h3> Creating a class-Practice </ h3>
 
-あら不思議、これだけ覚えればPerlのオブジェクト指向はほぼマスターです。では、実践編です。<b>Point</b>クラスと<b>Point3D</b>クラスを作成してみます。
+Oh mysteriously, Perl's object-oriented programming is almost master if you remember this much. Then, it is a practical edition. Let's create a <b> Point </ b> class and a <b> Point3D </ b> class.
 
-<h4>Pointクラス</h4>
+<h4> Point class </ h4>
 
 <blockquote>
 <ul>
   <li>
-    Pointは点を表すクラスです。
-  </li>
+    Point is a class that represents a point.
+  </ li>
   <li>
-    xとyというアクセッサを持ちます。
-  </li>
+    It has accessors x and y.
+  </ li>
   <li>
-    xとyの値を0にクリアするclearというメソッドを持ちます。
-  </li>
-</blockquote>
-</ul>
+    It has a method called clear that clears the values ​​of x and y to 0.
+  </ li>
+</ blockquote>
+</ ul>
 
 <pre>
 package Point;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 has x => 0;
 has y => 0;
 
 sub clear {
-  my $self = shift;
+  my $ self = shift;
   
-  $self->x(0);
-  $self->y(0);
+  $ self-> x (0);
+  $ self-> y (0);
 }
 
 1;
-</pre>
+</ pre>
 
-(末尾に「1;」という記述があるのは、モジュールを書くファイルの末尾が真でなければならないというルールがあるためです。)
+(The "1;" at the end is due to the rule that the file that writes the module must end with true.)
 
-Pointクラスは以下のように使用することができます。
+The Point class can be used as follows.
 
 <pre>
 use Point;
-my $point = Point->new(x => 3, y => 5);
-print $point->x;
-$point->y(9);
-$point->clear;
-</pre>
+my $ point = Point-> new (x => 3, y => 5);
+print $ point-> x;
+$ point-> y (9);
+$ point-> clear;
+</ pre>
 
-<h4>Point3Dクラス</h4>
+<h4> Point3D class </ h4>
 
 <blockquote>
 <ul>
   <li>
-    Point3Dは3次元の点を表すクラスです。
-  </li>
+    Point3D is a class that represents a three-dimensional point.
+  </ li>
   <li>
-    x,y,zというアクセッサを持ちます。
-  </li>
+    It has accessors x, y, z.
+  </ li>
   <li>
-    x,y,zの値を0にクリアするclearというメソッドを持ちます。
-  </li>
-</blockquote>
-</ul>
+    It has a method called clear that clears the values ​​of x, y, z to 0.
+  </ li>
+</ blockquote>
+</ ul>
 
-<b>Point3D</b>は<b>Point</b>を継承して作成します。<b>clear</b>メソッドは<b>x</b>と<b>y</b>と<b>z</b>の値をクリアするためにオーバーライドされています。
+<b> Point3D </ b> is created by inheriting <b> Point </ b>. The <b> clear </ b> method has been overridden to clear the values ​​of <b> x </ b>, <b> y </ b> and <b> z </ b>.
     
 <pre>
 package Point3D;
@@ -231,54 +231,54 @@ use Point -base;
 has z => 0;
 
 sub clear {
-  my $self = shift;
+  my $ self = shift;
   
-  $self->SUPER::clear;
+  $ self-> SUPER :: clear;
   
-  $self->z(0);
+  $ self-> z (0);
 }
 
 1;
-</pre>
+</ pre>
 
-Point3Dクラスは以下のように利用することができます。
+The Point3D class can be used as follows.
 
 <pre>
 use Point3D;
-my $point = Point->new(x => 3, y => 5, z => 8);
-print $point->z;
-$point->z(9);
-$point->clear;
-</pre>
+my $ point = Point-> new (x => 3, y => 5, z => 8);
+print $ point-> z;
+$ point-> z (9);
+$ point-> clear;
+</ pre>
 
-<h3>実行できるサンプル</h3>
+<h3> Executable sample </ h3>
 
-実行できるサンプルを書いておきますね。
+I'll write a sample that can be executed.
 
-<h4>lib/Point.pm</h4>
+<h4> lib / Point.pm </ h4>
 
-libというディレクトを作成して、その中にPoint.pmというファイルを作成してください。
+Create a directory called lib and create a file called Point.pm in it.
 
 <pre>
 package Point;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 has x => 0;
 has y => 0;
 
 sub clear {
-  my $self = shift;
+  my $ self = shift;
   
-  $self->x(0);
-  $self->y(0);
+  $ self-> x (0);
+  $ self-> y (0);
 }
 
 1;
-</pre>
+</ pre>
 
-<h4>lib/Point3D.pm</h4>
+<h4> lib / Point3D.pm </ h4>
 
-libというディレクトの中にPoint3D.pmというファイルを作成してください。
+Create a file called Point3D.pm in a directory called lib.
 
 <pre>
 package Point3D;
@@ -287,230 +287,229 @@ use Point -base;
 has z => 0;
 
 sub clear {
-  my $self = shift;
+  my $ self = shift;
   
-  $self->SUPER::clear;
+  $ self-> SUPER :: clear;
   
-  $self->z(0);
+  $ self-> z (0);
 }
 
 1;
-</pre>
+</ pre>
 
-<h4>test.pl</h4>
+<h4> test.pl </ h4>
 
-クラスを読み込んで利用するサンプルです。libモジュールを使うことで、モジュールの検索パスを追加できます。
+This is a sample to read and use the class. You can add a module search path by using the lib module.
 
 <pre>
 use strict;
 use warnings;
-use lib 'lib';
+use lib'lib';
 use Point3D;
 
-my $point = Point3D->new(x => 3, y => 5, z => 8);
+my $ point = Point3D-> new (x => 3, y => 5, z => 8);
 
-# 8と表示される
-print $point->z . "\n";
+# 8 is displayed
+print $ point-> z. "\ n";
 
-$point->z(9);
+$ point-> z (9);
 
-# 9と表示される
-print $point->z . "\n";
-$point->clear;
+# 9 is displayed
+print $ point-> z. "\ n";
+$ point-> clear;
 
-# 0と表示される
-print $point->z . "\n";
-</pre>
+# 0 is displayed
+print $ point-> z. "\ n";
+</ pre>
 
-<h4>スクリプトの実行</h4>
-ディレクトリ構成は以下のようにします。
+<h4> Script execution </ h4>
+The directory structure is as follows.
 
 <pre>
 test.pl
-lib - Point.pm
-    - Point3D.pm
-</pre>
+lib --Point.pm
+    --Point3D.pm
+</ pre>
 
-以下のように実行してください。
+Please execute as follows.
 
 <pre>
 perl test.pl
-</pre>
+</ pre>
 
-<h3>オブジェクト指向プログラミングの概念</h3>
+<h3> Object-oriented programming concept </ h3>
 
-<h4>継承</h4>
+<h4> Inheritance </ h4>
 
-Object::Simpleをよく理解するために、オブジェクト指向の概念を解説したいと思います。
+To better understand Object :: Simple, I would like to explain object-oriented concepts.
 
-オブジェクト指向の一つ目の概念は「継承」です。「継承」とは「クラスQがクラスPを継承していたら、クラスQはクラスPのすべてのメソッドを呼び出すことができる」ということを意味します。
+The first object-oriented concept is "inheritance". "Inheritance" means "if class Q inherits from class P, then class Q can call all the methods of class P".
 
 <pre>
-+---+
-| P | スーパークラス
-+---+   method1とmethod2を定義
++ --- +
+| P | Superclass
++ --- + Define method1 and method2
   |
-+---+
-| Q | サブクラス
-+---+   method3を定義
-</pre>
++ --- +
+| Q | Subclass
++ --- + Define method3
+</ pre>
 
-クラスQはクラスPを継承しているので、クラスQはクラスQのメソッドに加えて、クラスPのすべてのメソッドを呼び出すことができます。言い換えれば、クラスQはmethod1, method2とmethod3を呼び出すことができます。
+Since class Q inherits from class P, class Q can call all the methods of class P in addition to the methods of class Q. In other words, class Q can call method1, method2 and method3.
 
 <pre>
 package P;
-use Object::Simple -base;
+use Object :: Simple -base;
 
-sub method1 { ... }
-sub method2 { ... }
-</pre>
+sub method1 {...}
+sub method2 {...}
+</ pre>
 
 <pre>
 package Q;
 use P -base;
 
-sub method3 { ... }
-</pre>
+sub method3 {...}
+</ pre>
 
-Perlはオブジェクト指向プログラミングを助ける便利な関数とメソッドを持っています。オブジェクトがどのクラスに属しているかを知るには、ref関数を使用します。
-
-<pre>
-my $class = ref $obj;
-</pre>
-
-オブジェクトが特定のクラスを継承しているかどうかを調べるには、isaメソッドを使用します。
+Perl has useful functions and methods to help with object-oriented programming. To find out which class an object belongs to, use the ref function.
 
 <pre>
-$obj->isa('MyClass');
-</pre>
+my $ class = ref $ obj;
+</ pre>
 
-オブジェクト（あるいはクラス)が特定のメソッドを呼び出すことができるかどうかを知るには、canメソッドを使用します。
-
-<pre>
-MyClass->can('method1');
-$obj->can('method1');
-</pre>
-
-<h4>カプセル化</h4>
-
-オブジェクト指向プログラミングのふたつ目の概念はカプセル化です。「カプセル化」は「内部的にデータに直接アクセスしてはいけない」ということを意味します。ドキュメントに記述された公開されたメソッドを使用しなければなりません。このルールを守ることによって、すべてのことがシンプルになります。
-
-このルールを守るためには値を取得や設定を行うためのアクセッサを生成する必要があります。
+To find out if an object inherits a particular class, use the isa method.
 
 <pre>
-my $value = $obj->foo;
-$obj->foo(1);
-</pre>
+$ obj-> isa ('MyClass');
+</ pre>
 
-  直接データにアクセスするのは良くない習慣です。
+Use the can method to find out if an object (or class) can call a particular method.
 
 <pre>
-# 良くない
-my $value = $obj->{foo};
-$obj->{foo} = 1;
-</pre>
+MyClass-> can ('method1');
+$ obj-> can ('method1');
+</ pre>
 
-<h4>ポリモーフィズム</h4>
+<h4> Encapsulation </ h4>
 
-オブジェクト指向プログラミングの三つ目の概念は「ポリモーフィズム」です。
-「ポリモーフィズム」は、「オーバーロード」と「オーバーライド」のふたつの概念に
-分割されます。
+The second concept of object-oriented programming is encapsulation. "Encapsulation" means "no direct access to data internally". You must use the published methods described in the documentation. By following this rule, everything will be simple.
 
-Perlプログラマはオーバーロードを気にする必要はありません。Perlは動的な言語なので、サブルーチンはどのような値でも受け取ることができます。オーバーロードはC++やJavaなどの静的な型を持つ言語にとって必要です。
+In order to follow this rule, it is necessary to generate an accessor to get and set the value.
 
-「オーバーライド」は「サブクラスにおいて、基底クラスのメソッドを変更することができる」ということを意味します。
+<pre>
+my $ value = $ obj-> foo;
+$ obj-> foo (1);
+</ pre>
+
+  Accessing data directly is a bad habit.
+
+<pre>
+# Not good
+my $ value = $ obj-> {foo};
+$ obj-> {foo} = 1;
+</ pre>
+
+<h4> Polymorphism </ h4>
+
+The third concept of object-oriented programming is "polymorphism".
+"Polymorphism" becomes two concepts of "overload" and "override"
+It will be split.
+
+Perl programmers don't have to worry about overloading. Perl is a dynamic language, so subroutines can accept any value. Overloading is required for languages ​​with static types such as C ++ and Java.
+
+"Override" means "in a subclass, you can change the methods of the base class".
 
 <pre>
 package P;
-use Object::Simple -base;
+use Object :: Simple -base;
 
-sub method1 { return 1 }
-</pre>
+sub method1 {return 1}
+</ pre>
 
 <pre>
 package Q;
 use P -base;
 
-sub method1 { return 2 }
-</pre>
+sub method1 {return 2}
+</ pre>
 
-クラスPのmethod1は1という値を返却します。クラスQのmethod1は2という値を返却します。つまり、クラスQにおいて、method1はオーバーライドされたということです。
+Method1 of class P returns a value of 1. Method1 of class Q returns a value of 2. In other words, in class Q, method1 has been overridden.
 
 <pre>
-# 1を返す
-my $obj_p = P->new;
-$obj_p->method1;
+Returns # 1
+my $ obj_p = P-> new;
+$ obj_p-> method1;
 
-# 2を返す
-my $obj_q = Q->new;
-$obj_q->method1; # Return value is 2
-</pre>
+Returns # 2
+my $ obj_q = Q-> new;
+$ obj_q-> method1; #Return value is 2
+</ pre>
 
-もし基底クラスのメソッドをサブクラスから呼び出したい場合はSUPER擬似クラスを使用します。
+If you want to call a method of the base class from a subclass, use the SUPER pseudo-class.
 
 <pre>
 package Q;
-use Object::Simple -base;
+use Object :: Simple -base;
 
 sub method1 {
-  my $self = shift;
+  my $ self = shift;
   
-  # SUPER擬似クラスを使ってPのmethod1を呼び出す
-  my $value = $self->SUPER::method1(@_);
+  Call method1 of P using the #SUPER pseudo-class
+  my $ value = $ self-> SUPER :: method1 (@ _);
   
-  return 2 + $value;
+  return 2 + $ value;
 }
-</pre>
+</ pre>
 
-newはオーバーライドすることができます。たとえば、オブジェクトの初期化処理を行いたい場合は、newをオーバーライドします。
+new can be overridden. For example, if you want to initialize the object, override new.
 
 <pre>
 sub new {
-  my $self = shift->SUPER::new(@_);
+  my $ self = shift-> SUPER :: new (@_);
   
-  # 初期化処理
+  #Initialization process
   
-  return $self;
+  return $ self;
 }
-</pre>
+</ pre>
 
-newの引数を変更したい場合もnewをオーバーライドすることで解決できます。
+If you want to change the argument of new, you can solve it by overriding new.
     
 <pre>
 sub new {
-  my $self = shift;
+  my $ self = shift;
   
-  $self->SUPER::new(x => $_[0], y => $_[1]);
+  $ self-> SUPER :: new (x => $ _ [0], y => $ _ [1]);
   
-  return $self;
+  return $ self;
 }
-</pre>
+</ pre>
 
-これらの三つの概念「継承」「カプセル化」「ポリモーフィズム」を理解するならば、十分強力なオブジェクト指向プログラムができ、ソースコードは他の言語のユーザから見ても読みやすいものになるでしょう。
+Understanding these three concepts, "inheritance," "encapsulation," and "polymorphism," will create a powerful enough object-oriented program and make the source code readable by users in other languages.
 
-<h3>パッケージブロック構文</h3>
+<h3> Package block syntax </ h3>
 
-Perl 5.14では、パッケージブロック構文というものが追加されて、次のように記述することができ、ファイルの末尾に「1;」を書かなくてもよくなりました。Perl5.14以上のPerlを使っている方は、利用してみるのもよいと思います。
+In Perl 5.14, a package block syntax has been added that allows you to write the following, eliminating the need to write a "1;" at the end of the file. If you are using Perl 5.14 or higher, you may want to try it.
 
 <pre>
 package Point {
-  use Object::Simple -base;
+  use Object :: Simple -base;
 
   has x => 0;
   has y => 0;
 
   sub clear {
-    my $self = shift;
+    my $ self = shift;
     
-    $self->x(0);
-    $self->y(0);
+    $ self-> x (0);
+    $ self-> y (0);
   }
 }
-</pre>
+</ pre>
 
-<h3>まとめ</h3>
+<h3> Summary </ h3>
 
-Perlは柔軟な言語です。Perlという言語の中で、完全なオブジェクト指向を行うことができます。Perlのオブジェクト指向は後付けの実装と揶揄されることがありますが、機能としてはオブジェクト指向として、完全なものをそなえています。
+Perl is a flexible language. You can be completely object-oriented in the language Perl. Perl's object-orientation is sometimes ridiculed as a retrofit implementation, but it's functionally object-oriented and complete.
 
-Perlは名前空間を持ち、オブジェクト指向が可能なので、大規模開発にも十分耐えることができます。規模が大きくなってきたら、オブジェクト指向でプログラミングするとよいと思います。
-
+Perl has a namespace and is object-oriented, so it can withstand large-scale development. As the scale grows, I think it's a good idea to program in an object-oriented manner.

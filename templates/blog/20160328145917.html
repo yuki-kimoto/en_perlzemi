@@ -1,34 +1,34 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130416136637.html">
-      <span itemprop="name">言語実装</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Language implementation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>opcode.h</h2>
+  </ li>
+</ ol>
+<h2> opcode.h </ h2>
 
 
 
-<strong>opcode.h</strong>には、それぞれのオペレーションに関する情報が記載されている。Perl言語研究では、「OP型」のデータのことを、オペレーションと呼ぶことにしています。Perlは、構文解析が終わると、構文木に変換されますが、このそれぞれのノードは「OP型」になっています。
+<strong> opcode.h </ strong> contains information about each operation. In Perl language research, "OP type" data is called an operation. Perl is converted to a syntax tree after parsing, but each of these nodes is "OP type".
 
-オペレーションは、オペレーションコードによって、分類され、それぞれが情報を持ちます。その情報が記述されています。
+Operations are categorized by operation code, and each has its own information. That information is described.
 
-<h3>オペレーションの名前</h3>
+<h3> Name of operation </ h3>
 
-たとえば、オペレーションの名前が記述されています。
+For example, the name of the operation is described.
 
 <pre>
-EXTCONST char* const PL_op_name[] = {
+EXTCONST char * const PL_op_name [] = {
   "null",
   "stub",
   "scalar",
@@ -38,14 +38,14 @@ EXTCONST char* const PL_op_name[] = {
   "gvsv",
   ...
 };
-</pre>
+</ pre>
 =====
-<h3>オペレーションの解説</h3>
+<h3> Operation explanation </ h3>
 
-次に、オペレーションの解説が記述されています。
+Next, a description of the operation is described.
 
 <pre>
-EXTCONST char* const PL_op_desc[] = {
+EXTCONST char * const PL_op_desc [] = {
   "null operation",
   "stub",
   "scalar",
@@ -56,22 +56,22 @@ EXTCONST char* const PL_op_desc[] = {
   "glob value",
   ...
 };
-</pre>
+</ pre>
 
-<h3>オペレーションが実行する関数のアドレス</h3>
+<h3> Address of the function that the operation executes </ h3>
 
-各オペレーションは、対応する関数がありますが、その関数へのアドレスが記述されています。
+Each operation has a corresponding function, but the address to that function is described.
 
 <pre>
-EXT Perl_ppaddr_t PL_ppaddr[] /* or perlvars.h */
-#  endif
-#endif /* PERL_GLOBAL_STRUCT */
-#if (defined(DOINIT) && !defined(PERL_GLOBAL_STRUCT)) || defined(PERL_GLOBAL_STRUCT_INIT)
-#  define PERL_PPADDR_INITED
+EXT Perl_ppaddr_t PL_ppaddr [] /* or perlvars.h * /
+# endif
+#endif / * PERL_GLOBAL_STRUCT * /
+#if (defined (DOINIT) &&! Defined (PERL_GLOBAL_STRUCT)) || defined (PERL_GLOBAL_STRUCT_INIT)
+#define PERL_PPADDR_INITED
 = {
   Perl_pp_null,
   Perl_pp_stub,
-  Perl_pp_scalar, /* implemented by Perl_pp_null */
+  Perl_pp_scalar, / * implemented by Perl_pp_null * /
   Perl_pp_pushmark,
   Perl_pp_wantarray,
   Perl_pp_const,
@@ -79,52 +79,52 @@ EXT Perl_ppaddr_t PL_ppaddr[] /* or perlvars.h */
   Perl_pp_gv,
   ...
 }
-</pre>
+</ pre>
 
-「pp」というプレフィックスは、「push pop」という意味で、実行される関数は、引数スタックを操作する関数です。
+The prefix "pp" means "push pop", and the function executed is the function that manipulates the argument stack.
 
-<h3>オペレーションの最適化を行う関数</h3>
+<h3> Functions that optimize operations </ h3>
 
-各オペレーションは「ck」というプレフィックスがつく関数で、最適化されます。その関数のアドレスが記述されています。「ck」は「check」の略です。
+Each operation is optimized with a function prefixed with "ck". The address of the function is described. "Ck" is an abbreviation for "check".
 
 <pre>
-#if (defined(DOINIT) && !defined(PERL_GLOBAL_STRUCT)) || defined(PERL_GLOBAL_STRUCT_INIT)
-#  define PERL_CHECK_INITED
+#if (defined (DOINIT) &&! Defined (PERL_GLOBAL_STRUCT)) || defined (PERL_GLOBAL_STRUCT_INIT)
+#define PERL_CHECK_INITED
 = {
-  Perl_ck_null,   /* null */
-  Perl_ck_null,   /* stub */
-  Perl_ck_fun,    /* scalar */
-  Perl_ck_null,   /* pushmark */
-  Perl_ck_null,   /* wantarray */
-  Perl_ck_svconst,  /* const */
-  Perl_ck_null,   /* gvsv */
+  Perl_ck_null, / * null * /
+  Perl_ck_null, / * stub * /
+  Perl_ck_fun, / * scalar * /
+  Perl_ck_null, / * pushmark * /
+  Perl_ck_null, / * wantarray * /
+  Perl_ck_svconst, / * const * /
+  Perl_ck_null, / * gvsv * /
 };
-</pre>
+</ pre>
 
-<h3>関数の引数の情報</h3>
+<h3> Function argument information </ h3>
 
-実行される関数の引数情報が、記述されています。
+The argument information of the function to be executed is described.
 
 <pre>
-EXTCONST U32 PL_opargs[] = {
-  0x00000000, /* null */
-  0x00000000, /* stub */
-  0x00001b04, /* scalar */
-  0x00000004, /* pushmark */
-  0x00000004, /* wantarray */
-  0x00000604, /* const */
-  0x00000644, /* gvsv */
-  0x00000644, /* gv */
+EXTCONST U32 PL_opargs [] = {
+  0x00000000, / * null * /
+  0x00000000, / * stub * /
+  0x00001b04, / * scalar * /
+  0x00000004, / * pushmark * /
+  0x00000004, / * wantarray * /
+  0x00000604, / * const * /
+  0x00000644, / * gvsv * /
+  0x00000644, / * gv * /
   ...
 };
-</pre>
+</ pre>
 
-これは、数値で記述されていて、なにがなんだかわかりませんね。これは「op.h」で定義されています。上記の値は、以下の値の、ビット演算の論理和の値です。
+This is written numerically and I don't know what it is. It is defined in "op.h". The above value is the value of the logical sum of the bit operations of the following values.
 
 <pre>
-/* op.h */
+/* op.h * /
 
-/* Lowest byte of PL_opargs */
+/ * Lowest byte of PL_opargs * /
 #define OA_MARK 1
 #define OA_FOLDCONST 2
 #define OA_RETSCALAR 4
@@ -134,7 +134,7 @@ EXTCONST U32 PL_opargs[] = {
 #define OA_DANGEROUS 64
 #define OA_DEFGV 128
 
-/* The next 4 bits (8..11) encode op class information */
+/ * The next 4 bits (8..11) encode op class information * /
 #define OCSHIFT 8
 
 #define OA_CLASS_MASK (15 << OCSHIFT)
@@ -156,8 +156,8 @@ EXTCONST U32 PL_opargs[] = {
 #define OA_METHOP (14 << OCSHIFT)
 #define OA_UNOP_AUX (15 << OCSHIFT)
 
-/* Each remaining nybble of PL_opargs (i.e. bits 12..15, 16..19 etc)
- * encode the type for each arg */
+/ * Each remaining nybble of PL_opargs (i.e. bits 12..15, 16..19 etc)
+ * encode the type for each arg * /
 #define OASHIFT 12
 
 #define OA_SCALAR 1
@@ -168,43 +168,42 @@ EXTCONST U32 PL_opargs[] = {
 #define OA_FILEREF 6
 #define OA_SCALARREF 7
 #define OA_OPTIONAL 8
-</pre>
+</ pre>
 
-そして、上記には、この値の説明がありませんが、それは「regen/opcodes」にあります。
-
-<pre>
-# Other options are:
-#   needs stack mark                    - m  (OA_MARK)
-#   needs constant folding              - f  (OA_FOLDCONST)
-#   produces a scalar                   - s  (OA_RETSCALAR)
-#   produces an integer                 - i  (unused)
-#   needs a target                      - t  (OA_TARGET)
-#   target can be in a pad              - T  (OA_TARGET|OA_TARGLEX)
-#   has a corresponding integer version - I  (OA_OTHERINT)
-#   make temp copy in list assignment   - d  (OA_DANGEROUS)
-#   uses $_ if no argument given        - u  (OA_DEFGV)
-</pre>
-
-<h3>オペレーションに関するプライベートなフラグ</h3>
-
-そして、オペレーションに関するプライベートなフラグ情報があります。これらの詳細な説明は「regen/op_private」にあります。
+And the above doesn't explain this value, but it's in "regen / opcodes".
 
 <pre>
-#define OPpLVREF_SV             0x00
-#define OPpARG1_MASK            0x01
-#define OPpCOREARGS_DEREF1      0x01
-#define OPpENTERSUB_INARGS      0x01
-#define OPpSORT_NUMERIC         0x01
-#define OPpTRANS_FROM_UTF       0x01
-#define OPpCONST_NOVER          0x02
-#define OPpCOREARGS_DEREF2      0x02
-#define OPpEVAL_HAS_HH          0x02
-#define OPpFT_ACCESS            0x02
-#define OPpHINT_STRICT_REFS     0x02
-#define OPpITER_REVERSED        0x02
+#Other options are:
+# needs stack mark --m (OA_MARK)
+#needs constant folding --f (OA_FOLDCONST)
+# produces a scalar --s (OA_RETSCALAR)
+# produces an integer --i (unused)
+# needs a target --t (OA_TARGET)
+# target can be in a pad --T (OA_TARGET | OA_TARGLEX)
+# has a corresponding integer version --I (OA_OTHERINT)
+# make temp copy in list assignment --d (OA_DANGEROUS)
+# uses $ _ if no argument given --u (OA_DEFGV)
+</ pre>
+
+<h3> Private flags for operations </ h3>
+
+And there is private flag information about the operation. A detailed description of these can be found in "regen / op_private".
+
+<pre>
+#define OPpLVREF_SV 0x00
+#define OPpARG1_MASK 0x01
+#define OPpCOREARGS_DEREF1 0x01
+#define OPpENTERSUB_INARGS 0x01
+#define OPpSORT_NUMERIC 0x01
+#define OPpTRANS_FROM_UTF 0x01
+#define OPpCONST_NOVER 0x02
+#define OPpCOREARGS_DEREF2 0x02
+#define OPpEVAL_HAS_HH 0x02
+#define OPpFT_ACCESS 0x02
+#define OPpHINT_STRICT_REFS 0x02
+#define OPpITER_REVERSED 0x02
 ...
-</pre>
+</ pre>
 
 <hr>
-<a href="/blog/20130416136637.html">Perl言語研究</a>
-
+<a href="/blog/20130416136637.html "> Perl Language Research </a>

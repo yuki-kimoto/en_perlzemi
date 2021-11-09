@@ -1,48 +1,47 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>無名配列生成子 [] - 配列のリファレンスを簡単に作成</h2>
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Anonymous array generator []-Easily create array references </ h2>
 
 
 
-Perlには<b>無名配列生成子</b>「[]」という演算子があります。名前はちょっと難しいですが、実用的には、簡単に配列のリファレンスを作成するためのものです。
+Perl has an operator <b> anonymous array generator </ b> "[]". The name is a bit tricky, but in practice it's an easy way to create an array reference.
 
-無名配列生成子を使うと、以下のように簡単に<a href="/blog/20180214151861.html">配列のリファレンス</a>が作成できます。
-
-<pre>
-# 無名配列生成子
-my $nums = [1, 2, 3];
-</pre>
-
-もし無名配列生成子を使わない場合は、次のように書きます。まず<a href="/blog/20161012147627.html">配列</a>を作成してから、リファレンス生成子を使って、配列のリファレンスを作成します。
+With the anonymous array generator, you can easily create a <a href="/blog/20180214151861.html"> array reference </a> as follows:
 
 <pre>
-# 無名配列生成子を使わない場合
+#Anonymous array generator
+my $ nums = [1, 2, 3];
+</ pre>
+
+If you don't want to use an anonymous array generator, write: First create a <a href="/blog/20161012147627.html"> array </a> and then use the reference generator to create an array reference.
+
+<pre>
+# If you don't use an anonymous array generator
 my @nums = (1, 2, 3);
-my $nums = \@nums;
-</pre>
+my $ nums = \ @nums;
+</ pre>
 
-無名配列生成子を使うと、上の処理を省略して書くことができるんです。[1, 2, 3]を見た時は、上の処理が省略されているという感覚を持つと理解しやすいと思います。
+If you use an anonymous array generator, you can omit the above process and write it. When you look at [1, 2, 3], it will be easier to understand if you have the feeling that the above processing is omitted.
 
-<b>どうして「無名配列生成子」というの?</b>
+<b> Why is it called an "anonymous array generator"? </ B>
 
-無名配列生成子を使うと「@nums」という配列を作成する必要がありませんね。つまり、内部的に「@nums」に該当する「無名の配列」が作成されているのです。
+With the anonymous array generator, you don't have to create an array called "@nums". In other words, an "anonymous array" corresponding to "@nums" is created internally.
 
-きっと、この部分に焦点を当てて命名されたのでしょう。
+I'm sure it was named with a focus on this part.
 
-無名配列生成子に対応して<a href="/blog/20170926150643.html">無名ハッシュ生成子</a>というものあります。
-
+There is a <a href="/blog/20170926150643.html"> anonymous hash generator </a> that corresponds to the anonymous array generator.

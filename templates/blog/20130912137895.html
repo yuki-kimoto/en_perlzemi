@@ -1,148 +1,146 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20091116124667.html">
-      <span itemprop="name">モジュール</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Module </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>strict - 文法チェックを厳しくする</h2>
+  </ li>
+</ ol>
+<h2> strict --Strict grammar check </ h2>
 
 
 
-文法チェックを厳しくするには<b>strictモジュール</b>を使用します。
-
-<pre>
-use strict;
-</pre>
-
-strictプラグマはPerlの文法チェックを厳しくするためのプラグマです。strictプラグマは、Perlのスクリプトを書くときには、必ず記述するようにしてください。宣言されていない変数が利用されていた場合は、スクリプトを実行しようとしたときに、コンパイルエラーで止まります。
-
-<h3>strictプラグマの解説</h3>
-
-strictモジュールとは呼ばずに、strictプラグマと呼んでいますが、これはモジュールの一種で、Perlのコンパイル時の挙動を変化させるものは、プラグマと呼ばれ、小文字で始める習慣になっています。
-
-strictプラグマの効果を見ていきましょう。strictプラグマには、みっつの効果があります。
-
-<h4>変数宣言を強制する</h4>
-
-ひとつめは<strong>変数宣言を強制する</strong>という効果です。Perlではmyで宣言された変数はレキシカル変数と呼ばれます。strictプラグマを使用した場合は、宣言されていない変数を使用することができなくなります。
+Use the <b> strict module </ b> to tighten grammar checks.
 
 <pre>
 use strict;
+</ pre>
 
-# 変数を宣言して利用しているのでエラーにならない
-my $num;
-$num = 1
-</pre>
+The strict pragma is a pragma to tighten Perl's grammar checks. Be sure to write the strict pragma when writing Perl scripts. If an undeclared variable is used, it will stop with a compile error when trying to execute the script.
+
+<h3> Explanation of strict pragma </ h3>
+
+Instead of calling it a strict module, we call it a strict pragma, but this is a type of module that changes Perl's compile-time behavior, called a pragma, and it's customary to start with a lowercase letter.
+
+Let's see the effect of the strict pragma. The strict pragma has three effects.
+
+<h4> Force variable declaration </ h4>
+
+The first is the effect of <strong> forcing variable declaration </ strong>. In Perl, variables declared with my are called lexical variables. If you use the strict pragma, you will not be able to use undeclared variables.
 
 <pre>
 use strict;
 
-# 宣言しないで利用しているのでエラーになる
-$num2 = 2
-</pre>
-
-二番目のケースでは、以下のようなエラーメッセージが表示されて、プログラムは実行されずに、終了します。
-
-<pre>
-Global symbol "$num2" requires explicit package name at a.pl line 4.
-</pre>
-
-英語で書かれているので翻訳します。
-
-<pre>
-グローバルなシンボル「$num2」は明示的なパッケージ名を必要とします。4行目。
-</pre>
-
-このメッセージが表示されたら、宣言されていない変数が利用されていると考えて、ほぼ間違いはありません。行番号がわかるので、その行番号を見て、変数名に間違いがないか、事前に変数宣言をしているかをチェックしましょう。
-
-<h4>クォートされていない文字列の文字列の禁止</h4>
-
-strictプラグマは、<strong>クォートされていない文字列の使用を禁止</strong>します。実はPerlでは、strictプラグマが有効になっていない場合は、クォートされていない文字列を使用することができます。strictプラグマを有効にした場合は、クォートされていない文字列を使用できなくなります。
+#Variable is declared and used, so no error occurs
+my $ num;
+$ num = 1
+</ pre>
 
 <pre>
 use strict;
 
-# 文字列をクォートしているのでエラーにならない
-my $str = 'abcde';
-</pre>
+# I am using it without declaring it, so an error occurs
+$ num2 = 2
+</ pre>
+
+In the second case, the program exits without running with an error message similar to the following:
+
+<pre>
+Global symbol "$ num2" requires explicit package name at a.pl line 4.
+</ pre>
+
+Since it is written in English, I will translate it.
+
+<pre>
+The global symbol "$ num2" requires an explicit package name. 4th line.
+</ pre>
+
+If you see this message, it's almost certain that you're using an undeclared variable. Now that you know the line number, look at that line number and check that the variable name is correct and that you have declared the variable in advance.
+
+<h4> Prohibition of unquoted strings </ h4>
+
+The strict pragma <strong> prohibits the use of unquoted strings </ strong>. In fact, Perl allows you to use unquoted strings if the strict pragma isn't enabled. If you enable the strict pragma, you will not be able to use unquoted strings.
 
 <pre>
 use strict;
 
-# 文字列をクォートしているのでエラーになる
-my $str = abcde;
-</pre>
+#Since the string is quoted, no error occurs
+my $ str ='abcde';
+</ pre>
 
-二番目のケースでは、以下のようなエラーメッセージが表示されて、プログラムは実行されずに、終了します。
+<pre>
+use strict;
+
+# An error occurs because the string is quoted
+my $ str = abcde;
+</ pre>
+
+In the second case, the program exits without running with an error message similar to the following:
 
 <pre>
 Bareword "abcde" not allowed while "strict subs" in use at a.pl line 3.
-</pre>
+</ pre>
 
-英語で書かれているので翻訳します。
-
-<pre>
-裸の「abcde」は「strict subs」の利用下では許可されていません。3行目。
-</pre>
-
- このような間違いを避けるためにも、strictプラグマは必ず有効にしましょう。
-
-<h4>シンボリックリファレンスの禁止</h4>
-
-三つ目の効果は<strong>シンボリックリファレンスの禁止</strong>です。Perlにはシンボリックリファレンスと呼ばれる機能がありますが、strictプラグマはシンボリックリファレンスの使用を禁止します。
-
-シンボリックリファレンスとは、間単にいうと文字列によって、シンボル(変数や関数)を参照できる機能のことです。
-
-以下のスクリプトを見てください。
+Since it is written in English, I will translate it.
 
 <pre>
-# 足し算をする関数
+Naked "abcde" is not allowed under the use of "strict subs". 3rd line.
+</ pre>
+
+ Be sure to enable the strict pragma to avoid such mistakes.
+
+<h4> Prohibition of symbolic reference </ h4>
+
+The third effect is <strong> prohibition of symbolic reference </ strong>. Perl has a feature called symbolic references, but the strict pragma prohibits the use of symbolic references.
+
+A symbolic reference is a function that allows you to refer to a symbol (variable or function) simply by a character string.
+
+See the script below.
+
+<pre>
+# Addition function
 sub total {
-  my ($num1, $num2) = @_;
+  my ($ num1, $ num2) = @_;
   
-  return $num1 + $num2;
+  return $ num1 + $ num2;
 }
 
-# シンボリックリファレンスで関数を参照して実行
-my $num = &{'total'}(1 + 2);
+# Refer to function and execute with symbolic reference
+my $ num = & {'total'} (1 + 2);
 
-print $num;
-</pre>
+print $ num;
+</ pre>
 
-このスクリプトではtatalという関数がありますが。「total(1 + 2)」とは呼び出さずに「&{'total'}(1 + 2)」として、シンボリックリファレンスで関数を参照して呼び出しています。
+There is a function called tatal in this script. Instead of calling "total (1 + 2)", it is called as "& {'total'} (1 + 2)" by referring to the function in the symbolic reference.
 
-strictプラグマが有効になっている場合は、次のようなエラーメッセージを表示してスクリプトは終了します。
+If the strict pragma is enabled, the script will exit with an error message similar to the following:
 
 <pre>
 Can't use string ("total") as a subroutine ref while "strict refs" in use at a.pl line 11.
-</pre>
+</ pre>
 
-英語で書かれているので翻訳します。
+Since it is written in English, I will translate it.
 
 <pre>
-「strict refs」の利用下では、文字列「total」をサブルーチンとして利用することはできません。11行目。
-</pre>
+Under the use of "strict refs", the character string "total" cannot be used as a subroutine. 11th line.
+</ pre>
 
-ときには、シンボリックリファレンスを使用しなければならない場合が発生すると思います。動的にサブルーチンやメソッド名を決定したい場合などです。そういう場合は、次のようにして、シンボリックリファレンスの禁止を解除することができます。
+Occasionally, you may have to use a symbolic reference. For example, when you want to dynamically determine a subroutine or method name. In such a case, you can remove the prohibition of symbolic reference by doing the following.
 
 <pre>
 use strict;
 
-# シンボリックリファレンスの禁止だけを解除
-no strict 'refs';
-</pre>
+# Remove only the prohibition of symbolic reference
+no strict'refs';
+</ pre>
 
-このようにstrictプラグマには「変数宣言を強制する」「クォートされていない文字列の文字列の禁止」「シンボリックリファレンスの禁止」という三つの効果があることを、覚えておきましょう。
-
-
+Keep in mind that the strict pragma has three effects: "force variable declaration", "prohibit unquoted strings", and "prohibit symbolic references".

@@ -1,129 +1,128 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130220136137.html">
-        <span itemprop="name">読み物</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlは後方互換性を維持するスクリプト言語</h2>
+        <span itemprop = "name"> reading material </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Perl is a scripting language that maintains backward compatibility </ h2>
 
 
 
-後方互換性の維持という観点から見ると、二つのタイプにスクリプト言語を分類することができます。後方互換性を維持する方針を持つスクリプト言語と後方互換性を維持しない方針を持つスクリプト言語です。
+From the perspective of maintaining backward compatibility, scripting languages ​​can be divided into two types. A scripting language that has a policy of maintaining backward compatibility and a scripting language that has a policy of not maintaining backward compatibility.
 
 <table>
   <tr>
     <td>
-      <b>後方互換性を維持する方針を持つ</b>
-    </td>
+      <b> Have a policy to maintain backward compatibility </ b>
+    </ td>
     <td>
       Perl, JavaScript
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      後方互換性を維持する方針を持たない
-    </td>
+      No policy to maintain backward compatibility
+    </ td>
     <td>
       Python, Ruby, PHP
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h3>各スクリプト言語の後方互換性</h3>
+<h3> Backwards compatibility of each scripting language </ h3>
 
-<h4>Perlの後方互換性</h4>
+<h4> Perl backwards compatibility </ h4>
 
-Perlは非常に高いレベルで後方互換性が維持されてきた言語です。古いバージョンのPerlで書いたスクリプトは、多くの場合新しいバージョンPerlで動かすことができますし、スクリプトの変更は最小限のものですみます。
+Perl is a language that has been backwards compatible at a very high level. Scripts written in older versions of Perl can often be run in newer versions of Perl, with minimal script changes.
 
-安定性という点では、非常にPerlは定評があります。
+Perl has a very good reputation in terms of stability.
 
-<h4>JavaScriptの後方互換性</h4>
-JavaScriptも非常に高いレベルで後方互換性が維持される言語です。ブラウザに組み込まれているスクリプト言語なので、後方互換性を崩すことはまずできないといってもいいでしょう。
+<h4> JavaScript backwards compatibility </ h4>
+JavaScript is also a language that maintains a very high level of backward compatibility. It's a scripting language built into the browser, so it's almost impossible to break backwards compatibility.
 
-<h4>Pythonの後方互換性</h4>
+<h4> Python backwards compatibility </ h4>
 
-Python2というバージョンに限っていえば、Pythonは非常に高いレベルで後方互換性が維持されてきた言語です。Python2の古いバージョンで記述したスクリプト新しいバージョンのPython2で動かすことができますし、スクリプトの変更は最小限のものですみます。
+As far as the Python2 version is concerned, Python is a language that has been backwards compatible at a very high level. Scripts written in older versions of Python2 You can run them in newer versions of Python2 with minimal script changes.
 
-けれども、Python2と最新バージョンのPython3には、後方互換性がありません。かなり高いレベルで後方互換性がありません。Python2をPython3に移行するためには、非常に多くのスクリプトの書き換えを必要とします。
+However, Python 2 and the latest version of Python 3 are not backwards compatible. Not backwards compatible at a fairly high level. Migrating Python2 to Python3 requires a great deal of script rewriting.
 
-ですから、現在ではPython3とPython2という二つの系統が存在する状態になっています。(Python2のサポートは終わる予定です。)
+Therefore, there are currently two systems, Python3 and Python2. (Python2 support will end.)
 
-<h4>Rubyの後方互換性</h4>
+<h4> Ruby backwards compatibility </ h4>
 
-Rubyは後方互換性が維持されないスクリプト言語です。どのバージョンにおいても、後方互換性は維持されません。1.6, 1.7, 1.8, 1.9とどのバージョンを見ても、後方互換性は維持されません。
+Ruby is a scripting language that is not backwards compatible. Backwards compatibility is not maintained in any version. Backward compatibility is not maintained with any version of 1.6, 1.7, 1.8, 1.9.
 
-Ruby1.8はJIS規格で標準化が行われたのにもかかわらず、次のバージョンのRuby1.9では、後方互換性が崩されました。
+Although Ruby1.8 was standardized by the JIS standard, backward compatibility was broken in the next version of Ruby1.9.
 
-ですので、現在ではRuby1.9とRuby1.8という二つの系統が存在する状態になっています。
+Therefore, there are currently two systems, Ruby 1.9 and Ruby 1.8.
 
-<h4>PHPの後方互換性</h4>
+<h4> PHP backwards compatibility </ h4>
 
-PHPも後方互換性が配慮されない言語です。バージョンが上がるたびに書き換えを行う必要があります。
+PHP is also a language that is not backwards compatible. It is necessary to rewrite each time the version goes up.
 
-<h3>後方互換性を維持することの意味</h3>
+<h3> What it means to maintain backward compatibility </ h3>
 
-後方互換性を崩すということの重大な決定を、プログラムを知らない若い人たちは、比較的軽く見る傾向があると僕は思っています。
+I think young people who don't know the program tend to take a relatively light look at the crucial decision to break backwards compatibility.
 
-たぶん後方互換性を崩すという決定が、どれくらい大きくプログラムに影響を与えるかということを知らないのでしょう。
+You probably don't know how much the decision to break backwards compatibility will affect your program.
 
-ではここでは、Python3とPython2は後方互換性がなく、Perlは一貫して後方互換性があります。この二つを比較してみましょう。
+So here, Python 3 and Python 2 are not backwards compatible, and Perl is consistently backwards compatible. Let's compare the two.
 
-<h4>後方互換性が崩れるとプログラムの書き換えを行わなければならない</h4>
+<h4> If backward compatibility is broken, the program must be rewritten </ h4>
 
-まずだれもが思いつくのは、後方互換性が崩れるとプログラムを書き換えなくてはいけないということです。書き換えればいいじゃんと思うかもしれませんが、10個くらいのスクリプトだったら、がんばれます。
+The first thing everyone comes up with is that if backwards compatibility breaks, you'll have to rewrite your program. You might think that you should rewrite it, but if you have about 10 scripts, you can do your best.
 
-でも10000個あったら、どうするのでしょうか。全体をきちんと書き換えなければ、動かないタイプのものであったら、10000個変更してから、プログラムの動きを確認することになります。
+But what if there are 10,000? If you do not rewrite the whole thing properly, if it is a type that does not work, you will have to change 10,000 pieces and then check the operation of the program.
 
-ささいな書き換えであったとしても、相当難しいでしょうし、とてもつまらない作業でしょう。つまり、後方互換性を崩すということは、今までプログラムをその言語で書いていたユーザーの負担を相当増やすということです。
+Even a trivial rewrite would be quite difficult and a very boring task. In other words, breaking backwards compatibility significantly increases the burden on users who have previously written programs in that language.
 
-Perlで書いておけば、将来的には大規模な書き換えが起こりません。でもPython2で書くと、将来大規模な書き換えが発生します。だから、スクリプトの数が100個を超えるのであれば、僕はPerlで書くことをお勧めします。
+If you write it in Perl, there will be no major rewrites in the future. But if you write it in Python2, a large-scale rewrite will occur in the future. So if you have more than 100 scripts, I recommend writing in Perl.
 
-<h4>後方互換性が崩れると新規ユーザーはどちらを選んだらよいかがわからない</h4>
+<h4> New users don't know which one to choose if backwards compatibility is broken </ h4>
 
-後方互換性が崩れると新規ユーザーはどちらを選んだらよいかがわからくなります。Python3にしようか、Python2にしようか、Ruby1.9にしようか、Ruby1.8にしようか迷います。
+If backwards compatibility is broken, new users will not know which to choose. I'm wondering whether to use Python3, Python2, Ruby1.9, or Ruby1.8.
 
-新しいほうを選んでおいたらよいんじゃないのということも簡単にはいえない。それは、ライブラリが新しいバージョンではそろっていないので、古いバージョンを選ばざるをえないということが、とても多いから。
+It's not easy to say that you should choose the new one. That's because the library isn't available in the new version, so it's very common to have to choose the old version.
 
-古いほうには未来がないし、新しいほうにはライブラリがそろっていないという、ジレンマをいつでも抱えることになっちゃう。ユーザーのバージョン選択の複雑性が増しちゃうってことです。
+The old one has no future, and the new one always has the dilemma of not having a library. It adds to the complexity of user version selection.
 
-言語の開発者は新しいバージョンを選んでほしいと思っているのだけれど、そううまくはいかない。結局別の言語を選んでおいたほうが、生産性が高いと思っちゃうかもしれない。
+Language developers want to choose a new version, but that doesn't work. After all, you might think that choosing a different language is more productive.
 
-Perlだとそんなジレンマがなくって、常に新しいPerlを選んでおけばいい。いつでも、新しいバージョンを選べばいい。ただそれだけ。とても決定が楽だ。
+Perl doesn't have that dilemma, so you can always choose a new Perl. You can always choose a new version. That's it. It's very easy to decide.
 
-ユーザーが古い書き方を続けちゃうという欠点もあるのだけれど、その点は、新しい書き方のほうがよいよーとWebでどんどん伝えていこう。Perlはゆっくりと漸進的に新しくなっていくのがよいね。
+There is a drawback that users keep writing old styles, but I will tell you more and more on the Web that new styles are better. Perl should be slowly and progressively new.
 
-<h4>ライブラリ作者はどのバージョンを対象にライブラリを書けばよいかに困る</h4>
+<h4> Library authors are at a loss as to which version to write the library for </ h4>
 
-一番辛いのは、ライブラリ作者がどのバージョンを対象にライブラリを書けばよいのかということを、いつも考えなくちゃいけないってことだ。
+The hardest part is that library authors always have to think about which version to write the library for.
 
-Python3用に書けばPython2では動かない。Python3用に書けば、Python2では動かない。Ruby1.9用に書けばRuby1.8では動かない。Ruby1.9で書けば、Ruby1.8では動かない。
+If you write it for Python3, it won't work in Python2. If you write it for Python3, it won't work in Python2. If you write it for Ruby 1.9, it won't work with Ruby 1.8. If you write it in Ruby 1.9, it won't work in Ruby 1.8.
 
-ライブラリ作者はいつもこんな悩みを抱えることになる。どちらをいつまでサポートしようか、古いバージョン用のライブラリでバグが見つかったらどうしよう。バグフィックスのサポートをいつまで続けるか。
+Library authors will always have this kind of trouble. Which and how long will you support it, and what if you find a bug in the library for an older version? How long will you continue to support bug fixes?
 
-特に大規模なライブラリを作っている場合は、移行は容易ではなくって、ほとんどの場合は古いバージョンのサポートがなくなる運命にある。両方のサポートは非常にしづらいからだ。
+Migrating is not easy, especially if you are building a large library, and in most cases it is destined to lose support for older versions. Both support is very difficult.
 
-ユーザーから見ればこうなる、あるライブラリは古いバージョンでしか動かないが、あるライブラリは新しいバージョンでしか動かない。こうなると決定はとても苦しい。新しいバージョンに移行したくてもできないか、非常に難しいか、とても手間のかかる作業になる。
+From the user's point of view, some libraries only work with older versions, but some libraries only work with newer versions. When this happens, the decision is very difficult. If you want to move to a new version, you can't do it, it's very difficult, or it's a lot of work.
 
-この点Perlは超優秀。Perlの場合はライブラリ作者は、ひとつのPerlだけを考えればいい。まぁPerl5.8.7で動くようにしておけば、まぁどこでも動くでしょう。CPANにあるモジュールは、このバージョンのPerlでは動くが、このバージョンのPerlでは動かないということを、ほとんど意識しなくってもいい。
+Perl is super excellent in this respect. In the case of Perl, the library author only needs to consider one Perl. Well, if you make it work with Perl 5.8.7, it will work everywhere. You should be almost unaware that the modules on CPAN will work with this version of Perl, but not with this version of Perl.
 
-ライブラリ作者にとっては、ライブラリの2重管理というのは、とても退屈で大変な仕事なので、できればやりたくない。Perlで書いてしまえば、2重管理しなくてもよいので、とても楽です。
+For library authors, double management of a library is a very tedious and difficult task, so I don't want to do it if possible. If you write it in Perl, you don't have to manage it twice, so it's very easy.
 
-<h3>後方互換性を維持することは複雑性を減らす</h3>
+<h3> Maintaining backwards compatibility reduces complexity </ h3>
 
-ここまで読んでくれればわかると思うのですけれど、新しい言語のバージョンをリリースして、きれいな書き方ができるようになっても、表面的にはシンプルになったように見えるのだけれど、プログラムやアプリケーションの全体という観点から見てみると、より複雑さを増していることがわかる。
+As you'll understand if you read this far, even if you release a new language version and you can write cleanly, it seems to be simple on the surface, but programs and applications From the perspective of the whole of, we can see that it is becoming more complex.
 
-Perlは古い書き方を残すので、表面的にはシンプルに見えないし、クリーンには見えないのだけれど、プログラムやライブラリの全体という観点から見ると、非常にシンプルでクリーンさを保っている言語だ。
+Perl retains its old writing style, so it doesn't look simple or clean on the surface, but it's a very simple and clean language from a program and library perspective as a whole.
 
-プログラムの選択をするときは、表面的な記述だけではなくって、プログラムやライブラリを含めた、クリーンさというものにも注目してもらえたらと思います。特に若い人たちや経験の浅い人たちは表面的なものをみがちなので。
+When choosing a program, I hope that you will pay attention not only to the superficial description but also to the cleanliness of the program and libraries. Especially young people and inexperienced people tend to look superficial.
 
-そうすると、Perlでプログラムを記述しておくと、とても楽なんだよということがわかってもらえるかなぁと思います。迷わずにとても気持ちよくプログラムができる。
-
+Then, I think that you will understand that it is very easy to write a program in Perl. You can program very comfortably without hesitation.

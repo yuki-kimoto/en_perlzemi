@@ -1,41 +1,39 @@
+<h2> Perl is highly compatible with all language cores, standard modules, and CPAN modules </ h2>
 
-<h2>Perlは、言語コア、標準モジュール、CPANモジュールすべてで互換性が高い</h2>
+Perl's extremely high stability also contributes to standard modules and CPAN modules created by third parties.
 
-Perlのきわめて高い安定性は、標準モジュールや、第三者が作成しているCPANモジュールにも寄与しています。
+<h3> Perl language core backwards compatibility </ h3>
 
-<h3>Perl言語コアの後方互換性</h3>
+The Perl language core is extremely backwards compatible, and changes that break backwards compatibility are rare. The policy is that the Perl language will evolve while maintaining compatibility.
 
-Perl言語コアの後方互換性はきわめて高く、後方互換性が崩される変更がされることは、めったなことではありません。Perl言語は、方針として、互換性を維持しながら、発展していくことが、予定されています。
+This makes Perl a very suitable scripting language for places where long-term stability is required, such as scripting for work.
 
-このため、仕事で利用するスクリプトなど、長期間の安定性が求められる場所においては、Perlは、非常に適したスクリプト言語になっています。
+In the real world, automated exams cannot be written in every part, so it is a great benefit to have compatibility when upgrading languages.
 
-現実の現場では、すべての部分で自動試験が記述できるわけではないので、言語をアップグレードするときに、互換性が保たれていることは、大きな利益になります。
+The idea of ​​Ruby is that by breaking compatibility, the language gets better and better, which contributes to future profits. Perl, on the other hand, is a language that seeks to maintain compatibility, as breaking the compatibility of programs used in many places can have a significant impact.
 
-Rubyの思想は、互換性を崩すことによって、言語がどんどんよくなっていくので、将来の利益に寄与するという考え方を持っています。一方Perlは、たくさんの場所で利用されているプログラムの互換性を崩すと、大きな影響が及ぶので、互換性を維持しようと考える言語です。
+I think Python is a language that has an idea between Perl and Ruby that we want to maintain compatibility in minor version upgrades of the language and allow us to break compatibility in major version upgrades.
 
-Pythonは、言語のマイナーなバージョンアップにおいては互換性を維持しよう、メジャーバージョンアップのときには、互換性を壊すことを許してほしいというPerlとRubyの中間の思想を持った言語のように思います。
+Perl6 is now positioned as a sister language to Perl and is no longer the successor to Perl. Perl 6 is positioned as another language that is very similar to Perl, between the Perl community and the Perl 6 community. This is different in Perl from the relationship between Python 3 and Python 2.
 
-Perl6は、現在では、Perlの姉妹言語という位置づけであり、Perlの後継ではなくなりました。Perl6はPerlによく似た別の言語という位置づけが、PerlのコミュニティとPerl6のコミュニティの間でなされています。この点はPerlにおいては、Python3とPython2の関係とは異なっています。
+<h3> Perl standard module backward compatibility </ h3>
 
-<h3>Perl標準モジュールの後方互換性</h3>
+The backward compatibility of Perl standard modules is very high. I've never heard of a standard module breaking backwards compatibility.
 
-Perlの標準モジュールの後方互換性は非常に高いです。標準モジュールにおいて、後方互換性が崩されたというのは、聞いたことがないくらいです。
+Therefore, it is very stable and you can use it with confidence.
 
-ですので、非常に安定しており、安心して利用できます。
+It can happen from time to time that a module disappears from the standard module. In the shift of the times, there are modules that are judged to be unnecessary to manage as standard modules in the democratic decision of the Perl core team.
 
-あるモジュールが標準モジュールからなくなるということは、ときどき起こりえます。時代の偏移において、Perlコアチームの民主的な決定において、標準モジュールとして、管理する必要はないと判断されるモジュールがあります。
+However, this does not mean that it will be backwards compatible, but that the module will continue to be available on CPAN.
 
-けれども、これは後方互換性が崩れるということではなくって、そのモジュールは、CPANから引き続き利用することができるということです。
+If you use that module, you have to pay a little for the effort of installing it from CPAN. API changes are unlikely to happen.
 
-もし、そのモジュールを使うのであれば、CPANからインストールする手間を、少しだけ負担してねということです。APIが変更されることは、めったなことでは起こりえないでしょう。
+<h3> Backwards compatibility with CPAN modules </ h3>
 
-<h3>CPANモジュールの後方互換性</h3>
+Perl has a mechanism called CPAN that allows you to freely use modules created by a third party. Anyone can create a CPAN module, so it's the module author who is responsible for the backwards compatibility policy for that module.
 
-PerlにはCPANという第三者が作成したモジュールを自由に利用できる仕組みがあります。CPANモジュールはだれでも作成できるので、そのモジュールに関する後方互換性の方針に責任を持つのは、モジュールの作者です。
+However, I don't think there are many CPAN authors who have a policy of breaking backwards compatibility. Backward compatibility is not guaranteed at the time of the first experimental release, but most authors will not change the API after this release unless there is a big reason.
 
-けれども、後方互換性をどんどん壊していくという方針をとるCPAN作者は、あまりいないように感じます。最初の実験的なリリースのときには、後方互換性は保障しないけれど、本リリースされたら、大きな理由が無い限りは、APIの変更をしない作者が、ほとんどです。
+The backward compatibility of the CPAN module is generally stable. Most modules are available for Perl 5.8 or Perl 5.10 and above.
 
-CPANモジュールの後方互換性は、全体的に見て安定しています。Perl 5.8あるいはPerl 5.10以上であれば、利用できるモジュールがほとんどです。
-
-Perl言語コア、標準モジュール、CPANモジュールというPerlエコシステム全体が、非常に高い安定性を持っているというのが、Perlという言語のひとつの特徴になっています。
-
+One of the hallmarks of the Perl language is that the entire Perl ecosystem of the Perl language core, standard modules, and CPAN modules is extremely stable.

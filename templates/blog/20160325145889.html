@@ -1,110 +1,109 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20130416136637.html">
-      <span itemprop="name">言語実装</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> Language implementation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>embedvar.h</h2>
+  </ li>
+</ ol>
+<h2> embedvar.h </ h2>
 
 
 
-<strong>embedvar.h</strong>は、インタープリタ変数、グローバル変数の抽象化のためのヘッダです。
+<strong> embedvar.h </ strong> is a header for abstracting interpreter variables and global variables.
 
-<h3>インタープリタ変数の抽象化</h3>
+<h3> Interpreter variable abstraction </ h3>
 
-インタープリタ変数の抽象化のロジックは以下のようになっています。
+The logic of the interpretation variable abstraction is as follows.
 
 <pre>
-#if defined(MULTIPLICITY)
-/* cases 2 and 3 above */
+#if defined (MULTIPLICITY)
+/ * cases 2 and 3 above * /
 
-#  if defined(PERL_IMPLICIT_CONTEXT)
-#    define vTHX	aTHX
-#  else
-#    define vTHX	PERL_GET_INTERP
-#  endif
+#if defined (PERL_IMPLICIT_CONTEXT)
+#define vTHX aTHX
+# else
+#define vTHX PERL_GET_INTERP
+# endif
 
-#define PL_AboveLatin1		(vTHX->IAboveLatin1)
-#define PL_Argv			(vTHX->IArgv)
-#define PL_Cmd			(vTHX->ICmd)
-#define PL_DBcontrol	(vTHX->IDBcontrol)
+#define PL_AboveLatin1 (vTHX-> IAboveLatin1)
+#define PL_Argv (vTHX-> IArgv)
+#define PL_Cmd (vTHX-> ICmd)
+#define PL_DBcontrol (vTHX-> IDBcontrol)
 
 #endif
-</pre>
+</ pre>
 
-まず「MULTIPLICITY」が定義されている場合というのは、複数のインタープリタが利用できる状態であるということです。そのような場合は、インタープリタごとの変数にアクセスする必要があります。
+First, when "MULTIPLICITY" is defined, it means that multiple interpreters can be used. In such cases, you need to access the variables for each interpreter.
 
-次に、「PERL_IMPLICIT_CONTEXT」とは、暗黙のコンテキストが想定するという意味で、「Perl_」で始まる関数の第一引数に、インタープリタが渡されるということを意味します。
+Next, "PERL_IMPLICIT_CONTEXT" means that the interpreter is passed as the first argument of a function that starts with "Perl_", in the sense that an implicit context assumes it.
 
-一般的には「MULTIPLICITY」が定義されていれば「PERL_IMPLICIT_CONTEXT」が定義されていると考えてください。
+In general, if "MULTIPLICITY" is defined, consider that "PERL_IMPLICIT_CONTEXT" is defined.
 
-「aTHX」は次のように定義されています。
+"ATHX" is defined as follows:
 
 <pre>
-/* perl.h */
+/*perl.h */
 #ifdef PERL_IMPLICIT_CONTEXT
-#  define aTHX	my_perl
+#define aTHX my_perl
 #end
-</pre>
+</ pre>
 
-my_perlは、グローバル変数であり、インタープリタを表しています。
-
-<pre>
-/* perlmain.c */
-static PerlInterpreter *my_perl;
-</pre>
-
-次に「PERL_IMPLICIT_CONTEXT」が定義されていない場合ですが、「PERL_GET_INTERP」は、次のように定義されていて、現在のインタープリタです。これは、グローバル変数です。
+my_perl is a global variable and represents an interpreter.
 
 <pre>
-/* perl.h */
-#  define PERL_GET_INTERP              (PL_curinterp)
-</pre>
+/* perlmain.c * /
+static PerlInterpreter * my_perl;
+</ pre>
+
+Next, if "PERL_IMPLICIT_CONTEXT" is not defined, "PERL_GET_INTERP" is defined as follows and is the current interpreter. This is a global variable.
 
 <pre>
-/* perlvar.h */
-PERLVARI(G, curinterp,	PerlInterpreter *, NULL)
-					/* currently running interpreter
-					 * (initial parent interpreter under
-					 * useithreads) */
-</pre>
-
-「PERL_IMPLICT_CONTEXT」が定義されている場合は「vTHX」は「my_perl」として展開され、そうでない場合は「Gcurinterp」として展開されます。。
-
-そして、インタープリタ変数へのアクセスですが以下のように定義されています。
+/*perl.h */
+#define PERL_GET_INTERP (PL_curinterp)
+</ pre>
 
 <pre>
-#define PL_AboveLatin1		(vTHX->IAboveLatin1)
-</pre>
+/* perlvar.h * /
+PERLVARI (G, curinterp, PerlInterpreter *, NULL)
+/ * currently running interpreter
+* (initial parent interpreter under under
+* useithreads) * /
+</ pre>
 
-<h3>グローバル変数の抽象化</h3>
+If "PERL_IMPLICT_CONTEXT" is defined, "vTHX" will be expanded as "my_perl", otherwise it will be expanded as "Gcurinterp". ..
 
-次にグローバル変数の抽象化のコードが書かれています。「PERL_GLOBAL_STRUCT」が、定義されている場合は、グローバル変数全体が、ひとつの構造体として存在しています、定義されていない場合は、通常のグローバル変数として存在しています。その二つの場合のどちらでも「PL_appctx」によって、変数にアクセスすることができます。
+And the access to the interpreted variable is defined as follows.
 
 <pre>
-#if defined(PERL_GLOBAL_STRUCT)
+#define PL_AboveLatin1 (vTHX-> IAboveLatin1)
+</ pre>
 
-#define PL_appctx		(my_vars->Gappctx)
-#define PL_Gappctx		(my_vars->Gappctx)
+<h3> Global variable abstraction </ h3>
+
+Next is the code for the abstraction of global variables. If "PERL_GLOBAL_STRUCT" is defined, the entire global variable exists as a single structure, otherwise it exists as a regular global variable. In both of these cases, you can access the variable with "PL_appctx".
+
+<pre>
+#if defined (PERL_GLOBAL_STRUCT)
+
+#define PL_appctx (my_vars-> Gappctx)
+#define PL_Gappctx (my_vars-> Gappctx)
 #endif
-</pre>
+</ pre>
 
 <pre>
-/* perlmain.c */
-struct perl_vars *my_vars = init_global_struct();
-</pre>
+/* perlmain.c * /
+struct perl_vars * my_vars = init_global_struct ();
+</ pre>
 
 <hr>
-<a href="/blog/20130416136637.html">Perl言語研究</a>
-
+<a href="/blog/20130416136637.html"> Perl Language Research </a>
