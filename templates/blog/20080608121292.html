@@ -1,178 +1,178 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>Perlのコンテキストを理解しよう</h2>
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Understand Perl context </ h2>
 
 
 
-Perlにはコンテキストと呼ばれる概念があります。コンテキストとは文脈という意味で、次の二つのコンテキストがあります。
+Perl has a concept called context. Context means context, and there are the following two contexts.
 
 <ul>
   <li>
-    <a href="/blog/20180531152777.html">スカラコンテキスト</a>
-  </li>
+    <a href="/blog/20180531152777.html"> Scalar context </a>
+  </ li>
   <li>
-    <a href="/blog/20180530152777.html">リストコンテキスト</a>
-  </li>
-</ul>
+    <a href="/blog/20180530152777.html"> List context </a>
+  </ li>
+</ ul>
 
-スカラとして評価される文脈をスカラコンテキスト、リストとして評価される文脈をリストコンテキストと呼びます。
+The context evaluated as a scalar is called a scalar context, and the context evaluated as a list is called a list context.
 
-一例としてあげれば、<a href="/blog/20081009122357.html">localtime関数</a>は、スカラコンテキストでは、日付・時刻を表示する文字列を返却し、リストコンテキストでは、日付・時刻情報をリストにして返します。
+As an example, the <a href="/blog/20081009122357.html"> localtime function </a> returns a string that displays the date / time in the scalar context, and the date / time information in the list context. Is listed and returned.
 
 <pre>
-# スカラコンテキスト
-$date_string = localtime;
+#Scalar context
+$ date_string = localtime;
 
-# リストコンテキスト
+#List context
 @date_info = localtime;
-</pre>
+</ pre>
 
-もうひとつの一例をあげると、配列は、スカラコンテキストでは、配列の個数を、リストコンテキストでは、要素のリストを返します。
+To give another example, an array returns the number of arrays in a scalar context and a list of elements in a list context.
 
 <pre>
-# スカラコンテキスト
-$count = @values;
+#Scalar context
+$ count = @values;
 
-# リストコンテキスト
+#List context
 @elements = @values;
-</pre>
+</ pre>
 
-リストについての詳しい解説は以下で行っています。
+A detailed explanation of the list is given below.
 
 <ul>
   <li>
-    <a href="/blog/20100308126967.html">リスト</a>
-  </li>
-</ul>
+    <a href="/blog/20100308126967.html"> List </a>
+  </ li>
+</ ul>
 
-<h4>スカラコンテキスト</h4>
+<h4> Scalar context </ h4>
 
-スカラコンテキストとして評価される場所を挙げておきます。
+Here are some places that are evaluated as scalar contexts.
 
-<b>スカラ変数への代入</b>
+<b> Assignment to scalar variables </ b>
 
-<a href="/blog/20161107147852.html">スカラ変数</a>への代入はスカラコンテキストです。配列はスカラコンテキストで評価すると、配列の長さを返します。
-
-<pre>
-my $num = @values;
-</pre>
-
-<b>比較演算子の項</b>
-
-<a href="/blog/20080318120585.html">比較演算子</a>の左右の項はスカラコンテキストです。
+Assignment to <a href="/blog/20161107147852.html"> scalar variable </a> is a scalar context. When the array is evaluated in scalar context, it returns the length of the array.
 
 <pre>
-$x < @values
-$x == @values
-</pre>
+my $ num = @values;
+</ pre>
 
-<a href="/blog/20170521149524.html">for文</a>のループで頻繁に目にします。
+<b> Comparison operator term </ b>
+
+The left and right terms of <a href="/blog/20080318120585.html"> comparison operator </a> are scalar contexts.
 
 <pre>
-for (my $i = 0; $i < @nums; $i++) {
+$ x <@values
+$ x == @values
+</ pre>
+
+I often see it in the loop of <a href="/blog/20170521149524.html"> for statement </a>.
+
+<pre>
+for (my $ i = 0; $ i <@nums; $ i ++) {
   ...
 }
-</pre>
+</ pre>
 
-<b>ifの条件部</b>
+<b> if condition part </ b>
 
-<a href="/blog/20161023147731.html">if</a>の条件部はスカラコンテキストです。以下では@valuesはスカラコンテキストで評価されるので、配列の個数を返します。
+The conditional part of <a href="/blog/20161023147731.html"> if </a> is the scalar context. In the following, @values ​​is evaluated in scalar context, so it returns the number of arrays.
 
 <pre>
 if (@values) {
   ...
 }
-</pre>
+</ pre>
 
-スカラコンテキストの詳しい解説は以下で行っています。
+A detailed explanation of the scalar context is given below.
 
 <ul>
   <li>
-    <a href="/blog/20180531152777.html">スカラコンテキスト</a>
-  </li>
-</ul>
+    <a href="/blog/20180531152777.html"> Scalar context </a>
+  </ li>
+</ ul>
 
-<h4>リストコンテキスト</h4>
+<h4> List context </ h4>
 
-リストコンテキストとして評価される場所を上げておきます。
+Here's where it's evaluated as a list context.
 
-<b>配列への代入</b>
+<b> Assignment to an array </ b>
 
-<a href="/blog/20161012147627.html">配列</a>への代入はリストコンテキストです。
+Assignment to <a href="/blog/20161012147627.html"> array </a> is a list context.
 
 <pre>
-my @values2 = @values;
-</pre>
+my @ values2 = @values;
+</ pre>
 
-<b>リスト</b>
+<b> List </ b>
 
-<a href="/blog/20100308126967.html">リスト</a>の内側はリストコンテキストです。
+Inside the <a href="/blog/20100308126967.html"> list </a> is the list context.
 
 <pre>
 (@values);
-</pre>
+</ pre>
 
-<b>サブルーチンの引数</b>
+<b> Subroutine arguments </ b>
 
-<a href="/blog/20101130129876.html">サブルーチン</a>の引数は、リストコンテキストです。
+The argument of <a href="/blog/20101130129876.html"> subroutine </a> is the list context.
 
 <pre>
-func(@values);
-</pre>
+func (@values);
+</ pre>
 
-リストコンテキストの詳しい解説は以下で行っています。
+A detailed explanation of the list context is given below.
 
 <ul>
   <li>
-    <a href="/blog/20180530152777.html">リストコンテキスト</a>
-  </li>
-</ul>
+    <a href="/blog/20180530152777.html"> List context </a>
+  </ li>
+</ ul>
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-スカラコンテキストとリストコンテキストを理解するためのサンプルです。
+This is a sample to understand the scalar context and list context.
 
 <pre>
 use strict;
 use warnings;
 
-# スカラコンテキストとリストコンテキスト
+#Scalar context and list context
 
-print "1:localtime関数で、コンテキストの意味を知る。\n";
-my $scalar;
+print "1: Know the meaning of the context with the localtime function. \ N";
+my $ scalar;
 my @list;
 
-# 左辺が、スカラなので、スカラ用
-# の戻り値が返ります。
-$scalar = localtime;
+#Since the left side is scalar, it is for scalar
+The return value of # is returned.
+$ scalar = localtime;
                       
-# 左辺が、配列なので、リスト用
-# の戻り値が返ります。                       
+#The left side is an array, so it's for a list
+The return value of # is returned.
 @list = localtime;
 
-print "スカラコンテキストでは、書式化された日付\n",
-  "'$scalar'\n\n";
+print "formatted date \ n in scalar context",
+  "'$ scalar' \ n \ n";
 
-print "リストコンテキストでは、年月日と時間の値のリスト\n" .
-  join(',', @list) . "\n\n";
-</pre>
+print "In list context, a list of date and time values ​​\ n".
+  join (',', @list). "\ n \ n";
+</ pre>
 
-Perlの関数は、スカラを要求される場所では、スカラ用の戻り値を、リストを要求される場所では、リスト用の戻り値を返却することができます。
+Perl functions can return a scalar return where a scalar is required and a list return where a list is required.
 
-スカラコンテキストとリストコンテキストの区別は、Perlを触っているうちに自然に覚えていきます。ここで示したのはひとつの例です。左辺がスカラなら、スカラコンテキスト、左辺が配列ならば、リストコンテキストになります。
+The distinction between a scalar context and a list context is naturally remembered as you touch Perl. Here is an example. If the left side is a scalar, it is a scalar context, and if the left side is an array, it is a list context.

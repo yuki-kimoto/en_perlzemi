@@ -1,67 +1,67 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161126148016.html">
-      <span itemprop="name">ファイル操作</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>OSに依存しないファイル名の作成</h2>
+      <span itemprop = "name"> File operations </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> OS-independent file name creation </ h2>
 
 
 
-OSに依存しないファイル名を作成するには<a href="/blog/20100412127089.html">File::Spec</a>モジュールの<strong>catfile</strong>メソッドを使用します。
-
-<pre>
-use File::Spec;
-my $file_name = File::Spec->catfile('t', 'test1.t');
-</pre>
-
-ファイル名の規則は、OSによって異なります。/ や \ を使ってファイル名を構成してしまうと、OS間での移植性が損なわれます。File::Specモジュールを使えば、実行しているOSに応じたファイル名の規則にしたがって、ファイル名が作成されるので、異なるOSに移植しても、手直しが発生しません。
-
-<strong>updir</strong>メソッドを使用するとOSに依存しない「1階層上のディレクトリ」を表現することができます。
+To create an OS-independent filename, use the <strong> catfile </ strong> method of the <a href="/blog/20100412127089.html"> File :: Spec </a> module.
 
 <pre>
-File::Spec->updir
-</pre>
+use File :: Spec;
+my $ file_name = File :: Spec-> catfile ('t','test1.t');
+</ pre>
 
-UnixでもWindowでも、１階層上のディレクトリの表現は、 .. ですが、もしかしたら、他のOSでは、表現が異なるかもしれません。
+File name rules vary by OS. If you use / or \ to configure filenames, portability between operating systems is compromised. If you use the File :: Spec module, the file name will be created according to the file name rules according to the OS you are running, so even if you port it to a different OS, no rework will occur.
 
-<h3>サンプル</h3>
+You can use the <strong> updir </ strong> method to represent an OS-independent "directory one level up".
 
-OSに依存しないファイル名を作成するサンプルです。
+<pre>
+File :: Spec-> updir
+</ pre>
+
+In both Unix and Window, the representation of the directory one level above is .., but the representation may be different on other OS.
+
+<h3> Sample </ h3>
+
+This is a sample to create an OS-independent file name.
 
 <pre>
 use strict;
 use warnings;
 
-# OSに依存しないファイル名を作成する
+#Create an OS-independent file name
 
-use File::Spec;
+use File :: Spec;
 
-print "1: OSに依存しないファイル名を作成する。\n";
-# Unix では  、lib/test1.t となり、
-# Windowsでは、lib\test1.t となる。
-my $file_name = File::Spec->catfile( 't', 'test1.t' );
-print "\$file_name = $file_name\n\n";
+print "1: Create an OS-independent file name. \ N";
+# On Unix, it becomes lib / test1.t,
+# On Windows, it is lib \ test1.t.
+my $ file_name = File :: Spec-> catfile ('t','test1.t');
+print "\ $ file_name = $ file_name \ n \ n";
 
-print "2: OSに依存しない「1階層上のディレクトリ」を表\現する。\n";
-my $up_dir = File::Spec->updir;
-print "\$up_dir = $up_dir\n\n";
+print "2: Shows an OS-independent" directory one level higher ". \ n ";
+my $ up_dir = File :: Spec-> updir;
+print "\ $ up_dir = $ up_dir \ n \ n";
 
-print "3: このスクリプトの、1階層上の、lib というディレクトリ名を作成する。\n";
+print "3: Create a directory named lib, one level above this script. \ N";
 use FindBin;
-my $lib_dir = File::Spec->catfile($FindBin::Bin, File::Spec->updir, 'lib');
-print "\$lib_dir = $lib_dir\n\n";
-</pre>
+my $ lib_dir = File :: Spec-> catfile ($ FindBin :: Bin, File :: Spec-> updir,'lib');
+print "\ $ lib_dir = $ lib_dir \ n \ n";
+</ pre>
 
-(参考)<a href="/blog/20100524127696.html">FindBin</a>
+(Reference) <a href="/blog/20100524127696.html"> FindBin </a>

@@ -1,91 +1,91 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161026147748.html">
-      <span itemprop="name">数値</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">誤差</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>数値と誤差</h2>
+      <span itemprop = "name"> Numerical value </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Error </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Numerical values ​​and errors </ h2>
 
 
 
-小数をコンピュータで表現するには誤差が問題になります。2進数で表現できない小数は誤差が発生します。
+Error is a problem when expressing decimal numbers on a computer. Decimal numbers that cannot be expressed in binary will have an error.
 
-コンピュータは数値を内部的には2進数としてしか表現できません。整数についてはどんな数でも2進数として表現できます。
+Computers can only represent numbers internally as binary numbers. Any number can be expressed as a binary number for integers.
 
-問題になるのは小数です。２進数で表現できる少数は、0.5, 0.25, 0.125, 0.0625 ( 順に、1/2, 1/4, 1/8, 1/16 ) などの1/2のn乗で表現される数と、これらの和で表現される数( たとえば 0.75 )だけです。
+The problem is decimals. The minority that can be expressed in binary is numbers expressed in 1/2 nth root such as 0.5, 0.25, 0.125, 0.0625 (in order, 1/2, 1/4, 1/8, 1/16) and these. Only the number represented by the sum of (for example, 0.75).
 
-0.3 というのはいくら2を乗算しても整数になりませんから、2進数で正確に表現することができません。コンピュータはこのような数を近似することによって何とか扱います。0.3は、2進数を使って以下のように近似されます。
+0.3 is not an integer no matter how much you multiply it by 2, so it cannot be expressed accurately in binary. Computers manage by approximating such numbers. 0.3 is approximated using binary numbers as follows:
 
 <pre>
-0.3　 =　1/4 + 1/32 + 1/64 + 1/512
-　　=　0.25 + 0.03125 + 0.015625 + 0.001953125
-　　=　0.298828125
-</pre>
+0.3 = 1/4 + 1/32 + 1/64 + 1/512
+= 0.25 + 0.03125 + 0.015625 + 0.001953125
+= 0.298828125
+</ pre>
 
-このようにより小さな2進数を加算していくことで近似値をさらに実際の値に近づけることができます。それでも実際の値である0.3には決して等しくなりません。( 0.3と等しくなるのは、極限を扱う数学の世界だけです。 現実世界の有限の足し算では、0.3と等しくなりません。)
+By adding smaller binary numbers in this way, the approximate value can be made closer to the actual value. Still, it is never equal to the actual value of 0.3. (Only in the world of mathematics dealing with the limit is equal to 0.3. In finite addition in the real world, it is not equal to 0.3.)
 
-このようにコンピュータでは、2進数の和で表現できる数以外を扱うときは必ず誤差が発生しています。
+In this way, computers always have an error when dealing with numbers other than those that can be represented by the sum of binary numbers.
 
-<h3>1と0.1を10回加算したものは異なる</h3>
+<h3> 1 and 0.1 added 10 times are different </ h3>
 
-1は2進数として表現できます。一方0.1は2進数では表現できません。コンピュータの世界では0.1は本当の0.1ではなくて0.1の近似値だからです。だから、0.1を10回加算しても1にはなりません。
+1 can be expressed as a binary number. On the other hand, 0.1 cannot be expressed in binary. In the computer world, 0.1 is not a true 0.1, but an approximation of 0.1. Therefore, adding 0.1 10 times does not result in 1.
 
-小数を扱う場合の数値の比較は気をつける必要があります。小数を比較する方法については、後に記述します。
+You need to be careful when comparing numbers when dealing with decimal numbers. How to compare decimal numbers will be described later.
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-誤差の発生を確認するサンプルです。
+This is a sample to check the occurrence of error.
 
 <pre>
 use strict;
 use warnings;
 
-# 1/4   2進数で表現ができる。
-my $num1 = 0.25;
+# 1/4 Can be expressed in binary numbers.
+my $ num1 = 0.25;
 
-# 1/2 + 1/4  2進数で表現できる。
-my $num2 = 0.625;
+# 1/2 + 1/4 Can be expressed in binary.
+my $ num2 = 0.625;
 
-# 2進数では、近似値としてしか表現できない。
-my $num3 = 0.3;
+# In binary, it can only be expressed as an approximate value.
+my $ num3 = 0.3;
 
-print "(1)2進数で表\現できない数値は近似値になる。\n";
-printf("\$num1 = %.60f\n", $num1);
-printf("\$num2 = %.60f\n", $num2);
+print "(1) Binary numbers that cannot be represented \ are approximate values. \ N";
+printf ("\ $ num1 =% .60f \ n", $ num1);
+printf ("\ $ num2 =% .60f \ n", $ num2);
 
-# 0.3にはならない。
-printf("\$num3 = %.60f\n", $num3); 
-print "\n";
+It does not become # 0.3.
+printf ("\ $ num3 =% .60f \ n", $ num3);
+print "\ n";
 
-my $num4 = 1;
-my $num5;
+my $ num4 = 1;
+my $ num5;
 
-# 0.1 を10回加算すると、1になるはずだがそうはならない。
-for my $i (1 .. 10) {
-  $num5 += 0.1;
+If you add # 0.1 10 times, you should get 1, but that's not the case.
+for my $ i (1 .. 10) {
+  $ num5 + = 0.1;
 }
 
-print "(2)1 と 0.1 を10回加算した数値は異なる。\n";
-if ($num4 == $num5) {
-  print "\$num4と\$num5は等しい。\n";
+print "(2) The value obtained by adding 1 and 0.1 10 times is different. \ N";
+if ($ num4 == $ num5) {
+  print "\ $ num4 and \ $ num5 are equal. \ N";
 }
 else {
-  print "\$num4と\$num5は等しくない。\n";
-  printf("\$num4 = %.60f\n", $num4);
-  printf("\$num5 = %.60f\n", $num5);
+  print "\ $ num4 and \ $ num5 are not equal. \ N";
+  printf ("\ $ num4 =% .60f \ n", $ num4);
+  printf ("\ $ num5 =% .60f \ n", $ num5);
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20170326149148.html">printf関数</a>
+(Reference) <a href="/blog/20170326149148.html"> printf function </a>

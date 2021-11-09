@@ -1,75 +1,73 @@
+<h2> Cut out a record containing a specific time from the log </ h2>
 
-<h2>ログから特定の時刻を含むレコードを切り出す</h2>
-
-特定の時刻を含むレコードを切り出すサンプルです。
+This is a sample to cut out a record containing a specific time.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)特定範囲の時刻を含むレコードを切り出す。\n";
+print "(1) Cut out a record containing a specific range of time. \ N";
 my @records = (
-  '1  7:00:00 aaa',
-  '2  8:00:00 iii',
-  '3  9:00:00 uuu',
+  '1 7:00:00 aaa',
+  '2 8:00:00 iii',
+  '3 9:00:00 uuu',
   '4 10:00:00 eee',
   '5 11:00:00 ooo',
 );
 
-my $start_time = '08:00:00';
+my $ start_time = '08: 00: 00';
 
-# この時刻は含まないこととする
-my $end_time = '11:00:00'; 
+# This time is not included
+my $ end_time = '11: 00: 00';
 
-for my $record (@records) {
+for my $ record (@records) {
   
-  # 時刻を切り出す
-  if ($record =~ / (\d{1,2}):(\d{2}):(\d{2}) /) {
-    # 書式をあわせることで文字列として比較ができる。
-    # '7:00:00' -> '07:00:00'
-    my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
+  # Cut out the time
+  if ($ record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
+    # You can compare as a character string by matching the format.
+    # '7: 00: 00'-> '07: 00: 00'
+    my $ time = sprintf ("% 02s:% 02s:% 02s", $ 1, $ 2, $ 3);
     
-    # 開始時刻から終了時刻までに含まれるレコードを切り出す。
-    if ($time ge $start_time && $time lt $end_time) {
-      print $record . "\n";
+    # Cut out the records included from the start time to the end time.
+    if ($ time ge $ start_time && $ time lt $ end_time) {
+      print $ record. "\ n";
     }
   }
 }
-</pre>
-実行結果
+</ pre>
+Execution result
 
 <pre>
-(1)特定範囲の時刻を含むレコードを切り出す。
-2  8:00:00 iii
-3  9:00:00 uuu
+(1) Cut out a record that includes a specific range of time.
+2 8:00:00 iii
+3 9:00:00 uuu
 4 10:00:00 eee
-</pre>
+</ pre>
 
-<h3>解説</h3>
+<h3> Explanation </ h3>
 
-<h4>時刻のフォーマットを整える</h4>
-sprintf関数を使用して時刻のフォーマットを整えます。同じ長さの文字列長に整えることによって文字列での比較が可能になります。
+<h4> Adjust the time format </ h4>
+Use the sprintf function to format the time. By adjusting the length of the character string to the same length, it is possible to compare with the character string.
 
 <pre>
-if ($record =~ / (\d{1,2}):(\d{2}):(\d{2}) /) {
-  my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
+if ($ record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
+  my $ time = sprintf ("% 02s:% 02s:% 02s", $ 1, $ 2, $ 3);
   
-  if ($time ge $start_time && $time lt $end_time) {
-    print $record . "\n";
+  if ($ time ge $ start_time && $ time lt $ end_time) {
+    print $ record. "\ n";
   }
 }
-</pre>
+</ pre>
 
-<h4>開始時刻から終了時刻までに含まれるレコードを切り出す</h4>
+<h4> Cut out the records included from the start time to the end time </ h4>
 
-ge、lt は文字列での辞書順でどちらが先かを比較する演算子です。 geはgreater than or equel( 以上 ) の略でlt は lower than( より小さい )の略です。
+ge and lt are operators that compare which comes first in the dictionary order of strings. ge is an abbreviation for greater than or equel and lt is an abbreviation for lower than.
 
 <pre>
-if ($time ge $start_time && $time lt $end_time) {
-  print $record . "\n";
+if ($ time ge $ start_time && $ time lt $ end_time) {
+  print $ record. "\ n";
 }
-</pre>
+</ pre>
 
 <hr>
-<a href="/blog/20080229122347.html">Perl逆引き辞典/日付と時刻へ</a>
-
+<a href="/blog/20080229122347.html"> Perl Reverse Dictionary / To Date and Time </a>

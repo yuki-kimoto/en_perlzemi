@@ -1,206 +1,205 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161123147990.html">
-        <span itemprop="name">日付・時刻</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Google Calendar Data API で祝日を取得する</h2>
+        <span itemprop = "name"> Date / Time </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Get holidays with Google Calendar Data API </ h2>
 
 
 
-祝日というのは人間が決めたものなので非常に扱いにくいものです。春分、秋分という前年の2月に決まる祝日や、振替休日などもあります。
+Holidays are very difficult to handle because they are decided by humans. There are also holidays such as spring equinox and autumn equinox, which are decided in February of the previous year, and transfer holidays.
 
-今回のサンプルではGoogleがGoogle Calendar Data APIで提供してくれている日本の祝日のデータを取得することにします。
+In this sample, we will get the data of Japanese holidays provided by Google with Google Calendar Data API.
 
-あくまでGoogleが調べた日本の休日のデータなので絶対的な信頼性はありません。<span style="color:#FF0000;">Googleが間違っていれば間違った祝日のデータを取得しますので、日付の間違いが損害を及ぼすようなアプリケーションにそのまま使用してはいけません。</span>かならず他の手段で正しいことを確かめるようにします。
+It is not absolutely reliable because it is the data of Japanese holidays examined by Google. <span style = "color: # FF0000;"> If Google is wrong, it will get the wrong holiday data, so please do not use it as it is for applications where the wrong date causes damage. </ span> Make sure you are correct by other means.
 
 <pre>
 use strict;
 use warnings;
 
-# Web上から情報を取得するのでHTTPクライアントを使用する。
-use LWP::UserAgent;
+# Use an HTTP client to get information from the web.
+use LWP :: UserAgent;
 
-#フィードがXMLで与えられるのでXML::Simpleで解析。
-use XML::Simple;
+#Since the feed is given in XML, parse it with XML :: Simple.
+use XML :: Simple;
 
-# Google Calendar Data API のURL( 日本の祝日を取得するためのURL )
-my $feed_base
-  = 'http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
+#Google Calendar Data API URL (URL to get Japanese holidays)
+my $ feed_base
+  ='http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
 
-# この日を含む開始日
-my $start_date = '2007-01-01';
+# Start date including this date
+my $ start_date = '2007-01-01';
 
-# この日を含まない終了日
-my $end_date = '2008-01-01';
+#End date not including this date
+my $ end_date = '2008-01-01';
 
-# フィードの最大取得件数
-my $max_results = 100;
+# Maximum number of feeds
+my $ max_results = 100;
 
-my $query = "start-min=${start_date}&start-max=${end_date}&max-results=${max_results}";
+my $ query = "start-min = $ {start_date} & start-max = $ {end_date} & max-results = $ {max_results}";
 
-my $feed_url = $feed_base . '?' . $query;
+my $ feed_url = $ feed_base.'?'. $ Query;
 
-# WebからXMLを取得
-my $http_client = LWP::UserAgent->new;
-my $response = $http_client->get($feed_url);
+# Get XML from the web
+my $ http_client = LWP :: UserAgent-> new;
+my $ response = $ http_client-> get ($ feed_url);
 
-my $holidays_xml;
-if ($response->is_success) {
-  $holidays_xml = $response->content;
+my $ holidays_xml;
+if ($ response-> is_success) {
+  $ holidays_xml = $ response-> content;
 }
 else {
-  die "フィードの取得に失敗しました。";
+  die "Failed to get the feed.";
 }
 
-# XMLを解析
-my $xml_parser = XML::Simple->new;
-# XML::SAXがない人のためパーサを変更
-$XML::Simple::PREFERRED_PARSER = 'XML::Parser'; 
-my $holidays_data = $xml_parser->XMLin($holidays_xml);
+# Parse XML
+my $ xml_parser = XML :: Simple-> new;
+#XML :: Change parser for those who don't have SAX
+$ XML :: Simple :: PREFERRED_PARSER ='XML :: Parser';
+my $ holidays_data = $ xml_parser-> XMLin ($ holidays_xml);
 
-my $holidays = [];
-for my $key (keys %{$holidays_data->{'entry'}}) {
-  my $holiday_day = $holidays_data->{entry}{$key}{'gd:when'}{startTime};
-  my $holiday_name = $holidays_data->{entry}{$key}{title}{content};
-  push @$holidays, {day => $holiday_day, name => $holiday_name};
+my $ holidays = [];
+for my $ key (keys% {$ holidays_data-> {'entry'}}) {
+  my $ holiday_day = $ holidays_data-> {entry} {$ key} {'gd: when'} {startTime};
+  my $ holiday_name = $ holidays_data-> {entry} {$ key} {title} {content};
+  push @ $ holidays, {day => $ holiday_day, name => $ holiday_name};
 }
 
-# 文字コードがPerlの内部表現( UTF8 )になっているのでお好みに応じてエンコード
+# Character code is Perl's internal representation (UTF8), so encode as you like
 use Encode;
-my $encode_to;
-if ($^O eq 'MSWin32') {
-  $encode_to = 'shift-jis';
+my $ encode_to;
+if ($ ^ O eq'MSWin32') {
+  $ encode_to ='shift-jis';
 }
 else {
-  $encode_to = 'utf8';
+  $ encode_to ='utf8';
 }
 
-# データすべてをエンコード
-for my $holiday (@$holidays) {
-  for my $key (keys %$holiday) {
-    $holiday->{$key} = encode($encode_to, $holiday->{$key});
+# Encode all data
+for my $ holiday (@ $ holidays) {
+  for my $ key (keys% $ holiday) {
+    $ holiday-> {$ key} = encode ($ encode_to, $ holiday-> {$ key});
   }
 }
 
-use Data::Dumper;
-print Data::Dumper->Dump([$holidays], ['*holidays']);
-</pre>
+use Data :: Dumper;
+print Data :: Dumper-> Dump ([$ holidays], ['* holidays']);
+</ pre>
 
-<h3>祝日の問題</h3>
-祝日は国によってことなります。また祝日が決まっても振り替え休日で休日が変化することもあります。春分や秋分などのように政府が前年の2月に正式な祝日の日を決定するものもあります。
+<h3> Holiday issues </ h3>
+Holidays vary from country to country. Even if a holiday is decided, the holiday may change due to a transfer holiday. In some cases, such as the equinox and autumn equinox, the government decides on a formal holiday in February of the previous year.
 
-<h3>Google Calender Data API</h3>
+<h3> Google Calender Data API </ h3>
 
-Google Calender Data API を使用すると、国民の休日を取得することができます。振替休日も考慮されています。信頼性はGoogleの信頼性によります。
+You can use the Google Calender Data API to get national holidays. Transfer holidays are also taken into consideration. Reliability depends on Google's reliability.
 
-<h3>コード解説</h3>
+<h3> Code explanation </ h3>
 
-<h4>Google Calender Data API</h4>
-以下のURLがGoogle Calender Data API の祝日取得のためのURLです。
+<h4> Google Calender Data API </ h4>
+The following URL is the URL for getting holidays for the Google Calender Data API.
 <pre>
-my $feed_base
-  = 'http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
-</pre>
+my $ feed_base
+  ='http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
+</ pre>
 
-<h4>クエリ文字列の作成</h4>
-上記の元になるURLに条件を指定したクエリ文字列を連結します。指定する日付は開始日を含み、終了日を含まないものになります。
-
-<pre>
-# この日を含む開始日
-my $start_date = '2007-01-01';
-
-# この日を含まない終了日
-my $end_date = '2008-01-01';
-
-# フィードの最大取得件数
-my $max_results = 100;
-
-my $query = "start-min=${start_date}&start-max=${end_date}&max-results=${max_results}";
-my $feed_url = $feed_base . '?' . $query;
-</pre>
-
-このサンプルでは以下のURLを作成しています。
-　[http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full?start-min=2007-01-01&start-max=2008-01-01&max-results=100]
-
-あとは上記URLの情報をWebから取得して、XMLデータなのでこれを解析して使いやすい形にして、OSに応じて文字コードをエンコードします。
-
-<h4>WebからXMLデータを取得する。</h4>
-
-LWP::UserAgentは、HTTPクライアントを作成するためのモジュールです。Webブラウザがやっていることをプログラム上で行えます。
+<h4> Create query string </ h4>
+Concatenate the query string with the specified conditions to the above source URL. The date you specify will include the start date and not the end date.
 
 <pre>
-use LWP::UserAgent;
-my $http_client = LWP::UserAgent->new;
-my $response = $http_client->get($feed_url);
+# Start date including this date
+my $ start_date = '2007-01-01';
 
-my $holidays_xml;
-if ($response->is_success) {
-  $holidays_xml = $response->content;
+#End date not including this date
+my $ end_date = '2008-01-01';
+
+# Maximum number of feeds
+my $ max_results = 100;
+
+my $ query = "start-min = $ {start_date} & start-max = $ {end_date} & max-results = $ {max_results}";
+my $ feed_url = $ feed_base.'?'. $ Query;
+</ pre>
+
+In this sample, the following URL is created.
+[http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full?start-min=2007-01-01&start-max=2008-01-01&max-results=100 ]
+
+After that, get the information of the above URL from the Web, analyze it because it is XML data, make it easy to use, and encode the character code according to the OS.
+
+<h4> Get XML data from the Web. </ h4>
+
+LWP :: UserAgent is a module for creating HTTP clients. You can programmatically do what your web browser is doing.
+
+<pre>
+use LWP :: UserAgent;
+my $ http_client = LWP :: UserAgent-> new;
+my $ response = $ http_client-> get ($ feed_url);
+
+my $ holidays_xml;
+if ($ response-> is_success) {
+  $ holidays_xml = $ response-> content;
 }
 else {
-  die "フィードの取得に失敗しました。";
+  die "Failed to get the feed.";
 }
-</pre>
+</ pre>
 
-<h4>XMLを解析して使いやすいデータにする。</h4>
-XMLを解析するにはXML::Simpleを使用します。XML::SimpleはXMLデータをPerlのデータ(ハッシュ、配列)に変換するためのモジュールです。
+<h4> Parse XML to make it easy to use. </ h4>
+Use XML :: Simple to parse the XML. XML :: Simple is a module for converting XML data into Perl data (hash, array).
 <pre>
-use XML::Simple;
+use XML :: Simple;
 
-# XMLを解析
-my $xml_parser = XML::Simple->new();
-$XML::Simple::PREFERRED_PARSER = 'XML::Parser';
-my $holidays_data = $xml_parser->XMLin( $holidays_xml );
+# Parse XML
+my $ xml_parser = XML :: Simple-> new ();
+$ XML :: Simple :: PREFERRED_PARSER ='XML :: Parser';
+my $ holidays_data = $ xml_parser-> XMLin ($ holidays_xml);
 
-my $holidays = [];
-for my $key (keys %{$holidays_data->{'entry'}}) {
-  my $holiday_day = $holidays_data->{entry}{$key}{'gd:when'}{startTime};
-  my $holiday_name = $holidays_data->{entry}{$key}{title}{content};
-  push @$holidays, {day => $holiday_day, name => $holiday_name};
+my $ holidays = [];
+for my $ key (keys% {$ holidays_data-> {'entry'}}) {
+  my $ holiday_day = $ holidays_data-> {entry} {$ key} {'gd: when'} {startTime};
+  my $ holiday_name = $ holidays_data-> {entry} {$ key} {title} {content};
+  push @ $ holidays, {day => $ holiday_day, name => $ holiday_name};
 }
-</pre>
+</ pre>
 
-XML変換後はデータに以下のようにしてアクセスできます。
+After the XML transformation, you can access the data as follows.
 
 <pre>
-# 祝日の日付
-$holidays_data->{'entry'}{識別子となるURL}{'gd:when'}{startTime};
+#Holiday dates
+$ holidays_data-> {'entry'} {URL as an identifier} {'gd: when'} {startTime};
 
-# 祝日の名前
-$holidays_data->{entry}{識別子となるURL}{title}{content};
-</pre>
+# Holiday name
+$ holidays_data-> {entry} {URL as an identifier} {title} {content};
+</ pre>
 
-<h4>文字コードを変換する</h4>
+<h4> Convert character code </ h4>
 
-Webから受け取ったXMLの文字コードはUTF-8です。XML::SimpleがXMLをPerlのデータに変換した時点で、文字はPerlの内部表現( UTF-8 )に変換されます。
+The character code of XML received from the Web is UTF-8. When XML :: Simple converts XML to Perl data, the characters are converted to Perl's internal representation (UTF-8).
 
-これを正しく出力するためには、Perlの内部表現から適切な文字コードにエンコードする必要があります。
+In order to output this correctly, it is necessary to encode it from Perl's internal representation to an appropriate character code.
 
-(出力する文字列がたとえUTF-8であろうともエンコードは必要です。内部表現UTF-8から外部表現UTF-8に変換すると考えると理解しやすいです。公式には「UTF-8フラグを落とす」といいますがわかりにくい)
+(Even if the output string is UTF-8, encoding is necessary. It is easy to understand if you think of converting from the internal representation UTF-8 to the external representation UTF-8. Officially, "Turn off the UTF-8 flag. It's hard to understand)
 
 <pre>
 use Encode;
-my $encode_to;
-if ($^O eq 'MSWin32') {
-  $encode_to = 'shift-jis';
+my $ encode_to;
+if ($ ^ O eq'MSWin32') {
+  $ encode_to ='shift-jis';
 }
 else {
-  $encode_to = 'utf8';
+   $ encode_to ='utf8';
 }
 
-# データすべてをエンコード
-for my $holiday (@$holidays) {
-  for my $key (keys %$holiday){
-    $holiday->{$key} = encode($encode_to, $holiday->{$key});
-  }
+# Encode all data
+for my $ holiday (@ $ holidays) {
+   for my $ key (keys% $ holiday) {
+     $ holiday-> {$ key} = encode ($ encode_to, $ holiday-> {$ key});
+   }
 }
-</pre>
-
+</ pre>

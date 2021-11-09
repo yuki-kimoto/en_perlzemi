@@ -1,266 +1,266 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Perlの算術演算子</h2>
+  </ li>
+</ ol>
+<h2> Perl arithmetic operators </ h2>
 
 
 
-Perlで四則演算を行うための<strong>算術演算子</strong>について解説します。
+Describes the <strong> arithmetic operators </ strong> for performing four arithmetic operations in Perl.
 
-<h4>加算</h4>
+<h4> Addition </ h4>
 
-足し算を行うには<a href="/blog/20180219151904.html">加算演算子「+」</a>を使用します。
-
-<pre>
-# 足し算
-my $add = 1 + 1;
-</pre>
-
-<h4>減算</h4>
-
-引き算を行うには<a href="/blog/20180220151913.html">減算演算子「-」</a>を使用します。
+Use the <a href="/blog/20180219151904.html"> addition operator "+" </a> to add.
 
 <pre>
-# 引き算
-my $sub = 9 - 1;
-</pre>
+# Addition
+my $ add = 1 + 1;
+</ pre>
 
-<h4>乗算</h4>
+<h4> Subtraction </ h4>
 
-掛け算を行うには、<a href="/blog/20180221151922.html">乗算演算子「*」</a>を使用します。
-
-<pre>
-# 掛け算
-my $multi = 5 * 4;
-</pre>
-
-<h4>除算</h4>
-
-割り算を行うには<a href="/blog/20180222151930.html">除算演算子「/」</a>を使用します。
+Use the <a href="/blog/20180220151913.html"> subtraction operator "-" </a> to do the subtraction.
 
 <pre>
-# 割り算
-my $div = 9 / 4;
-</pre>
+# Subtraction
+my $ sub = 9 --1;
+</ pre>
 
-割り算の答えは割り切れないときは小数になります。
+<h4> Multiplication </ h4>
 
-<h3>簡略な記述による4則演算</h3>
-
-自分自身に対して4則演算を行いたいときは簡略な記述方法があります。
+To do the multiplication, use the <a href="/blog/20180221151922.html"> multiplication operator "*" </a>.
 
 <pre>
-# $add = $add + 3 と同じ
-$add += 3;
+#Multiplication
+my $ multi = 5 * 4;
+</ pre>
 
-# $sub = $sub - 5 と同じ
-$sub -= 5;
+<h4> Division </ h4>
 
-# $multi = $multi * 2 と同じ
-$multi *= 2;
-
-# $div = $div / 7 と同じ
-$div /= 7;
-</pre>
-
-<h3>商と余りを求める</h3>
-
-商を求める演算子はありません。 / 演算子で割り算をした後 int関数で整数部を取り出します。
+Use the <a href="/blog/20180222151930.html"> division operator "/" </a> to perform the division.
 
 <pre>
-# 商
-my $div_int = int( 9 / 4 );
-</pre>
+#Division
+my $ div = 9/4;
+</ pre>
 
-余りを求めるには、<a href="/blog/20180223151939.html">剰余演算子</a>を使います。
+The answer to division is a decimal if it is not divisible.
 
-<pre>
-# 余り
-my $mod = 9 % 4;
-</pre>
+<h3> Four rules of operation with a simple description </ h3>
 
-<h3>べき乗を求める</h3>
-
-べき乗を求めるには<strong>**</strong>演算子を使用します。
+If you want to perform 4 rules on yourself, there is a simple description method.
 
 <pre>
-my $two_power_num = 4 ** 2;
-</pre>
+Same as # $ add = $ add + 3
+$ add + = 3;
 
-べき乗を求めるには<a href="/blog/20080629121475.html">べき乗演算子「**」</a>を使います。べき乗とは、同じ数を複数回かける演算のことです。
+Same as # $ sub = $ sub -5
+$ sub-= 5;
 
-<h3>インクリメント演算子とデクリメント演算子</h3>
+Same as # $ multi = $ multi * 2
+$ multi * = 2;
 
-ある数値に1を加えたり、1を引いたりする演算には、<a href="/blog/20180224151948.html">インクリメント演算子</a>と<a href="/blog/20180226151973.html">デクリメント演算子</a>を利用することができます。特別な記述が用意されています。++$i や ++$i という記述を1を加えることができ、--$iや$i--という記述で1を減算することができます。
+Same as # $ div = $ div / 7
+$ div / = 7;
+</ pre>
 
-<pre>
-# インクリメント
-$num++;
+<h3> Seeking quotient and remainder </ h3>
 
-# デクリメント
-$num--;
-</pre>
-
-インクリメントとデクリメントの書き方は++あるいは--を変数の前につけるか後につけるかで2とおりあります。演算子を変数の前につけるか後ろにつけるかで、文脈によって意味が変わるので注意が必要です。
+There is no operator to find the quotient. After dividing with the / operator, the int function retrieves the integer part.
 
 <pre>
-my $i = 0;
-my $k = ++$i;
-</pre>
+#Quotient
+my $ div_int = int (9/4);
+</ pre>
+
+To find the remainder, use the <a href="/blog/20180223151939.html"> modulo operator </a>.
 
 <pre>
-my $i = 0;
-my $k = $i++;
-</pre>
+#Remainder
+my $ mod = 9% 4;
+</ pre>
 
-上記の二つは$kに入る値が異なります。最初の場合は、$kには、1が入ります。二つ目の場合は、$kには0が入ります。
+<h3> Find exponentiation </ h3>
 
-前に++をおいた場合は、代入する前に$iが1加算され、後ろに++をおいた場合は、代入が行われた後に$iに1が加算されます。
-
-代入の場合で解説しましたが、関数に値を渡す場合の例も挙げておきます。
+Use the <strong> ** </ strong> operator to find the power.
 
 <pre>
-# funcの引数には、$iに1を加算したものが渡される。
-func(++$i);
+my $ two_power_num = 4 ** 2;
+</ pre>
 
-# funcの引数には、$i が渡され、その後に1加算される。
-func($i++);
-</pre>
+Use the <a href="/blog/20080629121475.html"> exponentiation operator "**" </a> to find the exponentiation. Exponentiation is an operation that multiplies the same number multiple times.
 
-<h3>数値型の自動拡張</h3>
+<h3> Increment and decrement operators </ h3>
 
-Perlは、プログラミング言語上は、数値型を持っていませんが、内部では、数値型を持っています。
-
-32ビット整数で計算できない場合は、環境がサポートしていれば、64bit整数に拡張され計算されます。
-
-また、64bit整数でも表現できない場合は、倍精度浮動小数点型に拡張され計算されます。
-
-<h3>文字列の足し算もそのまま行える</h3>
-
-Perlでは<a href="/blog/20161003147558.html">文字列</a>と数値の変換は自動的に行われ、文字列であっても、数値を含んでいれば、加算演算子で足し算ができます。
+<a href="/blog/20180224151948.html"> Increment Operator </a> and <a href="/blog/20180226151973.html" for operations that add or subtract 1 to a number. You can use the> decrement operator </a>. A special description is provided. You can add 1 to the description ++ $ i or ++ $ i, and subtract 1 from the description --$ i or $ i--.
 
 <pre>
-my $num_str1 = "34";
-my $num_str2 = "56";
+# Increment
+$ num ++;
 
-my $total = $num_str1 + $num_str2;
-</pre>
+#Decrement
+$ num--;
+</ pre>
 
-テキストファイルから、数値を含んでいる文字列を取得し、そのまま足し算できるので、ちょっとした作業には、Perlが抜群に便利です。
-
-<h3>サンプルプログラム</h3>
-
-数値計算に関するサンプルプログラムです。
-
-<h4>四則演算</h4>
-
-足し算、引き算、掛け算、割り算のサンプルです。
+There are two ways to write increments and decrements, depending on whether you put ++ or-before or after the variable. Note that the meaning changes depending on the context, depending on whether the operator is added before or after the variable.
 
 <pre>
-use strict;
-use warnings;
+my $ i = 0;
+my $ k = ++ $ i;
+</ pre>
 
-print "(1)4則演算\n";
+<pre>
+my $ i = 0;
+my $ k = $ i ++;
+</ pre>
 
-# 足し算
-my $add = 1 + 1;
+The above two have different values ​​in $ k. In the first case, $ k contains 1. In the second case, $ k will be 0.
 
-# 引き算
-my $sub = 9 - 1;
+If you put ++ before, $ i is added 1 before the assignment, and if you put ++ after it, 1 is added to $ i after the assignment.
 
-# 掛け算
-my $multi =5 * 4;
+I explained in the case of assignment, but I will also give an example of passing a value to a function.
 
-# 割り算
-my $div = 9 / 4;
+<pre>
+The argument of # func is $ i plus one.
+func (++ $ i);
 
-print "\$add = $add\n";
-print "\$sub = $sub\n";
-print "\$multi = $multi\n";
-print "\$div = $div\n\n";
+$ I is passed to the argument of # func, and then 1 is added.
+func ($ i ++);
+</ pre>
 
-print "(2)簡略な記述による4則演算\n";
+<h3> Numeric automatic expansion </ h3>
 
-# $add = $add + 3 と同じ
-$add += 3;
+Perl does not have a numeric type in programming languages, but it does have a numeric type internally.
 
-# $sub = $sub - 5 と同じ
-$sub -= 5;
+If it cannot be calculated with a 32-bit integer, it will be extended to a 64-bit integer and calculated if the environment supports it.
 
-# $multi = $multi * 2 と同じ
-$multi *= 2;
+If it cannot be represented by a 64-bit integer, it will be expanded to a double-precision floating-point type and calculated.
 
-# $div = $div / 7 と同じ
-$div /= 7;
+<h3> Addition of character strings can be done as it is </ h3>
 
-print "\$add = $add\n";
-print "\$sub = $sub\n";
-print "\$multi = $multi\n";
-print "\$div = $div\n\n";
+Perl automatically converts <a href="/blog/20161003147558.html"> strings </a> to numbers, and even strings can be added with the addition operator if they contain numbers. You can add.
 
+<pre>
+my $ num_str1 = "34";
+my $ num_str2 = "56";
 
-print "(3)商と余りを求める演算\n";
-# 商
-my $div_int = int( 9 / 4 );
-# 余り
-my $mod = 9 % 4;
+my $ total = $ num_str1 + $ num_str2;
+</ pre>
 
-print "\$div_int = $div_int\n";
-print "\$mod = $mod\n";
-</pre>
+Perl is extremely useful for small tasks because you can get a string containing numbers from a text file and add it as is.
 
-<h4>べき乗を求める</h4>
+<h3> Sample program </ h3>
 
-べき乗を求めるサンプルです。
+This is a sample program for numerical calculation.
+
+<h4> Four arithmetic operations </ h4>
+
+Samples of addition, subtraction, multiplication, and division.
 
 <pre>
 use strict;
 use warnings;
 
-# べき乗を求める。
-print "1: べき乗を求める。\n";
-my $num = 4;
-my $two_power_num = 4 ** 2;
-print "$numの2乗は$two_power_numです。\n";
-</pre>
+print "(1) 4 rules operation \ n";
 
-<h4>インクリメントとデクリメント</h4>
+# Addition
+my $ add = 1 + 1;
 
-インクリメント演算子とデクリメント演算子を使ったサンプルです。
+# Subtraction
+my $ sub = 9 --1;
+
+#Multiplication
+my $ multi = 5 * 4;
+
+#Division
+my $ div = 9/4;
+
+print "\ $ add = $ add \ n";
+print "\ $ sub = $ sub \ n";
+print "\ $ multi = $ multi \ n";
+print "\ $ div = $ div \ n \ n";
+
+print "(2) Four-rule operation with a simple description \ n";
+
+Same as # $ add = $ add + 3
+$ add + = 3;
+
+Same as # $ sub = $ sub -5
+$ sub-= 5;
+
+Same as # $ multi = $ multi * 2
+$ multi * = 2;
+
+Same as # $ div = $ div / 7
+$ div / = 7;
+
+print "\ $ add = $ add \ n";
+print "\ $ sub = $ sub \ n";
+print "\ $ multi = $ multi \ n";
+print "\ $ div = $ div \ n \ n";
+
+
+print "(3) Operation to find quotient and remainder \ n";
+#Quotient
+my $ div_int = int (9/4);
+#Remainder
+my $ mod = 9% 4;
+
+print "\ $ div_int = $ div_int \ n";
+print "\ $ mod = $ mod \ n";
+</ pre>
+
+<h4> Find exponentiation </ h4>
+
+This is a sample to find the power.
 
 <pre>
 use strict;
 use warnings;
 
-# 評価される前に1プラスされる。
-print "(1)前置のインクリメントとデクリメント\n";
-my $i = 0;
-print ++$i . "\n";
-print $i . "\n";
+# Find a power.
+print "1: Find the power. \ N";
+my $ num = 4;
+my $ two_power_num = 4 ** 2;
+print "The square of $ num is $ two_power_num. \ N";
+</ pre>
 
-print --$i . "\n";
-print $i . "\n";
+<h4> Increment and decrement </ h4>
 
-# 評価された後に1プラスされる。
-print "(2)後置のインクリメントとデクリメント\n";
-$i = 0;
-print $i++ . "\n";
-print $i . "\n";
+This is a sample using the increment operator and the decrement operator.
 
-print $i-- . "\n";
-print $i;
-</pre>
+<pre>
+use strict;
+use warnings;
+
+# 1 is added before being evaluated.
+print "(1) Prefix increment and decrement \ n";
+my $ i = 0;
+print ++ $ i. "\ n";
+print $ i. "\ n";
+
+print-$ i. "\ n";
+print $ i. "\ n";
+
+# 1 is added after being evaluated.
+print "(2) Post-increment and decrement \ n";
+$ i = 0;
+print $ i ++. "\ n";
+print $ i. "\ n";
+
+print $ i--. "\ n";
+print $ i;
+</ pre>

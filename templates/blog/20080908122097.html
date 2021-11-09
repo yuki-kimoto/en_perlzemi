@@ -1,69 +1,69 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>srand関数 - 再現性のある乱数を生成する</h2>
+  </ li>
+</ ol>
+<h2> srand function-generates reproducible random numbers </ h2>
 
 
-<b>srand関数</b>を使用すると再現性のある乱数を生成することができます。<a href="/blog/20080906122079.html">rand関数</a>を呼び出す前に適当な数値をsrand関数に与えます。
+You can use the <b> srand function </ b> to generate reproducible random numbers. Before calling <a href="/blog/20080906122079.html"> rand function </a>, give an appropriate number to the srand function.
 
 <pre>
-# 乱数発生アルゴリズムを初期化
-srand $seed;
-rand $num;
-</pre>
+#Initialize random number generation algorithm
+srand $ seed;
+rand $ num;
+</ pre>
 
-<h4>コンピュータにおける乱数の生成とは</h4>
+<h4> What is random number generation in a computer? </ H4>
 
-コンピュータは演算によって乱数を発生させます。ということはこれは乱数ではありません。コンピュータは人間がさいころを投げるようには、ランダムな分布を発生させることはできません。
+Computers generate random numbers by arithmetic. So this is not a random number. Computers cannot generate a random distribution like humans throw dice.
 
-コンピュータができることは、「なるべく均等な分布を発生させるアルゴリズム」を使って数値列を作ることだけです。このアルゴリズムは初期値の違いによって分布を変えます。これを擬似乱数といいます。
+All a computer can do is create a sequence of numbers using an "algorithm that produces as even a distribution as possible". This algorithm changes the distribution depending on the difference in the initial value. This is called a pseudo-random number.
 
-初期値の違いによって分布を変えるということは、言い換えれば初期値が同じであれば分布を変えないということです。
+Changing the distribution depending on the difference in the initial values ​​means that if the initial values ​​are the same, the distribution will not change.
 
-rand関数が毎回異なる乱数列を発生させるように見えるのは、rand関数が最初に使われるときに、暗黙的にsrand関数で初期化されるからです。プログラムを動かすたびに異なる初期値が使われます。
+The rand function seems to generate a different sequence of random numbers each time because it is implicitly initialized by the srand function when it is first used. A different initial value is used each time the program is run.
 
-srandに与える初期を固定することで、再現性のある乱数を発生させることができます。
+By fixing the initial value given to srand, it is possible to generate reproducible random numbers.
 
-<h3>サンプルプログラム</h3>
+<h3> Sample program </ h3>
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)再現性のある乱数を発生させる。\n";
-print"乱数列の生成(1回目)\n";
+print "(1) Generate reproducible random numbers. \ N";
+print "Generation of random number sequence (1st time) \ n";
 
-# 乱数発生アルゴリズムの初期化に利用される(seedは種という意味)
-my $seed = 12314; 
+# Used to initialize random number generation algorithm (seed means seed)
+my $ seed = 12314;
 
-# 乱数発生アルゴリズムを初期化
-srand $seed; 
-for my $i (1 .. 10) {
-  print "$i回目: " . int(rand 100) . "\n";
+#Initialize random number generation algorithm
+srand $ seed;
+for my $ i (1 .. 10) {
+  print "$ i times:". Int (rand 100). "\ n";
 }
-print "\n";
+print "\ n";
 
 
-print "乱数列の生成(2回目)\n";
+print "Generate random number sequence (2nd time) \ n";
 
-# 乱数発生アルゴリズムを初期化
-srand $seed;
-for my $i (1 .. 10) {
-  print "$i回目: " . int(rand 100) . "\n";
+#Initialize random number generation algorithm
+srand $ seed;
+for my $ i (1 .. 10) {
+  print "$ i times:". Int (rand 100). "\ n";
 }
-print "\n";
-</pre>
+print "\ n";
+</ pre>

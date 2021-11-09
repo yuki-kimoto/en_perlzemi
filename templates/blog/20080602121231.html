@@ -1,122 +1,122 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name"><a href="/blog/20180820153471.html">インストール</a></span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> <a href="/blog/20180820153471.html"> Installation </a> </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
 
-<h2>ActivePerlのインストール</h2>
+<h2> Install ActivePerl </ h2>
 
-<strong>ActivePerl</strong>はActiveState社によって無償で提供されているWindowsで商用利用可能なPerlディストリビューションの一つです。
+<strong> ActivePerl </ strong> is one of the commercially available Perl distributions for Windows provided by ActiveState for free.
 
-特徴はWindows関連のモジュールが多く添付されていることです。Excelなどを直接操作できるWin32::OLEなどのモジュールが標準で添付されています。
+The feature is that many Windows-related modules are attached. Modules such as Win32 :: OLE that can directly operate Excel etc. are attached as standard.
 
-ActivePerlをWindowsにインストールしてPerlを使えるようにしましょう。インストールは簡単です。
+Let's install ActivePerl on Windows so that we can use Perl. Installation is easy.
 
-<h3>ActivePerlのダウンロード</h3>
+<h3> Download ActivePerl </ h3>
 
-ActivePerlをt次のページからダウンロードします。2021年現在の最新版は、5.32です。
+Download ActivePerl from the next page. The latest version as of 2021 is 5.32.
 
 <ul>
   <li>
-    <a href="https://www.activestate.com/activeperl/downloads">ActivePerlのダウンロード</a>
-  </li>
-</ul>
+    <a href="https://www.activestate.com/activeperl/downloads"> Download ActivePerl </a>
+  </ li>
+</ ul>
 
-<a href="https://www.activestate.com/activeperl/downloads"><img style="border:1px solid #ddd;width:100%;" src="/images/active_perl/active_perl_click.png"></a>
+<a href="https://www.activestate.com/activeperl/downloads"> <img style="border: 1px solid #ddd; width: 100%;" src = "/ images / active_perl / active_perl_click.png" > </a>
 
-2021年現在は、ActivePerlのダウンロードにはActiveStateへの会員登録が必要です。msiという拡張子はWindowsのインストーラであることを表します。
+As of 2021, ActivePerl download requires ActiveState membership registration. The extension msi indicates that it is a Windows installer.
 
-フリーで提供されているのは64bit版だけです。
+Only the 64-bit version is provided free of charge.
 
-<h3>ActivePerlのインストール</h3>
+<h3> Install ActivePerl </ h3>
 
-ダウンロードしたActive Perlをダブルクリックします。
+Double-click the downloaded Active Perl.
 
-インストーラーが起動します。「Next」を押して進みます。
+The installer will start. Press "Next" to proceed.
 
-途中で「I accept the terms in the License Agreement」というチェックボックスがでてくるので、チェックをいれて「Next」を押します。
+A check box that says "I accept the terms in the License Agreement" will appear on the way. Check it and press "Next".
 
-「typical」を選択します。
+Select "typical".
 
-さらに「Next」を押して進んでいって、最後に「Install」をクリックするとActive Perlのインストールが始まります。
+Press "Next" to proceed, and finally click "Install" to start installing Active Perl.
 
-ここで「この不明な発行元からのアプリがデバイスに変更を加えることを許可しますか?」というダイアログが表示されると思いますが、「はい」をクリックしましょう。
+You'll see a dialog here, "Do you want to allow apps from this unknown publisher to make changes to your device?", Click "Yes".
 
-5分くらい時間がかかるので待ちましょう。
+It will take about 5 minutes, so let's wait.
 
-プログレスバーが満タンになると、Active Perlのインストールが完了します。
+When the progress bar is full, the Active Perl installation is complete.
 
-「Finish」を押してダイアログを閉じましょう。Readmeが表示されますが、これも閉じて大丈夫です。
+Press "Finish" to close the dialog. A Readme will be displayed, but you can close it as well.
 
-<h3>Perlがインストールされていることの確認</h3>
+<h3> Make sure Perl is installed </ h3>
 
-インストールが完了したら実際にActive Perlがインストールできているか確認してみましょう。
+After the installation is complete, let's check if Active Perl is actually installed.
 
-コマンドプロンプトというツールをを実行してPerlのバージョンを表示してみます。
+Try running a tool called Command Prompt to see the version of Perl.
 
-コマンドプロンプトは、「スタートメニュー」→「アプリの一覧」→「Windowsシステムツール」→「コマンドプロンプト」から実行できます。
+The command prompt can be executed from "Start Menu"-> "List of Apps"-> "Windows System Tools"-> "Command Prompt".
 
-黒い画面がでてくるので、以下の文字をキーボードからうち「Enter」を押してみてください。
+A black screen will appear, so try pressing "Enter" from the keyboard with the following characters.
 
 <pre>
 perl -v
-</pre>
+</ pre>
 
-次のようにバージョン情報が表示されればインストールは成功しています。
+If the version information is displayed as shown below, the installation is successful.
 
 <pre>
 This is perl 5, version 32, subversion 1 (v5.32.1) built for MSWin32-x64-multi-thread
 (with 1 registered patch, see perl -V for more detail)
-</pre>
+</ pre>
 
-これでActive Perlのインストールは完了です。
+This completes the Active Perl installation.
 
-<h3>Active Perlの使い方</h3>
+<h3> How to use Active Perl </ h3>
 
-Active Perlは、Windowsでは、コマンドプロンプトと呼ばれるツール上でperlコマンドを使って、実行します。
+Active Perl runs on Windows using the perl command on a tool called the command prompt.
 
-コマンドプロンプトの使い方を知りたい方は「<a href="/blog/20080603121251.html">Perlを実行するためのコマンドプロンプト入門</a>」という記事を参考にしてください。
+If you want to know how to use the command prompt, please refer to the article "<a href="/blog/20080603121251.html"> Introduction to the command prompt for running Perl </a>".
 
-<h3>Active Perlのその他の情報</h3>
+<h3> More information about Active Perl </ h3>
 
-Active Perlのその他の情報です。
+Other information about Active Perl.
 
-<h4>Active Perlのアンインストール方法</h4>
+<h4> How to uninstall Active Perl </ h4>
 
-Active Perlのアンインストール方法の解説です。Windows 10で実行した例です。
+This is an explanation of how to uninstall Active Perl. This is an example executed on Windows 10.
 
-「スタートメニュー」→「設定」→「アプリ」→「Active Perlをクリック」→「アンインストール」
+"Start Menu"-> "Settings"-> "Apps"-> "Click Active Perl"-> "Uninstall"
 
-<h4>ActivePerlとStrawberry Perlの違い</h4>
+<h4> Differences between Active Perl and Strawberry Perl </ h4>
 
-Strawberry Perlは、ActivePerlによく似ていますが、会員登録が必要ない、<a href="https://c.perlzemi.com/">C言語</a>のコンパイラでPerlの<a href="/blog/20100809127859.html">XSモジュール</a>のコンパイルに必要なMinGWがデフォルトでインストールされている、<a href="https://perlzemi.com/blog/20101027127859.html">cpanm</a>がデフォルトでインストールされている、使用頻度の高い画像処理などのライブラリが使えるなど、Perlユーザーが使いやすい構成になっています。
+Strawberry Perl is very similar to ActivePerl, but does not require membership registration, it is a <a href="https://c.perlzemi.com/"> C language </a> compiler and Perl's <a href= "/blog/20100809127859.html"> MinGW required to compile the XS module </a> is installed by default, <a href="https://perlzemi.com/blog/20101027127859.html"> cpanm </a> is installed by default, and libraries such as frequently used image processing can be used, making it easy for Perl users to use.
 
-またActive Perlは無償利用では、最新バージョンのPerlだけが公開されているのに対して、Strawberry Perlでは、古いバージョンのPerlも公開されています。
+In addition, Active Perl is released only for the latest version of Perl for free use, while Strawberry Perl also publishes an older version of Perl.
 
-<h4>ActivePerlのインストールのサポート</h4>
+<h4> Support for ActivePerl installation </ h4>
 
-ActivePerlをインストールできない、ActivePerlのインストールに失敗したということでお困りの場合は、Perlゼミを運営しているPerlクラブのPerlクラブフォーラムでご質問ください。
+If you're having trouble installing ActivePerl or failing to install ActivePerl, ask in the Perl Club Forums of the Perl club that runs your Perl seminar.
 
 <ul>
-  <li><a href="https://perlclub.net/forum">Perlクラブフォーラム</a></li>
-</ul>
+  <li> <a href="https://perlclub.net/forum"> Perl Club Forum </a> </ li>
+</ ul>
 
-<h4>Windowsへのその他のPerlのインストール方法</h4>
+<h4> Other ways to install Perl on Windows </ h4>
 
-WindowsでPerlを利用するその他の方法については、以下を参考にしてください。
+For other ways to use Perl on Windows, see below.
 
 <ul>
   <li>
-    <a href="/blog/20180808153368.html">Strawberry Perl(ストロベリーパール)をWindowsにインストールする</a>
-  </li>
+    <a href="/blog/20180808153368.html"> Install Strawberry Perl on Windows </a>
+  </ li>
   <li>
-    <a href="/blog/20180806153350.html">msys2をWindowsにインストールしてPerlを使う</a>
-  </li>
-</ul>
+    <a href="/blog/20180806153350.html"> Install msys2 on Windows and use Perl </a>
+  </ li>
+</ ul>

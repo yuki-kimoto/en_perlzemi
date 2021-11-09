@@ -1,62 +1,62 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/"><span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161126148016.html"><span itemprop="name">ファイル操作</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>ディレクトリの上の階層を表す表現 ..</h2>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/blog/20161126148016.html"> <span itemprop = "name"> File operation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Representation of the hierarchy above the directory .. </ h2>
 
 
 
-ディレクトリは、自分自身を表す特別なディレクトリ名( . )と、1階層上のディレクトリを表す特別なディレクトリ名( .. )を、持っています。
+A directory has a special directory name (.) That represents itself and a special directory name (..) that represents a directory one level higher.
 
 <pre>
-# 自分自身のディレクトリを表す特別なディレクトリ名
-.
-
-# 1階層上のディレクトリを表す特別なディレクトリ名
+#A special directory name that represents your own directory
 ..
-</pre>
 
-<h3> . と .. の確認方法</h3>
+# A special directory name that represents a directory one level above
+..
+</ pre>
+
+<h3> How to check. And .. </ h3>
 
 <pre>
-# Windows の コマンドプロンプトの場合
-dir 
+# For her command prompt on Windows
+dir
 
-# Unix, Linux の シェルの場合
+# Unix, Linux shell
 ls -a
-</pre>
+</ pre>
 
-上記のコマンドで、ディレクトリの中に、. と .. というディレクトリ名があるのを確認できます。
+With the above command, you can see that there are directory names. And .. in the directory.
 
-<h3>具体的な例</h3>
+<h3> Specific example </ h3>
 
 <pre>
-#以下のようなディレクトリ構成があるとする。
+# Suppose you have the following directory structure.
 
-| Module ---| t --- | test1.t
-            |       | test2.t
+| Module --- | t --- | test1.t
+            | | test2.t
             |
             | lib --- | SomeModule1.pm
                       | SomeModule2.pm
 
-# カレントディレクトリが、lib である場合に、test1.t というファイル名を表現するには
-../t/test1.t ( Unix の場合 )
-..\t\test1.t ( Windowsの場合 )
-とする。
+# To represent the file name test1.t when the current directory is lib
+../t/test1.t (for Unix)
+.. \ t \ test1.t (for Windows)
+And.
 
-# カレントディレクトリが、t である場合に、 SomeModule1.pm というファイル名を表現するには
-../lib/SomeModule1.pm ( Unix の場合 )
-..\lib\SomeModule1.pm ( Windows の場合 )
-とする。
-</pre>
+# To represent the file name SomeModule1.pm when the current directory is t
+../lib/SomeModule1.pm (for Unix)
+.. \ lib \ SomeModule1.pm (for Windows)
+And.
+</ pre>

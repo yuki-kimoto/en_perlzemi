@@ -1,67 +1,67 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/"><span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161126148016.html"><span itemprop="name">ファイル操作</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>階層を持つディレクトリを一度に削除する</h2>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/blog/20161126148016.html"> <span itemprop = "name"> File operation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Delete directories with hierarchy at once </ h2>
 
 
 
-階層を持つディレクトリを一度に削除するには<a href="/blog/20100409127089.html">File::Path</a>モジュールの<strong>rmtree</strong>を使用します。rmtree の戻り値は、削除することのできた、ファイル数です。
+Use the <strong> rmtree </ strong> of the <a href="/blog/20100409127089.html"> File :: Path </a> module to delete directories with hierarchies all at once. The return value of rmtree is the number of files that could be deleted.
 
 <pre>
-use File::Path 'rmtree';
-rmtree $dir;
-</pre>
+use File :: Path'rmtree';
+rmtree $ dir;
+</ pre>
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-階層を持つディレクトリを一度に削除するサンプルです。
+This is a sample to delete directories with a hierarchy at once.
 
 <pre>
 use strict;
 use warnings;
-use File::Path 'rmtree';
+use File :: Path'rmtree';
 
-# ディレクトリを削除する
-# 準備(ディレクトリの作成)
-my $dir1 = "dir_20080527_$$";
-my $dir2 = "$dir1/dir2";
-mkdir $dir1
-  or die "$dir1 を作成することができません。 : $!";
-mkdir $dir2
-  or die "$dir2 を作成することができません。 : $!";
-print "準備: $dir1 と $dir2 が作成されました。\n\n";
-print "1: 階層を持つディレクトリを一度に削除する。\n"; 
+#Delete the directory
+#Preparation (creating a directory)
+my $ dir1 = "dir_20080527_ $$";
+my $ dir2 = "$ dir1 / dir2";
+mkdir $ dir1
+  or die "Unable to create $ dir1.: $!";
+mkdir $ dir2
+  or die "Unable to create $ dir2.: $!";
+print "Preparation: $ dir1 and $ dir2 have been created. \ N \ n";
+print "1: Delete hierarchical directories at once. \ N";
 
 {
-  # 警告をキャッチするには、__WARN__シグナルを
-  # 捕獲するシグナルハンドラを使うしかない。
-  # ( 古いrmtreeの実装の場合 )
-  # 第一引数に、警告の内容が格納される。
-  local $SIG{__WARN__} = sub {
-    my $msg = shift;
-    die "$msg";
+  #To catch the warning, use the __WARN__ signal
+  # There is no choice but to use a signal handler to capture.
+  # (For old rmtree implementations)
+  # The content of the warning is stored in the first argument.
+  local $ SIG {__ WARN__} = sub {
+    my $ msg = shift;
+    die "$ msg";
   };
 
-  if (-d $dir1) {
-    # rmtree 関数で、 warn が呼ばれたら、
-    # 上記の sub{ } の中に移り、die で終了する。
-    rmtree($dir1); 
+  if (-d $ dir1) {
+    If warn is called in the # rmtree function,
+    # Move to the above sub {} and exit with die.
+    rmtree ($ dir1);
                    
-    print "$dir1 は削除されました。\n";
+    print "$ dir1 has been deleted. \ N";
   }
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20080309120507.html">local - パッケージ変数を一時的に退避して復元</a>
+(Reference) <a href="/blog/20080309120507.html"> local --Temporarily save and restore package variables </a>

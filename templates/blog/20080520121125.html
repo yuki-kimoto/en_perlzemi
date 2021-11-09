@@ -1,54 +1,54 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>unlink関数 - ファイルを削除する</h2>
+  </ li>
+</ ol>
+<h2> unlink function-delete file </ h2>
 
-<strong>unlink</strong>関数を使用すると、ファイルを削除することができます。戻り値には、削除したファイルの個数が返ってきます。
+You can use the <strong> unlink </ strong> function to delete a file. The return value is the number of deleted files.
 
 <pre>
-unlink $file;
-</pre>
+unlink $ file;
+</ pre>
 
-<h3>unlink関数のプログラミングのサンプル</h3>
+<h3> Unlink function programming sample </ h3>
 
-unlink関数でファイルを削除するプログラミングのサンプルです。
+This is a programming sample that deletes a file with the unlink function.
 
 <pre>
 use strict;
 use warnings;
 use Fcntl;
 
-# ファイルを削除する。 
+#Delete the file.
 
-# 準備のためにファイル作成。
-my $file = "sample_20080520_$$.txt";
+# Create a file for preparation.
+my $ file = "sample_20080520_$$. txt";
 
-sysopen(my $fh, $file, O_CREAT | O_WRONLY | O_EXCL)
-  or die "$file を作成することができません。: $!";
-close( $fh );
-print "準備: '$file'が作成されました。\n\n";
+sysopen (my $ fh, $ file, O_CREAT | O_WRONLY | O_EXCL)
+  or die "Unable to create $ file .: $!";
+close ($ fh);
+print "Preparation:'$ file' has been created. \ N \ n";
 
-print "1: ファイルを削除する。\n";
-if (unlink $file) {
-  print "'$file'は削除されました。\n";
+print "1: Delete the file. \ N";
+if (unlink $ file) {
+  print "'$ file' has been deleted. \ N";
 }
 else {
-  print "'$file'は削除できませんでした。\n";
+  print "'$ file' could not be deleted. \ N";
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20080804121794.html">sysopen関数</a>、<a href="/blog/20180310152509.html">Fcntl</a>
+(Reference) <a href="/blog/20080804121794.html"> sysopen function </a>, <a href="/blog/20180310152509.html"> Fcntl </a>

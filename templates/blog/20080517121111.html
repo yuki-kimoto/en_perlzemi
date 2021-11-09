@@ -1,78 +1,78 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/"><span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161126148016.html"><span itemprop="name">ファイル操作</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>ファイル名からディレクトリ名とベース名を取り出す</h2>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/blog/20161126148016.html"> <span itemprop = "name"> File operation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Extract the directory name and base name from the file name </ h2>
 
 
 
-ファイル名から、ディレクトリ名とベース名を取り出すには<a href="/blog/20100225126425.html">File::Basename</a>モジュールの<strong>fileparse</strong>メソッドを使用します。
+To extract the directory name and base name from the file name, use the <strong> fileparse </ strong> method of the <a href="/blog/20100225126425.html"> File :: Basename </a> module.
 
 <pre>
-use File::Basename 'fileparse';
-my ($base_name, $dir) = fileparse $file;
-</pre>
+use File :: Basename'fileparse';
+my ($ base_name, $ dir) = fileparse $ file;
+</ pre>
 
-File::Basename モジュールの fileparse関数を使えば、ファイル名を、ディレクトリ名とベース名を分けることができます。戻り値のリストの0番目がベース名、1番目がディレクトリ名で、元の順序と逆なので、注意してください。
+You can use the fileparse function of the File :: Basename module to separate the file name from the directory name and the base name. Note that the 0th in the list of return values ​​is the base name and the 1st is the directory name, which is the reverse of the original order.
 
-File::Basename は、OSに依存しないように作成されています。Unix,Windows,MacOS では、ファイルの区切り文字が異なりますが、問題なく利用できます。
+File :: Basename is created to be OS independent. On Unix, Windows, and MacOS, the file delimiters are different, but they can be used without problems.
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
- ファイル名からディレクトリ名とベース名を取り出すサンプルです。
+ This is a sample to extract the directory name and base name from the file name.
 
 <pre>
 use strict;
 use warnings;
 
-# ファイル名からディレクトリ名とベース名を取り出す
+# Extract the directory name and base name from the file name
 
-use File::Basename 'fileparse';
+use File :: Basename'fileparse';
 
-my $file_unix = 'dir1/dir2/base_name.txt';
-my $file_win = 'dir1\\dir2\\base_name.txt';
+my $ file_unix ='dir1 / dir2 / base_name.txt';
+my $ file_win ='dir1 \\ dir2 \\ base_name.txt';
                                
-print "1: ファイル名から、ディレクトリ名とベース名を取り出す。\n";
-my ($base_name, $dir) = fileparse $file_unix;
-print "Unixの場合\n" .
-  "\$dir = $dir\n" .
-  "\$base_name = $base_name\n\n";
+print "1: Extract the directory name and base name from the file name. \ N";
+my ($ base_name, $ dir) = fileparse $ file_unix;
+print "For Unix \ n".
+  "\ $ dir = $ dir \ n".
+  "\ $ base_name = $ base_name \ n \ n";
 
-($base_name, $dir) = fileparse $file_win;
-print "Windowsの場合\n" .
-  "\$dir = $dir\n" .
-  "\$base_name = $base_name\n\n";
+($ base_name, $ dir) = fileparse $ file_win;
+print "For Windows \ n".
+  "\ $ dir = $ dir \ n".
+  "\ $ base_name = $ base_name \ n \ n";
       
-print "2: ベース名だけ取り出す。\n";
-# 配列スライスで,リストの0番目だけを抜き出します。
-my $base_name_only = (fileparse $file_unix)[0]; 
-print "\$base_name_only = $base_name_only\n\n";
-</pre>
-実行結果
+print "2: Extract only the base name. \ N";
+# In the array slice, extract only the 0th of the list.
+my $ base_name_only = (fileparse $ file_unix) [0];
+print "\ $ base_name_only = $ base_name_only \ n \ n";
+</ pre>
+Execution result
 <pre>
-1: ファイル名から、ディレクトリ名とベース名を取り出す。
-Unixの場合
-$dir = dir1/dir2/
-$base_name = base_name.txt
+1: Extract the directory name and base name from the file name.
+For Unix
+$ dir = dir1 / dir2 /
+$ base_name = base_name.txt
 
-Windowsの場合
-$dir = dir1\dir2\
-$base_name = base_name.txt
+For Windows
+$ dir = dir1 \ dir2 \
+$ base_name = base_name.txt
 
-2: ベース名だけ取り出す。
-$base_name_only = base_name.txt
-</pre>
+2: Extract only the base name.
+$ base_name_only = base_name.txt
+</ pre>
 
 <hr>
-<a href="/blog/20080229120427.html">Perl逆引き辞典</a>
+<a href="/blog/20080229120427.html"> Perl Reverse Dictionary </a>

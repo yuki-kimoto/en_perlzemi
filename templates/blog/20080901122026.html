@@ -1,426 +1,427 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">進数変換</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>2進数、8進数、16進数の進数変換</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Base conversion </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Binary, octal, hexadecimal conversion </ h2>
 
 
 
-Perlで「進数変換」を行う方法を解説します。
+I will explain how to perform "base conversion" in Perl.
 
-<h4>10進数から2進数、8進数、16進数への変換</h4>
+<h4> Conversion from decimal to binary, octal, hexadecimal </ h4>
 
-10進数から2進数、8進数、16進数に変換してみましょう。<a href="/blog/20081001122296.html">sprintf関数</a>でフォーマット指定を使います。
-
-<pre>
-# 2進文字列に変換
-my $bit_str = sprintf("%b", $num);
-</pre>
+Let's convert from decimal to binary, octal, and hexadecimal. Use the format specification in the <a href="/blog/20081001122296.html"> sprintf function </a>.
 
 <pre>
-# 8進文字列に変換
-my $oct_str = sprintf("%o", $num);
-</pre>
+#Convert to binary string
+my $ bit_str = sprintf ("% b", $ num);
+</ pre>
 
 <pre>
-# 16進文字列に変換
-my $hex_str = sprintf("%X", $num);
-</pre>
-
-10進文字列を2進数に変換するには、sprintf関数でフォーマット指定で "%b"とします。8進数、16進数に変換するにはそれぞれ、"%o","%X"とします。
-
-sprintf関数は<a href="/blog/20170326149148.html">printf関数</a>によくにた関数です。sprintfを使えば、printf関数で出力される文字列が戻り値として取得できます。
-
-以下は2進数、8進数、16進数への変換のサンプルです。
+# Convert to octal string
+my $ oct_str = sprintf ("% o", $ num);
+</ pre>
 
 <pre>
-use strict;
-use warnings;
+# Convert to hexadecimal string
+my $ hex_str = sprintf ("% X", $ num);
+</ pre>
 
-# 数値
-my $num = 255;
+To convert a decimal string to a binary number, use the sprintf function to specify the format as "% b". To convert to octal and hexadecimal, use "% o" and "% X" respectively.
 
-# 2進文字列に変換
-my $bit_str = sprintf("%b", $num);
+The sprintf function is a common function of the <a href="/blog/20170326149148.html"> printf function </a>. If you use sprintf, you can get the character string output by the printf function as the return value.
 
-# 8進文字列に変換
-my $oct_str = sprintf("%o", $num);
-
-# 16進文字列に変換
-my $hex_str = sprintf("%X", $num);
-
-print "(1)10進文字列から2,8,16進文字列への変換\n";
-print "10進文字列: $num;\n";
-print "2進文字列: $bit_str;\n";
-print "8進文字列: $oct_str;\n";
-print "16進文字列: $hex_str;\n";
-</pre>
-
-<h4>2進数、8進数、16進数から10進数への変換</h4>
-
-2進数、8進数、16進数から10進数への変換を解説します。
-
-<b>2進数から10進数への変換</b>
-
-2進数から10進数へ変換するには<a href="/blog/20171027150945.html">oct関数</a>を使用します。oct関数は本来は8進数を10進数に変換する関数ですが、0bが先頭についた文字列を引数として渡した場合は、2進数を10進数に変換します。
-
-<pre>
-my $num = oct('0b' . $bit_str);
-</pre>
-
-<b>8進数から10進数への変換</b>
-
-8進数から10進数へ変換するには<a href="/blog/20171027150945.html">oct関数</a>を使用します。サンプルでは'17'を渡していますが'017'のように先頭に0がついていても正しく変換されます。
-
-<pre>
-my $num = oct($oct_str);
-</pre>
-
-<b>16進数から10進数への変換</b>
-
-16進数から10進数へ変換するには<a href="/blog/20171026150980.html">hex関数</a>を使用します。サンプルでは'FF'を引数に渡していますが'0xFF'のように先頭に0xがついていても正しく変換されます。
-
-<pre>
-my $hex_to_dec = hex($hex_str);
-</pre>
-
-2進数、8進数、16進数を10進数へ変換するサンプルです。
+Below is a sample conversion to binary, octal, and hexadecimal numbers.
 
 <pre>
 use strict;
 use warnings;
 
-my $bit_str = '110';
-my $oct_str = '17';
-my $hex_str = 'FF';
+# Numerical value
+my $ num = 255;
 
-# oct関数で、2進文字列から10進数へ変換する。
-print "2進数から10進数への変換\n";
-my $bit_to_dec = oct('0b' . $bit_str); 
-print "$bit_str -> $bit_to_dec\n\n";
+#Convert to binary string
+my $ bit_str = sprintf ("% b", $ num);
 
-# oct関数で8進文字列から10進数へ変換する。
-print "8進数から10進数への変換\n";
-my $oct_to_dec = oct($oct_str);
-print "$oct_str -> $oct_to_dec\n\n"; 
+# Convert to octal string
+my $ oct_str = sprintf ("% o", $ num);
 
-# hex関数で8進文字列から10進数へ変換する。
-print "16進数から10進数への変換\n";
-my $hex_to_dec = hex($hex_str);
-print "$hex_str -> $hex_to_dec\n\n"; 
-</pre>
+# Convert to hexadecimal string
+my $ hex_str = sprintf ("% X", $ num);
 
-<h4>10進数からn進数へ変換するアルゴリズム</h4>
+print "(1) Conversion from decimal string to 2,8, hexadecimal string \ n";
+print "decimal string: $ num; \ n";
+print "binary string: $ bit_str; \ n";
+print "octal string: $ oct_str; \ n";
+print "Hexadecimal string: $ hex_str; \ n";
+</ pre>
 
-10進数からn進数に変換するサンプルです。引数の有効性のチェックもきちんと行ってみました。
+<h4> Binary, Octal, Hexadecimal to Decimal Conversion </ h4>
+
+I will explain the conversion from binary numbers, octal numbers, and hexadecimal numbers to decimal numbers.
+
+<b> Binary to Decimal Conversion </ b>
+
+Use the <a href="/blog/20171027150945.html"> oct function </a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a character string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
+
+<pre>
+my $ num = oct ('0b'. $ Bit_str);
+</ pre>
+
+<b> Conversion from octal to decimal </ b>
+
+Use the <a href="/blog/20171027150945.html"> oct function </a> to convert from octal to decimal. In the sample, '17' is passed, but even if there is a leading 0 like '017', it will be converted correctly.
+
+<pre>
+my $ num = oct ($ oct_str);
+</ pre>
+
+<b> Hexadecimal to Decimal Conversion </ b>
+
+Use the <a href="/blog/20171026150980.html"> hex function </a> to convert from hexadecimal to decimal. In the sample,'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
+
+<pre>
+my $ hex_to_dec = hex ($ hex_str);
+</ pre>
+
+This is a sample to convert binary, octal, and hexadecimal numbers to decimal numbers.
 
 <pre>
 use strict;
 use warnings;
 
-# 10進数からへn進数への変換
-my $dec_num = -255;
+my $ bit_str = '110';
+my $ oct_str = '17';
+my $ hex_str ='FF';
 
-# 変換すると-FF
-print "10進数 $dec_num => 16進数 " . dec_to_n($dec_num, 16);
+Convert a binary string to a decimal number with the #oct function.
+print "Binary to Decimal Conversion \ n";
+my $ bit_to_dec = oct ('0b'. $ Bit_str);
+print "$ bit_str-> $ bit_to_dec \ n \ n";
 
-# 10進数をn進数に変換( 16進数まで対応 )
+Convert an octal string to a decimal number with the #oct function.
+print "Octal to Decimal Conversion \ n";
+my $ oct_to_dec = oct ($ oct_str);
+print "$ oct_str-> $ oct_to_dec \ n \ n";
+
+Convert an octal string to a decimal number with the #hex function.
+print "Hexadecimal to Decimal Conversion \ n";
+my $ hex_to_dec = hex ($ hex_str);
+print "$ hex_str-> $ hex_to_dec \ n \ n";
+</ pre>
+
+<h4> Algorithm for converting decimal to n-ary </ h4>
+
+This is a sample to convert from decimal to n-ary. I also checked the validity of the arguments properly.
+
+<pre>
+use strict;
+use warnings;
+
+#Conversion from decimal to n-ary
+my $ dec_num = -255;
+
+# Convert to -FF
+print "decimal $ dec_num => hexadecimal" .dec_to_n ($ dec_num, 16);
+
+# Convert decimal to n (up to hexadecimal)
 sub dec_to_n {
-    # 10進数と変換後の進数
-    my ($dec, $n) = @_;
+    # Decimal and converted base
+    my ($ dec, $ n) = @_;
 
-    # $n の有効性のチェック
-    return if !defined $n || $n !~ /^\d+$/ || $n < 2 || $n > 16;
+    Checking the validity of # $ n
+    return if! defined $ n || $ n! ~ / ^ \ D + $ / || $ n <2 || $ n> 16;
 
-    # $decの有効性のチェック
-    return if !defined $dec;
-    return if $dec !~  /^([+-]?)\d+$/;
+    Checking the validity of # $ dec
+    return if! defined $ dec;
+    return if $ dec! ~ / ^ ([+-]?) \ D + $ /;
 
-    # 符号が存在する場合は保存しておく
-    my $sign = $1 ? substr($dec, 0, 1, '') : ''; 
+    Save the # sign if it exists
+    my $ sign = $ 1? substr ($ dec, 0, 1,''):'';
 
-    # 0ならばそのまま返却
-    return $dec if $dec == 0; 
+    If # 0, return as it is
+    return $ dec if $ dec == 0;
 
-    # 余りの配列
-    my @rem_list; 
+    # Array of remainders
+    my @rem_list;
     
-    # 10進数をn進数に変換する。
-    while ($dec != 0) {
-      # 余りを求めて保存しておく。
-      unshift(@rem_list, $dec % $n);
+    # Convert decimal to n-ary.
+    while ($ dec! = 0) {
+      # Find the remainder and save it.
+      unshift (@rem_list, $ dec% $ n);
       
-      # 商を求める。
-      $dec = int($dec / $n);
+      # Ask for a quotient.
+      $ dec = int ($ dec / $ n);
     }
     
-    # 進数表現に変換するテーブル。
-    my @dec_to_n = (0 .. 9, 'A' .. 'F');
+    # A table to convert to a base number representation.
+    my @dec_to_n = (0 .. 9,'A' ..'F');
 
-    # 変換テーブルで変換して文字を結合
-    return join('', $sign, map { $dec_to_n[$_] } @rem_list); 
+    # Convert in conversion table and join characters
+    return join ('', $ sign, map {$ dec_to_n [$ _]} @rem_list);
 }
-</pre>
+</ pre>
 
-<b>10進数からn進数に変換するサブルーチンの仕様</b>
-
-<pre>
-dec_to_n($dec, $n);
-dec_to_n(255 , 16);
-</pre>
-
-第1引数は10進数、第2引数は10進数から何進数に変換するのかを数字で指定します。戻り値は変換できた場合は対応するn進数が、変換できなかった場合はundefが返ります。$nは、2進数から16進数までに対応しています。
-
-<b>$n の有効性のチェック</b>
+<b> Subroutine specifications for converting decimal to n-ary </ b>
 
 <pre>
-return if !defined $n || $n !~ /^\d+$/ || $n < 2 || $n > 16;
-</pre>
+dec_to_n ($ dec, $ n);
+dec_to_n (255, 16);
+</ pre>
 
-まず$nが引数として渡されている必要があります。次に2以上16以下の整数である必要があります。この条件を1行で表現したのが上の文です。
+The first argument is a decimal number, and the second argument is a number that specifies the number to convert from decimal to decimal. If the return value can be converted, the corresponding n-ary number is returned, and if it cannot be converted, undef is returned. $ n supports binary to hexadecimal numbers.
 
-もし「$nが定義されていない」あるいは「$nが数字列でない」あるいは「$nが２より小さい」あるいは「$nが16より大きい」場合は、エラーとみなして単独のreturnを返します。
-
-単独のreturnはスカラーコンテキストの場合はundefを、リストコンテキストの場合は空リストを返します。
-
-<b>$decの有効性のチェックと符号の取り出し</b>
+<b> Checking the validity of $ n </ b>
 
 <pre>
-return if !defined $dec;
-return if $dec !~  /^([+-]?)\d+$/;
-my $sign = $1 ? substr($dec, 0, 1, '') : '';
-</pre>
+return if! defined $ n || $ n! ~ / ^ \ D + $ / || $ n <2 || $ n> 16;
+</ pre>
 
-$decは引数として渡されている必要があります。次に、10進数の整数である必要があります。<a href="/blog/20080831122025.html">10進整数のをあらわす正規表現</a>は
+First, $ n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
 
-<pre>
-/^([+-]?)\d+$/
-</pre>
+If "$ n is not defined" or "$ n is not a string" or "$ n is less than 2" or "$ n is greater than 16", it is considered an error and a single return is returned. ..
 
-になります。(「先頭に+か-があってもなくてもよくて、その後に数字がひとつ以上続いて終わる」と読む)
+A single return returns undef for scalar contexts and an empty list for list contexts.
+
+<b> Checking the validity of $ dec and extracting the code </ b>
 
 <pre>
-my $sign = $1 ? substr( $dec, 0, 1, '' ) : '';
-</pre>
+return if! defined $ dec;
+return if $ dec! ~ / ^ ([+-]?) \ D + $ /;
+my $ sign = $ 1? substr ($ dec, 0, 1,''):'';
+</ pre>
 
-符号がついていた場合は$1に符号が代入されますので、$1が定義されているかどうかで符号のありなしを判定します。ここでは、条件分岐に3項演算子を用いています。
-
-符号があれば、<a href="/blog/20080224120386.html">substr関数</a>で、先頭の一文字を空文字に置換することで削除します。substr関数の戻り値には、削除された文字すなわち+か-が返却されます。
-
-$1が未定義の場合は符号がないので''空文字列を代入しておきます。
-
-<b>10進数をn進数に変換するアルゴリズム</b>
+$ dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html"> Regular expression for decimal integers </a>
 
 <pre>
-return $dec if $dec == 0;
+/ ^ ([+-]?) \ D + $ /
+</ pre>
+
+Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")
+
+<pre>
+my $ sign = $ 1? substr ($ dec, 0, 1,''):'';
+</ pre>
+
+If there is a sign, the sign is assigned to $ 1, so the presence or absence of the sign is judged by whether or not $ 1 is defined. Here, the ternary operator is used for conditional branching.
+
+If there is a sign, delete it by replacing the first character with an empty string with the <a href="/blog/20080224120386.html"> substr function </a>. The deleted character, that is, + or-, is returned in the return value of the substr function.
+
+If $ 1 is undefined, there is no sign, so substitute an empty string.
+
+<b> Algorithm for converting decimal numbers to n-ary numbers </ b>
+
+<pre>
+return $ dec if $ dec == 0;
     
 my @rem_list;
     
-# 10進数をn進数に変換する。
-while ($dec != 0) {
-  unshift(@rem_list, $dec % $n);
-  $dec = int($dec / $n);
+# Convert decimal to n-ary.
+while ($ dec! = 0) {
+  unshift (@rem_list, $ dec% $ n);
+  $ dec = int ($ dec / $ n);
 }
-</pre>
+</ pre>
 
-$decが0の場合は、戻り値が必ず0になるので0を返却しておきます。<a href="/blog/20100123126425.html">while文</a>のループの中で、10進数をn進数に変換するのですが、0の場合は例外的な記述を行わないといけないので先に処理しておきました。
+If $ dec is 0, the return value will always be 0, so 0 is returned. In the loop of <a href="/blog/20100123126425.html"> while statement </a>, the decimal number is converted to the n-ary number, but if it is 0, an exceptional description must be made. So I processed it first.
 
-10進数をn進数に変換するアルゴリズムは以下のようになります。
+Decimal number
 
-<pre>
-10進数をnで割り算することを商が0になるまで繰り返す。繰り返しの割り算を行った余りを逆さから記述するとn進数に変換できる。
-</pre>
-
-もう少し数字を使ってわかりやすく書いてみます。
+The algorithm for converting to n-ary is as follows.
 
 <pre>
-10進数の11を2進数に変換する。
+Divide the decimal number by n and repeat until the quotient is 0. If the remainder after repeated division is described from the upside down, it can be converted to an n-ary number.
+</ pre>
 
-11 ÷ 2 = 5 余り 1
- 5 ÷ 2 = 2 余り 1
- 2 ÷ 2 = 1 余り 0
- 1 ÷ 2 = 0 余り 1
-
-余りを逆さから書くと 1011 でこれが答え。
-</pre>
-
-unshift関数を使って、配列の先頭に余りを挿入していくことで、この順番に並びます。
-
-<b>配列に代入されている数値をn進文字に変換して結合</b>
+I will write it in an easy-to-understand manner using a few more numbers.
 
 <pre>
-my @dec_to_n = (0 .. 9, 'A' .. 'F');
-return join('', $sign, map {$dec_to_n[$_]} @rem_list); 
-</pre>
+Converts the decimal number 11 to a binary number.
 
-たとえば16進数などの場合は、11～15をA～Fに変換する必要があります。@dec_to_nは変換のための配列です。
+11 ÷ 2 = 5 remainder 1
+ 5 ÷ 2 = 2 remainder 1
+ 2 ÷ 2 = 1 remainder 0
+ 1 ÷ 2 = 0 remainder 1
 
-@rem_list の各要素をmap関数で、 $dec_to_n[ $_ ] に変換します。
+If you write the remainder upside down, this is the answer in 1011.
+</ pre>
+
+By using the unshift function and inserting the remainder at the beginning of the array, it will be arranged in this order.
+
+<b> Convert the numbers assigned to the array to n-ary characters and combine them </ b>
 
 <pre>
-$dec_to_n[1] → 1
-$dec_to_n[10] → A
-$dec_to_n[15] → F
-</pre>
+my @dec_to_n = (0 .. 9,'A' ..'F');
+return join ('', $ sign, map {$ dec_to_n [$ _]} @rem_list);
+</ pre>
 
-のように変換されます。
+For example, for hexadecimal numbers, you need to convert 11 to 15 to A to F. @dec_to_n is an array for conversion.
 
-変換された配列と$signに保存してある符号をjoin関数で結びつけてひとつの文字列にします。
+Convert each element of @rem_list to $ dec_to_n [$ _] with the map function.
 
-<h4>n進数から10進数へ変換を行うアルゴリズム</h4>
+<pre>
+$ dec_to_n [1] → 1
+$ dec_to_n [10] → A
+$ dec_to_n [15] → F
+</ pre>
 
-n進数から10進数へ変換するサンプルです。
+Will be converted as
 
-n進数から10進数へ変換するアルゴリズムは簡単なので、引数の有効性のチェックもきちんと行ってみました。
+The converted array and the code saved in $ sign are combined with the join function to form a single character string.
 
-このサンプルでは、引数の有効性のチェックは本処理の3倍くらいありますが、本処理よりエラー処理の記述が多くなることはよくあることです。
+<h4> Algorithm for converting from n-ary to decimal </ h4>
+
+This is a sample to convert from n-ary to decimal.
+
+Since the algorithm for converting from n-ary to decimal is simple, I also checked the validity of the arguments properly.
+
+In this sample, the validity check of the argument is about 3 times as much as this process, but it is common that there are more error processing descriptions than this process.
 
 <pre>
 use strict;
 use warnings;
 
-# n進数から10進数への変換
-my $hex_num = "FF"; # 10進数では255 (15*16 + 15)
-print "16進数 $hex_num => 10進数 " . n_to_dec($hex_num , 16) . "\n";
+# Convert from n-ary to decimal
+my $ hex_num = "FF"; # 255 in decimal (15 * 16 + 15)
+print "Hex $ hex_num => Decimal". N_to_dec ($ hex_num, 16). "\ n";
 
-# n進数を10進数に変換( 16進数まで対応 )
+#Convert n-ary to decimal (up to hexadecimal)
 sub n_to_dec {
-  # 数字列と進数
-  my ($num_str, $n) = @_;
+  # Number strings and base numbers
+  my ($ num_str, $ n) = @_;
 
-  # $n の有効性のチェック
-  return if !defined $n || $n !~ /^\d+$/ || $n < 2 || $n > 16;
+  Checking the validity of # $ n
+  return if! defined $ n || $ n! ~ / ^ \ D + $ / || $ n <2 || $ n> 16;
     
-  # $num_strの有効性のチェック( $nとの整合性のチェックを含む )
-  return if !defined $num_str;
+  # Checking the validity of $ num_str (including checking the consistency with $ n)
+  return if! defined $ num_str;
 
-  # 個々の数字に分解
-  my @nums = split(//, $num_str);
+  # Break down into individual numbers
+  my @nums = split (//, $ num_str);
     
-  # 許容するのは1～9とA～F
-  my @valid = (0 .. 9, 'A' .. 'F');
-  my %valid;
-  for (my $i = 0; $i < @valid; $i++) {
-    # 変換テーブルを作成( $valid{E} = 15
-    # $valid{F} = 16 のようなテーブル )
-    $valid{$valid[$i]} = $i; 
+  # Allow 1-9 and A-F
+  my @valid = (0 .. 9,'A' ..'F');
+  my% valid;
+  for (my $ i = 0; $ i <@valid; $ i ++) {
+    # Create conversion table ($ valid {E} = 15)
+    A table like # $ valid {F} = 16)
+    $ valid {$ valid [$ i]} = $ i;
   }
     
-  # @nums の個々の数字が変換テーブルで正しく変換できない場合
-  # あるいは、変換後の数字に$n以上の数が含まれていた場合はundefを返す。
-  for my $num (@nums) {
-    # 小文字の場合は大文字に変換
-    $num = $valid{ uc $num };
-    return if !defined $num || $num >= $n;
+  If individual numbers in # @nums cannot be converted correctly in the conversion table
+  # Alternatively, if the converted number contains $ n or more, undef is returned.
+  for my $ num (@nums) {
+    # Convert lowercase letters to uppercase
+    $ num = $ valid {uc $ num};
+    return if! defined $ num || $ num> = $ n;
   }
     
-  # ここからが進数変換の本処理
-  my $dec = 0;
-  for my $i (@nums) {
-    # $nを掛けることで繰上げを行う
-    $dec = $dec * $n + $i;
+  # From here is the main process of base conversion
+  my $ dec = 0;
+  for my $ i (@nums) {
+    Carry up by multiplying by # $ n
+    $ dec = $ dec * $ n + $ i;
   }
-  return $dec;
+  return $ dec;
 }
-</pre>
+</ pre>
 
-<b>n進数から10進数に変換するサブルーチンの仕様</b>
-
-<pre>
-n_to_dec($num_str, $n);
-n_to_dec('FE16' , 16);
-</pre>
-
-第1引数はn進文字列、第2引数は何進数から10進数に変換するのかを数字で指定します。戻り値は変換できた場合は対応する10進数が、変換できなかった場合はundefが返ります。$nは、2進数から16進数までに対応しています。
-
-<b>$n の有効性のチェック</b>
+<b> Subroutine specifications for converting n-ary to decimal </ b>
 
 <pre>
-return if !defined $n || $n !~ /^\d+$/ || $n < 2 || $n > 16;
-</pre>
+n_to_dec ($ num_str, $ n);
+n_to_dec ('FE16', 16);
+</ pre>
 
-まず$nが引数として渡されている必要があります。次に2以上16以下の整数である必要があります。この条件を1行で表現したのが上の文です。
+The first argument is an n-ary character string, and the second argument is a number that specifies the number to convert from base to decimal. The return value returns the corresponding decimal number if it can be converted, and undef if it cannot be converted. $ n supports binary to hexadecimal numbers.
 
-もし「$nが定義されていない」あるいは「$nが数字列でない」あるいは「$nが２より小さい」あるいは「$nが16より大きい」場合は、エラーとみなして単独のreturnを返します。
-
-単独のreturnはスカラーコンテキストの場合はundefを、リストコンテキストの場合は空リストを返します。
-
-<b>$num_strの有効性のチェック</b>
-
-$num_strが有効である場合は、「$num_str が定義されていて」、「$num_strが数字あるいはA～F,a～fで構成されている」場合です。
-
-また$num_str の有効性は $nに依存します。$n がたとえば8ならば$num_strに9という数字が出てきてはいけません。8進数の文字列に9という数字が出てきた場合はエラーとします。
-
-<b>個々の文字に分解</b>
+<b> Checking the validity of $ n </ b>
 
 <pre>
-my @nums = split(//, $num_str);
-</pre>
+return if! defined $ n || $ n! ~ / ^ \ D + $ / || $ n <2 || $ n> 16;
+</ pre>
 
-"1010"という2進数文字列を10進数に直す場合は、8*1 + 4 * 0 + 2*1 + 1*0 という計算をすることになるので、split関数を使って個々の文字に分解しておきます。
+First, $ n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
 
-<b>有効な文字をキーとして持つハッシュの作成</b>
+If "$ n is not defined" or "$ n is not a string" or "$ n is less than 2" or "$ n is greater than 16", it is considered an error and a single return is returned. ..
+
+A single return returns undef for scalar contexts and an empty list for list contexts.
+
+<b> Checking the validity of $ num_str </ b>
+
+If $ num_str is valid, then "$ num_str is defined" and "$ num_str consists of numbers or A to F, a to f".
+
+Also, the validity of $ num_str depends on $ n. If $ n is 8, for example, then $ num_str should not have the number 9. If the number 9 appears in the octal character string, an error will occur.
+
+<b> Decompose into individual characters </ b>
 
 <pre>
-my @valid = (0 .. 9 , 'A' .. 'F');
-my %valid;
-for (my $i = 0; $i < @valid; $i++){
-  $valid{$valid[$i]} = $i;
+my @nums = split (//, $ num_str);
+</ pre>
+
+If you want to convert the binary character string "1010" to decimal, you need to calculate 8 * 1 + 4 * 0 + 2 * 1 + 1 * 0, so use the split function to break it down into individual characters. I will do it.
+
+<b> Creating a hash with valid characters as keys </ b>
+
+<pre>
+my @valid = (0 .. 9,'A' ..'F');
+my% valid;
+for (my $ i = 0; $ i <@valid; $ i ++) {
+  $ valid {$ valid [$ i]} = $ i;
 }
-</pre>
-有効だとみなしたいのは、0～9,A～F,a～fです。また進数変換の計算に備えて、Aという文字列は10に、Fという文字は15にといったような変換を行うハッシュを作っておきます。
+</ pre>
+We want to consider 0-9, A-F, a-f to be valid. Also, in preparation for the calculation of base conversion, create a hash that converts the character string A to 10 and the character F to 15.
 
-このハッシュテーブルは便利にできていて、有効な文字ならば変換された文字が返却され、そうでなければundefが返ります。このようなハッシュテーブルを作れば、変換と変換可能かどうかの判定を同時に行うことができます。
+This hashtable is convenient, if it is a valid character it will return the converted character, otherwise it will return undef. If you create such a hash table, you can convert and judge whether it is convertible at the same time.
 
-<b>「$num_strの有効性のチェック」と「$nとの整合性のチェック」</b>
+<b> "Checking the validity of $ num_str" and "Checking the consistency with $ n" </ b>
 
 <pre>
-for my $num (@nums) {
-  $num = $valid{uc $num};
-  return if !defined $num || $num >= $n;
+for my $ num (@nums) {
+  $ num = $ valid {uc $ num};
+  return if! defined $ num || $ num> = $ n;
 }
-</pre>
+</ pre>
 
-@numsには、分解されたひとつつひとつの文字が入っています。これを%validハッシュを使って、変換できる場合は数値に変換します。
+@nums contains each decomposed character. Convert this to a number if it can be converted using a% valid hash.
 
-uc関数は大文字に変換する関数です。'f'といった小文字の場合でも、'F'に変換することで有効な文字と判断されるようにします。
+The uc function is a function that converts to uppercase. Even if it is a lowercase letter such as'f', it will be judged as a valid character by converting it to'F'.
 
-%validを使って変換できなかった場合は、$numにはundefが代入されます。$numがundefだった場合は有効な$str_numで無かったと判断しreturnします。
+If it cannot be converted using% valid, $ num will be assigned undef. If $ num is undef, it is judged that it was not a valid $ str_num and it returns.
 
-また $num が $n( 引数での進数の指定 )以上の場合も有効な$str_numでないとみなして、returnします。
+Also, if $ num is greater than or equal to $ n (specified base in the argument), it is considered not to be a valid $ str_num and returns.
 
-<b>n進数から10進数への変換</b>
+<b> Conversion from n-ary to decimal </ b>
 
 <pre>
-my $dec = 0;
-for my $i (@nums) { 
-  $dec = $dec * $n + $i;
+my $ dec = 0;
+for my $ i (@nums) {
+  $ dec = $ dec * $ n + $ i;
 }
-</pre>
+</ pre>
 
-n進数から10進数の進数変換のアルゴリズムは以下のようになります。8進数の'254'を10進数に変換するには以下のように演算を行っていきます。
-
-<pre>
-0×8 + 2 => 2
-2×8 + 5 => 21
-21×8 + 4 => 172
-</pre>
-
-計算過程をそのまま残すと以下のようになります。
+The algorithm for converting from n-ary to decimal is as follows. To convert the octal '254' to decimal, perform the following operations.
 
 <pre>
-0×8 + 2
-(0×8 + 2)×8 + 5
-{(0×8 + 2)×8 + 5}×8 + 4 
-# つまり上記は
-2×8×8 + 5×8 + 4 となっています。
-</pre>
+0 × 8 + 2 => 2
+2 × 8 + 5 => 21
+21 × 8 + 4 => 172
+</ pre>
 
+If you leave the calculation process as it is, it will be as follows.
+
+<pre>
+0 × 8 + 2
+(0 × 8 + 2) × 8 + 5
+{(0 × 8 + 2) × 8 + 5} × 8 + 4
+# So the above is
+It is 2 x 8 x 8 + 5 x 8 + 4.
+</ pre>

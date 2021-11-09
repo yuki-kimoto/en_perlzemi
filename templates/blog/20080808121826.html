@@ -1,112 +1,112 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop="name">ファイル入出力</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>シーケンシャルアクセスとランダムアクセス</h2>
+      <span itemprop = "name"> File input / output </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Sequential access and random access </ h2>
 
 
-ファイルにアクセスする方法には、シーケンシャルアクセスとランダムアクセスという2種類の方法があります。
+There are two ways to access files: sequential access and random access.
 
-シーケンシャルアクセスとは、ファイルを先頭から順番に読み込んでいくアクセスのことで、ランダムアクセスとは、ファイルの特定のバイト位置を指定するアクセスのことです。
+Sequential access is access that reads the file in order from the beginning, and random access is access that specifies a specific byte position of the file.
 
-シーケンシャルアクセスは、可変長のテキストファイルを扱う場合に利用され、ランダムアクセスは固定長バイナリファイル高速に処理する場合に利用されます。
+Sequential access is used when dealing with variable length text files, and random access is used when processing fixed length binary files at high speed.
 
-<h3>シーケンシャルアクセスとは</h3>
+<h3> What is sequential access? </ H3>
 
-シーケンシャルアクセスは順次アクセスとも呼ばれます。シーケンシャルアクセスとは、ファイルを先頭から順番に読み込んでいくアクセス方法のことです。ファイルを<a href="/blog/20080718121643.html">open関数</a>でオープンして、<a href="/blog/20180424152457.html">readline関数</a>で1行づつ読み込んでいくのは、シーケンシャルアクセスになります。テキストファイルは、この方法でアクセスします。
+Sequential access is also known as sequential access. Sequential access is an access method that reads files in order from the beginning. Open the file with the <a href="/blog/20080718121643.html"> open function </a> and read it line by line with the <a href="/blog/20180424152457.html"> readline function </a> It will be sequential access. Text files are accessed this way.
 
-シーケンシャルアクセスの欠点としては、たとえば、変更したい部分がファイルの1万行目にあった場合は、必要のない9999行を読み込む必要があることです。高速にアクセスする必要があるときは、シーケンシャルアクセスは向いていません。
+The downside of sequential access is that, for example, if the part you want to change is on line 10,000 of the file, you need to read 9999 lines that you don't need. Sequential access is not suitable when you need fast access.
 
-ただ、改行を区切り文字とするような可変長のテキストファイルを扱う場合はシーケンシャルアクセスしか利用できません。
+However, when dealing with variable-length text files that use line breaks as delimiters, only sequential access can be used.
 
-<h3>ランダムアクセスとは</h3>
+<h3> What is random access? </ H3>
 
-ランダムアクセスとは、ファイルのなかの特定のバイト位置を指定しておこなうファイルアクセス方法のことです。たとえば、「10バイト目から8バイト」のように指定します。ランダムアクセスという名前ですが、ランダムにアクセスするという意味はありません。バイト位置を指定したアクセスを意味します。
+Random access is a file access method that is performed by specifying a specific byte position in the file. For example, specify "10th to 8th bytes". It's called Random Access, but it doesn't mean random access. Means access with a specified byte position.
 
 <pre>
-|---------------------------------------|
-|    |         |データ|        |        |
-|----+---------+------+--------+--------|
-</pre>
+| --------------------------------------- |
+| | | Data | | |
+| ---- + --------- + ------ + -------- + -------- |
+</ pre>
 
-上記の「データ」が先頭から10バイト目で、8バイトのデータならば、その位置を指定することで、直接アクセスすることができます。
+If the above "data" is the 10th byte from the beginning and 8 bytes of data, you can access it directly by specifying the position.
 
-バイト位置を直接指定できるので、ファイルへのアクセスが非常に高速になります。シーケンシャルアクセスのように、余分な部分を読み込む必要がないからです。ただし、特定のバイト位置を指定してファイルにアクセスするためには、ファイルを固定長のデータを扱うように設計しなければなりません。ファイルが可変長であれば、特定の位置を指し示すことができないからです。
+You can specify the byte position directly, which makes accessing the file very fast. This is because there is no need to read extra parts like sequential access. However, in order to access a file by specifying a specific byte position, the file must be designed to handle fixed-length data. If the file is variable in length, it cannot point to a specific location.
 
-<h3>シーケンシャルアクセスとランダムアクセスの比較</h3>
+<h3> Comparison of sequential access and random access </ h3>
 
 <table>
   <tr>
     <td>
-      　
-    </td>
+      Twice
+    </ td>
     <td>
-      <span style="font-weight:bold;">シーケンシャルアクセス</span>
-    </td>
+      <span style = "font-weight: bold;"> Sequential access </ span>
+    </ td>
     <td>
-      <span style="font-weight:bold;">ランダムアクセス</span>
-    </td>
-  </tr>
+      <span style = "font-weight: bold;"> Random access </ span>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <span style="font-weight:bold;">アクセス方法</span>
-    </td>
+      <span style = "font-weight: bold;"> Access method </ span>
+    </ td>
     <td>
-      順次読み込み
-    </td>
+      Sequential reading
+    </ td>
     <td>
-      バイト位置の指定
-    </td>
-  </tr>
+      Specifying the byte position
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <span style="font-weight:bold;">主な用途</span>
-    </td>
+      <span style = "font-weight: bold;"> Main uses </ span>
+    </ td>
     <td>
-      テキストファイルの読み込み
-    </td>
+      Reading a text file
+    </ td>
     <td>
-      速度が要求されるアプリケーション
-    </td>
-  </tr>
+      Applications that require speed
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <span style="font-weight:bold;">速度</span>
-    </td>
+      <span style = "font-weight: bold;"> speed </ span>
+    </ td>
     <td>
-      データが後ろにあるほど低速
-    </td>
+      The slower the data is
+    </ td>
     <td>
-      直接アクセスできるため高速
-    </td>
-  </tr>
+      High speed due to direct access
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      <span style="font-weight:bold;">ファイル設計</span>
-    </td>
+      <span style = "font-weight: bold;"> File design </ span>
+    </ td>
     <td>
-      可変長データでも可
-    </td>
+      Variable length data is also possible
+    </ td>
     <td>
-      固定長データ
-    </td>
-  </tr>
+      Fixed length data
+    </ td>
+  </ tr>
 
-</table>
+</ table>

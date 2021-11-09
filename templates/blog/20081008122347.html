@@ -1,60 +1,60 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-        <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-        <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>time関数 - エポックから現在までの経過秒数を取得</h2>
+        <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+        <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> time function --Get the number of seconds elapsed from the epoch to the present </ h2>
 
 
 
-<b>time関数</b>を使用すると、エポックから現在までの経過秒数を取得することができます。エポックとは時刻の基準となるある時点のことです。多くのシステムでは、協定世界時の 1970年1月1日0時0分0秒00:00:00がエポックとなります。
+You can use the <b> time function </ b> to get the number of seconds elapsed from the epoch to the present. An epoch is a point in time that serves as a reference for time. In many systems, the epoch is January 1, 1970, 0:00:00:00, Coordinated Universal Time.
 
 <pre>
-my $sec_from_epoch = time;
-</pre>
+my $ sec_from_epoch = time;
+</ pre>
 
-time関数を使用するとエポックから数えた秒数を取得することができます。この秒数はうるう秒が考慮されていないので実際の時刻と少しの誤差があります。(うるう秒とは毎年地球の自転が遅れるために数年に一度時刻の調整のために挿入される秒のことです。)
+You can use the time function to get the number of seconds counted from the epoch. This number of seconds is slightly different from the actual time because leap seconds are not taken into account. (Leap seconds are seconds that are inserted every few years to adjust the time because the rotation of the earth is delayed every year.)
 
-日付・時刻に関する一般的な情報については、以下を参考にしてください。
+For general information about dates and times, please refer to the following.
 
 <ul>
   <li>
-    <a href="/blog/20161123147990.html">Perlで日付・時刻を扱う</a>
-  </li>
-</ul>
+    <a href="/blog/20161123147990.html"> Handling dates and times in Perl </a>
+  </ li>
+</ ul>
 
-<h4>エポックとは</h4>
+<h4> What is an epoch? </ H4>
 
-エポックとは時刻の基準となるある時点のことです。多くのシステムでは、協定世界時の 1970年1月1日0時0分0秒00:00:00がエポックとなります。
+An epoch is a point in time that serves as a reference for time. In many systems, the epoch is January 1, 1970, 0:00:00:00, Coordinated Universal Time.
 
-<h4>時刻の範囲</h4>
+<h4> Time range </ h4>
 
-32bitのマシンにおいてはエポックを基準として、-2,147,483,648秒～2,147,483,647秒までの時刻を表現することができます。
+On a 32-bit machine, the time from -2,147,483,648 seconds to 2,147,483,647 seconds can be expressed based on the epoch.
 
-日付に直すと（協定世界時で)1901年12月13日(金)20時45分52秒から2038年1月19日(火)3時14分7秒までとなります。　この範囲を超える時刻の計算はPerlの標準関数では行うことができません。
+The date will be from December 13, 1901 (Friday) 20:45:52 to January 19, 2038 (Tuesday) 3:14:07 (Coordinated Universal Time). Calculation of time beyond this range cannot be performed with Perl standard functions.
 
-<h3>time関数のサンプル</h3>
+<h3> Time function sample </ h3>
 
-time関数を使ったサンプルです。
+This is a sample using the time function.
 
 <pre>
 use strict;
 use warnings;
 
-# エポックから現時点までの経過秒数を取得する
-my $sec_from_epoch = time;
+#Get the number of seconds elapsed from the epoch to the present time
+my $ sec_from_epoch = time;
 
-print "$sec_from_epoch sec\n";
-</pre>
+print "$ sec_from_epoch sec \ n";
+</ pre>

@@ -1,74 +1,74 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161026147748.html">
-      <span itemprop="name">数値</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">数値と文字列の自動変換</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>数値と文字列の自動変換</h2>
+      <span itemprop = "name"> Numerical value </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> Automatic conversion of numbers and strings </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Automatic conversion of numbers and strings </ h2>
 
 
 
-Perlでは、<a href="/blog/20161003147558.html">文字列</a>と数値の自動変換が暗黙的に行われます。C言語やJavaのように明示的に文字列と数値の変換を行う必要がないので、スクリプトの記述が非常に楽です。
-
-<pre>
-my $num1_str = "100";
-my $num1 = 100;
-
-my $num1_total = $num1_str + $num1;
-</pre>
-
-文字列である"100"は数値として使用されると100に自動変換されて計算されます。
-
-Perlがどのように文字列を数値として解釈するかを解説します。
+Perl implicitly automatically converts <a href="/blog/20161003147558.html"> strings </a> and numbers. It is very easy to write a script because there is no need to explicitly convert strings and numbers as in C and Java.
 
 <pre>
-my $num2_str = "34A11";
-</pre>
+my $ num1_str = "100";
+my $ num1 = 100;
 
-"34A11"は数値として使用されると34に変換されます。先頭から続く数値の部分が数値に変換されます。
+my $ num1_total = $ num1_str + $ num1;
+</ pre>
 
-use warnings; を記述しておくと数値だけで構成されない文字列を数値として使用しようとすると警告が行われます。
+When the character string "100" is used as a numerical value, it is automatically converted to 100 and calculated.
 
-空文字列"" は、0として計算されます(この場合も数値ではないので警告が行われます)。
+Learn how Perl interprets strings as numbers.
 
-<h3>サンプル</h3>
+<pre>
+my $ num2_str = "34A11";
+</ pre>
 
-数値と文字列の自動変換を確認するサンプルです。
+"34A11" is converted to 34 when used as a number. The part of the number that continues from the beginning is converted to a number.
+
+If you write use warnings ;, you will be warned if you try to use a string that does not consist only of numbers as a number.
+
+The empty string "" is calculated as 0 (again, it is not a number, so a warning is given).
+
+<h3> Sample </ h3>
+
+This is a sample to check the automatic conversion of numbers and strings.
 
 <pre>
 use strict;
 use warnings;
 
-my $num1_str = "100";
-my $num1 = 100;
+my $ num1_str = "100";
+my $ num1 = 100;
 
-my $num1_total = $num1_str + $num1;
+my $ num1_total = $ num1_str + $ num1;
 
-print "(1)文字列から数値への自動変換\n";
-print "\$num1_total = $num1_total\n\n";
+print "(1) Automatic conversion from string to number \ n";
+print "\ $ num1_total = $ num1_total \ n \ n";
 
-# この文字列が数値として使用される場合は、34と
-# として扱われる。
-# use warningsを有効にしていれば数値として
-# 使おうとすると警告になる。
-my $num2_str = "34A11"; 
+# If this string is used as a number, then 34
+Treated as #.
+As a number if # use warnings are enabled
+# If you try to use it, you will be warned.
+my $ num2_str = "34A11";
 
-my $num2 = 3;
+my $ num2 = 3;
 
-my $num2_total = $num2_str + $num2;
+my $ num2_total = $ num2_str + $ num2;
 
-print "(2)先頭から続く数字を使って計算される。\n";
-print "\$num2_total = $num2_total\n";
-</pre>
+print "(2) Calculated using the numbers that continue from the beginning. \ N";
+print "\ $ num2_total = $ num2_total \ n";
+</ pre>

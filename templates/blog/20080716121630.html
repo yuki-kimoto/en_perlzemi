@@ -1,324 +1,325 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop="name">サブルーチン</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>サブルーチンの動的な生成</h2>
+        <span itemprop = "name"> Subroutine </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Dynamic generation of subroutines </ h2>
 
 
 
-Perlでは、サブルーチンを動的に生成することもできます。
+Perl also allows you to dynamically generate subroutines.
 
-<h3>関数ジェネレータ</h3>
+<h3> Function generator </ h3>
 
-関数ジェネレータとは、サブルーチンを生成するためのサブルーチンのことです。関数ジェネレータは、動的にサブルーチンを生成したいときに用いられるテクニックのひとつです。
+A function generator is a subroutine that creates a subroutine. Function generators are one of the techniques used when you want to dynamically generate subroutines.
 
-一般的な名称にしたがって関数ジェネレータと呼びますが、Perlの用語でいえばサブルーチンジェネレータのことです。この解説では、関数もサブルーチンも同じ意味です。
+It's called a function generator according to its general name, but in Perl terms it's a subroutine generator. In this discussion, functions and subroutines have the same meaning.
 
-<h4>関数ジェネレータの作成と呼び出し</h4>
+<h4> Creating and calling a function generator </ h4>
 
 <pre>
-# 呼び出し
-my $func = func_generator();
-$func->();
+#Call
+my $ func = func_generator ();
+$ func-> ();
 
-# 定義
+#Definition
 sub func_generator {
 
-  my $func = sub {
-    print "これは、実行時に生成されたサブルーチンです。\n";
+  my $ func = sub {
+    print "This is a subroutine generated at runtime. \ N";
   };
-  # サブルーチンへのリファレンスを返す。
-  return $func; 
+  # Returns a reference to the subroutine.
+  return $ func;
 }
-</pre>
+</ pre>
 
-関すジェネレータを作成するには、無名サブルーチンを作成して、そのリファレンスを、戻り値として返します。
+To create a generator for it, create an anonymous subroutine and return its reference as a return value.
 
-関数ジェネレータを呼び出す( func_generator() )と、生成されたサブルーチンへのリファレンスが戻りち値として取得できます。生成さえたサブルーチンのリファレンスをデリファレンスして( $func->() )して、サブルーチンを呼び出します。
+When you call the function generator (func_generator ()), you can get a reference to the generated subroutine as a return value. Dereference ($ func-> ()) the reference of the generated subroutine and call the subroutine.
 
-<h4>少しだけ異なった複数のサブルーチンを生成する</h4>
+<h4> Generate multiple subroutines that are slightly different </ h4>
 
 <pre>
-# 関数ジェネレータ呼び出し
-my $create_safe_msg = message_factory("is safe."); 
-my $create_danger_msg = message_factory("is danger."); 
+#Function generator call
+my $ create_safe_msg = message_factory ("is safe.");
+my $ create_danger_msg = message_factory ("is danger.");
 
-# 生成したサブルーチンの呼び出し
-my $safe_msg1 = $create_safe_msg->("cat"); 
-my $danger_msg1 = $create_danger_msg->("mamushi");
+# Call the generated subroutine
+my $ safe_msg1 = $ create_safe_msg-> ("cat");
+my $ danger_msg1 = $ create_danger_msg-> ("mamushi");
 
-# 伝えるメッセージを指定できるサブルーチンを作成する関数ジェネレータ
+# Function generator that creates a subroutine that allows you to specify the message to convey
 sub message_factory {
-  my $message = shift; 
+  my $ message = shift;
   
   return sub {
-    my $word = shift;
-    return $word . ' ' . $message; 
+    my $ word = shift;
+    return $ word.'''. $ Message;
   }
 }
-</pre>
+</ pre>
 
-関数ジェネレータで引数を受け取って、その引数を生成するサブルーチンの中で利用することができます。こうすることで、少しだけ異なったサブルーチンを複数生成することができます。
+It can be used in a subroutine that receives an argument in a function generator and generates that argument. This allows you to generate multiple subroutines that are slightly different.
 
-<h3>型グロブを使ってサブルーチンの名前を動的に決定する</h3>
+<h3> Dynamically name subroutines using typeglobs </ h3>
 
-型グロブを使ってサブルーチンの名前を動的に決定するサンプルです。
+This is a sample that dynamically names a subroutine using a typeglob.
 
-<h4>無名サブルーチンに名前をつける</h4>
-
-<pre>
- *sum = sub {
-  return $_[0] + $_[1];                         
-};
-</pre>
-
-型グロブを利用することで、サブルーチンに別名をつけることができます。左辺は型グロブ( *name )、右辺はサブルーチンへのリファレンス( \&subroutin )にします。
-
-今回の例の場合は、右辺は無名サブルーチンへのリファレンスになっており、無名サブルーチンに別名をつけていることになります。
-
-無名サブルーチンに名前をつけるくらいなら、最初から名前をつけておけばよいと考えるかもしれません。無名サブルーチンに名前をつけることの利点は、実行時にサブルーチンに名前を与えることができるということです。サブルーチン名を動的に決定することができます。
-
-<h4>動的にサブルーチンに名前をつける</h4>
+<h4> Name an anonymous subroutine </ h4>
 
 <pre>
-my $word = 'cat';
-my $func_name = "${word}_repeat";
-
-no strict 'refs';
-*{$func_name} = sub {
-  return "$word $word";                 
+ * sum = sub {
+  return $ _ [0] + $ _ [1];
 };
-</pre>
+</ pre>
 
-型グロブ名には、変数を使うことができます。$func_name に入る値によって、サブルーチン名が変化します。
+Subroutines can be aliased by using typeglobs. The left side is the type glob (* name) and the right side is the reference to the subroutine (\ & subroutin).
 
-*{$name} という記述は、use strict; を使用していると、エラーになります。no strict 'refs'として、シンボリックリンクの制限を無効にします。( ところで、*{ $name }という記述はなぜシンボリックリファレンスなんでしょうか?  )今回の場合は、cat_repeat という名前を動的につけています。
+In the case of this example, the right-hand side is a reference to the anonymous subroutine, which means that the anonymous subroutine is given an alias.
 
-もう少しよく書いてみましょう。
+You might think that it's better to name the anonymous subroutine from the beginning than to name it. The advantage of naming anonymous subroutines is that you can give the subroutine a name at run time. The subroutine name can be determined dynamically.
+
+<h4> Dynamically name subroutines </ h4>
+
+<pre>
+my $ word ='cat';
+my $ func_name = "$ {word} _repeat";
+
+no strict'refs';
+* {$ func_name} = sub {
+  return "$ word $ word";
+};
+</ pre>
+
+You can use variables in the typeglob name. The subroutine name changes depending on the value entered in $ func_name.
+
+The description * {$ name} will result in an error if you use use strict ;. no strict Disables symbolic link restrictions as'refs'. (By the way, why is the description * {$ name} a symbolic reference?) In this case, the name cat_repeat is dynamically assigned.
+
+Let's write a little better.
 
 <pre>
 BEGIN {
-  my $word = 'cat';
-  my $func_name = "${word}_repeat";
+  my $ word ='cat';
+  my $ func_name = "$ {word} _repeat";
 
-  my $code = sub{
-    return "$word $word"; 
+  my $ code = sub {
+    return "$ word $ word";
   };
     
-  no strict 'refs';    
-  *{$func_name} = $code;
+  no strict'refs';
+  * {$ func_name} = $ code;
 }
-</pre>
+</ pre>
 
-BEGINを使って、コンパイル時に動的にサブルーチン名を決定するようにしておきます。my $code = sub{ }; という記述でいったん無名サブルーチンへのリファレンスを変数に格納しておき、最後に *{ $func_name } = $code; として名前をつけます。このようにして、no strict 'refs' の有効範囲をできるだけ狭めておいたほうがよいです。
+Use BEGIN to dynamically determine the subroutine name at compile time. Store the reference to the anonymous subroutine in a variable with the description my $ code = sub {} ;, and finally name it as * {$ func_name} = $ code ;. In this way, you should keep the scope of no strict'refs' as narrow as possible.
 
-<h3>関数テンプレート</h3>
+<h3> Function template </ h3>
 
-<strong>関数テンプレート</strong>とは、動的に複数のサブルーチンを作成するプログラム技法です。プログラムが始まる前にサブルーチンに名前をつけておくのではなくて、プログラムが始まってからサブルーチンに名前をつけます。
+<Strong> Function template </ strong> is a programming technique that dynamically creates multiple subroutines. Instead of naming the subroutine before the program starts, name the subroutine after the program starts.
 
-無名サブルーチンと型グロブを利用することで、サブルーチンを動的に生成し、動的に名前をつることができます。関数テンプレートを使えば、サブルーチン名に応じた処理を作成することができます。
+By using anonymous subroutines and typeglobs, you can dynamically generate subroutines and name them dynamically. You can use a function template to create a process according to the subroutine name.
 
-<h4>関数テンプレートの書き方</h4>
+<h4> How to write a function template </ h4>
 
 <pre>
-my %numbers = (
+my% numbers = (
   one => 1,
   two => 2,
   three => 3,
   four => 4,
 );
 
-for my $num (keys %numbers) {
-  # 無名サブルーチンへのリファレンスを繰り返し作成
-  my $code = sub {
-    # 数の名前に対応した戻り値が返る
-    return $numbers{$num}; 
+for my $ num (keys% numbers) {
+  #Repeat reference to anonymous subroutine
+  my $ code = sub {
+    # Returns the return value corresponding to the name of the number
+    return $ numbers {$ num};
   };
   
-  # シンボリックリファレンスの制限を解除
-  no strict 'refs';
-  # 型グロブを利用して無名サブルーチンに名前をつける。  
-  *{$num} = $code;
+  # Remove restrictions on symbolic references
+  no strict'refs';
+  Name an anonymous subroutine using a #type glob.
+  * {$ num} = $ code;
 }
-</pre>
+</ pre>
 
-注目する点は、「サブルーチン名」と「サブルーチンの処理」に関連性があることです。サブルーチン名が、one であればそれに対応する $numbers{ 'one' },すなわち 1 が、戻り値として返却されます。
+The point to note is that there is a relationship between "subroutine name" and "subroutine processing". If the subroutine name is one, the corresponding $ numbers {'one'}, or 1, is returned as the return value.
 
-関数テンプレートを作成するには、まずforeach文にサブルーチン名の配列を渡して繰り返し呼びます。次に無名サブルーチンを作成して、関数名を利用した処理を行います。最後に、型グロブを利用して無名サブルーチンに名前をつけてあげます。
+To create a function template, first pass an array of subroutine names to the foreach statement and call it repeatedly. Next, create an anonymous subroutine and perform processing using the function name. Finally, we'll use a typeglob to name the anonymous subroutine.
 
-実際の利用としては、Class::Accessor などのモジュールで、アクセッサーの作成の部分で利用されています。
+In actual use, it is used in the part of creating accessors in modules such as Class :: Accessor.
 
-もう少しよく書いてみましょう。
+Let's write a little better.
 
 <pre>
-BEGIN{
-  my %numbers = (
+BEGIN {
+  my% numbers = (
     one => 1,
     two => 2,
     three => 3,
     four => 4,
   );
 
-  for my $num (keys %numbers) {
-    # 無名サブルーチンへのリファレンスを繰り返し作成
-    my $code = sub {
-      return $numbers{ $num }; # 数の名前に対応した戻り値が返る
+  for my $ num (keys% numbers) {
+    #Repeat reference to anonymous subroutine
+    my $ code = sub {
+      return $ numbers {$ num}; # Returns the return value corresponding to the name of the number
     };
    
-    # シンボリックリファレンスの制限を解除
-    no strict 'refs';
-    # 型グロブを利用して無名サブルーチンに名前をつける。 
-    *{$num} = $code;
+    # Remove restrictions on symbolic references
+    no strict'refs';
+    Name an anonymous subroutine using a #type glob.
+    * {$ num} = $ code;
   }
 }
-</pre>
+</ pre>
 
-BEGINブロックで囲って、コンパイル時に動的にサブルーチンを作成しておいたほうがよいです。そうしないと、この記述を行うまでは、サブルーチンを呼び出すことができません。
+It is better to enclose it in a BEGIN block and dynamically create a subroutine at compile time. Otherwise, you will not be able to call the subroutine until you make this statement.
 
-もっと良いのは、モジュールとして別ファイルに作成して、use を使ってコンパイル時に読み込む方法です。
+A better way is to create it as a module in a separate file and use use to load it at compile time.
 
-<h3>サンプルコード</h3>
+<h3> Sample code </ h3>
 
-<h4>関数ジェネレーター</h4>
+<h4> Function generator </ h4>
 
-関数ジェネレーターのサンプルコードです。
+Sample code for the function generator.
 
-関数ジェネレータをコードを使って解説します。
+I will explain the function generator using code.
 
 <pre>
 use strict;
 use warnings;
 
-print "1: 関数ジェネレータでサブルーチンを生成する\n";
+print "1: Generate a subroutine with a function generator \ n";
 
-my $func = func_generator();
-$func->();
-print "\n";
+my $ func = func_generator ();
+$ func-> ();
+print "\ n";
 
-# 関数ジェネレータ
+#Function generator
 sub func_generator {
 
-  my $func = sub {
-    print "これは、実行時に生成されたサブルーチンです。\n";
+  my $ func = sub {
+    print "This is a subroutine generated at runtime. \ N";
   };
 
-  # サブルーチンへのリファレンスを返す。
-  return $func; 
+  # Returns a reference to the subroutine.
+  return $ func;
 }
 
-print "2: 関数ジェネレータで複数のサブルーチンを生成する。\n";
-# サブルーチンへのリファレンスが返る
-my $create_safe_msg = message_factory("is safe.");
-my $create_danger_msg = message_factory("is danger.");
+print "2: Generate multiple subroutines with function generator. \ N";
+# A reference to the subroutine is returned
+my $ create_safe_msg = message_factory ("is safe.");
+my $ create_danger_msg = m
+essage_factory ("is danger.");
 
-print "'is safe' を与えて生成したサブルーチン\n";
-# デリファレンスして呼び出す
-my $safe_msg1 = $create_safe_msg->("cat");
-my $safe_msg2 = $create_safe_msg->("dog");
+print "Subroutine generated with'is safe'\ n";
+#Dereference and call
+my $ safe_msg1 = $ create_safe_msg-> ("cat");
+my $ safe_msg2 = $ create_safe_msg-> ("dog");
 
-print "${safe_msg1}\n${safe_msg2}\n\n";
+print "$ {safe_msg1} \ n $ {safe_msg2} \ n \ n";
 
-print "'is danger' を与えて生成したサブルーチン\n";
-my $danger_msg1 = $create_danger_msg->("mamushi");
-my $danger_msg2 = $create_danger_msg->("suzumebachi");
+print "Subroutine generated with'is danger'\ n";
+my $ danger_msg1 = $ create_danger_msg-> ("mamushi");
+my $ danger_msg2 = $ create_danger_msg-> ("suzumebachi");
 
-print "${danger_msg1}\n${danger_msg2}\n\n";
+print "$ {danger_msg1} \ n $ {danger_msg2} \ n \ n";
 
-# 伝えるメッセージを指定できるサブルーチンを作成する関数ジェネレータ
+# Function generator that creates a subroutine that allows you to specify the message to convey
 sub message_factory {
-  # 関数ジェネレータの引数によって、生成するサブルーチンを動的に変更できる。
-  my $message = shift; 
+  You can dynamically change the generated subroutine by the argument of #function generator.
+  my $ message = shift;
 
   return sub {
-    my $word = shift;
-    return $word . ' ' . $message;
+    my $ word = shift;
+    return $ word.'''. $ Message;
   }
 }
-</pre>
+</ pre>
 
-<h4>動的に生成したサブルーチンに名前をつける</h4>
+<h4> Name dynamically generated subroutines </ h4>
 
-型グロブを使って、動的に生成したサブルーチンに名前をつけるサンプルです。
-
-<pre>
-use strict;
-use warnings;
-
-# サブルーチンの名前を実行時に決定する。
-# 型グロブと無名サブルーチンを利用することで実現できます。
-
-print "1: 無名サブルーチンに名前をつける。\n";
-*sum = sub {
-  # *sum は型ブログという機能で、別名を作成することができます。
-  # ここでは名前のないサブルーチンにsumという名前をつけています。
-  return $_[0] + $_[1];                         
-};
-
-print "1と2の和は、" . sum(1, 2) . "です。\n\n";
-
-print "2: 動的にサブルーチンに名前をつける。\n";
-
-my $word = 'cat';
-my $func_name = "${word}_repeat";
-
-no strict 'refs';
-*{$func_name} = sub {
-  # 無名サブルーチンに、cat_repeat 名前を実行時に
-  # 与えることができます。
-  return "$word $word"; 
-};
-
-my $repeat_word = cat_repeat();
-print $repeat_word . "\n";
-</pre>
-
-<h4>関数テンプレート</h4>
-
-関数テンプレートを使ったサンプルです。
+This is a sample to name a dynamically generated subroutine using a typeglob.
 
 <pre>
 use strict;
 use warnings;
 
-# 関数テンプレート
+# Determine the name of the subroutine at run time.
+This can be achieved by using #type globs and anonymous subroutines.
 
-print "1: 関数テンプレートを使って動的に複数のサブルーチンを作成する。\n";
+print "1: Name the anonymous subroutine. \ N";
+* sum = sub {
+  # * sum is a function called type blog, and you can create an alias.
+  # Here, the unnamed subroutine is named sum.
+  return $ _ [0] + $ _ [1];
+};
 
-# one というサブルーチンを呼んだら 1 が返却されるようにする。
-# two というサブルーチンを呼んだら 2 が返却されるようにする。
-my %numbers = (
+print "The sum of 1 and 2 is" .sum (1, 2). ". \ N \ n";
+
+print "2: Dynamically name the subroutine. \ N";
+
+my $ word ='cat';
+my $ func_name = "$ {word} _repeat";
+
+no strict'refs';
+* {$ func_name} = sub {
+  # When executing the cat_repeat name in an anonymous subroutine
+  # Can be given.
+  return "$ word $ word";
+};
+
+my $ repeat_word = cat_repeat ();
+print $ repeat_word. "\ n";
+</ pre>
+
+<h4> Function template </ h4>
+
+This is a sample using a function template.
+
+<pre>
+use strict;
+use warnings;
+
+#Function template
+
+print "1: Dynamically create multiple subroutines using function templates. \ N";
+
+Make sure that 1 is returned when the subroutine # one is called.
+Make sure that 2 is returned when the subroutine # two is called.
+my% numbers = (
   one => 1,
   two => 2,
   three => 3,
   four => 4,
 );
 
-for my $num (keys %numbers) {
-  # 無名サブルーチンへのリファレンスを繰り返し作成
-  my $code = sub {
-    # 数の名前に対応した戻り値が返る
-    return $numbers{ $num }; 
+for my $ num (keys% numbers) {
+  #Repeat reference to anonymous subroutine
+  my $ code = sub {
+    # Returns the return value corresponding to the name of the number
+    return $ numbers {$ num};
   };
   
-  # シンボリックリファレンスの制限を解除
-  no strict 'refs';
-  # 型グロブを利用して無名サブルーチンに名前をつける。
-  *{$num} = $code; 
+  # Remove restrictions on symbolic references
+  no strict'refs';
+  Name an anonymous subroutine using a #type glob.
+  * {$ num} = $ code;
 }
 
-print one(),two(),three(),four(),"\n";
-</pre>
+print one (), two (), three (), four (), "\ n";
+</ pre>

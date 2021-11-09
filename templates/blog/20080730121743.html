@@ -1,86 +1,86 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop="name">ファイル入出力</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>標準入力 標準出力 標準エラー出力</h2>
+      <span itemprop = "name"> File input / output </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Standard input Standard output Standard error output </ h2>
 
 
 
-標準入力、標準出力、標準エラー出力について書きます。
+I will write about standard input, standard output, and standard error output.
 
 <ol>
   <li>
-    標準入力
-  </li>
+    Standard input
+  </ li>
   <li>
-    標準出力
-  </li>
+    Standard output
+  </ li>
   <li>
-    標準エラー出力
-  </li>
-</ol>
+    Standard error output
+  </ li>
+</ ol>
 
-<h3>1.標準入力</h3>
+<h3> 1. Standard input </ h3>
 
-標準入力の読込先はキーボードです。標準入力を利用すると、キーボードから入力を受け取っることができます。キーボードから受け取った文字をそのまま出力するプログラムを書くと次のようになります。 STDIN というファイルハンドルが標準入力を表します。
-
-<pre>
-use strict;
-use warnings;
-
-# STDIN という標準入力を表すファイルハンドルから一行読み込み。
-my $line = <STDIN>; 
-print $line;
-</pre>
-
- STDINから読み込むと、キーボードから読みこまれることがわかると思います。
-
-<h3>2.標準出力</h3>
-
-標準出力の出力先は、ディスプレイです。標準出力に書き込むとディスプレイに表示することができます。STDOUTというファイルハンドルが標準出力を表します。
+The standard input is read to the keyboard. You can use standard input to receive input from the keyboard. If you write a program that outputs the characters received from the keyboard as they are, it will be as follows. A file handle called STDIN represents standard input.
 
 <pre>
 use strict;
 use warnings;
 
-print STDOUT $line; 
-</pre>
+Read a line from the file handle that represents the standard input # STDIN.
+my $ line = <STDIN>;
+print $ line;
+</ pre>
 
-明示的にSTDOUTを指定しなくても、print関数はデフォルトで、STDOUTに出力を行います。
+ If you read from STDIN, you can see that it is read from the keyboard.
 
-<h3>3.標準エラー出力</h3>
+<h3> 2. Standard output </ h3>
 
-標準エラー出力の出力先は、標準出力と同じでディスプレイです。標準エラー出力とはエラーをユーザに伝えるための機能です。STDERRというファイルハンドルが標準エラー出力を表します。以下のように書くと、ディスプレイに、"aaa" "bbb" と表示されます。
+The output destination of the standard output is the display. You can write to standard output and see it on the display. A file handle called STDOUT represents standard output.
 
 <pre>
 use strict;
 use warnings;
 
-print STDOUT "aaa\n";
-print STDERR "bbb\n";
-</pre>
+print STDOUT $ line;
+</ pre>
 
-両方がディスプレに出力するなら標準エラー出力の役割は何でしょうか?それは、標準出力と標準エラー出力を分離することです。
+The print function prints to STDOUT by default, even if you do not explicitly specify STDOUT.
 
-OSには、リダイレクトという機能があり、標準出力の出力先をディスプレイからファイルに切り替えることができます。
+<h3> 3. Standard error output </ h3>
 
-このとき標準エラー出力は切り替わらず出力先はディスプレイのままです。エラーがファイルに書き出されてしまって、エラーがわからないという状況を防ぐために標準エラー出力があります。
-
-以下のように標準出力をファイルにリダイレクトすると、標準エラー出力だけが、ディスプレイに表示されます。
+The output destination of the standard error output is the same as the standard output and is the display. Standard error output is a function for notifying the user of an error. A file handle called STDERR represents standard error output. If you write the following, the display will show "aaa" and "bbb".
 
 <pre>
-perl スクリプト名 > ファイル
-</pre>
+use strict;
+use warnings;
+
+print STDOUT "aaa \ n";
+print STDERR "bbb \ n";
+</ pre>
+
+What is the role of standard error if both output to display? It is to separate standard and error output.
+
+The OS has a function called redirection, which allows you to switch the output destination of standard output from the display to a file.
+
+At this time, the standard error output does not switch and the output destination remains the display. There is a standard error output to prevent situations where the error is written to a file and the error is unknown.
+
+If you redirect the standard output to a file as shown below, only the standard error output will be shown on the display.
+
+<pre>
+perl script name> file
+</ pre>

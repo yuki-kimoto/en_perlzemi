@@ -1,110 +1,110 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/"><span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20161130148051.html"><span itemprop="name">モジュール作成</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>型グロブを理解する</h2>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/blog/20161130148051.html"> <span itemprop = "name"> Module creation </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Understand typeglobs </ h2>
 
 
 
-型グロブは、シンボルテーブルのエントリーを表現します。
-
-<pre>
- *main::num # $main::{num} とほぼ同じ意味。
- *num # パッケージ名を省略することもできます。 
-</pre>
-
-シンボルテーブル上の、 $main::{num} には、'*main::num' という文字列が代入されていますが、ずばりこれを表します( シンボルテーブルのエントリーと呼ばれている。たぶん )。ただし、文字列ではなく、型グロブというものになります。
-
-パッケージ名を省略すると、現在のカレントパッケージのシンボルテーブルのエントリになります。
-
-<h3>型グロブと変数</h3>
+The typeglob represents an entry in the symbol table.
 
 <pre>
-my $num_from_typedglob = ${*main::num}; # $numと同じ
-my @num_from_typedglob = @{*main::num}; # @numと同じ
-my %num_from_typedglob = %{*main::num}; # %numと同じ
-my $ret_from_typedglob = &{*main::num}; # &numと同じ( num() とも同じ )
-</pre>
+ * Main :: num # $ main :: {num} has almost the same meaning.
+ * num # You can omit the package name.
+</ pre>
 
-型グロブは、一種のハッシュであり、<a href="/blog/20161107147852.html">スカラー変数</a>、<a href="/blog/20161012147627.html">配列</a>、<a href="/blog/20161013147635.html">ハッシュ</a>、<a href="/blog/20101130129876.html">サブルーチン</a>などにアクセスすることができます。デリファレンスと見た目が、まったく同じですが、デリファレンスではありません。
+On the symbol table, $ main :: {num} is assigned the string'* main :: num', which is exactly what it is (called the symbol table entry, maybe). .. However, it's not a string, it's a typeglob.
 
-<h3>型グロブのイメージ</h3>
+If you omit the package name, it becomes an entry in the symbol table of the current current package.
+
+<h3> Typeglobs and variables </ h3>
 
 <pre>
-|-------------|
-| *typedglob  |--|
-|-------------|  |
-                 |      |-----------------|
-                 |----->| ${ *typedglob } |
-                 |      |-----------------|
-                 |----->| @{ *typedglob } |
-                 |      |-----------------|
-                 |----->| %{ *typedglob } |
-                 |      |-----------------|
-                 |----->| &{ *typedglob } |
-                        |-----------------|
-</pre>
+my $ num_from_typedglob = $ {* main :: num}; # Same as $ num
+my @num_from_typedglob = @ {* main :: num}; # Same as @num
+my% num_from_typedglob =% {* main :: num}; # Same as% num
+my $ ret_from_typedglob = & {* main :: num}; # Same as & num (also same as num ())
+</ pre>
 
-<h3>サンプル</h3>
+A typeglob is a kind of hash, <a href="/blog/20161107147852.html"> scalar variable </a>, <a href="/blog/20161012147627.html"> array </a>, < You can access a href = "/ blog / 20161013147635.html"> hash </a>, <a href="/blog/20101130129876.html"> subroutine </a>, and more. It looks exactly like a dereference, but it's not a dereference.
 
-型グロブとシンボルテーブルを理解するためのサンプルです。
+<h3> Image of type glob </ h3>
+
+<pre>
+| ------------- |
+| * typedglob |-|
+| -------------- | |
+                 | | ----------------- |
+                 | -----> | $ {* typedglob} |
+                 | | ----------------- |
+                 | -----> | @ {* typedglob} |
+                 | | ----------------- |
+                 | -----> |% {* typedglob} |
+                 | | ----------------- |
+                 | -----> | & {* typedglob} |
+                        | ----------------- |
+</ pre>
+
+<h3> Sample </ h3>
+
+A sample to understand typeglobs and symbol tables.
 
 <pre>
 use strict;
 use warnings;
 
-# 型グロブ
-# *typedglob;
-# シンボルテーブルのエントリーを表現する。
+#Type glob
+# * typedglob;
+#Represents an entry in the symbol table.
 
 
-# 名前が同じで、ファニー文字($, @, %)だけが異なる変数
-our $num = 11;
+# Variables with the same name but different only in funny characters ($, @,%)
+our $ num = 11;
 our @num = (12, 13);
-our %num = (key => 14);
+our% num = (key => 14);
 
-# 名前が同じサブルーチン
+# Subroutine with the same name
 sub num {
   return 15;
 }
 
-require Data::Dumper;
+require Data :: Dumper;
 
-print "1-1: シンボルテーブルから、変数にアクセスする。\n";
-# ${ } で括ると、スカラーのエントリ
-my $num_from_symbol = ${$main::{num}};
-# @{ } で括ると、配列のエントリ
-my @num_from_symbol = @{$main::{num}};
-# %{ } で括ると、ハッシュのエントリ
-my %num_from_symbol = %{$main::{num}};
+print "1-1: Access variables from the symbol table. \ N";
+Enclosed in # $ {}, a scalar entry
+my $ num_from_symbol = $ {$ main :: {num}};
+Array entries, enclosed in # @ {}
+my @num_from_symbol = @ {$ main :: {num}};
+Hash entries, enclosed in #% {}
+my% num_from_symbol =% {$ main :: {num}};
 
-print Data::Dumper->Dump([$num_from_symbol], ['*num_from_symbol']);
-print Data::Dumper->Dump([\@num_from_symbol], ['*num_from_symbol']);
-print Data::Dumper->Dump([\%num_from_symbol], ['*num_from_symbol']);
-print "\n";
+print Data :: Dumper-> Dump ([$ num_from_symbol], ['* num_from_symbol']);
+print Data :: Dumper-> Dump ([\ @ num_from_symbol], ['* num_from_symbol']);
+print Data :: Dumper-> Dump ([\% num_from_symbol], ['* num_from_symbol']);
+print "\ n";
 
-print "1-2: シンボルテーブルから、サブルーチンを呼び出す。\n";
-my $ret_from_symbol = &{$main::{num}}; # &{ } で括ると,サブルーチンのエントリ
-print "\$ret_from_symbol = $ret_from_symbol\n\n";
+print "1-2: Call a subroutine from the symbol table. \ N";
+my $ ret_from_symbol = & {$ main :: {num}};
+print "\ $ ret_from_symbol = $ ret_from_symbol \ n \ n";
 
-print "2-1: 型グロブから、変数にアクセスする。\n";
-my $num_from_typedglob = ${*main::num}; # ${ } で括ると、スカラーのエントリ
-my @num_from_typedglob = @{*main::num}; # @{ } で括ると、配列のエントリが
-my %num_from_typedglob = %{*main::num}; # %{ } で括ると、ハッシュのエントリ
+print "2-1: Access the variable from the typeglob. \ N";
+my $ num_from_typedglob = $ {* main :: num}; Enclosed in # $ {} is a scalar entry
+my @num_from_typedglob = @ {* main :: num}; If you enclose it with # @ {}, the array entry will be
+my% num_from_typedglob =% {* main :: num}; #% {} is a hash entry
 
-print Data::Dumper->Dump([$num_from_typedglob], ['*num_from_typedglob']);
-print Data::Dumper->Dump([\@num_from_typedglob], ['*num_from_typedglob']);
-print Data::Dumper->Dump([\%num_from_typedglob], ['*num_from_typedglob']);
-print "\n";
+print Data :: Dumper-> Dump ([$ num_from_typedglob], ['* num_from_typedglob']);
+print Data :: Dumper-> Dump ([\ @ num_from_typedglob], ['* num_from_typedglob']);
+print Data :: Dumper-> Dump ([\% num_from_typedglob], ['* num_from_typedglob']);
+print "\ n";
 
-print "2-2: 型グロブから、サブルーチンを呼び出す。\n";
-my $ret_from_typedglob = &{*main::num};
-print "\$ret_from_typedglob = $ret_from_typedglob\n\n";
-</pre>
+print "2-2: Call a subroutine from a typeglob. \ N";
+my $ ret_from_typedglob = & {* main :: num};
+print "\ $ ret_from_typedglob = $ ret_from_typedglob \ n \ n";
+</ pre>

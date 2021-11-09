@@ -1,407 +1,408 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop="name">サブルーチン</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>クロージャーを作成する方法</h2>
+        <span itemprop = "name"> Subroutine </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> How to create a closure </ h2>
 
 
 
-Perlで「クロージャー」を作成する方法を解説します。
+Learn how to create "closures" in Perl.
 
-<h3>クロージャの定義</h3>
+<h3> Closure definition </ h3>
 
-クロージャの定義をコードを使って解説します。
+I will explain the definition of closure using code.
 
 <pre>
 use strict;
 use warnings;
 
-# もっともシンプルなクロージャ
+# The simplest closure
 {
-  # 変数の生成
-  my $var = 5;
+  # Variable generation
+  my $ var = 5;
   sub var {
-    return $var;
+    return $ var;
   }
 }
-# スコープが終わってもvarサブルーチンに参照されているため、
-# $var は存在し続ける。
-# var サブルーチンだけが、$var を見ることが可能。
+#Because it is referenced by the var subroutine even after the scope ends
+# $ var continues to exist.
+Only the #var subroutine can see $ var.
 
-print "1: もっともシンプルなクロージャ\n";
-print var(), "\n";
-</pre>
+print "1: The simplest closure \ n";
+print var (), "\ n";
+</ pre>
 
-<h4>クロージャの定義</h4>
+<h4> Closure definition </ h4>
 
-クロージャであるための条件は、サブルーチンが、自分のスコープ外のレキシカル変数を参照していることです。( この例では、var が、自分のスコープ外の$var を参照。)
+The condition for being a closure is that the subroutine references a lexical variable that is out of its scope. (In this example, var refers to $ var outside its scope.)
 
-クロージャの定義は人や状況によってあいまいです。varサブルーチンのことをクロージャと呼ぶこともありますし、「varサブルーチンと参照されている変数$var を含む環境」のことをクロージャと呼ぶこともあります。
+The definition of closure is ambiguous depending on the person and the situation. The var subroutine is sometimes called a closure, and the "environment containing the variable $ var referenced by the var subroutine" is sometimes called a closure.
 
-サブルーチンを作成するときは、必ず引数として変数を受け取って、スコープ外の変数を参照してはいけないと書きましたが、クロージャは例外のひとつです。
+When creating a subroutine, I wrote that I should always take a variable as an argument and not refer to an out-of-scope variable, but closures are one exception.
 
-Perlのスコープについては以下の記事を参考にしてください。
+Please refer to the following article for the scope of Perl.
 
 <ul>
   <li>
-    <a href="/blog/20110128130016.html">Perlのスコープについて理解しよう</a>
-  </li>
-</ul>
+    <a href="/blog/20110128130016.html"> Understand Perl scope </a>
+  </ li>
+</ ul>
 
-<h4>クロージャの特徴</h4>
+<h4> Closure features </ h4>
 
 <pre>
 {
-  # 変数の生成
-  my $var = 5; 
+  # Variable generation
+  my $ var = 5;
   sub var {
-    return $var;
+    return $ var;
   }
 }
-</pre>
+</ pre>
 
-$var は、varサブルーチン内で参照されているために、スコープが終了しても、メモリ上から削除されない。( レキシカル変数は、スコープが終わって、どこからも参照されていないときにメモリ上から破棄される。）
+Since $ var is referenced in the var subroutine, it is not deleted from memory when the scope ends. (Lexical variables are destroyed from memory when they are out of scope and are not referenced anywhere.)
 
-スコープが終了すると、スコープ外からは、$var が見えなくなる。( varサブルーチンは、スコープの影響を受けないため、スコープ外からは見える。)
+When the scope ends, $ var is no longer visible outside the scope. (The var subroutine is not affected by the scope and is visible from outside the scope.)
 
-$var を見ることができるのは、var サブルーチンだけである。スコープが終了した後は、var サブルーチンを通してのみ、 $var の値にアクセスすることができる。
+Only the var subroutine can see $ var. After the scope is finished, the value of $ var can only be accessed through the var subroutine.
 
-<h4>クロージャのイメージ</h4>
+<h4> Closure image </ h4>
 
 <pre>
-|-------------スコープ( クロージャ )--------------|
-|                                                 |
-| |--------|              |--------------|        |     |------------|
-| |        | アクセス可能 |              | アクセス可能 |            |
-| | データ |<-------------| サブルーチン |<-------------| スコープ外 |
-| |        |              |              |        |     |            |
-| |--------|              |--------------|        |     |------------|
-|                                                 |
-|-------------------------------------------------|
+| -------------- Scope (closure) -------------- |
+| |
+| | -------- | | -------------- | | | ------------ |
+| | | Accessible | | accessible | |
+| | Data | <------------| Subroutines | <------------- | Out of scope |
+| | | | | | | |
+| | -------- | | -------------- | | | ------------ |
+| |
+| ------------------------------------------------- |
 
-                   スコープ外からデータにはアクセス不能
-</pre>
+                   Data is inaccessible from outside the scope
+</ pre>
 
-スコープ外からは、サブルーチンを通じてのみデータにアクセス可能。直接データにアクセスすることができない。
+Data can only be accessed from outside the scope through subroutines. You cannot access the data directly.
 
-<h3>クロージャを「関数ジェネレータ」を使って作成する</h3>
+<h3> Create closures using "function generator" </ h3>
 
-クロージャを関数ジェネレータを使って作成してみます。
+Let's create a closure using a function generator.
 
 <pre>
 use strict;
 use warnings;
 
-# タイマーを生成する。
-print "1: 関数ジェネレータでクロージャを生成する( タイマー )。\n";
-my $timer1 = create_timer(); 
+# Generate a timer.
+print "1: Generate closure with function generator (timer). \ N";
+my $ timer1 = create_timer ();
 sleep 1;
-# 1秒後にもうひとつタイマーを生成
-my $timer2 = create_timer();
+# Generate another timer after 1 second
+my $ timer2 = create_timer ();
 
-# 1秒止まる
+# Stop for 1 second
 sleep 1;
 
-print '$timer1 による経過秒: ';
-print $timer1->(), "\n";
+print'$ timer1 elapsed seconds:';
+print $ timer1-> (), "\ n";
 
-print '$timer2 による経過秒: ';
-print $timer2->(), "\n\n";
+print'$ timer2 elapsed seconds:';
+print $ timer2-> (), "\ n \ n";
 
 
-# 経過時刻を知るクロージャを生成する関数ジェネレータ
+# Function generator that generates closures that know the elapsed time
 sub create_timer {
-  # time() は、関数ジェネレータが呼び出された時刻
-  my $time = time(); 
+  # time () is the time when the function generator was called
+  my $ time = time ();
   
   return sub {
-    # time() は生成されたサブルーチンが
-    # 呼び出された時刻。time() - $time で
-    # 経過時刻を知ることができる。
-    return time() - $time;                          
+    # time () is the generated subroutine
+    # The time it was called. time ()-with $ time
+    # You can know the elapsed time.
+    return time ()-$ time;
   }
 }
-</pre>
+</ pre>
 
-<h4>クロージャを生成するための関数ジェネレータ</h4>
+<h4> Function generator for generating closures </ h4>
 
 <pre>
 sub create_timer {
-  # time() は、関数ジェネレータが呼び出された時刻
-  my $time = time(); 
+  # time () is the time when the function generator was called
+  my $ time = time ();
 
-  # time() は生成されたサブルーチンが
-  # 呼び出された時刻。time() - $time で
-  # 経過時刻を知ることができる。
+  # time () is the generated subroutine
+  # The time it was called. time ()-with $ time
+  # You can know the elapsed time.
   return sub {
-    return time() - $time;                      
+    return time ()-$ time;
   }
 }
-</pre>
+</ pre>
 
-関数ジェネレータとは、サブーチンを生成するサブルーチンのことです。関数ジェネレータを利用すれば、複数のクロージャを生成することができます。
+A function generator is a subroutine that creates a suboutin. You can use the function generator to generate multiple closures.
 
-生成されるそれぞれのクロージャは、データを独自に持ちます。この例では、 $time の値は、メモリ上にクロージャ毎に作成されます。戻り値はサブルーチンへのリファレンスになっています。これは、Perlでは、サブルーチンそのものを戻り値にすることができないためです。
+Each generated closure has its own data. In this example, the value of $ time is created in memory for each closure. The return value is a reference to the subroutine. This is because Perl does not allow the subroutine itself to be the return value.
 
-<h4>関数ジェネレータの呼び出してクロージャを作成する</h4>
-
-<pre>
-my $timer1 = create_timer();
-my $timer2 = create_timer();
-</pre>
-
-戻り値は、サブルーチンへのリファレンスになります。このサブルーチンはクロージャで,独自にメモリ上に環境( サブルーチンに参照された変数とサブルーチンの定義  )を持ちます。
-
-<h4>クロージャを呼び出す</h4>
+<h4> Call a function generator to create a closure </ h4>
 
 <pre>
-$timer1->();
-</pre>
+my $ timer1 = create_timer ();
+my $ timer2 = create_timer ();
+</ pre>
 
-サブルーチンへのリファレンスをうけったので、デリファレンスして呼び出します。
+The return value serves as a reference to the subroutine. This subroutine is a closure and has its own environment (variables referenced in the subroutine and the definition of the subroutine) in memory.
 
-<h4>クロージャの利用方法</h4>
+<h4> Call closure </ h4>
 
-クロージャを利用すると、「基準になる時点での状態」と「現時点での状態」の変化を簡潔に記述することができます。
+<pre>
+$ timer1-> ();
+</ pre>
 
-クラスを作れば同じことを実現できますが、クラスを作りたくない場合は、クロージャを利用します。( クラスをひとつ作れば、クラスを管理する手間が増えます。この例のようにシンプルな記述のためにわざわざクラスを作りたくない場合に、クロージャを使います。 )
+Now that we have a reference to the subroutine, we dereference it and call it.
 
-<h3>クロージャに参照される「変数を初期化」する</h3>
+<h4> How to use closures </ h4>
 
-クロージャに参照される変数を初期化するサンプルです。
+Closures allow you to concisely describe the changes between the "state at the time of reference" and the "state at the moment".
+
+You can do the same thing by creating a class, but if you don't want to create a class, use closures. (If you create one class, it will take more time to manage the class. If you do not want to create a class for simple description like this example, use closure.)
+
+<h3> "Initialize variables" referenced by closures </ h3>
+
+This is a sample to initialize the variable referenced by the closure.
 
 <pre>
 use strict;
 use warnings;
 
-# 関数ジェネレータに引数として渡す。
-print "1: クロージャに参照される変数を初期化する。\n";
-my $sign_inversion = create_sign_checker(1); 
+# Pass it as an argument to the function generator.
+print "1: Initialize the variable referenced by the closure. \ N";
+my $ sign_inversion = create_sign_checker (1);
 
-if ($sign_inversion->(-2)) {
-  # 符号が反転していたら
-  print "-2 は、1から見て符号が反転しています。\n";
+if ($ sign_inversion-> (-2)) {
+  # If the sign is inverted
+  print "-2 has the sign inverted when viewed from 1. \ n";
 }
 
-# 符号が反転しかかどうかを確かめるクロージャを生成する関数ジェネレータ
+# Function generator that generates closures to see if the sign is only inverted
 sub create_sign_checker {
-  # クロージャを作成したときに初期化される。
-  my $num1 = shift; 
+  #Initialized when you create a closure.
+  my $ num1 = shift;
     
   return sub {
-    # クロージャを呼び出したときの引数。
-    my $num2 = shift; 
+    # Argument when calling the closure.
+    my $ num2 = shift;
     
-    if ($num1 * $num2 > 0) {
-      # 反転していない場合
-      return 0; 
+    if ($ num1 * $ num2> 0) {
+      # If not flipped
+      return 0;
     }
-    elsif ($num1 * $num2 < 0) {
-      # 反転している場合
-      return 1; 
+    elsif ($ num1 * $ num2 <0) {
+      # If flipped
+      return 1;
     }
     else {
-      # どちらかが0の場合undefを返す
-      return; 
+      # Returns undef if either is 0
+      return;
     }
   }
 }
-</pre>
+</ pre>
 
-<h4>クロージャに参照される変数を初期化する</h4>
+<h4> Initialize variables referenced by closures </ h4>
 
 <pre>
-# クロージャを生成。( クロージャに参照される変数を1で初期化 )
-my $sign_inversion = create_sign_checker(1);
+# Generate closures. (Initialize the variable referenced by the closure with 1)
+my $ sign_inversion = create_sign_checker (1);
 
-# クロージャを呼び出す
-$sign_inversion->(-2);
+#Call closure
+$ sign_inversion-> (-2);
 
-# クロージャを生成する関数ジェネレータ
+# Function generator to generate closures
 sub create_sign_checker {
-  # クロージャを作成したときに初期化される。
-  my $num1 = shift; 
+  #Initialized when you create a closure.
+  my $ num1 = shif
+t;
     
-  # クロージャの定義
-  return sub{
-    # クロージャを呼び出したときの引数。
-    my $num2 = shift; 
+  # Closure definition
+  return sub {
+    # Argument when calling the closure.
+    my $ num2 = shift;
     # ...
   }
 }
-</pre>
+</ pre>
 
-クロージャを作成するときに、クロージャが参照する変数を初期化することができます。クロージャを作成するときに引数として渡します。それを、関数ジェネレータの引数として受け取って、変数に設定します。
+When you create a closure, you can initialize the variables that the closure references. Pass it as an argument when creating the closure. Take it as an argument to the function generator and set it in a variable.
 
-<h3>クロージャの概念をクラスとの対比でわかりやすく説明する</h3>
+<h3> Explain the concept of closures in an easy-to-understand manner in comparison with classes </ h3>
 
-クロージャの概念はぼやっとしていて輪郭を捕らえるのが難しいです。わたしなりにできるだけ理解できるように解説したいと思います。
+The concept of closures is vague and difficult to capture contours. I would like to explain it so that I can understand it as much as possible.
 
-<h4>クロージャとは</h4>
-
-<ol>
-  <li>
-    クロージャーとは、データとそのデータを操作する関数のセットである。
-  </li>
-  <li>
-    データはカプセル化されていて、データを操作できるのは、クロージャ内部の関数だけである。
-  </li>
-  <li>
-    データの初期化が可能である。
-  </li>
-  <li>
-    データごとに個々のインスタンスを作成することができる。
-  </li>
-  <li>
-    関数はインスタンスから呼び出される。
-  </li>
-</ol>
-
-次に、オブジェクト指向におけるクラスについて。
-
-<h4>クラスとは</h4>
+<h4> What is a closure </ h4>
 
 <ol>
   <li>
-    クラスとは、データとそのデータを操作する関数のセットである。
-  </li>
+    A closure is a set of data and functions that manipulate that data.
+  </ li>
   <li>
-    データはカプセル化されていて、データを操作できるのは、クラス内部の関数だけである。
-  </li>
+    The data is encapsulated and only the functions inside the closure can manipulate the data.
+  </ li>
   <li>
-    データの初期化が可能である。
-  </li>
+    Data can be initialized.
+  </ li>
   <li>
-    データごとに個々のインスタンスを作成することができる。
-  </li>
+    You can create individual instances for each piece of data.
+  </ li>
   <li>
-    関数はインスタンスから呼び出される。
-  </li>
-</ol>
+    The function is called from the instance.
+  </ li>
+</ ol>
 
-ここで気づいてほしいことは、クラスとクロージャは、実は同じものだということです。Perlの実装においては、クラスとクロージャは、文法的な書き方において違いがあります。けれど、機能的には同じものです。クロージャとは簡易なクラスのことだと思えば理解しやすいです。(クロージャの概念は、もう少し広いけれど、最初のうちは簡易なクラスだと理解する。)
+Next, about classes in object orientation.
 
-<h4>クラスとクロージャの相違点</h4>
+<h4> What is a class? </ H4>
 
 <ol>
   <li>
-    クロージャは、クラス名を持たない。my $ins = Class->new; というnewを呼び出すことで、インスタンスを生成するのではなく、 my $ins = closure_maker(); という形でインスタンスを生成する。
-  </li>
+    A class is a set of data and functions that manipulate that data.
+  </ li>
   <li>
-    クロージャは、継承できない。クラスのように継承をすることはできません。
-  </li>
-</ol>
+    The data is encapsulated and only the functions inside the class can manipulate the data.
+  </ li>
+  <li>
+    Data can be initialized.
+  </ li>
+  <li>
+    You can create individual instances for each piece of data.
+  </ li>
+  <li>
+    The function is called from the instance.
+  </ li>
+</ ol>
 
-クラスとクロージャを使って、数を数えるための機能(カウンター)を実装してみます。
+What you should be aware of here is that classes and closures are actually the same thing. In Perl implementations, classes and closures differ in their grammatical writing. However, they are functionally the same. Closures are easy to understand if you think of them as simple classes. (The concept of closures is a bit broader, but at first I understand it's a simple class.)
 
-<h4>カウンターをクラスで実装する</h4>
+<h4> Differences between classes and closures </ h4>
+
+<ol>
+  <li>
+    Closures do not have a class name. By calling new my $ ins = Class-> new ;, instead of creating an instance, create an instance in the form of my $ ins = closure_maker () ;.
+  </ li>
+  <li>
+    Closures cannot be inherited. It cannot be inherited like a class.
+  </ li>
+</ ol>
+
+Let's implement a function (counter) for counting using classes and closures.
+
+<h4> Implement the counter in a class </ h4>
 
 <pre>
 use strict;
 use warnings;
 
 package Counter;
-sub new{
-  my $class = shift;
-  my $self = {};
-  $self->{cnt} = shift;
-  bless $self, $class;
+sub new {
+  my $ class = shift;
+  my $ self = {};
+  $ self-> {cnt} = shift;
+  bless $ self, $ class;
 }
 
-sub add_count{
-  my $self = shift;
-  $self->{cnt}++;
+sub add_count {
+  my $ self = shift;
+  $ self-> {cnt} ++;
 }
 
-sub count{
-  my $self = shift;
-  return $self->{cnt};
+sub count {
+  my $ self = shift;
+  return $ self-> {cnt};
 }
 
 package main;
-my $cnt = Counter->new(10);
+my $ cnt = Counter-> new (10);
 
-print "1: クラスによるカウンターの実装\n";
-print "カウント前:", $cnt->count, "\n";
-$cnt->add_count;
-print "カウント後:", $cnt->count, "\n\n";
-</pre>
+print "1: Class-based counter implementation \ n";
+print "Before counting:", $ cnt-> count, "\ n";
+$ cnt-> add_count;
+print "after counting:", $ cnt-> count, "\ n \ n";
+</ pre>
 
-<h4>カウンターをクロージャで実装する</h4>
+<h4> Implement the counter with closures </ h4>
 
 <pre>
 use strict;
 use warnings;
 
-# クロージャ
-sub make_counter{
-  my $self = {};
-  $self->{cnt} = shift;
+# Closure
+sub make_counter {
+  my $ self = {};
+  $ self-> {cnt} = shift;
    
-  # クロージャでは、サブルーチンへのリファレンスを使ってメソッドを実装する。
-  my $funcs = {}; 
-  $funcs->{add_count} = sub {
-    $self->{cnt}++;
+  # Closures implement methods using references to subroutines.
+  my $ funcs = {};
+  $ funcs-> {add_count} = sub {
+    $ self-> {cnt} ++;
   };
    
-   $funcs->{count} = sub {
-     return $self->{cnt};
+   $ funcs-> {count} = sub {
+     return $ self-> {cnt};
    };
-   return $funcs;
+   return $ funcs;
 }
 
-my $cnt = make_counter(10);
+my $ cnt = make_counter (10);
 
-print "2: クロージャによるカウンターの実装\n";
-print "カウント前:" . $cnt->{count}->() . "\n"; 
-$cnt->{add_count}->();
-print "カウント後:" . $cnt->{count}->() . "\n";
-</pre>
+print "2: Implementation of counters with closures \ n";
+print "Before counting:". $ Cnt-> {count}-> (). "\ n";
+$ cnt-> {add_count}-> ();
+print "after counting:". $ Cnt-> {count}-> (). "\ n";
+</ pre>
 
-このようにクラスとクロージャは、よく似ています。次回は、コードを解説します。
+As you can see, classes and closures are very similar. Next time, I will explain the code.
 
-<h4>クラスとクロージャの視覚的なイメージ</h4>
+<h4> Visual image of classes and closures </ h4>
 
 <pre>
-## クラス
-|------クラス------|
-| ・データ         |
-| ・データ操作関数 |
-|------------------|
+## class
+| ------ Class ------ |
+| ・ Data |
+| ・ Data manipulation functions |
+| ------------------ |
 
 
-## クロージャ
-|----クロージャ----|
-| ・データ         |
-| ・データ操作関数 |
-|------------------|
+## Closure
+| ---- Closure ---- |
+| ・ Data |
+| ・ Data manipulation functions |
+| ------------------ |
 
-</pre>
+</ pre>
 
-<h4>小飼 弾さんの添削</h4>
+<h4> Correction of Dan Kogai </ h4>
 
 <ul>
   <li>
-    <a href="http://blog.livedoor.jp/dankogai/archives/51079991.html">perl - Class vs. Closure(404 Blog Not Found)</a>
-  </li>
+    <a href="http://blog.livedoor.jp/dankogai/archives/51079991.html"> perl --Class vs. Closure (404 Blog Not Found) </a>
+  </ li>
   <li>
-    クロージャでクラスと同じことができるけれど、Perlではクロージャの生成は、オブジェクトの生成よりもコストがかかるそうです。
-  </li>
+    Closures can do the same thing as classes, but in Perl creating closures costs more than creating objects.
+  </ li>
   <li>
-    クロージャは、継承できないと書きましたが継承できるみたいです。(やりかたは今のところは思いつきません。)
-  </li>
-</ul>
+    I wrote that closures cannot be inherited, but it seems that they can be inherited. (I can't think of a way to do it for now.)
+  </ li>
+</ ul>

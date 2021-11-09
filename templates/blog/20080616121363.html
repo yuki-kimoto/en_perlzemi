@@ -1,140 +1,140 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20101130129876.html">
-        <span itemprop="name">サブルーチン</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>よいサブルーチンを作成するための心がけ</h2>
+        <span itemprop = "name"> Subroutine </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Keep in mind to create good subroutines </ h2>
 
 
 
-サブルーチン作成に関するわたしの考えを殴り書きしました。
+I've scribbled my thoughts on creating subroutines.
 
-<h3>見出し</h3>
-
-<ol>
-  <li>
-    引数と戻り値について理解する。
-  </li>
-  <li>
-    小さなサブルーチンを作成する。
-  </li>
-  <li>
-    サブルーチンに柔軟性を持たせる。
-  </li>
-  <li>
-    呼び出しの階層を浅く保つ。
-  </li>
-  <li>
-    機能を実現するサブルーチンを作成する。
-  </li>
-  <li>
-    ユーザーを意識する。
-  </li>
-  <li>
-    将来を楽にすることを考える。
-  </li>
-  <li>
-    完全な抽象化は求めない。
-  </li>
-</ol>
-
-<h3>1. 引数と戻り値について理解する</h3>
-
-サブルーチンを理解するためには、引数の受け取り方と、戻り値の返却のし方を覚えれば十分です。なぜなら、引数を受け取ってから、戻り値を返却をするまでは、今まで学習したプログラミングとなんら変わることがないからです。引数と戻り値の扱いを、覚えたら、すぐに実践に移りましょう。
-
-サブルーチン作成で、難しいのは、以下の4点です。
+<h3> Heading </ h3>
 
 <ol>
   <li>
-    何をサブルーチンにするか
-  </li>
+    Understand the arguments and return values.
+  </ li>
   <li>
-    どのような名前をつけるか
-  </li>
+    Create a small subroutine.
+  </ li>
   <li>
-    引数を何にするか
-  </li>
+    Give the subroutine flexibility.
+  </ li>
   <li>
-    戻り値を何にするか
-  </li>
-</ol>
+    Keep the call hierarchy shallow.
+  </ li>
+  <li>
+    Create a subroutine that implements the function.
+  </ li>
+  <li>
+    Be aware of the user.
+  </ li>
+  <li>
+    Think about making the future easier.
+  </ li>
+  <li>
+    We don't want a complete abstraction.
+  </ li>
+</ ol>
 
-正しい書き方と呼べるサブルーチンは存在しないので、場面に応じて一生懸命考えながらつくる必要があります。
+<h3> 1. Understand arguments and return values ​​</ h3>
 
-<h3>2. 小さなサブルーチンを作成する</h3>
+To understand the subroutine, it is enough to learn how to receive the arguments and how to return the return value. This is because there is no difference from the programming you have learned so far from receiving the argument to returning the return value. As soon as you learn how to handle arguments and return values, let's put them into practice.
 
-小さなサブルーチンは、30行程度までのサブルーチンです。大きなサブルーチンは、100行程度までのサブルーチンです。これを超えるならば、サブルーチンに関する考え方が、間違っています。複数の機能を詰め込みすぎの可能性があります。
+The following four points are difficult when creating a subroutine.
 
-大きすぎるサブルーチンは、ひとつの機能を実現できていませんから、再利用が困難になります。処理をまとめただけの、意味のないサブルーチンになってしまいます。小さなサブルーチンを作るように心がけるほうが、うまくいきます。ひとつの機能を実現することを意識しながら、小さなサブルーチンを作るよう心がけます。
+<ol>
+  <li>
+    What to make a subroutine
+  </ li>
+  <li>
+    What kind of name to give
+  </ li>
+  <li>
+    What to do with the argument
+  </ li>
+  <li>
+    What to return
+  </ li>
+</ ol>
 
-ただし、大きすぎるサブルーチンが常に間違っているというわけではありません。そのサブルーチンを使う頻度が、ものすごく多いならば、そのサブルーチンには意味があります。それが、十分役立っているなら、再利用性や機能性を犠牲にしていても良い場合がときどきあります。ただし、やみくもに、大きなサブルーチンを作るのは避けましょう。それが、本当に意味があるかどうか、考えましょう。
+There is no subroutine that can be called the correct way of writing, so you need to think hard according to the situation.
 
-<h3>3. サブルーチンに柔軟性を持たせる</h3>
+<h3> 2. Create a small subroutine </ h3>
 
-サブルーチンを柔軟なものにするには、引数にハッシュを用いて、オプションを指定できるようにします。たとえば、区切り文字を自由に指定できるだとか、出力に改行文字をつけるかどうかであるとか、そういう部分を、オプションで指定できます。引数の指定で、戻り値を変更できるということは、サブルーチンに柔軟性をもたせることになります。
+A small subroutine is a subroutine up to about 30 lines. Large subroutines are subroutines up to about 100 lines. Beyond this, the idea of ​​subroutines is wrong. It may be overloaded with multiple features.
 
-ただ、柔軟にしすぎると、サブルーチンを作成するのが大変です。そのオプションは、将来に役立つ可能性が高いかということを考えます。オプションを追加するということは、ロジックが複雑になり、試験するコストがかかるということです。そのコストに見合うだけの、将来の見返りの可能性を考えましょう。見返りがないときは、オプションにする必要はないわけです。
+Subroutines that are too large cannot be reused because they do not realize one function. It will be a meaningless subroutine that just summarizes the processing. It's better to try to make small subroutines. I try to make small subroutines while being aware of realizing one function.
 
-<h3>4. 呼び出しの階層を浅く保つ</h3>
+However, subroutines that are too large are not always wrong. If you use the subroutine very often, it makes sense. Sometimes it's okay to sacrifice reusability or functionality if it works well enough. However, avoid blindly creating large subroutines. Think about whether it really makes sense.
 
-深すぎるサブルーチンは、作らないほうがよいです。サブルーチンから、サブルーチンを呼んで、またそのサブルーチンから別のサブルーチンを呼ぶと、可読性が著しく下がります。深い位置で呼んでもよいサブルーチンは、高度に汎用的で、再利用可能なサブルーチンだけにします。
+<h3> 3. Make subroutines flexible </ h3>
 
-たしかにサブルーチンの呼び出し階層を深めれば、深めるほど、機能は抽象化されます。ただし、サブルーチン作成のコストがかかることを意識しましょう。抽象化は、良いことばかりではないです。管理するコストと可読性を下げるというマイナスの影響も大きいです。
+To make the subroutine flexible, use a hash as an argument to allow options to be specified. For example, you can specify the delimiter freely, whether to add a newline character to the output, and so on. Being able to change the return value by specifying an argument gives the subroutine flexibility.
 
-以下のような書き方は、推奨しません。なるべくfunc1の深さで、サブルーチンを実現します。必要があれば、func2の深さにしてもかまいません。が、func3の深さにならないようにします。func3が、プログラミングの中で、何回も使われ、再利用可能なサブルーチンである場合は、func3を作成しても良いかもしれません。
+However, if you make it too flexible, it will be difficult to create a subroutine. Think about whether that option is likely to be useful in the future. Adding options adds complexity to the logic and is costly to test. Consider future rewards that are worth the cost. If there is no reward, there is no need to make it an option.
+
+<h3> 4. Keep the call hierarchy shallow </ h3>
+
+It's best not to create subroutines that are too deep. Calling a subroutine from a subroutine and then calling another subroutine from that subroutine can significantly reduce readability. Only highly versatile and reusable subroutines can be called deeply.
+
+Certainly, the deeper the subroutine call hierarchy, the more abstract the functionality. However, be aware that the cost of creating a subroutine is high. Abstraction isn't all good. The negative impact of lowering management costs and readability is also significant.
+
+The following writing style is not recommended. Realize the subroutine as deep as func1. It can be func2 depth if desired. But don't go to the depth of func3. If func3 is a subroutine that is used many times in programming and can be reused, you may want to create func3.
 
 <pre>
-func1(); # func1 の呼び出し
+func1 (); Call # func1
 
-sub func1{
-  func2(); # func2 の呼び出し
+sub func1 {
+  func2 (); Call # func2
 }
 
-sub func2{
-  func3(); # func3 の呼び出し
+sub func2 {
+  func3 (); # func3 call
 }
 
-sub func3{
-  # 本当に汎用的で、再利用可能なサブルーチンだけは、深い階層で呼ばれてもよい。
+sub func3 {
+  # Only really generic and reusable subroutines may be called deeper.
 }
-</pre>
+</ pre>
 
-<h3>5. 機能を実現するサブルーチンを作成する</h3>
+<h3> 5. Create a subroutine that realizes the function </ h3>
 
-サブルーチンが、再利用可能であるということは、思ったほど多くはありません。実際にプログラミングをしてみればわかることですが、最初に作るプログラミングというのは、まず汎用性がありません。なぜなら、汎用的なことを目的にプログラミングしないからです。たとえば、特定のテキストファイルを処理して、そこから、特定の文字列を抜き出す場合は、再利用可能なサブルーチンを作れるはずがありません。あなた専用の特別なサブルーチンができるだけです。
+Subroutines aren't as often reusable as you might think. As you can see by actually programming, the programming you make first is not versatile. Because we don't program for general purpose. For example, if you want to process a particular text file and extract a particular string from it, you wouldn't be able to create a reusable subroutine. You can only have a special subroutine dedicated to you.
 
-それでもサブルーチンは作る価値があります。再利用可能でないからサブルーチンを作らないというのはよいことではないです。ひとつの機能の実現としてサブルーチンを作ることが必要です。そうすれば、コードの可読性があがり、サブルーチンの再利用の可能性が生まれます。最初のうちは、再利用できるサブルーチンを作ることは、あまり気にしないで、ひとつの機能を実現するサブルーチンを作成することを主眼におきましょう。
+Still, subroutines are worth making. It's not good not to create a subroutine because it's not reusable. It is necessary to create a subroutine to realize one function. This will increase the readability of your code and create the possibility of subroutine reuse. At first, don't worry too much about creating reusable subroutines, but focus on creating subroutines that implement a single function.
 
-<h3>6. ユーザーを意識する</h3>
+<h3> 6. User awareness </ h3>
 
-サブルーチンは、利用されるために使われます(もちろん自分を含めて)。ということは、名前はわかりやすくなくてはなりません。どのような機能を実現しているかがわからなくてはなりません。名前が機能をしっかり表現していなくてはなりません。引数はわかりやすいか、戻り値はわかりやすいかということを考えます。
+Subroutines are used to be used (including yourself, of course). This means that the name must be easy to understand. You have to know what kind of function you are realizing. The name must well describe the function. Think about whether the arguments are easy to understand and the return value is easy to understand.
 
-サブルーチンを作るときは、たとえ自分だけが利用するときでも、ユーザーに対するインターフェイスを作成しているのだという気持ちで作るのが良いと思います。
+When creating a subroutine, I think it's best to create it with the feeling that you're creating an interface for the user, even if you're the only one using it.
 
-<h3>7. 将来を楽にすることを考える</h3>
+<h3> 7. Thinking about making the future easier </ h3>
 
-サブルーチンを作ることは、正直疲れます。時間と手間がかかります。サブルーチンを作らなくても、プログラムは動きます。でも、サブルーチンの作成は、ひとつの投資なのです。将来を楽にするための投資です。いまきちんと作っておけば、将来の仕様の変更や、環境の変化に柔軟に対応することができます。だから、サブルーチン作成はめんどうでも、きっちりと意識して行いましょう。
-実は、サブルーチンを作る技術がなかったり、サブルーチンの作成を怠ったりして、保守性が最悪の水準に陥ったプログラムが、世の中にごろごろしています。工夫やアイデアではなくて、マンパワーや根性が試されるプログラムが多いです。プログラマーが、疲れ果ててしまう原因のひとつでもあります。
+To be honest, making subroutines is tiring. It takes time and effort. The program works without creating a subroutine. But creating a subroutine is an investment. An investment to ease the future. If you make it properly now, you can flexibly respond to future changes in specifications and changes in the environment. Therefore, even if it is troublesome to create a subroutine, let's be conscious of it.
+In fact, there are many programs in the world that have the worst maintainability due to lack of technology for creating subroutines or neglecting to create subroutines. There are many programs that test manpower and guts rather than ingenuity and ideas. It's also one of the reasons programmers get tired.
 
-プログラマーの明るい未来のためにもよいサブルーチン作成を心がけます。
+I will try to create good subroutines for the bright future of programmers.
 
-<h3>8. 完全な抽象化は求めない</h3>
+<h3> 8. Don't ask for complete abstraction </ h3>
 
-まったく反対のことをいいますが、サブルーチン作成にこだわりすぎて、いつまでたっても完成しないプログラムには、意味がありません。どこまで、抽象化できるかということは、抽象化のための技術力と、きづかいと、時間の制約とにかかっています。
+The exact opposite is true, but a program that is too particular about subroutine creation and never completes is meaningless. The extent to which abstraction can be achieved depends on the technical capabilities for abstraction, the difficulty, and the time constraints.
 
-抽象化するための技術力がないとそもそも、抽象化できません。将来の保守を楽にしようというきづかいがないと、抽象化はできません。納期がぎりぎりで、作っては動かさないといけないという状況が続くと抽象化はできません。
+In the first place, it cannot be abstracted without the technical ability to abstract it. Abstraction is not possible without the slogan to ease future maintenance. If the delivery date is just around the corner and you have to make and move it, you can't abstract it.
 
-抽象化は、バランスの上に成り立っています。抽象化は、たいていは良いことですが、徹底的に抽象化を求めてしまうと、そこでプログラミングが止まってしまって、実現したいことが実現できなくなります。多くの抽象化のためにプログラミングが完成しないくらいなら、完成するほうを選びます。ただし、なるべく抽象化する気持ちは持っておいたほうが良いです。
+Abstraction is built on balance. Abstraction is usually a good thing, but if you ask for abstraction thoroughly, programming will stop there and you will not be able to achieve what you want to achieve. If programming isn't complete because of a lot of abstractions, I prefer to complete it. However, it is better to have a feeling of abstraction as much as possible.

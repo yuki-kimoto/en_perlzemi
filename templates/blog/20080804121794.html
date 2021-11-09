@@ -1,134 +1,134 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>sysopen関数 - オープンモードを詳細に指定</h2>
+  </ li>
+</ ol>
+<h2> sysopen function --specify open mode in detail </ h2>
 
 
-<strong>sysopen</strong>関数を使用すればオープンモードを詳細に指定することができます。<a href="/blog/20080718121643.html">open関数</a>のオープンモード以上のことを行いたい場合に利用できます。
+You can specify the open mode in detail using the <strong> sysopen </ strong> function. <a href="/blog/20080718121643.html"> open function </a> open mode You can use it when you want to do more than that.
 
 <pre>
-sysopen(my $fh, $file, O_WRONLY | O_EXCL | O_CREAT) 
-</pre>
+sysopen (my $ fh, $ file, O_WRONLY | O_EXCL | O_CREAT)
+</ pre>
 
-Perlのsysopenは、C言語のfopenと同等の関数です。第1引数にファイルハンドル、第２引数にファイル名、第３引数に、オープンフラグを指定します。必要であれば第４引数にパーミッションを8進数で指定でき、デフォルトのパーミッションは 0666です。
+Perl's sysopen is a function equivalent to C's fopen. Specify the file handle in the first argument, the file name in the second argument, and the open flag in the third argument. If you want, you can specify the permission in octal as the 4th argument, and the default permission is 0666.
 
-オープンフラグは、<a href="/blog/20080806121804.html">ビット演算子</a> | で結ぶことで複数指定できます。オープンフラグの組み合わせでオープンモードを指定します。
+You can specify multiple open flags by connecting them with <a href="/blog/20080806121804.html"> bit operator </a> |. Specify the open mode with a combination of open flags.
 
-たとえば、ファイルが存在していなければ作成して書き込みモードでオープンということをしたいとしましょう。
+For example, let's say you want to create a file if it doesn't exist and open it in write mode.
 
-open関数では、書き込みモードでオープンしたいが、ファイルが存在していれば上書きしないという動作を実現することができません。O_WRONLY | O_EXCL | O_CREAT をオープンモードに指定すれば、これを実現できます。
+With the open function, I want to open in write mode, but I can't realize the operation of not overwriting if the file exists. You can achieve this by specifying O_WRONLY | O_EXCL | O_CREAT as open mode.
 
-O_WRONLY は書き込みモードという意味で、O_CREAT はファイルが存在しない場合に新規作成するという意味です。O_EXCLはファイルが存在するとエラーという意味です。O_EXCLが、O_CREATよりも優先されて、ファイルが存在する場合はエラーになります。存在しない場合は作成されます。
+O_WRONLY means write mode, and O_CREAT means create a new file if it doesn't exist. O_EXCL means error if the file exists. O_EXCL takes precedence over O_CREAT and an error will occur if the file exists. If it does not exist, it will be created.
 
-オープンフラグを表すシンボルを使うためにはあらかじめインポートしておく必要があります。
+In order to use the symbol that represents the open flag, it must be imported in advance.
 
 <pre>
 use Fcntl;
-</pre>
+</ pre>
 
-<a href="/blog/20180310152509.html">Fcntl</a>モジュールを使用すると、O_WRONLY などのシンボルが使用できます。sysopen関数を使うときは、セットで使用すると覚えておきましょう。
+The <a href="/blog/20180310152509.html"> Fcntl </a> module allows you to use symbols such as O_WRONLY. When using the sysopen function, remember to use it as a set.
 
-<h4>オープンモードの種類</h4>
+<h4> Open mode type </ h4>
 
 <table>
   <tr>
     <td>
-      O_RDONLY	
-    </td>
+      O_RDONLY
+    </ td>
     <td>
-      読み込み
-    </td>
-  </tr>
+      Read
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_WRONLY	
-    </td>
+      O_WRONLY
+    </ td>
     <td>
-      書き込み
-    </td>
-  </tr>
+      write in
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       O_RDWR
-    </td>
+    </ td>
     <td>
-      読み書き両用
-    </td>
-  </tr>
+      Read / write
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_CREAT	
-    </td>
+      O_CREAT
+    </ td>
     <td>
-      ファイルが存在しなければ作成する。
-    </td>
-  </tr>
+      Create the file if it does not exist.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       O_EXCL
-    </td>
+    </ td>
     <td>
-      ファイルが存在すればopenを失敗させる
-    </td>
-  </tr>
+      Fail open if the file exists
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_APPEND	
-    </td>
+      O_APPEND
+    </ td>
     <td>
-      追加書き込み
-    </td>
-  </tr>
+      Additional writing
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      O_TRUNC	
-    </td>
+      O_TRUNC
+    </ td>
     <td>
-      ファイルを0バイトに切り詰める
-    </td>
-  </tr>
+      Truncate the file to 0 bytes
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-Perlのopen関数は、"<", ">",">>" などわかりやすい記号を使ってオープンモードを指定することができます反面、C言語のopen関数のようにオープンモードの詳細な指定をすることができません。
+Perl's open function allows you to specify the open mode using easy-to-understand symbols such as "<", ">", ">>", but on the other hand, you can specify the open mode in detail like the C language open function. can not do.
 
-sysopen関数を使えば、オープンモードを細かく指定することができます。( パーミッションも指定することができますが、ファイルのアクセス権について書くときに触れたいと思います。)
+You can use the sysopen function to specify the open mode in detail. (Although you can specify permissions as well, I'll mention them when writing about file permissions.)
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-オープンモードを詳細に指定するサンプルです。
+This is a sample that specifies the open mode in detail.
 
 <pre>
 use strict;
 use warnings;
 
-# オープンモードをシンボルで指定するためのモジュール
+#Module for specifying open mode with a symbol
 use Fcntl;
 
-my $file = shift; # ファイル名を指定。
+my $ file = shift; #Specify the file name.
 
-# ファイルが存在していなければ作成して書き込みモードでオープン
-sysopen(my $fh, $file, O_WRONLY | O_EXCL | O_CREAT) 
-  or die "Couldn't open $file : $!";
-close( $fh );
-</pre>
+#Create the file if it doesn't exist and open it in write mode
+sysopen (my $ fh, $ file, O_WRONLY | O_EXCL | O_CREAT)
+  or die "Couldn't open $ file: $!";
+close ($ fh);
+</ pre>

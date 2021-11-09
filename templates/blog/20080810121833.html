@@ -1,229 +1,229 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop="name">ファイル入出力</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>ランダムアクセスを使って読み書きする</h2>
+      <span itemprop = "name"> File input / output </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Read and write using random access </ h2>
 
 
-変更したい箇所だけをピンポイントで指定して、変更して書き戻すランダムアクセスのサンプルです。ランダムアクセスというのは一般的に固定長のバイナリファイルに対して使われますが、簡便のためここでは固定長テキストファイルを使います。
+This is a random access sample where you can pinpoint only the part you want to change, change it, and write it back. Random access is generally used for fixed-length binary files, but for convenience, we will use fixed-length text files here.
 
 <pre>
 use strict;
 use warnings;
 
-# seek の位置を指定するオプションを使用するために使用
-use Fcntl qw(:seek);
+Used to use the option to specify the position of # seek
+use Fcntl qw (: seek);
 
-# ランダムアクセスによってファイル内容を書き換える。
-my $file = "data_20080810.txt";
+# Rewrite the file contents by random access.
+my $ file = "data_20080810.txt";
 
-# 読み書きモードでオープン(あまり安全でない)
-open(my $fh, "+<", $file)
-  or die "Cannot open $file";
+#Open in read / write mode (not very secure)
+open (my $ fh, "+ <", $ file)
+  or die "Cannot open $ file";
 
-# 16バイト
-my $len_rec = 16;
+# 16 bytes
+my $ len_rec = 16;
 
-# レコードの先頭
-my $pos_name = 0;
+#Beginning of record
+my $ pos_name = 0;
 
-# 固定長8バイト
-my $len_name = 8; 
+# Fixed length 8 bytes
+my $ len_name = 8;
 
-# 先頭から8バイト目
-my $pos_age = 8;
+# 8th byte from the beginning
+my $ pos_age = 8;
 
-# 固定長8バイト
-my $len_age = 8; 
+# Fixed length 8 bytes
+my $ len_age = 8;
 
-# 今回はpekoの年齢に1を加えてみる。
-# pekoは2レコード目にあります。年齢は、レコードの先頭から8バイト目
-my $pos_peko_age = 1 * $len_rec + $pos_age;
+# This time, add 1 to the age of peko.
+#peko is on the second record. Age is the 8th byte from the beginning of the record
+my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
 
-# ファイルポインタの位置を、ペコの年齢の位置まで移動
-seek($fh, $pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $file: $!";
+# Move the position of the file pointer to the position of Peco's age
+seek ($ fh, $ pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $ file: $!";
 
-# $ageに、pekoの年齢を読み込み
-my $age;
+Load peko's age into # $ age
+my $ age;
 
-# 読み込んだバイト数
-my $len_read;
-$len_read = read($fh, $age, $len_age);
+# Number of bytes read
+my $ len_read;
+$ len_read = read ($ fh, $ age, $ len_age);
 
-if (!defined $len_read) {
-  die "Cannot read $file: $!";
+if (! defined $ len_read) {
+  die "Cannot read $ file: $!";
 }
-elsif ($len_read != $len_age) {
-  die "Read only $len_read bytes";
+elsif ($ len_read! = $ len_age) {
+  die "Read only $ len_read bytes";
 }
 
 
-# 年齢に1加える
-$age++;
+# Add 1 to age
+$ age ++;
 
-# readするとファイルポインタが読み込んだ分だけ進むので、元の位置に戻す。
-seek($fh, $pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $file: $!";
+When #read, the file pointer advances by the amount read, so return it to the original position.
+seek ($ fh, $ pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $ file: $!";
 
-# ファイルへ書き込み
-printf $fh  "%08s", $age
-  or die "Cannot print: $file: $!";
+# Write to file
+printf $ fh "% 08s", $ age
+  or die "Cannot print: $ file: $!";
 
-# ファイルを閉じる
-close $fh
-  or die "Cannot close $file: $!";
-</pre>
+#Close file
+close $ fh
+  or die "Cannot close $ file: $!";
+</ pre>
 
-以下は読み込むデータです。(名前8バイト、年齢8バイト)というレコードが3つ並んでいるデータです。data_20080810.txtという名前で保存してください。
+The following is the data to read. It is the data that three records (name 8 bytes, age 8 bytes) are lined up. Save it as data_20080810.txt.
 <pre>
-taro    00000023peko    00000018akira   00000023
-</pre>
+taro 00000023peko 00000018akira 00000023
+</ pre>
 
-<h3>コード解説</h3>
+<h3> Code explanation </ h3>
 
-<h4>(1) seek関数で使用するシンボルを使う準備</h4>
-
-<pre>
-use Fcntl qw(:seek);
-</pre>
-
-Fcntlモジュールから、seek関数に関連するシンボルをインポートします。SEEK_SET, SEEK_CUR, SEEK_END という3つの定数がインポートされます。
-
-<h4>(2) 固定長ファイルでの位置の指定方法</h4>
+<h4> (1) Preparing to use the symbols used in the seek function </ h4>
 
 <pre>
-# 16バイト
-my $len_rec = 16;
+use Fcntl qw (: seek);
+</ pre>
 
-# レコードの先頭
-my $pos_name = 0;
+Import the symbols associated with the seek function from the Fcntl module. Three constants, SEEK_SET, SEEK_CUR and SEEK_END, are imported.
 
-# 固定長8バイト
-my $len_name = 8; 
+<h4> (2) How to specify the position in a fixed-length file </ h4>
 
-# 先頭から8バイト目
-my $pos_age = 8;
-
-# 固定長8バイト
-my $len_age = 8; 
-
-# 今回はpekoの年齢に1を加えてみる。
-# pekoは2レコード目にあります。年齢は、レコードの先頭から8バイト目
-my $pos_peko_age = 1 * $len_rec + $pos_age;
-</pre>
-
-固定長ファイルの場合は、直接バイト位置を指定できます。上記のように、1レコードの長さ、それぞれのデータの先頭からの位置とバイト数を定義しておくと、位置を指定するときに便利です。
-
-<h4>(3) seek関数で、読み込みたいバイト位置まで移動する。</h4>
 <pre>
-# ファイルポインタの位置を、ペコの年齢の位置まで移動
+# 16 bytes
+my $ len_rec = 16;
 
-seek($fh, $pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $file: $!";
-</pre>
+#Beginning of record
+my $ pos_name = 0;
 
-seek関数を使うとファイルポインタを、指定したバイト位置まで移動することができます。ファイルポインタというのは現在のファイルのバイト位置を覚えてくれている変数だと思ってください。
+# Fixed length 8 bytes
+my $ len_name = 8;
 
-第1引数はオープンしているファイルハンドル、第2引数は移動したいバイト位置、第3引数は基準とする位置(先頭、現在の位置、末尾)です。
+# 8th byte from the beginning
+my $ pos_age = 8;
 
-第3引数に指定できる定数は以下のとおりです。
+# Fixed length 8 bytes
+my $ len_age = 8;
+
+# This time, add 1 to the age of peko.
+#peko is on the second record. Age is the 8th byte from the beginning of the record
+my $ pos_peko_age = 1 * $ len_rec + $ pos_age;
+</ pre>
+
+For fixed-length files, you can specify the byte position directly. As mentioned above, it is convenient to define the length of one record, the position from the beginning of each data and the number of bytes, when specifying the position.
+
+<h4> (3) Use the seek function to move to the byte position you want to read. </ h4>
+<pre>
+# Move the position of the file pointer to the position of Peco's age
+
+seek ($ fh, $ pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $ file: $!";
+</ pre>
+
+You can use the seek function to move the file pointer to the specified byte position. Think of a file pointer as a variable that remembers the byte position of the current file.
+
+The first argument is the open filehandle, the second argument is the byte position you want to move, and the third argument is the reference position (start, current position, end).
+
+The constants that can be specified for the third argument are as follows.
 
 <table>
   <tr>
     <td>
-      定数
-    </td>
+      constant
+    </ td>
     <td>
-      意味
-    </td>
-  </tr>
+      meaning
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       SEEK_SET
-    </td>
+    </ td>
     <td>
-      ファイルの先頭を基準にする
-    </td>
-  </tr>
+      Based on the beginning of the file
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       SEEK_CUR
-    </td>
+    </ td>
     <td>
-      現在のファイルポインタが指す位置を基準にする
-    </td>
-  </tr>
+      Based on the position pointed to by the current file pointer
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       SEEK_END
-    </td>
+    </ td>
     <td>
-      ファイルの末端を基準にする
-    </td>
-  </tr>
+      Based on the end of the file
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-上記の位置を基準にして、第2引数の値が加算されます。先頭からのバイト位置を指定する場合は、SEEK_SETです。SEEK_ENDの場合は、第2引数は負の値を指定することになります。
+The value of the second argument is added based on the above position. SEEK_SET is used to specify the byte position from the beginning. In the case of SEEK_END, the second argument will specify a negative value.
 
-seek関数は失敗するとundefを返して、$!にエラー内容を設定します。
+If the seek function fails, it returns undef and sets $! To the error content.
 
-<h4>(4) read関数でデータを読み込む</h4>
+<h4> (4) Read the data with the read function </ h4>
 
 <pre>
-# $ageに、pekoの年齢を読み込み
-my $age;
+Load peko's age into # $ age
+my $ age;
 
-# 読み込んだバイト数
-my $len_read;
-$len_read = read($fh, $age, $len_age);
+# Number of bytes read
+my $ len_read;
+$ len_read = read ($ fh, $ age, $ len_age);
 
-if (!defined $len_read) {
-  die "Cannot read $file: $!";
+if (! defined $ len_read) {
+  die "Cannot read $ file: $!";
 }
-elsif ($len_read != $len_age) {
-  die "Read only $len_read bytes";
+elsif ($ len_read! = $ len_age) {
+  die "Read only $ len_read bytes";
 }
-</pre>
+</ pre>
 
-read関数を使うことで、指定したバイト数だけをファイルから読み込むことができます。第1引数はオープンしたファイルハンドル、第2引数は、読み込んだデータを格納するスカラー変数、第3引数は読み込むバイト数です。
+By using the read function, only the specified number of bytes can be read from the file. The first argument is the open filehandle, the second argument is the scalar variable that stores the read data, and the third argument is the number of bytes to read.
 
-read関数の戻り値は、実際に読み込んだバイト数になります。リードエラーの場合は、undefが返り$!にエラー内容が設定されます。
+The return value of the read function is the number of bytes actually read. In case of read error, undef is returned and the error content is set in $ !.
 
-読み込んだバイト数が足りなかった場合、読み込みエラーの場合それぞれでエラー処理を行います。
+If the number of bytes read is insufficient, error handling is performed for each read error.
 
-<h4>(5)seek関数で書き込み位置に移動する</h4>
-
-<pre>
-# readするとファイルポインタが読み込んだ分だけ進むので、元の位置に戻す。
-seek($fh, $pos_peko_age, SEEK_SET)
-  or die "Cannnot seek: $file: $!";
-</pre>
-
-read関数は読み込んだ分だけファイルポインタの位置を進めます。再度同じ位置に書き込むためには、もう一度seek関数を呼び出します。
-
-<h4>(6)ファイルへの書き込みを行う</h4>
+<h4> (5) Move to the write position with the seek function </ h4>
 
 <pre>
-printf $fh  "%08s", $age
-  or die "Cannot print: $file: $!";
-</pre>
+When #read, the file pointer advances by the amount read, so return it to the original position.
+seek ($ fh, $ pos_peko_age, SEEK_SET)
+  or die "Cannnot seek: $ file: $!";
+</ pre>
 
-書き込みは<a href="/blog/20170326149148.html">printf関数</a>でフォーマットを指定して行います。%08sという指定で、「8桁の文字列で、8桁に満たない部分は0で埋める」ということを意味します。
+The read function advances the position of the file pointer by the amount read. To write to the same position again, call the seek function again.
+
+<h4> (6) Write to a file </ h4>
+
+<pre>
+printf $ fh "% 08s", $ age
+  or die "Cannot print: $ file: $!";
+</ pre>
+
+Writing is done by specifying the format with the <a href="/blog/20170326149148.html"> printf function </a>. By specifying% 08s, it means that "in an 8-digit character string, the part less than 8 digits is filled with 0".

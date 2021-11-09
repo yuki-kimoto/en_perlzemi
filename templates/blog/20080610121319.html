@@ -1,80 +1,80 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>wantarray関数 - スカラかリストをコンテキストに応じて返却 </h2>
+  </ li>
+</ ol>
+<h2> wantarray function-return scalar or list depending on context </ h2>
 
 
 
-Perlでは<a href="/blog/20080608121292.html">コンテキスト</a>という概念があるので、スカラあるいは<a href="/blog/20100308126967.html">リスト</a>をコンテキストに応じて返却することができます。
+Perl has the concept of <a href="/blog/20080608121292.html"> context </a>, so you can either scalar or <a href="/blog/20100308126967.html"> list </a> depending on the context. You can return it.
 
 <pre>
-sub func_name{
-  # 処理 ...
-  return wantarray ? リスト : スカラ;
+sub func_name {
+  # process ...
+  return wantarray? List: Scalar;
 }
-</pre>
+</ pre>
 
-wantarrayを使えば、リストコンテキストの場合とスカラコンテキストの場合を区別して、戻り値を返却することができます。
+You can use wantarray to return the return value by distinguishing between the list context and the scalar context.
 
-wantarrayが使われている標準関数には<a href="/blog/20081009122357.html">localtime関数</a>があります。
+The standard functions that wantarray uses are the <a href="/blog/20081009122357.html"> localtime function </a>.
 
-<h4>wantarray関数は使わないほうがよい</h4>
+<h4> Don't use the wantarray function </ h4>
 
-wantarray関数は、非常に発見しにくバグを生み出しだしがちなので、使用することはお勧めしません。たとえば、スカラが返ってくると思って、関数の引数に指定したら、リストが返っていたということが、起こりうるからです。
+We do not recommend using the wantarray function as it tends to create very hard-to-find bugs. For example, if you think that a scalar will be returned and specify it as an argument of a function, it is possible that a list is returned.
 
 <pre>
-# スカラが返ってくると思っていたが、実際はリストが返ってきてしまう
-func(localtime());
-</pre>
+I expected #scala to come back, but in reality the list comes back
+func (localtime ());
+</ pre>
 
-このようなバグを避けるためには、wantarray関数は使わずに、戻り値は<a href="/blog/20161107147852.html">スカラ変数</a>を返すか、リストを返すようにしましょう。
+To avoid such a bug, don't use the wantarray function and return <a href="/blog/20161107147852.html"> scalar variable </a> or a list. ..
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-wantarrayのサンプルです。
+This is a sample of wantarray.
 
 <pre>
 use strict;
 use warnings;
 
-# スカラかリストをコンテキストに応じて返却する
-# wantarray ? return リスト : return スカラ
+#Return scalar or list depending on context
+# wantarray? return list: return scalar
 
-print "1: スカラかリストをコンテキストに応じて返却する\n";
+print "1: Return scalar or list depending on context \ n";
 my @nums = (1, 2, 3, 4, 5);
-my @odd_nums = grep_odd_nums(@nums);
-my $odd_nums_cnt = grep_odd_nums(@nums); 
+my @odd_nums = grep_odd_nums (@nums);
+my $ odd_nums_cnt = grep_odd_nums (@nums);
 
-print "1～5 の中で、奇数は、", join(',', @odd_nums) . "です。\n";
-print "奇数の個数は、$odd_nums_cnt です。\n\n";
+print "In 1-5, the odd numbers are", join (',', @odd_nums). ". \ N";
+print "The odd number is $ odd_nums_cnt. \ N \ n";
 
-# 奇数のリストを返却するサブルーチン
+# Subroutine that returns an odd list
 sub grep_odd_nums {
   my @nums = @_;
   my @odd_nums;
   
-  for my $num (@nums) {
-    if($num % 2 == 1) {
-      push @odd_nums, $num;
+  for my $ num (@nums) {
+    if ($ num% 2 == 1) {
+      push @odd_nums, $ num;
     }
   }
 
-  # リストコンテキストならば、 @odd_nums を返却
-  # スカラコンテキストならば、 @odd_nums の個数を返却
-  return wantarray ? @odd_nums : scalar @odd_nums;
+  #If in list context, return @odd_nums
+  #If in scalar context, return the number of @odd_nums
+  return wantarray? @odd_nums: scalar @odd_nums;
 }
-</pre>
+</ pre>

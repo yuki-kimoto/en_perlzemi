@@ -1,260 +1,260 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/"><span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemprop="item" href="/blog/20101130129876.html"><span itemprop="name">サブルーチン</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>Perlのサブルーチンの柔軟性をC言語と比較してみる</h2>
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/"> <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <a itemprop="item" href="/blog/20101130129876.html"> <span itemprop = "name"> Subroutine </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Compare the flexibility of Perl subroutines with C </ h2>
 
 
 
-Perlのサブルーチンの特徴をまとめておきます。C言語と比較してみました。Perlの言語としての柔軟性が理解できると思います。※1
+Here is a summary of the features of Perl subroutines. I compared it with C language. You can see the flexibility of Perl as a language. * 1
 
-<h3>Perlのサブルーチンの特徴</h3>
+<h3> Perl Subroutine Features </ h3>
 
 <table>
   <tr>
     <td>
-      　
-    </td>
+      Twice
+    </ td>
     <td>
       Perl
-    </td>
+    </ td>
     <td>
-      C言語
-    </td>
-  </tr>
+      C language
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       1
-    </td>
+    </ td>
     <td>
-      サブルーチンの定義はどこで行っても良い
-    </td>
+      Subroutine definition can be done anywhere
+    </ td>
     <td>
-      一般的に、関数の前方宣言(プロトタイプ宣言)が必要
-    </td>
-  </tr>
+      In general, a function forward declaration (prototype declaration) is required
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       2
-    </td>
+    </ td>
     <td>
-      引数の型を宣言しておく必要がない
-    </td>
+      There is no need to declare the argument type
+    </ td>
     <td>
-      引数の型を宣言しておく必要がある。
-    </td>
-  </tr>
+      The argument type must be declared.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       3
-    </td>
+    </ td>
     <td>
-      戻り値の型を宣言しておく必要がない
-    </td>
+      There is no need to declare the return type
+    </ td>
     <td>
-      戻り値の型を宣言しておく必要がある。
-    </td>
-  </tr>
+      The return type must be declared.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      4
-    </td>
+      Four
+    </ td>
     <td>
-      デフォルトで可変個の引数を受け取る
-    </td>
+      Receives variable arguments by default
+    </ td>
     <td>
-      引数の個数を宣言時に決めておく必要がある
-    </td>
-  </tr>
+      It is necessary to decide the number of arguments at the time of declaration
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      5
-    </td>
+      Five
+    </ td>
     <td>
-      リストを戻り値として使用可能
-    </td>
+      List can be used as return value
+    </ td>
     <td>
-      配列を戻り値にすることはできない
-    </td>
-  </tr>
+      Array cannot be a return value
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       6
-    </td>
+    </ td>
     <td>
-      レキシカル変数へのリファレンスを戻り値にできる
-    </td>
+      A reference to a lexical variable can be used as a return value
+    </ td>
     <td>
-      ローカル変数のアドレスを戻り値にできない
-    </td>
-  </tr>
+      Cannot return the address of a local variable
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       7
-    </td>
+    </ td>
     <td>
-      コンテキストという概念がある
-    </td>
+      There is a concept of context
+    </ td>
     <td>
-      コンテキストという概念はない
-    </td>
-  </tr>
+      There is no concept of context
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       8
-    </td>
+    </ td>
     <td>
-      サブルーチンが属する名前空間がある
-    </td>
+      There is a namespace to which the subroutine belongs
+    </ td>
     <td>
-      関数が属する名前空間はない
-    </td>
-  </tr>
+      There is no namespace to which the function belongs
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h3>1. サブルーチンの定義はどこで行っても良い</h3>
+<h3> 1. Subroutines can be defined anywhere </ h3>
 
 <pre>
-# perl ( サブルーチンの定義はどこで行ってもよい )
+# perl (Subroutine definition can be done anywhere)
 
-func() # ここでも使えるし 
+func () # Can also be used here
 
 sub func {
 
 }
 
-func() # ここでも使える
-</pre>
+func () # Can also be used here
+</ pre>
 
 <pre>
-/* C言語 ( 一般的には、前方宣言が必要 ) */
+/ * C language (generally requires a forward declaration) * /
 
-int func(int x); /* 関数プロトタイプ宣言 */
+int func (int x); / * Function prototype declaration * /
 
-func(3) /* ここで、使うためには、前方宣言( プロトタイプ宣言 ) が必要 */
+func (3) / * Here, a forward declaration (prototype declaration) is required to use it * /
 
-int func( int x ){
+int func (int x) {
 
 }
-</pre>
+</ pre>
 
-Perlでは、実行時にサブルーチンの名前をシンボルテーブルに探しにいきます。だから、どこにでも書くことができます。
+Perl looks for the name of the subroutine in the symbol table at run time. So you can write anywhere.
 
-C言語では、コンパイル時に、関数の名前が解決されます。関数を使う場所より後ろに関数定義があった場合は、使う場所より前で前方宣言( プロトタイプ宣言 ) がなされていなくてはなりません。
+In C, function names are resolved at compile time. If the function definition is after the place where the function is used, the forward declaration (prototype declaration) must be made before the place where the function is used.
 
-<h3>2. 3. 4. 引数の型、引数の個数、戻り値の型を、決めておく必要がない</h3>
+<h3> 2. 3. 4. It is not necessary to determine the argument type, the number of arguments, and the return type. </ H3>
 
 <pre>
-# Perl (最初に決めておくことは、サブルーチンの名前だけ。)
+# Perl (The first thing to decide is the name of the subroutine.)
 sub func {
 
 }
-</pre>
+</ pre>
 
 <pre>
-/* C言語 ( 引数の型、引数の個数、戻り値の型を決めておく必要がある。 ) */
+/ * C language (It is necessary to decide the argument type, the number of arguments, and the return type.) * /
 
-int func(int x, int y) {
+int func (int x, int y) {
 
 }
-</pre>
+</ pre>
 
-Perlでは、引数の型、引数の個数、戻り値の型は、実行時に決定されます。C言語では、引数の型、引数の個数、戻り値の型は、コンパイル時に決定されます。
+In Perl, the argument type, the number of arguments, and the return type are determined at run time. In C, the argument type, the number of arguments, and the return type are determined at compile time.
 
-<h3>5. リストを戻り値として使用可能</h3>
+<h3> 5. List can be used as return value </ h3>
 
 <pre>
-# Perl (リストを戻り値として使用可能)
+# Perl (list can be used as return value)
 
 sub func {
     return (1, 2, 3);
 }
-</pre>
+</ pre>
 
 <pre>
-/* C言語 ( 配列を返却するには,引数で受け取ったポインタを操作する必要がある ) */
+/ * C language (To return an array, you need to manipulate the pointer received as an argument) * /
 
-int ary[100];
-fucn(ary); /* ポインタを渡す */
+int ary [100];
+fucn (ary); / * Pass a pointer * /
 
-void func(int *ary) {
-  /* ここで、ポインタを通じて、 ary に値を代入する必要がある。 */
+void func (int * ary) {
+  / * Now you need to assign a value to ary through a pointer. * /
 }
-</pre>
+</ pre>
 
-Perlでは、リストを戻り値に、することができます。C言語では、配列を戻り値として返却することができません。呼び出し元へ、配列を返却したい場合は、引数で、ポインタとして渡して、それを操作する必要があります。
+In Perl, you can use a list as a return value. In C language, an array cannot be returned as a return value. If you want to return the array to the caller, you need to pass it as a pointer as an argument and operate it.
 
-<h3>6. レキシカル変数へのリファレンスを戻り値にできる</h3>
-
-<pre>
-# Perl 
-sub func {
-  my $val = 1;
-  return \$val;
-}
-</pre>
-
-<pre>
-/* C言語 */
-int func(){
-    int x;
-    return &x;
-}
-</pre>
-
-Perlでは、レキシカル変数は、どこかから参照されている限りは、メモリ上から破棄されません。C言語では、関数が終了してしまうと、ローカル変数は、破棄されてしまいます。
-
-<h3>7. コンテキストという概念がある</h3>
-
-Perlには、コンテキストに応じて、スカラーかリストを関数の戻り値として使用することができます。C言語には、このような概念はありません。
-
-<h3>8. サブルーチンが属する名前空間がある</h3>
+<h3> 6. A reference to a lexical variable can be used as a return value </ h3>
 
 <pre>
 # Perl
-# 本当の名前は、main::func ( mainパッケージに属するfuncサブルーチン )
+sub func {
+  my $ val = 1;
+  return \ $ val;
+}
+</ pre>
+
+<pre>
+/ * C language * /
+int func () {
+    int x;
+    return & x;
+}
+</ pre>
+
+In Perl, lexical variables are not destroyed from memory as long as they are referenced from somewhere. In C, local variables are discarded when the function ends.
+
+<h3> 7. There is a concept of context </ h3>
+
+Perl can use a scalar or list as the return value of a function, depending on the context. There is no such concept in C language.
+
+<h3> 8. There is a namespace to which the subroutine belongs </ h3>
+
+<pre>
+# Perl
+# The real name is main :: func (func subroutine belonging to the main package)
 sub func {
 
 }
 
 package SomePackage;
-# 本当の名前は、SomePackage::func 
-# ( SomePackageパッケージに属する funcサブルーチン ) 
-# 上記のfuncとは、まったく別のもの
+#The real name is SomePackage :: func
+# (Func subroutine belonging to SomePackage package)
+# It's completely different from the above func
 sub func {
 
 }
-</pre>
+</ pre>
 
 <pre>
-/* C言語 */
-/* func は func であり、プログラムのどこから見ても func です。*/
-int func() {
+/ * C language * /
+/ * func is func, which is func from any point of view in the program. * /
+int func () {
 
 }
-</pre>
+</ pre>
 
-Perlでは、すべてのサブルーチンは、名前空間に属します。Perlでは、名前空間のことをパッケージと呼びます。C言語は、名前空間を持ちません。
+In Perl, all subroutines belong to namespaces. In Perl, namespaces are called packages. C language does not have a namespace.
 
-<h3>注</h3>
-<span style="font-size:small;">※1 Cを批判しているわけではないのであしからず。Cは、「実行速度が速い」「ハードウェアよりのプログラミングが可能」「低レベルなデータ操作が得意」という特徴を持ちます。Perlはこれが苦手なのです。</span>
+<h3> Note </ h3>
+<span style = "font-size: small;"> * 1 I'm not criticizing C, so I'm not sure. C has the characteristics of "fast execution speed", "programming from hardware", and "good at low-level data manipulation". Perl is not good at this. </ span>

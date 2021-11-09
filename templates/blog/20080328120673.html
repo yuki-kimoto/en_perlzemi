@@ -1,133 +1,133 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161023147731.html">
-        <span itemprop="name">制御構造</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> control structure </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="3" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">foreach文</span>
-    <meta itemprop="position" content="4" />
-  </li>
-</ol>
-<h2>foreach - 配列の各要素の処理</h2>
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> foreach statement </ span>
+    <meta itemprop = "position" content = "4" />
+  </ li>
+</ ol>
+<h2> foreach --Processing of each element of the array </ h2>
 
 
 
-<strong>配列の各要素を順番に処理</strong>するには<strong>foreach</strong>を使用します。Perlでは<a href="/blog/20100123126425.html">while文</a>よりも好んで使用されます。
-
-<pre>
-foreach my $item (@array) {
-  ...
-}
-</pre>
-
-またPerlではforeachはforの別名なので、foreachの代わりにforを使うこともできます。こちらのほうが簡潔でよいと思います。
+Use <strong> foreach </ strong> to process each element of the <strong> array in turn </ strong>. Perl prefers to use <a href="/blog/20100123126425.html"> while statement </a>.
 
 <pre>
-for my $item (@array) {
+foreach my $ item (@array) {
   ...
 }
-</pre>
+</ pre>
 
-要素を順番に出力する方法は以下のページで詳しく解説しています。
+Also, in Perl, foreach is another name for for, so you can use for instead of foreach. I think this is more concise.
+
+<pre>
+for my $ item (@array) {
+  ...
+}
+</ pre>
+
+The method of outputting the elements in order is explained in detail on the following page.
 
 <ul>
   <li>
-    <a href="/blog/20170521149524.html">for文、while文を使った繰り返しの処理を覚えよう</a>
-  </li>
-</ul>
+    <a href="/blog/20170521149524.html"> Let's learn the iterative processing using for statement and while statement </a>
+  </ li>
+</ ul>
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-配列の要素を順番に出力するサンプルです。
+This is a sample that outputs the elements of the array in order.
 <pre>
-# 配列の要素を順番に出力
+# Output array elements in order
 my @nums = (3, 4, 5);
-foreach my $num (@nums) {
-  print "$num\n";
+foreach my $ num (@nums) {
+  print "$ num \ n";
 }
-</pre>
+</ pre>
 
-データ構造が配列のリファレンスの場合に配列の要素を順番に出力するサンプルです。
+This is a sample that outputs the elements of an array in order when the data structure is an array reference.
 
 <pre>
-# 配列の要素を順番に出力(配列のリファレンス)
-my $nums = [3, 4, 5];
-foreach my $num (@$nums) {
-  print "$num\n";
+# Output array elements in sequence (array reference)
+my $ nums = [3, 4, 5];
+foreach my $ num (@ $ nums) {
+  print "$ num \ n";
 }
-</pre>
+</ pre>
 
- 2次元配列に含まれる値を行ごとにタブ区切りで出力するサンプルです。<a href="/blog/20081007122338.html">join関数</a>を使って配列に含まれる文字列をタブでつなげています。
+ This is a sample that outputs the values ​​contained in the two-dimensional array, separated by tabs for each line. <a href="/blog/20081007122338.html"> join function </a> is used to connect the strings contained in the array with tabs.
 
 <pre>
-# 2次元配列に含まれる値を行ごとにタブ区切で出力
-my $data = [
+# Output the values ​​contained in the 2D array in tabs for each line
+my $ data = [
   ['a', 1],
   ['b', 2]
-];
+];;
 
-foreach my $record (@$data) {
-  print join("\t", @$record) . "\n";
+foreach my $ record (@ $ data) {
+  print join ("\ t", @ $ record). "\ n";
 }
-</pre>
+</ pre>
 
-ハッシュの配列に含まれる値を行ごとにタブ区切りで出力するサンプルです。
+This is a sample that outputs the values ​​contained in the hash array for each line, separated by tabs.
 
 <pre>
-# ハッシュの配列の含まれる値を行ごとにタブ区切りで出力
-my $persons = [
-  {name => 'Ken',  age => 19},
-  {name => 'Taro', age => 32}
-];
+# Outputs the values ​​contained in the hash array, tab-separated line by line
+my $ people = [
+  {name =>'Ken', age => 19},
+  {name =>'Taro', age => 32}
+];;
 
-foreach my $person (@$persons) {
-  my @record = ($person->{name}, $person->{age});
-  print join("\t", @record) . "\n";
+foreach my $ person (@ $ persons) {
+  my @record = ($ person-> {name}, $ person-> {age});
+  print join ("\ t", @record). "\ n";
 }
-</pre>
+</ pre>
 
-foreachのいくつかのサンプルです。
+Here are some samples of foreach.
 
 <pre>
 use strict;
 use warnings;
 
-print "[1]\n";
-my @persons = ('tom', 'taro', 'sinji');
-foreach my $person (@persons){
-  print $person, "\n";
+print "[1] \ n";
+my @persons = ('tom','taro','sinji');
+foreach my $ person (@persons) {
+  print $ person, "\ n";
 }
-print "\n";
+print "\ n";
 
-print "[2]\n";
+print "[2] \ n";
 my @numbers = (1, 2, 3);
-foreach my $number (@numbers){
-  # $numberに渡されるのは、要素の別名なので、配列そのものの値を変更できる。
-  $number = $number * 2;
+foreach my $ number (@numbers) {
+  Since what is passed to # $ number is an alias for the element, you can change the value of the array itself.
+  $ number = $ number * 2;
 }
-print "\@numbers = (", join(',', @numbers), ")\n\n";
+print "\ @ numbers = (", join (',', @numbers), ") \ n \ n";
 
-print "[3]\n";
-foreach my $index (0 .. $#persons){ 
-  # 要素番号を使いたい時は、配列そのものの要素を渡さずに、要素番号を渡す。
-  print "\$persons[ $index ] = $persons[ $index ]\n";
+print "[3] \ n";
+foreach my $ index (0 .. $ #persons) {
+  #When you want to use the element number, pass the element number without passing the element of the array itself.
+  print "\ $ persons [$ index] = $ persons [$ index] \ n";
 }
-</pre>
-実行結果
+</ pre>
+Execution result
 <pre>
 [1]
 tom
@@ -138,8 +138,7 @@ sinji
 @numbers = (2,4,6)
 
 [3]
-$persons[ 0 ] = tom
-$persons[ 1 ] = taro
-$persons[ 2 ] = sinji
-</pre>
-
+$ people [0] = tom
+$ persons [1] = taro
+$ persons [2] = sinji
+</ pre>

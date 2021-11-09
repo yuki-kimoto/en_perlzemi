@@ -1,195 +1,194 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161123147990.html">
-        <span itemprop="name">日付・時刻</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>時刻の差を求める(時刻に日付を含む)</h2>
+        <span itemprop = "name"> Date / Time </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Find the time difference (including the date in the time) </ h2>
 
 
 
-時刻に日付を含んでいる場合にその差を求めるにはTime::Localモジュールのtimelocal関数で、日付を含む時刻を秒に変換して差を求めます。
+To find the difference when the time contains a date, use the timelocal function of the Time :: Local module to convert the time containing the date to seconds and find the difference.
 
-ログなどでは書式化された時刻が記述されていますので、その状態から時刻の差を求めるサンプルを作成しました。
+Since the formatted time is described in logs etc., I created a sample to find the time difference from that state.
 
 <pre>
 use strict;
 use warnings;
 
-# 差は2秒 これを計算で求める
-print "(1)時刻の差を求める( 時刻に日付を含む )\n";
-my $time_str1 = '30/Sep/2006:23:59:59'; 
-my $time_str2 = '01/Oct/2006:00:00:01';
+# Difference is 2 seconds Calculate this
+print "(1) Find the time difference (time includes date) \ n";
+my $ time_str1 = '30 / Sep / 2006: 23: 59: 59';
+my $ time_str2 = '01 / Oct / 2006: 00: 00: 01';
 
 
-# 時刻の文字列表現を日付を含んだ時刻情報のハッシュに変換する。
-my $time1 = time_from_str($time_str1);
-my $time2 = time_from_str($time_str2);
+# Converts a string representation of time into a hash of time information, including dates.
+my $ time1 = time_from_str ($ time_str1);
+my $ time2 = time_from_str ($ time_str2);
 
-# 時刻情報のハッシュを秒に変換して経過秒を計算
-my $sec_interval = time_to_sec($time2) - time_to_sec($time1);
+# Convert time information hash to seconds to calculate elapsed seconds
+my $ sec_interval = time_to_sec ($ time2) --time_to_sec ($ time1);
 
-print "時刻の差は$sec_interval秒です。\n";
+print "Time difference is $ sec_interval seconds. \ N";
 
 
-# 時刻の文字列表現を時刻情報を表すハッシュに変換する関数
+# A function that converts a string representation of time into a hash that represents time information
 sub time_from_str {
-  my $time_str = shift;
-  return unless $time_str;
+  my $ time_str = shift;
+  return unless $ time_str;
   
-  my $time = {};
+  my $ time = {};
   
-  # 日付を含む時刻の書式にマッチしたら
-  if ($time_str =~ m#^(\d{2})/(\w{3})/(\d{4}):(\d{2}):(\d{2}):(\d{2})$#) {
+  # If it matches the format of the time including the date
+  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ #) {
     
-    #ハッシュを作成
-    @{$time}{qw/mday mon year hour min sec/}
-      = ($1, $2, $3, $4, $5, $6);
+    #Create hash
+    @ {$ time} {qw / mday mon year hour min sec /}
+      = ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6);
     
-    #月の英語表記と月の番号を対応させたハッシュ
-    my %num_of_mon = ( 
-      jan => 0, feb => 1, mar => 2, apr => 3, may =>  4,  jun =>  5,
-      jul => 6, aug => 7, sep => 8, oct => 9, nov => 10,  dec => 11,
+    #Hash corresponding to the English notation of the month and the number of the month
+    my% num_of_mon = (
+      jan => 0, feb => 1, mar => 2, apr => 3, may => 4, jun => 5,
+      jul => 6, aug => 7, sep => 8, oct => 9, nov => 10, dec => 11,
     );
 
-    # 月の表記が間違っている場合はreturn
-    $time->{mon} = $num_of_mon{lc($time->{mon})};
-    return unless defined $time->{mon};
+    #Return if the month notation is incorrect
+    $ time-> {mon} = $ num_of_mon {lc ($ time-> {mon})};
+    return unless defined $ time-> {mon};
     
-    $time->{year} -= 1900;
+    $ time-> {year}-= 1900;
     
-    return wantarray ? %$time : $time;
+    return wantarray?% $ time: $ time;
   }
   return;
 }
 
-# 時刻を秒に変換する関数
+# Function to convert time to seconds
 sub time_to_sec {
-  my $time;
-  if (ref $_[0] eq 'HASH') {
-    $time = shift;
+  my $ time;
+  if (ref $ _ [0] eq'HASH') {
+    $ time = shift;
   }
   else {
-    %$time = @_;
+    % $ time = @_;
   }
   
-  return unless defined $time->{sec};
-  return unless defined $time->{min};
-  return unless defined $time->{hour};
-  return unless defined $time->{mday};
-  return unless defined $time->{mon};
-  return unless defined $time->{year};
+  return unless defined $ time-> {sec};
+  return unless defined $ time-> {min};
+  return unless defined $ time-> {hour};
+  return unless defined $ time-> {mday};
+  return unless defined $ time-> {mon};
+  return unless defined $ time-> {year};
   
-  # Time::Localモジュールを使用して秒に変換
-  require Time::Local;
-  my $sec = Time::Local::timelocal(
-    $time->{sec},
-    $time->{min},
-    $time->{hour},
-    $time->{mday},
-    $time->{mon},
-    $time->{year},
+  Convert to seconds using the # Time :: Local module
+  require Time :: Local;
+  my $ sec = Time :: Local :: timelocal (
+    $ time-> {sec},
+    $ time-> {min},
+    $ time-> {hour},
+    $ time-> {mday},
+    $ time-> {mon},
+    $ time-> {year},
   );
   
-  return $sec;
+  return $ sec;
 }
-</pre>
+</ pre>
 
-実行結果
+Execution result
 <pre>
-(1)時刻の差を求める( 時刻に日付を含む )
-時刻の差は2秒です。
-</pre>
+(1) Find the time difference (time includes date)
+The time difference is 2 seconds.
+</ pre>
 
-<h3>解説</h3>
+<h3> Explanation </ h3>
 
-<h4>時刻の文字列表現を時刻情報を表すハッシュに変換する</h4>
+<h4> Convert time string representation to hash representing time information </ h4>
 
-'30/Sep/2006:23:59:59' のような日付を含む時刻を時刻情報を表すハッシュに変換しています。
+Converting a time containing a date such as '30 / Sep / 2006: 23: 59: 59'to a hash representing time information.
 
-時刻情報を表すハッシュには、sec,min,hour,mday,mon,year という6つのキーを持たせています。
+The hash that represents the time information has six keys: sec, min, hour, mday, mon, and year.
 
-正規表現で、日付と時刻を切り出してから,Sepのような月の英語名の表記を月の番号に変換しています。
+After cutting out the date and time with a regular expression, the English name of the month such as Sep is converted to the month number.
 
 <pre>
 sub time_from_str {
-  my $time_str = shift;
-  return unless $time_str;
+  my $ time_str = shift;
+  return unless $ time_str;
   
-  my $time = {};
+  my $ time = {};
   
-  # 日付を含む時刻の書式にマッチしたら
-  if ($time_str =~ m#^(\d{2})/(\w{3})/(\d{4}):(\d{2}):(\d{2}):(\d{2})$#) {
+  # If it matches the format of the time including the date
+  if ($ time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $ #) {
     
-    #ハッシュを作成
-    @{$time}{qw/mday mon year hour min sec/}
-      = ($1, $2, $3, $4, $5, $6);
+    #Create hash
+    @ {$ time} {qw / mday mon year hour min sec /}
+      = ($ 1, $ 2, $ 3, $ 4, $ 5, $ 6);
     
-    #月の英語表記と月の番号を対応させたハッシュ
-    my %num_of_mon = ( 
-      jan => 0, feb => 1, mar => 2, apr => 3, may =>  4,  jun =>  5,
-      jul => 6, aug => 7, sep => 8, oct => 9, nov => 10,  dec => 11,
+    #Hash corresponding to the English notation of the month and the number of the month
+    my% num_of_mon = (
+      jan => 0, feb => 1, mar => 2, apr => 3, may => 4, jun => 5,
+      jul => 6, aug => 7, sep => 8, oct => 9, nov => 10, dec => 11,
     );
 
-    # 月の表記が間違っている場合はreturn
-    $time->{mon} = $num_of_mon{lc($time->{mon})};
-    return unless defined $time->{mon};
+    #Return if the month notation is incorrect
+    $ time-> {mon} = $ num_of_mon {lc ($ time-> {mon})};
+    return unless defined $ time-> {mon};
     
-    $time->{year} -= 1900;
+    $ time-> {year}-= 1900;
     
-    return wantarray ? %$time : $time;
+    return wantarray?% $ time: $ time;
   }
   return;
 }
-</pre>
-その他は、「<a href="/blog/20081018122442.html">時刻の差を求める(24時間を越えない場合)</a>」と同じです。
+</ pre>
+Others are the same as "<a href="/blog/20081018122442.html"> Find the time difference (if it does not exceed 24 hours) </a>".
 
-<h4>時刻を秒に変換する</h4>
+<h4> Convert time to seconds </ h4>
 
-日付を含む時刻を秒に変換(エポック秒)に変換するにはTime::Localモジュールのtimelocal関数を使用します。
+To convert a time containing a date to seconds (epoch seconds), use the timelocal function of the Time :: Local module.
 
-その他は、「<a href="/blog/20081018122442.html">時刻の差を求める(24時間を越えない場合)</a>」と同じです。
+Others are the same as "<a href="/blog/20081018122442.html"> Find the time difference (if it does not exceed 24 hours) </a>".
 
 <pre>
-# 時刻情報のハッシュを秒に変換して経過秒を計算
-my $sec_interval = time_to_sec($time2) - time_to_sec($time1);
+# Convert time information hash to seconds to calculate elapsed seconds
+my $ sec_interval = time_to_sec ($ time2) --time_to_sec ($ time1);
 
-# 時刻を秒に変換する関数
+# Function to convert time to seconds
 sub time_to_sec {
-  my $time;
-  if (ref $_[0] eq 'HASH') {
-    $time = shift;
+  my $ time;
+  if (ref $ _ [0] eq'HASH') {
+    $ time = shift;
   }
   else {
-    %$time = @_;
+    % $ time = @_;
   }
   
-  return unless defined $time->{sec};
-  return unless defined $time->{min};
-  return unless defined $time->{hour};
-  return unless defined $time->{mday};
-  return unless defined $time->{mon};
-  return unless defined $time->{year};
+  return unless defined $ time-> {sec};
+  return unless defined $ time-> {min};
+  return unless defined $ time-> {hour};
+  return unless defined $ time-> {mday};
+  return unless defined $ time-> {mon};
+  return unless defined $ time-> {year};
   
-  # Time::Localモジュールを使用して秒に変換
-  require Time::Local;
-  my $sec = Time::Local::timelocal(
-    $time->{sec},
-    $time->{min},
-    $time->{hour},
-    $time->{mday},
-    $time->{mon},
-    $time->{year},
+  Convert to seconds using the # Time :: Local module
+  require Time :: Local;
+  my $ sec = Time :: Local :: timelocal (
+    $ time-> {sec},
+    $ time-> {min},
+    $ time-> {hour},
+    $ time-> {mday},
+    $ time-> {mon},
+    $ time-> {year},
   );
   
-  return $sec;
+  return $ sec;
 }
-</pre>
-
+</ pre>

@@ -1,177 +1,176 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>行入力演算子「&lt;&gt;」 - ファイルから一行読み込む</h2>
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Line input operator "& lt; & gt;" --Read one line from a file </ h2>
 
 
 
-<strong>ファイルを一行づつ読み込む</strong>には<strong>行入力演算子「<>」</strong>を使用します。読み込む行がなくなると、undefを返却します。
-
-<pre>
-my $line = <$fh>;
-</pre>
-
-他の演算子と異なり「<」と「>」の間にファイルハンドルを記述することに注意してください。
-
-通常は、<a href="/blog/20100123126425.html">while文</a>と組み合わせて、繰り返して行を読み込むのに利用します。
+Use the <strong> line input operator "<>" </ strong> to read <strong> files line by line </ strong>. When there are no more lines to read, undef is returned.
 
 <pre>
-while(my $line = <$fh>) {
+my $ line = <$ fh>;
+</ pre>
+
+Note that unlike other operators, you put the filehandle between "<" and ">".
+
+Usually used in combination with <a href="/blog/20100123126425.html"> while statement </a> to read lines repeatedly.
+
+<pre>
+while (my $ line = <$ fh>) {
   # ...
 }
-</pre>
+</ pre>
 
-考え深い方は、上記のように書いた場合は、もし「0」などの偽の値が返ってきた場合は、正しく動かないんじゃないかと感じるのではないでしょうか。行の途中は、改行コードが入りますから、「0」が返ることはありませんが、末尾の場合は「0」が返ってくる可能性があります。
+If you think about it as above, you may feel that it will not work properly if a false value such as "0" is returned. Since a line feed code is inserted in the middle of the line, "0" is not returned, but "0" may be returned at the end.
 
-でも、心配しないでください。ファイル演算子は、whileと組み合わされて使う場合のみ、次のように解釈されるからです。
+But don't worry. This is because the file operator is interpreted as follows only when used in combination with while.
 
 <pre>
-while(defined(my $line = <$fh>)) {
+while (defined (my $ line = <$ fh>)) {
   # ...
 }
-</pre>
+</ pre>
 
-ですから、whileと組み合わせて使っている限りは、最初の書き方で問題ありません。
+So, as long as you use it in combination with while, the first writing is fine.
 
-<h3>ダイヤモンド演算子</h3>
+<h3> Diamond operator </ h3>
 
-行入力演算子で「<」と「>」の間に何もない「<>」という記述の場合は、特別に<strong>ダイヤモンド演算子</strong>と呼ばれます。ファイルハンドルが省略された場合は、標準入力と、<a href="/blog/20080108132865.html">コマンドライン引数</a>で指定されたファイル名から、1行づつ読み込むことができます。
-
-<pre>
-# ダイヤモンド演算子
-my $line = <>;
-</pre>
-
-ダイヤモンド演算子を使用すればファイルから1行読み込みを簡単に行うことができます。標準入力とコマンドライン引数で与えられたファイルから一行ずつ順に読み込みます。
+The line input operator "<>" with nothing between "<" and ">" is specially called the <strong> diamond operator </ strong>. If the file handle is omitted, it can be read line by line from the standard input and the file name specified by the <a href="/blog/20080108132865.html"> command line argument </a>.
 
 <pre>
-while (my $line = <>) {
+#Diamond operator
+my $ line = <>;
+</ pre>
+
+You can easily read a single line from a file using the diamond operator. Reads line by line from the file given by standard input and command line arguments.
+
+<pre>
+while (my $ line = <>) {
   ...
 }
-</pre>
+</ pre>
 
-ダイヤモンド演算子を使う利点は「標準入力から他のプログラムの出力を受け取ることができるプログラム」を簡単に書けるということです。これは一般的なUNIXユーティリティであるcat,sed,awk,grepなどと同じ動きです。
+The advantage of using the diamond operator is that you can easily write a "program that can receive the output of other programs from standard input". This is the same behavior as common UNIX utilities such as cat, sed, awk, grep, etc.
 
 <pre>
-# コマンドライン引数からファイル名を受け取る
+#Receive file name from command line argument
 script.pl file.txt
 
-# 他のプログラムの出力をパイプを使って標準入力から受け取る
+# Receive the output of other programs from standard input using pipes
 grep hello file.txt | script.pl
-</pre>
+</ pre>
 
-もう一つの利点はわざわざopenやcloseをする必要がないということです。短いプログラムではダイヤモンド演算子を利用すると簡単にプログラムを書くことができるので便利です。
+Another advantage is that you don't have to bother to open or close. For short programs, it is convenient to use the diamond operator because it is easy to write the program.
 
-受け取った行をそのまま出力するサンプルです。
+This is a sample that outputs the received line as it is.
 
 <pre>
-# 受け取った行をそのまま出力する
+# Output the received line as it is
 use strict;
 use warnings;
 
-while (my $line = <>) {
-  print $line;
+while (my $ line = <>) {
+  print $ line;
 }
-</pre>
+</ pre>
 
-<h3>配列に一度に取り込む</h3>
+<h3> Get into the array at once </ h3>
 
-行入力演算子を、リストコンテキストで評価すると、すべての行を配列に取り込むことができます。けれども、ファイルが大きい場合は、メモリの使用量が大きくなるので、注意してください。
-
-<pre>
-my @lines = <$fh>
-</pre>
-
-<h3>ファイルのすべての内容を取り込む</h3>
-
-ファイルのすべての内容を取り込むには、次のような書き方が一般的です。
+You can populate an array with all rows by evaluating the row input operator in a list context. However, be aware that if the file is large, it will use a lot of memory.
 
 <pre>
-my $content = do { local $/; <$fh> };
-</pre>
+my @lines = <$ fh>
+</ pre>
 
-「$/」は、行の区切り文字です。これを未定義にすれば、行入力演算子は、ファイルの内容をすべてを取り込みます。<a href="/blog/20080309120507.html">local</a>を使って、一時的に未定義にしています。doブロックは、最後に評価された値を返します。ですから、この記述で、ファイルの内容を一度に読み込むことができます。
+<h3> Import all the contents of the file </ h3>
 
-<h3>サンプル</h3>
+To capture the entire contents of a file, it is common to write something like this:
 
-行入力演算子を使って、ファイルを1行ずつ読み込むサンプルです。1行読みこみを while ループで繰り返します。
+<pre>
+my $ content = do {local $ /; <$ fh>};
+</ pre>
+
+"$ /" Is the line delimiter. If you leave this undefined, the line input operator will populate the entire contents of the file. I'm using <a href="/blog/20080309120507.html"> local </a> to temporarily undefine it. The do block returns the last evaluated value. So, with this description, you can read the contents of the file at once.
+
+<h3> Sample </ h3>
+
+This is a sample that reads a file line by line using the line input operator. Repeat reading one line in a while loop.
 
 <pre>
 use strict;
 use warnings;
 
-# ファイルリード
-# readline $fh
-# <$fh>
+# File read
+# readline $ fh
+# <$ fh>
 
-# 読み込みたいファイル名
-my $file = shift; 
+# File name you want to read
+my $ file = shift;
 
-open(my $fh, "<", $file)
-  or die "Cannot open $file: $!";
+open (my $ fh, "<", $ file)
+  or die "Cannot open $ file: $!";
 
-print "1: ファイルリードの一般的な記述\n";
-# readline関数で、一行読み込む。
-while(my $line = readline $fh){ 
-    # chomp関数で、改行を取り除く
-    chomp $line;
+print "1: General description of file read \ n";
+Read one line with the # readline function.
+while (my $ line = readline $ fh) {
+    Remove line breaks with # chomp function
+    chomp $ line;
     
-    # $line に対して何らかの処理。
-    # 標準出力へ書き出し。
-    print $line, "\n";
+    Something to do with # $ line.
+    #Export to standard output.
+    print $ line, "\ n";
 
-    # ファイルがEOF( END OF FILE ) に到達するまで1行読みこみを繰り返す。
+    # Repeat reading one line until the file reaches EOF (END OF FILE).
 }
 
-close $fh;
-</pre>
+close $ fh;
+</ pre>
 
-<h3>コード解説</h3>
+<h3> Code explanation </ h3>
 
-<h4>(1)1行ファイル読み込み</h4>
+<h4> (1) Read 1-line file </ h4>
 <pre>
-while (my $line = readline $fh) { 
-    # 処理 ...
+while (my $ line = readline $ fh) {
+    # process ...
 }
-</pre>
-ファイルを1行づつ読み込むには、readline関数を使用します。$fhは、open関数でオープンしたファイルハンドルです。１行読み込みをwhile文で繰り返して、ファイルの最後まで読み込んでいきます。
+</ pre>
+To read the file line by line, use the readline function. $ fh is the filehandle opened by the open function. Repeat reading one line with a while statement to read to the end of the file.
 
-whileループの条件文を書く位置で、1行読みこみを行っているのは変に感じるかもしれませんがこのような記述が可能です。my $line = readline $fh という記述で、$lineというレキシカル変数を宣言して、$line に、読み込んだ1行を代入しています。$line は、whileループの中でだけ有効で、外からは見えません。
+It may seem strange to read one line at the position where the conditional statement of the while loop is written, but such a description is possible. With the description my $ line = readline $ fh, I declare a lexical variable called $ line and assign the read line to $ line. $ line is valid only inside a while loop and is not visible from the outside.
 
-ファイルの終わりに到達すれば、readline関数はundefを返し、$lineにundefが代入されます。$lineがundefなので、while文は終了します。
+When the end of the file is reached, the readline function returns undef and $ line is assigned undef. Since $ line is undef, the while statement ends.
 
-<h4>(2)chomp関数で改行を取り除く</h4>
-
-<pre>
-while (my $line = readline $fh) { 
-  chomp $line;
-  # 処理 ...
-}
-</pre>
-
-行を読み込んだら改行が不必要な場合が多いので、chomp関数を使って改行を取り除きます。
-
-<h4>(3)readlineのもうひとつの書き方 <$fh></h4>
+<h4> (2) Remove line breaks with chomp function </ h4>
 
 <pre>
-while (my $line = <$fh>) { 
-  # 処理 ...
+while (my $ line = readline $ fh) {
+  chomp $ line;
+  # process ...
 }
-</pre>
+</ pre>
 
-Perlでは、 < > の中にファイルハンドルを入れると、readline $fh と同じ意味になります。簡便な記述を好む場合はこちらを使います。
+Line breaks are often unnecessary after reading a line, so use the chomp function to remove the line breaks.
 
+<h4> (3) Another way to write readline <$ fh> </ h4>
+
+<pre>
+while (my $ line = <$ fh>) {
+  # process ...
+}
+</ pre>
+
+In Perl, putting a filehandle inside <> has the same meaning as readline $ fh. Use this if you prefer a simple description.

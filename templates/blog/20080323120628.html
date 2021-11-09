@@ -1,123 +1,121 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>Perlにおける真偽値</h2>
+  </ li>
+</ ol>
+<h2> Perl boolean </ h2>
 
 
 
-Perlにおける<strong>真偽値</strong>を解説します。Perlにおける<strong>偽値</strong>は次の五つです。
+Explains <strong> boolean </ strong> in Perl. There are five <strong> false values ​​</ strong> in Perl:
 
 <table>
   <tr>
     <td>
       1
-    </td>
+    </ td>
     <td>
-      <a href="/blog/20100220126425.html">undef</a>
-    </td>
+      <a href="/blog/20100220126425.html"> undef </a>
+    </ td>
     <td>
-      未定義値
-    </td>
-  </tr>
+      Undefined value
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       2
-    </td>
+    </ td>
     <td>
       ""
-    </td>
+    </ td>
     <td>
-      空文字列
-    </td>
-  </tr>
+      Empty string
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       3
-    </td>
+    </ td>
     <td>
       0
-    </td>
+    </ td>
     <td>
       0
-    </td>
-  </tr>
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      4
-    </td>
+      Four
+    </ td>
     <td>
       "0"
-    </td>
+    </ td>
     <td>
-      文字列の0
-    </td>
-  </tr>
+      String 0
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-Perlにおける<strong>真値</strong>は上記以外すべてです。
+The <strong> true value </ strong> in Perl is all but the above.
 
-未定義値、<a href="/blog/20161026147748.html">数値</a>の0、空の<a href="/blog/20161003147558.html">文字列</a>、0と等しい文字列、空の<a href="/blog/20100308126967.html">リスト</a>だけが偽値になります。
+Undefined value, equal to 0 in <a href="/blog/20161026147748.html"> number </a>, empty <a href="/blog/20161003147558.html"> string </a>, 0 Only the string, the empty <a href="/blog/20100308126967.html"> list </a>, will be false.
 
-<h4>真になる値の例</h4>
+<h4> Examples of true values ​​</ h4>
 
 <pre>
 # 1
 1;
 
-# 文字列
+#String
 "Hellow"
 
-# オブジェクト
-my $obj = Point->new;
+# object
+my $ obj = Point-> new;
 
-# 文字列の"0.0"
+# String "0.0"
 "0.0"
-</pre>
+</ pre>
 
-"0.0"は、数値としては0と等しいが、真として扱われます。
+"0.0" is numerically equal to 0, but is treated as true.
 
-<h3>サンプルプログラム</h3>
+<h3> Sample program </ h3>
 
-真偽値のサンプルです。
+This is a sample boolean value.
 
 <pre>
-# 真偽値のサンプル
-my $var;        # 偽。定義した直後の変数はundef
-$var = undef;   # 偽。
+# Boolean sample
+my $ var; # False. The variable immediately after definition is undef
+$ var = undef; # False.
 
-$var = 0;       # 偽。
-$var = 0.0      # 数値で0と等価なものは偽。
-$var = 1;       # 真。
+$ var = 0; # False.
+$ var = 0.0 # A number equivalent to 0 is false.
+$ var = 1; # True.
 
-$var = '';      # 偽
-$var = '0';     # 偽。
-$var = '0.0'    # 真。文字列の場合は'0'と''以外は真。
-</pre>
+$ var =''; # False
+$ var = '0'; # False.
+$ var = '0.0' # True. True for strings except '0' and''.
+</ pre>
 
-真偽値は、if文でよく利用されます。if文による条件分岐については以下の記事をごらんください。
+False values ​​are often used in if statements. Please see the following article for conditional branching by if statement.
 
 <ul>
   <li>
-    <a href="/blog/20161023147731.html">if文による条件分岐</a>
-  </li>
-</ul>
-
-
+    <a href="/blog/20161023147731.html"> Conditional branching by if statement </a>
+  </ li>
+</ ul>

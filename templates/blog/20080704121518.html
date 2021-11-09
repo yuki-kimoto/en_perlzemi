@@ -1,72 +1,72 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161025147739.html">
-        <span itemprop="name">サブルーチン</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>サブルーチンのリファレンス</h2>
+        <span itemprop = "name"> Subroutine </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Subroutine reference </ h2>
 
 
 
-サブルーチンのリファレンスとは、サブルーチンを指し示すもののことです。
+A subroutine reference is a reference to a subroutine.
 
 <pre>
-# リファレンスを作成
-my $twice_ref = \&twice;
-# デリファレンスして呼び出し
-my $twice_num = $twice_ref->($num); 
+#Create reference
+my $ twice_ref = \ & twice;
+#Dereference and call
+my $ twice_num = $ twice_ref-> ($ num);
  
 sub twice {
-  return $_[0] * 2;
+  return $ _ [0] * 2;
 }
-</pre>
+</ pre>
 
-&twiceで、サブルーチンそのものを表現します。( @がつけられると配列、%がつけられるとハッシュというのと同じように、&がつけられるとサブルーチンを表します。) 普段は、twice($num) のようにサブルーチンを呼び出していますが、&twice( $num ) のように明示的に呼び出すこともできます。
+Express the subroutine itself with & twice. (Similar to an array with @ and a hash with%, a subroutine is represented with &.) Normally, subroutines are called like twice ($ num). You can also call it explicitly, like & twice ($ num).
 
-サブルーチンへのリファレンスを表現するには、\&twice のようにします。サブルーチンを呼び出すには、$twice_ref->(1) のように、サブルーチンへのリファレンスをデリファレンスしてます。ハッシュや配列のデリファレンスによく似た記述です。
+To represent a reference to a subroutine, use \ & twice. To call the subroutine, dereference the reference to the subroutine, as in $ twice_ref-> (1). A description very similar to a hash or array dereference.
 
-リファレンスについての詳しい解説は以下の記事をご覧ください。
+See the following articles for a detailed explanation of the reference.
 
 <ul>
   <li>
-    <a href="/blog/20100930127859.html">リファレンスの使い方をマスターしよう</a>
-  </li>
-</ul>
+    <a href="/blog/20100930127859.html"> Let's master how to use the reference </a>
+  </ li>
+</ ul>
 
-<h4>無名サブルーチンへのリファレンス</h4>
+<h4> Reference to anonymous subroutines </ h4>
 
-sub{ } といった名前のないサブルーチンへのリファレンスを作成することができます。my $sum_ref = sub{ }; のように記述します。サブルーチンそのものが実行されるわけではなく、サブルーチンへのリファレンスが、$sum_ref に代入されます。
+You can create a reference to an unnamed subroutine such as sub {}. Write as my $ sum_ref = sub {} ;. The subroutine itself is not executed, but a reference to the subroutine is assigned to $ sum_ref.
 
 <pre>
-my $sum_ref = sub {
+my $ sum_ref = sub {
   my @nums = @_;
-  my $total;
-  for my $num (@nums){
-    $total += $num;
+  my $ total;
+  for my $ num (@nums) {
+    $ total + = $ num;
   }
-  return $total;
+  return $ total;
 };
-</pre>
+</ pre>
 
-サブルーチンへのリファレンスを作成すれば、引数としてサブルーチンに渡すことができます。Perlでは、サブルーチンのリファレンスを利用して、サブルーチンにサブルーチンを渡すことができるのです。
+You can create a reference to a subroutine and pass it as an argument to the subroutine. In Perl, you can use a subroutine reference to pass a subroutine to a subroutine.
 
-また、サブルーチンへのリファレンスを使用すれば、選択的にサブルーチンを実行することができます。次回に具体例を見ます。
+You can also use a reference to a subroutine to execute the subroutine selectively. I will see a concrete example next time.
 
-<h3>サブルーチンへのリファレンスを利用したポリモーフィズム</h3>
+<h3> Polymorphism using references to subroutines </ h3>
 
-サブルーチンへのリファレンスを利用したポリモーフィズムを実現したサンプルです。
+This is a sample that realizes polymorphism using a reference to a subroutine.
 
 <pre>
 use strict;
@@ -74,336 +74,337 @@ use warnings;
 
 my @nums = (1, 2, 3);
 
-print "1: サブルーチンへのリファレンスを使って合計と平均を順番に求める。\n";
+print "1: Calculate the sum and average in order using the reference to the subroutine. \ N";
 
-# サブルーチンへのリファレンスの# 配列を作成。
-my @calc_funcs = (\&sum, \&average); 
+Create a # array of references to #subroutines.
+my @calc_funcs = (\ & sum, \ & average);
                                        
-for my $calc_func (@calc_funcs) {
-  my $result = $calc_func->(@nums);
-  print "結果: $result\n";
+for my $ calc_func (@calc_funcs) {
+  my $ result = $ calc_func-> (@nums);
+  print "Result: $ result \ n";
 }
-print "\n";
+print "\ n";
 
 sub sum {
   my @nums = @_;
-  my $total;
-  for my $num (@nums) {
-    $total += $num;
+  my $ total;
+  for my $ num (@nums) {
+    $ total + = $ num;
   }
-  return $total;
+  return $ total;
 }
 
 sub average {
-  return sum(@_) / @_;
+  return sum (@_) / @_;
 }
 
 
-print "2: サブルーチンへのリファレンスを使って選択的に処理する。\n";
-my $how_to_calc = 'sum';
-my $calc_func;
+print "2: Selectively process using reference to subroutine. \ N";
+my $ how_to_calc ='sum';
+my $ calc_func;
 
-if ($how_to_calc eq 'sum') {
-  $calc_func = \&sum;
-}
-else {
-  $calc_func = \&average;
-}
-
-my $result = $calc_func->(@nums);
-
-print "計算方法 : $how_to_calc\n" .
-  "結果 : $result\n\n";
-
-
-print "3: サブルーチンへのリファレンスとハッシュを使って選択的に処理する。\n";
-$how_to_calc = 'average';
-my %calc_table = (sum => \&sum, average => \&average);
-
-# $calc_table{'average'} には、サブルーチンへのリファレンス
-# が入っているので、-> 演算子でデリファレンスして
-# サブルーチンを呼び出す。
-$result = $calc_table{ $how_to_calc }->(@nums); 
-
-print "計算方法 : $how_to_calc\n" .
-  "結果 : $result\n\n";
-</pre>
-
-<h4>変数に対してサブルーチンを順番に適用する</h4>
-
-<pre>
-my @calc_funcs = (\&sum, \&average);
-for my $calc_func (@calc_funcs) {
-  my $result = $calc_func->(@nums);
-}
-</pre>
-
-ある<a href="/blog/20161107147852.html">変数</a>に対してサブルーチンを順番に適用するには、サブルーチンへのリファレンスを利用します。サブルーチンへのリファレンスを配列に格納して<a href="/blog/20170521149524.html">forループ</a>で繰り返しサブルーチンを呼び出します。
-
-<h4>変数とサブルーチンのイメージ</h4>
-
-<pre>
-|----------|
-|          |<-------- サブルーチン1
-|          |
-|  変数    |<-------- サブルーチン2
-|          |
-|          |<-------- サブルーチン3
-|----------|
-</pre>
-
-ある種類の引数に対して、順番にサブルーチンを適用していくイメージ。引数は固定で、サブルーチンが移り変わってゆくイメージ。
-
-<h4>サブルーチンへのリファレンスを利用したポリモーフィズム</h4>
-
-<pre>
-# if文で分岐する方法
-my $how_to_calc = 'sum';
-my $calc_func;
-
-if ($how_to_calc eq 'sum') {
-  $calc_func = \&sum;
+if ($ how_to_calc eq'sum') {
+  $ calc_func = \ & sum;
 }
 else {
-  $calc_func = \&average;
+  $ calc_func = \ & average;
 }
 
-my $result = $calc_func->(@nums);
-</pre>
+my $ result = $ calc_func-> (@nums);
 
-ポリモーフィズムとは、「同じ記述であるのに異なる関数が呼び出される」ということを意味する言葉です。オブジェクト指向では、「オブジェクトに応じて異なるメソッドが適用される」ということを意味する場合が多いです。
+print "Calculation method: $ how_to_calc \ n".
+  "Result: $ result \ n \ n";
 
-この例の場合は、 $calc_func->(@num) という記述は、$calc_func に何が代入されているかによって意味を変えます。\$sum が代入されている場合は、sum サブルーチンが呼びだされ、\$average が代入されている場合は、average サブルーチンが呼びだされます。
 
-javaでは、オーバーロードとオーバーライドがポリモーフィズムを実現するための方法で、C言語では関数ポインタです。
+print "3: Selectively process using reference to subroutine and hash. \ N";
+$ how_to_calc ='average';
+my% calc_table = (sum => \ & sum, average => \ & average);
 
-<h4>ハッシュを利用した美しい方法</h4>
+# $ calc_table {'average'} is a reference to the subroutine
+Since # is included, dereference it with the-> operator.
+#Call a subroutine.
+$ result = $ calc_table {$ how_to_calc}-> (@nums);
 
-<pre>
-$how_to_calc = 'average';
-my %calc_table = (sum => \&sum, average => \&average);
-$result = $calc_table{$how_to_calc}->(@nums); 
-</pre>
+print "Calculation method: $ how_to_calc \ n".
+  "Result: $ result \ n \ n";
+</ pre>
 
-<a href="/blog/20161013147635.html">ハッシュ</a>を利用した方法が関数リファレンスによるポリモーフィズムのもっとも洗練された形だとわたしは思っています。
-
-選択的な処理であるのに、if文をいっさい使っていません。ハッシュのキーに対応したサブルーチンを呼ぶことで、処理を分岐させています。
-
-<h3>サブルーチンでシグナルハンドラの実装</h3>
-
-<strong>シグナルハンドラ</strong>とは、シグナルをきっかけとして実行されるサブルーチンのことです。シグナルとはOSがプロセスに送る合図です。Ctrl + c は「現在実行中のプロセスにINTシグナルを送ってね。」とOSに依頼します。また、alerm関数は「現在実行中のプロセスにn秒後にLARMシグナルを送ってね」とOSに依頼します。
+<h4> Apply subroutines to variables in sequence </ h4>
 
 <pre>
-$SIG{INT} = sub {
-  die "INTシグナルがこのプロセスに送られました。";
+my @calc_funcs = (\ & sum, \ & average);
+for my $ calc_func (@calc_funcs) {
+  my $ result = $ calc_func-> (@nums);
+}
+</ pre>
+
+To apply subroutines in sequence to a <a href="/blog/20161107147852.html"> variable </a>, use a reference to the subroutine. Store the reference to the subroutine in an array and call the subroutine repeatedly in <a href="/blog/20170521149524.html"> for loop </a>.
+
+<h4> Image of variables and subroutines </ h4>
+
+<pre>
+| ---------- |
+| | <-------- Subroutine 1
+| |
+| Variables | <-------- Subroutine 2
+| |
+| | <-------- Subroutine 3
+| ---------- |
+</ pre>
+
+An image of applying subroutines in order to a certain type of argument. The argument is fixed, and the image of the subroutine changing.
+
+<h4> Polymorphism using references to subroutines </ h4>
+
+<pre>
+How to branch with #if statement
+my $ how_to_calc ='sum';
+my $ calc_func;
+
+if ($ how_to_calc eq'sum') {
+  $ calc_func = \ & sum;
+}
+else {
+  $ calc_func = \ & average;
+}
+
+my $ result = $ calc_func-> (@nums);
+</ pre>
+
+Polymorphism is a term that means "the same description but different functions are called". Object-oriented often means that "different methods are applied depending on the object".
+
+In this example, the statement $ calc_func-> (@num) has different meanings depending on what is assigned to $ calc_func. If \ $ sum is assigned, the sum subroutine is called, and if \ $ average is assigned, the average subroutine is called.
+
+In java, overloading and overriding are the ways to achieve polymorphism, and in C they are function pointers.
+
+<h4> Beautiful method using hash </ h4>
+
+<pre>
+$ how_to_calc ='average';
+my% calc_table = (sum => \ & sum, average => \ & average);
+$ result = $ calc_table {$ how_to_calc}-> (@nums);
+</ pre>
+
+I think the <a href="/blog/20161013147635.html"> hash </a> method is the most sophisticated form of function-referenced polymorphism.
+
+Although it is a selective process, it does not use any if statements. The process is branched by calling the subroutine corresponding to the hash key.
+
+<h3> Implementation of signal handler in subroutine </ h3>
+
+A <strong> signal handler </ strong> is a subroutine that is executed triggered by a signal. A signal is a signal that the OS sends to a process. Ctrl + c asks the OS to "send an INT signal to the currently running process." The alerm function also asks the OS to "send a LARM signal to the currently running process after n seconds".
+
+<pre>
+$ SIG {INT} = sub {
+  die "INT signal sent to this process.";
 };
 
-$SIG{ALRM} = sub {
-  die "ALRMシグナルがこのプロセスに送られました。";
+$ SIG {ALRM} = sub {
+  die "ALRM signal was sent to this process.";
 };
-</pre>
+</ pre>
 
-INTシグナルを捕らえるには、$SIG{ INT } に対して、サブルーチンへのリファレンスを代入します。この例では、無名サブルーチンを定義してそのリファレンスを代入しています。
+To catch the INT signal, assign a reference to the subroutine to $ SIG {INT}. This example defines an anonymous subroutine and assigns its reference.
 
-シグナルに関する注意点はたくさんありますがここでは書きません。プロセス間通信について書くときに書きます。
+There are a lot of things to note about signals, but I won't write them here. I write it when I write about interprocess communication.
 
-<h3>イベント駆動型プログラミングの初歩的な実装</h3>
+<h3> A rudimentary implementation of event-driven programming </ h3>
 
-イベント駆動型プログラミングの初歩的な実装のサンプルです。
+This is a sample of a rudimentary implementation of event-driven programming.
 
 <pre>
 use strict;
 use warnings;
 
-# イベントハンドラ
-my $text = "aIue!!!o";
+# Event handler
+my $ text = "aIue !!! o";
 
-# 引数に、イベントハンドラを渡す。
-parse( 
-  $text, 
-  start_h => \&start,
-  lc_h => \&found_lc,
-  end_h => \&end,
+Pass the event handler as the # argument.
+parse (
+  $
+text,
+  start_h => \ & start,
+  lc_h => \ & found_lc,
+  end_h => \ & end,
 );
 
-# 文字列を解析するサブルーチン( イベント検知関数 )
+#Subroutine that parses a string (event detection function)
 sub parse {
-  # テキストとイベントハンドラのハッシュを受け取る。
-  my ($text, %handler) = @_;
+  #Receives a hash of text and event handlers.
+  my ($ text,% handler) = @_;
   
-  # 最初に呼ばれるハンドラ
-  $handler{start_h}->();
+  #First called handler
+  $ handler {start_h}-> ();
   
-  # 一文字づつ解析していく。
-  for my $i (0 .. length($text) - 1) { 
-    my $char = substr($text, $i, 1);
+  # Analyze one character at a time.
+  for my $ i (0 .. length ($ text) ―― 1) {
+    my $ char = substr ($ text, $ i, 1);
     
-    # 小文字を発見したときにイベントハンドラを呼ぶ。
-    # コールバック関数で利用できるように
-    # 文字と位置を引数に渡す。
-    if ($char =~ /[a-z]/) { 
-      $handler{lc_h}->($char, $i); 
+    # Call an event handler when it finds a lowercase letter.
+    # Made available in callback functions
+    #Pass the character and position as arguments.
+    if ($ char = ~ / [a-z] /) {
+      $ handler {lc_h}-> ($ char, $ i);
     }
   }
   
-  # 最後に呼ばれるハンドラ
-  $handler{end_h}->();
+  #Last called handler
+  $ handler {end_h}-> ();
 }
 
-# イベントハンドラ( コールバック関数 )
+#Event handler (callback function)
 sub start {
-  print "文字列の解析が始まりました。\n";
+  print "String parsing has started. \ N";
 }
 
 sub found_lc {
-  # 小文字を発見した場合に呼び出される。
+  # Called when a lowercase letter is found.
   
-  # 引数に文字とポジションを受け取れる。
-  my ($char, $pos) = @_; 
+  You can receive characters and positions as #arguments.
+  my ($ char, $ pos) = @_;
                              
-  print "$charの位置は、$pos です。\n";
+  print "The position of $ char is $ pos. \ N";
 }
 
 sub end {
-  print "文字列の解析が終わりました。\n";
+  print "The parse of the string is finished. \ N";
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20080224120386.html">substr関数</a>
+(Reference) <a href="/blog/20080224120386.html"> substr function </a>
 
-<h4>(1)イベントを検出するためのサブルーチン</h4>
+<h4> (1) Subroutine for detecting events </ h4>
 
 <pre>
-# イベントを検出する関数の呼び出し。
-parse( 
-  $text, 
-  start_h => \&start,
-  lc_h => \&found_lc,
-  end_h => \&end,
+#Call a function to detect an event.
+parse (
+  $ text,
+  start_h => \ & start,
+  lc_h => \ & found_lc,
+  end_h => \ & end,
 );
 
-# イベントを検出する関数
+#Event detection function
 sub parse {
-  # テキストとイベントハンドラのハッシュを受け取る。
-  my ( $text, %handler ) = @_; 
+  #Receives a hash of text and event handlers.
+  my ($ text,% handler) = @_;
   
-  # 最初に呼ばれるハンドラ
-  $handler{start_h}->();
+  #First called handler
+  $ handler {start_h}-> ();
   # ...
 }
-</pre>
+</ pre>
 
-イベント駆動型のプログラミングでは、「イベントを検出する処理」と「イベントが発生したときに実行される処理」を分離します。そのために、まずイベントを検出する処理をサブルーチンとして実装します。
+In event-driven programming, "event detection" and "event execution" are separated. To do this, first implement the process of detecting the event as a subroutine.
 
-引数には、ハッシュを使って、サブルーチンへのリファレンスを渡しています。このサブルーチンはイベントが発生したときに実行されます。
+The argument uses a hash to pass a reference to the subroutine. This subroutine is executed when an event occurs.
 
-<h4>(2)イベントが発生したときに実行されるサブルーチン(コールバック関数)</h4>
+<h4> (2) Subroutine (callback function) executed when an event occurs </ h4>
 
 <pre>
 sub start {
-  print "文字列の解析が始まりました。\n";
+  print "String parsing has started. \ N";
 }
 
 sub found_lc {
-  # 小文字を発見した場合に呼び出される。
-  # 引数に文字とポジションを受け取れる。
+  # Called when a lowercase letter is found.
+  You can receive characters and positions as #arguments.
 
-  my ($char, $pos) = @_; 
+  my ($ char, $ pos) = @_;
                              
-  print "$charの位置は、$pos です。\n";
+  print "The position of $ char is $ pos. \ N";
 }
 
 sub end {
-  print "文字列の解析が終わりました。\n";
+  print "The parse of the string is finished. \ N";
 }
-</pre>
+</ pre>
 
-イベントが発生したときに実行されるサブルーチンは、一般的には、コールバック関数と呼ばれます。ここに、イベントが発生したときに行う処理を書きます。
+Subroutines that are executed when an event occurs are commonly referred to as callback functions. Here, write the processing to be performed when an event occurs.
 
-イベントを検出する関数で、コールバック関数を呼ぶときに引数を渡してあげると、コールバック関数で受け取って利用することができます。
+It is a function that detects an event, and if you pass an argument when calling the callback function, it can be received and used by the callback function.
 
-<h3>サンプルコード</h3>
+<h3> Sample code </ h3>
 
-サブルーチンのサンプルコードです。
+Subroutine sample code.
 
-<h4>サブルーチンのリファレンス</h4>
+<h4> Subroutine reference </ h4>
 
-サブルーチンへのリファレンスを作成するサンプルです。
+This is a sample to create a reference to a subroutine.
 
 <pre>
 use strict;
 use warnings;
 
-# サブルーチンへのリファレンス
-# 接頭に\をつけてあげるとサブルーチンへの
-# リファレンスになります。
-# &twice が、twiceサブルーチン自体を指します。
-print "1: サブルーチンへのリファレンス\n";
-my $twice_ref = \&twice; 
+# Subroutine reference
+# Prefix \ to the subroutine
+#It will be a reference.
+# & twice refers to the twice subroutine itself.
+print "1: Reference to subroutine \ n";
+my $ twice_ref = \ & twice;
 
-# 呼び出すときは、
-# $sub_ref->( arg1, arg2 ) 
-# のように呼び出します。
-# 引数がいらないときは、
-# $sub_ref->() です。
-my $num = 1;
-my $twice_num = $twice_ref->($num); 
+# When calling
+# $ sub_ref-> (arg1, arg2)
+Call it like #.
+#When no argument is needed
+# $ sub_ref-> ().
+my $ num = 1;
+my $ twice_num = $ twice_ref-> ($ num);
 
-print "$num の2倍は、$twice_numです。\n\n";
+print "Twice of $ num is $ twice_num. \ N \ n";
 
 sub twice {
-  return $_[0] * 2;
+  return $ _ [0] * 2;
 }
 
 
-# sub{ } という名前を持たないサブルーチンへのリファレンスを$sum_refに代入。
-print "2: 無名サブルーチンへのリファレンス\n";
-my $sum_ref = sub {
+Assign a reference to a subroutine that does not have the name # sub {} into $ sum_ref.
+print "2: Reference to anonymous subroutine \ n";
+my $ sum_ref = sub {
   my @nums = @_;
-  my $total;
-  for my $num (@nums) {
-    $total += $num;
+  my $ total;
+  for my $ num (@nums) {
+    $ total + = $ num;
   }
-  return $total;
+  return $ total;
 };
 
-my $total = $sum_ref->(1, 2, 3);
-print "1,2,3の和は$totalです。\n\n";
-</pre>
+my $ total = $ sum_ref-> (1, 2, 3);
+print "The sum of 1,2,3 is $ total. \ N \ n";
+</ pre>
 
-<h4>シグナルハンドラ</h4>
+<h4> Signal handler </ h4>
 
-シグナルハンドラを使ったサンプルです。無限ループをするために<a href="/blog/20100123126425.html">while文</a>を使っています。
+This is a sample using a signal handler. I'm using a <a href="/blog/20100123126425.html"> while statement </a> to do an infinite loop.
 
 <pre>
 use strict;
 use warnings;
 
-print "1: シグナルハンドラでINTシグナルを捕獲する。\n";
+print "1: Capture INT signal with signal handler. \ N";
 
-$SIG{INT} = sub {
-  die "INTシグナルがこのプロセスに送られました。";
+$ SIG {INT} = sub {
+  die "INT signal sent to this process.";
 };
 
-# 無限ループ
-while(1){ };
+# infinite loop
+while (1) {};
 
-# INTシグナルを実行中のプロセスに送るには、Ctrl + c とします。
-</pre>
+Use Ctrl + c to send a # INT signal to a running process.
+</ pre>
 
 <pre>
 use strict;
 use warnings;
 
-print "2: シグナルハンドラでALRMシグナルを捕獲する。\n";
+print "2: Capture ALRM signal with signal handler. \ N";
 
-$SIG{ALRM} = sub {
-  die "ALRMシグナルがこのプロセスに送られました。";
+$ SIG {ALRM} = sub {
+  die "ALRM signal was sent to this process.";
 };
 
-# 2秒後に、ALRM シグナルを実行中のプロセスに送る。
-alarm 2; 
+# After 2 seconds, send an ALRM signal to the running process.
+alarm 2;
 
-# 無限ループ
-while( 1 ){ }; 
-</pre>
+# infinite loop
+while (1) {};
+</ pre>

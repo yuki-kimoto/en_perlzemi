@@ -1,77 +1,76 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161022147731.html">
-        <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">オートロード</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>AUTOLOAD - サブルーチンのオートロード </h2>
+        <span itemprop = "name"> Syntax </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> autoload </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> AUTOLOAD --Subroutine autoload </ h2>
 
 
 
-Perlではサブルーチンが存在しなかった場合に呼び出される<strong>AUTOLOAD</strong>というサブルーチンを定義することができます。これをサブルーチンのオートロードと呼びます。
+Perl allows you to define a subroutine called <strong> AUTOLOAD </ strong> that will be called if the subroutine does not exist. This is called subroutine autoloading.
 
 <pre>
 package MyModule;
 
-aaaaiiiii( 1, 2 );
+aaaaiiiii (1, 2);
 
-our $AUTOLOAD;
+our $ AUTOLOAD;
 sub AUTOLOAD {
   # ...
 }
-</pre>
+</ pre>
 
-our $AUROLOADを定義しておくと、呼び出された関数名を取得できます。
+If you define our $ AUROLOAD, you can get the name of the called function.
 
-<h4>オートロードは何のために使うの</h4>
+<h4> What is autoload used for? </ H4>
 
-日常の仕事でプログラミングをするときは、オートロードを使う必要性はほとんどありません。また、モジュールを作成するときも、オートロードを積極的に使う理由はありません。
+When programming in everyday work, there is little need to use autoloading. Also, there is no reason to actively use autoload when creating modules.
 
-オートロードの呼び出しは、非常に遅く、代替的な手段がたいていの場合はあります。
+Calling autoloads is very slow and alternatives are often available.
 
-アクセッサを作りたい場合は、<a href="/blog/20100312126967.html">eval</a>で動的に生成したり、<a href="/blog/20080704121518.html">サブルーチンのリファレンス</a>を<a href="/blog/20080614121342.html">型グロブ</a>に代入する方法のほうが、パフォーマンス的にも優秀です。
+If you want to create an accessor, you can dynamically generate it with <a href="/blog/20100312126967.html"> eval </a> or <a href="/blog/20080704121518.html"> subroutine reference < Substituting / a> for <a href="/blog/20080614121342.html"> typeglobs </a> is also better in terms of performance.
 
-Perlで、唯一オートロードでしか実現できない機能があります。それは、オブジェクトにメソッドを生やすということです。普段は使うことはないですが、フレームワークでこの機能を実現したいという場合は、唯一の手法になります。
+Perl has the only feature that can only be achieved with autoloading. That is to give the method to the object. I don't usually use it, but if you want to achieve this functionality in a framework, it's the only way to do it.
 
-<h3>サンプルプログラム</h3>
+<h3> Sample program </ h3>
 
-サブルーチンのオートロードのサンプルです。
+This is a sample of subroutine autoloading.
 
 <pre>
 use strict;
 use warnings;
 
-# AUTOLOAD サブルーチン
-# ・定義しておくとサブルーチンの名前を発見できなかった場合に呼び出されます。
+#AUTOLOAD subroutine
+# ・ If defined, it will be called when the name of the subroutine cannot be found.
 
-print "1: AUTOLOAD で、存在しない関数を呼び出す\n";
+print "1: AUTOLOAD calls a non-existent function \ n";
 
-# どこにも定義していない関数を呼び出すと。
-aaaaiiiii( 1, 2 );
+# When you call a function that is not defined anywhere.
+aaaaiiiii (1, 2);
 
-# これが呼ばれます。
+#This is called.
 sub AUTOLOAD {
 
-  # $AUROLOAD を定義しておくと、呼び出された関数名を取得できます。
-  our $AUTOLOAD; 
+  If you define # $ AUROLOAD, you can get the name of the called function.
+  our $ AUTOLOAD;
 
-  # 関数名と引数を受け取れます。
-  my (@arg) = @_; 
-  print "AUTOLOAD が呼び出されました。\n";
-  print "呼び出そうとした関数は、 $AUTOLOAD です。\n";
-  print "引数は、" . join(',', @arg) . "です。\n";
+  # You can receive the function name and arguments.
+  my (@arg) = @_;
+  print "AUTOLOAD has been called. \ N";
+  print "The function you tried to call is $ AUTOLOAD. \ N";
+  print "The argument is" .join (',', @arg). ". \ N";
 }
-</pre>
-
+</ pre>

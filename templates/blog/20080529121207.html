@@ -1,133 +1,133 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>glob関数 - ディレクトリに含まれるファイル一覧を取得</h2>
+  </ li>
+</ ol>
+<h2> glob function --get list of files contained in directory </ h2>
 
 
 
-<strong>glob</strong>関数を使用すると、ファイル一覧を取得することができます。
+You can use the <strong> glob </ strong> function to get a list of files.
 
 <pre>
-my @all_files = glob "*"; 
-</pre>
+my @all_files = glob "*";
+</ pre>
 
-ファイル一覧を取得するには、glob 演算子を使います。対象は、カレントディレクトリのファイル(ディレクトリを含む)になります。別のディレクトリのファイル一覧を取得したときは<a href="/blog/20080528121197.html">chdir関数</a> で、カレントディレクトリを移動するか、相対パスあるいは、絶対パスで、表現します。
+Use the glob operator to get a list of files. The target is files (including directories) in the current directory. When you get the file list of another directory, move the current directory with <a href="/blog/20080528121197.html"> chdir function </a>, or express it with a relative path or an absolute path. ..
 
-<h3>glob の引数の表現例</h3>
+<h3> Example of glob argument expression </ h3>
 
 <table>
   <tr>
     <td>
       "*"
-    </td>
+    </ td>
     <td>
-      .で始まらない、すべてのファイル
-    </td>
-  </tr>
+      All files that do not start with.
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      "*.txt"
-    </td>
+      "*.TXT"
+    </ td>
     <td>
-      .txt で終わるファイル
-    </td>
-  </tr>
+      Files ending in .txt
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      "*.txt *.pl
-    </td>
+      "* .txt * .pl
+    </ td>
     <td>
-      .txt あるいは、 .pl で終わるファイル( .txt と .pl の間に空白があります )
-    </td>
-  </tr>
+      .txt or a file ending in .pl (there is a space between .txt and .pl)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      "* .*"
-    </td>
+      "*. *"
+    </ td>
     <td>
-      すべてのファイル( * と .* の間に空白があります )
-    </td>
-  </tr>
+      All files (with spaces between * and. *)
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      "lib/*
-    </td>
+      "lib / *
+    </ td>
     <td>
-      libディレクトリ以下のファイル
-    </td>
-  </tr>
+      Files under the lib directory
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      c:/dir/*
-    </td>
+      c: / dir / *
+    </ td>
     <td>
-      絶対パスで指定
-    </td>
-  </tr>
+      Specified by absolute path
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-空白で、区切ると複数のパターンを指定できます。相対パス以外にも、絶対パスも使うことができます。* はUnixのシェルで用いられるワイルドカードのひとつです。glob関数は、シェルのワイルドカード展開の規則にしたがって、*を含むファイル名を展開します。
+You can specify multiple patterns by separating them with a blank. In addition to relative paths, you can also use absolute paths. * Is one of the wildcards used in the Unix shell. The glob function expands filenames containing * according to shell wildcard expansion rules.
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-glob関数のサンプルです。
+This is a sample glob function.
 
 <pre>
 use strict;
 use warnings;
 
-# カレントディレクトリのファイル一覧を取得する。
+# Get the list of files in the current directory.
 # glob
 
-print "1: カレントディレクトリのファイル一覧を取得する。\n";
-# * は、. で始まらないすべてのファイルを表現
+print "1: Get the list of files in the current directory. \ N";
+# * Represents all files that do not start with.
 my @all_files = glob "*";
-print join("\n", @all_files) . "\n\n";
+print join ("\ n", @all_files). "\ n \ n";
 
-print "2: .txt で終わるファイル一覧を取得する。\n" ;
-my @text_files = glob "*.txt";
-print join("\n", @text_files) . "\n\n";
+print "2: Get a list of files ending in .txt. \ N";
+my @text_files = glob "* .txt";
+print join ("\ n", @text_files). "\ n \ n";
 
-print "3: .txt と .pl で終わるファイル一覧を取得する。\n";
-# 複数パターンある場合は空白で区切る
-my @text_and_pl_files = glob "*.txt *.pl"; 
-print join("\n", @text_and_pl_files) . "\n\n";
+print "3: Get a list of files ending in .txt and .pl. \ N";
+# If there are multiple patterns, separate them with a blank
+my @text_and_pl_files = glob "* .txt * .pl";
+print join ("\ n", @text_and_pl_files). "\ n \ n";
 
-print "4: 通常ファイルの一覧を取得する。\n";
+print "4: Get a list of regular files. \ N";
 my @normal_files = glob "*";
-# 複雑なことをしたいときは,"*" で
-# すべてのファイルを取得してから、
-# grep で選別する。
-@normal_files = grep{ -f $_ } @normal_files; 
-print join("\n", @normal_files) . "\n\n";
-</pre>
+# If you want to do complicated things, use "*"
+# Get all the files and then
+Sort by # grep.
+@normal_files = grep {-f $ _} @normal_files;
+print join ("\ n", @normal_files). "\ n \ n";
+</ pre>
 
-参考:<a href="/blog/20081007122338.html">join関数</a>
+Reference: <a href="/blog/20081007122338.html"> join function </a>
 
-実行結果
+Execution result
 
 <pre>
-1: カレントディレクトリのファイル一覧を取得する。
+1: Get the list of files in the current directory.
 a.exe
 a.pl
 aaa
@@ -139,42 +139,42 @@ lib
 yuki-kimoto-Portablebbs-b578c1d
 yuki-kimoto-Portablebbs-b578c1d.zip
 
-2: .txt で終わるファイル一覧を取得する。
+2: Get a list of files ending in .txt.
 
 
-3: .txt と .pl で終わるファイル一覧を取得する。
+3: Get a list of files ending in .txt and .pl.
 a.pl
 hello.pl
 
-4: 通常ファイルの一覧を取得する。
+4: Get a list of regular files.
 a.exe
 a.pl
 hello.exe
 hello.pl
 yuki-kimoto-Portablebbs-b578c1d.zip
-</pre>
+</ pre>
 
-<h3>Windowsではglob関数は正しく動作しないのでディレクトリハンドルを使う</h3>
+<h3> Use the directory handle because the glob function doesn't work properly on Windows </ h3>
 
-ファイル一覧を取得するときにglob関数を使うことが多いと思います。けれども今のところはglob関数はWindowsでは正しく動かないと見ておいたほうがよいでしょう。ディレクトリ名に特定の文字列を含む場合は、ファイル一覧を正しく取得することができません。
+I think you often use the glob function to get a list of files. But for now, it's best to see that the glob function doesn't work properly on Windows. If the directory name contains a specific character string, the file list cannot be obtained correctly.
 
-ですので、glob関数を使う代わりに、以下のようなファイル名の一覧を取得する関数を作るのがよいでしょう。ディレクトリハンドルをオープンするには<a href="/blog/20171002150691.html">opendir関数</a>、ディレクトリの読出しには<a href="/blog/20171003150703.html">readdir関数</a>を使用します。
+So, instead of using the glob function, it's a good idea to create a function that gets a list of filenames like this: <a href="/blog/20171002150691.html"> opendir function </a> to open the directory handle, <a href="/blog/20171003150703.html"> readdir function </a> to read the directory Use>.
 
 <pre>
 sub get_files {
-  my $dir = shift;
+  my $ dir = shift;
   
-  opendir my $dh, $dir
-    or die qq/Can't open directory "$dir": $!/;
+  opendir my $ dh, $ dir
+    or die qq / Can't open directory "$ dir": $! /;
   
-  my @dirs = map { "$dir/$_" } grep { $_ ne '.' && $_ ne '..' } readdir $dh;
+  my @dirs = map {"$ dir / $ _"} grep {$ _ ne'.' && $ _ ne' ..'} readdir $ dh;
   
   return @dirs;
 }
-</pre>
+</ pre>
 
-使い方
+How to use
 
 <pre>
-my @files = get_files('c:/pictures');
-</pre>
+my @files = get_files ('c: / pictures');
+</ pre>

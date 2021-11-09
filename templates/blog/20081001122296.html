@@ -1,409 +1,408 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
     here
-  </li>
-</ol>
-<h2>sprintf関数 - 文字列の書式指定</h2>
+  </ li>
+</ ol>
+<h2> sprintf function --string formatting </ h2>
 
 
 
-<strong>sprintf関数</strong>を使用すると書式指定した<a href="/blog/20161003147558.html">文字列</a>を作成することができます。<a href="/blog/20161026147748.html">数値</a>の左側を0で埋めて出力したい場合や、浮動小数点の少数の桁数を指定したい場合などに、sprintf関数を使うと便利です。
-
-<pre>
-my $str = sprintf("%08d", $num1);
-my $str = sprintf("%.2f", $num2);
-my $str = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
-</pre>
-
-数値や文字列をある規則にしたがって出力したい場合があります。たとえば、足りない部分を空白で埋めた固定長の文字列を作成したい場合 "18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" のようにわざわざ空白を作っておくのは面倒です。
-
-sprintf関数で書式指定を行えば、 "18" を "18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" のように変換できます。
-
-またたとえば足りない部分を0で埋めた数値を出力することもできます。 18 を '00000018' にすることができます。
-
-小数点をある桁で丸めて出力することもできます。 12.3456 を 小数点第一位で丸めて '12.3' にできます。
-
-<h3>書式指定の記述方法</h3>
+You can use the <strong> sprintf function </ strong> to create a formatted <a href="/blog/20161003147558.html"> string </a>. It is convenient to use the sprintf function when you want to fill the left side of <a href="/blog/20161026147748.html"> number </a> with 0 and output it, or when you want to specify a small number of floating point digits. is.
 
 <pre>
-my $str = sprintf("%08d", $num1);
-my $str = sprintf("%.2f", $num2);
-my $str = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
-</pre>
+my $ str = sprintf ("% 08d", $ num1);
+my $ str = sprintf ("% .2f", $ num2);
+my $ str = sprintf ("aiueo% 08daiueo% .2f", $ num1, $ num2);
+</ pre>
 
-書式指定は%で始まります。最後は d や f などの決められた英数字で終わります。dは第2引数を整数として解釈するという意味で、fは浮動小数点として解釈するという意味です。
+You may want to output numbers or strings according to certain rules. For example, if you want to create a fixed-length character string with the missing parts filled with blanks, it is troublesome to create blanks like "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;".
 
-% と 英文字 の間にはどのような書式で文字列を作成するかということを指定します。"%08d"は「$num1を整数として解釈して8文字に満たない場合は0で埋める」と読みます。"%.2f"は「$num2を浮動小数点として解釈して小数点以下2桁で丸める」と読みます。
+You can convert "18" to "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;" by specifying the format with the sprintf function.
 
-<h3>sprintf関数の書式指定子一覧</h3>
+Also, for example, you can output a numerical value with the missing part filled with 0s. 18 can be '00000018'.
 
-sprintf関数には書式を設定するさまざまな指定子が存在します。一覧を作成しました。
+You can also output by rounding the decimal point to a certain digit. You can round 12.3456 to one decimal place to get '12.3'.
 
-<h4>%c</h4>
+<h3> Format specification description method </ h3>
 
-%cはASCII文字コードに対応する文字に変換するフォーマット指定子です。
+<pre>
+my $ str = sprintf ("% 08d", $ num1);
+my $ str = sprintf ("% .2f", $ num2);
+my $ str = sprintf ("aiueo% 08daiueo% .2f", $ num1, $ num2);
+</ pre>
 
-<h4>%s</h4>
+Formatting starts with%. It ends with a fixed alphanumeric character such as d or f. d means to interpret the second argument as an integer, and f means to interpret it as a floating point number.
 
-%sは引数を文字列として解釈するフォーマット指定子です。'002'のように先頭に0がついている場合は、そのまま文字列として'002'になります。
+Specifies the format in which the string is created between the% and the alphabet. "% 08d" is read as "Interpret $ num1 as an integer and pad it with 0 if it is less than 8 characters". "% .2f" is read as "Interpret $ num2 as a floating point number and round it to two decimal places."
 
-<h4>%d</h4>
+<h3> List of format specifiers for sprintf function </ h3>
 
-%dは引数を符号付整数として解釈します。たとえば'0003'を渡した場合は、数値としてみれば 3であるので 3 に変換されます。
+There are various formatting specifiers for the sprintf function. I created a list.
 
-<h4>%u</h4>
+<h4>% c </ h4>
 
-%uは引数を正の整数として解釈します。
+% c is a format specifier that converts to the character corresponding to the ASCII character code.
 
-<h4>%o</h4>
+<h4>% s </ h4>
 
-%oは引数を正の整数として解釈して8進文字列に変換します。
+% s is a format specifier that interprets the argument as a string. If there is a leading 0 like '002', it will be '002' as a character string as it is.
 
-<h4>%x %X</h4>
+<h4>% d </ h4>
 
-%xは引数を正の整数として解釈して16進文字列に変換します。%xの場合は表記が小文字に、%Xの場合は表記が大文字になります。
+% d interprets the argument as a signed integer. For example, if you pass '0003', it will be converted to 3 because it is 3 in terms of numbers.
 
-<h4>%b</h4>
+<h4>% u </ h4>
 
-%bは引数を正の整数として解釈して2進文字列に変換します。
+% u interprets the argument as a positive integer.
 
-<h4>%f</h4>
+<h4>% o </ h4>
 
-%fは引数を浮動小数点として解釈します。
+% o interprets the argument as a positive integer and converts it to an octal string.
 
-<h4> %e %E</h4>
+<h4>% x% X </ h4>
 
-%eは%fと同じですが、指数表記にフォーマットしてくれます。%eの場合は表記が小文字に、%Eの場合は表記が大文字になります。
+% x interprets the argument as a positive integer and converts it to a hexadecimal string. The notation is lowercase for% x and uppercase for% X.
 
-<h4>%g %G</h4>
+<h4>% b </ h4>
 
-%gは引数を浮動小数点として解釈して %e か %f にフォーマットします。小数点以下が短い場合などは、%fのフォーマットに、長い場合は%eのフォーマットになったりします。
+% b interprets the argument as a positive integer and converts it to a binary string.
 
-また、%gは%f,%e と異なり末尾の余分な0はつきません。
+<h4>% f </ h4>
 
-<h4>%p</h4>
+% f interprets the argument as floating point.
 
-%pで引数で与えられた変数のメモリ上のアドレスを16進表記で取得できます。
+<h4>% e% E </ h4>
 
-<h3>固定長文字列にフォーマットする</h3>
+% e is the same as% f, but it formats it in exponential notation. The notation is lowercase for% e and uppercase for% E.
 
-<strong>sprintf</strong>関数で<strong>固定長文字列</strong>にフォーマットするには以下の例のような書式指定を使います。
+<h4>% g% G </ h4>
+
+% g interprets the argument as floating point and formats it to% e or% f. If the decimal point is short, it will be in the% f format, and if it is long, it will be in the% e format.
+
+Also, unlike% f and% e,% g does not have an extra 0 at the end.
+
+<h4>% p </ h4>
+
+You can get the memory address of the variable given as an argument by% p in hexadecimal notation.
+
+<h3> Format to a fixed length string </ h3>
+
+To format a <strong> fixed-length string </ strong> with the <strong> sprintf </ strong> function, use a format specification like the example below.
 
 <table>
   <tr>
     <td>
-      %5s
-    </td>
+      % 5s
+    </ td>
     <td>
-      右詰めスペース埋め
-    </td>
-  </tr>
+      Right-justified space filling
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %-5s
-    </td>
+      % -5s
+    </ td>
     <td>
-      左詰めスペース埋め
-    </td>
-  </tr>
+      Left-justified space filling
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      %0s
-    </td>
+      % 0s
+    </ td>
     <td>
-      0埋め
-    </td>
-  </tr>
+      0 fill
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-sprintf関数で固定長文字列にフォーマットするには、%に続けて数値を記述します。%5s のように書きます。
+To format a fixed-length string with the sprintf function, write a number after%. Write as% 5s.
 
-デフォルトでは右詰めのスペース埋めになります。左詰めにするためには、数値の前にマイナス(-)をつけて%-5sのようにします。足りない部分を0で埋めるには、%05sのように記述します。
+The default is right-justified space filling. To left justify, add a minus (-) in front of the number to make it like% -5s. To fill in the missing parts with 0, write as% 05s.
 
-フォーマット後の文字列が指定した文字列超を越える場合は、切り詰められることはされず指定が無視されます。
+If the formatted string exceeds the specified string, it will not be truncated and the specification will be ignored.
 
-<h3>2進数、8進数、16進数を進数表記でフォーマットする</h3>
+<h3> Format binary, octal, and hexadecimal numbers in base notation </ h3>
 
-2進数、8進数、16進数を数値リテラルとして表現するときに、0b, 0, 0X をつけて表現しました。2進数、8進数、16進数をこの表現にフォーマットするには、# 記号を使います。
-
-<pre>
-sprintf("1: %#o", 8);
-sprintf("2: %#x", 255);
-sprintf("3: %#X", 255);
-sprintf("4: %#b", 4); 
-</pre>
-
-進数表記でフォーマットするには、#を使用します。
-
-他のフォーマットと組み合わせることもできます。
+When expressing binary, octal, and hexadecimal numbers as numeric literals, they are expressed with 0b, 0, and 0X. Use the # symbol to format binary, octal, and hexadecimal numbers into this representation.
 
 <pre>
-# 10進数を8進数に変換 左詰でスペース埋め
-$formated[5]  = sprintf("1: <%-#5o>", 8);
-</pre>
+sprintf ("1:% # o", 8);
+sprintf ("2:% # x", 255);
+sprintf ("3:% # X", 255);
+sprintf ("4:% # b", 4);
+</ pre>
 
-# というのはフォーマット指定の中で「フラグ」と呼ばれるものに分類されます。- も「フラグ」に分類されます。5は「文字列幅」と呼ばれるものに分類されます。
+Use # to format in base notation.
 
-「フラグ」どうしの順序はどんな順序でもかまいませんが、「フラグ」は「文字列幅」よりも前にくる必要があります。
-
-<pre>
-"%-#5o" # OK
-"%#-5o" # OK
-"%5-#o" # 駄目
-</pre>
-
-<h3>小数点以下のけた数で精度を指定する</h3>
-
-sprintf関数を使って小数点以下の桁数で精度を指定するには、フォーマット指定子 %f と .5 .10 のような「精度」の表記を使用します。
+It can also be combined with other formats.
 
 <pre>
-# 小数点以下3位
-$formated[1] = sprintf("%.3f", 0.45674);
-</pre>
+# Convert decimal to octal Fill space with left justification
+$ formatted [5] = sprintf ("1: <%-# 5o>", 8);
+</ pre>
 
-小数点以下の桁数で精度を指定するには、引数を浮動少数点として解釈するフォーマット指定子 %f と .5 .10 のような「精度」の表記を使用します。.3 とすると小数点以下第3位で丸められます。
+# Is classified as a "flag" in the format specification. —— Is also classified as a “flag”. 5 is categorized as what is called "string width".
 
-他のフォーマットと組み合わせることもできます。
+The order of the "flags" can be anything, but the "flags" must come before the "string width".
 
 <pre>
-# 左詰スペース埋めの文字幅10で小数点以下3位に丸める
-$formated[2]  = sprintf("<%-10.3f>", 0.45674);
-</pre>
+"%-# 5o" # OK
+"% # -5o" # OK
+"% 5- # o" # No
+</ pre>
+
+<h3> Specify the precision with the number of digits after the decimal point </ h3>
+
+To specify the precision with the number of decimal places using the sprintf function, use the format specifier% f and the "precision" notation, such as .5.10.
+
+<pre>
+# 3rd place after the decimal point
+$ formatted [1] = sprintf ("% .3f", 0.45674);
+</ pre>
+
+To specify the precision with the number of decimal places, use the format specifier% f, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is .3, it will be rounded to the third decimal place.
+
+It can also be combined with other formats.
+
+<pre>
+#Round to the third decimal place with a character width of 10 that fills the left-justified space
+$ formatted [2] = sprintf ("<% -10.3f>", 0.45674);
+</ pre>
 
 <ul>
   <li>
-     は「フラグ」と呼ばれるものに分類されます。10 は「文字列幅」と呼ばれるものに分類されます。.3 は「精度」と呼ばれるものに分類されます。fは公式に名前はないようですがここでは、フォーマット指定子と呼んでいます。
-  </li>
-</ul>
+     Is categorized as what is called a "flag". 10 is categorized as what is called "string width". .3 is categorized as what is called "precision". f doesn't seem to have an official name, but here we call it a format specifier.
+  </ li>
+</ ul>
 
-フォーマット指定の順番は、
-
-<pre>
-% フラグ 文字列幅 精度 フォーマット指定子
-</pre>
-
-である必要があります。「フラグ」「文字列」「精度」はフォーマット指定のオプションになっていて必要に応じて指定します。
-
-<h3>有効桁数で精度を指定する</h3>
-
-sprintf関数を使って有効桁数で精度を指定するには、フォーマット指定子 %g と .5 .10 のような「精度」の表記を使用します。
+The order of format specification is
 
 <pre>
-# 有効桁3桁
-my $formated = sprintf("%.3g", 45.674);
-</pre>
+% Flag String Width Precision Format Specifier
+</ pre>
 
-小数点以下の桁数で精度を指定するには、引数を浮動少数点として解釈するフォーマット指定子 %g と .5 .10 のような「精度」の表記を使用します。%.3g とすると有効桁３けたで丸められます。
+Must be. "Flag", "Character string", and "Precision" are format specification options and can be specified as necessary.
 
-<h3>sprintf関数のサンプル</h3>
+<h3> Specify the precision by the number of significant digits </ h3>
 
-sprintf関数のサンプルです。
-
-<h4>sprintfの簡単なサンプル</h4>
-
-sprintf関数の簡単なサンプルです。
+To specify precision by significant digits using the sprintf function, use the format specifier% g and the "precision" notation, such as .5.10.
 
 <pre>
-use strict;
-use warnings;
+# 3 significant digits
+my $ formatted = sprintf ("% .3g", 45.674);
+</ pre>
 
-my $num1 = 3;
+To specify the precision with the number of decimal places, use the format specifier% g, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is% .3g, it will be rounded to 3 digits.
 
-# 8桁で足りない部分は0で埋める
-my $formated1 = sprintf("%08d", $num1); 
-print $formated1 . "\n\n";
+<h3> Sample sprintf function </ h3>
 
-# 小数点以下2桁に丸める
-my $num2 = 3.1415;
-my $formated2 = sprintf("%.2f", $num2);
-print $formated2 . "\n\n";
+This is a sample of the sprintf function.
 
-# 複数の引数を指定する
-my $formated3 = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
-print $formated3 . "\n";
-</pre>
+<h4> A simple sample of sprintf </ h4>
 
-<h4>さまざまな書式指定のサンプル</h4>
-
-さまざまな書式指定のサンプルです。
+A simple sample of the sprintf function.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)書式指定子一覧\n";
+my $ num1 = 3;
+
+# Fill in the missing part with 8 digits with 0
+my $ formatted1 = sprintf ("% 08d", $ num1);
+print $ formatted1. "\ n \ n";
+
+# Round to two decimal places
+my $ num2 = 3.1415;
+my $ formatted2 = sprintf ("% .2f", $ num2);
+print $ formatted2. "\ n \ n";
+
+# Specify multiple arguments
+my $ formatted3 = sprintf ("aiueo% 08daiueo% .2f", $ num1, $ num2);
+print $ formatted3. "\ n";
+</ pre>
+
+<h4> Samples of various formatting </ h4>
+
+Samples of various formatting.
+
+<pre>
+use strict;
+use warnings;
+
+print "(1) List of format specifiers \ n";
 my @formated;
 
-# 65 はASCIIコードで 'A'
-$formated[1]  = sprintf("1: %c", 65);
+# 65 is ASC
+'A' in II code
+$ formatted [1] = sprintf ("1:% c", 65);
 
-# 文字列として解釈
-$formated[2]  = sprintf("2: %s", '00002');
+#Interpreted as a string
+$ formatted [2] = sprintf ("2:% s", '00002');
 
-# 符号付整数として解釈 
-$formated[3]  = sprintf("3: %d", '-00002');
+# Interpreted as a signed integer
+$ formatted [3] = sprintf ("3:% d",'-00002');
 
-# 符号なし整数として解釈
-$formated[4]  = sprintf("4: %u", '00002');
+# Interpreted as an unsigned integer
+$ formatted [4] = sprintf ("4:% u", '00002');
 
-# 10進数を8進数に変換
-$formated[5]  = sprintf("5: %o", 8);
+# Convert decimal to octal
+$ formatted [5] = sprintf ("5:% o", 8);
 
-# 10進数を16進数に変換(小文字表記)
-$formated[6]  = sprintf("6: %x", 255);
+# Convert decimal to hexadecimal (lowercase)
+$ formatted [6] = sprintf ("6:% x", 255);
 
-# 10進数を16進数に変換(大文字表記)
-$formated[7]  = sprintf("7: %X", 255);
+# Convert decimal to hexadecimal (uppercase)
+$ formatted [7] = sprintf ("7:% X", 255);
 
-# 10進数を2進数に変換 
-$formated[8]  = sprintf("8: %b", 4);
+# Convert decimal to binary
+$ formatted [8] = sprintf ("8:% b", 4);
 
-# 浮動少数点として解釈
-$formated[9]  = sprintf("9: %f", 0.00004560);
+# Interpreted as a floating minority point
+$ formatted [9] = sprintf ("9:% f", 0.00004560);
 
-# 浮動小数点として解釈
-# (指数表記小文字)
-$formated[10] = sprintf("10: %e",0.00004560);
+# Interpreted as floating point
+# (Lowercase exponential notation)
+$ formatted [10] = sprintf ("10:% e", 0.00004560);
 
-# 浮動小数点として解釈
-# (指数表記大文字)
-$formated[11] = sprintf("11: %E",0.00004560);
+# Interpreted as floating point
+# (Capital notation)
+$ formatted [11] = sprintf ("11:% E", 0.00004560);
 
-# 浮動小数点として解釈
-# (末尾0は削除される)
-$formated[12] = sprintf("12: %g", 0.00004560);
+# Interpreted as floating point
+# (End 0 is deleted)
+$ formatted [12] = sprintf ("12:% g", 0.00004560);
 
-# 浮動小数点として解釈
-# (末尾の0は削除される。大文字)
-$formated[13] = sprintf("13: %G", 0.00004560);
+# Interpreted as floating point
+# (The trailing 0 is removed. Uppercase)
+$ formatted [13] = sprintf ("13:% G", 0.00004560);
 
-# $num のメモリ上のアドレス
-my $num = 3;                                              
-$formated[14] = sprintf("14: %p", $num); 
+# $ Num's in-memory address
+my $ num = 3;
+$ formatted [14] = sprintf ("14:% p", $ num);
 
-for my $i (1 .. 14) {
-  print $formated[$i] . "\n"; 
+for my $ i (1 .. 14) {
+  print $ formatted [$ i]. "\ n";
 }
-</pre>
+</ pre>
 
-<h4>固定長文字列にフォーマットする</h4>
+<h4> Format to a fixed length string </ h4>
 
-sprintf関数を使って固定長文字列にフォーマットするサンプルです。
+This is a sample to format to a fixed length string using the sprintf function.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)固定長文字列にフォーマットする。\n";
+print "(1) Format to a fixed-length character string. \ N";
 my @formated;
 
-# 右詰めスペース埋め
-$formated[1] = sprintf("1: %5s", 1);
+# Fill right-justified space
+$ formatted [1] = sprintf ("1:% 5s", 1);
 
-# 左詰めスペース埋め
-$formated[2] = sprintf("2: %-5s", 1);
+# Fill left-justified space
+$ formatted [2] = sprintf ("2:% -5s", 1);
 
-# 0埋め
-$formated[3] = sprintf("3: %05s", 1);
+# 0 fill
+$ formatted [3] = sprintf ("3:% 05s", 1);
 
-# 指定した文字の長さを超える場合は無視される
-$formated[4] = sprintf("4: %5d", 123456);
+#Ignored if the specified character length is exceeded
+$ formatted [4] = sprintf ("4:% 5d", 123456);
 
-# %s以外でもOK。
-$formated[5] = sprintf("5: %5d", 1);
+Other than #% s is OK.
+$ formatted [5] = sprintf ("5:% 5d", 1);
 
-# %s以外でもOK。
-$formated[6] = sprintf("6: %5g", 1.23);
+Other than #% s is OK.
+$ formatted [6] = sprintf ("6:% 5g", 1.23);
 
-for my $i (1 .. 6) {
-  print $formated[$i] . "\n"; 
+for my $ i (1 .. 6) {
+  print $ formatted [$ i]. "\ n";
 }
-</pre>
+</ pre>
 
-<h4>2進数、8進数、16進数を進数表記でフォーマット</h4>
+<h4> Format binary, octal, and hexadecimal numbers in base notation </ h4>
 
-sprintfで2進数、8進数、16進数を進数表記でフォーマットするサンプルです。
+This is a sample to format binary, octal, and hexadecimal numbers in binary notation with sprintf.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)2進数、8進数、16進数を進数表\記でフォーマットする\n";
+print "(1) Format binary, octal, and hexadecimal numbers in the base number table \ n";
 my @formated;
 
-# 10進数を8進数に変換
-$formated[1]  = sprintf("1: %#o", 8);
+# Convert decimal to octal
+$ formatted [1] = sprintf ("1:% # o", 8);
 
-# 10進数を16進数に変換(小文字表記)
-$formated[2]  = sprintf("2: %#x", 255);
+# Convert decimal to hexadecimal (lowercase)
+$ formatted [2] = sprintf ("2:% # x", 255);
 
-# 10進数を16進数に変換(大文字表記)
-$formated[3]  = sprintf("3: %#X", 255);
+# Convert decimal to hexadecimal (uppercase)
+$ formatted [3] = sprintf ("3:% # X", 255);
 
-# 10進数を2進数に変換
-$formated[4]  = sprintf("4: %#b", 4); 
+# Convert decimal to binary
+$ formatted [4] = sprintf ("4:% # b", 4);
 
-for my $i (1 .. 4) {
-  print $formated[$i] . "\n";
+for my $ i (1 .. 4) {
+  print $ formatted [$ i]. "\ n";
 }
-print "\n";
+print "\ n";
 
-# 10進数を8進数に変換 左詰でスペース埋め
-print "(2)他のフォーマットと組み合わせる。\n";
-$formated[5]  = sprintf("1: <%-#5o>", 8);
+# Convert decimal to octal Fill space with left justification
+print "(2) Combine with other formats. \ N";
+$ formatted [5] = sprintf ("1: <%-# 5o>", 8);
 
-print $formated[5] . "\n";
-</pre>
+print $ formatted [5]. "\ n";
+</ pre>
 
-<h4>小数点以下のけた数で精度を指定</h4>
+<h4> Specify the precision with the number of digits after the decimal point </ h4>
 
-小数点以下のけた数で精度を指定するサンプルです。
+This is a sample that specifies the precision with the number of digits after the decimal point.
 
 <pre>
 use strict;
 use warnings;
 
-printf "(1)小数点以下のけた数で精度を指定する。\n";
+printf "(1) Specify the precision with the number of digits after the decimal point. \ N";
 my @formated;
-# 小数点以下3位までの精度で
-# フォーマットする。
-$formated[1] = sprintf("%.3f", 0.45674);
-print $formated[1] . "\n\n";
+# With precision up to 3 decimal places
+#Format.
+$ formatted [1] = sprintf ("% .3f", 0.45674);
+print $ formatted [1]. "\ n \ n";
 
-# 左詰スペース埋めの文字幅10で小数点以下3位に丸める
-print "(2)他のフォーマットと組み合わせる。\n";
-$formated[2]  = sprintf("<%-10.3f>", 0.45674);
-print $formated[2] . "\n";
-</pre>
+#Round to the third decimal place with a character width of 10 that fills the left-justified space
+print "(2) Combine with other formats. \ N";
+$ formatted [2] = sprintf ("<% -10.3f>", 0.45674);
+print $ formatted [2]. "\ n";
+</ pre>
 
-<h4>有効桁数で精度を指定</h4>
+<h4> Specify precision by the number of significant digits </ h4>
 
-有効桁数で精度を指定するサンプルです。
+This is a sample that specifies the precision by the number of significant digits.
 
 <pre>
 use strict;
 use warnings;
 
-printf "(1)有効桁数で精度を指定する。\n";
+printf "(1) Specify the precision by the number of significant digits. \ N";
 
-# 有効桁3桁の精度でフォーマットする。
-my $formated = sprintf("%.3g", 45.674);
-print $formated . "\n";
-</pre>
-
-
+#Format with a precision of 3 significant digits.
+my $ formatted = sprintf ("% .3g", 45.674);
+print $ formatted. "\ n";
+</ pre>

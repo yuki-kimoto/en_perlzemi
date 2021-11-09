@@ -1,187 +1,186 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>Perlを実行するためのコマンドプロンプト入門</h2>
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Getting Started with Command Prompt to Run Perl </ h2>
 
-Perlのプログラミングは、コマンドと呼ばれるテキストを入力して実行します。まず最初にWindowsにおけるコマンド実行ツールであるコマンドプロンプトについて解説したいと思います。解説はWindows 10であることを前提にします。Windows 7, 8でも、ほとんど同じ手順で実行できますが、アプリケーションを探す場所など、一部異なる場合があります。
+Perl programming is done by typing text called commands. First of all, I would like to explain the command prompt, which is a command execution tool in Windows. The explanation assumes that you are using Windows 10. You can follow almost the same procedure on Windows 7 and 8, but there may be some differences, such as where to look for the application.
 
-<h4>コマンドプロンプトとは</h4>
+<h4> What is a command prompt? </ H4>
 
-コマンドプロンプトとは、Windows環境におけるCUIを用いたプログラムの実行環境です。CUIとは、Character-based User Interfaceの略で、テキストを入力して、プログラムを実行するインターフェースのことです。Windows上で、Perlプログラミングをするときは、コマンドプロンプトを用いて、Perlを実行することになります。
+The command prompt is the execution environment of the program using CUI in the Windows environment. CUI is an abbreviation for Character-based User Interface, which is an interface for inputting text and executing a program. When programming Perl on Windows, you will run Perl using the command prompt.
 
-<h4>コマンドプロンプトを実行するには</h4>
+<h4> To run the command prompt </ h4>
 
-画面左下のWindowsメニューからアプリの一覧で「Windowsシステムツール」→「コマンドプロンプト」で実行できます。コマンドプロンプトのアイコンを右クリックでドラッグして、デスクトップに、ショートカットを作っておくと便利です。
+You can execute it from "Windows System Tools"-> "Command Prompt" in the list of apps from the Windows menu at the bottom left of the screen. It is convenient to create a shortcut on the desktop by right-clicking and dragging the command prompt icon.
 
-コマンドプロンプトを実行すると、以下のようにコマンドプロンプトが立ち上がります。
+When you execute the command prompt, the command prompt will be launched as shown below.
 
-<img src="/images/commandprompt/commandprompt.png">
+<img src = "/ images / commandprompt / commandprompt.png">
 
-コマンドプロンプトのホームディレクトリは、ユーザーディレクトリです。
+The command prompt home directory is the user directory.
 
-この例では以下です。
-
-<pre>
-C:\Users\kimot
-</pre>
-
-<h4>拡張子を表示する</h4>
-
-Perlのプログラムは単なるテキストファイルですが、拡張子が「.pl」なので、拡張子を表示するように設定しておきましょう。拡張子とはプログラムの種類を表すためのものです。
-
-画面左下のWindowsメニューを右クリック → 「エクスプローラー」をクリック → 上のタブの「表示」をクリック → 「ファイル名拡張子」にチェックを入れる。
-
-<h4>Perlプログラムを作成する</h4>
-
-コマンドプロンプトのホームディレクトリをエクスプローラーで開きましょう。
-
-この例では以下のディレクトリにアクセスします。
+In this example:
 
 <pre>
-C:\Users\kimot
-</pre>
+C: \ Users \ kimot
+</ pre>
 
-画面左下のWindowsメニューを右クリック → 「エクスプローラー」をクリック → 左メニュー「OS(C:)」をクリック → 「ユーザー」をクリック → 「kimot」をクリック。
+<h4> Show extension </ h4>
 
-Usersに該当する部分は、日本語では「ユーザー」と表示されていることに注意してください。
+The Perl program is just a text file, but the extension is ".pl", so let's set it to display the extension. The extension is used to indicate the type of program.
 
-C:\Users\kimotのディレクトリの空いている部分を右クリック→「新規作成」→「テキスト文書」。名前を「start.pl」にして保存してください。「拡張子を変えると動かなくなる可能性があります」の注意ができますが、そのまま進めます。
+Right-click the Windows menu at the bottom left of the screen → click "Explorer" → click "View" on the upper tab → check "File name extension".
 
-「.pl」の関連づけをメモ帳に変更します。使っているテキストエディタがある場合は、使っているテキストエディタに関連づけを変更してください。
+<h4> Create a Perl program </ h4>
 
-「start.pl」を右クリック →「プログラムから開く」→「別のプログラムを選択」→「メモ帳」→「常にこのアプリを使って.plファイルを開く」にチェック。
+Open the command prompt home directory in Explorer.
 
-「start.pl」をクリックして、メモ帳で開く。
+In this example, access the following directories.
 
-以下の内容を入力してください。
+<pre>
+C: \ Users \ kimot
+</ pre>
+
+Right-click the Windows menu at the bottom left of the screen → click "Explorer" → click the left menu "OS (C :)" → click "User" → click "kimot".
+
+Please note that the part corresponding to Users is displayed as "User" in Japanese.
+
+Right-click an empty part of the C: \ Users \ kimot directory → "New" → "Text Document". Name it "start.pl" and save it. You can note that "If you change the extension, it may not work", but proceed as it is.
+
+Change the association of ".pl" to Notepad. If you have a text editor you are using, change the association to the text editor you are using.
+
+Right-click "start.pl"-> "Open with"-> "Select another program"-> "Notepad"-> Check "Always use this app to open .pl files".
+
+Click "start.pl" to open it in Notepad.
+
+Please enter the following content.
 
 <pre>
 print "Hello World";
-</pre>
+</ pre>
 
-左上の「ファイル」→「上書き保存」で保存します。
+Save by selecting "File"-> "Save" in the upper left.
 
-<h4>Perlを実行する</h4>
+<h4> Run Perl </ h4>
 
-Perlを実行するにはperlコマンドを使用します。コマンドプロンプトで以下の記述してEnterを入力してください。
+Use the perl command to run Perl. Enter the following at the command prompt and enter Enter.
 
 <pre>
 perl start.pl
-</pre>
+</ pre>
 
-以下のように出力されれば、Perlプログラムを実行できています。おめでとうございます。
+If the output is as follows, the Perl program can be executed. Congratulations.
 
 <pre>
 Hello World
-</pre>
+</ pre>
 
-<h4>最初に覚えておきたいコマンド</h4>
+<h4> First command to remember </ h4>
 
-dirコマンドでファイルの一覧を表示できます。dirと入力して、Enterを押してください。
+You can display a list of files with the dir command. Type dir and press Enter.
 
 <pre>
 dir
-</pre>
+</ pre>
 
-cdコマンドで、作業ディレクトリを変更できます。
+You can change the working directory with the cd command.
 
 <pre>
-cd ディレクトリ名
-</pre>
+cd directory name
+</ pre>
 
-ひとつ上のディレクトリに移動するには、 cd .. とします。
+Use cd .. to move up one directory.
 
 <pre>
 cd ..
-</pre>
+</ pre>
 
-<h4>空白のある引数を渡す</h4>
+<h4> Pass an argument with a blank </ h4>
 
 <pre>
 perl start.pl "a i u"
-</pre>
+</ pre>
 
-引数に空白が含まれている場合は、ダブルクオーテーションで囲みます。
+If the argument contains spaces, enclose it in double quotes.
 
-<h4>ドライブを変更する</h4>
+<h4> Change drive </ h4>
 
 <pre>
 c:
 d:
-</pre>
+</ pre>
 
-c: で、C ドライブに、d: で、D ドライブにドライブを変更することができます。
+You can change the drive to C drive with c: and to D drive with d :.
 
-<h4>コマンド履歴を参照する</h4>
+<h4> Refer to command history </ h4>
 
 <pre>
 ↑
 ↓
-</pre>
+</ pre>
 
-上下キーでコマンド履歴をたどることができます。
+You can follow the command history with the up and down keys.
 
-<h4>ファイル名を補完する</h4>
+<h4> Completing the file name </ h4>
 
 <pre>
 Ctrl + f
-</pre>
+</ pre>
 
-ファイル名を途中まで入力して、Ctrl + f で、ファイル名を補完することができます。以下で記述するコマンドプロンプトの設定の変更が必要になります。
+You can enter the file name halfway and press Ctrl + f to complete the file name. It is necessary to change the command prompt settings described below.
 
-<h4>環境変数を表示する</h4>
-
-<pre>
-echo %PATH% ( 環境変数PATHの内容をみる場合 )
-</pre>
-
-環境変数を見るには、echo %環境変数名%とします。
-
-<h4>環境変数を設定する</h4>
+<h4> Display environment variables </ h4>
 
 <pre>
-SET DATE=20080604 ( 環境変数DATEに、20080604を設定する場合 )
-perl start.pl %DATE% ( 環境変数を引数として使用する例 )
-</pre>
+echo% PATH% (when looking at the contents of the environment variable PATH)
+</ pre>
 
-環境変数を、SET 環境変数名=値 で環境変数を設定できます。= の左右には、空白を入れてはいけません。環境変数を使用するには、 %環境変数名%  とします。
+To see the environment variables, use echo% environment variable name%.
 
-環境変数を設定しても、OSの環境変数の値は変わりません。起動しているコマンドプロンプト内でだけ有効です。
+<h4> Set environment variables </ h4>
 
-<h4>コマンドプロンプトの便利な設定</h4>
+<pre>
+SET DATE = 20080604 (when setting the environment variable DATE to 20080604)
+perl start.pl% DATE% (Example using environment variables as arguments)
+</ pre>
 
-<b>コマンドプロンプトの設定の変更方法</b>
+You can set environment variables with SET environment variable name = value. There should be no space to the left or right of =. To use an environment variable, use% environment variable name%.
 
-ショートカットをデスクトップに作ったら、右クリック「プロパティ」で、設定を変更できます。
+Setting environment variables does not change the value of OS environment variables. It is valid only within the command prompt that is running.
 
-<b>作業フォルダの設定とファイル名補完の設定</b>
+<h4> Convenient command prompt settings </ h4>
 
-「ショートカット」タブから作業フォルダの設定とファイル名補完の設定ができます。作業フォルダとは、ショートカットを起動したときの、カレントディレクトリのことです。
+<b> How to change the command prompt settings </ b>
 
-ファイル名補完の設定をするには、「リンク先」とかかれた、コマンドプロンプトのパスの最後に、 :/f on と追加します。: の前には、空白が必要です。これで、 「 8. ファイル名を補完 」のコマンドが有効になります。
+After creating the shortcut on the desktop, you can change the setting by right-clicking "Properties".
 
-例 %SystemRoot%\system32\cmd.exe :/f on
+<b> Working folder settings and file name completion settings </ b>
 
-<b>簡易編集モードの設定</b>
+You can set the working folder and file name completion from the "Shortcut" tab. The working folder is the current directory when the shortcut is started.
 
-「オプション」タブから、簡易編集モードの設定ができます。チェックを入れると、右クリックで、コピー＆ペーストができるようになります。
+To set filename completion, add: / f on to the end of the command prompt path labeled "link destination". There must be a space before the :. This will enable the "8. Complete Filename" command.
 
-<b>フォントサイズの設定</b>
+Example% SystemRoot% \ system32 \ cmd.exe: /f on
 
-「フォント」タブから、フォントサイズを設定できます。少し小さめにしたほうが見やすいと思います。
+<b> Easy edit mode setting </ b>
 
-<b>画面バッファサイズの設定</b>
+You can set the simple edit mode from the "Options" tab. If you check it, you can copy and paste by right-clicking.
 
-「レイアウト」タブから、画面バッファサイズの設定ができます。「高さ」の項目を最大値にしておきます。
+<b> Font size setting </ b>
 
-画面バッファサイズ「高さ」を大きくしておくと、画面がスクロールしても、設定した行数分だけ、出力を保存しておくことができます。
+You can set the font size from the Font tab. I think it's easier to see if you make it a little smaller.
 
+<b> Screen buffer size setting </ b>
+
+You can set the screen buffer size from the "Layout" tab. Set the "Height" item to the maximum value.
+
+If you increase the screen buffer size "height", you can save the output for the set number of lines even if the screen scrolls.

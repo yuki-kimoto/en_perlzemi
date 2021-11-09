@@ -1,79 +1,77 @@
+<h2> Find the date n days later </ h2>
 
-<h2>n日後の日付を求める</h2>
-
-n日後の日付を求めるには、n日を秒に変換してtime関数で取得した現在の時刻(エポックからの秒数秒)に加算します。加算した秒をlocaltime関数を使って、日付と時刻の表記に変換します。
+To find the date n days later, convert n days to seconds and add them to the current time (seconds from the epoch) obtained with the time function. Convert the added seconds to date and time notation using the localtime function.
 
 <pre>
 use strict;
 use warnings;
-use Time::Local 'timelocal';
+use Time :: Local'timelocal';
 
-print "(1)n日後の日付を求める\n";
+print "(1) Find the date n days later \ n";
 
-# 2日後
-my $n = 2;
+# 2 days later
+my $ n = 2;
 
-# 日付を秒に直して加える。
-my $sec_from_epoch = time + (60 * 60 * 24 * $n);
+# Convert the date to seconds and add it.
+my $ sec_from_epoch = time + (60 * 60 * 24 * $ n);
 
-# 秒を日付と時刻に変換
-my ($sec, $min, $hour, $mday, $month, $year)
-  = localtime( $sec_from_epoch );
+#Convert seconds to date and time
+my ($ sec, $ min, $ hour, $ mday, $ month, $ year)
+  = localtime ($ sec_from_epoch);
 
-$month++;
-$year += 1900;
+$ month ++;
+$ year + = 1900;
 
-print "$n日後は、$year年$month月$mday日$hour時$min分$sec秒です。\n";
-</pre>
+print "$ n days later is $ year year $ month month $ mday day $ hour hour $ min minutes $ sec seconds. \ N";
+</ pre>
 
-実行結果
-
-<pre>
-(1)n日後の日付を求める
-2日後は、2008年10月24日23時2分43秒です。
-</pre>
-
-<h3>解説</h3>
-
-<h4>日付を秒に直して加算</h4>
-
-時刻を扱うときは秒に変換してから扱います。time関数でエポックからの秒数を取得できるので、それに n日後の秒数を加算します。
+Execution result
 
 <pre>
-# 2日後
-my $n = 2;
+(1) Find the date n days later
+Two days later, it is 23:02:43 on October 24, 2008.
+</ pre>
 
-# 日付を秒に直して加える。
-my $sec_from_epoch = time + (60 * 60 * 24 * $n); 
-</pre>
+<h3> Explanation </ h3>
 
-特定の日付から2日後を取得したい場合は、まずTime::Localモジュールのtimelocal関数を使って、特定の日付のエポックからの秒数を求めます。
+<h4> Convert date to seconds and add </ h4>
 
-その後は上の手順と同じです。
-
-<pre>
-use Time::Local 'timelocal';
-
-# 2000年3月31日
-my $year = 2000 - 1900;
-my $mon = 3 -1;
-my $mday = 31;
-my $sec_from_epoch = timelocal(0, 0, 0, $mday, $mon, $year);
-</pre>
-
-<h4>秒を日付と時刻に変換する</h4>
-
-localtime関数を使って秒を日付と時刻に変換します。
+When dealing with time, convert it to seconds before handling it. You can get the number of seconds from the epoch with the time function, so add the number of seconds after n days to it.
 
 <pre>
-# 秒を日付と時刻に変換
-my ($sec, $min, $hour, $mday, $month, $year)
-  = localtime( $sec_from_epoch );
+# 2 days later
+my $ n = 2;
 
-$month++;
-$year += 1900;
-</pre>
+# Convert the date to seconds and add it.
+my $ sec_from_epoch = time + (60 * 60 * 24 * $ n);
+</ pre>
+
+If you want to get two days after a particular date, first use the timelocal function of the Time :: Local module to find the number of seconds since the epoch on a particular date.
+
+After that, the procedure is the same as above.
+
+<pre>
+use Time :: Local'timelocal';
+
+# March 31, 2000
+my $ year = 2000 --1900;
+my $ mon = 3 -1;
+my $ mday = 31;
+my $ sec_from_epoch = timelocal (0, 0, 0, $ mday, $ mon, $ year);
+</ pre>
+
+<h4> Convert seconds to date and time </ h4>
+
+Convert seconds to date and time using the localtime function.
+
+<pre>
+#Convert seconds to date and time
+my ($ sec, $ min, $ hour, $ mday, $ month, $ year)
+  = localtime ($ sec_from_epoch);
+
+$ month ++;
+$ year + = 1900;
+</ pre>
 
 <hr>
-<a href="/blog/20080229122347.html">Perl逆引き辞典/日付と時刻へ</a>
-
+<a href="/blog/20080229122347.html"> Perl Reverse Dictionary / To Date and Time </a>

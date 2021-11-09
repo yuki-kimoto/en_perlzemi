@@ -1,219 +1,219 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161004147558.html">
-      <span itemprop="name">標準関数</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> standard function </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     here
-  </li>
-</ol>
-<h2>flock関数 - ファイルの排他制御</h2>
+  </ li>
+</ ol>
+<h2> flock function --exclusive control of files </ h2>
 
 
 
-<strong>flock関数</strong>を使用すれば、ファイルの排他制御を行うことができます。今回は、flock関数を実際に使って順番を守ってファイルに読み書きを行います。(一般的には、排他処理と呼びます。)
+You can use the <strong> flock function </ strong> for exclusive control of files. This time, we will actually use the flock function to read and write to the file in order. (Generally, it is called exclusive processing.)
 
-以下は、実際に順番を守って読み書きしているとことを実感するサンプルです。sample_20080814.pl という名前で保存してください。
+The following is a sample that makes you realize that you are actually reading and writing in order. Save it as sample_20080814.pl.
 
 <pre>
 use strict;
 use warnings;
-use Fcntl qw/:DEFAULT :flock :seek/;
+use Fcntl qw /: DEFAULT: flock: seek /;
 
-# 上書きするので注意
-my $file = "data_20080814.txt";
+# Be careful as it will be overwritten
+my $ file = "data_20080814.txt";
 
-# 読み書きモードでオープン(あまり安全でない)
-# O_CREATでファイルがなければ作成する。
-sysopen(my $fh, $file, O_RDWR | O_CREAT)
-  or die "Cannot open $file: $!"; 
+#Open in read / write mode (not very secure)
+If there is no file with # O_CREAT, create it.
+sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
+  or die "Cannot open $ file: $!";
 
-# 排他ロック( 読み込んで書き込むので排他ロック )
-flock($fh, LOCK_EX)
-  or die "Cannot lock $file: $!";
+#Exclusive lock (exclusive lock because it reads and writes)
+flock ($ fh, LOCK_EX)
+  or die "Cannot lock $ file: $!";
 
-my $cnt;
-$cnt = <$fh>;
-if (!defined $cnt && $!){ die "Cannot read $file: $!"; }
+my $ cnt;
+$ cnt = <$ fh>;
+if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
 
-$cnt++;
+$ cnt ++;
 
-# ファイルポインタを先頭に移動
-seek($fh, 0, SEEK_SET)
-  or die "Cannot seek $file: $!";
+#Move the file pointer to the beginning
+seek ($ fh, 0, SEEK_SET)
+  or die "Cannot seek $ file: $!";
 
-# 書き込み。
-print { $fh } $cnt
-  or die "Cannot Write $file: $!";
+# write in.
+print {$ fh} $ cnt
+  or die "Cannot Write $ file: $!";
 
-# 書き込みサイズにファイルを切り詰める
-truncate($fh, length $cnt);
+# Truncate the file to write size
+truncate ($ fh, length $ cnt);
 
-# closeの際にファイルロックは解除される。
-close $fh
-  or die "Cannot close $file: $!";
+The file lock is released at the time of # close.
+close $ fh
+  or die "Cannot close $ file: $!";
 
-print "現在のカウント: $cnt\n";
-</pre>
+print "Current count: $ cnt \ n";
+</ pre>
 
-上記のスクリプトを、ランダムな時間間隔で繰り返すスクリプトです。 write_loop_20080814.pl という名前で保存してください。
+A script that repeats the above script at random time intervals. Save it as write_loop_20080814.pl.
 
 <pre>
 use strict;
 use warnings;
 use FindBin;
-use Time::HiRes 'usleep';
+use Time :: HiRes'usleep';
 
-my $script = "$FindBin::Bin/sample_20080814.pl";
+my $ script = "$ FindBin :: Bin / sample_20080814.pl";
 
 while (1) {
-  # 上記のスクリプトを繰り返し呼び出す。
-  system("perl $script");
+  # Repeat the above script.
+  system ("perl $ script");
 
-  # 100,000(1秒)より小さいランダムな数    
-  my $random = rand 1000_000;
-  usleep $random;
+  # Random number less than 100,000 (1 second)
+  my $ random = rand 1000_000;
+  usleep $ random;
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20100524127696.html">FindBin</a>、<a href="/blog/20180309152509.html">Time::HiRes</a>
+(Reference) <a href="/blog/20100524127696.html"> FindBin </a>, <a href="/blog/20180309152509.html"> Time :: HiRes </a>
 
-<a href="/blog/20100123126425.html">while文</a>を使って、繰り返しスクリプトを呼び出しています。
+The script is called repeatedly using the <a href="/blog/20100123126425.html"> while statement </a>.
 
-コマンドプロンプトを3つくらい立ち上げて、write_loop_20080814.plをすべてのプロンプトで実行してください。data_20080814.txtを読み込んで、カウントアップして書き戻すということを3並列で行います。
+Launch about 3 command prompts and execute write_loop_20080814.pl at all prompts. Read data_20080814.txt, count up and write back in 3 parallels.
 
-もし順番が守られていなければ、書き込み内容に重複が発生するか、あるいはファイルが破損します。順番が守られていれば正しくカウントアップされるはずです。
+If the order is not followed, the written content will be duplicated or the file will be corrupted. If the order is followed, it should count up correctly.
 
-プロセスを、Ctrl + C で3つとも強制終了して、カウントが重複していないことを確認してください。カウントが重複していなければ、順番を守って読み書きしていることがわかります。(一部のOS(Winows98など)ではflockは機能しませんがたいていのOSで機能するでしょう。)
+Kill all three processes with Ctrl + C and make sure there are no duplicate counts. If the counts do not overlap, you can see that you are reading and writing in order. (Flock doesn't work on some operating systems (such as Winows98), but it will work on most operating systems.)
 
-<h3>コード解説</h3>
+<h3> Code explanation </ h3>
 
-<h4>Fcntl - ファイルロック用の定数を読み込む</h4>
+<h4> Fcntl --Read constants for file locking </ h4>
 
-<a href="/blog/20180310152509.html">Fcntl</a>モジュールを使うとflockで使用するファイルロック用の定数を利用することができるようになります。
+The <a href="/blog/20180310152509.html"> Fcntl </a> module allows you to use the file locking constants used by flock.
 
 <pre>
-use Fcntl qw/:DEFAULT :flock :seek/;
-</pre>
+use Fcntl qw /: DEFAULT: flock: seek /;
+</ pre>
 
-flockで使用する定数を読み込むために、use Fcntl qw( :flock ) とします。:flockタグによって読み込まれる定数は、LOCK_SH, LOCK_EX,LOCK_UN の3つです。
+Use use Fcntl qw (: flock) to read the constants used by flock. There are three constants read by the: flock tag: LOCK_SH, LOCK_EX, and LOCK_UN.
 
 <table>
   <tr>
     <td>
       LOCK_SH
-    </td>
+    </ td>
     <td>
-      共有ロック
-    </td>
-  </tr>
+      Shared lock
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       LOCK_EX
-    </td>
+    </ td>
     <td>
-      排他ロック
-    </td>
-  </tr>
+      Exclusive lock
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       LOCK_NB
-    </td>
+    </ td>
     <td>
-      ノンブロックモード
-    </td>
-  </tr>
+      Non-block mode
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-LOCK_NB は、LOCK_SH LOCK_EX と一緒に使用され、ロックがすでにかかっていた場合に、ロックが解除されるのを待たずに制御をプログラムに返す場合にしようされます。
+LOCK_NB is used with LOCK_SH LOCK_EX to return control to the program without waiting for the lock to be released if the lock has already been applied.
 
-補足ですが、:DEFAULT は、<a href="/blog/20080804121794.html">sysopen関数</a>の  O_RDWR と O_CREAT を使用するために、:seek は、seek関数の SEEK_SET を使用するために、指定しています。
+As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and O_CREAT in the <a href="/blog/20080804121794.html"> sysopen function </a>. Therefore, it is specified.
 
-<h4>(2)ファイルが存在しない場合は作成して、読み書きモードでオープンする</h4>
-
-<pre>
-# 読み書きモードでオープン(あまり安全でない)
-# O_CREATでファイルがなければ作成する。
-sysopen(my $fh, $file, O_RDWR | O_CREAT)
-  or die "Cannot open $file: $!";
-</pre>
-
-sysopenで、オープンフラグに、O_RDWR と O_CREAT を指定します。
-
-<h4>(3)flock関数で、排他ロックを行う</h4>
+<h4> (2) If the file does not exist, create it and open it in read / write mode </ h4>
 
 <pre>
-# 排他ロック( 読み込んで書き込むので排他ロック )
-flock($fh, LOCK_EX)
-  or die "Cannot lock $file: $!";
-</pre>
+#Open in read / write mode (not very secure)
+If there is no file with # O_CREAT, create it.
+sysopen (my $ fh, $ file, O_RDWR | O_CREAT)
+  or die "Cannot open $ file: $!";
+</ pre>
 
-今回は、データを読み込んでカウントアップして書き戻すので、排他ロック(書き込みロック)を使います。排他ロックを行うためには、flock関数の第2引数に、LOCK_EX を指定します。読み込みを行うだけの場合は、LOCK_SH を指定します。
+In sysopen, specify O_RDWR and O_CREAT for the open flags.
 
-第一引数は、ファイルではなくて、オープンしたファイルハンドルであることに注意してください。すべてのプロセスが、ファイルにアクセスする場合は、flockによってロックを取得するという約束を守ることで、順番を守ってファイルにアクセスすることができます。
-
-<h4>(4)カウントアップして書き込み</h4>
-
-<pre>
-my $cnt;
-$cnt = <$fh>;
-if (!defined $cnt && $!){ die "Cannot read $file: $!"; }
-
-$cnt++;
-
-# ファイルポインタを先頭に移動
-seek($fh, 0, SEEK_SET)
-  or die "Cannot seek $file: $!";
-
-# 書き込み。
-print { $fh } $cnt
-  or die "Cannot Write $file: $!";
-
-# 書き込みサイズにファイルを切り詰める
-truncate($fh, length $cnt);
-</pre>
-
-ファイルから読み込んで、エラーがなければ、カウントアップします。読み込んだ時点でファイルポインタが進んでいるので、seek関数で先頭に戻します。print関数で書き込んで、書き込んだサイズまでtruncate関数で切り詰めます。( 今回は数字がアップしていくだけなので、truncateの必要はないですが。)
-
-<h4>(5)ロックの解除</h4>
+<h4> (3) Exclusive lock is performed with the flock function </ h4>
 
 <pre>
-# closeの際にファイルロックは解除される。
-close $fh
-  or die "Cannot close $file: $!";
-</pre>
+#Exclusive lock (exclusive lock because it reads and writes)
+flock ($ fh, LOCK_EX)
+  or die "Cannot lock $ file: $!";
+</ pre>
 
-close 関数を呼び出すことで、ファイルへのロックが解除されます。
+This time, we will use an exclusive lock (write lock) because we will read the data, count it up, and write it back. To perform an exclusive lock, specify LOCK_EX in the second argument of the flock function. If you just want to read, specify LOCK_SH.
 
-<h3>ループスクリプトの簡単な解説</h3>
+Note that the first argument is an open filehandle, not a file. When all processes access a file, they can access the file in order by keeping the promise of acquiring the lock with flock.
+
+<h4> (4) Count up and write </ h4>
+
+<pre>
+my $ cnt;
+$ cnt = <$ fh>;
+if (! Defined $ cnt && $!) {Die "Cannot read $ file: $!";}
+
+$ cnt ++;
+
+#Move the file pointer to the beginning
+seek ($ fh, 0, SEEK_SET)
+  or die "Cannot seek $ file: $!";
+
+# write in.
+print {$ fh} $ cnt
+  or die "Cannot Write $ file: $!";
+
+# Truncate the file to write size
+truncate ($ fh, length $ cnt);
+</ pre>
+
+Read from the file and count up if there are no errors. Since the file pointer is advanced at the time of reading, use the seek function to return it to the beginning. Write with the print function and truncate to the written size with the truncate function. (This time, the numbers are just going up, so there is no need for truncate.)
+
+<h4> (5) Unlock </ h4>
+
+<pre>
+The file lock is released at the time of # close.
+close $ fh
+  or die "Cannot close $ file: $!";
+</ pre>
+
+Calling the close function unlocks the file.
+
+<h3> A brief explanation of the loop script </ h3>
 
 <pre>
 use FindBin;
-use Time::HiRes 'usleep';
+use Time :: HiRes'usleep';
 
-my $script = "$FindBin::Bin/sample_20080814.pl";
+my $ script = "$ FindBin :: Bin / sample_20080814.pl";
 
 while (1) {
-  # 上記のスクリプトを繰り返し呼び出す。
-  system("perl $script"); 
+  # Repeat the above script.
+  system ("perl $ script");
 
-  # 100,000(1秒)より小さいランダムな数    
-  my $random = rand 1000_000;
-  usleep $random;
+  # Random number less than 100,000 (1 second)
+  my $ random = rand 1000_000;
+  usleep $ random;
 }
-</pre>
+</ pre>
 
-FindBinは、スクリプトのパスを知ることができるモジュールです。system関数は、指定したコマンドを実行することができる関数です。rand関数は、ランダムな数を発生させるための関数です。usleep関数は一定時間スクリプトを停止する関数です。<a href="/blog/20170522149546.html">sleep関数</a>と異なり秒数をマイクロ秒単位で指定することができます。
+FindBin is a module that allows you to know the path of a script. The system function is a function that can execute a specified command. The rand function is a function for generating a random number. The usleep function is a function that stops the script for a certain period of time. Unlike the <a href="/blog/20170522149546.html"> sleep function </a>, you can specify the number of seconds in microseconds.
 
-usleep関数に1秒以下のランダムな値を与えて、このプロセスを平行して走らせたときに、ファイルへの競合が起こるような工夫になっています。
+The usleep function is given a random value of 1 second or less, and when this process is run in parallel, it is devised so that a file conflict occurs.

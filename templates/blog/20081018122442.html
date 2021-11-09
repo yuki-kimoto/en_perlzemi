@@ -1,238 +1,237 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161123147990.html">
-        <span itemprop="name">日付・時刻</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>時刻の差を求める(24時間を越えない場合)</h2>
+        <span itemprop = "name"> Date / Time </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Find the time difference (if it does not exceed 24 hours) </ h2>
 
 
 
-時刻の差を求めるには、まずhhmmssと表記されているものを秒に変換する必要があります。秒の差を求めた上で再度hhmmssの時刻表現に復元します。時刻の差を求めるサンプルです。
+To find the time difference, you first need to convert what is labeled hhmmss to seconds. After finding the difference in seconds, restore to the time representation of hhmmss again. This is a sample to find the time difference.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)時刻の差を求める(24時間を越えない)\n";
-my $time_str1 = '03:44:23';
-my $time_str2 = '22:34:45';
+print "(1) Find the time difference (does not exceed 24 hours) \ n";
+my $ time_str1 = '03: 44: 23';
+my $ time_str2 = '22:34:45';
 
-# 時刻の文字列表現を時刻情報のハッシュに変換する。
-my $time1 = time_from_str($time_str1);
-my $time2 = time_from_str($time_str2);
+# Convert the time string representation to a hash of time information.
+my $ time1 = time_from_str ($ time_str1);
+my $ time2 = time_from_str ($ time_str2);
 
-# 時刻情報のハッシュを秒に変換して経過秒を計算
-my $sec_interval = time_to_sec($time2) - time_to_sec($time1);
+# Convert time information hash to seconds to calculate elapsed seconds
+my $ sec_interval = time_to_sec ($ time2) --time_to_sec ($ time1);
 
-# 経過秒を時刻表現のハッシュに変換
-my $time_interval = sec_to_time($sec_interval);
+# Convert elapsed seconds to hash of time representation
+my $ time_interval = sec_to_time ($ sec_interval);
 
-# 時刻表現のハッシュを時刻の文字列表現に変換
-my $time_interval_str = str_from_time($time_interval);
+# Convert time representation hash to time string representation
+my $ time_interval_str = str_from_time ($ time_interval);
 
-print "時刻の差は$time_interval_strです。\n";
+print "Time difference is $ time_interval_str. \ N";
 
-# 時刻の文字列表現を時刻情報を表すハッシュに変換する関数
+# A function that converts a string representation of time into a hash that represents time information
 sub time_from_str {
-  my $time_str = shift;
-  return unless $time_str;
+  my $ time_str = shift;
+  return unless $ time_str;
   
-  my $time = {};
-  if ($time_str =~ /^(\d{2}):(\d{2}):(\d{2})$/) {
-    @{$time}{qw/hour min sec/} = ($1, $2, $3);
-    return wantarray ? %$time : $time;
+  my $ time = {};
+  if ($ time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $ /) {
+    @ {$ time} {qw / hour min sec /} = ($ 1, $ 2, $ 3);
+    return wantarray?% $ time: $ time;
   }
   return;
 }
 
-# 時刻情報を表すハッシュを時刻の文字列表現に変換する関数
+# A function that converts a hash representing time information into a string representation of time.
 sub str_from_time {
-  my $time;
-  if (ref $_[0] eq 'HASH') {
-    $time = shift;
+  my $ time;
+  if (ref $ _ [0] eq'HASH') {
+    $ time = shift;
   }
   else {
-    %$time = @_;
+    % $ time = @_;
   }
     
-  return unless defined $time->{hour};
-  return unless defined $time->{min};
-  return unless defined $time->{sec};
+  return unless defined $ time-> {hour};
+  return unless defined $ time-> {min};
+  return unless defined $ time-> {sec};
     
-  my $time_str
-    = sprintf("%02s:%02s:%02s", @{$time}{qw/hour min sec/});
-  return $time_str;
+  my $ time_str
+    = sprintf ("% 02s:% 02s:% 02s", @ {$ time} {qw / hour min sec /});
+  return $ time_str;
 }
 
-# 時刻を秒に変換する関数
+# Function to convert time to seconds
 sub time_to_sec {
-  my $time;
-  if (ref $_[0] eq 'HASH') {
-    $time = shift;
+  my $ time;
+  if (ref $ _ [0] eq'HASH') {
+    $ time = shift;
   }
   else {
-    %$time = @_;
+    % $ time = @_;
   }
     
-  return unless defined $time->{hour};
-  return unless defined $time->{min};
-  return unless defined $time->{sec};
+  return unless defined $ time-> {hour};
+  return unless defined $ time-> {min};
+  return unless defined $ time-> {sec};
   
-  my $sec = $time->{hour} * 3600 +
-            $time->{min} * 60 +
-            $time->{sec};
+  my $ sec = $ time-> {hour} * 3600 +
+            $ time-> {min} * 60 +
+            $ time-> {sec};
   
-  return $sec;
+  return $ sec;
 }
 
-# 秒を時刻に変換する関数。
+# A function that converts seconds to time.
 sub sec_to_time {
-  my $sec = int(shift);
-  my $time = {};
+  my $ sec = int (shift);
+  my $ time = {};
   
-  $time->{hour} = int($sec / 3600);
-  $sec = $sec % 3600;
+  $ time-> {hour} = int ($ sec / 3600);
+  $ sec = $ sec% 3600;
   
-  $time->{min} = int($sec / 60);
-  $sec = $sec % 60;
+  $ time-> {min} = int ($ sec / 60);
+  $ sec = $ sec% 60;
   
-  $time->{sec} = $sec;
+  $ time-> {sec} = $ sec;
   
-  return wantarray ? %$time : $time;
+  return wantarray?% $ time: $ time;
 }
-</pre>
-実行結果
+</ pre>
+Execution result
 <pre>
-(1)時刻の差を求める(24時間を越えない)
-時刻の差は18:50:22です。
-</pre>
+(1) Find the time difference (does not exceed 24 hours)
+The time difference is 18:50:22.
+</ pre>
 
-<h3>コード解説</h3>
+<h3> Code explanation </ h3>
 
-<h4>時刻の文字列表現を時刻情報を表すハッシュに変換する</h4>
+<h4> Convert time string representation to hash representing time information </ h4>
 
-ログなどに時刻が表示されている場合は文字列になっています。この文字列を時刻情報を表すハッシュに変換しておくのが便利です。
+If the time is displayed in the log etc., it is a character string. It is convenient to convert this string into a hash that represents the time information.
 
-このように文字列をハッシュに変換することはよく行われます。(データを構造化しておくと抽象性、可読性、再利用性が増します。)
+It's common to convert strings to hashes in this way. (Structuring the data increases abstraction, readability, and reusability.)
 
 <pre>
-# 時刻の文字列表現を時刻情報のハッシュに変換する。
-my $time1 = time_from_str( $time_str1 );
-my $time2 = time_from_str( $time_str2 );
+# Convert the time string representation to a hash of time information.
+my $ time1 = time_from_str ($ time_str1);
+my $ time2 = time_from_str ($ time_str2);
 
-# 時刻の文字列表現を時刻情報を表すハッシュに変換する関数
+# A function that converts a string representation of time into a hash that represents time information
 sub time_from_str {
-  my $time_str = shift;
-  return unless $time_str;
+  my $ time_str = shift;
+  return unless $ time_str;
   
-  my $time = {};
-  if ($time_str =~ /^(\d{2}):(\d{2}):(\d{2})$/) {
-    @{$time}{qw/hour min sec/} = ($1, $2, $3);
-    return wantarray ? %$time : $time;
+  my $ time = {};
+  if ($ time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $ /) {
+    @ {$ time} {qw / hour min sec /} = ($ 1, $ 2, $ 3);
+    return wantarray?% $ time: $ time;
   }
   return;
 }
-</pre>
+</ pre>
 
-以下の部分はハッシュスライスになっています。$timeをデリファレンスしてハッシュスライスで代入する形です。qwは文字列リスト演算子です。
-
-<pre>
-@{$time}{qw/hour min sec/} = ($1, $2, $3);
-</pre>
-
-戻り値はリストとスカラーを選択できるようにしてあります。
+The following part is a hash slice. It is a form of dereferencing $ time and assigning it as a hash slice. qw is a string list operator.
 
 <pre>
-return wantarray ? %$time : $time;
-</pre>
+@ {$ time} {qw / hour min sec /} = ($ 1, $ 2, $ 3);
+</ pre>
 
-<h4>時刻情報のハッシュを秒に変換して経過秒を計算</h4>
-
-時刻を秒に直す計算は 「 時 × 3600 + 分 × 60 + 秒 」です。 
+The return value allows you to select a list and a scalar.
 
 <pre>
-my $sec_interval = time_to_sec($time2) - time_to_sec($time1);
+return wantarray?% $ time: $ time;
+</ pre>
 
-# 時刻を秒に変換する関数
+<h4> Convert the hash of time information to seconds and calculate the elapsed seconds </ h4>
+
+The calculation to convert the time to seconds is "hours x 3600 + minutes x 60 + seconds".
+
+<pre>
+my $ sec_interval = time_to_sec ($ time2) --time_to_sec ($ time1);
+
+# Function to convert time to seconds
 sub time_to_sec {
-  my $time;
-  if (ref $_[0] eq 'HASH') {
-    $time = shift;
+  my $ time;
+  if (ref $ _ [0] eq'HASH') {
+    $ time = shift;
   }
   else {
-    %$time = @_;
+    % $ time = @_;
   }
     
-  return unless defined $time->{hour};
-  return unless defined $time->{min};
-  return unless defined $time->{sec};
+  return unless defined $ time-> {hour};
+  return unless defined $ time-> {min};
+  return unless defined $ time-> {sec};
   
-  my $sec = $time->{hour} * 3600 +
-            $time->{min} * 60 +
-            $time->{sec};
+  my $ sec = $ time-> {hour} * 3600 +
+            $ time-> {min} * 60 +
+            $ time-> {sec};
   
-  return $sec;
+  return $ sec;
 }
-</pre>
+</ pre>
 
-<h4>経過秒を時刻表現のハッシュに変換</h4>
+<h4> Convert elapsed seconds to hash of time representation </ h4>
 
-秒を時刻に変換するには、秒を3600で割った商と余りを求めます。この商が「時」になります。
+To convert seconds to time, find the quotient and remainder of seconds divided by 3600. This quotient becomes "time".
 
-さらに、その余りを60で割った商と余りを求めます。この商が「分」、余りが「秒」になります。
+Then find the quotient and the remainder by dividing the remainder by 60. This quotient is "minutes" and the remainder is "seconds".
 
 <pre>
-my $time_interval = sec_to_time($sec_interval);
+my $ time_interval = sec_to_time ($ sec_interval);
 
-# 秒を時刻に変換する関数。
+# A function that converts seconds to time.
 sub sec_to_time {
-  my $sec = int(shift);
-  my $time = {};
+  my $ sec = int (shift);
+  my $ time = {};
   
-  $time->{hour} = int($sec / 3600);
-  $sec = $sec % 3600;
+  $ time-> {hour} = int ($ sec / 3600);
+  $ sec = $ sec% 3600;
   
-  $time->{min} = int($sec / 60);
-  $sec = $sec % 60;
+  $ time-> {min} = int ($ sec / 60);
+  $ sec = $ sec% 60;
   
-  $time->{sec} = $sec;
+  $ time-> {sec} = $ sec;
   
-  return wantarray ? %$time : $time;
+  return wantarray?% $ time: $ time;
 }
-</pre>
+</ pre>
 
-<h4>時刻表現のハッシュを時刻の文字列表現に変換</h4>
+<h4> Convert time representation hash to time string representation </ h4>
 
-最後に再び文字列に戻します。ここでは、sprintf関数を使いました。
+Finally, it returns to the string again. Here, I used the sprintf function.
 
 <pre>
-my $time_interval_str = str_from_time($time_interval);
+my $ time_interval_str = str_from_time ($ time_interval);
 
-# 時刻情報を表すハッシュを時刻の文字列表現に変換する関数
+# A function that converts a hash representing time information into a string representation of time.
 sub str_from_time {
-  my $time;
-  if (ref $_[0] eq 'HASH') {
-    $time = shift;
+  my $ time;
+  if (ref $ _ [0] eq'HASH') {
+    $ time = shift;
   }
   else {
-    %$time = @_;
+    % $ time = @_;
   }
     
-  return unless defined $time->{hour};
-  return unless defined $time->{min};
-  return unless defined $time->{sec};
+  return unless defined $ time-> {hour};
+  return unless defined $ time-> {min};
+  return unless defined $ time-> {sec};
     
-  my $time_str
-    = sprintf("%02s:%02s:%02s", @{$time}{qw/hour min sec/});
-  return $time_str;
+  my $ time_str
+    = sprintf ("% 02s:% 02s:% 02s", @ {$ time} {qw / hour min sec /});
+  return $ time_str;
 }
-</pre>
-
+</ pre>

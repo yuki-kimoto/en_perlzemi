@@ -1,291 +1,289 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>Perlの比較演算子</h2>
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Perl comparison operator </ h2>
 
 
 
-<b>比較演算子</b>は、二つの値の大小について比較する演算子です。Perlには、数値を比較する<b>数値比較演算子</b>と文字列が辞書順でどちらが大きいかを比較する<b>文字列比較演算子</b>があります。
+The <b> comparison operator </ b> is an operator that compares the magnitude of two values. Perl has a <b> numeric comparison operator </ b> that compares numbers and a <b> string comparison operator </ b> that compares which is larger in lexical order.
 
-<h3>数値比較演算子</h3>
+<h3> Numeric comparison operator </ h3>
 
-数値比較演算子は、値を数値として比較するときに利用する演算子です。
+Numeric comparison operators are operators used to compare values ​​as numbers.
 
 <table>
   <tr>
     <td>
-      *演算子
-    </td>
+      *operator
+    </ td>
     <td>
-      *意味
-    </td>
-  </tr>
+      *meaning
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A == B
-    </td>
+    </ td>
     <td>
-      AとBは等しい
-    </td>
-  </tr>
+      A and B are equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A != B
-    </td>
+      A! = B
+    </ td>
     <td>
-      AとBは等しくない
-    </td>
-  </tr>
+      A and B are not equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A > B
-    </td>
+      A> B
+    </ td>
     <td>
-      AはBより大きい
-    </td>
-  </tr>
+      A is greater than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A >= B
-    </td>
+      A> = B
+    </ td>
     <td>
-      AはB以上
-    </td>
-  </tr>
+      A is B or higher
+    </ td>
+  </ tr>
 
   <tr>
     <td>
-      A < B
-    </td>
+      A <B
+    </ td>
     <td>
-      AはBより小さい
-    </td>
-  </tr>
+      A is smaller than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A <= B
-    </td>
+    </ td>
     <td>
-      AはB以下
-    </td>
-  </tr>
+      A is less than or equal to B
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-比較演算子は、条件を満たすと真値、満たさない場合は偽値を返します。
+The comparison operator returns a true value if the condition is met, and a false value if the condition is not met.
 
-Perlの真偽値については以下の記事も参考にしてください。
+Please also refer to the following articles for Perl booleans.
 
 <ul>
   <li>
-    <a href="/blog/20080323120628.html">Perlにおける真偽値</a>
-  </li>
-</ul>
+    <a href="/blog/20080323120628.html"> Perl boolean </a>
+  </ li>
+</ ul>
 
-<h4>if文の条件部で使う</h4>
+<h4> Used in the conditional part of the if statement </ h4>
 
-<a href="/blog/20161107147852.html">変数</a>に代入された数値を比較するサンプルプログラムを<a href="/blog/20161023147731.html">if文</a>を使って書いてみます。
+Use <a href="/blog/20161023147731.html"> if statement </a> for a sample program that compares the numbers assigned to <a href="/blog/20161107147852.html"> variables </a> I will write it.
 
 <pre>
-my $num1 = 4;
-my $num2 = 3;
+my $ num1 = 4;
+my $ num2 = 3;
 
-if ($num1 > $num2) {
+if ($ num1> $ num2) {
   print "Left is big";
 }
-</pre>
+</ pre>
 
-このプログラムでは$num1には4が、$num2には3が代入されています。$num1は$num2より大きいので、条件が真になって、ブロックの中が実行されます。
+In this program, $ num1 is assigned 4 and $ num2 is assigned 3. Since $ num1 is greater than $ num2, the condition is true and the inside of the block is executed.
 
-<h4>三項演算子の条件部で使う</h4>
+<h4> Used in the conditional part of the ternary operator </ h4>
 
-比較演算子を<a href="/blog/20080325120646.html">三項演算子</a>の条件部で使用してみましょう。
+Let's use the comparison operator in the conditional part of the <a href="/blog/20080325120646.html"> ternary operator </a>.
 
 <pre>
-my $num1 = 4;
-my $num2 = 3;
+my $ num1 = 4;
+my $ num2 = 3;
 
-my $message = $num1 > $num2 ? "OK" : "Not OK";
-</pre>
+my $ message = $ num1> $ num2? "OK": "Not OK";
+</ pre>
 
-$num1は$num2より大きいので真が返され「OK」が$messageに代入されます。
+Since $ num1 is larger than $ num2, true is returned and "OK" is assigned to $ message.
 
-<h3>文字列比較演算子</h3>
+<h3> String comparison operator </ h3>
 
-文字列比較演算子は<a href="/blog/20161003147558.html">文字列</a>を辞書順で比較するときに利用する演算子です。
+The string comparison operator is an operator used to compare <a href="/blog/20161003147558.html"> strings </a> in lexicographical order.
 
-辞書順比較では、先頭から1文字づつ、文字コードの大きさを比べてゆきます。「a」は「b」より小さくなります。「1」は「02」より大きくなります。
+In dictionary order comparison, the size of the character code is compared one character at a time from the beginning. "A" is smaller than "b". "1" is larger than "02".
 
 <table>
   <tr>
     <td>
-      *演算子
-    </td>
+      *operator
+    </ td>
     <td>
-      *意味
-    </td>
-  </tr>
+      *meaning
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A eq B
-    </td>
+    </ td>
     <td>
-      AとBは等しい
-    </td>
-  </tr>
+      A and B are equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A ne B
-    </td>
+    </ td>
     <td>
-      AとBは等しくない
-    </td>
-  </tr>
+      A and B are not equal
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A gt B
-    </td>
+    </ td>
     <td>
-      AはBより大きい
-    </td>
-  </tr>
+      A is greater than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A ge B
-    </td>
+    </ td>
     <td>
-      AはB以上
-    </td>
-  </tr>
+      A is B or higher
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A lt B
-    </td>
+    </ td>
     <td>
-      AはBより小さい
-    </td>
-  </tr>
+      A is smaller than B
+    </ td>
+  </ tr>
 
   <tr>
     <td>
       A le B
-    </td>
+    </ td>
     <td>
-      AはB以下
-    </td>
-  </tr>
+      A is less than or equal to B
+    </ td>
+  </ tr>
 
-</table>
+</ table>
 
-<h4>if文の条件部で使う</h4>
+<h4> Used in the conditional part of the if statement </ h4>
 
-文字列比較演算子をif文の条件部で使うサンプルです。
+This is a sample that uses the string comparison operator in the conditional part of the if statement.
 
 <pre>
-my $str1 = "1";
-my $str2 = "02";
+my $ str1 = "1";
+my $ str2 = "02";
 
-if ($num1 gt $num2) {
+if ($ num1 gt $ num2) {
   print "Left is big";
 }
-</pre>
+</ pre>
 
-<h3>論理演算子で条件を組み合わせる</h3>
+<h3> Combine conditions with logical operators </ h3>
 
-論理演算子を使うと比較演算子を組み合わせた条件で使用することができます。
+Logical operators allow you to use them in a combination of comparison operators.
 
 <pre>
-# $num1は1より大きい、かつ、5より小さい
-if ($num1 > 1 && $num1 < 5) {
+# $ num1 is greater than 1 and less than 5
+if ($ num1> 1 && $ num1 <5) {
   ...
 }
 
-# $num1は1より小さい、または、5より大きい
-if ($num1 < 1 || $num1 > 5) {
+# $ num1 is less than 1 or greater than 5
+if ($ num1 <1 || $ num1> 5) {
   ...
 }
-</pre>
+</ pre>
 
-論理演算子についてはこちらで解説しています。
+Logical operators are explained here.
 
 <ul>
   <li>
-    <a href="/blog/20100816136168.html">Perlの論理演算子</a>
-  </li>
-</ul>
+    <a href="/blog/20100816136168.html"> Perl logical operators </a>
+  </ li>
+</ ul>
 
-<h3>文字列の部分位置を調べる方法</h3>
+<h3> How to check the partial position of a character string </ h3>
 
-Perlの文字列比較演算子の「eq」は完全に文字列が一致するときに利用しますが、文字列の部分一致を知りたいときもありますね。そういう場合は、正規表現を使いましょう。
+Perl's string comparison operator "eq" is used when a string matches perfectly, but there are times when you want to know a partial match of a string. In that case, use regular expressions.
 
 <pre>
-# $str1が「Cat」を含んでいたら
-if ($str1 =~ /Cat/) {
+If # $ str1 contains "Cat"
+if ($ str1 = ~ / Cat /) {
   ...
 }
-</pre>
+</ pre>
 
-正規表現については、以下で解説しています。
+Regular expressions are explained below.
 
 <ul>
   <li>
-    <a href="/blog/20100827127859.html">Perlの正規表現</a>
-  </li>
-</ul>
+    <a href="/blog/20100827127859.html"> Perl regular expression </a>
+  </ li>
+</ ul>
 
-<h3>サンプルプログラム</h3>
+<h3> Sample program </ h3>
 
-数値比較と辞書順比較のサンプルです。
+This is a sample of numerical comparison and dictionary order comparison.
 
 <pre>
 use strict;
 use warnings;
 
-# 数値比較と辞書順比較
-print "1: 数値比較と辞書順比較を比べる\n";
-my $num1 = "1";  
-my $num2 = "02"; 
+# Numerical comparison and dictionary order comparison
+print "1: Compare numerical comparison and dictionary order comparison \ n";
+my $ num1 = "1";
+my $ num2 = "02";
 
-if ($num1 <  $num2) {
-  print "数値で比較して$num1 は $num2 より小さい\n";
+if ($ num1 <$ num2) {
+  print "$ num1 is less than $ num2 when compared numerically \ n";
 }
 
-if ($num1 gt $num2) {
-  print "辞書順で比較して, $num1 は $num2 より、大きい\n";
+if ($ num1 gt $ num2) {
+  print "Compare in lexicographical order, $ num1 is greater than $ num2 \ n";
 }
 
-</pre>
+</ pre>
 
-実行結果
+Execution result
 
 <pre>
-1: 数値比較と辞書順比較を比べる
-数値で比較して1 は 02 より小さい
-辞書順で比較して, 1 は 02 より、大きい
-</pre>
-
-
+1: Compare numerical comparison and dictionary order comparison
+Compared numerically, 1 is less than 02
+Compared in lexicographical order, 1 is greater than 02
+</ pre>

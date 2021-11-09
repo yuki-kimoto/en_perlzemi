@@ -1,89 +1,88 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161123147990.html">
-        <span itemprop="name">日付・時刻</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-</ol>
-<h2>月末日を取得する</h2>
+        <span itemprop = "name"> Date / Time </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+</ ol>
+<h2> Get the last day of the month </ h2>
 
 
 
-月末日を取得する関数のサンプルです。Time::Localモジュールのtimelocal関数を使って存在する日付を確かめています。
+This is a sample function to get the last day of the month. The timelocal function of the Time :: Local module is used to check the existing date.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1)月末日を取得する。\n";
-my $end_of_month_200802 = end_of_month(2008, 2);
-print "2008年2月の月末日は$end_of_month_200802日です。\n";
+print "(1) Get the last day of the month. \ N";
+my $ end_of_month_200802 = end_of_month (2008, 2);
+print "The last day of February 2008 is $ end_of_month_200802. \ N";
 
-# 月末日を求める関数。
+# A function that finds the last day of the month.
 sub end_of_month {
-  my ($year, $month) = @_;
-  return if !$year || !$month;
+  my ($ year, $ month) = @_;
+  return if! $ year ||! $ month;
 
-  # Time::Local::timelocal関数は1900からの経過年を引数
-  # にとるので、1900を引く。    
-  $year -= 1900; 
+  # Time :: Local :: timelocal function takes an elapsed year from 1900 as an argument
+  Since it is taken to #, subtract 1900.
+  $ year-= 1900;
 
-  # Time::Local::timelocal関数は 1月は0,2月は1のように0から
-  # 始まる月を引数に取るので、1を引く。
-  $month--;
+  # Time :: Local :: timelocal function starts from 0 like 0 in January and 1 in February
+  # Takes the month that starts as an argument, so subtract 1.
+  $ month-;
 
-  # 月末日の候補はこの4つ
-  my @days = (31, 30, 29, 28); 
+  # These four candidates for the end of the month
+  my @days = (31, 30, 29, 28);
     
-  # 日付の存在チェック用に使用。
-  require Time::Local; 
+  # Used for checking the existence of dates.
+  require Time :: Local;
   
-  for my $day (@days) {
-    eval{
-      # 存在しない日を指定すると例外が起こる。
-      Time::Local::timelocal(0, 0, 0, $day, $month, $year);
+  for my $ day (@days) {
+    eval {
+      # If you specify a non-existent day, an exception will be thrown.
+      Time :: Local :: timelocal (0, 0, 0, $ day, $ month, $ year);
     };
-    # 例外が起こらなければ存在する日付。
-    return $day unless $@;
+    # Date that exists if no exception occurs.
+    return $ day unless $ @;
   }
   return;
 }
-</pre>
+</ pre>
 
-(参考)<a href="/blog/20100312126967.html">eval</a>
+(Reference) <a href="/blog/20100312126967.html"> eval </a>
 
-<h3>コード解説</h3>
+<h3> Code explanation </ h3>
 
-<h4>月末日の候補になる日付</h4>
+<h4> Candidate date for the last day of the month </ h4>
 
-月末日になるのは、28日、29日、30日、31日のどれかです。31日から順にチェックしていって存在する日付であればそれが月末日です。
+The last day of the month is 28th, 29th, 30th, or 31st. If the date is checked in order from the 31st and exists, it is the last day of the month.
 
 <pre>
 my @days = (31, 30, 29, 28);
-</pre>
+</ pre>
 
-<h4>存在する日付のチェック</h4>
+<h4> Check existing dates </ h4>
 
-「存在する日付かどうかを判定する。」で解説したように、Time::Localモジュールのtimelocal関数で日付のチェックを行います。
+Check the date with the timelocal function of the Time :: Local module, as explained in "Determining if a date exists."
 
-31日から順に28日までチェックをしていきます。存在しない日付を指定すると例外が起こるので、例外が起こらなければそれが月末日です。
+We will check from the 31st to the 28th. If you specify a date that does not exist, an exception will be thrown, so if no exception is raised, it is the last day of the month.
 
 <pre>
-require Time::Local; 
+require Time :: Local;
   
-for my $day (@days) {
-  eval{
-    # 存在しない日を指定すると例外が起こる。
-    Time::Local::timelocal(0, 0, 0, $day, $month, $year);
+for my $ day (@days) {
+  eval {
+    # If you specify a non-existent day, an exception will be thrown.
+    Time :: Local :: timelocal (0, 0, 0, $ day, $ month, $ year);
   };
-  # 例外が起こらなければ存在する日付。
-  return $day unless $@;
+  # Date that exists if no exception occurs.
+  return $ day unless $ @;
 }
-</pre>
-
+</ pre>

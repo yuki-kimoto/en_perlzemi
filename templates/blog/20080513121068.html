@@ -1,62 +1,62 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20161005147566.html">
-      <span itemprop="name">演算子</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
+      <span itemprop = "name"> operator </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
   <li>
-      <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>「_」 - ファイルテストの結果の再利用</h2>
+      <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> "_" --Reuse of file test results </ h2>
 
 
 
-「<strong>_</strong>」を使用すると<a href="/blog/20100820127859.html">ファイルテスト演算子</a>、あるいは<a href="/blog/20080512121060.html">stat関数</a>の結果を再利用することができます。
+Using "<strong> _ </ strong>" <a href="/blog/20100820127859.html"> file test operator </a>, or <a href="/blog/20080512121060.html"> stat You can reuse the result of the function </a>.
 
 <pre>
-if( -s $file > $size && -A _ > $from_last_access ){ 
+if (-s $ file> $ size && -A _> $ from_last_access) {
   ...
 }
-</pre>
+</ pre>
 
--s $file で、サイズを取得しますが、実は背後では、stat を呼んでいます。そのときに、サイズ以外の情報も内部的に保存されます。_ を利用すれば、一回目のファイルテストで取得した、ファイルの情報を再利用できます。
+You get the size with -s $ file, but behind the scenes you call stat. At that time, information other than size is also saved internally. You can use _ to reuse the file information obtained in the first file test.
 
-_ を使う意義はパフォーマンスだけです。ファイルの情報を得るには、OSに対してシステムコールを行わなければなりません。システムコールは、一般的にコストがかかります。_ を使えば、すでに取得しているファイル情報を利用するので、2回目のシステムコールが省かれます。
+The only meaning of using _ is performance. You must make a system call to the OS to get information about the file. System calls are generally costly. If you use _, the file information that you have already obtained will be used, so the second system call will be omitted.
 
-注意点は、近接している場所以外では使わないことです。どこかで、statが呼ばれると、情報が更新されてしまいます。
+Please note that it should only be used in close proximity. If stat is called somewhere, the information will be updated.
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-ファイルテストの結果を再利用するサンプルです。
+This is a sample that reuses the result of the file test.
 
 <pre>
 use strict;
 use warnings;
 
-# ファイル演算子(あるいは stat )の結果を再利用する。
+Reuse the result of the # file operator (or stat).
 
-# 準備
-my $file = 'a.txt';
-unless (-f $file){
-  die "$file は存在しません。\n"; # ファイルの存在をチェック
+#Preparation
+my $ file ='a.txt';
+unless (-f $ file) {
+  die "$ file does not exist. \ N"; #Check for file existence
 }
 
-print " 1: 古くて、ファイルサイズの大きいファイルかをチェックする\n";
-my $size = 1_000_000;
-my $from_last_access = 90;
+print "1: Check if the file is old and has a large file size \ n";
+my $ size = 1_000_000;
+my $ from_last_access = 90;
 
-if (-s $file > $size && -A _ > $from_last_access) { 
-  # 2回目のファイルテストには、_ が利用できる。
-  print "$file は、$sizeバイトより大きくて、" .
-    "最終アクセスから $from_last_access日以上たっています。\n\n"; 
+if (-s $ file> $ size && -A _> $ from_last_access) {
+  # You can use _ for the second file test.
+  print "$ file is greater than $ size bytes,".
+    "It's been over $ from_last_access days since last access. \ N \ n";
 }
-else { print "$fileは、条件に当てはまりませんでした。\n" }
-</pre>
+else {print "$ file did not meet the condition. \ N"}
+</ pre>

@@ -1,67 +1,67 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-        <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20100827127859.html">
-      <span itemprop="name">正規表現</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>文字列の先頭と末尾にマッチさせる -  ^ と $</h2>
+      <span itemprop = "name"> Regular expression </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+      <span itemprop = "name"> here </ span>
+    <meta itemprop = "position" content = "3" />
+  </ li>
+</ ol>
+<h2> Match the beginning and end of a string-^ and $ </ h2>
 
 
 
-正規表現で文字列の先頭と末尾を表現するには<strong>^</strong>と<strong>$</strong>を使用します。
+Use <strong> ^ </ strong> and <strong> $ </ strong> to represent the beginning and end of a string with a regular expression.
 
 <pre>
-# ^ は先頭を表す。
-/^ab/ 
+# ^ Represents the beginning.
+/ ^ ab /
 
-# $ は末尾を表す
-/cd$/ 
-</pre>
+# $ Represents the end
+/ cd $ /
+</ pre>
 
-^ は、文字クラス否定の記号としても使われます。[]の先頭にあれば、文字クラスの否定を表現し、//の先頭にあれば、文字列の先頭を表現します。
+^ Is also used as a character class negation symbol. If it is at the beginning of [], it represents the negation of the character class, and if it is at the beginning of //, it represents the beginning of the character string.
 
-<h3>サンプル</h3>
+<h3> Sample </ h3>
 
-文字列の先頭と末尾にマッチするサンプルです。
+This is a sample that matches the beginning and end of the string.
 
 <pre>
 use strict;
 use warnings;
 
-# 文字列の先頭と末尾を表現する。 ^ と $      
-my $word = "abcd";
+#Represents the beginning and end of a string. ^ And $
+my $ word = "abcd";
 
-print "1: 文字列の先頭を表\現する。 ^\n";
-if ($word =~ /^ab/) {
-  print "'$word' は、ab で始まります。\n"
+print "1: Represent the beginning of the string. ^ \ N";
+if ($ word = ~ / ^ ab /) {
+  print "'$ word' starts with ab. \ N"
 }
-if ($word =~ /bc/) {
-  print "bc を含みますが、\n"
+if ($ word = ~ / bc /) {
+  print "includes bc, but \ n"
 }
-if ($word !~ /^bc/) {
-  print "bc で始まっていません。\n\n";
+if ($ word! ~ / ^ Bc /) {
+  print "does not start with bc. \ N \ n";
 }
 
-print "2: 文字列の末尾を表\現する。 ^\n";
-if ($word =~ /cd$/) {
-  print "'$word' は、cd で終わります。\n"
+print "2: Show the end of the string \. ^ \ N";
+if ($ word = ~ / cd $ /) {
+  print "'$ word' ends with cd. \ N"
 }
-if ($word =~ /bc/) {
-  print "bc を含みますが、\n"
+if ($ word = ~ / bc /) {
+  print "includes bc, but \ n"
 }
-if ($word !~ /bc$/) {
-  print "bc で終わっていません。\n\n";
+if ($ word! ~ / bc $ /) {
+  print "does not end with bc. \ N \ n";
 }
-</pre>
+</ pre>

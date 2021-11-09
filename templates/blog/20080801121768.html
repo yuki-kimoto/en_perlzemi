@@ -1,71 +1,71 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/">
-      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop = "name"> Perl </ span> </a>
+    <meta itemprop = "position" content = "1" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
     <a itemprop="item" href="/blog/20110212130370.html">
-      <span itemprop="name">ファイル入出力</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <span itemprop="name">here</span>
-  </li>
-</ol>
-<h2>パイプの仕組みを理解する</h2>
+      <span itemprop = "name"> File input / output </ span> </a>
+    <meta itemprop = "position" content = "2" />
+  </ li>
+  & # 8250;
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
+    <span itemprop = "name"> here </ span>
+  </ li>
+</ ol>
+<h2> Understand how pipes work </ h2>
 
 
-現代的なOSでは、「あるプログラムの標準出力」を「別のプログラムの標準入力」に渡すことが可能です。このOSの機能をパイプと呼びます。
+In modern operating systems, it is possible to pass "standard output of one program" to "standard input of another program". This OS function is called a pipe.
 
-パイプという機能は非常に便利な機能です。標準入力からデータを受け取り、標準出力に出力するようにプログラムを作成しておけば、複数のプログラムを連動させることができます。
+The function called pipe is a very convenient function. If you create a program that receives data from standard input and outputs it to standard output, you can link multiple programs.
 
-<h3>1. パイプのイメージ</h3>
-
-<pre>
-               |-----------|    |-----------|    |-----------|
-最初の入力 --->|プログラムA|--->|プログラムB|--->|プログラムC|---> 最終的な出力
-               |-----------|    |-----------|    |-----------|
-</pre>
-
-パイプを使えば、プログラムAの標準出力をプログラムBの標準入力に連結することができます。さらに、プログラムBの標準出力をプログラムCの標準入力に連結することもできます。このように、標準出力と標準入力を連結することで、中間ファイルを作らずに、データを連続的に処理することができます。
-
-<h3>2. パイプを使用する</h3>
+<h3> 1. Image of pipe </ h3>
 
 <pre>
-perldoc perlintro | perl -ne "print if /open/"
-</pre>
+               | ----------- | | ----------- | | ----------- |
+First input ---> | Program A | ---> | Program B | ---> | Program C | ---> Final output
+               | ----------- | | ----------- | | ----------- |
+</ pre>
 
-| というのがパイプ記号です。この例では、perldoc perlintro の標準出力を、perl -ne "print if /open/"の標準入力に連結しています。
+You can use a pipe to connect the standard output of Program A to the standard input of Program B. In addition, the standard output of program B can be concatenated with the standard input of program C. By concatenating standard output and standard input in this way, data can be processed continuously without creating an intermediate file.
 
-perldocコマンドはperlのマニュアル表示コマンドです。perl -ne "print if /open/" は、unix の grepに該当するワンライナーです。openという文字を含む行を選択して出力します。
-
-全体として見ると、perlintoのマニュアルページから、openを含む行を取り出しています。パイプを利用すると、データを複数のプログラムで連続的に処理することができます。
-
-<h3>3.パイプの仕組み</h3>
-
-パイプとは、あるプログラムの標準出力を別のプログラムの標準入力に連結する機能だといいました。実際に内部的にOSがやっていることを知ると理解が深まると思いますので書いておきます。
-
-誤解を恐れずにいうと、パイプとは一時ファイル(※1)です。プログラムAは一時ファイルに出力し、その一時ファイルからプログラムBが読み取ります。以下のようなイメージです。
+<h3> 2. Use pipes </ h3>
 
 <pre>
-|-----------|                               |-----------|
-|プログラムA|--->  一時ファイル(パイプ) --->|プログラムB|
-|-----------|                               |-----------|
-</pre>
+perldoc perlintro | perl -ne "print if / open /"
+</ pre>
 
-OSが暗黙的に一時ファイルを利用しているので、プログラムAの出力が直接プログラムBの入力になっているように見えます。これがパイプの背後にある仕組みです。
+| Is the pipe symbol. In this example, the standard output of perldoc perlintro is concatenated to the standard input of perl -ne "print if / open /".
 
-もうひとつ大事な話をします。プログラムAとプログラムBはいつ一時ファイルを閉じるのかという話です。
+The perldoc command is a perl manual display command. perl -ne "print if / open /" is a one-liner for unix grep. Selects the line containing the word open and outputs it.
 
-プログラムAは書き込みモードで一時ファイルを開いています。プログラムBは読み込みモードで一時ファイルを開いています。プログラムAは一時ファイルを読み取る必要はないし、プログラムBは一時ファイルに書き込む必要がないのでこのようにオープンされます。
+Overall, I'm pulling out the line containing open from the perlinto man page. Pipes allow multiple programs to process data continuously.
 
-さて、プログラムAとプログラムBはいつ一時ファイルをクローズするのでしょうか?マルチタスクで、プログラムAとプログラムBが同時に起動している場合で考えます。
+<h3> 3. How the pipe works </ h3>
 
-プログラムAの答えは簡単です。プログラムAの出力が終わったら一時ファイルをクローズします。プログラムAの処理は、プログラムBに依存しません。
+Pipe is a function that connects the standard output of one program to the standard input of another program. I think that understanding will deepen if you know what the OS is actually doing internally, so I will write it down.
 
-では、プログラムBは、いつ一時ファイルををクローズするのでしょうか。答えは、プログラムAが一時ファイルをクローズして、かつ一時ファイルのデータを最後まで読み取った場合です。通常のファイルのようにEOFに到達しただけでは、クローズしません。なぜなら、プログラムAがまだ書き込みを続ける可能性が残っているからです。だから、プログラムBが、一時ファイルを閉じるためには、プログラムAが一時ファイルをクローズしている必要があるのです。
+Don't be afraid to misunderstand, a pipe is a temporary file (* 1). Program A outputs to a temporary file, and Program B reads from that temporary file. The image is as follows.
 
-※1 パイプの実装はOSによって異なります。Unix系OSでは、メモリ上でパイプが作成されます。Windowsでは、ディスク上に一時ファイルとしてパイプが作られます。
+<pre>
+| ----------- | | ----------- |
+| Program A | ---> Temporary files (pipes) ---> | Program B |
+| ----------- | | ----------- |
+</ pre>
+
+Since the OS implicitly uses temporary files, it looks like the output of program A is directly the input of program B. This is the mechanism behind the pipe.
+
+Let me tell you another important story. Program A and Program B are talking about when to close temporary files.
+
+Program A is opening a temporary file in write mode. Program B is opening a temporary file in read mode. Program A does not need to read the temporary file, and program B does not need to write to the temporary file, so it is opened this way.
+
+Now, when do program A and program B close the temporary files? Consider multitasking when program A and program B are running at the same time.
+
+The answer for Program A is simple. Close the temporary file when the output of program A is finished. The processing of program A does not depend on program B.
+
+So when does Program B close the temporary file? The answer is that Program A closes the temporary file and reads the data in the temporary file to the end. Just reaching EOF like a normal file does not close it. This is because there is still the possibility that Program A will continue to write. So, in order for Program B to close the temporary file, Program A needs to close the temporary file.
+
+* 1 Pipe mounting differs depending on the OS. On Unix-like operating systems, pipes are created in memory. On Windows, a pipe is created as a temporary file on the disk.
