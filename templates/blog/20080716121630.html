@@ -76,7 +76,7 @@ This is a sample that dynamically names a subroutine using a typeglob.
 
 <pre>
  * sum = sub {
-  return $_ [0] + $_ [1];
+  return $_[0] + $_[1];
 };
 </pre>
 
@@ -140,7 +140,7 @@ for my $num (keys %numbers) {
   # Repeat reference to anonymous subroutine
   my $code = sub {
     # Returns the return value corresponding to the name of the number
-    return $numbers {$num};
+    return $numbers{$num};
   };
   
   # Remove restrictions on symbolic references
@@ -150,7 +150,7 @@ for my $num (keys %numbers) {
 }
 </pre>
 
-The point to note is that there is a relationship between "subroutine name" and "subroutine processing". If the subroutine name is one, the corresponding $numbers {'one'}, or 1, is returned as the return value.
+The point to note is that there is a relationship between "subroutine name" and "subroutine processing". If the subroutine name is one, the corresponding $numbers{'one'}, or 1, is returned as the return value.
 
 To create a function template, first pass an array of subroutine names to the foreach statement and call it repeatedly. Next, create an anonymous subroutine and perform processing using the function name. Finally, we'll use a typeglob to name the anonymous subroutine.
 
@@ -170,7 +170,7 @@ BEGIN {
   for my $num (keys %numbers) {
     # Repeat reference to anonymous subroutine
     my $code = sub {
-      return $numbers {$num}; # Returns the return value corresponding to the name of the number
+      return $numbers{$num}; # Returns the return value corresponding to the name of the number
     };
    
     # Remove restrictions on symbolic references
@@ -260,7 +260,7 @@ print "1: Name the anonymous subroutine.\n";
 * sum = sub {
   # * sum is a function called type blog, and you can create an alias.
   # Here, the unnamed subroutine is named sum.
-  return $_ [0] + $_ [1];
+  return $_[0] + $_[1];
 };
 
 print "The sum of 1 and 2 is" .sum (1, 2). ".\n\n";
@@ -306,7 +306,7 @@ for my $num (keys %numbers) {
   # Repeat reference to anonymous subroutine
   my $code = sub {
     # Returns the return value corresponding to the name of the number
-    return $numbers {$num};
+    return $numbers{$num};
   };
   
   # Remove restrictions on symbolic references

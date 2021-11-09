@@ -216,9 +216,9 @@ Use <a href="/blog/20080215120307.html">hash slice</a> to create the hash corres
 @items_hash {('name','age','country') = ('tora', 24,'Japan');
 
 # When disassembled
-$items_hash {name} ='tora';
-$items_hash {age} = 24;
-$items_hash {contry} ='Japan';
+$items_hash{name} ='tora';
+$items_hash{age} = 24;
+$items_hash{contry} ='Japan';
 </pre>
 
 Using hash slices in this way eliminates the need to write iterations.
@@ -350,8 +350,8 @@ sub bubble_sort_ascend {
      # If you are bigger than the next number, replace it,
      # If you are smaller, do nothing.
      # By doing this, the last element becomes the maximum.
-     if ($nums [$i]> $nums [$i + 1]) {
-       ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
+     if ($nums[$i]> $nums[$i + 1]) {
+       ($nums[$i], $nums[$i + 1]) = ($nums[$i + 1], $nums[$i]);
        print join(',', @nums). "(Snap)\n";
      }
     }
@@ -372,8 +372,8 @@ sub bubble_sort_descend {
                        
   while ($change_cnt> 0) {
     for my $i (0 .. $change_cnt - 1) {
-     if ($nums [$i] <$nums [$i + 1]) {
-       ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
+     if ($nums[$i] <$nums[$i + 1]) {
+       ($nums[$i], $nums[$i + 1]) = ($nums[$i + 1], $nums[$i]);
        print join(',', @nums). "(Snap)\n";
      }
     }
@@ -478,16 +478,16 @@ sub bubble_sort {
       # To select ascending or descending order, you only have to rewrite this part from the last time.
       my $is_change;
       if ($order eq'ascend') {
-        # In ascending order, exchange if $nums [$i]> $nums [$i + 1]
-        $is_change = $nums [$i]> $nums [$i + 1];
+        # In ascending order, exchange if $nums[$i]> $nums[$i + 1]
+        $is_change = $nums[$i]> $nums[$i + 1];
       }
 elsif ($order eq'descend') {
-        # In descending order, exchange if $nums [$i] <$nums [$i + 1]
-        $is_change = $nums [$i] <$nums [$i + 1];
+        # In descending order, exchange if $nums[$i] <$nums[$i + 1]
+        $is_change = $nums[$i] <$nums[$i + 1];
       }
 
       if ($is_change) {
-        ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
+        ($nums[$i], $nums[$i + 1]) = ($nums[$i + 1], $nums[$i]);
       }
     }
     $change_cnt-;
@@ -535,25 +535,25 @@ If $opt->{order} is not specified, it is a kind way to specify the default value
 
 <pre>
 # Last bubble sort
-if ($nums [$i] <$nums [$i + 1]) {
-  ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
+if ($nums[$i] <$nums[$i + 1]) {
+  ($nums[$i], $nums[$i + 1]) = ($nums[$i + 1], $nums[$i]);
   print join(',', @nums). "(Snap)\n";
 }
 
 # This bubble sort
 my $is_change;
 if ($order eq'ascend') {
-  $is_change = $nums [$i]> $nums [$i + 1];
+  $is_change = $nums[$i]> $nums[$i + 1];
 }
 elsif ($order eq'descend') {
-  $is_change = $nums [$i] <$nums [$i + 1];
+  $is_change = $nums[$i] <$nums[$i + 1];
 }
 
 if ($is_change) {
-  ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
+  ($nums[$i], $nums[$i + 1]) = ($nums[$i + 1], $nums[$i]);
 }
 </pre>
 
-In the case of ascend, the judgment is $nums [$i]> $nums [$i + 1], and in the case of descend, the judgment is $nums [$i] <$nums [$i + 1]. It's good.
+In the case of ascend, the judgment is $nums[$i]> $nums[$i + 1], and in the case of descend, the judgment is $nums[$i] <$nums[$i + 1]. It's good.
 
 Rather than thinking about such an algorithm all at once from the beginning, it is easier to see if it is made separately and modified by focusing only on the differences as in this case.

@@ -23,7 +23,7 @@ my $twice_ref = \ & twice;
 my $twice_num = $twice_ref->($num);
  
 sub twice {
-  return $_ [0] * 2;
+  return $_[0] * 2;
 }
 </pre>
 
@@ -114,10 +114,10 @@ print "3: Selectively process using reference to subroutine and hash.\n";
 $how_to_calc ='average';
 my %calc_table = (sum => \ & sum, average => \ & average);
 
-# $calc_table {'average'} is a reference to the subroutine
+# $calc_table{'average'} is a reference to the subroutine
 Since # is included, dereference it with the->operator.
 # Call a subroutine.
-$result = $calc_table {$how_to_calc}->(@nums);
+$result = $calc_table{$how_to_calc}->(@nums);
 
 print "Calculation method: $how_to_calc\n".
   "Result: $result\n\n";
@@ -176,7 +176,7 @@ In java, overloading and overriding are the ways to achieve polymorphism, and in
 <pre>
 $how_to_calc ='average';
 my %calc_table = (sum => \ & sum, average => \ & average);
-$result = $calc_table {$how_to_calc}->(@nums);
+$result = $calc_table{$how_to_calc}->(@nums);
 </pre>
 
 I think the <a href="/blog/20161013147635.html">hash</a> method is the most sophisticated form of function-referenced polymorphism.
@@ -188,16 +188,16 @@ Although it is a selective process, it does not use any if statements. The proce
 A <strong> signal handler </strong> is a subroutine that is executed triggered by a signal. A signal is a signal that the OS sends to a process. Ctrl + c asks the OS to "send an INT signal to the currently running process." The alerm function also asks the OS to "send a LARM signal to the currently running process after n seconds".
 
 <pre>
-$SIG {INT} = sub {
+$SIG{INT} = sub {
   die "INT signal sent to this process.";
 };
 
-$SIG {ALRM} = sub {
+$SIG{ALRM} = sub {
   die "ALRM signal was sent to this process.";
 };
 </pre>
 
-To catch the INT signal, assign a reference to the subroutine to $SIG {INT}. This example defines an anonymous subroutine and assigns its reference.
+To catch the INT signal, assign a reference to the subroutine to $SIG{INT}. This example defines an anonymous subroutine and assigns its reference.
 
 There are a lot of things to note about signals, but I won't write them here. I write it when I write about interprocess communication.
 
@@ -227,7 +227,7 @@ sub parse {
   my ($text,%handler) = @_;
   
   # First called handler
-  $handler {start_h}->();
+  $handler{start_h}->();
   
   # Analyze one character at a time.
   for my $i (0 .. length($text) ―― 1) {
@@ -237,12 +237,12 @@ sub parse {
     # Made available in callback functions
     # Pass the character and position as arguments.
     if ($char = ~ / [a-z] /) {
-      $handler {lc_h}->($char, $i);
+      $handler{lc_h}->($char, $i);
     }
   }
   
   # Last called handler
-  $handler {end_h}->();
+  $handler{end_h}->();
 }
 
 # Event handler (callback function)
@@ -283,7 +283,7 @@ sub parse {
   my ($text,%handler) = @_;
   
   # First called handler
-  $handler {start_h}->();
+  $handler{start_h}->();
   # ...
 }
 </pre>
@@ -347,7 +347,7 @@ my $twice_num = $twice_ref->($num);
 print "Twice of $num is $twice_num.\n\n";
 
 sub twice {
-  return $_ [0] * 2;
+  return $_[0] * 2;
 }
 
 
@@ -376,7 +376,7 @@ use warnings;
 
 print "1: Capture INT signal with signal handler.\n";
 
-$SIG {INT} = sub {
+$SIG{INT} = sub {
   die "INT signal sent to this process.";
 };
 
@@ -392,7 +392,7 @@ use warnings;
 
 print "2: Capture ALRM signal with signal handler.\n";
 
-$SIG {ALRM} = sub {
+$SIG{ALRM} = sub {
   die "ALRM signal was sent to this process.";
 };
 

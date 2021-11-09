@@ -121,10 +121,10 @@ sub func {
 
 <pre>
 # First argument
-$_ [0]
+$_[0]
 
 # Second argument
-$_ [1]
+$_[1]
 </pre>
 
 This style of writing reduces readability and is recommended not to be used unless performance is absolutely necessary.
@@ -213,11 +213,11 @@ func ({name =>'Ken', age => 19});
 
 sub func {
   # Convert to hash reference as needed
-  my $arg = ref $_ [0] eq'HASH'? $_ [0]: {@_};
+  my $arg = ref $_[0] eq'HASH'? $_[0]: {@_};
 }
 </pre>
 
-If the argument is a hash reference, it is assigned as it is, and if it is a hash, it is converted to a hash reference. $_ [0] is the first element of the argument @_.
+If the argument is a hash reference, it is assigned as it is, and if it is a hash, it is converted to a hash reference. $_[0] is the first element of the argument @_.
 
 <h3> Typical pattern of how to receive arguments </h3>
 

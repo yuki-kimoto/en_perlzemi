@@ -162,7 +162,7 @@ sub dec_to_n {
     my @dec_to_n = (0 .. 9,'A' ..'F');
 
     # Convert in conversion table and join characters
-    return join('', $sign, map {$dec_to_n [$_]} @rem_list);
+    return join('', $sign, map {$dec_to_n[$_]} @rem_list);
 }
 </pre>
 
@@ -256,17 +256,17 @@ By using the unshift function and inserting the remainder at the beginning of th
 
 <pre>
 my @dec_to_n = (0 .. 9,'A' ..'F');
-return join('', $sign, map {$dec_to_n [$_]} @rem_list);
+return join('', $sign, map {$dec_to_n[$_]} @rem_list);
 </pre>
 
 For example, for hexadecimal numbers, you need to convert 11 to 15 to A to F. @dec_to_n is an array for conversion.
 
-Convert each element of @rem_list to $dec_to_n [$_] with the map function.
+Convert each element of @rem_list to $dec_to_n[$_] with the map function.
 
 <pre>
-$dec_to_n [1] → 1
-$dec_to_n [10] → A
-$dec_to_n [15] → F
+$dec_to_n[1] → 1
+$dec_to_n[10] → A
+$dec_to_n[15] → F
 </pre>
 
 Will be converted as
@@ -307,16 +307,16 @@ sub n_to_dec {
   my @valid = (0 .. 9,'A' ..'F');
   my %valid;
   for (my $i = 0; $i <@valid; $i++) {
-    # Create conversion table ($valid {E} = 15)
-    A table like # $valid {F} = 16)
-    $valid {$valid [$i]} = $i;
+    # Create conversion table ($valid{E} = 15)
+    A table like # $valid{F} = 16)
+    $valid{$valid[$i]} = $i;
   }
     
   If individual numbers in # @nums cannot be converted correctly in the conversion table
   # Alternatively, if the converted number contains $n or more, undef is returned.
   for my $num (@nums) {
     # Convert lowercase letters to uppercase
-    $num = $valid {uc $num};
+    $num = $valid{uc $num};
     return if! defined $num || $num> = $n;
   }
     
@@ -371,7 +371,7 @@ If you want to convert the binary character string "1010" to decimal, you need t
 my @valid = (0 .. 9,'A' ..'F');
 my %valid;
 for (my $i = 0; $i <@valid; $i++) {
-  $valid {$valid [$i]} = $i;
+  $valid{$valid[$i]} = $i;
 }
 </pre>
 We want to consider 0-9, A-F, a-f to be valid. Also, in preparation for the calculation of base conversion, create a hash that converts the character string A to 10 and the character F to 15.
@@ -382,7 +382,7 @@ This hashtable is convenient, if it is a valid character it will return the conv
 
 <pre>
 for my $num (@nums) {
-  $num = $valid {uc $num};
+  $num = $valid{uc $num};
   return if! defined $num || $num> = $n;
 }
 </pre>

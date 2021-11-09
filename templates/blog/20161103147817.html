@@ -109,7 +109,7 @@ To release the resources of the child process, use the waitpid function and writ
 
 <pre>
 use POSIX'WNOHANG';
-$SIG {CHLD} = sub {while (waitpid (-1, WNOHANG)> 0) {Resource release process}}
+$SIG{CHLD} = sub {while (waitpid (-1, WNOHANG)> 0) {Resource release process}}
 </pre>
 
 I think it is difficult to understand the meaning of this description at first glance, so I will explain it.
@@ -119,7 +119,7 @@ I think it is difficult to understand the meaning of this description at first g
 The CHLD signal is a signal sent to the parent process when the child process terminates. In other words, by monitoring the CHLD signal on the parent process side, you can do something when the child process terminates.
 
 <pre>
-$SIG {CHLD} = sub {What to do if a child process terminates}
+$SIG{CHLD} = sub {What to do if a child process terminates}
 </pre>
 
 <h4> waitpid function </h4>
@@ -186,7 +186,7 @@ To do this, you need to use a while statement to process all terminated child pr
 If you don't need to release a specific resource and just want to release a zombie, you can set "IGNORE" without calling waitpid from the signal hands and it will do it automatically.
 
 <pre>
-$SIG {CHLD} ='IGNORE' ；
+$SIG{CHLD} ='IGNORE' ；
 </pre>
 
 <h3> Read the output of other commands using a pipe </h3>

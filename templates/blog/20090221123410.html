@@ -647,7 +647,7 @@ If you want to see the warning, use a signal handler and do the following:
 my $warn;
 
 # Handler called when a warning occurs
-local $SIG {__ WARN__} = sub {
+local $SIG{__ WARN__} = sub {
   $warn = shift;
 };
 

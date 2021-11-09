@@ -47,13 +47,13 @@ Now let's create an accessor. In Perl, it's common to use the same accessor to g
 sub title {
   my $self = shift;
   if (@_) {
-    $self->{title} = $_ [0];
+    $self->{title} = $_[0];
   }
   return $self->{title};
 }
 </pre>
 
-The object is in $self. So, if @_ has a value, I set $_ [0] to $self->{title}.
+The object is in $self. So, if @_ has a value, I set $_[0] to $self->{title}.
 
 The last line returns $self->{title}.
 
@@ -73,7 +73,7 @@ sub title {
   my $self = shift;
   if (@_) {
     my $old = $self->{title};
-    $self->{title} = $_ [0];
+    $self->{title} = $_[0];
     return $old;
   }
   else {

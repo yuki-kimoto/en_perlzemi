@@ -71,14 +71,14 @@ my @numbers = (10, 25, 40, 4, -6);
 To reference the elements of an array: Note that the first character is $, not @. Subscripts start at 0.
 
 <pre>
-$Array [subscript]
+$Array[subscript]
 </pre>
 
 You can output the first element and the second element as follows:
 
 <pre>
-print $numbers [0];
-print $numbers [1];
+print $numbers[0];
+print $numbers[1];
 </pre>
 
 <h4> Array element assignment </h4>
@@ -86,13 +86,13 @@ print $numbers [1];
 To make an assignment:
 
 <pre>
-$Array [subscript] = value
+$Array[subscript] = value
 </pre>
 
 Try substituting 20 for the first element.
 
 <pre>
-$numbers [0] = 20;
+$numbers[0] = 20;
 </pre>
 
 <h4> Number of elements in the array </h4>
@@ -118,7 +118,7 @@ Let's output the elements of the array in order with the for statement.
 
 <pre>
 for (my $i = 0; $i <@nums; $i++) {
-  print $nums [$i], "\n";
+  print $nums[$i], "\n";
 }
 </pre>
 
@@ -285,7 +285,7 @@ I compared the array and the array reference. It's easy to misunderstand, so let
 
 <pre>
 # arrangement
-$numbers [0]
+$numbers[0]
 
 # Array reference
 $numbers_ref->[0]
@@ -459,7 +459,7 @@ if (grep {$_ == $saerch_number} @numbers) {
 The # hash key has the property of not allowing duplication.
 my %no_duplicate_hash;
 for my $number (@numbers) {
-  $no_duplicate_hash {$number} ++;
+  $no_duplicate_hash{$number} ++;
 }
 
 # Get a list of hash keys
@@ -469,7 +469,7 @@ print '2: @no_duplicate_numbers = ('. join(',', @no_duplicate_numbers). ")\n\n";
 # 3: Count the number of overlapping elements in the array (continued above)
 print "3: Number of elements\n";
 for my $key (sort keys %no_duplicate_hash) {
-  print "$key contains $no_duplicate_hash {$key}.\n";
+  print "$key contains $no_duplicate_hash{$key}.\n";
 }
 </pre>
 
@@ -527,7 +527,7 @@ my $numbers_ref = [1, 2, 3];
 
 # 1. Element reference
 print "1. Element reference\n";
-print "\ $numbers [0] =", $numbers [0], "\n";
+print "\ $numbers[0] =", $numbers[0], "\n";
 
 # Array reference
 print "\ $numbers_ref->[0] =", $numbers_ref->[0], "\n";
@@ -573,7 +573,7 @@ Execution result
 Array: @numbers = (1,2,3)
 
 1. Element reference
-$numbers [0] = 1
+$numbers[0] = 1
 $numbers_ref->[0] = 1
 
 2. Processing of each element

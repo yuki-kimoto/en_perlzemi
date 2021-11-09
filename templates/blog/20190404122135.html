@@ -34,23 +34,23 @@ app->hook (before_dispatch => sub {
     my $script_name = $c->app->home->rel_file ("public / $path");
     
     # CGI Environment variable
-    local $ENV {AUTH_TYPE} ='';
-    local $ENV {CONTENT_LENGTH} = $req->headers->content_length;
-    local $ENV {CONTENT_TYPE} = $req->headers->content_type;
-    local $ENV {GATEWAY_INTERFACE} ='CGI / 1.1';
-    local $ENV {PATH_INFO} = $req->url->path;
-    local $ENV {PATH_TRANSLATED} = $req->url->path;
-    local $ENV {QUERY_STRING} = $req->url->query->to_string;
-    local $ENV {REMOTE_ADDR} = $c->tx->remote_address;
-    local $ENV {REMOTE_HOST} = $c->tx->remote_address;
-    local $ENV {REMOTE_IDENT} ='';
-    local $ENV {REMOTE_USER} ='';
-    local $ENV {REQUEST_METHOD} = $method;
-    local $ENV {SCRIPT_NAME} = $script_name;
-    local $ENV {SERVER_NAME} ='localhost';
-    local $ENV {SERVER_PORT} = $c->tx->remote_port;
-    local $ENV {SERVER_SOFTWARE} = "Mojolicious (Perl)";
-    local $ENV {SERVER_PROTOCOL} ='HTTP / 1.1';
+    local $ENV{AUTH_TYPE} ='';
+    local $ENV{CONTENT_LENGTH} = $req->headers->content_length;
+    local $ENV{CONTENT_TYPE} = $req->headers->content_type;
+    local $ENV{GATEWAY_INTERFACE} ='CGI / 1.1';
+    local $ENV{PATH_INFO} = $req->url->path;
+    local $ENV{PATH_TRANSLATED} = $req->url->path;
+    local $ENV{QUERY_STRING} = $req->url->query->to_string;
+    local $ENV{REMOTE_ADDR} = $c->tx->remote_address;
+    local $ENV{REMOTE_HOST} = $c->tx->remote_address;
+    local $ENV{REMOTE_IDENT} ='';
+    local $ENV{REMOTE_USER} ='';
+    local $ENV{REQUEST_METHOD} = $method;
+    local $ENV{SCRIPT_NAME} = $script_name;
+    local $ENV{SERVER_NAME} ='localhost';
+    local $ENV{SERVER_PORT} = $c->tx->remote_port;
+    local $ENV{SERVER_SOFTWARE} = "Mojolicious (Perl)";
+    local $ENV{SERVER_PROTOCOL} ='HTTP / 1.1';
     
     # Check script name
     unless ($script_name = ~ / ^ [a-zA-Z_0-9 \ / \-\.] + $/) {

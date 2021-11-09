@@ -185,7 +185,7 @@ AV * av_nums = newAV ();
 Substitution.
 <pre>
 # Perl
-$nums [0] = 1;
+$nums[0] = 1;
 
 # XS
 av_store (av_nums, 0, newSVuv (1));
@@ -195,7 +195,7 @@ Get the element. Since av_fetch returns a pointer to SV *, you need to remove th
 
 <pre>
 # Perl
-my $num = $nums [0];
+my $num = $nums[0];
 
 # XS
 SV ** const sv_num_ptr = av_fetch (nums, 0, FALSE);
@@ -271,7 +271,7 @@ How to write in XS corresponding to the operation of <a href="/blog/201610131476
 
 <pre>
 # Perl
-exists $hash {"key"};
+exists $hash{"key"};
 
 # XS
 hv_exists(hash, "key", strlen ("key"));
@@ -323,13 +323,13 @@ sub return_array_of_hash {
   my @persons;
  
   my %person1;
-  $person1 {name} ='Ken';
-  $person1 {age} = 19;
+  $person1{name} ='Ken';
+  $person1{age} = 19;
   push @peoples, \%person1;
   
   my %person2;
-  $person2 {name} ='Taro';
-  $person2 {age} = 26;
+  $person2{name} ='Taro';
+  $person2{age} = 26;
   push @persons, \%person2;
   
   return \@persons;

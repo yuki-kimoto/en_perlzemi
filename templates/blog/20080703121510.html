@@ -74,7 +74,7 @@ Hash::Util::lock_keys(%hash);
 
 Added # key3.
 # Die, so capture it with eval for a sample.
-eval {$hash {key3} = 3};
+eval {$hash{key3} = 3};
 print "$@\n";
 
 # Remove the prohibition on adding and deleting keys.
@@ -87,7 +87,7 @@ print "1-2: Prohibit the addition of keys other than the specified key.\n";
 
 Die when trying to add # key3.
 Hash::Util::lock_keys(%hash, @restrict_keys);
-eval {$hash {key3} = 3};
+eval {$hash{key3} = 3};
 print "$@\n";
 
 Remove the # key restriction.
@@ -98,11 +98,11 @@ print "2: Prohibit changing hash value and adding / deleting keys.\n";
 
 # Die when trying to change the value.
 Hash::Util::lock_hash (%hash);
-eval {$hash {key1} = 3};
+eval {$hash{key1} = 3};
 print "$@\n";
 
 Die when trying to add a # key.
-eval {$hash {key3} = 1};
+eval {$hash{key3} = 1};
 print "$@\n";
 
 # Lift the prohibition on hash changes

@@ -45,7 +45,7 @@ print "1: Delete hierarchical directories at once.\n";
   # There is no choice but to use a signal handler to capture.
   # (For old rmtree implementations)
   # The content of the warning is stored in the first argument.
-  local $SIG {__ WARN__} = sub {
+  local $SIG{__ WARN__} = sub {
     my $msg = shift;
     die "$msg";
   };

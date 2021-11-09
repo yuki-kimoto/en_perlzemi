@@ -149,7 +149,7 @@ It can also be combined with other formats.
 
 <pre>
 # Convert decimal to octal Fill space with left justification
-$formatted [5] = sprintf("1: <%-# 5o>", 8);
+$formatted[5] = sprintf("1: <%-# 5o>", 8);
 </pre>
 
 # Is classified as a "flag" in the format specification. —— Is also classified as a “flag”. 5 is categorized as what is called "string width".
@@ -168,7 +168,7 @@ To specify the precision with the number of decimal places using the sprintf fun
 
 <pre>
 # 3rd place after the decimal point
-$formatted [1] = sprintf("%.3f", 0.45674);
+$formatted[1] = sprintf("%.3f", 0.45674);
 </pre>
 
 To specify the precision with the number of decimal places, use the format specifier%f, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is .3, it will be rounded to the third decimal place.
@@ -177,7 +177,7 @@ It can also be combined with other formats.
 
 <pre>
 # Round to the third decimal place with a character width of 10 that fills the left-justified space
-$formatted [2] = sprintf("<% -10.3f>", 0.45674);
+$formatted[2] = sprintf("<% -10.3f>", 0.45674);
 </pre>
 
 <ul>
@@ -246,54 +246,54 @@ my @formated;
 
 # 65 is ASC
 'A' in II code
-$formatted [1] = sprintf("1:%c", 65);
+$formatted[1] = sprintf("1:%c", 65);
 
 # Interpreted as a string
-$formatted [2] = sprintf("2:%s", '00002');
+$formatted[2] = sprintf("2:%s", '00002');
 
 # Interpreted as a signed integer
-$formatted [3] = sprintf("3:%d",'-00002');
+$formatted[3] = sprintf("3:%d",'-00002');
 
 # Interpreted as an unsigned integer
-$formatted [4] = sprintf("4:%u", '00002');
+$formatted[4] = sprintf("4:%u", '00002');
 
 # Convert decimal to octal
-$formatted [5] = sprintf("5:%o", 8);
+$formatted[5] = sprintf("5:%o", 8);
 
 # Convert decimal to hexadecimal (lowercase)
-$formatted [6] = sprintf("6:%x", 255);
+$formatted[6] = sprintf("6:%x", 255);
 
 # Convert decimal to hexadecimal (uppercase)
-$formatted [7] = sprintf("7:%X", 255);
+$formatted[7] = sprintf("7:%X", 255);
 
 # Convert decimal to binary
-$formatted [8] = sprintf("8:%b", 4);
+$formatted[8] = sprintf("8:%b", 4);
 
 # Interpreted as a floating minority point
-$formatted [9] = sprintf("9:%f", 0.00004560);
+$formatted[9] = sprintf("9:%f", 0.00004560);
 
 # Interpreted as floating point
 # (Lowercase exponential notation)
-$formatted [10] = sprintf("10:%e", 0.00004560);
+$formatted[10] = sprintf("10:%e", 0.00004560);
 
 # Interpreted as floating point
 # (Capital notation)
-$formatted [11] = sprintf("11:%E", 0.00004560);
+$formatted[11] = sprintf("11:%E", 0.00004560);
 
 # Interpreted as floating point
 # (End 0 is deleted)
-$formatted [12] = sprintf("12:%g", 0.00004560);
+$formatted[12] = sprintf("12:%g", 0.00004560);
 
 # Interpreted as floating point
 # (The trailing 0 is removed. Uppercase)
-$formatted [13] = sprintf("13:%G", 0.00004560);
+$formatted[13] = sprintf("13:%G", 0.00004560);
 
 # $Num's in-memory address
 my $num = 3;
-$formatted [14] = sprintf("14:%p", $num);
+$formatted[14] = sprintf("14:%p", $num);
 
 for my $i (1 .. 14) {
-  print $formatted [$i] . "\n";
+  print $formatted[$i] . "\n";
 }
 </pre>
 
@@ -309,25 +309,25 @@ print "(1) Format to a fixed-length character string.\n";
 my @formated;
 
 # Fill right-justified space
-$formatted [1] = sprintf("1:%5s", 1);
+$formatted[1] = sprintf("1:%5s", 1);
 
 # Fill left-justified space
-$formatted [2] = sprintf("2:% -5s", 1);
+$formatted[2] = sprintf("2:% -5s", 1);
 
 # 0 fill
-$formatted [3] = sprintf("3:%05s", 1);
+$formatted[3] = sprintf("3:%05s", 1);
 
 # Ignored if the specified character length is exceeded
-$formatted [4] = sprintf("4:%5d", 123456);
+$formatted[4] = sprintf("4:%5d", 123456);
 
 Other than # %s is OK.
-$formatted [5] = sprintf("5:%5d", 1);
+$formatted[5] = sprintf("5:%5d", 1);
 
 Other than # %s is OK.
-$formatted [6] = sprintf("6:%5g", 1.23);
+$formatted[6] = sprintf("6:%5g", 1.23);
 
 for my $i (1 .. 6) {
-  print $formatted [$i] . "\n";
+  print $formatted[$i] . "\n";
 }
 </pre>
 
@@ -343,27 +343,27 @@ print "(1) Format binary, octal, and hexadecimal numbers in the base number tabl
 my @formated;
 
 # Convert decimal to octal
-$formatted [1] = sprintf("1:% # o", 8);
+$formatted[1] = sprintf("1:% # o", 8);
 
 # Convert decimal to hexadecimal (lowercase)
-$formatted [2] = sprintf("2:% # x", 255);
+$formatted[2] = sprintf("2:% # x", 255);
 
 # Convert decimal to hexadecimal (uppercase)
-$formatted [3] = sprintf("3:% # X", 255);
+$formatted[3] = sprintf("3:% # X", 255);
 
 # Convert decimal to binary
-$formatted [4] = sprintf("4:% # b", 4);
+$formatted[4] = sprintf("4:% # b", 4);
 
 for my $i (1 .. 4) {
-  print $formatted [$i] . "\n";
+  print $formatted[$i] . "\n";
 }
 print "\n";
 
 # Convert decimal to octal Fill space with left justification
 print "(2) Combine with other formats.\n";
-$formatted [5] = sprintf("1: <%-# 5o>", 8);
+$formatted[5] = sprintf("1: <%-# 5o>", 8);
 
-print $formatted [5] . "\n";
+print $formatted[5] . "\n";
 </pre>
 
 <h4> Specify the precision with the number of digits after the decimal point </h4>
@@ -378,13 +378,13 @@ printf "(1) Specify the precision with the number of digits after the decimal po
 my @formated;
 # With precision up to 3 decimal places
 # Format.
-$formatted [1] = sprintf("%.3f", 0.45674);
-print $formatted [1]. "\n\n";
+$formatted[1] = sprintf("%.3f", 0.45674);
+print $formatted[1]. "\n\n";
 
 # Round to the third decimal place with a character width of 10 that fills the left-justified space
 print "(2) Combine with other formats.\n";
-$formatted [2] = sprintf("<% -10.3f>", 0.45674);
-print $formatted [2] . "\n";
+$formatted[2] = sprintf("<% -10.3f>", 0.45674);
+print $formatted[2] . "\n";
 </pre>
 
 <h4> Specify precision by the number of significant digits </h4>

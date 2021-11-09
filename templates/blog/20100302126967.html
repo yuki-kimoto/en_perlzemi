@@ -258,7 +258,7 @@ Perl can receive warnings as signals, so you can set the following breakpoints i
 
 <pre>
 # Catch the warning and set a breakpoint
-$SIG {__ WARN__} = sub {
+$SIG{__ WARN__} = sub {
     $DB::single = 1;
 };
 </pre>
@@ -317,13 +317,13 @@ Use conditional breakpoints in these cases.
 total (1, 2);
 
 # I want to see only during this process
-$ENV {a} = 1;
+$ENV{a} = 1;
 total (3, 4);
 
 sub total {
   my ($num1, $num2) = @_;
   
-  $DB::single = 1 if $ENV {a};
+  $DB::single = 1 if $ENV{a};
   my $total = $num1 + $num2;
 
   return $total;
