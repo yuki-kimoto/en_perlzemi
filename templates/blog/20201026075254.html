@@ -66,12 +66,12 @@ Details are explained in the article on variable expansion.
 
 Here are the escape sequences that can be used in double-quoted strings.
 
-Frequently used ones are line breaks "\n", tabs "\ t", double quotes "\" ", and backslashes themselves" \\ ".
+Frequently used ones are line breaks "\n", tabs "\t", double quotes "\" ", and backslashes themselves" \\ ".
 
 <table>
   <tr> <th> Escape sequence </th> <th> Meaning </th> </tr>
   <tr> <td>\n </td> <td> Line breaks </td> </tr>
-  <tr> <td> \ t </td> <td> tab </td> </tr>
+  <tr> <td>\t </td> <td> tab </td> </tr>
   <tr> <td> \ "</td> <td>" </td> </tr>
   <tr> <td> \\ </td> <td> \ </td> </tr>
 </table>
@@ -99,10 +99,10 @@ Variable expansion and escape sequences of double-quoted strings can be used as 
 <pre>
 my $name = "Yuki Kimoto";
 
-my $message = "I'm Yuki Kimoto \ tHello";
+my $message = "I'm Yuki Kimoto\tHello";
 
 # You can use variable expansion and escape sequences in regular expression literals
-if ($message = ~ / $name \ t /) {
+if ($message = ~ / $name\t /) {
   
 }
 </pre>

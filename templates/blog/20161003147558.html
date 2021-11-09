@@ -46,7 +46,7 @@ When creating a string, enclose it in single quotes or double quotes, but if you
 
 <a href="/blog/20201028075254.html"> Escape sequence</a> is <a href="/blog/20201027075254.html"> string enclosed in single quotes</a> and <a href= "/blog/20201026075254.html"> Double quoted strings</a> are special characters that can be used.
 
-For example, you can use the <b> line break "\n" </b> or the <b> tab "\ t" </b>. Line breaks and tabs are invisible characters, but they can be represented using escape sequences.
+For example, you can use the <b> line break "\n" </b> or the <b> tab "\t" </b>. Line breaks and tabs are invisible characters, but they can be represented using escape sequences.
 
 This is a <a href="/blog/20201030075254.html"> double quote string escape sequence</a>.
 
@@ -55,7 +55,7 @@ This is a <a href="/blog/20201030075254.html"> double quote string escape sequen
 my $str1 = "Hello\n";
 
 # Tab character
-my $str2 = "Cat \ tDog";
+my $str2 = "Cat\tDog";
 </pre>
 
 Frequently used escape sequences are line breaks and tabs, so be sure to remember these two.
@@ -238,7 +238,7 @@ my @animals = ('Cat','Dog','Mouse');
 my $csv = join(',', @animals);
 
 # Create TSV data "Cat Dog Mouse"
-my $tsv = join("\ t", @animals);
+my $tsv = join("\t", @animals);
 </pre>
 
 Please refer to the following article for the join function.
@@ -265,8 +265,8 @@ my @animals = split(/, /, $csv);
 A sample for TSV data is also included.
 
 <pre>
-my $tsv = "Cat \ tDog \ tMouse";
-my @animals = split(/ \ t /, $csv);
+my $tsv = "Cat\tDog\tMouse";
+my @animals = split(/\t /, $csv);
 </pre>
 
 A regular expression can be specified directly as the first argument of the split function. For example, use the regular expression "one or more blanks"You can

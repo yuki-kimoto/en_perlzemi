@@ -26,7 +26,7 @@ use File::Spec;
 my $file_name = File::Spec-> catfile ('t','test1.t');
 </pre>
 
-File name rules vary by OS. If you use / or \ to configure filenames, portability between operating systems is compromised. If you use the File::Spec module, the file name will be created according to the file name rules according to the OS you are running, so even if you port it to a different OS, no rework will occur.
+File name rules vary by OS. If you use / or\to configure filenames, portability between operating systems is compromised. If you use the File::Spec module, the file name will be created according to the file name rules according to the OS you are running, so even if you port it to a different OS, no rework will occur.
 
 You can use the <strong> updir </strong> method to represent an OS-independent "directory one level up".
 
@@ -50,7 +50,7 @@ use File::Spec;
 
 print "1: Create an OS-independent file name.\n";
 # On Unix, it becomes lib / test1.t,
-# On Windows, it is lib \ test1.t.
+# On Windows, it is lib\test1.t.
 my $file_name = File::Spec-> catfile ('t','test1.t');
 print "\ $file_name = $file_name\n\n";
 

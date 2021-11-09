@@ -35,12 +35,12 @@ my @names = ('Yuki','Taro','Kato');
 my $names_csv = join(',', @names);
 </pre>
 
-The delimiter can be anything, and the tab character "\ t" is often used.
+The delimiter can be anything, and the tab character "\t" is often used.
 
 <pre>
 # Create "Yuki Toro Kato" from the array
 my @names = ('Yuki','Taro','Kato');
-my $names_csv = join("\ t", @names);
+my $names_csv = join("\t", @names);
 </pre>
 
 Strings rarely contain tabs, so they are often easier to work with than commas.
@@ -48,7 +48,7 @@ Strings rarely contain tabs, so they are often easier to work with than commas.
 If you add a line break at the end, you can easily create one line of data separated by tabs.
 
 <pre>
-my $line = join("\ t", @names). "\n";
+my $line = join("\t", @names). "\n";
 </pre>
 
 <h4> Decompose to array by specifying delimiter </h4>
@@ -77,7 +77,7 @@ use warnings;
 
 # Concatenate multiple strings with tabs
 my @animals = qw (cat dog sheep);
-my $line = join("\ t", @animals);
+my $line = join("\t", @animals);
 </pre>
 
 Reference: <a href="/blog/20080221120361.html"> qw () String concatenation operator</a>
