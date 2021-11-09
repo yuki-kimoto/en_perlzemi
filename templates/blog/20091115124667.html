@@ -48,16 +48,16 @@ Let's write a simple sample to actually download the file.
 use Net::FTP;
 
 # Connect to FTP server (host name or IP address is OK)
-my $ftp = Net::FTP-> new ('somehost');
+my $ftp = Net::FTP->new ('somehost');
 
 # Login by specifying user name and password
-$ftp-> login ('user','password');
+$ftp->login ('user','password');
 
 Download the file using the command # get to get the file
-$ftp-> get ('/ dir / somefile');
+$ftp->get ('/ dir / somefile');
 
 # Exit the connection
-$ftp-> quit;
+$ftp->quit;
 </pre>
 You can connect to the FTP server by specifying the connection destination in the new method. In addition, an object is returned as the return value, and this is used to log in or issue an FTP command.
 
@@ -74,13 +74,13 @@ Here are some commonly used methods.
 Create a Net::FTP object to connect to the FTP server.
 
 <pre>
-$ftp = Net::FTP-> new ($host);
+$ftp = Net::FTP->new ($host);
 </pre>
 
 You can specify the host name or IP address as an argument. In addition, options can be specified after the second argument. Options are specified in the hash reference. Frequently used options include Timeout to set the number of seconds to time out. The default timeout period is 120 seconds.
 
 <pre>
-$ftp = Net::FTP-> new ($host, Timeout => 180)
+$ftp = Net::FTP->new ($host, Timeout => 180)
 </pre>
 
 <h4> login </h4>
@@ -88,13 +88,13 @@ $ftp = Net::FTP-> new ($host, Timeout => 180)
 Log in by specifying the user name and password.
 
 <pre>
-$ftp-> login ($user, $password)
+$ftp->login ($user, $password)
 </pre>
 
 If you want to connect to the FTP server anonymously, specify "anonymous" as the user name.
 
 <pre>
-$ftp-> login ('anonymous')
+$ftp->login ('anonymous')
 </pre>
 
 <h4> cwd </h4>
@@ -102,14 +102,14 @@ $ftp-> login ('anonymous')
 Change the current directory of the connection destination.
 
 <pre>
-$ftp-> cwd ($dir)
+$ftp->cwd ($dir)
 </pre>
 
 FTP is a stateful protocol that allows you to change the destination directory. When downloading a file, it may be common to change the current directory and then specify only the file name.
 
 <pre>
-$ftp-> cwd ('dir') # change current directory
-$ftp-> get ('somefile') # Download file
+$ftp->cwd ('dir') # change current directory
+$ftp->get ('somefile') # Download file
 </pre>
 
 <h4> get </h4>
@@ -117,13 +117,13 @@ $ftp-> get ('somefile') # Download file
 Use get to download the file.
 
 <pre>
-$ftp-> get ($file)
+$ftp->get ($file)
 </pre>
 
 If you specify the file name in the second argument, you can change the name and download.
 
 <pre>
-$ftp-> get ($file, $renamed_file)
+$ftp->get ($file, $renamed_file)
 </pre>
 
 <h4> put </h4>
@@ -131,13 +131,13 @@ $ftp-> get ($file, $renamed_file)
 Use put to upload the file.
 
 <pre>
-$ftp-> put ($file $)
+$ftp->put ($file $)
 </pre>
 
 If you specify the file name in the second argument, you can change the name and upload.
 
 <pre>
-$ftp-> put ($file, $renamed_file)
+$ftp->put ($file, $renamed_file)
 </pre>
 
 <h4> binary </h4>
@@ -145,7 +145,7 @@ $ftp-> put ($file, $renamed_file)
 Change the file transfer mode to binary mode.
 
 <pre>
-$ftp-> binary
+$ftp->binary
 </pre>
 
 FTP has the idea of ​​a file transfer mode. There are two transfer modes, binary mode and ASCII mode.
@@ -157,7 +157,7 @@ Binary mode does not perform any conversion when transferring files. When transf
 Change the file transfer mode to ASCII mode.
 
 <pre>
-$ftp-> ascii
+$ftp->ascii
 </pre>
 
 If you specify ASCII mode, the line feed code will be converted automatically. For example, the default line feed code for Windows is\r\n. The default line feed code for Unix is ​​\n. If you transfer a file created with Windows Notepad to Unix as it is, it cannot be displayed correctly. If you transfer in ASCII mode, this conversion will be done automatically.
@@ -167,7 +167,7 @@ If you specify ASCII mode, the line feed code will be converted automatically. F
 Get a list of file names.
 
 <pre>
-@files = $ftp-> ls ($dir)
+@files = $ftp->ls ($dir)
 </pre>
 
 If the directory name is omitted, the list of files included in the current directory of the connection destination is acquired.
@@ -179,7 +179,7 @@ To check the existence of a file, use the ls method to get a list of files and c
 Get a list of file names, including detailed information.
 
 <pre>
-@file_infos = $ftp-> dir ($dir)
+@file_infos = $ftp->dir ($dir)
 </pre>
 
 The dir command is OS dependent. You can get the output result by executing "ls -l" on that OS. For example, in the case of Fedora 7 that I am currently using, the output is as follows.
@@ -196,7 +196,7 @@ Delete the directory.
 
 <pre>
 # Delete directory
-$ftp-> rmdir($dir)
+$ftp->rmdir($dir)
 </pre>
 
 <h4> mkdir </h4>
@@ -205,10 +205,10 @@ Create a directory. If the second argument is true, the directory will be create
 
 <pre>
 # Create directory
-$ftp-> mkdir($dir)
+$ftp->mkdir($dir)
 
 # Recursively create directories
-$ftp-> mkdir($dir, $is_recurse)
+$ftp->mkdir($dir, $is_recurse)
 </pre>
 
 <h4> quit </h4>
@@ -216,7 +216,7 @@ $ftp-> mkdir($dir, $is_recurse)
 Close the connection with the FTP server.
 
 <pre>
-$ftp-> quit;
+$ftp->quit;
 </pre>
 
 <h4> Sometimes used method </h4>
@@ -292,18 +292,18 @@ In fact, the first sample omitted error handling to briefly explain how to use N
 
 <pre>
 # Connect to FTP server
-my $ftp = Net::FTP-> new ('somehost')
+my $ftp = Net::FTP->new ('somehost')
   or die "Cannot connect to'$host': $!";
 
 # Login
-$ftp-> login ('user','password')
-  or die "Cannot login'$host: $user: $password':". $ftp-> message;
+$ftp->login ('user','password')
+  or die "Cannot login'$host: $user: $password':". $ftp->message;
 
 # Download
-$ftp-> get ('/ dir / somefile');
-  or die "FTP command fail:". $ftp-> message;
+$ftp->get ('/ dir / somefile');
+  or die "FTP command fail:". $ftp->message;
 
-$ftp-> quit;
+$ftp->quit;
 </pre>
 
 Why should error handling be done? Because the FTP server is external and there is no guarantee that it will succeed. You need to think about when you can't connect due to a network error or a server down.
@@ -317,22 +317,22 @@ Let's take a brief look at Net::FTP error handling.
 If the connection to the FTP server fails with the new method, the return value will be undef, so do or die to terminate the program. Include the OS error message $!.
 
 <pre>
-my $ftp = Net::FTP-> new ('somehost')
+my $ftp = Net::FTP->new ('somehost')
   or die "Cannot connect to'$host': $!";
 </pre>
 
 <h4> [B] Other error handling </h4>
 
-If an error occurs after connecting, you can get the details of the error with $ftp-> message. Make sure to include this error message in the error message.
+If an error occurs after connecting, you can get the details of the error with $ftp->message. Make sure to include this error message in the error message.
 
 <pre>
 # Login
-$ftp-> login ('user','password')
-  or die "Cannot login'$host: $user: $password:'". $ftp-> message;
+$ftp->login ('user','password')
+  or die "Cannot login'$host: $user: $password:'". $ftp->message;
 
 # Download
-$ftp-> get ('/ dir / somefile');
-  or die "FTP command fail:". $ftp-> message;
+$ftp->get ('/ dir / somefile');
+  or die "FTP command fail:". $ftp->message;
 </pre>
 
 <h3> Net::FTP executable sample </h3>
@@ -348,19 +348,19 @@ use Net::FTP;
 my $host ='ftp.u-aizu.ac.jp';
 my $user ='anonymous';
 
-my $ftp = Net::FTP-> new ($host)
+my $ftp = Net::FTP->new ($host)
   or die "Cannot connect to'$host': $!";
 
-$ftp-> login ($user)
-  or die "Cannot login'$host: $user':". $ftp-> message;
+$ftp->login ($user)
+  or die "Cannot login'$host: $user':". $ftp->message;
 
-$ftp-> cwd ('/ pub / CPAN')
-  or die "FTP command fail:". $ftp-> message;
+$ftp->cwd ('/ pub / CPAN')
+  or die "FTP command fail:". $ftp->message;
 
-$ftp-> get ('index.html')
-  or die "FTP command fail:". $ftp-> message;
+$ftp->get ('index.html')
+  or die "FTP command fail:". $ftp->message;
 
-$ftp-> quit;
+$ftp->quit;
 </pre>
 
 <h3> FTPS connection - FTP over SSL / TLS </h3>
@@ -382,20 +382,20 @@ use Net::FTP;
 my $host ='ftp.u-aizu.ac.jp';
 my $user ='anonymous';
 
-my $ftp = Net::FTP-> new ($host)
+my $ftp = Net::FTP->new ($host)
   or die "Cannot connect to'$host': $!";
 
 # Start explicit TSL / SSL encryption
-$ftp-> starttls () or die "Can't upgrade start TLS:";
+$ftp->starttls () or die "Can't upgrade start TLS:";
 
-$ftp-> login ($user)
-  or die "Cannot login'$host: $user':". $ftp-> message;
+$ftp->login ($user)
+  or die "Cannot login'$host: $user':". $ftp->message;
 
-$ftp-> cwd ('/ pub / CPAN')
-  or die "FTP command fail:". $ftp-> message;
+$ftp->cwd ('/ pub / CPAN')
+  or die "FTP command fail:". $ftp->message;
 
-$ftp-> get ('index.html')
-  or die "FTP command fail:". $ftp-> message;
+$ftp->get ('index.html')
+  or die "FTP command fail:". $ftp->message;
 
-$ftp-> quit;
+$ftp->quit;
 </pre>

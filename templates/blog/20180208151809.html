@@ -32,7 +32,7 @@ Let's write an image of the hash reference below.
 <pre>
 # image
                       %score
-$score_ref - -- --> (math => 68, english => 90)
+$score_ref - -- -->(math => 68, english => 90)
 </pre>
 
 A hash reference represents "what points to a hash" rather than the hash itself.
@@ -61,8 +61,7 @@ Below is an image. In the case of a hash, the entire contents are copied, wherea
 %score1%score2
 (math => 68, english => 90) (math => 68, english => 90)
 
-$score_ref1 - -- -- -- ->
-$score_ref2 - -- -- -- -> (math => 68, english => 90)
+$score_ref1 - -- -- -- ->$score_ref2 - -- -- -- ->(math => 68, english => 90)
 </pre>
 
 When passing to <a href="/blog/20101130129876.html">subroutine</a>, it is more efficient to pass a hash reference because the contents are not copied.
@@ -130,10 +129,10 @@ You can use the arrow operator "->" to retrieve the hash value from the hash ref
 
 <pre>
 # Get the hash value from the hash reference
-my $score_math = $score_ref-> {math};
+my $score_math = $score_ref->{math};
 
 # Set the hash value from the hash reference
-$score_ref-> {math} = 67;
+$score_ref->{math} = 67;
 </pre>
 
 If the arrow operator is used, it is a hash reference. If not, it's a hash. Please be able to read this well in the source code.

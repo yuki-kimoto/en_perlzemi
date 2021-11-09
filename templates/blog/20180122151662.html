@@ -43,7 +43,7 @@ sub new {
   my $self = {};
   open my $fh,'<', $file
     or croak "Can't open $file: $!";
-  $self-> {fh} = $fh;
+  $self->{fh} = $fh;
   
   return bless $self, $class;
 }
@@ -52,13 +52,13 @@ sub new {
 sub DESTROY {
   my $self = shift;
   print "DESTROY";
-  close $self-> {fh};
+  close $self->{fh};
 }
 
 package main;
 
 {
-  my $file = File-> new ('a.txt');
+  my $file = File->new ('a.txt');
 }
 </pre>
 

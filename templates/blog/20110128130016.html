@@ -117,11 +117,11 @@ If you want the subroutine to have scope, assign an anonymous subroutine (which 
   my $foo = sub {...};
 
   # Can be called
-  $foo-> ();
+  $foo->();
 }
 
 # Cannot be called from this position
-$foo-> ();
+$foo->();
 </pre>
 
 At the end of the scope, the subroutine reference assigned to $foo is released. Note that the subroutine itself is not freed. sub {...} is parsed and placed in memory at compile time.

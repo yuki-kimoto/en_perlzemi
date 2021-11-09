@@ -24,11 +24,11 @@ Now, let's write a sample that behaves differently depending on the class to whi
 use strict;
 use warnings;
 
-my $file_path_unix = FilePath::Unix-> new;
-my $file_path_win = FilePath::Windows-> new;
+my $file_path_unix = FilePath::Unix->new;
+my $file_path_win = FilePath::Windows->new;
 
-my $unix_result = $file_path_unix-> cat_path ('a','b');
-my $win_result = $file_path_win-> cat_path ('a','b');
+my $unix_result = $file_path_unix->cat_path ('a','b');
+my $win_result = $file_path_win->cat_path ('a','b');
 
 print "unix: $unix_result\n";
 print "win: $win_result\n";
@@ -45,7 +45,7 @@ sub new {
 
 sub cat_path {
   my ($self, $str1, $str2) = @_;
-  return $str1. $Self-> delimiter. $Str2;
+  return $str1. $Self->delimiter. $Str2;
 }
 
 
@@ -82,25 +82,25 @@ sub new {...}
 
 sub cat_path {
   my ($self, $str1, $str2) = @_;
-  return $str1. $Self-> delimiter. $Str2;
+  return $str1. $Self->delimiter. $Str2;
 }
 </pre>
 
 If you look at the class FilePath::Base, there is a method called cat_path. By the way, if you look at the part that calls cat_path, the object of File::Path class is not created.
 
 <pre>
-my $file_path_unix = FilePath::Unix-> new;
-my $file_path_win = FilePath::Windows-> new;
+my $file_path_unix = FilePath::Unix->new;
+my $file_path_win = FilePath::Windows->new;
 
-my $unix_result = $file_path_unix-> cat_path ('a','b');
-my $win_result = $file_path_win-> cat_path ('a','b');
+my $unix_result = $file_path_unix->cat_path ('a','b');
+my $win_result = $file_path_win->cat_path ('a','b');
 </pre>
 
 Objects of the FilePath::Unix class and FilePath::Windows class have been created, respectively.
 
 This is because FilePath::Unix and FilePath::Windows inherits his FilePath::Base, as explained in <a href="/blog/20090324123747.html">Inheritance</a>. , FilePath::I was able to call the method of the Base class, cat_path.
 
-The next thing to pay attention to is the description of $self-> delimiter in cat_path.
+The next thing to pay attention to is the description of $self->delimiter in cat_path.
 
 <h3> 3. Call a subclass method in the superclass. </h3>
 
@@ -109,7 +109,7 @@ Let's pay attention to the inside of cat_path.
 <pre>
 sub cat_path {
   my ($self, $str1, $str2) = @_;
-  return $str1. $Self-> delimiter. $Str2;
+  return $str1. $Self->delimiter. $Str2;
 }
 </pre>
 In cat_path, the delimiter method is called. However, FilePath::Base does not have a method called delimiter. Can I call a method I don't have?
@@ -117,7 +117,7 @@ In cat_path, the delimiter method is called. However, FilePath::Base does not ha
 Actually, there is a secret in this $self part.
 
 <pre>
-my $unix_result = $file_path_unix-> cat_path ('a','b');
+my $unix_result = $file_path_unix->cat_path ('a','b');
 </pre>
 
 When you call the cat_path method like this, the object assigned to $self is the FilePath::Unix class object.
@@ -129,8 +129,8 @@ The FilePath::Unix class has a delimiter method, so you can call the delimiter m
 If you create an object of the FilePath::Base class, cat_file will fail if you try to call the delimiter method internally.
 
 <pre>
-my $file_path_base = FilePath::Base-> new;
-$file_path_base-> cat_file ('a','b'); # Failure!
+my $file_path_base = FilePath::Base->new;
+$file_path_base->cat_file ('a','b'); # Failure!
 </pre>
 
 A class that implements the delimiter method that inherits the FilePath::Base class will be created and meaningful.

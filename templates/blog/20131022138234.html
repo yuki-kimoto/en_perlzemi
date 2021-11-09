@@ -56,8 +56,8 @@ my $nums = pdl [2, 4, 7];
 The data created by the pdl function is called a PDL variable. Let's get the elements of a one-dimensional PDL variable. Use the <strong> at </strong> method to get the data.
 
 <pre>
-my $first = $nums-> at (0);
-my $second = $nums-> at (1);
+my $first = $nums->at (0);
+my $second = $nums->at (1);
 </pre>
 
 In the above example, we got the value of the element contained in the PDL variable, but we can also get it as a PDL variable.
@@ -79,8 +79,8 @@ my $pdl_second = $nums (1);
 These are PDL variables, so if you want to get the element value itself, you can retrieve it with the <strong> at </strong> method.
 
 <pre>
-my $first = $pdl_first-> at (0);
-my $second = $pdl_second-> at (0);
+my $first = $pdl_first->at (0);
+my $second = $pdl_second->at (0);
 </pre>
 
 If you want to change the value of an element, use nice slice notation as well. Use the <strong>. = </Strong> operator. . = Is overridden for assignment, not string concatenation.
@@ -107,7 +107,7 @@ The feature of PDL is that the same operation can be performed on the set of par
 Let's get the length of one-dimensional data. Use the <strong> dims </strong> method to get the length of the data.
 
 <pre>
-my $length = $nums-> dims;
+my $length = $nums->dims;
 </pre>
 
 <h3> Sample </h3>
@@ -125,8 +125,8 @@ use PDL::NiceSlice;
 my $nums = pdl [2, 4, 7];
 
 # Element output
-print $nums-> at (0). "\n";
-print $nums-> at (1). "\n";
+print $nums->at (0). "\n";
+print $nums->at (1). "\n";
 
 # Retrieving PDL variables
 my $pdl_first = $nums (0);
@@ -180,7 +180,7 @@ Multiplication and division correspond to constant multiples of the vector. Keep
 Use the <strong> uniq method </strong> to retrieve the <strong> unique value </strong>.
 
 <pre>
-my $pdl_uniq = $pdl-> uniq;
+my $pdl_uniq = $pdl->uniq;
 </pre>
 
 <h3> Four arithmetic operations between PDL variables </h3>
@@ -221,7 +221,7 @@ There is no special way to calculate the dot product. To calculate the <strong> 
 
 <pre>
 # Dot product
-my $inner_product = ($pdl1 * $pdl2)-> sum;
+my $inner_product = ($pdl1 * $pdl2)->sum;
 </pre>
 
 The result of the dot product is just a value, not a PDL variable.
@@ -253,7 +253,7 @@ my $pdl_div = $pdl / 3;
 my $pdl_quotient = $pdl% 3;
 
 # Get unique value
-my $pdl_uniq = $pdl-> uniq;
+my $pdl_uniq = $pdl->uniq;
 
 # Calculation result
 print "$pdl_add\n";
@@ -291,7 +291,7 @@ my $pdl_quotient = $pdl1% $pdl2;
 my $pdl_pow = $pdl1 + $pdl2;
 
 # Dot product
-my $inner_product = ($pdl1 * $pdl2)-> sum;
+my $inner_product = ($pdl1 * $pdl2)->sum;
 
 # Calculation result
 print "$pdl_add\n";

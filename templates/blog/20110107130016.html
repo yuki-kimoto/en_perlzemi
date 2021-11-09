@@ -39,10 +39,10 @@ use utf8;
 get'/' => sub {
     my $self = shift;
     
-    my $module = $self-> req-> param ('module');
+    my $module = $self->req->param ('module');
     
-    $self-> stash (error =>'');
-    $self-> stash (output =>'');
+    $self->stash (error =>'');
+    $self->stash (output =>'');
     
     if ($module && $module = ~ / ^ [: \ w] + $/) {
         my $home = $ENV {DOCUMENT_ROOT};
@@ -54,11 +54,11 @@ get'/' => sub {
             chdir $home
               or die qq {Can't change directory "$home": $!};
             
-            my $ua = LWP::UserAgent-> new;
-            my $res = $ua-> get ('http://xrl.us/cpanm/');
+            my $ua = LWP::UserAgent->new;
+            my $res = $ua->get ('http://xrl.us/cpanm/');
             my $cpanm_content;
-            if ($res-> is_success) {
-                $cpanm_content = $res-> content;
+            if ($res->is_success) {
+                $cpanm_content = $res->content;
             }
             else {
                 die qq {Can't donwlaod "cpanm"};
@@ -82,20 +82,20 @@ get'/' => sub {
             push @output, split /\n /, $output;
         };
         
-        return $self-> render (error => $@) if $@;
+        return $self->render (error => $@) if $@;
         
-        $self-> render (output => \@output);
+        $self->render (output => \@output);
     }
     elsif ($module) {
-        $self-> stash (error =>'Enter module name correctly');
-        $self-> render;
+        $self->stash (error =>'Enter module name correctly');
+        $self->render;
     }
     else {
-        $self-> render;
+        $self->render;
     }
 } =>'index';
 
-app-> start;
+app->start;
 
 __DATA__
 

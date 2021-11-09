@@ -24,18 +24,18 @@ To use a module written in object orientation, first load the module using <stro
 use CGI;
 </pre>
 
-To create an object, write <strong> module name-> new </strong>. Assigning the created object to $cgi.
+To create an object, write <strong> module name->new </strong>. Assigning the created object to $cgi.
 
 <pre>
-my $cgi = CGI-> new ();
+my $cgi = CGI->new ();
 </pre>
 
-<strong> new is a method for creating objects </strong> and is called a constructor. At first, you can think of a <strong> method as a function that can be called from-> </strong>.
+<strong> new is a method for creating objects </strong> and is called a constructor. At first, you can think of a <strong> method as a function that can be called from-></strong>.
 
 Let's call methods other than new.
 
 <pre>
-my $str = $cgi-> h1 ('a');
+my $str = $cgi->h1 ('a');
 </pre>
 
 h1 method receives a string
@@ -55,8 +55,8 @@ use strict;
 use warnings;
 
 use CGI;
-my $cgi = CGI-> new;
-my $str = $cgi-> h1 ('a');
+my $cgi = CGI->new;
+my $str = $cgi->h1 ('a');
 
 # <h1> a </h1> is output
 print $str;
@@ -78,7 +78,7 @@ In object orientation, <strong> methods are called from module names or objects 
 
   <tr>
     <td>
-      CGI-> new ()
+      CGI->new ()
     </td>
     <td>
        Call from module name
@@ -87,7 +87,7 @@ In object orientation, <strong> methods are called from module names or objects 
 
   <tr>
     <td>
-      $cgi-> h1
+      $cgi->h1
     </td>
     <td>
        Call from object

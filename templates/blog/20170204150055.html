@@ -135,7 +135,7 @@ print(...)
 {
   MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   
-  self-> print();
+  self->print();
   XSRETURN (0);
 }
 
@@ -203,12 +203,12 @@ print(...)
 {
   MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   
-  self-> print();
+  self->print();
   XSRETURN (0);
 }
 </pre>
 
-In the method call, the Perl object is passed as the first argument, so convert it to the pointer "MyClass *". Then call the method as "self-> print".
+In the method call, the Perl object is passed as the first argument, so convert it to the pointer "MyClass *". Then call the method as "self->print".
 
 <b> Calling class methods </b>
 
@@ -276,9 +276,9 @@ use warnings;
 
 use MyClass;
 
-my $obj = MyClass-> new;
-$obj-> print;
-MyClass-> print_static;
+my $obj = MyClass->new;
+$obj->print;
+MyClass->print_static;
 </pre>
 
 <h3> Compile and run </h3>
@@ -404,11 +404,11 @@ foo (...)
   
   // Create a pointer to the structure
   Point * point = (Point *) malloc (sizeof (Point));
-  point-> x = x;
-  point-> y = y;
+  point->x = x;
+  point->y = y;
   
-  printf("%f\n", point-> x);
-  printf("%f\n", point-> y);
+  printf("%f\n", point->x);
+  printf("%f\n", point->y);
   
   // Release when no longer needed
   free (point);
@@ -439,12 +439,12 @@ foo (...)
 {
   // Structure
   Point * point = (Point *) malloc (sizeof (Point));
-  point-> x = 1;
-  point-> y = 2;
+  point->x = 1;
+  point->y = 2;
   
   // Convert value to SV * type
-  SV * x_sv = sv_2mortal (newSVnv (point-> x));
-  SV * y_sv = sv_2mortal (newSVnv (point-> y));
+  SV * x_sv = sv_2mortal (newSVnv (point->x));
+  SV * y_sv = sv_2mortal (newSVnv (point->y));
   
   // Create hash
   HV * point_hv = (HV *) sv_2mortal ((SV *) newHV ());

@@ -129,7 +129,7 @@ The calculated result is as follows.
 Use the <strong> at </strong> method to get the elements of the matrix. Note that the row and column order is different from a regular matrix, and the subscripts start at 0.
 
 <pre>
-$matrix-> at (column, row)
+$matrix->at (column, row)
 </pre>
 
 The following is a sample to get the value (3) of the 2nd row and 1st column of the 2x2 matrix.
@@ -141,7 +141,7 @@ my $mat = pdl [
   [1, 2],
   [3, 4]
 ];;
-my $val = $mat-> at (0, 1);
+my $val = $mat->at (0, 1);
 </pre>
 
 <h3> Set matrix elements </h3>
@@ -187,7 +187,7 @@ Let's create an identity matrix. Let's make a 3x3 identity matrix. The procedure
 use PDL;
 
 my $mat = PDL::Core::zeroes (3, 3);
-$mat-> diagonal (0, 1). = 1;
+$mat->diagonal (0, 1). = 1;
 </pre>
 
 The output result is as follows.
@@ -212,7 +212,7 @@ my $mat = pdl [
   [3, 4]
 ];;
 
-my $det = $mat-> det;
+my $det = $mat->det;
 </pre>
 
 The value of the determinant is as follows.

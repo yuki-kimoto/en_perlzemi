@@ -1100,7 +1100,7 @@ You can use <a href="/blog/20100412127089.html">File::Spec module</a> to create 
 
 <pre>
 use File::Spec;
-my $file_name = File::Spec-> catfile ('dir','file.txt');
+my $file_name = File::Spec->catfile ('dir','file.txt');
 </pre>
 
 On Windows operating systems, $file_name is dir\file.txt, and on Unix operating systems, the file name is dir / file.txt.
@@ -1174,25 +1174,25 @@ Use the URI module to handle URL operations conveniently.
 <pre>
 use URI;
 
-my $url = URI-> new ('http://www.perl.com/index.html');
+my $url = URI->new ('http://www.perl.com/index.html');
 
 # URL schema name http
-my $schema = $url-> schema;
+my $schema = $url->schema;
 
 # URL host name www.perl.com
-my $host = $url-> host;
+my $host = $url->host;
 
 # URL path part /index.html
-my $path = $url-> path;
+my $path = $url->path;
 
 # URL query string settings
-$url-> query_form (name =>'taro', age => 13);
+$url->query_form (name =>'taro', age => 13);
 
 # URL query string name = taro & age = 13
-my $query = $url-> query;
+my $query = $url->query;
 
 # Get URL as a string http://www.perl.com/index.html?name=taro&age=13
-my $url_str = $url-> as_string;
+my $url_str = $url->as_string;
 </pre>
 
 <h4> Data::Dumper </h4>
@@ -1202,7 +1202,7 @@ Use the <a href="/blog/20080208120248.html">Data::Dumper module</a> to output th
 <pre>
 use Data::Dumper;
 my $hash = {a => 1, b => 2};
-print Data::Dumper-> Dump ([$hash], ['$hash']);
+print Data::Dumper->Dump ([$hash], ['$hash']);
 </pre>
 
 <h4> XML::Simple </h4>
@@ -1211,8 +1211,8 @@ Use the <a href="/blog/20100424127089.html">XML::Simple module</a> to convert XM
 
 <pre>
 use XML::Simple;
-my $xml = XML::Simple-> new;
-my $hash = $xml-> XMLin ($xml_file);
+my $xml = XML::Simple->new;
+my $hash = $xml->XMLin ($xml_file);
 </pre>
 
 You can parse an XML file with the XMLin method and convert it to a Perl data structure.
@@ -1223,15 +1223,15 @@ Use the LWP::UserAgent module to get information from the internet.
 
 <pre>
 use LWP::UserAgent;
-my $ua = LWP::UserAgent-> new;
-my $response = $ua-> get ($url);
+my $ua = LWP::UserAgent->new;
+my $response = $ua->get ($url);
 
 my $content; # Obtained content
-if ($response-> is_success) {
-  $content = $response-> content;
+if ($response->is_success) {
+  $content = $response->content;
 }
 else {
-  die($response-> status_line);
+  die($response->status_line);
 }
 </pre>
 
@@ -1245,23 +1245,23 @@ If you want to do FTP, use <a href="/blog/20091115124667.html">Net::FTP module</
 use Net::FTP;
 
 # Specify the host name (or IP address) to connect to the FTP server
-my $ftp = Net::FTP-> new ($host)
+my $ftp = Net::FTP->new ($host)
   or die "Cannot connect to $host: $@";
 
 # Login by specifying user name and password
-$ftp-> login ($user, $password)
-  or die "Cannot login", $ftp-> message;
+$ftp->login ($user, $password)
+  or die "Cannot login", $ftp->message;
 
 # Change current directory
-$ftp-> cwd ($dir)
+$ftp->cwd ($dir)
   or die "Cannot change working directory", $ft
 
 # Get file
-$ftp-> get ($file)
-  or die "get failed", $ftp-> message;
+$ftp->get ($file)
+  or die "get failed", $ftp->message;
 
 # FTP disconnection
-$ftp-> quit;
+$ftp->quit;
 </pre>
 
 <h4> Text::Diff </h4>

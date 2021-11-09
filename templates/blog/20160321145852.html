@@ -73,7 +73,7 @@ SV ** Icurpad;
 However, this variable is rarely used in Perl source code. It is often accessed with the variable name "PL_stacksp". It is defined in "embedvar.h".
 
 <pre>
-# define PL_stack_sp (vTHX-> Istack_sp)
+# define PL_stack_sp (vTHX->Istack_sp)
 </pre>
 
 When actually reading the source code, if you see the variable name "PL_stack_sp", you first guess that this is an interpreter variable. Then open "interpvar.h" and check if there is a definition like "PERLVAR (I, stack_sp, SV **)".
@@ -135,11 +135,11 @@ struct interpreter {
 };
 </pre>
 
-You can see that "PL_stack_sp" is expanded to "my_perl-> Istack_sp". This means accessing a member variable called "Istack_sp" in the current interpreter.
+You can see that "PL_stack_sp" is expanded to "my_perl->Istack_sp". This means accessing a member variable called "Istack_sp" in the current interpreter.
 
 <h3> Summary </h3>
 
-Keep in mind that "PL_stack_sp" will be expanded to "my_perl-> Istack_sp". In addition, if "MULTIPLICITY" is not enabled, "Istack_sp" is directly available as a global variable. By using "PL_stack_sp", you can access with or without multiple interpreters without being aware of it.
+Keep in mind that "PL_stack_sp" will be expanded to "my_perl->Istack_sp". In addition, if "MULTIPLICITY" is not enabled, "Istack_sp" is directly available as a global variable. By using "PL_stack_sp", you can access with or without multiple interpreters without being aware of it.
 
 Perl macro definitions are too deep in the hierarchy, but if you go deeper, you'll find a landing point.
 

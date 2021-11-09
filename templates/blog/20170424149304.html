@@ -28,7 +28,7 @@ To send an email: It's easy to create in the form of a multipart message and att
 use MIME::Lite;
 
 # Create multipart message
-my $msg = MIME::Lite-> new (
+my $msg = MIME::Lite->new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
@@ -37,13 +37,13 @@ my $msg = MIME::Lite-> new (
 );
 
 # Add text
-$msg-> attach (
+$msg->attach (
   Type =>'TEXT',
   Data => "Here's the GIF file you wanted"
 );
 
 # Add image
-$msg-> attach (
+$msg->attach (
   Type =>'image / gif',
   Path =>'aaa000123.gif',
   Filename =>'logo.gif',
@@ -51,7 +51,7 @@ $msg-> attach (
 );
 
 # Send email
-$msg-> send;
+$msg->send;
 </pre>
 
 <ol>
@@ -93,7 +93,7 @@ use MIME::Lite;
 use Encode'encode';
 
 # Create multipart message
-my $msg = MIME::Lite-> new (
+my $msg = MIME::Lite->new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
@@ -102,13 +102,13 @@ my $msg = MIME::Lite-> new (
 );
 
 # Add text
-$msg-> attach (
+$msg->attach (
   Type =>'TEXT',
   Data => encode ('ISO-2022-JP','text of email body'),
 );
 
 # Add image
-$msg-> attach (
+$msg->attach (
   Type =>'image / gif',
   Path =>'aaa000123.gif',
   Filename =>'logo.gif',
@@ -116,7 +116,7 @@ $msg-> attach (
 );
 
 # Send email "
-$msg-> send;
+$msg->send;
 </pre>
 
 <h4> When sending in UTF-8 </h4>
@@ -129,7 +129,7 @@ use MIME::Lite;
 use Encode'encode';
 
 # Create multipart message
-my $msg = MIME::Lite-> new (
+my $msg = MIME::Lite->new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
@@ -138,13 +138,13 @@ my $msg = MIME::Lite-> new (
 );
 
 # Add text
-$msg-> attach (
+$msg->attach (
   Type =>'TEXT',
   Data => encode ('UTF-8','text of email body'),
 );
 
 # Add image
-$msg-> attach (
+$msg->attach (
   Type =>'image / gif',
   Path =>'aaa000123.gif',
   Filename =>'logo.gif',
@@ -152,7 +152,7 @@ $msg-> attach (
 );
 
 # Send email "
-$msg-> send;
+$msg->send;
 </pre>
 
 If you don't know the character code of Perl, see the explanation article of Encode module.

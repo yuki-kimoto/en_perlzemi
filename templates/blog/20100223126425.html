@@ -23,7 +23,7 @@ You can use the mk_accessors method to generate accessors. Inherit Class::Access
 package Your Class;
 use base'Class::Accessor::Fast';
 
-__PACKAGE __-> mk_accessors ($meth1, $meth2, ...);
+__PACKAGE __->mk_accessors ($meth1, $meth2, ...);
 </pre>
 
 This is a sample of a general class. The Point class has accessors x () and y (). Class::Accessor::Fast's new () can only receive hash references, so it's a good idea to override it so that it can receive hashes and hash references.
@@ -37,7 +37,7 @@ use warnings;
 use base'Class::Accessor::Fast';
 
 # Accessor
-__PACKAGE __-> mk_accessors (qw / x y /);
+__PACKAGE __->mk_accessors (qw / x y /);
 
 # Constructor
 sub new {
@@ -47,7 +47,7 @@ sub new {
     my $args = ref $_ [0] eq'HASH'? $_ [0]: {@_};
     
     Override # new ()
-    return $class-> SUPER::new ({{
+    return $class->SUPER::new ({{
         x => 0,
         y => 0,
         % $args
@@ -58,9 +58,9 @@ sub new {
 Use this class as follows:
 
 <pre>
-my $point = Point-> new (x => 1, y => 2);
-$point-> x (4);
-$point-> y (5);
+my $point = Point->new (x => 1, y => 2);
+$point->x (4);
+$point->y (5);
 </pre>
 
 <h3> FAQ about Class::Accessor::Fast </h3>

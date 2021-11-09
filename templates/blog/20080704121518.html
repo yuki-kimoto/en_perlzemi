@@ -20,7 +20,7 @@ A subroutine reference is a reference to a subroutine.
 # Create reference
 my $twice_ref = \ & twice;
 # Dereference and call
-my $twice_num = $twice_ref-> ($num);
+my $twice_num = $twice_ref->($num);
  
 sub twice {
   return $_ [0] * 2;
@@ -29,7 +29,7 @@ sub twice {
 
 Express the subroutine itself with & twice. (Similar to an array with @and a hash with%, a subroutine is represented with &.) Normally, subroutines are called like twice ($num). You can also call it explicitly, like & twice ($num).
 
-To represent a reference to a subroutine, use \ & twice. To call the subroutine, dereference the reference to the subroutine, as in $twice_ref-> (1). A description very similar to a hash or array dereference.
+To represent a reference to a subroutine, use \ & twice. To call the subroutine, dereference the reference to the subroutine, as in $twice_ref->(1). A description very similar to a hash or array dereference.
 
 See the following articles for a detailed explanation of the reference.
 
@@ -74,7 +74,7 @@ Create a # array of references to # subroutines.
 my @calc_funcs = (\ & sum, \ & average);
                                        
 for my $calc_func (@calc_funcs) {
-  my $result = $calc_func-> (@nums);
+  my $result = $calc_func->(@nums);
   print "Result: $result\n";
 }
 print "\n";
@@ -104,7 +104,7 @@ else {
   $calc_func = \ & average;
 }
 
-my $result = $calc_func-> (@nums);
+my $result = $calc_func->(@nums);
 
 print "Calculation method: $how_to_calc\n".
   "Result: $result\n\n";
@@ -115,9 +115,9 @@ $how_to_calc ='average';
 my %calc_table = (sum => \ & sum, average => \ & average);
 
 # $calc_table {'average'} is a reference to the subroutine
-Since # is included, dereference it with the-> operator.
+Since # is included, dereference it with the->operator.
 # Call a subroutine.
-$result = $calc_table {$how_to_calc}-> (@nums);
+$result = $calc_table {$how_to_calc}->(@nums);
 
 print "Calculation method: $how_to_calc\n".
   "Result: $result\n\n";
@@ -128,7 +128,7 @@ print "Calculation method: $how_to_calc\n".
 <pre>
 my @calc_funcs = (\ & sum, \ & average);
 for my $calc_func (@calc_funcs) {
-  my $result = $calc_func-> (@nums);
+  my $result = $calc_func->(@nums);
 }
 </pre>
 
@@ -162,12 +162,12 @@ else {
   $calc_func = \ & average;
 }
 
-my $result = $calc_func-> (@nums);
+my $result = $calc_func->(@nums);
 </pre>
 
 Polymorphism is a term that means "the same description but different functions are called". Object-oriented often means that "different methods are applied depending on the object".
 
-In this example, the statement $calc_func-> (@num) has different meanings depending on what is assigned to $calc_func. If \ $sum is assigned, the sum subroutine is called, and if \ $average is assigned, the average subroutine is called.
+In this example, the statement $calc_func->(@num) has different meanings depending on what is assigned to $calc_func. If \ $sum is assigned, the sum subroutine is called, and if \ $average is assigned, the average subroutine is called.
 
 In java, overloading and overriding are the ways to achieve polymorphism, and in C they are function pointers.
 
@@ -176,7 +176,7 @@ In java, overloading and overriding are the ways to achieve polymorphism, and in
 <pre>
 $how_to_calc ='average';
 my %calc_table = (sum => \ & sum, average => \ & average);
-$result = $calc_table {$how_to_calc}-> (@nums);
+$result = $calc_table {$how_to_calc}->(@nums);
 </pre>
 
 I think the <a href="/blog/20161013147635.html">hash</a> method is the most sophisticated form of function-referenced polymorphism.
@@ -227,7 +227,7 @@ sub parse {
   my ($text,%handler) = @_;
   
   # First called handler
-  $handler {start_h}-> ();
+  $handler {start_h}->();
   
   # Analyze one character at a time.
   for my $i (0 .. length($text) ―― 1) {
@@ -237,12 +237,12 @@ sub parse {
     # Made available in callback functions
     # Pass the character and position as arguments.
     if ($char = ~ / [a-z] /) {
-      $handler {lc_h}-> ($char, $i);
+      $handler {lc_h}->($char, $i);
     }
   }
   
   # Last called handler
-  $handler {end_h}-> ();
+  $handler {end_h}->();
 }
 
 # Event handler (callback function)
@@ -283,7 +283,7 @@ sub parse {
   my ($text,%handler) = @_;
   
   # First called handler
-  $handler {start_h}-> ();
+  $handler {start_h}->();
   # ...
 }
 </pre>
@@ -337,12 +337,12 @@ print "1: Reference to subroutine\n";
 my $twice_ref = \ & twice;
 
 # When calling
-# $sub_ref-> (arg1, arg2)
+# $sub_ref->(arg1, arg2)
 Call it like # .
 # When no argument is needed
-# $sub_ref-> ().
+# $sub_ref->().
 my $num = 1;
-my $twice_num = $twice_ref-> ($num);
+my $twice_num = $twice_ref->($num);
 
 print "Twice of $num is $twice_num.\n\n";
 
@@ -362,7 +362,7 @@ my $sum_ref = sub {
   return $total;
 };
 
-my $total = $sum_ref-> (1, 2, 3);
+my $total = $sum_ref->(1, 2, 3);
 print "The sum of 1,2,3 is $total.\n\n";
 </pre>
 

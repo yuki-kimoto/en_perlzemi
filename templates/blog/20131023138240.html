@@ -27,7 +27,7 @@ use PDL;
 my $nums = pdl [4, 2, 7];
 
 # Maximum value
-my $max = $nums-> max;
+my $max = $nums->max;
 </pre>
 
 The PDL::Ufunc module provides functions for calculating statistics from PDL variables.
@@ -38,7 +38,7 @@ Use the <strong> min method </strong> to find the <strong> minimum </strong>.
 
 <pre>
 # minimum value
-my $min = $nums-> min;
+my $min = $nums->min;
 </pre>
 
 <h3> Total </h3>
@@ -47,7 +47,7 @@ Use the <strong> sum method </strong> to find the <strong> sum </strong>.
 
 <pre>
 # total
-my $total = $nums-> sum;
+my $total = $nums->sum;
 </pre>
 
 <h3> Average </h3>
@@ -55,7 +55,7 @@ my $total = $nums-> sum;
 Use the <strong> avg method </strong> to find the <strong> average </strong>.
 
 <pre>
-my $average = $nums-> avg;
+my $average = $nums->avg;
 </pre>
 
 <h3> Median </h3>
@@ -63,7 +63,7 @@ my $average = $nums-> avg;
 Use the <strong> median method </strong> to find the <strong> median </strong>.
 
 <pre>
-my $median = $nums-> median;
+my $median = $nums->median;
 </pre>
 
 The median is the value that comes in the middle when all the values ​​are listed.
@@ -73,7 +73,7 @@ The median is the value that comes in the middle when all the values ​​are l
 Use the <strong> mode method </strong> to find the <strong> mode </strong>.
 
 <pre>
-my $mode = $nums-> mode;
+my $mode = $nums->mode;
 </pre>
 
 The mode is the value that appears most often.
@@ -84,7 +84,7 @@ Use the <strong> qsort method </strong> to sort in ascending order.
 
 <pre>
 # Ascending sort
-my $nums_sort_asc = $nums-> qsort;
+my $nums_sort_asc = $nums->qsort;
 </pre>
 
 To sort in descending order, combine ascending sort and slice.
@@ -111,22 +111,22 @@ use PDL::NiceSlice;
 my $nums = pdl [4, 4, 2, 2, 2, 7];
 
 # Maximum value
-my $max = $nums-> max;
+my $max = $nums->max;
 
 # minimum value
-my $min = $nums-> min;
+my $min = $nums->min;
 
 # total
-my $total = $nums-> sum;
+my $total = $nums->sum;
 
 # Average
-my $average = $nums-> avg;
+my $average = $nums->avg;
 
 # Median
-my $median = $nums-> median;
+my $median = $nums->median;
 
 # Mode
-my $mode = $nums-> mode;
+my $mode = $nums->mode;
 
 print "Max: $max\n";
 print "Min: $min\n";
@@ -136,7 +136,7 @@ print "Median: $median\n";
 print "Mode: $mode\n";
 
 # Ascending sort
-my $nums_sort_asc = $nums-> qsort;
+my $nums_sort_asc = $nums->qsort;
 
 # Descending sort(combined with ascending sort and slice)
 my $nums_sort_desc = $nums_sort_asc (-1: 0);
@@ -171,7 +171,7 @@ use PDL::Stats::Basic;
 my $nums = pdl [4, 2, 7];
 
 # Distributed
-my $variance = $nums-> var;
+my $variance = $nums->var;
 </pre>
 
 <h3> Bias of an estimulus </h3>
@@ -180,7 +180,7 @@ To find the <strong> unbiased variance </strong>, use the <strong> var_unbiased 
 
 <pre>
 # Unbiased dispersion
-my $variance = $nums-> var_unbiased;
+my $variance = $nums->var_unbiased;
 </pre>
 
 Bias of an estimulus has a denominator of (n -1).
@@ -191,7 +191,7 @@ To find the <strong> standard deviation </strong>, use the <strong> stdv </stron
 
 <pre>
 # standard deviation
-my $stdv = $nums-> stdv;
+my $stdv = $nums->stdv;
 </pre>
 
 The meaning of the standard deviation is an indication of how scattered the data is. The standard deviation formula is the "positive square root of the variance". Variance also indicates how scattered the data is, but because the units are different from the original data, it is difficult to compare with the original data. If you take the positive square root and make it the standard deviation, the unit will be the same as the unit of the original data.
@@ -202,7 +202,7 @@ To find the <strong> unbiased standard deviation </strong>, use the <strong> std
 
 <pre>
 # Unbiased standard deviation
-my $stdv = $nums-> stdv_unbiased;
+my $stdv = $nums->stdv_unbiased;
 </pre>
 
 The unbiased standard deviation formula is the "positive square root of the unbiased variance".
@@ -213,7 +213,7 @@ To find the <strong> standard error </strong>, use the <strong> se </strong> met
 
 <pre>
 # Standard error
-my $se = $nums-> se;
+my $se = $nums->se;
 </pre>
 
 <h3> Sum of deviation squares </h3>
@@ -222,7 +222,7 @@ To find the <strong> sum of squared deviations </strong>, use the <strong> ss </
 
 <pre>
 # Deviation square sum
-my $ss = $nums-> ss;
+my $ss = $nums->ss;
 </pre>
 
 <h3> Skewness </h3>
@@ -231,7 +231,7 @@ To find the <strong> skewness </strong>, use the <strong> skew </strong> method.
 
 <pre>
 # Skewness
-my $skew = $nums-> skew;
+my $skew = $nums->skew;
 </pre>
 
 <h3> Bias of an estimulus </h3>
@@ -240,7 +240,7 @@ To find the <strong> unbiased skewness </strong>, use the <strong> skew_unbiased
 
 <pre>
 # Bias of an estimulus
-my $skew_unbiased = $nums-> skew_unbiased;
+my $skew_unbiased = $nums->skew_unbiased;
 </pre>
 
 <h3> Kurtosis </h3>
@@ -249,7 +249,7 @@ To find the <strong> kurtosis </strong>, use the <strong> kurt </strong> method.
 
 <pre>
 # Kurtosis
-my $kurt = $nums-> kurt;
+my $kurt = $nums->kurt;
 </pre>
 
 <h3> Bias of an estimulus </h3>
@@ -258,7 +258,7 @@ To find the <strong> unbiased kurtosis </strong>, use the <strong> kurt_unbiased
 
 <pre>
 # Bias of an estimulus
-my $kurt_unbiased = $nums-> kurt_unbiased;
+my $kurt_unbiased = $nums->kurt_unbiased;
 </pre>
 
 <h3> Sample </h3>
@@ -276,34 +276,34 @@ use PDL::Stats::Basic;
 my $nums = pdl [4, 2, 7, 3, 5];
 
 # Distributed
-my $variance = $nums-> var;
+my $variance = $nums->var;
 
 # Unbiased dispersion
-my $variance_unbiased = $nums-> var_unbiased;
+my $variance_unbiased = $nums->var_unbiased;
 
 # standard deviation
-my $stdv = $nums-> stdv;
+my $stdv = $nums->stdv;
 
 # Unbiased standard deviation
-my $stdv_unbiased = $nums-> stdv_unbiased;
+my $stdv_unbiased = $nums->stdv_unbiased;
 
 # Standard error
-my $se = $nums-> se;
+my $se = $nums->se;
 
 # Deviation square sum
-my $ss = $nums-> ss;
+my $ss = $nums->ss;
 
 # Skewness
-my $skew = $nums-> skew;
+my $skew = $nums->skew;
 
 # Bias of an estimulus
-my $skew_unbiased = $nums-> skew_unbiased;
+my $skew_unbiased = $nums->skew_unbiased;
 
 # Kurtosis
-my $kurt = $nums-> kurt;
+my $kurt = $nums->kurt;
 
 # Bias of an estimulus
-my $kurt_unbiased = $nums-> kurt_unbiased;
+my $kurt_unbiased = $nums->kurt_unbiased;
 
 print "Variance: $variance\n";
 print "Unbiased variance: $variance_unbiased\n ";

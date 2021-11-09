@@ -6,22 +6,22 @@ Use the Math::Bezier module to find the coordinates of a Bezier curve in Perl. Y
 use Math::Bezier;
  
 # (x, y) Create a curve by passing a list of control points
-my $bezier = Math::Bezier-> new ($x1, $y1, $x2, $y2, ..., $xn, $yn);
+my $bezier = Math::Bezier->new ($x1, $y1, $x2, $y2, ..., $xn, $yn);
  
 # Pass the reference instead
-my $bezier = Math::Bezier-> new ([$x1, $y1, $x2, $y2, ..., $xn, $yn]);
+my $bezier = Math::Bezier->new ([$x1, $y1, $x2, $y2, ..., $xn, $yn]);
  
 # Determine the point(x, y) in the curve. Specify a range from 0 to 1.
-my ($x, $y) = $bezier-> point(0.5);
+my ($x, $y) = $bezier->point(0.5);
  
 # Returns a list in scalar context
-my $xy = $bezier-> point(0.5);
+my $xy = $bezier->point(0.5);
  
 # Returns the (x, y) points divided into 20 along the curve.
-my @curve = $bezier-> curve (20);
+my @curve = $bezier->curve (20);
  
 # Receive in reference
-my $curve = $bezier-> curve (20);
+my $curve = $bezier->curve (20);
 </pre>
 
 <h3> A sample that draws a 3D Bezier curve and divides it into 100 points </h3>
@@ -41,13 +41,13 @@ use warnings;
 use Math::Bezier;
 
 # List of control points (x, y)
-my $bezier = Math::Bezier-> new (0, 0, 10, 10, 20, 40);
+my $bezier = Math::Bezier->new (0, 0, 10, 10, 20, 40);
 
-my $curve_points = $bezier-> curve (100);
+my $curve_points = $bezier->curve (100);
 
 for (my $i = 0; $i <@$curve_points; $i + = 2) {
-  my $x = $curve_points-> [$i];
-  my $y = $curve_points-> [$i + 1];
+  my $x = $curve_points->[$i];
+  my $y = $curve_points->[$i + 1];
   
   print "($x, $y)\n";
 }

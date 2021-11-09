@@ -21,14 +21,14 @@ XML is a common format for writing data in text files. It can be used when writi
 <pre>
 # Load module and create object
 use XML::Simple;
-my $xml = XML::Simple-> new;
+my $xml = XML::Simple->new;
 </pre>
 
 Use the <strong> XMLin method </strong> to read the XML file. XML is transformed into Perl data structures (multidimensional hashes and arrays).
 
 <pre>
 # XML file parsing
-my $data = $xml-> XMLin ('conf.xml');
+my $data = $xml->XMLin ('conf.xml');
 </pre>
 
 This is a sample XML of the configuration file. Imagine an application that edits multiple logs on multiple systems. Save the file in UTF-8.
@@ -37,21 +37,15 @@ This is a sample XML of the configuration file. Imagine an application that edit
 <? xml version = "1.0" encoding = "UTF-8"?>
 <conf>
   <!-Version 1.01->
+  <!-Application home directory->  <app-home-dir> c: \ apphome </app-home-dir>
 
-  <!-Application home directory->
-  <app-home-dir> c: \ apphome </app-home-dir>
+  <!-Library directory->  <lib-dir> lib </lib-dir>
 
-  <!-Library directory->
-  <lib-dir> lib </lib-dir>
+  <!-Directory to store logs->  <log-dir> log </log-dir>
 
-  <!-Directory to store logs->
-  <log-dir> log </log-dir>
+  <!-System type->  <system> xxx yyy zzz </system>
 
-  <!-System type->
-  <system> xxx yyy zzz </system>
-
-  <!-Log type->
-  <log-types>
+  <!-Log type->  <log-types>
     <cpu script = "parse_cpu.pl" from-dir = "raw / cpu" to-dir = "edit / cpu" />
     <mem script = "parse_mem.pl" from-dir = "raw / mem" to-dir = "edit / mem" />
     <gclog script = "parse_gclog.pl" from-dir = "raw / gclog" to-dir = "edit / gclog" />
@@ -103,8 +97,8 @@ Since it is converted to an internal character string, if you want to output it,
 <pre>
 # When outputting, convert from internal character string to byte character string
 use Encode'encode';
-my $conf = $xml-> XMLin ('japanese.xml');
-print encode ('UTF-8', $conf-> {name});
+my $conf = $xml->XMLin ('japanese.xml');
+print encode ('UTF-8', $conf->{name});
 </pre>
 
 <h3> XML::Simple options </h3>
@@ -113,7 +107,7 @@ XML::Simple allows you to specify options in the constructor arguments.
 
 <pre>
 # Option
-my $xml = XML::Simple-> new (ForceArray => 1);
+my $xml = XML::Simple->new (ForceArray => 1);
 </pre>
 
 The following two options may be used frequently.

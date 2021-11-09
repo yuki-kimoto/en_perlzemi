@@ -19,7 +19,7 @@ This time, let's make it possible to pass arguments to the constructor.
 <h3> 1. Pass arguments to the constructor. </h3>
 When creating an object
 <pre>
-my $book = Book-> new (title =>'Good news', author =>'Kimoto');
+my $book = Book->new (title =>'Good news', author =>'Kimoto');
 </pre>
 
 Is ideal.
@@ -41,7 +41,7 @@ There is nothing particularly difficult.
 You'll want to accept hashes as well as <b> hash references </b>. Like this.
 
 <pre>
-my $book = Book-> new ({title =>'Good news', author =>'Kimoto'});
+my $book = Book->new ({title =>'Good news', author =>'Kimoto'});
 </pre>
 
 The constructor that can be supported is like this.
@@ -67,8 +67,8 @@ sub new {
   my %args = ref $args [0] eq'HASH'?%{$args [0]}: @args;
   my $self = {%args};
  
-  $self-> {title} || ='default title';
-  $self-> {author} || ='default author';
+  $self->{title} || ='default title';
+  $self->{author} || ='default author';
 
   return $self, $class;
 }
@@ -77,14 +77,14 @@ sub new {
 Please pay attention to the following part. If the <b> value is a false value, the default value is assigned </b>.
 
 <pre>
-  $self-> {title} || ='default title';
-  $self-> {author} || ='default author';
+  $self->{title} || ='default title';
+  $self->{author} || ='default author';
 </pre>
 
 However, with this, the default value will be set even if an empty string is assigned, so if that is not the case, use the <b> defined </b> function.
 
 <pre>
-  $self-> {title} ='default title' unless defined $self-> {title};
+  $self->{title} ='default title' unless defined $self->{title};
 </pre>
 
 will do.

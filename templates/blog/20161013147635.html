@@ -100,7 +100,7 @@ You can use {} instead of () to create a reference to a direct hash
 <h4> Access the hash element </h4>
 
 <pre>
-$math_scores_ref-> {Aiko}
+$math_scores_ref->{Aiko}
 </pre>
 
 <h4> Extract the hash from the hash reference </h4>
@@ -120,10 +120,10 @@ my %math_scores =% $math_scores;
 
 You can dereference and retrieve hashes with% $math_scores.
 
-You can use "-> {key}" if you only need one element.
+You can use "->{key}" if you only need one element.
 
 <pre>
-$math_scores-> {Taro};
+$math_scores->{Taro};
 </pre>
 
 You can read more about hash references here.
@@ -216,7 +216,7 @@ my %math_scores = (
 # Assign the generated reference to the scalar variable $math_scores_ref
 my $math_scores_ref = \%math_scores;
 print "1: Hash reference\n";
-print Data::Dumper-> Dump ([$math_scores_ref], ['$math_scores_ref']);
+print Data::Dumper->Dump ([$math_scores_ref], ['$math_scores_ref']);
 print "\n\n";
 
 # 2: Make a direct hash reference using an anonymous hash ({}).
@@ -227,13 +227,13 @@ my $math_scores_ref2 = {
 };
 
 print "2: Anonymous hash\n";
-print Data::Dumper-> Dump ([$math_scores_ref2], ['$math_scores_ref2']);
+print Data::Dumper->Dump ([$math_scores_ref2], ['$math_scores_ref2']);
 print "\n\n";
 
-# 3: Access the hash element. ($hash_ref-> {key})
+# 3: Access the hash element. ($hash_ref->{key})
 print "3: Access the hash element.\n";
-print "\ $math_scores_ref-> {Aiko} = $math_scores_ref-> {Aiko}\n";
-print "\ $math_scores_ref-> {Kenta} = $math_scores_ref-> {Kenta}\n";
+print "\ $math_scores_ref->{Aiko} = $math_scores_ref->{Aiko}\n";
+print "\ $math_scores_ref->{Kenta} = $math_scores_ref->{Kenta}\n";
 
 </pre>
 
@@ -255,8 +255,8 @@ $math_scores_ref2 = {
 
 
 3: Access the hash element.
-$math_scores_ref-> {Aiko} = 89
-$math_scores_ref-> {Kenta} = 100
+$math_scores_ref->{Aiko} = 89
+$math_scores_ref->{Kenta} = 100
 </pre>
 
 <h4> Hash reference dereference </h4>
@@ -278,22 +278,22 @@ my $math_scores = {
 # 1: Dereference and output all elements of the hash
 print "1: Dereference and print all elements of the hash\n";
 for my $key (keys %$math_scores) {
-  print "\ $math_scores-> {$key} =". $math_scores-> {$key}. "\n";
+  print "\ $math_scores->{$key} =". $math_scores->{$key}. "\n";
 }
 print "\n";
 
-# 2: Use the-> operator to refer to an element.
+# 2: Use the->operator to refer to an element.
 print "2: Delete one key\n";
-delete $math_scores-> {Taro};
+delete $math_scores->{Taro};
 
-print Data::Dumper-> Dump ([$math_scores], ['$math_scores']);
+print Data::Dumper->Dump ([$math_scores], ['$math_scores']);
 </pre>
 Execution result
 <pre>
 1: Dereference and output all elements of the hash
-$math_scores-> {Kenji} = 54
-$math_scores-> {Taro} = 89
-$math_scores-> {Naoko} = 54
+$math_scores->{Kenji} = 54
+$math_scores->{Taro} = 89
+$math_scores->{Naoko} = 54
 
 2: Delete one key
 $math_scores = {

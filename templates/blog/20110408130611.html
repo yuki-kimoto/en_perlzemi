@@ -1,10 +1,10 @@
 nt; filename = pictures.csv');
-  $headers-> content_type ('text / csv; charset = UTF-8');
+  $headers->content_type ('text / csv; charset = UTF-8');
   
   # Render data
-  return $self-> render (data => $content);
+  return $self->render (data => $content);
 };
-app-> start;
+app->start;
 </pre>
 
 Use the Text::CSV::Encoded module to create CSV data. The only way to convert the data of one record to a row is to use the print method, which is a method for printing to a filehandle. Therefore, Perl's scalar input / output function is used to output to scalar variables.
@@ -16,7 +16,7 @@ You can name the file using the Content-Disposition header. Let's also specify t
 You can specify <strong> template_class </strong> as an argument of the render method for the class that describes the template when drawing.
 
 <pre>
-$c-> render (template_class => $class);
+$c->render (template_class => $class);
 </pre>
 
 This is very useful if you want to write the template directly in a plugin etc. Mojolicious plugins are very flexible and allow you to write and incorporate the web application itself.
@@ -28,11 +28,11 @@ use Mojo::Base'Mojolicious::Plugin';
 sub register {
   my ($self, $app, $conf) = @_;
   
-  my $r = $app-> route;
-  $r-> get ('/ viewer', sub {
+  my $r = $app->route;
+  $r->get ('/ viewer', sub {
      my $self = shift;
      # Specify template class
-     return $self-> render (template_class => __PACKAGE__);
+     return $self->render (template_class => __PACKAGE__);
   });
 }
 
@@ -67,8 +67,8 @@ get'/ sizeunknowndata' => sub {
     or die "Error";
 
   # Write chunk
-  $self-> res-> headers-> content_type ('application / gzip');
-  $self-> res-> headers-> content_disposition (qq / attachment; filename = "$file" /);
+  $self->res->headers->content_type ('application / gzip');
+  $self->res->headers->content_disposition (qq / attachment; filename = "$file" /);
   my $cb;
   $cb = sub {
     my $c = shift;
@@ -79,9 +79,9 @@ get'/ sizeunknowndata' => sub {
       undef $cb;
       return;
     }
-    $c-> write_chunk ($buffer, $cb);
+    $c->write_chunk ($buffer, $cb);
   };
-  $self-> $cb;
+  $self->$cb;
 };
 </pre>
 
@@ -96,7 +96,7 @@ Large static files can usually be delivered under "public" without straining mem
 
 <h3> Draw a 404 Not Found page </h3>
 
-Use <strong> reply-> not_found </strong> to draw a 404 Not found page (the page to display when the page is not found). Twice
+Use <strong> reply->not_found </strong> to draw a 404 Not found page (the page to display when the page is not found). Twice
 
 <pre>
 get'/' => sub {
@@ -104,21 +104,21 @@ get'/' => sub {
   
   If you want to draw a page with # 404 not found
   if (...) {
-    return $self-> reply-> not_found;
+    return $self->reply->not_found;
   }
 
-  $self-> render;
+  $self->render;
 }
 </pre>
 
 <h4> Changes in Mojolicious 6 </h4>
 
-The rendering of the 404 Not Found page has changed from render_not_found to reply-> not_found.
+The rendering of the 404 Not Found page has changed from render_not_found to reply->not_found.
 
 
 <h3> Draw exception (error) page </h3>
 
-You may want to show the error page to the user if something goes wrong with unintended processing. Use <strong> reply-> exception </strong> to draw such a page. Twice
+You may want to show the error page to the user if something goes wrong with unintended processing. Use <strong> reply->exception </strong> to draw such a page. Twice
 
 <pre>
 get'/' => sub {
@@ -126,16 +126,16 @@ get'/' => sub {
   
   # Draw exception (error) page
   if (...) {
-    return $self-> reply-> exception;
+    return $self->reply->exception;
   }
 
-  $self-> render;
+  $self->render;
 }
 </pre>
 
 <h4> Changes in Mojolicious 6 </h4>
 
-The render_exception method for rendering exception pages has been changed to reply-> exception.
+The render_exception method for rendering exception pages has been changed to reply->exception.
 
 
 <h3> How to use JSON::XS to draw JSON </h3>
@@ -147,18 +147,18 @@ use Mojolicious::Lite;
 use Mojo::JSON::XS;
 
 Replace handler for drawing # json
-app-> renderer-> add_handler (json => sub {
+app->renderer->add_handler (json => sub {
   my ($self, $c, $output, $options) = @_;
-  $$output = Mojo::JSON::XS-> new-> encode ($options-> {json});
+  $$output = Mojo::JSON::XS->new->encode ($options->{json});
 });
 
 get'/' => sub {
   my $self = shift;
   
-  $self-> render (json => {name =>'kimoto'});
+  $self->render (json => {name =>'kimoto'});
 };
 
-app-> start;
+app->start;
 </pre>
 
 Mojo::JSON::XS is a module that has the same interface as Mojo::JSON and uses JSON::XS internally. It's included in a package called Mojo::JSON::Any, so install it when you use it.

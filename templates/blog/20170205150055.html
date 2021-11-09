@@ -72,8 +72,8 @@ new (...)
   
   // Create structure (create as pointer)
   Point * point = (Point *) malloc (sizeof (Point));
-  point-> x = x;
-  point-> y = y;
+  point->x = x;
+  point->y = y;
   
   // Convert pointer to size_t type
   size_t point_iv = PTR2IV (point);
@@ -108,7 +108,7 @@ x (...)
   Point * point = INT2PTR (Point *, point_iv);
   
   // get x
-  double x = point-> x;
+  double x = point->x;
   
   // Convert x to SV * type
   SV * x_sv = sv_2mortal (newSVnv (x));
@@ -134,7 +134,7 @@ y (...)
   Point * point = INT2PTR (Point *, point_iv);
   
   // get x
-  double y = point-> y;
+  double y = point->y;
   
   // Convert x to SV * type
   SV * y_sv = sv_2mortal (newSVnv (y));
@@ -188,9 +188,9 @@ use strict;
 use warnings;
 use Point;
 
-my $point = Point-> new (1, 2);
-print $point-> x. "\n";
-print $point-> y. "\n";
+my $point = Point->new (1, 2);
+print $point->x. "\n";
+print $point->y. "\n";
 </pre>
 
 <h3> Compile and run </h3>

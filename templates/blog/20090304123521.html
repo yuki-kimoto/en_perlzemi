@@ -33,21 +33,21 @@ The start method starts the capture, and the stop method ends the capture. You c
 <pre>
 use IO::Capture::Stdout;
 
-my $capture = IO::Capture::Stdout-> new;
-$capture-> start;
+my $capture = IO::Capture::Stdout->new;
+$capture->start;
 print "aaa";
-$capture-> stop;
-my $stdout = $capture-> read;
+$capture->stop;
+my $stdout = $capture->read;
 </pre>
 
 If you want to get the standard output multiple times, you can write as follows.
 
 <pre>
-$capture-> start;
+$capture->start;
 print "aaa";
 print "bbb";
-$capture-> stop;
-my @stdout = $capture-> read;
+$capture->stop;
+my @stdout = $capture->read;
 </pre>
 
 In the list context, you can get ("aaa", "bbb") by calling read.
@@ -84,11 +84,11 @@ You can do the same with IO::Capture::Stderr.
 <pre>
 use IO::Capture::Stderr;
 
-my $capture = IO::Capture::Stderr-> new;
-$capture-> start;
+my $capture = IO::Capture::Stderr->new;
+$capture->start;
 print STDERR "aaa";
-$capture-> stop;
-my $stderr = $capture-> read;
+$capture->stop;
+my $stderr = $capture->read;
 </pre>
 
 <h4> How to capture standard error using only standard features </h4>

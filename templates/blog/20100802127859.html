@@ -32,7 +32,7 @@ use File::Basename'basename';
 # Same meaning as above
 BEGIN {
   require File::Basename;
-  File::Basename-> import ('basename');
+  File::Basename->import ('basename');
 }
 </pre>
 
@@ -55,11 +55,11 @@ print $foo;
 my $scores = {math => 90, english => 100};
 {
   # Temporary change
-  local $scores-> {math} = 80;
+  local $scores->{math} = 80;
 }
 
 Return to # 90
-print $scores-> {math};
+print $scores->{math};
 </pre>
 
 However, local is not used unless it has a very special purpose. You can do it with my in almost all situations, so first seriously consider whether you can do it with my.
@@ -110,14 +110,14 @@ perldoc -v $.
 
 <h3> Method call </h3>
 
-In Perl you can use-> to make method calls.
+In Perl you can use->to make method calls.
 <pre>
 # Method call
-SomeClass-> method ('a','b');
-$obj-> method ('a','b');
+SomeClass->method ('a','b');
+$obj->method ('a','b');
 </pre>
 
-A method call differs from a function call in that the value to the left of-> is passed as the first argument of the subroutine. In the above example, the first argument of method is the string SomeClass or $obj. 'a' and'b' are the second and third arguments.
+A method call differs from a function call in that the value to the left of->is passed as the first argument of the subroutine. In the above example, the first argument of method is the string SomeClass or $obj. 'a' and'b' are the second and third arguments.
 
 The recipient describes it as follows.
 <pre>
@@ -185,7 +185,7 @@ my $twice = sub {
 To do this:
 
 <pre>
-my $result = $twice-> (5);
+my $result = $twice->(5);
 </pre>
 
 <h3> Omission of {} in dereference </h3>
@@ -202,7 +202,7 @@ my @array = @{$array_ref};
 {} Is required if it is not a simple variable.
 
 <pre>
-my @array = @{$var-> nums};
+my @array = @{$var->nums};
 </pre>
 
 <h3> How to read the document of the file operator </h3>
@@ -242,9 +242,9 @@ my ($key1, $key2, $key3) = @{$hash} {qw / key1 key2 key3 /};
 I think it is better to substitute one by one if possible.
 
 <pre>
-my $key1 = $hash-> {key1};
-my $key2 = $hash-> {key2};
-my $key3 = $hash-> {key3};
+my $key1 = $hash->{key1};
+my $key2 = $hash->{key2};
+my $key3 = $hash->{key3};
 </pre>
 
 <h3> How to use eval </h3>
@@ -518,7 +518,7 @@ print $fh $output;
 This is called indirect object notation and has the same meaning as:
 
 <pre>
-$fh-> print($output);
+$fh->print($output);
 </pre>
 
 <h3> On Windows IO::Poll and select only work for sockets </h3>
@@ -615,7 +615,7 @@ $str = ~ m # http://aaa.com#;
 The ord function that returns a code point when a character string is passed is an abbreviation for ordinal. This means ordinal when translated into Japanese. By the way, the paired chr function converts it to a character when you pass a code point.
 
 <pre>
-ord function <-> chr function
+ord function <->chr function
 </pre>
 
 <h3> or is read in English as "if the left side is not true". </h3>

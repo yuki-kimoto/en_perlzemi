@@ -156,19 +156,19 @@ o conf urllist shift
 Installation of CPAN modules often fails. It's difficult to pinpoint the cause of this, but here are some possible situations.
 
 1. The CPAN mirror is down
--> Add an available CPAN mirror to the beginning of the urllist
+->Add an available CPAN mirror to the beginning of the urllist
 
 2. The module is huge, so there is not enough space to reserve for building the module.
--> Try increasing the value of build_cache to about 100M
+->Try increasing the value of build_cache to about 100M
 
 3. The module only assumes a Unix environment. Alternatively, it includes tests that fail on Windows.
--> If you think it's just because the test is failing, you can try a forced installation, but it's a good idea to report it.
+->If you think it's just because the test is failing, you can try a forced installation, but it's a good idea to report it.
 
 4. XS is included but cannot be installed because there is no gcc compiler.
--> If the gcc package is Linux, install gcc with yum or apt-get, if it is Windows, MinGW is packed if it is 5.10.1 or later ActivePerl, and there is a gcc environment.
+->If the gcc package is Linux, install gcc with yum or apt-get, if it is Windows, MinGW is packed if it is 5.10.1 or later ActivePerl, and there is a gcc environment.
 
 5. You are in an environment where you can only use the Internet with a proxy connection.
--> In the case of a corporate network, you may not be able to connect to the Internet via a proxy server. In that case, you can set a proxy. You need to find out the domain name and port number of the proxy. Twice
+->In the case of a corporate network, you may not be able to connect to the Internet via a proxy server. In that case, you can set a proxy. You need to find out the domain name and port number of the proxy. Twice
 
 <pre>
 # Proxy settings
@@ -187,7 +187,7 @@ http://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/
 </pre>
 
 6. The module depends on another (non-Perl) library
--> For example XML::LibXML depends on a library called libxml2. If that library is not installed, CPAN installation will fail. You need to install the package containing libxml2 with commands such as yum and apt-get.
+->For example XML::LibXML depends on a library called libxml2. If that library is not installed, CPAN installation will fail. You need to install the package containing libxml2 with commands such as yum and apt-get.
 
 <h3> FAQ about CPAN modules </h3>
 
@@ -247,7 +247,7 @@ A. Use the following script. ExtUtils::Installed is available.
 <pre>
 # List of installed module names
 use ExtUtils::Installed;
-print join "\n", ExtUtils::Installed-> new-> modules;
+print join "\n", ExtUtils::Installed->new->modules;
 </pre>
 
 Q. How can I install the modules in a new environment?

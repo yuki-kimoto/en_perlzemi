@@ -4,17 +4,17 @@ Let's do JavaScript-enabled web scraping with Selenium::Firefox. Selenium::Firef
 
 <pre>
 # Generate driver. The following two are the same, but only work with Firefox 48+.
-my $driver = Selenium::Firefox-> new;
-$driver = Selenium::Firefox-> new (marionette_enabled => 1);
+my $driver = Selenium::Firefox->new;
+$driver = Selenium::Firefox->new (marionette_enabled => 1);
  
 # Do something
 
 # Shut down the driver
-$driver-> shutdown_binary;
+$driver->shutdown_binary;
 
 # For Firefox 47 and if it's too old. Marionettes are disabled.
-$driver = Selenium::Firefox-> new (marionette_enabled => 0);
-$driver-> shutdown_binary; </pre>
+$driver = Selenium::Firefox->new (marionette_enabled => 0);
+$driver->shutdown_binary; </pre>
 </pre>
 
 <h3> Preparation of execution environment </h3>

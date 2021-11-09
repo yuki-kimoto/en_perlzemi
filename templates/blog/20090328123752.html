@@ -24,9 +24,9 @@ If the environment is Windows, I created an object of FilePath::Windows class, a
 use strict;
 use warnings;
 
-my $file_path = FilePath-> new;
+my $file_path = FilePath->new;
 
-my $result = $file_path-> cat_path ('a','b');
+my $result = $file_path->cat_path ('a','b');
 
 print "Result: $result\n";
 
@@ -36,10 +36,10 @@ package FilePath;
 sub new {
   my $self = shift;
   if ($^ O eq'MSWin32') {
-    return FilePath::Windows-> new;
+    return FilePath::Windows->new;
   }
   else {
-    return FilePath::Unix-> new;
+    return FilePath::Unix->new;
   }
 }
 
@@ -56,7 +56,7 @@ sub new {
 
 sub cat_path {
   my ($self, $str1, $str2) = @_;
-  return $str1. $Self-> delimiter. $Str2;
+  return $str1. $Self->delimiter. $Str2;
 }
 
 # For Unix
@@ -105,10 +105,10 @@ package FilePath;
 sub new {
   my $self = shift;
   if ($^ O eq'MSWin32') {
-    return FilePath::Windows-> new;
+    return FilePath::Windows->new;
   }
   else {
-    return FilePath::Unix-> new;
+    return FilePath::Unix->new;
   }
 }
 </pre>
@@ -119,10 +119,10 @@ I'm looking at $^ O to find out what type of OS I'm using and changing the objec
 sub new {
   my $self = shift;
   if ($^ O eq'MSWin32') {
-    return FilePath::Windows-> new (@_);
+    return FilePath::Windows->new (@_);
   }
   else {
-    return FilePath::Unix-> new (@_);
+    return FilePath::Unix->new (@_);
   }
 }
 </pre>
@@ -131,8 +131,8 @@ It is more often described as. Writing using the ternary operator makes it even 
 <pre>
 sub new {
   my $self = shift;
-  return $^ O eq'MSWin32'? FilePath::Windows-> new (@_):
-                            FilePath::Unix-> new (@_);
+  return $^ O eq'MSWin32'? FilePath::Windows->new (@_):
+                            FilePath::Unix->new (@_);
 }
 </pre>
 

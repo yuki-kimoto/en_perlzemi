@@ -284,8 +284,8 @@ In Perl, writing a class is generally written as follows.
 package Point;
 
 # Accessor
-sub x {shift-> {x}}
-sub y {shift-> {y}}
+sub x {shift->{x}}
+sub y {shift->{y}}
 
 # Constructor
 sub new {
@@ -300,9 +300,9 @@ sub new {
 
 package main;
 
-my $point = Point-> new (x => 1, y => 2);
-my $x = $point-> x;
-my $y = $point-> y;
+my $point = Point->new (x => 1, y => 2);
+my $x = $point->x;
+my $y = $point->y;
 </pre>
 
 It feels fresh, so I'd like to expect it in the near future so that I can write it easily.

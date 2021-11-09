@@ -25,10 +25,10 @@ You need to keep the order when multiple processes write to a single file. If th
 Also, if there are multiple processes that read and write to one file, data inconsistency will occur. Consider an access counter. Suppose the file says 0. Suppose you have a program that adds 1 to this number and writes it back. Consider the problem that arises when accessing in parallel in this case.
 
 <pre>
-Process A Read - -- -- -- -- -- -- -- -- -> Write
+Process A Read - -- -- -- -- -- -- -- -- ->Write
                   0 1
 
-Process B Read - -- -- -- -- -- -- -- -- -- --> Write
+Process B Read - -- -- -- -- -- -- -- -- -- -->Write
                                  0 1
 
 File contents 0 1 1

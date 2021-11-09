@@ -27,19 +27,19 @@ use utf8;
 
 use Imager;
 
-my $img = Imager-> new;
+my $img = Imager->new;
 
 # Load image
-$img-> read(file =>'example.jpg')
-  or die $img-> errstr;
+$img->read(file =>'example.jpg')
+  or die $img->errstr;
 
 # Font
-my $font = Imager::Font-> new (
+my $font = Imager::Font->new (
   file =>'/usr/share/fonts/ja/TrueType/kochi-gothic-subst.ttf'
 );
 
 # Drawing a string
-$img-> string (
+$img->string (
   x => 50,
   y => 50,
   string =>'I did it',
@@ -47,11 +47,11 @@ $img-> string (
   size => 15,
   aa => 1,
   color =>'# 000000',
-) or die $img-> errstr;
+) or die $img->errstr;
 
 # Save image
-$img-> write (file =>'new_example.jpg')
-  or die $img-> errstr;
+$img->write (file =>'new_example.jpg')
+  or die $img->errstr;
 </pre>
 
 Creating a font object with Imager::Font, specify the path where the font actually exists. The above example is for CentOS.
@@ -65,8 +65,8 @@ Save the script in UTF-8 and enable the utf8 pragma.
 Use the data option of the read method to read binary data in Perl's Imager module.
 
 <pre>
-$img-> read(data => $data, type =>'jpeg')
-  or die $img-> errstr;
+$img->read(data => $data, type =>'jpeg')
+  or die $img->errstr;
 </pre>
 
 Please note that you also need to specify the image type.

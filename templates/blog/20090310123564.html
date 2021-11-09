@@ -35,13 +35,13 @@ my $dec_string = decode ('utf8', $string);
 
 <h4> XML::Simple </h4>
 
-Using XML::Simple doesn't allow me to use any function. Methods can be used from objects created by XML::Simple-> new.
+Using XML::Simple doesn't allow me to use any function. Methods can be used from objects created by XML::Simple->new.
 
 <pre>
 use XML::Simple;
 my $file ='a.xml';
-my $parser = XML::Simple-> new;
-$parser-> XMLin ($file);
+my $parser = XML::Simple->new;
+$parser->XMLin ($file);
 </pre>
 
 When I use Encode, I can use a function called decode, but what if a function called decode has already been defined somewhere?

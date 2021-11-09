@@ -719,7 +719,7 @@ Perl_yyparse (pTHX_ int gramtype) {
   // ...
   
   // Tokenize
-  parser-> yychar = yylex ();
+  parser->yychar = yylex ();
   
   // ...
   
@@ -890,7 +890,7 @@ S_parse_body (pTHX_ char ** env, XSINIT_t xsinit)
   lex_start (linestr_sv, rsfp, lex_start_flags);
   
   // Perl by LexarPerform crypto analysis
-  if (yyparse (GRAMPROG) || PL_parser-> error_count) {
+  if (yyparse (GRAMPROG) || PL_parser->error_count) {
     
   }
 }
@@ -1246,7 +1246,7 @@ Perl_yylex (pTHX)
     char * d;
     STRLEN len;
     bool bof = FALSE;
-    const bool saw_infix_sigil = cBOOL (PL_parser-> saw_infix_sigil);
+    const bool saw_infix_sigil = cBOOL (PL_parser->saw_infix_sigil);
     U8 formbrack = 0;
     U32 fake_eof = 0;
 
@@ -1266,7 +1266,7 @@ In the description of embedvar.h and intrpvar.h, yy_parser is given the name PL_
 
 <pre>
 // embedvar.h
-# define PL_parser (vTHX-> Iparser)
+# define PL_parser (vTHX->Iparser)
 
 // intrpvar.h
 PERLVAR (I, parser, yy_parser *) / * current parser state * /
@@ -1296,7 +1296,7 @@ typedef struct yy_parser {
     char * lex_casestack; / * what kind of case mods in effect * /
     U8 lex_defer; / * state after determined token * /
     U8 lex_dojoin; / * doing an array interpolation
-1 = @{...} 2 =-> @* /
+1 = @{...} 2 =->@* /
     U8 lex_expect; / * UNUSED * /
     U8 expect; / * how to interpret ambiguous tokens * /
     I32 lex_formbrack; / * bracket count at outer format level * /
@@ -1548,11 +1548,11 @@ Variable names starting with PL_ are interpreted variables. A variable that hold
 # define vTHX PERL_GET_INTERP
 # endif
 
-# define PL_AboveLatin1 (vTHX-> IAboveLatin1)
-# define PL_Argv (vTHX-> IArgv)
-# define PL_Cmd (vTHX-> ICmd)
-# define PL_DBcontrol (vTHX-> IDBcontrol)
-# define PL_DBcv (vTHX-> IDBcv)
+# define PL_AboveLatin1 (vTHX->IAboveLatin1)
+# define PL_Argv (vTHX->IArgv)
+# define PL_Cmd (vTHX->ICmd)
+# define PL_DBcontrol (vTHX->IDBcontrol)
+# define PL_DBcv (vTHX->IDBcv)
 
 </pre>
 

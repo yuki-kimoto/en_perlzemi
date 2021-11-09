@@ -22,7 +22,7 @@ The set of character strings "a", "aa", and "aaa" is represented by one regular 
 
 <pre>
 a
-aa-> a {1,3}
+aa->a {1,3}
 aaa
 </pre>
 
@@ -30,7 +30,7 @@ Let's look at another example of a regular expression. A set of character string
 
 <pre>
 p1
-q1-> [pqr] 1
+q1->[pqr] 1
 r1
 </pre>
 
@@ -121,10 +121,10 @@ Now let's replace the string "This string is aa" with the string "This string is
 
 <pre>
 Regular expression Replaced string
-a {1,3} - -> bb
+a {1,3} - ->bb
 
 Target character string
-This string is aa - -> This string is bb
+This string is aa - ->This string is bb
 </pre>
 
 The script looks like this:
@@ -280,7 +280,7 @@ Use "\ d" to represent numbers. Matches 0-9.
 <pre>
 0
 1
-2-> \ d
+2->\ d
 8
 9
 </pre>
@@ -290,7 +290,7 @@ Use "\ d" to represent numbers. Matches 0-9.
 Use "\ D" to represent non-numeric characters. This is a companion to "\ d".
 
 <pre>
-Other than the number "\ d"-> \ D
+Other than the number "\ d"->\ D
 </pre>
 
 <h4> White space "\ s" </h4>
@@ -300,7 +300,7 @@ Whitespace is spaces, tabs, page breaks, carriage returns, and line feeds. Use "
 <pre>
 space " "
 Tab "\t"
-Page break "\f"-> \ s
+Page break "\f"->\ s
 Carriage return "\n"
 Line feed "\r"
 </pre>
@@ -310,7 +310,7 @@ Line feed "\r"
 Use "\ S" to represent non-whitespace characters. This is a companion to "\ s".
 
 <pre>
-Other than the space character "\ s"-> \ S
+Other than the space character "\ s"->\ S
 </pre>
 
 <h4> Word character "\ w" </h4>
@@ -320,7 +320,7 @@ A word character is a set of "alphabets, numbers, and underscores". Use "\ w" to
 <pre>
 A-Z
 a-z
-       -> \ w
+       ->\ w
 0-9
 _
 </pre>
@@ -330,7 +330,7 @@ _
 Use "\ W" to represent non-word characters.
 
 <pre>
-Other than the word character "\ w"-> \ W
+Other than the word character "\ w"->\ W
 </pre>
 
 <h4> The beginning of the character string "^" </h4>
@@ -338,12 +338,12 @@ Other than the word character "\ w"-> \ W
 Some regular expression characters can represent the beginning of a character. Use "^" to represent the beginning of a character.
 
 <pre>
-Beginning of string-> ^
+Beginning of string->^
 </pre>This regular expression character has no character length. Use in combination with other characters. For example, the regular expression "^ abc" matches strings that start with "abc". Even if "abc" is included, it will not match unless it starts with "abc".
 
 <pre>
 abcppp
-abcqqq-> ^ abc
+abcqqq->^ abc
 abcrrr
 </pre>
 
@@ -355,7 +355,7 @@ Use "$" to represent the end of a string. For example, the regular expression "a
 
 <pre>
 pppabc
-qqqabc-> abc $
+qqqabc->abc $
 rrrabc
 </pre>
 
@@ -367,7 +367,7 @@ Use "\ b" to represent word character boundaries. The boundary of a word charact
 
 <pre>
 abc /
-abc @-> abc \ b
+abc @->abc \ b
 abc
 </pre>
 
@@ -383,7 +383,7 @@ For example, if you want to express the letters "a", "b", or "c", write [abc].
 
 <pre>
 a
-b-> [abc]
+b->[abc]
 c
 </pre>
 
@@ -392,7 +392,7 @@ You can use the hyphen "-" symbol to specify a range of letters or numbers.
 <pre>
 a
 b b
-c-> [a-e]
+c->[a-e]
 d
 e
 </pre>
@@ -400,7 +400,7 @@ e
 <pre>
 0
 1
-2-> [0-4]
+2->[0-4]
 3
 Four
 </pre>
@@ -408,7 +408,7 @@ Four
 If you want to express either an alphabet or a numerical value, write [a-zA-Z0-9].
 
 <pre>
-Alphabets and numbers-> [a-zA-Z0-9]
+Alphabets and numbers->[a-zA-Z0-9]
 </pre>
 
 You can also use character classes to represent non-specific characters. Use "^" to represent something other than a specific character. Note that if "^" is used at the beginning of the character class [], it means "other than that", not "the beginning of the character".
@@ -416,7 +416,7 @@ You can also use character classes to represent non-specific characters. Use "^"
 For example, to represent a character other than "a", "b", and "c":
 
 <pre>
-Characters other than "a", "b" and "c"-> [^ abc]
+Characters other than "a", "b" and "c"->[^ abc]
 </pre>
 
 <h3> Quantifier </h3>
@@ -486,7 +486,7 @@ You can use the quantifier to specify how many consecutive characters will conti
 
 <pre>
 aaap
-        -> aaap?
+        ->aaap?
 aaa
 </pre>
 
@@ -495,7 +495,7 @@ It can be used in combination with regular expression characters as well as quan
 <pre>
 aaa
 aaap
-        -> aaa [pqr]?
+        ->aaa [pqr]?
 aaaq
 aaar
 </pre>
@@ -506,7 +506,7 @@ aaar
 
 <pre>
 aaa
-aaap-> aaap *
+aaap->aaap *
 aaapp
 </pre>
 
@@ -516,7 +516,7 @@ aaapp
 
 <pre>
 aaap
-aaapp-> aaap +
+aaapp->aaap +
 aaappp
 </pre>
 
@@ -526,7 +526,7 @@ aaappp
 
 <pre>
 aaap
-aaapp-> aaap {1,3}
+aaapp->aaap {1,3}
 aaappp
 </pre>
 
@@ -536,7 +536,7 @@ aaappp
 
 <pre>
 aaapp
-aaappp-> aaap {2,}
+aaappp->aaap {2,}
 aaapppp
 </pre>
 
@@ -546,7 +546,7 @@ aaapppp
 
 <pre>
 aaappp
-aaapppp-> aaap {0,5}
+aaapppp->aaap {0,5}
 aaappppp
 </pre>
 
@@ -556,7 +556,7 @@ Use "|" to represent a set of strings. Usually used in combination with parenthe
 
 <pre>
 a123b
-a456b-> a (123 | 456 | 789) b
+a456b->a (123 | 456 | 789) b
 a789b
 </pre>
 
@@ -565,7 +565,7 @@ a789b
 To make a regular expression character mean a normal character, you need to add a \ immediately before it. For example, to represent the character "." Itself, you need to use "\.".
 
 <pre>
-.txt-> \ .txt
+.txt->\ .txt
 </pre>
 
 If you use <a href="/blog/20100329127089.html">quotemeta function</a>, it will automatically escape the entire string.
@@ -734,7 +734,7 @@ You can use the i option to match case insensitively.
 
 <pre>
 abc
-Abc-> / abc / i
+Abc->/ abc / i
 ABC
 </pre>
 

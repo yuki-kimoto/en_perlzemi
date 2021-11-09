@@ -35,8 +35,8 @@ The obvious drawback of the reference counting method is that it cannot resolve 
 # Cross-reference
 my $hash1 = {};
 my $hash2 = {};
-$hash1-> {hash2} = $hash2;
-$hash2-> {hash1} = $hash1;
+$hash1->{hash2} = $hash2;
+$hash2->{hash1} = $hash1;
 </pre>
 
 Simply writing as above will cause a cross-reference and this object will not be released automatically. This can easily happen if the programmer is not careful. So if you're cross-referencing, you'll have to change the reference to either object to a weak reference that doesn't increase the reference count.
@@ -47,12 +47,12 @@ use Scalar::Util'weaken';
 # Cross-reference
 my $hash1 = {};
 my $hash2 = {};
-$hash1-> {hash2} = $hash2;
-$hash2-> {hash1} = $hash1;
+$hash1->{hash2} = $hash2;
+$hash2->{hash1} = $hash1;
 
 
 # Make one a weak reference
-weaken $hash1-> {hash2};
+weaken $hash1->{hash2};
 </pre>
 
 This way, memory will be freed when the reference to $hash1 or $hash2 reaches zero.

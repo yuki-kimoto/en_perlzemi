@@ -272,10 +272,10 @@ my $numbers_ref2 = [1, 2, 3, 4];
 <h4> Array element reference </h4>
 
 <pre>
-$numbers_ref2-> [0]
+$numbers_ref2->[0]
 </pre>
 
-<span style = "font-weight: bold;">Array reference-> [element number] </span>
+<span style = "font-weight: bold;">Array reference->[element number] </span>
 
 <h3> Comparison of arrays and array references </h3>
 
@@ -288,7 +288,7 @@ I compared the array and the array reference. It's easy to misunderstand, so let
 $numbers [0]
 
 # Array reference
-$numbers_ref-> [0]
+$numbers_ref->[0]
 </pre>
 
 <h4> Array reference dereference </h4>
@@ -496,9 +496,9 @@ print "array: \@\ $numbers_ref1 =" .join(',', @$numbers_ref1), ")\n";
 my $numbers_ref2 = [1, 2, 3, 4];
 print "array: \ $numbers_ref2 =", join(',', @$numbers_ref2). "]\n\n";
 
-# 3: Access the elements of the array. ($array_ref-> [element number])
-print "\ $numbers_ref2-> [0] = $numbers_ref2-> [0]\n";
-print "\ $numbers_ref2-> [1] = $numbers_ref2-> [1]\n";
+# 3: Access the elements of the array. ($array_ref->[element number])
+print "\ $numbers_ref2->[0] = $numbers_ref2->[0]\n";
+print "\ $numbers_ref2->[1] = $numbers_ref2->[1]\n";
 </pre>
 
 Execution result
@@ -508,8 +508,8 @@ Array: @numbers = (1,2,3,4,5,6,7,8)
 Array: @$numbers_ref1 = (1,2,3,4,5,6,7,8)
 Array: $numbers_ref2 = [1,2,3,4]
 
-$numbers_ref2-> [0] = 1
-$numbers_ref2-> [1] = 2
+$numbers_ref2->[0] = 1
+$numbers_ref2->[1] = 2
 </pre>
 
 <h4> Sample of array and array reference comparison </h4>
@@ -530,7 +530,7 @@ print "1. Element reference\n";
 print "\ $numbers [0] =", $numbers [0], "\n";
 
 # Array reference
-print "\ $numbers_ref-> [0] =", $numbers_ref-> [0], "\n";
+print "\ $numbers_ref->[0] =", $numbers_ref->[0], "\n";
 print "\n";
 
 # 2. Processing of each element
@@ -574,7 +574,7 @@ Array: @numbers = (1,2,3)
 
 1. Element reference
 $numbers [0] = 1
-$numbers_ref-> [0] = 1
+$numbers_ref->[0] = 1
 
 2. Processing of each element
 @numbers = 1,2,3,

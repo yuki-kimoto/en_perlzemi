@@ -63,7 +63,7 @@ Is expressed graphically as follows.
 
 <pre>
                 Convert "UTF-8 byte string" to "internal string"
-UTF-8 byte string - -> internal string
+UTF-8 byte string - ->internal string
 </pre>
 
 The meaning of the first argument of the decode function is easy to misunderstand. Specifies which character code the byte string is actually encoded in.
@@ -94,7 +94,7 @@ Is expressed graphically as follows.
 
 <pre>
                 Convert "internal string" to "UTF-8 byte string"
-Internal string - -> UTF-8 byte string
+Internal string - ->UTF-8 byte string
 </pre>
 
 <h3> Save the source code in UTF-8 and enable the utf8 pragma </h3>
@@ -114,7 +114,7 @@ A string written in the source code is called a string literal. Keep in mind tha
 How to save with a specific character code depends on the editor. For reference, the case of Windows Notepad is explained. If you understand this, you can understand it with other text editors.
 
 <blockquote>
-Select "File"-> "Save As"-> "Character Code"-> "UTF-8".
+Select "File"->"Save As"->"Character Code"->"UTF-8".
 </blockquote>
 
 The utf8 pragma has the effect of converting a UTF-8 byte string written in the source code into an internal string. So if you save the source code in UTF-8 and enable the utf8 pragma, string literals will be converted to internal strings.
@@ -123,7 +123,7 @@ The effect of the utf8 pragma is graphically represented as follows. The effect 
 
 <pre>
                                 use utf8
-UTF-8 byte string - -> internal string
+UTF-8 byte string - ->internal string
 </pre>
 
 As long as you follow the following three things mentioned at the beginning, you will have less trouble with character codes. If you are worried about the character code, please go back to this principle first.
@@ -181,7 +181,7 @@ $str = encode ('Shift_JIS', $str);
 </pre>
 The diagram is as follows.
 <pre>
-UTF-8 byte string-> internal string-> Shift_JIS byte string
+UTF-8 byte string->internal string->Shift_JIS byte string
 </pre>
 
 This is a bit annoying, so we have a function called from_to.The first argument is a byte string, the second argument is the character code before conversion, and the third argument is the character code after conversion. Note that unlike the enocde and decode functions, the byte string itself specified in the first argument is converted.

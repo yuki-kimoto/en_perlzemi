@@ -22,7 +22,7 @@
 
 
 
-You could use File::Spec-> catfile to create an OS-independent filename. This time, I will explain how to convert a certain file representation to the file name of the OS of the execution environment. When specifying a file name in a configuration file, etc., the file representation in Unix is ​​often used.
+You could use File::Spec->catfile to create an OS-independent filename. This time, I will explain how to convert a certain file representation to the file name of the OS of the execution environment. When specifying a file name in a configuration file, etc., the file representation in Unix is ​​often used.
 
 <pre>
 # File representation on Unix
@@ -36,7 +36,7 @@ The <b> splitdir method of File::Spec splits $unix_path into individual parts. C
 <pre>
 use File::Spec;
 my $unix_path ='dir1 / dir2 / file.txt';
-my $windows_path = File::Spec-> catfile (File::Spec-> splitdir ($unix_path));
+my $windows_path = File::Spec->catfile (File::Spec->splitdir ($unix_path));
 </pre>
 
 <h3> Executable sample </h3>
@@ -47,7 +47,7 @@ use warnings;
 
 use File::Spec;
 my $unix_path ='dir1 / dir2 / file.txt';
-my $windows_path = File::Spec-> catfile (File::Spec-> splitdir ($unix_path));
+my $windows_path = File::Spec->catfile (File::Spec->splitdir ($unix_path));
 
 print "1. Convert to Windows file path\n";
 print $windows_path, "\n";

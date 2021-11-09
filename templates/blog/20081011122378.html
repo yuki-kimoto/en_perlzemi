@@ -44,27 +44,27 @@ my $query = "start-min = ${start_date} & start-max = ${end_date} & max-results =
 my $feed_url = $feed_base.'?'. $Query;
 
 # Get XML from the web
-my $http_client = LWP::UserAgent-> new;
-my $response = $http_client-> get ($feed_url);
+my $http_client = LWP::UserAgent->new;
+my $response = $http_client->get ($feed_url);
 
 my $holidays_xml;
-if ($response-> is_success) {
-  $holidays_xml = $response-> content;
+if ($response->is_success) {
+  $holidays_xml = $response->content;
 }
 else {
   die "Failed to get the feed.";
 }
 
 # Parse XML
-my $xml_parser = XML::Simple-> new;
+my $xml_parser = XML::Simple->new;
 # XML::Change parser for those who don't have SAX
 $XML::Simple::PREFERRED_PARSER ='XML::Parser';
-my $holidays_data = $xml_parser-> XMLin ($holidays_xml);
+my $holidays_data = $xml_parser->XMLin ($holidays_xml);
 
 my $holidays = [];
-for my $key (keys%{$holidays_data-> {'entry'}}) {
-  my $holiday_day = $holidays_data-> {entry} {$key} {'gd: when'} {startTime};
-  my $holiday_name = $holidays_data-> {entry} {$key} {title} {content};
+for my $key (keys%{$holidays_data->{'entry'}}) {
+  my $holiday_day = $holidays_data->{entry} {$key} {'gd: when'} {startTime};
+  my $holiday_name = $holidays_data->{entry} {$key} {title} {content};
   push @$holidays, {day => $holiday_day, name => $holiday_name};
 }
 
@@ -81,12 +81,12 @@ else {
 # Encode all data
 for my $holiday (@$holidays) {
   for my $key (keys %$holiday) {
-    $holiday-> {$key} = encode ($encode_to, $holiday-> {$key});
+    $holiday->{$key} = encode ($encode_to, $holiday->{$key});
   }
 }
 
 use Data::Dumper;
-print Data::Dumper-> Dump ([$holidays], ['* holidays']);
+print Data::Dumper->Dump ([$holidays], ['* holidays']);
 </pre>
 
 <h3> Holiday issues </h3>
@@ -133,12 +133,12 @@ LWP::UserAgent is a module for creating HTTP clients. You can programmatically d
 
 <pre>
 use LWP::UserAgent;
-my $http_client = LWP::UserAgent-> new;
-my $response = $http_client-> get ($feed_url);
+my $http_client = LWP::UserAgent->new;
+my $response = $http_client->get ($feed_url);
 
 my $holidays_xml;
-if ($response-> is_success) {
-  $holidays_xml = $response-> content;
+if ($response->is_success) {
+  $holidays_xml = $response->content;
 }
 else {
   die "Failed to get the feed.";
@@ -151,14 +151,14 @@ Use XML::Simple to parse the XML. XML::Simple is a module for converting XML dat
 use XML::Simple;
 
 # Parse XML
-my $xml_parser = XML::Simple-> new ();
+my $xml_parser = XML::Simple->new ();
 $XML::Simple::PREFERRED_PARSER ='XML::Parser';
-my $holidays_data = $xml_parser-> XMLin ($holidays_xml);
+my $holidays_data = $xml_parser->XMLin ($holidays_xml);
 
 my $holidays = [];
-for my $key (keys%{$holidays_data-> {'entry'}}) {
-  my $holiday_day = $holidays_data-> {entry} {$key} {'gd: when'} {startTime};
-  my $holiday_name = $holidays_data-> {entry} {$key} {title} {content};
+for my $key (keys%{$holidays_data->{'entry'}}) {
+  my $holiday_day = $holidays_data->{entry} {$key} {'gd: when'} {startTime};
+  my $holiday_name = $holidays_data->{entry} {$key} {title} {content};
   push @$holidays, {day => $holiday_day, name => $holiday_name};
 }
 </pre>
@@ -167,10 +167,10 @@ After the XML transformation, you can access the data as follows.
 
 <pre>
 # Holiday dates
-$holidays_data-> {'entry'} {URL as an identifier} {'gd: when'} {startTime};
+$holidays_data->{'entry'} {URL as an identifier} {'gd: when'} {startTime};
 
 # Holiday name
-$holidays_data-> {entry} {URL as an identifier} {title} {content};
+$holidays_data->{entry} {URL as an identifier} {title} {content};
 </pre>
 
 <h4> Convert character code </h4>
@@ -194,7 +194,7 @@ else {
 # Encode all data
 for my $holiday (@$holidays) {
    for my $key (keys %$holiday) {
-     $holiday-> {$key} = encode ($encode_to, $holiday-> {$key});
+     $holiday->{$key} = encode ($encode_to, $holiday->{$key});
    }
 }
 </pre>

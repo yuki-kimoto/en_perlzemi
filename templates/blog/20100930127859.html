@@ -36,7 +36,7 @@ my $nums = \@nums;
 "Reference" means "what you point to." $nums points to @nums.
 
 <pre>
-$nums - -> @nums
+$nums - ->@nums
 </pre>
 
 <h4> Creating an anonymous array reference </h4>
@@ -50,7 +50,7 @@ my $nums = [1, 2, 3];
 $nums points to an array called "(1, 2, 3)" that has no name.
 
 <pre>
-$nums - -> (1, 2, 3)
+$nums - ->(1, 2, 3)
 </pre>
 
 It's easy to think of the anonymous array reference description as a simple way to create an array reference. The anonymous array generator eliminates the need to create an array to create an array reference.
@@ -83,8 +83,8 @@ my @nums = @$nums;
 You can dereference and then get the elements of the array, but that's a bit inconvenient. Perl provides a way to get elements directly from an array reference. Use the arrow operator "->" to retrieve an element from an array reference.
 
 <pre>
-my $first = $nums-> [0];
-my $second = $nums-> [1];
+my $first = $nums->[0];
+my $second = $nums->[1];
 </pre>
 
 Compare with the case of getting the elements of the array as follows. The difference is whether or not there is an arrow operator.
@@ -143,25 +143,25 @@ The above notation is the most common representation of a two-dimensional array 
 Let's access the elements of the array of the created array. This is an array reference that has an array reference as an element, so you can access it as follows:
 
 <pre>
-my $name1 = $people-> [0]-> [0];
-my $country1 = $people-> [0]-> [1];
-my $age1 = $people-> [0]-> [2];
+my $name1 = $people->[0]->[0];
+my $country1 = $people->[0]->[1];
+my $age1 = $people->[0]->[2];
 
-my $name2 = $people-> [1]-> [0];
-my $country2 = $persons-> [1]-> [1];
-my $age2 = $persons-> [1]-> [2];
+my $name2 = $people->[1]->[0];
+my $country2 = $persons->[1]->[1];
+my $age2 = $persons->[1]->[2];
 </pre>
 
 The point is to use the arrow operator twice. In Perl, you can omit the second and subsequent arrow operators, so you can also write:
 
 <pre>
-my $name1 = $people-> [0] [0];
-my $country1 = $people-> [0] [1];
-my $age1 = $people-> [0] [2];
+my $name1 = $people->[0] [0];
+my $country1 = $people->[0] [1];
+my $age1 = $people->[0] [2];
 
-my $name2 = $people-> [1] [0];
-my $country2 = $persons-> [1] [1];
-my $age2 = $persons-> [1] [2];
+my $name2 = $people->[1] [0];
+my $country2 = $persons->[1] [1];
+my $age2 = $persons->[1] [2];
 </pre>
 
 <h3> Two-dimensional array loop processing </h3>
@@ -300,7 +300,7 @@ my $person = {name =>'Ken', age => 19};
 $person points to the hash "(name =>'Ken', age => 19)" which has no name.
 
 <pre>
-$person - -> (name =>'Ken', age => 19)
+$person - ->(name =>'Ken', age => 19)
 </pre>
 
 It's easy to think of the anonymous hash reference description as a simple way to create a hash reference. Anonymous hash generators eliminate the need to create a hash to create a hash reference.
@@ -333,8 +333,8 @@ my %person =% $person;
 You can dereference and then get the hash element, but that's a bit inconvenient. Perl provides a way to get an element from a hash reference. Use the arrow operator "->" to retrieve an element from a hash reference.
 
 <pre>
-my $name = $person-> {name};
-my $age = $person-> {age};
+my $name = $person->{name};
+my $age = $person->{age};
 </pre>
 
 Compare with the case of getting the hash element as follows. The difference is whether or not there is an arrow operator.
@@ -385,7 +385,7 @@ First, let's output all the elements.
 <pre>
 for my $person (@$persons) {
   for my $key (keys %$person) {
-    my $value = $person-> {$key};
+    my $value = $person->{$key};
     print "$key: $value\n";
   }
 }
@@ -415,7 +415,7 @@ One caveat is that the order of the keys obtained with the keys function is inde
 <pre>
 for my $person (@$persons) {
   for my $key (sort keys %$person) {
-    my $value = $person-> {$key};
+    my $value = $person->{$key};
     print "$key: $value\n";
   }
 }
@@ -435,9 +435,9 @@ You can use the join function to join records with a specified string. Set the o
 <pre>
 for my $person (@$persons) {
   my @rec = (
-    $person-> {name},
-    $person-> {country},
-    $person-> {age}
+    $person->{name},
+    $person->{country},
+    $person->{age}
   );
     
   print join(',', @rec). "\n";
@@ -467,9 +467,9 @@ while (my $line = <>) {
   
   # (3) Create a hash reference
   my $person = {};
-  $person-> {name} = $rec [0];
-  $person-> {country} = $rec [1];
-  $person-> {age} = $rec [2];
+  $person->{name} = $rec [0];
+  $person->{country} = $rec [1];
+  $person->{age} = $rec [2];
     
   # (4) Added to array reference
   push @$persons, $person;
@@ -516,7 +516,7 @@ for my $time(sort keys %$infos) {
   print "$time\n";
   
   # (2) Inner loop
-  for my $column (@{$infos-> {$time}}) {
+  for my $column (@{$infos->{$time}}) {
     print "$column\n";
   }
 }
@@ -533,7 +533,7 @@ The reason for sorting like this is because we want to output in the order of ti
 (2) The inner loop is an array. The inner array is
 
 <pre>
-@{$infos-> {$time}}
+@{$infos->{$time}}
 </pre>
 
 You can take it out like this.
@@ -568,7 +568,7 @@ Next, let's output all records separated by commas as shown below.
 <pre>
 for my $time(sort keys %$infos) {
     
-  my @rec = ($time, @{$infos-> {$time}});
+  my @rec = ($time, @{$infos->{$time}});
   print join(',', @rec). "\n";
 }
 </pre>
@@ -602,17 +602,17 @@ while (my $line = <>) {
   my ($time, $res_time) = split(',', $line);
   
   # (2) Array reference for storing data at each time
-  $infos-> {$time} || = [];
+  $infos->{$time} || = [];
   
   # (3) Total number of cases
-  $infos-> {$time} [0] ++;
+  $infos->{$time} [0] ++;
   
   # (4) Total response time
-  $infos-> {$time} [1] + = $res_time;
+  $infos->{$time} [1] + = $res_time;
 
   # (5) Maximum response time
-  $infos-> {$time} [2] = $res_time
-    if! defined $infos-> {$time} [2] || $res_time> $infos-> {$time} [2];
+  $infos->{$time} [2] = $res_time
+    if! defined $infos->{$time} [2] || $res_time> $infos->{$time} [2];
 }
 </pre>
 
@@ -667,8 +667,8 @@ for my $time(sort keys %$infos) {
   print "$time\n";
   
   # (2) Inner loop
-  for my $name (sort keys%{$infos-> {$time}}) {
-    my $value = $infos-> {$time} {$name};
+  for my $name (sort keys%{$infos->{$time}}) {
+    my $value = $infos->{$time} {$name};
     print "$name: $value\n";
   }
 }
@@ -679,7 +679,7 @@ for my $time(sort keys %$infos) {
 (2) The inner loop is a hash. Even in the inner loop
 
 <pre>
-keys%{$infos-> {$time}}
+keys%{$infos->{$time}}
 </pre>
 
 The hash key is taken out like this.
@@ -716,9 +716,9 @@ for my $time(sort keys %$infos) {
     
   my @rec = (
     $time,
-    $infos-> {$time} {count},
-    $infos-> {$time} {ave_time},
-    $infos-> {$time} {max_time}
+    $infos->{$time} {count},
+    $infos->{$time} {ave_time},
+    $infos->{$time} {max_time}
   );
   print join(',', @rec). "\n";
 }
@@ -753,18 +753,18 @@ while (my $line = <>) {
   my ($time, $res_time) = split(',', $line);
   
   # (2) Array reference for storing data at each time
-  $infos-> {$time} || = {};
+  $infos->{$time} || = {};
   
   # (3) Total number of cases
-  $infos-> {$time} {count} ++;
+  $infos->{$time} {count} ++;
   
   # (4) Total response time
-  $infos-> {$time} {total_time} + = $res_time;
+  $infos->{$time} {total_time} + = $res_time;
 
   # (5) Maximum response time
-  $infos-> {$time} {max_time} = $res_time
-    if! defined $infos-> {$time} {max_time}
-      || $res_time> $infos-> {$time} {max_time};
+  $infos->{$time} {max_time} = $res_time
+    if! defined $infos->{$time} {max_time}
+      || $res_time> $infos->{$time} {max_time};
 }
 </pre>
 

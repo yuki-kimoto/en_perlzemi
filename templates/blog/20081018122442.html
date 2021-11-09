@@ -58,9 +58,9 @@ sub str_from_time {
     % $time = @_;
   }
     
-  return unless defined $time-> {hour};
-  return unless defined $time-> {min};
-  return unless defined $time-> {sec};
+  return unless defined $time->{hour};
+  return unless defined $time->{min};
+  return unless defined $time->{sec};
     
   my $time_str
     = sprintf("% 02s:% 02s:% 02s", @{$time} {qw / hour min sec /});
@@ -77,13 +77,13 @@ sub time_to_sec {
     % $time = @_;
   }
     
-  return unless defined $time-> {hour};
-  return unless defined $time-> {min};
-  return unless defined $time-> {sec};
+  return unless defined $time->{hour};
+  return unless defined $time->{min};
+  return unless defined $time->{sec};
   
-  my $sec = $time-> {hour} * 3600 +
-            $time-> {min} * 60 +
-            $time-> {sec};
+  my $sec = $time->{hour} * 3600 +
+            $time->{min} * 60 +
+            $time->{sec};
   
   return $sec;
 }
@@ -93,13 +93,13 @@ sub sec_to_time {
   my $sec = int(shift);
   my $time = {};
   
-  $time-> {hour} = int($sec / 3600);
+  $time->{hour} = int($sec / 3600);
   $sec = $sec% 3600;
   
-  $time-> {min} = int($sec / 60);
+  $time->{min} = int($sec / 60);
   $sec = $sec% 60;
   
-  $time-> {sec} = $sec;
+  $time->{sec} = $sec;
   
   return wantarray?% $time: $time;
 }
@@ -166,13 +166,13 @@ sub time_to_sec {
     % $time = @_;
   }
     
-  return unless defined $time-> {hour};
-  return unless defined $time-> {min};
-  return unless defined $time-> {sec};
+  return unless defined $time->{hour};
+  return unless defined $time->{min};
+  return unless defined $time->{sec};
   
-  my $sec = $time-> {hour} * 3600 +
-            $time-> {min} * 60 +
-            $time-> {sec};
+  my $sec = $time->{hour} * 3600 +
+            $time->{min} * 60 +
+            $time->{sec};
   
   return $sec;
 }
@@ -192,13 +192,13 @@ sub sec_to_time {
   my $sec = int(shift);
   my $time = {};
   
-  $time-> {hour} = int($sec / 3600);
+  $time->{hour} = int($sec / 3600);
   $sec = $sec% 3600;
   
-  $time-> {min} = int($sec / 60);
+  $time->{min} = int($sec / 60);
   $sec = $sec% 60;
   
-  $time-> {sec} = $sec;
+  $time->{sec} = $sec;
   
   return wantarray?% $time: $time;
 }
@@ -221,9 +221,9 @@ sub str_from_time {
     % $time = @_;
   }
     
-  return unless defined $time-> {hour};
-  return unless defined $time-> {min};
-  return unless defined $time-> {sec};
+  return unless defined $time->{hour};
+  return unless defined $time->{min};
+  return unless defined $time->{sec};
     
   my $time_str
     = sprintf("% 02s:% 02s:% 02s", @{$time} {qw / hour min sec /});

@@ -198,7 +198,7 @@ foo (...)
   / * Create structure (create as pointer) * /
   People * people = (People *) malloc (sizeof (P)eople));
   SV * sv_name = sv_2mortal (newSvPV ("kimoto", 0));
-  people-> name = SvREFCNT_inc (sv_name);
+  people->name = SvREFCNT_inc (sv_name);
   
   /* omit */
 }
@@ -224,7 +224,7 @@ DESTORY (...)
   People * people = INT2PTR (People *, people_iv);
   
   // Release sv_name
-  SvREFCNT_dec (people-> sv_name);
+  SvREFCNT_dec (people->sv_name);
   
   // Release People *
   free (people);

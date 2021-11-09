@@ -111,10 +111,10 @@ my $timer2 = create_timer ();
 sleep 1;
 
 print'$timer1 elapsed seconds:';
-print $timer1-> (), "\n";
+print $timer1->(), "\n";
 
 print'$timer2 elapsed seconds:';
-print $timer2-> (), "\n\n";
+print $timer2->(), "\n\n";
 
 
 # Function generator that generates closures that know the elapsed time
@@ -163,7 +163,7 @@ The return value serves as a reference to the subroutine. This subroutine is a c
 <h4> Call closure </h4>
 
 <pre>
-$timer1-> ();
+$timer1->();
 </pre>
 
 Now that we have a reference to the subroutine, we dereference it and call it.
@@ -186,7 +186,7 @@ use warnings;
 print "1: Initialize the variable referenced by the closure.\n";
 my $sign_inversion = create_sign_checker (1);
 
-if ($sign_inversion-> (-2)) {
+if ($sign_inversion->(-2)) {
   # If the sign is inverted
   print "-2 has the sign inverted when viewed from 1.\n";
 }
@@ -223,7 +223,7 @@ sub create_sign_checker {
 my $sign_inversion = create_sign_checker (1);
 
 # Call closure
-$sign_inversion-> (-2);
+$sign_inversion->(-2);
 
 # Function generator to generate closures
 sub create_sign_checker {
@@ -294,7 +294,7 @@ What you should be aware of here is that classes and closures are actually the s
 
 <ol>
   <li>
-    Closures do not have a class name. By calling new my $ins = Class-> new ;, instead of creating an instance, create an instance in the form of my $ins = closure_maker () ;.
+    Closures do not have a class name. By calling new my $ins = Class->new ;, instead of creating an instance, create an instance in the form of my $ins = closure_maker () ;.
   </li>
   <li>
     Closures cannot be inherited. It cannot be inherited like a class.
@@ -313,27 +313,27 @@ package Counter;
 sub new {
   my $class = shift;
   my $self = {};
-  $self-> {cnt} = shift;
+  $self->{cnt} = shift;
   bless $self, $class;
 }
 
 sub add_count {
   my $self = shift;
-  $self-> {cnt} ++;
+  $self->{cnt} ++;
 }
 
 sub count {
   my $self = shift;
-  return $self-> {cnt};
+  return $self->{cnt};
 }
 
 package main;
-my $cnt = Counter-> new (10);
+my $cnt = Counter->new (10);
 
 print "1: Class-based counter implementation\n";
-print "Before counting:", $cnt-> count, "\n";
-$cnt-> add_count;
-print "after counting:", $cnt-> count, "\n\n";
+print "Before counting:", $cnt->count, "\n";
+$cnt->add_count;
+print "after counting:", $cnt->count, "\n\n";
 </pre>
 
 <h4> Implement the counter with closures </h4>
@@ -345,16 +345,16 @@ use warnings;
 # Closure
 sub make_counter {
   my $self = {};
-  $self-> {cnt} = shift;
+  $self->{cnt} = shift;
    
   # Closures implement methods using references to subroutines.
   my $funcs = {};
-  $funcs-> {add_count} = sub {
-    $self-> {cnt} ++;
+  $funcs->{add_count} = sub {
+    $self->{cnt} ++;
   };
    
-   $funcs-> {count} = sub {
-     return $self-> {cnt};
+   $funcs->{count} = sub {
+     return $self->{cnt};
    };
    return $funcs;
 }
@@ -362,9 +362,9 @@ sub make_counter {
 my $cnt = make_counter (10);
 
 print "2: Implementation of counters with closures\n";
-print "Before counting:". $Cnt-> {count}-> (). "\n";
-$cnt-> {add_count}-> ();
-print "after counting:". $Cnt-> {count}-> (). "\n";
+print "Before counting:". $Cnt->{count}->(). "\n";
+$cnt->{add_count}->();
+print "after counting:". $Cnt->{count}->(). "\n";
 </pre>
 
 As you can see, classes and closures are very similar. Next time, I will explain the code.

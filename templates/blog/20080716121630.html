@@ -27,7 +27,7 @@ It's called a function generator according to its general name, but in Perl term
 <pre>
 # Call
 my $func = func_generator ();
-$func-> ();
+$func->();
 
 # Definition
 sub func_generator {
@@ -42,7 +42,7 @@ sub func_generator {
 
 To create a generator for it, create an anonymous subroutine and return its reference as a return value.
 
-When you call the function generator (func_generator ()), you can get a reference to the generated subroutine as a return value. Dereference ($func-> ()) the reference of the generated subroutine and call the subroutine.
+When you call the function generator (func_generator ()), you can get a reference to the generated subroutine as a return value. Dereference ($func->()) the reference of the generated subroutine and call the subroutine.
 
 <h4> Generate multiple subroutines that are slightly different </h4>
 
@@ -52,8 +52,8 @@ my $create_safe_msg = message_factory ("is safe.");
 my $create_danger_msg = message_factory ("is danger.");
 
 # Call the generated subroutine
-my $safe_msg1 = $create_safe_msg-> ("cat");
-my $danger_msg1 = $create_danger_msg-> ("mamushi");
+my $safe_msg1 = $create_safe_msg->("cat");
+my $danger_msg1 = $create_danger_msg->("mamushi");
 
 # Function generator that creates a subroutine that allows you to specify the message to convey
 sub message_factory {
@@ -200,7 +200,7 @@ use warnings;
 print "1: Generate a subroutine with a function generator\n";
 
 my $func = func_generator ();
-$func-> ();
+$func->();
 print "\n";
 
 # Function generator
@@ -222,14 +222,14 @@ essage_factory ("is danger.");
 
 print "Subroutine generated with'is safe'\n";
 # Dereference and call
-my $safe_msg1 = $create_safe_msg-> ("cat");
-my $safe_msg2 = $create_safe_msg-> ("dog");
+my $safe_msg1 = $create_safe_msg->("cat");
+my $safe_msg2 = $create_safe_msg->("dog");
 
 print "${safe_msg1}\n ${safe_msg2}\n\n";
 
 print "Subroutine generated with'is danger'\n";
-my $danger_msg1 = $create_danger_msg-> ("mamushi");
-my $danger_msg2 = $create_danger_msg-> ("suzumebachi");
+my $danger_msg1 = $create_danger_msg->("mamushi");
+my $danger_msg2 = $create_danger_msg->("suzumebachi");
 
 print "${danger_msg1}\n ${danger_msg2}\n\n";
 

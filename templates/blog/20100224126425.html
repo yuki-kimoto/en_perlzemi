@@ -25,8 +25,8 @@ has y => 1;
 
 package main;
 
-my $point = Point-> new;
-print $point-> x;
+my $point = Point->new;
+print $point->x;
 
 1;
 </pre>
@@ -47,8 +47,8 @@ has y => 0;
 sub clear {
   my $self = shift;
     
-  $self-> x (0);
-  $self-> y (0);
+  $self->x (0);
+  $self->y (0);
 }
 
 1;
@@ -57,15 +57,15 @@ sub clear {
 Use the Point class as follows: The constructor new is inherited from Object::Simple.
 
 <pre>
-my $point = Point-> new (x => 4, y => 6);
+my $point = Point->new (x => 4, y => 6);
 
-$point-> x (1);
-$point-> y (2);
+$point->x (1);
+$point->y (2);
 
-my $x = $point-> x;
-my $y = $point-> y;
+my $x = $point->x;
+my $y = $point->y;
 
-$point-> clear;
+$point->clear;
 </pre>
 
 <h3> How to use Object::Simple </h3>
@@ -97,7 +97,7 @@ has foo => sub {[]};
 has bar => sub {{}};
 
 # object
-has baz => sub {LWP::UserAgent-> new};
+has baz => sub {LWP::UserAgent->new};
 </pre>
 
 When setting array references, hash references, objects, etc. to default values, you need to enclose them in sub {} for lazy evaluation.
@@ -124,8 +124,8 @@ has z => 0;
 
 sub clear {
   my $self = shift;
-  $self-> SUPER::clear ();
-  $self-> z (0);
+  $self->SUPER::clear ();
+  $self->z (0);
 }
 
 1;
@@ -138,7 +138,7 @@ You can override the constructor new () for object initialization and argument p
 <pre>
 # Override new () for object initialization
 sub new {
-  my $self = shift-> SUPER::new (@_);
+  my $self = shift->SUPER::new (@_);
   
   # Initialization
   
@@ -151,7 +151,7 @@ sub new {
 sub new {
   my $self = shift;
   
-  $self-> SUPER::new (x => $_ [0], y => $_ [1]);
+  $self->SUPER::new (x => $_ [0], y => $_ [1]);
   
   return $self;
 }

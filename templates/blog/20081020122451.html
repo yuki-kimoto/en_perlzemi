@@ -55,10 +55,10 @@ sub time_from_str {
     );
 
     # Return if the month notation is incorrect
-    $time-> {mon} = $num_of_mon {lc($time-> {mon})};
-    return unless defined $time-> {mon};
+    $time->{mon} = $num_of_mon {lc($time->{mon})};
+    return unless defined $time->{mon};
     
-    $time-> {year}-= 1900;
+    $time->{year}-= 1900;
     
     return wantarray?% $time: $time;
   }
@@ -75,22 +75,22 @@ sub time_to_sec {
     % $time = @_;
   }
   
-  return unless defined $time-> {sec};
-  return unless defined $time-> {min};
-  return unless defined $time-> {hour};
-  return unless defined $time-> {mday};
-  return unless defined $time-> {mon};
-  return unless defined $time-> {year};
+  return unless defined $time->{sec};
+  return unless defined $time->{min};
+  return unless defined $time->{hour};
+  return unless defined $time->{mday};
+  return unless defined $time->{mon};
+  return unless defined $time->{year};
   
   Convert to seconds using the # Time::Local module
   require Time::Local;
   my $sec = Time::Local::timelocal (
-    $time-> {sec},
-    $time-> {min},
-    $time-> {hour},
-    $time-> {mday},
-    $time-> {mon},
-    $time-> {year},
+    $time->{sec},
+    $time->{min},
+    $time->{hour},
+    $time->{mday},
+    $time->{mon},
+    $time->{year},
   );
   
   return $sec;
@@ -134,10 +134,10 @@ sub time_from_str {
     );
 
     # Return if the month notation is incorrect
-    $time-> {mon} = $num_of_mon {lc($time-> {mon})};
-    return unless defined $time-> {mon};
+    $time->{mon} = $num_of_mon {lc($time->{mon})};
+    return unless defined $time->{mon};
     
-    $time-> {year}-= 1900;
+    $time->{year}-= 1900;
     
     return wantarray?% $time: $time;
   }
@@ -166,22 +166,22 @@ sub time_to_sec {
     % $time = @_;
   }
   
-  return unless defined $time-> {sec};
-  return unless defined $time-> {min};
-  return unless defined $time-> {hour};
-  return unless defined $time-> {mday};
-  return unless defined $time-> {mon};
-  return unless defined $time-> {year};
+  return unless defined $time->{sec};
+  return unless defined $time->{min};
+  return unless defined $time->{hour};
+  return unless defined $time->{mday};
+  return unless defined $time->{mon};
+  return unless defined $time->{year};
   
   Convert to seconds using the # Time::Local module
   require Time::Local;
   my $sec = Time::Local::timelocal (
-    $time-> {sec},
-    $time-> {min},
-    $time-> {hour},
-    $time-> {mday},
-    $time-> {mon},
-    $time-> {year},
+    $time->{sec},
+    $time->{min},
+    $time->{hour},
+    $time->{mday},
+    $time->{mon},
+    $time->{year},
   );
   
   return $sec;

@@ -35,7 +35,7 @@ print "1: Convert a csv format string to an array of arrays.\n";
 my $people = parse ($text);
 
 require Data::Dumper;
-print Data::Dumper-> Dump ([$persons], ['$perlsons']);
+print Data::Dumper->Dump ([$persons], ['$perlsons']);
 
 sub parse {
   my $text = shift;
@@ -134,7 +134,7 @@ my $headers = ['name','age','country'];
 my $people = parse ($text, $headers);
 
 require Data::Dumper;
-print Data::Dumper-> Dump ([$persons], ['$perlsons']);
+print Data::Dumper->Dump ([$persons], ['$perlsons']);
 
 sub parse {
   my ($text, $headers) = @_;
@@ -456,8 +456,8 @@ sub bubble_sort {
   Check if # $opt is a hash reference
   if (defined $opt) {
     if (ref $opt eq'HASH') {
-      Substitute if # $opt-> {order} is a true value.
-      $order = $opt-> {order} if $opt-> {order};
+      Substitute if # $opt->{order} is a true value.
+      $order = $opt->{order} if $opt->{order};
       
       unless ($order eq'ascend' || $order eq'descend') {
         return;
@@ -526,10 +526,10 @@ If the variable has an invalid state, do not continue processing. For fatal erro
 
 <pre>
 my $order ='ascend';
-$order = $opt-> {order} if $opt-> {order};
+$order = $opt->{order} if $opt->{order};
 </pre>
 
-If $opt-> {order} is not specified, it is a kind way to specify the default value instead of returning it with an error. Overwrite only if $opt-> {order} exists.
+If $opt->{order} is not specified, it is a kind way to specify the default value instead of returning it with an error. Overwrite only if $opt->{order} exists.
 
 <h4> (4) Select ascending and descending algorithms </h4>
 
