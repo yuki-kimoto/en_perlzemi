@@ -561,7 +561,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   else {
     $text->font ($font, $font_size);
     if ($book_index <$books_length) {
-      $text->text ($books->[$book_index] {name});
+      $text->text ($books->[$book_index]{name});
     }
   }
   $gfx->move ($cur_x + $name_width, $cur_y);
@@ -580,7 +580,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   else {
     $text->font ($font, $font_size);
     if ($book_index <$books_length) {
-      $text->text ($books->[$book_index] {unit_price});
+      $text->text ($books->[$book_index]{unit_price});
     }
   }
   $gfx->move ($cur_x + $unit_price_width, $cur_y);
@@ -600,7 +600,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   else {
     $text->font ($font, $font_size);
     if ($book_index <$books_length) {
-      $text->text ($books->[$book_index] {count});
+      $text->text ($books->[$book_index]{count});
     }
   }
   $gfx->move ($cur_x + $count_width, $cur_y);
@@ -620,7 +620,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   else {
     $text->font ($font, $font_size);
     if ($book_index <$books_length) {
-      $text->text ($books->[$book_index] {unit_price} * $books->[$book_index] {count});
+      $text->text ($books->[$book_index]{unit_price} * $books->[$book_index]{count});
     }
   }
   $gfx->move ($cur_x + $price_width, $cur_y);

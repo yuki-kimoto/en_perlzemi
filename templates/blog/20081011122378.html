@@ -63,8 +63,8 @@ my $holidays_data = $xml_parser->XMLin ($holidays_xml);
 
 my $holidays = [];
 for my $key (keys%{$holidays_data->{'entry'}}) {
-  my $holiday_day = $holidays_data->{entry} {$key} {'gd: when'} {startTime};
-  my $holiday_name = $holidays_data->{entry} {$key} {title} {content};
+  my $holiday_day = $holidays_data->{entry}{$key}{'gd: when'}{startTime};
+  my $holiday_name = $holidays_data->{entry}{$key}{title}{content};
   push @$holidays, {day => $holiday_day, name => $holiday_name};
 }
 
@@ -157,8 +157,8 @@ my $holidays_data = $xml_parser->XMLin ($holidays_xml);
 
 my $holidays = [];
 for my $key (keys%{$holidays_data->{'entry'}}) {
-  my $holiday_day = $holidays_data->{entry} {$key} {'gd: when'} {startTime};
-  my $holiday_name = $holidays_data->{entry} {$key} {title} {content};
+  my $holiday_day = $holidays_data->{entry}{$key}{'gd: when'}{startTime};
+  my $holiday_name = $holidays_data->{entry}{$key}{title}{content};
   push @$holidays, {day => $holiday_day, name => $holiday_name};
 }
 </pre>
@@ -167,10 +167,10 @@ After the XML transformation, you can access the data as follows.
 
 <pre>
 # Holiday dates
-$holidays_data->{'entry'} {URL as an identifier} {'gd: when'} {startTime};
+$holidays_data->{'entry'}{URL as an identifier}{'gd: when'}{startTime};
 
 # Holiday name
-$holidays_data->{entry} {URL as an identifier} {title} {content};
+$holidays_data->{entry}{URL as an identifier}{title}{content};
 </pre>
 
 <h4> Convert character code </h4>

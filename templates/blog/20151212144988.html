@@ -729,13 +729,13 @@ decimal
     # Regex
     my $re;
     if (defined $digits->[0] && defined $digits->[1]) {
-      $re = qr / ^ [0-9] {1, $digits->[0]} (\. [0-9] {0, $digits->[1]})? $/;
+      $re = qr / ^ [0-9]{1, $digits->[0]} (\. [0-9]{0, $digits->[1]})? $/;
     }
     elsif (defined $digits->[0]) {
-      $re = qr / ^ [0-9] {1, $digits->[0]} (\. [0-9] *)? $/;
+      $re = qr / ^ [0-9]{1, $digits->[0]} (\. [0-9] *)? $/;
     }
     elsif (defined $digits->[1]) {
-      $re = qr / ^ [0-9] + (\. [0-9] {0, $digits->[1]})? $/;
+      $re = qr / ^ [0-9] + (\. [0-9]{0, $digits->[1]})? $/;
     }
     else {
       $re = qr / ^ [0-9] + (\. [0-9] *)? $/;

@@ -155,13 +155,13 @@ my $age2 = $persons->[1]->[2];
 The point is to use the arrow operator twice. In Perl, you can omit the second and subsequent arrow operators, so you can also write:
 
 <pre>
-my $name1 = $people->[0] [0];
-my $country1 = $people->[0] [1];
-my $age1 = $people->[0] [2];
+my $name1 = $people->[0][0];
+my $country1 = $people->[0][1];
+my $age1 = $people->[0][2];
 
-my $name2 = $people->[1] [0];
-my $country2 = $persons->[1] [1];
-my $age2 = $persons->[1] [2];
+my $name2 = $people->[1][0];
+my $country2 = $persons->[1][1];
+my $age2 = $persons->[1][2];
 </pre>
 
 <h3> Two-dimensional array loop processing </h3>
@@ -605,14 +605,14 @@ while (my $line = <>) {
   $infos->{$time} || = [];
   
   # (3) Total number of cases
-  $infos->{$time} [0] ++;
+  $infos->{$time}[0] ++;
   
   # (4) Total response time
-  $infos->{$time} [1] + = $res_time;
+  $infos->{$time}[1] + = $res_time;
 
   # (5) Maximum response time
-  $infos->{$time} [2] = $res_time
-    if! defined $infos->{$time} [2] || $res_time> $infos->{$time} [2];
+  $infos->{$time}[2] = $res_time
+    if! defined $infos->{$time}[2] || $res_time> $infos->{$time}[2];
 }
 </pre>
 
@@ -668,7 +668,7 @@ for my $time(sort keys %$infos) {
   
   # (2) Inner loop
   for my $name (sort keys%{$infos->{$time}}) {
-    my $value = $infos->{$time} {$name};
+    my $value = $infos->{$time}{$name};
     print "$name: $value\n";
   }
 }
@@ -716,9 +716,9 @@ for my $time(sort keys %$infos) {
     
   my @rec = (
     $time,
-    $infos->{$time} {count},
-    $infos->{$time} {ave_time},
-    $infos->{$time} {max_time}
+    $infos->{$time}{count},
+    $infos->{$time}{ave_time},
+    $infos->{$time}{max_time}
   );
   print join(',', @rec). "\n";
 }
@@ -756,15 +756,15 @@ while (my $line = <>) {
   $infos->{$time} || = {};
   
   # (3) Total number of cases
-  $infos->{$time} {count} ++;
+  $infos->{$time}{count} ++;
   
   # (4) Total response time
-  $infos->{$time} {total_time} + = $res_time;
+  $infos->{$time}{total_time} + = $res_time;
 
   # (5) Maximum response time
-  $infos->{$time} {max_time} = $res_time
-    if! defined $infos->{$time} {max_time}
-      || $res_time> $infos->{$time} {max_time};
+  $infos->{$time}{max_time} = $res_time
+    if! defined $infos->{$time}{max_time}
+      || $res_time> $infos->{$time}{max_time};
 }
 </pre>
 

@@ -45,7 +45,7 @@ sub time_from_str {
   if ($time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
     
     # Create hash
-    @{$time} {qw / mday mon year hour min sec /}
+    @{$time}{qw / mday mon year hour min sec /}
       = ($1, $2, $3, $4, $5, $6);
     
     # Hash corresponding to the English notation of the month and the number of the month
@@ -124,7 +124,7 @@ sub time_from_str {
   if ($time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
     
     # Create hash
-    @{$time} {qw / mday mon year hour min sec /}
+    @{$time}{qw / mday mon year hour min sec /}
       = ($1, $2, $3, $4, $5, $6);
     
     # Hash corresponding to the English notation of the month and the number of the month
