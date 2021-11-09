@@ -133,7 +133,7 @@ create table book (
 )
 EOS
 
-$dbh-> do ($create_table);
+$dbh-> do($create_table);
 </pre>
 
 You now have a table named book.
@@ -150,7 +150,7 @@ Let's drop the table using do.
 
 <pre>
 my $drop_table = "drop table book";
-$dbh-> do ($drop_table);
+$dbh-> do($drop_table);
 </pre>
 
 <h3> Add record insert </h3>
@@ -171,7 +171,7 @@ Let's execute an insert statement using do. Please wait until the select stateme
 
 <pre>
 my $insert = "insert into book (title, author) values ​​('Perl','taro');";
-$dbh-> do ($insert);
+$dbh-> do($insert);
 </pre>
 
 This will add a record like the one below to the table.
@@ -180,7 +180,7 @@ This will add a record like the one below to the table.
 + - -- --- + - -- -- -- +
 | title | author | # header (this can be done when you create the table)
 + - -- --- + - -- -- -- +
-| Perl | taro | # record (record added by insert statement)
+| Perl | taro | # record(record added by insert statement)
 + - -- --- + - -- -- -- +
 </pre>
 
@@ -202,7 +202,7 @@ Let's execute the update statement using do.
 
 <pre>
 my $update = "update book set title ='Ruby' where author ='taro'";
-$dbh-> do ($update);
+$dbh-> do($update);
 </pre>
 
 The previous record is updated and looks like this:
@@ -211,7 +211,7 @@ The previous record is updated and looks like this:
 + - -- --- + - -- -- -- +
 | title | author | # header (this can be done when you create the table)
 + - -- --- + - -- -- -- +
-| Ruby | taro | # record (record updated by update statement)
+| Ruby | taro | # record(record updated by update statement)
 + - -- --- + - -- -- -- +
 </pre>
 
@@ -233,7 +233,7 @@ Let's execute a delete statement using do.
 
 <pre>
 my $delete = "delete from book where author ='taro';";
-$dbh-> do ($delete);
+$dbh-> do($delete);
 </pre>
 
 The record will be deleted.
@@ -309,19 +309,19 @@ create table book (
 )
 EOS
 
-$dbh-> do ($create_table);
+$dbh-> do($create_table);
 
 Execution of # insert statement
-$dbh-> do ("insert into book (title, author) values ​​('Perl','taro');");
-$dbh-> do ("insert into book (title, author) values ​​('C ++','taro');");
-$dbh-> do ("insert into book (title, author) values ​​('Python','ken');");
-$dbh-> do ("insert into book (title, author) values ​​('Java','mamoru');");
+$dbh-> do("insert into book (title, author) values ​​('Perl','taro');");
+$dbh-> do("insert into book (title, author) values ​​('C ++','taro');");
+$dbh-> do("insert into book (title, author) values ​​('Python','ken');");
+$dbh-> do("insert into book (title, author) values ​​('Java','mamoru');");
 
 Execution of # update statement
-$dbh-> do ("update book set title ='Ruby' where author ='mamoru'");
+$dbh-> do("update book set title ='Ruby' where author ='mamoru'");
 
 Execution of # delete statement
-$dbh-> do ("delete from book where author ='ken';");
+$dbh-> do("delete from book where author ='ken';");
 
 Execution of # select statement
 my $sth = $dbh-> prepare ("select * from book;");
@@ -330,7 +330,7 @@ $sth-> execute;
 # Fetch each row
 while (my @row = $sth-> fetchrow_array) {
   # Output each line
-  print join (',', @row), "\ n";
+  print join(',', @row), "\ n";
 }
 
 # Database disconnection

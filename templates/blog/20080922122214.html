@@ -24,10 +24,10 @@ To round off, use the <a href="/blog/20081001122296.html"> sprintf function</a>.
 
 <pre>
 # Specify by the number of digits after the decimal point.
-sprintf ("% .1f", $num1);
+sprintf("% .1f", $num1);
 
 # Specified by the number of significant digits.
-sprintf ("% .1g", $num1);
+sprintf("% .1g", $num1);
 </pre>
 
 To round off, use the sprintf function. The format "% .1f" is a format that rounds a floating point number to the first decimal place. The second decimal place is rounded off.
@@ -38,7 +38,7 @@ If you want to round off by specifying the number of significant digits, specify
 
 <pre>
 my $num2 = 0.725;
-my $num2_round = sprintf ("% .2f", $num2);
+my $num2_round = sprintf("% .2f", $num2);
 </pre>
 
 0.725 expressed in <a href="/blog/20080826121977.html"> numeric literal</a> is not 0.725 internally. Numerical values ​​that are not expressed in binary are always treated as an approximation 0.72499999999999998 (in my environment) due to internal error.
@@ -70,15 +70,15 @@ use warnings;
 my $num1 = 100.47;
 
 print "(1) Round off. \ N";
-my $num1_round = sprintf ("% .1f", $num1);
+my $num1_round = sprintf("% .1f", $num1);
 print "Rounding $num1 to the second decimal place gives ${num1_round}. \ N \ n";
 
 print "(2) Notes on rounding \ n";
 my $num2 = 0.725;
 
 It does not become # 0.73.
-my $num2_round = sprintf ("% .2f", $num2);
+my $num2_round = sprintf("% .2f", $num2);
 print "If you round 0.725 to the third decimal place, you get ${num2_round} \ n \ n";
 
-printf ("caused internally by the number% .30f \ n". $Num2);
+printf("caused internally by the number% .30f \ n". $Num2);
 </pre>

@@ -45,7 +45,7 @@ my @files = (
   "$top_dir / dir2 / 2.txt"
 );
 for my $file (@files) {
-  sysopen (my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
+  sysopen(my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
     or die "Unable to create $file .: $!";
   close $fh;
 }

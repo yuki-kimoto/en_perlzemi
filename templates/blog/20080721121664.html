@@ -31,7 +31,7 @@ When we talk about file handles in Perl, we mean multiple entities that Perl rec
     Symbol (FH)
   </li>
   <li>
-    Type glob (* FH)
+    Type glob(* FH)
   </li>
   <li>
     Reference to typeglobs (\ * FH)
@@ -48,34 +48,34 @@ Perl recognizes the above five as file handles. The following statements are all
 
 <pre>
 # 1. Symbol FH
-open (FH, "<", $file) or die "$!";
+open(FH, "<", $file) or die "$!";
 
 # 2. Type glob * FH
-open (* FH, "<", $file) or die "$!";
+open(* FH, "<", $file) or die "$!";
 
 # 3. Reference to typeglobs \ * FH
 my $fh = \ * FH;
-open ($fh, "<", $file) or die "$!";
+open($fh, "<", $file) or die "$!";
 
 # 4. IO::Handle object
 use IO::Handle;
 my $fh = IO::Handle-> new;
-open ($fh, "<", $file) or die "$!";
+open($fh, "<", $file) or die "$!";
 
 # 5. IO::File object (inheriting IO::Handle)
 use IO::File;
 my $fh = IO::File-> new;
-open ($fh, "<", $file) or die "$!";
+open($fh, "<", $file) or die "$!";
 </pre>
 
 <h3> How to write a modern file open </h3>
 
 How to write a modern file open
 <pre>
-open (my $fh, "<", $file)
+open(my $fh, "<", $file)
   or die "Can't open file $file: $!";
 </pre>
 
 is.
 
-When an undefined scalar variable is passed as the first argument to the open function, a reference to the anonymous glob is automatically generated. With the same description as "3. Reference to typeglob (\ * FH)", only the part of my $fh = \ * FH; is automatically performed. (This is a modern implementation of Perl, which may in the future automatically generate objects to IO::Handle.)
+When an undefined scalar variable is passed as the first argument to the open function, a reference to the anonymous glob is automatically generated. With the same description as "3. Reference to typeglob(\ * FH)", only the part of my $fh = \ * FH; is automatically performed. (This is a modern implementation of Perl, which may in the future automatically generate objects to IO::Handle.)

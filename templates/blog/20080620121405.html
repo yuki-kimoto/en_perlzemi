@@ -45,11 +45,11 @@ print Data::Dumper-> Dump ([$persons], ['$perlsons']);
 
 sub parse {
   my $text = shift;
-  my @lines = split ("\ n", $text);
+  my @lines = split("\ n", $text);
   
   my $items_list = [];
   for my $line (@lines) {
-    my @items = split (',', $line);
+    my @items = split(',', $line);
     push @ $items_list, [@items];
   }
   
@@ -145,11 +145,11 @@ print Data::Dumper-> Dump ([$persons], ['$perlsons']);
 sub parse {
   my ($text, $headers) = @_;
   
-  my @lines = split ("\ n", $text);
+  my @lines = split("\ n", $text);
   
   my $items_hash_list = [];
   foreach my $line (@lines) {
-    my @items = split (',', $line);
+    my @items = split(',', $line);
     
     my %items_hash = ();
     @items_hash {@ $headers} = @items;
@@ -204,7 +204,7 @@ If you write the header name in the subroutine, the subroutine and the header na
 
 <pre>
 for my $line (@lines) {
-  my @items = split (',', $line);
+  my @items = split(',', $line);
     
   my %items_hash = ();
   @items_hash {@ $headers} = @items;
@@ -246,7 +246,7 @@ use warnings;
 my @nums = (1, 2, 3);
 
 print "1: Subroutine for finding maximum and minimum values ​​\ n";
-print "(". join (',', @nums). ") \ n";
+print "(". join(',', @nums). ") \ n";
 print "maximum value:". Max (@nums). "\ n";
 print "Minimum:". Min (@nums). "\ n";
 
@@ -318,14 +318,14 @@ use warnings;
 my @nums = (5, 2, 7, 3, 4);
 
 print "1: Subroutine that sorts in ascending order by bubble sort \ n";
-print join (',', @nums). "(Initial state) \ n";
+print join(',', @nums). "(Initial state) \ n";
 my @sorted_nums_ascend = bubble_sort_ascend (@nums);
-print join (',', @sorted_nums_ascend). "(Last state) \ n \ n";
+print join(',', @sorted_nums_ascend). "(Last state) \ n \ n";
 
 print "2: Subroutine that sorts in descending order by bubble sort \ n";
-print join (',', @nums). "(Initial state) \ n";
+print join(',', @nums). "(Initial state) \ n";
 my @sorted_nums_descend = bubble_sort_descend (@nums);
-print join (',', @sorted_nums_descend). "(Last state) \ n";
+print join(',', @sorted_nums_descend). "(Last state) \ n";
 
 # Bubble sort subroutine. (Ascending order)
 sub bubble_sort_ascend {
@@ -358,7 +358,7 @@ sub bubble_sort_ascend {
      # By doing this, the last element becomes the maximum.
      if ($nums [$i]> $nums [$i + 1]) {
        ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
-       print join (',', @nums). "(Snap) \ n";
+       print join(',', @nums). "(Snap) \ n";
      }
     }
     $change_cnt-;
@@ -380,7 +380,7 @@ sub bubble_sort_descend {
     for my $i (0 .. $change_cnt - 1) {
      if ($nums [$i] <$nums [$i + 1]) {
        ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
-       print join (',', @nums). "(Snap) \ n";
+       print join(',', @nums). "(Snap) \ n";
      }
     }
     $change_cnt-;
@@ -424,20 +424,20 @@ use warnings;
 
 my @nums = (5,2,7,3,4);
 print "1: Subroutine that selects descending order and ascending order and sorts bubbles \ n";
-print join (',', @nums). "(Initial state) \ n";
+print join(',', @nums). "(Initial state) \ n";
 
-my @sorted_nums_ascend = bubble_sort (\ @ nums, {order =>'ascend'});
-my @sorted_nums_descend = bubble_sort (\ @ nums, {order =>'descend'});
+my @sorted_nums_ascend = bubble_sort(\ @ nums, {order =>'ascend'});
+my @sorted_nums_descend = bubble_sort(\ @ nums, {order =>'descend'});
 
 if (@sorted_nums_ascend) {
-  print join (',', @sorted_nums_ascend). "(Ascending order) \ n";
+  print join(',', @sorted_nums_ascend). "(Ascending order) \ n";
 }
 else {
   print "\ @sorted_nums_ascend is an empty list. \ N";
 }
 
 if (@sorted_nums_descend) {
-  print join (',', @sorted_nums_descend). "(Descending) \ n \ n";
+  print join(',', @sorted_nums_descend). "(Descending) \ n \ n";
 }
 else {
   print "\ @ sorted_nums_descend is an empty list. \ n \ n";
@@ -506,7 +506,7 @@ elsif ($order eq'descend') {
 <h4> (1) Explanation of arguments (options are passed as a reference to the hash) </h4>
 
 <pre>
-my @sorted_nums_ascend = bubble_sort (\ @ nums, {order =>'ascend'});
+my @sorted_nums_ascend = bubble_sort(\ @ nums, {order =>'ascend'});
 </pre>
 
 I want to pass an array and a hash, so I'll use a reference. In actual programming, options are often passed in <a href="/blog/20180208151809.html"> hash reference</a>.
@@ -543,7 +543,7 @@ If $opt-> {order} is not specified, it is a kind way to specify the default valu
 # Last bubble sort
 if ($nums [$i] <$nums [$i + 1]) {
   ($nums [$i], $nums [$i + 1]) = ($nums [$i + 1], $nums [$i]);
-  print join (',', @nums). "(Snap) \ n";
+  print join(',', @nums). "(Snap) \ n";
 }
 
 # This bubble sort

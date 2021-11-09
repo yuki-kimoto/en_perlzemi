@@ -32,11 +32,11 @@ use Fcntl qw /: DEFAULT: flock: seek /;
 
 # File for lock (create if not)
 my $lock_file = "lock";
-sysopen (my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
+sysopen(my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
   or die "Cannot open $lock_file: $!";
 
 # Exclusive lock for lock file (exclusive lock because it is read and written)
-flock ($lock_fh, LOCK_EX)
+flock($lock_fh, LOCK_EX)
   or die "Cannot lock $lock_file: $!";
 
 # Be careful as it will be overwritten
@@ -44,7 +44,7 @@ my $file = "data_20080815.txt";
 
 # Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
-sysopen (my $fh, $file, O_RDWR | O_CREAT)
+sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
 
 my $cnt;
@@ -86,7 +86,7 @@ use FindBin;
 my $script = "$FindBin::Bin / sample_20080815.pl";
 
 while (1) {
-  system ("perl $script");
+  system("perl $script");
   
   Random number less than # 1
   my $random = rand 1;
@@ -105,7 +105,7 @@ The script is repeatedly executed using the <a href="/blog/20100123126425.html">
 <pre>
 # Lock file (Note that it will be overwritten)
 my $lock_file = "lock";
-sysopen (my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
+sysopen(my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
   or die "Cannot open $lock_file: $!";
 </pre>
 
@@ -117,7 +117,7 @@ The lock file is locked using the <a href="/blog/20080814121872.html"> flock fun
 
 <pre>
 # Exclusive lock for lock file (exclusive lock because it is read and written)
-flock ($lock_fh, LOCK_EX)
+flock($lock_fh, LOCK_EX)
   or die "Cannot lock $lock_file: $!";
 </pre>
 

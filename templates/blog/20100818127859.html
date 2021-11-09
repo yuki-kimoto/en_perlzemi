@@ -32,7 +32,7 @@ It seems that XS is easy to understand if you understand the correspondence betw
 print "Hello";
 
 # XS
-PerlIO_printf (PerlIO_stdout (), "Hello");
+PerlIO_printf(PerlIO_stdout (), "Hello");
 </pre>
 
 PerlIO_printf is a function that corresponds to printf in the C standard library. The first argument is a PerlIO * type variable, and the second argument is a char * type variable. The standard output can be obtained with the PerlIO_stdout function. In XS, the standard library of standard input / output C is not used, but the functions provided by Perl are used. This is detailed in a document called perlapio.
@@ -96,7 +96,7 @@ my $val = undef;
 SV * sv_val = & PL_sv_undef;
 </pre>
 
-<h4> Check if the value is defined (corresponding to the defined function) </h4>
+<h4> Check if the value is defined(corresponding to the defined function) </h4>
 
 Use the <b> SvOK </b> function to see if a value of type SV * is defined. This is the equivalent of Perl's <a href="/blog/20100219126425.html"> defined function</a>.
 
@@ -141,7 +141,7 @@ print_line (...)
   PPCODE:
 {
     char * file = SvPV_nolen (ST (0));
-    PerlIO * infh = PerlIO_open (file, "r");
+    PerlIO * infh = PerlIO_open(file, "r");
     SV * line = sv_2mortal (newSVpv ("", 0));
     
     if (! infh) {
@@ -149,9 +149,9 @@ print_line (...)
     }
     
     while (sv_gets (line, infh, 0)) {
-      PerlIO_printf (PerlIO_stdout (), SvPV_nolen (line));
+      PerlIO_printf(PerlIO_stdout (), SvPV_nolen (line));
     }
-    PerlIO_close (infh);
+    PerlIO_close(infh);
 }
 </pre>
 
@@ -224,7 +224,7 @@ push function.
 push @nums, 1;
 
 # XS
-av_push (av_nums, newSVuv (1));
+av_push(av_nums, newSVuv (1));
 </pre>
 
 pop function.
@@ -234,7 +234,7 @@ pop function.
 my $num = pop @nums;
 
 # XS
-SV * sv_num = av_pop (av_nums);
+SV * sv_num = av_pop(av_nums);
 </pre>
 
 shift function.
@@ -244,7 +244,7 @@ shift function.
 my $num = shift @nums;
 
 # XS
-SV * sv_num = av_shift (av_nums);
+SV * sv_num = av_shift(av_nums);
 </pre>
 
 unshift function. Since av_unshift does not add a value to the beginning, it just adds an empty area to the beginning, so you need to set the value in av_store.
@@ -254,7 +254,7 @@ unshift function. Since av_unshift does not add a value to the beginning, it jus
 unshift @nums, 1;
 
 # XS
-av_unshift (av_nums, 1);
+av_unshift(av_nums, 1);
 av_store (av_nums, 0, newSVuv (1));
 </pre>
 
@@ -279,7 +279,7 @@ How to write in XS corresponding to the operation of <a href="/blog/201610131476
 exists $hash {"key"};
 
 # XS
-hv_exists (hash, "key", strlen ("key"));
+hv_exists(hash, "key", strlen ("key"));
 </pre>
 
 <h3> Creating an array of hashes </h3>
@@ -353,12 +353,12 @@ SV * return_array_of_hash ()
   hv_person1 = (HV *) sv_2mortal ((SV *) newHV ());
   hv_store (hv_person1, "name", 4, newSVpv ("Ken", 3), 0);
   hv_store (hv_person1, "age", 3, newSVuv (19), 0);
-  av_push (av_persons, newRV_inc ((SV *) hv_person1));
+  av_push(av_persons, newRV_inc ((SV *) hv_person1));
   
   hv_person2 = (HV *) sv_2mortal ((SV *) newHV ());
   hv_store (hv_person2, "name", 4, newSVpv ("Taro", 4), 0);
   hv_store (hv_person2, "age", 3, newSVuv (26), 0);
-  av_push (av_persons, newRV_inc ((SV *) hv_person2));
+  av_push(av_persons, newRV_inc ((SV *) hv_person2));
   
   SV * sv_ret = sv_2mortal (newRV_inc (av_persons));
   xPUSHs (sv_ret);
@@ -398,14 +398,14 @@ SV * return_array_of_hash ()
   hv_stores (person1, "age", set (new_mSVuv (19)));
   hv_stores (person1, "height", set (new_mSViv (170)));
   hv_stores (person1, "weight", set (new_mSVnv (45.3)));
-  av_push (persons, set (new_mRV (person1)));
+  av_push(persons, set (new_mRV (person1)));
   
   person2 = new_mHV ();
   hv_stores (person2, "name", set (new_mSVpvs ("Taro")));
   hv_stores (person2, "age", set (new_mSVuv (26)));
   hv_stores (person2, "height", set (new_mSViv (180)));
   hv_stores (person2, "weight", set (new_mSVnv (39.3)));
-  av_push (persons, set (new_mRV (person2)));
+  av_push(persons, set (new_mRV (person2)));
   
   ST (0) = new_mRV (persons);
   XSRETURN (1);
@@ -701,7 +701,7 @@ bless $self, "MyClass";
 
 # XS
 SV * sv_self = sv_2mortal (new_RV_inc (sv_2mortal ((SV *) newHV ()));
-sv_bless (sv_self, gv_stashpv ("MyClass", 1));
+sv_bless(sv_self, gv_stashpv ("MyClass", 1));
 </pre>
 
 <h4> Check if it is an object </h4>

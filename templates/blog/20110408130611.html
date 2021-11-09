@@ -73,7 +73,7 @@ get'/ sizeunknowndata' => sub {
   $cb = sub {
     my $c = shift;
     my $size = 500 * 1024;
-    my $length = sysread ($fh, my $buffer, $size);
+    my $length = sysread($fh, my $buffer, $size);
     unless (defined $length) {
       close $fh;
       undef $cb;

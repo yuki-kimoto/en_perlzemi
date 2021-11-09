@@ -33,11 +33,11 @@ my $file = "data_20080814.txt";
 
 # Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
-sysopen (my $fh, $file, O_RDWR | O_CREAT)
+sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
 
 # Exclusive lock (exclusive lock because it reads and writes)
-flock ($fh, LOCK_EX)
+flock($fh, LOCK_EX)
   or die "Cannot lock $file: $!";
 
 my $cnt;
@@ -76,7 +76,7 @@ my $script = "$FindBin::Bin / sample_20080814.pl";
 
 while (1) {
   # Repeat the above script.
-  system ("perl $script");
+  system("perl $script");
 
   # Random number less than 100,000 (1 second)
   my $random = rand 1000_000;
@@ -145,7 +145,7 @@ As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and
 <pre>
 # Open in read / write mode (not very secure)
 If there is no file with # O_CREAT, create it.
-sysopen (my $fh, $file, O_RDWR | O_CREAT)
+sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
 </pre>
 
@@ -155,7 +155,7 @@ In sysopen, specify O_RDWR and O_CREAT for the open flags.
 
 <pre>
 # Exclusive lock (exclusive lock because it reads and writes)
-flock ($fh, LOCK_EX)
+flock($fh, LOCK_EX)
   or die "Cannot lock $file: $!";
 </pre>
 
@@ -206,7 +206,7 @@ my $script = "$FindBin::Bin / sample_20080814.pl";
 
 while (1) {
   # Repeat the above script.
-  system ("perl $script");
+  system("perl $script");
 
   # Random number less than 100,000 (1 second)
   my $random = rand 1000_000;

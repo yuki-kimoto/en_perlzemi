@@ -31,7 +31,7 @@ use Fcntl qw (: seek);
 my $file = "data_20080810.txt";
 
 # Open in read / write mode (not very secure)
-open (my $fh, "+ <", $file)
+open(my $fh, "+ <", $file)
   or die "Cannot open $file";
 
 # 16 bytes
@@ -62,7 +62,7 @@ my $age;
 
 # Number of bytes read
 my $len_read;
-$len_read = read ($fh, $age, $len_age);
+$len_read = read($fh, $age, $len_age);
 
 if (! defined $len_read) {
   die "Cannot read $file: $!";
@@ -193,7 +193,7 @@ my $age;
 
 # Number of bytes read
 my $len_read;
-$len_read = read ($fh, $age, $len_age);
+$len_read = read($fh, $age, $len_age);
 
 if (! defined $len_read) {
   die "Cannot read $file: $!";

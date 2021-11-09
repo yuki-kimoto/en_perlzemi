@@ -65,14 +65,14 @@ Validator::Custom - HTML form validation, concise and flexible
   }
   
   # Filter each value of "Favorites" using the "trim" filter function
-  $favorite = $vc-> filter_each ($favorite,'trim');
+  $favorite = $vc-> filter_each($favorite,'trim');
   
   # Check that "Favorites" have at least one value
   if (@ $favorite == 0) {
     $validation-> add_failed (favorite =>'favorite must be selected more than one');
   }
   # Check that "Favorites" is one of "001", "002", and "003"
-  elsif (! ($vc-> check_each ($favorite,'in', ['001', '002', '003']))) {
+  elsif (! ($vc-> check_each($favorite,'in', ['001', '002', '003']))) {
     $validation-> add_failed (favorite =>'favorite is invalid');
   }
   
@@ -182,7 +182,7 @@ You can use the <b> trim </b> filter function to remove the left and right space
 
 <pre>
   # Filter each value of "Favorites" using the "trim" filter function
-  $favorite = $vc-> filter_each ($favorite,'trim');
+  $favorite = $vc-> filter_each($favorite,'trim');
 </pre>
 
 You can use the <b> filter_each </b> method to filter each value of "Favorites".
@@ -193,7 +193,7 @@ You can use the <b> filter_each </b> method to filter each value of "Favorites".
     $validation-> add_failed (favorite =>'favorite must be selected more than one');
   }
   # Check that "Favorites" is one of "001", "002", and "003"
-  elsif (! ($vc-> check_each ($favorite,'in', ['001', '002', '003']))) {
+  elsif (! ($vc-> check_each($favorite,'in', ['001', '002', '003']))) {
     $validation-> add_failed (favorite =>'favorite is invalid');
   }
 </pre>
@@ -536,8 +536,8 @@ The first argument is the value to check. The second argument is the name of the
 <h4> check_each </h4>
 
 <pre>
-  my $is_valid = $vc-> check_each ($values,'int');
-  my $is_valid = $vc-> check_each ($values,'int', $arg);
+  my $is_valid = $vc-> check_each($values,'int');
+  my $is_valid = $vc-> check_each($values,'int', $arg);
 </pre>
 
 Executes the check function on all elements of the array reference. If one or more values ​​are invalid, the <b> check_each </b> method returns a fake value.
@@ -558,8 +558,8 @@ The first argument is the value to filter. The second argument is the name of th
 <h4> filter_each </h4>
 
 <pre>
-  my $new_values ​​= $vc-> filter_each ($values,'trim');
-  my $new_values ​​= $vc-> filter_each ($values,'trim', $arg);
+  my $new_values ​​= $vc-> filter_each($values,'trim');
+  my $new_values ​​= $vc-> filter_each($values,'trim', $arg);
 </pre>
 
 Executes the filter function on all elements of the array reference.
@@ -631,7 +631,7 @@ Convert date string to Time::Piece object:
     $validation-> add_failed (date =>'date must have length');
   }
   else {
-    eval {$date_tp = Time::Piece-> strptime ($date,'% Y /% m /% d')};
+    eval {$date_tp = Time::Piece-> strptime($date,'% Y /% m /% d')};
     if (! $date_tp) {
       $validation-> add_failed (date =>'date value is invalid');
     }
@@ -650,7 +650,7 @@ Convert datetime string to Time::Piece object:
     $validation-> add_failed (datetime =>'datetime must have length');
   }
   else {
-    eval {$datetime_tp = Time::Piece-> strptime ($datetime,'% Y /% m /% d% H:% M:% S')};
+    eval {$datetime_tp = Time::Piece-> strptime($datetime,'% Y /% m /% d% H:% M:% S')};
     if (! $Datetime_tp) {
       $validation-> add_failed (datetime =>'datetime value is invalid');
     }

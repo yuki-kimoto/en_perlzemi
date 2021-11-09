@@ -45,7 +45,7 @@ GetOptions (
 
 A character with a special meaning was specified in a regular expression such as # .
 # Escape the string to work correctly even if
-$sep = quotemeta ($sep);
+$sep = quotemeta($sep);
 
 # Special line input operator
 while (<>) {
@@ -56,7 +56,7 @@ while (<>) {
   # Also specified to work correctly
   The # split function returns a list, so only the parts you need
   # Get by array slice
-  my $item = (split (/ $sep /, $_, -1)) [$col -1];
+  my $item = (split(/ $sep /, $_, -1)) [$col -1];
   print $item. "\ n";
 }
 </pre>
@@ -132,7 +132,7 @@ I will arrange the description. The value type can be s, which represents a stri
 <pre>
 while (<>) {
   chomp;
-  my $item = (split (/ $sep /, $_, -1)) [$col -1];
+  my $item = (split(/ $sep /, $_, -1)) [$col -1];
   print $item, "\ n";
 }
 </pre>
@@ -156,7 +156,7 @@ chomp;
 <h4> (3) -Specify -1 as the third argument of the -2 split function </h4>
 
 <pre>
-split (/ $sep /, $_, -1)
+split(/ $sep /, $_, -1)
 </pre>
 
 If the third argument of <a href="/blog/20080301120434.html"> split function</a> is omitted and the end of the element is blank, the last empty string will be ignored. (It was pointed out by Mr. huta.)
@@ -182,7 +182,7 @@ Will be acquired. To solve this, you can make the last empty string recognized b
 <h4> (3) -3 Get only the elements specified in the array slice </h4>
 
 <pre>
-my $item = (split (/ $sep /, $_, -1)) [$col -1];
+my $item = (split(/ $sep /, $_, -1)) [$col -1];
 </pre>
 
 Since split returns a list, <a href="/blog/20080216120316.html"> array slice</a> gets only the specified elements.

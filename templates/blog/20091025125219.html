@@ -64,7 +64,7 @@ Use the <a href="/blog/20080912122145.html"> abs function</a> to find the absolu
 $ret = abs $num;
 </pre>
 
-abs (-3) will be 3.
+abs(-3) will be 3.
 
 <h4> sqrt </h4>
 
@@ -74,7 +74,7 @@ To find the positive square root, use the <a href="/blog/20080630121483.html"> s
 $ret = sqrt $num;
 </pre>
 
-sqrt (4) will be 2.
+sqrt(4) will be 2.
 
 <h4> int </h4>
 
@@ -84,9 +84,9 @@ Use the <a href="/blog/20080923122214.html"> int function</a> to retrieve the in
 $ret = int $num;
 </pre>
 
-int (1.5) becomes 1 and int (-1.5) becomes -1.
+int(1.5) becomes 1 and int(-1.5) becomes -1.
 
-<h4> ceil (POSIX) </h4>
+<h4> ceil(POSIX) </h4>
 
 To round up the decimal point, use the POSIX module's <a href="/blog/20080924122227.html"> ceil function</a>.
 
@@ -95,7 +95,7 @@ use POSIX'ceil';
 $ret = ceil $num;
 </pre>
 
-<h4> floor (POSIX) </h4>
+<h4> floor(POSIX) </h4>
 
 To round down the decimal point, use the <a href="/blog/20090430122227.html"> floor function</a> of the POSIX module.
 
@@ -112,7 +112,7 @@ Use the <a href="/blog/20080906122079.html"> rand function</a> to generate rando
 $ret = rand $num;
 </pre>
 
-<h4> looks_like_number (Scalar::Util) </h4>
+<h4> looks_like_number(Scalar::Util) </h4>
 
 Use the <a href="/blog/20090501124313.html"> looks_like_number function</a> of the Scalar::Util module to determine if it is a number.
 
@@ -129,7 +129,7 @@ $ret = looks_like_number $num;
 Use the <a href="/blog/20081007122338.html"> join function</a> to concatenate strings by specifying a delimiter.
 
 <pre>
-$ret = join (',', @array);
+$ret = join(',', @array);
 </pre>
 
 The first argument is the delimiter. In this example, a comma is specified as the delimiter. The character strings given in the second and subsequent arguments are concatenated with a delimiter.
@@ -149,7 +149,7 @@ Use the <a href="/blog/20080224120386.html"> substr function</a> to extract and 
 [A] Extract the character at the specified position
 
 <pre>
-$ret = substr ($str, 2, 4);
+$ret = substr($str, 2, 4);
 </pre>
 
 The first argument is the target string. The second argument is the start position of the string you want to extract. The third argument is the length of the string you want to extract.
@@ -157,7 +157,7 @@ The first argument is the target string. The second argument is the start positi
 [B] Replace the character string at the specified position
 
 <pre>
-substr ($str, 0, 2, $replace);
+substr($str, 0, 2, $replace);
 </pre>
 
 To replace the character string at the specified position, specify the replaced character string in the 4th argument. In this example, the first two characters of $str are replaced by $replace.
@@ -167,13 +167,13 @@ To replace the character string at the specified position, specify the replaced 
 Use the <a href="/blog/20080225120395.html"> index function</a> to search for a string.
 
 <pre>
-$ret = index ($str, $search);
+$ret = index($str, $search);
 </pre>
 
 In the first argument, specify the character string to be searched, and in the second argument, specify the character string you want to search. The position where the character string is found is returned as the return value. If not found, -1 will be returned.
 
 <pre>
-$ret = index ($str, $search, $pos);
+$ret = index($str, $search, $pos);
 </pre>
 
 You can specify the search start position in the third argument.
@@ -183,7 +183,7 @@ You can specify the search start position in the third argument.
 Use the <a href="/blog/20100321126967.html"> rindex function</a> to search for a string from the end of the string.
 
 <pre>
-$ret = rindex ($str, $search);
+$ret = rindex($str, $search);
 </pre>
 
 <h4> split </h4>
@@ -191,7 +191,7 @@ $ret = rindex ($str, $search);
 Use the <a href="/blog/20080301120434.html"> split function</a> to split the string by the delimiter.
 
 <pre>
-@ret = split (/, /, $str);
+@ret = split(/, /, $str);
 </pre>
 
 Specify the delimiter as a regular expression in the first argument. In the second argument, specify the character string you want to split. The return value is an array of split strings.
@@ -243,7 +243,7 @@ $ret = lcfirst $str;
  Use the <a href="/blog/20081001122296.html"> sprintf function</a> to create a formatted string.
 
 <pre>
-$ret = sprintf ($format, @strs);
+$ret = sprintf($format, @strs);
 </pre>
 
 The first argument is a string that represents the format. The second and subsequent arguments are the character strings embedded in the format specifier part.
@@ -253,13 +253,13 @@ The first argument is a string that represents the format. The second and subseq
 Interpret $num as an integer and format it with 8 digits. Parts less than 8 digits are padded with 0s.
 
 <pre>
-$ret = sprintf ("% 08d", $num);
+$ret = sprintf("% 08d", $num);
 </pre>
 
 Interpret $num as a floating point and round it to two decimal places.
 
 <pre>
-$ret = sprintf ("% .2f", $num);
+$ret = sprintf("% .2f", $num);
 </pre>
 
 <span style = "font-weight: bold;"> [B] List of format specifiers </span>
@@ -273,9 +273,9 @@ Interpret the% u argument as an unsigned integer
 % X Convert positive numbers to hexadecimal strings (uppercase)
 % b Convert positive numbers to binary strings
 Interpret the% f argument as a floating point
-Interpret% e argument as floating point (formatted in exponential notation (lowercase))
-Interpret% E argument as floating point (formatted in exponential notation (uppercase))
-Interpret% g argument as floating point (formatted in exponential notation (lowercase), trailing 0s removed)
+Interpret% e argument as floating point(formatted in exponential notation (lowercase))
+Interpret% E argument as floating point(formatted in exponential notation (uppercase))
+Interpret% g argument as floating point(formatted in exponential notation (lowercase), trailing 0s removed)
 Interpret the% G argument as a floating point number (finger)Formatted in number notation (uppercase). The trailing 0 is removed)
 Translated to the in-memory address of the variable given in the% p argument
 </pre>
@@ -390,7 +390,7 @@ $ret = shift @array;
 Use the <a href="/blog/20100105126425.html"> unshift function</a> to add an element to the beginning of the array.
 
 <pre>
-unshift (@array, @items);
+unshift(@array, @items);
 </pre>
 
 <h4> pop </h4>
@@ -406,7 +406,7 @@ $ret = pop @array;
 Use the <a href="/blog/20100106126425.html"> push function</a> to add an element to the end of the array.
 
 <pre>
-push (@array, @items);
+push(@array, @items);
 </pre>
 
 <h4> splice </h4>
@@ -417,7 +417,7 @@ Use the <a href="/blog/20080127120141.html"> splice function</a> to work with mu
 You can retrieve multiple elements.
 
 <pre>
-@ret = splice (@array, $pos, $size)
+@ret = splice(@array, $pos, $size)
 </pre>
 
 Specify the target array in the first argument, the start position in the second argument, and the size you want to extract in the third argument.
@@ -426,7 +426,7 @@ Specify the target array in the first argument, the start position in the second
 You can replace multiple elements.
 
 <pre>
-splice (@array, $pos, $size, @items);
+splice(@array, $pos, $size, @items);
 </pre>
 
 Specify the array you want to replace with the 4th argument.
@@ -607,7 +607,7 @@ while (my ($key, $value) = each% hash) {
 Use the <a href="/blog/20080213120291.html"> exists function</a> to check for the existence of the hash key.
 
 <pre>
-$ret = exists ($hash {$key});
+$ret = exists($hash {$key});
 </pre>
 
 <h4> delete </h4>
@@ -634,7 +634,7 @@ Use the <a href="/blog/20080227120413.html"> reverse function</a> to swap the ha
 Use the <a href="/blog/20080718121643.html"> open function</a> to open the file.
 
 <pre>
-open (my $fh, "<", $file)
+open(my $fh, "<", $file)
   or die "Cannot open $file: $!";
 </pre>
 
@@ -695,7 +695,7 @@ $ret = fileno $fh;
 Use the <a href="/blog/20171002150691.html"> opendir function</a> to open the directory.
 
 <pre>
-opendir (my $dh, $dir)
+opendir(my $dh, $dir)
   or die "Cannot open $dir: $!";
 </pre>
 
@@ -831,7 +831,7 @@ $ret = getcwd;
 Use the <a href="/blog/20080821121933.html"> chmod function</a> to change the file permissions.
 
 <pre>
-chmod ($permission, $file)
+chmod($permission, $file)
   or die "Cannot change permission $file: $!";
 </pre>
 
@@ -880,7 +880,7 @@ if (-f $file) {
 <span style = "font-weight: bold;"> [A] List of commonly used file operators </span>
 
 <pre>
--e Check if the file exists (including the directory)
+-e Check if the file exists(including the directory)
 -f Check if the file is a regular file
 -d Check if the directory exists
 -r Check if it can be read
@@ -935,7 +935,7 @@ sleep $sec;
 
 When it sleeps, the program will stop during that time.
 
-<h4> usleep (Time::HiRes) </h4>
+<h4> usleep(Time::HiRes) </h4>
 
 To sleep in microseconds, use the usleep function of the <a href="/blog/20180309152509.html"> Time::HiRes</a> module.
 
@@ -952,7 +952,7 @@ usleep $microsec;
 Use the <a href="/blog/20100219126425.html"> defined function</a> to see if the value is defined.
 
 <pre>
-$ret = defined ($val);
+$ret = defined($val);
 </pre>
 
 <h4> kill </h4>
@@ -960,7 +960,7 @@ $ret = defined ($val);
 Use the kill function to signal the process.
 
 <pre>
-kill ($signal_number, $child_process_id);
+kill($signal_number, $child_process_id);
 </pre>
 
 <h4> caller </h4>
@@ -968,7 +968,7 @@ kill ($signal_number, $child_process_id);
 Use the caller function to get information about the calling function.
 
 <pre>
-($package, $filename, $line, $subroutine) = caller (0);
+($package, $filename, $line, $subroutine) = caller(0);
 </pre>
 
 In the argument, specify how many layers the caller information should be acquired. The return value will be the package name, file name, line number, and subroutine name in that order.
@@ -978,7 +978,7 @@ In the argument, specify how many layers the caller information should be acquir
 Use the <a href="/blog/20101222130016.html"> getpwuid function</a> to get the execution username.
 
 <pre>
-$ret = getpwuid ($>);
+$ret = getpwuid($>);
 </pre>
 
 Specify the user ID in the first argument. The execution user ID is stored in a special variable called $>, so specify this.
@@ -1234,7 +1234,7 @@ if ($response-> is_success) {
   $content = $response-> content;
 }
 else {
-  die ($response-> status_line);
+  die($response-> status_line);
 }
 </pre>
 

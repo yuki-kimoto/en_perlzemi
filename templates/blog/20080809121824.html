@@ -40,11 +40,11 @@ my $infile = shift;
 # use.
 my $tmpfile = "tmp $$";
 
-open (my $infh, "<", $infile)
+open(my $infh, "<", $infile)
   or die "Cannot open $infile: $!";
 
 # Open a temporary file for export.
-open (my $tmpfh, ">", $tmpfile)
+open(my $tmpfh, ">", $tmpfile)
   or die "Cannot open $tmpfile: $!";
     
 while (1) {
@@ -53,7 +53,7 @@ while (1) {
     # Make sure to avoid read errors
     undef $!;
     # In case of error or EOF, undef is returned
-    unless (defined ($line = <$infh>)) {
+    unless (defined($line = <$infh>)) {
       if ($!) {
         # In case of error
         die "Error read $infh: $!";
@@ -121,10 +121,10 @@ Make sure that the temporary file name includes the process ID ($$). By making i
 <h3> (2) Open both read file and temporary write file </h3>
 
 <pre>
-open (my $infh, "<", $infile)
+open(my $infh, "<", $infile)
   or die "Cannot open $infile: $!";
 
-open (my $tmpfh, ">", $tmpfile)
+open(my $tmpfh, ">", $tmpfile)
   or die "Cannot open $tmpfile: $!";
 </pre>
 
@@ -133,7 +133,7 @@ The input file is opened in read mode ("<") and the temporary file for writing i
 <h3> (3) File reading error check </h3>
 
 <pre>
-    unless (defined ($line = <$infh>)) {
+    unless (defined($line = <$infh>)) {
       if ($!) {
         die "Error read $infh: $!";
       }

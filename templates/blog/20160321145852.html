@@ -88,7 +88,7 @@ When actually reading the source code, if you see the variable name "PL_stack_sp
 Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled. The description is in "perl.h".
 
 <pre>
-# if! defined (MULTIPLICITY)
+# if! defined(MULTIPLICITY)
 START_EXTERN_C
 # include "intrpvar.h"
 END_EXTERN_C
@@ -100,10 +100,10 @@ END_EXTERN_C
 vTHX is an interpreter. Under "MULTIPLICITY", "vTHX" expands to "aTHX" and "PERL_GET_INTERP", but in general Perl, read as "PERL_IMPLICIT_CONTEXT" is defined. In other words, let's think that it will be expanded to "aTHX".
 
 <pre>
-# if defined (MULTIPLICITY)
+# if defined(MULTIPLICITY)
 / * cases 2 and 3 above * /
 
-# if defined (PERL_IMPLICIT_CONTEXT)
+# if defined(PERL_IMPLICIT_CONTEXT)
 # define vTHX aTHX
 # else
 # define vTHX PERL_GET_INTERP

@@ -136,7 +136,7 @@ umask 0022;
 my $file = "file_20080824_ $$";
 
 The # permission value is 644, affected by the bitmask.
-sysopen (my $fh, $file, O_CREAT | O_WRONLY, 0666)
+sysopen(my $fh, $file, O_CREAT | O_WRONLY, 0666)
   or die "Cannot open $file: $!";
     
 close $fh
@@ -145,6 +145,6 @@ close $fh
 The # permission value is affected by the bitmask and becomes 755.
 # Be careful as it will be overwritten
 my $dir = "dir_20080824_ $$";
-mkdir ($dir, 0777)
+mkdir($dir, 0777)
   or die "Cannot make $dir";
 </pre>

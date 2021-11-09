@@ -144,17 +144,17 @@ It is an arithmetic operation.
 $num = 1 + 1;
 $num = 1 - 1;
 $num = 1 * 2;
-$num = 1/2;
+$num = 1 / 2;
 </pre>
 
 How to find a quotient. To find the quotient, perform ordinary division and then extract the integer part with the int function.
 
 <pre>
 # Quotient
-$div = int (3/2);
+$div = int(3/2);
 
 # Remainder
-$mod = 3% 2;
+$mod = 3 % 2;
 </pre>
 
 See the following articles for a detailed explanation of the four arithmetic operations.
@@ -200,19 +200,19 @@ Various character string operations. Dot operator to concatenate strings, <a hre
 # Join
 my $join1 ='aaa'.' Bbb';
 
-my $join2 = join (',','aaa','bbb','ccc');
+my $join2 = join(',','aaa','bbb','ccc');
 
 # Split
-my @record = split (/, /,'aaa, bbb, ccc');
+my @record = split(/, /,'aaa, bbb, ccc');
 
 # length
 my $length = length'abcdef';
 
 # Cut out
-my $substr = substr ('abcd', 0, 2); # ab
+my $substr = substr('abcd', 0, 2); # ab
 
 # search
-my $result = index ('abcd','cd'); # Returns its position if found, -1 if not found
+my $result = index('abcd','cd'); # Returns its position if found, -1 if not found
 </pre>
 
 <h3> Array </h3>
@@ -635,10 +635,10 @@ In Perl, some functions have different return values ​​depending on the cont
 
 <pre>
 # Scalar context (get date / time as a character string)
-my $time_str = localtime ();
+my $time_str = localtime();
 
 # List context (get each element of date and time as an array)
-my @datetime = localtime ();
+my @datetime = localtime();
 </pre>
 
 <h4> unless statement </h4>
@@ -760,13 +760,13 @@ There is no function to read everything from a file, so read all the lines into 
 
 <pre>
 my @lines = <$fh>;
-my $content = join ('', @lines);
+my $content = join('', @lines);
 </pre>
 
 This can be written in one line.
 
 <pre>
-my $content = join ('', <$fh>);
+my $content = join('', <$fh>);
 </pre>
 
 <h4> Ternary operator </h4>

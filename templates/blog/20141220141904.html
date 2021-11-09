@@ -171,7 +171,7 @@ To avoid this, you need to manually increment the reference count by 1 if you wa
 / * When storing in an array * /
 SV * sv_num = sv_2mortal (newSvIV (3));
 AV * av_nums = (AV *) sv_2mortal ((SV *) newAV ());
-av_push (av_nums, SvREFCNT_inc (sv_num));
+av_push(av_nums, SvREFCNT_inc (sv_num));
 
 / * When storing in a hash * /
 SV * sv_score_math = sv_2mortal (newSViv (60));

@@ -125,14 +125,14 @@ print $timer2-> (), "\ n \ n";
 
 # Function generator that generates closures that know the elapsed time
 sub create_timer {
-  # time () is the time when the function generator was called
-  my $time = time ();
+  # time() is the time when the function generator was called
+  my $time = time();
   
   return sub {
-    # time () is the generated subroutine
-    # The time it was called. time ()-with $time
+    # time() is the generated subroutine
+    # The time it was called. time()-with $time
     # You can know the elapsed time.
-    return time ()-$time;
+    return time()-$time;
   }
 }
 </pre>
@@ -141,14 +141,14 @@ sub create_timer {
 
 <pre>
 sub create_timer {
-  # time () is the time when the function generator was called
-  my $time = time ();
+  # time() is the time when the function generator was called
+  my $time = time();
 
-  # time () is the generated subroutine
-  # The time it was called. time ()-with $time
+  # time() is the generated subroutine
+  # The time it was called. time()-with $time
   # You can know the elapsed time.
   return sub {
-    return time ()-$time;
+    return time()-$time;
   }
 }
 </pre>

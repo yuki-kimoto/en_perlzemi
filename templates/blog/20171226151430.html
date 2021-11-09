@@ -22,7 +22,7 @@
 You can use the <b> kill function </b> to kill the process.
 
 <pre>
-kill (signal number, process ID);
+kill(signal number, process ID);
 </pre>
 
 Specify the signal number in the first argument.
@@ -34,7 +34,7 @@ The return value is the number of successful kill functions.
 You can also specify multiple process IDs in a list, as shown below.
 
 <pre>
-kill (signal number, process ID1, process ID2, ...);
+kill(signal number, process ID1, process ID2, ...);
 </pre>
 
 <h3> Get the process ID </h3>
@@ -68,7 +68,7 @@ This number is the signal number because it is arranged in order from the first.
 Signal number 0 is a special number that allows the target process to check if it can receive the signal.
 
 <pre>
-my $success = kill (0, process ID);
+my $success = kill(0, process ID);
 </pre>
 
 This can be used to check if the child process is actually alive.

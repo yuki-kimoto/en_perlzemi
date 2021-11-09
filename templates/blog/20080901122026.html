@@ -22,17 +22,17 @@ Let's convert from decimal to binary, octal, and hexadecimal. Use the format spe
 
 <pre>
 # Convert to binary string
-my $bit_str = sprintf ("% b", $num);
+my $bit_str = sprintf("% b", $num);
 </pre>
 
 <pre>
 # Convert to octal string
-my $oct_str = sprintf ("% o", $num);
+my $oct_str = sprintf("% o", $num);
 </pre>
 
 <pre>
 # Convert to hexadecimal string
-my $hex_str = sprintf ("% X", $num);
+my $hex_str = sprintf("% X", $num);
 </pre>
 
 To convert a decimal string to a binary number, use the sprintf function to specify the format as "% b". To convert to octal and hexadecimal, use "% o" and "% X" respectively.
@@ -49,13 +49,13 @@ use warnings;
 my $num = 255;
 
 # Convert to binary string
-my $bit_str = sprintf ("% b", $num);
+my $bit_str = sprintf("% b", $num);
 
 # Convert to octal string
-my $oct_str = sprintf ("% o", $num);
+my $oct_str = sprintf("% o", $num);
 
 # Convert to hexadecimal string
-my $hex_str = sprintf ("% X", $num);
+my $hex_str = sprintf("% X", $num);
 
 print "(1) Conversion from decimal string to 2,8, hexadecimal string \ n";
 print "decimal string: $num; \ n";
@@ -73,7 +73,7 @@ I will explain the conversion from binary numbers, octal numbers, and hexadecima
 Use the <a href="/blog/20171027150945.html"> oct function</a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a character string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
 
 <pre>
-my $num = oct ('0b'. $Bit_str);
+my $num = oct('0b'. $Bit_str);
 </pre>
 
 <b> Conversion from octal to decimal </b>
@@ -81,7 +81,7 @@ my $num = oct ('0b'. $Bit_str);
 Use the <a href="/blog/20171027150945.html"> oct function</a> to convert from octal to decimal. In the sample, '17' is passed, but even if there is a leading 0 like '017', it will be converted correctly.
 
 <pre>
-my $num = oct ($oct_str);
+my $num = oct($oct_str);
 </pre>
 
 <b> Hexadecimal to Decimal Conversion </b>
@@ -89,7 +89,7 @@ my $num = oct ($oct_str);
 Use the <a href="/blog/20171026150980.html"> hex function</a> to convert from hexadecimal to decimal. In the sample,'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
 
 <pre>
-my $hex_to_dec = hex ($hex_str);
+my $hex_to_dec = hex($hex_str);
 </pre>
 
 This is a sample to convert binary, octal, and hexadecimal numbers to decimal numbers.
@@ -104,17 +104,17 @@ my $hex_str ='FF';
 
 Convert a binary string to a decimal number with the # oct function.
 print "Binary to Decimal Conversion \ n";
-my $bit_to_dec = oct ('0b'. $Bit_str);
+my $bit_to_dec = oct('0b'. $Bit_str);
 print "$bit_str-> $bit_to_dec \ n \ n";
 
 Convert an octal string to a decimal number with the # oct function.
 print "Octal to Decimal Conversion \ n";
-my $oct_to_dec = oct ($oct_str);
+my $oct_to_dec = oct($oct_str);
 print "$oct_str-> $oct_to_dec \ n \ n";
 
 Convert an octal string to a decimal number with the # hex function.
 print "Hexadecimal to Decimal Conversion \ n";
-my $hex_to_dec = hex ($hex_str);
+my $hex_to_dec = hex($hex_str);
 print "$hex_str-> $hex_to_dec \ n \ n";
 </pre>
 
@@ -145,7 +145,7 @@ sub dec_to_n {
     return if $dec! ~ / ^ ([+-]?) \ D + $/;
 
     Save the # sign if it exists
-    my $sign = $1? substr ($dec, 0, 1,''):'';
+    my $sign = $1? substr($dec, 0, 1,''):'';
 
     If # 0, return as it is
     return $dec if $dec == 0;
@@ -156,17 +156,17 @@ sub dec_to_n {
     # Convert decimal to n-ary.
     while ($dec! = 0) {
       # Find the remainder and save it.
-      unshift (@rem_list, $dec% $n);
+      unshift(@rem_list, $dec% $n);
       
       # Ask for a quotient.
-      $dec = int ($dec / $n);
+      $dec = int($dec / $n);
     }
     
     # A table to convert to a base number representation.
     my @dec_to_n = (0 .. 9,'A' ..'F');
 
     # Convert in conversion table and join characters
-    return join ('', $sign, map {$dec_to_n [$_]} @rem_list);
+    return join('', $sign, map {$dec_to_n [$_]} @rem_list);
 }
 </pre>
 
@@ -196,7 +196,7 @@ A single return returns undef for scalar contexts and an empty list for list con
 <pre>
 return if! defined $dec;
 return if $dec! ~ / ^ ([+-]?) \ D + $/;
-my $sign = $1? substr ($dec, 0, 1,''):'';
+my $sign = $1? substr($dec, 0, 1,''):'';
 </pre>
 
 $dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html"> Regular expression for decimal integers</a>
@@ -208,7 +208,7 @@ $dec must be passed as an argument. Next, it must be a decimal integer. <a href=
 Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")
 
 <pre>
-my $sign = $1? substr ($dec, 0, 1,''):'';
+my $sign = $1? substr($dec, 0, 1,''):'';
 </pre>
 
 If there is a sign, the sign is assigned to $1, so the presence or absence of the sign is judged by whether or not $1 is defined. Here, the ternary operator is used for conditional branching.
@@ -226,8 +226,8 @@ my @rem_list;
     
 # Convert decimal to n-ary.
 while ($dec! = 0) {
-  unshift (@rem_list, $dec% $n);
-  $dec = int ($dec / $n);
+  unshift(@rem_list, $dec% $n);
+  $dec = int($dec / $n);
 }
 </pre>
 
@@ -260,7 +260,7 @@ By using the unshift function and inserting the remainder at the beginning of th
 
 <pre>
 my @dec_to_n = (0 .. 9,'A' ..'F');
-return join ('', $sign, map {$dec_to_n [$_]} @rem_list);
+return join('', $sign, map {$dec_to_n [$_]} @rem_list);
 </pre>
 
 For example, for hexadecimal numbers, you need to convert 11 to 15 to A to F. @dec_to_n is an array for conversion.
@@ -305,7 +305,7 @@ sub n_to_dec {
   return if! defined $num_str;
 
   # Break down into individual numbers
-  my @nums = split (//, $num_str);
+  my @nums = split(//, $num_str);
     
   # Allow 1-9 and A-F
   my @valid = (0 .. 9,'A' ..'F');
@@ -364,7 +364,7 @@ Also, the validity of $num_str depends on $n. If $n is 8, for example, then $num
 <b> Decompose into individual characters </b>
 
 <pre>
-my @nums = split (//, $num_str);
+my @nums = split(//, $num_str);
 </pre>
 
 If you want to convert the binary character string "1010" to decimal, you need to calculate 8 * 1 + 4 * 0 + 2 * 1 + 1 * 0, so use the split function to break it down into individual characters. I will do it.

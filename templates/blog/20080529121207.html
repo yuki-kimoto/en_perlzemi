@@ -102,16 +102,16 @@ use warnings;
 print "1: Get the list of files in the current directory. \ N";
 # * Represents all files that do not start with.
 my @all_files = glob "*";
-print join ("\ n", @all_files). "\ n \ n";
+print join("\ n", @all_files). "\ n \ n";
 
 print "2: Get a list of files ending in .txt. \ N";
 my @text_files = glob "* .txt";
-print join ("\ n", @text_files). "\ n \ n";
+print join("\ n", @text_files). "\ n \ n";
 
 print "3: Get a list of files ending in .txt and .pl. \ N";
 # If there are multiple patterns, separate them with a blank
 my @text_and_pl_files = glob "* .txt * .pl";
-print join ("\ n", @text_and_pl_files). "\ n \ n";
+print join("\ n", @text_and_pl_files). "\ n \ n";
 
 print "4: Get a list of regular files. \ N";
 my @normal_files = glob "*";
@@ -119,7 +119,7 @@ my @normal_files = glob "*";
 # Get all the files and then
 Sort by # grep.
 @normal_files = grep {-f $_} @normal_files;
-print join ("\ n", @normal_files). "\ n \ n";
+print join("\ n", @normal_files). "\ n \ n";
 </pre>
 
 Reference: <a href="/blog/20081007122338.html"> join function</a>

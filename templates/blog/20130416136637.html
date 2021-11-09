@@ -1003,7 +1003,7 @@ typedef struct STRUCT_SV SV;
 
 // perl.h
 / * SGI's <sys / sema.h> has struct sv * /
-# if defined (__sgi)
+# if defined(__sgi)
 # define STRUCT_SV perl_sv
 # else
 # define STRUCT_SV sv
@@ -1543,10 +1543,10 @@ Variable names starting with PL_ are interpreted variables. A variable that hold
 
 <pre>
 // embedvar.h
-# if defined (MULTIPLICITY)
+# if defined(MULTIPLICITY)
 / * cases 2 and 3 above * /
 
-# if defined (PERL_IMPLICIT_CONTEXT)
+# if defined(PERL_IMPLICIT_CONTEXT)
 # define vTHX aTHX
 # else
 # define vTHX PERL_GET_INTERP

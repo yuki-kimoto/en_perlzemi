@@ -316,7 +316,7 @@ The following settings assume that you have a C / C ++ header file in "Rstats_li
 
 <pre>
     INC =>'-I. -I./Rstats_lib/include',
-    H => ['ppport.h', glob ('Rstats_lib / include / *. h')],
+    H => ['ppport.h', glob('Rstats_lib / include / *. h')],
 </pre>
 
 <h4> Add header file include path </h4>
@@ -336,7 +336,7 @@ This is an option passed to the compiler (such as gcc). Note that even if you sp
 The "H" option passes a list of header files. Specify all header files in the array reference. All header files under "Rstats_lib / include" are specified using "ppport.h" and the glob function.
 
 <pre>
-    H => ['ppport.h', glob ('Rstats_lib / include / *. h')],
+    H => ['ppport.h', glob('Rstats_lib / include / *. h')],
 </pre>
 
 If this is not specified, the dependency will not be resolved correctly when make is executed, so be sure to specify it. The "INC" option alone will compile successfully for the first time, but make will not understand the dependencies correctly.
@@ -346,7 +346,7 @@ If this is not specified, the dependency will not be resolved correctly when mak
 How can I store C / C ++ language source files in a different directory when writing an XS? You can do that if you write Makefile.PL well. Write the WriteMakefile options in Makefile.PL as follows:
 
 <pre>
-    C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],
+    C => ['Rstats.c', glob('Rstats_lib / src / *. Cpp')],
     OBJECT =>'$(O_FILES)',
     DEFINE =>'-o $@'
 </pre>
@@ -434,7 +434,7 @@ WriteMakefile (
     LIBS => [],
     DEFINE =>'',
     INC=>'-I. -I./Rstats_lib/include',
-    C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],
+    C => ['Rstats.c', glob('Rstats_lib / src / *. Cpp')],
     OBJECT =>'$(O_FILES)',
     DEFINE =>'-o $@'
 );
@@ -445,7 +445,7 @@ WriteMakefile (
 I think it is difficult to understand as it is, so I will explain the options of WriteMakefile.
 
 <pre>
-    C => ['Rstats.c', glob ('Rstats_lib / src / *. Cpp')],
+    C => ['Rstats.c', glob('Rstats_lib / src / *. Cpp')],
     OBJECT =>'$(O_FILES)',
     DEFINE =>'-o $@'
 </pre>
@@ -453,7 +453,7 @@ I think it is difficult to understand as it is, so I will explain the options of
 First, write all the source code required for compilation with the option "C". "Rstats.c" corresponds to "Rstats.xs". I am using the glog function to get the cpp file under "Rstats_lib / src". If it was C language, the options in this part would be as follows.
 
 <pre>
-    C => ['Rstats.c', glob ('Rstats_lib / src / *. C')],
+    C => ['Rstats.c', glob('Rstats_lib / src / *. C')],
 </pre>
 
 Internally, the file specified by the "C" option is stored in a variable called "C_FILES" in Makefile. In addition, a variable called "O_FILES" with the extension of "C_FILES" changed to ".o" is automatically created.

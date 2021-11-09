@@ -90,7 +90,7 @@ new (...)
   SV * point_svrv = sv_2mortal (newRV_inc (point_sv));
   
   // create an object
-  SV * point_obj = sv_bless (point_svrv, gv_stashpv (class_name, 1));
+  SV * point_obj = sv_bless(point_svrv, gv_stashpv (class_name, 1));
   
   XPUSHs (point_obj);
   XSRETURN (1);

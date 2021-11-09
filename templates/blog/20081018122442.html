@@ -33,10 +33,10 @@ my $time2 = time_from_str ($time_str2);
 my $sec_interval = time_to_sec ($time2) - time_to_sec ($time1);
 
 # Convert elapsed seconds to hash of time representation
-my $time_interval = sec_to_time ($sec_interval);
+my $time_interval = sec_to_time($sec_interval);
 
 # Convert time representation hash to time string representation
-my $time_interval_str = str_from_time ($time_interval);
+my $time_interval_str = str_from_time($time_interval);
 
 print "Time difference is $time_interval_str. \ N";
 
@@ -68,7 +68,7 @@ sub str_from_time {
   return unless defined $time-> {sec};
     
   my $time_str
-    = sprintf ("% 02s:% 02s:% 02s", @ {$time} {qw / hour min sec /});
+    = sprintf("% 02s:% 02s:% 02s", @ {$time} {qw / hour min sec /});
   return $time_str;
 }
 
@@ -95,13 +95,13 @@ sub time_to_sec {
 
 # A function that converts seconds to time.
 sub sec_to_time {
-  my $sec = int (shift);
+  my $sec = int(shift);
   my $time = {};
   
-  $time-> {hour} = int ($sec / 3600);
+  $time-> {hour} = int($sec / 3600);
   $sec = $sec% 3600;
   
-  $time-> {min} = int ($sec / 60);
+  $time-> {min} = int($sec / 60);
   $sec = $sec% 60;
   
   $time-> {sec} = $sec;
@@ -190,17 +190,17 @@ To convert seconds to time, find the quotient and remainder of seconds divided b
 Then find the quotient and the remainder by dividing the remainder by 60. This quotient is "minutes" and the remainder is "seconds".
 
 <pre>
-my $time_interval = sec_to_time ($sec_interval);
+my $time_interval = sec_to_time($sec_interval);
 
 # A function that converts seconds to time.
 sub sec_to_time {
-  my $sec = int (shift);
+  my $sec = int(shift);
   my $time = {};
   
-  $time-> {hour} = int ($sec / 3600);
+  $time-> {hour} = int($sec / 3600);
   $sec = $sec% 3600;
   
-  $time-> {min} = int ($sec / 60);
+  $time-> {min} = int($sec / 60);
   $sec = $sec% 60;
   
   $time-> {sec} = $sec;
@@ -214,7 +214,7 @@ sub sec_to_time {
 Finally, it returns to the string again. Here, I used the sprintf function.
 
 <pre>
-my $time_interval_str = str_from_time ($time_interval);
+my $time_interval_str = str_from_time($time_interval);
 
 # A function that converts a hash representing time information into a string representation of time.
 sub str_from_time {
@@ -231,7 +231,7 @@ sub str_from_time {
   return unless defined $time-> {sec};
     
   my $time_str
-    = sprintf ("% 02s:% 02s:% 02s", @ {$time} {qw / hour min sec /});
+    = sprintf("% 02s:% 02s:% 02s", @ {$time} {qw / hour min sec /});
   return $time_str;
 }
 </pre>

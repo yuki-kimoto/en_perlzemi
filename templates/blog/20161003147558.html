@@ -235,10 +235,10 @@ You can easily do this with the <b> join function </b>.
 my @animals = ('Cat','Dog','Mouse');
 
 # Create CSV data "Cat, Dog, Mouse"
-my $csv = join (',', @animals);
+my $csv = join(',', @animals);
 
 # Create TSV data "Cat Dog Mouse"
-my $tsv = join ("\ t", @animals);
+my $tsv = join("\ t", @animals);
 </pre>
 
 Please refer to the following article for the join function.
@@ -259,14 +259,14 @@ In such cases, you can use the <b> split function </b> to create an array with s
 my $csv ='Cat, Dog, Mouse';
 
 Create an array by specifying # comma. ('Cat','Dog','Mouse')
-my @animals = split (/, /, $csv);
+my @animals = split(/, /, $csv);
 </pre>
 
 A sample for TSV data is also included.
 
 <pre>
 my $tsv = "Cat \ tDog \ tMouse";
-my @animals = split (/ \ t /, $csv);
+my @animals = split(/ \ t /, $csv);
 </pre>
 
 A regular expression can be specified directly as the first argument of the split function. For example, use the regular expression "one or more blanks"You can
@@ -274,7 +274,7 @@ A regular expression can be specified directly as the first argument of the spli
 <pre>
 # Make an array of data separated by one or more spaces
 my $data = "Cat Dog Mouse";
-my @animals = split (/ +/, $csv);
+my @animals = split(/ +/, $csv);
 </pre>
 
 I'll talk more about regular expressions later.
@@ -310,10 +310,10 @@ You can use the <b> sprintf function </b> if you want to specify the number of d
 
 <pre>
 # Fill the left with 0 with 3 digits and it becomes "Code is 013"
-my $str1 = sprintf ("Code is% 03d", 13);
+my $str1 = sprintf("Code is% 03d", 13);
 
 # Display up to 3 decimal places "Number is 0.146"
-my $str2 = sprintf ("Number is% .3f", 0.145677);
+my $str2 = sprintf("Number is% .3f", 0.145677);
 </pre>
 
 See below for a detailed explanation of formatting.

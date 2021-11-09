@@ -1,6 +1,6 @@
 <h2> Find the date n days later </h2>
 
-To find the date n days later, convert n days to seconds and add them to the current time (seconds from the epoch) obtained with the time function. Convert the added seconds to date and time notation using the localtime function.
+To find the date n days later, convert n days to seconds and add them to the current time(seconds from the epoch) obtained with the time function. Convert the added seconds to date and time notation using the localtime function.
 
 <pre>
 use strict;
@@ -17,7 +17,7 @@ my $sec_from_epoch = time + (60 * 60 * 24 * $n);
 
 # Convert seconds to date and time
 my ($sec, $min, $hour, $mday, $month, $year)
-  = localtime ($sec_from_epoch);
+  = localtime($sec_from_epoch);
 
 $month ++;
 $year + = 1900;
@@ -67,7 +67,7 @@ Convert seconds to date and time using the localtime function.
 <pre>
 # Convert seconds to date and time
 my ($sec, $min, $hour, $mday, $month, $year)
-  = localtime ($sec_from_epoch);
+  = localtime($sec_from_epoch);
 
 $month ++;
 $year + = 1900;

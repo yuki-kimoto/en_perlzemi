@@ -55,7 +55,7 @@ To open an existing PDF file with PDF::API2, use the open method.
 
 <pre>
 # Open an existing PDF file
-my $pdf = PDF::API2-> open ('some.pdf');
+my $pdf = PDF::API2-> open('some.pdf');
 </pre>
 
 <h3> Add a new page </h3>
@@ -135,7 +135,7 @@ Note that the width and height must be specified in PDF units. One unit is 1/72 
 
 A typical PDF document has a page width of 612 units and a height of 792 units. The inch size is 8.5 "x 11". Obtained by dividing the width and height by 72.
 
-When a PDF document is given to the screen, it usually needs physical values ​​such as pixels. Resolution must be provided in order to convert from logical to physical units. Resolution is the value of a point (pixel) per inch used when logically converting to a physical value. In the above example, using 150 as the resolution, the page size in pixels would be 1275 x 1650. This is obtained by multiplying 8.5 x 11 inches by 150.
+When a PDF document is given to the screen, it usually needs physical values ​​such as pixels. Resolution must be provided in order to convert from logical to physical units. Resolution is the value of a point(pixel) per inch used when logically converting to a physical value. In the above example, using 150 as the resolution, the page size in pixels would be 1275 x 1650. This is obtained by multiplying 8.5 x 11 inches by 150.
 
 (Reference) <a target="_blank" href="http://docs.leadtools.grapecity.com/v19/dh/to/leadtools.topics.pdf~pdf.topics.pdfcoordinatesystem.html"> PDF coordinate system < / a>
 </blockquote>
@@ -211,7 +211,7 @@ Finally, save the new PDF and you're done.
 
 <pre>
 my $pdf = PDF::API2-> new ();
-my $old = PDF::API2-> open ('our / old.pdf');
+my $old = PDF::API2-> open('our / old.pdf');
  
 # Add page 2 from the old PDF as page 1 of the new PDF
 $pdf-> import_page ($old, 2);

@@ -37,9 +37,9 @@ use Fcntl;
 # Create a file for preparation.
 my $file = "sample_20080520_$$. txt";
 
-sysopen (my $fh, $file, O_CREAT | O_WRONLY | O_EXCL)
+sysopen(my $fh, $file, O_CREAT | O_WRONLY | O_EXCL)
   or die "Unable to create $file .: $!";
-close ($fh);
+close($fh);
 print "Preparation:'$file' has been created. \ N \ n";
 
 print "1: Delete the file. \ N";

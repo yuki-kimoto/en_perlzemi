@@ -22,7 +22,7 @@
 You can use the crypt function to save the password as a digest. If you save the password in clear text, it will be seen. The first argument is the password. The second argument is an arbitrary string called salt, which makes it difficult to decipher the digest.
 
 <pre>
-my $digest = crypt ($passwd, $salt);
+my $digest = crypt($passwd, $salt);
 </pre>
 
 If you want to create a digest, <a href="/blog/20100501127089.html"> Digest::MD5</a> or <a href="/blog/20100502127089.html"> Digest is now better than the crypt function. It is recommended to use::SHA</a>.
@@ -41,12 +41,12 @@ print "(1) Create a digest from the password. \ N";
 my $passwd ='secret';
 my $salt = join''. ('.','/', 0 .. 9,'A' ..'Z','a' ..'z') [rand 64, rand 64];
              
-my $digest = crypt ($passwd, $salt);
+my $digest = crypt($passwd, $salt);
 print "$digest \ n \ n";
 
 
 print "(2) Password verification. \ N";
-if (crypt ($passwd, $digest) eq $digest) {
+if (crypt($passwd, $digest) eq $digest) {
   print "Password matched. \ N";
 }
 </pre>
@@ -56,7 +56,7 @@ if (crypt ($passwd, $digest) eq $digest) {
 <pre>
 my $passwd ='secret'; # create password
 my $salt = join'', ('.','/', 0 .. 9,'A' ..'Z','a' ..'z') [rand 64, rand 64];
-my $digest = crypt ($passwd, $salt);
+my $digest = crypt($passwd, $salt);
 </pre>
 
 Use the crypt function to create a digest from the password. The crypt function is a one-way hash function. The character string converted by the one-way hash is called a digest.
@@ -72,7 +72,7 @@ These two characters are the beginning of the created digest.
 <h4> Password verification </h4>
 
 <pre>
-if (crypt ($passwd, $digest) eq $digest) {}
+if (crypt($passwd, $digest) eq $digest) {}
 </pre>
 
 When collating the password, use the crypt function to recreate the digest. If the digest you created matches the digest you created earlier, you know that the password is correct.

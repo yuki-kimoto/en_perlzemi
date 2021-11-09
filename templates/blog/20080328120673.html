@@ -80,8 +80,8 @@ my $data = [
   ['b', 2]
 ];;
 
-foreach my $record (@ $data) {
-  print join ("\ t", @ $record). "\ n";
+foreach my $record(@ $data) {
+  print join("\ t", @ $record). "\ n";
 }
 </pre>
 
@@ -96,7 +96,7 @@ my $people = [
 
 foreach my $person (@ $persons) {
   my @record = ($person-> {name}, $person-> {age});
-  print join ("\ t", @record). "\ n";
+  print join("\ t", @record). "\ n";
 }
 </pre>
 
@@ -119,10 +119,10 @@ foreach my $number (@numbers) {
   Since what is passed to # $number is an alias for the element, you can change the value of the array itself.
   $number = $number * 2;
 }
-print "\ @ numbers = (", join (',', @numbers), ") \ n \ n";
+print "\ @ numbers = (", join(',', @numbers), ") \ n \ n";
 
 print "[3] \ n";
-foreach my $index (0 .. $# persons) {
+foreach my $index(0 .. $# persons) {
   # When you want to use the element number, pass the element number without passing the element of the array itself.
   print "\ $persons [$index] = $persons [$index] \ n";
 }

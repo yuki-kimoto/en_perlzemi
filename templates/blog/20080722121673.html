@@ -40,7 +40,7 @@ If you think about it as above, you may feel that it will not work properly if a
 But don't worry. This is because the file operator is interpreted as follows only when used in combination with while.
 
 <pre>
-while (defined (my $line = <$fh>)) {
+while (defined(my $line = <$fh>)) {
   # ...
 }
 </pre>
@@ -121,7 +121,7 @@ use warnings;
 # File name you want to read
 my $file = shift;
 
-open (my $fh, "<", $file)
+open(my $fh, "<", $file)
   or die "Cannot open $file: $!";
 
 print "1: General description of file read \ n";

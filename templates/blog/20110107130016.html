@@ -77,7 +77,7 @@ get'/' => sub {
             open my $write_fh,'>','cpanm'
               or die qq {Can't open "cpanm" for write: $!};
             
-            print $write_fh join ("\ n", @cpanm);
+            print $write_fh join("\ n", @cpanm);
             
             close $write_fh;
             

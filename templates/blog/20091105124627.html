@@ -447,13 +447,13 @@ The formats provided by default are as follows.<table>
 If you want to customize the format freely, use the strftime method. Specify the time representation in $format.
 
 <pre>
-$t-> strftime ($format)
+$t-> strftime($format)
 </pre>
 
 This is a sample format of date and time.
 
 <pre>
-$t-> strftime ('% Y-% m-% d% H:% M:% S'); # 2009-11-34 12:14:15
+$t-> strftime('% Y-% m-% d% H:% M:% S'); # 2009-11-34 12:14:15
 </pre>
 
 A list of formats that can be used with strftime.
@@ -509,7 +509,7 @@ Note that Time::Piece's strftime method always returns a byte string, whether th
 
 <pre>
 # Byte string is always returned
-my $bytes = $tp-> strftime ("% Y year% m month");
+my $bytes = $tp-> strftime("% Y year% m month");
 </pre>
 
 <h3> Parse the character string that expresses the date / time </h3>
@@ -517,14 +517,14 @@ my $bytes = $tp-> strftime ("% Y year% m month");
 You can parse date and time representations to create Time::Piece objects. Use the strptime method to parse dates and times.
 
 <pre>
-my $t = Time::Piece-> strptime (character string representing date / time, format);
+my $t = Time::Piece-> strptime(character string representing date / time, format);
 </pre>
 
 As a sample, let's parse the MySQL date representation and create a Time::Piece object. Use the above strftime format for the format.
 
 <pre>
 my $datetime_mysql = '2009-12-31 23:59:59';
-my $t = Time::Piece-> strptime ($datetime_mysql,'% Y-% m-% d% H:% M:% S');
+my $t = Time::Piece-> strptime($datetime_mysql,'% Y-% m-% d% H:% M:% S');
 </pre>
 
 <h3> Localization </h3>
@@ -607,7 +607,7 @@ $t1 <$t2
 As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time::Piece object at any date and time.
 
 <pre>
-my $t = Time::Piece-> strptime ('2009-12-31 23:59:59','% Y-% m-% d% H:% M:% S');
+my $t = Time::Piece-> strptime('2009-12-31 23:59:59','% Y-% m-% d% H:% M:% S');
 </pre>
 
 (When I read the source code, there is a parse method, but when I tried it, it seems to be broken ... It seems that it is private because it is not in the document.)

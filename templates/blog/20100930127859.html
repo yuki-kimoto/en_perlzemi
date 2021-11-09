@@ -208,7 +208,7 @@ You can use the <a href="/blog/20081007122338.html"> join function</a> to join t
 
 <pre>
 for my $person (@ $persons) {
-  print join (',', @ $person). "\ n";
+  print join(',', @ $person). "\ n";
 }
 </pre>
 
@@ -241,7 +241,7 @@ Now let's create a two-dimensional array from a comma-separated file.
 my $people = [];
 while (my $line = <>) {
   chomp $line;
-  my @person = split (',', $line);
+  my @person = split(',', $line);
   push @ $persons, \ @person;
 }
 </pre>
@@ -263,7 +263,7 @@ my $people = [
 This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the character string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
 
 <pre>
-print join ("\ t", @ $person). "\ n";
+print join("\ t", @ $person). "\ n";
 </pre>
 
 <h3> Hash reference </h3>
@@ -444,7 +444,7 @@ for my $person (@ $persons) {
     $person-> {age}
   );
     
-  print join (',', @rec). "\ n";
+  print join(',', @rec). "\ n";
 }
 </pre>
 
@@ -467,7 +467,7 @@ while (my $line = <>) {
   chomp $line;
   
   # (2) Make an array of comma-separated strings
-  my @rec = split (',', $line);
+  my @rec = split(',', $line);
   
   # (3) Create a hash reference
   my $person = {};
@@ -516,7 +516,7 @@ Let's output all the elements.
 
 <pre>
 # (1) Outer loop
-for my $time (sort keys% $infos) {
+for my $time(sort keys% $infos) {
   print "$time \ n";
   
   # (2) Inner loop
@@ -570,10 +570,10 @@ Next, let's output all records separated by commas as shown below.
 </pre>
 
 <pre>
-for my $time (sort keys% $infos) {
+for my $time(sort keys% $infos) {
     
   my @rec = ($time, @ {$infos-> {$time}});
-  print join (',', @rec). "\ n";
+  print join(',', @rec). "\ n";
 }
 </pre>
 
@@ -603,7 +603,7 @@ while (my $line = <>) {
   chomp $line;
   
   # (1) Get time and response time
-  my ($time, $res_time) = split (',', $line);
+  my ($time, $res_time) = split(',', $line);
   
   # (2) Array reference for storing data at each time
   $infos-> {$time} || = [];
@@ -667,7 +667,7 @@ There were 3 accesses at 1:01, with an average response time of 2.1 seconds and 
 Let's output all the elements.
 
 <pre>
-for my $time (sort keys% $infos) {
+for my $time(sort keys% $infos) {
   print "$time \ n";
   
   # (2) Inner loop
@@ -716,7 +716,7 @@ Next, let's output the data created above by separating all records with commas 
 </pre>
 
 <pre>
-for my $time (sort keys% $infos) {
+for my $time(sort keys% $infos) {
     
   my @rec = (
     $time,
@@ -724,7 +724,7 @@ for my $time (sort keys% $infos) {
     $infos-> {$time} {ave_time},
     $infos-> {$time} {max_time}
   );
-  print join (',', @rec). "\ n";
+  print join(',', @rec). "\ n";
 }
 </pre>
 
@@ -754,7 +754,7 @@ while (my $line = <>) {
   chomp $line;
   
   # (1) Get time and response time
-  my ($time, $res_time) = split (',', $line);
+  my ($time, $res_time) = split(',', $line);
   
   # (2) Array reference for storing data at each time
   $infos-> {$time} || = {};

@@ -61,7 +61,7 @@ class MyClass {
   MyClass ();
   
   // method
-  void print ();
+  void print();
   
   // class method
   static void print_static ();
@@ -83,7 +83,7 @@ C ++ source file. Implements constructors, methods, and class methods. In the so
 MyClass::MyClass () {}
 
 // method
-void MyClass::print () {
+void MyClass::print() {
   std::cout << "MyClass::print \ n";
 }
 
@@ -110,7 +110,7 @@ Let's write an XS file.
 
 # define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
 # define XS_PTR_TO_OBJ (x, class) \
-  sv_bless (\
+  sv_bless(\
     sv_2mortal (\
       newRV_inc (\
         sv_2mortal (\
@@ -135,12 +135,12 @@ new (...)
 }
 
 void
-print (...)
+print(...)
   PPCODE:
 {
   MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   
-  self-> print ();
+  self-> print();
   XSRETURN (0);
 }
 
@@ -168,7 +168,7 @@ Let me explain a little. Below are macros that convert Perl objects (SV * type) 
 <pre>
 # define XS_OBJ_TO_PTR (x, type) (INT2PTR (type, SvROK (x)? SvIV (SvRV (x)): SvIV (x)))
 # define XS_PTR_TO_OBJ (x, class) \
-  sv_bless (\
+  sv_bless(\
     sv_2mortal (\
       newRV_inc (\
         sv_2mortal (\
@@ -203,12 +203,12 @@ A method call.
 
 <pre>
 void
-print (...)
+print(...)
   PPCODE:
 {
   MyClass * self = XS_OBJ_TO_PTR (ST (0), MyClass *);
   
-  self-> print ();
+  self-> print();
   XSRETURN (0);
 }
 </pre>
@@ -314,7 +314,7 @@ Now you can use C ++ classes from your XS file.(Returns a pointer to the SV * ty
     
     // Assign to array
     nums [i] = num;
-    printf ("% d \ n", num);
+    printf("% d \ n", num);
   }
   
   // Release when no longer needed
@@ -348,7 +348,7 @@ foo (...)
   
   // Add to array
   for (int i = 0; i <nums_len; i ++) {
-    av_push (nums_av, SvREFCNT_inc (sv_2mortal (newSViv (nums [i]))));
+    av_push(nums_av, SvREFCNT_inc (sv_2mortal (newSViv (nums [i]))));
   }
   
   // Create an array reference
@@ -412,8 +412,8 @@ foo (...)
   point-> x = x;
   point-> y = y;
   
-  printf ("% f \ n", point-> x);
-  printf ("% f \ n", point-> y);
+  printf("% f \ n", point-> x);
+  printf("% f \ n", point-> y);
   
   // Release when no longer needed
   free (point);

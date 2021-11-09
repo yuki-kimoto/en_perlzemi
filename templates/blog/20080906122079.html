@@ -47,7 +47,7 @@ print "(2) Randomly select the elements of the array. \ N";
 my @members = qw / aya ​​toru kato kenji mina haruna kita michel kotaro /;
 for my $i (1 .. 10) {
   # @members is the number of elements in the array
-  print "$i times:". $members [int (rand scalar @members)]. "\ n";
+  print "$i times:". $members [int(rand scalar @members)]. "\ n";
 }
 </pre>
 
@@ -56,7 +56,7 @@ for my $i (1 .. 10) {
 <h4> Generate random numbers </h4>
 
 <pre>
-rand (10);
+rand(10);
 </pre>
 
 Use the = rand function to generate random numbers. The rand function returns a random decimal number that is greater than or equal to 0 and less than the integer given by the argument.
@@ -64,16 +64,16 @@ Use the = rand function to generate random numbers. The rand function returns a 
 If 10 is given, a random decimal number greater than or equal to 0 and less than 10 will be returned. Note that 10 is not included. 9.99999 may be returned, but 10 will not be returned.
 
 <pre>
-int (rand 10);
+int(rand 10);
 </pre>
 
-You can get only the integer part by using <a href="/blog/20080923122214.html"> int function</a>. You can get integers from 0 to 9 with int (rand 10).
+You can get only the integer part by using <a href="/blog/20080923122214.html"> int function</a>. You can get integers from 0 to 9 with int(rand 10).
 
 <h4> Randomly select elements of the array </h4>
 
 <pre>
 my @members = qw / aya ​​toru kato kenji mina haruna kita michel kotaro /;
-$members [int (rand scalar @members)];
+$members [int(rand scalar @members)];
 </pre>
 
 To randomly select the elements of the <a href="/blog/20161012147627.html"> array</a>, give the number of elements in the array to the rand function, extract the integer part with the int function, and add subscripts. You can do it.
