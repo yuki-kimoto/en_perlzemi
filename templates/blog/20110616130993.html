@@ -1,13 +1,13 @@
 The g> tag helper makes it easy to write <strong> hyperlinks </strong>.
 
 <pre>
-<% = link_to index => begin%> Home <% end%>
+<% = link_to index => begin%> Home <%end%>
 <% = link_to index => {foo =>'bar'} => (class =>'links') => begin%>
   Home
-<% end%>
-<% = link_to'/ path / to / file' => begin%> File <% end%>
-<% = link_to'http://mojolicio.us' => begin%> Mojolicious <% end%>
-<% = link_to url_for-> query (foo => $foo) => begin%> Retry <% end%>
+<%end%>
+<% = link_to'/ path / to / file' => begin%> File <%end%>
+<% = link_to'http://mojolicio.us' => begin%> Mojolicious <%end%>
+<% = link_to url_for-> query (foo => $foo) => begin%> Retry <%end%>
 </pre>
 
 It will be expanded to the following HTML. The first argument is the root name or path. You can also pass a Mojo::URL object. The last argument is a block, which allows you to specify the text of the hyperlink.
@@ -44,7 +44,7 @@ The <strong> stylesheet </strong> tag helper makes it easy to write external lin
 <% = stylesheet'/foo.css'%>
 <% = stylesheet begin%>
   body {color: # 000}
-<% end%>
+<%end%>
 </pre>
 
 When specifying a link to an external style sheet, describe the path in the first argument. If you want to describe the style sheet itself, specify the block (begin to end) as the first argument. It will be expanded to the following HTML.
@@ -64,7 +64,7 @@ The <strong> javascript </strong> tag helper makes it easy to write JavaScript s
 % = javascript'/script.js';
 % = javascript begin
   var a ='b';
-% end
+%end
 </pre>
 
 The argument can be an external JavaScript path or block (begin to end). You can write the actual JavaScript source code inside the block.

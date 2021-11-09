@@ -154,7 +154,7 @@ You can also pass a hash to the subroutine. On the receiving side, @_ will be as
 
 <pre>
 # Passing side
-my $examin_total = sum_examin (% examin);
+my $examin_total = sum_examin (%examin);
 
 # Recipient
 sub sum_examin {
@@ -283,7 +283,7 @@ It is not always necessary to reassign the hash to the scalar, but it is often e
 parse_file ('in_file', out_file =>'out_file', search_path =>'dir');
 
 sub parse_file {
-  my ($in_file,% opt) = @_;
+  my ($in_file,%opt) = @_;
   my ($out_file, $search_path) = @opt {'out_file','search_path'};
   return;
 }

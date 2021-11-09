@@ -154,7 +154,7 @@ sub parse {
     my %items_hash = ();
     @items_hash {@$headers} = @items;
     
-    push @$items_hash_list, {% items_hash};
+    push @$items_hash_list, {%items_hash};
   }
   
   wantarray? return @$items_hash_list: $items_hash_list;
@@ -209,7 +209,7 @@ for my $line (@lines) {
   my %items_hash = ();
   @items_hash {@$headers} = @items;
     
-  push @$items_hash_list, {% items_hash};
+  push @$items_hash_list, {%items_hash};
 }
 </pre>
 
@@ -230,10 +230,10 @@ $items_hash {contry} ='Japan';
 Using hash slices in this way eliminates the need to write iterations.
 
 <pre>
-push @$items_hash_list, {% items_hash};
+push @$items_hash_list, {%items_hash};
 </pre>
 
-The push function requests a list after the second argument, but do not pass a hash as% items_hash. Then finally create a reference to the hash as {% items_hash} and push it.
+The push function requests a list after the second argument, but do not pass a hash as%items_hash. Then finally create a reference to the hash as {%items_hash} and push it.
 
 <h3> Find the maximum and minimum values ​​</h3>
 

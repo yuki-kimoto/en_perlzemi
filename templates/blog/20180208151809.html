@@ -28,7 +28,7 @@ A hash reference is a reference to a <a href="/blog/20161013147635.html"> hash</
 <pre>
 # Create a hash reference
 my %score = (math => 68, english => 90);
-my $score_ref = \% score;
+my $score_ref = \%score;
 </pre>
 
 Note that the hash reference is assigned to the <a href="/blog/20161107147852.html"> scalar variable</a>.
@@ -37,7 +37,7 @@ Let's write an image of the hash reference below.
 
 <pre>
 # image
-                      % score
+                      %score
 $score_ref - -- --> (math => 68, english => 90)
 </pre>
 
@@ -52,11 +52,11 @@ The hash is copied in its entirety by assignment, but the hash reference is not 
 <pre>
 # Hash is the value copied
 my %score1 = (math => 68, english => 90);
-my %score2 =% score1;
+my %score2 =%score1;
 
 # Hash reference does not copy value
 my %score1 = (math => 68, english => 90);
-my $score_ref1 = \% score1;
+my $score_ref1 = \%score1;
 my $score_ref2 = $score_ref1;
 </pre>
 
@@ -64,7 +64,7 @@ Below is an image. In the case of a hash, the entire contents are copied, wherea
 
 <pre>
 # image
-% score1% score2
+%score1%score2
 (math => 68, english => 90) (math => 68, english => 90)
 
 $score_ref1 - -- -- -- ->

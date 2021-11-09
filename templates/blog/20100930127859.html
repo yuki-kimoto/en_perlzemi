@@ -284,13 +284,13 @@ Creating a hash reference. References are created using the "\" symbol.
 
 <pre>
 my %person = (name =>'Ken', age => 19);
-my $person = \% person;
+my $person = \%person;
 </pre>
 
-"Reference" means "what you point to." $person points to% person.
+"Reference" means "what you point to." $person points to%person.
 
 <pre>
-$person - ->% person
+$person - ->%person
 </pre>
 
 <h4> Creating an anonymous hash reference </h4>
@@ -312,7 +312,7 @@ It's easy to think of the anonymous hash reference description as a simple way t
 <pre>
 # Creating a hash reference
 my %person = (name =>'Ken', age => 19);
-my $person = \% person;
+my $person = \%person;
 
 # Abbreviated notation above
 my $person = {name =>'Ken', age => 19};
@@ -366,7 +366,7 @@ Let's create an array of hashes in Perl. As explained in Array Array, you can on
 my %person1 = (name =>'Ken', country =>'Japan', age => 19);
 my %person2 = (name =>'Taro', country =>'USA', age => 45);
 
-my @persons = (\% person1, \% person2);
+my @persons = (\%person1, \%person2);
 </pre>
 
 Also, as the simplest notation, the outer array is also used as a reference, and it is common to write as follows.

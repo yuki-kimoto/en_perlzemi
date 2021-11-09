@@ -342,13 +342,13 @@ my $dt2 = DateTime-> last_day_of_month (year => 2008, month => 11);
 Use the <strong> strftime </strong> method to format the date. Pass the format specifier as an argument.
 
 <pre>
-$dt-> strftime("% a");
+$dt-> strftime("%a");
 </pre>
 
 You can also specify multiple character strings in combination as shown below.
 
 <pre>
-$dt-> strftime("% Y-% m-% d");
+$dt-> strftime("%Y-%m-%d");
 </pre>
 
 <h4> Strftime format specifier list </h4>
@@ -358,7 +358,7 @@ A list of strftime format specifiers.
 <table>
   <tr>
     <td>
-      % a
+      %a
     </td>
     <td>
       Abbreviated name of the day of the week
@@ -367,7 +367,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % A
+      %A
     </td>
     <td>
       Day of the week name
@@ -376,7 +376,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % b
+      %b
     </td>
     <td>
       Month abbreviation
@@ -385,7 +385,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % B
+      %B
     </td>
     <td>
       Month name
@@ -394,7 +394,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % c
+      %c
     </td>
     <td>
       Default format
@@ -403,7 +403,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % C
+      %C
     </td>
     <td>
       First two digits of the year
@@ -412,7 +412,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % d
+      %d
     </td>
     <td>
       Day (01-31)
@@ -421,16 +421,16 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % D
+      %D
     </td>
     <td>
-      Same as% m /% d /% y. Month day year
+      Same as%m /%d /%y. Month day year
     </td>
   </tr>
 
   <tr>
     <td>
-      % e
+      %e
     </td>
     <td>
       Day (1 to 31): The second digit of the one-digit number (1 to 9) is a space.
@@ -439,25 +439,25 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % F
+      %F
     </td>
     <td>
-      Same as% Y-% m-% d (for example, 2008-11-31)
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      % G
-    </td>
-    <td>
-      Year (I don't know the difference from% Y)
+      Same as%Y-%m-%d (for example, 2008-11-31)
     </td>
   </tr>
 
   <tr>
     <td>
-      % g
+      %G
+    </td>
+    <td>
+      Year (I don't know the difference from%Y)
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      %g
     </td>
     <td>
       Last two digits of the year (00-99)
@@ -466,16 +466,16 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % h
+      %h
     </td>
     <td>
-      Same as% b. Month abbreviation
+      Same as%b. Month abbreviation
     </td>
   </tr>
 
   <tr>
     <td>
-      % H
+      %H
     </td>
     <td>
       Hour (00 to 23)
@@ -484,7 +484,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % I
+      %I
     </td>
     <td>
       Hours (01 to 12) Time in 12-hour notation
@@ -493,7 +493,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % j
+      %j
     </td>
     <td>
       What day is it for the first time from the beginning of the year? (001 to 366)
@@ -502,7 +502,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % k
+      %k
     </td>
     <td>
       Hour (0 to 23): The second digit of the one-digit number (0-9) is a space.
@@ -511,7 +511,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % l
+      %l
     </td>
     <td>
       Hour (1 to 12) Time in 12-hour notation: The second digit of the one-digit number (0-9) is a space.
@@ -520,7 +520,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % m
+      %m
     </td>
     <td>
       Month number (01-12)
@@ -529,7 +529,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % M
+      %M
     </td>
     <td>
       Minutes (00 to 59)
@@ -538,7 +538,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % n
+      %n
     </td>
     <td>
       Newline character
@@ -547,7 +547,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % N
+      %N
     </td>
     <td>
       Milliseconds (% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits)
@@ -556,7 +556,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % p
+      %p
     </td>
     <td>
       AM or PM
@@ -565,7 +565,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % P
+      %P
     </td>
     <td>
       am or pm
@@ -574,17 +574,17 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % r
+      %r
     </td>
     <td>
-      Same as% I:% M:% S% p
+      Same as%I:%M:%S%p
       .. (11:55:23 PM etc.)
     </td>
   </tr>
 
   <tr>
     <td>
-      % R
+      %R
     </td>
     <td>
       Hours and minutes (15:16, etc.)
@@ -593,7 +593,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % s
+      %s
     </td>
     <td>
       Seconds from epoch
@@ -602,7 +602,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % S
+      %S
     </td>
     <td>
       Seconds (00 to 61)
@@ -611,7 +611,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % t
+      %t
     </td>
     <td>
       Tab character
@@ -620,16 +620,16 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % T
+      %T
     </td>
     <td>
-      Same as% H:% M:% S. Hours, minutes and seconds (such as 23:14:03)
+      Same as%H:%M:%S. Hours, minutes and seconds (such as 23:14:03)
     </td>
   </tr>
 
   <tr>
     <td>
-      % u
+      %u
     </td>
     <td>
       Day of the week number (1 to 7. Monday is 1)
@@ -638,7 +638,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % U
+      %U
     </td>
     <td>
       How many weeks have you counted from the beginning of the year? (00-53): Count the first Sunday of the year as the beginning of the week. The first Sunday week is 01. The week before that was 00.
@@ -647,7 +647,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % V
+      %V
     </td>
     <td>
       How many weeks have you counted from the beginning of the year? (01-53): Let the week with at least 4 days be the first week of the year. Count Monday as the beginning of the week.
@@ -656,7 +656,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % w
+      %w
     </td>
     <td>
       Day of the week number (0 to 6. Sunday is 0)
@@ -665,7 +665,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % W
+      %W
     </td>
     <td>
       Weeks counting from the beginning of the year (00-53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that was 00.
@@ -674,7 +674,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % x
+      %x
     </td>
     <td>
       Default format for dates
@@ -683,7 +683,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % X
+      %X
     </td>
     <td>
       Default format for time
@@ -692,7 +692,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % y
+      %y
     </td>
     <td>
       Last two digits of the year
@@ -701,7 +701,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % Y
+      %Y
     </td>
     <td>
       Year
@@ -710,7 +710,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % z
+      %z
     </td>
     <td>
       Time zone time shift from UTC (Coordinated Universal Time))
@@ -719,7 +719,7 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % Z
+      %Z
     </td>
     <td>
       Time zone name
@@ -911,7 +911,7 @@ In Japan, there is no daylight saving time, so there is no need to consider the 
 To simplify the date calculation, convert a specific time zone to UTC before calculating. Then, after the calculation is finished, return to the original time zone.
 
 <pre>
-my $dt = DateTime-> new (% user_input, time_zone => $user_tz);
+my $dt = DateTime-> new (%user_input, time_zone => $user_tz);
 
 Convert to # UTC
 $dt-> set_time_zone ('UTC');
@@ -1250,60 +1250,60 @@ use DateTime;
 print "(1) strftime format specification list\n";
 my $dt = DateTime-> now (time_zone =>'local');
 
-print'% a: Abbreviation for day of the week:'. $Dt-> strftime("% a"). "\n";
-print'% A: Day of the week name:'. $Dt-> strftime("% A"). "\n";
-print'% b: month abbreviation:'. $dt-> strftime("% b"). "\n";
-print'% B: month name:'. $dt-> strftime("% B"). "\n";
-print'% c: default format:'. $Dt-> strftime("% c"). "\n";
-print'% C: First two digits of the year:'. $Dt-> strftime("% C"). "\n";
-print'% d: days (01 to 31):'. $Dt-> strftime("% d"). "\n";
-print'% D: Same as% m /% d /% y. Month Day Year:'. $Dt-> strftime("% D"). "\n";
-print'% e: day (1 to 31) The second digit of the one digit number (1 to 9) is a space. :'
-  . $dt-> strftime("% e"). "\n";
-print'% F: Same as% Y-% m-% d (eg 2008-11-31):'. $Dt-> strftime("% F"). "\n";
-print'% G: Year (I don't know the difference from% Y):'. $Dt-> strftime("% G"). "\n";
-print'% g: Last two digits of the year (00-99):'. $Dt-> strftime("% g"). "\n";
-print'% h: Same as% b. Month abbreviation:'. $Dt-> strftime("% h"). "\n";
-print'% H: Hour (00 to 23):'. $Dt-> strftime("% H"). "\n";
-print'% I: Hour (01 to 12) Time in 12-hour notation:'. $Dt-> strftime("% I"). "\n";
-print'% j: What day is it for the first time in the year? (001 to 366):'
-  . $dt-> strftime("% j"). "\n";
-print'% k: Hour (0 to 23) The second digit of the one digit number (0 to 9) is a space. :'
-  . $dt-> strftime("% k"). "\n";
-print'% l: Hour (1 to 12) Time in 12-hour notation:'. $Dt-> strftime("% l"). "\n";
-print'% m: Month number (01 to 12):'. $Dt-> strftime("% m"). "\n";
-print'% M: Minutes (00 to 59):'. $Dt-> strftime("% M"). "\n";
-print'% n: Newline character:'. $Dt-> strftime("% n"). "\n";
-print'% N: milliseconds (write% 3N will display milliseconds in 3 digits and% 6N will display milliseconds in 6 digits):'
+print'%a: Abbreviation for day of the week:'. $Dt-> strftime("%a"). "\n";
+print'%A: Day of the week name:'. $Dt-> strftime("%A"). "\n";
+print'%b: month abbreviation:'. $dt-> strftime("%b"). "\n";
+print'%B: month name:'. $dt-> strftime("%B"). "\n";
+print'%c: default format:'. $Dt-> strftime("%c"). "\n";
+print'%C: First two digits of the year:'. $Dt-> strftime("%C"). "\n";
+print'%d: days (01 to 31):'. $Dt-> strftime("%d"). "\n";
+print'%D: Same as%m /%d /%y. Month Day Year:'. $Dt-> strftime("%D"). "\n";
+print'%e: day (1 to 31) The second digit of the one digit number (1 to 9) is a space. :'
+  . $dt-> strftime("%e"). "\n";
+print'%F: Same as%Y-%m-%d (eg 2008-11-31):'. $Dt-> strftime("%F"). "\n";
+print'%G: Year (I don't know the difference from%Y):'. $Dt-> strftime("%G"). "\n";
+print'%g: Last two digits of the year (00-99):'. $Dt-> strftime("%g"). "\n";
+print'%h: Same as%b. Month abbreviation:'. $Dt-> strftime("%h"). "\n";
+print'%H: Hour (00 to 23):'. $Dt-> strftime("%H"). "\n";
+print'%I: Hour (01 to 12) Time in 12-hour notation:'. $Dt-> strftime("%I"). "\n";
+print'%j: What day is it for the first time in the year? (001 to 366):'
+  . $dt-> strftime("%j"). "\n";
+print'%k: Hour (0 to 23) The second digit of the one digit number (0 to 9) is a space. :'
+  . $dt-> strftime("%k"). "\n";
+print'%l: Hour (1 to 12) Time in 12-hour notation:'. $Dt-> strftime("%l"). "\n";
+print'%m: Month number (01 to 12):'. $Dt-> strftime("%m"). "\n";
+print'%M: Minutes (00 to 59):'. $Dt-> strftime("%M"). "\n";
+print'%n: Newline character:'. $Dt-> strftime("%n"). "\n";
+print'%N: milliseconds (write% 3N will display milliseconds in 3 digits and% 6N will display milliseconds in 6 digits):'
   . $dt-> strftime("% 3N"). "\n";
-print'% p: AM or PM:'. $Dt-> strftime("% p"). "\n";
-print'% P: am or pm:'. $Dt-> strftime("% P"). "\n";
-print'% r:% I:% M:% S Same as% p. (11:55:23 PM, etc.):'
-  . $dt-> strftime("% r"). "\n";
-print'% R: hours and minutes (15:16, etc.):'. $Dt-> strftime("% R"). "\n";
-print'% s: seconds from epoch:'. $dt-> strftime("% s"). "\n";
-print'% S: seconds (00 to 61):'. $Dt-> strftime("% S"). "\n";
-print'% t: tab character:'. $Dt-> strftime("% t"). "\n";
-print'% T: Same as% H:% M:% S. Hours, minutes and seconds (such as 23:14:03):'
-  . $dt-> strftime("% T"). "\n";
-print'% u: Day of the week number (1 to 7. Monday is 1):'. $Dt-> strftime("% u"). "\n";
-print'% U: How many weeks from the beginning of the year? First Sunday of the year (00-53)'
+print'%p: AM or PM:'. $Dt-> strftime("%p"). "\n";
+print'%P: am or pm:'. $Dt-> strftime("%P"). "\n";
+print'%r:%I:%M:%S Same as%p. (11:55:23 PM, etc.):'
+  . $dt-> strftime("%r"). "\n";
+print'%R: hours and minutes (15:16, etc.):'. $Dt-> strftime("%R"). "\n";
+print'%s: seconds from epoch:'. $dt-> strftime("%s"). "\n";
+print'%S: seconds (00 to 61):'. $Dt-> strftime("%S"). "\n";
+print'%t: tab character:'. $Dt-> strftime("%t"). "\n";
+print'%T: Same as%H:%M:%S. Hours, minutes and seconds (such as 23:14:03):'
+  . $dt-> strftime("%T"). "\n";
+print'%u: Day of the week number (1 to 7. Monday is 1):'. $Dt-> strftime("%u"). "\n";
+print'%U: How many weeks from the beginning of the year? First Sunday of the year (00-53)'
   Count'.'As the beginning of the week. The first Sunday week is 01. The week before that was 00. :'
-  . $dt-> strftime("% U"). "\n";
-print'% V: How many weeks from the beginning of the year? (01-53) Weeks with at least 4 days'
+  . $dt-> strftime("%U"). "\n";
+print'%V: How many weeks from the beginning of the year? (01-53) Weeks with at least 4 days'
   .'Shall be the first week of the year. Count Monday as the beginning of the week. :'
-  . $dt-> strftime("% V"). "\n";
-print'% w: Day of the week number (0 to 6. Sunday is 0):'. $Dt-> strftime("% w"). "\n";
-print'% W: Weeks counting from the beginning of the year (00-53) The first Monday of the year is the week'
+  . $dt-> strftime("%V"). "\n";
+print'%w: Day of the week number (0 to 6. Sunday is 0):'. $Dt-> strftime("%w"). "\n";
+print'%W: Weeks counting from the beginning of the year (00-53) The first Monday of the year is the week'
   .'Count as the first. The first Monday week is 01. The week before that was 00. :'
-  . $dt-> strftime("% W"). "\n";
-print'% x: default date format:'. $Dt-> strftime("% x"). "\n";
-print'% X: Default format for time:'. $Dt-> strftime("% X"). "\n";
-print'% y: last two digits of the year:'. $Dt-> strftime("% y"). "\n";
-print'% Y: Year:'. $Dt-> strftime("% Y"). "\n";
-print'% z: Time zone time shift from UTC (Coordinated Universal Time):'
-  . $dt-> strftime("% z"). "\n";
-print'% Z: timezone name:'. $Dt-> strftime("% Z"). "\n";
+  . $dt-> strftime("%W"). "\n";
+print'%x: default date format:'. $Dt-> strftime("%x"). "\n";
+print'%X: Default format for time:'. $Dt-> strftime("%X"). "\n";
+print'%y: last two digits of the year:'. $Dt-> strftime("%y"). "\n";
+print'%Y: Year:'. $Dt-> strftime("%Y"). "\n";
+print'%z: Time zone time shift from UTC (Coordinated Universal Time):'
+  . $dt-> strftime("%z"). "\n";
+print'%Z: timezone name:'. $Dt-> strftime("%Z"). "\n";
 print'%%:%:'. $Dt-> strftime("%%"). "\n";
 print'%{method}: You can use the method of DateTime.pm. Example%{ymd}:'
   . $dt-> strftime("%{ymd}"). "\n";
@@ -1313,52 +1313,52 @@ Execution result
 
 <pre>
 (1) strftime format specification list
-% a: Abbreviation for day of the week: Mon
-% A: Day of the week name: Monday
-% b: Month abbreviation: Nov
-% B: Month name: November
-% c: Default format: Nov 17, 2008 12:09:37 AM
-% C: First two digits of the year: 20
-% d: days (01 to 31): 17
-% D: Same as% m /% d /% y. Date Year: 11/17/08
-% e: Day (1 to 31) The second digit of the one digit number (1 to 9) is a space. : 17
-% F: Same as% Y-% m-% d (for example, 2008-11-31): 2008-11-17
-% G: Year (I don't know the difference from% Y): 2008
-% g: Last 2 digits of year (00-99): 08
-% h: Same as% b. Month abbreviation: Nov
-% H: Hour (00 to 23): 00
-% I: Hour (01 to 12) Time in 12-hour notation: 12
-% j: What day is it for the first time from the beginning of the year? (001 to 366): 322
-% k: Hour (0 to 23) The second digit of the one-digit number (0 to 9) is a space
+%a: Abbreviation for day of the week: Mon
+%A: Day of the week name: Monday
+%b: Month abbreviation: Nov
+%B: Month name: November
+%c: Default format: Nov 17, 2008 12:09:37 AM
+%C: First two digits of the year: 20
+%d: days (01 to 31): 17
+%D: Same as%m /%d /%y. Date Year: 11/17/08
+%e: Day (1 to 31) The second digit of the one digit number (1 to 9) is a space. : 17
+%F: Same as%Y-%m-%d (for example, 2008-11-31): 2008-11-17
+%G: Year (I don't know the difference from%Y): 2008
+%g: Last 2 digits of year (00-99): 08
+%h: Same as%b. Month abbreviation: Nov
+%H: Hour (00 to 23): 00
+%I: Hour (01 to 12) Time in 12-hour notation: 12
+%j: What day is it for the first time from the beginning of the year? (001 to 366): 322
+%k: Hour (0 to 23) The second digit of the one-digit number (0 to 9) is a space
 NS. : 0
-% l: Hour (1 to 12) Time in 12-hour notation The second digit of the one-digit number (0 to 9) is a space. : 12
-% m: Month number (01 to 12): 11
-% M: Minutes (00 to 59): 09
-% n: Newline character:
+%l: Hour (1 to 12) Time in 12-hour notation The second digit of the one-digit number (0 to 9) is a space. : 12
+%m: Month number (01 to 12): 11
+%M: Minutes (00 to 59): 09
+%n: Newline character:
 
-% N: Milliseconds (Write% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits): 000
-% p: AM or PM: AM
-% P: am or pm: am
-Same as% r:% I:% M:% S% p. (11:55:23 PM etc.): 12:09:37 AM
-% R: Hours and minutes (15:16, etc.): 00:09
-% s: Seconds from Epoch: 1226848177
-% S: Seconds (00 to 61): 37
-% t: tab character:
-Same as% T:% H:% M:% S. Hours, minutes and seconds (such as 23:14:03): 00:09:37
-% u: Day of the week number (1 to 7. Monday is 1): 1
-% U: How many weeks from the beginning of the year? (00-53): Count the first Sunday of the year as the beginning of the week. The first Sunday week is 01. Before that
+%N: Milliseconds (Write% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits): 000
+%p: AM or PM: AM
+%P: am or pm: am
+Same as%r:%I:%M:%S%p. (11:55:23 PM etc.): 12:09:37 AM
+%R: Hours and minutes (15:16, etc.): 00:09
+%s: Seconds from Epoch: 1226848177
+%S: Seconds (00 to 61): 37
+%t: tab character:
+Same as%T:%H:%M:%S. Hours, minutes and seconds (such as 23:14:03): 00:09:37
+%u: Day of the week number (1 to 7. Monday is 1): 1
+%U: How many weeks from the beginning of the year? (00-53): Count the first Sunday of the year as the beginning of the week. The first Sunday week is 01. Before that
 The week is 00. : 46
-% V: How many weeks from the beginning of the year? (01-53): Let the week with at least 4 days be the first week of the year. Count Monday as the beginning of the week
+%V: How many weeks from the beginning of the year? (01-53): Let the week with at least 4 days be the first week of the year. Count Monday as the beginning of the week
 NS. : 47
-% w: Day of the week number (0 to 6. Sunday is 0): 1
-% W: Weeks counting from the beginning of the year (00 to 53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that
+%w: Day of the week number (0 to 6. Sunday is 0): 1
+%W: Weeks counting from the beginning of the year (00 to 53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that
 Is 00. : 46
-% x: Default date format: Nov 17, 2008
-% X: Default format for time: 12:09:37 AM
-% y: Last 2 digits of year: 08
-% Y: Year: 2008
-% z: Time zone time shift from UTC (Coordinated Universal Time): +0900
-% Z: Timezone name: JST
+%x: Default date format: Nov 17, 2008
+%X: Default format for time: 12:09:37 AM
+%y: Last 2 digits of year: 08
+%Y: Year: 2008
+%z: Time zone time shift from UTC (Coordinated Universal Time): +0900
+%Z: Timezone name: JST
 %%:%:%
 %{method}: DateTime.pm method can be used. %{ymd}: 2008-11-17
 </pre>

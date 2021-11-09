@@ -330,12 +330,12 @@ sub return_array_of_hash {
   my %person1;
   $person1 {name} ='Ken';
   $person1 {age} = 19;
-  push @peoples, \% person1;
+  push @peoples, \%person1;
   
   my %person2;
   $person2 {name} ='Taro';
   $person2 {age} = 26;
-  push @persons, \% person2;
+  push @persons, \%person2;
   
   return \@persons;
 }
@@ -469,7 +469,7 @@ my $str = "$num1 and $num2";
 # XS
 int num1 = 1;
 int num2 = 2;
-SV * sv_str = newSVpvf ("% d and% d", num1, num2);
+SV * sv_str = newSVpvf ("%d and%d", num1, num2);
 </pre>
 
 <h4> String concatenation + variable expansion </h4>
@@ -485,7 +485,7 @@ $str. = "$num1 and $num2";
 int num1 = 1;
 int num2 = 2;
 SV * sv_str = newSVpv ("abc", 0);
-sv_catpvf (sv_str, "% d and% d", num1, num2);
+sv_catpvf (sv_str, "%d and%d", num1, num2);
 </pre>
 
 <h4> String comparison </h4>
@@ -527,7 +527,7 @@ To get the package variable, write:
 # Perl
 $Foo::bar;
 @Foo::bar;
-% Foo::bar;
+%Foo::bar;
 
 # XS
 SV * sv_var = get_sv ("Foo::bar", 0);
@@ -545,7 +545,7 @@ Introducing a function that creates a package variable in XS. Specify "GV_ADD" i
 # Perl
 our $Foo::bar;
 our @Foo::bar;
-our% Foo::bar;
+our%Foo::bar;
 
 # XS
 SV * sv_var = get_sv ("Foo::bar", GV_ADD);

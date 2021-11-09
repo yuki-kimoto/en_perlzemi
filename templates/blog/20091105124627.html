@@ -453,53 +453,53 @@ $t-> strftime($format)
 This is a sample format of date and time.
 
 <pre>
-$t-> strftime('% Y-% m-% d% H:% M:% S'); # 2009-11-34 12:14:15
+$t-> strftime('%Y-%m-%d%H:%M:%S'); # 2009-11-34 12:14:15
 </pre>
 
 A list of formats that can be used with strftime.
 
 <pre>
-% a: Abbreviated name of the day of the week
-% A: Day of the week name
-% b: month abbreviation
-% B: Month name
-% c: Default format
-% C: First two digits of the year
-% d: days (01 to 31)
-% D: Same as% m /% d /% y. Month day year
-% e: day (1 to 31)
-% F: Same as% Y-% m-% d (for example, 2008-11-31)
-% G: 4 digits per year. If the year and week of ISO 8608 format is the previous year or the next year, that year.
-% g: Last two digits of the year. If the year and week of ISO 8608 format is the previous year or the next year, that year.
-% h: Same as% b. Month abbreviation
-% H: Hour (00 to 23)
-% I: Hour (01 to 12) Time in 12-hour notation
-% j: What day is it for the first time from the beginning of the year? (001 to 366)
-% k: Hour (0 to 23) The second digit of the one-digit number (0 to 9) is a space.
-% l: Hour (1 to 12) Time in 12-hour notation The second digit of the one-digit number (0 to 9) is a space.
-% m: Month number (01-12)
-% M: Minutes (00 to 59)
-% n: Newline character
-% N: Milliseconds (Write% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits)
-% p: am or pm
-% P: AM or PM
-Same as% r:% I:% M:% S% p. (11:55:23 PM etc.)
-% R: hour and minute (for example, 15:16)
-% s: Seconds from epoch
-% S: seconds (00 to 61)
-% t: tab character
-Same as% T:% H:% M:% S. Hours, minutes and seconds (such as 23:14:03)
-% u: Day of the week number (1 to 7. Monday is 1)
-% U: How many weeks from the beginning of the year? Count the first Sunday of the year (00-53) as the beginning of the week. The first Sunday week is 01. The week before that was 00.
-% V: How many weeks from the beginning of the year? (01-53) A week with at least 4 days is the first week of the year. Count Monday as the beginning of the week. Year and week in ISO 8608 format.
-% w: Day of the week number (0 to 6. Sunday is 0)
-% W: Weeks counting from the beginning of the year (00 to 53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that was 00.
-% x: Default format for dates
-% X: Default format for time
-% y: last two digits of the year
-% Y: year
-% z: Time zone time shift from UTC (Coordinated Universal Time))
-% Z: Timezone name
+%a: Abbreviated name of the day of the week
+%A: Day of the week name
+%b: month abbreviation
+%B: Month name
+%c: Default format
+%C: First two digits of the year
+%d: days (01 to 31)
+%D: Same as%m /%d /%y. Month day year
+%e: day (1 to 31)
+%F: Same as%Y-%m-%d (for example, 2008-11-31)
+%G: 4 digits per year. If the year and week of ISO 8608 format is the previous year or the next year, that year.
+%g: Last two digits of the year. If the year and week of ISO 8608 format is the previous year or the next year, that year.
+%h: Same as%b. Month abbreviation
+%H: Hour (00 to 23)
+%I: Hour (01 to 12) Time in 12-hour notation
+%j: What day is it for the first time from the beginning of the year? (001 to 366)
+%k: Hour (0 to 23) The second digit of the one-digit number (0 to 9) is a space.
+%l: Hour (1 to 12) Time in 12-hour notation The second digit of the one-digit number (0 to 9) is a space.
+%m: Month number (01-12)
+%M: Minutes (00 to 59)
+%n: Newline character
+%N: Milliseconds (Write% 3N displays milliseconds in 3 digits,% 6N displays milliseconds in 6 digits)
+%p: am or pm
+%P: AM or PM
+Same as%r:%I:%M:%S%p. (11:55:23 PM etc.)
+%R: hour and minute (for example, 15:16)
+%s: Seconds from epoch
+%S: seconds (00 to 61)
+%t: tab character
+Same as%T:%H:%M:%S. Hours, minutes and seconds (such as 23:14:03)
+%u: Day of the week number (1 to 7. Monday is 1)
+%U: How many weeks from the beginning of the year? Count the first Sunday of the year (00-53) as the beginning of the week. The first Sunday week is 01. The week before that was 00.
+%V: How many weeks from the beginning of the year? (01-53) A week with at least 4 days is the first week of the year. Count Monday as the beginning of the week. Year and week in ISO 8608 format.
+%w: Day of the week number (0 to 6. Sunday is 0)
+%W: Weeks counting from the beginning of the year (00 to 53) Count the first Monday of the year as the beginning of the week. The first Monday week is 01. The week before that was 00.
+%x: Default format for dates
+%X: Default format for time
+%y: last two digits of the year
+%Y: year
+%z: Time zone time shift from UTC (Coordinated Universal Time))
+%Z: Timezone name
 %%:%
 </pre>
 
@@ -509,7 +509,7 @@ Note that Time::Piece's strftime method always returns a byte string, whether th
 
 <pre>
 # Byte string is always returned
-my $bytes = $tp-> strftime("% Y year% m month");
+my $bytes = $tp-> strftime("%Y year%m month");
 </pre>
 
 <h3> Parse the character string that expresses the date / time </h3>
@@ -524,7 +524,7 @@ As a sample, let's parse the MySQL date representation and create a Time::Piece 
 
 <pre>
 my $datetime_mysql = '2009-12-31 23:59:59';
-my $t = Time::Piece-> strptime($datetime_mysql,'% Y-% m-% d% H:% M:% S');
+my $t = Time::Piece-> strptime($datetime_mysql,'%Y-%m-%d%H:%M:%S');
 </pre>
 
 <h3> Localization </h3>
@@ -607,7 +607,7 @@ $t1 <$t2
 As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time::Piece object at any date and time.
 
 <pre>
-my $t = Time::Piece-> strptime('2009-12-31 23:59:59','% Y-% m-% d% H:% M:% S');
+my $t = Time::Piece-> strptime('2009-12-31 23:59:59','%Y-%m-%d%H:%M:%S');
 </pre>
 
 (When I read the source code, there is a parse method, but when I tried it, it seems to be broken ... It seems that it is private because it is not in the document.)

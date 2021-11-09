@@ -45,57 +45,57 @@ my $str = sprintf("aiueo% 08daiueo% .2f", $num1, $num2);
 
 Formatting starts with%. It ends with a fixed alphanumeric character such as d or f. d means to interpret the second argument as an integer, and f means to interpret it as a floating point number.
 
-Specifies the format in which the string is created between the% and the alphabet. "% 08d" is read as "Interpret $num1 as an integer and pad it with 0 if it is less than 8 characters". "% .2f" is read as "Interpret $num2 as a floating point number and round it to two decimal places."
+Specifies the format in which the string is created between the%and the alphabet. "% 08d" is read as "Interpret $num1 as an integer and pad it with 0 if it is less than 8 characters". "% .2f" is read as "Interpret $num2 as a floating point number and round it to two decimal places."
 
 <h3> List of format specifiers for sprintf function </h3>
 
 There are various formatting specifiers for the sprintf function. I created a list.
 
-<h4>% c </h4>
+<h4>%c </h4>
 
-% c is a format specifier that converts to the character corresponding to the ASCII character code.
+%c is a format specifier that converts to the character corresponding to the ASCII character code.
 
-<h4>% s </h4>
+<h4>%s </h4>
 
-% s is a format specifier that interprets the argument as a string. If there is a leading 0 like '002', it will be '002' as a character string as it is.
+%s is a format specifier that interprets the argument as a string. If there is a leading 0 like '002', it will be '002' as a character string as it is.
 
-<h4>% d </h4>
+<h4>%d </h4>
 
-% d interprets the argument as a signed integer. For example, if you pass '0003', it will be converted to 3 because it is 3 in terms of numbers.
+%d interprets the argument as a signed integer. For example, if you pass '0003', it will be converted to 3 because it is 3 in terms of numbers.
 
-<h4>% u </h4>
+<h4>%u </h4>
 
-% u interprets the argument as a positive integer.
+%u interprets the argument as a positive integer.
 
-<h4>% o </h4>
+<h4>%o </h4>
 
-% o interprets the argument as a positive integer and converts it to an octal string.
+%o interprets the argument as a positive integer and converts it to an octal string.
 
-<h4>% x% X </h4>
+<h4>%x%X </h4>
 
-% x interprets the argument as a positive integer and converts it to a hexadecimal string. The notation is lowercase for% x and uppercase for% X.
+%x interprets the argument as a positive integer and converts it to a hexadecimal string. The notation is lowercase for%x and uppercase for%X.
 
-<h4>% b </h4>
+<h4>%b </h4>
 
-% b interprets the argument as a positive integer and converts it to a binary string.
+%b interprets the argument as a positive integer and converts it to a binary string.
 
-<h4>% f </h4>
+<h4>%f </h4>
 
-% f interprets the argument as floating point.
+%f interprets the argument as floating point.
 
-<h4>% e% E </h4>
+<h4>%e%E </h4>
 
-% e is the same as% f, but it formats it in exponential notation. The notation is lowercase for% e and uppercase for% E.
+%e is the same as%f, but it formats it in exponential notation. The notation is lowercase for%e and uppercase for%E.
 
-<h4>% g% G </h4>
+<h4>%g%G </h4>
 
-% g interprets the argument as floating point and formats it to% e or% f. If the decimal point is short, it will be in the% f format, and if it is long, it will be in the% e format.
+%g interprets the argument as floating point and formats it to%e or%f. If the decimal point is short, it will be in the%f format, and if it is long, it will be in the%e format.
 
-Also, unlike% f and% e,% g does not have an extra 0 at the end.
+Also, unlike%f and%e,%g does not have an extra 0 at the end.
 
-<h4>% p </h4>
+<h4>%p </h4>
 
-You can get the memory address of the variable given as an argument by% p in hexadecimal notation.
+You can get the memory address of the variable given as an argument by%p in hexadecimal notation.
 
 <h3> Format to a fixed length string </h3>
 
@@ -169,14 +169,14 @@ The order of the "flags" can be anything, but the "flags" must come before the "
 
 <h3> Specify the precision with the number of digits after the decimal point </h3>
 
-To specify the precision with the number of decimal places using the sprintf function, use the format specifier% f and the "precision" notation, such as .5.10.
+To specify the precision with the number of decimal places using the sprintf function, use the format specifier%f and the "precision" notation, such as .5.10.
 
 <pre>
 # 3rd place after the decimal point
 $formatted [1] = sprintf("% .3f", 0.45674);
 </pre>
 
-To specify the precision with the number of decimal places, use the format specifier% f, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is .3, it will be rounded to the third decimal place.
+To specify the precision with the number of decimal places, use the format specifier%f, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is .3, it will be rounded to the third decimal place.
 
 It can also be combined with other formats.
 
@@ -194,21 +194,21 @@ $formatted [2] = sprintf("<% -10.3f>", 0.45674);
 The order of format specification is
 
 <pre>
-% Flag String Width Precision Format Specifier
+%Flag String Width Precision Format Specifier
 </pre>
 
 Must be. "Flag", "Character string", and "Precision" are format specification options and can be specified as necessary.
 
 <h3> Specify the precision by the number of significant digits </h3>
 
-To specify precision by significant digits using the sprintf function, use the format specifier% g and the "precision" notation, such as .5.10.
+To specify precision by significant digits using the sprintf function, use the format specifier%g and the "precision" notation, such as .5.10.
 
 <pre>
 # 3 significant digits
 my $formatted = sprintf("% .3g", 45.674);
 </pre>
 
-To specify the precision with the number of decimal places, use the format specifier% g, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is% .3g, it will be rounded to 3 digits.
+To specify the precision with the number of decimal places, use the format specifier%g, which interprets the argument as a floating point number, and the "precision" notation, such as .5.10. If it is% .3g, it will be rounded to 3 digits.
 
 <h3> Sample sprintf function </h3>
 
@@ -251,51 +251,51 @@ my @formated;
 
 # 65 is ASC
 'A' in II code
-$formatted [1] = sprintf("1:% c", 65);
+$formatted [1] = sprintf("1:%c", 65);
 
 # Interpreted as a string
-$formatted [2] = sprintf("2:% s", '00002');
+$formatted [2] = sprintf("2:%s", '00002');
 
 # Interpreted as a signed integer
-$formatted [3] = sprintf("3:% d",'-00002');
+$formatted [3] = sprintf("3:%d",'-00002');
 
 # Interpreted as an unsigned integer
-$formatted [4] = sprintf("4:% u", '00002');
+$formatted [4] = sprintf("4:%u", '00002');
 
 # Convert decimal to octal
-$formatted [5] = sprintf("5:% o", 8);
+$formatted [5] = sprintf("5:%o", 8);
 
 # Convert decimal to hexadecimal (lowercase)
-$formatted [6] = sprintf("6:% x", 255);
+$formatted [6] = sprintf("6:%x", 255);
 
 # Convert decimal to hexadecimal (uppercase)
-$formatted [7] = sprintf("7:% X", 255);
+$formatted [7] = sprintf("7:%X", 255);
 
 # Convert decimal to binary
-$formatted [8] = sprintf("8:% b", 4);
+$formatted [8] = sprintf("8:%b", 4);
 
 # Interpreted as a floating minority point
-$formatted [9] = sprintf("9:% f", 0.00004560);
+$formatted [9] = sprintf("9:%f", 0.00004560);
 
 # Interpreted as floating point
 # (Lowercase exponential notation)
-$formatted [10] = sprintf("10:% e", 0.00004560);
+$formatted [10] = sprintf("10:%e", 0.00004560);
 
 # Interpreted as floating point
 # (Capital notation)
-$formatted [11] = sprintf("11:% E", 0.00004560);
+$formatted [11] = sprintf("11:%E", 0.00004560);
 
 # Interpreted as floating point
 # (End 0 is deleted)
-$formatted [12] = sprintf("12:% g", 0.00004560);
+$formatted [12] = sprintf("12:%g", 0.00004560);
 
 # Interpreted as floating point
 # (The trailing 0 is removed. Uppercase)
-$formatted [13] = sprintf("13:% G", 0.00004560);
+$formatted [13] = sprintf("13:%G", 0.00004560);
 
 # $Num's in-memory address
 my $num = 3;
-$formatted [14] = sprintf("14:% p", $num);
+$formatted [14] = sprintf("14:%p", $num);
 
 for my $i (1 .. 14) {
   print $formatted [$i]. "\n";
@@ -325,10 +325,10 @@ $formatted [3] = sprintf("3:% 05s", 1);
 # Ignored if the specified character length is exceeded
 $formatted [4] = sprintf("4:% 5d", 123456);
 
-Other than # % s is OK.
+Other than # %s is OK.
 $formatted [5] = sprintf("5:% 5d", 1);
 
-Other than # % s is OK.
+Other than # %s is OK.
 $formatted [6] = sprintf("6:% 5g", 1.23);
 
 for my $i (1 .. 6) {

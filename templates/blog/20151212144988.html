@@ -631,7 +631,7 @@ Convert date string to Time::Piece object:
     $validation-> add_failed (date =>'date must have length');
   }
   else {
-    eval {$date_tp = Time::Piece-> strptime($date,'% Y /% m /% d')};
+    eval {$date_tp = Time::Piece-> strptime($date,'%Y /%m /%d')};
     if (! $date_tp) {
       $validation-> add_failed (date =>'date value is invalid');
     }
@@ -650,7 +650,7 @@ Convert datetime string to Time::Piece object:
     $validation-> add_failed (datetime =>'datetime must have length');
   }
   else {
-    eval {$datetime_tp = Time::Piece-> strptime($datetime,'% Y /% m /% d% H:% M:% S')};
+    eval {$datetime_tp = Time::Piece-> strptime($datetime,'%Y /%m /%d%H:%M:%S')};
     if (! $Datetime_tp) {
       $validation-> add_failed (datetime =>'datetime value is invalid');
     }

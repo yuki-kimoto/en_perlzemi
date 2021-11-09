@@ -24,21 +24,21 @@ You can use the Hash::Util module to prevent the addition of <a href="/blog/2016
 <pre>
 use Hash::Util;
 # limit
-Hash::Util::lock_keys(% hash);
+Hash::Util::lock_keys(%hash);
 
 # lift
-Hash::Util::unlock_keys(% hash);
+Hash::Util::unlock_keys(%hash);
 </pre>
 
 You can use Hash::Util::lock_keys to limit the keys in a hash. If you specify only a hash as an argument, the addition of keys other than the current key is prohibited.
 
 <pre>
-% hash = ();
+%hash = ();
 Limited to # key1 and key2.
 @restrict_keys = qw / key1 key2 /;
-Hash::Util::lock_keys(% hash, @restrict_keys);
+Hash::Util::lock_keys(%hash, @restrict_keys);
 # Remove restrictions.
-Hash::Util::unlock_keys(% hash);
+Hash::Util::unlock_keys(%hash);
 </pre>
 
 If you specify a key as the second argument, you can prohibit the addition of keys other than that key.
@@ -48,10 +48,10 @@ The Hash::Util::lock_keys function does not prohibit delete keys from being dele
 <h3> Prohibit changing hash value and adding / deleting keys </h3>
 
 <pre>
-Hash::Util::lock_hash (% hash);
+Hash::Util::lock_hash (%hash);
 
 # Lift the prohibition on hash changes
-Hash::Util::lock_hash (% hash);
+Hash::Util::lock_hash (%hash);
 </pre>
 
 You can use the Hash::Util::lock_hash function to prevent key additions, deletions and value changes. You can treat the key and its corresponding value as read-only.
@@ -74,8 +74,8 @@ my @restrict_keys;
 
 Limited to # key1 and key2.
 print "1-1: Prohibit the addition of hash keys.\n";
-% hash = (key1 => 1, key2 => 2);
-Hash::Util::lock_keys(% hash);
+%hash = (key1 => 1, key2 => 2);
+Hash::Util::lock_keys(%hash);
 
 Added # key3.
 # Die, so capture it with eval for a sample.
@@ -83,26 +83,26 @@ eval {$hash {key3} = 3};
 print "$@\n";
 
 # Remove the prohibition on adding and deleting keys.
-Hash::Util::unlock_keys(% hash);
+Hash::Util::unlock_keys(%hash);
 
 Limited to # key1 and key2.
 print "1-2: Prohibit the addition of keys other than the specified key.\n";
-% hash = ();
+%hash = ();
 @restrict_keys = qw / key1 key2 /;
 
 Die when trying to add # key3.
-Hash::Util::lock_keys(% hash, @restrict_keys);
+Hash::Util::lock_keys(%hash, @restrict_keys);
 eval {$hash {key3} = 3};
 print "$@\n";
 
 Remove the # key restriction.
-Hash::Util::unlock_keys(% hash);
+Hash::Util::unlock_keys(%hash);
 
 print "2: Prohibit changing hash value and adding / deleting keys.\n";
-% hash = (key1 => 1, key2 => 2);
+%hash = (key1 => 1, key2 => 2);
 
 # Die when trying to change the value.
-Hash::Util::lock_hash (% hash);
+Hash::Util::lock_hash (%hash);
 eval {$hash {key1} = 3};
 print "$@\n";
 
@@ -111,7 +111,7 @@ eval {$hash {key3} = 1};
 print "$@\n";
 
 # Lift the prohibition on hash changes
-Hash::Util::lock_hash (% hash);
+Hash::Util::lock_hash (%hash);
 </pre>
 
 (Reference) <a href="/blog/20100312126967.html"> eval</a>

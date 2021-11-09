@@ -16,17 +16,17 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Examine the loaded module% INC </h2>
+<h2> Examine the loaded module%INC </h2>
 
 
 
-Use a special variable called <strong>% INC </strong> to find out which modules are loaded.
+Use a special variable called <strong>%INC </strong> to find out which modules are loaded.
 
 <pre>
-% INC
+%INC
 </pre>
 
-The% INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported. The result output by <a href="/blog/20080208120248.html"> Data::Dumper</a> is as follows.
+The%INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported. The result output by <a href="/blog/20080208120248.html"> Data::Dumper</a> is as follows.
 
 <pre>
 $VAR1 = {
@@ -43,4 +43,4 @@ $VAR1 = {
         };
 </pre>
 
-% INC has nothing to do with @INC, which contains the <a href="/blog/20180508152716.html"> module search path</a>. @INC and% INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function</a> to retrieve only the keys.
+%INC has nothing to do with @INC, which contains the <a href="/blog/20180508152716.html"> module search path</a>. @INC and%INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function</a> to retrieve only the keys.

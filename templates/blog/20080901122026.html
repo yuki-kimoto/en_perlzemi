@@ -22,20 +22,20 @@ Let's convert from decimal to binary, octal, and hexadecimal. Use the format spe
 
 <pre>
 # Convert to binary string
-my $bit_str = sprintf("% b", $num);
+my $bit_str = sprintf("%b", $num);
 </pre>
 
 <pre>
 # Convert to octal string
-my $oct_str = sprintf("% o", $num);
+my $oct_str = sprintf("%o", $num);
 </pre>
 
 <pre>
 # Convert to hexadecimal string
-my $hex_str = sprintf("% X", $num);
+my $hex_str = sprintf("%X", $num);
 </pre>
 
-To convert a decimal string to a binary number, use the sprintf function to specify the format as "% b". To convert to octal and hexadecimal, use "% o" and "% X" respectively.
+To convert a decimal string to a binary number, use the sprintf function to specify the format as "%b". To convert to octal and hexadecimal, use "%o" and "%X" respectively.
 
 The sprintf function is a common function of the <a href="/blog/20170326149148.html"> printf function</a>. If you use sprintf, you can get the character string output by the printf function as the return value.
 
@@ -49,13 +49,13 @@ use warnings;
 my $num = 255;
 
 # Convert to binary string
-my $bit_str = sprintf("% b", $num);
+my $bit_str = sprintf("%b", $num);
 
 # Convert to octal string
-my $oct_str = sprintf("% o", $num);
+my $oct_str = sprintf("%o", $num);
 
 # Convert to hexadecimal string
-my $hex_str = sprintf("% X", $num);
+my $hex_str = sprintf("%X", $num);
 
 print "(1) Conversion from decimal string to 2,8, hexadecimal string\n";
 print "decimal string: $num;\n";
@@ -391,11 +391,11 @@ for my $num (@nums) {
 }
 </pre>
 
-@nums contains each decomposed character. Convert this to a number if it can be converted using a% valid hash.
+@nums contains each decomposed character. Convert this to a number if it can be converted using a%valid hash.
 
 The uc function is a function that converts to uppercase. Even if it is a lowercase letter such as'f', it will be judged as a valid character by converting it to'F'.
 
-If it cannot be converted using% valid, $num will be assigned undef. If $num is undef, it is judged that it was not a valid $str_num and it returns.
+If it cannot be converted using%valid, $num will be assigned undef. If $num is undef, it is judged that it was not a valid $str_num and it returns.
 
 Also, if $num is greater than or equal to $n (specified base in the argument), it is considered not to be a valid $str_num and returns.
 

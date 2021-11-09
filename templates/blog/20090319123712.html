@@ -34,8 +34,8 @@ Let's create a constructor with such a function.
 
 <pre>
 sub new {
-  my ($class,% args) = @_;
-  my $self = {% args};
+  my ($class,%args) = @_;
+  my $self = {%args};
   return $self, $class;
 }
 </pre>
@@ -56,7 +56,7 @@ The constructor that can be supported is like this.
 sub new {
     my ($class, @args) = @_;
     my %args = ref $args [0] eq'HASH'?%{$args [0]}: @args;
-    my $self = {% args};
+    my $self = {%args};
     return $self, $class;
 }
 </pre>
@@ -71,7 +71,7 @@ Now, the demands on the constructor are still going on. For example, if you want
 sub new {
   my ($class, @args) = @_;
   my %args = ref $args [0] eq'HASH'?%{$args [0]}: @args;
-  my $self = {% args};
+  my $self = {%args};
  
   $self-> {title} || ='default title';
   $self-> {author} || ='default author';

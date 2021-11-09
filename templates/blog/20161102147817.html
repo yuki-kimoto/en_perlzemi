@@ -66,12 +66,12 @@ grep {$_ eq'foo'} @elements
 $_ for @elements;
 </pre>
 
-<h4>% ENV - Getting and setting environment variables </h4>
+<h4>%ENV - Getting and setting environment variables </h4>
 
-You can access <a href="/blog/20180510152716.html"> environment variables</a> with a special variable called <strong>% ENV </strong>.
+You can access <a href="/blog/20180510152716.html"> environment variables</a> with a special variable called <strong>%ENV </strong>.
 
 <pre>
-% ENV
+%ENV
 </pre>
 
 The environment variable name is the key and you can refer to the value with $ENV {'env_name'}. Environment variables are like variables that the OS has. Environment variables are copied into the memory of the process space when the OS starts the process. OS environment variables cannot be changed from the process.
@@ -113,17 +113,17 @@ unshift @INC,'./lib2';
 
 Add it directly to the beginning with <a href="/blog/20100105126425.html"> unshift function</a>. It is better to use use lib than this way. The advantage of using use lib is that it adds a search path at compile time, makes it more readable, and adds an architectural path as well.
 
-<h4>% INC - Check loaded modules </h4>
+<h4>%INC - Check loaded modules </h4>
 
-To find out <a href="/blog/20180529152759.html"> loaded modules</a>, look at the variable <strong>% INC </strong>.
+To find out <a href="/blog/20180529152759.html"> loaded modules</a>, look at the variable <strong>%INC </strong>.
 
 <pre>
-% INC
+%INC
 </pre>
 
-The% INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported.
+The%INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported.
 
-It has nothing to do with @INC, which stores the module's search path. @INC and% INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function</a> to retrieve only the keys.
+It has nothing to do with @INC, which stores the module's search path. @INC and%INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html"> keys function</a> to retrieve only the keys.
 
 <h4> $^ O - Get OS name </h4>
 
@@ -428,7 +428,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      % ENV
+      %ENV
     </td>
     <td>
       environmental variables
@@ -464,7 +464,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      % INC
+      %INC
     </td>
     <td>
       List of included file names
@@ -500,7 +500,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 |
   <tr>
     <td>
-      % SIG
+      %SIG
     </td>
     <td>
       Signal handler
