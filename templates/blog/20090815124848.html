@@ -737,10 +737,10 @@ A list of strftime format specifiers.
 
   <tr>
     <td>
-      % {method}
+      %{method}
     </td>
     <td>
-      You can use the methods of DateTime.pm. Example% {ymd}
+      You can use the methods of DateTime.pm. Example%{ymd}
     </td>
   </tr>
 
@@ -1305,8 +1305,8 @@ print'% z: Time zone time shift from UTC (Coordinated Universal Time):'
   . $dt-> strftime ("% z"). "\ n";
 print'% Z: timezone name:'. $Dt-> strftime ("% Z"). "\ n";
 print'%%:%:'. $Dt-> strftime ("%%"). "\ n";
-print'% {method}: You can use the method of DateTime.pm. Example% {ymd}:'
-  . $dt-> strftime ("% {ymd}"). "\ n";
+print'%{method}: You can use the method of DateTime.pm. Example%{ymd}:'
+  . $dt-> strftime ("%{ymd}"). "\ n";
 </pre>
 
 Execution result
@@ -1360,7 +1360,7 @@ Is 00. : 46
 % z: Time zone time shift from UTC (Coordinated Universal Time): +0900
 % Z: Timezone name: JST
 %%:%:%
-% {method}: DateTime.pm method can be used. % {ymd}: 2008-11-17
+%{method}: DateTime.pm method can be used. %{ymd}: 2008-11-17
 </pre>
 
 This is a sample that calculates the date and time using DateTime.

@@ -309,7 +309,7 @@ sub n_to_dec {
     
   # Allow 1-9 and A-F
   my @valid = (0 .. 9,'A' ..'F');
-  my% valid;
+  my %valid;
   for (my $i = 0; $i <@valid; $i ++) {
     # Create conversion table ($valid {E} = 15)
     A table like # $valid {F} = 16)
@@ -373,7 +373,7 @@ If you want to convert the binary character string "1010" to decimal, you need t
 
 <pre>
 my @valid = (0 .. 9,'A' ..'F');
-my% valid;
+my %valid;
 for (my $i = 0; $i <@valid; $i ++) {
   $valid {$valid [$i]} = $i;
 }

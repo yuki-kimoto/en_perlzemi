@@ -151,7 +151,7 @@ sub parse {
   foreach my $line (@lines) {
     my @items = split (',', $line);
     
-    my% items_hash = ();
+    my %items_hash = ();
     @items_hash {@ $headers} = @items;
     
     push @ $items_hash_list, {% items_hash};
@@ -206,7 +206,7 @@ If you write the header name in the subroutine, the subroutine and the header na
 for my $line (@lines) {
   my @items = split (',', $line);
     
-  my% items_hash = ();
+  my %items_hash = ();
   @items_hash {@ $headers} = @items;
     
   push @ $items_hash_list, {% items_hash};

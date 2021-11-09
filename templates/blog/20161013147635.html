@@ -27,9 +27,9 @@ The basis of hashing. Hash declaration and initialization. Hash output and assig
 Declaring and initializing the hash is done as follows.
 
 <pre>
-my% fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
+my %fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
 # or
-my% fathers = (Taro =>'Kenji', Naoko =>'Yoshio');
+my %fathers = (Taro =>'Kenji', Naoko =>'Yoshio');
 </pre>
 
 The variable prefix is ​​<b> percent sign </b> "%". (Key 1 => Value 1, Key 2 => Value 2, ...). Taro's father can be read as Kenji, Naoko's father as Yoshio
@@ -112,14 +112,14 @@ $math_scores_ref-> {Aiko}
 Dereference to retrieve a hash from a hash reference.
 
 <pre>
-my% hash =% $hash_ref;
-my% hash =% {$hash_ref};
+my %hash =% $hash_ref;
+my %hash =%{$hash_ref};
 </pre>
 
 You can also dereference a reference to a hash to retrieve the hash.
 
 <pre>
-my% math_scores =% $math_scores;
+my %math_scores =% $math_scores;
 </pre>
 
 You can dereference and retrieve hashes with% $math_scores.
@@ -173,11 +173,11 @@ You can retrieve the value using the # string as a key.
 # Hash declaration and initialization (variable prefix is%)
 # (Key 1 => Value 1, Key 2 => Value 2, ...)
 # Taro's father reads Kenji, Naoko's father reads Yoshio
-my% fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
+my %fathers = ('Taro' =>'Kenji','Naoko' =>'Yoshio');
 
 # More Perl-like writing
 The'' to the left of # => can be omitted
-my% mathers = (Taro =>'Tomoko', Naoko =>'Shizuka');
+my %mathers = (Taro =>'Tomoko', Naoko =>'Shizuka');
 
 # 1: Hash element output
 print "1: Hash element output \ n";
@@ -210,7 +210,7 @@ use warnings;
 use Data::Dumper;
 
 # Student math scores
-my% math_scores = (
+my %math_scores = (
   Aiko => 89,
   Kenta => 100,
   Taro => 34,

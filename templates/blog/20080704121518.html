@@ -118,7 +118,7 @@ print "Calculation method: $how_to_calc \ n".
 
 print "3: Selectively process using reference to subroutine and hash. \ N";
 $how_to_calc ='average';
-my% calc_table = (sum => \ & sum, average => \ & average);
+my %calc_table = (sum => \ & sum, average => \ & average);
 
 # $calc_table {'average'} is a reference to the subroutine
 Since # is included, dereference it with the-> operator.
@@ -181,7 +181,7 @@ In java, overloading and overriding are the ways to achieve polymorphism, and in
 
 <pre>
 $how_to_calc ='average';
-my% calc_table = (sum => \ & sum, average => \ & average);
+my %calc_table = (sum => \ & sum, average => \ & average);
 $result = $calc_table {$how_to_calc}-> (@nums);
 </pre>
 

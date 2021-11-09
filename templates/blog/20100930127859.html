@@ -275,7 +275,7 @@ I will explain the reference of <a href="/blog/20161013147635.html"> hash</a>.
 Creating a hash.
 
 <pre>
-my% person = (name =>'Ken', age => 19);
+my %person = (name =>'Ken', age => 19);
 </pre>
 
 <h4> Creating a hash reference </h4>
@@ -283,7 +283,7 @@ my% person = (name =>'Ken', age => 19);
 Creating a hash reference. References are created using the "\" symbol.
 
 <pre>
-my% person = (name =>'Ken', age => 19);
+my %person = (name =>'Ken', age => 19);
 my $person = \% person;
 </pre>
 
@@ -311,7 +311,7 @@ It's easy to think of the anonymous hash reference description as a simple way t
 
 <pre>
 # Creating a hash reference
-my% person = (name =>'Ken', age => 19);
+my %person = (name =>'Ken', age => 19);
 my $person = \% person;
 
 # Abbreviated notation above
@@ -322,16 +322,16 @@ In Perl, the appearance of both hashes and hash references is one reason why the
 
 <h3> Hash reference dereference </h3>
 
-To retrieve a hash from a hash reference, you need to do something called dereference. Use "% {}" for hash dereference.
+To retrieve a hash from a hash reference, you need to do something called dereference. Use "%{}" for hash dereference.
 
 <pre>
-my% person =% {$person};
+my %person =%{$person};
 </pre>
 
 You can also omit the parentheses as follows:
 
 <pre>
-my% person =% $person;
+my %person =% $person;
 </pre>
 
 You can dereference and then get the hash element, but that's a bit inconvenient. Perl provides a way to get an element from a hash reference. Use the arrow operator "->" to retrieve an element from a hash reference.
@@ -363,8 +363,8 @@ Hash references are detailed individually on the following pages.
 Let's create an array of hashes in Perl. As explained in Array Array, you can only have scalar values ​​as elements of an array. So you need to specify the hash reference as an element of the array.
 
 <pre>
-my% person1 = (name =>'Ken', country =>'Japan', age => 19);
-my% person2 = (name =>'Taro', country =>'USA', age => 45);
+my %person1 = (name =>'Ken', country =>'Japan', age => 19);
+my %person2 = (name =>'Taro', country =>'USA', age => 45);
 
 my @persons = (\% person1, \% person2);
 </pre>
@@ -671,7 +671,7 @@ for my $time (sort keys% $infos) {
   print "$time \ n";
   
   # (2) Inner loop
-  for my $name (sort keys% {$infos-> {$time}}) {
+  for my $name (sort keys%{$infos-> {$time}}) {
     my $value = $infos-> {$time} {$name};
     print "$name: $value \ n";
   }
@@ -683,7 +683,7 @@ for my $time (sort keys% $infos) {
 (2) The inner loop is a hash. Even in the inner loop
 
 <pre>
-keys% {$infos-> {$time}}
+keys%{$infos-> {$time}}
 </pre>
 
 The hash key is taken out like this.

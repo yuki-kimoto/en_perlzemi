@@ -27,7 +27,7 @@ A hash reference is a reference to a <a href="/blog/20161013147635.html"> hash</
 
 <pre>
 # Create a hash reference
-my% score = (math => 68, english => 90);
+my %score = (math => 68, english => 90);
 my $score_ref = \% score;
 </pre>
 
@@ -51,11 +51,11 @@ The hash is copied in its entirety by assignment, but the hash reference is not 
 
 <pre>
 # Hash is the value copied
-my% score1 = (math => 68, english => 90);
-my% score2 =% score1;
+my %score1 = (math => 68, english => 90);
+my %score2 =% score1;
 
 # Hash reference does not copy value
-my% score1 = (math => 68, english => 90);
+my %score1 = (math => 68, english => 90);
 my $score_ref1 = \% score1;
 my $score_ref2 = $score_ref1;
 </pre>
@@ -92,7 +92,7 @@ This notation appears frequently in Perl source code. It is important to read fr
 
 <pre>
 # Hash
-my% score = (math => 68, english => 90);
+my %score = (math => 68, english => 90);
 
 # Hash reference
 my $score = {math => 68, english => 90};
@@ -108,15 +108,15 @@ To do this, perform an operation called <b> dereference </b>.
 my $score_ref = {math => 68, english => 90};
 
 # Dereference
-my% score =% {$score_ref};
+my %score =%{$score_ref};
 </pre>
 
-Dereferences can be made using the notation "% {hash reference}".
+Dereferences can be made using the notation "%{hash reference}".
 
 If the hash reference is a scalar variable, you can omit the "{}".
 
 <pre>
-my% score =% $score_ref;
+my %score =% $score_ref;
 </pre>
 
 <h4> Pass as an argument to a standard function </h4>
