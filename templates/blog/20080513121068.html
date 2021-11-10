@@ -17,7 +17,7 @@
 Using "<strong> _ </strong>" <a href="/blog/20100820127859.html">file test operator</a>, or <a href="/blog/20080512121060.html">stat You can reuse the result of the function</a>.
 
 <pre>
-if (-s $file> $size && -A _> $from_last_access) {
+if (-s $file > $size && -A _> $from_last_access) {
   ...
 }
 </pre>
@@ -48,7 +48,7 @@ print "1: Check if the file is old and has a large file size\n";
 my $size = 1_000_000;
 my $from_last_access = 90;
 
-if (-s $file> $size && -A _> $from_last_access) {
+if (-s $file > $size && -A _> $from_last_access) {
   # You can use _ for the second file test.
   print "$file is greater than $size bytes, ".
     "It's been over $from_last_access days since last access.\n\n";

@@ -450,7 +450,7 @@ while ($message =~ /(.)/G) {
   my $char = $1;
   
   # Line break if the current drawing position exceeds the drawing end x coordinate
-  if ($cur_render_x> $render_end_x) {
+  if ($cur_render_x > $render_end_x) {
     $cur_render_x = $new_line_left_x;
     $cur_render_y-= $line_height;
     
@@ -459,7 +459,7 @@ while ($message =~ /(.)/G) {
   }
 
   # Page break if the current drawing position exceeds the drawing end y coordinate
-  if ($cur_render_y <$render_end_y) {
+  if ($cur_render_y < $render_end_y) {
     $cur_render_x = $render_start_x;
     $cur_render_y = $render_start_y;
     
@@ -694,7 +694,7 @@ while ($message =~ /(.)/G) {
   my $char = $1;
   
   # Line break if the current drawing position exceeds the drawing end x coordinate
-  if ($cur_render_x> $render_end_x) {
+  if ($cur_render_x > $render_end_x) {
     $cur_render_x = $new_line_left_x;
     $cur_render_y-= $line_height;
     
@@ -703,7 +703,7 @@ while ($message =~ /(.)/G) {
   }
 
   # Page break if the current drawing position exceeds the drawing end y coordinate
-  if ($cur_render_y <$render_end_y) {
+  if ($cur_render_y < $render_end_y) {
     $cur_render_x = $render_start_x;
     $cur_render_y = $render_start_y;
     
