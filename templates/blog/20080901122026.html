@@ -317,7 +317,7 @@ sub n_to_dec {
   for my $num (@nums) {
     # Convert lowercase letters to uppercase
     $num = $valid{uc $num};
-    return if! defined $num || $num> = $n;
+    return if! defined $num || $num >= $n;
   }
     
   # From here is the main process of base conversion
@@ -383,7 +383,7 @@ This hashtable is convenient, if it is a valid character it will return the conv
 <pre>
 for my $num (@nums) {
   $num = $valid{uc $num};
-  return if! defined $num || $num> = $n;
+  return if! defined $num || $num >= $n;
 }
 </pre>
 
