@@ -210,10 +210,10 @@ my $encode_to;
 if ($^O eq 'MSWin32') {$encode_to = 'shift-jis'}
 else {$encode_to = 'utf8'}
 print(
-  encode ($encode_to, $month_name) . "\n".
-  encode ($encode_to, $month_abbr) . "\n".
-  encode ($encode_to, $day_name) . "\n".
-  encode ($encode_to, $day_abbr) . "\n"
+  encode($encode_to, $month_name) . "\n".
+  encode($encode_to, $month_abbr) . "\n".
+  encode($encode_to, $day_name) . "\n".
+  encode($encode_to, $day_abbr) . "\n"
 );
 </pre>
 
@@ -1141,10 +1141,10 @@ if ($^O eq 'MSWin32') {$encode_to = 'shift-jis'}
 else {$encode_to = 'utf8'}
 
 print(
-  encode ($encode_to, $month_name) . "\n".
-  encode ($encode_to, $month_abbr) . "\n".
-  encode ($encode_to, $day_name) . "\n".
-  encode ($encode_to, $day_abbr) . "\n"
+  encode($encode_to, $month_name) . "\n".
+  encode($encode_to, $month_abbr) . "\n".
+  encode($encode_to, $day_name) . "\n".
+  encode($encode_to, $day_abbr) . "\n"
 );
 </pre>
 
@@ -1179,7 +1179,7 @@ my $dt = DateTime->now(locale => $locale, time_zone =>'local');
 
 # Day of the week name
 my $day_name = $dt->day_name;
-print encode ($encode_to, $day_name) . "\n";
+print encode($encode_to, $day_name) . "\n";
 </pre>
 
 This is a sample to get the date and time.

@@ -781,7 +781,7 @@ rmdir $dir
   or die "Cannot remove directory $dir: $!";
 </pre>
 
-<h4> mkpath (File::Path) </h4>
+<h4> mkpath(File::Path) </h4>
 
 To create a multi-level directory, use the mkpath function of the <a href="/blog/20100409127089.html">File::Path</a> module.
 
@@ -798,14 +798,14 @@ if ($@) {
 
 If mkpath fails, an exception will be thrown, so catch it with the eval block. The content of the error when an exception occurs is stored in $@.
 
-<h4> rmtree (File::Path) </h4>
+<h4> rmtree(File::Path) </h4>
 
 If you want to delete the directory that contains the files inside, use the rmtree function of the <a href="/blog/20100409127089.html">File::Path module</a>.
 
 <pre>
 use File::Path 'rmtree';
 
-rmtree ($dir, {error =>\my $errors});
+rmtree($dir, {error =>\my $errors});
 for my $diag (@$errors) {
   my ($file, $message) = each %$diag;
   warn "problem unlinking $file: $message\n";
@@ -832,7 +832,7 @@ chmod($permission, $file)
   or die "Cannot change permission $file: $!";
 </pre>
 
-<h4> basename (File::Basename) </h4>
+<h4> basename(File::Basename) </h4>
 
 To retrieve the base name of a file, use the basename function of the <a href="/blog/20100225126425.html">File::Basename module</a>.
 
@@ -843,7 +843,7 @@ $ret = basename $file;
 
 If the file name is /a/b/c.txt, c.txt is the base name.
 
-<h4> dirname (File::Basename) </h4>
+<h4> dirname(File::Basename) </h4>
 
 To get the name of the directory that contains the file, use the dirname function of the <a href="/blog/20100225126425.html">File::Basename module</a>.
 
@@ -1159,7 +1159,7 @@ my $verbose;
 
 # Receive value from command line option
 # (Numeric value,String, boolean value)
-GetOptions (
+GetOptions(
   'length = i'=> \$length,
   'file = s'=> \$data,
   'verbose' => \$verbose

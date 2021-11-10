@@ -102,14 +102,14 @@ use Encode 'encode';
 my $file = "aiueo";
 
 # For Windows
-open my $fh, '<', encode ('cp932', $file);
+open my $fh, '<', encode('cp932', $file);
 
 # For Linux
-open my $fh, '<', encode ('UTF-8', $file);
+open my $fh, '<', encode('UTF-8', $file);
 
 # For Mac OS X
 use Encode::UTF8Mac;
-open my $fh, '<', encode ('' utf-8-mac'', $file);
+open my $fh, '<', encode('' utf-8-mac'', $file);
 </pre>
 
 Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html">Encode::UTF8Mac</a> module.

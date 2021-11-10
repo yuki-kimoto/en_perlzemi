@@ -518,7 +518,7 @@ use Encode 'decode';
 
 # Read file
 while (my $line = <>) {
-  $line = decode ('cp932', $line);
+  $line = decode('cp932', $line);
   
   if ($line =~ /Tanaka/) {
     print "OK";
@@ -550,7 +550,7 @@ Therefore, even if Japanese is received as a command line argument, it will alwa
 
 <pre>
 my $name = $ARGV[0];
-$name = decode ('cp932', $name);
+$name = decode('cp932', $name);
 </pre>
 
 <h4> Encode the character string to be output to the outside </h4>
@@ -568,7 +568,7 @@ use Encode 'encode';
 my $message = 'aiueo';
 
 # Encode before output
-print encode ('UTF-8', $message);
+print encode('UTF-8', $message);
 </pre>
 
 <b> When specifying a file name </b>
@@ -584,8 +584,8 @@ use Encode 'encode';
 my $file = 'test.txt';
 
 # Open a file with a Japanese name
-open my $fh, '<', encode ('cp932', $file)
-  or die encode ('cp932', "Can't open file \" $file\": $!");
+open my $fh, '<', encode('cp932', $file)
+  or die encode('cp932', "Can't open file \" $file\": $!");
 </pre>
 
 I think this is a little annoying. If you use it often, I think that subroutines and modularization are one of the ways to make it easier.

@@ -18,7 +18,7 @@ You can use <strong> File::Find </strong> to process all files recursively.
 
 <pre>
 use File::Find;
-find (\&process, $top_dir);
+find(\&process, $top_dir);
 
 sub process {
   # What you want to do
@@ -36,7 +36,7 @@ If you want to scan without changing the current directory, you can use the "no_
 In this case, specify "wanted" as the reference to the subroutine.
 
 <pre>
-find ({wanted => \&process, no_chdir => 1}, $top_dir);
+find({wanted => \&process, no_chdir => 1}, $top_dir);
 </pre>
 
 <h3> Variables that can be used in the processing description </h3>
@@ -143,7 +143,7 @@ print "Preparation: $top_dir has been created.\n\n";
 print "1: Recursively print all file names (base names).\n";
 # In the first argument, write the processing you want to do for each file
 # Pass a reference to the subroutine.
-find (\&print_file_name, $top_dir);
+find(\&print_file_name, $top_dir);
                                      
 sub print_file_name {
   # In $_, the directory you are currently scanning
@@ -155,7 +155,7 @@ sub print_file_name {
 print "\n";
 
 print "2: Recursively print all file names (full path).\n";
-find (\&print_file_full_name, $top_dir);
+find(\&print_file_full_name, $top_dir);
 
 sub print_file_full_name {
   # In $_, the directory you are currently scanning
