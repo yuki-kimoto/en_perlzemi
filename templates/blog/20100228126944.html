@@ -330,7 +330,7 @@ use warnings;
 # Convert comma-separated data to "|" delimited
 while (my $line = <DATA>) {
     chomp $line;
-    my @items = split(/, /, $line);
+    my @items = split(/,/, $line);
     my $new_line = join('|', @items);
     print "$new_line\n";
 }

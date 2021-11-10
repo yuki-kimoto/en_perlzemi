@@ -54,7 +54,7 @@ sub parse_file {
     Dereference with # @$items
 
     my $items = [];
-    @$items = split(/, /, $line);
+    @$items = split(/,/, $line);
 
     The first argument of the # push function is an array, so @$recs
     # And dereference.
@@ -139,7 +139,7 @@ sub parse_file {
     # split returns an array, so
     Dereference with # @$items
     my $items = [];
-    @$items = split(/, /, $line);
+    @$items = split(/,/, $line);
 
     Since the first argument of the # push function is an array, dereference it with @$recs.
     push @$recs, $items;
@@ -188,7 +188,7 @@ while (my $line = <$fh>) {
   # Separate rows with commas and store in array
   # split returns an array, so
   Dereference with # @$items
-  @$items = split(/, /, $line);
+  @$items = split(/,/, $line);
 
   Since the first argument of the # push function is an array, dereference it with @{$recs}.
   push @$recs, $items;
@@ -206,7 +206,7 @@ At the end of the first while loop, it will be [masao, 10, Japan], but first cre
 <h4> (4) -3-b Comma-separated string split </h4>
 
 <pre>
-@$items = split(/, /, $line);
+@$items = split(/,/, $line);
 </pre>
 
 The split function returns an array, so to receive it, dereference $items to @$items.
@@ -252,7 +252,7 @@ chomp $line;
       
      # Change to array
      my @items;
-     @items = split(/, /, $line);
+     @items = split(/,/, $line);
 
      Create a reference with [] when # pushing.
      push @recs, [@items];
