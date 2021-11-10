@@ -216,7 +216,7 @@ Now, this time I would like to take up a slightly more complicated type conversi
 
 <h4>Convert array reference to C language array</h4>
 
-First, the array reference is converted to an array (AV * type), then the elements of the array are acquired one by one and converted to a C language array. The reference is SV * type. You can dereference it with "SvRV (rv)". Dereferencing something that is not a reference will cause a segmentation fault, so be sure to use "SvROK (rv)" to check that the SV * type value is a reference.
+First, the array reference is converted to an array (AV * type), then the elements of the array are got one by one and converted to a C language array. The reference is SV * type. You can dereference it with "SvRV (rv)". Dereferencing something that is not a reference will cause a segmentation fault, so be sure to use "SvROK (rv)" to check that the SV * type value is a reference.
 
 <pre>
 void
