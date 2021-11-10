@@ -25,9 +25,9 @@ This is a sample that pattern matches a character string containing regular expr
 
 <pre>
 # Pattern matching using a character string containing regular expression characters as a normal character string
-my $message = 'This message contains a {2}';
+my $message = 'This message contains a{2}';
 
-my $match = "a {2}";
+my $match = "a{2}";
 $match = quotemeta $match;
 
 if ($message =~ /$match/) {
@@ -39,7 +39,7 @@ quotemeta has the same meaning as the regular expression special character\Q. Th
 
 <pre>
 Express the same meaning as quotemeta using #\Q
-my $match = "\ Qa {2}";
+my $match = "\ Qa{2}";
 </pre>
 
 For more information on regular expressions, see <a href="/blog/20100827127859.html">Practical Perl Regular Expressions Complete Explanation</a>.

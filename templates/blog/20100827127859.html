@@ -15,14 +15,14 @@ A description of Perl's <strong> regular expressions </strong>. After reading th
 You can use regular expressions to represent a set of strings. For example, let's express the three character strings "a", "aa", and "aaa" with regular expressions. You can write the following using the regular expression "{}" that expresses the number of consecutive characters.
 
 <pre>
-a {1,3}
+a{1,3}
 </pre>
 
-The set of character strings "a", "aa", and "aaa" is represented by one regular expression "a {1,3}". {} Is called a quantifier and can represent consecutive characters.
+The set of character strings "a", "aa", and "aaa" is represented by one regular expression "a{1,3}". {} Is called a quantifier and can represent consecutive characters.
 
 <pre>
 a
-aa->a {1,3}
+aa->a{1,3}
 aaa
 </pre>
 
@@ -52,12 +52,12 @@ if ($str =~ /regular expression/) {
 }
 </pre>
 
-Let's check if the regular expression "a {1,3}" pattern matches the string "This string is aa.".
+Let's check if the regular expression "a{1,3}" pattern matches the string "This string is aa.".
 
 <pre>
 String: "This string is aa."
 
-Regular expression: "a {1,3}"
+Regular expression: "a{1,3}"
 </pre>
 
 The script is as follows.
@@ -65,7 +65,7 @@ The script is as follows.
 <pre>
 my $str = 'This string is aa.';
 
-if ($str =~ /a {1,3}/) {
+if ($str =~ /a{1,3}/) {
   print "Match\n";
 }
 </pre>
@@ -84,14 +84,14 @@ You can use pattern matching to get the matched string. To get the matched chara
 <pre>
 String: "This string is aar 1"
 
-Regular expression: (a {1,3}) ([pqr] 1)
+Regular expression: (a{1,3}) ([pqr] 1)
 </pre>
 
 The script looks like this: <a href="/blog/20161102147817.html">Special variables</a> The parts enclosed in parentheses are assigned to "$1" and "$2" in order.
 
 <pre>
 my $str = 'This string is aar1';
-if ($str =~ /(a {1,3}) ([pqr] 1)/) {
+if ($str =~ /(a{1,3}) ([pqr] 1)/) {
   print "Get $1 and $2";
 }
 </pre>
@@ -114,11 +114,11 @@ You can use a regular expression to replace the matched string. The replacement 
 Target string =~ s/regular expression/replacement string/;
 </pre>
 
-Now let's replace the string "This string is aa" with the string "This string is bb". This sample uses the regular expression "a {1,3}" that matches aa.
+Now let's replace the string "This string is aa" with the string "This string is bb". This sample uses the regular expression "a{1,3}" that matches aa.
 
 <pre>
 Regular expression Replaced string
-a {1,3} - ->bb
+a{1,3} - ->bb
 
 Target character string
 This string is aa - ->This string is bb
@@ -128,7 +128,7 @@ The script looks like this:
 
 <pre>
 my $str = 'This string is aa';
-$str =~ s/a {1,3}/bb/;
+$str =~ s/a{1,3}/bb/;
 </pre>
 
 Only one is replaced. For example, if you have the string "This string is aa aaa", the above replacement will result in "This string is bb aaa" and only the first matching string will be replaced.
@@ -144,7 +144,7 @@ The script that replaces all the matched strings looks like this:
 
 <pre>
 my $str = 'This string is aa aaa';
-$str =~ s/a {1,3}/bb/g;
+$str =~ s/a{1,3}/bb/g;
 </pre>
 
 The output of the replaced character string is as follows.
@@ -521,7 +521,7 @@ aaappp
 
 <pre>
 aaap
-aaapp->aaap {1,3}
+aaapp->aaap{1,3}
 aaappp
 </pre>
 
@@ -531,7 +531,7 @@ aaappp
 
 <pre>
 aaapp
-aaappp->aaap {2,}
+aaappp->aaap{2,}
 aaapppp
 </pre>
 
@@ -541,7 +541,7 @@ aaapppp
 
 <pre>
 aaappp
-aaapppp->aaap {0,5}
+aaapppp->aaap{0,5}
 aaappppp
 </pre>
 
