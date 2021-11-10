@@ -17,7 +17,7 @@ Learn about Perl's iterative syntax. Learning the iterative syntax greatly expan
 First, I will explain the iterative syntax <b> for statement </b>. Take a look at the following sample first. This is a program that outputs a number from 0 to 9 on the screen.
 
 <pre>
-for (my $i = 0; $i <10; $i++) {
+for (my $i = 0; $i < 10; $i++) {
   print "$i\n";
 }
 </pre>
@@ -52,7 +52,7 @@ The first part is the initialization of the loop variable. This part determines 
 Let's look at the first example again. Notice the part "my $i = 0".
 
 <pre>
-for (my $i = 0; $i <10; $i++) {
+for (my $i = 0; $i < 10; $i++) {
   print "$i\n";
 }
 </pre>
@@ -62,7 +62,7 @@ In the initialization part of the loop variable, variable declarations can be ma
 What if this part is "my $i = 5"?
 
 <pre>
-for (my $i = 5; $i <10; $i++) {...}
+for (my $i = 5; $i < 10; $i++) {...}
 </pre>
 
 Since "$i" is initialized with "5", the output result will be as follows.
@@ -88,17 +88,17 @@ for (Initialization of loop variable; Condition to loop; Update of loop variable
 The for statement repeatedly executes the block while the looping condition is met. Looking at the first example, the condition is that "$i" is less than "10".
 
 <pre>
-for (my $i = 0; $i <10; $i++) {
+for (my $i = 0; $i < 10; $i++) {
   print "$i\n";
 }
 </pre>
 
 So the block will be executed while "$i" is less than "10".
 
-What if this part is "$i <7"?
+What if this part is "$i < 7"?
 
 <pre>
-for (my $i = 0; $i <7; $i++) {...}
+for (my $i = 0; $i < 7; $i++) {...}
 </pre>
 
 The output result is as follows. Since "$i" loops while it is smaller than "7", you can see that it is output up to "6".
@@ -126,7 +126,7 @@ for (Initialization of loop variable; Condition to loop; Update of loop variable
 In the loop variable update part, you can change the value of the loop variable before executing the next block.
 
 <pre>
-for (my $i = 0; $i <10; $i++) {
+for (my $i = 0; $i < 10; $i++) {
   print "$i\n";
 }
 </pre>
@@ -138,7 +138,7 @@ The value of "$i" is incremented by 1 before proceeding to the next loop. In oth
 What if this part is "$i += 2"? This is a <a href="/blog/20161005147566.html">special assignment operator</a> that allows you to increment the value of "$i" by "2".
 
 <pre>
-for (my $i = 0; $i <10; $i += 2) {
+for (my $i = 0; $i < 10; $i += 2) {
   print "$i\n";
 }
 </pre>
@@ -215,7 +215,7 @@ Let's combine the for statement and the if statement. Programming will improve w
 I will write a sample program that loops from "0" to "10", but outputs only when the loop variable is a multiple of 3.
 
 <pre>
-for (my $i = 0; $i <10; $i++) {
+for (my $i = 0; $i < 10; $i++) {
   if ($i % 3 == 0) {
     print "$i\n";
   }
@@ -258,7 +258,7 @@ The difference from the for statement is that the while statement has only the "
 <pre>
 my $i = 0;
 
-while ($i <10) {
+while ($i < 10) {
   
   print "$i\n";
   
@@ -281,7 +281,7 @@ Five
 9
 </pre>
 
-The part "$i <10" is the part of the condition that loops in the while statement. Unlike the for statement, the while statement does not have an initialization part or a loop variable update part.
+The part "$i < 10" is the part of the condition that loops in the while statement. Unlike the for statement, the while statement does not have an initialization part or a loop variable update part.
 
 <pre>
 while (condition to loop) {...}
@@ -293,7 +293,7 @@ The "Initialize loop variable" and "Update loop variable" parts must be written 
 # Initialization of loop variables
 my $i = 0;
 
-while ($i <10) {
+while ($i < 10) {
   
   print "$i\n";
   
@@ -305,7 +305,7 @@ while ($i <10) {
 The above while statement sample corresponds to the following for statement.
 
 <pre>
-for (my $i = 0; $i <10; $i++) {
+for (my $i = 0; $i < 10; $i++) {
   print "$i\n";
 }
 </pre>
@@ -436,7 +436,7 @@ Next, suppose you may need the element number. In that case, use the normal for 
 <pre>
 my @animals = ('Cat', 'Dog', 'Mouse');
 
-for (my $i = 0; $i <@animals; $i++) {
+for (my $i = 0; $i < @animals; $i++) {
   my $animal = $animals[$i];
   print "$i: $animal\n";
 }

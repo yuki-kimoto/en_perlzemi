@@ -36,7 +36,7 @@ This is a sample that outputs the elements of the array in order.
 <pre>
 # Process array elements in sequence
 my @nums = (3, 4, 5);
-for (my $i = 0; $i <@nums; $i++) {
+for (my $i = 0; $i < @nums; $i++) {
   print "$i:". $nums[$i] . "\n";
 }
 </pre>
@@ -46,7 +46,7 @@ This is a sample that outputs the elements of an array in order when the data st
 <pre>
 # Process array elements in sequence (array reference)
 my $nums = [3, 4, 5];
-for (my $i = 0; $i <@$nums; $i++) {
+for (my $i = 0; $i < @$nums; $i++) {
   print "$i:". $nums->[$i] . "\n";
 }
 </pre>
@@ -60,7 +60,7 @@ my $data = [
   ['b', 2]
 ];;
 
-for (my $i = 0; $i <@$data; $i++) {
+for (my $i = 0; $i < @$data; $i++) {
   for (my $k = 0; $k <@{$data->[$i]}; $k ++) {
     print "($i, $k):". $Data->[$i]->[$k] . "\n";
   }
@@ -76,7 +76,7 @@ my $data = [
   ['b', 2]
 ];;
 
-for (my $i = 0; $i <@$data; $i++) {
+for (my $i = 0; $i < @$data; $i++) {
   print join("\t", @{$data->[$i]}) . "\n";
 }
 
@@ -87,7 +87,7 @@ use strict;
 use warnings;
 
 print "[1]\n";
-for (my $i = 0; $i <5; $i++) {
+for (my $i = 0; $i < 5; $i++) {
   # Add 1 at a time, and when $val reaches 5, exit the loop.
   print "$i\n";
 }
@@ -95,7 +95,7 @@ print "\n";
 
 print "[2]\n";
 my @chars = qw/a b c d e/;
-for (my $i = 0; $i <@chars; $i++) {
+for (my $i = 0; $i < @chars; $i++) {
   # @chars (array size) is 5, so when $index becomes 5, it exits the loop.
   print "$chars[$i]\n";
 }
