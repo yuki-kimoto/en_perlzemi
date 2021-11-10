@@ -107,8 +107,8 @@ my $win;
     my $win_text = GetWindowText ($win);
 
     # Browser name
-    if ($win_text = ~/\ b $browser_name \ b /) {
-      if ($win_text = ~/Perl Club /) {
+    if ($win_text =~ /\ b $browser_name \ b /) {
+      if ($win_text =~ /Perl Club /) {
         push @browser_wins, $win;
       }
     }

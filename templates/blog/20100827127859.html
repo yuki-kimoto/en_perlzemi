@@ -42,12 +42,12 @@ Pattern matching is an operation to check whether a set of characters represente
 
 <pre>
 # Pattern matching
-$str = ~/regular expression/</pre>
+$str =~ /regular expression/</pre>
 
-The pattern matching operator is "= ~". Regular expressions must be enclosed in slashes "/". Returns true if there is a match, false if there is no match. Pattern matching is often used in combination with if statements.
+The pattern matching operator is "=~ ". Regular expressions must be enclosed in slashes "/". Returns true if there is a match, false if there is no match. Pattern matching is often used in combination with if statements.
 
 <pre>
-if ($str = ~/regular expression /) {
+if ($str =~ /regular expression /) {
   # What to do if there is a match
 }
 </pre>
@@ -65,7 +65,7 @@ The script is as follows.
 <pre>
 my $str ='This string is aa.';
 
-if ($str = ~/a {1,3} /) {
+if ($str =~ /a {1,3} /) {
   print "Match\n";
 }
 </pre>
@@ -91,7 +91,7 @@ The script looks like this: <a href="/blog/20161102147817.html">Special variable
 
 <pre>
 my $str ='This string is aar1';
-if ($str = ~/(a ​​{1,3}) ([pqr] 1) /) {
+if ($str =~ /(a ​​{1,3}) ([pqr] 1) /) {
   print "Get $1 and $2";
 }
 </pre>
@@ -112,7 +112,7 @@ Get aaa and p1
 You can use a regular expression to replace the matched string. The replacement syntax is as follows:
 
 <pre>
-Target string = ~ s/regular expression/replacement string /;
+Target string =~ s/regular expression/replacement string /;
 </pre>
 
 Now let's replace the string "This string is aa" with the string "This string is bb". This sample uses the regular expression "a {1,3}" that matches aa.
@@ -129,7 +129,7 @@ The script looks like this:
 
 <pre>
 my $str ='This string is aa';
-$str = ~ s/a {1,3}/bb /;
+$str =~ s/a {1,3}/bb /;
 </pre>
 
 Only one is replaced. For example, if you have the string "This string is aa aaa", the above replacement will result in "This string is bb aaa" and only the first matching string will be replaced.
@@ -138,14 +138,14 @@ Use the regular expression option "g" to replace all match strings. Regular expr
 
 <pre>
 # Replace all matched strings
-Target string = ~ s/regular expression/replaced string/g;
+Target string =~ s/regular expression/replaced string/g;
 </pre>
 
 The script that replaces all the matched strings looks like this:
 
 <pre>
 my $str ='This string is aa aaa';
-$str = ~ s/a {1,3}/bb/g;
+$str =~ s/a {1,3}/bb/g;
 </pre>
 
 The output of the replaced character string is as follows.
@@ -268,7 +268,7 @@ You can also match the "." To any character, including newlines. If you want the
 
 <pre>
 Match # . To any character, including newlines
-$str = ~ /./s;
+$str =~ /./s;
 </pre>
 
 <h4> Number "\ d" </h4>
@@ -617,7 +617,7 @@ This can also be used in regular pattern matching.
 
 <pre>
 my $num = 34;
-if ($num = ~/$regex /) {
+if ($num =~ /$regex /) {
    
 }
 </pre>
@@ -703,7 +703,7 @@ Regular expression options are specified at the end of the regular expression. I
 You can replace everything that matches by specifying the g option.
 
 <blockquote>
-$message2 = ~ s/yah/yes/g;
+$message2 =~ s/yah/yes/g;
 </blockquote>
 
 We've already covered m, s, and g, so we'll cover the remaining options.
@@ -713,7 +713,7 @@ We've already covered m, s, and g, so we'll cover the remaining options.
 You can use the <strong> m </strong> option to match "^" and "$" to the beginning and end of a line.
 
 <pre>
-$message = ~/^ i/m
+$message =~ /^ i/m
 </pre>
 
 <h4> s Match "." To line breaks s option </h4>
@@ -721,7 +721,7 @@ $message = ~/^ i/m
 You can use the <strong> s </strong> option to match a "line break" to a ".".
 
 <pre>
-$message = ~/^ i/s
+$message =~ /^ i/s
 </pre>
 
 <h4> i Case sensitiveMatch without </h4>
@@ -755,7 +755,7 @@ my $regex = qr/  (\ d {2}) # hour
 ::(\ d {2}) # seconds
 / x;
 
-if ($time = ~/$regex /) {
+if ($time =~ /$regex /) {
   my $hour = $1;
   my $minute = $2;
   my $second = $3;
@@ -771,7 +771,7 @@ The regular expression option "o" allows variable expansion to be done only once
 <pre>
 my $regex = "a pen";
 for (1 .. 10) {
-  $message = ~/$regex/o;
+  $message =~ /$regex/o;
 }
 </pre>
 

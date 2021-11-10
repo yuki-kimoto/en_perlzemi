@@ -215,7 +215,7 @@ When running on a Windows OS, remove the "CR + LF" which is a line break in Wind
 To ensure that line breaks are removed, it's a good idea to use the following <a href="/blog/20100827127859.html">regular expression</a>.
 
 <pre>
-$str = ~ s/\ x0D? \ X0A? $//;
+$str =~ s/\ x0D? \ X0A? $//;
 </pre>
 
 I'll talk more about regular expressions later.
@@ -402,12 +402,12 @@ For example, if you want to know that the string contains the string "dog", you 
 <pre>
 my $message = "It is my dog ​​\n";
 
-if ($message = ~/dog /) {
+if ($message =~ /dog /) {
   ...
 }
 </pre>
 
-<b> = ~ </b> is called the pattern matching operator and is an operator for performing regular expression pattern matching.
+<b> =~ </b> is called the pattern matching operator and is an operator for performing regular expression pattern matching.
 
 Regular expressions must be enclosed in the symbol "//".
 
@@ -418,7 +418,7 @@ You can also use regular expressions to make substitutions. If you rewrite "dog"
 <pre>
 my $message = "It is my dog ​​\n";
 
-$message = ~ s/dog/cat /;
+$message =~ s/dog/cat /;
 </pre>
 
 You can replace with the syntax <b> "s/string to replace/string after replacement /" </b>.
@@ -482,7 +482,7 @@ The # length function works correctly. 5 is returned.
 my $length = length $message;
 
 # Regular expressions work correctly
-if ($message = ~/day /) {
+if ($message =~ /day /) {
   ...;
 }
 </pre>
@@ -520,7 +520,7 @@ use Encode 'decode';
 while (my $line = <>) {
   $line = decode ('cp932', $line);
   
-  if ($line = ~/Tanaka /) {
+  if ($line =~ /Tanaka /) {
     print "OK";
   }
 }

@@ -25,12 +25,12 @@ When performing pattern matching, you can put it in // or use it as it is. I thi
 
 <pre>
 Used in # //
-if ($str = ~/$regex /) {
+if ($str =~ /$regex /) {
   ...
 }
 
 # Use as it is
-if ($str = ~ $regex) {
+if ($str =~ $regex) {
   ...
 }
 </pre>
@@ -60,7 +60,7 @@ my $regex = qr/A/i;
                     
 my $replace ='c';
 
-$word = ~ s/$regex/$replace/g;
+$word =~ s/$regex/$replace/g;
 print "\$word = $word\n";
 </pre>
 

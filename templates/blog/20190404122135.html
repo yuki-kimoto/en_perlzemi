@@ -29,7 +29,7 @@ app->hook (before_dispatch => sub {
   
   my $path = $req->url->path;
   
-  if ($path = ~ /\.cgi$/) {
+  if ($path =~ /\.cgi$/) {
     my $method = $c->req->method;
     my $script_name = $c->app->home->rel_file ("public/$path");
     
@@ -53,7 +53,7 @@ app->hook (before_dispatch => sub {
     local $ENV{SERVER_PROTOCOL} ='HTTP/1.1';
     
     # Check script name
-    unless ($script_name = ~/^ [a-zA-Z_0-9 \/\-\.] + $/) {
+    unless ($script_name =~ /^ [a-zA-Z_0-9 \/\-\.] + $/) {
       die "Invalid script name";
     }
     

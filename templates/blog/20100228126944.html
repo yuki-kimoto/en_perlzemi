@@ -17,7 +17,7 @@ Perl is a scripting language that excels at text processing such as search and r
 
 <pre>
 # Replace all "banana" with "orange"
-$message = ~ s/banana/orange/g;
+$message =~ s/banana/orange/g;
 </pre>
 
 The processing speed of text processing is high. It depends on the processing content, but the experience is that a Linux server that can be rented at a low price can process 100,000 lines of text in about 1 second.
@@ -113,12 +113,12 @@ my $name = qq (aaa "bbb);
 my $name = q (aaa'bbb);
 
 # Change the enclosing character using m in regular expression pattern matching
-if ($name = ~ m | http: // |) {
+if ($name =~ m | http: // |) {
   # ...
 }
 
 # Change the enclosing character by replacing the regular expression
-$name = ~ s | http: // ||;
+$name =~ s | http: // ||;
 </pre>
 
 <h4> Regular expression escaped by \ Q </h4>
@@ -128,7 +128,7 @@ If you use the regular expression "\ Q" escape, you can copy and paste it as a s
 <pre>
 my $re = "abc [] ...";
 
-if ($name = ~/\ Q $re /) {
+if ($name =~ /\ Q $re /) {
   # ...
 }
 </pre>

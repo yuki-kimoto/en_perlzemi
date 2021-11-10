@@ -183,7 +183,7 @@ perl -ne "print if/AAA /";
 Since $_ is passed to the map function, grep function, and postfix for, this must be used.
 
 <pre>
-my @greped_array = grep {$_ = ~/AAA /} @array;
+my @greped_array = grep {$_ =~ /AAA /} @array;
 my @mapped_array = map {$_ * 2} @array;
 print $_ for @array;
 </pre>

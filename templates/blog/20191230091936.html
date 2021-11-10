@@ -446,7 +446,7 @@ $text->font ($font, $font_size);
 $text->translate ($render_start_x, $render_start_y);
 
 # Extract one character at a time
-while ($message = ~/(.)/G) {
+while ($message =~ /(.)/G) {
   my $char = $1;
   
   # Line break if the current drawing position exceeds the drawing end x coordinate
@@ -690,7 +690,7 @@ $text->font ($font, $font_size);
 $text->translate ($render_start_x, $render_start_y);
   
 # Extract one character at a time
-while ($message = ~/(.)/G) {
+while ($message =~ /(.)/G) {
   my $char = $1;
   
   # Line break if the current drawing position exceeds the drawing end x coordinate

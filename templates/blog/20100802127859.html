@@ -218,7 +218,7 @@ perldoc -f -X
 You may sometimes see tr, but the tr operator does string substitutions. The following sentence replaces "a ⇒ 1", "b ⇒ 2", and "c ⇒ 3".
 
 <pre>
-$str = ~ tr/abc/123 /;
+$str =~ tr/abc/123 /;
 </pre>
 
 <h3> See the settings in Perl itself </h3>
@@ -577,7 +577,7 @@ Anonymous subroutines that appear to be dynamically created are compiled at the 
 If you want to get a part of the matched character using <a href="/blog/20100827127859.html">regular expression</a>, write as follows in combination with the if statement.
 
 <pre>
-if ($str = ~/regular expression /) {
+if ($str =~ /regular expression /) {
   my $match1 = $1;
   my $match2 = $2;
 }
@@ -586,7 +586,7 @@ if ($str = ~/regular expression /) {
 Another way to write it is to evaluate the regular expression in the list context to get the matched characters.
 
 <pre>
-my ($match1, $match2) = $str = ~/regular expression /;
+my ($match1, $match2) = $str =~ /regular expression /;
 </pre>
 
 <h3> Change the enclosing character of the regular expression </h3>
@@ -594,18 +594,18 @@ my ($match1, $match2) = $str = ~/regular expression /;
 Normally, the regular expression is written as follows.
 
 <pre>
-$str = ~/regular expression/</pre>
+$str =~ /regular expression/</pre>
 
 There is another way of writing that has the same meaning. Using m has the same meaning as above.
 
 <pre>
-$str = ~ m/regular expression /;
+$str =~ m/regular expression /;
 </pre>
 
 The reason for this is that you can change the regex enclosing character if you find it very difficult to escape when there are a lot of "/" s in the regex. This is an example of changing the enclosing character to "#".
 
 <pre>
-$str = ~ m # http://aaa.com#;
+$str =~ m # http://aaa.com#;
 </pre>
 
 <h3> ord function is an abbreviation for ordinal </h3>

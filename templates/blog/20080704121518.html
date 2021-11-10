@@ -236,7 +236,7 @@ sub parse {
     # Call an event handler when it finds a lowercase letter.
     # Made available in callback functions
     # Pass the character and position as arguments.
-    if ($char = ~/[a-z] /) {
+    if ($char =~ /[a-z] /) {
       $handler{lc_h}->($char, $i);
     }
   }
