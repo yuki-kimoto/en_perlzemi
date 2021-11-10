@@ -134,10 +134,10 @@ sub dec_to_n {
     my ($dec, $n) = @_;
 
     # Checking the validity of $n
-    return if! defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
+    return if !defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
 
     # Checking the validity of $dec
-    return if! defined $dec;
+    return if !defined $dec;
     return if $dec !~ /^ ([+-]?)\D +$/;
 
     # Save the sign if it exists
@@ -178,7 +178,7 @@ The first argument is a decimal number, and the second argument is a number that
 <b> Checking the validity of $n </b>
 
 <pre>
-return if! defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
+return if !defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
 </pre>
 
 First, $n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
@@ -190,7 +190,7 @@ A single return returns undef for scalar contexts and an empty list for list con
 <b> Checking the validity of $dec and extracting the code </b>
 
 <pre>
-return if! defined $dec;
+return if !defined $dec;
 return if $dec !~ /^ ([+-]?)\D +$/;
 my $sign = $1 ? substr($dec, 0, 1, ''):'';
 </pre>
@@ -295,10 +295,10 @@ sub n_to_dec {
   my ($num_str, $n) = @_;
 
   # Checking the validity of $n
-  return if! defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
+  return if !defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
     
   # Checking the validity of $num_str (including checking the consistency with $n)
-  return if! defined $num_str;
+  return if !defined $num_str;
 
   # Break down into individual numbers
   my @nums = split(//, $num_str);
@@ -317,7 +317,7 @@ sub n_to_dec {
   for my $num (@nums) {
     # Convert lowercase letters to uppercase
     $num = $valid{uc $num};
-    return if! defined $num || $num >= $n;
+    return if !defined $num || $num >= $n;
   }
     
   # From here is the main process of base conversion
@@ -342,7 +342,7 @@ The first argument is an n-ary character string, and the second argument is a nu
 <b> Checking the validity of $n </b>
 
 <pre>
-return if! defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
+return if !defined $n || $n !~ /^\D +$/ || $n < 2 || $n > 16;
 </pre>
 
 First, $n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
@@ -383,7 +383,7 @@ This hashtable is convenient, if it is a valid character it will return the conv
 <pre>
 for my $num (@nums) {
   $num = $valid{uc $num};
-  return if! defined $num || $num >= $n;
+  return if !defined $num || $num >= $n;
 }
 </pre>
 
