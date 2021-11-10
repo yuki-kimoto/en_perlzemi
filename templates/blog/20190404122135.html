@@ -86,7 +86,7 @@ app->hook(before_dispatch => sub {
     
     # Response
     my $res = Mojo::Message::Response->new;
-    while (! $Res->is_finished) {
+    while (!$Res->is_finished) {
       $res->parse($header_part);
     }
     $c->res->code($res->code);
