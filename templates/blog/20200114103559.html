@@ -83,9 +83,9 @@ There is a character class defined in Perl. "\ D" is a predefined character clas
   \r General line breaks (?> \ V | \ x0D \ x0A)
    \ C Match 1 byte (in Unicode, '.' Matches a character)
    \ pP P P's name (Unicode) property
-   \ p {...} Matches a Unicode property with a name longer than one character
+\p{...} Matches a Unicode property with a name longer than one character
    \ PP Matches non-P
-   \ P {...} Matches one that does not have a Unicode property with a name longer than one character
+\P{...} Matches one that does not have a Unicode property with a name longer than one character
    \ X Matches Unicode extended grapheme clusters
 </pre>
 
@@ -118,7 +118,7 @@ For example, in the ASCII range, character classes that match alphabets and numb
 
 <pre>
 Character classes that match alphabets and numbers in the # ASCII range
-\ p {PosixAlnum}
+\p{PosixAlnum}
 </pre>
 
 <a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES">Character class - Regular expression reference</a>, quote the defined character class ..
@@ -128,13 +128,13 @@ Notice the character class in the column labeled ASCII-range.
 <pre>
             ASCII- Full-
    POSIX range range backslash
- [[: ...:]] \ p {...} \ p {...} sequence Description
+ [[: ...:]]\p{...}\p{...} sequence Description
  - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --- - -- -- -- -- -- -- -
  alnum PosixAlnum XPosixAlnum Alpha and Digit
  alpha PosixAlpha XPosixAlpha alphabet
  ascii ASCII any ASCII character
  blank PosixBlank XPosixBlank \ h Horizontal blank;
-                                                   All types are \ p {HorizSpace}
+                                                   All types are\p{HorizSpace}
                                                    Tomo (GNU extension)
  cntrl PosixCntrl XPosixCntrl Control character
  digit PosixDigit XPosixDigit \ d Numbers
@@ -174,9 +174,9 @@ if ($str =~ /[abcde] /) {
 # Match with web service user ID (a-zA-Z0-9_)
 my $user_id ='kimoto_yuki089';
 my $user_id_invalid ='abc & cde';
-if ($user_id =~ /^ \ p {PosixWord} + $/) {print "user_is valid\n";
+if ($user_id =~ /^\p{PosixWord} + $/) {print "user_is valid\n";
 }
-unless ($user_id_invalid =~ /^ \ p {PosixWord} + $/) {
+unless ($user_id_invalid =~ /^\p{PosixWord} + $/) {
    print "user_id_invalid is invalid\n";
 }
 
@@ -184,13 +184,13 @@ unless ($user_id_invalid =~ /^ \ p {PosixWord} + $/) {
 my $password ='Ufy | & 123_';
 my $passowrd_invalid1 ='abc def';
 my $passowrd_invalid2 ='abc a';
-if ($password =~ /^ \ p {PosixGraph} + $/) {
+if ($password =~ /^\p{PosixGraph} + $/) {
    print "password is valid\n";
 }
-unless ($passowrd_invalid1 =~ /^ \ p {PosixGraph} + $/) {
+unless ($passowrd_invalid1 =~ /^\p{PosixGraph} + $/) {
    print "passowrd_invalid1 is inalid\n";
 }
-unless ($passowrd_invalid2 =~ /^ \ p {PosixGraph} + $/) {
+unless ($passowrd_invalid2 =~ /^\p{PosixGraph} + $/) {
    print "passowrd_invalid2 is inalid\n";
 }
 </pre>

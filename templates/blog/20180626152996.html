@@ -23,12 +23,12 @@ For example, on an x86_64 system, the following string concatenation code is fou
 
 <pre>
     my $s;
-    my $a = "ab \ x {100} cde";
+    my $a = "ab\x{100} cde";
     my $b = "fghij";
-    my $c = "\ x {101} klmn";
+    my $c = "\x{101} klmn";
 
     for my $i (1..10_000_000) {
-        $s = "\ x {100} wxyz";
+        $s = "\x{100} wxyz";
         $s. = "foo = $a bar = $b baz = $c";
     }
 </pre>

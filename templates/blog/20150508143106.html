@@ -17,7 +17,7 @@ You can use <a href="/blog/20100827127859.html">regular expression</a> to find o
        Chinese characters
      </td>
      <td>
-       \ p {Han}
+\p{Han}
      </td>
    </tr>
 
@@ -26,7 +26,7 @@ You can use <a href="/blog/20100827127859.html">regular expression</a> to find o
        Hiragana
      </td>
      <td>
-       \ p {Hiragana}
+\p{Hiragana}
      </td>
    </tr>
 
@@ -35,7 +35,7 @@ You can use <a href="/blog/20100827127859.html">regular expression</a> to find o
        Kanakana
      </td>
      <td>
-       \ p {Katakana}
+\p{Katakana}
      </td>
    </tr>
 
@@ -47,7 +47,7 @@ use warnings;
 use utf8;
 
 my $str ='Ai Uesan';
-if ($str =~ /[\ p {Han} \ p {Hiragana} \ p {Katakana}] /) {
+if ($str =~ /[\p{Han}\p{Hiragana}\p{Katakana}] /) {
    # Contains Japanese
 }
 </pre>

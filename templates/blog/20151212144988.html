@@ -894,7 +894,7 @@ To determine that it is <strong> Hiragana </strong> and </strong> Katakana </str
 $vc->add_check (
   hiragana => sub {
     my ($vc, $value) = @_;
-    my $is_valid = $value =~ /^ \ p {InHiragana} + $/;
+    my $is_valid = $value =~ /^\p{InHiragana} + $/;
     return $is_valid;
   }
 );
@@ -903,7 +903,7 @@ $vc->add_check (
 $vc->add_check (
   katakana => sub {
     my ($vc, $value) = @_;
-    my $is_valid = $value =~ /^ \ p {InKatakana} + $/
+    my $is_valid = $value =~ /^\p{InKatakana} + $/
     return $is_valid;
   }
 );

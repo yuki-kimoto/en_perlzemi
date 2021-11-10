@@ -41,7 +41,7 @@ sub time_from_str {
   return unless $time_str;
   
   my $time = {};
-  if ($time_str =~ /^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
+  if ($time_str =~ /^ (\d{2}): (\d{2}) :(\d{2}) $/) {
     @{$time}{qw/hour min sec /} = ($1, $2, $3);
     return wantarray?% $time: $time;
   }
@@ -129,7 +129,7 @@ sub time_from_str {
   return unless $time_str;
   
   my $time = {};
-  if ($time_str =~ /^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
+  if ($time_str =~ /^ (\d{2}): (\d{2}) :(\d{2}) $/) {
     @{$time}{qw/hour min sec /} = ($1, $2, $3);
     return wantarray?% $time: $time;
   }

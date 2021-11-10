@@ -42,7 +42,7 @@ sub time_from_str {
   my $time = {};
   
   # If it matches the format of the time including the date
-  if ($time_str =~ m # ^ (\ d {2})/(\ w {3})/(\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
+  if ($time_str =~ m # ^ (\d{2})/(\w{3})/(\d{4}): (\d{2}): (\d{2}) :(\d{2}) $# ) {
     
     # Create hash
     @{$time}{qw/mday mon year hour min sec /}
@@ -121,7 +121,7 @@ sub time_from_str {
   my $time = {};
   
   # If it matches the format of the time including the date
-  if ($time_str =~ m # ^ (\ d {2})/(\ w {3})/(\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
+  if ($time_str =~ m # ^ (\d{2})/(\w{3})/(\d{4}): (\d{2}): (\d{2}) :(\d{2}) $# ) {
     
     # Create hash
     @{$time}{qw/mday mon year hour min sec /}
