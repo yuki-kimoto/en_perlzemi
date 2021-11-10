@@ -121,22 +121,22 @@ The%INC hash is assigned a combination of module name and module file name. You 
 
 It has nothing to do with @INC, which stores the module's search path. @INC and%INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html">keys function</a> to retrieve only the keys.
 
-<h4> $^ O - Get OS name </h4>
+<h4> $^O - Get OS name </h4>
 
-To get the <a href="/blog/20180527152759.html">OS name</a>, use the special variable <strong> $^ O </strong>.
+To get the <a href="/blog/20180527152759.html">OS name</a>, use the special variable <strong> $^O </strong>.
 
 <pre>
-$^ O
+$^O
 </pre>
 
-<b> $^ O value and OS type </b>
+<b> $^O value and OS type </b>
 
-The value of "$^ O" in each OS is summarized.
+The value of "$^O" in each OS is summarized.
 
 <table>
   <tr>
     <td>
-      <span style = "font-weight: bold;">$^ O value </span>
+      <span style = "font-weight: bold;">$^O value </span>
     </td>
     <td>
       <span style = "font-weight: bold;">Description and link </span>
@@ -289,12 +289,12 @@ $$
 
 The process ID is the unique knowledge of the process by the OS.To separate it, it is an identifier assigned when a process is started.
 
-<h4> $^ T - Get the process start time </h4>
+<h4> $^T - Get the process start time </h4>
 
-<a href="/blog/20180526152759.html">To get the process start time</a>, use the special variable "<strong> $^ T </strong>".
+<a href="/blog/20180526152759.html">To get the process start time</a>, use the special variable "<strong> $^T </strong>".
 
 <pre>
-$^ T
+$^T
 </pre>
 
 The time is obtained in epoch seconds (seconds from 00:00:00 on January 1, 1970).
@@ -433,7 +433,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ F
+      $^F
     </td>
     <td>
       Maximum file descriptor
@@ -469,7 +469,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ I
+      $^I
     </td>
     <td>
       Replacement edit extension
@@ -478,7 +478,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ M
+      $^M
     </td>
     <td>
       Do you want to trap if you run out of memory?
@@ -487,7 +487,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ O
+      $^O
     </td>
     <td>
       Operating system name
@@ -505,7 +505,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ T
+      $^T
     </td>
     <td>
       Time when the program started
@@ -514,7 +514,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ V
+      $^V
     </td>
     <td>
       Perl version information
@@ -523,7 +523,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ X
+      $^X
     </td>
     <td>
       Name when executed
@@ -577,7 +577,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ N
+      $^N
     </td>
     <td>
       Last used group in pattern matching
@@ -622,7 +622,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ R
+      $^R
     </td>
     <td>
       Result of regular expression assertion
@@ -730,7 +730,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ A
+      $^A
     </td>
     <td>
       Format special variables
@@ -739,7 +739,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ L
+      $^L
     </td>
     <td>
       Format special variables
@@ -810,7 +810,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ E
+      $^E
     </td>
     <td>
       Current OS error information
@@ -819,7 +819,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ S
+      $^S
     </td>
     <td>
       Current interpreter status
@@ -828,7 +828,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ W
+      $^W
     </td>
     <td>
       warning
@@ -872,7 +872,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ C
+      $^C
     </td>
     <td>
       Compile switch
@@ -881,7 +881,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ D
+      $^D
     </td>
     <td>
       Debug flag
@@ -908,7 +908,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ H
+      $^H
     </td>
     <td>
       Compile time tips
@@ -920,7 +920,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
       % ^ H
     </td>
     <td>
-      Has the same scope as $^ H
+      Has the same scope as $^H
     </td>
   </tr>
 
@@ -935,7 +935,7 @@ Below is a list of special variables. See the <a href="http://perldoc.jp/docs/pe
 
   <tr>
     <td>
-      $^ P
+      $^P
     </td>
     <td>
       Internal variables for debugging

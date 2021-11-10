@@ -35,7 +35,7 @@ package FilePath;
 
 sub new {
   my $self = shift;
-  if ($^ O eq 'MSWin32') {
+  if ($^O eq 'MSWin32') {
     return FilePath::Windows->new;
   }
   else {
@@ -104,7 +104,7 @@ package FilePath;
 
 sub new {
   my $self = shift;
-  if ($^ O eq 'MSWin32') {
+  if ($^O eq 'MSWin32') {
     return FilePath::Windows->new;
   }
   else {
@@ -113,12 +113,12 @@ sub new {
 }
 </pre>
 
-I'm looking at $^ O to find out what type of OS I'm using and changing the objects I create. The constructor in this example takes no arguments, but since constructors generally take arguments.
+I'm looking at $^O to find out what type of OS I'm using and changing the objects I create. The constructor in this example takes no arguments, but since constructors generally take arguments.
 
 <pre>
 sub new {
   my $self = shift;
-  if ($^ O eq 'MSWin32') {
+  if ($^O eq 'MSWin32') {
     return FilePath::Windows->new(@_);
   }
   else {
@@ -131,7 +131,7 @@ It is more often described as. Writing using the ternary operator makes it even 
 <pre>
 sub new {
   my $self = shift;
-  return $^ O eq 'MSWin32'? FilePath::Windows->new(@_):
+  return $^O eq 'MSWin32'? FilePath::Windows->new(@_):
                             FilePath::Unix->new(@_);
 }
 </pre>
@@ -148,4 +148,4 @@ In other words, when it comes to situations where inheritance is effective, ther
 
 Follow this sample with a debugger. You can understand it by observing how it moves around between classes.
 
-You can emulate Windows and Unix by changing the value of $^ O. Also, use the ref function to see the class to which the created object belongs.
+You can emulate Windows and Unix by changing the value of $^O. Also, use the ref function to see the class to which the created object belongs.

@@ -207,7 +207,7 @@ Windows people output in Shift-JIS, and other OS people output in UTF-8.
 <pre>
 Since the # UTF-8 flag is set, encode it.
 my $encode_to;
-if ($^ O eq 'MSWin32') {$encode_to ='shift-jis'}
+if ($^O eq 'MSWin32') {$encode_to ='shift-jis'}
 else {$encode_to ='utf8'}
 print(
   encode ($encode_to, $month_name) . "\n".
@@ -1137,7 +1137,7 @@ my $day_abbr = $dt->day_abbr;
 
 Since the # UTF-8 flag is set, encode it.
 my $encode_to;
-if ($^ O eq 'MSWin32') {$encode_to ='shift-jis'}
+if ($^O eq 'MSWin32') {$encode_to ='shift-jis'}
 else {$encode_to ='utf8'}
 
 print(
@@ -1168,7 +1168,7 @@ use DateTime::Locale;
 # For encoding
 use Encode;
 my $encode_to;
-if ($^ O eq 'MSWin32') {$encode_to ='s
+if ($^O eq 'MSWin32') {$encode_to ='s
 hift-jis'}
 else {$encode_to ='utf8'}
 

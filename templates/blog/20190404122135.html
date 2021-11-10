@@ -61,7 +61,7 @@ app->hook (before_dispatch => sub {
     my $output;
     if ($method eq 'GET') {
       # GET requst
-      $output = `$^ X $script_name`;
+      $output = `$^X $script_name`;
       if ($?) {
         $c->res->code ('505');
         $c->render (text => "Internal Server Error");
@@ -73,7 +73,7 @@ app->hook (before_dispatch => sub {
       my ($in_fh, $in_file) = tempfile;
       print $in_fh $body;
       close $in_fh;
-      $output = `$^ X -pe" "$in_file | $^ X $script_name`;
+      $output = `$^X -pe" "$in_file | $^X $script_name`;
       if ($?) {
         $c->res->code ('505');
         $c->render (text => "Internal Server Error");
