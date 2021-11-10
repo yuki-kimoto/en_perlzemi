@@ -32,24 +32,24 @@ If you want to include non-alphanumeric characters in the document, you need to 
 Corresponds to HTML h1 to h6.
 
 <pre>
-= head1 Header 1
+=head1 Header 1
 
-= head2 Header 2
+=head2 Header 2
 
-= head3 header 3
+=head3 header 3
 
-= head4 Header 4
+=head4 Header 4
 
-= head5 Header 5
+=head5 Header 5
 
-= head6 Header 6
+=head6 Header 6
 </pre>
 
 One thing to keep in mind when writing a POD is that you must insert a line break on the next line. For example, the following statement does not work.
 
 <pre>
-= head1 Header 1
-= head2 Header 2
+=head1 Header 1
+=head2 Header 2
 </pre>
 
 <h3> Source code </h3>
@@ -163,17 +163,17 @@ L <Perl Seminar | http://d.hatena.ne.jp/perlcodesample>
 
 <h3> Start and end of POD </h3>
 
-The start of POD ends with "= pod" and the end of POD ends with "= cut".
+The start of POD ends with "=pod" and the end of POD ends with "=cut".
 
 <pre>
-= pod
+=pod
 
 document
 
-= cut
+=cut
 </pre>
 
-Generally, when even one description of POD such as "= head1" appears, POD starts, so it is rare to write "= pod". However, when using <a href="/blog/20130712137361.html">multi-line comment</a> in the source code, this description method is used.
+Generally, when even one description of POD such as "=head1" appears, POD starts, so it is rare to write "=pod". However, when using <a href="/blog/20130712137361.html">multi-line comment</a> in the source code, this description method is used.
 
 <h3> Character escape </h3>
 
@@ -201,33 +201,33 @@ Images are not available in POD.
 CPAN module documentation is generally written as follows:
 
 <pre>
-= head1 NAME
+=head1 NAME
 
 Module name-A brief description of the module
 
-= head1 SYNOPSIS
+=head1 SYNOPSIS
 
   Source code sample
   
-= head1 DESCRIPTION
+=head1 DESCRIPTION
 
 Module description
 
-= head1 METHODS
+=head1 METHODS
 
-= head2 method 1
+=head2 method 1
 
-= head2 method 2
+=head2 method 2
 
-= head1 AUTHOR
+=head1 AUTHOR
 
 Author name
 
-= head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT & LICENSE
 
 Copyright notice
 
-= cut
+=cut
 </pre>
 
 <h3> Detailed POD documentation </h3>

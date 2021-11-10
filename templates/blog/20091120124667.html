@@ -275,22 +275,22 @@ use File::Basename 'basename';
 
 For small scripts used at work, it's a good idea to embed the documentation inside the script. In the case of the CPAN module, the end of the source code is the document, but in the case of a small script, it is convenient to write it at the beginning so that the user can see it at a glance when opening the source code.
 
-Perl documentation is written in a notation called POD. I will only introduce a simple way to write it. The heading is "= head1". Write the title to the right of "= head1". Write the text with a line below it. Please note that it makes sense to open a line. The end of the document is the line "= cut". If written in English, it will be as follows.
+Perl documentation is written in a notation called POD. I will only introduce a simple way to write it. The heading is "=head1". Write the title to the right of "=head1". Write the text with a line below it. Please note that it makes sense to open a line. The end of the document is the line "=cut". If written in English, it will be as follows.
 
 <pre>
-= head1 SCRIPT NAME
+=head1 SCRIPT NAME
 
 SomeScript.pl
 
-= head1 DESCRIPTION
+=head1 DESCRIPTION
 
 This script is used to do ....
 
-= head1 USAGE
+=head1 USAGE
 
 perl SomeScript.pl file1 file2 ...
 
-= cut
+=cut
 
 # Beginning of source code
 use strict;
@@ -301,19 +301,19 @@ use warnings;
 For local projects, I think it's best to write in Japanese to convey it to your colleagues in an easy-to-understand manner.
 
 <pre>
-= head1 script name
+=head1 script name
 
 SomeScript.pl
 
-= head1 overview
+=head1 overview
 
 It is for
 
-= head1 How to use
+=head1 How to use
 
 perl SomeScript.pl file1 file2 ...
 
-= cut
+=cut
 
 # Beginning of source code
 use strict;
