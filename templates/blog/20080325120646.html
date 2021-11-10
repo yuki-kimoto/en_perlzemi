@@ -23,7 +23,7 @@ It's a little difficult to understand just by looking at the above syntax, so le
 
 <pre>
 my $flag = 1;
-my $num = $flag? 3: 5;
+my $num = $flag ? 3: 5;
 </pre>
 
 "$Flag" is "1", which is the true value. The ternary operator returns the value immediately after the "?" If the condition is true. So "3" is assigned to "$num".
@@ -32,7 +32,7 @@ The following is a sample when the condition is false.
 
 <pre>
 my $flag = 0;
-my $num = $flag? 3: 5;
+my $num = $flag ? 3: 5;
 </pre>
 
 "$Flag" is "0", which is a fake value. The ternary operator returns the value immediately after the ":" if the condition is true. Therefore, "5" is substituted.
@@ -69,7 +69,7 @@ The difference is that the ternary operator can be <b> written short </b> and <b
 Taking advantage of this, you can write it like this in <a href="/blog/20140405139642.html">Mojolicious template</a>, for example.
 
 <pre>
-<%= $flag? 3: 5%>
+<%= $flag ? 3: 5%>
 </pre>
 
 It can be omitted compared to writing with an if statement, and it was possible to write short and neat in one line.
@@ -118,7 +118,7 @@ my $num1 = 1;
 my $num2 = 2;
 
 print "1. Example of ternary operator (replace if ~ else)\n";
-my $max_num = $num1> $num2? $num1: $num2;
+my $max_num = $num1> $num2 ? $num1: $num2;
 print "\$max_num = $max_num\n\n";
 
 # Same as the following if ~ else statement

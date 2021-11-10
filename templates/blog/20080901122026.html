@@ -141,7 +141,7 @@ sub dec_to_n {
     return if $dec! ~ / ^ ([+-]?) \ D + $/;
 
     Save the # sign if it exists
-    my $sign = $1? substr($dec, 0, 1, ''):'';
+    my $sign = $1 ? substr($dec, 0, 1, ''):'';
 
     If # 0, return as it is
     return $dec if $dec == 0;
@@ -152,7 +152,7 @@ sub dec_to_n {
     # Convert decimal to n-ary.
     while ($dec! = 0) {
       # Find the remainder and save it.
-      unshift(@rem_list, $dec% $n);
+      unshift(@rem_list, $dec % $n);
       
       # Ask for a quotient.
       $dec = int($dec / $n);
@@ -192,7 +192,7 @@ A single return returns undef for scalar contexts and an empty list for list con
 <pre>
 return if! defined $dec;
 return if $dec! ~ / ^ ([+-]?) \ D + $/;
-my $sign = $1? substr($dec, 0, 1, ''):'';
+my $sign = $1 ? substr($dec, 0, 1, ''):'';
 </pre>
 
 $dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html">Regular expression for decimal integers</a>
@@ -204,7 +204,7 @@ $dec must be passed as an argument. Next, it must be a decimal integer. <a href=
 Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")
 
 <pre>
-my $sign = $1? substr($dec, 0, 1, ''):'';
+my $sign = $1 ? substr($dec, 0, 1, ''):'';
 </pre>
 
 If there is a sign, the sign is assigned to $1, so the presence or absence of the sign is judged by whether or not $1 is defined. Here, the ternary operator is used for conditional branching.
@@ -222,7 +222,7 @@ my @rem_list;
     
 # Convert decimal to n-ary.
 while ($dec! = 0) {
-  unshift(@rem_list, $dec% $n);
+  unshift(@rem_list, $dec % $n);
   $dec = int($dec / $n);
 }
 </pre>

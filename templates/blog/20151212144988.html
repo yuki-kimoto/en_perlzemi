@@ -764,7 +764,7 @@ trim_collapse
     return undef unless defined $value;
     
     $value = ~ s / [\t\n\r\f] + / / g;
-    $value= ~ s / ^ [\t\n\r\f] * (. *?) [\t\n\r\f] * $/ $1 / ms;
+    $value = ~ s / ^ [\t\n\r\f] * (. *?) [\t\n\r\f] * $/ $1 / ms;
 
     return $value;
   });
