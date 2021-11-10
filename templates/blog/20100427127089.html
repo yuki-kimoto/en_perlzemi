@@ -128,7 +128,7 @@ sub get_content {
   my $file = shift;
 
   open my $fh, '<', $file
-    or die "Can't open file \" $file\": $!";
+    or die "Can't open file \" $file\":$!";
   
   my $content = do {local $/; <$fh>};
  

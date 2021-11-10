@@ -32,7 +32,7 @@ use warnings;
 my $file = "sample20080811.txt";
 
 open(my $fh, ">", $file)
-  or die "Cannot open $file: $!";
+  or die "Cannot open $file:$!";
     
 print $fh "delayed write\n"; # print function call
 print "File size not yet". -S $file. "Not written in bytes.\n";

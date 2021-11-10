@@ -42,7 +42,7 @@ my @files = (
 );
 for my $file (@files) {
   sysopen(my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
-    or die "Unable to create $file .: $!";
+    or die "Unable to create $file .:$!";
   close $fh;
 }
 print "Preparation: $top_dir has been created.\n\n";

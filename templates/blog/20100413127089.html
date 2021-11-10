@@ -58,13 +58,13 @@ close $tempfh;
 
 # Overwrite new file with old file
 move $tempfile, $file
-  or die "Can't move \" $tempfile\"to \" $file\": $!";
+  or die "Can't move \" $tempfile\"to \" $file\":$!";
 
 sub get_content {
   my $file = shift;
   
   open my $fh, '<', $file
-    or die "Can't open file \" $file\": $!";
+    or die "Can't open file \" $file\":$!";
   
   my $content = join('', <$fh>);
   

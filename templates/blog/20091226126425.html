@@ -576,7 +576,7 @@ File input/output.
 
 <pre>
 open my $fh, '<', $file
-  or die "Cannot open'$file': $!";
+  or die "Cannot open'$file':$!";
 
 while (my $line = <$fh>) {
   ...
@@ -804,7 +804,7 @@ Use the <a href="/blog/20090208123289.html">do function</a> to read the configur
 <pre>
 my $conf_file = "app.conf";
 my $conf = do $conf_file
-  or die qq/Can't load config file "$conf_file": $! $@/;
+  or die qq/Can't load config file "$conf_file":$! $@/;
 </pre>
 
 The contents of the configuration file.

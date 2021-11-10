@@ -42,12 +42,12 @@ my $dir = "dir_20080522_ $$";
 
 # Prepare files and directories
 sysopen(my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
-  or die "Unable to create $file .: $!";
+  or die "Unable to create $file .:$!";
 close $fh;
 print "Preparation:'$file' has been created.\n";
 
 mkdir $dir
-  or die "Unable to create $dir.: $!";
+  or die "Unable to create $dir.:$!";
 print "Preparation:'$dir' has been created.\n\n";
 
 print "1: Move the file.\n";
@@ -64,7 +64,7 @@ if (move $move_name, $dir) {
   print "$move_name has been moved to $dir.\n\n";
 }
 else {
-  warn "Unable to move $move_name to $dir .: $!";
+  warn "Unable to move $move_name to $dir .:$!";
 }
 </pre>
 

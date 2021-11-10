@@ -123,6 +123,6 @@ my $file = shift; # Specify the file name.
 
 # Create the file if it doesn't exist and open it in write mode
 sysopen(my $fh, $file, O_WRONLY | O_EXCL | O_CREAT)
-  or die "Couldn't open $file: $!";
+  or die "Couldn't open $file:$!";
 close($fh);
 </pre>

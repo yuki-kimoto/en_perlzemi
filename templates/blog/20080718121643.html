@@ -23,7 +23,7 @@ When opening a file, the following is a common way to write it. Learn other ways
 
 <pre>
 open(my $fh, "<", $file)
-  or die "Can't open $file: $!";
+  or die "Can't open $file:$!";
 </pre>
 
 "<" Means open mode, and when reading a file, specify "<".
@@ -110,7 +110,7 @@ When you open the file, you also need to handle the exception. If the file fails
 
 <pre>
 open(my $fh, "<", $file)
-  or die "Can't open $file: $!";
+  or die "Can't open $file:$!";
 </pre>
 
 <h3> Open two arguments-not recommended </h3>
@@ -134,7 +134,7 @@ use warnings;
 my $file = shift;
 
 open(my $fh2, "<", $file)
-  or die "Can't open file $file: $!";
+  or die "Can't open file $file:$!";
 </pre>
 
 <h3> Related articles </h3>

@@ -632,7 +632,7 @@ Use the <a href="/blog/20080718121643.html">open function</a> to open the file.
 
 <pre>
 open(my $fh, "<", $file)
-  or die "Cannot open $file: $!";
+  or die "Cannot open $file:$!";
 </pre>
 
 If the file is opened successfully, the file handle is assigned to $fh. (Declaring $fh and passing it to the open function at the same time.)
@@ -693,7 +693,7 @@ Use the <a href="/blog/20171002150691.html">opendir function</a> to open the dir
 
 <pre>
 opendir(my $dh, $dir)
-  or die "Cannot open $dir: $!";
+  or die "Cannot open $dir:$!";
 </pre>
 
 The opened directory handle is assigned to $dh. It is necessary to handle the error when the directory open fails.
@@ -731,7 +731,7 @@ Use the <a href="/blog/20080520121125.html">unlink function</a> to delete the fi
 
 <pre>
 unlink $file
-  or die "Cannot remove $file: $!";
+  or die "Cannot remove $file:$!";
 </pre>
 
 <h4> copy (File::Copy) </h4>
@@ -741,7 +741,7 @@ To copy a file, use the copy function of the <a href="/blog/20100408127089.html"
 <pre>
 use File::Copy 'copy';
 copy ($file_from, $file_to)
-  or die "Cannot copy $file_from to $file_to: $!";
+  or die "Cannot copy $file_from to $file_to:$!";
 </pre>
 
 <h4> move (File::Copy) </h4>
@@ -751,7 +751,7 @@ To move a file, use the move function of the <a href="/blog/20100408127089.html"
 <pre>
 use File::Copy 'copy';
 move ($file_from, $file_to)
-  or die "Cannot move $file_from to $file_to: $!";
+  or die "Cannot move $file_from to $file_to:$!";
 </pre>
 
 <h4> chdir </h4>
@@ -760,7 +760,7 @@ To change the current directory, get the <a href="/blog/20080528121197.html">chd
 
 <pre>
 chdir $dir
-  or die "Cannot change directory $dir: $!";
+  or die "Cannot change directory $dir:$!";
 </pre>
 
 <h4> mkdir </h4>
@@ -769,7 +769,7 @@ Use the <a href="/blog/20080523121155.html">mkdir function</a> to create the dir
 
 <pre>
 mkdir $dir
-  or die "Cannot create directory $dir: $!";
+  or die "Cannot create directory $dir:$!";
 </pre>
 
 <h4> rmdir </h4>
@@ -778,7 +778,7 @@ Use the <a href="/blog/20080526121181.html">rmdir function</a> to delete the dir
 
 <pre>
 rmdir $dir
-  or die "Cannot remove directory $dir: $!";
+  or die "Cannot remove directory $dir:$!";
 </pre>
 
 <h4> mkpath(File::Path) </h4>
@@ -829,7 +829,7 @@ Use the <a href="/blog/20080821121933.html">chmod function</a> to change the fil
 
 <pre>
 chmod($permission, $file)
-  or die "Cannot change permission $file: $!";
+  or die "Cannot change permission $file:$!";
 </pre>
 
 <h4> basename(File::Basename) </h4>

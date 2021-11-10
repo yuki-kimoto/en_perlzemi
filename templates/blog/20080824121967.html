@@ -131,7 +131,7 @@ my $file = "file_20080824_ $$";
 
 # The permission value is 644, affected by the bitmask.
 sysopen(my $fh, $file, O_CREAT | O_WRONLY, 0666)
-  or die "Cannot open $file: $!";
+  or die "Cannot open $file:$!";
     
 close $fh
   or die "Cannnot close $file";

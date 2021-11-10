@@ -42,7 +42,7 @@ sub new {
   
   my $self = {};
   open my $fh, '<', $file
-    or croak "Can't open $file: $!";
+    or croak "Can't open $file:$!";
   $self->{fh} = $fh;
   
   return bless $self, $class;

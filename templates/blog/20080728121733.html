@@ -41,7 +41,7 @@ sub parse_file {
   my $file = shift;
     
   open(my $fh, "<", $file)
-    or die "Cannot open $file for read: $!";
+    or die "Cannot open $file for read:$!";
   
   # Prepare a reference to an array that stores multiple records
   my $recs = [];
@@ -126,7 +126,7 @@ sub parse_file {
   my $file = shift;
   
   open(my $fh, "<", $file)
-    or die "Cannot open $file for read: $!";
+    or die "Cannot open $file for read:$!";
   
   # Prepare a reference to an array that stores multiple records
   my $recs = [];
@@ -242,7 +242,7 @@ sub parse_file {
   my $file = shift;
     
   open(my $fh, "<", $file)
-    or die "Cannot open $file for read: $!";
+    or die "Cannot open $file for read:$!";
     
   # Change to array
   my @recs;

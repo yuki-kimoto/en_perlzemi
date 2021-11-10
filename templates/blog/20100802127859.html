@@ -319,7 +319,7 @@ my $command = "ls -l";
 system $command;
 
 if ($? == -1) {
-  die "failed to execute: $!\n";
+  die "failed to execute:$!\n";
 }
 elsif ($? >> 8 != 0) {
   die "Return error status\n";
@@ -634,7 +634,7 @@ It is convenient to write the configuration file in Perl. Use <a href="/blog/200
 <pre>
 my $conf_file = "app.conf";
 my $conf = do $conf_file
-  or die qq/Can't load config file "$conf_file": $! $@/;
+  or die qq/Can't load config file "$conf_file":$! $@/;
 </pre>
 
 The contents of the configuration file.

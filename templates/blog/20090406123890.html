@@ -85,25 +85,25 @@ use Socket;
 # 1. Creating a socket
 my $sock;
 socket ($sock, PF_INET, SOCK_STREAM, getprotobyname ('tcp'))
-  or die "Cannot create socket: $!";
+  or die "Cannot create socket:$!";
 
 # 2. Creating socket information
 
 # Host name to connect to
 my $remote_host = 'localhost';
 my $packed_remote_host = inet_aton ($remote_host)
-  or die "Cannot pack $remote_host: $!";
+  or die "Cannot pack $remote_host:$!";
 
 # Port number to connect to
 my $remote_port = 9000;
 
 # Pack the host name and port number
 my $sock_addr = sockaddr_in ($remote_port, $packed_remote_host)
-  or die "Cannot pack $remote_host: $remote_port: $!";
+  or die "Cannot pack $remote_host: $remote_port:$!";
 
 # 3. Connect using socket
 connect ($sock, $sock_addr)
-  or die "Cannot connect $remote_host: $remote_port: $!";
+  or die "Cannot connect $remote_host: $remote_port:$!";
 
 # 4. Writing data
 # Do not write buffer.
@@ -140,7 +140,7 @@ use Socket;
 
 my $sock_receive;
 socket ($sock_receive, PF_INET, SOCK_STREAM, getprotobyname ('tcp'))
-  or die "Cannot create socket: $!";
+  or die "Cannot create socket:$!";
 
 # 2. Creating reception socket information
 my $local_port = 9000;
@@ -149,11 +149,11 @@ my $pack_addr = sockaddr_in ($local_port, INADDR_ANY);
 
 # 3. Link reception socket and reception socket information
 bind ($sock_receive, $pack_addr)
-  or die "Cannot bind: $!";
+  or die "Cannot bind:$!";
 
 # 4. Get ready to accept connections.
 listen ($sock_receive, SOMAXCONN)
-  or die "Cannot listen: $!";
+  or die "Cannot listen:$!";
 
 # 5. Accept and respond to the connection.
 my $sock_client; # Socket for communication with client
@@ -206,7 +206,7 @@ use Socket;
 # 1. Creating a socket
 my $sock;
 socket ($sock, PF_INET, SOCK_STREAM, getprotobyname ('tcp'))
-  or die "Cannot create socket: $!";
+  or die "Cannot create socket:$!";
 </pre>
 
 <h4> 1. Creating a socket </h4>
@@ -357,7 +357,7 @@ It is safer to handle the error.
 
 <pre>
 socket ($sock, PF_INET, SOCK_STREAM, getprotobyname ('tcp'))
-  or die "Cannot create socket: $!";
+  or die "Cannot create socket:$!";
 </pre>
 
 If the socket function fails, it returns undef and sets $! To the error content.
@@ -376,14 +376,14 @@ Explains how to create information on the connection destination of the socket. 
 # Host name to connect to
 my $remote_host = 'localhost';
 my $packed_remote_host = inet_aton ($remote_host)
-  or die "Cannot pack $remote_host: $!";
+  or die "Cannot pack $remote_host:$!";
 
 # Port number to connect to
 my $remote_port = 9000;
 
 # Pack the host name and port number
 my $sock_addr = sockaddr_in ($remote_port, $packed_remote_host)
-  or die "Cannot pack $remote_host: $remote_port: $!";
+  or die "Cannot pack $remote_host: $remote_port:$!";
 </pre>
 
 
@@ -418,7 +418,7 @@ If the string given to inet_aton is a host name, it will be converted to the cor
 
 <pre>
 my $packed_remote_host = inet_aton ($remote_host)
-  or die "Cannot pack $remote_host: $!";
+  or die "Cannot pack $remote_host:$!";
 </pre>
 
 In aton, a means ascii and n means network. To be precise, the binary format is a <b> 4-byte number expressed in network byte order </b>.
@@ -441,7 +441,7 @@ Next, you need to group the port number and IP address together using the sockad
 <pre>
 # Pack the host name and port number
 my $sock_addr = sockaddr_in ($remote_port, $packed_remote_host)
-  or die "Cannot pack $remote_host: $remote_port: $!";
+  or die "Cannot pack $remote_host: $remote_port:$!";
 </pre>
 
 The first argument is the port number, and the second argument is the IP address converted to binary format. The $sock_addr created in this way will be passed to the argument of the connect function for connection.
@@ -453,7 +453,7 @@ Use the connect function to connect to the server.
 <pre>
 # 3. Connect using socket
 connect ($sock, $sock_addr)
-  or die "Cannot connect $remote_host: $remote_port: $!";
+  or die "Cannot connect $remote_host: $remote_port:$!";
 </pre>
 
 <h4> Connect to the server </h4>

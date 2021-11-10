@@ -159,7 +159,7 @@ sub get_files {
   my $dir = shift;
   
   opendir my $dh, $dir
-    or die qq/Can't open directory "$dir": $!/;
+    or die qq/Can't open directory "$dir":$!/;
   
   my @dirs = map {"$dir/$_"} grep {$_ ne '.' && $_ ne ' ..'} readdir $dh;
   

@@ -37,7 +37,7 @@ use warnings;
 my $file = "sample20080812.txt";
 
 open(my $fh, ">", $file)
-  or die "Cannot open $file: $!";
+  or die "Cannot open $file:$!";
 
 # Change default output handle
 my $oldfh = select $fh;

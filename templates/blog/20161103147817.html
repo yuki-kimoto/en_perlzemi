@@ -199,7 +199,7 @@ use warnings;
 
 # (1) Open a pipe to read the output of other commands
 open my $pipe, '-|', 'dir'
-  or die qq/Can't open pipe: $!/;
+  or die qq/Can't open pipe:$!/;
 
 # (2) Read from pipe
 while (my $line = <$pipe>) {
@@ -213,7 +213,7 @@ close $pipe;
 
 <pre>
 open my $pipe, '-|', 'dir'
-  or die qq/Can't open pipe: $!/;
+  or die qq/Can't open pipe:$!/;
 </pre>
 
 The open function has special uses. To open a pipe that receives the output of other commands, specify "-|" in the second argument and the command in the third argument. This time, "dir", which is a command to output the contents of the directory, is specified.
@@ -244,7 +244,7 @@ use warnings;
 
 # (1) Open a pipe to send output to other commands
 open my $pipe, '|-', 'more'
-  or die qq/Can't open pipe: $!/;
+  or die qq/Can't open pipe:$!/;
 
 # (2) Write to pipe
 print $pipe "Hello world";
@@ -256,7 +256,7 @@ close $pipe;
 
 <pre>
 open my $pipe, '|-', 'more'
-  or die qq/Can't open pipe: $!/;
+  or die qq/Can't open pipe:$!/;
 </pre>
 
 The open function has special uses. To open a pipe that receives the output of other commands, specify "|-" in the second argument and the command in the third argument. This time, "more", which is a command to output the contents of the file, is specified.

@@ -39,7 +39,7 @@ my $from = 'xxx';
 my $to = 'yyy';
 
 copy ($from, $to)
-  or die "Can't copy \" $from\"to \" $to\": $!";
+  or die "Can't copy \" $from\"to \" $to\":$!";
 </pre>
 
 This is a sample to move files. Performs error handling in case the file move fails. Make sure to include the OS error message "$!" In the error message.
@@ -50,7 +50,7 @@ my $from = 'xxx';
 my $to = 'yyy';
 
 move ($from, $to)
-  or die "Can't move \" $from\"to \" $to\": $!";
+  or die "Can't move \" $from\"to \" $to\":$!";
 </pre>
 
 The file copy will fail if the file does not exist, or if the destination directory does not have write permissions.

@@ -28,32 +28,32 @@ my $file = "data_20080814.txt";
 # Open in read/write mode (not very secure)
 # If there is no file with O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
-  or die "Cannot open $file: $!";
+  or die "Cannot open $file:$!";
 
 # Exclusive lock (exclusive lock because it reads and writes)
 flock($fh, LOCK_EX)
-  or die "Cannot lock $file: $!";
+  or die "Cannot lock $file:$!";
 
 my $cnt;
 $cnt = <$fh>;
-if (! Defined $cnt && $!) {Die "Cannot read $file: $!";}
+if (! Defined $cnt && $!) {Die "Cannot read $file:$!";}
 
 $cnt ++;
 
 # Move the file pointer to the beginning
 seek ($fh, 0, SEEK_SET)
-  or die "Cannot seek $file: $!";
+  or die "Cannot seek $file:$!";
 
 # write in.
 print {$fh} $cnt
-  or die "Cannot Write $file: $!";
+  or die "Cannot Write $file:$!";
 
 # Truncate the file to write size
 truncate ($fh, length $cnt);
 
 # The file lock is released at the time of close.
 close $fh
-  or die "Cannot close $file: $!";
+  or die "Cannot close $file:$!";
 
 print "Current count: $cnt\n";
 </pre>
@@ -140,7 +140,7 @@ As a side note:DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and 
 # Open in read/write mode (not very secure)
 # If there is no file with O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
-  or die "Cannot open $file: $!";
+  or die "Cannot open $file:$!";
 </pre>
 
 In sysopen, specify O_RDWR and O_CREAT for the open flags.
@@ -150,7 +150,7 @@ In sysopen, specify O_RDWR and O_CREAT for the open flags.
 <pre>
 # Exclusive lock (exclusive lock because it reads and writes)
 flock($fh, LOCK_EX)
-  or die "Cannot lock $file: $!";
+  or die "Cannot lock $file:$!";
 </pre>
 
 This time, we will use an exclusive lock (write lock) because we will read the data, count it up, and write it back. To perform an exclusive lock, specify LOCK_EX in the second argument of the flock function. If you just want to read, specify LOCK_SH.
@@ -162,17 +162,17 @@ Note that the first argument is an open filehandle, not a file. When all process
 <pre>
 my $cnt;
 $cnt = <$fh>;
-if (! Defined $cnt && $!) {Die "Cannot read $file: $!";}
+if (! Defined $cnt && $!) {Die "Cannot read $file:$!";}
 
 $cnt ++;
 
 # Move the file pointer to the beginning
 seek ($fh, 0, SEEK_SET)
-  or die "Cannot seek $file: $!";
+  or die "Cannot seek $file:$!";
 
 # write in.
 print {$fh} $cnt
-  or die "Cannot Write $file: $!";
+  or die "Cannot Write $file:$!";
 
 # Truncate the file to write size
 truncate ($fh, length $cnt);
@@ -185,7 +185,7 @@ Read from the file and count up if there are no errors. Since the file pointer i
 <pre>
 # The file lock is released at the time of close.
 close $fh
-  or die "Cannot close $file: $!";
+  or die "Cannot close $file:$!";
 </pre>
 
 Calling the close function unlocks the file.

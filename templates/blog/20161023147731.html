@@ -657,7 +657,7 @@ If the open function fails and returns a false value, the processing after the "
 
 <pre>
 open(my $fh, "<", $file)
-  or die "Can't open $file: $!";
+  or die "Can't open $file:$!";
 </pre>
 
 The main processing is written first, and the auxiliary error processing is written later using or. One of the interesting things about Perl is that you can write programming in a natural language-like expression like this.

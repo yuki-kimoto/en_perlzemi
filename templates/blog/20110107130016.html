@@ -52,7 +52,7 @@ get'/' => sub {
         my @cpanm;
         eval {
             chdir $home
-              or die qq {Can't change directory "$home": $!};
+              or die qq {Can't change directory "$home":$!};
             
             my $ua = LWP::UserAgent->new;
             my $res = $ua->get('http://xrl.us/cpanm/');
@@ -72,7 +72,7 @@ get'/' => sub {
             push @cpanm, $cpanm_content;
             
             open my $write_fh, '>', 'cpanm'
-              or die qq {Can't open "cpanm" for write: $!};
+              or die qq {Can't open "cpanm" for write:$!};
             
             print $write_fh join("\n", @cpanm);
             

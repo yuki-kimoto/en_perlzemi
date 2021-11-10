@@ -130,7 +130,7 @@ Let's describe the process of reading the contents of a file at once.
 <pre>
 my $file = 'a.txt';
 open my $fh, '<', $file
-  or die "Can't open $file: $!";
+  or die "Can't open $file:$!";
 
 # Read the contents of the file at once
 my $content = do {local $/; <$fh>};

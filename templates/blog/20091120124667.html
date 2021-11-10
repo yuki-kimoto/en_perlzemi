@@ -36,7 +36,7 @@ my $fh;
 my $file = 'file1';
 
 open $fh, '<', $file
-  or die "Cannot open'$file': $!";
+  or die "Cannot open'$file':$!";
 
 while (my $lien = <$fh>) {
   ...
@@ -80,7 +80,7 @@ Make sure to handle the error whenever you open the file.
 
 <pre>
 open my $fh, '<', $file
-  or die "Cannot open'$file': $!";
+  or die "Cannot open'$file':$!";
 </pre>
 
 If the open function fails, it returns undef, so use or to handle the error. Since $! Contains the error message returned by the OS, include it in the error message shown to the user.

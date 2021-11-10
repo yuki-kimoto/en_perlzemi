@@ -292,7 +292,7 @@ In fact, the first sample omitted error handling to briefly explain how to use N
 <pre>
 # Connect to FTP server
 my $ftp = Net::FTP->new('somehost')
-  or die "Cannot connect to'$host': $!";
+  or die "Cannot connect to'$host':$!";
 
 # Login
 $ftp->login('user', 'password')
@@ -317,7 +317,7 @@ If the connection to the FTP server fails with the new method, the return value 
 
 <pre>
 my $ftp = Net::FTP->new('somehost')
-  or die "Cannot connect to'$host': $!";
+  or die "Cannot connect to'$host':$!";
 </pre>
 
 <h4> [B] Other error handling </h4>
@@ -348,7 +348,7 @@ my $host = 'ftp.u-aizu.ac.jp';
 my $user = 'anonymous';
 
 my $ftp = Net::FTP->new($host)
-  or die "Cannot connect to'$host': $!";
+  or die "Cannot connect to'$host':$!";
 
 $ftp->login($user)
   or die "Cannot login'$host: $user':". $ftp->message;
@@ -382,7 +382,7 @@ my $host = 'ftp.u-aizu.ac.jp';
 my $user = 'anonymous';
 
 my $ftp = Net::FTP->new($host)
-  or die "Cannot connect to'$host': $!";
+  or die "Cannot connect to'$host':$!";
 
 # Start explicit TSL/SSL encryption
 $ftp->starttls() or die "Can't upgrade start TLS:";

@@ -32,7 +32,7 @@ use Fcntl;
 my $file = "sample_20080520_$$. txt";
 
 sysopen(my $fh, $file, O_CREAT | O_WRONLY | O_EXCL)
-  or die "Unable to create $file .: $!";
+  or die "Unable to create $file .:$!";
 close($fh);
 print "Preparation:'$file' has been created.\n\n";
 

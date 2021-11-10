@@ -29,7 +29,7 @@ my $dir = 'study';
 
 # Open directory
 opendir my $dh, $dir
-  or die "Can't open directory $dir: $!";
+  or die "Can't open directory $dir:$!";
 
 # Read all files
 while (my $file = readdir $dh) {

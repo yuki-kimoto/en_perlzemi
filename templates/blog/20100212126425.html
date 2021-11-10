@@ -38,7 +38,7 @@ This is a sample to terminate the program when the file open fails.
 # Quit the program if file open fails
 my $file = 'a.txt';
 open my $fh, '<', $file
-  or die "Can't open file \" $file\": $!";
+  or die "Can't open file \" $file\":$!";
 </pre>
 
 The exit status is 0 if the program exits successfully. If you exit the program with die, the exit status will be a non-zero value. The exit status of die is determined by the following rules.

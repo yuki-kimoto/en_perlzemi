@@ -206,7 +206,7 @@ use Encode 'encode';
 
 my $file = 'Ah.txt';
 open my $fh, '<', encode('cp932', $file)
-  or die "Can't open". encode('cp932', $file). ": $!";
+  or die "Can't open". encode('cp932', $file). ":$!";
 </pre>
 
 The point is to encode just before passing it to the function that handles the file name. This is a little troublesome when dealing with many functions that handle file names, so it is convenient to create a function that converts the file name to the character code of the OS.
@@ -225,7 +225,7 @@ sub e ($) {encode($enc, shift)}
 
 my $file = 'Ah.txt';
 open my $fh, '<', e $file
-  or die qq/Can't open "$file": $!/;
+  or die qq/Can't open "$file":$!/;
 </pre>
 
 Now you can handle Perl character codes very simply.

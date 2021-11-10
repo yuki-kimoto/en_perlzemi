@@ -27,7 +27,7 @@ my $dir = 'study';
 
 # Open directory
 opendir my $dh, $dir
-  or die "Can't open directory $dir: $!"
+  or die "Can't open directory $dir:$!"
 </pre>
 
 An undefined variable is specified in the first argument, but <a href="/blog/20161107147852.html">variable declaration by my</a> is performed at the same time. The second argument specifies the directory name.
@@ -59,7 +59,7 @@ The directory handle is automatically released when the <a href="/blog/201101281
 
   # Open directory
   opendir my $dh, $dir
-    or die "Can't open directory $dir: $!"
+    or die "Can't open directory $dir:$!"
 }
 
 # The directory handle is automatically closed when the scope ends
