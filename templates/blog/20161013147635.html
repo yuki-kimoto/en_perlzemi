@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Understand Perl hashes </h2>
+<h2>Understand Perl hashes</h2>
 
 
 
@@ -14,11 +14,11 @@ A description of Perl's "hash". Perl hashes are "associative arrays" in other la
 
 In an array, you could retrieve an element by specifying a number, but in an "associative array", you can retrieve an element by specifying a character string as a key.
 
-<h3> Hash basics </h3>
+<h3>Hash basics</h3>
 
 The basis of hashing. Hash declaration and initialization. Hash output and assignment. You can think of a hash as an array from which you can get a value of a string as a subscript. You can retrieve the value using a character string as a key.
 
-<h4> Hash declaration and initialization </h4>
+<h4>Hash declaration and initialization</h4>
 
 Declaring and initializing the hash is done as follows.
 
@@ -30,7 +30,7 @@ my %fathers = (Taro =>'Kenji', Naoko =>'Yoshio');
 
 The variable prefix is <b> percent sign </b> "%". (Key 1 => Value 1, Key 2 => Value 2, ...). Taro's father can be read as Kenji, Naoko's father as Yoshio
 
-<h4> Hash element output </h4>
+<h4>Hash element output</h4>
 
 <pre>
 print $mothers{'Taro'};
@@ -38,13 +38,13 @@ print $mothers{'Taro'};
 
 When printing, $instead of%. $When dealing with a single element. Use {} to specify the key. (In the case of an array, it was []). {} Is read as a bracket. ([] Is brace. () Is parenthesis)
 
-<h3> Hash element assignment </h3>
+<h3>Hash element assignment</h3>
 
 <pre>
 $mothers{'Naoko'} = 'Haruna';
 </pre>
 
-<h3> Processing of each element of hash </h3>
+<h3>Processing of each element of hash</h3>
 
 <ul>
   <li>
@@ -58,7 +58,7 @@ $mothers{'Naoko'} = 'Haruna';
   </li>
 </ul>
 
-<h3> Hash manipulation </h3>
+<h3>Hash manipulation</h3>
 
 <ul>
   <li>
@@ -75,7 +75,7 @@ $mothers{'Naoko'} = 'Haruna';
   </li>
 </ul>
 
-<h3> Hash reference </h3>
+<h3>Hash reference</h3>
 
 You can create a hash reference as follows:
 
@@ -85,7 +85,7 @@ my $math_scores_ref = \%math_scores;
 
 Prefix%with\to generate a reference to the hash. Assign the generated reference to the scalar variable $math_score_href
 
-<h4> Create a direct hash reference using an anonymous hash. </h4>
+<h4>Create a direct hash reference using an anonymous hash.</h4>
 
 <pre>
 my $math_scores_ref2 = {
@@ -97,13 +97,13 @@ my $math_scores_ref2 = {
 
 You can use {} instead of () to create a reference to a direct hash
 
-<h4> Access the hash element </h4>
+<h4>Access the hash element</h4>
 
 <pre>
 $math_scores_ref->{Aiko}
 </pre>
 
-<h4> Extract the hash from the hash reference </h4>
+<h4>Extract the hash from the hash reference</h4>
 
 Dereference to retrieve a hash from a hash reference.
 
@@ -134,7 +134,7 @@ You can read more about hash references here.
   </li>
 </ul>
 
-<h3> Multidimensional data structure using hash </h3>
+<h3>Multidimensional data structure using hash</h3>
 
 The multidimensional data structure using hashes is explained in detail in the following articles. You can learn about "array hash", "hash array", and "hash hash".
 
@@ -144,7 +144,7 @@ The multidimensional data structure using hashes is explained in detail in the f
   </li>
 </ul>
 
-<h3> Column "It's Perl's fault that associative arrays are called hashes" </h3>
+<h3>Column "It's Perl's fault that associative arrays are called hashes"</h3>
 
 Perl has made a great decision to incorporate associative arrays as a feature of the language. It's incredibly convenient. This was a huge success, and almost all other scripting languages have been affected to incorporate associative arrays into the language itself.
 
@@ -152,9 +152,9 @@ Perhaps the name associative array was long, Perl decided to call it a hash. Thi
 
 But, surprisingly, it seems to represent the data structure exactly.
 
-<h3> Sample code </h3>
+<h3>Sample code</h3>
 
-<h4> Hash basics </h4>
+<h4>Hash basics</h4>
 
 The basis of hashing. Hash declaration and initialization. This is a sample of hash output and assignment.
 
@@ -196,7 +196,7 @@ $mothers{'Taro'} = Tomoko
 $mothers{'Naoko'} = Haruna
 </pre>
 
-<h4> Hash reference </h4>
+<h4>Hash reference</h4>
 
 This is a sample using the hash reference.
 
@@ -259,7 +259,7 @@ $math_scores_ref->{Aiko} = 89
 $math_scores_ref->{Kenta} = 100
 </pre>
 
-<h4> Hash reference dereference </h4>
+<h4>Hash reference dereference</h4>
 
 This is a sample to dereference the hash reference.
 

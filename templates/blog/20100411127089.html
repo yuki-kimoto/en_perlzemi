@@ -5,13 +5,13 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Let's understand how Perl exception handling works </h2>
+<h2>Let's understand how Perl exception handling works</h2>
 
 
 
 Perl allows you to use <strong> exception handling </strong> for error notification. Exception handling is very easy. All you have to do is learn how to raise an exception and how to catch it.
 
-<h3> Raise an exception </h3>
+<h3>Raise an exception</h3>
 
 Use the die function to raise an exception. When die is executed, the program will exit with an error status. You can pass a string to die.
 
@@ -34,7 +34,7 @@ sub is_int {
 }
 </pre>
 
-<h3> Catch exceptions </h3>
+<h3>Catch exceptions</h3>
 
 You can catch an exception if you don't want the program to terminate when the called function raises an exception. Use the <a href="/blog/20100312126967.html">eval</a> block to catch the exception.
 
@@ -71,7 +71,7 @@ sub is_int {
 }
 </pre>
 
-<h3> When raising an exception in a module </h3>
+<h3>When raising an exception in a module</h3>
 
 If you want to create a module and raise an exception in the function in it, use the croak function of the Carp module. croak calls die internally. The difference from die is that croak includes the calling line number in the exception message. This allows the user of the module to know where the function or method was called.
 

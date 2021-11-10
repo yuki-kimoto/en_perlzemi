@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> crypt function-create a digest to verify passwords </h2>
+<h2>crypt function-create a digest to verify passwords</h2>
 
 
 
@@ -22,7 +22,7 @@ my $digest = crypt($passwd, $salt);
 
 If you want to create a digest, <a href="/blog/20100501127089.html">Digest::MD5</a> or <a href="/blog/20100502127089.html">Digest is now better than the crypt function. It is recommended to use::SHA</a>.
 
-<h3> Sample crypt function </h3>
+<h3>Sample crypt function</h3>
 
 This is a sample using the crypt function.
 
@@ -46,7 +46,7 @@ if (crypt($passwd, $digest) eq $digest) {
 }
 </pre>
 
-<h4> Create a digest from password </h4>
+<h4>Create a digest from password</h4>
 
 <pre>
 my $passwd = 'secret'; # create password
@@ -64,7 +64,7 @@ For the second argument of crypt, specify 2 of the 64 characters of [./0-9A-Za-z
 
 These two characters are the beginning of the created digest.
 
-<h4> Password verification </h4>
+<h4>Password verification</h4>
 
 <pre>
 if (crypt($passwd, $digest) eq $digest) {}

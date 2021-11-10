@@ -8,21 +8,21 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> What to do if a "505 Internal Server" error occurs on Sakura's rental server </h2>
+<h2>What to do if a "505 Internal Server" error occurs on Sakura's rental server</h2>
 
 
 
 Mojolicious applications can run locally, but often don't work when I upload them to a rental server and try to run them as CGI. The following causes are possible, so let's deal with them in order.
 
-<h3> 404 Not Found is displayed </h3>
+<h3>404 Not Found is displayed</h3>
 
 The URL is incorrect. Enter the correct URL in your browser.
 
-<h3> The contents of the script are displayed </h3>
+<h3>The contents of the script are displayed</h3>
 
 Is the extension other than ".cgi"? It will not be executed as a CGI script without the ".cgi" extension.
 
-<h3> Module not loaded </h3>
+<h3>Module not loaded</h3>
 
 In your local environment, the CPAN module may be present, but not on the server. If you add the following description to the beginning of the script, the error content when loading fails will be displayed.
 
@@ -30,15 +30,15 @@ In your local environment, the CPAN module may be present, but not on the server
 use CGI::Carp 'fatalsToBrowser';
 </pre>
 
-<h3> Line feed code conversion error </h3>
+<h3>Line feed code conversion error</h3>
 
 When uploading an application from Windows to a rental server, you need to convert the line feed code. Make sure you are transferring in ASCII mode. Only app.cgi needs to be transferred in ASCII mode. For other scripts, it doesn't matter which mode you use.
 
-<h3> CGI script does not have execute permission </h3>
+<h3>CGI script does not have execute permission</h3>
 
 If the CGI script does not have execute permission, an error will occur. Make sure that the execution permission of the CGI script is 755 (in the case of suEXEC environment. Sakura rental server is in the suEXEC environment). You only need to change the permissions of app.cgi, other files are fine.
 
-<h3> Perl path error on the first line </h3>
+<h3>Perl path error on the first line</h3>
 
 An error will occur if the Perl path on the first line is incorrect.
 <pre>

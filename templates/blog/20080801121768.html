@@ -9,14 +9,14 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Understand how pipes work </h2>
+<h2>Understand how pipes work</h2>
 
 
 In modern operating systems, it is possible to pass "standard output of one program" to "standard input of another program". This OS function is called a pipe.
 
 The function called pipe is a very convenient function. If you create a program that receives data from standard input and outputs it to standard output, you can link multiple programs.
 
-<h3> 1. Image of pipe </h3>
+<h3>1. Image of pipe</h3>
 
 <pre>
                | - -- -- --- | | - -- -- --- | | - -- -- --- |
@@ -26,7 +26,7 @@ First input - ->| Program A | - ->| Program B | - ->| Program C | - ->Final outp
 
 You can use a pipe to connect the standard output of Program A to the standard input of Program B. In addition, the standard output of program B can be concatenated with the standard input of program C. By concatenating standard output and standard input in this way, data can be processed continuously without creating an intermediate file.
 
-<h3> 2. Use pipes </h3>
+<h3>2. Use pipes</h3>
 
 <pre>
 perldoc perlintro | perl -ne "print if/open /"
@@ -38,7 +38,7 @@ The perldoc command is a perl manual display command. perl -ne "print if/open /"
 
 Overall, I'm pulling out the line containing open from the perlinto man page. Pipes allow multiple programs to process data continuously.
 
-<h3> 3. How the pipe works </h3>
+<h3>3. How the pipe works</h3>
 
 Pipe is a function that connects the standard output of one program to the standard input of another program. I think that understanding will deepen if you know what the OS is actually doing internally, so I will write it down.
 

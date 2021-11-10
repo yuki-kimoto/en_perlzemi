@@ -6,15 +6,15 @@
     here
   </li>
 </ol>
-<h2> Perl string processing basics </h2>
+<h2>Perl string processing basics</h2>
 
 This is a description of Perl's string processing. Perl is a language that is good at text processing. It explains the output of character strings, here documents, search, replace, format specification, etc. in an easy-to-understand manner. It also explains how to handle Japanese.
 
-<h3> Basics of strings </h3>
+<h3>Basics of strings</h3>
 
 First of all, I will explain the basics of character strings.
 
-<h4> How to make a character string </h4>
+<h4>How to make a character string</h4>
 
 Let's create a string first. Use <b> single quotes </b> or <b> double quotes </b> to create the string.
 
@@ -26,7 +26,7 @@ my $str1 = 'Hello';
 my $str2 = "Hello";
 </pre>
 
-<h4> When enclosed in double quotes </h4>
+<h4>When enclosed in double quotes</h4>
 
 When creating a string, enclose it in single quotes or double quotes, but if you enclose it in double quote operators, <a href="/blog/20201030075254.html">double quote string escape sequences</a> And <a href="/blog/20180228151982.html">variable expansion</a> can be used.
 
@@ -39,7 +39,7 @@ When creating a string, enclose it in single quotes or double quotes, but if you
   </li>
 </ul>
 
-<h4> Escape sequence </h4>
+<h4>Escape sequence</h4>
 
 <a href="/blog/20201028075254.html">Escape sequence</a> is <a href="/blog/20201027075254.html">string enclosed in single quotes</a> and <a href= "/blog/20201026075254.html">Double quoted strings</a> are special characters that can be used.
 
@@ -80,7 +80,7 @@ If you want to use double quotes in a string enclosed in double quotes, use esca
 my $str2 = "Can't open \" foo.txt\".";
 </pre>
 
-<h4> Variable expansion </h4>
+<h4>Variable expansion</h4>
 
 <b> Variable expansion </b> is a function that allows variables to be used in a string enclosed in double quotes. The string contained in the variable is expanded.
 
@@ -125,7 +125,7 @@ my $str2 = "I have ${str1} _Foo";
 my $str3 = "I have ${str1} AIUEO";
 </pre>
 
-<h4> Concatenation of strings </h4>
+<h4>Concatenation of strings</h4>
 
 Next, let's concatenate the strings. Use the <a href="/blog/20080221120361.html">string concatenation operator "."</a> to concatenate strings.
 
@@ -151,7 +151,7 @@ This is the same as the following writing. It means that "$str2" is concatenated
 $str1 = $str1. $Str2;
 </pre>
 
-<h4> String output </h4>
+<h4>String output</h4>
 
 Use the <a href="/blog/20170404149131.html">print function</a> to print the string to the screen.
 
@@ -160,11 +160,11 @@ my $message = 'Hello';
 print $message;
 </pre>
 
-<h3> String processing tricks </h3>
+<h3>String processing tricks</h3>
 
 Here are some of the string processing tricks that are sometimes used.
 
-<h4> String list operator </h4>
+<h4>String list operator</h4>
 
 In Perl, there is a <b> string list operator </b> that makes it easy to create a list of strings.
 
@@ -204,7 +204,7 @@ Please refer to the following for a detailed explanation of the string list oper
   </li>
 </ul>
 
-<h4> Remove line breaks </h4>
+<h4>Remove line breaks</h4>
 
 You may want to <b> remove trailing line breaks </b> when reading a text file.
 
@@ -220,7 +220,7 @@ $str =~ s/\x0D?\X0A?$//;
 
 I'll talk more about regular expressions later.
 
-<h4> Concatenate array elements with the specified characters </h4>
+<h4>Concatenate array elements with the specified characters</h4>
 
 In string processing, CSV data (data separated by commas) and TSV data (data separated by tabs) are often created.
 
@@ -246,7 +246,7 @@ Please refer to the following article for the join function.
   </li>
 </ul>
 
-<h4> Split the string with the specified characters </h4>
+<h4>Split the string with the specified characters</h4>
 
 In the above, I explained how to create CSV data and TSV data, but on the contrary, you may want to make CSV data or TSV data into an array.
 
@@ -284,7 +284,7 @@ See the following article for a detailed explanation of the split function.
   </li>
 </ul>
 
-<h4> Get the length of the string </h4>
+<h4>Get the length of the string</h4>
 
 Use the <b> length function </b> to get the length of the string.
 
@@ -301,7 +301,7 @@ See below for a detailed explanation of the length function.
   </li>
 </ul>
 
-<h4> String format specification </h4>
+<h4>String format specification</h4>
 
 You can use the <b> sprintf function </b> if you want to specify the number of decimal places or specify a format that fills the left with 0s.
 
@@ -321,7 +321,7 @@ See below for a detailed explanation of formatting.
   </li>
 </ul>
 
-<h3> Here document </h3>
+<h3>Here document</h3>
 
 Perl has a syntax called <b> here-document </b> that makes it easy to create multi-line strings.
 
@@ -355,7 +355,7 @@ you can use here document
 EOS
 </pre>
 
-<h4> Make it the same as a string enclosed in double quotes or single quotes </h4>
+<h4>Make it the same as a string enclosed in double quotes or single quotes</h4>
 
 If you write your here document as follows, you can use escape sequences and special characters as if you were enclosing it in double quotes.
 
@@ -391,11 +391,11 @@ Please refer to the following articles for detailed explanations of here documen
   </li>
 </ul>
 
-<h3> Regular expression </h3>
+<h3>Regular expression</h3>
 
 Perl has a built-in <b> regular expression </b> feature in the language for searching and replacing strings.
 
-<h4> Search using pattern matching </h4>
+<h4>Search using pattern matching</h4>
 
 For example, if you want to know that the string contains the string "dog", you can write:
 
@@ -411,7 +411,7 @@ if ($message =~ /dog/) {
 
 Regular expressions must be enclosed in the symbol "//".
 
-<h4> Replace </h4>
+<h4>Replace</h4>
 
 You can also use regular expressions to make substitutions. If you rewrite "dog" to "cat", write as follows.
 
@@ -431,7 +431,7 @@ See the following articles for a detailed explanation of regular expressions.
   </li>
 </ul>
 
-<h3> Perl handles Japanese correctly </h3>
+<h3>Perl handles Japanese correctly</h3>
 
 So far, all the string samples have been in English. However, I think that most of the actual character string processing deals with Japanese.
 
@@ -457,7 +457,7 @@ In order to process Japanese correctly in Perl, remember the following three thi
   </li>
 </ol>
 
-<h4> Write the source code in UTF-8 and specify the utf8 pragma. </h4>
+<h4>Write the source code in UTF-8 and specify the utf8 pragma.</h4>
 
 Save the source code in UTF-8 on Windows, Mac or Linux. Then specify the <b> utf8 </b> pragma.
 
@@ -493,7 +493,7 @@ By converting to an internal character string, you will be able to perform chara
 
 "Byte string" and "internal string" will be explained later.
 
-<h4> Be sure to decode the character string received from the outside </h4>
+<h4>Be sure to decode the character string received from the outside</h4>
 
 <b> Decoding </b> means converting a "character string written in a specific character code" into a "Perl internal character string".
 
@@ -553,7 +553,7 @@ my $name = $ARGV[0];
 $name = decode('cp932', $name);
 </pre>
 
-<h4> Encode the character string to be output to the outside </h4>
+<h4>Encode the character string to be output to the outside</h4>
 
 While the character string received from the outside is decoded, the character output to the outside is always encoded.
 
@@ -598,7 +598,7 @@ For a detailed explanation of handling Japanese in Perl, see the following artic
   </li>
 </ul>
 
-<h3> Operators related to strings </h3>
+<h3>Operators related to strings</h3>
 
 Here are the operations that are sometimes used for string processing.
 
@@ -611,7 +611,7 @@ Here are the operations that are sometimes used for string processing.
   </li>
 </ul>
 
-<h3> Function for string processing </h3>
+<h3>Function for string processing</h3>
 
 Here are some functions that I sometimes use for string processing.
 
@@ -698,6 +698,6 @@ Here are some functions that I sometimes use for string processing.
   </tr>
 </table>
 
-<h3> Summary </h3>
+<h3>Summary</h3>
 
 If you remember this much, I think that you will be able to perform about 90%of character string processing including Japanese.

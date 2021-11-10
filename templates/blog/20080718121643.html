@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> open function-opens a file </h2>
+<h2>open function-opens a file</h2>
 
 
 
@@ -28,7 +28,7 @@ open(my $fh, "<", $file)
 
 "<" Means open mode, and when reading a file, specify "<".
 
-<h3> Commonly used open mode </h3>
+<h3>Commonly used open mode</h3>
 
 <table>
   <tr>
@@ -71,19 +71,19 @@ open(my $fh, "<", $file)
 
 Specify in the second argument of the open function. Enclose it in double or single quotes and pass it as a string.
 
-<h4> Read mode <</h4>
+<h4>Read mode <</h4>
 
 Read mode is a mode in which a file is opened read-only. If the file does not exist, an error will occur.
 
-<h4> Write mode> </h4>
+<h4>Write mode></h4>
 
 Write mode is a mode in which a file is opened write-only. The contents of the original file are deleted the moment you open it. If the file does not exist, it will be created.
 
-<h4> Additional write mode >> </h4>
+<h4>Additional write mode >></h4>
 
 The additional write mode is a mode in which a file is opened exclusively for additional write, and writing starts from the end of the current file. If the file does not exist, it will be created.
 
-<h4> What if you want to read a file and write to it? </H4>
+<h4>What if you want to read a file and write to it? </H4>
 
 There is another read/write mode in the file open mode, but this mode is not used for general purposes. It's easy to think that read-write mode is used when reading a file and writing to that file, but it's different.
 
@@ -104,7 +104,7 @@ As I will explain in detail later, this method is extremely dangerous. To do it 
   </li>
 </ol>
 
-<h3> Exception handling </h3>
+<h3>Exception handling</h3>
 
 When you open the file, you also need to handle the exception. If the file fails to open, there is no point in moving on to the subsequent processing, so use the die function to terminate the program. The cause of the file opening failure is assigned to "$!", So include that in the error message as well.
 
@@ -113,7 +113,7 @@ open(my $fh, "<", $file)
   or die "Can't open $file:$!";
 </pre>
 
-<h3> Open two arguments-not recommended </h3>
+<h3>Open two arguments-not recommended</h3>
 
 Older source code may use a two-argument open function, but now it is recommended to use a three-argument open function.
 
@@ -122,7 +122,7 @@ Older source code may use a two-argument open function, but now it is recommende
 open($fh, "<$file");
 </pre>
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample file open using the open function.
 
@@ -137,7 +137,7 @@ open(my $fh2, "<", $file)
   or die "Can't open file $file:$!";
 </pre>
 
-<h3> Related articles </h3>
+<h3>Related articles</h3>
 
 <ul>
   <li>

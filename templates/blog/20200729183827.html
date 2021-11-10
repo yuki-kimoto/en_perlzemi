@@ -11,11 +11,11 @@
   </li>
 </ol>
 
-<h2> Amazon::S3::Thin - Thin, lightweight, low-level Amazon S3 client </h2>
+<h2>Amazon::S3::Thin - Thin, lightweight, low-level Amazon S3 client</h2>
 
 Amazon::S3::Thin is a thin, lightweight, low-level Amazon S3 client. The following is a Japanese translation of <a href="https://metacpan.org/pod/Amazon::S3::Thin">Amazon::S3::Thin</a> 0.29.
 
-<h3> Overview </h3>
+<h3>Overview</h3>
 
 <pre>
 use Amazon::S3::Thin;
@@ -64,7 +64,7 @@ my $s3client = Amazon::S3::Thin->new({{
     });
 </pre>
 
-<h3> Explanation </h3>
+<h3>Explanation</h3>
 
 Amazon::S3:::Thin is a thin, lightweight, low-level Amazon S3 client.
 
@@ -90,9 +90,9 @@ There are already useful modules like Amazon::S3, Net::Amazon::S3. They provide 
 
 In some situations it is very important to check her raw HTTP communication. That's why I made this module.
 
-<h3> Constructor </h3>
+<h3>Constructor</h3>
 
-<h4> new(\%params) </h4>
+<h4>new(\%params)</h4>
 
 <B> Arguments: Hash reference with </b> options.
 
@@ -110,33 +110,25 @@ You can receive the following arguments:
   <li> virtual_host-Whether to use a virtual host type request format. The default is 0 (path style). </li>
 </ul>
 
-<h3> Accessor </h3>
+<h3>Accessor</h3>
 
 The following accessors are provided:You can use these to get/set the attributes of an object.
 
-<h4> secure </h4>
+<h4>secure</h4>
 
 Whether to use https (1) or http (0) when connecting to S3.
 
-<h4> ua </h4>
+<h4>ua</h4>
 
 The user agent used it internally to execute the request and return a response. If you set this attribute, it's an object compatible with <a href="https://metacpan.org/pod/LWP::UserAgent">LWP::UserAgent</a> (which provides the same interface). Please set with.
 
-<h4> debug </h4>
+<h4>debug</h4>
 
 Debug options.
 
-<h3> Operation on bucket </h3>
+<h3>Operation on bucket</h3>
 
-<h4> put_bucket ($bucket[, $headers]) </h4>
-
-<b> Arguments: </b>
-
-1. Bucket-a string with a bucket
-
-2. Header (optional)-Hash reference with extra header information
-
-<h4> delete_bucket ($bucket[$headers]) </h4>
+<h4>put_bucket ($bucket[, $headers])</h4>
 
 <b> Arguments: </b>
 
@@ -144,9 +136,17 @@ Debug options.
 
 2. Header (optional)-Hash reference with extra header information
 
-<h3> Operations on objects </h3>
+<h4>delete_bucket ($bucket[$headers])</h4>
 
-<h4> get_object ($bucket, $key[, $headers]) </h4>
+<b> Arguments: </b>
+
+1. Bucket-a string with a bucket
+
+2. Header (optional)-Hash reference with extra header information
+
+<h3>Operations on objects</h3>
+
+<h4>get_object ($bucket, $key[, $headers])</h4>
 
 <b> Arguments: </b>
 
@@ -170,7 +170,7 @@ The GET operation gets an object from Amazon S3.
 
 For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html">Amazon documentation on GET</a>.
 
-<h4> head_object ($bucket, $key) </h4>
+<h4>head_object ($bucket, $key)</h4>
 
 <b> Arguments: </b>
 
@@ -192,7 +192,7 @@ The HEAD operation gets the object's metadata from Amazon S3.
 
 For more information, <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjSee ectHEAD.html">Amazon documentation on HEAD</a>.
 
-<h4> delete_object ($bucket, $key) </h4>
+<h4>delete_object ($bucket, $key)</h4>
 
 <b> Arguments: </b> A string with a bucket name and a string with a key name.
 
@@ -204,7 +204,7 @@ Use the response object to see if it succeeded.
 
 For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html">Amazon documentation on DELETE</a>.
 
-<h4> copy_object ($src_bucket, $src_key, $dst_bucket, $dst_key[, $headers]) </h4>
+<h4>copy_object ($src_bucket, $src_key, $dst_bucket, $dst_key[, $headers])</h4>
 
 <b> Arguments: </b> A list with source (bucket, key) and destination (bucket, key), hash reference (optional) with additional header information.
 
@@ -216,7 +216,7 @@ A COPY request may return an error response with 200 OK, but this method determi
 
 For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html">Amazon documentation on COPY</a>.
 
-<h4> put_object ($bucket, $key, $content[, $headers]) </h4>
+<h4>put_object ($bucket, $key, $content[, $headers])</h4>
 
 <b> Arguments: </b>
 
@@ -234,7 +234,7 @@ The PUT operation adds an object to the bucket. Amazon S3 doesn't add partial ob
 
 For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html">Amazon documentation on PUT</a>.
 
-<h4> delete_multiple_objects ($bucket, @keys) </h4>
+<h4>delete_multiple_objects ($bucket, @keys)</h4>
 
 <b> Arguments: </b> An array containing a string with the bucket name and all the keys to delete.
 
@@ -244,7 +244,7 @@ The delete multiple objects operation allows you to delete multiple objects (up 
 
 For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/multiobjectdeleteapi.html">DELETE's Amazon documentation on deleting multiple objects</a>. Please give me.
 
-<h4> list_objects ($bucket[, \%options]) </h4>
+<h4>list_objects ($bucket[, \%options])</h4>
 
 <b> Arguments: </b> Use either a string with the bucket name and a hash reference (optional) that includes the following options:
 
@@ -262,7 +262,7 @@ This method returns some or all of the objects in the bucket (up to 1000). Note 
 
 For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGET.html">AMAZON REST Bucket GET Documentation</a>.
 
-<h4> generate_presigned_post ($bucket, $key[, $fields, $conditions, $expires_in]) </h4>
+<h4>generate_presigned_post ($bucket, $key[, $fields, $conditions, $expires_in])</h4>
 
 <b> Arguments: </b>
 
@@ -305,7 +305,7 @@ my $res = $ua->post(
 
 For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html">Amazon documentation on creating POST policies</a>. Please give me.
 
-<h3> Todo </h3>
+<h3>Todo</h3>
 
 Many APIs have not been implemented yet.
 
@@ -313,16 +313,16 @@ Repository
 
 <a href="https://github.com/DQNEO/Amazon-S3-Thin">https://github.com/DQNEO/Amazon-S3-Thin</a>
 
-<h3> License </h3>
+<h3>License</h3>
 
 Copyright (C) DQNEO.
 
 This library is free software. It can be redistributed or modified using the same terminology as Perl itself.
 
-<h3> Author </h3>
+<h3>Author</h3>
 
 DQNEO
 
-<h3> Thanks </h3>
+<h3>Thanks</h3>
 
 Timothy Apnel Breno G. de Olivey

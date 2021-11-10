@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> chomp function-remove line breaks </h2>
+<h2>chomp function-remove line breaks</h2>
 
 You can use the <strong> chomp function </strong> to remove line breaks.
 
@@ -19,7 +19,7 @@ You can use the <strong> chomp function </strong> to remove line breaks.
 chomp $line;
 </pre>
 
-<h4> Delete line breaks independent of OS </h4>
+<h4>Delete line breaks independent of OS</h4>
 
 There is one caveat regarding chomp. chomp is environment dependent. For example, when running on Windows, the trailing "\x0D\x0A" or "\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a special character for carriage return and \x0A is a special character for line feed. On Windows, the newline character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A".
 
@@ -30,7 +30,7 @@ For this reason, if the script saved on Windows and the loaded text file are mov
 $string =~ s/\x0D?\x0A?$//;
 </pre>
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample using the chomp function.
 

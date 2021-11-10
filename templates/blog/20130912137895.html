@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> strict - Strict grammar check </h2>
+<h2>strict - Strict grammar check</h2>
 
 
 
@@ -22,13 +22,13 @@ use strict;
 
 The strict pragma is a pragma to tighten Perl's grammar checks. Be sure to write the strict pragma when writing Perl scripts. If an undeclared variable is used, it will stop with a compile error when trying to execute the script.
 
-<h3> Explanation of strict pragma </h3>
+<h3>Explanation of strict pragma</h3>
 
 Instead of calling it a strict module, we call it a strict pragma, but this is a type of module that changes Perl's compile-time behavior, called a pragma, and it's customary to start with a lowercase letter.
 
 Let's see the effect of the strict pragma. The strict pragma has three effects.
 
-<h4> Force variable declaration </h4>
+<h4>Force variable declaration</h4>
 
 The first is the effect of <strong> forcing variable declaration </strong>. In Perl, variables declared with my are called lexical variables. If you use the strict pragma, you will not be able to use undeclared variables.
 
@@ -61,7 +61,7 @@ The global symbol "$num2" requires an explicit package name. 4th line.
 
 If you see this message, it's almost certain that you're using an undeclared variable. Now that you know the line number, look at that line number and check that the variable name is correct and that you have declared the variable in advance.
 
-<h4> Prohibition of unquoted strings </h4>
+<h4>Prohibition of unquoted strings</h4>
 
 The strict pragma <strong> prohibits the use of unquoted strings </strong>. In fact, Perl allows you to use unquoted strings if the strict pragma isn't enabled. If you enable the strict pragma, you will not be able to use unquoted strings.
 
@@ -93,7 +93,7 @@ Naked "abcde" is not allowed under the use of "strict subs". 3rd line.
 
  Be sure to enable the strict pragma to avoid such mistakes.
 
-<h4> Prohibition of symbolic reference </h4>
+<h4>Prohibition of symbolic reference</h4>
 
 The third effect is <strong> prohibition of symbolic reference </strong>. Perl has a feature called symbolic references, but the strict pragma prohibits the use of symbolic references.
 

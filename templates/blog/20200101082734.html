@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Drawing basic figures and creating tables - PDF::Create forms with API2 </h2>
+<h2>Drawing basic figures and creating tables - PDF::Create forms with API2</h2>
 
 I will explain how to create a table with PDF::API2.
 
@@ -34,11 +34,11 @@ HTML tables can be used to create tables. Here, let's make it possible to expres
   <tr> <td> Item </td> <td> Item </td> <td> Item </td> </tr>
 </table>
 
-<h3> Draw basic shapes </h3>
+<h3>Draw basic shapes</h3>
 
 First of all, let's draw a basic shape with PDF::API2 as a basis for creating a table.
 
-<h4> Generate content object for graphics </h4>
+<h4>Generate content object for graphics</h4>
 
 First of all, create a content object for the graphic. You can create a content object for graphics by calling the gfx method from the page object. This is a PDF::API2::Content object.
 
@@ -53,7 +53,7 @@ my $page = $pdf->page;
 my $gfx = $page->gfx;
 </pre>
 
-<h4> Draw a line </h4>
+<h4>Draw a line</h4>
 
 As the most basic drawing, let's draw a line with PDF::API2.
 
@@ -78,7 +78,7 @@ $gfx->stroke;
 
 When drawing figures in PDF::API2, remember the feeling of connecting paths and drawing.
 
-<h4> Set line thickness </h4>
+<h4>Set line thickness</h4>
 
 The line thickness can be set with the linewidth method. Call it before you stroke.
 
@@ -89,7 +89,7 @@ $gfx->linewidth(3);
 
 The line width is the same for the settings when drawing circles and polygons.
 
-<h4> Set line color </h4>
+<h4>Set line color</h4>
 
 The line color can be set with the strokecolor method. Call it before you stroke. The color can be specified by color name, RGB, or CMYK. Each color can have a 1-byte, 2-byte, 3-byte, or 4-byte value. For example, cyan can be set as%F000 or%FFFF000000000000.
 
@@ -108,7 +108,7 @@ The line color is the same for the settings when drawing circles and polygons.
 
 The color format is the same for the fill color settings.
 
-<h4> Draw a triangle surrounded by a line </h4>
+<h4>Draw a triangle surrounded by a line</h4>
 
 As an application of drawing a line, let's draw a triangle surrounded by a line. The line method connects the points and finally returns to the starting point.
 
@@ -188,7 +188,7 @@ my $pdf_file = 'render_tri.pdf';
 $pdf->saveas($pdf_file);
 </pre>
 
-<h4> Fill </h4>
+<h4>Fill</h4>
 
 You can fill it by enclosing it in a path. Use the fill method to fill. The default fill color is black. Note that fill must be called before the stroke.
 
@@ -207,7 +207,7 @@ There is also a fillstroke method that fills and draws lines at the same time.
 $gfx->fillstroke;
 </pre>
 
-<h4> Set the fill color </h4>
+<h4>Set the fill color</h4>
 
 The fill color can be set with the fillcolor method. Call it before filling. The color can be specified by color name, RGB, or CMYK. Each color can have a 1-byte, 2-byte, 3-byte, or 4-byte value. For example, cyan can be set as%F000 or%FFFF000000000000.
 
@@ -222,7 +222,7 @@ $gfx->fillcolor('# 0123ab');
 $gfx->fillcolor('%FF000000');
 </pre>
 
-<h3> Draw a rectangle </h3>
+<h3>Draw a rectangle</h3>
 
 PDF::API2 has a convenient method for drawing rectangles. All shapes can be created by connecting lines using the above method, but since there are many steps to connect lines, a method for drawing basic shapes such as rectangles is prepared.
 
@@ -270,63 +270,63 @@ $pdf->saveas($pdf_file);
 
 This is a sample that can draw a rectangle that can be executed as it is.
 
-<h3> Write other basic figures </h3>
+<h3>Write other basic figures</h3>
 
 I will introduce which method to use when you want to write other basic figures.
 
-<h4> Write a circle </h4>
+<h4>Write a circle</h4>
 
 If you want to draw a circle, use the circle method. It can be used for bullet points in the list.
 
-<h4> Draw an ellipse </h4>
+<h4>Draw an ellipse</h4>
 
 If you want to draw an ellipse, use the ellipse method.
 
-<h4> Write a fan shape</H4>
+<h4>Write a fan shape</H4>
 
 If you want to draw a sector, use the pie method.
 
-<h4> Draw an arc </h4>
+<h4>Draw an arc</h4>
 
 If you want to draw an arc, use the arc or bogen method. The bogen method can be used for rounded corners because you can specify the start and end points of the arc.
 
-<h4> Draw an elliptical arc </h4>
+<h4>Draw an elliptical arc</h4>
 
 If you want to draw an elliptical arc, use the bogen method.
 
-<h4> Write a curve (Peget curve) </h4>
+<h4>Write a curve (Peget curve)</h4>
 
 To draw a curve (Peget curve), use the curve method. You can draw a curve by the Peje curve algorithm.
 
-<h4> Write a curve (spline curve) </h4>
+<h4>Write a curve (spline curve)</h4>
 
 To draw a curve (spline curve), use the spline method. You can draw a curve that connects points smoothly.
 
-<h4> Draw a polygon </h4>
+<h4>Draw a polygon</h4>
 
 Use the poly method to draw a polygon. You can draw triangles, pentagons, hexagons, etc.
 
-<h4> Rotate the shape </h4>
+<h4>Rotate the shape</h4>
 
 Use the rotate method to rotate the shape.
 
-<h4> Enlarge/reduce the figure </h4>
+<h4>Enlarge/reduce the figure</h4>
 
 Use the scale method to scale the shape.
 
-<h4> To draw a horizontal line </h4>
+<h4>To draw a horizontal line</h4>
 
 There is a hline method that allows you to easily draw a horizontal line.
 
-<h4> To draw a vertical line </h4>
+<h4>To draw a vertical line</h4>
 
 There is a vline method that allows you to easily draw vertical lines.
 
-<h4> To draw a dashed line </h4>
+<h4>To draw a dashed line</h4>
 
 To draw a wavy line, use the linedash method.
 
-<h3> Create a table </h3>
+<h3>Create a table</h3>
 
 Now let's create a table.
 
@@ -441,7 +441,7 @@ You have completed a table with no information.
 
 <a href="/examples/pdf/table.pdf">Output result empty table</a>,
 
-<h4> Sample table with headings and items </h4>
+<h4>Sample table with headings and items</h4>
 
 Finally, let's create a sample table with headings and items.
 

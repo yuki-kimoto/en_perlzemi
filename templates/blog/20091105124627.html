@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Time::Piece - A new way to handle dates and times </h2>
+<h2>Time::Piece - A new way to handle dates and times</h2>
 
 
 
@@ -30,7 +30,7 @@ For general information on dates and times, please refer to the following.
   </li>
 </ul>
 
-<h3> Acquisition of time/date information </h3>
+<h3>Acquisition of time/date information</h3>
 
 Use the Time::Piece module as follows: When used, the Time::Piece module overwrites the core localtime and gmtime.
 
@@ -67,7 +67,7 @@ $year += 1900;
 
 It is more intuitive to use localtime of Time::Piece to handle date and time information.
 
-<h3> List of information that can be obtained with Time::Piece </h3>
+<h3>List of information that can be obtained with Time::Piece</h3>
 
 A list of information that can be obtained with Time::Piece.
 
@@ -308,7 +308,7 @@ A list of information that can be obtained with Time::Piece.
 
 </table>
 
-<h3> Judgment of date </h3>
+<h3>Judgment of date</h3>
 
 You can use Time::Piece to determine if it is a leap year and if it is the last day of the month.
 
@@ -320,11 +320,11 @@ $t->is_leap_year
 $t->month_last_day
 </pre>
 
-<h3> Format date/time </h3>
+<h3>Format date/time</h3>
 
 You may want to format the date/time and output it. Time::Piece provides several fixed formats. You can also format it freely using the strftime method.
 
-<h4> [A] Formats provided by default </h4>
+<h4>[A] Formats provided by default</h4>
 
 The formats provided by default are as follows.<table>
   <tr>
@@ -437,7 +437,7 @@ The formats provided by default are as follows.<table>
 
 </table>
 
-<h4> [B] Format customization </h4>
+<h4>[B] Format customization</h4>
 
 If you want to customize the format freely, use the strftime method. Specify the time representation in $format.
 
@@ -498,7 +498,7 @@ Same as%T:%H:%M:%S. Hours, minutes and seconds (such as 23:14:03)
 %%:%
 </pre>
 
-<h4> Precautions when handling Japanese </h4>
+<h4>Precautions when handling Japanese</h4>
 
 Note that Time::Piece's strftime method always returns a byte string, whether the input is a byte string or an internal string.
 
@@ -507,7 +507,7 @@ Note that Time::Piece's strftime method always returns a byte string, whether th
 my $bytes = $tp->strftime("%Y year%m month");
 </pre>
 
-<h3> Parse the character string that expresses the date/time </h3>
+<h3>Parse the character string that expresses the date/time</h3>
 
 You can parse date and time representations to create Time::Piece objects. Use the strptime method to parse dates and times.
 
@@ -522,7 +522,7 @@ my $datetime_mysql = '2009-12-31 23:59:59';
 my $t = Time::Piece->strptime($datetime_mysql, '%Y-%m-%d%H:%M:%S');
 </pre>
 
-<h3> Localization </h3>
+<h3>Localization</h3>
 
 By default, month and week names are in English. If you want to get the Japanese week name, pass an array of day names to the method to get the week name.
 
@@ -533,9 +533,9 @@ my $t = Time::Piece::localtime;
 my $wday = $t->wdayname(@week_names);
 </pre>
 
-<h3> Calculation of date/time information </h3>
+<h3>Calculation of date/time information</h3>
 
-<h4> Tempe::Piece object subtraction </h4>
+<h4>Tempe::Piece object subtraction</h4>
 
 Time::Piece can also calculate dates and times. If you subtract between Time::Piece objects, the return value will be a Time::Seconds object. This object is in seconds when evaluated as a string.
 
@@ -559,7 +559,7 @@ $sec->financial_months;
 
 The conversion to days and years is done according to the following rules. One day is converted to 24 hours. One week is converted to 7 days. One year is converted to 365.24225 days. One year is converted to 12 months.
 
-<h4> Addition of Time::Piece objects </h4>
+<h4>Addition of Time::Piece objects</h4>
 
 Time::Piece objects cannot be added to each other. You can add seconds or a Time::Seconds object to the Timpe::Piece object.
 
@@ -589,7 +589,7 @@ use Time::Seconds;
 $t + ONE_DAY * 5
 </pre>
 
-<h3> Date comparison </h3>
+<h3>Date comparison</h3>
 
 You can use comparison operators to compare dates. You can use "<", ">", "<=", " >= ", "<=>", "==" and " != " .
 
@@ -597,7 +597,7 @@ You can use comparison operators to compare dates. You can use "<", ">", "<=", "
 $t1 < $t2
 </pre>
 
-<h3> Create Time::Piece object </h3>
+<h3>Create Time::Piece object</h3>
 
 As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time::Piece object at any date and time.
 
@@ -607,7 +607,7 @@ my $t = Time::Piece->strptime('2009-12-31 23:59:59', '%Y-%m-%d%H:%M:%S');
 
 (When I read the source code, there is a parse method, but when I tried it, it seems to be broken ... It seems that it is private because it is not in the document.)
 
-<h3> Get an object that represents today's date </h3>
+<h3>Get an object that represents today's date</h3>
 
 To use the <strong> Time::Piece </strong> module to get an object that represents today:
 <pre>

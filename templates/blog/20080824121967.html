@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> umask function-limit permissions with bitmask </h2>
+<h2>umask function-limit permissions with bitmask</h2>
 
 
 Use the <strong> umask </strong> function to specify the bitmask.
@@ -23,7 +23,7 @@ To specify the bitmask, use the umask function. <a href="/blog/20080822121950.ht
 
 The permissions when creating the file are affected by the bitmask. A bitmask is a bit string that limits permissions when creating a file or directory. The following is a sample to specify the bitmask.
 
-<h3> What is a bit mask? </H3>
+<h3>What is a bit mask? </H3>
 
 Bitmasks affect the permissions when creating files and directories with the <a href="/blog/20080804121794.html">sysopen function</a> and mkdir functions.
 
@@ -33,7 +33,7 @@ When creating a file programmatically, it is better to set the permission value 
 
 (However, in the case of a file that should never be written to another person, create it with permissions such as 644.)
 
-<h3> Bitmask operation </h3>
+<h3>Bitmask operation</h3>
 
 The bitmask calculation is as follows.
 
@@ -112,7 +112,7 @@ Negation is the inversion of a bit. & Is the logical product of the bits, which 
 
 The logical product of "file permission" and "negation of bitmask" is "permission to be created".
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample to set the bit mask.
 

@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Object::Simple - Generate Mojo::Base compatible accessor </h2>
+<h2>Object::Simple - Generate Mojo::Base compatible accessor</h2>
 
 
 
@@ -33,7 +33,7 @@ print $point->x;
 
 You can inherit Object::Simple by specifying -base when using. Object::Simple has a new method. It also imports a method called has for defining accessors. Also, strict and warnings are automatically enabled.
 
-<h3> General class sample </h3>
+<h3>General class sample</h3>
 
 This is a sample of a general class. The Point class has accessors x and y. It also has a method called clear that initializes x and y to 0.
 
@@ -68,11 +68,11 @@ my $y = $point->y;
 $point->clear;
 </pre>
 
-<h3> How to use Object::Simple </h3>
+<h3>How to use Object::Simple</h3>
 
 There are several ways to define attributes.
 
-<h4> Define multiple attributes at once </h4>
+<h4>Define multiple attributes at once</h4>
 
 <pre>
 # No default value
@@ -84,7 +84,7 @@ has ['x', 'y'] => 0;
 
 You can define multiple accessors at once by specifying the array reference as the first argument of has.
 
-<h4> Specify default value </h4>
+<h4>Specify default value</h4>
 
 <pre>
 # Constant
@@ -102,7 +102,7 @@ has baz => sub {LWP::UserAgent->new};
 
 When setting array references, hash references, objects, etc. to default values, you need to enclose them in sub {} for lazy evaluation.
 
-<h4> Define all accessors at once </h4>
+<h4>Define all accessors at once</h4>
 
 <pre>
 has [qw/foo bar baz /],
@@ -112,7 +112,7 @@ has [qw/foo bar baz /],
 
 You can also define all accessors at once.
 
-<h3> Inheritance sample </h3>
+<h3>Inheritance sample</h3>
 
 This is a sample to create a Point3D class that inherits the Point class.
 
@@ -131,7 +131,7 @@ sub clear {
 1;
 </pre>
 
-<h3> Constructor override </h3>
+<h3>Constructor override</h3>
 
 You can override the constructor new() for object initialization and argument processing.
 

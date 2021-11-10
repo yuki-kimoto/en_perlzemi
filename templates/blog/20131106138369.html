@@ -10,18 +10,18 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Creating a graph with PDL </h2>
+<h2>Creating a graph with PDL</h2>
 
 
 
 
 I will explain how to create a graph using PDL.
 
-<h3> Install PDL::Graphics::PLplot </h3>
+<h3>Install PDL::Graphics::PLplot</h3>
 
 Install the module <strong> PDL::Graphics::PLplot </strong> to draw the graph. (You need to <a href="/blog/20131101138330.html">PDL installed</a> first.)
 
-<h4> Windows </h4>
+<h4>Windows</h4>
 
 To install in ppm, execute the following command.
 
@@ -57,11 +57,11 @@ Running PDL-Graphics-PLplot-0.62 install script ...
    C:\Perl64\site\bin
 </pre>
 
-<h3> Creating a simple graph </h3>
+<h3>Creating a simple graph</h3>
 
 Let's draw a graph in PDL. Use the module <strong> PDL::Graphics::PLplot </strong> to draw the graph.
 
-<h4> Linear function graph </h4>
+<h4>Linear function graph</h4>
 
 First, let's draw a graph of the simplest linear function "y = 2x". Use the <strong> xyplot </strong> method to create a xy graph.
 
@@ -91,7 +91,7 @@ You can create a graph of the linear function as follows.
 [f: id: perlcodesample: 20131106082618p: image: w500]
 </blockquote>
 
-<h4> new options </h4>
+<h4>new options</h4>
 
 Here are some graph options. It can be passed as an argument to the new method.
 
@@ -111,7 +111,7 @@ You can specify the size of the graph to be output with <strong> PAGESIZE </stro
 PAGESIZE => [500, 400]
 </pre>
 
-<h4> Options for drawing graphs </h4>
+<h4>Options for drawing graphs</h4>
 
 This option is specified when drawing the graph.
 
@@ -225,7 +225,7 @@ Below are the types of colors.
   HOTPINK LIGHTCORAL LIGHTPINK1 LIGHTGOLDENROD
 </pre>
 
-<h4> Sample </h4>
+<h4>Sample</h4>
 
 I wrote a graph of a linear function "y = 1/2 x + 10".
 
@@ -267,7 +267,7 @@ $pl->xyplot(
 $pl->close;
 </pre>
 
-<h3> Graph of n-th order function </h3>
+<h3>Graph of n-th order function</h3>
 
 Now let's draw a cubic function. It's interesting to know immediately what kind of shape it is.
 
@@ -296,7 +296,7 @@ $pl->xyplot($x, $y);
 $pl->close;
 </pre>
 
-<h3> Trigonometric function </h3>
+<h3>Trigonometric function</h3>
 
 The following is a graph of trigonometric functions (sin). Use the <strong> sin </strong> method to calculate trigonometric functions. It is defined in PDL::Math.
 
@@ -325,7 +325,7 @@ $pl->xyplot($x, $y);
 $pl->close;
 </pre>
 
-<h3> Exponential function </h3>
+<h3>Exponential function</h3>
 
 Next is the graph of the exponential function. Note that the value e to be calculated is created as a PDL variable.
 
@@ -358,7 +358,7 @@ $pl->close;
 
 </pre>
 
-<h3> Logarithmic function (natural logarithm) </h3>
+<h3>Logarithmic function (natural logarithm)</h3>
 
 The last is a graph of logarithmic function (natural logarithm). Use the <strong> log </strong> method to calculate the logarithmic function (natural logarithm). It is defined in PDL::Math. Note that the graph starts at 0.1, as the value of log0 will be infinitesimal.
 
@@ -388,7 +388,7 @@ $pl->close;
 </pre>
 
 
-<h3> Strip plot-graph of one x-axis and multiple y-axis </h3>
+<h3>Strip plot-graph of one x-axis and multiple y-axis</h3>
 
 One x-axis and multiple y-axis graphs are called strip plots and can be drawn using the <strong> stripplots </strong> method.
 

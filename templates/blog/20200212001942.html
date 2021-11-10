@@ -1,8 +1,8 @@
-<h2> D module-encodes data and dumps to standard error </h2>
+<h2>D module-encodes data and dumps to standard error</h2>
 
 The D module provides utility functions that encode data and dump it to standard error output.
 
-<h3> Usage example </h3>
+<h3>Usage example</h3>
 
 The D module is used as follows.
 <pre>
@@ -39,7 +39,7 @@ use D; dn $data;
 ] at test.pl line 7.
 </pre>
 
-<h3> Features </h3>
+<h3>Features</h3>
 <ul>
 <li> Export functions such as du, dw, dn. These function names are two characters and should not conflict with debug commands such as'p'. </li>
 The <li> dustr and dwstr functions encode all strings in the reference data. </li>
@@ -52,9 +52,9 @@ The <li> dustr and dwstr functions encode all strings in the reference data. </l
 <li> Unlike the default of Data::Dumper, it does not output'$VAR1 = '. </li>
 </ul>
 
-<h3> Function </h3>
+<h3>Function</h3>
 
-<h4> du function </h4>
+<h4>du function</h4>
 Encodes all strings in the reference data to UTF-8 and dumps the reference data to standard error along with the filename and line number.
 Even if the argument is not reference data such as a string, it is dumped in the same way as reference data.
 This function will be exported.
@@ -72,7 +72,7 @@ my $data = [{name =>'a'}, {name =>'i'}];
 use D; du $data;
 </pre>
 
-<h4> dw function </h4>
+<h4>dw function</h4>
 Encodes all strings in the reference data to cp932 and dumps the reference data along with the filename and line number to standard error output.
 Even if the argument is not reference data such as a string, it is dumped in the same way as reference data.
 This function will be exported.
@@ -83,7 +83,7 @@ my $data = [{name =>'a'}, {name =>'i'}];
 dw $data;
 </pre>
 
-<h4> dn function </h4>
+<h4>dn function</h4>
 It does not encode all the strings in the reference data and dumps the reference data along with the file name and line number to the standard error output.
 Even if the argument is not reference data such as a string, it is dumped in the same way as reference data.
 This function will be exported.
@@ -94,7 +94,7 @@ my $data = [{name =>'a'}, {name =>'i'}];
 dn $data;
 </pre>
 
-<h4> duster function </h4>
+<h4>duster function</h4>
 This function returns a UTF-8 encoded string.
 This function will be exported.
 
@@ -106,7 +106,7 @@ my $data = [{name =>'a'}, {name =>'i'}];
 my $str = dustr $data;
 </pre>
 
-<h4> dwstr function </h4>
+<h4>dwstr function</h4>
 This function returns a cp932 encoded string.
 This function will be exported.
 
@@ -118,7 +118,7 @@ my $data = [{name =>'a'}, {name =>'i'}];
 my $str = dwstr $data;
 </pre>
 
-<h4> dnstr function </h4>
+<h4>dnstr function</h4>
 This function returns a string without encoding.
 This function will be exported.
 
@@ -130,15 +130,15 @@ my $data = [{name =>'a'}, {name =>'i'}];
 my $str = dnstr $data;
 </pre>
 
-<h3> Bug report </h3>
+<h3>Bug report</h3>
 <a href="https://github.com/YoshiyukiItoh/D" target="_blank">https://github.com/YoshiyukiItoh/D</a>
 
-<h3> Related items </h3>
+<h3>Related items</h3>
 <ul>
 <li> <a href="https://metacpan.org/pod/Data::Dumper" target = "_ blank">Data::Dumper</a> </li>
 <li> <a href="https://metacpan.org/pod/Carp" target="_blank">Carp</a> </li>
 <li> <a href="https://metacpan.org/pod/Data::Recursive::Encode" target = "_ blank">Data::Recursive::Encode</a> </li>
 </ul>
 
-<h3> Original page (meta::cpan) </h3>
+<h3>Original page (meta::cpan)</h3>
 <a href="https://metacpan.org/pod/D" target="_blank">https://metacpan.org/pod/D</a>

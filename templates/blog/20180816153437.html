@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> plenv - Install Perl in your environment </h2>
+<h2>plenv - Install Perl in your environment</h2>
 
 
 
 You can use a tool called plenv to install Perl in your environment. This is useful if you don't want to use the system standard Perl or if you want to use a newer version of Perl. You can also use plenv to switch between multiple versions of Perl.
 
-<h3> Install plenv </h3>
+<h3>Install plenv</h3>
 
 Let's install plenv. As a prerequisite, please note that git must be installed to install plenv.
 
@@ -36,7 +36,7 @@ echo'eval "$(plenv init-)"'>> ~/.bash_profile
 exec $SHELL -l
 </pre>
 
-<h3> Installing Perl in the user environment </h3>
+<h3>Installing Perl in the user environment</h3>
 
 Let's take a look at the list of available Perls.
 
@@ -113,7 +113,7 @@ This is perl 5, version 20, subversion 3 (v5.20.3) built for x86_64-linux
 (with 1 registered patch, see perl -V for more detail)
 </pre>
 
-<h3> Install cpanm </h3>
+<h3>Install cpanm</h3>
 
 Let's also install cpanm, which is convenient for installing modules.
 
@@ -127,7 +127,7 @@ Now you can install the module with the following command.
 cpanm JSON
 </pre>
 
-<h3> Revert to original Perl </h3>
+<h3>Revert to original Perl</h3>
 
 To revert to the original Perl:
 
@@ -135,7 +135,7 @@ To revert to the original Perl:
 plenv global system
 </pre>
 
-<h3> How to use Perl installed with plenv with crontab </h3>
+<h3>How to use Perl installed with plenv with crontab</h3>
 
 One of the main points of plenv is that Perl installed with plenv is not used by cron. This is because .bash_profile is not loaded when running from cron because the shell is not started. The setting by plenv is described in .bash_profile.
 
@@ -169,7 +169,7 @@ PATH =/home/kimoto2/.plenv/shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/
 
 Now cron will use the specified version of Perl.
 
-<h4> First line description of Perl script </h4>
+<h4>First line description of Perl script</h4>
 
 Write the first line of the Perl script using the env command as shown below.
 

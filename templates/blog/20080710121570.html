@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> How to create a closure </h2>
+<h2>How to create a closure</h2>
 
 
 
 Learn how to create "closures" in Perl.
 
-<h3> Closure definition </h3>
+<h3>Closure definition</h3>
 
 I will explain the definition of closure using code.
 
@@ -40,7 +40,7 @@ print "1: The simplest closure\n";
 print var (), "\n";
 </pre>
 
-<h4> Closure definition </h4>
+<h4>Closure definition</h4>
 
 The condition for being a closure is that the subroutine references a lexical variable that is out of its scope. (In this example, var refers to $var outside its scope.)
 
@@ -56,7 +56,7 @@ Please refer to the following article for the scope of Perl.
   </li>
 </ul>
 
-<h4> Closure features </h4>
+<h4>Closure features</h4>
 
 <pre>
 {
@@ -74,7 +74,7 @@ When the scope ends, $var is no longer visible outside the scope. (The var subro
 
 Only the var subroutine can see $var. After the scope is finished, the value of $var can only be accessed through the var subroutine.
 
-<h4> Closure image </h4>
+<h4>Closure image</h4>
 
 <pre>
 | - -- -- -- --- Scope (closure) - -- -- -- --- |
@@ -92,7 +92,7 @@ Only the var subroutine can see $var. After the scope is finished, the value of 
 
 Data can only be accessed from outside the scope through subroutines. You cannot access the data directly.
 
-<h3> Create closures using "function generator" </h3>
+<h3>Create closures using "function generator"</h3>
 
 Let's create a closure using a function generator.
 
@@ -131,7 +131,7 @@ sub create_timer {
 }
 </pre>
 
-<h4> Function generator for generating closures </h4>
+<h4>Function generator for generating closures</h4>
 
 <pre>
 sub create_timer {
@@ -151,7 +151,7 @@ A function generator is a subroutine that creates a suboutin. You can use the fu
 
 Each generated closure has its own data. In this example, the value of $time is created in memory for each closure. The return value is a reference to the subroutine. This is because Perl does not allow the subroutine itself to be the return value.
 
-<h4> Call a function generator to create a closure </h4>
+<h4>Call a function generator to create a closure</h4>
 
 <pre>
 my $timer1 = create_timer ();
@@ -160,7 +160,7 @@ my $timer2 = create_timer ();
 
 The return value serves as a reference to the subroutine. This subroutine is a closure and has its own environment (variables referenced in the subroutine and the definition of the subroutine) in memory.
 
-<h4> Call closure </h4>
+<h4>Call closure</h4>
 
 <pre>
 $timer1->();
@@ -168,13 +168,13 @@ $timer1->();
 
 Now that we have a reference to the subroutine, we dereference it and call it.
 
-<h4> How to use closures </h4>
+<h4>How to use closures</h4>
 
 Closures allow you to concisely describe the changes between the "state at the time of reference" and the "state at the moment".
 
 You can do the same thing by creating a class, but if you don't want to create a class, use closures. (If you create one class, it will take more time to manage the class. If you do not want to create a class for simple description like this example, use closure.)
 
-<h3> "Initialize variables" referenced by closures </h3>
+<h3>"Initialize variables" referenced by closures</h3>
 
 This is a sample to initialize the variable referenced by the closure.
 
@@ -216,7 +216,7 @@ sub create_sign_checker {
 }
 </pre>
 
-<h4> Initialize variables referenced by closures </h4>
+<h4>Initialize variables referenced by closures</h4>
 
 <pre>
 # Generate closures. (Initialize the variable referenced by the closure with 1)
@@ -242,11 +242,11 @@ t;
 
 When you create a closure, you can initialize the variables that the closure references. Pass it as an argument when creating the closure. Take it as an argument to the function generator and set it in a variable.
 
-<h3> Explain the concept of closures in an easy-to-understand manner in comparison with classes </h3>
+<h3>Explain the concept of closures in an easy-to-understand manner in comparison with classes</h3>
 
 The concept of closures is vague and difficult to capture contours. I would like to explain it so that I can understand it as much as possible.
 
-<h4> What is a closure </h4>
+<h4>What is a closure</h4>
 
 <ol>
   <li>
@@ -268,7 +268,7 @@ The concept of closures is vague and difficult to capture contours. I would like
 
 Next, about classes in object orientation.
 
-<h4> What is a class? </H4>
+<h4>What is a class? </H4>
 
 <ol>
   <li>
@@ -290,7 +290,7 @@ Next, about classes in object orientation.
 
 What you should be aware of here is that classes and closures are actually the same thing. In Perl implementations, classes and closures differ in their grammatical writing. However, they are functionally the same. Closures are easy to understand if you think of them as simple classes. (The concept of closures is a bit broader, but at first I understand it's a simple class.)
 
-<h4> Differences between classes and closures </h4>
+<h4>Differences between classes and closures</h4>
 
 <ol>
   <li>
@@ -303,7 +303,7 @@ What you should be aware of here is that classes and closures are actually the s
 
 Let's implement a function (counter) for counting using classes and closures.
 
-<h4> Implement the counter in a class </h4>
+<h4>Implement the counter in a class</h4>
 
 <pre>
 use strict;
@@ -336,7 +336,7 @@ $cnt->add_count;
 print "after counting:", $cnt->count, "\n\n";
 </pre>
 
-<h4> Implement the counter with closures </h4>
+<h4>Implement the counter with closures</h4>
 
 <pre>
 use strict;
@@ -369,7 +369,7 @@ print "after counting:". $Cnt->{count}->() . "\n";
 
 As you can see, classes and closures are very similar. Next time, I will explain the code.
 
-<h4> Visual image of classes and closures </h4>
+<h4>Visual image of classes and closures</h4>
 
 <pre>
 # # class
@@ -387,7 +387,7 @@ As you can see, classes and closures are very similar. Next time, I will explain
 
 </pre>
 
-<h4> Correction of Dan Kogai </h4>
+<h4>Correction of Dan Kogai</h4>
 
 <ul>
   <li>

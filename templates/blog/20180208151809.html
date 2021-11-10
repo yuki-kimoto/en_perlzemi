@@ -9,13 +9,13 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Hash reference </h2>
+<h2>Hash reference</h2>
 
 
 
 A data structure called <b> hash reference </b> frequently appears in Perl. This page details the hash reference from the <a href="/blog/20100930127859.html">Reference</a>.
 
-<h4> What is a hash reference? </H4>
+<h4>What is a hash reference? </H4>
 
 A hash reference is a reference to a <a href="/blog/20161013147635.html">hash</a>. A reference means to point. You can use the reference generator "\" on a hash to create a hash reference.
 
@@ -37,7 +37,7 @@ $score_ref - -- -->(math => 68, english => 90)
 
 A hash reference represents "what points to a hash" rather than the hash itself.
 
-<h4> Hash reference is assigned and the contents are not copied </h4>
+<h4>Hash reference is assigned and the contents are not copied</h4>
 
 Let's see the difference between hashes and hash references from here.
 
@@ -71,7 +71,7 @@ When passing to <a href="/blog/20101130129876.html">subroutine</a>, it is more e
 my_func ($score_ref1);
 </pre>
 
-<h3> Anonymous hash generator </h3>
+<h3>Anonymous hash generator</h3>
 
 Hash references can be created using the reference generator "\", but this is a bit tricky. An operator called <a href="/blog/20170926150643.html">anonymous hash generator</a> is defined to quickly create a hash reference.
 
@@ -91,7 +91,7 @@ my %score = (math => 68, english => 90);
 my $score = {math => 68, english => 90};
 </pre>
 
-<h3> Dereference </h3>
+<h3>Dereference</h3>
 
 I used a reference generator to generate a hash reference. Now let's extract the hash from the hash reference, on the contrary.
 
@@ -112,7 +112,7 @@ If the hash reference is a scalar variable, you can omit the "{}".
 my %score = %$score_ref;
 </pre>
 
-<h4> Pass as an argument to a standard function </h4>
+<h4>Pass as an argument to a standard function</h4>
 
 <a href="/blog/20080210120265.html">keys function</a>, <a href="/blog/20100222126425.html">values function</a>, <a href="/blog/20080212120283. Hash-related functions such as the html">each function</a> take a hash as an argument. So be aware that if you want to pass a hash reference, you need to dereference it.
 
@@ -123,7 +123,7 @@ values %$hash;
 each %$hash;
 </pre>
 
-<h3> Extract the hash value from the hash reference </h3>
+<h3>Extract the hash value from the hash reference</h3>
 
 You can use the arrow operator "->" to retrieve the hash value from the hash reference.
 
@@ -147,7 +147,7 @@ $score{math} = 67;
 
 It's important to look closely, as it depends on whether it's a hash or a hash reference, with or without the arrow operator.
 
-<h4> Array reference </h4>
+<h4>Array reference</h4>
 
 Array references are as often used as hash references.
 

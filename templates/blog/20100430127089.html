@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Carp-Raise an exception from the caller's point of view </h2>
+<h2>Carp-Raise an exception from the caller's point of view</h2>
 
 
 
@@ -41,7 +41,7 @@ Keep the following points in mind when using die and croak.
   </li>
 </ul>
 
-<h3> What is the perspective of the module caller? </H3>
+<h3>What is the perspective of the module caller? </H3>
 
 I think the term module caller's point of view is a little difficult to understand, so I'll explain it using a sample.
 
@@ -96,7 +96,7 @@ Exception! At a.pl line 14
 
 You can use croak in this way to throw an exception from the caller's point of view.
 
-<h3> See full stack trace </h3>
+<h3>See full stack trace</h3>
 
 You may want to know all the information about where the function was called and where the exception occurred. In such cases, you can change the message added by croak to show the complete stack and race.
 
@@ -138,7 +138,7 @@ Module 2-If croak is executed here, the caller will be module 1.
 
 Even in such a case, you can get a complete stack trace by writing use Carp 'verbose'.
 
-<h3> FAQ about Carp module </h3>
+<h3>FAQ about Carp module</h3>
 
 Q. The Carp module also has a function called confess, should I use croak?
 A. confess can display the complete stack trace information, but croak seems to be preferred because the message is concise and you can switch to the complete stack trace information by specifying options.

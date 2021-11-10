@@ -1,4 +1,4 @@
-<h2> I want to write about a modern CGI script using Perl </h2>
+<h2>I want to write about a modern CGI script using Perl</h2>
 Someone said, "Is it CGI now?" The word CGI has a biased image, and I think the typical image is <b> "Perl = CGI = old" </b>. I think that these three are a set and are often talked about negatively.
 
 But if you think about it, PHP, a rental sharing server, runs on CGI. The extension is PHP, but the protocol is CGI. Many people may not understand that very much.
@@ -9,19 +9,19 @@ The downside of CGI is, in effect, performance, and I think that's the only down
 
 I think it's a nice feature of CGI scripts that it works just by renting a shared rental server and uploading it completely.
 
-<h3> Understand the meaning of the word CGI </h3>
+<h3>Understand the meaning of the word CGI</h3>
 
 If you are an engineer, you should understand the meaning of the word CGI. The old or Perl image is a falsely disseminated image in the first place, and CGI is a protocol for running web applications.
 
 Do something like "start the process, get the output and return it". Performance is slow because there is a process startup every time. As the scale of the application grows, it may be about 100 times different than the fast method that is not CGI.
 
-<h3> Perl's mainstream is PSGI or an embedded web server </h3>
+<h3>Perl's mainstream is PSGI or an embedded web server</h3>
 
 Until about five years ago, the mainstream of Perl was mod_perl, and in order to run Perl at high speed, it was common to use mod_perl. But this is hard to use. Of course, if you write it with mod_perl, it will not work as a CGI script.
 
 However, recently, a protocol called PSGI has appeared, and if a web framework supports the protocol called PSGI, it has become possible to execute Perl web applications at high speed. Another commonly used method is to run it on the web server of the web framework itself.
 
-<h3> Modern Perl web frameworks allow you to choose the protocol layer </h3>
+<h3>Modern Perl web frameworks allow you to choose the protocol layer</h3>
 
 Modern Perl web frameworks allow you to choose the protocol layer. In other words, it's easier to write an application to put on top and run it with PSGI, a built-in web server, or a CGI script.
 
@@ -35,7 +35,7 @@ Web App-PSGI (+ PSGI compatible web server)
 
 In other words, it has become easier to write a web application that allows the user to choose whether to create a web application and run it with CGI or a built-in web server. This is the last few years.
 
-<h3> Actual implementation </h3>
+<h3>Actual implementation</h3>
 
 I thought it would be possible in theory, but I don't know if it can be done without actually implementing it. So, I decided to make a web application that supports CGI and an embedded server, but I found that it was possible.
 
@@ -65,7 +65,7 @@ You can see how the implementation works by looking at the following repository.
   </li>
 </ul>
 
-<h3> Modern CGI can be written enough </h3>
+<h3>Modern CGI can be written enough</h3>
 
 The image of CGI is that it lacks functionality or is old, but if you look at the application above, you can see that modern web applications can also be written sufficiently. If you create it for your choice, you can combine the simplicity of CGI with the performance of your embedded web server.
 

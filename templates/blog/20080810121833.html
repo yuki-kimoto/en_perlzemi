@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Read and write using random access </h2>
+<h2>Read and write using random access</h2>
 
 
 This is a random access sample where you can pinpoint only the part you want to change, change it, and write it back. Random access is generally used for fixed-length binary files, but for convenience, we will use fixed-length text files here.
@@ -87,9 +87,9 @@ The following is the data to read. It is the data that three records (name 8 byt
 taro 00000023peko 00000018akira 00000023
 </pre>
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> (1) Preparing to use the symbols used in the seek function </h4>
+<h4>(1) Preparing to use the symbols used in the seek function</h4>
 
 <pre>
 use Fcntl qw(:seek);
@@ -97,7 +97,7 @@ use Fcntl qw(:seek);
 
 Import the symbols associated with the seek function from the Fcntl module. Three constants, SEEK_SET, SEEK_CUR and SEEK_END, are imported.
 
-<h4> (2) How to specify the position in a fixed-length file </h4>
+<h4>(2) How to specify the position in a fixed-length file</h4>
 
 <pre>
 # 16 bytes
@@ -122,7 +122,7 @@ my $pos_peko_age = 1 * $len_rec + $pos_age;
 
 For fixed-length files, you can specify the byte position directly. As mentioned above, it is convenient to define the length of one record, the position from the beginning of each data and the number of bytes, when specifying the position.
 
-<h4> (3) Use the seek function to move to the byte position you want to read. </h4>
+<h4>(3) Use the seek function to move to the byte position you want to read.</h4>
 <pre>
 # Move the position of the file pointer to the position of Peco's age
 
@@ -179,7 +179,7 @@ The value of the second argument is added based on the above position. SEEK_SET 
 
 If the seek function fails, it returns undef and sets $! To the error content.
 
-<h4> (4) Read the data with the read function </h4>
+<h4>(4) Read the data with the read function</h4>
 
 <pre>
 # Load peko's age into $age
@@ -203,7 +203,7 @@ The return value of the read function is the number of bytes actually read. In c
 
 If the number of bytes read is insufficient, error handling is performed for each read error.
 
-<h4> (5) Move to the write position with the seek function </h4>
+<h4>(5) Move to the write position with the seek function</h4>
 
 <pre>
 # When read, the file pointer advances by the amount read, so return it to the original position.
@@ -213,7 +213,7 @@ seek ($fh, $pos_peko_age, SEEK_SET)
 
 The read function advances the position of the file pointer by the amount read. To write to the same position again, call the seek function again.
 
-<h4> (6) Write to a file </h4>
+<h4>(6) Write to a file</h4>
 
 <pre>
 printf $fh "%08s", $age

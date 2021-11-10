@@ -9,14 +9,14 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Standard I/O and redirection </h2>
+<h2>Standard I/O and redirection</h2>
 
 
 Redirection is an OS function that switches the input source of standard input, standard output, and output destination of standard error output. Modern operating systems have basic redirection capabilities.
 
 There are three redirects to keep in mind: a redirect that switches the input source of standard input to a file, a redirect that switches the output destination of standard output to a file, and a redirect that switches the output destination of standard error output to a file.
 
-<h3> 1. Preparation </h3>
+<h3>1. Preparation</h3>
 
 I will make a sample to see the redirect movement.
 Reads one line from standard input and writes to standard output. It also outputs the character string "error\n" to the standard error output.
@@ -34,7 +34,7 @@ print $line; # Output to standard output
 print STDERR "error\n"; # Output to standard error output
 </pre>
 
-<h3> 2. Check normal movement </h3>
+<h3>2. Check normal movement</h3>
 
 <pre>
 perl sample_20080731.pl
@@ -55,7 +55,7 @@ error
 
 Is output. The standard input is the keyboard, and the standard output and standard error output are the display.
 
-<h3> 3. Switch the input source of standard input to a file </h3>
+<h3>3. Switch the input source of standard input to a file</h3>
 
 Since the input source is switched from the keyboard to the file, create a file called input_20080731.txt as a preparation and add the contents
 
@@ -78,7 +78,7 @@ error
 
 Is displayed on the display. The <symbol is the redirect symbol that switches the source of standard input to a file. If you write a program to receive the contents to be read from the standard input, the user can select the input source using redirection.
 
-<h3> 4. Switch the output destination of standard output to a file </h3>
+<h3>4. Switch the output destination of standard output to a file</h3>
 
 <pre>
 perl sample_20080731.pl > output_20080731.txt
@@ -92,7 +92,7 @@ aaa
 
 When you type, the content aaa is written in output_20080731.txt, and error is displayed on the display. The> symbol is a redirect symbol that switches the output destination of standard output to a file. If the program is written to output the output contents to the standard output, the user can select the output destination by using the redirect.
 
-<h3> 5. Switch the output destination of standard error output to a file </h3>
+<h3>5. Switch the output destination of standard error output to a file</h3>
 
 <pre>
 perl sample_20080731.pl 2> error_20080731.txt
@@ -106,7 +106,7 @@ aaa
 
 If you type, error_20080731.txt will show error and the display will show aaa. The 2> symbol is a redirect symbol that switches the output destination of standard error output to a file. Use this switch if you want to output the error to a file.
 
-<h3> 6. Use redirects in combination </h3>
+<h3>6. Use redirects in combination</h3>
 
 Redirects can be used in combination.
 

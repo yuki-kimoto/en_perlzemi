@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Think about the benefits of having no type in a variable </h2>
+<h2>Think about the benefits of having no type in a variable</h2>
 
 
 
@@ -14,7 +14,7 @@ For scripting languages such as PHP, Perl, Ruby, and Python, some people may thi
 
 But the lack of mold is really great. The lack of a mold frees you from a lot of hassle.
 
-<h3> Any type of value can be assigned </h3>
+<h3>Any type of value can be assigned</h3>
 
 First and foremost, you can assign a value of any type as long as the variable has no type. In other words, when you receive it, you don't have to be aware of what type of value you receive.
 
@@ -28,7 +28,7 @@ my $ua = LWP::UserAgent->new;
 
 Whether it's a string, a number, an array, an associative array, or an object, you don't have to be aware of it.
 
-<h3> The amount of description becomes very short </h3>
+<h3>The amount of description becomes very short</h3>
 
 The lack of variable types makes the amount of description very short.
 <pre>
@@ -43,7 +43,7 @@ LWP::UserAgent ua = new LWP::UserAgent ();
 
 Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all. Type inference also slows down the time it takes to compile source code. When the source code becomes large, you will not be able to write it quickly and get the execution result quickly. It also makes it a little more difficult to implement the method auto-completion feature in an integrated development environment.
 
-<h3> Variables are resistant to change if they have no type </h3>
+<h3>Variables are resistant to change if they have no type</h3>
 
 Untyped variables are more resistant to source code changes. For example, even if the return type on the right side changes, there is no need to change the source code on the receiving side.
 
@@ -52,7 +52,7 @@ Untyped variables are more resistant to source code changes. For example, even i
 my $ua = $c->client;
 </pre>
 
-<h3> No need to overload functions </h3>
+<h3>No need to overload functions</h3>
 
 Languages that have variable types have different types, but if you want to perform the same processing, you need to use a function called overloading. If you don't have a variable type, you don't need the overload function, you just have to branch with an if statement, which is very easy.
 
@@ -71,19 +71,19 @@ sub sum {
 
 The lack of types in variables has the great advantage of reducing function duplication.
 
-<h3> No need to implement an interface when you want to receive multiple types </h3>
+<h3>No need to implement an interface when you want to receive multiple types</h3>
 
 The big effort in Java is to learn and implement how the interface works. If you want to create a variable that wants to accept multiple types, you'll first implement the interface.
 
 However, if the variable has no type, there is no need for an interface mechanism. The lack of types in variables makes class implementations very simple with no duplication.
 
-<h3> No need for features like C ++ templates </h3>
+<h3>No need for features like C ++ templates</h3>
 
 Consider the case where the function argument receives an array. Then, suppose that the type of the variable contained in the array is not fixed. Also consider if you don't know if the array itself is a regular array, a dynamic array, or a special list. When a variable has a type, you have to think about many of these things individually, implement the interface well, or use complex, hard-to-debug features like C ++ templates.
 
 But if a variable doesn't have a type, you won't face this problem in the first place. After receiving it in the function, you just have to determine the type with the if statement if necessary. Therefore, the lack of types in variables makes it easy to write function and method implementations without duplication.
 
-<h3> Answer the criticism that you don't know what type of value is assigned to a variable if it doesn't have a type. </H3>
+<h3>Answer the criticism that you don't know what type of value is assigned to a variable if it doesn't have a type. </H3>
 
 I think there is a criticism that if a variable has no type, it is not possible to know what type of value is assigned. It's a readability issue. But I've never felt that untyped languages aren't readable. I think that's because it's read differently than when reading a static language in the first place.
 When reading a scripting language, it's usually easy to see what values it contains by reading contextually. For example, suppose a variable is used as follows.
@@ -115,7 +115,7 @@ What is $ua ? You can find out what the ua method of the Client class is returni
 
 If you read it like this and get used to reading the scripting language, you shouldn't have any problems.
 
-<h3> The advantage of having no type in a variable is that there is less duplication and the source code is applied </h3>
+<h3>The advantage of having no type in a variable is that there is less duplication and the source code is applied</h3>
 
 The advantage of having no type in a variable is that the source code has less duplication. The fact that you don't have to be aware of the type of a variable means that you don't have to be aware of the type when you use the classes, functions, and methods that use it. This is very useful when writing maintainable programs with few duplicates.
 
@@ -123,7 +123,7 @@ Scripting languages are said to be less maintainable, but I don't think there is
 
 It's sometimes commented that the untyped language is over, and it's time for a hybrid language, but I don't think that person understands the benefits of having no type. Maybe that person only understands how it looks in the source code.
 
-<h3> Is there a disadvantage that variables have no type? </H3>
+<h3>Is there a disadvantage that variables have no type? </H3>
 
 Performance is one of them. Numerical operations can be overwhelmingly faster if the value type is known in advance. If you know that it is an integer, you can calculate on that assumption, so the performance of numerical calculation is overwhelmingly better in static languages.
 
@@ -131,7 +131,7 @@ But when performance isn't an issue, I think it's best to use a scripting langua
 
 The other is that you can't rely on the integrated development environment because you can't implement method and function name completion well. When writing a scripting language, I think that development efficiency is good if you memorize a lot and do not rely on the integrated development environment.
 
-<h3> Reply to Hatena Bookmark Comment </h3>
+<h3>Reply to Hatena Bookmark Comment</h3>
 
 <blockquote>
 Disadvantages of not having a type: If there is a type, he can't find bugs that can be found statically by a computer, so I think he has to do it.
@@ -239,7 +239,7 @@ This is the level that Perl users will stab from their backs
 
 There is no content.
 
-<h3> Addendum </h3>
+<h3>Addendum</h3>
 The following was misunderstood.
 <blockquote>
 Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all.

@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Destructor - DESTROY </h2>
+<h2>Destructor - DESTROY</h2>
 
 
 
@@ -24,7 +24,7 @@ sub DESTROY {
 }
 </pre>
 
-<h3> Close the file handle with a destructor </h3>
+<h3>Close the file handle with a destructor</h3>
 
 For example, suppose you have a File class that represents a file. The File class stores the file handle opened by the <a href="/blog/20080718121643.html">open function</a> in the fh field.
 
@@ -66,6 +66,6 @@ Reference: <a href="/blog/20161030147778.html">Object Oriented</a>, <a href="/bl
 
 When I run this script, it says "DESTROY", which I put in to make sure the destructor is running. The destructor is running and the file handle is closed.
 
-<h3> Main uses of destructors </h3>
+<h3>Main uses of destructors</h3>
 
 Destructors are often used when closing external resources such as files and databases. Since Perl has a clear timing for the object to be released, you can write the resource closing process in the destructor.

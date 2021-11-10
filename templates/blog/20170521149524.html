@@ -6,13 +6,13 @@
     <span itemprop = "name">here </span></a>
   </li>
 </ol>
-<h2> Iterative processing using for/while statement </h2>
+<h2>Iterative processing using for/while statement</h2>
 
 
 
 Learn about Perl's iterative syntax. Learning the iterative syntax greatly expands the range of programs.
 
-<h3> Basics of for statement </h3>
+<h3>Basics of for statement</h3>
 
 First, I will explain the iterative syntax <b> for statement </b>. Take a look at the following sample first. This is a program that outputs a number from 0 to 9 on the screen.
 
@@ -45,7 +45,7 @@ for (Initialization of loop variable; Condition to loop; Update of loop variable
 }
 </pre>
 
-<h4> 1. Initialization of loop variables </h4>
+<h4>1. Initialization of loop variables</h4>
 
 The first part is the initialization of the loop variable. This part determines what value the loop variable starts with first. Think of a loop variable as a variable used within a loop.
 
@@ -75,7 +75,7 @@ Five
 9
 </pre>
 
-<h4> 2. Looping conditions </h4>
+<h4>2. Looping conditions</h4>
 
 Now let's look at the conditions for looping.
 
@@ -113,7 +113,7 @@ Five
 6
 </pre>
 
-<h4> 3. Update loop variables </h4>
+<h4>3. Update loop variables</h4>
 
 Finally, I will explain the update part of the loop variable.
 
@@ -155,11 +155,11 @@ Four
 
 Make sure you are looping from "0" to "2" and less than "10".
 
-<h3> For statement sample program </h3>
+<h3>For statement sample program</h3>
 
 I think that the iterative syntax will be easier to understand if you actually run some samples.
 
-<h4> Output from "9" to "0" for the first time </h4>
+<h4>Output from "9" to "0" for the first time</h4>
 
 Next, let's look at a program that outputs from "9" to "0" for the first time.
 
@@ -186,7 +186,7 @@ Four
 0
 </pre>
 
-<h4> Output from "9" to "1" for the first time by skipping two </h4>
+<h4>Output from "9" to "1" for the first time by skipping two</h4>
 
 Next, I will skip two and output from "9" to "1".
 
@@ -208,7 +208,7 @@ Five
 1
 </pre>
 
-<h4> Combining for and if statements </h4>
+<h4>Combining for and if statements</h4>
 
 Let's combine the for statement and the if statement. Programming will improve when you can combine for and if statements.
 
@@ -249,7 +249,7 @@ Combining if and for statements gives you better control over your program. Plea
   </li>
 </ul>
 
-<h3> while statement </h3>
+<h3>while statement</h3>
 
 Next, let's learn about <a href="/blog/20100123126425.html">while statement</a>. The while statement is a syntax for looping like the for statement.
 
@@ -312,7 +312,7 @@ for (my $i = 0; $i < 10; $i++) {
 
 The for statement is simpler to write. If you need a loop variable, the for statement is easier to write.
 
-<h3> foreach statement </h3>
+<h3>foreach statement</h3>
 
 The <b> foreach statement </b> can be used to process the elements of the <a href="/blog/20161012147627.html">array</a> in sequence. Take a look at the following sample program.
 
@@ -332,7 +332,7 @@ Dog
 Mouse
 </pre>
 
-<h4> Same as for statement and foreach statement </h4>
+<h4>Same as for statement and foreach statement</h4>
 
 In Perl, the foreach statement is an alias for the for statement, and you can also write for where you should write foreach.
 
@@ -346,7 +346,7 @@ for my $animal (@animals) {
 
 Looking at how to write Perl these days, I think I tend to always use for rather than foreach. I think it feels like it settles down on the shorter side.
 
-<h4> Use with range operator </h4>It can also be used with <a href="/blog/20170520149523.html">range operator</a>.
+<h4>Use with range operator</h4>It can also be used with <a href="/blog/20170520149523.html">range operator</a>.
 
 <pre>
 for my $num (3 .. 6) {
@@ -354,7 +354,7 @@ for my $num (3 .. 6) {
 }
 </pre>
 
-<h3> next statement </h3>
+<h3>next statement</h3>
 
 You can use the <a href="/blog/20170513149580.html">next statement</a> to jump to the beginning of the next iteration. Take a look at the following sample program.
 
@@ -378,7 +378,7 @@ The elements of the array (3, 5, 6, 7) are output, but only when "$num" is "5", 
 
 Only when it is "5", the "print function" is not executed because it jumps to the beginning of the loop.
 
-<h3> last statement </h3>
+<h3>last statement</h3>
 
 You can use the <a href="/blog/20170527149589.html">last statement</a> to end the iteration and escape the for statement. Take a look at the following sample program.
 
@@ -401,11 +401,11 @@ Five
 
 I introduced an example of combining with for here, but next and for can also be used in while statements.
 
-<h3> Use for, while, and foreach properly </h3>
+<h3>Use for, while, and foreach properly</h3>
 
 I explained the syntax of the three iterations, but you may feel that "how do you actually use them properly?" Therefore, I will write a guideline for proper use.
 
-<h4> First, think about whether you can write with foreach </h4>
+<h4>First, think about whether you can write with foreach</h4>
 
 First of all, think about whether you can write using foreach. Foreach is the easiest way to write a loop, so if foreach is enough, use foreach. It's common to process the elements of an array in sequence, but you can write this in foreach.
 
@@ -429,7 +429,7 @@ for my $animal (@animals) {
 
 First, consider whether you can write this way.
 
-<h4> When an element number is required, a normal for statement </h4>
+<h4>When an element number is required, a normal for statement</h4>
 
 Next, suppose you may need the element number. In that case, use the normal for statement. The following sample program outputs the element numbers and array elements. Note that you can get the length of the array by evaluating "@animals" in a scalar context.
 
@@ -450,7 +450,7 @@ The output result is as follows.
 2: Mouse
 </pre>
 
-<h4> While statement for repetition that does not increase the element number </h4>
+<h4>While statement for repetition that does not increase the element number</h4>
 
 Finally, use a while statement if the repetition does not increase the element number. Here are some common samples.
 
@@ -516,7 +516,7 @@ while (1) {
 }
 </pre>
 
-<h3> Multidimensional data structures and iterations </h3>
+<h3>Multidimensional data structures and iterations</h3>
 
 Finally, I will write a multidimensional data structure and a repetitive sample program. In Perl, we often use a data structure called an array of hashes, so I'll write a sample of it.
 
@@ -552,9 +552,9 @@ Here, "[]", "{}", "@$students", and "$student->{name}" that have never been expl
   </li>
 </ul>
 
-<h3> Functions for writing loops easily </h3>
+<h3>Functions for writing loops easily</h3>
 
-<h4> grep function </h4>
+<h4>grep function</h4>
 
 Perl has a <a href="/blog/20100119126425.html">grep function</a> that allows you to retrieve only matching elements of an array.
 
@@ -573,7 +573,7 @@ for my $value (@$values) {
 }
 </pre>
 
-<h4> map function </h4>
+<h4>map function</h4>
 
 Perl has a <a href="/blog/20100118126425.html">map function</a> that makes it easy to write transformations of all array elements.
 
@@ -591,7 +591,7 @@ for my $value1 (@values1) {
 }
 </pre>
 
-<h3> Postfix for-for modifier </h3>
+<h3>Postfix for-for modifier</h3>
 
 A special for syntax is the for modifier, which allows you to put a for after a statement. If you can write a for statement in one line, this writing method is also simple.
 

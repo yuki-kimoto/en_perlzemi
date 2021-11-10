@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> XML::Simple - Easy to parse XML </h2>
+<h2>XML::Simple - Easy to parse XML</h2>
 
 
 
@@ -81,7 +81,7 @@ $conf = {
 };
 </pre>
 
-<h3> Handling Japanese in XML::Simple </h3>
+<h3>Handling Japanese in XML::Simple</h3>
 
 When a character string containing Japanese is read by XMLin, the character code specified by the encoding attribute of the XML declaration is converted to the internal character string. Note that it is not a byte string.
 
@@ -101,7 +101,7 @@ my $conf = $xml->XMLin('japanese.xml');
 print encode('UTF-8', $conf->{name});
 </pre>
 
-<h3> XML::Simple options </h3>
+<h3>XML::Simple options</h3>
 
 XML::Simple allows you to specify options in the constructor arguments.
 
@@ -142,13 +142,13 @@ The following two options may be used frequently.
 
 </table>
 
-<h3> XML::LibXML - Standard and fast XML parsing </h3>
+<h3>XML::LibXML - Standard and fast XML parsing</h3>
 
 XML::Simple is not suitable for parsing complex XML. If you want to parse XML in a standard and fast way, you can choose the XML::LibXML module. XML::LibXML can read XML as a DOM tree. You can also access each element of XML using a method called XPath.
 
 This method requires more coding than XML::Simple and is technically difficult, but it is the best method for some requirements.
 
-<h4> What to do if the XML::LibXML module cannot be installed on CentOS </h4>
+<h4>What to do if the XML::LibXML module cannot be installed on CentOS</h4>
 
 If the <strong> XML::LibXML </strong> module <strong> installation fails </strong> on CentOS, the <b> libxml2-devel </b> package is missing and you should install it.
 

@@ -9,13 +9,13 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> wait function-waits for the termination of the child process </h2>
+<h2>wait function-waits for the termination of the child process</h2>
 
 
 
 If you branch with fork, you don't know which of the parent and child processes will terminate first. This time, I will explain how the parent process waits for the child process to finish.
 
-<h3> 1. Wait for the end of the child process with wait </h3>
+<h3>1. Wait for the end of the child process with wait</h3>
 
 Use the <b> wait </b> function to wait for the child process to terminate. The wait function <b> waits until one child process terminates </b>. The return value is <b> the process ID of the terminated child process </b>. If the child process was automatically reclaimed for any reason, -1 will be returned.
 
@@ -54,7 +54,7 @@ Parent process (child process ID: 25870)
 
 It will be. You can see that the parent process is waiting for the child process.
 
-<h3> 2. Termination of child process and deletion from process table </h3>
+<h3>2. Termination of child process and deletion from process table</h3>
 
 When a child process terminates, it is <b> not immediately deleted from the process table </b>. (The process table is used by the OS to manage the process.)
 
@@ -62,7 +62,7 @@ Wait for the child process to be removed from the process table after it termina
 
 Calling wait removes the terminated child process from the process table. The child process is also deleted from the process table when the parent process terminates.
 
-<h3> 3. Child process exit status </h3>
+<h3>3. Child process exit status</h3>
 
 When you call wait
 
@@ -72,7 +72,7 @@ $?
 
 Multiple data including the exit status of the child process are stored in the special variable called. Next time, I will explain how to get the exit status of the child process stored in $?.
 
-<h3> 4. What wait really does </h3>
+<h3>4. What wait really does</h3>
 
 In fact, <b> wait is not waiting for the child process to terminate </b>. Waiting for the child process to <b> generate a CHLD signal </b>. The CHLD signal occurs not only when the child process terminates, but also when the child process is stopped or restarted.
 

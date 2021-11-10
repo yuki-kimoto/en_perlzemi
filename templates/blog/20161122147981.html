@@ -10,24 +10,24 @@
     here
   </li>
 </ol>
-<h2> Cooperation with MySQL </h2>
+<h2>Cooperation with MySQL</h2>
 
 
 
 
 I will explain how to use "MySQL" in Perl.
 
-<h3> Explanation of DBI and DBI </h3>
+<h3>Explanation of DBI and DBI</h3>
 
 First, I will explain about DBI and DBI as basic knowledge about dealing with MySQL. When connecting to a database programmatically, it is common to use something called DBI. Also, the actual interaction with the RDBMS is done through the DBD.
 
-<h4> Common API DBI that can use various RDBMS </h4>
+<h4>Common API DBI that can use various RDBMS</h4>
 
 DBI is an API that does not depend on RDBMS (relational database management system). (DBI stands for Database Interface)
 
 RDBMS includes MySQL, Oracle, DB2, Postgre SQL, etc., but since they are created by different people, their usage is slightly different. DBI allows you to connect and request SQL with a common description for different beta bases.
 
-<h4> Functions for connecting to the database DBI </h4>
+<h4>Functions for connecting to the database DBI</h4>
 
 There is a module with the same name in Perl, so install it.
 
@@ -35,7 +35,7 @@ There is a module with the same name in Perl, so install it.
 cpan DBI
 </pre>
 
-<h4> Driver DBD that actually interacts with the RDBMS </h4>
+<h4>Driver DBD that actually interacts with the RDBMS</h4>
 
 DBI provides functions, but in reality DBD interacts with the database internally. There are various types of DBD, such as for MySQL, PostgreSQL, Oracle, and SQLite.
 
@@ -45,7 +45,7 @@ Install the DBD for MySQL. MySQL must be installed.
 cpan DBD::mysql
 </pre>
 
-<h4> Image of interaction between DBI, DBD and database server </h4>
+<h4>Image of interaction between DBI, DBD and database server</h4>
 
 DBI does not change when connecting to any database. This is because DBI is a collection of functions for connections that are designed to be database independent. The DBD actually exchanges data with the database.
 
@@ -63,7 +63,7 @@ DBI |
 | - --- | | - -- -- -- -- | | - -- -- -- -- |
 </pre>
 
-<h3> Connect to MySQL server </h3>
+<h3>Connect to MySQL server</h3>
 
 Use the <strong> connect </strong> method to connect to the MySQL server.
 
@@ -95,11 +95,11 @@ my $dbh = DBI->connect(
 );
 </pre>
 
-<h4> Database handle </h4>
+<h4>Database handle</h4>
 The connect method returns a database handle used for database operations as a return value.
 Use the database handle to interact with the MySQL server.
 
-<h4> Error handling </h4>
+<h4>Error handling</h4>
 If the database name is incorrect, the password is incorrect, or the database cannot be connected for some reason, undef will be returned in the return value. The content of the error at that time is
 
 <pre>
@@ -119,7 +119,7 @@ my $dbh = DBI->connect(
 ) or die "cannot connect to MySQL: $DBI::errstr";
 </pre>
 
-<h3> Convert current time to MySQL datetime type </h3>
+<h3>Convert current time to MySQL datetime type</h3>
 
 Use the localtime and strftime functions to convert the current time to a MySQL datetime type.
 
@@ -133,7 +133,7 @@ my $current_datetime = strftime("%Y-%m-%d%H:%M:%S", localtime);
 my $current_date = strftime("%Y-%m-%d", localtime);
 </pre>
 
-<h3> Extract "database definition difference" with "MySQL::Diff" module </h3>
+<h3>Extract "database definition difference" with "MySQL::Diff" module</h3>
 
 When I was looking for a tool to automatically generate commands that eliminate the differences from the differences in the MySQL database, I found the <a href="/blog/20111101132239.html">MySQL::Diff</a> module. This module comes with a command line tool called mysqldiff, so it's usually best to use it.
 
@@ -144,7 +144,7 @@ The documentation doesn't seem to explain the options, so you can check with the
 mysqldiff - help
 </pre>
 
-<h3> You need mysql-devel to install DBD::mysql </h3>
+<h3>You need mysql-devel to install DBD::mysql</h3>
 
 If you want to connect to MySQL from DBI with Perl, you need a module called <strong> DBD::mysql </strong>. This module depends on the C language library and will fail to install on its own. .. For example, if you have a Red Hat OS such as Cent OS, you need to install the package <strong> mysql-devel </strong>.
 

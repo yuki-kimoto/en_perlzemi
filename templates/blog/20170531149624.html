@@ -10,17 +10,17 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> The latest version of Perl, Perl 5.26 released. Indentable Here Documents, Unicode 9.0, Long Key Hash Performance Improvements </h2>
+<h2>The latest version of Perl, Perl 5.26 released. Indentable Here Documents, Unicode 9.0, Long Key Hash Performance Improvements</h2>
 
 
 
 Perl 5.26 was released on May 30, 2017! Perl was introduced in 1987, so it's finally 30 years!
 
-<h3> Addition of functions </h3>
+<h3>Addition of functions</h3>
 
 Some feature additions in Perl 5.26. I will pick up something that seems convenient.
 
-<h4> Indentable here document </h4>
+<h4>Indentable here document</h4>
 
 Indentable <a href="/blog/20080619121405.html">Here Document</a> syntax has been added. This seems convenient.
 
@@ -40,11 +40,11 @@ World
 
 It would be even better if you could color the source code well in the editor.
 
-<h4> Unicode 9.0 support </h4>
+<h4>Unicode 9.0 support</h4>
 
 Unicode 9.0 is supported. It can handle emoticons and other characters added in Unicode 9.0.
 
-<h4> Formal functions of lexical subroutines </h4>
+<h4>Formal functions of lexical subroutines</h4>
 
 The functionality of the lexical <a href="/blog/20101130129876.html">subroutine</a> is now official.
 
@@ -59,7 +59,7 @@ The functionality of the lexical <a href="/blog/20101130129876.html">subroutine<
 }
 </pre>
 
-<h4> Regular expression named captures are easier to understand </h4>
+<h4>Regular expression named captures are easier to understand</h4>
 
 The use of named captures for <a href="/blog/20100827127859.html">regular expressions</a> has become easier to understand. You can retrieve the named capture from the following hash variables.
 
@@ -76,22 +76,22 @@ if ($a =~ m/(? <name>. +)$/) {
 
 It was a little confusing to refer to with "$+ {name}", so I think this is a good addition.
 
-<h3> Performance improvements </h3>
+<h3>Performance improvements</h3>
 
 Pick up on performance improvements in Perl 5.26.
 
-<h4> Hash performance improvement in 64-bit environment </h4>
+<h4>Hash performance improvement in 64-bit environment</h4>
 
 Now hybrid <a href="/blog/20161013147635.html">hash</a> for better balance.
 
 Use the "At A Time Hard" algorithm for short keys of 16 bytes or less and the "Siphash 1-3" algorithm for long keys.
 Very long keys will significantly improve performance, short keys will have a small improvement.
 
-<h4> Faster line reading from file </h4>
+<h4>Faster line reading from file</h4>
 
 Improved performance for readline, which reads files from lines, and the "<>" operator. The implementation of the newline character search method is now faster.
 
-<h4> Faster reference assignment </h4>
+<h4>Faster reference assignment</h4>
 
 Assigning a reference to another variable is faster.
 
@@ -100,7 +100,7 @@ my $obj1 = SomeModule->new;
 my $obj2 = $obj1;
 </pre>
 
-<h4> Improved performance of split function </h4>
+<h4>Improved performance of split function</h4>
 
 The <a href="/blog/20080301120434.html">split function</a> is slightly faster.
 
@@ -108,7 +108,7 @@ The <a href="/blog/20080301120434.html">split function</a> is slightly faster.
 my @elements = split ...;
 </pre>
 
-<h4> Improved list assignment performance </h4>
+<h4>Improved list assignment performance</h4>
 
 <a href="/blog/20100308126967.html">List</a> Assignment performance is about 3x faster.
 
@@ -116,11 +116,11 @@ my @elements = split ...;
 my @elements = (1,2,3);
 </pre>
 
-<h3> Backwards incompatible changes </h3>
+<h3>Backwards incompatible changes</h3>
 
 This is a backwards incompatible change.
 
-<h4> The "." That was added by default at the end of @INC has been removed </h4>
+<h4>The "." That was added by default at the end of @INC has been removed</h4>
 
 In Perl 5.26, this is the most impactful and incompatible change. Changes have been made to remove the current directory in the module's loading path, which poses a security risk.
 
@@ -132,7 +132,7 @@ Please see the following article for details.
   </li>
 </ul>
 
-<h4> Unescaped "{" in regular expressions is not allowed </h4>
+<h4>Unescaped "{" in regular expressions is not allowed</h4>
 
 It has been deprecated since 5.16, but is no longer allowed in Perl 5.26.
 
@@ -141,7 +141,7 @@ It has been deprecated since 5.16, but is no longer allowed in Perl 5.26.
 /\{/;
 </pre>
 
-<h4> ${^ENCODING} feature removed </h4>
+<h4>${^ENCODING} feature removed</h4>
 
 The encoding pragma was deprecated in Perl 5.18, but with this release the encoding pragma no longer works out of the box. This is because the ${^ENCODING} variable, which was internally connected to the encoding pragma, has been removed.
 
@@ -153,7 +153,7 @@ If you really want to continue using the encoding pragma, you can deal with it b
 use encoding "euc-jp", Filter => 1;
 </pre>
 
-<h3> Impressions </h3>
+<h3>Impressions</h3>
 
 Changes that make Perl easier to understand and performance improvements are welcome. It's also great to be ready for the new Unicode soon.
 

@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> How to load C library from XS file </h2>
+<h2>How to load C library from XS file</h2>
 
 
 
 I will explain how to read the C language library from the XS file.
 
-<h3> Create a module with h2xs </h3>
+<h3>Create a module with h2xs</h3>
 
 First, create a module for XS with <a href="/blog/20170209150055.html">h2xs</a>.
 
@@ -35,7 +35,7 @@ README
 SomeModule.xs
 t/</pre>
 
-<h3> Creating a C language library </h3>
+<h3>Creating a C language library</h3>
 
 First, let's create a C language library. Create a header file and a source file.
 
@@ -61,7 +61,7 @@ void mylib_print() {
 
 Save the header and source files and place them in the same directory where the XS files are located. Keeping it in the same directory is the point of view because there are few later settings.
 
-<h3> XS file description </h3>
+<h3>XS file description</h3>
 
 Let's write an XS file. I am calling mylib_print.
 
@@ -84,7 +84,7 @@ foo (...)
 }
 </pre>
 
-<h3> Modify Makefile.PL </h3>
+<h3>Modify Makefile.PL</h3>
 
 Next, let's modify <a href="/blog/20150725143778.html">Makefile.PL</a> a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$(O_FILES)", all C language source files in the current directory will be compiled.
 <pre>
@@ -104,7 +104,7 @@ WriteMakefile (
 );
 </pre>
 
-<h3> Test script </h3>
+<h3>Test script</h3>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -117,7 +117,7 @@ use SomeModule;
 SomeModule::foo ();
 </pre>
 
-<h3> Compile and run </h3>
+<h3>Compile and run</h3>
 
 Let's compile and run it.
 

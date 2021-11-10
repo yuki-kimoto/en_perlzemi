@@ -1,4 +1,4 @@
-<h2> Documentation for Validator::Custom 1.0 and earlier </h2>
+<h2>Documentation for Validator::Custom 1.0 and earlier</h2>
 
 <a href="/blog/20151212144988.html">This page is a document prior to Validator::Custom 1.0. The latest version of the documentation is here.</a>
 
@@ -73,7 +73,7 @@ my $rule = [
 
 This document will be rewritten to the new grammar, so please refer to the official grammar for the old grammar.
 
-<h3> Install Validator::Custom </h3>
+<h3>Install Validator::Custom</h3>
 
 Use the cpan command to <strong> install </strong> <strong> Validator::Custom </strong>.
 
@@ -83,7 +83,7 @@ cpan Validator::Custom
 
 It can be installed on both Windows and Unix-like operating systems. You can't install without root privileges with the cpan command, so if you want to install in your local environment, use a tool such as cpanm.
 
-<h3> Validator::Create Custom Object </h3>
+<h3>Validator::Create Custom Object</h3>
 
 Use the <strong> new </strong> method to create a Validator::Custom object.
 
@@ -94,7 +94,7 @@ my $vc = Validator::Custom->new;
 
 Use this object for validation.
 
-<h3> Basics of validation </h3>
+<h3>Basics of validation</h3>
 
 I will explain the basics of validation. See the source code below.
 
@@ -117,7 +117,7 @@ if ($vresult->is_ok) {print "OK\n"}
 else {print "Not OK\n"}
 </pre>
 
-<h4> Data </h4>
+<h4>Data</h4>
 
 The data to be validated must be a hash reference.
 
@@ -126,7 +126,7 @@ The data to be validated must be a hash reference.
 my $data = {price => 1200};
 </pre>
 
-<h4> Rules </h4>
+<h4>Rules</h4>
 
 Next, create a rule for validation.
 
@@ -166,7 +166,7 @@ This time we only check one key, but if you want to check multiple values, you c
 $rule->require('name')->check('string');
 </pre>
 
-<h4> Validation </h4>
+<h4>Validation</h4>
 
 Use the validate method for validation.
 
@@ -177,7 +177,7 @@ my $vresult = $vc->validate($data, $rule);
 
 The return value is a Validator::Custom::Result object.
 
-<h4> Confirmation of results </h4>
+<h4>Confirmation of results</h4>
 
 You can check the result using the Validator::Custom::Result object.
 
@@ -187,7 +187,7 @@ my $ok = $vresult->is_ok;
 
 You can check if the validation result is correct with the is_ok method.
 
-<h3> Validation of multiple values </h3>
+<h3>Validation of multiple values</h3>
 
 Let's create a rule for validating multiple values.
 
@@ -209,7 +209,7 @@ $rule->require('price')->check('int');
 $rule->require('title')->check('ascii');
 </pre>
 
-<h3> Register user-defined constraints - register_constraint </h3>
+<h3>Register user-defined constraints - register_constraint</h3>
 
 I was able to express various constraints using the constraints provided by default, and and or conditions. In addition to this, Validator::Custom allows you to create new user-defined constraints.
 
@@ -266,7 +266,7 @@ $rule->require('admin_email')->check('email');
 my $data = {admin_email =>'foo@my.com'};
 </pre>
 
-<h3> Register constraint function </h3>
+<h3>Register constraint function</h3>
 
 Validator::Custom makes it easy to register constraint functions for validation. Use the <strong> register_constraint </strong> method to register the constraint function.
 
@@ -299,7 +299,7 @@ $vc->register_constraint(
 );
 </pre>
 
-<h3> Item does not have to exist require => 0/Validator::Custom Reference </h3>
+<h3>Item does not have to exist require => 0/Validator::Custom Reference</h3>
 
 If the <strong> item may or may not exist </strong>, use the <b> optional </b> method instead of the <strong> require </strong> method.
 
@@ -310,7 +310,7 @@ $rule->optional('name')->check('int');
 
 The above rule states that name may or may not exist, and if it does, it must be an int.
 
-<h3> At least one item contains a value </h3>
+<h3>At least one item contains a value</h3>
 
 You may want to enter multiple text boxes and check that at least one of them contains a value. In such a case, a little ingenuity is required. It's a good idea to merge the values in the textbox and then check that it's not empty.
 
@@ -328,7 +328,7 @@ $rule = [
 my $result = $vc->validate($data, $rule);
 </pre>
 
-<h3> and rules using conditions </h3>
+<h3>and rules using conditions</h3>
 
 <a href="/blog/20151212144988.html">This page is a document about Version 0.xx. The latest version of the documentation is here.</a>
 
@@ -348,7 +348,7 @@ $rule->require('price')
   ->check({less_than => 2000});
 </pre>
 
-<h3> or rules using conditions </h3>
+<h3>or rules using conditions</h3>
 
 When performing validation, you may want to state whether one condition is met. For example, you may want to write a condition that is blank or an integer.
 
@@ -363,7 +363,7 @@ my $rule = $vc->create_rule;
 $rule->require('price')->check_or('blank', 'int');
 </pre>
 
-<h4> and use condition and or condition at the same time </h4>
+<h4>and use condition and or condition at the same time</h4>
 
 You can also use the and condition and the or condition at the same time.
 
@@ -373,7 +373,7 @@ $rule->require('price')
   ->check({greater_than => 1000});
 </pre>
 
-<h3> Specifying arguments in constraints </h3>
+<h3>Specifying arguments in constraints</h3>
 
 Some of the constraints provided by default can take arguments. <b> equal_to </b>, <b> between </b>, etc.
 
@@ -394,7 +394,7 @@ my $data = {price => 1000, age => 19};
 
 The argument can be a string, a number, an array reference, or a hash reference, as long as it is a scalar value.
 
-<h3> to_array (filter) - convert array to reference </h3>
+<h3>to_array (filter) - convert array to reference</h3>
 
 If you want to convert the value to an array reference, use the <b> to_array </b> filter.
 
@@ -414,7 +414,7 @@ to_array converts data that is not an array reference to an array reference. If 
 
 This is useful for converting to an array reference when you don't know if one value will come or multiple values will come, such as checkboxes.
 
-<h3> in_array (constraint function)-Check if the value is contained in the array value </h3>
+<h3>in_array (constraint function)-Check if the value is contained in the array value</h3>
 
 When checking an HTML form, you may not want to allow values other than a certain value. In such cases, use the <strong> in_array </strong> constraint function.
 
@@ -433,7 +433,7 @@ The argument of the in_array constraint function specifies an array reference th
 {'in_array' => [qw/sushi bread apple /]}
 </pre>
 
-<h4> Apply to multiple values such as checkboxes </h4>
+<h4>Apply to multiple values such as checkboxes</h4>
 
 There are multiple check box values. If you want all of the multiple values to be included in a certain value, write as follows.
 
@@ -453,7 +453,7 @@ By using the <b> each </b> method, you can verify each value of the element.
 
 It's a little confusing, but it's useful to remember.
 
-<h4> Application </h4>
+<h4>Application</h4>
 
 For example, a rule that at least one is checked and all its values are 001 or 002 is applied as follows:
 
@@ -468,7 +468,7 @@ $rule->require('food')
 
 Validator::Custom makes it easy to validate HTML forms.
 
-<h3> selected_at_least (constraint function)-at least one is selected </h3>
+<h3>selected_at_least (constraint function)-at least one is selected</h3>
 
 In an HTML form, you may want to find out if at least one of the checkboxes is selected. In such cases, use the <b> selected_at_least </b> constraint function.
 
@@ -483,7 +483,7 @@ $rule->require('hobby')->check({selected_at_least => 1});
 
 The selected_at_least constraint function can specify at least how many must be selected in the argument. In this sample, 1 is specified, which means at least one.
 
-<h3> Use the constraint function registered in the constraint function </h3>
+<h3>Use the constraint function registered in the constraint function</h3>
 
 When writing constraint functions for validation with Validator::Custom, you may want to use low-level constraint functions.
 
@@ -514,7 +514,7 @@ The constraints attribute returns a hash reference that includes the constraint 
 my $is_int = $vc->constraints->{'int'}->($value);
 </pre>
 
-<h3> uint(constraint function) - Non-negative integer </h3>
+<h3>uint(constraint function) - Non-negative integer</h3>
 
 You may want to allow only non-negative integers in your HTML form. In such cases, use the <b> uint </b> constraint function.
 
@@ -531,7 +531,7 @@ my $is_valid = $vc->validate($data, $rule);
 
 Internally, the regular expression "^[0-9]+$" is used.
 
-<h3> duplication (constraint function) - Check that email addresses match </h3>
+<h3>duplication (constraint function) - Check that email addresses match</h3>
 
 In the HTML form, you may want to have two passwords entered and check that the passwords are the same. In such cases, use the <b> duplication </b> constraint function.
 
@@ -547,7 +547,7 @@ $rule->require(['mail1', 'mail2'])->name('mail_check')
 
 Note that validation will fail if neither of the two values is undefined.
 
-<h3> length(constraint function) - Check string length </h3>
+<h3>length(constraint function) - Check string length</h3>
 
 You may want to check the length of a string in an HTML form. In such cases, use the <b> length </b> constraint function.
 
@@ -571,7 +571,7 @@ $rule->require('value4')->check({'length' => {max => 5}});
 
 You can check the length. If the string is an internal string, you can check the length of the string. If the string is a byte string, check the number of bytes.
 
-<h3> defined(constraint function) - defined </h3>
+<h3>defined(constraint function) - defined</h3>
 
 Use the <strong> defined </strong> constraint function to specify that it is <strong> defined </strong>.
 
@@ -583,7 +583,7 @@ $rule->require('name')->check('defined');
 
 In the case of HTML form, you can use not_blank instead of define because you only need to be able to check if it is an empty string.
 
-<h3> decimal (constraint function) - Positive number (specify the number of digits) </h3>
+<h3>decimal (constraint function) - Positive number (specify the number of digits)</h3>
 
 <a href="/blog/20151212144988.html">This page is a document about Version 0.xx. The latest version of the documentation is here.</a>
 
@@ -597,7 +597,7 @@ $rule->require('num1')->check({'decimal' => 3});
 $rule->require('num2')->check({'decimal' => [1, 2]});
 </pre>
 
-<h3> blank (constraint function) - empty string </h3>
+<h3>blank (constraint function) - empty string</h3>
 
 Use the <strong> blank </strong> constraint function to specify that it is a <strong> empty string </strong>.
 
@@ -609,7 +609,7 @@ $rule->require('name')->check('blank');
 
 I don't think there is any particular opportunity to use it in HTML form validation.
 
-<h3> between (constraint function) - a number between A and B </h3>
+<h3>between (constraint function) - a number between A and B</h3>
 
 Use the <strong> between </strong> constraint function to specify that it is a <strong> number between A and B </strong>. Note that it includes A and B at both ends.
 
@@ -621,7 +621,7 @@ $rule->require('age')->check({between => [1, 20]});
 
 It does not consider whether between is an integer. If you want to apply an integer constraint, please also use the int constraint function.
 
-<h3> ascii (constraint function) - ASCII graphic characters </h3>
+<h3>ascii (constraint function) - ASCII graphic characters</h3>
 
 You may want to allow only <strong> ASCII print characters </strong> (hexadecimal numbers 21-7E), such as HTML form passwords. In such cases, use the <strong> ascii </strong> constraint function.
 
@@ -633,7 +633,7 @@ $rule->require('password')->check('ascii');
 
 Since it is a range of graphic characters, not the entire ASCII code, validation will fail if tabs, spaces, etc. are included.
 
-<h3> duplication (constraint function) - Check that two values are the same </h3>
+<h3>duplication (constraint function) - Check that two values are the same</h3>
 
 If you want to check that <strong> two values match </strong>, use the C <duplication> constraint function. Validation will always fail if either value is undefined.
 
@@ -648,7 +648,7 @@ $rule->require(['passwrod1', 'password2'])->name('password_check')
 
 If you want to check multiple values, you can pass an array reference to the require method. In this case, add the name method to the key value.
 
-<h4> Actually check the password </h4>
+<h4>Actually check the password</h4>
 
 When actually checking the password, also check that the password is not empty and that the password consists only of ASCII graphic characters. Also, regarding the restriction that the two passwords match, specify 0 for the copy option because the value corresponding to the identification key is not required for the validated secure data.
 
@@ -662,7 +662,7 @@ $rule->require(['password1', 'password2'])->name('password_check')
   ->check('duplication')->message('Two password is not matched')
 </pre>
 
-<h3> regex (constraint function) - matches regular expression </h3>
+<h3>regex (constraint function) - matches regular expression</h3>
 
 In a <strong> HTML form </strong>, use the <strong> regex </strong> constraint function if you want to check that it <strong> matches a regular expression </strong>.
 
@@ -675,7 +675,7 @@ my $rule = $vc->create_rule;
 $rule->require('num')->check({'regex' => qr/\d{0,3} /});
 </pre>
 
-<h3> not_space (constraint function)-not whitespace </h3>
+<h3>not_space (constraint function)-not whitespace</h3>
 
 In a <strong> HTML form </strong>, use the <strong> not_space </strong> constraint function if you want to check that it is <strong> not whitespace </strong>. A space character is a character string that consists only of a space character, a tab character, and a newline character. This includes cases where the string does not exist. It does not include whitespace in Unicode.
 
@@ -688,7 +688,7 @@ my $rule = $vc->create_rule;
 $rule->require('name')->check('not_space');
 </pre>
 
-<h3> not_defined(constraint function)-value not defined </h3>
+<h3>not_defined(constraint function)-value not defined</h3>
 
 In a <strong> HTML form </strong>, use the <strong> not_defined </strong> constraint function if you want to check that the <strong> value is undefined </strong>.
 
@@ -701,7 +701,7 @@ my $rule = $vc->create_rule;
 $rule->require('name')->check('not_defined');
 </pre>
 
-<h3> less_than (constraint function)-a number is less than a certain number </h3>
+<h3>less_than (constraint function)-a number is less than a certain number</h3>
 
 In a <strong> HTML form </strong>, use the <strong> less_than </strong> constraint function if you want to check that a <strong> number is less than a certain number </strong>.
 
@@ -714,7 +714,7 @@ my $rule = $vc->create_rule;
 $rule->require('num')->check({'less_than' => 25});
 </pre>
 
-<h3> int(constraint function)-integer </h3>
+<h3>int(constraint function)-integer</h3>
 
 In a <strong> HTML form </strong>, use the <strong> int </strong> constraint function if you want to check that it is a <strong> integer </strong>.
 
@@ -727,7 +727,7 @@ my $rule = $vc->create_rule;
 $rule->require('age')->check('int');
 </pre>
 
-<h3> http_url (constraint function) - HTTP or HTTPS URL </h3>
+<h3>http_url (constraint function) - HTTP or HTTPS URL</h3>
 
 In a <strong> HTML form </strong>, use the <strong> http_url </strong> constraint function if you want to check that it is a <strong> HTTP or HTTPS URL </strong>.
 
@@ -740,7 +740,7 @@ my $rule = $vc->create_rule;
 $rule->require('url')->check('http_url');
 </pre>
 
-<h3> greater_than (constraint function)-greater than a certain number </h3>
+<h3>greater_than (constraint function)-greater than a certain number</h3>
 
 In a <strong> HTML form </strong>, use the <strong> greater_than </strong> constraint function if you want to check that it is <strong> greater than a certain number </strong>.
 
@@ -753,7 +753,7 @@ my $rule = $vc->create_rule;
 $rule->require('price')->check({'greater_than' => 900});
 </pre>
 
-<h3> equal_to (constraint function) - equal numbers </h3>
+<h3>equal_to (constraint function) - equal numbers</h3>
 
 In a <strong> HTML form </strong>, use the <strong> equal_to </strong> constraint function if you want to check that <strong> numbers are equal </strong>.
 

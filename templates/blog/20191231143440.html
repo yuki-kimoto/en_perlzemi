@@ -10,17 +10,17 @@
     here
   </li>
 </ol>
-<h2> Insert image - PDF::Create form with API2 </h2>
+<h2>Insert image - PDF::Create form with API2</h2>
 
 I will explain how to insert PNG, GIF, JPEG images with PDF::API2.
 
 The PDF can contain images. PDF::API2 allows you to insert PNG, GIF, JPEG images into PDF.
 
-<h3> Insert image file </h3>
+<h3>Insert image file</h3>
 
 To insert an image file, you must first read the image file and create a resource object to represent the image.
 
-<h4> Reading image files </h4>
+<h4>Reading image files</h4>
 
 Let's read the image file and generate a resource object to represent the image.
 
@@ -56,7 +56,7 @@ my $image_file = '/path/image.gif';
 my $image_object = $pdf->image_gif($image_file);
 </pre>
 
-<h4> Generation of image content object </h4>
+<h4>Generation of image content object</h4>
 
 Create a content object to insert the image. This is a PDF::API2::Content object.
 
@@ -65,7 +65,7 @@ Create a content object to insert the image. This is a PDF::API2::Content object
 my $gfx = $page->gfx;
 </pre>
 
-<h4> Insert image file </h4>
+<h4>Insert image file</h4>
 
 In PDF::API2, use the image method of the content object to insert an image file.
 
@@ -86,7 +86,7 @@ Note that the width and height are in PDF units. Note that the coordinates move 
 
 As an example, if you want to display a 600x600 image at 600dpi resolution, specify 72.
 
-<h3> Sample to insert PNG image </h3>
+<h3>Sample to insert PNG image</h3>
 
 Let's write a sample to insert a PNG image.
 

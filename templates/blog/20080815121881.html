@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Lock the file using the lock file </h2>
+<h2>Lock the file using the lock file</h2>
 
 
 
@@ -92,9 +92,9 @@ The script is repeatedly executed using the <a href="/blog/20100123126425.html">
 
 (Reference) <a href="/blog/20100524127696.html">FindBin</a>, <a href="/blog/20080906122079.html">rand function</a>
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> (1) Create a lock file </h4>
+<h4>(1) Create a lock file</h4>
 
 <pre>
 # Lock file (Note that it will be overwritten)
@@ -105,7 +105,7 @@ sysopen(my $lock_fh, $lock_file, O_RDONLY | O_CREAT)
 
 Create a file for the lock.
 
-<h4> (2) Lock the lock file using the flock function </h4>
+<h4>(2) Lock the lock file using the flock function</h4>
 
 The lock file is locked using the <a href="/blog/20080814121872.html">flock function</a>.
 
@@ -117,7 +117,7 @@ flock($lock_fh, LOCK_EX)
 
 Only the process that can lock this file should access the file to be updated. Following this lock, open the file to be updated and update the file.
 
-<h4> (3) Unlock </h4>
+<h4>(3) Unlock</h4>
 
 <pre>
 # The file lock is released at the time of close.

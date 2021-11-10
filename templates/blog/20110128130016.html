@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Understand Perl scope </h2>
+<h2>Understand Perl scope</h2>
 
 
 
@@ -17,7 +17,7 @@ use strict;
 use warnings;
 </pre>
 
-<h3> Create scope </h3>
+<h3>Create scope</h3>
 
 Perl scope starts with "{" and ends with "}".
 
@@ -27,9 +27,9 @@ Perl scope starts with "{" and ends with "}".
 }
 </pre>
 
-<h3> Meaning of scope </h3>
+<h3>Meaning of scope</h3>
 
-<h4> Lexical variables </h4>
+<h4>Lexical variables</h4>
 
 Lexical variables declared within a scope (variables declared with my) can only be referenced within that scope. Also, the value contained in the variable is released when the scope ends.
 
@@ -45,7 +45,7 @@ Lexical variables declared within a scope (variables declared with my) can only 
 print $num;
 </pre>
 
-<h4> Package variables </h4>
+<h4>Package variables</h4>
 
 Package variables declared inside a scope (variables declared with our) can be referenced by partial name within that scope. You must use a fully qualified name to reference it from outside the scope.
 
@@ -68,7 +68,7 @@ print $Foo::NUM;
 
 Keep in mind that once a package variable is created, it exists to the end of the program and can be referenced by its fully qualified name from anywhere in the program.
 
-<h4> Package variables modified locally </h4>
+<h4>Package variables modified locally</h4>
 
 You can use <a href="/blog/20080309120507.html">local</a> to temporarily change a package variable. This changed value is reverted at the end of the scope.
 
@@ -90,7 +90,7 @@ print $NUM;
 
 Use local only for temporary changes to the value of package variables, and don't use it for variable declarations as it used to be.
 
-<h4> Subroutine </h4>
+<h4>Subroutine</h4>
 
 Perl subroutines are scope-independent.
 
@@ -126,7 +126,7 @@ $foo->();
 
 At the end of the scope, the subroutine reference assigned to $foo is released. Note that the subroutine itself is not freed. sub {...} is parsed and placed in memory at compile time.
 
-<h3> Scope in if and while statements </h3>
+<h3>Scope in if and while statements</h3>
 
 The "{}" used in if statements and <a href="/blog/20100123126425.html">while statements</a> is also a scope. In Perl, the scope is "{}", which is used in all kinds of syntax. It's consistent in this regard and is very straightforward compared to other languages.
 
@@ -170,11 +170,11 @@ The above can be thought of as the beginning and end of the file surrounded by "
 }
 </pre>
 
-<h3> Lexical variables declared at special positions </h3>
+<h3>Lexical variables declared at special positions</h3>
 
 There are some cases where you have a scope, though it is not declared inside the scope.
 
-<h4> if condition part </h4>
+<h4>if condition part</h4>
 
 The lexical variable declared in the conditional part of if has the scope of if.
 
@@ -221,7 +221,7 @@ while (my $num = 1) {
 print $num;
 </pre>
 
-<h4> for condition part </h4>
+<h4>for condition part</h4>
 
 The lexical variable declared in the condition part of for has the scope of for.
 
@@ -235,7 +235,7 @@ for (my $i = 0; $i < @nums; $i++) {
 print $i;
 </pre>
 
-<h4> variable assignment part of for </h4>
+<h4>variable assignment part of for</h4>
 
 The lexical variable declared in the variable assignment part of for has the scope of for.
 
@@ -249,6 +249,6 @@ for my $num (@nums) {
 print $num;
 </pre>
 
-<h4> At the end </h4>
+<h4>At the end</h4>
 
 If you keep this in mind, you won't have any problems with Perl scope. You'll find that Perl scope is intuitive and straightforward. This has been very helpful in making the structure of Perl programs easier to see.

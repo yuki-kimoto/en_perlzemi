@@ -10,7 +10,7 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Exit status of child process $? </H2>
+<h2>Exit status of child process $? </H2>
 
 
 
@@ -52,7 +52,7 @@ my $signal_num = $? & 127;
 
 will do. Since 127 is a binary number and is 01111111, the lower 7 bits can be obtained by taking the bit product.
 
-<h4> Check if the child process has terminated </h4>
+<h4>Check if the child process has terminated</h4>
 
 The wait function returns control when a CHLD signal occurs. This means that control returns not only when the child process terminates, but also when the child process is stopped or restarted.
 
@@ -63,7 +63,7 @@ use POSIX q (:sys_wait_h);
 my $is_finished = WIFEXITED ($?);
 </pre>
 
-<h4> Sample to see the exit status of the child process </h4>
+<h4>Sample to see the exit status of the child process</h4>
 
 The exit status is 255 because we called die in the child process. You can see that the parent process is getting this status.
 

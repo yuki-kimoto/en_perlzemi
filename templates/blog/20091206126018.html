@@ -1,8 +1,8 @@
-<h2> SQL basics learned using SQLite </h2>
+<h2>SQL basics learned using SQLite</h2>
 
 SQL is a query language for inserting and retrieving data into a database. Since the basic writing method of SQL is standardized, you can issue a query to the database with the same description in SQLite, MySQL, Oracle, or PostgreSQL.
 
-<h3> Preparation for executing SQL </h3>
+<h3>Preparation for executing SQL</h3>
 
 The following explains how to build an environment for executing SQLite on Windows.
 
@@ -18,11 +18,11 @@ sqlite3 test.db
 
 Let's start sqlite3 by specifying the database name. If the database does not exist, it will be created automatically.
 
-<h3> Syntax other than select </h3>
+<h3>Syntax other than select</h3>
 
 The difficult part in SQL is the select statement. Other syntax is relatively simple. In preparation for executing the select statement, I will first explain the SQL that is frequently used other than the select statement.
 
-<h4> create table - create table </h4>
+<h4>create table - create table</h4>
 
 Use the "create table" statement to create a table. Here, I will explain only the format of the simplest "create table" statement. (For "create table", see "Defining a table with create table (unpublished)".)
 
@@ -50,7 +50,7 @@ SQLite provides a command to display the created table list. Run the following c
 .table
 </pre>
 
-<h3> drop table - drop the table </h3>
+<h3>drop table - drop the table</h3>
 
 Use "drop table" to drop a table.
 
@@ -66,7 +66,7 @@ drop table books;
 
 Type ".table" to make sure the table has been deleted. After this, the "books" table will be used, so create it again using "create table".
 
-<h3> insert - add record </h3>
+<h3>insert - add record</h3>
 
 Use the insert statement to insert a record into the table.
 
@@ -105,7 +105,7 @@ insert into books (title, author, price) values ('Simple is good', 'Mai', 2000);
 insert into books (title, author, price) values ('Good morning', 'Kenta', 3000);
 </pre>
 
-<h3> Record update update </h3>
+<h3>Record update update</h3>
 
 Use the update statement to update the data in the table. Generally, you can narrow down the update target by specifying the search conditions in the where section. As explained in the select statement, multiple conditions can be specified in the where section.
 
@@ -136,7 +136,7 @@ The previous record is updated and looks like this:
 + - -- --- + - -- -- -- +
 </pre>
 
-<h3> Delete record delete </h3>
+<h3>Delete record delete</h3>
 
 Use the delete statement to delete a record. Generally, the search condition is specified in the where section to narrow down the deletion target.
 

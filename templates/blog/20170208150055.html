@@ -10,18 +10,18 @@
     here
   </li>
 </ol>
-<h2> Mutual conversion between Perl type and C type in XS </h2>
+<h2>Mutual conversion between Perl type and C type in XS</h2>
 
 
 
 Calling a C function from Perl means converting the Perl type to a C type, calling the C function, returning the result to the C type and returning it to Perl. In other words, most of what you learn is about learning type conversions.
 Here, I would like to provide information that can handle any type conversion.
 
-<h3> Basic type conversion </h3>
+<h3>Basic type conversion</h3>
 
 First, I will explain the basic type conversion.
 
-<h4> From SV * type to IV type </h4>
+<h4>From SV * type to IV type</h4>
 
 In Perl, the values passed to functions are mostly scalar. The scalar type is the "SV * type" in the world of XS. If a C function requires type IV, then SV * type must be converted to type IV.
 
@@ -44,7 +44,7 @@ foo (...)
 }
 </pre>
 
-<h4> From type IV to type SV * </h4>
+<h4>From type IV to type SV *</h4>
 
 Next, in order to return it to the Perl world, it is necessary to convert type IV to type SV *. Use <b> newSViv (iv) </b> to create a new SV * type from type IV.
 
@@ -63,7 +63,7 @@ foo (...)
 }
 </pre>
 
-<h4> From SV * type to UV type </h4>
+<h4>From SV * type to UV type</h4>
 
 SV * type values have an unsigned integer value called UV. In other words, in order to convert to UV type, it is sufficient to extract the UV value owned by the SV * type value.
 Use <b> "SvUV (sv)" </b> to retrieve the UV value owned by an SV * type value.
@@ -83,7 +83,7 @@ foo (...)
 }
 </pre>
 
-<h4> From UV type to SV * type </h4>
+<h4>From UV type to SV * type</h4>
 
 To return it to the Perl world, you need to convert the UV type to the SV * type. Use <b> newSVuv (uv) </b> to create a new SV * type from a UV type. Don't forget to set the value to mortal.
 
@@ -100,7 +100,7 @@ foo (...)
 }
 </pre>
 
-<h4> From SV * type to double type </h4>
+<h4>From SV * type to double type</h4>
 
 The double type value is contained in the SV * type NV value. In order to convert to double type, it is enough to take out the value of NV owned by SV * type.
 
@@ -119,7 +119,7 @@ foo (...)
 }
 </pre>
 
-<h4> From double type to SV * type </h4>
+<h4>From double type to SV * type</h4>
 
 To return it to the Perl world, you need to convert the double type to the SV * type. To create a new SV * type from double type, use <b> newSVnv (nv) </b>. Don't forget to set the value to mortal.
 
@@ -136,7 +136,7 @@ foo (...)
 }
 </pre>
 
-<h4> From SV * type to char * type </h4>
+<h4>From SV * type to char * type</h4>
 
 The char * type value is included in the value PV in the SV * type value. In order to convert to char * type, the value of PV owned by the value of SV * type should be taken out.
 
@@ -155,7 +155,7 @@ foo (...)
 }
 </pre>
 
-<h4> From char * type to SV * type </h4>
+<h4>From char * type to SV * type</h4>
 
 To return it to the Perl world, you need to convert the char * type to the SV * type. To create a new SV * type from a char * type, use <b> newSVpvn (pv, length) </b>.
 
@@ -178,7 +178,7 @@ foo (...)
 }
 </pre>
 
-<h4> From SV * type to std::string type </h4>
+<h4>From SV * type to std::string type</h4>
 
 <pre>
 # From SV * type to std::string type
@@ -194,7 +194,7 @@ foo (...)
 }
 </pre>
 
-<h4> From std::string type to SV * type </h4>
+<h4>From std::string type to SV * type</h4>
 
 <pre>
 # std::string type to SV * type
@@ -210,11 +210,11 @@ foo (...)
 }
 </pre>
 
-<h3> Complex type conversion </h3>
+<h3>Complex type conversion</h3>
 
 Now, this time I would like to take up a slightly more complicated type conversion. For example, what if you had a function that took a <a href="/blog/20161012147627.html">Perl array</a>? You need to convert a Perl array reference to a C array. Let's consider such a complex type conversion this time.
 
-<h4> Convert array reference to C language array </h4>
+<h4>Convert array reference to C language array</h4>
 
 First, the array reference is converted to an array (AV * type), then the elements of the array are acquired one by one and converted to a C language array. The reference is SV * type. You can dereference it with "SvRV (rv)". Dereferencing something that is not a reference will cause a segmentation fault, so be sure to use "SvROK (rv)" to check that the SV * type value is a reference.
 

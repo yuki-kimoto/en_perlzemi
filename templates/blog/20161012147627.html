@@ -6,13 +6,13 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Let's understand Perl arrays </h2>
+<h2>Let's understand Perl arrays</h2>
 
 
 
 An array is a variable that can store multiple values. Use arrays when you need to work with multiple pieces of the same type of data. Perl arrays are useful because they are called dynamic arrays and automatically grow in size.
 
-<h3> Array basics </h3>
+<h3>Array basics</h3>
 
 I will explain the basics of arrays.
 
@@ -37,7 +37,7 @@ I will explain the basics of arrays.
   </li>
 </ul>
 
-<h4> Array declaration </h4>
+<h4>Array declaration</h4>
 
 Use my to declare an array as you would for a scalar variable. Prefix with @(at sign) to represent the array.
 
@@ -45,7 +45,7 @@ Use my to declare an array as you would for a scalar variable. Prefix with @(at 
 my @numbers;
 </pre>
 
-<h4> Array initialization </h4>
+<h4>Array initialization</h4>
 
 You can assign data representing multiple values called <a href="/blog/20100308126967.html">list</a> to the array. The list is
 
@@ -66,7 +66,7 @@ You can also declare and assign an array at the same time.
 my @numbers = (10, 25, 40, 4, -6);
 </pre>
 
-<h4> Array element reference </h4>
+<h4>Array element reference</h4>
 
 To reference the elements of an array: Note that the first character is $, not @. Subscripts start at 0.
 
@@ -81,7 +81,7 @@ print $numbers[0];
 print $numbers[1];
 </pre>
 
-<h4> Array element assignment </h4>
+<h4>Array element assignment</h4>
 
 To make an assignment:
 
@@ -95,7 +95,7 @@ Try substituting 20 for the first element.
 $numbers[0] = 20;
 </pre>
 
-<h4> Number of elements in the array </h4>
+<h4>Number of elements in the array</h4>
 
 To get the number of arrays, evaluate the arrays in a scalar context. I'll explain the scalar context elsewhere, but remember that you can get the number of arrays by assigning an array to a scalar variable at first.
 
@@ -111,7 +111,7 @@ See the following article for a detailed explanation of how to get the number of
   </li>
 </ul>
 
-<h4> Process the elements of the array in order </h4>
+<h4>Process the elements of the array in order</h4>
 
 Use a for or foreach statement to process the elements of an array in sequence. For is used when you want to access in order using subscripts, and foreach is used when you simply want to process arrays in order. It's a good practice in Perl to use for when foreach can't handle it.
 Let's output the elements of the array in order with the for statement.
@@ -130,7 +130,7 @@ foreach my $num (@nums) {
 }
 </pre>
 
-<h3> Manipulation of array elements </h3>
+<h3>Manipulation of array elements</h3>
 
 You can use functions to add and retrieve elements from the array.
 
@@ -149,7 +149,7 @@ You can use functions to add and retrieve elements from the array.
   </li>
 </ul>
 
-<h4> shift function </h4>
+<h4>shift function</h4>
 
 You can use the "shift function" to "get the first element" of an array. If @array was (1, 2, 3), 1 would be assigned to $first and @array would be (2, 3).
 
@@ -163,7 +163,7 @@ my $first = shift @array;
   </li>
 </ul>
 
-<h4> unshift function </h4>
+<h4>unshift function</h4>
 
 You can use the "unshift function" to "add an element to the beginning" of an array. If @array was (1, 2, 3) then @array would be (5, 1, 2, 3).
 
@@ -177,7 +177,7 @@ unshift @array, 5;
   </li>
 </ul>
 
-<h4> pop function </h4>
+<h4>pop function</h4>
 
 You can use the "pop function" to "extract the last element" of an array. If @array is (1, 2, 3), 3 is assigned to $last and @array becomes (1, 2).
 
@@ -191,7 +191,7 @@ my $last = pop @array;
   </li>
 </ul>
 
-<h4> push function </h4>
+<h4>push function</h4>
 
 You can use the "push function" to "add an element to the end" of an array. .. If @array was (1, 2, 3) then @array would be (1, 2, 3, 5).
 
@@ -205,11 +205,11 @@ push @array, 5;
   </li>
 </ul>
 
-<h3> Sorting the array </h3>
+<h3>Sorting the array</h3>
 
 Use the sort function to sort the array.
 
-<h4> sort function </h4>
+<h4>sort function</h4>
 
 Pass a code block for comparison as the first argument. To sort in ascending order, write $a before $b, and to sort in descending order, write $b before $a. Use <=> as the comparison operator if you want to compare as a number, and use cmp if you want to compare in lexicographical order.
 
@@ -235,7 +235,7 @@ my @nums = (5, 8, 3, 2);
   </li>
 </ul>
 
-<h4> Easily sort in reverse order </h4>
+<h4>Easily sort in reverse order</h4>
 
 You can also use the "reverse function" if you want to easily sort in reverse order.
 
@@ -249,11 +249,11 @@ You can also use the "reverse function" if you want to easily sort in reverse or
   </li>
 </ul>
 
-<h3> Array reference </h3>
+<h3>Array reference</h3>
 
 <span style = "font-weight: bold;">A reference is the location of the memory that contains the array </span>. If you know C language, think of it as a "pointer that cannot perform address arithmetic". If you know Java, think of it as a "reference".
 
-<h4> Creating an array reference </h4>
+<h4>Creating an array reference</h4>
 
 <pre>
 my $numbers_ref1 = \@numbers;
@@ -261,7 +261,7 @@ my $numbers_ref1 = \@numbers;
 
 <span style = "font-weight: bold;">You can create an array reference by prefixing @with \.
 
-<h4> Create a direct array reference </h4>
+<h4>Create a direct array reference</h4>
 
 <pre>
 my $numbers_ref2 = [1, 2, 3, 4];
@@ -269,7 +269,7 @@ my $numbers_ref2 = [1, 2, 3, 4];
 
 <span style = "font-weight: bold;">Enclose the list in [] to serve as an array reference. </span>
 
-<h4> Array element reference </h4>
+<h4>Array element reference</h4>
 
 <pre>
 $numbers_ref2->[0]
@@ -277,11 +277,11 @@ $numbers_ref2->[0]
 
 <span style = "font-weight: bold;">Array reference->[element number] </span>
 
-<h3> Comparison of arrays and array references </h3>
+<h3>Comparison of arrays and array references</h3>
 
 I compared the array and the array reference. It's easy to misunderstand, so let's get a better understanding of the difference between the two.
 
-<h4> Element reference </h4>
+<h4>Element reference</h4>
 
 <pre>
 # arrangement
@@ -291,7 +291,7 @@ $numbers[0]
 $numbers_ref->[0]
 </pre>
 
-<h4> Array reference dereference </h4>
+<h4>Array reference dereference</h4>
 
 <pre>
 @$numbers_ref
@@ -307,7 +307,7 @@ Array references are also explained in detail on the following pages.
   </li>
 </ul>
 
-<h3> List </h3>
+<h3>List</h3>
 
 A <strong> list </strong> is a representation of a sequence of multiple values. Lists and arrays are different. Lists are notations, while arrays are variables.
 
@@ -327,9 +327,9 @@ my @array = ('a', 'b', 'c', 'd');
 
 RiSee <a href="/blog/20100308126967.html">List-A list of multiple values </a> for more information on strikes.
 
-<h3> Functions/syntax/operators related to arrays </h3>
+<h3>Functions/syntax/operators related to arrays</h3>
 
-<h4> splice function </h4>
+<h4>splice function</h4>
 
 Use the <strong> splice function </strong> to perform complex operations on <strong> array elements </strong>. You can retrieve and replace multiple elements. If $length is omitted when fetching multiple elements, the target is from the position of $pos to the end of the array.
 
@@ -347,7 +347,7 @@ splice @array, $pos, $length, @replace;
   </li>
 </ul>
 
-<h4> grep function </h4>
+<h4>grep function</h4>
 
 You can use the "<strong> grep function </strong>" to retrieve only the elements that match the conditions in the array. Each element of @array is passed to the default argument $_. Only elements that meet the conditional statement will be added to @matched.
 
@@ -362,7 +362,7 @@ You can use the "<strong> grep function </strong>" to retrieve only the elements
   </li>
 </ul>
 
-<h4> map function </h4>
+<h4>map function</h4>
 
 Use the <strong> map function </strong> to convert all the elements of a <strong> array </strong>. Each element of @array is passed to the default variable $_, so perform the necessary conversions in the code block {}. The last evaluated conversion statement is added to @mapped in order.
 
@@ -377,7 +377,7 @@ Use the <strong> map function </strong> to convert all the elements of a <strong
   </li>
 </ul>
 
-<h4> String list operator </h4>
+<h4>String list operator</h4>
 
 There is an operator called the <strong> string list operator </strong> to concisely describe a list of strings. You can use the string list operator to represent a list of strings without writing single quotes or commas.
 
@@ -403,7 +403,7 @@ my @strings = ('cat', 'dog', 'mouse');
   </li>
 </ul>
 
-<h4> Array slice </h4>
+<h4>Array slice</h4>
 
 To retrieve multiple elements by specifying the element number from the array, use a technique called <strong> array slice </strong>.
 
@@ -418,7 +418,7 @@ my @values = @array['m', 'n', ...]
   </li>
 </ul>
 
-<h3> "Multidimensional data structure" that combines arrays and hashes </h3>
+<h3>"Multidimensional data structure" that combines arrays and hashes</h3>
 
 Understanding "multidimensional data structures" that combine "arrays", "hashes" and "references" is essential to becoming an intermediate player.
 
@@ -434,9 +434,9 @@ The "multidimensional data structure" is explained in detail in the next article
 
 <div class = "icon-arrow">"<a href="/blog/20100930127859.html">Perl's" arrays "and" hashes "are free to manipulate" multidimensional data structures "</a>" </div>
 
-<h3> Sample program </h3>
+<h3>Sample program</h3>
 
-<h4> Search for elements in an array, remove duplicate elements in an array, count duplicates </h4>
+<h4>Search for elements in an array, remove duplicate elements in an array, count duplicates</h4>
 
 This is a sample to search for elements in an array, remove duplicate elements in an array, and count duplicates.
 
@@ -473,7 +473,7 @@ for my $key (sort keys %no_duplicate_hash) {
 }
 </pre>
 
-<h4> Array reference </h4>
+<h4>Array reference</h4>
 
 This is a sample program for array reference, array conversion, and element reference.
 
@@ -512,7 +512,7 @@ $numbers_ref2->[0] = 1
 $numbers_ref2->[1] = 2
 </pre>
 
-<h4> Sample of array and array reference comparison </h4>
+<h4>Sample of array and array reference comparison</h4>
 
 This is a sample program that allows you to see how arrays and array references differ.
 
@@ -585,7 +585,7 @@ $numbers_ref->[0] = 1
 @$numbers_ref = (4,3,2,1)
 </pre>
 
-<h3> Column "Perl that incorporates dynamic arrays into language features" </h3>
+<h3>Column "Perl that incorporates dynamic arrays into language features"</h3>
 
 Arrays that are built into Perl as a language feature are called dynamic arrays because you can freely add and remove values.
 

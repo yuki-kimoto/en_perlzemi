@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> ExtUtils::MakeMaker - Customize Makefile.PL </h2>
+<h2>ExtUtils::MakeMaker - Customize Makefile.PL</h2>
 
 
 
 <a href="http://pointoht.ti-da.net/e9338756.html">ExtUtils::MakeMaker</a> is used to explain how to write <b> Makefile.PL </b>. ..
 
-<h4> Specify a test script </h4>
+<h4>Specify a test script</h4>
 
 By default, the test scripts under the "t" directory are executed, but you may want to execute the test scripts in subdirectories in a deeper hierarchy.
 
@@ -26,7 +26,7 @@ In that case, use the <b> test </b> option. The following example allows the tes
   test => {TESTS =>'t /*.t t /*/*.tt/*/*/*.t'}
 </pre>
 
-<h4> Add files to be deleted when doing make clean, make real clean </h4>
+<h4>Add files to be deleted when doing make clean, make real clean</h4>
 
 Makefile.PL automatically creates a Makefile, which defines the commands that are executed by "make clean" and "make real clean".
 
@@ -44,7 +44,7 @@ realclean => {FILES =>'$(INST_ARCHAUTODIR) /*.xyz'}
 
 Please note that in FILES, it is necessary to describe the file name according to the make syntax rules.
 
-<h4> How to rename the XS file </h4>
+<h4>How to rename the XS file</h4>
 
 When you create an XS module using h2xs, if the namespace contains "::", the XS file name will be "last name.xs".
 
@@ -80,7 +80,7 @@ However, this is not enough, and you also need to describe the C language file n
 
 If you write like this, "SomeModule.c" will be compiled. It's complicated.
 
-<h4> Specify gcc optimization options </h4>
+<h4>Specify gcc optimization options</h4>
 
 To specify gcc optimization options on XS Specify the <strong> OPTIMIZE </strong> option as a WriteMakefile option in Makefile.PL.
 
@@ -124,7 +124,7 @@ WriteMakefile (
 );
 </pre>
 
-<h4> How to add a search path for a C/C ++ language header file in Makefile.PL </h4>
+<h4>How to add a search path for a C/C ++ language header file in Makefile.PL</h4>
 
 When writing Makefile.PL, you may want to change or add the location of C/C ++ header files. For ExtUtils::MakeMaker, you can set it with the <b> INC </b> and <b> H </b> options in the WriteMakefile.
 
@@ -135,7 +135,7 @@ The following settings assume that you have a C/C ++ header file in "Rstats_lib/
     H => ['ppport.h', glob('Rstats_lib/include/*. h')],
 </pre>
 
-<h4> Add header file include path </h4>
+<h4>Add header file include path</h4>
 
 Use the option "INC" to add the include path for the header file. By default, the current directory is set, so "./Rstats_lib/include" is added to this.
 
@@ -157,7 +157,7 @@ The "H" option passes a list of header files. Specify all header files in the ar
 
 If this is not specified, the dependency will not be resolved correctly when make is executed, so be sure to specify it. The "INC" option alone will compile successfully for the first time, but make will not understand the dependencies correctly.
 
-<h4> How to add a search path for C/C ++ language source files in Makefile.PL </h4>
+<h4>How to add a search path for C/C ++ language source files in Makefile.PL</h4>
 
 How can I store C/C ++ language source files in a different directory when writing an XS? You can do that if you write Makefile.PL well. Write the WriteMakefile options in Makefile.PL as follows:
 
@@ -255,7 +255,7 @@ WriteMakefile (
 );
 </pre>
 
-<h4> C language source file description </h4>
+<h4>C language source file description</h4>
 
 I think it is difficult to understand as it is, so I will explain the options of WriteMakefile.
 
@@ -273,7 +273,7 @@ First, write all the source code required for compilation with the option "C". "
 
 Internally, the file specified by the "C" option is stored in a variable called "C_FILES" in Makefile. In addition, a variable called "O_FILES" with the extension of "C_FILES" changed to ".o" is automatically created.
 
-<h4> Change the output location of the object file </h4>
+<h4>Change the output location of the object file</h4>
 
 What does the "DEFINE" option describe?
 
@@ -285,7 +285,7 @@ This is changing the output location of the object file. You can add gcc argumen
 
 What is "$@"? This is a Makefile syntax rule for variables to which the target name is automatically assigned. Since the target name is the object file name, if you write it like this, the object file will be output in the same directory as the source code file.
 
-<h4> Linker targeting </h4>
+<h4>Linker targeting</h4>
 
 Finally, you need to describe the targeting of the linker. You need to tell the linker the object file name, as all the object files will be merged into one and the final dynamic link library will end up with a ".so" extension.
 

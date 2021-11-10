@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Data::Page - Easy paging process </h2>
+<h2>Data::Page - Easy paging process</h2>
 
 
 
@@ -29,10 +29,10 @@ print "Last entry on page:", $page->last, "\n";
 
 In the first argument of the constructor (new), specify the total number of results. In the second argument, specify the number of entries per page. In the third argument, specify the current page. The third argument can be omitted and the default is 1.
 
-<h3> Information that can be obtained </h3>
+<h3>Information that can be obtained</h3>
 
 You can use various methods to get the following information:
-<h4> Total number </h4>
+<h4>Total number</h4>
 
 <pre>
 my $total_entories = $page->total_entries;
@@ -40,7 +40,7 @@ my $total_entories = $page->total_entries;
 
 Use the total_entries method to get the total number. This will be the value given in the first argument of the constructor.
 
-<h4> Number of cases per page </h4>
+<h4>Number of cases per page</h4>
 
 <pre>
 my $entries_per_page = $page->entries_per_page
@@ -48,7 +48,7 @@ my $entries_per_page = $page->entries_per_page
 
 Use the entries_per_page method to get the number per page. This is the same as specified in the second argument of the constructor.
 
-<h3> Number of current pages </h3>
+<h3>Number of current pages</h3>
 
 <pre>
 my $entries_on_this_page = $page->entries_on_this_page
@@ -56,7 +56,7 @@ my $entries_on_this_page = $page->entries_on_this_page
 
 Use the entries_on_this_page method to get the number of items currently contained in the page. "Number of items per page" always returns a constant value, while "Number of items on the current page" actually returns the number of items contained in the page.
 
-<h3> Current page number </h3>
+<h3>Current page number</h3>
 
 <pre>
 my $current_page = $page->current_page;
@@ -64,7 +64,7 @@ my $current_page = $page->current_page;
 
 Use the current_page method to get the current page number. This is the same as the one specified in the third argument of the constructor.
 
-<h3> First page number </h3>
+<h3>First page number</h3>
 
 <pre>
 my $first_page = $page->first_page;
@@ -72,7 +72,7 @@ my $first_page = $page->first_page;
 
 Use the first_page method to get the first page number. Always returns 1.
 
-<h3> Last page number </h3>
+<h3>Last page number</h3>
 
 <pre>
 my $last_page = $page->last_page;
@@ -80,7 +80,7 @@ my $last_page = $page->last_page;
 
 Use the last_page method to get the last page number. This is the same value as the total number of pages.
 
-<h3> First element number on the current page </h3>
+<h3>First element number on the current page</h3>
 
 <pre>
 my $first = $page->first;
@@ -88,7 +88,7 @@ my $first = $page->first;
 
 Use the first method to get the first element number of the current page. For example, if the total number is 20, the number per page is 10, and the current page is 2, the number 11 will be returned.
 
-<h3> Last element number on the current page </h3>
+<h3>Last element number on the current page</h3>
 
 <pre>
 my $last = $page->last;
@@ -96,7 +96,7 @@ my $last = $page->last;
 
 Use the last method to get the last element number of the current page. For example, if the total number is 20, the number per page is 10, and the current page is 1, the number 10 will be returned.
 
-<h3> Previous page number </h3>
+<h3>Previous page number</h3>
 
 <pre>
 my $previous_page = $page->previous_page;
@@ -104,7 +104,7 @@ my $previous_page = $page->previous_page;
 
 Use the previous_page method to get the previous page number. Returns undef if there is no previous page number.
 
-<h3> Next page number </h3>
+<h3>Next page number</h3>
 
 <pre>
 my $next_page = $page->next_page;

@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> pack function-packs data into binary format </h2>
+<h2>pack function-packs data into binary format</h2>
 
 
 
@@ -26,7 +26,7 @@ After the second argument, specify the <a href="/blog/20100308126967.html">list<
 
 The return value is the packed data.
 
-<h4> Packed in signed 32-bit binary format </h4>
+<h4>Packed in signed 32-bit binary format</h4>
 
 As an example, to pack three integers into a signed 32-bit binary format:
 
@@ -51,7 +51,7 @@ my @values = (7, 8, 9);
 my $packed = pack("l3", @values);
 </pre>
 
-<h4> Pack floating point into signed double binary format </h4>
+<h4>Pack floating point into signed double binary format</h4>
 
 Let's pack the three floating point numbers into a double precision floating point double binary format.
 
@@ -61,7 +61,7 @@ my $packed = pack("d3", 0.5, 1.2, 5.4);
 
 Double-precision floating point numbers can be packed with the symbol "d".
 
-<h4> To write binary data </h4>
+<h4>To write binary data</h4>
 
 To write binary data, set the filehandle to binary mode using the <a href="/blog/20100204126425.html">binmode function</a> and <a href="/blog/20170404149131.html">print Use the function</a>.
 
@@ -83,7 +83,7 @@ print $fh $data;
 close $fh;
 </pre>
 
-<h4> To change endianness </h4>
+<h4>To change endianness</h4>
 
 The conversion from big endian to little endian can be done using "N" and "V". The following example is an example of an unsigned 32-bit integer.
 
@@ -95,11 +95,11 @@ my $value = unpack('N1', $value_big);
 my $value_litte = pack('V1', $value);
 </pre>
 
-<h4> How to restore packed data </h4>
+<h4>How to restore packed data</h4>
 
 Use the unpack function to restore the packed data.
 
-<h3> List of formats </h3>
+<h3>List of formats</h3>
 
 List of formats for the pack function.
 
@@ -376,13 +376,13 @@ List of formats for the pack function.
 
 </table>
 
-<h3> Advantages of binary format </h3>
+<h3>Advantages of binary format</h3>
 
 The advantage of the <b> binary format is that it is smaller in size. </b> Perl numbers are internally a structure called SVIt is represented by, and the size is larger by the existence of the field of the structure.
 
 Another advantage is that it is <b> placed in a contiguous area </b>. Since 32bit is 4 bytes, 3 4 bytes are consecutive and 12 bytes can express 3 integers.
 
-<h4> Data exchange with C language </h4>
+<h4>Data exchange with C language</h4>
 
 C language arrays correspond to just the packed binary format. The following declaration has exactly the same data structure as the packed binary format.
 
@@ -390,6 +390,6 @@ C language arrays correspond to just the packed binary format. The following dec
 int32_t values [3];
 </pre>
 
-<h3> More details </h3>
+<h3>More details</h3>
 
 For more information about the pack function, see the official documentation <a href="http://perldoc.jp/docs/perl/5.8.8/perlpacktut.pod">Introduction to pack</a> and <a href=" Please refer to http://perldoc.jp/func/pack">pack function</a>.

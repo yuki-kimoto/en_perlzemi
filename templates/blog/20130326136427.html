@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> perltidy - Format Perl source code </h2>
+<h2>perltidy - Format Perl source code</h2>
 
 
 
@@ -20,15 +20,15 @@ perltidy is a tool for shaping Perl source code. It formats the Perl source code
 perltidy source file
 </pre>
 
-<h3> Steps to run perltidy on multiple files in a directory </h3>
+<h3>Steps to run perltidy on multiple files in a directory</h3>
 
 Here are the steps to recursively process all the files in a directory using <strong> perltidy </strong>. At this point, perltidy itself doesn't seem to implement a way to handle directories recursively.
 
-<h4> Make a backup first </h4>
+<h4>Make a backup first</h4>
 
 Make a backup of your directory first. This is to return even if you make a mistake. Back up each directory in a different location.
 
-<h4> Find the desired file </h4>
+<h4>Find the desired file</h4>
 
 First, find the desired file using the <b> find2perl </b> command. I think files ending in .pm and files ending in .pl will be formatted. The target directory name is dir.
 
@@ -38,7 +38,7 @@ find2perl perl_lib/-name "* .p [ml]" | perl
 
 If the target file is correct, proceed to the next step.
 
-<h4> Run perltidy </h4>
+<h4>Run perltidy</h4>
 
 Now let's run perltidy on the output file.
 
@@ -48,7 +48,7 @@ find2perl perl_lib/-name "* .p [ml]" | perl | perl -ne "system('perltidy', $_)"
 
 You now have a file with the extension <b> .tdy </b>. This is the formatted source file. Let's check if the output is correct.
 
-<h4> Overwrite the original file with a file with a .tdy extension </h4>
+<h4>Overwrite the original file with a file with a .tdy extension</h4>
 
 Overwrites the original file with a file with a .tdy extension. That's it.
 

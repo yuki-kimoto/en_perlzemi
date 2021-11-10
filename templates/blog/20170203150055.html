@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> How to use C ++ library from XS </h2>
+<h2>How to use C ++ library from XS</h2>
 
 
 
 Perl's XS also allows you to call libraries written in <b> C ++ </b>. Just specify "g ++" for C ++ for the compiler and linker.
 
-<h3> Create a module with h2xs </h3>
+<h3>Create a module with h2xs</h3>
 
 First, create a module for XS with h2xs.
 
@@ -35,7 +35,7 @@ README
 SomeModule.xs
 t/</pre>
 
-<h3> Creating a C ++ library </h3>
+<h3>Creating a C ++ library</h3>
 
 Let's create a C ++ library. Create a header file and a source file.
 
@@ -61,7 +61,7 @@ void mylib_print() {
 
 Save the header and source files and place them in the same directory where the XS files are located.
 
-<h3> XS file description </h3>
+<h3>XS file description</h3>
 
 Let's write an XS file. I am calling mylib_print.
 
@@ -84,7 +84,7 @@ foo (...)
 }
 </pre>
 
-<h3> Modify Makefile.PL </h3>
+<h3>Modify Makefile.PL</h3>
 
 Next, let's modify Makefile.PL a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$(O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
 
@@ -111,7 +111,7 @@ WriteMakefile (
 );
 </pre>
 
-<h3> Test script </h3>
+<h3>Test script</h3>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -124,7 +124,7 @@ use SomeModule;
 SomeModule::foo ();
 </pre>
 
-<h3> Compile and run </h3>
+<h3>Compile and run</h3>
 
 Let's compile and run it.
 
@@ -142,12 +142,12 @@ mylib_cpp
 
 Now you can use the C ++ library from the XS file.
 
-<h3> FAQ </h3>
+<h3>FAQ</h3>
 
-<h4> Is it possible to write C ++ directly in the XS file? </h4>
+<h4>Is it possible to write C ++ directly in the XS file?</h4>
 
 I can do it. However, it tends to cause problems such as collision with Perl symbols, so I think it is better to describe it in the source file and header file.
 
-<h4> Is it possible to use a mixture of C language libraries and C ++ libraries? </h4>
+<h4>Is it possible to use a mixture of C language libraries and C ++ libraries?</h4>
 
 C ++ is almost upward compatible with C language, so I think it's okay if the C language library can be compiled with g ++. If not, I'm not sure.

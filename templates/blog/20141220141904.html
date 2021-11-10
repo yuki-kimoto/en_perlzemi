@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> How to write a program without causing a memory leak in XS </h2>
+<h2>How to write a program without causing a memory leak in XS</h2>
 
 
 
 I will explain how to write a program without causing a memory leak in XS.
 
-<h3> Perl memory management is a reference counting method </h3>
+<h3>Perl memory management is a reference counting method</h3>
 
 First of all, as a basic knowledge, please be aware that Perl's memory management is performed by the <a href="/blog/20131010138141.html">reference counting method</a>. In the reference counting method, the memory is released when the reference count reaches 0. In other words, freeing memory in Perl is equivalent to setting the reference count to 0.
 
@@ -54,11 +54,11 @@ The above code describes what happens when you get out of scope.
 
 Following this process, the memory is released.
 
-<h3> Basics of memory management in XS </h3>
+<h3>Basics of memory management in XS</h3>
 
 Next, based on this, I will explain the basics of memory management in XS.
 
-<h4> Perl variables </h4>
+<h4>Perl variables</h4>
 
 First, let's take a brief look at Perl variables.
 
@@ -87,7 +87,7 @@ SV * sv_str_ref = newRV_inc (sv_str);
 
 There is another function called newRV, but when generating a reference, it is a rule to increase the reference count by 1 with newRV_inc.
 
-<h3> Make all created variables mortal </h3>
+<h3>Make all created variables mortal</h3>
 
 Then proceed to memory management. The ironclad rule of Perl's memory management is that all newly created Perl variables should be mortal. By making it mortal, the reference count of variables that are out of scope is decremented by 1 and the memory is automatically freed.
 
@@ -151,7 +151,7 @@ foo (...)
 /* End of Perl scope */}
 </pre>
 
-<h3> When storing data in arrays and hashes </h3>
+<h3>When storing data in arrays and hashes</h3>
 
 If you code while observing the above iron rules, memory release will not work if you store data in arrays and hashes. This is because arrays and hashes decrement the reference count of the "SV * type" data they contain by one when they are destroyed by themselves.
 
@@ -167,7 +167,7 @@ HV * hv_scores = (HV *) sv_2mortal ((SV *) newHV ());
 hv_store (hv_scores, "math", strlen ("math"), SvREFCNT_inc (sv_score_math), 0);
 </pre>
 
-<h3> When storing Perl data in a C structure </h3>
+<h3>When storing Perl data in a C structure</h3>
 
 If you want to store Perl data in a C structure, you need to manage the memory yourself. As a premise of this story, you should look at <a href="/blog/20140807140729.html">How to treat C structs as Perl objects</a>.
 
@@ -227,7 +227,7 @@ DESTORY (...)
 
 If you want to store data in a member of the C world structure (same as the class) in this way, you need to manually increase or decrease the reference count.
 
-<h3> Summary </h3>
+<h3>Summary</h3>
 
 In summary, there are three main points.
 
@@ -245,7 +245,7 @@ In summary, there are three main points.
 
 This should work in most cases.
 
-<h3> Reference </h3>
+<h3>Reference</h3>
 
 The functions used in XS mentioned in this explanation are explained in detail in the following articles.
 

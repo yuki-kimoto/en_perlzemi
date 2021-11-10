@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> flock function - exclusive control of files </h2>
+<h2>flock function - exclusive control of files</h2>
 
 
 
@@ -88,9 +88,9 @@ If the order is not followed, the written content will be duplicated or the file
 
 Kill all three processes with Ctrl + C and make sure there are no duplicate counts. If the counts do not overlap, you can see that you are reading and writing in order. (Flock doesn't work on some operating systems (such as Winows98), but it will work on most operating systems.)
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> Fcntl - Read constants for file locking </h4>
+<h4>Fcntl - Read constants for file locking</h4>
 
 The <a href="/blog/20180310152509.html">Fcntl</a> module allows you to use the file locking constants used by flock.
 
@@ -134,7 +134,7 @@ LOCK_NB is used with LOCK_SH LOCK_EX to return control to the program without wa
 
 As a side note:DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and O_CREAT in the <a href="/blog/20080804121794.html">sysopen function</a>. Therefore, it is specified.
 
-<h4> (2) If the file does not exist, create it and open it in read/write mode </h4>
+<h4>(2) If the file does not exist, create it and open it in read/write mode</h4>
 
 <pre>
 # Open in read/write mode (not very secure)
@@ -145,7 +145,7 @@ sysopen(my $fh, $file, O_RDWR | O_CREAT)
 
 In sysopen, specify O_RDWR and O_CREAT for the open flags.
 
-<h4> (3) Exclusive lock is performed with the flock function </h4>
+<h4>(3) Exclusive lock is performed with the flock function</h4>
 
 <pre>
 # Exclusive lock (exclusive lock because it reads and writes)
@@ -157,7 +157,7 @@ This time, we will use an exclusive lock (write lock) because we will read the d
 
 Note that the first argument is an open filehandle, not a file. When all processes access a file, they can access the file in order by keeping the promise of acquiring the lock with flock.
 
-<h4> (4) Count up and write </h4>
+<h4>(4) Count up and write</h4>
 
 <pre>
 my $cnt;
@@ -180,7 +180,7 @@ truncate ($fh, length $cnt);
 
 Read from the file and count up if there are no errors. Since the file pointer is advanced at the time of reading, use the seek function to return it to the beginning. Write with the print function and truncate to the written size with the truncate function. (This time, the numbers are just going up, so there is no need for truncate.)
 
-<h4> (5) Unlock </h4>
+<h4>(5) Unlock</h4>
 
 <pre>
 # The file lock is released at the time of close.
@@ -190,7 +190,7 @@ close $fh
 
 Calling the close function unlocks the file.
 
-<h3> A brief explanation of the loop script </h3>
+<h3>A brief explanation of the loop script</h3>
 
 <pre>
 use FindBin;

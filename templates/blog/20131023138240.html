@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Statistical functions in PDL </h2>
+<h2>Statistical functions in PDL</h2>
 
 
 
 Here are some basic statistical functions.
 
-<h3> Maximum </h3>
+<h3>Maximum</h3>
 
 To find the <strong> maximum </strong> from a one-dimensional PDL variable, use the <strong> max method </strong>.
 
@@ -32,7 +32,7 @@ my $max = $nums->max;
 
 The PDL::Ufunc module provides functions for calculating statistics from PDL variables.
 
-<h3> Minimum </h3>
+<h3>Minimum</h3>
 
 Use the <strong> min method </strong> to find the <strong> minimum </strong>.
 
@@ -41,7 +41,7 @@ Use the <strong> min method </strong> to find the <strong> minimum </strong>.
 my $min = $nums->min;
 </pre>
 
-<h3> Total </h3>
+<h3>Total</h3>
 
 Use the <strong> sum method </strong> to find the <strong> sum </strong>.
 
@@ -50,7 +50,7 @@ Use the <strong> sum method </strong> to find the <strong> sum </strong>.
 my $total = $nums->sum;
 </pre>
 
-<h3> Average </h3>
+<h3>Average</h3>
 
 Use the <strong> avg method </strong> to find the <strong> average </strong>.
 
@@ -58,7 +58,7 @@ Use the <strong> avg method </strong> to find the <strong> average </strong>.
 my $average = $nums->avg;
 </pre>
 
-<h3> Median </h3>
+<h3>Median</h3>
 
 Use the <strong> median method </strong> to find the <strong> median </strong>.
 
@@ -68,7 +68,7 @@ my $median = $nums->median;
 
 The median is the value that comes in the middle when all the values are listed.
 
-<h3> Mode </h3>
+<h3>Mode</h3>
 
 Use the <strong> mode method </strong> to find the <strong> mode </strong>.
 
@@ -78,7 +78,7 @@ my $mode = $nums->mode;
 
 The mode is the value that appears most often.
 
-<h3> Sort </h3>
+<h3>Sort</h3>
 
 Use the <strong> qsort method </strong> to sort in ascending order.
 
@@ -96,7 +96,7 @@ my $nums_sort_desc = $nums_sort_asc (-1: 0);
 
  The meaning of "-1: 0" means that the first -1 is the last element. 0 means the first element. "-1: 0" means from the last element to the first element, and the order can be reversed.
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample that can be executed.
 
@@ -145,7 +145,7 @@ print "$nums_sort_asc\n";
 print "$nums_sort_desc\n";
 </pre>
 
-<h3> Install PDL::Stats::Basic </h3>
+<h3>Install PDL::Stats::Basic</h3>
 
 The following statistical functions are made available by a module called <strong> PDL::Stats::Basic </strong>. You need to install PDL::Stats.
 
@@ -159,7 +159,7 @@ Loading PDL::Stats::Basic makes the functions defined in PDL::Stats::Basic avail
 use PDL::Stats::Basic;
 </pre>
 
-<h3> Distributed </h3>
+<h3>Distributed</h3>
 
 To find the <strong> distributed </strong>, use the <strong> var </strong> method.
 
@@ -174,7 +174,7 @@ my $nums = pdl [4, 2, 7];
 my $variance = $nums->var;
 </pre>
 
-<h3> Bias of an estimulus </h3>
+<h3>Bias of an estimulus</h3>
 
 To find the <strong> unbiased variance </strong>, use the <strong> var_unbiased </strong> method.
 
@@ -185,7 +185,7 @@ my $variance = $nums->var_unbiased;
 
 Bias of an estimulus has a denominator of (n -1).
 
-<h3> Standard deviation </h3>
+<h3>Standard deviation</h3>
 
 To find the <strong> standard deviation </strong>, use the <strong> stdv </strong> method.
 
@@ -196,7 +196,7 @@ my $stdv = $nums->stdv;
 
 The meaning of the standard deviation is an indication of how scattered the data is. The standard deviation formula is the "positive square root of the variance". Variance also indicates how scattered the data is, but because the units are different from the original data, it is difficult to compare with the original data. If you take the positive square root and make it the standard deviation, the unit will be the same as the unit of the original data.
 
-<h3> Bias of an estimulus </h3>
+<h3>Bias of an estimulus</h3>
 
 To find the <strong> unbiased standard deviation </strong>, use the <strong> stdv_unbiased </strong> method.
 
@@ -207,7 +207,7 @@ my $stdv = $nums->stdv_unbiased;
 
 The unbiased standard deviation formula is the "positive square root of the unbiased variance".
 
-<h3> Standard error </h3>
+<h3>Standard error</h3>
 
 To find the <strong> standard error </strong>, use the <strong> se </strong> method.
 
@@ -216,7 +216,7 @@ To find the <strong> standard error </strong>, use the <strong> se </strong> met
 my $se = $nums->se;
 </pre>
 
-<h3> Sum of deviation squares </h3>
+<h3>Sum of deviation squares</h3>
 
 To find the <strong> sum of squared deviations </strong>, use the <strong> ss </strong> method.
 
@@ -225,7 +225,7 @@ To find the <strong> sum of squared deviations </strong>, use the <strong> ss </
 my $ss = $nums->ss;
 </pre>
 
-<h3> Skewness </h3>
+<h3>Skewness</h3>
 
 To find the <strong> skewness </strong>, use the <strong> skew </strong> method.
 
@@ -234,7 +234,7 @@ To find the <strong> skewness </strong>, use the <strong> skew </strong> method.
 my $skew = $nums->skew;
 </pre>
 
-<h3> Bias of an estimulus </h3>
+<h3>Bias of an estimulus</h3>
 
 To find the <strong> unbiased skewness </strong>, use the <strong> skew_unbiased </strong> method.
 
@@ -243,7 +243,7 @@ To find the <strong> unbiased skewness </strong>, use the <strong> skew_unbiased
 my $skew_unbiased = $nums->skew_unbiased;
 </pre>
 
-<h3> Kurtosis </h3>
+<h3>Kurtosis</h3>
 
 To find the <strong> kurtosis </strong>, use the <strong> kurt </strong> method.
 
@@ -252,7 +252,7 @@ To find the <strong> kurtosis </strong>, use the <strong> kurt </strong> method.
 my $kurt = $nums->kurt;
 </pre>
 
-<h3> Bias of an estimulus </h3>
+<h3>Bias of an estimulus</h3>
 
 To find the <strong> unbiased kurtosis </strong>, use the <strong> kurt_unbiased </strong> method.
 
@@ -261,7 +261,7 @@ To find the <strong> unbiased kurtosis </strong>, use the <strong> kurt_unbiased
 my $kurt_unbiased = $nums->kurt_unbiased;
 </pre>
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample that can be executed.
 

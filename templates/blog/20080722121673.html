@@ -10,7 +10,7 @@
       <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Line input operator "& lt; & gt;" - Read one line from a file </h2>
+<h2>Line input operator "& lt; & gt;" - Read one line from a file</h2>
 
 
 
@@ -42,7 +42,7 @@ while (defined(my $line = <$fh>)) {
 
 So, as long as you use it in combination with while, the first writing is fine.
 
-<h3> Diamond operator </h3>
+<h3>Diamond operator</h3>
 
 The line input operator "<>" with nothing between "<" and">" is specially called the <strong> diamond operator </strong>. If the file handle is omitted, it can be read line by line from the standard input and the file name specified by the <a href="/blog/20080108132865.html">command line argument</a>.
 
@@ -83,7 +83,7 @@ while (my $line = <>) {
 }
 </pre>
 
-<h3> Get into the array at once </h3>
+<h3>Get into the array at once</h3>
 
 You can populate an array with all rows by evaluating the row input operator in a list context. However, be aware that if the file is large, it will use a lot of memory.
 
@@ -91,7 +91,7 @@ You can populate an array with all rows by evaluating the row input operator in 
 my @lines = <$fh>
 </pre>
 
-<h3> Import all the contents of the file </h3>
+<h3>Import all the contents of the file</h3>
 
 To capture the entire contents of a file, it is common to write something like this:
 
@@ -101,7 +101,7 @@ my $content = do {local $/; <$fh>};
 
 "$/" Is the line delimiter. If you leave this undefined, the line input operator will populate the entire contents of the file. I'm using <a href="/blog/20080309120507.html">local</a> to temporarily undefine it. The do block returns the last evaluated value. So, with this description, you can read the contents of the file at once.
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample that reads a file line by line using the line input operator. Repeat reading one line in a while loop.
 
@@ -135,9 +135,9 @@ while (my $line = readline $fh) {
 close $fh;
 </pre>
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> (1) Read 1-line file </h4>
+<h4>(1) Read 1-line file</h4>
 <pre>
 while (my $line = readline $fh) {
     # process ...
@@ -149,7 +149,7 @@ It may seem strange to read one line at the position where the conditional state
 
 When the end of the file is reached, the readline function returns undef and $line is assigned undef. Since $line is undef, the while statement ends.
 
-<h4> (2) Remove line breaks with chomp function </h4>
+<h4>(2) Remove line breaks with chomp function</h4>
 
 <pre>
 while (my $line = readline $fh) {
@@ -160,7 +160,7 @@ while (my $line = readline $fh) {
 
 Line breaks are often unnecessary after reading a line, so use the chomp function to remove the line breaks.
 
-<h4> (3) Another way to write readline <$fh> </h4>
+<h4>(3) Another way to write readline <$fh></h4>
 
 <pre>
 while (my $line = <$fh>) {

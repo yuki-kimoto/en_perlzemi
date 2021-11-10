@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> close function-close file handle </h2>
+<h2>close function-close file handle</h2>
 
 
 Use the <strong> close function </strong> to close the <strong> filehandle </strong>.
@@ -20,7 +20,7 @@ close $fh;
 
 In a little more detail, when the close function is called, the current buffer is flushed and then the filehandle is closed.
 
-<h3> Is it necessary to close the file handle with the close function? </H3>
+<h3>Is it necessary to close the file handle with the close function? </H3>
 
 Is it necessary to close the file handle with the close function after opening the file with the open function? It is not always necessary.
 
@@ -34,7 +34,7 @@ open(my $fh, '<', $file);
 
 Here are some examples when you need to use the close function.
 
-<h4> When a file handle is assigned to a type glob or symbol </h4>
+<h4>When a file handle is assigned to a type glob or symbol</h4>
 
 Filehandles can also be assigned to typeglobs and filehandles. In old source code, you will often see the following open.
 
@@ -48,7 +48,7 @@ open(FH, '<', $file)
 
 In such a case, if you do not explicitly close it, the file handle will remain open even after the scope ends, so let's close it. If you have a short program and the program quits quickly, Global Destruction will close the file, so you don't have to close it, but it's a good idea to do so.
 
-<h4> If you want to flush the buffer immediately and close the filehandle </h4>
+<h4>If you want to flush the buffer immediately and close the filehandle</h4>
 
 The close function flushes the buffer and then closes the file handle. A buffer is data that has not yet been written to a file.
 
@@ -56,6 +56,6 @@ Suppose you open a filehandle in write mode and write data with the print functi
 
 In such a case, if you want to flush immediately, you can use the close function.
 
-<h4> When you need to open a pipe, socket, etc. and explicitly close it </h4>
+<h4>When you need to open a pipe, socket, etc. and explicitly close it</h4>
 
 If you use the fork and open functions to open multiple pipes, sockets, etc., you may want to close only the write side or only the read side. In that case, explicitly call the close function.

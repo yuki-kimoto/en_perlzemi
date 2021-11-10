@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Easy way to implement XS using multiple modules </h2>
+<h2>Easy way to implement XS using multiple modules</h2>
 
 
 
@@ -33,7 +33,7 @@ I tried various things, but the next method seemed to be easy, so I will introdu
   </li>
 </ol>
 
-<h4> Create a module with h2xs </h4>
+<h4>Create a module with h2xs</h4>
 
 First, create a module for XS with h2xs.
 
@@ -52,7 +52,7 @@ README
 SomeModule.xs
 t/</pre>
 
-<h4> XS file description </h4>
+<h4>XS file description</h4>
 
 I will create an XS file. Let's add a function called foo that displays "foo" to SomeModule, and a function called bar that displays "bar" to SomeModule::Util.
 
@@ -101,7 +101,7 @@ foo (...)
 }
 </pre>
 
-<h4> Creating a module </h4>
+<h4>Creating a module</h4>
 
 At this point, all you have to do is create SomeModule and SomeModule::Util.
 
@@ -133,7 +133,7 @@ package SomeModule::Util;
 1;
 </pre>
 
-<h4> Test script </h4>
+<h4>Test script</h4>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -148,7 +148,7 @@ SomeModule::foo ();
 SomeModule::Util::bar ();
 </pre>
 
-<h4> Compile and run </h4>
+<h4>Compile and run</h4>
 
 Let's compile and run it.
 

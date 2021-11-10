@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> localtime function - get current date/time </h2>
+<h2>localtime function - get current date/time</h2>
 
 
 You can use the <strong> localtime function </strong> to get the current date and time. You can get the local time according to each region.
@@ -40,7 +40,7 @@ For general information about dates and times, please refer to the following.
   </li>
 </ul>
 
-<h4> Local Time and Coordinated Universal Time </h4>
+<h4>Local Time and Coordinated Universal Time</h4>
 
 If you set the time like "The time when the sun is highest is noon (12:00)", the times will not match in each country. For example, when Japan is at noon (12:00), the other side of the globe is at midnight.
 
@@ -50,7 +50,7 @@ In addition, there is a time that coincides with the whole world called Coordina
 
 In the case of Japan, the local time is 9 hours ahead of Coordinated Universal Time.
 
-<h3> Sample localtime function </h3>
+<h3>Sample localtime function</h3>
 
 This is a sample using the localtime function.
 
@@ -90,7 +90,7 @@ my $date_str = localtime;
 print $date_str . "\n";
 </pre>
 
-<h4> Get the current date and time(local time) </h4>
+<h4>Get the current date and time(local time)</h4>
 
 <pre>
 my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime;
@@ -118,7 +118,7 @@ my @day_of_week = qw/Sun Mon Tue Wed Thu Fri Sat/;
 
 $yday is the number of days since the beginning of the year. $isdst is whether or not daylight saving time is applied.
 
-<h4> Get the current date (local time) as a string </h4>
+<h4>Get the current date (local time) as a string</h4>
 
 <pre>
 my $date_str = localtime;
@@ -126,6 +126,6 @@ my $date_str = localtime;
 
 To get a string representation of the time, evaluate the return value of the localtime function in a scalar context.
 
-<h4> Default argument of localtime function </h4>
+<h4>Default argument of localtime function</h4>
 
 If no argument is given to the localtime function, the value of the <a href="/blog/20081008122347.html">time function</a> (the number of seconds elapsed since the epoch) will be used. You can also explicitly give an argument for the number of seconds since the epoch.

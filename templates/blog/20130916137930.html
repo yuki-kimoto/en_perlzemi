@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> warnings module </h2>
+<h2>warnings module</h2>
 
 Use the <strong> warnings </strong> pragma to display warnings.
 
@@ -20,11 +20,11 @@ use warnings;
 
 In Perl, in the default state, no warning is displayed and the script is executed. You can use the warnings pragma to display warnings. When writing a script, be sure to write it together with the strict pragma.
 
-<h3> Frequently seen warning </h3>
+<h3>Frequently seen warning</h3>
 
 Here are some of the warnings you'll see often.
 
-<h4> Use undefined values </h4>
+<h4>Use undefined values</h4>
 
 A warning is displayed if you use an undefined value. In the following script, the undefined value is output as it is by the print function.
 
@@ -50,7 +50,7 @@ I am using the undefined value $str in print. 6th line.
 
 If you get a warning that you are using undefined, it means that the variable is left unassigned. In other words, there is a mistake in the script. Let's modify the script so that this warning does not appear.
 
-<h3> String is not encoded </h3>
+<h3>String is not encoded</h3>
 
 When using multibyte characters such as Japanese, you may see a warning that the string is unencoded. Below is the script that raises the warning.
 
@@ -87,7 +87,7 @@ my $str = 'Hello';
 print encode('UTF-8', $str);
 </pre>
 
-<h3> Subroutines have been redefined </h3>
+<h3>Subroutines have been redefined</h3>
 
 If you define a subroutine more than once, you will be warned that the subroutine has been redefined. Below is the script that raises the warning.
 
@@ -130,7 +130,7 @@ sub one {1}
 
 Warnings other than subroutine redefinition warnings can be suppressed in a similar way, but in principle warnings should not be suppressed. You should fix the part that caused the warning.
 
-<h3> Suppress subroutine redefinition warnings </h3>
+<h3>Suppress subroutine redefinition warnings</h3>
 
 If you have a bug during development and need to fix it in a hurry, you will sometimes apply a monkey patch. A monkey patch is to overwrite the definition of a subroutine or method so that it behaves correctly.
 

@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> opcode.h </h2>
+<h2>opcode.h</h2>
 
 
 
@@ -18,7 +18,7 @@
 
 Operations are categorized by operation code, and each has its own information. That information is described.
 
-<h3> Name of operation </h3>
+<h3>Name of operation</h3>
 
 For example, the name of the operation is described.
 
@@ -35,7 +35,7 @@ EXTCONST char * const PL_op_name [] = {
 };
 </pre>
 =====
-<h3> Operation explanation </h3>
+<h3>Operation explanation</h3>
 
 Next, a description of the operation is described.
 
@@ -53,7 +53,7 @@ EXTCONST char * const PL_op_desc [] = {
 };
 </pre>
 
-<h3> Address of the function that the operation executes </h3>
+<h3>Address of the function that the operation executes</h3>
 
 Each operation has a corresponding function, but the address to that function is described.
 
@@ -75,7 +75,7 @@ EXT Perl_ppaddr_t PL_ppaddr [] /* or perlvars.h */# endif
 
 The prefix "pp" means "push pop", and the function executed is the function that manipulates the argument stack.
 
-<h3> Functions that optimize operations </h3>
+<h3>Functions that optimize operations</h3>
 
 Each operation is optimized with a function prefixed with "ck". The address of the function is described. "Ck" is an abbreviation for "check".
 
@@ -86,7 +86,7 @@ Each operation is optimized with a function prefixed with "ck". The address of t
   Perl_ck_null,/* null */  Perl_ck_null,/* stub */  Perl_ck_fun,/* scalar */  Perl_ck_null,/* pushmark */  Perl_ck_null,/* wantarray */  Perl_ck_svconst,/* const */  Perl_ck_null,/* gvsv */};
 </pre>
 
-<h3> Function argument information </h3>
+<h3>Function argument information</h3>
 
 The argument information of the function to be executed is described.
 
@@ -158,7 +158,7 @@ And the above doesn't explain this value, but it's in "regen/opcodes".
 # uses $_ if no argument given - u (OA_DEFGV)
 </pre>
 
-<h3> Private flags for operations </h3>
+<h3>Private flags for operations</h3>
 
 And there is private flag information about the operation. A detailed description of these can be found in "regen/op_private".
 

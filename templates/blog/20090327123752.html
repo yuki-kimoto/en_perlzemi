@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Polymorphism with inheritance </h2>
+<h2>Polymorphism with inheritance</h2>
 
 
 
 One of the characteristics of object orientation is polymorphism. Polymorphism can be understood in the sense that <b> similar descriptions behave differently </b>.
 
-<h3> 1. Make different behaviors depending on the class </h3>
+<h3>1. Make different behaviors depending on the class</h3>
 
 Now, let's write a sample that behaves differently depending on the class to which you belong. A simple example is to concatenate strings with specific symbols. The Unix delimiter and the Windows delimiter are treated as samples.
 
@@ -72,7 +72,7 @@ win: a\b
 
 It will be displayed.
 
-<h3> 2. Pay attention to the behavior of cat_path </h3>
+<h3>2. Pay attention to the behavior of cat_path</h3>
 
 First of all, the characteristic of this sample is that the method called cat_path has two meanings.
 
@@ -102,7 +102,7 @@ This is because FilePath::Unix and FilePath::Windows inherits his FilePath::Base
 
 The next thing to pay attention to is the description of $self->delimiter in cat_path.
 
-<h3> 3. Call a subclass method in the superclass. </h3>
+<h3>3. Call a subclass method in the superclass.</h3>
 
 Let's pay attention to the inside of cat_path.
 
@@ -124,7 +124,7 @@ When you call the cat_path method like this, the object assigned to $self is the
 
 The FilePath::Unix class has a delimiter method, so you can call the delimiter method from within the cat_path method.
 
-<h3> 4. The FilePath::Base class is an incomplete class that is intended to be inherited. </h3>
+<h3>4. The FilePath::Base class is an incomplete class that is intended to be inherited.</h3>
 
 If you create an object of the FilePath::Base class, cat_file will fail if you try to call the delimiter method internally.
 
@@ -137,7 +137,7 @@ A class that implements the delimiter method that inherits the FilePath::Base cl
 
 I would like to name such a class <b> inherited class </b>. (I couldn't find a proper name for such a class in a Perl book, so I'll call it a <b> inherited class </b>. It's called a Java abstract class because it can create objects. Not really)
 
-<h3> 5. Defining methods in subclasses </h3>
+<h3>5. Defining methods in subclasses</h3>
 
 And notice that the FilePath::Unix class and the FilePath::Windows class have different implementations of the delimiter method to achieve polymorphism.
 

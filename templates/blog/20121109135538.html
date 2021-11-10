@@ -10,14 +10,14 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Handling of "matrix" in PDL </h2>
+<h2>Handling of "matrix" in PDL</h2>
 
 
 
 
 I will explain the handling of "matrix" in PDL.
 
-<h3> Creating a matrix </h3>
+<h3>Creating a matrix</h3>
 
 Use the <b> pdl </b> function to create a matrix.
 
@@ -39,7 +39,7 @@ The following matrix is created.
 ]
 </pre>
 
-<h3> Matrix addition </h3>
+<h3>Matrix addition</h3>
 
 Use the <b> + </b> operator to add matrices.
 
@@ -67,7 +67,7 @@ Each element is added and the result is as follows.
 ]
 </pre>
 
-<h3> Matrix subtraction </h3>
+<h3>Matrix subtraction</h3>
 
 Use the <strong>-</strong> operator to add matrices.
 
@@ -96,7 +96,7 @@ Each element is subtracted and the result is as follows.
 </pre>
 
 
-<h3> Matrix product </h3>
+<h3>Matrix product</h3>
 
 Use the <strong> x </strong> operator to find the matrix product.
 
@@ -124,7 +124,7 @@ The calculated result is as follows.
 ]
 </pre>
 
-<h3> Get matrix elements </h3>
+<h3>Get matrix elements</h3>
 
 Use the <strong> at </strong> method to get the elements of the matrix. Note that the row and column order is different from a regular matrix, and the subscripts start at 0.
 
@@ -144,7 +144,7 @@ my $mat = pdl [
 my $val = $mat->at(0, 1);
 </pre>
 
-<h3> Set matrix elements </h3>
+<h3>Set matrix elements</h3>
 
 To set the elements of a matrix, use the notation <strong> nice slice </strong>. You need to load the <b> PDL::NiceSlice </b> module to use nice slice notation.
 
@@ -179,7 +179,7 @@ The output of this variable is as follows.
 ]
 </pre>
 
-<h3> Create an identity matrix </h3>
+<h3>Create an identity matrix</h3>
 
 Let's create an identity matrix. Let's make a 3x3 identity matrix. The procedure is to create a 3x3 square matrix with all zeros in the <b> zeroes </b> function of <strong> PDL::Core </strong>. Then slice the diagonal with the <b> diagonal </b> method and substitute 1. The argument (0, 1) means 1D and 2D. It means to get the diagonal of 1D and 2D.
 
@@ -200,7 +200,7 @@ The output result is as follows.
 ]
 </pre>
 
-<h3> Find the determinant </h3>
+<h3>Find the determinant</h3>
 
 Use the <b> det </b> method to find the determinant.
 
@@ -221,7 +221,7 @@ The value of the determinant is as follows.
 -2
 </pre>
 
-<h3> Find the inverse matrix </h3>
+<h3>Find the inverse matrix</h3>
 
 Use the <b> inv </b> function to find the inverse matrix.
 
@@ -242,7 +242,7 @@ The calculated result is as follows.
 ]
 </pre>
 
-<h3> Create a vector (column vector) </h3>
+<h3>Create a vector (column vector)</h3>
 
 To create a vector (column vector):
 
@@ -264,7 +264,7 @@ The output result of the data is as follows.
 ]
 </pre>
 
-<h3> Calculate the linear transformation </h3>
+<h3>Calculate the linear transformation</h3>
 
 
 Let's calculate the linear transformation. It is an operation of square matrix × column vector.

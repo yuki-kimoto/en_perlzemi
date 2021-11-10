@@ -10,17 +10,17 @@
     here
   </li>
 </ol>
-<h2> Validator::Custom - validation of HTML input data </h2>
+<h2>Validator::Custom - validation of HTML input data</h2>
 
 
 
 Validator::Custom is a Perl module to help validate HTML forms. You can concisely describe value checking and filtering, and error message handling. It is extremely easy to use and can flexibly handle complex validation combinations.
 
-<h3> Name </h3>
+<h3>Name</h3>
 
 Validator::Custom - HTML form validation, concise and flexible
 
-<h3> How to use </h3>
+<h3>How to use</h3>
 
 <pre>
   use Validator::Custom;
@@ -98,7 +98,7 @@ Validator::Custom - HTML form validation, concise and flexible
 
 =====
 
-<h3> Explanation </h3>
+<h3>Explanation</h3>
 
 Validator::Custom is a validator of HTML forms, with simplicity and good flexibility.
 
@@ -119,9 +119,9 @@ The features are as follows.
   </li>
 </ul>
 
-<h3> Guide </h3>
+<h3>Guide</h3>
 
-<h4> 1. Basics </h4>
+<h4>1. Basics</h4>
 
 <b> 1. Create a new Validator::Custom object </b>
 
@@ -197,7 +197,7 @@ You can use the <b> check_each </b> method to check each value of "favorites".
 
 If you want to know the default check function and filter function, see the "Check function" and "Filter function" items.
 
-<h4> 2 Handling of validation objects </h4>
+<h4>2 Handling of validation objects</h4>
 
 Use the <b> is_valid </b> method to check that all input data is correct.
 
@@ -250,7 +250,7 @@ You can use the <b> messages_to_hash </b> method to get the names and messages o
 
 Please also refer to <a href="/blog/20151210144988.html">Validator::Custom::Validation</a>.
 
-<h4> 3 Advanced technology </h4>
+<h4>3 Advanced technology</h4>
 
 <b> 1. Addition of check function </b>
 
@@ -294,11 +294,11 @@ The filter function takes three arguments. The first argument is the Validator::
 
 The filter function should return the result of the filter.
 
-<h3> Check function </h3>
+<h3>Check function</h3>
 
 Validator::Custom has the following default check functions: All check functions can be called using the <b> check </b> method.
 
-<h4> int </h4>
+<h4>int</h4>
 
 <pre>
   my $value = 19;
@@ -327,7 +327,7 @@ If you also want to check the range of values, you can write:
   my $is_valid = $vc->check($value, 'int') && $value > 0;
 </pre>
 
-<h4> number </h4>
+<h4>number</h4>
 
 <pre>
   my $is_valid = $vc->check($value, 'number');
@@ -375,7 +375,7 @@ Illegal value example:
   '-100.7891'
 </pre>
 
-<h4> ascii_graphic </h4>
+<h4>ascii_graphic</h4>
 
 <pre>
   my $is_valid = $vc->check($value, 'ascii');
@@ -396,7 +396,7 @@ Illegal value example:
   "\taaa"
 </pre>
 
-<h4> in </h4>
+<h4>in</h4>
 
 <pre>
   my $value = '001';
@@ -420,11 +420,11 @@ Illegal value example:
   '005'
 </pre>
 
-<h3> Filter function </h3>
+<h3>Filter function</h3>
 
 Validator::Custom has the following default filter functions: All filter functions are y C <filter> method.
 
-<h4> trim </h4>
+<h4>trim</h4>
 
 <pre>
   my $new_value = $vc->filter($value, 'trim');
@@ -439,7 +439,7 @@ Filtering example:
   Output:'Ken'
 </pre>
 
-<h4> remove_blank </h4>
+<h4>remove_blank</h4>
 
 <pre>
   my $new_values = $vc->filter($values, 'remove_blank');
@@ -454,11 +454,11 @@ Filtering example:
   Output: [1, 2, 4]
 </pre>
 
-<h3> Method </h3>
+<h3>Method</h3>
 
 Validator::Custom inherits all the methods of <a href="http://search.cpan.org/dist/Object-Simple/lib/Object/Simple.pm">Object::Simple</a> And implements the following new methods:
 
-<h4> new </h4>
+<h4>new</h4>
 
 <pre>
   my $vc = Validator::Custom->new;
@@ -466,7 +466,7 @@ Validator::Custom inherits all the methods of <a href="http://search.cpan.org/di
 
 Create a new Validator::Custom object.
 
-<h4> add_check </h4>
+<h4>add_check</h4>
 
 <pre>
   $vc->add_check(int => sub {...});
@@ -490,7 +490,7 @@ sample:
 
 The check function takes three arguments. The first argument is the Validator::Custom object, the second argument is the value to check, and the third argument is the argument to the check function. The check function must return a true or false value.
 
-<h4> add_filter </h4>
+<h4>add_filter</h4>
 
 <pre>
   $vc->add_filter(trim => sub {...});
@@ -517,7 +517,7 @@ The filter function takes three arguments. The first argument is the Validator::
 
 The filter function should return the result of the filter.
 
-<h4> check </h4>
+<h4>check</h4>
 
 <pre>
   my $is_valid = $vc->check($value, 'int');
@@ -528,7 +528,7 @@ Execute the check function.
 
 The first argument is the value to check. The second argument is the name of the check function. The third argument is the argument of the check function.
 
-<h4> check_each </h4>
+<h4>check_each</h4>
 
 <pre>
   my $is_valid = $vc->check_each($values, 'int');
@@ -539,7 +539,7 @@ Executes the check function on all elements of the array reference. If one or mo
 
 The first argument is the value to check. This should be an array reference. The second argument is the name of the check function. The third argument is the argument of the check function.
 
-<h4> filter </h4>
+<h4>filter</h4>
 
 <pre>
   my $new_value = $vc->filter($value, 'trim');
@@ -550,7 +550,7 @@ Execute the filter function.
 
 The first argument is the value to filter. The second argument is the name of the filter function. The third argument is the argument of the filter function.
 
-<h4> filter_each </h4>
+<h4>filter_each</h4>
 
 <pre>
   my $new_values = $vc->filter_each($values, 'trim');
@@ -561,7 +561,7 @@ Executes the filter function on all elements of the array reference.
 
 The first argument is the value to filter. This should be an array reference. The second argument is the name of the filter function. The third argument is the argument of the filter function.
 
-<h4> Sample </h4>
+<h4>Sample</h4>
 
 Here are some samples for validation.
 
@@ -654,13 +654,13 @@ Convert datetime string to Time::Piece object:
 
 (Reference) <a href="/blog/20100312126967.html">eval</a>
 
-<h3> FAQ </h3>
+<h3>FAQ</h3>
 
-<h4> I'm still using the 0.xx version of Validator::Custom. I would like to see the documentation. </h4>
+<h4>I'm still using the 0.xx version of Validator::Custom. I would like to see the documentation.</h4>
 
 <a href="http://search.cpan.org/~kimoto/Validator-Custom/lib/Validator/Custom/Document/Version0.pod">Validator::Custom::Document::Version0</a> please look. This is the complete documentation for "Validator::Custom 0.xx".
 
-<h4> What should I be aware of in version 1.xx? </h4>
+<h4>What should I be aware of in version 1.xx?</h4>
 
 <ul>
   <li>
@@ -680,7 +680,7 @@ Convert datetime string to Time::Piece object:
   </li>
 </ul>
 
-<h4> How do I create a check function that corresponds to a version 0.xx constraint function? </H4>
+<h4>How do I create a check function that corresponds to a version 0.xx constraint function? </H4>
 
 I will show you some samples.
 
@@ -751,7 +751,7 @@ decimal
   }
 </pre>
 
-<h4> How do I create a filter function that corresponds to the version 0.xx constraint function? </H4>
+<h4>How do I create a filter function that corresponds to the version 0.xx constraint function? </H4>
 
 I will show you some samples.
 
@@ -855,13 +855,13 @@ trim_uni_trail
   });
 </pre>
 
-<h3> Author </h3>
+<h3>Author</h3>
 
 Yuki Kimoto (kimoto.yuki@gmail.com)
 
 [http://github.com/yuki-kimoto/Validator-Custom]
 
-<h3> Validator::Custom check function sample </h3>
+<h3>Validator::Custom check function sample</h3>
 
 Here are some sample check functions such as "Hiragana", "Katakana", and email address check.
 
@@ -871,7 +871,7 @@ Here are some sample check functions such as "Hiragana", "Katakana", and email a
   </li>
 </ul>
 
-<h3> Documentation for Validator::Custom 1.0 and earlier </h3>
+<h3>Documentation for Validator::Custom 1.0 and earlier</h3>
 
 Documentation for Validator::Custom 1.0 and earlier can be found here.
 
@@ -881,11 +881,11 @@ Documentation for Validator::Custom 1.0 and earlier can be found here.
   </li>
 </ul>
 
-<h3> Check function sample </h3>
+<h3>Check function sample</h3>
 
 Here are some sample check functions for validation in Validator::Custom.
 
-<h4> Hiragana and Katakana </h4>
+<h4>Hiragana and Katakana</h4>
 
 To determine that it is <strong> Hiragana </strong> and </strong> Katakana </strong>, register the following constraint function.
 
@@ -909,7 +909,7 @@ $vc->add_check(
 );
 </pre>
 
-<h4> Email validation </h4>
+<h4>Email validation</h4>
 
 Email validation is not provided as a default check function. If necessary, it is recommended to install Email::Valid::Loose and then register and use the check function.
 

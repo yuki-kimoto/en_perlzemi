@@ -11,7 +11,7 @@
   </li>
 </ol>
 
-<h2> Create PDF file - Create form with PDF::API2 </h2>
+<h2>Create PDF file - Create form with PDF::API2</h2>
 
 To create a PDF file with PDF::API2:
 
@@ -44,7 +44,7 @@ If you can create an empty PDF file, you are successful.
 
 <a href="/examples/pdf/empty.pdf">Output result empty page</a>
 
-<h3> Open an existing PDF file </h3>
+<h3>Open an existing PDF file</h3>
 
 To open an existing PDF file with PDF::API2, use the open method.
 
@@ -53,7 +53,7 @@ To open an existing PDF file with PDF::API2, use the open method.
 my $pdf = PDF::API2->open('some.pdf');
 </pre>
 
-<h3> Add a new page </h3>
+<h3>Add a new page</h3>
 
 Use the page method to add a new page in PDF::API2. The page created by page is added to the end of the PDF document.
 
@@ -69,7 +69,7 @@ If you specify an argument, you can insert it on the specified page. Existing pa
 my $page = $pdf->page(5);
 </pre>
 
-<h3> Get an existing page </h3>
+<h3>Get an existing page</h3>
 
 To get the page that already exists in PDF::API2, specify the page number in the openpage method. Page numbers start at 1. Note that it does not start at 0.
 
@@ -78,7 +78,7 @@ To get the page that already exists in PDF::API2, specify the page number in the
 my $page = $pdf->openpage($page_number);
 </pre>
 
-<h3> Get the number of pages </h3>
+<h3>Get the number of pages</h3>
 
 In PDF::API2, use the pages method to get the number of existing pages.
 
@@ -87,7 +87,7 @@ In PDF::API2, use the pages method to get the number of existing pages.
 my $pages_count = $pdf->pages;
 </pre>
 
-<h3> Set the paper size </h3>
+<h3>Set the paper size</h3>
 
 To set the page paper size in PDF::API2, use the mediabox method.
 
@@ -172,7 +172,7 @@ use PDF::API2;
 
 <a href="/examples/pdf/size_a4.pdf">Output result A4 size</a>, <a href="/examples/pdf/size_b5.pdf">Output result B5 size</a>, <a href="/examples/pdf/size_595_842.pdf">Output result 595 × 842 size</a>
 
-<h3> Get the paper size </h3>
+<h3>Get the paper size</h3>
 
 To get the paper size, use the page object's mediabox method with no arguments.
 
@@ -196,7 +196,7 @@ For example, the following values are returned.
 
 Generally, the margin X from the lower left is 0 and the margin Y from the lower left is 0, so you can think of the upper right coordinate X as the width and the upper right coordinate Y as the height.
 
-<h3> Combine multiple PDF files </h3>
+<h3>Combine multiple PDF files</h3>
 
 Here are the steps to combine multiple PDF files. Create a new PDF::API2 object. Open an existing PDF file.
 

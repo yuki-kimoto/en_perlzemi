@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "4" />
   </li>
 </ol>
-<h2> General-purpose constructor template </h2>
+<h2>General-purpose constructor template</h2>
 
 
 
 I will present a template of a general-purpose constructor. A general-purpose constructor template is a little difficult.
 
-<h3> 1. General-purpose constructor guidelines </h3>
+<h3>1. General-purpose constructor guidelines</h3>
 
 A generic constructor should take into account not only when it is called from a class, but also when it is called from a <b> object </b>.
 
@@ -36,7 +36,7 @@ Corresponds to both.
 
 Another guideline is to separate the constructor and initialization process. I will create a <b> init method for initialization </b>.
 
-<h3> 2. Creating a generic constructor </h3>
+<h3>2. Creating a generic constructor</h3>
 The following is a general-purpose constructor template.
 <pre>
 sub new {
@@ -55,7 +55,7 @@ sub init {
 }
 </pre>
 
-<h3> 3. Processing to extract the class name from the object </h3>
+<h3>3. Processing to extract the class name from the object</h3>
 
 I think this part is difficult to understand.
 <pre>
@@ -68,7 +68,7 @@ If not, I'm trying to just use the class name. If a string (class name) is passe
 
 That's why $class will contain the class name, whether it's called by the class name or by an object.
 
-<h3> 4. Separate initialization process </h3>
+<h3>4. Separate initialization process</h3>
 
 The following part separates the initialization process. If you want to initialize, create the object first with the bless function. Then call the init method from that object.
 
@@ -80,6 +80,6 @@ It's a little confusing, but let's get used to it. To call a method of the same 
   $self->init(@_);
 </pre>
 
-<h3> 5. Why do you need to create it this way? </H3>
+<h3>5. Why do you need to create it this way? </H3>
 
 It's not good yet. I'll cover it in inheritance. I'll just say that if you don't create the object this way, you'll run into trouble when trying to inherit.

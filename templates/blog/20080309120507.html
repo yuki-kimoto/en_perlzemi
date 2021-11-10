@@ -10,7 +10,7 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> local - Temporarily save and restore package variables </h2>
+<h2>local - Temporarily save and restore package variables</h2>
 
 You can use <b> local </b> to temporarily change package variables.
 
@@ -20,7 +20,7 @@ LOCAL_VARIABLE_NAME = value;
 
 If no value is specified, <a href="/blog/20100220126425.html">undefined value</a> will be set.
 
-<h3> Saving and restoring values </h3>
+<h3>Saving and restoring values</h3>
 
 Assigning a value using local restores the previous value at the end of the <a href="/blog/20110128130016.html">scope</a>.
 
@@ -58,7 +58,7 @@ my %score = (math => 90, english => 70);
 local $score{math};
 </pre>
 
-<h3> local for special variables </h3>
+<h3>local for special variables</h3>
 
 The most common use of local in Perl is for <a href="/blog/20161102147817.html">special variables</a> such as "$/", "%ENV" and "@ARGV".
 
@@ -72,7 +72,7 @@ local $ENV{HOME};
 local @ARGV;
 </pre>
 
-<h3> Use my for variable declaration </h3>
+<h3>Use my for variable declaration</h3>
 
 Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variables by lcoal. Try to use "my" for almost all variable declarations.
 
@@ -81,7 +81,7 @@ Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces variable
 my $num;
 </pre>
 
-<h3> Difference between my and local </h3>
+<h3>Difference between my and local</h3>
 
 local is not a variable declaration, contrary to the expectation of the name. It has a dynamic scope.
 
@@ -122,7 +122,7 @@ Local variables in other languages are lexical variables using my in Perl.
   </tr>
 </table>
 
-<h3> Read the contents of the file at once </h3>
+<h3>Read the contents of the file at once</h3>
 
 There are not many occasions when local is used voluntarily, but there are occasions when it is used. That is when describing the process of reading the contents of a file at once.
 Let's describe the process of reading the contents of a file at once.
@@ -146,7 +146,7 @@ And when the scope ends, "$/" returns to its original state.
 
 Keep in mind that Perl, which doesn't have a standard function to read a file at once, may read the entire contents of the file in this way.
 
-<h3> local sample program </h3>
+<h3>local sample program</h3>
 
 This is a sample to temporarily change a special variable using local. Special variables are package variables that belong to the main package.
 

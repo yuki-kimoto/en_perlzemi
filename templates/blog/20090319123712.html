@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Allow arguments to be passed to the constructor </h2>
+<h2>Allow arguments to be passed to the constructor</h2>
 
 
 
 This time, let's make it possible to pass arguments to the constructor.
 
-<h3> 1. Pass arguments to the constructor. </h3>
+<h3>1. Pass arguments to the constructor.</h3>
 When creating an object
 <pre>
 my $book = Book->new(title =>'Good news', author =>'Kimoto');
@@ -36,7 +36,7 @@ sub new {
 
 There is nothing particularly difficult.
 
-<h3> 2. I also want to accept hash references </h3>
+<h3>2. I also want to accept hash references</h3>
 
 You'll want to accept hashes as well as <b> hash references </b>. Like this.
 
@@ -57,7 +57,7 @@ sub new {
 
 If the first argument is a hash reference, dereference it and assign it to the hash. If not, assign the argument as a hash.
 
-<h3> 3. I want to set a default value in the constructor </h3>
+<h3>3. I want to set a default value in the constructor</h3>
 
 Now, the demands on the constructor are still going on. For example, if you want to <b> set a default value </b> when no value is assigned.
 

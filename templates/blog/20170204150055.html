@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> How to use C ++ classes from XS </h2>
+<h2>How to use C ++ classes from XS</h2>
 
 
 
 Learn how to call <b> C ++ classes </b> on your XS. If I can do this, I think any C ++ library will be able to bind to Perl.
 
-<h3> Create a module with h2xs </h3>
+<h3>Create a module with h2xs</h3>
 
 First, create a module for XS with <a href="/blog/20170209150055.html">h2xs</a>.
 
@@ -35,7 +35,7 @@ README
 MyClass.xs
 t/</pre>
 
-<h3> Creating a class in C ++ </h3>
+<h3>Creating a class in C ++</h3>
 
 Let's create a class in C ++. Create a header file and a source file.
 
@@ -65,7 +65,7 @@ class MyClass {
 
 What starts with "#ifndef" is what is called an include guard. The header file needs to be read from two places, the XS file and the source file. Then, if it is left as it is, the header file will be imported twice and a compile error will occur. To prevent that, we are including it.
 
-<h3> MyClass_src.cpp </h3>
+<h3>MyClass_src.cpp</h3>
 
 C ++ source file. Implements constructors, methods, and class methods. In the source file, you need to read the header file to resolve the symbol MyClass. The file name is "MyClass_src.cpp". This is because if you name it "MyClass.cpp", the compiled name will be "MyClass.o", because it will overlap with the compiled name "MyClass.o" of the XS file "MyClass.xs". ..
 <pre>
@@ -89,7 +89,7 @@ void MyClass::print_static () {
 
 Save the header and source files and place them in the same directory where the XS files are located.
 
-<h3> XS file description </h3>
+<h3>XS file description</h3>
 
 Let's write an XS file.
 
@@ -225,7 +225,7 @@ void DESTORY (...)
 }
 </pre>
 
-<h3> Modify Makefile.PL </h3>
+<h3>Modify Makefile.PL</h3>
 
 Next, let's modify <a href="/blog/20150725143778.html">Makefile.PL</a> a little. The bottom "OBJECT" option is commented out by default, so uncomment it. If you set "$(O_FILES)", all C language source files and C ++ source files in the current directory will be compiled.
 
@@ -252,7 +252,7 @@ WriteMakefile (
 );
 </pre>
 
-<h3> Test script </h3>
+<h3>Test script</h3>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -267,7 +267,7 @@ $obj->print;
 MyClass->print_static;
 </pre>
 
-<h3> Compile and run </h3>
+<h3>Compile and run</h3>
 
 Let's compile and run it.
 
@@ -305,7 +305,7 @@ Now you can use C ++ classes from your XS file.(Returns a pointer to the SV * ty
 }
 </pre>
 
-<h4> Convert C language array to array reference </h4>
+<h4>Convert C language array to array reference</h4>
 
 Converts a C array into a Perl array reference. An array (AV * type) can be created with "newAV ()". If you created the array, it should be mortal. Note that sv_2mortal only accepts SV * types, so we cast it as (SV *). Also note that sv_2mortal returns the SV * type, so we cast it as (AV *).
 
@@ -340,7 +340,7 @@ foo (...)
 }
 </pre>
 
-<h4> Convert hash reference to struct </h4>
+<h4>Convert hash reference to struct</h4>
 
 I will explain how to convert <a href="/blog/20161013147635.html">Perl hash</a> to a C language structure.
 
@@ -403,7 +403,7 @@ foo (...)
 }
 </pre>
 
-<h4> Convert struct to hash reference </h4>
+<h4>Convert struct to hash reference</h4>
 
 Converts the structure to a hash reference.
 
@@ -450,7 +450,7 @@ foo (...)
 }
 </pre>
 
-<h3> To find out XS functions perlapi </h3>
+<h3>To find out XS functions perlapi</h3>
 
 The functions that create SV type data introduced here can be found in a document called perlapi. Please use the brief explanation of perlapi.
 

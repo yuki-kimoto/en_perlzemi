@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Basics of database operation learned with SQLite </h2>
+<h2>Basics of database operation learned with SQLite</h2>
 
 
 
@@ -22,7 +22,7 @@ A module called DBI, which is the interface part seen by the user for connecting
 
 So you can just download the latest version of ActivePerl and start learning the database without building any environment.
 
-<h3> Make sure DBD::SQLite and DBI are installed </h3>
+<h3>Make sure DBD::SQLite and DBI are installed</h3>
 
 First check if DBD::SQLite and DBI are installed. You can check if these modules are installed with the command "perldoc" to view the Perl documentation from the command prompt.
 
@@ -63,7 +63,7 @@ cpan DBI
 
 Now you are ready to learn the database.
 
-<h3> Connect to database </h3>
+<h3>Connect to database</h3>
 
 Now let's connect to the database. Use the DBI module's connect method to connect to the database. The first argument of connect specifies the information to connect to the database called data source. The format is a bit special, but let's remember.
 
@@ -78,7 +78,7 @@ my $dbh = DBI->connect($data_source);
 
 You should now have a file called test.db in your current directory.
 
-<h3> Disconnect database </h3>
+<h3>Disconnect database</h3>
 
 Let's remember here the process of disconnecting the database that is paired with the database connection. Use disconnect to disconnect the database.
 
@@ -88,7 +88,7 @@ $dbh->disconnect;
 
 It is wise to disconnect when you no longer need to connect to the database.
 
-<h3> Execute SQL </h3>
+<h3>Execute SQL</h3>
 
 SQL is the query language used to create tables, register data in databases, and retrieve data. I will explain the basic SQL from now on. Here, we will first explain how to execute SQL.
 
@@ -105,7 +105,7 @@ There are two ways to execute SQL.
 
 The second method is used to execute what is called a select statement in SQL. The first method is used to execute SQL other than the select statement. Remember "select is prepare and execute" and "otherwise do".
 
-<h3> Create a table </h3>
+<h3>Create a table</h3>
 
 Now let's create the simplest SQL to create a table. Use the "create table" statement to create a table. In the "create table" statement, specify the name of the table to be created and the field names to be included in the table. "In SQLite, you don't necessarily have to specify the data type of the field, so I'll omit the type here for simplicity.
 
@@ -133,7 +133,7 @@ $dbh->do($create_table);
 
 You now have a table named book.
 
-<h3> Drop the table </h3>
+<h3>Drop the table</h3>
 
 Now that you've learned how to create a table, let's also learn how to delete a table, which is the opposite operation. Use the "drop table" statement to drop a table.
 
@@ -148,7 +148,7 @@ my $drop_table = "drop table book";
 $dbh->do($drop_table);
 </pre>
 
-<h3> Add record insert </h3>
+<h3>Add record insert</h3>
 
 Use the insert statement to insert a record into the table.
 
@@ -179,7 +179,7 @@ This will add a record like the one below to the table.
 + - -- --- + - -- -- -- +
 </pre>
 
-<h3> Record update update </h3>
+<h3>Record update update</h3>
 
 Use the update statement to update the data in the table. Generally, you can narrow down the update target by specifying the search conditions in the where section. As explained in the select statement, multiple conditions can be specified in the where section.
 
@@ -210,7 +210,7 @@ The previous record is updated and looks like this:
 + - -- --- + - -- -- -- +
 </pre>
 
-<h3> Delete record delete </h3>
+<h3>Delete record delete</h3>
 
 Use the delete statement to delete a record. Generally, the search condition is specified in the where section to narrow down the deletion target.
 
@@ -233,7 +233,7 @@ $dbh->do($delete);
 
 The record will be deleted.
 
-<h3> Get record select </h3>
+<h3>Get record select</h3>
 
 It's finally a select statement. Up to this point, you couldn't check the added record or deleted record, but you can check it by remembering the select statement. Now let's write the simplest select statement. To get all the columns in the specified table: * Means all fields.
 
@@ -271,7 +271,7 @@ while (my @row = $sth->fetchrow_array) {
 }
 </pre>
 
-<h3> In SQLite, it is convenient to create a database in memory </h3>
+<h3>In SQLite, it is convenient to create a database in memory</h3>
 
 SQLite allows you to create a database in memory. You don't need to specify a file name, and the table will be deleted automatically when you disconnect the database, which is very convenient if you want to check the operation a little. For most of the explanations here, I will create a database in memory and explain it.
 
@@ -283,7 +283,7 @@ my $dbh = DBI->connect("dbi: SQLite: dbname =: memory:");
 
 You can now connect to the database in memory.
 
-<h3> Sample code for insert, update, delete, select that can actually be run </h3>
+<h3>Sample code for insert, update, delete, select that can actually be run</h3>
 
 So far, I've only explained, so I think it was difficult to get an image. Here are some samples. Try running the source code and get used to working with records in the database. If you understand this, you have mastered the basics of database basics.
 
@@ -340,7 +340,7 @@ C ++, taro
 Ruby, mamoru
 </pre>
 
-<h3> Connect by specifying the user name and password </h3>
+<h3>Connect by specifying the user name and password</h3>
 
 No username or password is required to connect to the database created by SQLite. However, standard databases such as MySQL, PostgreSQL, and Oracle require a username and password to be specified when connecting.
 
@@ -350,7 +350,7 @@ To connect using DBI with a username and password: Specify the user name in the 
 my $dbh = DBI->connect($data_source, $user, $password);
 </pre>
 
-<h3> Standard settings for DBI options </h3>
+<h3>Standard settings for DBI options</h3>
 
 In DBI, you can specify DBI options in the 4th argument of the connect method.
 
@@ -405,7 +405,7 @@ my $dbh = DBI->connect(
 );
 </pre>
 
-<h3> Install SQLite client sqlite3 </h3>
+<h3>Install SQLite client sqlite3</h3>
 
 If you install SQLite on Windows, you will be able to execute SQL directly from the command prompt. SQL can be executed programmatically using DBI, but it is better to have an environment where it can be executed interactively for learning SQL.
 

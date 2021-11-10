@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> File::Spec - Create OS-independent file name </h2>
+<h2>File::Spec - Create OS-independent file name</h2>
 
 
 
@@ -28,9 +28,9 @@ The File::Spec method is implemented as a class method and is called in the foll
 File::Spec->$method;
 </pre>
 
-<h3> method </h3>
+<h3>method</h3>
 
-<h4> catfile </h4>
+<h4>catfile</h4>
 
 Use catfile to create filenames from individual parts. $file is "xxx\yyy\zzz" for Windows and "xxx/yyy/zzz" for Unix. OS-specific delimiters are used to create filenames.
 
@@ -49,7 +49,7 @@ my $file = 'zzz';
 my $file_abs = File::Spec->catfile($dir, $file);
 </pre>
 
-<h4> splitdir </h4>
+<h4>splitdir</h4>
 
 Use splitdir to split the filename into individual parts. @parts becomes ('xxx','yyy','zzz').
 
@@ -58,7 +58,7 @@ Use splitdir to split the filename into individual parts. @parts becomes ('xxx',
 my @parts = File::Spec->splitdir('xxx/yyy/zzz');
 </pre>
 
-<h4> File::Spec Technique </h4>
+<h4>File::Spec Technique</h4>
 
 You may want to create a file name with the delimiter "/" even on Windows. To achieve this, use File::Spec::Unix instead of File::Spec.
 
@@ -68,11 +68,11 @@ use File::Spec::Unix;
 my $file = File::Spec::Unix->catfile('xxx', 'yyy', 'zzz');
 </pre>
 
-<h3> Supplement </h3>
+<h3>Supplement</h3>
 
 The standard open function etc. works correctly with both the Unix delimiter "/" and the Windows delimiter "\". So if you just want to open a file, you don't need to convert Unix delimiters to Windows delimiters.
 
-<h3> Related articles </h3>
+<h3>Related articles</h3>
 
 <ul>
   <li>

@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    here
   </li>
 </ol>
-<h2> system function-execute another process </h2>
+<h2>system function-execute another process</h2>
 
 
 
@@ -23,7 +23,7 @@ If the process ends successfully, 0 is returned as the return value. Error check
 
 If you want to execute commands such as tar and gzip, you can use the system function.
 
-<h3> Execute the ls command </h3>
+<h3>Execute the ls command</h3>
 
 As an example of the system function, let's execute the Linux ls command that displays the contents of the current directory.
 
@@ -42,7 +42,7 @@ batch Image-PNG-Simple mojo Object-Simple role task deal
 crontab.txt imager-japanese-translation.wiki mojo-examples
 </pre>
 
-<h3> Pass arguments to system function </h3>
+<h3>Pass arguments to system function</h3>
 
 To pass arguments to the command you pass to the system function, pass the commands as an array to the system function. For example, if you want to pass the arguments "-l" and "tmp", write as follows.
 
@@ -51,7 +51,7 @@ my @cmd = ('ls', '-a', 'tmp');
 system(@cmd) == 0 or die "Can't execute @cmd:$!";
 </pre>
 
-<h3> System function security </h3>
+<h3>System function security</h3>
 
 The system function is a function that is prone to security problems. For example, suppose the input data from the web is "rm" and you pass it unchecked to the system function.
 

@@ -10,7 +10,7 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Introduction to Object Oriented </h2>
+<h2>Introduction to Object Oriented</h2>
 
 
 
@@ -18,7 +18,7 @@ Many people find it difficult to do object-oriented programming in Perl, and don
 
 In fact, with the help of modules, Perl's object orientation is very straightforward. This time, I will explain Perl's object orientation using a module called Object::Simple.
 
-<h3> Install Object::Simple </h3>
+<h3>Install Object::Simple</h3>
 
 Install Object::Simple. You can easily install modules using cpan.
 
@@ -28,7 +28,7 @@ cpan Object::Simple
 
 Now you are ready to go.
 
-<h3> Class definition </h3>
+<h3>Class definition</h3>
 
 In Perl, classes are defined using <strong> package </strong>. First, use the <b> -base </b> flag to create a class that inherits from Object::Simple. Remember the following description as a spell first.
 
@@ -37,7 +37,7 @@ package MyClass;
 use Object::Simple -base;
 </pre>
 
-<h3> Constructor </h3>
+<h3>Constructor</h3>
 
 This way you can define a class called <b> MyClass </b>. You can create an object from a class using the constructor <b> new </b>. (This new is inherited from Object::Simple.)
 
@@ -54,7 +54,7 @@ my $obj = MyClass->new({foo => 1, bar => 2});
 
 This is set as an attribute value.
 
-<h3> Accessor </h3>
+<h3>Accessor</h3>
 
 Next, let's define an accessor. An accessor is a method for accessing an attribute value (instance variable). You can access the attribute values by defining an accessor.
 
@@ -103,7 +103,7 @@ has [qw/foo bar baz /];
 has [qw/foo bar baz /] => 0;
 </pre>
 
-<h3> Inheritance </h3>
+<h3>Inheritance</h3>
 
 Use <b> -base </b> for inheritance. Let's create a <b> SubClass </b> that inherits from <b> MyClass </b>.
 
@@ -117,7 +117,7 @@ package SubClass;
 use MyClass -base;
 </pre>
 
-<h3> Superclass method call </h3>
+<h3>Superclass method call</h3>
 
 You can use <b> SUPER </b> to call superclass methods.
 
@@ -132,7 +132,7 @@ sub clear {
 }
 </pre>
 
-<h3> Constructor override </h3>
+<h3>Constructor override</h3>
 
 You may want to override the constructor in a subclass. To override the constructor:
 
@@ -151,11 +151,11 @@ sub new {
 
 Since new is a constructor, be sure to return the object itself.
 
-<h3> Creating a class-Practice </h3>
+<h3>Creating a class-Practice</h3>
 
 Oh mysteriously, Perl's object-oriented programming is almost master if you remember this much. Then, it is a practical edition. Let's create a <b> Point </b> class and a <b> Point3D </b> class.
 
-<h4> Point class </h4>
+<h4>Point class</h4>
 
 <blockquote>
 <ul>
@@ -200,7 +200,7 @@ $point->y(9);
 $point->clear;
 </pre>
 
-<h4> Point3D class </h4>
+<h4>Point3D class</h4>
 
 <blockquote>
 <ul>
@@ -245,11 +245,11 @@ $point->z(9);
 $point->clear;
 </pre>
 
-<h3> Executable sample </h3>
+<h3>Executable sample</h3>
 
 I'll write a sample that can be executed.
 
-<h4> lib/Point.pm </h4>
+<h4>lib/Point.pm</h4>
 
 Create a directory called lib and create a file called Point.pm in it.
 
@@ -270,7 +270,7 @@ sub clear {
 1;
 </pre>
 
-<h4> lib/Point3D.pm </h4>
+<h4>lib/Point3D.pm</h4>
 
 Create a file called Point3D.pm in a directory called lib.
 
@@ -291,7 +291,7 @@ sub clear {
 1;
 </pre>
 
-<h4> test.pl </h4>
+<h4>test.pl</h4>
 
 This is a sample to read and use the class. You can add a module search path by using the lib module.
 
@@ -316,7 +316,7 @@ $point->clear;
 print $point->z . "\n";
 </pre>
 
-<h4> Script execution </h4>
+<h4>Script execution</h4>
 The directory structure is as follows.
 
 <pre>
@@ -331,9 +331,9 @@ Please execute as follows.
 perl test.pl
 </pre>
 
-<h3> Object-oriented programming concept </h3>
+<h3>Object-oriented programming concept</h3>
 
-<h4> Inheritance </h4>
+<h4>Inheritance</h4>
 
 To better understand Object::Simple, I would like to explain object-oriented concepts.
 
@@ -385,7 +385,7 @@ MyClass->can('method1');
 $obj->can('method1');
 </pre>
 
-<h4> Encapsulation </h4>
+<h4>Encapsulation</h4>
 
 The second concept of object-oriented programming is encapsulation. "Encapsulation" means "no direct access to data internally". You must use the published methods described in the documentation. By following this rule, everything will be simple.
 
@@ -404,7 +404,7 @@ my $value = $obj->{foo};
 $obj->{foo} = 1;
 </pre>
 
-<h4> Polymorphism </h4>
+<h4>Polymorphism</h4>
 
 The third concept of object-oriented programming is "polymorphism".
 "Polymorphism" becomes two concepts of "overload" and "override"
@@ -482,7 +482,7 @@ sub new {
 
 Understanding these three concepts, "inheritance, " "encapsulation, " and "polymorphism, " will create a powerful enough object-oriented program and make the source code readable by users in other languages.
 
-<h3> Package block syntax </h3>
+<h3>Package block syntax</h3>
 
 In Perl 5.14, a package block syntax has been added that allows you to write the following, eliminating the need to write a "1;" at the end of the file. If you are using Perl 5.14 or higher, you may want to try it.
 
@@ -502,7 +502,7 @@ package Point {
 }
 </pre>
 
-<h3> Summary </h3>
+<h3>Summary</h3>
 
 Perl is a flexible language. You can be completely object-oriented in the language Perl. Perl's object-orientation is sometimes ridiculed as a retrofit implementation, but it's functionally object-oriented and complete.
 

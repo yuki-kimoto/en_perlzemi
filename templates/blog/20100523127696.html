@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Storable-Serialize data </h2>
+<h2>Storable-Serialize data</h2>
 
 
 
@@ -39,7 +39,7 @@ Use the <strong> thaw </strong> function to restore the serialized data.
 my $data = thaw $serialized_data;
 </pre>
 
-<h3> FAQ about Storable modules </h3>
+<h3>FAQ about Storable modules</h3>
 
 Q. I saw an nfreeze function. How is it different from the freeze function?
 A. You can use the nfreeze function to serialize your data in an OS-independent manner. For example, suppose you save the data serialized by the freeze function on a database server on a certain OS. If another OS retrieves the serialized data from the database server, it cannot be restored by thaw. In such cases, you need to serialize with nfreeze.

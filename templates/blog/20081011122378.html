@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Get holidays with Google Calendar Data API </h2>
+<h2>Get holidays with Google Calendar Data API</h2>
 
 
 
@@ -89,23 +89,23 @@ use Data::Dumper;
 print Data::Dumper->Dump([$holidays], ['* holidays']);
 </pre>
 
-<h3> Holiday issues </h3>
+<h3>Holiday issues</h3>
 Holidays vary from country to country. Even if a holiday is decided, the holiday may change due to a transfer holiday. In some cases, such as the equinox and autumn equinox, the government decides on a formal holiday in February of the previous year.
 
-<h3> Google Calender Data API </h3>
+<h3>Google Calender Data API</h3>
 
 You can use the Google Calender Data API to get national holidays. Transfer holidays are also taken into consideration. Reliability depends on Google's reliability.
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> Google Calender Data API </h4>
+<h4>Google Calender Data API</h4>
 The following URL is the URL for getting holidays for the Google Calender Data API.
 <pre>
 my $feed_base
   = 'http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
 </pre>
 
-<h4> Create query string </h4>
+<h4>Create query string</h4>
 Concatenate the query string with the specified conditions to the above source URL. The date you specify will include the start date and not the end date.
 
 <pre>
@@ -127,7 +127,7 @@ In this sample, the following URL is created.
 
 After that, get the information of the above URL from the Web, analyze it because it is XML data, make it easy to use, and encode the character code according to the OS.
 
-<h4> Get XML data from the Web. </h4>
+<h4>Get XML data from the Web.</h4>
 
 LWP::UserAgent is a module for creating HTTP clients. You can programmatically do what your web browser is doing.
 
@@ -145,7 +145,7 @@ else {
 }
 </pre>
 
-<h4> Parse XML to make it easy to use. </h4>
+<h4>Parse XML to make it easy to use.</h4>
 Use XML::Simple to parse the XML. XML::Simple is a module for converting XML data into Perl data (hash, array).
 <pre>
 use XML::Simple;
@@ -173,7 +173,7 @@ $holidays_data->{'entry'}{URL as an identifier}{'gd: when'}{startTime};
 $holidays_data->{entry}{URL as an identifier}{title}{content};
 </pre>
 
-<h4> Convert character code </h4>
+<h4>Convert character code</h4>
 
 The character code of XML received from the Web is UTF-8. When XML::Simple converts XML to Perl data, the characters are converted to Perl's internal representation (UTF-8).
 

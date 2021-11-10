@@ -8,13 +8,13 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Creating a Web application template </h2>
+<h2>Creating a Web application template</h2>
 
 
 
 Mojolicious will automatically generate the minimum required template. I will explain how to create a template and the template of the created Web application.
 
-<h3> Creating a Web application template </h3>
+<h3>Creating a Web application template</h3>
 
 To create a web application template, change to the directory directly under mojo and execute the following command. It seems to be a good practice to keep the application name in uppercase and the letters after it in lowercase. (Names like "TestApp" aren't very good, I think names like "Testapp" are good.)
 
@@ -61,7 +61,7 @@ A list of created files will be output to the screen.
   [write] C:\Download\mojo\sampleapp\templates\example\welcome.html.ep
 </pre>
 
-<h3> Role of each created directory </h3>
+<h3>Role of each created directory</h3>
 
 If you specify the name "Sampleapp", a directory called "sampleapp" will be created under mojo. You will create a web application by editing the files under sampleapp. I will explain the role of each directory to get an overall overview.
 
@@ -77,7 +77,7 @@ sampleapp-+
 
 I will briefly explain the file.
 
-<h4> lib - directory to store applications </h4>
+<h4>lib - directory to store applications</h4>
 
 The lib directory stores applications. An application is a module written in Perl in Mojolicious. Therefore, the .pm file will be stored under the lib directory.
 
@@ -94,23 +94,23 @@ Sampleapp.pm is a class that represents the application itself. In this, the set
 
 Classes that will be controllers are placed under the Sampleapp directory. The controller class is a class that describes the process corresponding to the URL. Remember that the controller describes the process that corresponds to the URL. (It corresponds to C of MVC which is often called)
 
-<h4> log - Store error and warning logs </h4>
+<h4>log - Store error and warning logs</h4>
 
 Mojolicious messages are output to a file called development.log under the log directory. If you get any error, look at this log.
 
-<h4> public - Store static files (HTML, CSS, JavaScript) </h4>
+<h4>public - Store static files (HTML, CSS, JavaScript)</h4>
 
 This directory contains static files such as HTML files, CSS, and JavaScript.
 
-<h4> script - Stores HTTP server startup scripts, etc. </h4>
+<h4>script - Stores HTTP server startup scripts, etc.</h4>
 
 Below the script, the script that starts the HTTP server is placed. Mojolicious implements an HTTP server for convenience such as testing. By starting this HTTP server, you can run the web application without an HTTP server such as Apache.
 
-<h4> t - Store web application exams </h4>
+<h4>t - Store web application exams</h4>
 
 The test of the Web application is stored under t. Testing web applications is generally a hassle, but Mojolicous has a testing framework called Test::Mojo that makes it easy to test.
 
-<h4> templates - Store HTML templates </h4>
+<h4>templates - Store HTML templates</h4>
 
 Mojolicious has Mojo::Template as a standard template engine. This corresponds to V in MVC. You can use Mojo::Template to dynamically generate HTML on request. Unlike HTML::Template and Template-Toolkit, Mojo::Template is characterized by being able to use Perl syntax in templates.
 

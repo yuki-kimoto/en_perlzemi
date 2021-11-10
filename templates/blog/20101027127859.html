@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> Building a local Perl environment with cpanm </h2>
+<h2>Building a local Perl environment with cpanm</h2>
 
 
 
 This is the procedure to build a local environment using cpanm. It is a straightforward procedure without hesitation.
 
-<h3> Install cpanm </h3>
+<h3>Install cpanm</h3>
 
 Execute the following command as an individual user.
 
@@ -28,7 +28,7 @@ perl cpanm App::cpanminus
 
 cpanm makes it easy to install CPAN modules in your local environment. If you don't have root privileges, the CPAN module will be installed under the directory perl5 under your home directory. The installation may take some time, but wait for a while.
 
-<h3> Settings for using modules and commands </h3>
+<h3>Settings for using modules and commands</h3>
 
 To use the installed modules and commands, you need to add the following settings to the bash configuration file called ".bashrc".
 
@@ -52,7 +52,7 @@ Then reflect this setting.
 source ~/.bashrc
 </pre>
 
-<h3> Module installation </h3>
+<h3>Module installation</h3>
 
 Let's try installing a module called Mojolicious.
 
@@ -74,7 +74,7 @@ perl -MMojolicious -e 1
 
 Now you can install more and more modules in your local environment. If you want to put the module on another server, just copy "~/perl5" entirely if the architecture is exactly the same. Of course, don't forget to write ".bashrc". Deploying in Perl is very easy, isn't it?
 
-<h3> Install the CPAN module in the directory you specified using cpanm </h3>
+<h3>Install the CPAN module in the directory you specified using cpanm</h3>
 
 Use the <b> -L </b> option to install the CPAN module on the directory specified using cpanm.
 
@@ -84,11 +84,11 @@ cpanm -L extlib DBIx::Custom
 
 DBIx::Custom will be installed in the current directory <b> extlib </b>.
 
-<h3> Install the module by specifying the version with cpanm and cpanfile </h3>
+<h3>Install the module by specifying the version with cpanm and cpanfile</h3>
 
 <strong> cpanm </strong> and <strong> cpanfile </strong> allow you to specify the version to install the module.
 
-<h4> Cpanfile description </h4>
+<h4>Cpanfile description</h4>
 
 Write a cpanfile. cpanfile is a file for specifying the module version. Create a file named cpanfile. Make the following description.
 
@@ -180,7 +180,7 @@ You can use the following notation for the version:
 
 </table>
 
-<h4> Module installation </h4>
+<h4>Module installation</h4>
 
 The cpanm <strong> - installdeps </strong> option will look up the description in the cpanfile and install the module for you. (Note that the dot follows the option)
 

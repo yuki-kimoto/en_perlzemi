@@ -10,7 +10,7 @@
       <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Backticks operator-Run another process and get standard output </h2>
+<h2>Backticks operator-Run another process and get standard output</h2>
 
 
 
@@ -23,7 +23,7 @@ my $output = `$cmd`;
 
 It's pretty similar to the <a href="/blog/20180124151680.html">system function</a>. The system function returns an exit status, while the backticks operator returns the standard output of the process.
 
-<h3> Execute the ls command </h3>
+<h3>Execute the ls command</h3>
 
 As an example of the backticks operator, let's execute the Linux ls command that displays the contents of the current directory.
 
@@ -39,7 +39,7 @@ batch Image-PNG-Simple mojo Object-Simple role task deal
 crontab.txt imager-japanese-translation.wiki mojo-examples
 </pre>
 
-<h3> To check the return value of the calling process </h3>
+<h3>To check the return value of the calling process</h3>
 
 How do you check if the process you call with the backticks operator fails or returns an error status?
 
@@ -68,7 +68,7 @@ if ($status != 0) {
 }
 </pre>
 
-<h3> Backticks operator security </h3>
+<h3>Backticks operator security</h3>
 
 The backticks operator is a security-prone operator. For example, suppose the input data from the Web is "rm" and you pass it unchecked to the backticks operator.
 
@@ -76,7 +76,7 @@ The backticks operator executes unintended commands.
 
 If you are receiving input from the user programmatically, make sure that the string you pass to the backticks operator is safe.
 
-<h3> Backticks operator sample </h3>
+<h3>Backticks operator sample</h3>
 
 This is a sample backticks operator.
 

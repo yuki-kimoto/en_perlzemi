@@ -6,14 +6,14 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Perl's garbage collection (GC) characteristics </h2>
+<h2>Perl's garbage collection (GC) characteristics</h2>
 
 
 
 The mechanism that automatically releases objects (variables and values) from memory when they are no longer needed is called <strong> garbage collection </strong>. Garbage means garbage. Collection means to collect.
 
 # <img style = "border: 1px solid ddd" src = "https://cdn-ak.f.st-hatena.com/images/fotolife/p/perlcodesample/20180907/20180907084205.png">
-<h3> Perl's garbage collection is a reference counting method </h3>
+<h3>Perl's garbage collection is a reference counting method</h3>
 
 Perl's garbage collection is called the <strong> reference counting method </strong>. Each time a reference to an object is created, it increments the reference count by one. Conversely, it decrements the reference count by one when the object's reference is removed. The object is released when the reference count reaches 0.
 
@@ -27,7 +27,7 @@ The second feature is memory saving. Since the processing is performed when the 
 
 The third is that it does not stop at the timing of Full GC like the generational GC. In generational GC, there is something called FullGC in which many objects are released at a specific timing. The program will stop during FullGC. But for web apps, you probably don't care too much (probably).
 
-<h3> The disadvantage of the reference counting method is that cross-references cannot be resolved </h3>
+<h3>The disadvantage of the reference counting method is that cross-references cannot be resolved</h3>
 
 The obvious drawback of the reference counting method is that it cannot resolve cross-references. Objects that are referenced to each other are not released from memory. Programmers need to be careful if objects are cross-referenced or circularly referenced.
 

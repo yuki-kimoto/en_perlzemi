@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> What is buffering? </H2>
+<h2>What is buffering? </H2>
 
 
 The Perl output function <a href="/blog/20170404149131.html">print function</a> provides buffering. Buffering means "to store data". Perl's print function does not immediately write its contents to a file when it is actually called. The contents to be written are buffered, and when the buffer exceeds the capacity, it is actually written to a file.
@@ -47,9 +47,9 @@ sleep 3;
 
 (Reference) <a href="/blog/20080718121643.html">open function</a>, <a href="/blog/20160312145776.html">close function</a>
 
-<h3> Perl print function buffering specification </h3>
+<h3>Perl print function buffering specification</h3>
 
-<h4> (1) Block buffering </h4>
+<h4>(1) Block buffering</h4>
 
 Perl's print function does block buffering by default. (The exception is when printing to the display, which does line buffering. Perl 5.6 and later)
 
@@ -57,11 +57,11 @@ Block buffering is a buffering method that stores data in a buffer up to a certa
 
 The fixed number of bytes depends on the setting, but I think that it is generally about 4kB. Also, the contents of the buffer are written to the file when the file is closed.
 
-<h4> (2) Line buffering </h4>
+<h4>(2) Line buffering</h4>
 
 Line buffering is done when printing to the display. The contents to be written are accumulated in the buffer until a newline character appears, and when a newline appears, the contents of the buffer are written to a file.
 
-<h3> Buffering and deferred writing </h3>
+<h3>Buffering and deferred writing</h3>
 
 The print function stores the written contents in a buffer and outputs them all at once because the cost of outputting to a file is very high. Writing to a file means accessing the disc.
 
@@ -69,9 +69,9 @@ Disk I/O is much slower than memory I/O, so reducing the number of disk accesses
 
 For this reason, Perl doesn't actually write when you call the print function, it stores up to a certain number of bytes in the write buffer and writes it to a file at once. This is called delayed writing.
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> (1) Block buffering is performed </h4>
+<h4>(1) Block buffering is performed</h4>
 
 <pre>
 print $fh "delayed write\n"; # print function call
@@ -83,7 +83,7 @@ I wrote to $fh with the print function, but at this point the content has not be
 
 By the way, the output to the display is line buffering, so it will be output when "\n" appears.
 
-<h4> (2) Delayed writing is performed </h4>
+<h4>(2) Delayed writing is performed</h4>
 
 <pre>
 # Write the buffer to a file at the same time as close(delayed write).

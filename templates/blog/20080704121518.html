@@ -10,7 +10,7 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Subroutine reference </h2>
+<h2>Subroutine reference</h2>
 
 
 
@@ -39,7 +39,7 @@ See the following articles for a detailed explanation of the reference.
   </li>
 </ul>
 
-<h4> Reference to anonymous subroutines </h4>
+<h4>Reference to anonymous subroutines</h4>
 
 You can create a reference to an unnamed subroutine such as sub {}. Write as my $sum_ref = sub {} ;. The subroutine itself is not executed, but a reference to the subroutine is assigned to $sum_ref.
 
@@ -58,7 +58,7 @@ You can create a reference to a subroutine and pass it as an argument to the sub
 
 You can also use a reference to a subroutine to execute the subroutine selectively. I will see a concrete example next time.
 
-<h3> Polymorphism using references to subroutines </h3>
+<h3>Polymorphism using references to subroutines</h3>
 
 This is a sample that realizes polymorphism using a reference to a subroutine.
 
@@ -123,7 +123,7 @@ print "Calculation method: $how_to_calc\n".
   "Result: $result\n\n";
 </pre>
 
-<h4> Apply subroutines to variables in sequence </h4>
+<h4>Apply subroutines to variables in sequence</h4>
 
 <pre>
 my @calc_funcs = (\&sum, \&average);
@@ -134,7 +134,7 @@ for my $calc_func (@calc_funcs) {
 
 To apply subroutines in sequence to a <a href="/blog/20161107147852.html">variable</a>, use a reference to the subroutine. Store the reference to the subroutine in an array and call the subroutine repeatedly in <a href="/blog/20170521149524.html">for loop</a>.
 
-<h4> Image of variables and subroutines </h4>
+<h4>Image of variables and subroutines</h4>
 
 <pre>
 | - -- -- -- |
@@ -148,7 +148,7 @@ To apply subroutines in sequence to a <a href="/blog/20161107147852.html">variab
 
 An image of applying subroutines in order to a certain type of argument. The argument is fixed, and the image of the subroutine changing.
 
-<h4> Polymorphism using references to subroutines </h4>
+<h4>Polymorphism using references to subroutines</h4>
 
 <pre>
 # How to branch with if statement
@@ -171,7 +171,7 @@ In this example, the statement $calc_func->(@num) has different meanings dependi
 
 In java, overloading and overriding are the ways to achieve polymorphism, and in C they are function pointers.
 
-<h4> Beautiful method using hash </h4>
+<h4>Beautiful method using hash</h4>
 
 <pre>
 $how_to_calc = 'average';
@@ -183,7 +183,7 @@ I think the <a href="/blog/20161013147635.html">hash</a> method is the most soph
 
 Although it is a selective process, it does not use any if statements. The process is branched by calling the subroutine corresponding to the hash key.
 
-<h3> Implementation of signal handler in subroutine </h3>
+<h3>Implementation of signal handler in subroutine</h3>
 
 A <strong> signal handler </strong> is a subroutine that is executed triggered by a signal. A signal is a signal that the OS sends to a process. Ctrl + c asks the OS to "send an INT signal to the currently running process." The alerm function also asks the OS to "send a LARM signal to the currently running process after n seconds".
 
@@ -201,7 +201,7 @@ To catch the INT signal, assign a reference to the subroutine to $SIG{INT}. This
 
 There are a lot of things to note about signals, but I won't write them here. I write it when I write about interprocess communication.
 
-<h3> A rudimentary implementation of event-driven programming </h3>
+<h3>A rudimentary implementation of event-driven programming</h3>
 
 This is a sample of a rudimentary implementation of event-driven programming.
 
@@ -266,7 +266,7 @@ sub end {
 
 (Reference) <a href="/blog/20080224120386.html">substr function</a>
 
-<h4> (1) Subroutine for detecting events </h4>
+<h4>(1) Subroutine for detecting events</h4>
 
 <pre>
 # Call a function to detect an event.
@@ -292,7 +292,7 @@ In event-driven programming, "event detection" and "event execution" are separat
 
 The argument uses a hash to pass a reference to the subroutine. This subroutine is executed when an event occurs.
 
-<h4> (2) Subroutine (callback function) executed when an event occurs </h4>
+<h4>(2) Subroutine (callback function) executed when an event occurs</h4>
 
 <pre>
 sub start {
@@ -317,11 +317,11 @@ Subroutines that are executed when an event occurs are commonly referred to as c
 
 It is a function that detects an event, and if you pass an argument when calling the callback function, it can be received and used by the callback function.
 
-<h3> Sample code </h3>
+<h3>Sample code</h3>
 
 Subroutine sample code.
 
-<h4> Subroutine reference </h4>
+<h4>Subroutine reference</h4>
 
 This is a sample to create a reference to a subroutine.
 
@@ -366,7 +366,7 @@ my $total = $sum_ref->(1, 2, 3);
 print "The sum of 1,2,3 is $total.\n\n";
 </pre>
 
-<h4> Signal handler </h4>
+<h4>Signal handler</h4>
 
 This is a sample using a signal handler. I'm using a <a href="/blog/20100123126425.html">while statement</a> to do an infinite loop.
 

@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> Module::Starter - Create a distribution module </h2>
+<h2>Module::Starter - Create a distribution module</h2>
 
 
 
 If you want to distribute a module, it is convenient to have a module that automatically creates the distribution format. For example, if you want to upload a module you created to CPAN, you must have a defined distribution format. One of the modules that creates the template is <strong> Module::Starter </strong>.
 
-<h3> Create a template with the module-starter command </h3>
+<h3>Create a template with the module-starter command</h3>
 
 When you install Module::Starter, the <strong> module-starter </strong> command is also installed. Create a module using this command. When you execute it, you can confirm that a directory called Somo-Module has been created.
 
@@ -24,25 +24,25 @@ When you install Module::Starter, the <strong> module-starter </strong> command 
 module-starter - module = Some::Module - author = "Yuki Kimoto" - email = kimoto.yuki@gmail.com
 </pre>
 
-<h4> Specifying the module name </h4>
+<h4>Specifying the module name</h4>
 
 Specify the module name with <strong>-module </strong>.
 
-<h4> Specify build method </h4>
+<h4>Specify build method</h4>
 
 Specify the build method with - builder. You can specify either "ExtUtils::MakeMaker" that uses make, which is the standard build method for Unix-like OS, or "Module::Build" that uses Build written in genuine Perl. By default, "ExtUtils::MakeMaker" is used. Here, "Module::Build" is used.
 
 Unless you have a specific need, it's safe to use ExtUtils::MakeMaker, which is compatible with older versions of Perl.
 
-<h4> Your name </h4>
+<h4>Your name</h4>
 
 Specify your name with <strong> - author </strong>.
 
-<h4> Your email address </h4>
+<h4>Your email address</h4>
 
 Specify your email address with <strong> - email </strong>.
 
-<h3> Directory structure </h3>
+<h3>Directory structure</h3>
 
 Immediately after creating the template, the directory structure is as follows.
 
@@ -57,7 +57,7 @@ drwxr-xr-x 2 root root 4096 2009-06-14 12:40 t
 
 I will briefly explain the roles one by one.
 
-<h4> Makefile.PL </h4>
+<h4>Makefile.PL</h4>
 
 Makefile.PL is a script written in Perl for creating a script called Makefile. A script called Makefile is a script for building, testing, and installing modules.
 
@@ -71,18 +71,18 @@ perl Makefile.PL
 
 Will create a script called Makefile.
 
-<h4> Changes </h4>
+<h4>Changes</h4>
 
 Changes is for writing the history when the module is upgraded. Please note that you often forget to write when you upgrade the module.
 
-<h3> lib </h3>
+<h3>lib</h3>
 
 lib is the directory where the modules are stored. The script that is the main body of the module is stored in this.
 
-<h3> MANIFEST </h3>
+<h3>MANIFEST</h3>
 
 In MANIFEST, describe the file to be stored when the module is distributed. You can edit the MANIFEST file directly, but you can also create it automatically.
 
-<h4> t </h4>
+<h4>t</h4>
 
 The directory that stores the module's automated tests.

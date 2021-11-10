@@ -8,23 +8,23 @@
   </li>
 </ol>
 
-<h2> Perl One Liner-Explanation of e Options </h2>
+<h2>Perl One Liner-Explanation of e Options</h2>
 
 Perl has a feature called Oneliner that allows you to execute Perl scripts from the command line. Windows doesn't have the convenience of commands like Linux, so you can do something similar with Perl's one-liner. Introducing a one-liner that is often used in Perl.
 
-<h3> What is one-liner? </H3>
+<h3>What is one-liner? </H3>
 
 A one-line Perl script that can be executed directly from the command line
 
-<h4> -e </h4>
+<h4>-e</h4>
 
 If -e is specified, subsequent Perl scripts will be executed directly.
 
-<h4> -n </h4>
+<h4>-n</h4>
 
 If -n is specified, the subsequent Perl script will be enclosed in "while (<>) {}" using the line input operator in the <a href="/blog/20100123126425.html">while statement</a>. It will be a script.
 
-<h4> One-liner commentary </h4>
+<h4>One-liner commentary</h4>
 
 <pre>
 perl -ne "print if (/ search /)" inputfile.txt> outputfile.txt
@@ -32,7 +32,7 @@ perl -ne "print if (/ search /)" inputfile.txt> outputfile.txt
 
 This sentence is the same as 1 and 2 below.
 
-<h4> 1: grep.pl </h4>
+<h4>1: grep.pl</h4>
 
 <pre>
 # Each line of the file given by the argument is passed to <>.
@@ -44,23 +44,23 @@ while (<>) {
 }
 </pre>
 
-<h4> 2: Execution </h4>
+<h4>2: Execution</h4>
 
 <pre>
 perl grep.pl inputfile.txt> outputfile.txt
 </pre>
 
-<h3> Extract lines containing the specified string to grep with Perl </h3>
+<h3>Extract lines containing the specified string to grep with Perl</h3>
 
  Let's use a function called One Liner to extract the line containing the character string specified in Perl.
 
-<h4> One liner to realize grep(used from command prompt) </h4>
+<h4>One liner to realize grep(used from command prompt)</h4>
 
 <pre>
 perl -ne "print if (/ search /)" inputfile.txt> outputfile.txt
 </pre>
 
-<h4> inputfile.txt </h4>
+<h4>inputfile.txt</h4>
 
 <pre>
 search1
@@ -71,7 +71,7 @@ oiuyyiu
 search3
 </pre>
 
-<h3> Cat at the Windows command prompt </h3>
+<h3>Cat at the Windows command prompt</h3>
 
 This time I will introduce a one-liner for doing the same thing as cat on Linux on Windows. The cat command is a command that allows you to combine the contents of files. To cat at the command prompt:
 

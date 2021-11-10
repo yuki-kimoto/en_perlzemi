@@ -11,7 +11,7 @@
   </li>
 </ol>
 
-<h2> Draw text - PDF::Create form with API2 </h2>
+<h2>Draw text - PDF::Create form with API2</h2>
 
 To draw text in PDF with PDF::API2:
 
@@ -99,7 +99,7 @@ When you draw text, the x-coordinate of the current drawing position moves to th
 
 Note that the text is written on the font baseline.
 
-<h3> Set the font color </h3>
+<h3>Set the font color</h3>
 
 To set the font color, set the stroke color and fill color. Please note that there is no method that allows you to specify the font color directly.
 
@@ -121,7 +121,7 @@ Text drawing is also created by using the content drawing function to create the
 
 For a detailed explanation of drawing shapes and stroke color and fill color, refer to <a href="/blog/20200101082734.html">Drawing basic shapes and creating tables</a>.
 
-<h3> Set the background color </h3>
+<h3>Set the background color</h3>
 
 I will explain how to draw the background color and draw the text on it. In fact, there are pitfalls to this, so be careful.
 
@@ -162,7 +162,7 @@ The background color is simply written using the function of the graphic content
 
 This will allow you to draw text on top of the background color.
 
-<h3> Draw underline </h3>
+<h3>Draw underline</h3>
 
 To underline text in PDF::API2, specify the "-underline" option of the text method. "Auto" will automatically determine the position of the underline.
 
@@ -171,7 +171,7 @@ To underline text in PDF::API2, specify the "-underline" option of the text meth
 $text->text('Hello World!', -Underline =>'auto');
 </pre>
 
-<h3> Make it bold </h3>
+<h3>Make it bold</h3>
 
 To use bold in the core font, specify the font for bold.
 
@@ -191,7 +191,7 @@ As an alternative, consider increasing the font size by 1.
 $text->font($font, $font_size + 1);
 </pre>
 
-<h3> Set character spacing </h3>
+<h3>Set character spacing</h3>
 
 Use the charspace method to set the character spacing. The default is 0.
 
@@ -200,7 +200,7 @@ Use the charspace method to set the character spacing. The default is 0.
 $text->charspace(1);
 </pre>
 
-<h3> Draw text around the specified position </h3>
+<h3>Draw text around the specified position</h3>
 
 To draw text centered on a specified position in PDF::API2, use the text_center method. The options are the same as the text method.
 
@@ -211,7 +211,7 @@ $text->text_center('Hello World!');
 
 It can be used when you want to display the page heading etc. in the center of the screen.
 
-<h3> Draw text with the specified position as the right edge </h3>
+<h3>Draw text with the specified position as the right edge</h3>
 
 Use the text_right method to draw the text as a drawing with the specified position as the right edge in PDF::API2. The options are the same as the text method.
 
@@ -222,7 +222,7 @@ It can be used when you want to display the page number etc. at the bottom right
 $text->text_right('Hello World!');
 </pre>
 
-<h3> Get the current text drawing position </h3>
+<h3>Get the current text drawing position</h3>
 
 To get the current text drawing position in PDF::API2, use the textpos method.
 
@@ -233,7 +233,7 @@ my ($x, $y) = $text->textpos();
 
 You can use this value to check where line breaks should occur and where page breaks should occur.
 
-<h3> Get the font size </h3>
+<h3>Get the font size</h3>
 
 To get the font size of an existing text in PDF::API2, call the textstate method with no arguments and it will return a hash that represents the state of the text, so retrieve the fontsize value.
 
@@ -243,7 +243,7 @@ my %text_state = $text->textstate;
 my $font_size = $text_state{fontsize};
 </pre>
 
-<h3> Get the height of the text </h3>
+<h3>Get the height of the text</h3>
 
 The height of the text is actually the same as the font size. Font size 16 is the same as 16 in PDF units. If you want to start a new line, you can use the font size to start a new line so that they do not overlap.
 
@@ -252,7 +252,7 @@ my $font_size = 16;
 my $text_height = $font_size;
 </pre>
 
-<h3> Row height </h3>
+<h3>Row height</h3>
 
 There is a little space between the lines. The line height is the height of the text plus the width between the lines. If the font size (text height) is 11 and the line spacing is 2, the line height is 13.
 
@@ -270,7 +270,7 @@ my $line_height = $text_height + $line_margin;
 
 For example, if you want to make a line break and move, you can subtract the line height.
 
-<h3> Get the width of the text to draw </h3>
+<h3>Get the width of the text to draw</h3>
 
 Use the advancewidth method to get the width of the text to draw in advance.
 
@@ -280,13 +280,13 @@ my $text_width = $text->advancewidth($string);
 
 It can be used when performing a process called line break when it extends to the right side.
 
-<h3> Margin settings </h3>
+<h3>Margin settings</h3>
 
 When using PDF::API2, if you want to set the margin on the page, you cannot set the margin value like the screen on the GUI. You have to calculate it yourself.
 
 However, not only the disadvantages, but if you remember this method, you can change the margins on odd and even pages, which is very flexible.
 
-<h4> Relationship between PDF unit and inch and mm </h4>
+<h4>Relationship between PDF unit and inch and mm</h4>
 
 First of all, let's remember the relationship between the PDF unit specified in PDF and inches and mm.
 
@@ -322,7 +322,7 @@ my $page_right_margin = 36;
 
 Note that the top and bottom margins are based on the baseline of the font, so the characters may be slightly out of the way they look.
 
-<h4> Drawing start position and drawing end position </h4>
+<h4>Drawing start position and drawing end position</h4>
 
 When considering the margins, it is necessary to calculate the XY coordinates of the drawing start position and the XY coordinates of the drawing end position.
 
@@ -371,7 +371,7 @@ my $render_end_x = $page_width - 1- $page_right_margin;
 my $render_end_y = $page_bottom_margin;
 </pre>
 
-<h4> Text drawing corresponding to margins, line breaks, and page breaks </h4>
+<h4>Text drawing corresponding to margins, line breaks, and page breaks</h4>
 
 Now, let's draw the text, paying attention to the margins, line breaks, and page breaks. When it reaches the right end, it will start a new line. English only. English words are broken on a character-by-character basis. When you reach the bottom, the page will break.
 
@@ -493,12 +493,12 @@ In my environment, 12,000 characters take 1-2 seconds. PDF output is a surprisin
 
 <a href="/examples/pdf/margin_full_text.pdf">Output result margins, line breaks, page breaks</a>
 
-<h4> How to represent HTML headlines and p tags? </H4>
+<h4>How to represent HTML headlines and p tags? </H4>
 
 I won't go into detail here, but I'll just give you a hint. At the very least, you need to parse the tags. Regular expressions and modules that parse HTML will be available. Is it general-purpose to use a module that parses HTML, considering that it will correspond to lists and tables later?
 
 <pre>
-<h1> Title </h1>
+<h1>Title</h1>
 
 <p>
 message
@@ -509,13 +509,13 @@ XML::Simple seems to be easy to use. With fixed format, you don't have to think 
 
 If you output in a fixed format like when making a book, CSS analysis seems to be unnecessary. It seems that it is necessary to set the margin programmatically for each heading and p tag.
 
-<h4> How to break a line in English words? </H4>
+<h4>How to break a line in English words? </H4>
 
 It seems that you often don't want to cut English words in the middle of a line break. In this case, it's a little difficult, but think about it as follows.
 
 First, remember the x-coordinate where the alphabet starts. Also, if an alphabetic character starts, save it in a string like $tmp_word. Let's wait for the text output yet and move on to the next loop. When a non-English character arrives, one English word is up to just before that. If the width of $tmp_word exceeds the right end, it will be output with a line break, and if it does not exceed, it will be output as it is.
 
-<h3> Font for drawing Japanese </h3>
+<h3>Font for drawing Japanese</h3>
 
 In order to draw Japanese with PDF::API2, a font that supports Japanese is required. The core font is English only.
 
@@ -523,7 +523,7 @@ Among the fonts, you need to use a font called TrueType Font.
 
 Fonts are provided as a single file with a TrueType Font extension of ttf.
 
-<h4> Get TrueType Font </h4>
+<h4>Get TrueType Font</h4>
 
 There are TrueType fonts available for free, so get them. If you search, you will find many.
 
@@ -539,7 +539,7 @@ Here, I would like to introduce one TrueType font that can draw Japanese, called
 
 Download it and place it wherever you like.
 
-<h4> Loading TrueType Fonts </h4>
+<h4>Loading TrueType Fonts</h4>
 
 TrueType Fonts can be read with the ttfont method. Specify the path of the acquired TrueType Font.
 
@@ -566,7 +566,7 @@ use FindBin;
 my $true_type_font_file = "$FindBin::Bin/kochi-gothic-subst.ttf";
 </pre>
 
-<h4> I want to make it bold with a TrueType font that supports Japanese </h4>
+<h4>I want to make it bold with a TrueType font that supports Japanese</h4>
 
 If you want to make it bold with TrueType Font that supports Japanese, use a font that has a bold font in addition to the normal font.
 
@@ -610,7 +610,7 @@ In Japanese fonts, it is assumed that the text baseline is almost always at the 
 
 In this case, please note that the setting above the margin needs to be taken into consideration because the characters will protrude upward.
 
-<h3> Samples for margins, line breaks, page breaks, Japanese, and bold </h3>
+<h3>Samples for margins, line breaks, page breaks, Japanese, and bold</h3>
 
 This is a sample that supports margins, line breaks, page breaks, Japanese, and bold. "Hello world." Is displayed repeatedly, and only in the case of the world, it is in bold.
 

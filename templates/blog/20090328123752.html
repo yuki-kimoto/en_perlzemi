@@ -10,13 +10,13 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> Create an object according to the environment </h2>
+<h2>Create an object according to the environment</h2>
 
 
 
 Let's modify the class a little and change the behavior according to the OS.
 
-<h3> 1. Polymorphism that changes its behavior according to the environment </h3>
+<h3>1. Polymorphism that changes its behavior according to the environment</h3>
 
 If the environment is Windows, I created an object of FilePath::Windows class, and if the environment is not, I wrote a class that creates an object of FilaPath::Unix class.
 
@@ -95,7 +95,7 @@ print ref $file_path;
 
 Then you can see which class of object is created.
 
-<h3> 2. Change the behavior with the constructor </h3>
+<h3>2. Change the behavior with the constructor</h3>
 
 We have prepared a class called FilePath as a class for users to use. The constructor of this class will create an object according to the environment. (Generally, it's called a factory class.)
 
@@ -136,7 +136,7 @@ sub new {
 }
 </pre>
 
-<h3> 3. Convenient part of inheritance </h3>
+<h3>3. Convenient part of inheritance</h3>
 
 If you use inheritance well, you will find that you can clearly write a description that makes it behave according to the environment.
 
@@ -144,7 +144,7 @@ Also, if you want to support other environments, just create a class called "Fil
 
 In other words, when it comes to situations where inheritance is effective, there are many patterns and there is a high possibility of expansion. Twice
 
-<h3> 4. If you find it difficult to inherit </h3>
+<h3>4. If you find it difficult to inherit</h3>
 
 Follow this sample with a debugger. You can understand it by observing how it moves around between classes.
 

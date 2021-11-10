@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> File::Find - Recursively process subdirectories </h2>
+<h2>File::Find - Recursively process subdirectories</h2>
 
 
 
@@ -29,7 +29,7 @@ File::Find is chdir, which processes all files while changing directories. Pass 
 
 After the second argument, pass the list of directories you want to process. (In the example, only one). You can change the scan order by using finddepth instead of find. (Explanation below)
 
-<h4> If you do not want to change the current directory </h4>
+<h4>If you do not want to change the current directory</h4>
 
 If you want to scan without changing the current directory, you can use the "no_chdir" option.
 
@@ -39,7 +39,7 @@ In this case, specify "wanted" as the reference to the subroutine.
 find({wanted => \&process, no_chdir => 1}, $top_dir);
 </pre>
 
-<h3> Variables that can be used in the processing description </h3>
+<h3>Variables that can be used in the processing description</h3>
 
 <table>
   <tr>
@@ -74,7 +74,7 @@ find({wanted => \&process, no_chdir => 1}, $top_dir);
 
 In the sub process, you can get the current directory and the file name to be processed. Use these to describe what you want to do in each file.
 
-<h3> Find scan order (going order) </h3>
+<h3>Find scan order (going order)</h3>
 
 <pre>
 (1) $top_dir |-(2) top.txt
@@ -88,7 +88,7 @@ In the sub process, you can get the current directory and the file name to be pr
 
 Scan in what is commonly referred to as the destination order. In the case of the same hierarchy, files are processed before the directory. (2) comes before (3).
 
-<h3> Finddepth scanning order (returning order) </h3>
+<h3>Finddepth scanning order (returning order)</h3>
 
 <pre>
 (10) $top_dir |-(1) top.txt
@@ -102,7 +102,7 @@ Scan in what is commonly referred to as the destination order. In the case of th
 
 Scan in what is commonly referred to as the return order. Each directory is processed immediately after all the processing in the hierarchy below it is completed. In the case of the same hierarchy, files are processed before the directory.
 
-<h3> Sample </h3>
+<h3>Sample</h3>
 
 This is a sample that recursively processes all files.
 

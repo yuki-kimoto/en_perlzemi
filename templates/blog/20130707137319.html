@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Let's review hash-based object orientation </h2>
+<h2>Let's review hash-based object orientation</h2>
 
 
 
@@ -16,7 +16,7 @@ I don't expect much from mop myself. Because hash-based object-oriented can crea
 
 We will write about the advantages of hash-based object-oriented programming.
 
-<h3> Constructor performance </h3>
+<h3>Constructor performance</h3>
 
 Hash-based object-oriented programming has much better performance in constructor generation.
 
@@ -28,7 +28,7 @@ This is because the received value is simply stored in a hash and blessed. You m
 
 If you're worried about that, I think it's better to write with hash-based object thinking from the beginning and have faster performance.
 
-<h3> Accessor performance </h3>
+<h3>Accessor performance</h3>
 
 Accessors are often called. What if there is a module performance bottleneck in the part that calls a lot of accessors? Even in such a case, hash-based object-oriented programming can easily solve the problem.
 
@@ -44,7 +44,7 @@ $self->{title}
 
 If you were writing in mop, you wouldn't be able to do this.
 
-<h3> Simple is Best </h3>
+<h3>Simple is Best</h3>
 
 You can implement a large, nicely implemented framework with a simple object-oriented module without a lot of features. If you look at a framework like Mojolicious, you'll see that it's a concise object-oriented module that creates well-organized classes.
 
@@ -58,7 +58,7 @@ has y => 0;
 
 It's usually enough to generate accessors and set default values. If it is complicated, it will be a heavy burden.
 
-<h3> It's easy to use single inheritance and delegation for class design </h3>
+<h3>It's easy to use single inheritance and delegation for class design</h3>
 
 When designing a class, I find it best to use the techniques of single inheritance and delegation. Designing a class with this policy makes the class easier to understand. There is no need to use multiple inheritance, and I think it tends to complicate the structure of the class.
 
@@ -75,7 +75,7 @@ has q => sub {Q->new};
 
 By doing this, you can create class P that can use the functions of class Q. Of course, since it inherits a single R, the functions of R can be used directly from P.
 
-<h3> Intuitive override </h3>
+<h3>Intuitive override</h3>
 
 For example, suppose you want to override a constructor in a subclass. Hash-based object-oriented programming is intuitive and familiar to other languages.
 
@@ -91,11 +91,11 @@ sub new {
 
 BUILD and BUILDARGS of mop are difficult to understand.
 
-<h3> The destructor is DESTROY </h3>
+<h3>The destructor is DESTROY</h3>
 
 The destructor is DESTROY as per Perl's custom. You don't have to bother to remember mop's DEMOLISH.
 
-<h3> Hash-based object-oriented modules are recommended </h3>
+<h3>Hash-based object-oriented modules are recommended</h3>
 
 I recommend hash-based object-oriented over meta-object protocol-based object-oriented. I also want the core to contain one hash-based object-oriented module.
 

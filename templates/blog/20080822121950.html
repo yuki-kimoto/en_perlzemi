@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Understand permissions </h2>
+<h2>Understand permissions</h2>
 
 
 
@@ -39,7 +39,7 @@ Allow "any user" to "read"
 
 There are some terms in this explanation that I haven't explained yet, so I'll explain them below.
 
-<h4> What is a user? </H4>
+<h4>What is a user? </H4>
 
 UNIX has the concept of a user. All users are managed by the OS.
 
@@ -47,7 +47,7 @@ First, it exists with the highest privileged "root" user during UNIX installatio
 
 root can create other users. UNIX is a multitasking operating system. For example, when you join a project, the administrator will create a user for you with root privileges.
 
-<h4> What is a group? </H4>
+<h4>What is a group? </H4>
 
 UNIX has the concept of groups. For example, suppose you have a file that you use to develop a project. This file is not intended to be written by anyone other than the person in charge of development and testing.
 
@@ -55,15 +55,15 @@ In such a case, the administrator has root privileges and creates a group for th
 
 By creating a group, you can set permissions for each group.
 
-<h4> What is the owner of the file? </H4>
+<h4>What is the owner of the file? </H4>
 
 On UNIX, files are always owned by someone. There are no unowned files. For example, when you create a file, the owner of the file becomes your user ID.
 
-<h4> What is a file owner group? </H4>
+<h4>What is a file owner group? </H4>
 
 On UNIX, files are always owned by some group. If you create a new file as your user, the group name will be the same as your user name. (This is because when you create a user, a group name with the same name is created at the same time, and that group name is set.)
  
-<h4> What is execution permission? </H4>
+<h4>What is execution permission? </H4>
 
 I think that the "read" and "write" permissions that can be specified in the "what" part can be understood without explanation, so I will explain the "execute" permission.
 
@@ -89,7 +89,7 @@ Use the chmod function to actually change the file permissions. Please refer to 
   </li>
 </ul>
 
-<h3> How to express file permissions </h3>
+<h3>How to express file permissions</h3>
 
 Explains how to express file permissions.
 
@@ -147,7 +147,7 @@ The third digit is the bit that represents read permission, the second digit is 
 
 For example, if the bit string is 110, you have read and write permissions, and if it is 101, you have read and execute permissions.
 
-<h4> Octal representation of file permissions </h4>
+<h4>Octal representation of file permissions</h4>
 
 File permissions are just bit strings, but they are often specified in octal for convenience. Use octal numbers when changing permissions with the command chmod, or when specifying permissions with the <a href="/blog/20080804121794.html">sysopen function</a>.
 
@@ -267,7 +267,7 @@ The correspondence between binary numbers (bit strings) and octal numbers is des
 
 Of these, the four most commonly used are 6 (110, read and write), 7 (111, read and write and execute), 4 (100, read), and 5 (101, read and execute). It's helpful to remember these four numbers.
 
-<h4> Character representation of file permissions </h4>
+<h4>Character representation of file permissions</h4>
 
 File permissions are often expressed in text for human readability. It is used when specifying permissions with the <a href="/blog/20080821121933.html">chmod function</a> and when displaying detailed file information with the ls -l command.
 
@@ -388,7 +388,7 @@ Based on this, let's make a correspondence table again.
 
 If you can write this correspondence table, your understanding of permissions is perfect.
 
-<h3> Set permissions to "Owner", "Group", "Any User" </h3>
+<h3>Set permissions to "Owner", "Group", "Any User"</h3>
 
 
 Explains how to set file permissions for "owner", "group", and "any user". Using the table below, the permissions are expressed in 3 bits and are as follows.
@@ -573,7 +573,7 @@ For example, if the owner of the file has "read" and "write" and the owning grou
 
 Binary numbers or character representations are easy to understand, but since you have to write 9 characters, it is troublesome to specify them with arguments. Therefore, when specifying it as an argument, it is often specified in octal. It is convenient if you can understand the meaning immediately by looking only at the octal number.
 
-<h4> Octal representation of commonly used permissions </h4>
+<h4>Octal representation of commonly used permissions</h4>
 
 <b> For data files </b>
 
@@ -649,7 +649,7 @@ Binary numbers or character representations are easy to understand, but since yo
 </table>
 
 
-<h3> Directory permissions </h3>
+<h3>Directory permissions</h3>
 
 The meaning of permissions on directories is a little different from the meaning of permissions on files. Explains the meaning of permissions on directories.
 
@@ -673,7 +673,7 @@ It looks like this.
 
 A directory is a special file that contains file information.
 
-<h4> Read and write permissions on the directory </h4>
+<h4>Read and write permissions on the directory</h4>
 
 Understanding a directory as a special file makes it easier to understand the read and write permissions for the directory.
 
@@ -684,13 +684,13 @@ Read permission is the permission to read the file information written in the di
 
 One thing to keep in mind here is that the permissions to delete and add files are set by the write permissions on the directory. <span style = "font-weight: bold;">Even if you don't give write permission to a file, you can delete it if you have write permission on the directory. </span>
 
-<h4> Execution permission for the directory </h4>
+<h4>Execution permission for the directory</h4>
 
 Be sure to give execute permission to the directory. When you lose execute permission for a directory, you can use ls to see the contents of the directory, cd to move it, change the information of files in the directory, and perform all operations on the directory and files in the directory. You will not be able to.
 
 There is little point in losing execute permission on a directory. It is sufficient to give execute permission to the directory and set it with read permission and write permission.
 
-<h4> Common directory permissions </h4>
+<h4>Common directory permissions</h4>
 
 <table>
   <tr>
@@ -722,7 +722,7 @@ There is little point in losing execute permission on a directory. It is suffici
 
 </table>
 
-<h3> Check file permissions </h3>
+<h3>Check file permissions</h3>
 
 I will explain how to check the permissions. To find out the file permissions, use the <a href="/blog/20080512121060.html">stat function</a> to retrieve the file permissions information. The third element is the mode information. Converting with the obtained S_IMODE function gives pure permission information.
 
@@ -753,7 +753,7 @@ S_ISBLK ($mode) S_ISCHR ($mode) S_ISFIFO ($mode) S_ISSOCK ($mode)
 
 The third mode information returned by the stat function can be retrieved a lot by performing bit operations with the constants defined in Fcntl.
 
-<h4> Sample to check permissions </h4>
+<h4>Sample to check permissions</h4>
 
 This is a sample to check permissions.
 
@@ -776,7 +776,7 @@ printf "Permissions for $file (octal display):%03o\n", S_IMODE ($mode);
 printf "$file permissions (binary display):%09b\n", S_IMODE ($mode);
 </pre>
 
-<h3> What is a bit mask? </H3>
+<h3>What is a bit mask? </H3>
 
 Bitmasks affect the permissions when creating files and directories with the <a href="/blog/20080804121794.html">sysopen function</a> and mkdir functions.
 

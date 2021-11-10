@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> embedvar.h </h2>
+<h2>embedvar.h</h2>
 
 
 
 <strong> embedvar.h </strong> is a header for abstracting interpreter variables and global variables.
 
-<h3> Interpreter variable abstraction </h3>
+<h3>Interpreter variable abstraction</h3>
 
 The logic of the interpretation variable abstraction is as follows.
 
@@ -79,7 +79,7 @@ And the access to the interpreted variable is defined as follows.
 # define PL_AboveLatin1 (vTHX->IAboveLatin1)
 </pre>
 
-<h3> Global variable abstraction </h3>
+<h3>Global variable abstraction</h3>
 
 Next is the code for the abstraction of global variables. If "PERL_GLOBAL_STRUCT" is defined, the entire global variable exists as a single structure, otherwise it exists as a regular global variable. In both of these cases, you can access the variable with "PL_appctx".
 

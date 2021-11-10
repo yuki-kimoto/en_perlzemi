@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> Find the time difference (if it does not exceed 24 hours) </h2>
+<h2>Find the time difference (if it does not exceed 24 hours)</h2>
 
 
 
@@ -110,9 +110,9 @@ Execution result
 The time difference is 18:50:22.
 </pre>
 
-<h3> Code explanation </h3>
+<h3>Code explanation</h3>
 
-<h4> Convert time string representation to hash representing time information </h4>
+<h4>Convert time string representation to hash representing time information</h4>
 
 If the time is displayed in the log etc., it is a character string. It is convenient to convert this string into a hash that represents the time information.
 
@@ -149,7 +149,7 @@ The return value allows you to select a list and a scalar.
 return wantarray?%$time: $time;
 </pre>
 
-<h4> Convert the hash of time information to seconds and calculate the elapsed seconds </h4>
+<h4>Convert the hash of time information to seconds and calculate the elapsed seconds</h4>
 
 The calculation to convert the time to seconds is "hours x 3600 + minutes x 60 + seconds".
 
@@ -178,7 +178,7 @@ sub time_to_sec {
 }
 </pre>
 
-<h4> Convert elapsed seconds to hash of time representation </h4>
+<h4>Convert elapsed seconds to hash of time representation</h4>
 
 To convert seconds to time, find the quotient and remainder of seconds divided by 3600. This quotient becomes "time".
 
@@ -204,7 +204,7 @@ sub sec_to_time {
 }
 </pre>
 
-<h4> Convert time representation hash to time string representation </h4>
+<h4>Convert time representation hash to time string representation</h4>
 
 Finally, it returns to the string again. Here, I used the sprintf function.
 

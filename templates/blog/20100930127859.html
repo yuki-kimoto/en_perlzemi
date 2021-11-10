@@ -6,17 +6,17 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2> References and multidimensional data structures </h2>
+<h2>References and multidimensional data structures</h2>
 
 
 
 A reference represents something that points to data. It's easy to understand if you think of it as a pointer in C language.
 
-<h3> Array reference </h3>
+<h3>Array reference</h3>
 
 I will explain the array reference. Twice
 
-<h4> Array </h4>
+<h4>Array</h4>
 
 <a href="/blog/20161012147627.html">Array</a> is created.
 
@@ -24,7 +24,7 @@ I will explain the array reference. Twice
 my @nums = (1, 2, 3);
 </pre>
 
-<h4> Creating an array reference </h4>
+<h4>Creating an array reference</h4>
 
 Creating an array reference. References are created using the "\" symbol.
 
@@ -39,7 +39,7 @@ my $nums = \@nums;
 $nums - ->@nums
 </pre>
 
-<h4> Creating an anonymous array reference </h4>
+<h4>Creating an anonymous array reference</h4>
 
 Creating an anonymous array reference. "[]" Is called an anonymous array generator.
 
@@ -66,7 +66,7 @@ my $nums = [1, 2, 3];
 
 In Perl, the appearance of both arrays and array references is one reason why the code is hard to read. It is important to read the code with a clear distinction between "array" and "array reference".
 
-<h3> Array reference dereference </h3>
+<h3>Array reference dereference</h3>
 
 To retrieve an array from an array reference, you need to do the <a href="/blog/20180301151991.html">dereference</a> operation. Use "@{}" to dereference the array.
 
@@ -104,7 +104,7 @@ Array references are also explained in detail on the following pages.
   </li>
 </ul>
 
-<h3> Two-dimensional array </h3>
+<h3>Two-dimensional array</h3>
 
 Let's create a two-dimensional array in Perl. A characteristic of Perl arrays is that they can only have scalar values as elements. So you can't have an array as an element of an array like this:
 
@@ -138,7 +138,7 @@ my $people = [
 
 The above notation is the most common representation of a two-dimensional array in Perl.
 
-<h3> Array element reference of array </h3>
+<h3>Array element reference of array</h3>
 
 Let's access the elements of the array of the created array. This is an array reference that has an array reference as an element, so you can access it as follows:
 
@@ -163,11 +163,11 @@ my $country2 = $persons->[1][1];
 my $age2 = $persons->[1][2];
 </pre>
 
-<h3> Two-dimensional array loop processing </h3>
+<h3>Two-dimensional array loop processing</h3>
 
 Let's loop through a two-dimensional array.
 
-<h4> Output of all elements </h4>
+<h4>Output of all elements</h4>
 First, let's output all the elements.
 
 <pre>
@@ -190,7 +190,7 @@ USA
 
 Perl's two-dimensional array is essentially an array reference that has an array reference as an element. So if you want to loop, you need to dereference and retrieve the array. This means that you need to dereference the outer loop as "@$persons" and the inner loop as "@$person".
 
-<h4> Output all records separated by commas </h4>
+<h4>Output all records separated by commas</h4>
 
 Next, let's output all records separated by commas as shown below.
 
@@ -207,7 +207,7 @@ for my $person (@$persons) {
 }
 </pre>
 
-<h4> Create a two-dimensional array from comma-separated files </h4>
+<h4>Create a two-dimensional array from comma-separated files</h4>
 
 Now consider creating a two-dimensional array from comma-separated files. Suppose you have the following files: Suppose the file name is "persons.txt".
 
@@ -253,7 +253,7 @@ my $people = [
 ];;
 </pre>
 
-<h4> Separate commasIt's better to use tab delimiters </h4>
+<h4>Separate commasIt's better to use tab delimiters</h4>
 
 This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the character string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
 
@@ -261,11 +261,11 @@ This time, the output was separated by commas, but if you use it for business, i
 print join("\t", @$person) . "\n";
 </pre>
 
-<h3> Hash reference </h3>
+<h3>Hash reference</h3>
 
 I will explain the reference of <a href="/blog/20161013147635.html">hash</a>.
 
-<h4> Hash </h4>
+<h4>Hash</h4>
 
 Creating a hash.
 
@@ -273,7 +273,7 @@ Creating a hash.
 my %person = (name =>'Ken', age => 19);
 </pre>
 
-<h4> Creating a hash reference </h4>
+<h4>Creating a hash reference</h4>
 
 Creating a hash reference. References are created using the "\" symbol.
 
@@ -288,7 +288,7 @@ my $person = \%person;
 $person - ->%person
 </pre>
 
-<h4> Creating an anonymous hash reference </h4>
+<h4>Creating an anonymous hash reference</h4>
 
 Creating an anonymous hash reference. "{}" Is called an anonymous hash generator.
 
@@ -315,7 +315,7 @@ my $person = {name =>'Ken', age => 19};
 
 In Perl, the appearance of both hashes and hash references is one reason why the code is hard to read. It is important to read the code with a clear distinction between "hash" and "hash reference".
 
-<h3> Hash reference dereference </h3>
+<h3>Hash reference dereference</h3>
 
 To retrieve a hash from a hash reference, you need to do something called dereference. Use "%{}" for hash dereference.
 
@@ -353,7 +353,7 @@ Hash references are detailed individually on the following pages.
   </li>
 </ul>
 
-<h3> Hash array </h3>
+<h3>Hash array</h3>
 
 Let's create an array of hashes in Perl. As explained in Array Array, you can only have scalar values as elements of an array. So you need to specify the hash reference as an element of the array.
 
@@ -377,7 +377,7 @@ The above notation is the most common representation of an array of hashes in Pe
 
 Let's loop through an array of hashes.
 
-<h4> Output of all elements </h4>
+<h4>Output of all elements</h4>
 
 First, let's output all the elements.
 
@@ -420,7 +420,7 @@ for my $person (@$persons) {
 }
 </pre>
 
-<h4> Output all records separated by commas </h4>
+<h4>Output all records separated by commas</h4>
 
 Next, let's output all records separated by commas as shown below.
 
@@ -443,7 +443,7 @@ for my $person (@$persons) {
 }
 </pre>
 
-<h4> Create an array of hashes from comma-separated files </h4>
+<h4>Create an array of hashes from comma-separated files</h4>
 
 Now consider, on the contrary, creating an array of hashes from a comma-separated file. Suppose you have the following files: Suppose the file name is "persons.txt".
 
@@ -486,11 +486,11 @@ my $people = [
 ];;
 </pre>
 
-<h3> Array hash </h3>
+<h3>Array hash</h3>
 
 Next, I will explain about "array hash".
 
-<h4> Creating an array hash </h4>
+<h4>Creating an array hash</h4>
 
 Creating an array hash. Let's assume a scene where hourly aggregation is performed.
 
@@ -505,7 +505,7 @@ my $infos = {
 
 There were 3 accesses at 1:01, with an average response time of 2.1 seconds and a maximum response time of 4.6 seconds. There were 5 accesses at 1:02, with an average response time of 4.1 seconds and a maximum response time of 7.4 seconds. There were 6 accesses at 1:03, with an average response time of 3.5 seconds and a maximum response time of 5.7 seconds. This is the data.
 
-<h4> Output all elements </h4>
+<h4>Output all elements</h4>
 
 Let's output all the elements.
 
@@ -554,7 +554,7 @@ Five
 5.7
 </pre>
 
-<h3> Output all records separated by commas </h3>
+<h3>Output all records separated by commas</h3>
 
 Next, let's output all records separated by commas as shown below.
 
@@ -574,7 +574,7 @@ for my $time(sort keys %$infos) {
 
 Just join them with the join function, as explained in "Array of arrays" and "Array of hashes".
 
-<h4> Create array hash from comma separated files </h4>
+<h4>Create array hash from comma separated files</h4>
 
 Now consider creating an array hash from a comma-separated file. Suppose you have the following files: Suppose the file name is "access.log". The first column is the time of access (hours: minutes) and the second column is the response time.
 
@@ -639,11 +639,11 @@ my $infos = {
 };
 </pre>
 
-<h3> Hash hash </h3>
+<h3>Hash hash</h3>
 
 Next, I will explain about "hash of hash".
 
-<h4> Creating a hash of hashes </h4>
+<h4>Creating a hash of hashes</h4>
 
 Creating a hash of hashes. Imagine what you're doing when you're doing hourly aggregation.
 
@@ -657,7 +657,7 @@ my $infos = {
 
 There were 3 accesses at 1:01, with an average response time of 2.1 seconds and a maximum response time of 4.6 seconds. There were 5 accesses at 1:02, with an average response time of 4.1 seconds and a maximum response time of 7.4 seconds. There were 6 accesses at 1:03, with an average response time of 3.5 seconds and a maximum response time of 5.7 seconds. This is the data.
 
-<h4> Output all elements </h4>
+<h4>Output all elements</h4>
 
 Let's output all the elements.
 
@@ -700,7 +700,7 @@ count: 6
 max_time: 5.7
 </pre>
 
-<h3> Output all records separated by commas </h3>
+<h3>Output all records separated by commas</h3>
 
 Next, let's output the data created above by separating all records with commas as shown below.
 
@@ -725,7 +725,7 @@ for my $time(sort keys %$infos) {
 
 Just join them with the join function, as explained in "Array of arrays" and "Array of hashes".
 
-<h4> Create a hash of hashes from comma-separated files </h4>
+<h4>Create a hash of hashes from comma-separated files</h4>
 
 Now consider creating a hash of hashes from a comma-separated file. Suppose you have the following files: Suppose the file name is "access.log". The first column is the time of access (hours: minutes) and the second column is the response time.
 
@@ -791,7 +791,7 @@ my $infos = {
 };
 </pre>
 
-<h3> Other references </h3>
+<h3>Other references</h3>
 
 <ul>
   <li>
@@ -805,6 +805,6 @@ my $infos = {
   </li>
 </ul>
 
-<h3> EndRini </h3>
+<h3>EndRini</h3>
 
 Now you are free to work with arrays and hashes. When you can handle data freely, you can do a lot of things by programming. Also, as an application, it is a good idea to challenge yourself so that you can sort these data freely. <a href="/blog/20100110126528.html">Explanation of sort function</a> will be helpful.

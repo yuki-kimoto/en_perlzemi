@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> Variable expansion </h2>
+<h2>Variable expansion</h2>
 
 
 
@@ -31,7 +31,7 @@ my $message = "I like $animal";
 
 "$Animal" is interpolated and "$message" becomes "I like cat".
 
-<h4> When a character string follows variable expansion </h4>
+<h4>When a character string follows variable expansion</h4>
 
 When expanding a variable, if a character string follows the variable, that character string will also be recognized as part of the variable name. In such a case, use "{}" after $to enclose the variable name.
 
@@ -43,7 +43,7 @@ my $message = "dog ${animal} mouse";
 
 It will be correctly expanded as "dog cat mouse".
 
-<h4> Array variable expansion </h4>
+<h4>Array variable expansion</h4>
 
 <a href="/blog/20161012147627.html">Array</a> can also be interpolated. If the array is variable-expanded, the elements are concatenated with blanks.
 
@@ -55,7 +55,7 @@ my $message = "I like @animals";
 
 "$Message" expands to "I like dog cat mouse".
 
-<h4> Subroutine variable expansion </h4>
+<h4>Subroutine variable expansion</h4>
 
 <a href="/blog/20101130129876.html">Subroutine</a> is not a variable, so it cannot be interpolated. It is smart to assign to a variable and then use the variable expansion function.
 
@@ -64,7 +64,7 @@ my $total = sum (1, 2);
 my $message = "Number is $total";
 </pre>
 
-<h4> Variable expansion in here document </h4>
+<h4>Variable expansion in here document</h4>
 
 You can also use variable interpolation in <a href="/blog/20080619121405.html">Here Document</a>. Enclosing the terminating string in double quotes makes it easier to understand the intention of variable expansion.
 

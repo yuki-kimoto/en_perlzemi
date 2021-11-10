@@ -10,7 +10,7 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2> The latest version of Perl, 5.16.0, has been released </h2>
+<h2>The latest version of Perl, 5.16.0, has been released</h2>
 
 
 
@@ -32,9 +32,9 @@ As a result, the Perl 5.12 series is no longer supported. Only critical security
 <a href="http://perldoc.jp/docs/perl/5.16.0/perl5160delta.pod">Changes in Perl 5.16</a>
 </blockquote>
 
-<h3> New features </h3>
+<h3>New features</h3>
 
-<h4> __SUB__ </h4>
+<h4>__SUB__</h4>
 It is now possible to write __SUB__, which is similar to __FILE__ and __PACKAGE__. This is a feature that allows you to get a reference to the subroutine you are currently executing, making it easier to write recursive subroutines. It can be used in the state of use 5.16 or use feature 'current_sub'.
 
 <pre>
@@ -44,10 +44,10 @@ sub func {
 }
 </pre>
 
-<h4> Add enable and disable in debugger </h4>
+<h4>Add enable and disable in debugger</h4>
 You can now enable and disable breakpoints.
 
-<h4> Specify the file name in the breakpoint setting in the debugger </h4>
+<h4>Specify the file name in the breakpoint setting in the debugger</h4>
 
 You can now specify the file name in addition to the line number with the b command (specify breakpoints).
 
@@ -57,14 +57,14 @@ b [file]: [line]
 
 This may reduce the work of moving back and forth between files.
 
-<h4> Many Perl keywords are now available in the CORE namespace </h4>
+<h4>Many Perl keywords are now available in the CORE namespace</h4>
 Until now, CORE was not actually a namespace, but it seems that CORE has become a namespace and can be treated in the same way as a normal namespace.
 
 <pre>
 Core::tie
 </pre>
 
-<h4> Providing a modified type map </h4>
+<h4>Providing a modified type map</h4>
 
 Additional typemaps such as T_AVREF_REFCOUNT_FIXED are now provided. This is a story on XS.
 
@@ -72,14 +72,14 @@ Additional typemaps such as T_AVREF_REFCOUNT_FIXED are now provided. This is a s
 HV * T_HVREF_REFCOUNT_FIXED
 </pre>
 
-<h4> Almost compatible with Unicode 6.1 </h4>
+<h4>Almost compatible with Unicode 6.1</h4>
 Almost compatible with Unicode 6.1. Please note that Unicode 6.0 and Unicode 6.1 are not fully compatible.
 
 Speaking of Unicode6, it is characteristic that emoticons are included as characters. I wonder if it will be easier to create an application that sends emails from mobile phones.
 
-<h3> Minor changes </h3>
+<h3>Minor changes</h3>
 
-<h4> use VERSION is now expected to work with that Perl version </h4>
+<h4>use VERSION is now expected to work with that Perl version</h4>
 The statement "use v5.16" is now expected to work with Perl 5.16.
 <pre>
 use v5.16;
@@ -87,10 +87,10 @@ use v5.16;
 
 In other words, "use v5.14" expects Perl 5.14 to work, and "use v5.16" expects Perl 5.16 to work.
 
-<h4> $[is no longer disabled under use v5.16. </h4>
+<h4>$[is no longer disabled under use v5.16.</h4>
 $[Now is no longer valid under use v5.16.
 
-<h4> Fixed a memory leak in a regular expression named capture </h4>
+<h4>Fixed a memory leak in a regular expression named capture</h4>
 
 A memory leak in the following code has been fixed. This has been around since Perl 5.10.
 
@@ -105,10 +105,10 @@ A memory leak in the following code has been fixed. This has been around since P
 
 I wonder if named capture is now available in the daemon process.
 
-<h3> Deprecated </h3>
+<h3>Deprecated</h3>
 Unicode database files located in lib/unicore are no longer read. This is to make Perl's core smaller. Use the new Unicode::UCD function instead.
 
-<h3> Deprecated modules </h3>
+<h3>Deprecated modules</h3>
 
 <ul>
   <li>
@@ -118,7 +118,7 @@ Unicode database files located in lib/unicore are no longer read. This is to mak
 
 Version::Requirements has been deprecated. Use CPAN::Meta::Requirements.
 
-<h3> Future deprecated modules </h3>
+<h3>Future deprecated modules</h3>
 The following modules will be deprecated in the future. It will be removed after a while after being deprecated. However, it's still available on CPAN, so if you're using it, you'll have to spend more time installing it.
 
 <ul>
@@ -150,7 +150,7 @@ The following modules will be deprecated in the future. It will be removed after
 
 The core may get smaller little by little by removing unnecessary modules.
 
-<h3> Removed modules and pragmas </h3>
+<h3>Removed modules and pragmas</h3>
 
 The following modules have been removed from the core. It's on CPAN.
 

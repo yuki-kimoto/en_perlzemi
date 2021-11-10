@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> interpvar.h </h2>
+<h2>interpvar.h</h2>
 
 
 
 <strong> interpretvar.h </strong> contains the definitions of interpreted variables. Interpreter variables are variables that are defined for each Perl interpreter.
 
-<h3> What is an interpreter? </H3>
+<h3>What is an interpreter? </H3>
 
 Perl can have multiple interpreters. Perl will generate an interpreter and begin interpreting the source code. Normally, one interpreter is enough, but if you want to keep multiple interpreters in a C language program, you can generate multiple interpreters.
 
@@ -39,7 +39,7 @@ Perl-(no interpreter)
 
 =====
 
-<h3> Interpreter variable </h3>
+<h3>Interpreter variable</h3>
 
 Interpreter variables are variables that each interpreter has. When reading Perl source code, you will open interpvar.h very often. This is because the variables defined here are used throughout the Perl source code.
 
@@ -75,7 +75,7 @@ However, this variable is rarely used in Perl source code. It is often accessed 
 
 When actually reading the source code, if you see the variable name "PL_stack_sp", you first guess that this is an interpreter variable. Then open "interpvar.h" and check if there is a definition like "PERLVAR (I, stack_sp, SV **)".
 
-<h3> Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled </h3>
+<h3>Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled</h3>
 
 Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled. The description is in "perl.h".
 
@@ -87,7 +87,7 @@ END_EXTERN_C
 # endif
 </pre>
 
-<h3> vTHX is the current interpreter </h3>
+<h3>vTHX is the current interpreter</h3>
 
 vTHX is an interpreter. Under "MULTIPLICITY", "vTHX" expands to "aTHX" and "PERL_GET_INTERP", but in general Perl, read as "PERL_IMPLICIT_CONTEXT" is defined. In other words, let's think that it will be expanded to "aTHX".
 
@@ -133,7 +133,7 @@ struct interpreter {
 
 You can see that "PL_stack_sp" is expanded to "my_perl->Istack_sp". This means accessing a member variable called "Istack_sp" in the current interpreter.
 
-<h3> Summary </h3>
+<h3>Summary</h3>
 
 Keep in mind that "PL_stack_sp" will be expanded to "my_perl->Istack_sp". In addition, if "MULTIPLICITY" is not enabled, "Istack_sp" is directly available as a global variable. By using "PL_stack_sp", you can access with or without multiple interpreters without being aware of it.
 

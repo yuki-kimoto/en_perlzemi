@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">bitwise operation </span>
   </li>
 </ol>
-<h2> Bitwise operator-Performs bitwise operations </h2>
+<h2>Bitwise operator-Performs bitwise operations</h2>
 
 
 
@@ -94,7 +94,7 @@ Interpretation of bit operations |
 Invert Bits |
 </table>
 
-<h3> Binary, hexadecimal, and decimal support </h3>
+<h3>Binary, hexadecimal, and decimal support</h3>
 
 <table>
   <tr>
@@ -243,7 +243,7 @@ Invert Bits |
 
 </table>
 
-<h3> Binary carry and decimal </h3>
+<h3>Binary carry and decimal</h3>
 
 <table>
   <tr>
@@ -328,7 +328,7 @@ Invert Bits |
 
 It corresponds to doubling in decimal and raising one place in binary.
 
-<h3> Bit shift operator </h3>
+<h3>Bit shift operator</h3>
 
 Bit shift is to shift the arrangement of bits to the left or right. There are two types of bit shifts: right bit shift and left bit shift. From a mathematical point of view, the left bit shift is double and the right bit shift is the same as his quotient divided by two.
 
@@ -362,7 +362,7 @@ Bit shift is to shift the arrangement of bits to the left or right. There are tw
 
 </table>
 
-<h4> Bit shift operator </h4>
+<h4>Bit shift operator</h4>
 
 <pre>
 # Left bit shift
@@ -438,7 +438,7 @@ That is,
 = 32 + 4 = 36
 </pre>
 
-<h3> Meaning of left bit shift </h3>
+<h3>Meaning of left bit shift</h3>
 
 Left bit shift is equivalent to doubling the value.
 
@@ -525,14 +525,14 @@ It certainly doubles.
 
 On the contrary, right bit shift is the same as the quotient divided by 2.
 
-<h3> Understand the meaning of bits in a computer </h3>
+<h3>Understand the meaning of bits in a computer</h3>
 
 If you don't understand the meaning of a bit, please click here.
 
 A bit is the smallest unit of data that a computer handles. There are only two bit states, "standing" and "not standing". Expressed in binary, it means "1" or "0". A sequence of 1s and 0s is called a bit string.
 Some computer devices are called memory, which is a device that stores a huge string of bits.
 
-<h4> The parable of a light bulb </h4>
+<h4>The parable of a light bulb</h4>
 
 I think it's difficult to imagine memory at first, but it's easy to imagine if you think of a lot of light bulbs lined up in a straight line. There are many light bulbs lined up, and there are "light bulbs with" and "light bulbs without".
 
@@ -542,7 +542,7 @@ I think it's difficult to imagine memory at first, but it's easy to imagine if y
 
 As mentioned above, suppose you have 8 light bulbs. You can express "on" and "not on" with one light bulb. In other words, one light bulb can be used in two ways. If there are eight, 2 to the 8th power can express 256 ways.
 
-<h4> Information transmission using light bulbs </h4>
+<h4>Information transmission using light bulbs</h4>
 
 I will try to convey information using a light bulb. Let's say that Mr. A and Mr. B have made the following arrangements regarding how to light a light bulb.
 
@@ -553,7 +553,7 @@ I will try to convey information using a light bulb. Let's say that Mr. A and Mr
 
 In this way, Mr. A and Mr. B can exchange information using light bulbs even in places where nothing can be seen at night or where no sound can be heard in the distance. Information can be exchanged by human beings giving meaning to symbols that are meaningless by themselves, such as "○○○○ ××××".
 
-<h4> Gives the mathematical meaning of a sequence of light bulbs in binary </h4>
+<h4>Gives the mathematical meaning of a sequence of light bulbs in binary</h4>
 
 It gives the mathematical meaning of a binary number as well as a light bulb.
 <pre>
@@ -564,7 +564,7 @@ It gives the mathematical meaning of a binary number as well as a light bulb.
 
 By doing this, the mere arrangement of light bulbs has a mathematical meaning. This is called a bit string and is the basis of computer calculations.
 
-<h3> Sample code </h3>
+<h3>Sample code</h3>
 
 The following is a sample of bit operation and a sample of expressing a flag with bits.
 
@@ -615,15 +615,15 @@ if ($all_flg_on & FLG3) {
 printf("%04b", 0b1100 & 0b1010);
 </pre>
 
-<h4> (1) Express numbers in binary </h4>
+<h4>(1) Express numbers in binary</h4>
 
 You can use the prefix 0b to represent numbers in binary.
 
-<h4> (2) Output in binary notation </h4>
+<h4>(2) Output in binary notation</h4>
 
 To output in binary, use the <a href="/blog/20170326149148.html">printf function</a> and specify%b in the format. 04 between%and b is an option that means to fill the missing part with 0 in 4-digit display.
 
-<h4> (3) Expressing flags by bit operation </h4>
+<h4>(3) Expressing flags by bit operation</h4>
 
 <pre>
 sub FLG1 {1;} A subroutine that returns # 1. 1 is 1 in binary.
@@ -640,7 +640,7 @@ if ($all_flg_on & FLG3) {
 }
 </pre>
 
-<h4> (3) -1 Expressing a constant with a subroutine </h4>
+<h4>(3) -1 Expressing a constant with a subroutine</h4>
 
 <pre>
 sub FLG1 {1};
@@ -648,7 +648,7 @@ sub FLG1 {1};
 
 If you write this, 1 will be returned when <a href="/blog/20101130129876.html">subroutine</a> is called, and you can treat it like a constant. When calling, you can call it with FGG1 without writing FLG1 ().
 
-<h4> (3)-Set the flag value to a multiple of 2 so that the bits do not overlap </h4>
+<h4>(3)-Set the flag value to a multiple of 2 so that the bits do not overlap</h4>
 
 <pre>
 sub FLG1 {1;} A subroutine that returns # 1. 1 is 1 in binary.
@@ -658,7 +658,7 @@ A subroutine that returns sub FLG3 {4;} # 4. 4 is 100 in base.
 
 Use multiples of 2 to prevent the bits from overlapping. In order to use it as a flag, each bit must be able to be determined separately.
 
-<h4> (3) -3 Expression that all flags are turned on </h4>
+<h4>(3) -3 Expression that all flags are turned on</h4>
 
 <pre>
 my $all_flg_on = FLG1 | FLG2 | FLG3;
@@ -666,7 +666,7 @@ my $all_flg_on = FLG1 | FLG2 | FLG3;
 
 OR the bits you want to turn on.
 
-<h4> (3) -4 Make sure the flag is on </h4>
+<h4>(3) -4 Make sure the flag is on</h4>
 
 <pre>
 if ($all_flg_on & FLG3) {
@@ -675,7 +675,7 @@ if ($all_flg_on & FLG3) {
 </pre>
 You can check if the flag is on by taking the logical product with the flag that you want to check if it is on.
 
-<h4> (3) -5 Basically avoid bit operations </h4>
+<h4>(3) -5 Basically avoid bit operations</h4>
 
 Basically, I don't write a program that uses bit operations. Bitwise operations are only needed when calling a Perl function that directly wraps a C library.
 
@@ -709,7 +709,7 @@ print "3-bit right shift:". $Num >> 3 . "\n";
 print "\n";
 </pre>
 
-<h4> Binary to Decimal Conversion </h4>
+<h4>Binary to Decimal Conversion</h4>
 
 <pre>
 00100100

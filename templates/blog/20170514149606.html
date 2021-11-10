@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2> goto statement-jump to any label </h2>
+<h2>goto statement-jump to any label</h2>
 
 
 
@@ -19,13 +19,13 @@ You can use the <b> goto statement </b> to jump to any label.
 goto label
 </pre>
 
-<h3> It is good not to use goto </h3>
+<h3>It is good not to use goto</h3>
 
 As explained in <a href="/blog/20091120124667.html">Perl's modern writing style</a>, goto is a good programming style not to use.
 
 Use <a href="/blog/20100411127089.html">exception handling</a> if you want to handle errors, and <a href="/blog/20170527149589.html">last statement if you want to break out of the loop. Use</a>. Perl has alternatives, so it's unlikely that you'll use goto.
 
-<h3> The only use of goto is to recurse a function </h3>
+<h3>The only use of goto is to recurse a function</h3>
 
 Besides jumping to the label, goto can execute functions without increasing the call stack. Perl doesn't optimize tail recursion and warns you of deep stacks, which you can work around with the "goto & function name" syntax.
 

@@ -10,13 +10,13 @@
     here
   </li>
 </ol>
-<h2> How to treat a C language structure as a Perl object in XS </h2>
+<h2>How to treat a C language structure as a Perl object in XS</h2>
 
 
 
 In XS, you can also treat the structure itself as a Perl object. I will explain how to treat a C language structure as a Perl object.
 
-<h3> Create a module with h2xs </h3>
+<h3>Create a module with h2xs</h3>
 
 First, create a module for XS with h2xs.
 
@@ -35,7 +35,7 @@ README
 SomeModule.xs
 t/</pre>
 
-<h3> XS file description </h3>
+<h3>XS file description</h3>
 
 Let's write an XS file. The pointer of the structure is converted to size_t type by PTR2INT. In addition, size_t type is converted to SV * type, SV * type is converted to SV * type reference, and finally bless is converted to object.
 
@@ -166,7 +166,7 @@ DESTORY (...)
 MODULE = SomeModule PACKAGE = SomeModule
 </pre>
 
-<h3> Creating a Point module </h3>
+<h3>Creating a Point module</h3>
 
 Please put a file called Point.pm under lib. SomeModule is loaded because SomeModule has a binding description.
 
@@ -177,7 +177,7 @@ use SomeModule;
 1;
 </pre>
 
-<h3> Test script </h3>
+<h3>Test script</h3>
 
 Create a test script. This should be in the same directory where the XS files are located.
 
@@ -191,7 +191,7 @@ print $point->x . "\n";
 print $point->y . "\n";
 </pre>
 
-<h3> Compile and run </h3>
+<h3>Compile and run</h3>
 
 Let's compile and run it.
 
