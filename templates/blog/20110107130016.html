@@ -66,7 +66,7 @@ get'/' => sub {
             
             push @cpanm,'#! / usr / bin / perl';
             push @cpanm, "BEGIN {".
-                             "\ $ENV{HOME} =" $home'; ".
+                             "\$ENV{HOME} =" $home'; ".
                              "use lib'$home / perl5 / lib / perl5';".
                          "}";
             push @cpanm, $cpanm_content;

@@ -257,7 +257,7 @@ my $price_total_top_label ='amount';
 $text->translate ($render_start_x, $render_start_y-$unit_height * $cur_row + $text_bottom_padding);
 $text->font ($font, $font_size_default);
 $text->text ($price_total_top_label);
-my $price_total_top = "\ ${price_total_disp} Yen";
+my $price_total_top = "\${price_total_disp} Yen";
 $text->translate (
   $render_start_x + 48 * $unit_width,
   $render_start_y-$unit_height * $cur_row + $text_bottom_padding
@@ -592,7 +592,7 @@ $text->font ($font, $font_size_default);
 $text->text ($price_total_label);
 $text->translate ($render_end_x, $render_start_y-$unit_height * $cur_row + $text_bottom_padding);
 $text->font ($font, $font_size_default);
-$text->text_right ("\ $price_total_disp");
+$text->text_right ("\$price_total_disp");
 $cur_row + = 1;
 
 # Thick line

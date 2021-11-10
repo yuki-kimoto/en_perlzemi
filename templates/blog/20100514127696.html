@@ -40,9 +40,9 @@ my $type ='prefork';
 
 # Optional processing
 GetOptions (
-  'enable_cache' => \ $enable_cache,
-  'max_clients = i'=> \ $max_clients,
-  'type = s'=> \ $type
+  'enable_cache' => \$enable_cache,
+  'max_clients = i'=> \$max_clients,
+  'type = s'=> \$type
 );
 
 Receives non-option arguments
@@ -64,13 +64,13 @@ For "Option name = Type", specify the option name and value type. If the option 
 
 <pre>
 # Authenticity value
-'enable_cache' => \ $enable_cache
+'enable_cache' => \$enable_cache
 
 # Integer
-'max_clients = i'=> \ $max_clients
+'max_clients = i'=> \$max_clients
 
 # String
-'type = s'=> \ $type
+'type = s'=> \$type
 </pre>
 
 For "Variables to save", specify a reference for scalar variables. Set the default value first and pass it as a reference to the GetOptions argument.
@@ -81,7 +81,7 @@ my $max_clients = 5;
 
 # Specify a scalar variable reference in the argument
 GetOptions (
-  'max_clients = i'=> \ $max_clients,
+  'max_clients = i'=> \$max_clients,
 );
 </pre>
 

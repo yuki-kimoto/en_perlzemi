@@ -21,7 +21,7 @@ To create a scalar variable reference:
 
 <pre>
 my $str = "Hello";
-my $str_ref = \ $str;
+my $str_ref = \$str;
 </pre>
 
 <h4> Dereference scalar variable reference </h4>
@@ -62,9 +62,9 @@ my $type ='prefork';
 
 # Optional processing
 GetOptions (
-  'enable_cache' => \ $enable_cache,
-  'max_clients = i'=> \ $max_clients,
-  'type = s'=> \ $type
+  'enable_cache' => \$enable_cache,
+  'max_clients = i'=> \$max_clients,
+  'type = s'=> \$type
 );
 
 Receives non-option arguments

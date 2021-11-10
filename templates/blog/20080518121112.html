@@ -49,9 +49,9 @@ my $file_bak ='dir1 / dir2 / base_name.log.bak';
 
 print "1: Extract the extension from the file name. (Specify the extension name)\n";
 my ($base_name, $dir, $suffix) = fileparse ($file_txt,'.txt');
-print "\ $dir = $dir\n",
-  "\ $base_name = $base_name\n",
-  "\ $suffix = $suffix\n\n";
+print "\$dir = $dir\n",
+  "\$base_name = $base_name\n",
+  "\$suffix = $suffix\n\n";
 
 print "2: Extract the extension from the file name. (Specify the extension name pattern)\n";
 my $regex_suffix = qr / \. [^ \.] + $/;
@@ -60,9 +60,9 @@ my $suffix_txt = (fileparse $file_txt, $regex_suffix) [2];
 my $suffix_log = (fileparse $file_log, $regex_suffix) [2];
 my $suffix_bak = (fileparse $file_bak, $regex_suffix) [2];
 
-print "\ $suffix_txt = $suffix_txt\n",
-  "\ $suffix_log = $suffix_log\n",
-  "\ $suffix_bak = $suffix_bak\n";
+print "\$suffix_txt = $suffix_txt\n",
+  "\$suffix_log = $suffix_log\n",
+  "\$suffix_bak = $suffix_bak\n";
 </pre>
 
 Execution result

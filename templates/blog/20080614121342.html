@@ -89,7 +89,7 @@ print "\n";
 
 print "1-2: Call a subroutine from the symbol table.\n";
 my $ret_from_symbol = & {$main::{num}};
-print "\ $ret_from_symbol = $ret_from_symbol\n\n";
+print "\$ret_from_symbol = $ret_from_symbol\n\n";
 
 print "2-1: Access the variable from the typeglob.\n";
 my $num_from_typedglob = ${* main::num}; Enclosed in # ${} is a scalar entry
@@ -103,5 +103,5 @@ print "\n";
 
 print "2-2: Call a subroutine from a typeglob.\n";
 my $ret_from_typedglob = & {* main::num};
-print "\ $ret_from_typedglob = $ret_from_typedglob\n\n";
+print "\$ret_from_typedglob = $ret_from_typedglob\n\n";
 </pre>

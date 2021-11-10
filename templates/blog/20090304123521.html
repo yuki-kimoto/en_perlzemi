@@ -64,7 +64,7 @@ my $stdout;
 Start capturing # STDOUT
 open my $temp,'> &', STDOUT;
 close STDOUT;
-open STDOUT,'>', \ $stdout;
+open STDOUT,'>', \$stdout;
 
 print "hoge";
 
@@ -103,7 +103,7 @@ my $stderr;
 # Start capture STDERR
 open my $temp,'> &', STDERR;
 close STDERR;
-open STDERR,'>', \ $stderr;
+open STDERR,'>', \$stderr;
 
 print STDERR "hoge";
 

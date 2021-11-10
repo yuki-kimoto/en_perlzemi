@@ -179,13 +179,13 @@ my %mathers = (Taro =>'Tomoko', Naoko =>'Shizuka');
 print "1: Hash element output\n";
 # When outputting, $instead of%
 # {} Use brackets
-print "\ $mathers{'Taro'} =", $mathers{'Taro'}, "\n";
+print "\$mathers{'Taro'} =", $mathers{'Taro'}, "\n";
 print "\n";
 
 # 2: Hash element assignment
 print "2: Hash element assignment\n";
 $mathers{'Naoko'} ='Haruna';
-print "\ $mathers{'Naoko'} =", $mathers{'Naoko'} . "\n";
+print "\$mathers{'Naoko'} =", $mathers{'Naoko'} . "\n";
 </pre>
 Execution result
 <pre>
@@ -232,8 +232,8 @@ print "\n\n";
 
 # 3: Access the hash element. ($hash_ref->{key})
 print "3: Access the hash element.\n";
-print "\ $math_scores_ref->{Aiko} = $math_scores_ref->{Aiko}\n";
-print "\ $math_scores_ref->{Kenta} = $math_scores_ref->{Kenta}\n";
+print "\$math_scores_ref->{Aiko} = $math_scores_ref->{Aiko}\n";
+print "\$math_scores_ref->{Kenta} = $math_scores_ref->{Kenta}\n";
 
 </pre>
 
@@ -278,7 +278,7 @@ my $math_scores = {
 # 1: Dereference and output all elements of the hash
 print "1: Dereference and print all elements of the hash\n";
 for my $key (keys %$math_scores) {
-  print "\ $math_scores->{$key} =" . $math_scores->{$key} . "\n";
+  print "\$math_scores->{$key} =" . $math_scores->{$key} . "\n";
 }
 print "\n";
 
