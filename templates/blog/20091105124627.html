@@ -519,7 +519,7 @@ As a sample, let's parse the MySQL date representation and create a Time::Piece 
 
 <pre>
 my $datetime_mysql = '2009-12-31 23:59:59';
-my $t = Time::Piece->strptime($datetime_mysql,'%Y-%m-%d%H:%M:%S');
+my $t = Time::Piece->strptime($datetime_mysql, '%Y-%m-%d%H:%M:%S');
 </pre>
 
 <h3> Localization </h3>
@@ -527,7 +527,7 @@ my $t = Time::Piece->strptime($datetime_mysql,'%Y-%m-%d%H:%M:%S');
 By default, month and week names are in English. If you want to get the Japanese week name, pass an array of day names to the method to get the week name.
 
 <pre>
-my @week_names = ('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+my @week_names = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
 my $t = Time::Piece::localtime;
 # Get week name in Japanese
 my $wday = $t->wdayname (@week_names);
@@ -591,7 +591,7 @@ $t + ONE_DAY * 5
 
 <h3> Date comparison </h3>
 
-You can use comparison operators to compare dates. You can use "<",">", "<=",">=", "<=>", "==" and "! =" .
+You can use comparison operators to compare dates. You can use "<", ">", "<=", ">=", "<=>", "==" and "! =" .
 
 <pre>
 $t1 <$t2
@@ -602,7 +602,7 @@ $t1 <$t2
 As far as I read the document, it seems that there is no choice but to use the strptime method to create a Time::Piece object at any date and time.
 
 <pre>
-my $t = Time::Piece->strptime('2009-12-31 23:59:59','%Y-%m-%d%H:%M:%S');
+my $t = Time::Piece->strptime('2009-12-31 23:59:59', '%Y-%m-%d%H:%M:%S');
 </pre>
 
 (When I read the source code, there is a parse method, but when I tried it, it seems to be broken ... It seems that it is private because it is not in the document.)

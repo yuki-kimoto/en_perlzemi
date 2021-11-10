@@ -17,7 +17,7 @@ To create an OS-independent filename, use the <strong> catfile </strong> method 
 
 <pre>
 use File::Spec;
-my $file_name = File::Spec->catfile ('t','test1.t');
+my $file_name = File::Spec->catfile ('t', 'test1.t');
 </pre>
 
 File name rules vary by OS. If you use / or\to configure filenames, portability between operating systems is compromised. If you use the File::Spec module, the file name will be created according to the file name rules according to the OS you are running, so even if you port it to a different OS, no rework will occur.
@@ -45,7 +45,7 @@ use File::Spec;
 print "1: Create an OS-independent file name.\n";
 # On Unix, it becomes lib / test1.t,
 # On Windows, it is lib\test1.t.
-my $file_name = File::Spec->catfile ('t','test1.t');
+my $file_name = File::Spec->catfile ('t', 'test1.t');
 print "\$file_name = $file_name\n\n";
 
 print "2: Shows an OS-independent" directory one level higher ".\n ";
@@ -54,7 +54,7 @@ print "\$up_dir = $up_dir\n\n";
 
 print "3: Create a directory named lib, one level above this script.\n";
 use FindBin;
-my $lib_dir = File::Spec->catfile ($FindBin::Bin, File::Spec->updir,'lib');
+my $lib_dir = File::Spec->catfile ($FindBin::Bin, File::Spec->updir, 'lib');
 print "\$lib_dir = $lib_dir\n\n";
 </pre>
 

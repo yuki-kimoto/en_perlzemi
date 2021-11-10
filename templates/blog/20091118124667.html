@@ -191,7 +191,7 @@ This is a bit annoying, so we have a function called from_to.The first argument 
 use Encode'from_to';
 
 # $str itself is converted
-from_to ($str,'UTF-8','Shift_JIS');
+from_to ($str, 'UTF-8', 'Shift_JIS');
 </pre>
 
 <h3> Character string specified as the file name </h3>
@@ -205,7 +205,7 @@ use utf8;
 use Encode'encode';
 
 my $file ='Ah.txt';
-open my $fh,'<', encode ('cp932', $file)
+open my $fh, '<', encode ('cp932', $file)
   or die "Can't open". encode ('cp932', $file). ": $!";
 </pre>
 
@@ -224,7 +224,7 @@ sub d ($) {decode ($enc, shift)}
 sub e ($) {encode ($enc, shift)}
 
 my $file ='Ah.txt';
-open my $fh,'<', e $file
+open my $fh, '<', e $file
   or die qq / Can't open "$file": $! /;
 </pre>
 
@@ -246,7 +246,7 @@ So, while you can use it to speculate that this is probably the case, be aware t
 
 Whether a function in a module accepts an internal string or a byte string as an argument depends on the intention of the module creator. The same is true for the return value of a function. It is up to the author to decide whether to return a byte string or an internal string. Be sure to read the documentation.
 
-I think this is one of the things programmers find particularly difficult when programming in Perl. But don't just deny it, remember that you're benefiting from the other big benefits of "maintaining backwards compatibility," "simple conversion rules," and "correct and proper handling of strings." I think Perl handles strings pretty well compared to other languages.
+I think this is one of the things programmers find particularly difficult when programming in Perl. But don't just deny it, remember that you're benefiting from the other big benefits of "maintaining backwards compatibility, " "simple conversion rules, " and "correct and proper handling of strings." I think Perl handles strings pretty well compared to other languages.
 
 As you can see from the implementation of other programming languages, there is a trade-off with the handling of character codes. It's a difficult field to deal with.
 

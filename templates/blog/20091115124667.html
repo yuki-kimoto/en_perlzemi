@@ -51,7 +51,7 @@ use Net::FTP;
 my $ftp = Net::FTP->new ('somehost');
 
 # Login by specifying user name and password
-$ftp->login ('user','password');
+$ftp->login ('user', 'password');
 
 Download the file using the command # get to get the file
 $ftp->get ('/ dir / somefile');
@@ -296,7 +296,7 @@ my $ftp = Net::FTP->new ('somehost')
   or die "Cannot connect to'$host': $!";
 
 # Login
-$ftp->login ('user','password')
+$ftp->login ('user', 'password')
   or die "Cannot login'$host: $user: $password':". $ftp->message;
 
 # Download
@@ -327,7 +327,7 @@ If an error occurs after connecting, you can get the details of the error with $
 
 <pre>
 # Login
-$ftp->login ('user','password')
+$ftp->login ('user', 'password')
   or die "Cannot login'$host: $user: $password:'". $ftp->message;
 
 # Download

@@ -64,14 +64,14 @@ get'/' => sub {
                 die qq {Can't donwlaod "cpanm"};
             }
             
-            push @cpanm,'#! / usr / bin / perl';
+            push @cpanm, '#! / usr / bin / perl';
             push @cpanm, "BEGIN {".
                              "\$ENV{HOME} =" $home'; ".
                              "use lib'$home / perl5 / lib / perl5';".
                          "}";
             push @cpanm, $cpanm_content;
             
-            open my $write_fh,'>','cpanm'
+            open my $write_fh, '>', 'cpanm'
               or die qq {Can't open "cpanm" for write: $!};
             
             print $write_fh join("\n", @cpanm);

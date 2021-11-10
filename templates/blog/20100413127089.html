@@ -63,7 +63,7 @@ move $tempfile, $file
 sub get_content {
   my $file = shift;
   
-  open my $fh,'<', $file
+  open my $fh, '<', $file
     or die "Can't open file \" $file \ ": $!";
   
   my $content = join('', <$fh>);

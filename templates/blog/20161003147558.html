@@ -172,7 +172,7 @@ You can use the string list operator to create a list of strings without quotes 
 
 <pre>
 # Normal method
-my @strs1 = ('Cat','Dog','Mouse');
+my @strs1 = ('Cat', 'Dog', 'Mouse');
 
 # How to use the string list operator
 my @strs2 = qw (Cat Dog Mouse);
@@ -229,7 +229,7 @@ In such cases, prepare the data in an array and concatenate it with specific cha
 You can easily do this with the <b> join function </b>.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 # Create CSV data "Cat, Dog, Mouse"
 my $csv = join(',', @animals);
@@ -255,7 +255,7 @@ In such cases, you can use the <b> split function </b> to create an array with s
 <pre>
 my $csv ='Cat, Dog, Mouse';
 
-Create an array by specifying # comma. ('Cat','Dog','Mouse')
+Create an array by specifying # comma. ('Cat', 'Dog', 'Mouse')
 my @animals = split(/, /, $csv);
 </pre>
 
@@ -584,7 +584,7 @@ use Encode'encode';
 my $file ='test.txt';
 
 # Open a file with a Japanese name
-open my $fh,'<', encode ('cp932', $file)
+open my $fh, '<', encode ('cp932', $file)
   or die encode ('cp932', "Can't open file \" $file \ ": $!");
 </pre>
 

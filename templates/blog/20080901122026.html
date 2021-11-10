@@ -82,7 +82,7 @@ my $num = oct($oct_str);
 
 <b> Hexadecimal to Decimal Conversion </b>
 
-Use the <a href="/blog/20171026150980.html">hex function</a> to convert from hexadecimal to decimal. In the sample,'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
+Use the <a href="/blog/20171026150980.html">hex function</a> to convert from hexadecimal to decimal. In the sample, 'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
 
 <pre>
 my $hex_to_dec = hex($hex_str);
@@ -141,7 +141,7 @@ sub dec_to_n {
     return if $dec! ~ / ^ ([+-]?) \ D + $/;
 
     Save the # sign if it exists
-    my $sign = $1? substr($dec, 0, 1,''):'';
+    my $sign = $1? substr($dec, 0, 1, ''):'';
 
     If # 0, return as it is
     return $dec if $dec == 0;
@@ -159,7 +159,7 @@ sub dec_to_n {
     }
     
     # A table to convert to a base number representation.
-    my @dec_to_n = (0 .. 9,'A' ..'F');
+    my @dec_to_n = (0 .. 9, 'A' ..'F');
 
     # Convert in conversion table and join characters
     return join('', $sign, map {$dec_to_n[$_]} @rem_list);
@@ -192,7 +192,7 @@ A single return returns undef for scalar contexts and an empty list for list con
 <pre>
 return if! defined $dec;
 return if $dec! ~ / ^ ([+-]?) \ D + $/;
-my $sign = $1? substr($dec, 0, 1,''):'';
+my $sign = $1? substr($dec, 0, 1, ''):'';
 </pre>
 
 $dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html">Regular expression for decimal integers</a>
@@ -204,7 +204,7 @@ $dec must be passed as an argument. Next, it must be a decimal integer. <a href=
 Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")
 
 <pre>
-my $sign = $1? substr($dec, 0, 1,''):'';
+my $sign = $1? substr($dec, 0, 1, ''):'';
 </pre>
 
 If there is a sign, the sign is assigned to $1, so the presence or absence of the sign is judged by whether or not $1 is defined. Here, the ternary operator is used for conditional branching.
@@ -255,7 +255,7 @@ By using the unshift function and inserting the remainder at the beginning of th
 <b> Convert the numbers assigned to the array to n-ary characters and combine them </b>
 
 <pre>
-my @dec_to_n = (0 .. 9,'A' ..'F');
+my @dec_to_n = (0 .. 9, 'A' ..'F');
 return join('', $sign, map {$dec_to_n[$_]} @rem_list);
 </pre>
 
@@ -304,7 +304,7 @@ sub n_to_dec {
   my @nums = split(//, $num_str);
     
   # Allow 1-9 and A-F
-  my @valid = (0 .. 9,'A' ..'F');
+  my @valid = (0 .. 9, 'A' ..'F');
   my %valid;
   for (my $i = 0; $i <@valid; $i++) {
     # Create conversion table ($valid{E} = 15)
@@ -368,7 +368,7 @@ If you want to convert the binary character string "1010" to decimal, you need t
 <b> Creating a hash with valid characters as keys </b>
 
 <pre>
-my @valid = (0 .. 9,'A' ..'F');
+my @valid = (0 .. 9, 'A' ..'F');
 my %valid;
 for (my $i = 0; $i <@valid; $i++) {
   $valid{$valid[$i]} = $i;

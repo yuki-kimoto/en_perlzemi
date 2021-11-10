@@ -27,8 +27,8 @@ use warnings;
 my $file_path_unix = FilePath::Unix->new;
 my $file_path_win = FilePath::Windows->new;
 
-my $unix_result = $file_path_unix->cat_path ('a','b');
-my $win_result = $file_path_win->cat_path ('a','b');
+my $unix_result = $file_path_unix->cat_path ('a', 'b');
+my $win_result = $file_path_win->cat_path ('a', 'b');
 
 print "unix: $unix_result\n";
 print "win: $win_result\n";
@@ -92,8 +92,8 @@ If you look at the class FilePath::Base, there is a method called cat_path. By t
 my $file_path_unix = FilePath::Unix->new;
 my $file_path_win = FilePath::Windows->new;
 
-my $unix_result = $file_path_unix->cat_path ('a','b');
-my $win_result = $file_path_win->cat_path ('a','b');
+my $unix_result = $file_path_unix->cat_path ('a', 'b');
+my $win_result = $file_path_win->cat_path ('a', 'b');
 </pre>
 
 Objects of the FilePath::Unix class and FilePath::Windows class have been created, respectively.
@@ -117,7 +117,7 @@ In cat_path, the delimiter method is called. However, FilePath::Base does not ha
 Actually, there is a secret in this $self part.
 
 <pre>
-my $unix_result = $file_path_unix->cat_path ('a','b');
+my $unix_result = $file_path_unix->cat_path ('a', 'b');
 </pre>
 
 When you call the cat_path method like this, the object assigned to $self is the FilePath::Unix class object.
@@ -130,7 +130,7 @@ If you create an object of the FilePath::Base class, cat_file will fail if you t
 
 <pre>
 my $file_path_base = FilePath::Base->new;
-$file_path_base->cat_file ('a','b'); # Failure!
+$file_path_base->cat_file ('a', 'b'); # Failure!
 </pre>
 
 A class that implements the delimiter method that inherits the FilePath::Base class will be created and meaningful.

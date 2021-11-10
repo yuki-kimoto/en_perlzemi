@@ -27,7 +27,7 @@ Is it necessary to close the file handle with the close function after opening t
 In general, open the file as follows:
 
 <pre>
-open(my $fh,'<', $file);
+open(my $fh, '<', $file);
 </pre>
 
 "$Fh" is a lexical variable. Then, when the scope is over, the lexical variables are released. Then, when it is released, the close function is automatically called. Files are also one scope. So if a lexical variable has a filehandle assigned to it, you usually don't need to call the close function.
@@ -40,10 +40,10 @@ Filehandles can also be assigned to typeglobs and filehandles. In old source cod
 
 <pre>
 # Type glob
-open(* FH,'<', $file)
+open(* FH, '<', $file)
 
 # Symbol
-open(FH,'<', $file)
+open(FH, '<', $file)
 </pre>
 
 In such a case, if you do not explicitly close it, the file handle will remain open even after the scope ends, so let's close it. If you have a short program and the program quits quickly, Global Destruction will close the file, so you don't have to close it, but it's a good idea to do so.

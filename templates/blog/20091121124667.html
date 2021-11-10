@@ -159,13 +159,13 @@ insert into table name (field name 1, field name 2, ..) values ​​(value 1, v
 To add a record with "title" to "Perl" and "author" to "taro" to the table, the SQL would be: If the data is a string, enclose it in single quotes (although this is a very dangerous security method and a workaround will be explained later).
 
 <pre>
-insert into book (title, author) values ​​('Perl','taro');
+insert into book (title, author) values ​​('Perl', 'taro');
 </pre>
 
 Let's execute an insert statement using do. Please wait until the select statement is explained a little further to confirm whether it has been inserted.
 
 <pre>
-my $insert = "insert into book (title, author) values ​​('Perl','taro');";
+my $insert = "insert into book (title, author) values ​​('Perl', 'taro');";
 $dbh->do($insert);
 </pre>
 
@@ -307,10 +307,10 @@ EOS
 $dbh->do($create_table);
 
 Execution of # insert statement
-$dbh->do("insert into book (title, author) values ​​('Perl','taro');");
-$dbh->do("insert into book (title, author) values ​​('C ++','taro');");
-$dbh->do("insert into book (title, author) values ​​('Python','ken');");
-$dbh->do("insert into book (title, author) values ​​('Java','mamoru');");
+$dbh->do("insert into book (title, author) values ​​('Perl', 'taro');");
+$dbh->do("insert into book (title, author) values ​​('C ++', 'taro');");
+$dbh->do("insert into book (title, author) values ​​('Python', 'ken');");
+$dbh->do("insert into book (title, author) values ​​('Java', 'mamoru');");
 
 Execution of # update statement
 $dbh->do("update book set title ='Ruby' where author ='mamoru'");

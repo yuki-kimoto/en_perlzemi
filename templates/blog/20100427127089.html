@@ -34,7 +34,7 @@ This translates into a Perl data structure that looks like this:
 
 <pre>
 # JSON
-'[{" name ":" Ken "," age ": 19}, {" name ":" Ken "," age ": 25}]'
+'[{" name ":" Ken ", " age ": 19}, {" name ":" Ken ", " age ": 25}]'
 </pre>
 ▼
 <pre>
@@ -129,7 +129,7 @@ my $data = decode_json (get_content ($file));
 sub get_content {
   my $file = shift;
 
-  open my $fh,'<', $file
+  open my $fh, '<', $file
     or die "Can't open file \" $file \ ": $!";
   
   my $content = do {local $/; <$fh>};

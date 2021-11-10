@@ -317,14 +317,14 @@ The for statement is simpler to write. If you need a loop variable, the for stat
 The <b> foreach statement </b> can be used to process the elements of the <a href="/blog/20161012147627.html">array</a> in sequence. Take a look at the following sample program.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 foreach my $animal (@animals) {
   print "$animal\n";
 }
 </pre>
 
-This is a program that outputs the elements of the array ('Cat','Dog','Mouse') in order. The output result is as follows.
+This is a program that outputs the elements of the array ('Cat', 'Dog', 'Mouse') in order. The output result is as follows.
 
 <pre>
 Cat
@@ -337,7 +337,7 @@ Mouse
 In Perl, the foreach statement is an alias for the for statement, and you can also write for where you should write foreach.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 for my $animal (@animals) {
   print "$animal\n";
@@ -410,7 +410,7 @@ I explained the syntax of the three iterations, but you may feel that "how do yo
 First of all, think about whether you can write using foreach. Foreach is the easiest way to write a loop, so if foreach is enough, use foreach. It's common to process the elements of an array in sequence, but you can write this in foreach.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 foreach my $animal (@animals) {
   print "$animal\n";
@@ -420,7 +420,7 @@ foreach my $animal (@animals) {
 Or write as follows using the alias for.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 for my $animal (@animals) {
   print "$animal\n";
@@ -434,7 +434,7 @@ First, consider whether you can write this way.
 Next, suppose you may need the element number. In that case, use the normal for statement. The following sample program outputs the element numbers and array elements. Note that you can get the length of the array by evaluating "@animals" in a scalar context.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 for (my $i = 0; $i <@animals; $i++) {
   my $animal = $animals[$i];
@@ -477,7 +477,7 @@ File I / O is explained in detail below.
 Use a while statement to write the process such as ending when the array is extracted using the pop function and disappears.
 
 <pre>
-my @animals = ('Cat','Dog','Mouse');
+my @animals = ('Cat', 'Dog', 'Mouse');
 
 while (my $animal = pop @animals) {
   print "$animal\n";

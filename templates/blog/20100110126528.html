@@ -68,10 +68,10 @@ If you omit the code block, it has the same meaning as if you sort in ascending 
 
 <h3> Sort by multiple conditions </h3>
 
-Try to sort the strings in the order of longest, and if the lengths are the same, sort them in ascending dictionary order. Use || to specify the second condition. If the order cannot be determined in the first comparison, the next comparison will be made. @strs becomes ('aaa','bbb','aa','bb','a','b').
+Try to sort the strings in the order of longest, and if the lengths are the same, sort them in ascending dictionary order. Use || to specify the second condition. If the order cannot be determined in the first comparison, the next comparison will be made. @strs becomes ('aaa', 'bbb', 'aa', 'bb', 'a', 'b').
 
 <pre>
-my @strs = ('aaa','bbb','b','a','aa','bb');
+my @strs = ('aaa', 'bbb', 'b', 'a', 'aa', 'bb');
 @strs = sort {length $b <=> length $a || $a cmp $b} @strs;
 </pre>
 

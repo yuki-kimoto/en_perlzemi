@@ -118,7 +118,7 @@ use Test::More tests => 2;
   
   my $total = sum ($num1, $num2);
   
-  ok ($total == 3,'sum');
+  ok ($total == 3, 'sum');
 }
 
 # double exam
@@ -128,7 +128,7 @@ use Test::More tests => 2;
   my $double = double ($num1);
     
   # Failure!
-  ok ($double == 2,'double');
+  ok ($double == 2, 'double');
 }
 
 # Subroutine that sums two numbers
@@ -157,7 +157,7 @@ Performs an automatic test for each subroutine. In this sample, we are testing a
   
   my $total = sum ($num1, $num2);
   
-  ok ($total == 3,'sum');
+  ok ($total == 3, 'sum');
 }
 
 # Subroutine that sums two numbers
@@ -179,7 +179,7 @@ As you write a lot of tests, variable name collisions become more frequent. To a
   
   my $total = sum ($num1, $num2);
   
-  ok ($total == 3,'sum');
+  ok ($total == 3, 'sum');
 }
 
 # double exam
@@ -188,7 +188,7 @@ As you write a lot of tests, variable name collisions become more frequent. To a
   
   my $double = double ($num1);
   
-  ok ($double == 2,'double'); # Failed!
+  ok ($double == 2, 'double'); # Failed!
 }
 </pre>
 
@@ -280,7 +280,7 @@ my $num1 = 1;
   
   my $total = SomeModule::sum ($num1, $num2);
   
-  ok ($total == 3,'sum');
+  ok ($total == 3, 'sum');
 }
 </pre>
 
@@ -305,7 +305,7 @@ use SomeModule;
   
   my $double = SomeModule::double ($num1);
   
-  ok ($double == 2,'double');
+  ok ($double == 2, 'double');
 }
 
 </pre>
@@ -464,10 +464,10 @@ Note that the second argument is a reference to the regular expression qr / \ w 
 The <strong> cmp_ok function </strong> allows you to test using any comparison operator.
 
 <pre>
-cmp_ok ($num,'<', 3);
+cmp_ok ($num, '<', 3);
 </pre>
 
-The first and third arguments are the values ​​you want to compare. The second argument is the comparison operator. All comparison operators such as "=", "<", "<=",">=",">", "eq", "ne", "gt", "lt", "ge", and "le" can be used.
+The first and third arguments are the values ​​you want to compare. The second argument is the comparison operator. All comparison operators such as "=", "<", "<=", ">=", ">", "eq", "ne", "gt", "lt", "ge", and "le" can be used.
 
 <h4> is_deeply function </h4>
 
@@ -525,7 +525,7 @@ Next, I will introduce a function for testing module loading, class definition, 
 The <strong> can_ok function </strong> is used for testing to make sure a class has a method.
 
 <pre>
-can_ok ('Book','title','author','price','to_string','clone');
+can_ok ('Book', 'title', 'author', 'price', 'to_string', 'clone');
 </pre>
 
 This is a test to make sure that the Book class has methods title, author, price, to_string, clone.
@@ -536,21 +536,21 @@ This is a test to make sure that the Book class has methods title, author, price
 
 <pre>
 my $comic = Comic->new;
-isa_ok ($comic,'Book');
+isa_ok ($comic, 'Book');
 </pre>
 
 This is a test to make sure that the $comic object inherits from the Book class.
 The exam will also succeed if you specify your own class as follows:
 
 <pre>
-isa_ok ($comic,'Comic');
+isa_ok ($comic, 'Comic');
 </pre>
 
 It also supports testing what kind of reference it is, not an object.
 
 <pre>
 my $ary_ref = [];
-isa_ok ($array_ref,'ARRAY');
+isa_ok ($array_ref, 'ARRAY');
 </pre>
 
 <h4> require_ok function </h4>

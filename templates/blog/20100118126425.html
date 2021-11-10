@@ -28,19 +28,19 @@ my @nums = (1, 2, 3);
 my @doubled = map {$_ * 2} @nums;
 </pre>
 
-This is a sample that deletes the first string of all elements using map. If @strs is ('& nbsp; & nbsp; a','& nbsp; & nbsp; b','& nbsp; & nbsp; & nbsp; c'), then @trimed is ('a','b','c') Become.
+This is a sample that deletes the first string of all elements using map. If @strs is ('& nbsp; & nbsp; a', '& nbsp; & nbsp; b', '& nbsp; & nbsp; & nbsp; c'), then @trimed is ('a', 'b', 'c') Become.
 
 <pre>
 # Excluding leading blanks
-my @strs = ('a','b','c');
+my @strs = ('a', 'b', 'c');
 my @trimed = map {$_ = ~ s / ^ \ s + //; $_} @strs;
 </pre>
 
-You can also convert one element into two elements. If @keys is ('a','b','c') then @mapped is (a => 1, b => 1, c => 1).
+You can also convert one element into two elements. If @keys is ('a', 'b', 'c') then @mapped is (a => 1, b => 1, c => 1).
 
 <pre>
 # Convert to two elements
-my @keys = ('a','b','c');
+my @keys = ('a', 'b', 'c');
 my @mapped = map {$_ => 1} @keys;
 </pre>
 

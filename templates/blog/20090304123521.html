@@ -62,15 +62,15 @@ This is a method to switch the output destination of STDOUT with the open functi
 my $stdout;
 
 Start capturing # STDOUT
-open my $temp,'> &', STDOUT;
+open my $temp, '> &', STDOUT;
 close STDOUT;
-open STDOUT,'>', \$stdout;
+open STDOUT, '>', \$stdout;
 
 print "hoge";
 
 # STDOUT capture finished
 close STDOUT;
-open STDOUT,'> &', $temp;
+open STDOUT, '> &', $temp;
 close $temp;
 
 print $stdout; # "hoge" is output
@@ -101,15 +101,15 @@ This is a method to switch the output destination of STDERR with the open functi
 my $stderr;
 
 # Start capture STDERR
-open my $temp,'> &', STDERR;
+open my $temp, '> &', STDERR;
 close STDERR;
-open STDERR,'>', \$stderr;
+open STDERR, '>', \$stderr;
 
 print STDERR "hoge";
 
 # End capture STDERR
 close STDERR;
-open STDERR,'> &', $temp;
+open STDERR, '> &', $temp;
 close $temp;
 
 

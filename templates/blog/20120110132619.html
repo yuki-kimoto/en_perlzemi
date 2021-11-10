@@ -29,7 +29,7 @@ $rule->require ('password')
   ->check ('not_blank')->message ('password is empty')
   ->check ('ascii')->message ('password contains invalid caharcters');
 
-$rule->require (['password','password2'])->name ('password_check')
+$rule->require (['password', 'password2'])->name ('password_check')
   ->check ('duplication')->message ('Two password not match')
   ->copy (0);
 
@@ -63,7 +63,7 @@ my $rule = [
     [not_blank =>'password is empty'],
     [ascii =>'password contains invalid caharcters']
   ],,
-  {password_check => ['password','password2']}
+  {password_check => ['password', 'password2']}
     => {copy => 0}
     => [
       [duplication =>'Two password not match']
@@ -360,7 +360,7 @@ my $data = {price => 1200};
 
 # or rules using conditions
 my $rule = $vc->create_rule;
-$rule->require ('price')->check_or ('blank','int');
+$rule->require ('price')->check_or ('blank', 'int');
 </pre>
 
 <h4> and use condition and or condition at the same time </h4>
@@ -369,7 +369,7 @@ You can also use the and condition and the or condition at the same time.
 
 <pre>
 $rule->require ('price')
-  ->check_or ('blank','int')
+  ->check_or ('blank', 'int')
   ->check ({greater_than => 1000});
 </pre>
 
@@ -439,7 +439,7 @@ There are multiple check box values. If you want all of the multiple values â€‹â
 
 <pre>
 # Multiple values
-my $data = {food => ['sushi','cake']};
+my $data = {food => ['sushi', 'cake']};
 
 # rule
 my $rule = $vc->create_rule;
@@ -474,7 +474,7 @@ In an HTML form, you may want to find out if at least one of the checkboxes is s
 
 <pre>
 # data
-my $data = {hobby => ['music','movie']};
+my $data = {hobby => ['music', 'movie']};
 
 # rule
 my $rule = $vc->create_rule;
@@ -541,7 +541,7 @@ my $data = {mail1 =>'a@somehost.com', mail2 =>'a@somehost.com'};
 
 # rule
 my $rule = $vc->create_rule;
-$rule->require (['mail1','mail2'])->name ('mail_check')
+$rule->require (['mail1', 'mail2'])->name ('mail_check')
   ->check ('duplication');
 </pre>
 
@@ -642,7 +642,7 @@ Multiple values
 <pre>
 my $data = {password1 =>'secret', password2 =>'secret'};
 my $rule = $vc->create_rule;
-$rule->require (['passwrod1','password2'])->name ('password_check')
+$rule->require (['passwrod1', 'password2'])->name ('password_check')
   ->check ('duplication');
 </pre>
 
@@ -658,7 +658,7 @@ The rules are as follows.
 $rule->require ('password')
   ->check ('not_blank')->message ('password is empty')
   ->check ('ascii')->message ('password contains invalid character');
-$rule->require (['password1','password2'])->name ('password_check')
+$rule->require (['password1', 'password2'])->name ('password_check')
   ->check ('duplication')->message ('Two password is not matched')
 </pre>
 

@@ -110,19 +110,19 @@ Let's create a two-dimensional array in Perl. A characteristic of Perl arrays is
 
 <pre>
 # Wrong example of a two-dimensional array
-my @person1 = ('Ken','Japan', 19);
-my @person2 = ('Taro','USA', 45);
+my @person1 = ('Ken', 'Japan', 19);
+my @person2 = ('Taro', 'USA', 45);
 
 my @persons = (@person1, @person2);
 </pre>
 
-@persons becomes a one-dimensional array of ('Ken','Japan', 19,'Taro','USA', 45).
+@persons becomes a one-dimensional array of ('Ken', 'Japan', 19, 'Taro', 'USA', 45).
 
 Only scalar values ​​can be in the elements of the array. The array reference is a scalar value. So you can have an array reference as an element of the array. Use "\" to create an array reference.
 
 <pre>
-my @person1 = ('Ken','Japan', 19);
-my @person2 = ('Taro','USA', 45);
+my @person1 = ('Ken', 'Japan', 19);
+my @person2 = ('Taro', 'USA', 45);
 
 my @persons = (\@person1, \@person2);
 </pre>
@@ -131,8 +131,8 @@ Also, as the simplest notation, the outer array is also used as a reference, and
 
 <pre>
 my $people = [
-  ['Ken','Japan', 19],
-  ['Taro','USA', 45]
+  ['Ken', 'Japan', 19],
+  ['Taro', 'USA', 45]
 ];;
 </pre>
 
@@ -249,8 +249,8 @@ The created two-dimensional array is as follows.
 
 <pre>
 my $people = [
-  ['Ken','Japan', '19'],
-  ['Taro','USA', '45']
+  ['Ken', 'Japan', '19'],
+  ['Taro', 'USA', '45']
 ];;
 </pre>
 

@@ -35,7 +35,7 @@ Use the lexical variable you just declared for the filehandle. Declaring a lexic
 my $fh;
 my $file ='file1';
 
-open $fh,'<', $file
+open $fh, '<', $file
   or die "Cannot open'$file': $!";
 
 while (my $lien = <$fh>) {
@@ -48,14 +48,14 @@ Lexical variables have the great advantage of having scope and being able to be 
 It would also be more modern to put the declarations of lexical variables together in the open function.
 
 <pre>
-open my $fh,'<', $file
+open my $fh, '<', $file
 </pre>
 
 <h3> Use open function with 3 arguments (required) </h3>
 
 Try to use the 3-argument open function.
 <pre>
-open my $fh,'<', $file
+open my $fh, '<', $file
 </pre>
 
 Some old explanations explain the two-argument open function, but don't use it. The two-argument open function is vulnerable to security and should not be used.
@@ -68,10 +68,10 @@ This is also true when opening a pipe.
 
 <pre>
 # ○ (three arguments)
-open my $pipe,'-|','dir';
+open my $pipe, '-|', 'dir';
 
 # × (two arguments)
-open my $pipe,'dir |';
+open my $pipe, 'dir |';
 </pre>
 
 <h3> Perform error handling when opening a file (required) </h3>
@@ -79,7 +79,7 @@ open my $pipe,'dir |';
 Make sure to handle the error whenever you open the file.
 
 <pre>
-open my $fh,'<', $file
+open my $fh, '<', $file
   or die "Cannot open'$file': $!";
 </pre>
 
@@ -195,7 +195,7 @@ Some well-known CPAN modules use default variables, but I personally don't recom
 Perl 5 allows you to declare a lexical variable at the beginning of a foreach statement.
 
 <pre>
-my @students = ('taro','kenji','naoya');
+my @students = ('taro', 'kenji', 'naoya');
 for my $student (@students) {
   ...
 }
@@ -364,7 +364,7 @@ my @strings = qw / aa bb cc /;
 It has the same meaning as the following description.
 
 <pre>
-my @strings = ('aa','bb','cc');
+my @strings = ('aa', 'bb', 'cc');
 </pre>
 
 <h3> Explicit when importing module functions (highly recommended) </h3>

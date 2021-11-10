@@ -97,14 +97,14 @@ my $msg = MIME::Lite->new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
-  Subject => encode ('MIME-Header-ISO_2022_JP','mail title'),
+  Subject => encode ('MIME-Header-ISO_2022_JP', 'mail title'),
   Type =>'multipart / mixed'
 );
 
 # Add text
 $msg->attach (
   Type =>'TEXT',
-  Data => encode ('ISO-2022-JP','text of email body'),
+  Data => encode ('ISO-2022-JP', 'text of email body'),
 );
 
 # Add image
@@ -133,14 +133,14 @@ my $msg = MIME::Lite->new (
   From =>'me@myhost.com',
   To =>'you@yourhost.com',
   Cc =>'some@other.com, some@more.com',
-  Subject => encode ('MIME-Header','mail title'),
+  Subject => encode ('MIME-Header', 'mail title'),
   Type =>'multipart / mixed'
 );
 
 # Add text
 $msg->attach (
   Type =>'TEXT',
-  Data => encode ('UTF-8','text of email body'),
+  Data => encode ('UTF-8', 'text of email body'),
 );
 
 # Add image

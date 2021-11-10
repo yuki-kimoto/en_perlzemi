@@ -27,7 +27,7 @@ unless ($file) {
 }
 
 Create a key for each column of # csv
-my $headers = ['name','age','country'];
+my $headers = ['name', 'age', 'country'];
 
 # Parse the file and convert the csv format data to an array of arrays.
 # The header key is also passed as an argument.
@@ -78,7 +78,7 @@ rika, 38, France
 <h4> (1) Creating an array of hash keys </h4>
 
 <pre>
-my $headers = ['name','age','country'];
+my $headers = ['name', 'age', 'country'];
 </pre>
 
 By using the hash key, we give meaning to what was just an array last time. The first item of the csv file corresponds to name, the second item corresponds to age, and the third item corresponds to country.
@@ -136,18 +136,18 @@ I usually use% $items to dereference, but I want to dereference it so that hash 
 will do.
 
 <pre>
-@{$items}{'name','age','country'}
+@{$items}{'name', 'age', 'country'}
 </pre>
 
 If you write
 
 <pre>
-('masao', 10,'Japan')
+('masao', 10, 'Japan')
 </pre>
 
 Can be obtained.
 
-Also, since ['name','age','country'] is assigned to $headers, you can get ('name','age','country') by dereferencing @$headers. increase.
+Also, since ['name', 'age', 'country'] is assigned to $headers, you can get ('name', 'age', 'country') by dereferencing @$headers. increase.
 
 <pre>
 @{$items}{@$headers}
@@ -156,11 +156,11 @@ Also, since ['name','age','country'] is assigned to $headers, you can get ('name
 Is the description
 
 <pre>
-@{$items}{'name','age','country'}
+@{$items}{'name', 'age', 'country'}
 </pre>
 Is the same as the description
 <pre>
-('masao', 10,'Japan')
+('masao', 10, 'Japan')
 </pre>
 Can be obtained.
 <pre>

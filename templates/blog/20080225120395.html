@@ -37,7 +37,7 @@ The search start position can be specified in the third argument of index. In th
   my $found_posision = -1;
     
   while (1) {
-    $found_posision = index($message,'love', $found_posision + 1);
+    $found_posision = index($message, 'love', $found_posision + 1);
     last if $found_posision == -1;
     push @found_positions, $found_posision;
   }
@@ -77,7 +77,7 @@ This is a sample to check the first position of the comma using the index functi
 <pre>
 # Find out the first position of the comma
 my $csv = 'aaa,bbb,ccc';
-my $pos = index($csv, ',');
+my $pos = index($csv, ', ');
 </pre>
 
 This is a sample that processes only when a character string is found.
@@ -101,10 +101,10 @@ use warnings;
 my $message = "love love love.";
 
 # Search for characters using the index function
-my $word_love_pos_first = index($message,'love');
+my $word_love_pos_first = index($message, 'love');
 
 # Search for the second love
-my $word_love_pos_second = index($message,'love', $word_love_pos_first + 1);
+my $word_love_pos_second = index($message, 'love', $word_love_pos_first + 1);
 
 print "First: $word_love_pos_first, Second: $word_love_pos_second\n";
 

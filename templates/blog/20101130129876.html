@@ -225,7 +225,7 @@ Here is a typical pattern of how to receive arguments.
 
 <h4> (1) Multiple scalars </h4>
 <pre>
-search ('aiueo','eo', 2);
+search ('aiueo', 'eo', 2);
 
 sub search {
   my ($str, $search, $offset) = @_;
@@ -249,7 +249,7 @@ Receive it in a list and assign it to an array.
 <h4> (3) One scalar and list </h4>
 
 <pre>
-search_file ('file','apple','dog');
+search_file ('file', 'apple', 'dog');
 
 sub search_file {
   my ($file, @search_list) = @_;
@@ -265,7 +265,7 @@ search_arg_hash (str =>'aiueo', search =>'eo', offset => 2);
 
 sub search_arg_hash {
   my %arg = @_;
-  my ($str, $search, $offset) = @arg {'str','search','offset'};
+  my ($str, $search, $offset) = @arg {'str', 'search', 'offset'};
 }
 </pre>
 
@@ -280,7 +280,7 @@ parse_file ('in_file', out_file =>'out_file', search_path =>'dir');
 
 sub parse_file {
   my ($in_file,%opt) = @_;
-  my ($out_file, $search_path) = @opt {'out_file','search_path'};
+  my ($out_file, $search_path) = @opt {'out_file', 'search_path'};
   return;
 }
 </pre>
