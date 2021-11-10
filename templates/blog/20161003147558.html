@@ -8,13 +8,13 @@
 </ol>
 <h2>Perl string processing basics</h2>
 
-This is a description of Perl's string processing. Perl is a language that is good at text processing. It explains the output of character strings, here documents, search, replace, format specification, etc. in an easy-to-understand manner. It also explains how to handle Japanese.
+This is a description of Perl's string processing. Perl is a language that is good at text processing. It explains the output of strings, here documents, search, replace, format specification, etc. in an easy-to-understand manner. It also explains how to handle Japanese.
 
 <h3>Basics of strings</h3>
 
-First of all, I will explain the basics of character strings.
+First of all, I will explain the basics of strings.
 
-<h4>How to make a character string</h4>
+<h4>How to make a string</h4>
 
 Let's create a string first. Use <b> single quotes </b> or <b> double quotes </b> to create the string.
 
@@ -433,7 +433,7 @@ See the following articles for a detailed explanation of regular expressions.
 
 <h3>Perl handles Japanese correctly</h3>
 
-So far, all the string examples have been in English. However, I think that most of the actual character string processing deals with Japanese.
+So far, all the string examples have been in English. However, I think that most of the actual string processing deals with Japanese.
 
 If you are a beginner, you will feel how to do Japanese processing correctly in Perl.
 
@@ -450,10 +450,10 @@ In order to process Japanese correctly in Perl, remember the following three thi
     The source code is written in UTF-8 and the utf8 pragma is specified.
   </li>
   <li>
-    Be sure to decode the character string received from the outside
+    Be sure to decode the string received from the outside
   </li>
   <li>
-    Encode the character string to be output to the outside
+    Encode the string to be output to the outside
   </li>
 </ol>
 
@@ -489,17 +489,17 @@ if ($message =~ /day/) {
 
 The utf8 pragma converts the "UTF-8 byte string" written in the source code to the "internal string".
 
-By converting to an internal character string, you will be able to perform character string processing correctly.
+By converting to an internal string, you will be able to perform string processing correctly.
 
 "Byte string" and "internal string" will be explained later.
 
-<h4>Be sure to decode the character string received from the outside</h4>
+<h4>Be sure to decode the string received from the outside</h4>
 
-<b> Decoding </b> means converting a "character string written in a specific character code" into a "Perl internal character string".
+<b> Decoding </b> means converting a "string written in a specific character code" into a "Perl internal string".
 
 For the sake of convenience, "Perl's internal string" is called <b> internal string </b>, and "string written in a specific character code" is a <b> byte character. Let's call it a column </b>.
 
-For example, a character string written with the character code "UTF-8" is called "UTF-8 byte character string", and a character string written with the character code "EUC-jp" is called "EUC-jp byte character". It is called "column".
+For example, a string written with the character code "UTF-8" is called "UTF-8 byte string", and a string written with the character code "EUC-jp" is called "EUC-jp byte character". It is called "column".
 
 If you know how to handle strings in Java, it is easy to understand by considering the correspondence between "string stream" and "byte stream".
 
@@ -553,9 +553,9 @@ my $name = $ARGV[0];
 $name = decode('cp932', $name);
 </pre>
 
-<h4>Encode the character string to be output to the outside</h4>
+<h4>Encode the string to be output to the outside</h4>
 
-While the character string received from the outside is decoded, the character output to the outside is always encoded.
+While the string received from the outside is decoded, the character output to the outside is always encoded.
 
 Encoding means converting an "internal string" to a "byte string".
 
@@ -594,7 +594,7 @@ For a detailed explanation of handling Japanese in Perl, see the following artic
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html">Encode module-Properly handles multi-byte character strings such as Japanese</a>
+    <a href="/blog/20091118124667.html">Encode module-Properly handles multi-byte strings such as Japanese</a>
   </li>
 </ul>
 
@@ -700,4 +700,4 @@ Here are some functions that I sometimes use for string processing.
 
 <h3>Summary</h3>
 
-If you remember this much, I think that you will be able to perform about 90%of character string processing including Japanese.
+If you remember this much, I think that you will be able to perform about 90%of string processing including Japanese.

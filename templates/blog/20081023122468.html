@@ -24,7 +24,7 @@ for my $record(@records) {
   
   # Cut out the time
   if ($record =~ /(\d{1,2}): (\d{2}) :(\d{2})/) {
-    # You can compare as a character string by matching the format.
+    # You can compare as a string by matching the format.
     # '7: 00:00'->'07:00:00'
     my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
     
@@ -47,7 +47,7 @@ Execution result
 <h3>Explanation</h3>
 
 <h4>Adjust the time format</h4>
-Use the sprintf function to format the time. By adjusting the length of the character string to the same length, it is possible to compare with the character string.
+Use the sprintf function to format the time. By adjusting the length of the string to the same length, it is possible to compare with the string.
 
 <pre>
 if ($record =~ /(\d{1,2}): (\d{2}) :(\d{2})/) {

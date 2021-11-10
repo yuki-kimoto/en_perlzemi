@@ -42,7 +42,7 @@ my $str = "Hello";
 SV * sv_str = newSVpv ("Hello", 0);
 </pre>
 
-Perl scalars support SV * in XS. You can use the newSVpv function to create an SV * that represents a <a href="/blog/20161003147558.html">string</a>. The first argument is a string. The second argument is a STRLEN type argument that specifies the length of the string. If you specify 0, the length of the character string is automatically determined.
+Perl scalars support SV * in XS. You can use the newSVpv function to create an SV * that represents a <a href="/blog/20161003147558.html">string</a>. The first argument is a string. The second argument is a STRLEN type argument that specifies the length of the string. If you specify 0, the length of the string is automatically determined.
 
 Others include the newSVpvn and newSVpvs functions, which focus on efficiency.
 
@@ -105,7 +105,7 @@ if (SvOK (sv_val)) {...}
 
 <h4>Conversion from SV * to char * type</h4>
 
-If SV * contains a character string or number, it must be of char * type when it is used in other functions.
+If SV * contains a string or number, it must be of char * type when it is used in other functions.
 
 <pre>
 char * str = SvPV_nolen (sv_some);
@@ -365,7 +365,7 @@ AV * is an array and HV * is a hash. newAV creates an empty array. newHV creates
 
 <h3>Creating an array of hashes Part 2</h3>
 
-Based on gfx's advice, I rewrote the creation of the hash array. The principle of always making it mortal immediately after creating SV *, AV *, HV *, when creating a character string, do not specify the number of characters when setting the hash element, for the array or hash element If you do, you have to increase the reference count by one. After that, I defined a macro that can be written as consistently and simply as possible. I don't know.
+Based on gfx's advice, I rewrote the creation of the hash array. The principle of always making it mortal immediately after creating SV *, AV *, HV *, when creating a string, do not specify the number of characters when setting the hash element, for the array or hash element If you do, you have to increase the reference count by one. After that, I defined a macro that can be written as consistently and simply as possible. I don't know.
 
 <pre>
 # define new_mAV () (AV *) sv_2mortal ((SV *) newAV ())

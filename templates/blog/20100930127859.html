@@ -255,7 +255,7 @@ my $people = [
 
 <h4>Separate commasIt's better to use tab delimiters</h4>
 
-This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the character string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
+This time, the output was separated by commas, but if you use it for business, it will be easier to use if you connect them by separating them with tabs. If it is separated by commas, you have to be aware of the case where the characters contain commas. If it is a tab, it is rare that the tab is included in the string. Also, if you set it as a tab delimiter, you can paste it in Excel as it is.
 
 <pre>
 print join("\t", @$person) . "\n";
@@ -475,7 +475,7 @@ while (my $line = <>) {
 }
 </pre>
 
-(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the character string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@$persons".
+(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@$persons".
 
 The resulting array of hashes looks like this:
 

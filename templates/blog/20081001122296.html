@@ -22,7 +22,7 @@ my $str = sprintf("%.2f", $num2);
 my $str = sprintf("aiueo%08daiueo%.2f", $num1, $num2);
 </pre>
 
-You may want to output numbers or strings according to certain rules. For example, if you want to create a fixed-length character string with the missing parts filled with blanks, it is troublesome to create blanks like "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;".
+You may want to output numbers or strings according to certain rules. For example, if you want to create a fixed-length string with the missing parts filled with blanks, it is troublesome to create blanks like "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;".
 
 You can convert "18" to "18 & nbsp; & nbsp; & nbsp; & nbsp; & nbsp;" by specifying the format with the sprintf function.
 
@@ -52,7 +52,7 @@ There are various formatting specifiers for the sprintf function. I created a li
 
 <h4>%s</h4>
 
-%s is a format specifier that interprets the argument as a string. If there is a leading 0 like '002', it will be '002' as a character string as it is.
+%s is a format specifier that interprets the argument as a string. If there is a leading 0 like '002', it will be '002' as a string as it is.
 
 <h4>%d</h4>
 
@@ -305,7 +305,7 @@ This is a example to format to a fixed length string using the sprintf function.
 use strict;
 use warnings;
 
-print "(1) Format to a fixed-length character string.\n";
+print "(1) Format to a fixed-length string.\n";
 my @formated;
 
 # Fill right-justified space

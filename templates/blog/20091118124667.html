@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2>Encode module-Properly handles multi-byte character strings such as Japanese</h2>
+<h2>Encode module-Properly handles multi-byte strings such as Japanese</h2>
 
 
 
@@ -18,10 +18,10 @@ Use the Encode module to properly handle multibyte characters such as Japanese i
 
 <ol>
   <li>
-    The character string input from the outside is decoded by the decode function of the Encode module.
+    The string input from the outside is decoded by the decode function of the Encode module.
   </li>
   <li>
-    The character string to be output to the outside is encoded by the encode function of the Encode module.
+    The string to be output to the outside is encoded by the encode function of the Encode module.
   </li>
   <li>
     Save the source code in UTF-8 and enable the utf8 pragma
@@ -30,13 +30,13 @@ Use the Encode module to properly handle multibyte characters such as Japanese i
 
 <h3>Terms in this commentary</h3>
 
-In this explanation, the character string input from the outside is called "<span style =" font-weight: bold;">byte character string </span>". Let's call the string converted to Perl's internal representation "<span style =" font-weight: bold;">internal string </span>". If the "byte character string" is described in a specific character code, it will be called "UTF-8 byte character string" or "Shift_JIS byte character string".
+In this explanation, the string input from the outside is called "<span style =" font-weight: bold;">byte string </span>". Let's call the string converted to Perl's internal representation "<span style =" font-weight: bold;">internal string </span>". If the "byte string" is described in a specific character code, it will be called "UTF-8 byte string" or "Shift_JIS byte string".
 
-When dealing with Japanese in programming, it is necessary to clearly distinguish whether the character string is a byte character string or an internal character string. The rule when dealing with multiple languages in Perl is that the program is responsible for converting between internal and byte strings. This method is a little tricky, but the mechanism is very simple as you only have to remember the above three rules.
+When dealing with Japanese in programming, it is necessary to clearly distinguish whether the string is a byte string or an internal string. The rule when dealing with multiple languages in Perl is that the program is responsible for converting between internal and byte strings. This method is a little tricky, but the mechanism is very simple as you only have to remember the above three rules.
 
-<h3>Be sure to decode the character string input from the outside</h3>
+<h3>Be sure to decode the string input from the outside</h3>
 
-Character strings input from the outside are always decoded using the decode function of the Encode module. Decoding is the process of converting a "byte character string" to an "internal character string". When dealing with multibyte strings, be sure to use the decode function to convert them to internal strings.
+Character strings input from the outside are always decoded using the decode function of the Encode module. Decoding is the process of converting a "byte string" to an "internal string". When dealing with multibyte strings, be sure to use the decode function to convert them to internal strings.
 
 Specify the character code of the byte string in the first argument of the decode function, and specify the byte string in the second argument. The return value will be an internal string.
 
@@ -68,11 +68,11 @@ UTF-8 byte string - ->internal string
 
 The meaning of the first argument of the decode function is easy to misunderstand. Specifies which character code the byte string is actually encoded in.
 
-<h3>Be sure to encode the character string to be output to the outside</h3>
+<h3>Be sure to encode the string to be output to the outside</h3>
 
-The character string to be output to the outside is encoded using the encode function of the Encode module. Encoding is the process of converting an "internal character string" to a "byte character string".
+The string to be output to the outside is encoded using the encode function of the Encode module. Encoding is the process of converting an "internal string" to a "byte string".
 
-The first argument of the encode function specifies which character code to convert. Specify the internal character string in the second argument.
+The first argument of the encode function specifies which character code to convert. Specify the internal string in the second argument.
 
 <pre>
 use Encode 'encode';
@@ -99,7 +99,7 @@ Internal string - ->UTF-8 byte string
 
 <h3>Save the source code in UTF-8 and enable the utf8 pragma</h3>
 
-Another thing to worry about when dealing with multibyte characters is the character string described in the source code. If you need to write multi-byte characters such as Japanese in the source code, save the source code in UTF-8. Then enable the utf8 pragma.
+Another thing to worry about when dealing with multibyte characters is the string described in the source code. If you need to write multi-byte characters such as Japanese in the source code, save the source code in UTF-8. Then enable the utf8 pragma.
 
 <pre>
 # Save source code as UTF-8
@@ -130,7 +130,7 @@ As long as you follow the following three things mentioned at the beginning, you
 
 <h3>Meaning of converting to an internal string</h3>
 
-Let's see the effect of actually converting it to an internal character string. You can see that Perl handles strings correctly. The <a href="/blog/20080926122245.html">length function</a> returns the correct length, and the <a href="/blog/20100827127859.html">regular expression</a> It works correctly.
+Let's see the effect of actually converting it to an internal string. You can see that Perl handles strings correctly. The <a href="/blog/20080926122245.html">length function</a> returns the correct length, and the <a href="/blog/20100827127859.html">regular expression</a> It works correctly.
 
 Save the source code in UTF-8. If it is not saved in UTF-8, you will get a warning such as "Malformed UTF-8 character".
 

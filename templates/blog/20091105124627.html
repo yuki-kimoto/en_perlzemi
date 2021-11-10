@@ -507,12 +507,12 @@ Note that Time::Piece's strftime method always returns a byte string, whether th
 my $bytes = $tp->strftime("%Y year%m month");
 </pre>
 
-<h3>Parse the character string that expresses the date/time</h3>
+<h3>Parse the string that expresses the date/time</h3>
 
 You can parse date and time representations to create Time::Piece objects. Use the strptime method to parse dates and times.
 
 <pre>
-my $t = Time::Piece->strptime(character string representing date/time, format);
+my $t = Time::Piece->strptime(string representing date/time, format);
 </pre>
 
 As a example, let's parse the MySQL date representation and create a Time::Piece object. Use the above strftime format for the format.

@@ -54,11 +54,11 @@ my $salt = join'', ('.','/', 0 .. 9,'A' ..'Z','a' ..'z') [rand 64, rand 64];
 my $digest = crypt($passwd, $salt);
 </pre>
 
-Use the crypt function to create a digest from the password. The crypt function is a one-way hash function. The character string converted by the one-way hash is called a digest.
+Use the crypt function to create a digest from the password. The crypt function is a one-way hash function. The string converted by the one-way hash is called a digest.
 
 The digest created by the crypt function is very difficult to combine.
 
-In the first argument of crypt, specify the character string that will be the source of the digest. Only the first 8 bytes make sense. Characters longer than that are ignored.
+In the first argument of crypt, specify the string that will be the source of the digest. Only the first 8 bytes make sense. Characters longer than that are ignored.
 
 For the second argument of crypt, specify 2 of the 64 characters of [./0-9A-Za-z]. The second and subsequent characters are ignored. If you choose 2 random characters from these 64 characters, the safety of the digest will be higher.
 

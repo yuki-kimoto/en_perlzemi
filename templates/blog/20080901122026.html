@@ -33,7 +33,7 @@ my $hex_str = sprintf("%X", $num);
 
 To convert a decimal string to a binary number, use the sprintf function to specify the format as "%b". To convert to octal and hexadecimal, use "%o" and "%X" respectively.
 
-The sprintf function is a common function of the <a href="/blog/20170326149148.html">printf function</a>. If you use sprintf, you can get the character string output by the printf function as the return value.
+The sprintf function is a common function of the <a href="/blog/20170326149148.html">printf function</a>. If you use sprintf, you can get the string output by the printf function as the return value.
 
 Below is a example conversion to binary, octal, and hexadecimal numbers.
 
@@ -66,7 +66,7 @@ I will explain the conversion from binary numbers, octal numbers, and hexadecima
 
 <b> Binary to Decimal Conversion </b>
 
-Use the <a href="/blog/20171027150945.html">oct function</a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a character string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
+Use the <a href="/blog/20171027150945.html">oct function</a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
 
 <pre>
 my $num = oct('0b'. $Bit_str);
@@ -271,7 +271,7 @@ $dec_to_n[15] → F
 
 Will be converted as
 
-The converted array and the code saved in $sign are combined with the join function to form a single character string.
+The converted array and the code saved in $sign are combined with the join function to form a single string.
 
 <h4>Algorithm for converting from n-ary to decimal</h4>
 
@@ -337,7 +337,7 @@ n_to_dec ($num_str, $n);
 n_to_dec ('FE16', 16);
 </pre>
 
-The first argument is an n-ary character string, and the second argument is a number that specifies the number to convert from base to decimal. The return value returns the corresponding decimal number if it can be converted, and undef if it cannot be converted. $n supports binary to hexadecimal numbers.
+The first argument is an n-ary string, and the second argument is a number that specifies the number to convert from base to decimal. The return value returns the corresponding decimal number if it can be converted, and undef if it cannot be converted. $n supports binary to hexadecimal numbers.
 
 <b> Checking the validity of $n </b>
 
@@ -355,7 +355,7 @@ A single return returns undef for scalar contexts and an empty list for list con
 
 If $num_str is valid, then "$num_str is defined" and "$num_str consists of numbers or A to F, a to f".
 
-Also, the validity of $num_str depends on $n. If $n is 8, for example, then $num_str should not have the number 9. If the number 9 appears in the octal character string, an error will occur.
+Also, the validity of $num_str depends on $n. If $n is 8, for example, then $num_str should not have the number 9. If the number 9 appears in the octal string, an error will occur.
 
 <b> Decompose into individual characters </b>
 
@@ -363,7 +363,7 @@ Also, the validity of $num_str depends on $n. If $n is 8, for example, then $num
 my @nums = split(//, $num_str);
 </pre>
 
-If you want to convert the binary character string "1010" to decimal, you need to calculate 8 * 1 + 4 * 0 + 2 * 1 + 1 * 0, so use the split function to break it down into individual characters. I will do it.
+If you want to convert the binary string "1010" to decimal, you need to calculate 8 * 1 + 4 * 0 + 2 * 1 + 1 * 0, so use the split function to break it down into individual characters. I will do it.
 
 <b> Creating a hash with valid characters as keys </b>
 
@@ -374,7 +374,7 @@ for (my $i = 0; $i < @valid; $i++) {
   $valid{$valid[$i]} = $i;
 }
 </pre>
-We want to consider 0-9, A-F, a-f to be valid. Also, in preparation for the calculation of base conversion, create a hash that converts the character string A to 10 and the character F to 15.
+We want to consider 0-9, A-F, a-f to be valid. Also, in preparation for the calculation of base conversion, create a hash that converts the string A to 10 and the character F to 15.
 
 This hashtable is convenient, if it is a valid character it will return the converted character, otherwise it will return undef. If you create such a hash table, you can convert and judge whether it is convertible at the same time.
 

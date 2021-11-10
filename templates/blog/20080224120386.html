@@ -12,14 +12,14 @@
 </ol>
 <h2>substr function - Cut out/replace string</h2>
 
-You can use the <strong> substr function </strong> to cut out or replace the character at the specified position. The first argument is a character string, the second argument is the start position, and the third argument is the cutout length. The starting position starts at 0. If the 3rd argument is omitted, the target will be up to the end of <a href="/blog/20161003147558.html">character string</a>.
+You can use the <strong> substr function </strong> to cut out or replace the character at the specified position. The first argument is a string, the second argument is the start position, and the third argument is the cutout length. The starting position starts at 0. If the 3rd argument is omitted, the target will be up to the end of <a href="/blog/20161003147558.html">string</a>.
 
 <pre>
 # Cut out
 my $word_like = substr($message, 2, 4);
 </pre>
 
-To replace the character at the specified position, specify the character string in the 4th argument.
+To replace the character at the specified position, specify the string in the 4th argument.
 
 <pre>
 # Replace
@@ -28,15 +28,15 @@ substr($message, 2, 4, 'want to eat');
 
 <h4>Substr function example program</h4>
 
-This is a example to cut out the character at the specified position using the substr function. In the following example, the character string "Ken" is extracted.
+This is a example to cut out the character at the specified position using the substr function. In the following example, the string "Ken" is extracted.
 
 <pre>
-# Cut out the character at the specified position. The character string to be cut out is "Ken".
+# Cut out the character at the specified position. The string to be cut out is "Ken".
 my $message = "I'm Ken";
 my $name = substr($message, 4, 3);
 </pre>
 
-This is a example that replaces the character string at the specified position using the substr function.
+This is a example that replaces the string at the specified position using the substr function.
 
 <pre>
 # Replaces the character at the specified position. After the replacement, it becomes "I'm Mike".
@@ -46,11 +46,11 @@ substr($message, 4, 3, 'Mike');
 
 <h4>If you want to handle Japanese</h4>
 
-In order for the substr function to handle Japanese correctly, the character string must be an internal character string. See the following articles for internal strings.
+In order for the substr function to handle Japanese correctly, the string must be an internal string. See the following articles for internal strings.
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html">Encode module-Properly handles multi-byte character strings such as Japanese</a>
+    <a href="/blog/20091118124667.html">Encode module-Properly handles multi-byte strings such as Japanese</a>
   </li>
 </ul>
 

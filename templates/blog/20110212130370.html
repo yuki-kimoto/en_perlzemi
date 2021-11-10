@@ -118,7 +118,7 @@ The following explanation is detailed about the handling of Japanese.
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html">Properly handle multi-byte character strings such as Japanese</a>
+    <a href="/blog/20091118124667.html">Properly handle multi-byte strings such as Japanese</a>
   </li>
 </ul>
 
@@ -255,7 +255,7 @@ After writing, close the file. In the case of writing, writing to the file is co
 close $fh or die qw/Can't close file "$file":$!/;
 </pre>
 
-When you run the program repeatedly, you can see that the character string "Hello" is added to data.txt.
+When you run the program repeatedly, you can see that the string "Hello" is added to data.txt.
 
 <pre>
 Hello
@@ -302,9 +302,9 @@ my $content = do {# create block
 
 <h3>Line feed code</h3>
 
-A line feed code is a special character string that represents the end of a line. The line feed code differs depending on the OS. In Windows, it is a sequence of characters "0D 0A" in hexadecimal, and in Unix it is "0A".
+A line feed code is a special string that represents the end of a line. The line feed code differs depending on the OS. In Windows, it is a sequence of characters "0D 0A" in hexadecimal, and in Unix it is "0A".
 
-It is as follows when it is described as a character string of Perl. You can write characters in hexadecimal with the notation "\x".
+It is as follows when it is described as a string of Perl. You can write characters in hexadecimal with the notation "\x".
 
 <pre>
 # Windows line feed code
