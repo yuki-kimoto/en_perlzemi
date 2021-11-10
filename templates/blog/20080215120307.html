@@ -14,13 +14,13 @@
 
 
 
-You can retrieve multiple values ​​from a <a href="/blog/20161013147635.html">hash</a> using a feature called <strong> hash slice </strong>.
+You can retrieve multiple values from a <a href="/blog/20161013147635.html">hash</a> using a feature called <strong> hash slice </strong>.
 
 <pre>
 my @math_score_slice = @math_scores{'Aiko', 'Kenta'};
 </pre>
 
-Hash slices allow you to specify multiple keys and retrieve the values ​​as a list. Note that the prefix is ​​@, not $or %, and the keying is {}.
+Hash slices allow you to specify multiple keys and retrieve the values as a list. Note that the prefix is @, not $or %, and the keying is {}.
 
 For <a href="/blog/20180208151809.html">hash reference</a>, you can do a hash slice like this:
 
@@ -28,7 +28,7 @@ For <a href="/blog/20180208151809.html">hash reference</a>, you can do a hash sl
 my @math_score_slice = @$math_scores{'Aiko', 'Kenta'};
 </pre>
 
-<h4> Use hash slices as lvalues ​​</h4>
+<h4> Use hash slices as lvalues </h4>
 
 <pre>
 @math_score_of{'Aiko', 'Kenta'} = (20, 40);
@@ -66,13 +66,13 @@ print Dumper \%math_scores;
 print "\n\n";
 
 # 1: Hash slice
-print "1: Hash slice (get values ​​for Aiko and Kenta)\n";
+print "1: Hash slice (get values for Aiko and Kenta)\n";
 my @math_score_slice = @math_scores{'Aiko', 'Kenta'};
 print "\@math_score_slice =", join(',', @math_score_slice), ")\n\n";
 
-# 2: Use hash slices as lvalues ​​(set values ​​for Aiko and Kenta)
+# 2: Use hash slices as lvalues (set values for Aiko and Kenta)
 print "2: Use hash slice as lvalue"
-  . "(Set values ​​for Aiko and Kenta)\n";
+  . "(Set values for Aiko and Kenta)\n";
 @math_scores{'Aiko', 'Kenta'} = (20, 40);
 print Dumper \%math_scores;
 </pre>

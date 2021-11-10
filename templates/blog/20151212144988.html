@@ -10,7 +10,7 @@
     here
   </li>
 </ol>
-<h2> Validator::Custom - validation of HTML input data </​​h2>
+<h2> Validator::Custom - validation of HTML input data </h2>
 
 
 
@@ -154,7 +154,7 @@ Then use the <b> validation </b> method to create a new validation object.
 this is,
 A <a href="/blog/20151210144988.html">Validator::Custom::Validation</a> object to store the failed parameter name and message.
 
-<b> 4. Validation of input data </​​b>
+<b> 4. Validation of input data </b>
 
 <pre>
   # Check that "ID" is an integer
@@ -442,7 +442,7 @@ Filtering example:
 <h4> remove_blank </h4>
 
 <pre>
-  my $new_values ​​= $vc->filter ($values, 'remove_blank');
+  my $new_values = $vc->filter ($values, 'remove_blank');
 </pre>
 
 Removes empty and undefined characters from the array reference.
@@ -535,7 +535,7 @@ The first argument is the value to check. The second argument is the name of the
   my $is_valid = $vc->check_each($values, 'int', $arg);
 </pre>
 
-Executes the check function on all elements of the array reference. If one or more values ​​are invalid, the <b> check_each </b> method returns a fake value.
+Executes the check function on all elements of the array reference. If one or more values are invalid, the <b> check_each </b> method returns a fake value.
 
 The first argument is the value to check. This should be an array reference. The second argument is the name of the check function. The third argument is the argument of the check function.
 
@@ -553,8 +553,8 @@ The first argument is the value to filter. The second argument is the name of th
 <h4> filter_each </h4>
 
 <pre>
-  my $new_values ​​= $vc->filter_each($values, 'trim');
-  my $new_values ​​= $vc->filter_each($values, 'trim', $arg);
+  my $new_values = $vc->filter_each($values, 'trim');
+  my $new_values = $vc->filter_each($values, 'trim', $arg);
 </pre>
 
 Executes the filter function on all elements of the array reference.
@@ -698,7 +698,7 @@ http_url
 <pre>
   $vc->add_check (http_url => sub {
     my ($vc, $value, $arg) = @_;
-    return defined $value && $value =~ /^ s? https ?: \/\/[-_.!~ *'() A-zA-Z0-9;\/?: ​​\@& = + \$, % # ] + $/? 1: 0;
+    return defined $value && $value =~ /^ s? https ?: \/\/[-_.!~ *'() A-zA-Z0-9;\/?: \@& = + \$, % # ] + $/? 1: 0;
   });
 </pre>
 

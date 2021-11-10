@@ -105,7 +105,7 @@ You can receive the following arguments:
   <li> aws_secret_access_key (<b> Required </b>)-The secret access key for your credentials. </li>
   <li> region-(<b> required </b>) Region of bucket to access (currently only used if signature version is 4) </li>
   <li> secure- Whether to use https. The default is 0 (http). </li>
-  <li> ua-User agent object compatible with LWP::UserAgent. The default is an instance of LWP::user agent. </li> <li> signature_version-Her AWS signature version to use. The supported values ​​are 2 and 4. The default is 4. </li>
+  <li> ua-User agent object compatible with LWP::UserAgent. The default is an instance of LWP::user agent. </li> <li> signature_version-Her AWS signature version to use. The supported values are 2 and 4. The default is 4. </li>
   <li> debug- Debug options. The default is 0 (false). If the setting value is 1, the contents of HTTP requests and responses are displayed in stderr. </li>
   <li> virtual_host-Whether to use a virtual host type request format. The default is 0 (path style). </li>
 </ul>
@@ -276,7 +276,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 5. expires_in (number)-the number of seconds since the current time before the signed URL expired
 
-<b> Return value: </b> Returns a hash reference with two elements, "url" and "fields". "Url" is the posted URL. "Fields" are the fields of the form and their respective values ​​that were used when submitting POST. Is an array reference with the form fields to use when submitting the post and their respective values. (You must follow the order of fields.)
+<b> Return value: </b> Returns a hash reference with two elements, "url" and "fields". "Url" is the posted URL. "Fields" are the fields of the form and their respective values that were used when submitting POST. Is an array reference with the form fields to use when submitting the post and their respective values. (You must follow the order of fields.)
 
 This method uses HTTP POST to generate a signed URL for uploading a file to Amazon S3. The original implementation from boto3 is <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.generate_presigned_post">S3Client.generate_presigned_post ( )</a> was referenced and ported.
 

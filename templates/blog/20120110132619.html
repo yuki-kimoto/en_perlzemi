@@ -117,7 +117,7 @@ if ($vresult->is_ok) {print "OK\n"}
 else {print "Not OK\n"}
 </pre>
 
-<h4> Data </​​h4>
+<h4> Data </h4>
 
 The data to be validated must be a hash reference.
 
@@ -187,7 +187,7 @@ my $ok = $vresult->is_ok;
 
 You can check if the validation result is correct with the is_ok method.
 
-<h3> Validation of multiple values ​​</h3>
+<h3> Validation of multiple values </h3>
 
 Let's create a rule for validating multiple values.
 
@@ -312,7 +312,7 @@ The above rule states that name may or may not exist, and if it does, it must be
 
 <h3> At least one item contains a value </h3>
 
-You may want to enter multiple text boxes and check that at least one of them contains a value. In such a case, a little ingenuity is required. It's a good idea to merge the values ​​in the textbox and then check that it's not empty.
+You may want to enter multiple text boxes and check that at least one of them contains a value. In such a case, a little ingenuity is required. It's a good idea to merge the values in the textbox and then check that it's not empty.
 
 <pre>
 # At least one item contains a value
@@ -400,7 +400,7 @@ If you want to convert the value to an array reference, use the <b> to_array </b
 
 <pre>
 # data
-my $data = {languages ​​=>'Japanese'};
+my $data = {languages =>'Japanese'};
 
 # rule
 my $rule = $vc->create_rule;
@@ -412,11 +412,11 @@ print $vresult->data->{languages}; # ['Japanese']
 
 to_array converts data that is not an array reference to an array reference. If it was originally an array reference, it does nothing.
 
-This is useful for converting to an array reference when you don't know if one value will come or multiple values ​​will come, such as checkboxes.
+This is useful for converting to an array reference when you don't know if one value will come or multiple values will come, such as checkboxes.
 
 <h3> in_array (constraint function)-Check if the value is contained in the array value </h3>
 
-When checking an HTML form, you may not want to allow values ​​other than a certain value. In such cases, use the <strong> in_array </strong> constraint function.
+When checking an HTML form, you may not want to allow values other than a certain value. In such cases, use the <strong> in_array </strong> constraint function.
 
 <pre>
 # data
@@ -433,9 +433,9 @@ The argument of the in_array constraint function specifies an array reference th
 {'in_array' => [qw/sushi bread apple /]}
 </pre>
 
-<h4> Apply to multiple values ​​such as checkboxes </h4>
+<h4> Apply to multiple values such as checkboxes </h4>
 
-There are multiple check box values. If you want all of the multiple values ​​to be included in a certain value, write as follows.
+There are multiple check box values. If you want all of the multiple values to be included in a certain value, write as follows.
 
 <pre>
 # Multiple values
@@ -455,7 +455,7 @@ It's a little confusing, but it's useful to remember.
 
 <h4> Application </h4>
 
-For example, a rule that at least one is checked and all its values ​​are 001 or 002 is applied as follows:
+For example, a rule that at least one is checked and all its values are 001 or 002 is applied as follows:
 
 <pre>
 # rule
@@ -545,7 +545,7 @@ $rule->require (['mail1', 'mail2'])->name ('mail_check')
   ->check ('duplication');
 </pre>
 
-Note that validation will fail if neither of the two values ​​is undefined.
+Note that validation will fail if neither of the two values is undefined.
 
 <h3> length(constraint function) - Check string length </h3>
 
@@ -633,9 +633,9 @@ $rule->require ('password')->check ('ascii');
 
 Since it is a range of graphic characters, not the entire ASCII code, validation will fail if tabs, spaces, etc. are included.
 
-<h3> duplication (constraint function) - Check that two values ​​are the same </h3>
+<h3> duplication (constraint function) - Check that two values are the same </h3>
 
-If you want to check that <strong> two values ​​match </strong>, use the C <duplication> constraint function. Validation will always fail if either value is undefined.
+If you want to check that <strong> two values match </strong>, use the C <duplication> constraint function. Validation will always fail if either value is undefined.
 
 Multiple values
 

@@ -23,9 +23,9 @@ First, I will explain the basic type conversion.
 
 <h4> From SV * type to IV type </h4>
 
-In Perl, the values ​​passed to functions are mostly scalar. The scalar type is the "SV * type" in the world of XS. If a C function requires type IV, then SV * type must be converted to type IV.
+In Perl, the values passed to functions are mostly scalar. The scalar type is the "SV * type" in the world of XS. If a C function requires type IV, then SV * type must be converted to type IV.
 
-SV * type values ​​have integer type values ​​in the area called IV. In other words, in order to convert to type IV, the value of IV contained in SV * type should be taken out.
+SV * type values have integer type values in the area called IV. In other words, in order to convert to type IV, the value of IV contained in SV * type should be taken out.
 
 Use <b> "SvIV (sv)" </b> to retrieve the value of IV owned by a value of type SV *.
 
@@ -65,7 +65,7 @@ foo (...)
 
 <h4> From SV * type to UV type </h4>
 
-SV * type values ​​have an unsigned integer value called UV. In other words, in order to convert to UV type, it is sufficient to extract the UV value owned by the SV * type value.
+SV * type values have an unsigned integer value called UV. In other words, in order to convert to UV type, it is sufficient to extract the UV value owned by the SV * type value.
 Use <b> "SvUV (sv)" </b> to retrieve the UV value owned by an SV * type value.
 
 In the XS world, unsigned integers are mapped to a type called UV, so substitute them for the UV type. UV and unsigned int are compatible.

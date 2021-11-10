@@ -10,14 +10,14 @@
     here
   </li>
 </ol>
-<h2> unpack function-restore packed data </​​h2>
+<h2> unpack function-restore packed data </h2>
 
 
 
 You can use the unpack function to restore the data packed in binary format with the <a href="/blog/20171218151360.html">pack function</a>.
 
 <pre>
-my @values ​​= unpack($format, $packed);
+my @values = unpack($format, $packed);
 </pre>
 
 The first argument is the format.
@@ -33,10 +33,10 @@ If the three integers are packed in a signed 32-bit binary format, use the unpac
 <pre>
 my $packed = pack("l3", 7, 8, 9);
 
-my @values ​​= unpack("l3", $packed);
+my @values = unpack("l3", $packed);
 </pre>
 
-@values ​​will be a <a href="/blog/20161012147627.html">array</a> called (7, 8, 9).
+@values will be a <a href="/blog/20161012147627.html">array</a> called (7, 8, 9).
 
 <h4> Restore floating point packed data in signed double binary format </h4>
 
@@ -45,7 +45,7 @@ If the three floating point numbers are packed in a double precision floating po
 <pre>
 my $packed = pack("d3", 0.5, 1.2, 5.4);
 
-my @values ​​= unpack("d3", $packed);
+my @values = unpack("d3", $packed);
 </pre>
 
 <h4> Endian conversion </h4>

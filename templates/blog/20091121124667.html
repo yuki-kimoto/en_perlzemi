@@ -153,19 +153,19 @@ $dbh->do($drop_table);
 Use the insert statement to insert a record into the table.
 
 <pre>
-insert into table name (field name 1, field name 2, ..) values ​​(value 1, value 2, value 3);
+insert into table name (field name 1, field name 2, ..) values (value 1, value 2, value 3);
 </pre>
 
 To add a record with "title" to "Perl" and "author" to "taro" to the table, the SQL would be: If the data is a string, enclose it in single quotes (although this is a very dangerous security method and a workaround will be explained later).
 
 <pre>
-insert into book (title, author) values ​​('Perl', 'taro');
+insert into book (title, author) values ('Perl', 'taro');
 </pre>
 
 Let's execute an insert statement using do. Please wait until the select statement is explained a little further to confirm whether it has been inserted.
 
 <pre>
-my $insert = "insert into book (title, author) values ​​('Perl', 'taro');";
+my $insert = "insert into book (title, author) values ('Perl', 'taro');";
 $dbh->do($insert);
 </pre>
 
@@ -275,7 +275,7 @@ while (my @row = $sth->fetchrow_array) {
 
 SQLite allows you to create a database in memory. You don't need to specify a file name, and the table will be deleted automatically when you disconnect the database, which is very convenient if you want to check the operation a little. For most of the explanations here, I will create a database in memory and explain it.
 
-To create a database in memory, specify ": ​​memory:" as the database name of the data source.
+To create a database in memory, specify ": memory:" as the database name of the data source.
 
 <pre>
 my $dbh = DBI->connect ("dbi: SQLite: dbname =: memory:");
@@ -307,10 +307,10 @@ EOS
 $dbh->do($create_table);
 
 Execution of # insert statement
-$dbh->do("insert into book (title, author) values ​​('Perl', 'taro');");
-$dbh->do("insert into book (title, author) values ​​('C ++', 'taro');");
-$dbh->do("insert into book (title, author) values ​​('Python', 'ken');");
-$dbh->do("insert into book (title, author) values ​​('Java', 'mamoru');");
+$dbh->do("insert into book (title, author) values ('Perl', 'taro');");
+$dbh->do("insert into book (title, author) values ('C ++', 'taro');");
+$dbh->do("insert into book (title, author) values ('Python', 'ken');");
+$dbh->do("insert into book (title, author) values ('Java', 'mamoru');");
 
 Execution of # update statement
 $dbh->do("update book set title = 'Ruby' where author = 'mamoru'");
