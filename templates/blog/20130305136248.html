@@ -431,11 +431,11 @@ sub method1 {return 2}
 Method1 of class P returns a value of 1. Method1 of class Q returns a value of 2. In other words, in class Q, method1 has been overridden.
 
 <pre>
-Returns # 1
+# Returns 1
 my $obj_p = P->new;
 $obj_p->method1;
 
-Returns # 2
+# Returns 2
 my $obj_q = Q->new;
 $obj_q->method1; # Return value is 2
 </pre>
@@ -449,7 +449,7 @@ use Object::Simple -base;
 sub method1 {
   my $self = shift;
   
-  Call method1 of P using the # SUPER pseudo-class
+  # Call method1 of P using the SUPER pseudo-class
   my $value = $self->SUPER::method1 (@_);
   
   return 2 + $value;

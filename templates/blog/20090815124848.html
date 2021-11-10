@@ -205,7 +205,7 @@ When outputting to a screen or file, it is necessary to turn off the UTF-8 flag.
 Windows people output in Shift-JIS, and other OS people output in UTF-8.
 
 <pre>
-Since the # UTF-8 flag is set, encode it.
+# Since the UTF-8 flag is set, encode it.
 my $encode_to;
 if ($^O eq 'MSWin32') {$encode_to = 'shift-jis'}
 else {$encode_to = 'utf8'}
@@ -758,7 +758,7 @@ $dt->add (years => 1);
 # Hour addition
 $dt->add (hours => 1);
 
-Addition of # minutes
+# Addition of minutes
 $dt->add (minutes => 1);
 
 # Addition of seconds
@@ -785,7 +785,7 @@ $dt->subtract (years => 1);
 # Hour subtraction
 $dt->subtract (hours => 1);
 
-Subtraction of # minutes
+# Subtraction of minutes
 $dt->subtract (minutes => 1);
 
 # Second subtraction
@@ -908,7 +908,7 @@ To simplify the date calculation, convert a specific time zone to UTC before cal
 <pre>
 my $dt = DateTime->new(%user_input, time_zone => $user_tz);
 
-Convert to # UTC
+# Convert to UTC
 $dt->set_time_zone ('UTC');
 
 # Calculate the date.
@@ -1135,7 +1135,7 @@ my $day_name = $dt->day_name;
 # Abbreviated name of the day of the week
 my $day_abbr = $dt->day_abbr;
 
-Since the # UTF-8 flag is set, encode it.
+# Since the UTF-8 flag is set, encode it.
 my $encode_to;
 if ($^O eq 'MSWin32') {$encode_to = 'shift-jis'}
 else {$encode_to = 'utf8'}
@@ -1390,7 +1390,7 @@ print "(1) -2 Add time\n";
 my $dt_next_hour = $dt->clone;
 $dt_next_hour->add (hours => 1);
 
-Addition of # minutes
+# Addition of minutes
 my $dt_next_minutes = $dt->clone;
 $dt_next_minutes->add (minutes => 1);
 

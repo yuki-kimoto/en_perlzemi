@@ -27,7 +27,7 @@ die "$message\n";
 This is a sample that displays the usage and terminates the program when the argument does not exist. $0 is the script name.
 
 <pre>
-Exit the program if the # argument does not exist
+# Exit the program if the argument does not exist
 my $file = shift;
 die "Usage: $0[file]" unless $file;
 </pre>
@@ -58,7 +58,7 @@ Use die to throw an exception. Use "eval {}" to catch the exception. Use $@to de
 <pre>
 # Exception handling flow
 eval {
-  Processing that terminates programs that use # die
+  # Processing that terminates programs that use die
 };
 
 if ($@) {

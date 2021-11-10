@@ -153,7 +153,7 @@ use warnings;
 my $file = 'a.txt';
 my @stat_inf = stat $file;
 
-Creating a # stat commentary
+# Creating a stat commentary
 my @stat_exp = (
   '0 dev filesystem device number',
   '1 ino i node number',
@@ -172,7 +172,7 @@ my @stat_exp = (
 
 if (@stat_inf) {
   for my $i (0 .. 12) {
-    Output by combining the information of # stat and the explanation.
+    # Output by combining the information of stat and the explanation.
     printf("%-15s%s\n", $stat_inf[$i], $stat_exp[$i]);
   }
 }

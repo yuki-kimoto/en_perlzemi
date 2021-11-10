@@ -98,17 +98,17 @@ my $bit_str = '110';
 my $oct_str = '17';
 my $hex_str = 'FF';
 
-Convert a binary string to a decimal number with the # oct function.
+# Convert a binary string to a decimal number with the oct function.
 print "Binary to Decimal Conversion\n";
 my $bit_to_dec = oct('0b'. $Bit_str);
 print "$bit_str->$bit_to_dec\n\n";
 
-Convert an octal string to a decimal number with the # oct function.
+# Convert an octal string to a decimal number with the oct function.
 print "Octal to Decimal Conversion\n";
 my $oct_to_dec = oct($oct_str);
 print "$oct_str->$oct_to_dec\n\n";
 
-Convert an octal string to a decimal number with the # hex function.
+# Convert an octal string to a decimal number with the hex function.
 print "Hexadecimal to Decimal Conversion\n";
 my $hex_to_dec = hex($hex_str);
 print "$hex_str->$hex_to_dec\n\n";
@@ -133,17 +133,17 @@ sub dec_to_n {
     # Decimal and converted base
     my ($dec, $n) = @_;
 
-    Checking the validity of # $n
+    # Checking the validity of $n
     return if! defined $n || $n !~ /^\D +$/ || $n <2 || $n> 16;
 
-    Checking the validity of # $dec
+    # Checking the validity of $dec
     return if! defined $dec;
     return if $dec !~ /^ ([+-]?)\D +$/;
 
-    Save the # sign if it exists
+    # Save the sign if it exists
     my $sign = $1 ? substr($dec, 0, 1, ''):'';
 
-    If # 0, return as it is
+    # If 0, return as it is
     return $dec if $dec == 0;
 
     # Array of remainders
@@ -294,7 +294,7 @@ sub n_to_dec {
   # Number strings and base numbers
   my ($num_str, $n) = @_;
 
-  Checking the validity of # $n
+  # Checking the validity of $n
   return if! defined $n || $n !~ /^\D +$/ || $n <2 || $n> 16;
     
   # Checking the validity of $num_str (including checking the consistency with $n)
@@ -308,11 +308,11 @@ sub n_to_dec {
   my %valid;
   for (my $i = 0; $i < @valid; $i++) {
     # Create conversion table ($valid{E} = 15)
-    A table like # $valid{F} = 16)
+    # A table like $valid{F} = 16)
     $valid{$valid[$i]} = $i;
   }
     
-  If individual numbers in # @nums cannot be converted correctly in the conversion table
+  # If individual numbers in @nums cannot be converted correctly in the conversion table
   # Alternatively, if the converted number contains $n or more, undef is returned.
   for my $num (@nums) {
     # Convert lowercase letters to uppercase
@@ -323,7 +323,7 @@ sub n_to_dec {
   # From here is the main process of base conversion
   my $dec = 0;
   for my $i (@nums) {
-    Carry up by multiplying by # $n
+    # Carry up by multiplying by $n
     $dec = $dec * $n + $i;
   }
   return $dec;

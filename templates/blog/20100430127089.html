@@ -50,14 +50,14 @@ Let's say your Module module defines a parse function. Suppose you call this fun
 Let's first look at the die example.
 
 <pre>
-When an exception is raised with # die # 1
+# When an exception is raised with die # 1
 package YourModule; # 2
                                           # 3
                                           # Four
 sub parse {# 5
-  Raise an exception with # die # 6
+  # Raise an exception with die # 6
   die "Exception!"; # 7
-} # 8
+# } 8
                                           # 9
 package main; # 10
                                           # 11
@@ -73,14 +73,14 @@ Exception! At a.pl line 7.
 
 Next is the case of croak.
 <pre>
-When an exception is raised by # croak # 1
+# When an exception is raised by croak # 1
 package YourModule; # 2
 use Carp 'croak'; # 3
                                           # Four
 sub parse {# 5
-  Raise an exception with # die # 6
+  # Raise an exception with die # 6
   croak "Exception!"; # 7
-} # 8
+# } 8
                                           # 9
 package main; # 10
                                           # 11
@@ -103,7 +103,7 @@ You may want to know all the information about where the function was called and
 Just add the following line anywhere in the script.
 
 <pre>
-Change the # croak message to one that contains the complete stack trace information
+# Change the croak message to one that contains the complete stack trace information
 use Carp 'verbose';
 </pre>
 

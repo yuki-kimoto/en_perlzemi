@@ -145,7 +145,7 @@ for my $num (keys %numbers) {
   
   # Remove restrictions on symbolic references
   no strict'refs';
-  Name an anonymous subroutine using a # type glob.
+  # Name an anonymous subroutine using a type glob.
   * {$num} = $code;
 }
 </pre>
@@ -175,7 +175,7 @@ BEGIN {
    
     # Remove restrictions on symbolic references
     no strict'refs';
-    Name an anonymous subroutine using a # type glob.
+    # Name an anonymous subroutine using a type glob.
     * {$num} = $code;
   }
 }
@@ -235,7 +235,7 @@ print "${danger_msg1}\n ${danger_msg2}\n\n";
 
 # Function generator that creates a subroutine that allows you to specify the message to convey
 sub message_factory {
-  You can dynamically change the generated subroutine by the argument of # function generator.
+  # You can dynamically change the generated subroutine by the argument of function generator.
   my $message = shift;
 
   return sub {
@@ -254,7 +254,7 @@ use strict;
 use warnings;
 
 # Determine the name of the subroutine at run time.
-This can be achieved by using # type globs and anonymous subroutines.
+# This can be achieved by using type globs and anonymous subroutines.
 
 print "1: Name the anonymous subroutine.\n";
 * sum = sub {
@@ -293,8 +293,8 @@ use warnings;
 
 print "1: Dynamically create multiple subroutines using function templates.\n";
 
-Make sure that 1 is returned when the subroutine # one is called.
-Make sure that 2 is returned when the subroutine # two is called.
+# Make sure that 1 is returned when the subroutine one is called.
+# Make sure that 2 is returned when the subroutine two is called.
 my %numbers = (
   one => 1,
   two => 2,
@@ -311,7 +311,7 @@ for my $num (keys %numbers) {
   
   # Remove restrictions on symbolic references
   no strict'refs';
-  Name an anonymous subroutine using a # type glob.
+  # Name an anonymous subroutine using a type glob.
   * {$num} = $code;
 }
 

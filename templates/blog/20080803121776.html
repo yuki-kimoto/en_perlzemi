@@ -37,18 +37,18 @@ GetOptions (
   'sep = s'=> \$sep,
 );
 
-A character with a special meaning was specified in a regular expression such as # .
+# A character with a special meaning was specified in a regular expression such as .
 # Escape the string to work correctly even if
 $sep = quotemeta($sep);
 
 # Special line input operator
 while (<>) {
-  When the argument is omitted, the # chomp function targets $_.
+  # When the argument is omitted, the chomp function targets $_.
   chomp;
   
-  The third argument of # split, -1, is when the last column is an empty string.
+  # The third argument of split, -1, is when the last column is an empty string.
   # Also specified to work correctly
-  The # split function returns a list, so only the parts you need
+  # The split function returns a list, so only the parts you need
   # Get by array slice
   my $item = (split(/ $sep /, $_, -1)) [$col -1];
   print $item . "\n";

@@ -32,7 +32,7 @@ my @recs = parse_file ($file);
 
 # Output (because it is a two-dimensional array, follow it with for)
 for my $items (@recs) {
-  Output by connecting with # comma.
+  # Output by connecting with comma.
   print join(',', @$items) . "\n";
 }
 
@@ -51,12 +51,12 @@ sub parse_file {
     # Prepare a reference to the array that stores the data
     # Separate rows with commas and store in array
     # split returns an array, so
-    Dereference with # @$items
+    # Dereference with @$items
 
     my $items = [];
     @$items = split(/,/, $line);
 
-    The first argument of the # push function is an array, so @$recs
+    # The first argument of the push function is an array, so @$recs
     # And dereference.
     push @$recs, $items;
   }
@@ -112,7 +112,7 @@ rika, 38, France
 
 <pre>
 for my $items (@recs) {
-  Output by connecting with # comma.
+  # Output by connecting with comma.
   print join(',', @$items) . "\n";
 }
 </pre>
@@ -137,11 +137,11 @@ sub parse_file {
     # Prepare a reference to the array that stores the data
     # Separate rows with commas and store in array
     # split returns an array, so
-    Dereference with # @$items
+    # Dereference with @$items
     my $items = [];
     @$items = split(/,/, $line);
 
-    Since the first argument of the # push function is an array, dereference it with @$recs.
+    # Since the first argument of the push function is an array, dereference it with @$recs.
     push @$recs, $items;
   }
   close $fh;
@@ -187,10 +187,10 @@ while (my $line = <$fh>) {
 
   # Separate rows with commas and store in array
   # split returns an array, so
-  Dereference with # @$items
+  # Dereference with @$items
   @$items = split(/,/, $line);
 
-  Since the first argument of the # push function is an array, dereference it with @{$recs}.
+  # Since the first argument of the push function is an array, dereference it with @{$recs}.
   push @$recs, $items;
 }
 </pre>
@@ -254,7 +254,7 @@ chomp $line;
      my @items;
      @items = split(/,/, $line);
 
-     Create a reference with [] when # pushing.
+     # Create a reference with [] when pushing.
      push @recs, [@items];
    }
    close $fh;

@@ -141,7 +141,7 @@ I will write a few points to imitate.
 
 <h4> 1. Look at the position where spaces such as if and foreach statements and subroutines are inserted </h4>
 <pre>
-There is a space immediately after # if, there is no space in (), etc.
+# There is a space immediately after if, there is no space in (), etc.
 if ($flg) {
   ...
 }
@@ -174,7 +174,7 @@ Use the default arguments only if:
 I think you can use it in one liner. $_ Is used as a print argument and a regular expression target.
 
 <pre>
-One liner that retrieves lines containing the characters # AAA
+# One liner that retrieves lines containing the characters AAA
 perl -ne "print if/AAA /";
 </pre>
 
@@ -321,9 +321,9 @@ use warnings;
 
 </pre>
 
-<h3> Avoid the # storm in comments (recommended) </h3>
+# <h3> Avoid the storm in comments (recommended) </h3>
 
-I often work with comments full of # , but I don't personally recommend it. The main reason is that once you write the comment, someone who comes later has to imitate it. It makes me sick when I think that I have to imitate this to write one function. Also, instead of improving the quality of the code, it often happens that the comments are not catching up when the function is rewritten. So let's stop.
+# I often work with comments full of , but I don't personally recommend it. The main reason is that once you write the comment, someone who comes later has to imitate it. It makes me sick when I think that I have to imitate this to write one function. Also, instead of improving the quality of the code, it often happens that the comments are not catching up when the function is rewritten. So let's stop.
 
 <pre>
 # ################################################# # ##############
@@ -376,7 +376,7 @@ use File::Copy qw/copy move/;
 use File::Path 'mkpath';
 use Encode qw/encode decode/;
 
-Use the # mkpath function.
+# Use the mkpath function.
 mkpath $dir;
 </pre>
 
@@ -456,7 +456,7 @@ Then, the error handling is described on the side that calls the function.
 <pre>
 my $val = func ();
 
-Exit the program if # $val is a false value
+# Exit the program if $val is a false value
 die "Error" unless $val;
 </pre>
 
@@ -471,7 +471,7 @@ sub func {
   
   # Some processing
   
-  Use # die to throw an exception
+  # Use die to throw an exception
   if ($error) {
     die "Error message";
   }

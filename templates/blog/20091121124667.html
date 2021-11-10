@@ -173,9 +173,9 @@ This will add a record like the one below to the table.
 
 <pre>
 + - -- --- + - -- -- -- +
-| title | author | # header (this can be done when you create the table)
+# | title | author | header (this can be done when you create the table)
 + - -- --- + - -- -- -- +
-| Perl | taro | # record(record added by insert statement)
+# | Perl | taro | record(record added by insert statement)
 + - -- --- + - -- -- -- +
 </pre>
 
@@ -204,9 +204,9 @@ The previous record is updated and looks like this:
 
 <pre>
 + - -- --- + - -- -- -- +
-| title | author | # header (this can be done when you create the table)
+# | title | author | header (this can be done when you create the table)
 + - -- --- + - -- -- -- +
-| Ruby | taro | # record(record updated by update statement)
+# | Ruby | taro | record(record updated by update statement)
 + - -- --- + - -- -- -- +
 </pre>
 
@@ -306,19 +306,19 @@ EOS
 
 $dbh->do($create_table);
 
-Execution of # insert statement
+# Execution of insert statement
 $dbh->do("insert into book (title, author) values ('Perl', 'taro');");
 $dbh->do("insert into book (title, author) values ('C ++', 'taro');");
 $dbh->do("insert into book (title, author) values ('Python', 'ken');");
 $dbh->do("insert into book (title, author) values ('Java', 'mamoru');");
 
-Execution of # update statement
+# Execution of update statement
 $dbh->do("update book set title = 'Ruby' where author = 'mamoru'");
 
-Execution of # delete statement
+# Execution of delete statement
 $dbh->do("delete from book where author = 'ken';");
 
-Execution of # select statement
+# Execution of select statement
 my $sth = $dbh->prepare ("select * from book;");
 $sth->execute;
 

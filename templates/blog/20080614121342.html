@@ -13,8 +13,8 @@
 The typeglob represents an entry in the symbol table.
 
 <pre>
- * Main::num # $main::{num} has almost the same meaning.
- * num # You can omit the package name.
+ # * Main::num $main::{num} has almost the same meaning.
+ # * num You can omit the package name.
 </pre>
 
 On the symbol table, $main::{num} is assigned the string'* main::num', which is exactly what it is (called the symbol table entry, maybe). .. However, it's not a string, it's a typeglob.
@@ -75,11 +75,11 @@ sub num {
 require Data::Dumper;
 
 print "1-1: Access variables from the symbol table.\n";
-Enclosed in # ${}, a scalar entry
+# Enclosed in ${}, a scalar entry
 my $num_from_symbol = ${$main::{num}};
-Array entries, enclosed in # @{}
+# Array entries, enclosed in @{}
 my @num_from_symbol = @{$main::{num}};
-Hash entries, enclosed in # %{}
+# Hash entries, enclosed in %{}
 my %num_from_symbol = %{$main::{num}};
 
 print Data::Dumper->Dump ([$num_from_symbol], ['* num_from_symbol']);

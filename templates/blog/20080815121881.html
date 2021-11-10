@@ -37,7 +37,7 @@ flock($lock_fh, LOCK_EX)
 my $file = "data_20080815.txt";
 
 # Open in read/write mode (not very secure)
-If there is no file with # O_CREAT, create it.
+# If there is no file with O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
 
@@ -61,7 +61,7 @@ truncate ($fh, length $cnt);
 close $fh
   or die "Cannot close $file: $!";
 
-The file lock is released at the time of # close.
+# The file lock is released at the time of close.
 close $lock_fh
   or die "Cannot close $lock_file: $!";
 
@@ -82,7 +82,7 @@ my $script = "$FindBin::Bin/sample_20080815.pl";
 while (1) {
   system("perl $script");
   
-  Random number less than # 1
+  # Random number less than 1
   my $random = rand 1;
   sleep $random;
 }
@@ -120,7 +120,7 @@ Only the process that can lock this file should access the file to be updated. F
 <h4> (3) Unlock </h4>
 
 <pre>
-The file lock is released at the time of # close.
+# The file lock is released at the time of close.
 close $lock_fh
   or die "Cannot close $lock_file: $!";
 </pre>

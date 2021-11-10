@@ -146,7 +146,7 @@ print "1: Recursively print all file names (base names).\n";
 find (\&print_file_name, $top_dir);
                                      
 sub print_file_name {
-  In # $_, the directory you are currently scanning
+  # In $_, the directory you are currently scanning
   # The file name used as the base point is stored.
   # $File::Find::dir is currently scanning
   # The directory name is stored.
@@ -158,7 +158,7 @@ print "2: Recursively print all file names (full path).\n";
 find (\&print_file_full_name, $top_dir);
 
 sub print_file_full_name {
-  In # $_, the directory you are currently scanning
+  # In $_, the directory you are currently scanning
   # The file name used as the base point is stored.
   print $File::Find::name, "\n";
 }

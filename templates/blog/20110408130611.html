@@ -102,7 +102,7 @@ Use <strong> reply->not_found </strong> to draw a 404 Not found page (the page t
 get'/' => sub {
   my $sefl = shift;
   
-  If you want to draw a page with # 404 not found
+  # If you want to draw a page with 404 not found
   if (...) {
     return $self->reply->not_found;
   }
@@ -146,7 +146,7 @@ Mojolicious has its own module that draws JSON called Mojo::JSON, which is writt
 use Mojolicious::Lite;
 use Mojo::JSON::XS;
 
-Replace handler for drawing # json
+# Replace handler for drawing json
 app->renderer->add_handler (json => sub {
   my ($self, $c, $output, $options) = @_;
   $$output = Mojo::JSON::XS->new->encode ($options->{json});

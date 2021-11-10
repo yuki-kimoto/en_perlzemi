@@ -20,7 +20,7 @@ The <strong> Exporter </strong> module allows you to export a function from a mo
 # Package declaration
 package Your Module;
 
-Inherit # Exporter
+# Inherit Exporter
 use Exporter 'import';
 
 # Write the function to export
@@ -41,7 +41,7 @@ When you create a module using Exporter, the function is imported when you use t
 If you execute use in the form of "use module name;", the functions included in @EXPORT will be imported.
 
 <pre>
-The functions (func1 and func2) included in # @EXPORT are imported.
+# The functions (func1 and func2) included in @EXPORT are imported.
 use Your Module;
 </pre>
 
@@ -64,7 +64,7 @@ In the import method of Exporter, the process of exporting the function to the c
 
 <pre>
 sub import {
-  First argument of # use (YourModule in this example)
+  # First argument of use (YourModule in this example)
   my $class = shift;
 
   # Caller's package (main in this example)

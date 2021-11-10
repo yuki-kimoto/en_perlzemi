@@ -49,7 +49,7 @@ our $num = 1;
   local $num = 2;
 }
 
-Return to # 1
+# Return to 1
 print $foo;
 
 my $scores = {math => 90, english => 100};
@@ -58,7 +58,7 @@ my $scores = {math => 90, english => 100};
   local $scores->{math} = 80;
 }
 
-Return to # 90
+# Return to 90
 print $scores->{math};
 </pre>
 
@@ -74,7 +74,7 @@ Please refer to the following for a detailed explanation of local.
 
 <h3> Multi-line comment </h3>
 
-There is no multi-line comment syntax, so it's a bit disappointing, but the comment is only # . If you want to comment on multiple lines while debugging, you can comment out by interpreting it as a document.
+# There is no multi-line comment syntax, so it's a bit disappointing, but the comment is only . If you want to comment on multiple lines while debugging, you can comment out by interpreting it as a document.
 
 <pre>
 =pod
@@ -344,7 +344,7 @@ use vars 'VAR';
 
 <h3> Operators starting with q that you want to remember </h3>
 
-  Operators starting with q are difficult to remember, so I will summarize them. You can also use //, {}, # #, ||, etc. as the enclosing characters.
+  # Operators starting with q are difficult to remember, so I will summarize them. You can also use //, {}, #, ||, etc. as the enclosing characters.
 
 q is a single quote operator. It is the same as single quote except that single quote can be used.
 
@@ -360,7 +360,7 @@ my $str = qq/aaa "" "$str/;
 
 qw is a string list operator. You can easily write a list of strings.
 <pre>
-Same as # ('foo', 'bar', 'baz')
+# Same as ('foo', 'bar', 'baz')
 my $str = qw/foo bar baz/</pre>
 
 qr is a regular expression reference.

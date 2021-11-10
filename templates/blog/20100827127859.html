@@ -266,7 +266,7 @@ c->.
 You can also match the "." To any character, including newlines. If you want the "." To match a newline, use the regular expression option "s".
 
 <pre>
-Match # . To any character, including newlines
+# Match . To any character, including newlines
 $str =~ /./s;
 </pre>
 
@@ -599,7 +599,7 @@ m {/ aaa/bbb}
 You can also change the enclosing character for replacement.
 
 <pre>
-s # aaa # bbb #
+# s aaa # bbb #
 s | aaa | bbb |
 </pre>
 
@@ -748,9 +748,9 @@ You can use the x option to ignore whitespace in regular expressions. You will a
 
 <pre>
 my $time = '03:02:56';
-my $regex = qr/  (\d{2}) # hour
-::(\d{2}) # min
-::(\d{2}) # seconds
+# my $regex = qr/  (\d{2}) hour
+# ::(\d{2}) min
+# ::(\d{2}) seconds
 / x;
 
 if ($time =~ /$regex /) {

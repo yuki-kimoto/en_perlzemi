@@ -448,7 +448,7 @@ my @numbers = (1, 2, 3, 3, 4, 5, 6, 6, 6, 7, 8);
 print'array: @numbers = ('. join(',', @numbers). ")\n\n";
 
 # 1: Check if the array contains the specified element.
-Apply # grep.
+# Apply grep.
 my $saerch_number = 3;
 if (grep {$_ == $saerch_number} @numbers) {
   # If the element to be searched is found, the inside of the if statement will be true.
@@ -456,7 +456,7 @@ if (grep {$_ == $saerch_number} @numbers) {
 }
 
 # 2: Remove duplicates from array (order is not guaranteed)
-The # hash key has the property of not allowing duplication.
+# The hash key has the property of not allowing duplication.
 my %no_duplicate_hash;
 for my $number (@numbers) {
   $no_duplicate_hash{$number} ++;
@@ -487,7 +487,7 @@ print "array: \@numbers =", join(',', @numbers). ")\n\n";
 # 1: Array reference If you put\before @, it becomes an array reference.
 my $numbers_ref1 = \@numbers;
 
-You can revert to the original array by prefixing the # array reference with @.
+# You can revert to the original array by prefixing the array reference with @.
 # This is called a dereference.
 print "array: \@\$numbers_ref1 =" .join(',', @$numbers_ref1), ")\n";
 
@@ -561,7 +561,7 @@ print "\@numbers = (", join(',', @numbers), ")\n";
 # Array reference (dereference and pass to function)
 push @$numbers_ref, 4;
 
-The # sort function returns an array, so use an anonymous array []
+# The sort function returns an array, so use an anonymous array []
 # Recreating an array reference.
 $numbers_ref = [sort {$b <=> $a} @$numbers_ref];
 print "\@\$numbers_ref =", join(',', @$numbers_ref), ")\n\n";

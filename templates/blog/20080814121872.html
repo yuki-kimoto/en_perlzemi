@@ -26,7 +26,7 @@ use Fcntl qw /:DEFAULT :flock :seek/;
 my $file = "data_20080814.txt";
 
 # Open in read/write mode (not very secure)
-If there is no file with # O_CREAT, create it.
+# If there is no file with O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
 
@@ -51,7 +51,7 @@ print {$fh} $cnt
 # Truncate the file to write size
 truncate ($fh, length $cnt);
 
-The file lock is released at the time of # close.
+# The file lock is released at the time of close.
 close $fh
   or die "Cannot close $file: $!";
 
@@ -138,7 +138,7 @@ As a side note:DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and 
 
 <pre>
 # Open in read/write mode (not very secure)
-If there is no file with # O_CREAT, create it.
+# If there is no file with O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
 </pre>
@@ -183,7 +183,7 @@ Read from the file and count up if there are no errors. Since the file pointer i
 <h4> (5) Unlock </h4>
 
 <pre>
-The file lock is released at the time of # close.
+# The file lock is released at the time of close.
 close $fh
   or die "Cannot close $file: $!";
 </pre>
