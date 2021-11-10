@@ -50,7 +50,7 @@ To handle dates generically, use the DateTime module.
 
 <pre>
 use DateTime;
-my $dt = DateTime->new (
+my $dt = DateTime->new(
   year => 1964,
   month => 10,
   day => 16,
@@ -123,14 +123,14 @@ my $dt = DateTime->from_epoch (epoch => $epoch, time_zone =>'local');
 DateTime is a constructor that allows you to specify the time zone. You can reuse the DateTime::TimeZone object by creating it first.
 
 <pre>
-my $time_zone = DateTime::TimeZone->new (name =>'Asia/Tokyo');
+my $time_zone = DateTime::TimeZone->new(name =>'Asia/Tokyo');
 </pre>
 
 <h4> Creating a timezone object </h4>
 
 Use the new method to create a timezone object. In the argument, specify the time zone name in name. (List of time zone names)
 <pre>
-my $time_zone = DateTime::TimeZone->new (name =>'Asia/Tokyo');
+my $time_zone = DateTime::TimeZone->new(name =>'Asia/Tokyo');
 </pre>
 
 <h4> Automatic generation of timezone objects </h4>
@@ -906,7 +906,7 @@ In Japan, there is no daylight saving time, so there is no need to consider the 
 To simplify the date calculation, convert a specific time zone to UTC before calculating. Then, after the calculation is finished, return to the original time zone.
 
 <pre>
-my $dt = DateTime->new (%user_input, time_zone => $user_tz);
+my $dt = DateTime->new(%user_input, time_zone => $user_tz);
 
 Convert to # UTC
 $dt->set_time_zone ('UTC');
@@ -964,7 +964,7 @@ use DateTime;
 # Initialization of DateTime object
 # (Use the same year, not the year elapsed since 1900.)
 # (Month counts from 1 instead of 0. 10 is his October.)
-my $dt = DateTime->new (
+my $dt = DateTime->new(
   year => 1964,
   month => 10,
   day => 16,
@@ -1102,10 +1102,10 @@ use DateTime;
 use DateTime::TimeZone;
 
 # (1) Creating a timezone object
-my $time_zone = DateTime::TimeZone->new (name =>'Asia/Tokyo');
+my $time_zone = DateTime::TimeZone->new(name =>'Asia/Tokyo');
 
 # When automatically acquiring the time zone from the OS settings
-# my $time_zone = DateTime::TimeZone->new (name =>'local');
+# my $time_zone = DateTime::TimeZone->new(name =>'local');
                                                      
 # (2) Use of timezone object
 my $dt1 = DateTime->now (time_zone => $time_zone);
@@ -1444,8 +1444,8 @@ my $dt_mix = $dt->clone;
 $dt_mix = $dt_mix->add (months => 1)->subtract (days => 1);
 
 print "(2) Subtraction between DateTime objects\n";
-my $dt1 = DateTime->new (year => 2000, month => 2, day => 1);
-my $dt2 = DateTime->new (year => 2003, month => 3, day => 19);
+my $dt1 = DateTime->new(year => 2000, month => 2, day => 1);
+my $dt2 = DateTime->new(year => 2003, month => 3, day => 19);
 
 my $duration = $dt2- $dt1;
 
@@ -1473,7 +1473,7 @@ use warnings;
 use DateTime;
 
 # DateTime Subtraction between objects
-my $dt1 = DateTime->new (
+my $dt1 = DateTime->new(
   year => 2000,
   month => 2,
   day => 1,
@@ -1482,7 +1482,7 @@ my $dt1 = DateTime->new (
   second => 30
 );
 
-my $dt2 = DateTime->new (
+my $dt2 = DateTime->new(
   year => 2003,
   month => 3,
   day => 19,

@@ -40,7 +40,7 @@ Pass it to new in IO::ScalarArray to create the object. Then use a typeglob to m
 use IO::ScalarArray;
 {
   my @inputs = ("1\n", "2\n", "3\n");
-  my $stdin = IO::ScalarArray->new (\@inputs);
+  my $stdin = IO::ScalarArray->new(\@inputs);
   local * STDIN = * $stdin;
   # Exam description
 }
@@ -61,7 +61,7 @@ use IO::ScalarArray;
 
 {
   my @answers = ("y\n");
-  my $stdin = IO::ScalarArray->new (\@answers);
+  my $stdin = IO::ScalarArray->new(\@answers);
   
   local * STDIN = * $stdin;
   

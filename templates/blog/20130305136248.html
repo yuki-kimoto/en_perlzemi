@@ -48,8 +48,8 @@ my $obj = MyClass->new;
 The <b> new </b> method can receive a hash or a hash reference.
     
 <pre>
-my $obj = MyClass->new (foo => 1, bar => 2);
-my $obj = MyClass->new ({foo => 1, bar => 2});
+my $obj = MyClass->new(foo => 1, bar => 2);
+my $obj = MyClass->new({foo => 1, bar => 2});
 </pre>
 
 This is set as an attribute value.
@@ -143,7 +143,7 @@ use Object::Simple -base;
 sub new {
   my $class = shift;
   
-  my $self = $class->SUPER::new (@_);
+  my $self = $class->SUPER::new(@_);
   
   return $self;
 }
@@ -194,7 +194,7 @@ The Point class can be used as follows.
 
 <pre>
 use Point;
-my $point = Point->new (x => 3, y => 5);
+my $point = Point->new(x => 3, y => 5);
 print $point->x;
 $point->y (9);
 $point->clear;
@@ -239,7 +239,7 @@ The Point3D class can be used as follows.
 
 <pre>
 use Point3D;
-my $point = Point->new (x => 3, y => 5, z => 8);
+my $point = Point->new(x => 3, y => 5, z => 8);
 print $point->z;
 $point->z (9);
 $point->clear;
@@ -301,7 +301,7 @@ use warnings;
 use lib 'lib';
 use Point3D;
 
-my $point = Point3D->new (x => 3, y => 5, z => 8);
+my $point = Point3D->new(x => 3, y => 5, z => 8);
 
 # 8 is displayed
 print $point->z . "\n";
@@ -460,7 +460,7 @@ new can be overridden. For example, if you want to initialize the object, overri
 
 <pre>
 sub new {
-  my $self = shift->SUPER::new (@_);
+  my $self = shift->SUPER::new(@_);
   
   # Initialization process
   
@@ -474,7 +474,7 @@ If you want to change the argument of new, you can solve it by overriding new.
 sub new {
   my $self = shift;
   
-  $self->SUPER::new (x => $_[0], y => $_[1]);
+  $self->SUPER::new(x => $_[0], y => $_[1]);
   
   return $self;
 }

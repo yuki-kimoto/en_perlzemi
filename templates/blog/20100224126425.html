@@ -57,7 +57,7 @@ sub clear {
 Use the Point class as follows: The constructor new is inherited from Object::Simple.
 
 <pre>
-my $point = Point->new (x => 4, y => 6);
+my $point = Point->new(x => 4, y => 6);
 
 $point->x (1);
 $point->y (2);
@@ -133,12 +133,12 @@ sub clear {
 
 <h3> Constructor override </h3>
 
-You can override the constructor new () for object initialization and argument processing.
+You can override the constructor new() for object initialization and argument processing.
 
 <pre>
-# Override new () for object initialization
+# Override new() for object initialization
 sub new {
-  my $self = shift->SUPER::new (@_);
+  my $self = shift->SUPER::new(@_);
   
   # Initialization
   
@@ -147,11 +147,11 @@ sub new {
 </pre>
 
 <pre>
-# Override new () for argument processing
+# Override new() for argument processing
 sub new {
   my $self = shift;
   
-  $self->SUPER::new (x => $_[0], y => $_[1]);
+  $self->SUPER::new(x => $_[0], y => $_[1]);
   
   return $self;
 }

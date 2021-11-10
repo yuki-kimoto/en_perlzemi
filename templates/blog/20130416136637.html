@@ -1385,7 +1385,7 @@ Renew stands for realloc. It will also check if the memory to be secured does no
 
 <pre>
 // handy.h
-# define Renew (v, n, t) \
+# define Renew(v, n, t) \
 (v = (MEM_WRAP_CHECK_ (n, t) (t *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
 # define Renewc (v, n, t, c) \
 (v = (MEM_WRAP_CHECK_ (n, t) (c *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))

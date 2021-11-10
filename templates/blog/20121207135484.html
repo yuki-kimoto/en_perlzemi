@@ -24,7 +24,7 @@ The sample below is exactly what was written on the site, but is a sample that c
 <pre>
 use FFI::Raw;
 
-my $cos = FFI::Raw->new (
+my $cos = FFI::Raw->new(
   'libm.so', 'cos',
   FFI::Raw::double, # return value
   FFI::Raw::double # argument 1
@@ -53,7 +53,7 @@ There is <a href="https://metacpan.org/pod/FFI::Platypus">FFI::Platypus</a> as a
 use FFI::Platypus 1.00;
  
 # for all new code you should use api => 1
-my $ffi = FFI::Platypus->new (api => 1);
+my $ffi = FFI::Platypus->new(api => 1);
 $ffi->lib (undef); # search libc
  
 # call dynamically

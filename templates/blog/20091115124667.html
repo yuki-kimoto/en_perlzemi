@@ -48,7 +48,7 @@ Let's write a simple sample to actually download the file.
 use Net::FTP;
 
 # Connect to FTP server (host name or IP address is OK)
-my $ftp = Net::FTP->new ('somehost');
+my $ftp = Net::FTP->new('somehost');
 
 # Login by specifying user name and password
 $ftp->login ('user', 'password');
@@ -74,13 +74,13 @@ Here are some commonly used methods.
 Create a Net::FTP object to connect to the FTP server.
 
 <pre>
-$ftp = Net::FTP->new ($host);
+$ftp = Net::FTP->new($host);
 </pre>
 
 You can specify the host name or IP address as an argument. In addition, options can be specified after the second argument. Options are specified in the hash reference. Frequently used options include Timeout to set the number of seconds to time out. The default timeout period is 120 seconds.
 
 <pre>
-$ftp = Net::FTP->new ($host, Timeout => 180)
+$ftp = Net::FTP->new($host, Timeout => 180)
 </pre>
 
 <h4> login </h4>
@@ -292,7 +292,7 @@ In fact, the first sample omitted error handling to briefly explain how to use N
 
 <pre>
 # Connect to FTP server
-my $ftp = Net::FTP->new ('somehost')
+my $ftp = Net::FTP->new('somehost')
   or die "Cannot connect to'$host': $!";
 
 # Login
@@ -317,7 +317,7 @@ Let's take a brief look at Net::FTP error handling.
 If the connection to the FTP server fails with the new method, the return value will be undef, so do or die to terminate the program. Include the OS error message $!.
 
 <pre>
-my $ftp = Net::FTP->new ('somehost')
+my $ftp = Net::FTP->new('somehost')
   or die "Cannot connect to'$host': $!";
 </pre>
 
@@ -348,7 +348,7 @@ use Net::FTP;
 my $host ='ftp.u-aizu.ac.jp';
 my $user ='anonymous';
 
-my $ftp = Net::FTP->new ($host)
+my $ftp = Net::FTP->new($host)
   or die "Cannot connect to'$host': $!";
 
 $ftp->login ($user)
@@ -382,7 +382,7 @@ use Net::FTP;
 my $host ='ftp.u-aizu.ac.jp';
 my $user ='anonymous';
 
-my $ftp = Net::FTP->new ($host)
+my $ftp = Net::FTP->new($host)
   or die "Cannot connect to'$host': $!";
 
 # Start explicit TSL/SSL encryption
