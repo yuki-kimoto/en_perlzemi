@@ -73,7 +73,7 @@ sub import {
   # Export function
   no strict'refs';
   foreach my $func (@{"${class}::EXPORT"}) {
-      * {"${caller}::$func"} = \ & {"${class}::$func"};
+      * {"${caller}::$func"} = \&{"${class}::$func"};
   }
 }
 </pre>
