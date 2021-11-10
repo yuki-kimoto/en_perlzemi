@@ -274,7 +274,7 @@ Validator::Custom makes it easy to register constraint functions for validation.
 $vc->register_constraint(
   tel_num => sub {
     my $value = shift;
-    $value =~ /^ [\ d-] + $/? 1: 0;
+    $value =~ /^ [\d-] + $/? 1: 0;
   }
 );
 </pre>
@@ -293,7 +293,7 @@ Multiple constraint functions can be registered at the same time.
 $vc->register_constraint(
   tel_num => sub {
      my $value = shift;
-     $value =~ /^ [\ d-] + $/? 1: 0;
+     $value =~ /^ [\d-] + $/? 1: 0;
   },
   hiragana => sub {...}
 );

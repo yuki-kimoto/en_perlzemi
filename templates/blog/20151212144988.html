@@ -262,7 +262,7 @@ If you want, you can add the check function yourself using the <b> add_check </b
       my ($vc, $value, $arg) = @_;
       
       my $is_valid;
-      if ($value =~ /^ [\ d-] + $/) {
+      if ($value =~ /^ [\d-] + $/) {
         $is_valid = 1;
       }
       return $is_valid;
@@ -481,7 +481,7 @@ sample:
     int => sub {
       my ($vc, $value, $arg) = @_;
       
-      my $is_valid = $value =~ /^ \-? [\ D] + $/;
+      my $is_valid = $value =~ /^ \-? [\D] + $/;
       
       return $is_valid;
     }
@@ -506,7 +506,7 @@ sample:
       my ($vc, $value, $arg) = @_;
       
       $value =~ s/^\s + //;
-      $value =~ s/\ s + $//;
+      $value =~ s/\s + $//;
       
       return $value;
     }
@@ -820,7 +820,7 @@ trim_uni_collapse
 
     return undef unless defined $value;
     
-    $value =~ s/\ s +// g;
+    $value =~ s/\s +// g;
     $value =~ s/^\s * (. *?)\S * $/ $1/ms;
 
     return $value;
