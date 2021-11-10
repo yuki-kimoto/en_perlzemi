@@ -71,7 +71,7 @@ Now let's connect to the database. Use the DBI module's connect method to connec
 
 <pre>
 use DBI;
-my $database ='test.db';
+my $database = 'test.db';
 my $data_source = "dbi: SQLite: dbname = $database";
 my $dbh = DBI->connect ($data_source);
 </pre>
@@ -190,13 +190,13 @@ update table name set field name 1 = value 1, feel name 2 = value 2, .. where to
 The SQL to change the title value of a record whose "author" is "taro" to Ruby is as follows.
 
 <pre>
-update book set title ='Ruby' where author ='taro'
+update book set title = 'Ruby' where author = 'taro'
 </pre>
 
 Let's execute the update statement using do.
 
 <pre>
-my $update = "update book set title ='Ruby' where author ='taro'";
+my $update = "update book set title = 'Ruby' where author = 'taro'";
 $dbh->do($update);
 </pre>
 
@@ -221,13 +221,13 @@ delete from table name where field name to search = value
 The SQL to delete a record whose "author" is "taro" looks like this:
 
 <pre>
-delete from book where author ='taro';
+delete from book where author = 'taro';
 </pre>
 
 Let's execute a delete statement using do.
 
 <pre>
-my $delete = "delete from book where author ='taro';";
+my $delete = "delete from book where author = 'taro';";
 $dbh->do($delete);
 </pre>
 
@@ -313,10 +313,10 @@ $dbh->do("insert into book (title, author) values ​​('Python', 'ken');");
 $dbh->do("insert into book (title, author) values ​​('Java', 'mamoru');");
 
 Execution of # update statement
-$dbh->do("update book set title ='Ruby' where author ='mamoru'");
+$dbh->do("update book set title = 'Ruby' where author = 'mamoru'");
 
 Execution of # delete statement
-$dbh->do("delete from book where author ='ken';");
+$dbh->do("delete from book where author = 'ken';");
 
 Execution of # select statement
 my $sth = $dbh->prepare ("select * from book;");

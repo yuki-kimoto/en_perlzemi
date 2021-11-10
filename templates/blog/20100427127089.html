@@ -25,7 +25,7 @@ Use the <strong> decode_json function </strong> to convert JSON to a Perl data s
 
 <pre>
 # Convert JSON to Perl data structures
-my $json_in ='[{"name": "Ken", "age": 19}, {"name": "Ken", "age": 25}]';
+my $json_in = '[{"name": "Ken", "age": 19}, {"name": "Ken", "age": 25}]';
 
 my $data = decode_json ($json_in);
 </pre>
@@ -92,7 +92,7 @@ For example, it is easy to make a mistake, but if you write the following, it wi
 use utf8;
 use JSON 'decode_json';
 
-my $json ='{"name": "Masuda"}';
+my $json = '{"name": "Masuda"}';
 
 my $data = decode_json ($json);
 </pre>
@@ -105,7 +105,7 @@ use utf8;
 use JSON 'decode_json';
 use Encode 'encode_utf8';
 
-my $json ='{"name": "Masuda"}';
+my $json = '{"name": "Masuda"}';
 
 # Convert to UTF-8 byte string
 $json = encode_utf8 ($json);

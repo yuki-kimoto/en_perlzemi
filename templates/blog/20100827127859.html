@@ -63,7 +63,7 @@ Regular expression: "a {1,3}"
 The script is as follows.
 
 <pre>
-my $str ='This string is aa.';
+my $str = 'This string is aa.';
 
 if ($str =~ /a {1,3} /) {
   print "Match\n";
@@ -90,7 +90,7 @@ Regular expression: (a {1,3}) ([pqr] 1)
 The script looks like this: <a href="/blog/20161102147817.html">Special variables</a> The parts enclosed in parentheses are assigned to "$1" and "$2" in order.
 
 <pre>
-my $str ='This string is aar1';
+my $str = 'This string is aar1';
 if ($str =~ /(a ​​{1,3}) ([pqr] 1) /) {
   print "Get $1 and $2";
 }
@@ -128,7 +128,7 @@ This string is aa - ->This string is bb
 The script looks like this:
 
 <pre>
-my $str ='This string is aa';
+my $str = 'This string is aa';
 $str =~ s/a {1,3}/bb/;
 </pre>
 
@@ -144,7 +144,7 @@ Target string =~ s/regular expression/replaced string/g;
 The script that replaces all the matched strings looks like this:
 
 <pre>
-my $str ='This string is aa aaa';
+my $str = 'This string is aa aaa';
 $str =~ s/a {1,3}/bb/g;
 </pre>
 

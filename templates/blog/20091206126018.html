@@ -116,13 +116,13 @@ update table name set field name 1 = value 1, feel name 2 = value 2, .. where to
 The SQL to change the title value of a record whose "author" is "taro" to Ruby is as follows.
 
 <pre>
-update books set title ='Ruby' where author ='taro'
+update books set title = 'Ruby' where author = 'taro'
 </pre>
 
 Let's execute the update statement using do.
 
 <pre>
-my $update = "update books set title ='Ruby' where author ='taro'";
+my $update = "update books set title = 'Ruby' where author = 'taro'";
 $dbh->do($update);
 </pre>
 
@@ -147,13 +147,13 @@ delete from table name where field name to search = value
 The SQL to delete a record whose "author" is "taro" looks like this:
 
 <pre>
-delete from books where author ='taro';
+delete from books where author = 'taro';
 </pre>
 
 Let's execute a delete statement using do.
 
 <pre>
-my $delete = "delete from books where author ='taro';";
+my $delete = "delete from books where author = 'taro';";
 $dbh->do($delete);
 </pre>
 

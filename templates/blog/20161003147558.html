@@ -20,7 +20,7 @@ Let's create a string first. Use <b> single quotes </b> or <b> double quotes </b
 
 <pre>
 # Create a string with single quotes
-my $str1 ='Hello';
+my $str1 = 'Hello';
 
 # Create a string with double quotes
 my $str2 = "Hello";
@@ -70,7 +70,7 @@ If you want to use single quotes in a string enclosed in single quotes, use <a h
 
 <pre>
 # Use single quotes
-my $str1 ='Kimoto \'s cat';
+my $str1 = 'Kimoto \'s cat';
 </pre>
 
 If you want to use double quotes in a string enclosed in double quotes, use escape sequences.
@@ -130,7 +130,7 @@ my $str3 = "I have ${str1} AIUEO";
 Next, let's concatenate the strings. Use the <a href="/blog/20080221120361.html">string concatenation operator "."</a> to concatenate strings.
 
 <pre>
-my $str1 ='I have a'.'pen';
+my $str1 = 'I have a'.'pen';
 </pre>
 
 The above example concatenates strings enclosed in quotes, but you can also use variables.
@@ -156,7 +156,7 @@ $str1 = $str1. $Str2;
 Use the <a href="/blog/20170404149131.html">print function</a> to print the string to the screen.
 
 <pre>
-my $message ='Hello';
+my $message = 'Hello';
 print $message;
 </pre>
 
@@ -253,7 +253,7 @@ In the above, I explained how to create CSV data and TSV data, but on the contra
 In such cases, you can use the <b> split function </b> to create an array with specific characters as delimiters.
 
 <pre>
-my $csv ='Cat, Dog, Mouse';
+my $csv = 'Cat, Dog, Mouse';
 
 Create an array by specifying # comma. ('Cat', 'Dog', 'Mouse')
 my @animals = split(/, /, $csv);
@@ -465,7 +465,7 @@ Save the source code in UTF-8 on Windows, Mac or Linux. Then specify the <b> utf
 # utf8 Specify pragma
 use utf8;
 
-my $message ='Hello';
+my $message = 'Hello';
 </pre>
 
 Remember this as a convention first.
@@ -476,7 +476,7 @@ Now the length function and regular expressions will work correctly for the stri
 # utf8 Specify pragma
 use utf8;
 
-my $message ='Hello';
+my $message = 'Hello';
 
 The # length function works correctly. 5 is returned.
 my $length = length $message;
@@ -565,7 +565,7 @@ For example, if you want to output in UTF-8, write as follows.<pre>
 use utf8;
 use Encode 'encode';
 
-my $message ='aiueo';
+my $message = 'aiueo';
 
 # Encode before output
 print encode ('UTF-8', $message);
@@ -581,7 +581,7 @@ To open a file with a Japanese name: If the error message has a Japanese file na
 use utf8;
 use Encode 'encode';
 
-my $file ='test.txt';
+my $file = 'test.txt';
 
 # Open a file with a Japanese name
 open my $fh, '<', encode ('cp932', $file)

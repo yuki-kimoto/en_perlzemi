@@ -25,7 +25,7 @@ use Text::CSV::Encoded;
 
 my $file = shift;
 
-my $encoding ='UTF-8';
+my $encoding = 'UTF-8';
 my $csv = Text::CSV::Encoded->new({{
   encoding_in => $encoding,
   encoding_out => $encoding
@@ -37,7 +37,7 @@ open my $fh, "<", $file
 while (my $fields = $csv->getline ($fh)) {
 
   # Edit data (here, put the word edit in the first field)
-  $fields->[0]. ='Edit';
+  $fields->[0]. = 'Edit';
   
   # Output field data
   $csv->print(* STDOUT, $fields);

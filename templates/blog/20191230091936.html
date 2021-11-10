@@ -37,7 +37,7 @@ $text->translate (30, 750);
 # Draw text
 $text->text ('Hello World!');
 
-my $pdf_file ='text_core_font.pdf';
+my $pdf_file = 'text_core_font.pdf';
 $pdf->saveas ($pdf_file);
 </pre>
 
@@ -424,7 +424,7 @@ my $render_end_x = $page_width - 1- $page_right_margin;
 my $render_end_y = $page_bottom_margin;
 
 # Message (1000 repeats of the same message)
-my $message ='Hello World!' X 1000;
+my $message = 'Hello World!' X 1000;
 
 # Newline return x Save coordinates
 my $new_line_left_x = $render_start_x;
@@ -483,7 +483,7 @@ while ($message =~ /(.)/G) {
   ($cur_render_x) = $text->textpos;
 }
 
-my $pdf_file ='margin_full_text.pdf';
+my $pdf_file = 'margin_full_text.pdf';
 $pdf->saveas ($pdf_file);
 </pre>
 
@@ -544,7 +544,7 @@ Download it and place it wherever you like.
 TrueType Fonts can be read with the ttfont method. Specify the path of the acquired TrueType Font.
 
 <pre>
-my $true_type_font_file ='/path/kochi-gothic-subst.ttf';
+my $true_type_font_file = '/path/kochi-gothic-subst.ttf';
 my $font = $pdf->ttfont ($true_type_font_file);
 </pre>
 
@@ -598,11 +598,11 @@ These files can be used for normal and bold.
 
 <pre>
 # generally
-my $true_type_font_file ='/path/AozoraMinchoRegular.ttf';
+my $true_type_font_file = '/path/AozoraMinchoRegular.ttf';
 my $font = $pdf->ttfont ($true_type_font_file);
 
 # Bold
-my $true_type_font_bold_file ='/path/AozoraMincho-bold.ttf';
+my $true_type_font_bold_file = '/path/AozoraMincho-bold.ttf';
 my $font_bold = $pdf->ttfont ($true_type_font_file);
 </pre>
 
@@ -668,7 +668,7 @@ my $render_end_x = $page_width - 1- $page_right_margin;
 my $render_end_y = $page_bottom_margin;
 
 # Message (1000 repeats of the same message)
-my $message ='Hello world. 'x 1000;
+my $message = 'Hello world. 'x 1000;
 
 # Newline return x Save coordinates
 my $new_line_left_x = $render_start_x;
@@ -735,7 +735,7 @@ while ($message =~ /(.)/G) {
   ($cur_render_x) = $text->textpos;
 }
 
-my $pdf_file ='margin_full_text_jp.pdf';
+my $pdf_file = 'margin_full_text_jp.pdf';
 $pdf->saveas ($pdf_file);
 </pre>
 

@@ -43,12 +43,12 @@ use strict;
 use warnings;
 
 # Open the file to write
-my $file ='data.txt';
+my $file = 'data.txt';
 open my $fh, '>', $file
   or die "Can't open file $file: $!";
 
 # syswrite function
-my $buffer ='AGTC';
+my $buffer = 'AGTC';
 my $byte_size = length $buffer;
 syswrite $fh, $buffer, $byte_size;
 </pre>

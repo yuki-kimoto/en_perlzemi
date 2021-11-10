@@ -42,7 +42,7 @@ To create a tar file, add the file with the <strong> add_files </strong> method 
 
 <pre>
 # Create tar file
-my $curdir ='/ somedir';
+my $curdir = '/ somedir';
 chdir $curdir
   or die qq/Can't change directory "$curdir": $!/;
 
@@ -104,12 +104,12 @@ A. There is no such method, so you need to devise it. Use the File::Find module,
 use File::Find 'find';
 use Archive::Tar;
 
-my $curdir ='/ somedir';
+my $curdir = '/ somedir';
 chdir $curdir
   or die qq/Can't change directory "$curdir": $!/;
 
 my $tar = Archive::Tar->new;
-my $top ='top';
+my $top = 'top';
 
 my @files;
 find (sub {

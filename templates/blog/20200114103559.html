@@ -166,14 +166,14 @@ use warnings;
 use utf8;
 
 # Use character class
-my $str ='Hello';
+my $str = 'Hello';
 if ($str =~ /[abcde] /) {
   print "Match\n";
 }
 
 # Match with web service user ID (a-zA-Z0-9_)
-my $user_id ='kimoto_yuki089';
-my $user_id_invalid ='abc & cde';
+my $user_id = 'kimoto_yuki089';
+my $user_id_invalid = 'abc & cde';
 if ($user_id =~ /^\p{PosixWord} + $/) {print "user_is valid\n";
 }
 unless ($user_id_invalid =~ /^\p{PosixWord} + $/) {
@@ -181,9 +181,9 @@ unless ($user_id_invalid =~ /^\p{PosixWord} + $/) {
 }
 
 # Match a web service password(a non-blank visible character in the ASCII range)
-my $password ='Ufy | & 123_';
-my $passowrd_invalid1 ='abc def';
-my $passowrd_invalid2 ='abc a';
+my $password = 'Ufy | & 123_';
+my $passowrd_invalid1 = 'abc def';
+my $passowrd_invalid2 = 'abc a';
 if ($password =~ /^\p{PosixGraph} + $/) {
    print "password is valid\n";
 }

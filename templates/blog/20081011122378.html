@@ -28,7 +28,7 @@ use XML::Simple;
 
 # Google Calendar Data API URL (URL to get Japanese holidays)
 my $feed_base
-  ='http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
+  = 'http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
 
 # Start date including this date
 my $start_date = '2007-01-01';
@@ -58,7 +58,7 @@ else {
 # Parse XML
 my $xml_parser = XML::Simple->new;
 # XML::Change parser for those who don't have SAX
-$XML::Simple::PREFERRED_PARSER ='XML::Parser';
+$XML::Simple::PREFERRED_PARSER = 'XML::Parser';
 my $holidays_data = $xml_parser->XMLin ($holidays_xml);
 
 my $holidays = [];
@@ -72,10 +72,10 @@ for my $key (keys %{$holidays_data->{'entry'}}) {
 use Encode;
 my $encode_to;
 if ($^O eq 'MSWin32') {
-  $encode_to ='shift-jis';
+  $encode_to = 'shift-jis';
 }
 else {
-  $encode_to ='utf8';
+  $encode_to = 'utf8';
 }
 
 # Encode all data
@@ -102,7 +102,7 @@ You can use the Google Calender Data API to get national holidays. Transfer holi
 The following URL is the URL for getting holidays for the Google Calender Data API.
 <pre>
 my $feed_base
-  ='http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
+  = 'http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full';
 </pre>
 
 <h4> Create query string </h4>
@@ -152,7 +152,7 @@ use XML::Simple;
 
 # Parse XML
 my $xml_parser = XML::Simple->new();
-$XML::Simple::PREFERRED_PARSER ='XML::Parser';
+$XML::Simple::PREFERRED_PARSER = 'XML::Parser';
 my $holidays_data = $xml_parser->XMLin ($holidays_xml);
 
 my $holidays = [];
@@ -185,10 +185,10 @@ In order to output this correctly, it is necessary to encode it from Perl's inte
 use Encode;
 my $encode_to;
 if ($^O eq 'MSWin32') {
-  $encode_to ='shift-jis';
+  $encode_to = 'shift-jis';
 }
 else {
-   $encode_to ='utf8';
+   $encode_to = 'utf8';
 }
 
 # Encode all data

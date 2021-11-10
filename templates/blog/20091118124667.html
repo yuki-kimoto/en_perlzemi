@@ -204,7 +204,7 @@ use warnings;
 use utf8;
 use Encode 'encode';
 
-my $file ='Ah.txt';
+my $file = 'Ah.txt';
 open my $fh, '<', encode ('cp932', $file)
   or die "Can't open". encode ('cp932', $file). ": $!";
 </pre>
@@ -218,12 +218,12 @@ use warnings;
 use utf8;
 
 use Encode qw/encode decode/;
-my $enc ='cp932';
+my $enc = 'cp932';
 binmode STDERR, ": encoding ($enc)";
 sub d ($) {decode ($enc, shift)}
 sub e ($) {encode ($enc, shift)}
 
-my $file ='Ah.txt';
+my $file = 'Ah.txt';
 open my $fh, '<', e $file
   or die qq/Can't open "$file": $!/;
 </pre>

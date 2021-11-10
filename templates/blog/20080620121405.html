@@ -216,9 +216,9 @@ Use <a href="/blog/20080215120307.html">hash slice</a> to create the hash corres
 @items_hash {('name', 'age', 'country') = ('tora', 24, 'Japan');
 
 # When disassembled
-$items_hash{name} ='tora';
+$items_hash{name} = 'tora';
 $items_hash{age} = 24;
-$items_hash{contry} ='Japan';
+$items_hash{contry} = 'Japan';
 </pre>
 
 Using hash slices in this way eliminates the need to write iterations.
@@ -452,7 +452,7 @@ sub bubble_sort {
   }
   else {return}
   
-  my $order ='ascend';
+  my $order = 'ascend';
   Check if # $opt is a hash reference
   if (defined $opt) {
     if (ref $opt eq 'HASH') {
@@ -525,7 +525,7 @@ If the variable has an invalid state, do not continue processing. For fatal erro
 <h4> (3) Set the default value </h4>
 
 <pre>
-my $order ='ascend';
+my $order = 'ascend';
 $order = $opt->{order} if $opt->{order};
 </pre>
 
