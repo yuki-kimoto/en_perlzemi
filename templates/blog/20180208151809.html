@@ -46,7 +46,7 @@ The hash is copied in its entirety by assignment, but the hash reference is not 
 <pre>
 # Hash is the value copied
 my %score1 = (math => 68, english => 90);
-my %score2 =%score1;
+my %score2 = %score1;
 
 # Hash reference does not copy value
 my %score1 = (math => 68, english => 90);
@@ -101,7 +101,7 @@ To do this, perform an operation called <b> dereference </b>.
 my $score_ref = {math => 68, english => 90};
 
 # Dereference
-my %score =%{$score_ref};
+my %score = %{$score_ref};
 </pre>
 
 Dereferences can be made using the notation "%{hash reference}".
@@ -109,7 +109,7 @@ Dereferences can be made using the notation "%{hash reference}".
 If the hash reference is a scalar variable, you can omit the "{}".
 
 <pre>
-my %score =% $score_ref;
+my %score = %$score_ref;
 </pre>
 
 <h4> Pass as an argument to a standard function </h4>

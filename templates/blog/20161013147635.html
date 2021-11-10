@@ -108,17 +108,17 @@ $math_scores_ref->{Aiko}
 Dereference to retrieve a hash from a hash reference.
 
 <pre>
-my %hash =% $hash_ref;
-my %hash =%{$hash_ref};
+my %hash = %$hash_ref;
+my %hash = %{$hash_ref};
 </pre>
 
 You can also dereference a reference to a hash to retrieve the hash.
 
 <pre>
-my %math_scores =% $math_scores;
+my %math_scores = %$math_scores;
 </pre>
 
-You can dereference and retrieve hashes with% $math_scores.
+You can dereference and retrieve hashes with%$math_scores.
 
 You can use "->{key}" if you only need one element.
 

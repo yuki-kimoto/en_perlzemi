@@ -43,7 +43,7 @@ sub time_from_str {
   my $time = {};
   if ($time_str =~ /^ (\d{2}): (\d{2}) :(\d{2}) $/) {
     @{$time}{qw/hour min sec /} = ($1, $2, $3);
-    return wantarray?% $time: $time;
+    return wantarray?%$time: $time;
   }
   return;
 }
@@ -55,7 +55,7 @@ sub str_from_time {
     $time = shift;
   }
   else {
-    % $time = @_;
+    %$time = @_;
   }
     
   return unless defined $time->{hour};
@@ -74,7 +74,7 @@ sub time_to_sec {
     $time = shift;
   }
   else {
-    % $time = @_;
+    %$time = @_;
   }
     
   return unless defined $time->{hour};
@@ -101,7 +101,7 @@ sub sec_to_time {
   
   $time->{sec} = $sec;
   
-  return wantarray?% $time: $time;
+  return wantarray?%$time: $time;
 }
 </pre>
 Execution result
@@ -131,7 +131,7 @@ sub time_from_str {
   my $time = {};
   if ($time_str =~ /^ (\d{2}): (\d{2}) :(\d{2}) $/) {
     @{$time}{qw/hour min sec /} = ($1, $2, $3);
-    return wantarray?% $time: $time;
+    return wantarray?%$time: $time;
   }
   return;
 }
@@ -146,7 +146,7 @@ The following part is a hash slice. It is a form of dereferencing $time and assi
 The return value allows you to select a list and a scalar.
 
 <pre>
-return wantarray?% $time: $time;
+return wantarray?%$time: $time;
 </pre>
 
 <h4> Convert the hash of time information to seconds and calculate the elapsed seconds </h4>
@@ -163,7 +163,7 @@ sub time_to_sec {
     $time = shift;
   }
   else {
-    % $time = @_;
+    %$time = @_;
   }
     
   return unless defined $time->{hour};
@@ -200,7 +200,7 @@ sub sec_to_time {
   
   $time->{sec} = $sec;
   
-  return wantarray?% $time: $time;
+  return wantarray?%$time: $time;
 }
 </pre>
 
@@ -218,7 +218,7 @@ sub str_from_time {
     $time = shift;
   }
   else {
-    % $time = @_;
+    %$time = @_;
   }
     
   return unless defined $time->{hour};

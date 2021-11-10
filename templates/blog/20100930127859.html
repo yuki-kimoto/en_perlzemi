@@ -321,13 +321,13 @@ In Perl, the appearance of both hashes and hash references is one reason why the
 To retrieve a hash from a hash reference, you need to do something called dereference. Use "%{}" for hash dereference.
 
 <pre>
-my %person =%{$person};
+my %person = %{$person};
 </pre>
 
 You can also omit the parentheses as follows:
 
 <pre>
-my %person =% $person;
+my %person = %$person;
 </pre>
 
 You can dereference and then get the hash element, but that's a bit inconvenient. Perl provides a way to get an element from a hash reference. Use the arrow operator "->" to retrieve an element from a hash reference.

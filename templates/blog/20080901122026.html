@@ -152,7 +152,7 @@ sub dec_to_n {
     # Convert decimal to n-ary.
     while ($dec != 0) {
       # Find the remainder and save it.
-      unshift(@rem_list, $dec % $n);
+      unshift(@rem_list, $dec %$n);
       
       # Ask for a quotient.
       $dec = int($dec/$n);
@@ -222,7 +222,7 @@ my @rem_list;
     
 # Convert decimal to n-ary.
 while ($dec != 0) {
-  unshift(@rem_list, $dec % $n);
+  unshift(@rem_list, $dec %$n);
   $dec = int($dec/$n);
 }
 </pre>

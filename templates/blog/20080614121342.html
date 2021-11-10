@@ -26,7 +26,7 @@ If you omit the package name, it becomes an entry in the symbol table of the cur
 <pre>
 my $num_from_typedglob = ${* main::num}; # Same as $num
 my @num_from_typedglob = @{* main::num}; # Same as @num
-my %num_from_typedglob =%{* main::num}; # Same as%num
+my %num_from_typedglob = %{* main::num}; # Same as%num
 my $ret_from_typedglob = & {* main::num}; # Same as & num (also same as num ())
 </pre>
 
@@ -80,7 +80,7 @@ my $num_from_symbol = ${$main::{num}};
 Array entries, enclosed in # @{}
 my @num_from_symbol = @{$main::{num}};
 Hash entries, enclosed in # %{}
-my %num_from_symbol =%{$main::{num}};
+my %num_from_symbol = %{$main::{num}};
 
 print Data::Dumper->Dump ([$num_from_symbol], ['* num_from_symbol']);
 print Data::Dumper->Dump ([\@num_from_symbol], ['* num_from_symbol']);
@@ -94,7 +94,7 @@ print "\$ret_from_symbol = $ret_from_symbol\n\n";
 print "2-1: Access the variable from the typeglob.\n";
 my $num_from_typedglob = ${* main::num}; Enclosed in # ${} is a scalar entry
 my @num_from_typedglob = @{* main::num}; If you enclose it with # @{}, the array entry will be
-my %num_from_typedglob =%{* main::num}; # %{} is a hash entry
+my %num_from_typedglob = %{* main::num}; # %{} is a hash entry
 
 print Data::Dumper->Dump ([$num_from_typedglob], ['* num_from_typedglob']);
 print Data::Dumper->Dump ([\@num_from_typedglob], ['* num_from_typedglob']);
