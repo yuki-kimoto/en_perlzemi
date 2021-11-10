@@ -445,7 +445,7 @@ sub bubble_sort {
   my @nums;
   Check if # $nums is an array reference.
   if (defined $nums) {
-   if (ref $nums eq'ARRAY') {
+   if (ref $nums eq 'ARRAY') {
      @nums = @$nums
    }
    else {return}
@@ -455,11 +455,11 @@ sub bubble_sort {
   my $order ='ascend';
   Check if # $opt is a hash reference
   if (defined $opt) {
-    if (ref $opt eq'HASH') {
+    if (ref $opt eq 'HASH') {
       Substitute if # $opt->{order} is a true value.
       $order = $opt->{order} if $opt->{order};
       
-      unless ($order eq'ascend' || $order eq'descend') {
+      unless ($order eq 'ascend' || $order eq 'descend') {
         return;
       }
     }
@@ -477,11 +477,11 @@ sub bubble_sort {
     for my $i (0 .. $change_cnt - 1) {
       # To select ascending or descending order, you only have to rewrite this part from the last time.
       my $is_change;
-      if ($order eq'ascend') {
+      if ($order eq 'ascend') {
         # In ascending order, exchange if $nums[$i]> $nums[$i + 1]
         $is_change = $nums[$i]> $nums[$i + 1];
       }
-elsif ($order eq'descend') {
+elsif ($order eq 'descend') {
         # In descending order, exchange if $nums[$i] <$nums[$i + 1]
         $is_change = $nums[$i] <$nums[$i + 1];
       }
@@ -510,7 +510,7 @@ I want to pass an array and a hash, so I'll use a reference. In actual programmi
 <pre>
 my @nums;
 if (defined $nums) {
-  if (ref $nums eq'ARRAY') {
+  if (ref $nums eq 'ARRAY') {
     @nums = @$nums;
   }
   else {return}
@@ -542,10 +542,10 @@ if ($nums[$i] <$nums[$i + 1]) {
 
 # This bubble sort
 my $is_change;
-if ($order eq'ascend') {
+if ($order eq 'ascend') {
   $is_change = $nums[$i]> $nums[$i + 1];
 }
-elsif ($order eq'descend') {
+elsif ($order eq 'descend') {
   $is_change = $nums[$i] <$nums[$i + 1];
 }
 

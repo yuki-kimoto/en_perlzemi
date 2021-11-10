@@ -71,7 +71,7 @@ for my $key (keys %{$holidays_data->{'entry'}}) {
 # Character code is Perl's internal representation (UTF8), so encode as you like
 use Encode;
 my $encode_to;
-if ($^ O eq'MSWin32') {
+if ($^ O eq 'MSWin32') {
   $encode_to ='shift-jis';
 }
 else {
@@ -184,7 +184,7 @@ In order to output this correctly, it is necessary to encode it from Perl's inte
 <pre>
 use Encode;
 my $encode_to;
-if ($^ O eq'MSWin32') {
+if ($^ O eq 'MSWin32') {
   $encode_to ='shift-jis';
 }
 else {

@@ -59,7 +59,7 @@ app->hook (before_dispatch => sub {
     
     # Run CGI script
     my $output;
-    if ($method eq'GET') {
+    if ($method eq 'GET') {
       # GET requst
       $output = `$^ X $script_name`;
       if ($?) {
@@ -67,7 +67,7 @@ app->hook (before_dispatch => sub {
         $c->render (text => "Internal Server Error");
       }
     }
-    elsif ($method eq'POST') {
+    elsif ($method eq 'POST') {
       # POST request
       my $body = $req->body;
       my ($in_fh, $in_file) = tempfile;
