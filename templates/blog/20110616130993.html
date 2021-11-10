@@ -25,8 +25,8 @@ It will be expanded to the following HTML. The first argument is the root name o
 The <strong> image </strong> tag helper makes it easy to write <strong> image tags </strong>.
 
 <pre>
-<%= image'/images/foo.png'%>
-<%= image'/images/foo.png', alt =>'Foo'%>
+<%= image'/images/foo.png' %>
+<%= image'/images/foo.png', alt =>'Foo' %>
 </pre>
 
 It will be expanded as follows. The first argument is the URL to the image. This URL is expanded by the url_for method. The remaining arguments are used as attributes.
@@ -41,7 +41,7 @@ It will be expanded as follows. The first argument is the URL to the image. This
 The <strong> stylesheet </strong> tag helper makes it easy to write external links to stylesheets and stylesheets.
 
 <pre>
-<%= stylesheet'/foo.css'%>
+<%= stylesheet'/foo.css' %>
 <%= stylesheet begin%>
   body {color: # 000}
 <%end%>
@@ -81,10 +81,10 @@ The argument can be an external JavaScript path or block (begin to end). You can
 The <strong> input_tag </strong> tag helper makes it easy to write <strong> input tags </strong>.
 
 <pre>
-<%= input_tag'first_name'%>
-<%= input_tag first_name =>'Default name'%>
-<%= input_tag'employed', type =>'checkbox'%>
-<%= input_tag'country', type =>'radio', value =>'germany'%>
+<%= input_tag'first_name' %>
+<%= input_tag first_name =>'Default name' %>
+<%= input_tag'employed', type =>'checkbox' %>
+<%= input_tag'country', type =>'radio', value =>'germany' %>
 </pre>
 
 It will be expanded as follows. The first argument is the value of name and the remaining arguments are used as attributes. Input values ​​contained in HTTP request parameters are automatically completed.
