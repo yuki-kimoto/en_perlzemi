@@ -108,7 +108,7 @@ To format a <strong> fixed-length string </strong> with the <strong> sprintf </s
 
   <tr>
     <td>
-      % -5s
+      %-5s
     </td>
     <td>
       Left-justified space filling
@@ -128,7 +128,7 @@ To format a <strong> fixed-length string </strong> with the <strong> sprintf </s
 
 To format a fixed-length string with the sprintf function, write a number after%. Write as%5s.
 
-The default is right-justified space filling. To left justify, add a minus (-) in front of the number to make it like% -5s. To fill in the missing parts with 0, write as%05s.
+The default is right-justified space filling. To left justify, add a minus (-) in front of the number to make it like%-5s. To fill in the missing parts with 0, write as%05s.
 
 If the formatted string exceeds the specified string, it will not be truncated and the specification will be ignored.
 
@@ -312,7 +312,7 @@ my @formated;
 $formatted[1] = sprintf("1:%5s", 1);
 
 # Fill left-justified space
-$formatted[2] = sprintf("2:% -5s", 1);
+$formatted[2] = sprintf("2:%-5s", 1);
 
 # 0 fill
 $formatted[3] = sprintf("3:%05s", 1);
