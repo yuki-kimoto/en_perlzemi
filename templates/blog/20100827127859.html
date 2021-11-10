@@ -270,64 +270,64 @@ You can also match the "." To any character, including newlines. If you want the
 $str =~ /./s;
 </pre>
 
-<h4> Number "\ d" </h4>
+<h4> Number "\d" </h4>
 
-Use "\ d" to represent numbers. Matches 0-9.
+Use "\d" to represent numbers. Matches 0-9.
 
 <pre>
 0
 1
-2->\ d
+2->\d
 8
 9
 </pre>
 
-<h4> Other than numbers "\ D" </h4>
+<h4> Other than numbers "\D" </h4>
 
-Use "\ D" to represent non-numeric characters. This is a companion to "\ d".
+Use "\D" to represent non-numeric characters. This is a companion to "\d".
 
 <pre>
-Other than the number "\ d"->\ D
+Other than the number "\d"->\D
 </pre>
 
-<h4> White space "\ s" </h4>
+<h4> White space "\s" </h4>
 
-Whitespace is spaces, tabs, page breaks, carriage returns, and line feeds. Use "\ s" to represent whitespace.
+Whitespace is spaces, tabs, page breaks, carriage returns, and line feeds. Use "\s" to represent whitespace.
 
 <pre>
 space " "
 Tab "\t"
-Page break "\f"->\ s
+Page break "\f"->\s
 Carriage return "\n"
 Line feed "\r"
 </pre>
 
-<h4> "\ S" other than white space </h4>
+<h4> "\S" other than white space </h4>
 
-Use "\ S" to represent non-whitespace characters. This is a companion to "\ s".
+Use "\S" to represent non-whitespace characters. This is a companion to "\s".
 
 <pre>
-Other than the space character "\ s"->\ S
+Other than the space character "\s"->\S
 </pre>
 
-<h4> Word character "\ w" </h4>
+<h4> Word character "\w" </h4>
 
-A word character is a set of "alphabets, numbers, and underscores". Use "\ w" to represent word characters.
+A word character is a set of "alphabets, numbers, and underscores". Use "\w" to represent word characters.
 
 <pre>
 A-Z
 a-z
-       ->\ w
+       ->\w
 0-9
 _
 </pre>
 
-<h4> Non-word characters "\ W" </h4>
+<h4> Non-word characters "\W" </h4>
 
-Use "\ W" to represent non-word characters.
+Use "\W" to represent non-word characters.
 
 <pre>
-Other than the word character "\ w"->\ W
+Other than the word character "\w"->\W
 </pre>
 
 <h4> The beginning of the character string "^" </h4>
@@ -344,7 +344,7 @@ abcqqq->^ abc
 abcrrr
 </pre>
 
-When combined with the m option, ^ changes to mean the beginning of a line. Use "\ A" if you want to represent the beginning of a string when using the m option. "\ A" always represents the beginning of the string regardless of the existence of the option.
+When combined with the m option, ^ changes to mean the beginning of a line. Use "\A" if you want to represent the beginning of a string when using the m option. "\A" always represents the beginning of the string regardless of the existence of the option.
 
 <h4> End of string "$" </h4>
 
@@ -356,11 +356,11 @@ qqqabc->abc $
 rrrabc
 </pre>
 
-When combined with the m option, $changes to mean the end of a line. Use "\ z" if you want to represent the end of a string when using the m option. "\ Z" always represents the end of the string regardless of the existence of the option.
+When combined with the m option, $changes to mean the end of a line. Use "\z" if you want to represent the end of a string when using the m option. "\Z" always represents the end of the string regardless of the existence of the option.
 
 <h4> Word character boundaries </h4>
 
-Use "\ b" to represent word character boundaries. The boundary of a word character is the part that changes from a word character to another character. For example, the regular expression "abc\b" does not match "abcd" but does match "abc /", "abc @", and "abc".
+Use "\b" to represent word character boundaries. The boundary of a word character is the part that changes from a word character to another character. For example, the regular expression "abc\b" does not match "abcd" but does match "abc /", "abc @", and "abc".
 
 <pre>
 abc/abc @->abc\b
@@ -608,7 +608,7 @@ s | aaa | bbb |
 Regular expressions can be referenced using the <a href="/blog/20080419120860.html">qr operator</a>. You can use it as a regular expression reference and assign it to a variable, including regular expression options.
 
 <pre>
-my $regex = qr/(\ d +)/sm;
+my $regex = qr/(\d +)/sm;
 </pre>
 
 This can also be used in regular pattern matching.
@@ -739,7 +739,7 @@ The e option allows you to use an expression as the result of the replacement.
 The following sample is a sample that doubles the matched number.
 
 <pre>
-s/(\ d +)/$1 * 2/e;
+s/(\d +)/$1 * 2/e;
 </pre>
 
 <h4> x Ignore whitespace in regular expressions </h4>
