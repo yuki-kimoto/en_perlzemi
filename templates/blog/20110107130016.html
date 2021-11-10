@@ -44,7 +44,7 @@ get'/' => sub {
     $self->stash(error =>'');
     $self->stash(output =>'');
     
-    if ($module && $module =~ /^ [:\w] +$/) {
+    if ($module && $module =~ /^[:\w] +$/) {
         my $home = $ENV{DOCUMENT_ROOT};
         $home =~ s #/www $# #;
         

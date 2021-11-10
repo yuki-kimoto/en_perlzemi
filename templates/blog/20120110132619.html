@@ -274,7 +274,7 @@ Validator::Custom makes it easy to register constraint functions for validation.
 $vc->register_constraint(
   tel_num => sub {
     my $value = shift;
-    $value =~ /^ [\d-] +$/? 1: 0;
+    $value =~ /^[\d-] +$/? 1: 0;
   }
 );
 </pre>
@@ -293,7 +293,7 @@ Multiple constraint functions can be registered at the same time.
 $vc->register_constraint(
   tel_num => sub {
      my $value = shift;
-     $value =~ /^ [\d-] +$/? 1: 0;
+     $value =~ /^[\d-] +$/? 1: 0;
   },
   hiragana => sub {...}
 );
@@ -319,7 +319,7 @@ You may want to enter multiple text boxes and check that at least one of them co
 my $vc = Validator::Custom->new;
 $data = {name1 =>'Ken', name2 =>'', name3 =>'Taro'};
 $rule = [
-  {key => qr/^ name\d+$/} => [
+  {key => qr/^name\d+$/} => [
     'merge',
     'trim',
     'not_blank'
@@ -529,7 +529,7 @@ $rule->require('age')->check('uint');
 my $is_valid = $vc->validate($data, $rule);
 </pre>
 
-Internally, the regular expression "^ [0-9] + $" is used.
+Internally, the regular expression "^[0-9] + $" is used.
 
 <h3> duplication (constraint function) - Check that email addresses match </h3>
 

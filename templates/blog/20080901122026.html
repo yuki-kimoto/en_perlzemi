@@ -138,7 +138,7 @@ sub dec_to_n {
 
     # Checking the validity of $dec
     return if !defined $dec;
-    return if $dec !~ /^ ([+-]?)\D+$/;
+    return if $dec !~ /^([+-]?)\D+$/;
 
     # Save the sign if it exists
     my $sign = $1 ? substr($dec, 0, 1, ''):'';
@@ -191,14 +191,14 @@ A single return returns undef for scalar contexts and an empty list for list con
 
 <pre>
 return if !defined $dec;
-return if $dec !~ /^ ([+-]?)\D+$/;
+return if $dec !~ /^([+-]?)\D+$/;
 my $sign = $1 ? substr($dec, 0, 1, ''):'';
 </pre>
 
 $dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html">Regular expression for decimal integers</a>
 
 <pre>
-/ ^ ([+-]?)\D+$/
+/^([+-]?)\D+$/
 </pre>
 
 Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")

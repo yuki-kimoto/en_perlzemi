@@ -67,7 +67,7 @@ sub recursive_copy {
   # In the top directory of the copy destination
   # Replace.
   my $file_to = $File::Find::name;
-  $file_to =~ s # ^ $top_dir # $dir_copy_to # ;
+  $file_to =~ s #^$top_dir # $dir_copy_to # ;
                                         
   if (-d $file_from) {
     # The directory cannot be copied, so create it with the same name.
@@ -97,7 +97,7 @@ sub recursive_copy {
   # In the top directory of the copy destination
   # Replace.
   my $file_to = $File::Find::name;
-  $file_to =~ s # ^ $top_dir # $dir_copy_to # ;
+  $file_to =~ s #^$top_dir # $dir_copy_to # ;
                                         
   if (-d $file_from) {
     # The directory cannot be copied, so create it with the same name.

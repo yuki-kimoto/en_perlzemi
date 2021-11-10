@@ -225,8 +225,7 @@ Regular expressions that represent a set of characters include:
 
   <tr>
     <td>
-      ^ ^
-    </td>
+      ^^    </td>
     <td>
       The beginning of the string
     </td>
@@ -335,16 +334,15 @@ Other than the word character "\w"->\W
 Some regular expression characters can represent the beginning of a character. Use "^" to represent the beginning of a character.
 
 <pre>
-Beginning of string->^
-</pre>This regular expression character has no character length. Use in combination with other characters. For example, the regular expression "^ abc" matches strings that start with "abc". Even if "abc" is included, it will not match unless it starts with "abc".
+Beginning of string->^</pre>This regular expression character has no character length. Use in combination with other characters. For example, the regular expression "^abc" matches strings that start with "abc". Even if "abc" is included, it will not match unless it starts with "abc".
 
 <pre>
 abcppp
-abcqqq->^ abc
+abcqqq->^abc
 abcrrr
 </pre>
 
-When combined with the m option, ^ changes to mean the beginning of a line. Use "\A" if you want to represent the beginning of a string when using the m option. "\A" always represents the beginning of the string regardless of the existence of the option.
+When combined with the m option,^changes to mean the beginning of a line. Use "\A" if you want to represent the beginning of a string when using the m option. "\A" always represents the beginning of the string regardless of the existence of the option.
 
 <h4> End of string "$" </h4>
 
@@ -412,7 +410,7 @@ You can also use character classes to represent non-specific characters. Use "^"
 For example, to represent a character other than "a", "b", and "c":
 
 <pre>
-Characters other than "a", "b" and "c"->[^ abc]
+Characters other than "a", "b" and "c"->[^abc]
 </pre>
 
 <h3> Quantifier </h3>
@@ -711,7 +709,7 @@ We've already covered m, s, and g, so we'll cover the remaining options.
 You can use the <strong> m </strong> option to match "^" and "$" to the beginning and end of a line.
 
 <pre>
-$message =~ /^ i/m
+$message =~ /^i/m
 </pre>
 
 <h4> s Match "." To line breaks s option </h4>
@@ -719,7 +717,7 @@ $message =~ /^ i/m
 You can use the <strong> s </strong> option to match a "line break" to a ".".
 
 <pre>
-$message =~ /^ i/s
+$message =~ /^i/s
 </pre>
 
 <h4> i Case sensitiveMatch without </h4>
