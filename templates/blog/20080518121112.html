@@ -27,7 +27,7 @@ You can also use <a href="/blog/20100827127859.html">regular expression</a> to s
 
 <pre>
 use File::Basename;
-my $regex_suffix = qr/\. [^\.] + $/;
+my $regex_suffix = qr/\. [^\.]+$/;
 my $suffix_txt = (fileparse ($file_txt, $regex_suffix)) [2];
 </pre>
 
@@ -54,7 +54,7 @@ print "\$dir = $dir\n",
   "\$suffix = $suffix\n\n";
 
 print "2: Extract the extension from the file name. (Specify the extension name pattern)\n";
-my $regex_suffix = qr/\. [^\.] + $/;
+my $regex_suffix = qr/\. [^\.]+$/;
 
 my $suffix_txt = (fileparse $file_txt, $regex_suffix) [2];
 my $suffix_log = (fileparse $file_log, $regex_suffix) [2];

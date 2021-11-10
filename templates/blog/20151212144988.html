@@ -262,7 +262,7 @@ If you want, you can add the check function yourself using the <b> add_check </b
       my ($vc, $value, $arg) = @_;
       
       my $is_valid;
-      if ($value =~ /^[\d-] +$/) {
+      if ($value =~ /^[\d-]+$/) {
         $is_valid = 1;
       }
       return $is_valid;
@@ -481,7 +481,7 @@ sample:
     int => sub {
       my ($vc, $value, $arg) = @_;
       
-      my $is_valid = $value =~ /^\-? [\D] +$/;
+      my $is_valid = $value =~ /^\-? [\D]+$/;
       
       return $is_valid;
     }
@@ -698,7 +698,7 @@ http_url
 <pre>
   $vc->add_check(http_url => sub {
     my ($vc, $value, $arg) = @_;
-    return defined $value && $value =~ /^s? https ?: \/\/[-_.!~ *'() A-zA-Z0-9;\/?: \@& = + \$, % # ] +$/? 1: 0;
+    return defined $value && $value =~ /^s? https ?: \/\/[-_.!~ *'() A-zA-Z0-9;\/?: \@& = + \$, % # ]+$/? 1: 0;
   });
 </pre>
 
@@ -735,10 +735,10 @@ decimal
       $re = qr/^[0-9]{1, $digits->[0]} (\. [0-9] *)? $/;
     }
     elsif (defined $digits->[1]) {
-      $re = qr/^[0-9] + (\. [0-9]{0, $digits->[1]})? $/;
+      $re = qr/^[0-9]+(\. [0-9]{0, $digits->[1]})? $/;
     }
     else {
-      $re = qr/^[0-9] + (\. [0-9] *)? $/;
+      $re = qr/^[0-9]+(\. [0-9] *)? $/;
     }
     
     # Check value
@@ -763,7 +763,7 @@ trim_collapse
     
     return undef unless defined $value;
     
-    $value =~ s/[\t\n\r\f] +// g;
+    $value =~ s/[\t\n\r\f]+// g;
     $value =~ s/^[\t\n\r\f] * (. *?) [\t\n\r\f] *$/ $1/ms;
 
     return $value;
@@ -778,7 +778,7 @@ trim_lead
     
     return undef unless defined $value;
 
-    $value =~ s/^[\t\n\r\f] + (. *)$/ $1/ms;
+    $value =~ s/^[\t\n\r\f]+(. *)$/ $1/ms;
 
     return $value;
   });
@@ -792,7 +792,7 @@ trim_trail
     
     return undef unless defined $value;
 
-    $value =~ s/^(. *?) [\t\n\r\f] +$/ $1/ms;
+    $value =~ s/^(. *?) [\t\n\r\f]+$/ $1/ms;
 
     return $value;
   });
@@ -894,7 +894,7 @@ To determine that it is <strong> Hiragana </strong> and </strong> Katakana </str
 $vc->add_check(
   hiragana => sub {
     my ($vc, $value) = @_;
-    my $is_valid = $value =~ /^\p{InHiragana} +$/;
+    my $is_valid = $value =~ /^\p{InHiragana}+$/;
     return $is_valid;
   }
 );
@@ -903,7 +903,7 @@ $vc->add_check(
 $vc->add_check(
   katakana => sub {
     my ($vc, $value) = @_;
-    my $is_valid = $value =~ /^\p{InKatakana} +$/
+    my $is_valid = $value =~ /^\p{InKatakana}+$/
     return $is_valid;
   }
 );

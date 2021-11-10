@@ -17,13 +17,13 @@
 To determine if <a href="/blog/20161003147558.html">string</a> represents an integer, <a href="/blog/20100827127859.html">regular expression</a> > Is used. Determines if a regular expression is made up of numbers from start to finish.
 
 <pre>
-/^[0-9] + $/
+/^[0-9]+$/
 </pre>
 
 To determine if it's an integer, just add to the regular expression above that it doesn't matter if it's prefixed with + or-.
 
 <pre>
-/^[+-]? [0-9] + $/
+/^[+-]? [0-9]+$/
 </pre>
 
 <h3> Sample </h3>
@@ -39,7 +39,7 @@ print "1: Determine if the string represents the correct number\n";
 my $num1 = "345";
 # Determining if the string is only numbers
 # Read "One or more numbers continue from the beginning to the end"
-if ($num1 =~ /^[0-9] +$/) {
+if ($num1 =~ /^[0-9]+$/) {
   print "$num1 is a string of numbers only.\n";
 }
 
@@ -48,7 +48,7 @@ my $num2 = "-123";
 
 # "With or without + or-at the beginning, after that
 # One or more numbers follow to the end "
-if ($num2 =~ /^[+-]? [0-9] +$/) {
+if ($num2 =~ /^[+-]? [0-9]+$/) {
   print "$num2 is an integer.\n";
 }
 </pre>

@@ -174,9 +174,9 @@ if ($str =~ /[abcde]/) {
 # Match with web service user ID (a-zA-Z0-9_)
 my $user_id = 'kimoto_yuki089';
 my $user_id_invalid = 'abc & cde';
-if ($user_id =~ /^\p{PosixWord} +$/) {print "user_is valid\n";
+if ($user_id =~ /^\p{PosixWord}+$/) {print "user_is valid\n";
 }
-unless ($user_id_invalid =~ /^\p{PosixWord} +$/) {
+unless ($user_id_invalid =~ /^\p{PosixWord}+$/) {
    print "user_id_invalid is invalid\n";
 }
 
@@ -184,13 +184,13 @@ unless ($user_id_invalid =~ /^\p{PosixWord} +$/) {
 my $password = 'Ufy | & 123_';
 my $passowrd_invalid1 = 'abc def';
 my $passowrd_invalid2 = 'abc a';
-if ($password =~ /^\p{PosixGraph} +$/) {
+if ($password =~ /^\p{PosixGraph}+$/) {
    print "password is valid\n";
 }
-unless ($passowrd_invalid1 =~ /^\p{PosixGraph} +$/) {
+unless ($passowrd_invalid1 =~ /^\p{PosixGraph}+$/) {
    print "passowrd_invalid1 is inalid\n";
 }
-unless ($passowrd_invalid2 =~ /^\p{PosixGraph} +$/) {
+unless ($passowrd_invalid2 =~ /^\p{PosixGraph}+$/) {
    print "passowrd_invalid2 is inalid\n";
 }
 </pre>

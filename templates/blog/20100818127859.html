@@ -558,17 +558,17 @@ To use <a href="/blog/20100827127859.html">regular expressions</a> in XS, you mu
 
 <pre>
 # Perl
-my $re = qr/[0-9] +/;
+my $re = qr/[0-9]+/;
 
 # XS (the second argument of pregcomp is a regular expression flag)
-SV * sv_re_str = newSVpv ("[0-9] +", 0);
+SV * sv_re_str = newSVpv ("[0-9]+", 0);
 REGEXP * sv_re = pregcomp (sv_re_str, 0);
 </pre>
 
 The REGEXP * type is a type of SV * type, so when you actually use the code, use sv_2mortal so that the memory is automatically released. If you write it assuming that it will be used in actual code, it will be as follows.
 
 <pre>
-SV * sv_re_str = sv_2mortal (newSVpv ("[0-9] +", 0));
+SV * sv_re_str = sv_2mortal (newSVpv ("[0-9]+", 0));
 REGEXP * sv_re = (REGEXP *) sv_2mortal ((SV *) pregcomp (sv_re_str, 0));
 </pre>
 
@@ -581,7 +581,7 @@ You can specify the regular expression flag as the second argument of pregcomp.
 my $re = qr/abc/im;
 
 # XS
-SV * sv_re_str = newSVpv ("[0-9] +", 0);
+SV * sv_re_str = newSVpv ("[0-9]+", 0);
 REGEXP * sv_re = pregcomp (sv_re_str, RXf_PMf_FOLD | RXf_PMf_MULTILINE);
 </pre>
 
@@ -642,7 +642,7 @@ If the match is successful, the return value will be true. I will write a sample
 SV * sv_value = sv_2mortal (newSVpv ("12", 0));
 char * value = SvPV_nolen (sv_value);
 
-SV * sv_re_str = sv_2mortal (newSVpv ("^* ([-+]? [0-9] +) * $", 0));
+SV * sv_re_str = sv_2mortal (newSVpv ("^* ([-+]? [0-9]+) * $", 0));
 REGEXP * sv_re = (REGEXP *) sv_2mortal ((SV *) pregcomp (sv_re_str, 0));
 
 IV ret = pregexec (
