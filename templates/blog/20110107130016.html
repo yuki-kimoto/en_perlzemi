@@ -31,7 +31,7 @@ use FindBin;
 use lib "$FindBin::Bin / lib";
 
 use Mojolicious::Lite;
-use File::Copy'move';
+use File::Copy 'move';
 use LWP::UserAgent;
 use utf8;
 
@@ -67,7 +67,7 @@ get'/' => sub {
             push @cpanm, '#! / usr / bin / perl';
             push @cpanm, "BEGIN {".
                              "\$ENV{HOME} =" $home'; ".
-                             "use lib'$home / perl5 / lib / perl5';".
+                             "use lib '$home / perl5 / lib / perl5';".
                          "}";
             push @cpanm, $cpanm_content;
             

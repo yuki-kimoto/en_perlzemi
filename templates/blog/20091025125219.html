@@ -88,7 +88,7 @@ int(1.5) becomes 1 and int(-1.5) becomes -1.
 To round up the decimal point, use the POSIX module's <a href="/blog/20080924122227.html">ceil function</a>.
 
 <pre>
-use POSIX'ceil';
+use POSIX 'ceil';
 $ret = ceil $num;
 </pre>
 
@@ -97,7 +97,7 @@ $ret = ceil $num;
 To round down the decimal point, use the <a href="/blog/20090430122227.html">floor function</a> of the POSIX module.
 
 <pre>
-use POSIX'floor';
+use POSIX 'floor';
 $ret = floor $num;
 </pre>
 
@@ -114,7 +114,7 @@ $ret = rand $num;
 Use the <a href="/blog/20090501124313.html">looks_like_number function</a> of the Scalar::Util module to determine if it is a number.
 
 <pre>
-use Scalar::Util'looks_like_number';
+use Scalar::Util 'looks_like_number';
 $ret = looks_like_number $num;
 </pre>
 
@@ -474,7 +474,7 @@ The elements of the array are sequentially assigned to $_. The result of $_ * 2 
 To find the maximum value of an array element, use the max function of the <a href="/blog/20080114120030.html">List::Util module</a>.
 
 <pre>
-use List::Util'max';
+use List::Util 'max';
 $ret = max @array;
 </pre>
 
@@ -483,7 +483,7 @@ $ret = max @array;
 To find the minimum value of an array element, use the min function of the <a href="/blog/20080114120030.html">List::Util module</a>.
 
 <pre>
-use List::Util'min';
+use List::Util 'min';
 $ret = min @array;
 </pre>
 
@@ -492,7 +492,7 @@ $ret = min @array;
 Use the sum function of the <a href="/blog/20080114120030.html">List::Util module</a> to sum the elements of the array.
 
 <pre>
-use List::Util'sum';
+use List::Util 'sum';
 $ret = sum @array;
 </pre>
 
@@ -545,7 +545,7 @@ Use cmp to compare in lexicographical order. If you want to sort in descending o
 To sort the array randomly, use the shuffle function of the <a href="/blog/20080114120030.html">List::Util module</a>.
 
 <pre>
-use List::Util'shuffle';
+use List::Util 'shuffle';
 @ret = shuffle @array;
 </pre>
 
@@ -739,7 +739,7 @@ unlink $file
 To copy a file, use the copy function of the <a href="/blog/20100408127089.html">File::Copy</a> module.
 
 <pre>
-use File::Copy'copy';
+use File::Copy 'copy';
 copy ($file_from, $file_to)
   or die "Cannot copy $file_from to $file_to: $!";
 </pre>
@@ -749,7 +749,7 @@ copy ($file_from, $file_to)
 To move a file, use the move function of the <a href="/blog/20100408127089.html">File::Copy</a> module.
 
 <pre>
-use File::Copy'copy';
+use File::Copy 'copy';
 move ($file_from, $file_to)
   or die "Cannot move $file_from to $file_to: $!";
 </pre>
@@ -786,7 +786,7 @@ rmdir $dir
 To create a multi-level directory, use the mkpath function of the <a href="/blog/20100409127089.html">File::Path</a> module.
 
 <pre>
-use File::Path'mkpath';
+use File::Path 'mkpath';
 eval {
   mkpath $dir
 };
@@ -803,7 +803,7 @@ If mkpath fails, an exception will be thrown, so catch it with the eval block. T
 If you want to delete the directory that contains the files inside, use the rmtree function of the <a href="/blog/20100409127089.html">File::Path module</a>.
 
 <pre>
-use File::Path'rmtree';
+use File::Path 'rmtree';
 
 rmtree ($dir, {error => \ my $errors});
 for my $diag (@$errors) {
@@ -819,7 +819,7 @@ In the first argument, specify the directory you want to delete. You can specify
 To get the current directory, use the getcwd function of the <a href="/blog/20100527127859.html">Cwd module</a>.
 
 <pre>
-use Cwd'getcwd';
+use Cwd 'getcwd';
 $ret = getcwd;
 </pre>
 
@@ -837,7 +837,7 @@ chmod($permission, $file)
 To retrieve the base name of a file, use the basename function of the <a href="/blog/20100225126425.html">File::Basename module</a>.
 
 <pre>
-use File::Basename'basename';
+use File::Basename 'basename';
 $ret = basename $file;
 </pre>
 
@@ -848,7 +848,7 @@ If the file name is /a/b/c.txt, c.txt is the base name.
 To get the name of the directory that contains the file, use the dirname function of the <a href="/blog/20100225126425.html">File::Basename module</a>.
 
 <pre>
-use File::Basename'dirname';
+use File::Basename 'dirname';
 $ret = dirname $file;
 </pre>
 
@@ -918,7 +918,7 @@ From the beginning, the order is "seconds, minutes, hours, days, months, years, 
 To get the elapsed seconds since the epoch from the date and time information, use the <a href="/blog/20081014122416.html">Time::Local module's timelocal function</a>.
 
 <pre>
-use Time::Local'timelocal';
+use Time::Local 'timelocal';
 $ret = timelocal ($sec, $min, $hour, $mday, $mon, $year);
 </pre>
 
@@ -937,7 +937,7 @@ When it sleeps, the program will stop during that time.
 To sleep in microseconds, use the usleep function of the <a href="/blog/20180309152509.html">Time::HiRes</a> module.
 
 <pre>
-use Time::HiRes'usleep';
+use Time::HiRes 'usleep';
 usleep $microsec;
 </pre>
 
@@ -985,7 +985,7 @@ Specify the user ID in the first argument. The execution user ID is stored in a 
 To get the hostname, use the hostname function in the <a href="/blog/20100522127696.html">Sys::Hostname module</a>.
 
 <pre>
-use Sys::Hostname'hostname';
+use Sys::Hostname 'hostname';
 $ret = hostname;
 </pre>
 
@@ -1151,7 +1151,7 @@ perl script_name - length = 100 - file = test.txt - verbose
 To receive this option, write:
 
 <pre>
-use Getopt::Long'GetOptions';
+use Getopt::Long 'GetOptions';
 
 # Set default value
 my $data ='file.dat';
@@ -1269,6 +1269,6 @@ $ftp->quit;
 If you want to check the difference between files, use <a href="/blog/20100414127089.html">Text::Diff module</a>.
 
 <pre>
-use Text::Diff'diff';
+use Text::Diff 'diff';
 my $diff = diff ($file1, $file2);
 </pre>

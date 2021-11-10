@@ -93,11 +93,11 @@ Regarding the file name delimiter, you can use the "/" delimiter even in Windows
 
 You can use Japanese file names in Perl, but you must always specify the file name with the character code of each OS.
 
-Save the source code in UTF-8 and add "use utf8" at the beginning. Use the encode function to convert to the character code of each OS.
+Save the source code in UTF-8 and add "use utf8 " at the beginning. Use the encode function to convert to the character code of each OS.
 
 <pre>
 use utf8;
-use Encode'encode';
+use Encode 'encode';
 
 my $file = "aiueo";
 
@@ -402,7 +402,7 @@ The actual script looks like this:
 use strict;
 use warnings;
 
-use File::Copy'move';
+use File::Copy 'move';
 
 # (1) Read the contents of the file
 my $file ='date.txt';

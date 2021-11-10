@@ -41,7 +41,7 @@ Character strings input from the outside are always decoded using the decode fun
 Specify the character code of the byte string in the first argument of the decode function, and specify the byte string in the second argument. The return value will be an internal string.
 
 <pre>
-use Encode'decode';
+use Encode 'decode';
 
 # External input (command line argument)
 my $str = shift;
@@ -75,7 +75,7 @@ The character string to be output to the outside is encoded using the encode fun
 The first argument of the encode function specifies which character code to convert. Specify the internal character string in the second argument.
 
 <pre>
-use Encode'encode';
+use Encode 'encode';
 
 # When converting an internal string to a UTF-8 byte string
 $str = encode ('UTF-8', $str);
@@ -188,7 +188,7 @@ This is a bit annoying, so we have a function called from_to.The first argument 
 
 <pre>
 # Character code conversion
-use Encode'from_to';
+use Encode 'from_to';
 
 # $str itself is converted
 from_to ($str, 'UTF-8', 'Shift_JIS');
@@ -202,7 +202,7 @@ When specifying a file name for a function such as open or unlink, it must be co
 use strict;
 use warnings;
 use utf8;
-use Encode'encode';
+use Encode 'encode';
 
 my $file ='Ah.txt';
 open my $fh, '<', encode ('cp932', $file)

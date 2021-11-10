@@ -18,7 +18,7 @@ The <strong> Carp </strong> module allows you to raise an exception from the per
 
 <pre>
 # Loading modules and importing functions
-use Carp'croak';
+use Carp 'croak';
 </pre>
 
 You can use the <strong> croak function </strong> to raise an exception from the perspective of the module caller. The caller's line number is added to the end of the message.
@@ -75,7 +75,7 @@ Next is the case of croak.
 <pre>
 When an exception is raised by # croak # 1
 package YourModule; # 2
-use Carp'croak'; # 3
+use Carp 'croak'; # 3
                                           # Four
 sub parse {# 5
   Raise an exception with # die # 6
@@ -104,7 +104,7 @@ Just add the following line anywhere in the script.
 
 <pre>
 Change the # croak message to one that contains the complete stack trace information
-use Carp'verbose';
+use Carp 'verbose';
 </pre>
 
 I embedded it in the script above. I put it just before YourModule::parse ().
@@ -113,7 +113,7 @@ I embedded it in the script above. I put it just before YourModule::parse ().
 package main;
 
 # Call the parse function
-use Carp'verbose';
+use Carp 'verbose';
 YourModule::parse ();
 </pre>
 
@@ -123,7 +123,7 @@ Exception! At a.pl line 7
         YourModule::parse () called at a.pl line 14
 </pre>
 
-Generally speaking, many Perl modules on CPAN use croak to raise exceptions. This means that you can expect to see a complete stack trace by writing use Carp'verbose'.
+Generally speaking, many Perl modules on CPAN use croak to raise exceptions. This means that you can expect to see a complete stack trace by writing use Carp 'verbose'.
 
 Also, if a module is utilizing yet another module, the exception raised there may not be the true caller's point of view.
 
@@ -136,7 +136,7 @@ Module 2-If croak is executed here, the caller will be module 1.
               I don't know the line number of the true caller.
 </pre>
 
-Even in such a case, you can get a complete stack trace by writing use Carp'verbose'.
+Even in such a case, you can get a complete stack trace by writing use Carp 'verbose'.
 
 <h3> FAQ about Carp module </h3>
 
@@ -147,7 +147,7 @@ Q. I want to raise a warning, not an exception.
 A. You can use the carp function to raise a warning.
 <pre>
 # warning
-use Carp'carp';
+use Carp 'carp';
 carp'Warning!';
 </pre>
 

@@ -108,7 +108,7 @@ For more information on the special variable "$?", See "<a href="http://d.hatena
 To release the resources of the child process, use the waitpid function and write the following.
 
 <pre>
-use POSIX'WNOHANG';
+use POSIX 'WNOHANG';
 $SIG{CHLD} = sub {while (waitpid (-1, WNOHANG)> 0) {Resource release process}}
 </pre>
 

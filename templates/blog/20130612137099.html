@@ -26,7 +26,7 @@ my $str = "\ x {3042}";
 Note that strings containing Unicode characters represented by code points are always treated as internal strings, with or without utf8 pragma. In other words, it is already decoded. To output, encode as follows.
 
 <pre>
-use Encode'encode';
+use Encode 'encode';
 print encode ('UTF-8', $str);
 </pre>
 For windows, try specifying cp932 as the character code.

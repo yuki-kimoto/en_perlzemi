@@ -19,7 +19,7 @@ The Time::Local module is the opposite of the <a href="/blog/20081009122357.html
 Use the <strong> timelocal function </strong> of the <strong> Time::Local </strong> module to convert dates and times (local time) to epoch seconds.
 
 <pre>
-use Time::Local'timelocal';
+use Time::Local 'timelocal';
 my $sec_from_epoch = timelocal ($sec, $min, $hour, $mday, $month, $year);
 </pre>
 
@@ -47,7 +47,7 @@ This is a sample of the Time::Local module.
 use strict;
 use warnings;
 
-use Time::Local'timelocal';
+use Time::Local 'timelocal';
 
 print "(1) Convert date and time(local time) to epoch seconds.\n";
 my $sec = 10;
@@ -96,7 +96,7 @@ To convert the date and time(Coordinated Universal Time) to epoch seconds, use t
 use strict;
 use warnings;
 
-use Time::Local'timegm';
+use Time::Local 'timegm';
 
 print "(1) Convert date and time(Coordinated Universal Time) to Epoch seconds.\n";
 my $sec = 10;
@@ -117,7 +117,7 @@ print $sec_from_epoch;
 <h4> Convert date and time(Coordinated Universal Time) to epoch seconds. </h4>
 
 <pre>
-use Time::Local'timegm';
+use Time::Local 'timegm';
 
 my $sec = 10;
 my $min = 30;

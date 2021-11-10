@@ -19,7 +19,7 @@ By using this, it is possible to determine the existing date.
 use strict;
 use warnings;
 
-use Time::Local'timelocal';
+use Time::Local 'timelocal';
 
 print "(1) Check if the date exists.\n";
 # Perl treats the time as the number of years since 1900
@@ -103,7 +103,7 @@ Since the arguments of the timelocal function must be specified in the order of 
 If the date does not exist, the timelocal function throws an exception, so catch it with eval. If an exception occurs, the content will be set in $@, so the judgment will be made with this.
 
 <pre>
-use Time::Local'timelocal';
+use Time::Local 'timelocal';
 eval {
   timelocal (0, 0, 0, $mday, $mon, $year);
 };

@@ -514,7 +514,7 @@ Let's write a sample to read a file with the character code "cp932" written on W
 use strict;
 use warnings;
 use utf8;
-use Encode'decode';
+use Encode 'decode';
 
 # Read file
 while (my $line = <>) {
@@ -563,7 +563,7 @@ To encode, use the encode function of the <a href="/blog/20091118124667.html">En
 
 For example, if you want to output in UTF-8, write as follows.<pre>
 use utf8;
-use Encode'encode';
+use Encode 'encode';
 
 my $message ='aiueo';
 
@@ -579,7 +579,7 @@ To open a file with a Japanese name: If the error message has a Japanese file na
 
 <pre>
 use utf8;
-use Encode'encode';
+use Encode 'encode';
 
 my $file ='test.txt';
 

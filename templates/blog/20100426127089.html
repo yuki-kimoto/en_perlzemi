@@ -21,7 +21,7 @@ The <strong> Exporter </strong> module allows you to export a function from a mo
 package Your Module;
 
 Inherit # Exporter
-use Exporter'import';
+use Exporter 'import';
 
 # Write the function to export
 our @EXPORT = qw / func1 func2 /;
@@ -84,13 +84,13 @@ There are multiple ways to write the Exporter module, and you can write as follo
 
 <pre>
 # Part 1
-use Exporter'import';
+use Exporter 'import';
 
 # 2
 push @ISA, 'Exporter';
 
 # 3
-use base'Exporter';
+use base 'Exporter';
 </pre>
 
 Here is the first one that seems to be the most intuitive.

@@ -90,7 +90,7 @@ For example, it is easy to make a mistake, but if you write the following, it wi
 <pre>
 # Common mistakes when dealing with Japanese. decode_json needs to receive UTF-8 byte string
 use utf8;
-use JSON'decode_json';
+use JSON 'decode_json';
 
 my $json ='{"name": "Masuda"}';
 
@@ -102,8 +102,8 @@ The reason this doesn't work is that $json has already been converted to an inte
 <pre>
 # Correct example when dealing with Japanese
 use utf8;
-use JSON'decode_json';
-use Encode'encode_utf8';
+use JSON 'decode_json';
+use Encode 'encode_utf8';
 
 my $json ='{"name": "Masuda"}';
 
@@ -119,7 +119,7 @@ Since the JSON module does not have a function to read a file, I will describe h
 
 <pre>
 # Sample to read JSON from file
-use JSON'decode_json';
+use JSON 'decode_json';
 
 my $file = shift;
 
