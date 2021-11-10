@@ -68,36 +68,36 @@ There is a character class defined in Perl. "\ D" is a predefined character clas
 <a href="https://perldoc.jp/docs/perl/5.16.1/perlreref.pod#CHARACTER32CLASSES">Character class - Regular expression reference</a>, quote the defined character class ..
 
 <pre>
-   \ d Numerical value
-   \ D non-numeric
-   \ w word letter
-   \ W Non-word character
-   \ s whitespace
-   \ S Non-whitespace character
-   \ h Horizontal whitespace
-   \ H Non-horizontal whitespace character
+\d Numerical value
+\D non-numeric
+\w word letter
+\W Non-word character
+\s whitespace
+\S Non-whitespace character
+\h Horizontal whitespace
+\H Non-horizontal whitespace character
   \n Non-line feed (if not followed by'{NAME}'; experimental; in character class
            Illegal; equivalent to [^\n]; similar to'.' Without/s)
-   \ v Vertical whitespace
-   \ V Non-vertical whitespace
-  \r General line breaks (?> \ V | \ x0D \ x0A)
-   \ C Match 1 byte (in Unicode, '.' Matches a character)
-   \ pP P P's name (Unicode) property
+\v Vertical whitespace
+\V Non-vertical whitespace
+  \r General line breaks (?>\V |\x0D\x0A)
+\C Match 1 byte (in Unicode, '.' Matches a character)
+\pP P P's name (Unicode) property
 \p{...} Matches a Unicode property with a name longer than one character
-   \ PP Matches non-P
+\PP Matches non-P
 \P{...} Matches one that does not have a Unicode property with a name longer than one character
-   \ X Matches Unicode extended grapheme clusters
+\X Matches Unicode extended grapheme clusters
 </pre>
 
 Character classes can also be used within character classes.
 
 <pre>
-[a-c \ d \ s]
+[a-c\d\s]
 </pre>
 
 Please note that all of these are Unicode affected. Perl supports Unicode, and a good practice for working with Japanese is all <a href="https://perlzemi.com/blog/20091118124667.html">internal strings (decoded) in your program. Treat it as a string)</a>.
 
-In this case, "\ d" matches not only half-width 0-9 but also full-width 0-9. \ s matches not only half-width space characters but also full-width space characters.
+In this case, "\ d" matches not only half-width 0-9 but also full-width 0-9.\s matches not only half-width space characters but also full-width space characters.
 
 If you want to limit it to the ASCII range, read the instructions below.
 
@@ -133,11 +133,11 @@ Notice the character class in the column labeled ASCII-range.
  alnum PosixAlnum XPosixAlnum Alpha and Digit
  alpha PosixAlpha XPosixAlpha alphabet
  ascii ASCII any ASCII character
- blank PosixBlank XPosixBlank \ h Horizontal blank;
+ blank PosixBlank XPosixBlank\h Horizontal blank;
                                                    All types are\p{HorizSpace}
                                                    Tomo (GNU extension)
  cntrl PosixCntrl XPosixCntrl Control character
- digit PosixDigit XPosixDigit \ d Numbers
+ digit PosixDigit XPosixDigit\d Numbers
  graph PosixGraph XPosixGraph Alnum and Punct
  lower PosixLower XPosixLower Lowercase
  print PosixPrint XPosixPrint Graph and Print, but
@@ -145,10 +145,10 @@ Notice the character class in the column labeled ASCII-range.
  punct PosixPunct XPosixPunct With ASCII range punctuation
                                                    Symbol; simply outside of it
                                                    punct
- space PosixSpace XPosixSpace [\ s \ cK]
-         PerlSpace XPerlSpace \ s Perl blank definition
+ space PosixSpace XPosixSpace [\ s\cK]
+         PerlSpace XPerlSpace\s Perl blank definition
  upper PosixUpper XPosixUpper Uppercase
- word PosixWord XPosixWord \ w Alnum + Unicode mark +
+ word PosixWord XPosixWord\w Alnum + Unicode mark +
                                                    Connection characters like'_'
                                                    (Perl extension)
  xdigit ASCII_Hex_Digit XPosixDigit Hexadecimal;

@@ -65,15 +65,15 @@ Frequently used ones are line breaks "\n", tabs "\t", double quotes "\" ", and b
   <tr> <th> Escape sequence </th> <th> Meaning </th> </tr>
   <tr> <td>\n </td> <td> Line breaks </td> </tr>
   <tr> <td>\t </td> <td> tab </td> </tr>
-  <tr> <td> \ "</td> <td>" </td> </tr>
-  <tr> <td> \\ </td> <td> \ </td> </tr>
+  <tr> <td>\"</td> <td>" </td> </tr>
+  <tr> <td> \\ </td> <td>\</td> </tr>
 </table>
 
 Some escape sequences allow you to write the ASCII code itself by starting with "\ x".
 
 <pre>
 # Specify ASCII code directly to express line breaks
-my $message = "Hello \ x0D \ x0A";
+my $message = "Hello\x0D\x0A";
 print $message;
 </pre>
 

@@ -505,7 +505,7 @@ sample:
     trim => sub {
       my ($vc, $value, $arg) = @_;
       
-      $value =~ s/^ \ s + //;
+      $value =~ s/^\s + //;
       $value =~ s/\ s + $//;
       
       return $value;
@@ -698,7 +698,7 @@ http_url
 <pre>
   $vc->add_check (http_url => sub {
     my ($vc, $value, $arg) = @_;
-    return defined $value && $value =~ /^ s? https ?: \/\/[-_.!~ *'() A-zA-Z0-9; \ /?: ​​\@& = + \$, % # ] + $/? 1: 0;
+    return defined $value && $value =~ /^ s? https ?: \/\/[-_.!~ *'() A-zA-Z0-9;\/?: ​​\@& = + \$, % # ] + $/? 1: 0;
   });
 </pre>
 
@@ -806,7 +806,7 @@ trim_uni
     
     return undef unless defined $value;
 
-    $value =~ s/^ \ s * (. *?) \ S * $/ $1/ms;
+    $value =~ s/^\s * (. *?)\S * $/ $1/ms;
 
     return $value;
   });
@@ -821,7 +821,7 @@ trim_uni_collapse
     return undef unless defined $value;
     
     $value =~ s/\ s +// g;
-    $value =~ s/^ \ s * (. *?) \ S * $/ $1/ms;
+    $value =~ s/^\s * (. *?)\S * $/ $1/ms;
 
     return $value;
   });
@@ -835,7 +835,7 @@ trim_uni_lead
     
     return undef unless defined $value;
     
-    $value =~ s/^ \ s + (. *) $/ $1/ms;
+    $value =~ s/^\s + (. *) $/ $1/ms;
     
     return $value;
   });
@@ -849,7 +849,7 @@ trim_uni_trail
     
     return undef unless defined $value;
 
-    $value =~ s/^ (. *?) \ S + $/ $1/ms;
+    $value =~ s/^ (. *?)\S + $/ $1/ms;
 
     return $value;
   });

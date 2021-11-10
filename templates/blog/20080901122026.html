@@ -134,11 +134,11 @@ sub dec_to_n {
     my ($dec, $n) = @_;
 
     Checking the validity of # $n
-    return if! defined $n || $n !~ /^ \ D + $/ || $n <2 || $n> 16;
+    return if! defined $n || $n !~ /^\D + $/ || $n <2 || $n> 16;
 
     Checking the validity of # $dec
     return if! defined $dec;
-    return if $dec !~ /^ ([+-]?) \ D + $/;
+    return if $dec !~ /^ ([+-]?)\D + $/;
 
     Save the # sign if it exists
     my $sign = $1 ? substr($dec, 0, 1, ''):'';
@@ -178,7 +178,7 @@ The first argument is a decimal number, and the second argument is a number that
 <b> Checking the validity of $n </b>
 
 <pre>
-return if! defined $n || $n !~ /^ \ D + $/ || $n <2 || $n> 16;
+return if! defined $n || $n !~ /^\D + $/ || $n <2 || $n> 16;
 </pre>
 
 First, $n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.
@@ -191,14 +191,14 @@ A single return returns undef for scalar contexts and an empty list for list con
 
 <pre>
 return if! defined $dec;
-return if $dec !~ /^ ([+-]?) \ D + $/;
+return if $dec !~ /^ ([+-]?)\D + $/;
 my $sign = $1 ? substr($dec, 0, 1, ''):'';
 </pre>
 
 $dec must be passed as an argument. Next, it must be a decimal integer. <a href="/blog/20080831122025.html">Regular expression for decimal integers</a>
 
 <pre>
-/ ^ ([+-]?) \ D + $/
+/ ^ ([+-]?)\D + $/
 </pre>
 
 Will be. (Read "It doesn't matter if there is a + or-at the beginning, followed by one or more numbers")
@@ -295,7 +295,7 @@ sub n_to_dec {
   my ($num_str, $n) = @_;
 
   Checking the validity of # $n
-  return if! defined $n || $n !~ /^ \ D + $/ || $n <2 || $n> 16;
+  return if! defined $n || $n !~ /^\D + $/ || $n <2 || $n> 16;
     
   # Checking the validity of $num_str (including checking the consistency with $n)
   return if! defined $num_str;
@@ -342,7 +342,7 @@ The first argument is an n-ary character string, and the second argument is a nu
 <b> Checking the validity of $n </b>
 
 <pre>
-return if! defined $n || $n !~ /^ \ D + $/ || $n <2 || $n> 16;
+return if! defined $n || $n !~ /^\D + $/ || $n <2 || $n> 16;
 </pre>
 
 First, $n must be passed as an argument. Then it must be an integer greater than or equal to 2 and less than or equal to 16. The above sentence expresses this condition on one line.

@@ -75,11 +75,9 @@ This relationship is illustrated below.
 
 <pre>
 UTF-8 byte string-JSON UTF-8 byte string-Perl data
-                      \ \
-encode_json is \
-Conversion to top left \
-                         \ decode_json is the conversion to the lower right
-                          \ \
+\\
+encode_json is\Conversion to top left\\decode_json is the conversion to the lower right
+\\
 Internal string JSON Internal string-Perl data
 </pre>
 
@@ -130,7 +128,7 @@ sub get_content {
   my $file = shift;
 
   open my $fh, '<', $file
-    or die "Can't open file \" $file \ ": $!";
+    or die "Can't open file \" $file\": $!";
   
   my $content = do {local $/; <$fh>};
  

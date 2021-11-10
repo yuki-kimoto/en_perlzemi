@@ -19,7 +19,7 @@ Even in my company, some old CGI scripts are still running. After a little resea
 So, I tried to make a command that can display the part that needs to be corrected by combining find and some commands as shown below.
 
 <pre>
-find. \ (-name \ * .pl -or -name \ * .pm -or -name \ *. cgi \) | xargs grep -e require -e do [^ a-zA-Z];
+find.\(-name\* .pl -or -name\* .pm -or -name\*. cgi \) | xargs grep -e require -e do [^ a-zA-Z];
 </pre>
 
 If you execute the above command at the top level of the directory where the Perl script exists, "require" and "do" in the script with the extensions ".pl", ".pm" and ".cgi" will be used. You can extract all the locations where you are.

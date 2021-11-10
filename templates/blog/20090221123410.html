@@ -330,18 +330,18 @@ prove is very useful because it will perform all the automated tests for you.
 The execution result of prove is as follows. You can see that the first test was successful and the second test was unsuccessful.
 
 <pre>
-t \ sum ....... ok
-t \ double ....
-t \ double .... NOK 1/1 # Failed test'double'
-# at t \ double.t line 13.
+t\sum ....... ok
+t\double ....
+t\double .... NOK 1/1 # Failed test'double'
+# at t\double.t line 13.
 # Looks like you failed 1 test of 1.
-t \ double .... dubius
+t\double .... dubius
         Test returned status 1 (wstat 256, 0x100)
 DIED. FAILED test 1
         Failed 1/1 tests, 0.00%okay
 Failed Test Stat Wstat Total Fail List of Failed
 - -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --- - -- -- -- -- -- -- -- -- -
-t \ double.t 1 256 1 1 1
+t\double.t 1 256 1 1 1
 Failed 1/2 test scripts. 1/2 subtests failed.
 Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
 Failed 1/2 test programs. 1/2 subtests failed.
@@ -350,8 +350,8 @@ Failed 1/2 test programs. 1/2 subtests failed.
 The double function is wrong, so if you modify it to double the number, all the tests will succeed as below.
 
 <pre>
-t \ sum ....... ok
-t \ double .... ok
+t\sum ....... ok
+t\double .... ok
 All tests successful.
 Files = 2, Tests = 2, 0 wallclock secs (0.00 cusr + 0.00 csys = 0.00 CPU)
 </pre>

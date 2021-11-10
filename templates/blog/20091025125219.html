@@ -805,7 +805,7 @@ If you want to delete the directory that contains the files inside, use the rmtr
 <pre>
 use File::Path 'rmtree';
 
-rmtree ($dir, {error => \ my $errors});
+rmtree ($dir, {error =>\my $errors});
 for my $diag (@$errors) {
   my ($file, $message) = each %$diag;
   warn "problem unlinking $file: $message\n";

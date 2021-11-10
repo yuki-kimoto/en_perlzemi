@@ -77,7 +77,7 @@ If you want to use double quotes in a string enclosed in double quotes, use esca
 
 <pre>
 # Use double quotes
-my $str2 = "Can't open \" foo.txt \ ".";
+my $str2 = "Can't open \" foo.txt\".";
 </pre>
 
 <h4> Variable expansion </h4>
@@ -215,7 +215,7 @@ When running on a Windows OS, remove the "CR + LF" which is a line break in Wind
 To ensure that line breaks are removed, it's a good idea to use the following <a href="/blog/20100827127859.html">regular expression</a>.
 
 <pre>
-$str =~ s/\ x0D? \ X0A? $//;
+$str =~ s/\ x0D?\X0A? $//;
 </pre>
 
 I'll talk more about regular expressions later.
@@ -585,7 +585,7 @@ my $file = 'test.txt';
 
 # Open a file with a Japanese name
 open my $fh, '<', encode ('cp932', $file)
-  or die encode ('cp932', "Can't open file \" $file \ ": $!");
+  or die encode ('cp932', "Can't open file \" $file\": $!");
 </pre>
 
 I think this is a little annoying. If you use it often, I think that subroutines and modularization are one of the ways to make it easier.

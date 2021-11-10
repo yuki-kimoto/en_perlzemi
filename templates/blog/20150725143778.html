@@ -110,8 +110,8 @@ make manifest
 Unnecessary files can be added to MANIFEST by writing them in <b> MANIFEST.SKIP </b>. Below is a sample of MANIFEST.SKIP. You can specify the file you want to skip with <a href="/blog/20100827127859.html">Regular expression</a>.
 
 <pre>
-\ bRCS \ b
-\ bCVS \ b
+\ bRCS\b
+\ bCVS\b
 ^ MANIFEST \.
 ^ Makefile $
 ^ Build $
@@ -121,7 +121,7 @@ Unnecessary files can be added to MANIFEST by writing them in <b> MANIFEST.SKIP 
 ^ blib/^ pm_to_blib
 \ .cvsignore
 \ .gz $
-^ \ .git
+^\.git
 ^ cover_db/^ MYMETA.yml $
 ^ MYMETA.json $
 ^ spvm $

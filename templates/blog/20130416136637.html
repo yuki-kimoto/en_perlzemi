@@ -949,9 +949,7 @@ XPVNV is assigned to SV type sv_any. It represents a number.
 # define new_XPVNV () new_body_allocated (SVt_PVNV)
 
 // sv.c
-# define new_body_allocated (sv_type) \
-    (void *) ((char *) S_new_body (aTHX_ sv_type) \
-- body_by_type [sv_type] .offset)
+# define new_body_allocated (sv_type)\    (void *) ((char *) S_new_body (aTHX_ sv_type)\- body_by_type [sv_type] .offset)
 
 // sv.c
 STATIC void *
@@ -963,15 +961,8 @@ S_new_body (pTHX_ const svtype sv_type)
 }
 
 // sv.c
-# define new_body_inline (xpv, sv_type) \
-    STMT_START {\
-void ** const r3wt = & PL_body_roots [sv_type]; \
-xpv = (PTR_TBL_ENT_t *) (* ((void **) (r3wt)) \
-? * ((void **) (r3wt)): Perl_more_bodies (aTHX_ sv_type, \
-bodies_by_type [sv_type] .body_size, \
-bodies_by_type [sv_type] .arena_size)); \
-* (r3wt) = * (void **) (xpv); \
-    } STMT_END
+# define new_body_inline (xpv, sv_type)\    STMT_START {\
+void ** const r3wt = & PL_body_roots [sv_type];\xpv = (PTR_TBL_ENT_t *) (* ((void **) (r3wt))\? * ((void **) (r3wt)): Perl_more_bodies (aTHX_ sv_type,\bodies_by_type [sv_type] .body_size,\bodies_by_type [sv_type] .arena_size));\* (r3wt) = * (void **) (xpv);\    } STMT_END
 
 // sv.c
 / *
@@ -1003,25 +994,14 @@ struct STRUCT_SV {/ * struct sv {*/    _SV_HEAD (void *);
 };
 
 // sv.h
-/ * start with 2 sv-head building blocks */# define _SV_HEAD (ptrtype) \
-    ptrtype sv_any;/* pointer to body */\
+/ * start with 2 sv-head building blocks */# define _SV_HEAD (ptrtype)\    ptrtype sv_any;/* pointer to body */\
     U32 sv_refcnt;/* how many references to us */\
     U32 sv_flags/* what we are */
 // sv.h
-# define _SV_HEAD_UNION \
-    union {\
+# define _SV_HEAD_UNION\    union {\
 char * svu_pv;/* pointer to malloced string */\
-IV svu_iv; \
-UV svu_uv; \
-_NV_BODYLESS_UNION \
-SV * svu_rv;/* pointer to another SV */\
-struct regexp * svu_rx; \
-SV ** svu_array; \
-HE ** svu_hash; \
-GP * svu_gp; \
-PerlIO * svu_fp; \
-    } sv_u \
-    _SV_HEAD_DEBUG
+IV svu_iv;\UV svu_uv;\_NV_BODYLESS_UNION\SV * svu_rv;/* pointer to another SV */\
+struct regexp * svu_rx;\SV ** svu_array;\HE ** svu_hash;\GP * svu_gp;\PerlIO * svu_fp;\    } sv_u\    _SV_HEAD_DEBUG
 </pre>
 
 sv_any is a pointer to a structure that stores the actual value held by the SV. sv_refcnt is a reference count, sv_flag is a type and flag related to SV, for example, the type is an integer, the flag is read-only, and so on. I'm not sure how sv_u is used.
@@ -1156,21 +1136,7 @@ struct op {
 # ifdef BASEOP_DEFINITION
 # define BASEOP BASEOP_DEFINITION
 # else
-# define BASEOP \
-    OP * op_next; \
-    OP * _OP_SIBPARENT_FIELDNAME; \
-    OP * (* op_ppaddr) (pTHX); \
-    PADOFFSET op_targ; \
-    PERL_BITFIELD16 op_type: 9; \
-    PERL_BITFIELD16 op_opt: 1; \
-    PERL_BITFIELD16 op_slabbed: 1; \
-    PERL_BITFIELD16 op_savefree: 1; \
-    PERL_BITFIELD16 op_static: 1; \
-    PERL_BITFIELD16 op_folded: 1; \
-    PERL_BITFIELD16 op_moresib: 1; \
-    PERL_BITFIELD16 op_spare: 1; \
-    U8 op_flags; \
-    U8 op_private;
+# define BASEOP\    OP * op_next;\    OP * _OP_SIBPARENT_FIELDNAME;\    OP * (* op_ppaddr) (pTHX);\    PADOFFSET op_targ;\    PERL_BITFIELD16 op_type: 9;\    PERL_BITFIELD16 op_opt: 1;\    PERL_BITFIELD16 op_slabbed: 1;\    PERL_BITFIELD16 op_savefree: 1;\    PERL_BITFIELD16 op_static: 1;\    PERL_BITFIELD16 op_folded: 1;\    PERL_BITFIELD16 op_moresib: 1;\    PERL_BITFIELD16 op_spare: 1;\    U8 op_flags;\    U8 op_private;
 # endif
 
 / *
@@ -1302,19 +1268,8 @@ PADNAME
 typedef struct padname PADNAME;
 
 // //
-# define _PADNAME_BASE \
-    char * xpadn_pv; \
-    HV * xpadn_ourstash; \
-    union {\
-HV * xpadn_typestash; \
-CV * xpadn_protocv; \
-    } xpadn_type_u; \
-    U32 xpadn_low; \
-    U32 xpadn_high; \
-    U32 xpadn_refcnt; \
-    int xpadn_gen; \
-    U8 xpadn_len; \
-    U8 xpadn_flags
+# define _PADNAME_BASE\    char * xpadn_pv;\    HV * xpadn_ourstash;\    union {\
+HV * xpadn_typestash;\CV * xpadn_protocv;\    } xpadn_type_u;\    U32 xpadn_low;\    U32 xpadn_high;\    U32 xpadn_refcnt;\    int xpadn_gen;\    U8 xpadn_len;\    U8 xpadn_flags
 
 struct padname {
     _PADNAME_BASE;
@@ -1361,12 +1316,8 @@ STMT_START and STMT_END are mechanisms to safely execute statements in macros. Y
 <pre>
 // A mechanism for safely executing a macro by wrapping the body of the macro in a do-while loop.
 
-# define SWAP (x, y) \
-  do {\
-    tmp = x; \
-    x = y; \
-    y = tmp;} \
-  while (0)
+# define SWAP (x, y)\  do {\
+    tmp = x;\    x = y;\    y = tmp;}\  while (0)
 </pre>
 
 
@@ -1385,10 +1336,8 @@ Renew stands for realloc. It will also check if the memory to be secured does no
 
 <pre>
 // handy.h
-# define Renew(v, n, t) \
-(v = (MEM_WRAP_CHECK_ (n, t) (t *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
-# define Renewc (v, n, t, c) \
-(v = (MEM_WRAP_CHECK_ (n, t) (c *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
+# define Renew(v, n, t)\(v = (MEM_WRAP_CHECK_ (n, t) (t *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
+# define Renewc (v, n, t, c)\(v = (MEM_WRAP_CHECK_ (n, t) (c *) MEM_LOG_REALLOC (n, t, v, saferealloc ((Malloc_t) (v), (MEM_SIZE) ((n) * sizeof (t)))))
 
 </pre>
 
