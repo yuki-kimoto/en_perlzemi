@@ -498,9 +498,9 @@ Creating an array hash. Let's assume a scene where hourly aggregation is perform
 <pre>
 # Time => [Number, average response time, maximum response time]
 my $infos = {
-  '01: 01'=> [3, 2.1, 4.6],
-  '01: 02'=> [5, 4.1, 7.4],
-  '01: 03'=> [6, 3.5, 5.7]
+  '01:01'=> [3, 2.1, 4.6],
+  '01:02'=> [5, 4.1, 7.4],
+  '01:03'=> [6, 3.5, 5.7]
 };
 </pre>
 
@@ -560,9 +560,9 @@ Five
 Next, let's output all records separated by commas as shown below.
 
 <pre>
-01: 01,3,2.1,4.6
-01: 02,5,4.1,7.4
-01: 03,6,3.5,5.7
+01:01,3,2.1,4.6
+01:02,5,4.1,7.4
+01:03,6,3.5,5.7
 </pre>
 
 <pre>
@@ -580,15 +580,15 @@ Just join them with the join function, as explained in "Array of arrays" and "Ar
 Now consider creating an array hash from a comma-separated file. Suppose you have the following files: Suppose the file name is "access.log". The first column is the time of access (hours: minutes) and the second column is the response time.
 
 <pre>
-01: 01,3
-01: 01,2
-01: 02,5
-01: 02,3
-01: 02,2
-01: 03,9
-01: 03,4
-01: 03,6
-01: 03,1
+01:01,3
+01:01,2
+01:02,5
+01:02,3
+01:02,2
+01:03,9
+01:03,4
+01:03,6
+01:03,1
 </pre>
 
 From such a file, let's create a hash of an array with "number of cases per time", "total response time", and "maximum response time" as data. The total response time is saved because the average response time can be calculated later by "Total response time / number of cases".
@@ -622,17 +622,17 @@ You can hash an array like this:
 
 <pre>
 my $infos = {
-    '01: 03'=> [
+    '01:03'=> [
          Four,
          20, 20,
          9
    ],,
-    '01: 01'=> [
+    '01:01'=> [
          2,
          Five,
          3
    ],,
-    '01: 02'=> [
+    '01:02'=> [
          3,
          Ten,
          Five
@@ -652,7 +652,7 @@ Creating a hash of hashes. Imagine what you're doing when you're doing hourly ag
 my $infos = {
   '01:01' => {count => 3, ave_time => 2.1, max_time => 4.6},
   '01:02' => {count => 5, ave_time => 4.1, max_time => 7.4},
-  '01: 03'=> {count => 6, ave_time => 3.5, max_time => 5.7}
+  '01:03'=> {count => 6, ave_time => 3.5, max_time => 5.7}
 };
 </pre>
 
@@ -706,9 +706,9 @@ max_time: 5.7
 Next, let's output the data created above by separating all records with commas as shown below.
 
 <pre>
-01: 01,3,2.1,4.6
-01: 02,5,4.1,7.4
-01: 03,6,3.5,5.7
+01:01,3,2.1,4.6
+01:02,5,4.1,7.4
+01:03,6,3.5,5.7
 </pre>
 
 <pre>
@@ -731,15 +731,15 @@ Just join them with the join function, as explained in "Array of arrays" and "Ar
 Now consider creating a hash of hashes from a comma-separated file. Suppose you have the following files: Suppose the file name is "access.log". The first column is the time of access (hours: minutes) and the second column is the response time.
 
 <pre>
-01: 01,3
-01: 01,2
-01: 02,5
-01: 02,3
-01: 02,2
-01: 03,9
-01: 03,4
-01: 03,6
-01: 03,1
+01:01,3
+01:01,2
+01:02,5
+01:02,3
+01:02,2
+01:03,9
+01:03,4
+01:03,6
+01:03,1
 </pre>
 
 From such a file, let's create a hash of a hash with the total number of cases per time, the total response time, and the maximum response time as data. The total response time is saved because the average response time can be calculated by "Total response time / number of cases".
@@ -774,17 +774,17 @@ You can hash the following hashes.
 
 <pre>
 my $infos = {
-    '01: 03'=> {
+    '01:03'=> {
         'max_time' => 9,
         'count' => 4,
         'total_time' => 20
     },
-    '01: 01'=> {
+    '01:01'=> {
         'max_time' => 3,
         'count' => 2,
         'total_time' => 5
                      },
-    '01: 02'=> {
+    '01:02'=> {
         'max_time' => 5,
         'count' => 3,
         'total_time' => 10

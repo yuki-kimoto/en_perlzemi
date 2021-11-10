@@ -15,17 +15,17 @@ my @records = (
   '5 11:00:00 ooo',
 );
 
-my $start_time = '08: 00: 00';
+my $start_time = '08:00:00';
 
 # This time is not included
-my $end_time = '11: 00: 00';
+my $end_time = '11:00:00';
 
 for my $record(@records) {
   
   # Cut out the time
   if ($record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
     # You can compare as a character string by matching the format.
-    # '7: 00: 00'->'07: 00: 00'
+    # '7: 00:00'->'07:00:00'
     my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
     
     # Cut out the records included from the start time to the end time.
