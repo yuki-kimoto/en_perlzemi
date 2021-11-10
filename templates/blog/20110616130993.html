@@ -5,7 +5,7 @@ The g> tag helper makes it easy to write <strong> hyperlinks </strong>.
 <%= link_to index => {foo =>'bar'} => (class =>'links') => begin%>
   Home
 <%end%>
-<%= link_to'/ path / to / file' => begin%> File <%end%>
+<%= link_to'/ path/to/file' => begin%> File <%end%>
 <%= link_to'http://mojolicio.us' => begin%> Mojolicious <%end%>
 <%= link_to url_for->query (foo => $foo) => begin%> Retry <%end%>
 </pre>
@@ -32,8 +32,8 @@ The <strong> image </strong> tag helper makes it easy to write <strong> image ta
 It will be expanded as follows. The first argument is the URL to the image. This URL is expanded by the url_for method. The remaining arguments are used as attributes.
 
 <pre>
-<img src = "/ images / foo.png" />
-<img alt = "Foo" src = "/ images / foo.png" />
+<img src = "/ images/foo.png" />
+<img alt = "Foo" src = "/ images/foo.png" />
 </pre>
 
 <h3> Style sheet (CSS) </h3>
@@ -50,8 +50,8 @@ The <strong> stylesheet </strong> tag helper makes it easy to write external lin
 When specifying a link to an external style sheet, describe the path in the first argument. If you want to describe the style sheet itself, specify the block (begin to end) as the first argument. It will be expanded to the following HTML.
 
 <pre>
-<link href = "/ foo.css" media = "screen" rel = "stylesheet" type = "text / css" />
-<style type = "text / css"><! [CDATA [
+<link href = "/ foo.css" media = "screen" rel = "stylesheet" type = "text/css" />
+<style type = "text/css"><! [CDATA [
   body {color: # 000}
 ]]> </style>
 </pre>
@@ -70,8 +70,8 @@ The <strong> javascript </strong> tag helper makes it easy to write JavaScript s
 The argument can be an external JavaScript path or block (begin to end). You can write the actual JavaScript source code inside the block.
 
 <pre>
-<script src = "/ script.js" type = "text / javascript" />
-<script type = "text / javascript"><! [CDATA [
+<script src = "/ script.js" type = "text/javascript" />
+<script type = "text/javascript"><! [CDATA [
   var a ='b';
 ]]> </script>
 </pre>

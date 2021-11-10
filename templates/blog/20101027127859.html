@@ -33,23 +33,23 @@ cpanm makes it easy to install CPAN modules in your local environment. If you do
 To use the installed modules and commands, you need to add the following settings to the bash configuration file called ".bashrc".
 
 <pre>
-export PERL_CPANM_OPT = "- local-lib = ~ / perl5"
-export PATH = $HOME / perl5 / bin: $PATH;
-export PERL5LIB = $HOME / perl5 / lib / perl5: $PERL5LIB;
+export PERL_CPANM_OPT = "- local-lib = ~/perl5"
+export PATH = $HOME/perl5/bin: $PATH;
+export PERL5LIB = $HOME/perl5/lib/perl5: $PERL5LIB;
 </pre>
 
-PERL_CPANM_OPT is an environment variable for setting cpanm. Specifies the directory where the module will be installed. By default, it is installed under "~ / perl5", but a warning will occur, so specify it explicitly. PATH is a setting for using installed commands. For example, the cpanm command will be available. You can add a module include path with PERL5LIB. With this setting, the modules installed from the script will be available.
+PERL_CPANM_OPT is an environment variable for setting cpanm. Specifies the directory where the module will be installed. By default, it is installed under "~/perl5", but a warning will occur, so specify it explicitly. PATH is a setting for using installed commands. For example, the cpanm command will be available. You can add a module include path with PERL5LIB. With this setting, the modules installed from the script will be available.
 
 Edit ".bashrc" as follows and add the above description.
 
 <pre>
-vi ~ / .bashrc
+vi ~/.bashrc
 </pre>
 
 Then reflect this setting.
 
 <pre>
-source ~ / .bashrc
+source ~/.bashrc
 </pre>
 
 <h3> Module installation </h3>
@@ -60,10 +60,10 @@ Let's try installing a module called Mojolicious.
 cpanm Mojolicious
 </pre>
 
-You can use the ls command to verify that Mojolicious is installed in the directory "~ / perl5 / lib / perl5".
+You can use the ls command to verify that Mojolicious is installed in the directory "~/perl5/lib/perl5".
 
 <pre>
-ls ~ / perl5 / lib / perl5
+ls ~/perl5/lib/perl5
 </pre>
 
 Also try to see if the module is actually available. If you execute the following command from the command line and no error occurs, it is successful.
@@ -72,7 +72,7 @@ Also try to see if the module is actually available. If you execute the followin
 perl -MMojolicious -e 1
 </pre>
 
-Now you can install more and more modules in your local environment. If you want to put the module on another server, just copy "~ / perl5" entirely if the architecture is exactly the same. Of course, don't forget to write ".bashrc". Deploying in Perl is very easy, isn't it?
+Now you can install more and more modules in your local environment. If you want to put the module on another server, just copy "~/perl5" entirely if the architecture is exactly the same. Of course, don't forget to write ".bashrc". Deploying in Perl is very easy, isn't it?
 
 <h3> Install the CPAN module in the directory you specified using cpanm </h3>
 

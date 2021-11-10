@@ -25,7 +25,7 @@ use Fcntl qw /: DEFAULT: flock: seek /;
 # Be careful as it will be overwritten
 my $file = "data_20080814.txt";
 
-# Open in read / write mode (not very secure)
+# Open in read/write mode (not very secure)
 If there is no file with # O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
@@ -66,7 +66,7 @@ use warnings;
 use FindBin;
 use Time::HiRes 'usleep';
 
-my $script = "$FindBin::Bin / sample_20080814.pl";
+my $script = "$FindBin::Bin/sample_20080814.pl";
 
 while (1) {
   # Repeat the above script.
@@ -134,10 +134,10 @@ LOCK_NB is used with LOCK_SH LOCK_EX to return control to the program without wa
 
 As a side note: DEFAULT uses his SEEK_SET in the seek function to use O_RDWR and O_CREAT in the <a href="/blog/20080804121794.html">sysopen function</a>. Therefore, it is specified.
 
-<h4> (2) If the file does not exist, create it and open it in read / write mode </h4>
+<h4> (2) If the file does not exist, create it and open it in read/write mode </h4>
 
 <pre>
-# Open in read / write mode (not very secure)
+# Open in read/write mode (not very secure)
 If there is no file with # O_CREAT, create it.
 sysopen(my $fh, $file, O_RDWR | O_CREAT)
   or die "Cannot open $file: $!";
@@ -196,7 +196,7 @@ Calling the close function unlocks the file.
 use FindBin;
 use Time::HiRes 'usleep';
 
-my $script = "$FindBin::Bin / sample_20080814.pl";
+my $script = "$FindBin::Bin/sample_20080814.pl";
 
 while (1) {
   # Repeat the above script.

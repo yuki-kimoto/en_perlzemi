@@ -39,16 +39,16 @@ sudo cpan App::perlbrew
 perlbrew init
 </pre>
 
-Next, let's pass the path of perlbrew. Add the configuration file for bash provided by perlbrew to "~ / .bashrc" (in the case of bash).
+Next, let's pass the path of perlbrew. Add the configuration file for bash provided by perlbrew to "~/.bashrc" (in the case of bash).
 
 <pre>
-echo "source ~ / perl5 / perlbrew / etc / bashrc">> ~ / .bashrc
+echo "source ~/perl5/perlbrew/etc/bashrc">> ~/.bashrc
 </pre>
 
 Reload ".bashrc".
 
 <pre>
-source ~ / .bashrc
+source ~/.bashrc
 </pre>
 
 <h3> Installing Perl in the user environment </h3>
@@ -83,7 +83,7 @@ The available Perls are displayed as shown below. The one with the asterisk is t
 
 <pre>
   perl-5.28.2
-* / usr / bin / perl (5.8.8)
+*/usr/bin/perl (5.8.8)
 </pre>
 
 Use perlbrew's switch command to switch Perl.
@@ -146,7 +146,7 @@ env | grep PATH
 You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
 
 <pre>
-PATH = / home / admins / perl5 / perlbrew / bin: / home / admins / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / admins / bin
+PATH =/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
 </pre>
 
 Edit crontab with the following command.
@@ -157,7 +157,7 @@ crontab -e
 Then write the above PATH value to the top of crontab.
 
 <pre>
-PATH = / home / admins / perl5 / perlbrew / bin: / home / admins / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / admins / bin
+PATH =/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
 
 # cron settings continue ...
 </pre>
@@ -169,7 +169,7 @@ Now cron will use the specified version of Perl.
 Write the first line of the Perl script using the env command as shown below.
 
 <pre>
-# ! / usr / bin / env perl
+# !/usr/bin/env perl
 </pre>
 
 This will automatically detect perl from the set PATH value.

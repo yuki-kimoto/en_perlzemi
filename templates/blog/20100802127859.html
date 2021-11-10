@@ -218,7 +218,7 @@ perldoc -f -X
 You may sometimes see tr, but the tr operator does string substitutions. The following sentence replaces "a ⇒ 1", "b ⇒ 2", and "c ⇒ 3".
 
 <pre>
-$str = ~ tr / abc / 123 /;
+$str = ~ tr/abc/123 /;
 </pre>
 
 <h3> See the settings in Perl itself </h3>
@@ -236,7 +236,7 @@ will do.
 The notation of dereferencing a hash reference and hash slicing is very hard to read.
 
 <pre>
-my ($key1, $key2, $key3) = @{$hash}{qw / key1 key2 key3 /};
+my ($key1, $key2, $key3) = @{$hash}{qw/key1 key2 key3 /};
 </pre>
 
 I think it is better to substitute one by one if possible.
@@ -350,24 +350,23 @@ use vars 'VAR';
 q is a single quote operator. It is the same as single quote except that single quote can be used.
 
 <pre>
-my $str = q / aaa'''bbb /;
+my $str = q/aaa'''bbb /;
 </pre>
 
 qq is a double quote operator. Same as double quotes except that double quotes can be used.
 
 <pre>
-my $str = qq / aaa "" "$str /;
+my $str = qq/aaa "" "$str /;
 </pre>
 
 qw is a string list operator. You can easily write a list of strings.
 <pre>
 Same as # ('foo', 'bar', 'baz')
-my $str = qw / foo bar baz /
-</pre>
+my $str = qw/foo bar baz/</pre>
 
 qr is a regular expression reference.
 <pre>
-my $regex_ref = qr / ^ aaa. * Bbb $/ ms;
+my $regex_ref = qr/^ aaa. * Bbb $/ ms;
 </pre>
 
 <h3> 1; is required at the end of the module </h3>
@@ -530,7 +529,7 @@ On Windows, asynchronous IO processing can only be done on sockets. Not for file
 On Windows, it doesn't work well if the argument of the glob function contains a space. To get this to work, you need to enclose it in double quotes.
 
 <pre>
-my @files = glob('"C: / Documents and Settings / *. *"');
+my @files = glob('"C:/Documents and Settings/*. *"');
 </pre>
 
 <h3> If you need parentheses for the subroutine </h3>
@@ -578,7 +577,7 @@ Anonymous subroutines that appear to be dynamically created are compiled at the 
 If you want to get a part of the matched character using <a href="/blog/20100827127859.html">regular expression</a>, write as follows in combination with the if statement.
 
 <pre>
-if ($str = ~ / regular expression /) {
+if ($str = ~/regular expression /) {
   my $match1 = $1;
   my $match2 = $2;
 }
@@ -587,7 +586,7 @@ if ($str = ~ / regular expression /) {
 Another way to write it is to evaluate the regular expression in the list context to get the matched characters.
 
 <pre>
-my ($match1, $match2) = $str = ~ / regular expression /;
+my ($match1, $match2) = $str = ~/regular expression /;
 </pre>
 
 <h3> Change the enclosing character of the regular expression </h3>
@@ -595,13 +594,12 @@ my ($match1, $match2) = $str = ~ / regular expression /;
 Normally, the regular expression is written as follows.
 
 <pre>
-$str = ~ / regular expression /
-</pre>
+$str = ~/regular expression/</pre>
 
 There is another way of writing that has the same meaning. Using m has the same meaning as above.
 
 <pre>
-$str = ~ m / regular expression /;
+$str = ~ m/regular expression /;
 </pre>
 
 The reason for this is that you can change the regex enclosing character if you find it very difficult to escape when there are a lot of "/" s in the regex. This is an example of changing the enclosing character to "#".
@@ -637,7 +635,7 @@ It is convenient to write the configuration file in Perl. Use <a href="/blog/200
 <pre>
 my $conf_file = "app.conf";
 my $conf = do $conf_file
-  or die qq / Can't load config file "$conf_file": $! $@/;
+  or die qq/Can't load config file "$conf_file": $! $@/;
 </pre>
 
 The contents of the configuration file.

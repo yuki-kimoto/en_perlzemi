@@ -31,7 +31,7 @@ DBI requires ODBC as a driver. The corresponding Perl module is DBD::ODBC. DBD::
 Unix ODBC is one of the Unix implementations of ODBC. Let's install Unix ODBC from source code. As the number of dependent modules increases, GUI support is optionally removed. Make will take some time, so wait for a while.
 
 <pre>
-cd / usr / local / src
+cd/usr/local/src
 wget http://www.unixodbc.org/unixODBC-2.3.0.tar.gz
 tar -xzvf unixODBC-2.3.0.tar.gz
 cd unixODBC-2.3.0
@@ -40,7 +40,7 @@ make
 make install
 </pre>
 
-This library is installed under "/ usr / local / lib". Let's check.
+This library is installed under "/ usr/local/lib". Let's check.
 
 <pre>
 ls /usr/local/lib/libodbc.so
@@ -51,18 +51,18 @@ ls /usr/local/lib/libodbc.so
 FreeTDS is a library that implements the "Tabular Data Stream" communication protocol. Used by Unix ODBC.
 
 <pre>
-cd / usr / local / src
+cd/usr/local/src
 wget http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-0.82.tar.gz
 tar -xzvf freetds-0.82.tar.gz
 cd freetds-0.82
-export LD_LIBRARY_PATH = / usr / local / lib
-export LD_RUN_PATH = / usr / local / lib
-./configure - with-unixodbc = / usr / local - with-msdblib
+export LD_LIBRARY_PATH =/usr/local/lib
+export LD_RUN_PATH =/usr/local/lib
+./configure - with-unixodbc =/usr/local - with-msdblib
 make
 make install
 </pre>
 
-This library is installed under "/ usr / local / lib". Let's check.
+This library is installed under "/ usr/local/lib". Let's check.
 
 <pre>
 ls /usr/local/lib/libtdsodbc.so
@@ -73,7 +73,7 @@ ls /usr/local/lib/libtdsodbc.so
 Install the DBD::ODBC module.
 
 <pre>
-export ODBCHOME = / usr / local
+export ODBCHOME =/usr/local
 cpan DBD::ODBC
 </pre>
 

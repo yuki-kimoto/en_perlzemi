@@ -23,7 +23,7 @@ my $end_time = '11:00:00';
 for my $record(@records) {
   
   # Cut out the time
-  if ($record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
+  if ($record = ~/(\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
     # You can compare as a character string by matching the format.
     # '7: 00:00'->'07:00:00'
     my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
@@ -50,7 +50,7 @@ Execution result
 Use the sprintf function to format the time. By adjusting the length of the character string to the same length, it is possible to compare with the character string.
 
 <pre>
-if ($record = ~ / (\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
+if ($record = ~/(\ d {1,2}): (\ d {2}) :( \ d {2}) /) {
   my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
   
   if ($time ge $start_time && $time lt $end_time) {
@@ -70,4 +70,4 @@ if ($time ge $start_time && $time lt $end_time) {
 </pre>
 
 <hr>
-<a href="/blog/20080229122347.html">Perl Reverse Dictionary / To Date and Time</a>
+<a href="/blog/20080229122347.html">Perl Reverse Dictionary/To Date and Time</a>

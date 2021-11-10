@@ -21,30 +21,28 @@
 To find out if a string contains the specified regular expression:
 
 <pre>
-$message = ~ / play /
-</pre>
+$message = ~/play/</pre>
 
-$string = ~ / Regular expression /. If $string contains a regular expression, it returns non-zero. = ~ Is called the pattern matching operator. In this example, we're using the letters play instead of regular expressions.
+$string = ~/Regular expression /. If $string contains a regular expression, it returns non-zero. = ~ Is called the pattern matching operator. In this example, we're using the letters play instead of regular expressions.
 
 <h3> Pattern matching does not match </h3>
 
 To check if a string contains the specified regular expression:
 
 <pre>
-$message! ~ / You /
-</pre>
+$message! ~/You/</pre>
 
-$string! ~ / Regular expression /. If $string does not contain a regular expression, it returns non-zero.
+$string! ~/Regular expression /. If $string does not contain a regular expression, it returns non-zero.
 
 <h3> Replacement </h3>
 
 To replace a string with a regular expression:
 
 <pre>
-$message = ~ s / tennis / baseball /;
+$message = ~ s/tennis/baseball /;
 </pre>
 
-$string = ~ s / regular expression / replacement string /. If $string contains a regular expression, replace it with the specified string. The $message itself will be replaced.
+$string = ~ s/regular expression/replacement string /. If $string contains a regular expression, replace it with the specified string. The $message itself will be replaced.
 
 <h3> Sample </h3>
 
@@ -59,22 +57,21 @@ use warnings;
 my $message ='I play tennis.';
 print "\$message =" $message'\n\n ";
 
-# Pattern matching basics ($var = ~ / regular expression /) (Here, just a string (play))
+# Pattern matching basics ($var = ~/regular expression /) (Here, just a string (play))
 print "1: Check if the string contains play.\n";
-if ($message = ~ / play /) {
+if ($message = ~/play /) {
   print "\$message contains play.\n\n";
 }
 
 print "2: Check if the string contains you.\n";
-if ($message! ~ / You /) {
+if ($message! ~/You /) {
   print "\$message does not contain you.\n\n";
 }
 
 # Substitution basics
 print "3: Replace tennis in the string with baseball.\n";
 
-# $var = ~ s / regular expression / replacement string /
-$message = ~ s / tennis / baseball /;
+# $var = ~ s/regular expression/replacement string/$message = ~ s/tennis/baseball /;
 
 print "$message\n";
 </pre>

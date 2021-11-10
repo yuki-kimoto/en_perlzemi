@@ -20,27 +20,26 @@ otsune introduced <a href="http://www.otsune.com/bsd/tips/usercpaninstall.html">
 
 <pre>
 # Create a directory for the library
-mkdir -p ~ / local
+mkdir -p ~/local
 
 # Create a CPAN config file
 echo no | cpan
 
 Rewrite the configuration file MyConfig.pm for the # cpan command
 # (Please copy up to the line __END__ at once and execute it. If it stops, enter)
-perl-~ / .cpan / CPAN / MyConfig.pm> ~ / .cpan / CPAN / MyConfig.pm.edit
+perl-~/.cpan/CPAN/MyConfig.pm> ~/.cpan/CPAN/MyConfig.pm.edit
 while (<>) {
     if (/ ^ \ s * \}; /) {
-        print q # 'make_install_arg' => qq [SITEPREFIX = $ENV{HOME} / local], # , "\n",
-              q # 'makepl_arg' => qq [INSTALLDIRS = site LIB = $ENV{HOME} / local / lib / perl5 PREFIX = $ENV{HOME} / local], # , "\n",
-              q # 'mbuildpl_arg' => qq [./Build - install_base $ENV{HOME} / local], # , "\n",
-              q # 'urllist' => [q [ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/], q [ftp://ftp.ring.gr.jp/pub/ lang / perl / CPAN /]], # , "\n",
+        print q # 'make_install_arg' => qq [SITEPREFIX = $ENV{HOME}/local], # , "\n",
+              q # 'makepl_arg' => qq [INSTALLDIRS = site LIB = $ENV{HOME}/local/lib/perl5 PREFIX = $ENV{HOME}/local], # , "\n",
+              q # 'mbuildpl_arg' => qq [./Build - install_base $ENV{HOME}/local], # , "\n",
+              q # 'urllist' => [q [ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/], q [ftp://ftp.ring.gr.jp/pub/ lang/perl/CPAN /]], # , "\n",
               q # }; # , "\n";
     }
-    elsif (! / ^ \ s *'make_install_arg' / &&
-        ! / ^ \ s *'makepl_arg' / &&
-        ! / ^ \ s *'mbuildpl_arg' / &&
-        ! / ^ \ s *'urllist' /
-    )
+    elsif (!/^ \ s *'make_install_arg'/&&
+        !/^ \ s *'makepl_arg'/&&
+        !/^ \ s *'mbuildpl_arg'/&&
+        !/^ \ s *'urllist'/    )
     {
         print;
     }
@@ -49,22 +48,22 @@ __END__
 
 
 # Overwrite the current configuration file with the edited file
-mv -f ~ / .cpan / CPAN / MyConfig.pm.edit ~ / .cpan / CPAN / MyConfig.pm
+mv -f ~/.cpan/CPAN/MyConfig.pm.edit ~/.cpan/CPAN/MyConfig.pm
 
 # Perl library location settings
-echo'setenv PATH $HOME / local / bin: $PATH' >> ~ / .cshrc
-echo'setenv PERL5LIB $HOME / local / lib / perl5: $HOME / local / lib / perl5 / site_perl' >> ~ / .cshrc
+echo'setenv PATH $HOME/local/bin: $PATH' >> ~/.cshrc
+echo'setenv PERL5LIB $HOME/local/lib/perl5: $HOME/local/lib/perl5/site_perl' >> ~/.cshrc
 
 # Avoid BSD PAN errors
-echo'setenv PKG_DBDIR $HOME / local / var / db / pkg' >> ~ / .cshrc
-echo'setenv PORT_DBDIR $HOME / local / var / db / pkg' >> ~ / .cshrc
-echo'setenv INSTALL_AS_USER >> ~ / .cshrc'
-echo'setenv LD_LIBRARY_PATH $HOME / local / lib' >> ~ / .cshrc
-mkdir -p ~ / local / var / db / pkg
+echo'setenv PKG_DBDIR $HOME/local/var/db/pkg' >> ~/.cshrc
+echo'setenv PORT_DBDIR $HOME/local/var/db/pkg' >> ~/.cshrc
+echo'setenv INSTALL_AS_USER >> ~/.cshrc'
+echo'setenv LD_LIBRARY_PATH $HOME/local/lib' >> ~/.cshrc
+mkdir -p ~/local/var/db/pkg
 
 
 # Reflect the contents of .cshrc in environment variables
-source ~ / .cshrc
+source ~/.cshrc
 
 Update to the latest version of # cpan
 cpan -i Bundle::CPAN
@@ -75,6 +74,6 @@ cpan -i Bundle::CPAN
 You can now use cpan.
 
 <h3> If you want to start over for some reason </h3>
-I'm messing around with the directories ~ / local, ~ / .cpan, and the csh configuration file ~ / .cshrc.
-If you want to start over, delete the ~ / local and ~ / .cpan directories.
-Also, open ~ / .cshrc with vi and delete the items added at the end.
+I'm messing around with the directories ~/local, ~/.cpan, and the csh configuration file ~/.cshrc.
+If you want to start over, delete the ~/local and ~/.cpan directories.
+Also, open ~/.cshrc with vi and delete the items added at the end.

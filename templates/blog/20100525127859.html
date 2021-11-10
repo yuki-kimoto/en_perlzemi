@@ -17,7 +17,7 @@ The <strong> lib </strong> module allows you to add a search path for a module.
 
 <pre>
 # Add module search path
-use lib 'home / user / local / lib';
+use lib 'home/user/local/lib';
 </pre>
 
 In Perl, the <a href="/blog/20180508152716.html">list of module search paths</a> is stored in the special variable "@INC", but the lib module is at the beginning of @INC at compile time. Add the search path to.
@@ -25,7 +25,7 @@ In Perl, the <a href="/blog/20180508152716.html">list of module search paths</a>
 <pre>
 # lib module adds path to the beginning of @INC
 BEGIN {
-  unshift @INC, '/ home / user / local / lib';
+  unshift @INC, '/ home/user/local/lib';
 }
 </pre>
 
@@ -34,7 +34,7 @@ The lib module is often used in combination with the <a href="/blog/201005241276
 <pre>
 # Add the lib directory of the directory where the script exists to the search path
 use FindBin;
-use lib "$FindBin::Bin / lib";
+use lib "$FindBin::Bin/lib";
 </pre>
 
 <h4> FAQ about lib module </h4>

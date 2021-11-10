@@ -44,7 +44,7 @@ If you proceed to the end, you are done.
 
 Since Perl 5.10 and later, you can use Time::Piece as a standard Perl module, so it's a good idea to use Time::Piece. For the handling of time by Time::Piece, see "<a href="/blog/20091105124627.html">Handling date and time by" Time::Piece "</a>".
 
-<h3> DateTime initialization and acquisition of date / time information </h3>
+<h3> DateTime initialization and acquisition of date/time information </h3>
 
 To handle dates generically, use the DateTime module.
 
@@ -64,7 +64,7 @@ The DateTime module is an object-oriented module. Create a DateTime object with 
 
 You don't have to specify the year as a number from 1900 or the month as a number starting from 0, unlike the localtime function in the standard function or the Time::Local in the standard module.
 
-<h4> Acquisition of date / time information </h4>
+<h4> Acquisition of date/time information </h4>
 
 <pre>
 # Get method to get time information
@@ -92,7 +92,7 @@ my $dt = DateTime->now (time_zone =>'local');
 You can also specify the time zone explicitly.
 
 <pre>
-my $dt = DateTime->now (time_zone =>'Asia / Tokyo');
+my $dt = DateTime->now (time_zone =>'Asia/Tokyo');
 </pre>
 
 It seems that specifying the time zone explicitly is a little slower than specifying local. However, explicit specification impairs portability.
@@ -123,14 +123,14 @@ my $dt = DateTime->from_epoch (epoch => $epoch, time_zone =>'local');
 DateTime is a constructor that allows you to specify the time zone. You can reuse the DateTime::TimeZone object by creating it first.
 
 <pre>
-my $time_zone = DateTime::TimeZone->new (name =>'Asia / Tokyo');
+my $time_zone = DateTime::TimeZone->new (name =>'Asia/Tokyo');
 </pre>
 
 <h4> Creating a timezone object </h4>
 
 Use the new method to create a timezone object. In the argument, specify the time zone name in name. (List of time zone names)
 <pre>
-my $time_zone = DateTime::TimeZone->new (name =>'Asia / Tokyo');
+my $time_zone = DateTime::TimeZone->new (name =>'Asia/Tokyo');
 </pre>
 
 <h4> Automatic generation of timezone objects </h4>
@@ -138,7 +138,7 @@ my $time_zone = DateTime::TimeZone->new (name =>'Asia / Tokyo');
 As shown below, if you specify the time zone in the DateTime constructor (new, now, etc.), the DateTime::TimeZone object is automatically created internally.
 
 <pre>
-my $dt = DateTime->now (time_zone =>'Asia / Tokyo');
+my $dt = DateTime->now (time_zone =>'Asia/Tokyo');
 </pre>
 
 Every time you create a DateTime object, a DateTime::TimeZone object will be created.
@@ -264,19 +264,19 @@ You can use DateTime to get date and time information. You can get it in various
 # yyyy-mm-dd
 my $ymd = $dt->ymd;
 
-# yyyy / mm / dd
+# yyyy/mm/dd
 my $ymd_slash = $dt->ymd ('/');
 
 # mm-dd-yyyy
 my $mdy = $dt->mdy;
 
-# mm / dd / yyyy
+# mm/dd/yyyy
 my $mdy_slash = $dt->mdy ('/');
 
 # dd-mm-yyyy
 my $dmy = $dt->dmy;
 
-# dd / mm / yyyy
+# dd/mm/yyyy
 my $dmy_slash = $dt->dmy ('/');
 
 # Time information
@@ -292,7 +292,7 @@ my $ymdhms = $dt->datetime;
 
 Output result
 <pre>
-(1) Convenient output method of DateTime date / time
+(1) Convenient output method of DateTime date/time
 Date (hyphen) 2008-11-14
 Date (slash) 2008/11/14
 Month, day, year (hyphen) 11-14-2008
@@ -986,7 +986,7 @@ my $second = $dt->second;
 my $yday = $dt->day_of_year;
 my $qtr = $dt->quarter;
 
-print "(1) Date / time information of DateTime\n";
+print "(1) Date/time information of DateTime\n";
 print(
   "${year} year ${mon} month ${mday} day ${wday} th day\n".
   "${hour} hours ${minute} minutes ${second} seconds\n".
@@ -996,7 +996,7 @@ print(
 </pre>
 Execution result
 <pre>
-(1) Date / time information of DateTime
+(1) Date/time information of DateTime
 October 16, 1964 5th day of the week
 16:12:47
 Day 290 (counting in one year)
@@ -1014,7 +1014,7 @@ use DateTime;
 my $dt = DateTime->now (time_zone =>'local');
 
 # (1) -2 When explicitly specifying the time zone.
-# my $dt = DateTime->now (time_zone =>'Asia / Tokyo');
+# my $dt = DateTime->now (time_zone =>'Asia/Tokyo');
 
 # (1) -3 UTC Coordinated Universal Time
 # my $dt = DateTime->now;
@@ -1102,7 +1102,7 @@ use DateTime;
 use DateTime::TimeZone;
 
 # (1) Creating a timezone object
-my $time_zone = DateTime::TimeZone->new (name =>'Asia / Tokyo');
+my $time_zone = DateTime::TimeZone->new (name =>'Asia/Tokyo');
 
 # When automatically acquiring the time zone from the OS settings
 # my $time_zone = DateTime::TimeZone->new (name =>'local');
@@ -1193,7 +1193,7 @@ use DateTime::Locale;
 
 my $dt = DateTime->now (time_zone =>'local');
 
-print "(1) Convenient output method of DateTime date / time\n";
+print "(1) Convenient output method of DateTime date/time\n";
 my $ymd = $dt->ymd;
 my $ymd_slash = $dt->ymd ('/');
 my $mdy = $dt->mdy;
@@ -1209,11 +1209,11 @@ print(
   "Date (slash) $ymd_slash\n".
   "Month, day, year (hyphen) $mdy\n".
   "Month, day, year (slash) $mdy_slash\n".
-  "Day / month / year (hyphen) $dmy\n".
-  "Day / month / year (slash) $dmy_slash\n\n".
+  "Day/month/year (hyphen) $dmy\n".
+  "Day/month/year (slash) $dmy_slash\n\n".
   "Hour, minute, second (colon) $hms\n".
   "Hour, minute and second (hyphen) $hms_hyphen\n\n".
-  "Year / month / day / hour / minute / second $ymdhms\n"
+  "Year/month/day/hour/minute/second $ymdhms\n"
 );
 </pre>
 

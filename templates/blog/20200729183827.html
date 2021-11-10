@@ -28,7 +28,7 @@ my $s3client = Amazon::S3::Thin->new ({{
     });
  
 my $bucket = "mybucket";
-my $key = "dir / file.txt";
+my $key = "dir/file.txt";
 my $response;
  
 $response = $s3client->put_bucket ($bucket);
@@ -112,7 +112,7 @@ You can receive the following arguments:
 
 <h3> Accessor </h3>
 
-The following accessors are provided: You can use these to get / set the attributes of an object.
+The following accessors are provided: You can use these to get/set the attributes of an object.
 
 <h4> secure </h4>
 
@@ -159,7 +159,7 @@ Debug options.
 <b> Return: </b> <a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a> object in response to the request. You can use the content () method on the returned object to read its contents.
 
 <pre>
-my $res = $s3->get_object ('my.bucket', 'my / key.ext');
+my $res = $s3->get_object ('my.bucket', 'my/key.ext');
  
 if ($res->is_success) {
     my $content = $res->content;
@@ -181,7 +181,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 <b> Return: </b> <a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a> object in response to the request. You can use the header () method on the returned object to read the metadata.
 
 <pre>
-my $res = $s3->head_object ('my.bucket', 'my / key.ext');
+my $res = $s3->head_object ('my.bucket', 'my/key.ext');
  
 if ($res->is_success) {
     my $etag = $res->header ('etag'); # => `" fba9dede5f27731c9771645a39863328 "`
@@ -210,7 +210,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 <b> Return: </b> <a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a> object in response to the request.
 
-This method is a variation of the PUT operation described in Amazon's S3 API. Make a copy of the object that is already stored in Amazon S3. This "PUT copy" operation is the same as performing a GET from the old bucket / key and performing her PUT on the new bucket / key.
+This method is a variation of the PUT operation described in Amazon's S3 API. Make a copy of the object that is already stored in Amazon S3. This "PUT copy" operation is the same as performing a GET from the old bucket/key and performing her PUT on the new bucket/key.
 
 A COPY request may return an error response with 200 OK, but this method determines the error response and rewrites the status code to 500.
 
@@ -270,7 +270,7 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 
 2. Key (string)-a string with a destination key
 
-3. Field (Array Reference)-Builds an array reference for key / value pairs on top of the pre-filled form field.
+3. Field (Array Reference)-Builds an array reference for key/value pairs on top of the pre-filled form field.
 
 4. Condition (array reference)-Array reference of the condition (array reference or hash reference) to include in the policy
 
@@ -285,7 +285,7 @@ Note: This method only supports signature v4.
 This is an example of generating a signed URL and uploading the file "test.txt". In this case, you can set the object metadata "x-amz-meta-foo" with any value and the upload size is limited to 1MB.
 
 <pre>
-my $presigned = $s3->generate_presigned_post ('my.bucket', 'my / key.ext', [
+my $presigned = $s3->generate_presigned_post ('my.bucket', 'my/key.ext', [
     'x-amz-meta-foo' =>'bar',
 ], [
     ['starts-with' =>'$x-amz-meta-foo', ''],
@@ -295,7 +295,7 @@ my $presigned = $s3->generate_presigned_post ('my.bucket', 'my / key.ext', [
 my $ua = LWP::UserAgent->new;
 my $res = $ua->post (
     $signed->{url},
-    Content_Type =>'multipart / form-data',
+    Content_Type =>'multipart/form-data',
     Content => [
         @{$signed->{fields}},
         file => ['test.txt'],

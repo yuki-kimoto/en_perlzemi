@@ -85,14 +85,14 @@ As you can see, Perl 5.22 has significantly improved math-related features.
 Perl 5.22 adds a new flag for <a href="/blog/20100827127859.html">regular expressions</a> that doesn't use regular parentheses for capture. This makes it possible to write complex regular expressions concisely without using the uncaptured parentheses "(? :)".
 
 <pre>
- "hello" = ~ / (hi | hello) / n
+ "hello" = ~/(hi | hello)/n
 </pre>
 
 I'm using parentheses, but I don't capture them. If you want to capture with the n option, do the following:
 
 <pre>
-"hello" = ~ / (?-n :( hi | hello)) / n; # $1 is "hello"
-"hello" = ~ / (? <greet> hi | hello) / n; # $1 is "hello", $+ {greet} is also "hello"
+"hello" = ~/(?-n :( hi | hello))/n; # $1 is "hello"
+"hello" = ~/(? <greet> hi | hello)/n; # $1 is "hello", $+ {greet} is also "hello"
 </pre>
 
 When writing complex regular expressions, it might be easier to see them in combination with the n option and a named capture.

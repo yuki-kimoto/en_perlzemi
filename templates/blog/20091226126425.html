@@ -140,7 +140,7 @@ It is an arithmetic operation.
 $num = 1 + 1;
 $num = 1 - 1;
 $num = 1 * 2;
-$num = 1 / 2;
+$num = 1/2;
 </pre>
 
 How to find a quotient. To find the quotient, perform ordinary division and then extract the integer part with the int function.
@@ -570,9 +570,9 @@ The following article explains in detail how to create a subroutine.
   </li>
 </ul>
 
-<h3> File input / output </h3>
+<h3> File input/output </h3>
 
-File input / output.
+File input/output.
 
 <pre>
 open my $fh, '<', $file
@@ -587,11 +587,11 @@ close $fh;
 
 When you open a file with the open function, the file handle is assigned to $fh. '<' Is the read mode. When writing, use'>'. You can read a line from a file with the description <$fh>. After or, it is executed when the file open fails. die is a function that displays an error message and terminates the program. $! Is an error message from the OS when the file open fails.
 
-Perl's file I / O is explained in detail on the following pages.
+Perl's file I/O is explained in detail on the following pages.
 
 <ul>
   <li>
-    <a href="/blog/20110212130370.html">Basics of file input / output</a>
+    <a href="/blog/20110212130370.html">Basics of file input/output</a>
   </li>
 </ul>
 
@@ -630,7 +630,7 @@ my $file = shift;
 In Perl, some functions have different return values ​​depending on the context. For example, the localtime function. This is a Perl-specific grammar called <a href="/blog/20080608121292.html">context</a>.
 
 <pre>
-# Scalar context (get date / time as a character string)
+# Scalar context (get date/time as a character string)
 my $time_str = localtime();
 
 # List context (get each element of date and time as an array)
@@ -804,7 +804,7 @@ Use the <a href="/blog/20090208123289.html">do function</a> to read the configur
 <pre>
 my $conf_file = "app.conf";
 my $conf = do $conf_file
-  or die qq / Can't load config file "$conf_file": $! $@/;
+  or die qq/Can't load config file "$conf_file": $! $@/;
 </pre>
 
 The contents of the configuration file.

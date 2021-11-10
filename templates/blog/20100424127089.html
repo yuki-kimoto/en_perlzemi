@@ -46,9 +46,9 @@ This is a sample XML of the configuration file. Imagine an application that edit
   <!-System type->  <system> xxx yyy zzz </system>
 
   <!-Log type->  <log-types>
-    <cpu script = "parse_cpu.pl" from-dir = "raw / cpu" to-dir = "edit / cpu" />
-    <mem script = "parse_mem.pl" from-dir = "raw / mem" to-dir = "edit / mem" />
-    <gclog script = "parse_gclog.pl" from-dir = "raw / gclog" to-dir = "edit / gclog" />
+    <cpu script = "parse_cpu.pl" from-dir = "raw/cpu" to-dir = "edit/cpu" />
+    <mem script = "parse_mem.pl" from-dir = "raw/mem" to-dir = "edit/mem" />
+    <gclog script = "parse_gclog.pl" from-dir = "raw/gclog" to-dir = "edit/gclog" />
   </log-types>
 </conf>
 </pre>
@@ -59,19 +59,19 @@ This file is converted to the following data structure.
 $conf = {
   'log-types' => {
     'cpu' => {
-      'to-dir' =>'edit / cpu',
+      'to-dir' =>'edit/cpu',
       'script' =>'parse_cpu.pl',
-      'from-dir' =>' raw / cpu'
+      'from-dir' =>' raw/cpu'
     },
     'gclog' => {
-      'to-dir' =>'edit / gclog',
+      'to-dir' =>'edit/gclog',
       'script' =>'parse_gclog.pl',
-      'from-dir' =>' raw / gclog'
+      'from-dir' =>' raw/gclog'
     },
     'mem' => {
-      'to-dir' =>'edit / mem',
+      'to-dir' =>'edit/mem',
       'script' =>'parse_mem.pl',
-      'from-dir' =>' raw / mem'
+      'from-dir' =>' raw/mem'
     }
   },
   'system' =>'xxx yyy zzz',

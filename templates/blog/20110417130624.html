@@ -225,7 +225,7 @@ Use it for words you want to emphasize on the page. strong is an inline element.
 <h4> Image img </h4>
 
 <pre>
-<img border = "0" src = "/ images / img001.gif" width = "128" height = "128" alt = "description"></pre>
+<img border = "0" src = "/ images/img001.gif" width = "128" height = "128" alt = "description"></pre>
 
 Use the img tag to display the image. Border is added by default, so specify 0 for border. Specify a link to the image in scr. Specify the width of the image in width and the height of the image in height. Describe the description of the image in alt. img is an inline element.
 
@@ -410,7 +410,7 @@ You can specify the following attributes:
 <h4> Image button & lt; input type = "image"></h4>
 
 <pre>
-<input type = "image" src = "/ image / dog.png" alt = "dog"></pre>
+<input type = "image" src = "/ image/dog.png" alt = "dog"></pre>
 
 It is an image button. src will be the URL of the image. alt is a description of the image.
 
@@ -457,10 +457,10 @@ The following attributes can be specified.
   </li>
 </ul>
 
-Note that when uploading a file, you must specify "multipart / form-data" for the enctype of the form tag.
+Note that when uploading a file, you must specify "multipart/form-data" for the enctype of the form tag.
 
 <pre>
-<form action = "cgi-bin / abc.cgi" method = "post" enctype = "multipart / form-data"><input type = "file" name = "datafile"><input type = "submit" value = "submit"></form>
+<form action = "cgi-bin/abc.cgi" method = "post" enctype = "multipart/form-data"><input type = "file" name = "datafile"><input type = "submit" value = "submit"></form>
 </pre>
 
 <h3> Pull-down menu or list box select </h3>
@@ -497,50 +497,48 @@ Introducing the tags used in the header part.
 <h4> Character code specification </h4>
 
 <pre>
-<meta http-equiv = "Content-Type" content = "text / html; charset = UTF-8"></pre>
+<meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"></pre>
 
-Use the meta tag to specify the character code to be used in HTML. When using the meta tag, specify "Content-Type" for http-equiv and "text / html; charset = UTF-8" for content. If you do not specify this, the characters may be garbled in the browser.
+Use the meta tag to specify the character code to be used in HTML. When using the meta tag, specify "Content-Type" for http-equiv and "text/html; charset = UTF-8" for content. If you do not specify this, the characters may be garbled in the browser.
 Therefore, please describe at the beginning of the head tag. If you use the http-equiv attribute, the browser will use the http-equiv information if there is no Content-Type in the HTTP response header.
 
 <h4> CSS (style sheet) description </h4>
 
 <pre>
-<style type = "text / css">/ * <! [CDATA [* /
-
-/ * CSS description * /
-
-/ *]]> * / </style>
+<style type = "text/css">/ * <! [CDATA [*/
+/ * CSS description */
+/ *]]> */</style>
 </pre>
 
-Use the style tag to write CSS. Specify "text / css" for type. It seems that the CSS code needs to be written in a section called CDATA so that it works properly even with the specification of XHTML. On the contrary, from the perspective of CSS, the CDATA section is not needed, so it is commented out with / * * /.
+Use the style tag to write CSS. Specify "text/css" for type. It seems that the CSS code needs to be written in a section called CDATA so that it works properly even with the specification of XHTML. On the contrary, from the perspective of CSS, the CDATA section is not needed, so it is commented out with/* * /.
 
 <h4> Loading external CSS (style sheet) </h4>
 
 <pre>
-<link href = "/ css / common.css" media = "screen" rel = "stylesheet" type = "text / css" />
+<link href = "/ css/common.css" media = "screen" rel = "stylesheet" type = "text/css" />
 </pre>
 
-Use the link tag to load external CSS. Specify "screen" for media. This is to specify that it is CSS for computer screens. Specify "stylesheet" for rel. This shows the external stylesheet definition file. Specify "text / css" for type.
+Use the link tag to load external CSS. Specify "screen" for media. This is to specify that it is CSS for computer screens. Specify "stylesheet" for rel. This shows the external stylesheet definition file. Specify "text/css" for type.
 
 <h4> JavaScript description </h4>
 
 <pre>
-<script type = "text / javascript">// <! [CDATA [
+<script type = "text/javascript">// <! [CDATA [
  
 // JavaScript source code
  
 //]] </script>
 </pre>
 
-Use the script tag to write JavaScript. Specify "text / javascript" for type. It seems that the JavaScript code needs to be written in a section called CDATA so that it works properly even with the specification of XHTML. On the contrary, from the viewpoint of JavaScript, the CDATA section is not needed, so it is commented out with //.
+Use the script tag to write JavaScript. Specify "text/javascript" for type. It seems that the JavaScript code needs to be written in a section called CDATA so that it works properly even with the specification of XHTML. On the contrary, from the viewpoint of JavaScript, the CDATA section is not needed, so it is commented out with //.
 
 <h4> Loading external JavaScript </h4>
 
 <pre>
-<script src = "/ js / myapi.js" type = "text / javascript"></script>
+<script src = "/ js/myapi.js" type = "text/javascript"></script>
 </pre>
 
-Use the script tag to load external JavaScript. Specify the URL of the JavaScript source in src, and specify "text / javascript" in type.
+Use the script tag to load external JavaScript. Specify the URL of the JavaScript source in src, and specify "text/javascript" in type.
 
 <h3> At the end </h3>
 

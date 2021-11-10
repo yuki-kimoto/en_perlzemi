@@ -3,10 +3,10 @@
   </li>
   &#8250;
   <li>
-    Frequently used functions / modules
+    Frequently used functions/modules
   </li>
 </ol>
-<h2> List of frequently used functions / standard modules </h2>
+<h2> List of frequently used functions/standard modules </h2>
 
 
 
@@ -28,13 +28,13 @@ It also explains frequently used special variables and standard modules. Each it
     <a href="#hash">hash operation</a>
   </li>
   <li>
-    <a href="#file-io">File I / O</a>
+    <a href="#file-io">File I/O</a>
   </li>
   <li>
     <a href="#file-directory">File directory operations</a>
   </li>
   <li>
-    <a href="#date-time">Time / Time</a>
+    <a href="#date-time">Time/Time</a>
   </li>
   <li>
     <a href="#other">Other important functions</a>
@@ -585,13 +585,13 @@ To get all the values ​​of a hashUse the <a href="/blog/20100222126425.html"
 
 <h4> each </h4>
 
-Use the <a href="/blog/20080212120283.html">each function</a> to get the hash key / value pairs in sequence.
+Use the <a href="/blog/20080212120283.html">each function</a> to get the hash key/value pairs in sequence.
 
 <pre>
 ($key, $value) = each %hash;
 </pre>
 
-Use the <a href="/blog/20100123126425.html">while statement</a> to process all key / value pairs in sequence.
+Use the <a href="/blog/20100123126425.html">while statement</a> to process all key/value pairs in sequence.
 
 <pre>
 while (my ($key, $value) = each %hash) {
@@ -624,7 +624,7 @@ Use the <a href="/blog/20080227120413.html">reverse function</a> to swap the has
 </pre>
 
 <div id = "file-io"></div>
-<h3> 5 File input / output </h3>
+<h3> 5 File input/output </h3>
 
 <h4> open </h4>
 
@@ -723,7 +723,7 @@ while (my $file = readdir $dh) {
 </pre>
 
 <div id = "file-directory"></div>
-<h3> 6 File / directory operations </h3>
+<h3> 6 File/directory operations </h3>
 
 <h4> unlink </h4>
 
@@ -852,7 +852,7 @@ use File::Basename 'dirname';
 $ret = dirname $file;
 </pre>
 
-In the case of the file name /a/b/c.txt, / a / b corresponds to the directory name.
+In the case of the file name /a/b/c.txt,/a/b corresponds to the directory name.
 
 <h4> FileStrike operator </h4>
 
@@ -889,7 +889,7 @@ if (-f $file) {
 </pre>
 
 <div id = "date-time"></div>
-<h3> 7 Time / Time </h3>
+<h3> 7 Time/Time </h3>
 
 <h4> time </h4>
 
@@ -1103,7 +1103,7 @@ use File::Spec;
 my $file_name = File::Spec->catfile ('dir', 'file.txt');
 </pre>
 
-On Windows operating systems, $file_name is dir\file.txt, and on Unix operating systems, the file name is dir / file.txt.
+On Windows operating systems, $file_name is dir\file.txt, and on Unix operating systems, the file name is dir/file.txt.
 
 <h4> FindBin </h4>
 
@@ -1131,7 +1131,7 @@ This is an example of adding the current directory and the lib directory of the 
 Use the <a href="/blog/20100430127089.html">Carp module</a> to report an error from the caller's perspective. Use croak instead of die and carp instead of warn.
 
 <pre>
-use Carp qw / croak carp /;
+use Carp qw/croak carp /;
 
 Same as # die
 croak ($​​message);

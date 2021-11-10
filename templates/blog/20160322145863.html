@@ -17,19 +17,14 @@
 <strong> perlvars.h </strong> defines Perl global variables.
 
 <pre>
-/* perlvars.h * /
-
-/ * global state * /
-# if defined(USE_ITHREADS)
-PERLVAR (G, op_mutex, perl_mutex) / * Mutex for op refcounting * /
-# endif
+/* perlvars.h */
+/ * global state */# if defined(USE_ITHREADS)
+PERLVAR (G, op_mutex, perl_mutex)/* Mutex for op refcounting */# endif
 PERLVARI (G, curinterp, PerlInterpreter *, NULL)
 / * currently running interpreter
 * (initial parent interpreter under under
-* useithreads) * /
-# if defined(USE_ITHREADS)
-PERLVAR (G, thr_key, perl_key) / * key to retrieve per-thread struct * /
-# endif
+* useithreads) */# if defined(USE_ITHREADS)
+PERLVAR (G, thr_key, perl_key)/* key to retrieve per-thread struct */# endif
 </pre>
 
 Perl has an interpreter variable for each interpreter, but there are also global variables. For example, the interpreter currently running, the mutex to control thread contention, etc. are defined as global variables.
@@ -39,17 +34,13 @@ The declaration of global variables is described using the macros "PERLVAR" and 
 <pre>
 /*perl.h */
 
-/ * Set up PERLVAR macros for populating structs * /
-# define PERLVAR (prefix, var, type) type prefix # # var;
+/ * Set up PERLVAR macros for populating structs */# define PERLVAR (prefix, var, type) type prefix # # var;
 
-/ *'var' is an array of length'n' * /
-# define PERLVARA (prefix, var, n, type) type prefix # # var [n];
+/ *'var' is an array of length'n' */# define PERLVARA (prefix, var, n, type) type prefix # # var [n];
 
-/ * initialize'var' to init' * /
-# define PERLVARI (prefix, var, type, init) type prefix # # var;
+/ * initialize'var' to init' */# define PERLVARI (prefix, var, type, init) type prefix # # var;
 
-/ * like PERLVARI, but make'var' a const * /
-# define PERLVARIC (prefix, var, type, init) type prefix # # var;
+/ * like PERLVARI, but make'var' a const */# define PERLVARIC (prefix, var, type, init) type prefix # # var;
 </pre>
 
 For example, "PERLVAR (G, op_mutex, perl_mutex)" expands as follows:
@@ -79,8 +70,7 @@ Let's see how "PL_op_mutex" is expanded on this premise. First, from "embedvar.h
 "My_vars" is defined in "perlmain.c".
 
 <pre>
-/* perlmain.c * /
-struct perl_vars * my_vars = init_global_struct ();
+/* perlmain.c */struct perl_vars * my_vars = init_global_struct ();
 </pre>
 
 Let's also look at the definition of a structure called "perl_vars". You can see that it is a structure that has the contents of "perlvars.h" as a member variable.

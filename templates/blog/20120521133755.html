@@ -96,7 +96,7 @@ A memory leak in the following code has been fixed. This has been around since P
 
 <pre>
     for (1..10_000_000) {
-        if ("foo" = ~ / (foo | (? <capture> bar))? /) {
+        if ("foo" = ~/(foo | (? <capture> bar))? /) {
             my $capture = $+ {capture}
         }
     }
@@ -106,7 +106,7 @@ A memory leak in the following code has been fixed. This has been around since P
 I wonder if named capture is now available in the daemon process.
 
 <h3> Deprecated </h3>
-Unicode database files located in lib / unicore are no longer read. This is to make Perl's core smaller. Use the new Unicode::UCD function instead.
+Unicode database files located in lib/unicore are no longer read. This is to make Perl's core smaller. Use the new Unicode::UCD function instead.
 
 <h3> Deprecated modules </h3>
 
@@ -169,7 +169,7 @@ The following Perl4 format libraries have been removed.
     abbrev.pl assert.pl bigfloat.pl bigint.pl bigrat.pl cacheout.pl
     complete.pl ctime.pl dotsh.pl exceptions.pl fastcwd.pl flush.pl
     getcwd.pl getopt.pl getopts.pl hostname.pl importenv.pl
-    lib / find {, depth} .pl look.pl newgetopt.pl open2.pl open3.pl
+    lib/find {, depth} .pl look.pl newgetopt.pl open2.pl open3.pl
     pwd.pl shellwords.pl stat.pl tainted.pl termcap.pl timelocal.pl
 </blockquote>
 

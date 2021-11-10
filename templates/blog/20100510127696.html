@@ -44,9 +44,9 @@ To create a tar file, add the file with the <strong> add_files </strong> method 
 # Create tar file
 my $curdir ='/ somedir';
 chdir $curdir
-  or die qq / Can't change directory "$curdir": $! /;
+  or die qq/Can't change directory "$curdir": $! /;
 
-$tar->add_files ('xxx.txt', 'dir / yyy.txt');
+$tar->add_files ('xxx.txt', 'dir/yyy.txt');
 $tar->write ('archive.tar');
 </pre>
 
@@ -63,7 +63,7 @@ If you specify the file name in the argument of extract, you can extract only th
 
 <pre>
 # Extract only specified files
-$tar->extract ('xxx.txt', 'dir / yyy.txt');
+$tar->extract ('xxx.txt', 'dir/yyy.txt');
 </pre>
 
 Use the <strong> list_files </strong> method to find out which files are contained in the tar file.
@@ -106,7 +106,7 @@ use Archive::Tar;
 
 my $curdir ='/ somedir';
 chdir $curdir
-  or die qq / Can't change directory "$curdir": $! /;
+  or die qq/Can't change directory "$curdir": $! /;
 
 my $tar = Archive::Tar->new;
 my $top ='top';

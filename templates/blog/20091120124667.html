@@ -175,7 +175,7 @@ I think you can use it in one liner. $_ Is used as a print argument and a regula
 
 <pre>
 One liner that retrieves lines containing the characters # AAA
-perl -ne "print if / AAA /";
+perl -ne "print if/AAA /";
 </pre>
 
 <h4> 2. map function, grep function and postfix for </h4>
@@ -183,7 +183,7 @@ perl -ne "print if / AAA /";
 Since $_ is passed to the map function, grep function, and postfix for, this must be used.
 
 <pre>
-my @greped_array = grep {$_ = ~ / AAA /} @array;
+my @greped_array = grep {$_ = ~/AAA /} @array;
 my @mapped_array = map {$_ * 2} @array;
 print $_ for @array;
 </pre>
@@ -248,7 +248,7 @@ sub func {
 
 If you are using Perl 5.10 or later, a module called Time::Piece is attached as standard and can be used for date processing.
 
-<a href="/blog/20091105124627.html"><Time::Piece - Standard module for handling date / time></a>
+<a href="/blog/20091105124627.html"><Time::Piece - Standard module for handling date/time></a>
 
 You may also want to install the DataTime module if you can install it from CPAN. This is highly functional but a little heavy.
 
@@ -358,7 +358,7 @@ Please also refer to.
 The string list operator is often used, so I will explain it. The string list operator is often used to create an array of strings.
 
 <pre>
-my @strings = qw / aa bb cc /;
+my @strings = qw/aa bb cc /;
 </pre>
 
 It has the same meaning as the following description.
@@ -372,9 +372,9 @@ my @strings = ('aa', 'bb', 'cc');
 It's a good idea to make it explicit when importing functions in a module. A reader of the source code can easily understand which module the function belongs to.
 <pre>
 use File::Basename 'basename';
-use File::Copy qw / copy move /;
+use File::Copy qw/copy move /;
 use File::Path 'mkpath';
-use Encode qw / encode decode /;
+use Encode qw/encode decode /;
 
 Use the # mkpath function.
 mkpath $dir;

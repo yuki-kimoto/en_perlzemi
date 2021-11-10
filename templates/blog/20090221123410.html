@@ -210,15 +210,12 @@ not ok 2 - double
 The above script was done in one file, but I'll show you the general layout of the automated test directory. The layout of the automated test directory is as follows. Suppose you want to test a module called SomeModule.pm.
 
 <pre>
-SomeModule /
-    |
-    | - -- lib /
-    | |
+SomeModule/    |
+    | - -- lib/    | |
     | | - -- SomeModule.pm
     |
     |
-    | - --- t /
-           |
+    | - --- t/           |
            | - -- sum.t
            |
            | - -- double.t
@@ -268,7 +265,7 @@ use warnings;
 
 # Add module search path
 use FindBin;
-use lib "$FindBin::Bin / ../ lib";
+use lib "$FindBin::Bin/../ lib";
 
 use Test::More tests => 1;
 use SomeModule;
@@ -294,7 +291,7 @@ use warnings;
 
 # Add module search path
 use FindBin;
-use lib "$FindBin::Bin / ../ lib";
+use lib "$FindBin::Bin/../ lib";
 
 use Test::More tests => 1;
 use SomeModule;
@@ -315,7 +312,7 @@ use SomeModule;
 Let's run an automated test. To do an automated test, first go inside the Somo Module. Then run the following command:
 
 <pre>
-perl t / sum.t
+perl t/sum.t
 </pre>
 
 You can run the exam.
@@ -451,13 +448,13 @@ Otherwise, use a function called cmp_ok.
 The <strong> like function </strong> tests that the string matches the regular expression. The <strong> dislike function </strong> tests that it doesn't match the regular expression </strong>.
 
 <pre>
-like ($str, qr / \ w + /);
-unlike ($str, qr / \ w + /);
+like ($str, qr/\ w + /);
+unlike ($str, qr/\ w + /);
 </pre>
 
 The first argument is the value you want to test. The second argument is a <strong> regular expression reference </strong>.
 
-Note that the second argument is a reference to the regular expression qr / \ w + /. If you change this to'\ w +'or / \ w + /, the test will not work.
+Note that the second argument is a reference to the regular expression qr/\ w + /. If you change this to'\ w +'or/\ w + /, the test will not work.
 
 <h4> cmp_ok function </h4>
 
@@ -633,7 +630,7 @@ else {
 
 # Or check the error message
 eval {some_func ()};
-like ($@, qr / error /);
+like ($@, qr/error /);
 </pre>
 
 (Reference) <a href="/blog/20100312126967.html">eval</a>

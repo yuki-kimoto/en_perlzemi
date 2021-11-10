@@ -1,5 +1,5 @@
 nt; filename = pictures.csv');
-  $headers->content_type ('text / csv; charset = UTF-8');
+  $headers->content_type ('text/csv; charset = UTF-8');
   
   # Render data
   return $self->render (data => $content);
@@ -7,7 +7,7 @@ nt; filename = pictures.csv');
 app->start;
 </pre>
 
-Use the Text::CSV::Encoded module to create CSV data. The only way to convert the data of one record to a row is to use the print method, which is a method for printing to a filehandle. Therefore, Perl's scalar input / output function is used to output to scalar variables.
+Use the Text::CSV::Encoded module to create CSV data. The only way to convert the data of one record to a row is to use the print method, which is a method for printing to a filehandle. Therefore, Perl's scalar input/output function is used to output to scalar variables.
 
 You can name the file using the Content-Disposition header. Let's also specify the Content-Type so that we can see that it is CSV data. When drawing, CSV data is binary data (not an internal string), so use the data option.
 
@@ -67,8 +67,8 @@ get'/ sizeunknowndata' => sub {
     or die "Error";
 
   # Write chunk
-  $self->res->headers->content_type ('application / gzip');
-  $self->res->headers->content_disposition (qq / attachment; filename = "$file" /);
+  $self->res->headers->content_type ('application/gzip');
+  $self->res->headers->content_disposition (qq/attachment; filename = "$file" /);
   my $cb;
   $cb = sub {
     my $c = shift;
@@ -91,7 +91,7 @@ When there is no more data to read, close the filehandle, undefine $cb and remov
 
 The title "Deliver a large file" was misleading. Changed the title to "Deliver large files dynamically".
 
-Large static files can usually be delivered under "public" without straining memory. Also, Mojolicious is an asynchronous I / O, so processing will not be blocked.
+Large static files can usually be delivered under "public" without straining memory. Also, Mojolicious is an asynchronous I/O, so processing will not be blocked.
 
 
 <h3> Draw a 404 Not Found page </h3>

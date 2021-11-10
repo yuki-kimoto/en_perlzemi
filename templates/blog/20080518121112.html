@@ -27,7 +27,7 @@ You can also use <a href="/blog/20100827127859.html">regular expression</a> to s
 
 <pre>
 use File::Basename;
-my $regex_suffix = qr / \. [^ \.] + $/;
+my $regex_suffix = qr/\. [^ \.] + $/;
 my $suffix_txt = (fileparse ($file_txt, $regex_suffix)) [2];
 </pre>
 
@@ -43,9 +43,9 @@ use warnings;
 use File::Basename 'fileparse';
 
 # Extract the extension from the file name.
-my $file_txt ='dir1 / dir2 / base_name.txt';
-my $file_log ='dir1 / dir2 / base_name.log';
-my $file_bak ='dir1 / dir2 / base_name.log.bak';
+my $file_txt ='dir1/dir2/base_name.txt';
+my $file_log ='dir1/dir2/base_name.log';
+my $file_bak ='dir1/dir2/base_name.log.bak';
 
 print "1: Extract the extension from the file name. (Specify the extension name)\n";
 my ($base_name, $dir, $suffix) = fileparse ($file_txt, '.txt');
@@ -54,7 +54,7 @@ print "\$dir = $dir\n",
   "\$suffix = $suffix\n\n";
 
 print "2: Extract the extension from the file name. (Specify the extension name pattern)\n";
-my $regex_suffix = qr / \. [^ \.] + $/;
+my $regex_suffix = qr/\. [^ \.] + $/;
 
 my $suffix_txt = (fileparse $file_txt, $regex_suffix) [2];
 my $suffix_log = (fileparse $file_log, $regex_suffix) [2];
@@ -71,8 +71,7 @@ Execution result
 1: Create a file.
 C: \ Users \ kimoto \ labo> perl a.pl
 1: Extract the extension from the file name. (Specify the extension name)
-$dir = dir1 / dir2 /
-$base_name = base_name
+$dir = dir1/dir2/$base_name = base_name
 $suffix = .txt
 
 2: Extract the extension from the file name. (Specify the extension name pattern)

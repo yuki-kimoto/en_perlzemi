@@ -127,14 +127,12 @@ SV *
 foo (...)
   PPCODE:
 {
-  / * Starting Perl Scope * /
-  
+/* Starting Perl Scope */  
   SV * sv_str = sv_2mortal (newSvPV ("Hello", 0));
   
   XSRETURN (0);
   
-  / * End of Perl scope * /
-}
+/* End of Perl scope */}
 </pre>
 
 When returned as a return value as shown below, when returning to the Perl code, the reference count is incremented by 1, and since it is mortal, the reference count is decremented by 1, so the reference count does not change as a result. ..
@@ -144,16 +142,13 @@ SV *
 foo (...)
   PPCODE:
 {
-  / * Starting Perl Scope * /
-  
+/* Starting Perl Scope */  
   SV * sv_str = sv_2mortal (newSvPV ("Hello", 0));
   
-  / * Put it on the stack and return it as a return value * /
-  XPUSHs (sv_str);
+/* Put it on the stack and return it as a return value */  XPUSHs (sv_str);
   XSRETURN (1);
   
-  / * End of Perl scope * /
-}
+/* End of Perl scope */}
 </pre>
 
 <h3> When storing data in arrays and hashes </h3>
@@ -163,13 +158,11 @@ If you code while observing the above iron rules, memory release will not work i
 To avoid this, you need to manually increment the reference count by 1 if you want to store the data in arrays and hashes. For arrays, this is the case when using av_push, av_store, and for hashes, using hv_store. Use the <strong> SvREFCNT_inc </strong> function to increase the reference count.
 
 <pre>
-/ * When storing in an array * /
-SV * sv_num = sv_2mortal (newSvIV (3));
+/ * When storing in an array */SV * sv_num = sv_2mortal (newSvIV (3));
 AV * av_nums = (AV *) sv_2mortal ((SV *) newAV ());
 av_push(av_nums, SvREFCNT_inc (sv_num));
 
-/ * When storing in a hash * /
-SV * sv_score_math = sv_2mortal (newSViv (60));
+/ * When storing in a hash */SV * sv_score_math = sv_2mortal (newSViv (60));
 HV * hv_scores = (HV *) sv_2mortal ((SV *) newHV ());
 hv_store (hv_scores, "math", strlen ("math"), SvREFCNT_inc (sv_score_math), 0);
 </pre>
@@ -195,8 +188,7 @@ foo (...)
 {
   /* omit */
   
-  / * Create structure (create as pointer) * /
-  People * people = (People *) malloc (sizeof (P)eople));
+/* Create structure (create as pointer) */  People * people = (People *) malloc (sizeof (P)eople));
   SV * sv_name = sv_2mortal (newSvPV ("kimoto", 0));
   people->name = SvREFCNT_inc (sv_name);
   

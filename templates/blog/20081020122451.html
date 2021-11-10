@@ -2,7 +2,7 @@
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161123147990.html">        <span itemprop = "name">Date / Time </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161123147990.html">        <span itemprop = "name">Date/Time </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
@@ -20,8 +20,8 @@ use warnings;
 
 # Difference is 2 seconds Calculate this
 print "(1) Find the time difference (time includes date)\n";
-my $time_str1 = '30 / Sep / 2006:23:59:59';
-my $time_str2 = '01 / Oct / 2006:00:00:01';
+my $time_str1 = '30/Sep/2006:23:59:59';
+my $time_str2 = '01/Oct/2006:00:00:01';
 
 
 # Converts a string representation of time into a hash of time information, including dates.
@@ -42,10 +42,10 @@ sub time_from_str {
   my $time = {};
   
   # If it matches the format of the time including the date
-  if ($time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
+  if ($time_str = ~ m # ^ (\ d {2})/(\ w {3})/(\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
     
     # Create hash
-    @{$time}{qw / mday mon year hour min sec /}
+    @{$time}{qw/mday mon year hour min sec /}
       = ($1, $2, $3, $4, $5, $6);
     
     # Hash corresponding to the English notation of the month and the number of the month
@@ -107,7 +107,7 @@ The time difference is 2 seconds.
 
 <h4> Convert time string representation to hash representing time information </h4>
 
-Converting a time containing a date such as '30 / Sep / 2006:23:59:59'to a hash representing time information.
+Converting a time containing a date such as '30/Sep/2006:23:59:59'to a hash representing time information.
 
 The hash that represents the time information has six keys: sec, min, hour, mday, mon, and year.
 
@@ -121,10 +121,10 @@ sub time_from_str {
   my $time = {};
   
   # If it matches the format of the time including the date
-  if ($time_str = ~ m # ^ (\ d {2}) / (\ w {3}) / (\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
+  if ($time_str = ~ m # ^ (\ d {2})/(\ w {3})/(\ d {4}): (\ d {2}): (\ d {2}) :( \ d {2}) $# ) {
     
     # Create hash
-    @{$time}{qw / mday mon year hour min sec /}
+    @{$time}{qw/mday mon year hour min sec /}
       = ($1, $2, $3, $4, $5, $6);
     
     # Hash corresponding to the English notation of the month and the number of the month

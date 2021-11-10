@@ -143,12 +143,9 @@ func () # Can also be used here
 </pre>
 
 <pre>
-/ * C language (generally requires a forward declaration) * /
-
-int func (int x); / * Function prototype declaration * /
-
-func (3) / * Here, a forward declaration (prototype declaration) is required to use it * /
-
+/ * C language (generally requires a forward declaration) */
+int func (int x);/* Function prototype declaration */
+func (3)/* Here, a forward declaration (prototype declaration) is required to use it */
 int func (int x) {
 
 }
@@ -168,8 +165,7 @@ sub func {
 </pre>
 
 <pre>
-/ * C language (It is necessary to decide the argument type, the number of arguments, and the return type.) * /
-
+/ * C language (It is necessary to decide the argument type, the number of arguments, and the return type.) */
 int func (int x, int y) {
 
 }
@@ -188,14 +184,11 @@ sub func {
 </pre>
 
 <pre>
-/ * C language (To return an array, you need to manipulate the pointer received as an argument) * /
-
+/ * C language (To return an array, you need to manipulate the pointer received as an argument) */
 int ary [100];
-fucn (ary); / * Pass a pointer * /
-
+fucn (ary);/* Pass a pointer */
 void func (int * ary) {
-  / * Now you need to assign a value to ary through a pointer. * /
-}
+/* Now you need to assign a value to ary through a pointer. */}
 </pre>
 
 In Perl, you can use a list as a return value. In C language, an array cannot be returned as a return value. If you want to return the array to the caller, you need to pass it as a pointer as an argument and operate it.
@@ -211,8 +204,7 @@ sub func {
 </pre>
 
 <pre>
-/ * C language * /
-int func () {
+/ * C language */int func () {
     int x;
     return & x;
 }
@@ -243,9 +235,7 @@ sub func {
 </pre>
 
 <pre>
-/ * C language * /
-/ * func is func, which is func from any point of view in the program. * /
-int func () {
+/ * C language *// * func is func, which is func from any point of view in the program. */int func () {
 
 }
 </pre>

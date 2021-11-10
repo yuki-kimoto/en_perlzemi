@@ -118,8 +118,8 @@ use File::Find;
 # Create directories and files
 my $top_dir = "dir_20080530_$$";
 my @dirs = (
-  "$top_dir / dir1", "$top_dir / dir1 / dir1_1", "$top_dir / dir1 / dir1_2",
-  "$top_dir / dir2",
+  "$top_dir/dir1", "$top_dir/dir1/dir1_1", "$top_dir/dir1/dir1_2",
+  "$top_dir/dir2",
 );
 for my $dir (@dirs) {
   eval {mkpath $dir};
@@ -127,9 +127,9 @@ for my $dir (@dirs) {
 }
 
 my @files = (
-  "$top_dir / top.txt", "$top_dir / dir1 / 1.txt",
-  "$top_dir / dir1 / dir1_1 / 1_1.txt", "$top_dir / dir1 / dir1_2 / 1_2.txt",
-  "$top_dir / dir2 / 2.txt"
+  "$top_dir/top.txt", "$top_dir/dir1/1.txt",
+  "$top_dir/dir1/dir1_1/1_1.txt", "$top_dir/dir1/dir1_2/1_2.txt",
+  "$top_dir/dir2/2.txt"
 );
 for my $file (@files) {
   sysopen(my $fh, $file, O_WRONLY | O_CREAT | O_EXCL)
@@ -175,36 +175,36 @@ Preparation: You have created dir_20080530_4944.
 . (dir_20080530_4944)
 top.txt (dir_20080530_4944)
 dir1 (dir_20080530_4944)
-1.txt (dir_20080530_4944 / dir1)
-dir1_1 (dir_20080530_4944 / dir1)
-1_1.txt (dir_20080530_4944 / dir1 / dir1_1)
-dir1_2 (dir_20080530_4944 / dir1)
-1_2.txt (dir_20080530_4944 / dir1 / dir1_2)
+1.txt (dir_20080530_4944/dir1)
+dir1_1 (dir_20080530_4944/dir1)
+1_1.txt (dir_20080530_4944/dir1/dir1_1)
+dir1_2 (dir_20080530_4944/dir1)
+1_2.txt (dir_20080530_4944/dir1/dir1_2)
 dir2 (dir_20080530_4944)
-2.txt (dir_20080530_4944 / dir2)
+2.txt (dir_20080530_4944/dir2)
 
 2: Recursively output all file names (full path).
 dir_20080530_4944
-dir_20080530_4944 / top.txt
-dir_20080530_4944 / dir1
-dir_20080530_4944 / dir1 / 1.txt
-dir_20080530_4944 / dir1 / dir1_1
-dir_20080530_4944 / dir1 / dir1_1 / 1_1.txt
-dir_20080530_4944 / dir1 / dir1_2
-dir_20080530_4944 / dir1 / dir1_2 / 1_2.txt
-dir_20080530_4944 / dir2
-dir_20080530_4944 / dir2 / 2.txt
+dir_20080530_4944/top.txt
+dir_20080530_4944/dir1
+dir_20080530_4944/dir1/1.txt
+dir_20080530_4944/dir1/dir1_1
+dir_20080530_4944/dir1/dir1_1/1_1.txt
+dir_20080530_4944/dir1/dir1_2
+dir_20080530_4944/dir1/dir1_2/1_2.txt
+dir_20080530_4944/dir2
+dir_20080530_4944/dir2/2.txt
 
 3: Scan directories in return order
-dir_20080530_4944 / top.txt
-dir_20080530_4944 / dir1 / 1.txt
-dir_20080530_4944 / dir1 / dir1_1 / 1_1.txt
-dir_20080530_4944 / dir1 / dir1_1
-dir_20080530_4944 / dir1 / dir1_2 / 1_2.txt
-dir_20080530_4944 / dir1 / dir1_2
-dir_20080530_4944 / dir1
-dir_20080530_4944 / dir2 / 2.txt
-dir_20080530_4944 / dir2
+dir_20080530_4944/top.txt
+dir_20080530_4944/dir1/1.txt
+dir_20080530_4944/dir1/dir1_1/1_1.txt
+dir_20080530_4944/dir1/dir1_1
+dir_20080530_4944/dir1/dir1_2/1_2.txt
+dir_20080530_4944/dir1/dir1_2
+dir_20080530_4944/dir1
+dir_20080530_4944/dir2/2.txt
+dir_20080530_4944/dir2
 dir_20080530_4944
 </pre>
 

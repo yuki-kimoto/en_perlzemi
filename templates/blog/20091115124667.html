@@ -16,7 +16,7 @@ Net::FTP allows you to download and upload files via FTP.
 
 IT-related work often accesses servers to download and upload files. Doing this using FTP client software such as FFFTP can be very tedious. You'll want to automate it if you can.
 
-Perl comes standard with a module called Net::FTP for creating client applications for FTP. If you use Net::FTP, file download / upload work can be automated and work efficiency can be improved.
+Perl comes standard with a module called Net::FTP for creating client applications for FTP. If you use Net::FTP, file download/upload work can be automated and work efficiency can be improved.
 
 <h3> What is FTP? </H3>
 
@@ -54,7 +54,7 @@ my $ftp = Net::FTP->new ('somehost');
 $ftp->login ('user', 'password');
 
 Download the file using the command # get to get the file
-$ftp->get ('/ dir / somefile');
+$ftp->get ('/ dir/somefile');
 
 # Exit the connection
 $ftp->quit;
@@ -300,7 +300,7 @@ $ftp->login ('user', 'password')
   or die "Cannot login'$host: $user: $password':". $ftp->message;
 
 # Download
-$ftp->get ('/ dir / somefile');
+$ftp->get ('/ dir/somefile');
   or die "FTP command fail:". $ftp->message;
 
 $ftp->quit;
@@ -331,7 +331,7 @@ $ftp->login ('user', 'password')
   or die "Cannot login'$host: $user: $password:'". $ftp->message;
 
 # Download
-$ftp->get ('/ dir / somefile');
+$ftp->get ('/ dir/somefile');
   or die "FTP command fail:". $ftp->message;
 </pre>
 
@@ -354,7 +354,7 @@ my $ftp = Net::FTP->new ($host)
 $ftp->login ($user)
   or die "Cannot login'$host: $user':". $ftp->message;
 
-$ftp->cwd ('/ pub / CPAN')
+$ftp->cwd ('/ pub/CPAN')
   or die "FTP command fail:". $ftp->message;
 
 $ftp->get ('index.html')
@@ -363,15 +363,15 @@ $ftp->get ('index.html')
 $ftp->quit;
 </pre>
 
-<h3> FTPS connection - FTP over SSL / TLS </h3>
+<h3> FTPS connection - FTP over SSL/TLS </h3>
 
-I will explain how to connect with FTPS by Net::FTP. FTPS is a protocol for FTP connection over SSL / TSL. Please note that it is different from SFTP, which transfers files over SSH.
+I will explain how to connect with FTPS by Net::FTP. FTPS is a protocol for FTP connection over SSL/TSL. Please note that it is different from SFTP, which transfers files over SSH.
 
-This section describes how to perform "explicit TSL / SSL encryption" that makes an SSL connection request with the AUTH command after making an FTP connection with the FTP port number (21 as standard).
+This section describes how to perform "explicit TSL/SSL encryption" that makes an SSL connection request with the AUTH command after making an FTP connection with the FTP port number (21 as standard).
 
 Net::FTP can communicate using FTPS if IO::Socket::SSL is installed. If you have an older version of IO::Socket::SSL, please upgrade.
 
-To do "explicit TSL / SSL encryption", just call the starttls method immediately after connecting with the new method. Let's rewrite the above sample with "explicit TSL / SSL encryption".
+To do "explicit TSL/SSL encryption", just call the starttls method immediately after connecting with the new method. Let's rewrite the above sample with "explicit TSL/SSL encryption".
 
 <pre>
 use strict;
@@ -385,13 +385,13 @@ my $user ='anonymous';
 my $ftp = Net::FTP->new ($host)
   or die "Cannot connect to'$host': $!";
 
-# Start explicit TSL / SSL encryption
+# Start explicit TSL/SSL encryption
 $ftp->starttls () or die "Can't upgrade start TLS:";
 
 $ftp->login ($user)
   or die "Cannot login'$host: $user':". $ftp->message;
 
-$ftp->cwd ('/ pub / CPAN')
+$ftp->cwd ('/ pub/CPAN')
   or die "FTP command fail:". $ftp->message;
 
 $ftp->get ('index.html')

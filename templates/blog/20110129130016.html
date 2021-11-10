@@ -9,9 +9,9 @@ Benchmark results are slightly lower than those using raw DBI. Compared to using
 
 <pre>
            Rate normal multiple raw
-normal 22.3 / s - - 90% -92%
-multiple 213 / s 855% - -23%
-raw 278 / s 1147% 31% -
+normal 22.3/s - - 90% -92%
+multiple 213/s 855% - -23%
+raw 278/s 1147% 31% -
 </pre>
 
 <h4> Speed ​​up with bulk insert </h4>
@@ -29,7 +29,7 @@ Below is the benchmark script.
 <pre>
 use strict;
 use warnings;
-use Benchmark qw / timethese cmpthese /;
+use Benchmark qw/timethese cmpthese /;
 
 use DBIx::Custom;
 
@@ -88,10 +88,10 @@ Benchmark results show that using bulk_insert gives about 5 times the normal per
 
 <pre>
               Rate normal multiple raw bulk_insert
-normal 24.0 / s - - 72% -76% -83%
-multiple 86.2 / s 259% - -16% -40%
-raw 102 / s 326% 18% - - 29%
-bulk_insert 143 / s 496% 66% 40% -
+normal 24.0/s - - 72% -76% -83%
+multiple 86.2/s 259% - -16% -40%
+raw 102/s 326% 18% - - 29%
+bulk_insert 143/s 496% 66% 40% -
 </pre>
 
-If bulk inserts are not performing well, check once to see if there is enough memory space for database inserts. If this memory area is insufficient, swap-in / swap-out will occur, which will be very slow.
+If bulk inserts are not performing well, check once to see if there is enough memory space for database inserts. If this memory area is insufficient, swap-in/swap-out will occur, which will be very slow.

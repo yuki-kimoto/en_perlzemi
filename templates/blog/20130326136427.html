@@ -33,7 +33,7 @@ Make a backup of your directory first. This is to return even if you make a mist
 First, find the desired file using the <b> find2perl </b> command. I think files ending in .pm and files ending in .pl will be formatted. The target directory name is dir.
 
 <pre>
-find2perl perl_lib / -name "* .p [ml]" | perl
+find2perl perl_lib/-name "* .p [ml]" | perl
 </pre>
 
 If the target file is correct, proceed to the next step.
@@ -43,7 +43,7 @@ If the target file is correct, proceed to the next step.
 Now let's run perltidy on the output file.
 
 <pre>
-find2perl perl_lib / -name "* .p [ml]" | perl | perl -ne "system('perltidy', $_)"
+find2perl perl_lib/-name "* .p [ml]" | perl | perl -ne "system('perltidy', $_)"
 </pre>
 
 You now have a file with the extension <b> .tdy </b>. This is the formatted source file. Let's check if the output is correct.
@@ -53,7 +53,7 @@ You now have a file with the extension <b> .tdy </b>. This is the formatted sour
 Overwrites the original file with a file with a .tdy extension. That's it.
 
 <pre>
-find2perl perl_lib / -name "* .p [ml]" | perl | perl -MFile::Copy -ne "chomp $_; move ($_.'. Tdy', $_)"
+find2perl perl_lib/-name "* .p [ml]" | perl | perl -MFile::Copy -ne "chomp $_; move ($_.'. Tdy', $_)"
 </pre>
 
 I want perltidy to have the ability to easily format multiple files in a directory.

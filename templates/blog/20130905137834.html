@@ -30,7 +30,7 @@ Task Deal has the following features.
     The client (target machine side) and the server (web browser side) communicate using WebSocket. Push delivery of commands from the server to the client.
   </li>
   <li>
-    It's portable. It can be installed on Unix / Linux servers and Cygwin on Windows (requires gcc4).
+    It's portable. It can be installed on Unix/Linux servers and Cygwin on Windows (requires gcc4).
   </li>
   <li>
     Only Perl 5.8.7 or higher is required. Installation is very easy.
@@ -49,7 +49,7 @@ Task Deal has the following features.
   </li>
 </ul>
 
-<h3> Installation on Unix / Linux machines </h3>
+<h3> Installation on Unix/Linux machines </h3>
 
 Task Deal is very easy to install.
 
@@ -146,33 +146,33 @@ See taskdeal-client.conf.
 
 <h4> Role and task settings </h4>
 
-You can create roles in <b> server / roles </b>. A role is just a directory that stores tasks.
+You can create roles in <b> server/roles </b>. A role is just a directory that stores tasks.
 
-First, let's create roles in the <b> server / roles </b> directory with the names small and medium. You can give the roll any name you like.
+First, let's create roles in the <b> server/roles </b> directory with the names small and medium. You can give the roll any name you like.
 
 <pre>
-server / roles / small
-            / medium
+server/roles/small
+/medium
 </pre>
 
 The task is just an executable file. Give the file execute permission. It can be created in the role directory.
 
 <pre>
-server / roles / small / echo
+server/roles/small/echo
 </pre>
 
 The echo task is just an executable script that prints "foo".
 
 <pre>
-# ! / bin / sh
+# !/bin/sh
 echo "foo"
 </pre>
 
 Tasks can also be hierarchically structured using directories.
 
 <pre>
-server / roles / small / echo
-                  / dir / echo2
+server/roles/small/echo
+/dir/echo2
 </pre>
 
 <h4> Developer </h4>

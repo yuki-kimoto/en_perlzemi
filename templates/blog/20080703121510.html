@@ -30,7 +30,7 @@ You can use Hash::Util::lock_keys to limit the keys in a hash. If you specify on
 <pre>
 %hash = ();
 Limited to # key1 and key2.
-@restrict_keys = qw / key1 key2 /;
+@restrict_keys = qw/key1 key2 /;
 Hash::Util::lock_keys(%hash, @restrict_keys);
 # Remove restrictions.
 Hash::Util::unlock_keys(%hash);
@@ -40,7 +40,7 @@ If you specify a key as the second argument, you can prohibit the addition of ke
 
 The Hash::Util::lock_keys function does not prohibit delete keys from being deleted. Only the addition of keys is prohibited.
 
-<h3> Prohibit changing hash value and adding / deleting keys </h3>
+<h3> Prohibit changing hash value and adding/deleting keys </h3>
 
 <pre>
 Hash::Util::lock_hash (%hash);
@@ -83,7 +83,7 @@ Hash::Util::unlock_keys(%hash);
 Limited to # key1 and key2.
 print "1-2: Prohibit the addition of keys other than the specified key.\n";
 %hash = ();
-@restrict_keys = qw / key1 key2 /;
+@restrict_keys = qw/key1 key2 /;
 
 Die when trying to add # key3.
 Hash::Util::lock_keys(%hash, @restrict_keys);
@@ -93,7 +93,7 @@ print "$@\n";
 Remove the # key restriction.
 Hash::Util::unlock_keys(%hash);
 
-print "2: Prohibit changing hash value and adding / deleting keys.\n";
+print "2: Prohibit changing hash value and adding/deleting keys.\n";
 %hash = (key1 => 1, key2 => 2);
 
 # Die when trying to change the value.
@@ -120,7 +120,7 @@ Attempt to access disallowed key'key3' in a restricted hash at - line 17.
 1-2: Prohibit the addition of keys other than the specified key.
 Attempt to access disallowed key'key3' in a restricted hash at - line 28.
 
-2: Prohibit changing hash value and adding / deleting keys.
+2: Prohibit changing hash value and adding/deleting keys.
 Modification of a read-only value attempted at - line 37.
 
 Attempt to access disallowed key'key3' in a restricted hash at - line 40.

@@ -223,7 +223,7 @@ $vc->register_constraint(
     
     # Returns 1 if correct, 0 if incorrect
     return 0 unless defined $value;
-    return $value = ~ / ^. + @. + $/? 1: 0;
+    return $value = ~/^. + @. + $/? 1: 0;
   }
 );
 </pre>
@@ -274,7 +274,7 @@ Validator::Custom makes it easy to register constraint functions for validation.
 $vc->register_constraint(
   tel_num => sub {
     my $value = shift;
-    $value = ~ / ^ [\ d-] + $/? 1: 0;
+    $value = ~/^ [\ d-] + $/? 1: 0;
   }
 );
 </pre>
@@ -293,13 +293,13 @@ Multiple constraint functions can be registered at the same time.
 $vc->register_constraint(
   tel_num => sub {
      my $value = shift;
-     $value = ~ / ^ [\ d-] + $/? 1: 0;
+     $value = ~/^ [\ d-] + $/? 1: 0;
   },
   hiragana => sub {...}
 );
 </pre>
 
-<h3> Item does not have to exist require => 0 / Validator::Custom Reference </h3>
+<h3> Item does not have to exist require => 0/Validator::Custom Reference </h3>
 
 If the <strong> item may or may not exist </strong>, use the <b> optional </b> method instead of the <strong> require </strong> method.
 
@@ -319,7 +319,7 @@ You may want to enter multiple text boxes and check that at least one of them co
 my $vc = Validator::Custom->new;
 $data = {name1 =>'Ken', name2 =>'', name3 =>'Taro'};
 $rule = [
-  {key => qr / ^ name \ d + $/} => [
+  {key => qr/^ name \ d + $/} => [
     'merge',
     'trim',
     'not_blank'
@@ -424,13 +424,13 @@ my $data = {food =>'sushi'};
 
 # rule
 my $rule = $rule->create_rule;
-$rule->require ('food')->check ({'in_array' => [qw / sushi bread apple /]});
+$rule->require ('food')->check ({'in_array' => [qw/sushi bread apple /]});
 </pre>
 
 The argument of the in_array constraint function specifies an array reference that contains the allowed values.
 
 <pre>
-{'in_array' => [qw / sushi bread apple /]}
+{'in_array' => [qw/sushi bread apple /]}
 </pre>
 
 <h4> Apply to multiple values ​​such as checkboxes </h4>
@@ -444,7 +444,7 @@ my $data = {food => ['sushi', 'cake']};
 # rule
 my $rule = $vc->create_rule;
 $rule->require ('food')
-  ->each(1)->check ({'in_array' => [qw / sushi bread apple /]);
+  ->each(1)->check ({'in_array' => [qw/sushi bread apple /]);
 
 my $is_valid = $vc->validate ($data, $rule);
 </pre>
@@ -463,7 +463,7 @@ $rule->require ('food')
   ->filter ('to_array')
   ->check ('selected_at_least')
   ->each(1)
-  ->check ({'in_array' => [qw / 001 002 /]});
+  ->check ({'in_array' => [qw/001 002 /]});
 </pre>
 
 Validator::Custom makes it easy to validate HTML forms.
@@ -672,7 +672,7 @@ my $data = {num => '123'};
 
 # rule
 my $rule = $vc->create_rule;
-$rule->require ('num')->check ({'regex' => qr / \ d {0,3} /});
+$rule->require ('num')->check ({'regex' => qr/\ d {0,3} /});
 </pre>
 
 <h3> not_space (constraint function)-not whitespace </h3>

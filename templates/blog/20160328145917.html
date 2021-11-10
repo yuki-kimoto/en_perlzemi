@@ -58,16 +58,13 @@ EXTCONST char * const PL_op_desc [] = {
 Each operation has a corresponding function, but the address to that function is described.
 
 <pre>
-EXT Perl_ppaddr_t PL_ppaddr [] /* or perlvars.h * /
-# endif
-# endif / * PERL_GLOBAL_STRUCT * /
-# if (defined(DOINIT) &&! Defined (PERL_GLOBAL_STRUCT)) || defined(PERL_GLOBAL_STRUCT_INIT)
+EXT Perl_ppaddr_t PL_ppaddr [] /* or perlvars.h */# endif
+# endif/* PERL_GLOBAL_STRUCT */# if (defined(DOINIT) &&! Defined (PERL_GLOBAL_STRUCT)) || defined(PERL_GLOBAL_STRUCT_INIT)
 # define PERL_PPADDR_INITED
 = {
   Perl_pp_null,
   Perl_pp_stub,
-  Perl_pp_scalar, / * implemented by Perl_pp_null * /
-  Perl_pp_pushmark,
+  Perl_pp_scalar,/* implemented by Perl_pp_null */  Perl_pp_pushmark,
   Perl_pp_wantarray,
   Perl_pp_const,
   Perl_pp_gvsv,
@@ -86,14 +83,7 @@ Each operation is optimized with a function prefixed with "ck". The address of t
 # if (defined(DOINIT) &&! Defined (PERL_GLOBAL_STRUCT)) || defined(PERL_GLOBAL_STRUCT_INIT)
 # define PERL_CHECK_INITED
 = {
-  Perl_ck_null, / * null * /
-  Perl_ck_null, / * stub * /
-  Perl_ck_fun, / * scalar * /
-  Perl_ck_null, / * pushmark * /
-  Perl_ck_null, / * wantarray * /
-  Perl_ck_svconst, / * const * /
-  Perl_ck_null, / * gvsv * /
-};
+  Perl_ck_null,/* null */  Perl_ck_null,/* stub */  Perl_ck_fun,/* scalar */  Perl_ck_null,/* pushmark */  Perl_ck_null,/* wantarray */  Perl_ck_svconst,/* const */  Perl_ck_null,/* gvsv */};
 </pre>
 
 <h3> Function argument information </h3>
@@ -102,25 +92,15 @@ The argument information of the function to be executed is described.
 
 <pre>
 EXTCONST U32 PL_opargs [] = {
-  0x00000000, / * null * /
-  0x00000000, / * stub * /
-  0x00001b04, / * scalar * /
-  0x00000004, / * pushmark * /
-  0x00000004, / * wantarray * /
-  0x00000604, / * const * /
-  0x00000644, / * gvsv * /
-  0x00000644, / * gv * /
-  ...
+  0x00000000,/* null */  0x00000000,/* stub */  0x00001b04,/* scalar */  0x00000004,/* pushmark */  0x00000004,/* wantarray */  0x00000604,/* const */  0x00000644,/* gvsv */  0x00000644,/* gv */  ...
 };
 </pre>
 
 This is written numerically and I don't know what it is. It is defined in "op.h". The above value is the value of the logical sum of the bit operations of the following values.
 
 <pre>
-/* op.h * /
-
-/ * Lowest byte of PL_opargs * /
-# define OA_MARK 1
+/* op.h */
+/ * Lowest byte of PL_opargs */# define OA_MARK 1
 # define OA_FOLDCONST 2
 # define OA_RETSCALAR 4
 # define OA_TARGET 8
@@ -129,8 +109,7 @@ This is written numerically and I don't know what it is. It is defined in "op.h"
 # define OA_DANGEROUS 64
 # define OA_DEFGV 128
 
-/ * The next 4 bits (8..11) encode op class information * /
-# define OCSHIFT 8
+/ * The next 4 bits (8..11) encode op class information */# define OCSHIFT 8
 
 # define OA_CLASS_MASK (15 << OCSHIFT)
 
@@ -152,8 +131,7 @@ This is written numerically and I don't know what it is. It is defined in "op.h"
 # define OA_UNOP_AUX (15 << OCSHIFT)
 
 / * Each remaining nybble of PL_opargs (i.e. bits 12..15, 16..19 etc)
- * encode the type for each arg * /
-# define OASHIFT 12
+ * encode the type for each arg */# define OASHIFT 12
 
 # define OA_SCALAR 1
 # define OA_LIST 2
@@ -165,7 +143,7 @@ This is written numerically and I don't know what it is. It is defined in "op.h"
 # define OA_OPTIONAL 8
 </pre>
 
-And the above doesn't explain this value, but it's in "regen / opcodes".
+And the above doesn't explain this value, but it's in "regen/opcodes".
 
 <pre>
 # Other options are:
@@ -182,7 +160,7 @@ And the above doesn't explain this value, but it's in "regen / opcodes".
 
 <h3> Private flags for operations </h3>
 
-And there is private flag information about the operation. A detailed description of these can be found in "regen / op_private".
+And there is private flag information about the operation. A detailed description of these can be found in "regen/op_private".
 
 <pre>
 # define OPpLVREF_SV 0x00

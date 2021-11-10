@@ -16,7 +16,7 @@
 
 Starting with Perl 5.10, a module called Time::Piece has been added to the standard module to handle time conveniently. If you're using Perl 5.10 or higher, the Time::Piece module is useful if you want to work with dates and times.
 
-In traditional Perl, standard modules didn't have an intuitive way to handle dates and times. It took a little tedious work to handle dates and times. Time::Piece provides intuitive manipulation of dates and times. It also has a date / time formatting function and an analysis function.
+In traditional Perl, standard modules didn't have an intuitive way to handle dates and times. It took a little tedious work to handle dates and times. Time::Piece provides intuitive manipulation of dates and times. It also has a date/time formatting function and an analysis function.
 
 Perl has a module called DateTime, which is essentially the standard for date-handling modules. However, this module must be installed from CPAN, not the standard module. Also, since it is a huge module, it takes a lot of time to load the module. You may be a little dissatisfied with the execution speed except in an environment where modules can be expanded in memory such as mod_perl.
 
@@ -30,7 +30,7 @@ For general information on dates and times, please refer to the following.
   </li>
 </ul>
 
-<h3> Acquisition of time / date information </h3>
+<h3> Acquisition of time/date information </h3>
 
 Use the Time::Piece module as follows: When used, the Time::Piece module overwrites the core localtime and gmtime.
 
@@ -320,9 +320,9 @@ $t->is_leap_year
 $t->month_last_day
 </pre>
 
-<h3> Format date / time </h3>
+<h3> Format date/time </h3>
 
-You may want to format the date / time and output it. Time::Piece provides several fixed formats. You can also format it freely using the strftime method.
+You may want to format the date/time and output it. Time::Piece provides several fixed formats. You can also format it freely using the strftime method.
 
 <h4> [A] Formats provided by default </h4>
 
@@ -507,12 +507,12 @@ Note that Time::Piece's strftime method always returns a byte string, whether th
 my $bytes = $tp->strftime("%Y year%m month");
 </pre>
 
-<h3> Parse the character string that expresses the date / time </h3>
+<h3> Parse the character string that expresses the date/time </h3>
 
 You can parse date and time representations to create Time::Piece objects. Use the strptime method to parse dates and times.
 
 <pre>
-my $t = Time::Piece->strptime(character string representing date / time, format);
+my $t = Time::Piece->strptime(character string representing date/time, format);
 </pre>
 
 As a sample, let's parse the MySQL date representation and create a Time::Piece object. Use the above strftime format for the format.
@@ -533,7 +533,7 @@ my $t = Time::Piece::localtime;
 my $wday = $t->wdayname (@week_names);
 </pre>
 
-<h3> Calculation of date / time information </h3>
+<h3> Calculation of date/time information </h3>
 
 <h4> Tempe::Piece object subtraction </h4>
 

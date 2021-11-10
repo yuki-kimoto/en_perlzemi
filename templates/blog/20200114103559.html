@@ -77,7 +77,7 @@ There is a character class defined in Perl. "\ D" is a predefined character clas
    \ h Horizontal whitespace
    \ H Non-horizontal whitespace character
   \n Non-line feed (if not followed by'{NAME}'; experimental; in character class
-           Illegal; equivalent to [^\n]; similar to'.' Without / s)
+           Illegal; equivalent to [^\n]; similar to'.' Without/s)
    \ v Vertical whitespace
    \ V Non-vertical whitespace
   \r General line breaks (?> \ V | \ x0D \ x0A)
@@ -107,7 +107,7 @@ Perl 5.14 introduces the "a" option, which limits the character class to the ASC
 
 <pre>
 # Match only numbers in the ASCII range.
-$str = ~ / \ d + / a;
+$str = ~/\ d +/a;
 </pre>
 
 <h4> Character class that represents only ASCII range </h4>
@@ -167,16 +167,16 @@ use utf8;
 
 # Use character class
 my $str ='Hello';
-if ($str = ~ / [abcde] /) {
+if ($str = ~/[abcde] /) {
   print "Match\n";
 }
 
 # Match with web service user ID (a-zA-Z0-9_)
 my $user_id ='kimoto_yuki089';
 my $user_id_invalid ='abc & cde';
-if ($user_id = ~ / ^ \ p {PosixWord} + $/) {print "user_is valid\n";
+if ($user_id = ~/^ \ p {PosixWord} + $/) {print "user_is valid\n";
 }
-unless ($user_id_invalid = ~ / ^ \ p {PosixWord} + $/) {
+unless ($user_id_invalid = ~/^ \ p {PosixWord} + $/) {
    print "user_id_invalid is invalid\n";
 }
 
@@ -184,13 +184,13 @@ unless ($user_id_invalid = ~ / ^ \ p {PosixWord} + $/) {
 my $password ='Ufy | & 123_';
 my $passowrd_invalid1 ='abc def';
 my $passowrd_invalid2 ='abc a';
-if ($password = ~ / ^ \ p {PosixGraph} + $/) {
+if ($password = ~/^ \ p {PosixGraph} + $/) {
    print "password is valid\n";
 }
-unless ($passowrd_invalid1 = ~ / ^ \ p {PosixGraph} + $/) {
+unless ($passowrd_invalid1 = ~/^ \ p {PosixGraph} + $/) {
    print "passowrd_invalid1 is inalid\n";
 }
-unless ($passowrd_invalid2 = ~ / ^ \ p {PosixGraph} + $/) {
+unless ($passowrd_invalid2 = ~/^ \ p {PosixGraph} + $/) {
    print "passowrd_invalid2 is inalid\n";
 }
 </pre>

@@ -48,10 +48,7 @@ For example, subroutine call stack information, currently executing syntax tree 
 Interpreter variables are defined using special macros. It's a macro called PERLVAR.
 
 <pre>
-PERLVAR (I, stack_sp, SV **) / * top of the stack * /
-PERLVAR (I, op, OP *) / * currently executing op * /
-PERLVAR (I, curpad, SV **) / * active pad (lexicals + tmps) * /
-</pre>
+PERLVAR (I, stack_sp, SV **)/* top of the stack */PERLVAR (I, op, OP *)/* currently executing op */PERLVAR (I, curpad, SV **)/* active pad (lexicals + tmps) */</pre>
 
 Let's take a look at the PERLVAR macro. There is a definition in "perl.h".
 
@@ -96,8 +93,7 @@ vTHX is an interpreter. Under "MULTIPLICITY", "vTHX" expands to "aTHX" and "PERL
 
 <pre>
 # if defined(MULTIPLICITY)
-/ * cases 2 and 3 above * /
-
+/ * cases 2 and 3 above */
 # if defined(PERL_IMPLICIT_CONTEXT)
 # define vTHX aTHX
 # else

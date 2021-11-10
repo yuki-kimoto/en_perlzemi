@@ -18,7 +18,7 @@ You can use <strong> File::Temp </strong> to create <b> temporary files </b> and
 
 <pre>
 # Loading modules and importing functions
-use File::Temp qw / tempfile tempdir /;
+use File::Temp qw/tempfile tempdir /;
 </pre>
 
 Use the <strong> tempfile </strong> function to create a temporary file. The return value is the file handle of the temporary file in the scalar context and the file handle and filename of the temporary file in the list context.
@@ -106,7 +106,7 @@ tempfile (DIR =>'somedir', SUFFIX =>'.dat');
 
 </table>
 
-If DIR is omitted, the directory for creating temporary files is automatically determined. For Unix it is / tmp.
+If DIR is omitted, the directory for creating temporary files is automatically determined. For Unix it is/tmp.
 
 <h3> Note </h3>
-* 1 It is not safe to open a file in read / write mode and write to the read file. This is because if the computer crashes during writing, the data before reading will be corrupted. It is safe to write to a different file than the one you read and then overwrite with that file.
+* 1 It is not safe to open a file in read/write mode and write to the read file. This is because if the computer crashes during writing, the data before reading will be corrupted. It is safe to write to a different file than the one you read and then overwrite with that file.

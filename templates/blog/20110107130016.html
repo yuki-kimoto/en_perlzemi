@@ -25,10 +25,10 @@ sakuracpanm - app.cgi
 To install a module, simply enter the module name in the text box and press the install button. The first CPAN module installation is time consuming (5-10 minutes) as it requires the installation of cpanm's dependent modules. Please wait patiently. Anyone can use it, so remove this tool as soon as the installation is complete, or set permissions to 000, etc.
 
 <pre>
-# ! / usr / bin / perl
+# !/usr/bin/perl
 
 use FindBin;
-use lib "$FindBin::Bin / lib";
+use lib "$FindBin::Bin/lib";
 
 use Mojolicious::Lite;
 use File::Copy 'move';
@@ -44,9 +44,9 @@ get'/' => sub {
     $self->stash (error =>'');
     $self->stash (output =>'');
     
-    if ($module && $module = ~ / ^ [: \ w] + $/) {
+    if ($module && $module = ~/^ [: \ w] + $/) {
         my $home = $ENV{DOCUMENT_ROOT};
-        $home = ~ s # / www $# #;
+        $home = ~ s #/www $# #;
         
         my @output;
         my @cpanm;
@@ -64,10 +64,10 @@ get'/' => sub {
                 die qq {Can't donwlaod "cpanm"};
             }
             
-            push @cpanm, '#! / usr / bin / perl';
+            push @cpanm, '#!/usr/bin/perl';
             push @cpanm, "BEGIN {".
                              "\$ENV{HOME} =" $home'; ".
-                             "use lib '$home / perl5 / lib / perl5';".
+                             "use lib '$home/perl5/lib/perl5';".
                          "}";
             push @cpanm, $cpanm_content;
             
@@ -78,7 +78,7 @@ get'/' => sub {
             
             close $write_fh;
             
-            my $output = `perl cpanm - local-lib = $home / perl5 $module 2> & 1`;
+            my $output = `perl cpanm - local-lib = $home/perl5 $module 2> & 1`;
             push @output, split /\n /, $output;
         };
         
@@ -102,14 +102,14 @@ __DATA__
 @@index.html.ep
 <html>
   <head>
-    <meta http-equiv = "Content-type" content = "text / html; charset = UTF-8">    <title> Sakura Rental Server Light CPAN Module Installation </title>
+    <meta http-equiv = "Content-type" content = "text/html; charset = UTF-8">    <title> Sakura Rental Server Light CPAN Module Installation </title>
   </head>
   <body>
     <h1> Sakura rental server light CPAN module installation </h1>
     <pre>
     # If you want to use the installed module, write as follows in the script (app.cgi).
     use FindBin;
-    use lib "$FindBin::Bin / .. / .. / perl5 / lib / perl5";
+    use lib "$FindBin::Bin/../../perl5/lib/perl5";
     
     # This script is available to everyone and should be removed as soon as the installation is complete.
     </pre>

@@ -16,13 +16,13 @@ This script first changes the current directory to a directory called "/ tmp".
 
 <b> The important thing here is that the directory "/ tmp" can be read and written by other users. </b>
 
-Being writable by other users means that you can put a file called "Find / Path.pm". (Reference: <a href="/blog/20100409127089.html">File::Path</a>)
+Being writable by other users means that you can put a file called "Find/Path.pm". (Reference: <a href="/blog/20100409127089.html">File::Path</a>)
 
 If the current directory "." Exists at the beginning of the module load path, it first tries to load the module that exists in the current directory.
 
-This script then tries to read "Find / Path.pm" which exists in the current directory "/ tmp".
+This script then tries to read "Find/Path.pm" which exists in the current directory "/ tmp".
 
-If the contents of "Find / Path.pm" are made into an attack program, "test.pl" will unintentionally execute "Find / Path.pm" in "/ tmp". ..
+If the contents of "Find/Path.pm" are made into an attack program, "test.pl" will unintentionally execute "Find/Path.pm" in "/ tmp". ..
 
 This seems to be a problem of "untrustworthy search path vulnerability".
 

@@ -32,7 +32,7 @@ File::Spec->$method;
 
 <h4> catfile </h4>
 
-Use catfile to create filenames from individual parts. $file is "xxx \ yyy \ zzz" for Windows and "xxx / yyy / zzz" for Unix. OS-specific delimiters are used to create filenames.
+Use catfile to create filenames from individual parts. $file is "xxx \ yyy \ zzz" for Windows and "xxx/yyy/zzz" for Unix. OS-specific delimiters are used to create filenames.
 
 <pre>
 # Create file name
@@ -43,7 +43,7 @@ It can also be used to concatenate directory names and file names. You do not ne
 
 <pre>
 # Concatenate directory name and file name
-my $dir ='xxx / yyy /';
+my $dir ='xxx/yyy /';
 my $file ='zzz';
 
 my $file_abs = File::Spec->catfile ($dir, $file);
@@ -55,7 +55,7 @@ Use splitdir to split the filename into individual parts. @parts becomes ('xxx',
 
 <pre>
 # Decompose file name
-my @parts = File::Spec->splitdir ('xxx / yyy / zzz');
+my @parts = File::Spec->splitdir ('xxx/yyy/zzz');
 </pre>
 
 <h4> File::Spec Technique </h4>

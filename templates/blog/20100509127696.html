@@ -18,7 +18,7 @@ The <strong> Benchmark </strong> module allows you to benchmark (performance com
 
 <pre>
 # Loading modules and importing functions
-use Benchmark qw / timethese cmpthese /;
+use Benchmark qw/timethese cmpthese /;
 </pre>
 
 You can get the performance information of each function by executing the <strong> timethese </strong> function. If you specify this as an argument to the <strong> compthese </strong> function, the standard output will display the comparison result.
@@ -73,22 +73,22 @@ The output result is as follows. It can be confirmed that loop3 is nearly 3 time
 <pre>
 # Benchmark output result
 Benchmark: timing 10000 iterations of loop1, loop2, loop3 ...
-     loop1: 4 wallclock secs (2.98 usr + 0.00 sys = 2.98 CPU) @3351.21 / s (n = 10000)
-     loop2: 2 wallclock secs (1.75 usr + 0.00 sys = 1.75 CPU) @5714.29 / s (n = 10000)
-     loop3: 1 wallclock secs (1.03 usr + 0.00 sys = 1.03 CPU) @9699.32 / s (n = 10000)
+     loop1: 4 wallclock secs (2.98 usr + 0.00 sys = 2.98 CPU) @3351.21/s (n = 10000)
+     loop2: 2 wallclock secs (1.75 usr + 0.00 sys = 1.75 CPU) @5714.29/s (n = 10000)
+     loop3: 1 wallclock secs (1.03 usr + 0.00 sys = 1.03 CPU) @9699.32/s (n = 10000)
         Rate loop1 loop2 loop3
-loop1 3351 / s - - 41% -65%
-loop2 5714 / s 71% - - 41%
-loop3 9699 / s 189% 70% -
+loop1 3351/s - - 41% -65%
+loop2 5714/s 71% - - 41%
+loop3 9699/s 189% 70% -
 </pre>
 
 <h3> FAQ about Benchmark module </h3>
 
 Q. Does the Benchmark module calculate the actual processing time?
-A. The time displayed by wallclock is the actual time taken. The value after @is calculated as "number of trials / CPU time".
+A. The time displayed by wallclock is the actual time taken. The value after @is calculated as "number of trials/CPU time".
 
-The value after @is calculated by the formula "number of trials / CPU time". CPU time is the time of the CPU used by the process, so it does not include I / O waits such as database access or time to execute child processes. Also, when the <a href="/blog/20170522149546.html">sleep function</a> is executed, it is not included in the execution time because it does not use the CPU.
+The value after @is calculated by the formula "number of trials/CPU time". CPU time is the time of the CPU used by the process, so it does not include I/O waits such as database access or time to execute child processes. Also, when the <a href="/blog/20170522149546.html">sleep function</a> is executed, it is not included in the execution time because it does not use the CPU.
 
-This means that the value after @cannot be used as a reference when benchmarking I / O or calling child processes. The value compared by cmpthese is also "number of trials / CPU time", so the displayed value cannot be used for evaluation as it is.
+This means that the value after @cannot be used as a reference when benchmarking I/O or calling child processes. The value compared by cmpthese is also "number of trials/CPU time", so the displayed value cannot be used for evaluation as it is.
 
-If you are doing I / O or running a child process, you need to look at the value displayed on the wallclock. However, in most cases, you will use the Benchmark module for the purpose of evaluating the algorithm of the program, so you can use the value compared by cmpthese as a guide.
+If you are doing I/O or running a child process, you need to look at the value displayed on the wallclock. However, in most cases, you will use the Benchmark module for the purpose of evaluating the algorithm of the program, so you can use the value compared by cmpthese as a guide.

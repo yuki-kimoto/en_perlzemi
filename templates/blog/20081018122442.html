@@ -2,7 +2,7 @@
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161123147990.html">        <span itemprop = "name">Date / Time </span></a>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161123147990.html">        <span itemprop = "name">Date/Time </span></a>
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
@@ -41,8 +41,8 @@ sub time_from_str {
   return unless $time_str;
   
   my $time = {};
-  if ($time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
-    @{$time}{qw / hour min sec /} = ($1, $2, $3);
+  if ($time_str = ~/^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
+    @{$time}{qw/hour min sec /} = ($1, $2, $3);
     return wantarray?% $time: $time;
   }
   return;
@@ -63,7 +63,7 @@ sub str_from_time {
   return unless defined $time->{sec};
     
   my $time_str
-    = sprintf("%02s:%02s:%02s", @{$time}{qw / hour min sec /});
+    = sprintf("%02s:%02s:%02s", @{$time}{qw/hour min sec /});
   return $time_str;
 }
 
@@ -93,10 +93,10 @@ sub sec_to_time {
   my $sec = int(shift);
   my $time = {};
   
-  $time->{hour} = int($sec / 3600);
+  $time->{hour} = int($sec/3600);
   $sec = $sec % 3600;
   
-  $time->{min} = int($sec / 60);
+  $time->{min} = int($sec/60);
   $sec = $sec % 60;
   
   $time->{sec} = $sec;
@@ -129,8 +129,8 @@ sub time_from_str {
   return unless $time_str;
   
   my $time = {};
-  if ($time_str = ~ / ^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
-    @{$time}{qw / hour min sec /} = ($1, $2, $3);
+  if ($time_str = ~/^ (\ d {2}): (\ d {2}) :( \ d {2}) $/) {
+    @{$time}{qw/hour min sec /} = ($1, $2, $3);
     return wantarray?% $time: $time;
   }
   return;
@@ -140,7 +140,7 @@ sub time_from_str {
 The following part is a hash slice. It is a form of dereferencing $time and assigning it as a hash slice. qw is a string list operator.
 
 <pre>
-@{$time}{qw / hour min sec /} = ($1, $2, $3);
+@{$time}{qw/hour min sec /} = ($1, $2, $3);
 </pre>
 
 The return value allows you to select a list and a scalar.
@@ -192,10 +192,10 @@ sub sec_to_time {
   my $sec = int(shift);
   my $time = {};
   
-  $time->{hour} = int($sec / 3600);
+  $time->{hour} = int($sec/3600);
   $sec = $sec % 3600;
   
-  $time->{min} = int($sec / 60);
+  $time->{min} = int($sec/60);
   $sec = $sec % 60;
   
   $time->{sec} = $sec;
@@ -226,7 +226,7 @@ sub str_from_time {
   return unless defined $time->{sec};
     
   my $time_str
-    = sprintf("%02s:%02s:%02s", @{$time}{qw / hour min sec /});
+    = sprintf("%02s:%02s:%02s", @{$time}{qw/hour min sec /});
   return $time_str;
 }
 </pre>

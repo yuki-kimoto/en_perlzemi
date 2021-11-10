@@ -59,10 +59,10 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile (
     NAME =>'Rstats::Element',
-    VERSION_FROM =>'lib / Rstats / Element.pm',
+    VERSION_FROM =>'lib/Rstats/Element.pm',
     PREREQ_PM => {},
     ($]> = 5.005?
-      (ABSTRACT_FROM =>'lib / Rstats / Element.pm',
+      (ABSTRACT_FROM =>'lib/Rstats/Element.pm',
        AUTHOR =>'A. U. Thor <kimoto@sakura.ne.jp>') :()),
     LIBS => [''],
     # XS option
@@ -100,8 +100,8 @@ use ExtUtils::MakeMaker;
 WriteMakefile (
     NAME =>'Rstats',
     AUTHOR =>'Yuki Kimoto <kimoto.yuki@gmail.com>',
-    VERSION_FROM =>'lib / Rstats.pm',
-    ABSTRACT_FROM =>'lib / Rstats.pm',
+    VERSION_FROM =>'lib/Rstats.pm',
+    ABSTRACT_FROM =>'lib/Rstats.pm',
     ($ExtUtils::MakeMaker::VERSION> = 6.3002
       ? ('LICENSE'=>' perl')
       : ()),
@@ -124,15 +124,15 @@ WriteMakefile (
 );
 </pre>
 
-<h4> How to add a search path for a C / C ++ language header file in Makefile.PL </h4>
+<h4> How to add a search path for a C/C ++ language header file in Makefile.PL </h4>
 
-When writing Makefile.PL, you may want to change or add the location of C / C ++ header files. For ExtUtils::MakeMaker, you can set it with the <b> INC </b> and <b> H </b> options in the WriteMakefile.
+When writing Makefile.PL, you may want to change or add the location of C/C ++ header files. For ExtUtils::MakeMaker, you can set it with the <b> INC </b> and <b> H </b> options in the WriteMakefile.
 
-The following settings assume that you have a C / C ++ header file in "Rstats_lib / include".
+The following settings assume that you have a C/C ++ header file in "Rstats_lib/include".
 
 <pre>
     INC =>'-I. -I./Rstats_lib/include',
-    H => ['ppport.h', glob('Rstats_lib / include / *. h')],
+    H => ['ppport.h', glob('Rstats_lib/include/*. h')],
 </pre>
 
 <h4> Add header file include path </h4>
@@ -149,24 +149,24 @@ This is an option passed to the compiler (such as gcc). Note that even if you sp
 
 <b> Specify a list of header file names </b>
 
-The "H" option passes a list of header files. Specify all header files in the array reference. All header files under "Rstats_lib / include" are specified using "ppport.h" and the glob function.
+The "H" option passes a list of header files. Specify all header files in the array reference. All header files under "Rstats_lib/include" are specified using "ppport.h" and the glob function.
 
 <pre>
-    H => ['ppport.h', glob('Rstats_lib / include / *. h')],
+    H => ['ppport.h', glob('Rstats_lib/include/*. h')],
 </pre>
 
 If this is not specified, the dependency will not be resolved correctly when make is executed, so be sure to specify it. The "INC" option alone will compile successfully for the first time, but make will not understand the dependencies correctly.
 
-<h4> How to add a search path for C / C ++ language source files in Makefile.PL </h4>
+<h4> How to add a search path for C/C ++ language source files in Makefile.PL </h4>
 
-How can I store C / C ++ language source files in a different directory when writing an XS? You can do that if you write Makefile.PL well. Write the WriteMakefile options in Makefile.PL as follows:
+How can I store C/C ++ language source files in a different directory when writing an XS? You can do that if you write Makefile.PL well. Write the WriteMakefile options in Makefile.PL as follows:
 
 <pre>
-    C => ['Rstats.c', glob('Rstats_lib / src / *. Cpp')],OBJECT =>'$(O_FILES)',
+    C => ['Rstats.c', glob('Rstats_lib/src/*. Cpp')],OBJECT =>'$(O_FILES)',
     DEFINE =>'-o $@'
 </pre>
 
-This is the case when the module name is Rstats and the source file directory is "Rstats_lib / src". It is assumed that a file called Rstats.xs is located at the top "/". The source file type is a C ++ source file.
+This is the case when the module name is Rstats and the source file directory is "Rstats_lib/src". It is assumed that a file called Rstats.xs is located at the top "/". The source file type is a C ++ source file.
 
 To make the image easier, I'll show you the structure of the directory and a complete sample of Makefile.PL.
 
@@ -222,8 +222,8 @@ my $ld = $cc;
 WriteMakefile (
     NAME =>'Rstats',
     AUTHOR =>'Yuki Kimoto <kimoto.yuki@gmail.com>',
-    VERSION_FROM =>'lib / Rstats.pm',
-    ABSTRACT_FROM =>'lib / Rstats.pm',
+    VERSION_FROM =>'lib/Rstats.pm',
+    ABSTRACT_FROM =>'lib/Rstats.pm',
     ($ExtUtils::MakeMaker::VERSION> = 6.3002
       ? ('LICENSE'=>' perl')
       : ()),
@@ -249,7 +249,7 @@ WriteMakefile (
     LIBS => [],
     DEFINE =>'',
     INC =>'-I. -I./Rstats_lib/include',
-    C => ['Rstats.c', glob('Rstats_lib / src / *. Cpp')],
+    C => ['Rstats.c', glob('Rstats_lib/src/*. Cpp')],
     OBJECT =>'$(O_FILES)',
     DEFINE =>'-o $@'
 );
@@ -260,15 +260,15 @@ WriteMakefile (
 I think it is difficult to understand as it is, so I will explain the options of WriteMakefile.
 
 <pre>
-    C => ['Rstats.c', glob('Rstats_lib / src / *. Cpp')],
+    C => ['Rstats.c', glob('Rstats_lib/src/*. Cpp')],
     OBJECT =>'$(O_FILES)',
     DEFINE =>'-o $@'
 </pre>
 
-First, write all the source code required for compilation with the option "C". "Rstats.c" corresponds to "Rstats.xs". I am using the glog function to get the cpp file under "Rstats_lib / src". If it was C language, the options in this part would be as follows.
+First, write all the source code required for compilation with the option "C". "Rstats.c" corresponds to "Rstats.xs". I am using the glog function to get the cpp file under "Rstats_lib/src". If it was C language, the options in this part would be as follows.
 
 <pre>
-    C => ['Rstats.c', glob('Rstats_lib / src / *. C')],
+    C => ['Rstats.c', glob('Rstats_lib/src/*. C')],
 </pre>
 
 Internally, the file specified by the "C" option is stored in a variable called "C_FILES" in Makefile. In addition, a variable called "O_FILES" with the extension of "C_FILES" changed to ".o" is automatically created.

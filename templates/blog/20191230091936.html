@@ -446,7 +446,7 @@ $text->font ($font, $font_size);
 $text->translate ($render_start_x, $render_start_y);
 
 # Extract one character at a time
-while ($message = ~ / (.) / G) {
+while ($message = ~/(.)/G) {
   my $char = $1;
   
   # Line break if the current drawing position exceeds the drawing end x coordinate
@@ -491,7 +491,7 @@ Three pages with margins that repeat "Hello World!" Are output.
 
 In my environment, 12,000 characters take 1-2 seconds. PDF output is a surprisingly heavy process.
 
-<a href = "/ examples / pdf / margin_full_text.pdf">Output result margins, line breaks, page breaks</a>
+<a href = "/ examples/pdf/margin_full_text.pdf">Output result margins, line breaks, page breaks</a>
 
 <h4> How to represent HTML headlines and p tags? </H4>
 
@@ -563,7 +563,7 @@ If you want to put the font file in the directory where you put the program and 
 <pre>
 use FindBin;
 
-my $true_type_font_file = "$FindBin::Bin / kochi-gothic-subst.ttf";
+my $true_type_font_file = "$FindBin::Bin/kochi-gothic-subst.ttf";
 </pre>
 
 <h4> I want to make it bold with a TrueType font that supports Japanese </h4>
@@ -625,9 +625,9 @@ use PDF::API2;
 my $pdf = PDF::API2->new;
 
 # Reading TrueType fonts that support Japanese
-my $true_type_font_file = "$FindBin::Bin / AozoraMinchoRegular.ttf";
+my $true_type_font_file = "$FindBin::Bin/AozoraMinchoRegular.ttf";
 my $font = $pdf->ttfont ($true_type_font_file);
-my $true_type_font_bold_file = "$FindBin::Bin / AozoraMincho-bold.ttf";
+my $true_type_font_bold_file = "$FindBin::Bin/AozoraMincho-bold.ttf";
 my $font_bold = $pdf->ttfont ($true_type_font_bold_file);
 
 my $font_size = 11;
@@ -690,7 +690,7 @@ $text->font ($font, $font_size);
 $text->translate ($render_start_x, $render_start_y);
   
 # Extract one character at a time
-while ($message = ~ / (.) / G) {
+while ($message = ~/(.)/G) {
   my $char = $1;
   
   # Line break if the current drawing position exceeds the drawing end x coordinate

@@ -748,26 +748,20 @@ Stack frames are used when locating source code.
 <pre>
 // parser.h
 typedef struct {
-    YYSTYPE val; / * semantic value * /
-    short state;
-    I32 savestack_ix; / * size of savestack at this state * /
-    CV * compcv; / * value of PL_compcv when this value was created * /
-} yy_stack_frame;
+    YYSTYPE val;/* semantic value */    short state;
+    I32 savestack_ix;/* size of savestack at this state */    CV * compcv;/* value of PL_compcv when this value was created */} yy_stack_frame;
 
 // parly.h
 typedef union YYSTYPE
 {
-/ * Line 2058 of yacc.c * /
-
-    I32 ival; / * __DEFAULT__ (marker for regen_perly.pl;
-must always be 1st union member) * /
-    char * pval;
+/ * Line 2058 of yacc.c */
+    I32 ival;/* __DEFAULT__ (marker for regen_perly.pl;
+must always be 1st union member) */    char * pval;
     OP * opval;
     GV * gvval;
 
 
-/ * Line 2058 of yacc.c * /
-} YYSTYPE;
+/ * Line 2058 of yacc.c */} YYSTYPE;
 </pre>
 
 <h3> aTHX_ is expanded when threads are enabled and Perl is compiled </h3>
@@ -983,8 +977,7 @@ bodies_by_type [sv_type] .arena_size)); \
 / *
  PL_body_roots [] array of pointers to list of free bodies of svtype
                      arrays are indexed by the svtype needed
-* /
-
+*/
 
 
 </pre>
@@ -998,34 +991,30 @@ SV type definition.
 typedef struct STRUCT_SV SV;
 
 // perl.h
-/ * SGI's <sys / sema.h> has struct sv * /
-# if defined(__sgi)
+/ * SGI's <sys/sema.h> has struct sv */# if defined(__sgi)
 # define STRUCT_SV perl_sv
 # else
 # define STRUCT_SV sv
 # endif
 
 // sv.h
-struct STRUCT_SV {/ * struct sv {* /
-    _SV_HEAD (void *);
+struct STRUCT_SV {/ * struct sv {*/    _SV_HEAD (void *);
     _SV_HEAD_UNION;
 };
 
 // sv.h
-/ * start with 2 sv-head building blocks * /
-# define _SV_HEAD (ptrtype) \
-    ptrtype sv_any; / * pointer to body * / \
-    U32 sv_refcnt; / * how many references to us * / \
-    U32 sv_flags / * what we are * /
-
+/ * start with 2 sv-head building blocks */# define _SV_HEAD (ptrtype) \
+    ptrtype sv_any;/* pointer to body */\
+    U32 sv_refcnt;/* how many references to us */\
+    U32 sv_flags/* what we are */
 // sv.h
 # define _SV_HEAD_UNION \
     union {\
-char * svu_pv; / * pointer to malloced string * / \
+char * svu_pv;/* pointer to malloced string */\
 IV svu_iv; \
 UV svu_uv; \
 _NV_BODYLESS_UNION \
-SV * svu_rv; / * pointer to another SV * / \
+SV * svu_rv;/* pointer to another SV */\
 struct regexp * svu_rx; \
 SV ** svu_array; \
 HE ** svu_hash; \
@@ -1043,27 +1032,7 @@ SV types can be extended and can be various, but these types are implemented as 
 
 <pre>
 typedef enum {
-SVt_NULL, / * 0 * /
-/ * BIND was here, before INVLIST replaced it. * /
-SVt_IV, / * 1 * /
-SVt_NV, / * 2 * /
-/ * RV was here, before it was merged with IV. * /
-SVt_PV, / * 3 * /
-SVt_INVLIST, / * 4, implemented as a PV * /
-SVt_PVIV, / * 5 * /
-SVt_PVNV, / * 6 * /
-SVt_PVMG, / * 7 * /
-SVt_REGEXP, / * 8 * /
-/ * PVBM was here, before BIND replaced it. * /
-SVt_PVGV, / * 9 * /
-SVt_PVLV, / * 10 * /
-SVt_PVAV, / * 11 * /
-SVt_PVHV, / * 12 * /
-SVt_PVCV, / * 13 * /
-SVt_PVFM, / * 14 * /
-SVt_PVIO, / * 15 * /
-SVt_LAST / * keep last in enum. Used to size arrays * /
-} svtype;
+SVt_NULL,/* 0 *// * BIND was here, before INVLIST replaced it. */SVt_IV,/* 1 */SVt_NV,/* 2 *// * RV was here, before it was merged with IV. */SVt_PV,/* 3 */SVt_INVLIST,/* 4, implemented as a PV */SVt_PVIV,/* 5 */SVt_PVNV,/* 6 */SVt_PVMG,/* 7 */SVt_REGEXP,/* 8 *// * PVBM was here, before BIND replaced it. */SVt_PVGV,/* 9 */SVt_PVLV,/* 10 */SVt_PVAV,/* 11 */SVt_PVHV,/* 12 */SVt_PVCV,/* 13 */SVt_PVFM,/* 14 */SVt_PVIO,/* 15 */SVt_LAST/* keep last in enum. Used to size arrays */} svtype;
 </pre>
 
 <h3> Perl can have multiple interpreters </h3>
@@ -1095,10 +1064,10 @@ The declaration dVar sometimes comes up, but I don't think you need to be aware 
 PERL_GLOBAL_STRUCT is defined from the source code only when the OS is symbian. If so, for most operating systems, dVAR is dNOOP, which means that dNOOP does nothing, so dVar does nothing.
 
 <pre>
-// symbian / PerlApp.cpp:
+// symbian/PerlApp.cpp:
 # define PERL_GLOBAL_STRUCT
 
-// symbian / PerlBase.h:
+// symbian/PerlBase.h:
 # define PERL_GLOBAL_STRUCT
 </pre>
 
@@ -1155,7 +1124,7 @@ Perl's entry point is in perlmain.c. However, this file is not included in the P
 There is a generated description in the following Makefile.
 
 <pre>
-# Cross / Makefile-cross-SH
+# Cross/Makefile-cross-SH
 perlmain.c: miniperlmain.c config.sh $(FIRSTMAKEFILE)
 sh writemain $(DYNALOADER) $(static_ext)> perlmain.c
 </pre>
@@ -1165,8 +1134,7 @@ If you execute make, "perlmain.c" will be generated.
 Also, "perlmain.c" is almost the same as the description of "mini perlmain.c", only the following line is added.
 
 <pre>
-/ * Register any extra external extensions * /
-EXTERN_C void boot_DynaLoader (pTHX_ CV * cv);
+/ * Register any extra external extensions */EXTERN_C void boot_DynaLoader (pTHX_ CV * cv);
 </pre>
 
 In other words, "mini perlmain.c" with the dynamic load function added is "perlmain.c". So, if you look at "miniperlmain.c", you can see almost everything.
@@ -1220,7 +1188,7 @@ struct op {
  * op_static tell op_free () to skip PerlMemShared_free (), when
  *! op_slabbed.
  * op_savefree on savestack via SAVEFREEOP
- * op_folded Result / remainder of a constant fold operation.
+ * op_folded Result/remainder of a constant fold operation.
  * op_moresib this op is is not the last sibling
  * op_spare One spare bit
  * op_flags Flags common to all operations. See OPf_ * below.
@@ -1228,8 +1196,7 @@ struct op {
  * by default, set to the number of children until
  * the operation is privatized by a check routine,
  * which may or may not check number of children).
- * /
-
+ */
 </pre>
 
 <h3> Perl's lexar (talker) main routine is yylex </h3>
@@ -1269,91 +1236,34 @@ In the description of embedvar.h and intrpvar.h, yy_parser is given the name PL_
 # define PL_parser (vTHX->Iparser)
 
 // intrpvar.h
-PERLVAR (I, parser, yy_parser *) / * current parser state * /
-
+PERLVAR (I, parser, yy_parser *)/* current parser state */
 // parser.h
 typedef struct yy_parser {
 
-    / * parser state * /
-
-    struct yy_parser * old_parser; / * previous value of PL_parser * /
-    YYSTYPE yylval; / * value of lookahead symbol, set by yylex () * /
-    int yychar; / * The lookahead symbol. * /
-
-    / * Number of tokens to shift before error messages enabled. * /
-    int yyerrstatus;
+/* parser state */
+    struct yy_parser * old_parser;/* previous value of PL_parser */    YYSTYPE yylval;/* value of lookahead symbol, set by yylex () */    int yychar;/* The lookahead symbol. */
+/* Number of tokens to shift before error messages enabled. */    int yyerrstatus;
 
     int stack_size;
-    int yylen; / * length of active reduction * /
-    yy_stack_frame * stack; / * base of stack * /
-    yy_stack_frame * ps; / * current stack frame * /
-
-    / * lexer state * /
-
-    I32 lex_brackets; / * square and curly bracket count * /
-    I32 lex_casemods; / * casemod count * /
-    char * lex_brackstack; / * what kind of brackets to pop * /
-    char * lex_casestack; / * what kind of case mods in effect * /
-    U8 lex_defer; / * state after determined token * /
-    U8 lex_dojoin; / * doing an array interpolation
-1 = @{...} 2 =->@* /
-    U8 lex_expect; / * UNUSED * /
-    U8 expect; / * how to interpret ambiguous tokens * /
-    I32 lex_formbrack; / * bracket count at outer format level * /
-    OP * lex_inpat; / * in pattern $) and $| are special * /
-    OP * lex_op; / * extra info to pass back on op * /
-    SV * lex_repl; / * runtime replacement from s /// * /
-    U16 lex_inwhat; / * what kind of quoting are we in * /
-    OPCODE last_lop_op; / * last named list or unary operator * /
-    I32 lex_starts; / * how many interps done on level * /
-    SV * lex_stuff; / * runtime pattern from m // or s /// * /
-    I32 multi_start; / * 1st line of multi-line string * /
-    I32 multi_end; / * last line of multi-line string * /
-    char multi_open; / * delimiter of said string * /
-    char multi_close; / * delimiter of said string * /
-    bool preambled;
-    bool lex_re_reparsing; / * we're doing G_RE_REPARSING * /
-    I32 lex_allbrackets; / * (), [], {},?: bracket count * /
-    SUBLEXINFO sublex_info;
+    int yylen;/* length of active reduction */    yy_stack_frame * stack;/* base of stack */    yy_stack_frame * ps;/* current stack frame */
+/* lexer state */
+    I32 lex_brackets;/* square and curly bracket count */    I32 lex_casemods;/* casemod count */    char * lex_brackstack;/* what kind of brackets to pop */    char * lex_casestack;/* what kind of case mods in effect */    U8 lex_defer;/* state after determined token */    U8 lex_dojoin;/* doing an array interpolation
+1 = @{...} 2 =->@*/    U8 lex_expect;/* UNUSED */    U8 expect;/* how to interpret ambiguous tokens */    I32 lex_formbrack;/* bracket count at outer format level */    OP * lex_inpat;/* in pattern $) and $| are special */    OP * lex_op;/* extra info to pass back on op */    SV * lex_repl;/* runtime replacement from s /// */    U16 lex_inwhat;/* what kind of quoting are we in */    OPCODE last_lop_op;/* last named list or unary operator */    I32 lex_starts;/* how many interps done on level */    SV * lex_stuff;/* runtime pattern from m // or s /// */    I32 multi_start;/* 1st line of multi-line string */    I32 multi_end;/* last line of multi-line string */    char multi_open;/* delimiter of said string */    char multi_close;/* delimiter of said string */    bool preambled;
+    bool lex_re_reparsing;/* we're doing G_RE_REPARSING */    I32 lex_allbrackets;/* (), [], {},?: bracket count */    SUBLEXINFO sublex_info;
     LEXSHARED * lex_shared;
-    SV * linesstr; / * current chunk of src text * /
-    char * bufptr; / * carries the cursor (current parsing)
+    SV * linesstr;/* current chunk of src text */    char * bufptr;/* carries the cursor (current parsing)
 position) from one invocation of yylex
-to the next * /
-    char * oldbufptr; / * in yylex, beginning of current token * /
-    char * oldoldbufptr; / * in yylex, beginning of previous token * /
-    char * bufend;
-    char * linestart; / * beginning of most recently read line * /
-    char * last_uni; / * position of last named-unary op * /
-    char * last_lop; / * position of last list operator * /
-    / * copline is used to pass a specific line number to newSTATEOP. It
+to the next */    char * oldbufptr;/* in yylex, beginning of current token */    char * oldoldbufptr;/* in yylex, beginning of previous token */    char * bufend;
+    char * linestart;/* beginning of most recently read line */    char * last_uni;/* position of last named-unary op */    char * last_lop;/* position of last list operator *//* copline is used to pass a specific line number to newSTATEOP. It
        is a one-time line number, as newSTATEOP invalidates it (sets it to)
        NOLINE) after using it. The purpose of this is to report line num-
-       bers in multiline constructs using the number of the first line. * /
-    line_t copline;
-    U16 in_my; / * we're compiling a "my" / "our" declaration * /
-    U8 lex_state; / * next token is determined * /
-    U8 error_count; / * how many compile errors so far, max 10 * /
-    HV * in_my_stash; / * declared class of this "my" declaration * /
-    PerlIO * rsfp; / * current source file pointer * /
-    AV * rsfp_filters; / * holds chain of active source filters * /
-    U8 form_lex_state; / * remember lex_state when parsing fmt * /
+       bers in multiline constructs using the number of the first line. */    line_t copline;
+    U16 in_my;/* we're compiling a "my"/"our" declaration */    U8 lex_state;/* next token is determined */    U8 error_count;/* how many compile errors so far, max 10 */    HV * in_my_stash;/* declared class of this "my" declaration */    PerlIO * rsfp;/* current source file pointer */    AV * rsfp_filters;/* holds chain of active source filters */    U8 form_lex_state;/* remember lex_state when parsing fmt */
+    YYSTYPE nextval [5];/* value of next token, if any */    I32 nexttype [5];/* type of next token */    U32 nexttoke;
 
-    YYSTYPE nextval [5]; / * value of next token, if any * /
-    I32 nexttype [5]; / * type of next token * /
-    U32 nexttoke;
-
-    COP * saved_curcop; / * the previous PL_curcop * /
-    char tokenbuf [256];
-    line_t herelines; / * number of lines in here-doc * /
-    line_t preambling; / * line # when processing $ENV{PERL5DB} * /
-    U8 lex_fakeeof; / * precedence at which to fake EOF * /
-    U8 lex_flags;
-    PERL_BITFIELD16 in_pod: 1; / * lexer is within a = pod section * /
-    PERL_BITFIELD16 filtered: 1; / * source filters in evalbytes * /
-    PERL_BITFIELD16 saw_infix_sigil: 1; / * saw & or * or%operator * /
-    PERL_BITFIELD16 parsed_sub: 1; / * last thing parsed was a sub * /
-} yy_parser;
+    COP * saved_curcop;/* the previous PL_curcop */    char tokenbuf [256];
+    line_t herelines;/* number of lines in here-doc */    line_t preambling;/* line # when processing $ENV{PERL5DB} */    U8 lex_fakeeof;/* precedence at which to fake EOF */    U8 lex_flags;
+    PERL_BITFIELD16 in_pod: 1;/* lexer is within a = pod section */    PERL_BITFIELD16 filtered: 1;/* source filters in evalbytes */    PERL_BITFIELD16 saw_infix_sigil: 1;/* saw & or * or%operator */    PERL_BITFIELD16 parsed_sub: 1;/* last thing parsed was a sub */} yy_parser;
 </pre>
 <h3> PADLIST </h3>
 
@@ -1365,19 +1275,12 @@ struct padlist PADLIST;
 
 // pad.h
 struct padlist {
-    SSize_t xpadl_max; / * max index for which array has space * /
-    union {
-PAD ** xpadlarr_alloc; / * Pointer to beginning of array of AVs.
-index 0 is a padnamelist * * /
-struct {
+    SSize_t xpadl_max;/* max index for which array has space */    union {
+PAD ** xpadlarr_alloc;/* Pointer to beginning of array of AVs.
+index 0 is a padnamelist * */struct {
 PADNAMELIST * padnl;
-PAD * pad_1; / * this slice of PAD * array always alloced * /
-PAD * pad_2; / * maybe unalloced * /
-} * xpadlarr_dbg; / * for use with a C debugger only * /
-    } xpadl_arr;
-    U32 xpadl_id; / * Semi-unique ID, shared between clones * /
-    U32 xpadl_outid; / * ID of outer pad * /
-};
+PAD * pad_1;/* this slice of PAD * array always alloced */PAD * pad_2;/* maybe unalloced */} * xpadlarr_dbg;/* for use with a C debugger only */    } xpadl_arr;
+    U32 xpadl_id;/* Semi-unique ID, shared between clones */    U32 xpadl_outid;/* ID of outer pad */};
 </pre>
 
 PADNAMELIST
@@ -1388,11 +1291,7 @@ typedef struct padnamelist PADNAMELIST;
 
 // pad.h
 struct padnamelist {
-    SSize_t xpadnl_fill; / * max index in use * /
-    PADNAME ** xpadnl_alloc; / * pointer to beginning of array * /
-    SSize_t xpadnl_max; / * max index for which array has space * /
-    PADOFFSET xpadnl_max_named; / * highest index with len> 0 * /
-    U32 xpadnl_refcnt;
+    SSize_t xpadnl_fill;/* max index in use */    PADNAME ** xpadnl_alloc;/* pointer to beginning of array */    SSize_t xpadnl_max;/* max index for which array has space */    PADOFFSET xpadnl_max_named;/* highest index with len> 0 */    U32 xpadnl_refcnt;
 };
 </pre>
 
@@ -1506,17 +1405,11 @@ PERL_SI is stack information.
 <pre>
 // cop.h
 struct stackinfo {
-    AV * si_stack; / * stack for current runlevel * /
-    PERL_CONTEXT * si_cxstack; / * context stack for runlevel * /
-    struct stackinfo * si_prev;
+    AV * si_stack;/* stack for current runlevel */    PERL_CONTEXT * si_cxstack;/* context stack for runlevel */    struct stackinfo * si_prev;
     struct stackinfo * si_next;
-    I32 si_cxix; / * current context index * /
-    I32 si_cxmax; / * maximum allocated index * /
-    I32 si_type; / * type of runlevel * /
-    I32 si_markoff; / * offset where markstack begins for us.
+    I32 si_cxix;/* current context index */    I32 si_cxmax;/* maximum allocated index */    I32 si_type;/* type of runlevel */    I32 si_markoff;/* offset where markstack begins for us.
 * currently used only with DEBUGGING,
-* but not # ifdef-ed for bincompat * /
-};
+* but not # ifdef-ed for bincompat */};
 
 typedef struct stackinfo PERL_SI;
 </pre>
@@ -1540,8 +1433,7 @@ Variable names starting with PL_ are interpreted variables. A variable that hold
 <pre>
 // embedvar.h
 # if defined(MULTIPLICITY)
-/ * cases 2 and 3 above * /
-
+/ * cases 2 and 3 above */
 # if defined(PERL_IMPLICIT_CONTEXT)
 # define vTHX aTHX
 # else
@@ -1571,8 +1463,7 @@ This seems to be a type called "Perl Interpreter". The definition of this struct
 <pre>
 // intrpvar.h
 PERLVAR (I, Latin1, SV *)
-PERLVAR (I, UpperLatin1, SV *) / * Code points 128 - 255 * /
-PERLVAR (I, AboveLatin1, SV *)
+PERLVAR (I, UpperLatin1, SV *)/* Code points 128 - 255 */PERLVAR (I, AboveLatin1, SV *)
 PERLVAR (I, InBitmap, SV *)
 </pre>
 

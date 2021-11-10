@@ -22,8 +22,7 @@ The logic of the interpretation variable abstraction is as follows.
 
 <pre>
 # if defined(MULTIPLICITY)
-/ * cases 2 and 3 above * /
-
+/ * cases 2 and 3 above */
 # if defined(PERL_IMPLICIT_CONTEXT)
 # define vTHX aTHX
 # else
@@ -56,8 +55,7 @@ In general, if "MULTIPLICITY" is defined, consider that "PERL_IMPLICIT_CONTEXT" 
 my_perl is a global variable and represents an interpreter.
 
 <pre>
-/* perlmain.c * /
-static PerlInterpreter * my_perl;
+/* perlmain.c */static PerlInterpreter * my_perl;
 </pre>
 
 Next, if "PERL_IMPLICIT_CONTEXT" is not defined, "PERL_GET_INTERP" is defined as follows and is the current interpreter. This is a global variable.
@@ -68,12 +66,10 @@ Next, if "PERL_IMPLICIT_CONTEXT" is not defined, "PERL_GET_INTERP" is defined as
 </pre>
 
 <pre>
-/* perlvar.h * /
-PERLVARI (G, curinterp, PerlInterpreter *, NULL)
+/* perlvar.h */PERLVARI (G, curinterp, PerlInterpreter *, NULL)
 / * currently running interpreter
 * (initial parent interpreter under under
-* useithreads) * /
-</pre>
+* useithreads) */</pre>
 
 If "PERL_IMPLICT_CONTEXT" is defined, "vTHX" will be expanded as "my_perl", otherwise it will be expanded as "Gcurinterp". ..
 
@@ -96,8 +92,7 @@ Next is the code for the abstraction of global variables. If "PERL_GLOBAL_STRUCT
 </pre>
 
 <pre>
-/* perlmain.c * /
-struct perl_vars * my_vars = init_global_struct ();
+/* perlmain.c */struct perl_vars * my_vars = init_global_struct ();
 </pre>
 
 <hr>

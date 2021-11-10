@@ -23,17 +23,16 @@ Let's install plenv. As a prerequisite, please note that git must be installed t
 Execute the following command.
 
 <pre>
-git clone git: //github.com/tokuhirom/plenv.git ~ / .plenv
-git clone git: //github.com/tokuhirom/Perl-Build.git ~ / .plenv / plugins / perl-build /
-</pre>
+git clone git: //github.com/tokuhirom/plenv.git ~/.plenv
+git clone git: //github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/</pre>
 
 Next, let's pass the path of plenv. Add the configuration file for bash provided by plenv to ".bash_profile" (for bash).
 
 Execute the following command.
 
 <pre>
-echo'export PATH = "$HOME / .plenv / bin: $PATH"' >> ~ / .bash_profile
-echo'eval "$(plenv init-)"'>> ~ / .bash_profile
+echo'export PATH = "$HOME/.plenv/bin: $PATH"' >> ~/.bash_profile
+echo'eval "$(plenv init-)"'>> ~/.bash_profile
 exec $SHELL -l
 </pre>
 
@@ -151,7 +150,7 @@ env | grep PATH
 You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
 
 <pre>
-PATH = / home / kimoto2 / .plenv / shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin: / usr / bin: / usr / local / sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
+PATH =/home/kimoto2/.plenv/shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin:/usr/bin:/usr/local/sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
 </pre>
 
 Edit crontab with the following command.
@@ -163,7 +162,7 @@ crontab -e
 Then write the above PATH value to the top of crontab.
 
 <pre>
-PATH = / home / kimoto2 / .plenv / shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin: / usr / bin: / usr / local / sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
+PATH =/home/kimoto2/.plenv/shims: /home/kimoto2/.plenv/bin:/home/kimoto2/.plenv/shims:/home/kimoto2/.plenv/bin:/usr/local/bin:/ bin:/usr/bin:/usr/local/sbin: /usr/sbin:/home/kimoto2/.local/bin:/home/kimoto2/bin:/home/kimoto2/.local/bin:/home/kimoto2 /bin:/home/kimoto2/.local/bin:/home/kimoto2/bin
 
 # cron settings continue ...
 </pre>
@@ -175,7 +174,7 @@ Now cron will use the specified version of Perl.
 Write the first line of the Perl script using the env command as shown below.
 
 <pre>
-# ! / usr / bin / env perl
+# !/usr/bin/env perl
 </pre>
 
 This will automatically detect perl from the set PATH value.
