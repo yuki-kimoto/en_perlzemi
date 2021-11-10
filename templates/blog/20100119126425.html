@@ -27,14 +27,14 @@ This is a sample to get only the elements that match <a href="/blog/201008271278
 <pre>
 # Get only the elements that match the regular expression
 my @nums = (1.23, 123, 43);
-my @matched = grep {/ ^\d + $/} @nums;
+my @matched = grep {/ ^\d+$/} @nums;
 </pre>
 
 If the pattern matching operator (=~ ) is omitted in the regular expression, the default variable $_ will be the target of pattern matching. The sample above has the same meaning as:
 
 <pre>
 # Explicitly specify the default variable $_
-my @matched = grep {$_ =~ /^\d +$/} @nums;
+my @matched = grep {$_ =~ /^\d+$/} @nums;
 </pre>
 
 This is a sample to get only multiples of 2. If @nums is (1, 2, 3, 4) then @even is (2, 4).
@@ -52,7 +52,7 @@ Processing using grep can be written using the foreach statement. Grep is often 
 my @nums = (1.23, 123, 43);
 my @matched;
 for my $num (@nums) {
-  push @matched, $num if $num =~ /^\d +$/;
+  push @matched, $num if $num =~ /^\d+$/;
 }
 </pre>
 

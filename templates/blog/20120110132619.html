@@ -319,7 +319,7 @@ You may want to enter multiple text boxes and check that at least one of them co
 my $vc = Validator::Custom->new;
 $data = {name1 =>'Ken', name2 =>'', name3 =>'Taro'};
 $rule = [
-  {key => qr/^ name\d + $/} => [
+  {key => qr/^ name\d+$/} => [
     'merge',
     'trim',
     'not_blank'

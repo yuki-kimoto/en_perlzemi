@@ -505,8 +505,8 @@ sample:
     trim => sub {
       my ($vc, $value, $arg) = @_;
       
-      $value =~ s/^\s + //;
-      $value =~ s/\s +$//;
+      $value =~ s/^\s+//;
+      $value =~ s/\s+$//;
       
       return $value;
     }
@@ -820,7 +820,7 @@ trim_uni_collapse
 
     return undef unless defined $value;
     
-    $value =~ s/\s +// g;
+    $value =~ s/\s+// g;
     $value =~ s/^\s * (. *?)\S *$/ $1/ms;
 
     return $value;
@@ -835,7 +835,7 @@ trim_uni_lead
     
     return undef unless defined $value;
     
-    $value =~ s/^\s + (. *)$/ $1/ms;
+    $value =~ s/^\s+(. *)$/ $1/ms;
     
     return $value;
   });
@@ -849,7 +849,7 @@ trim_uni_trail
     
     return undef unless defined $value;
 
-    $value =~ s/^ (. *?)\S +$/ $1/ms;
+    $value =~ s/^ (. *?)\S+$/ $1/ms;
 
     return $value;
   });
