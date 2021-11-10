@@ -10,7 +10,7 @@
 
 
 
-This is a list of frequently used functions and standard modules. Remembering these functions can make Perl more useful. I avoid detailed explanations and introduce simple samples. Those with a return value are represented by the symbol $ret. Twice
+This is a list of frequently used functions and standard modules. Remembering these functions can make Perl more useful. I avoid detailed explanations and introduce simple examples. Those with a return value are represented by the symbol $ret. Twice
 
 It also explains frequently used special variables and standard modules. Each item also links to the details of the function, so please use it conveniently.
 
@@ -245,7 +245,7 @@ $ret = sprintf($format, @strs);
 
 The first argument is a string that represents the format. The second and subsequent arguments are the character strings embedded in the format specifier part.
 
-<span style = "font-weight: bold;">[A] Formatting sample </span>
+<span style = "font-weight: bold;">[A] Formatting example </span>
 
 Interpret $num as an integer and format it with 8 digits. Parts less than 8 digits are padded with 0s.
 
@@ -445,7 +445,7 @@ If you want to retrieve only the elements that match the conditions, use the <a 
 @ret = grep {condition} @array;
 </pre>
 
-This is a sample to extract a value larger than 3.
+This is a example to extract a value larger than 3.
 
 <pre>
 @ret = grep {$_ > 3} @array;
@@ -461,7 +461,7 @@ Use the <a href="/blog/20100118126425.html">map function</a> to process all the 
 @ret = map {element manipulation} @array;
 </pre>
 
-This is a sample that doubles all the elements.
+This is a example that doubles all the elements.
 
 <pre>
 @ret = map {$_ * 2} @array;
@@ -505,7 +505,7 @@ Use the <a href="/blog/20100110126528.html">sort function</a> to sort the elemen
 </pre>
 
 <span style = "font-weight: bold;">[A] Compare numerically and sort in ascending order </span>
-This is a sample that compares numerically and sorts in ascending order.
+This is a example that compares numerically and sorts in ascending order.
 
 <pre>
 @ret = sort {$a <=> $b} @array;
@@ -514,7 +514,7 @@ This is a sample that compares numerically and sorts in ascending order.
 Use <=> to compare numerically. To sort in ascending order, use $a <=> $b.
 
 <span style = "font-weight: bold;">[B] Compare numerically and sort in descending order </span>
-This is a sample that compares numerically and sorts in descending order.
+This is a example that compares numerically and sorts in descending order.
 
 <pre>
 @ret = sort {$b <=> $a} @array;
@@ -523,7 +523,7 @@ This is a sample that compares numerically and sorts in descending order.
 Use <=> to compare numerically. To sort in descending order, use $b <=> $a.
 
 <span style = "font-weight: bold;">[C] Compare in dictionary order and sort in ascending order </span>
-This is a sample that compares in dictionary order and sorts in ascending order.
+This is a example that compares in dictionary order and sorts in ascending order.
 
 <pre>
 @ret = sort {$a cmp $b} @array;
@@ -532,7 +532,7 @@ This is a sample that compares in dictionary order and sorts in ascending order.
 Use cmp to compare in lexicographical order. If you want to sort in ascending order, use $a cmp $b.
 
 <span style = "font-weight: bold;">[D] Compare in dictionary order and sort in descending order </span>
-This is a sample that compares in dictionary order and sorts in descending order.
+This is a example that compares in dictionary order and sorts in descending order.
 
 <pre>
 @ret = sort {$b cmp $a} @array;

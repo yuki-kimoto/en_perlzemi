@@ -18,9 +18,9 @@ There are three redirects to keep in mind: a redirect that switches the input so
 
 <h3>1. Preparation</h3>
 
-I will make a sample to see the redirect movement.
+I will make a example to see the redirect movement.
 Reads one line from standard input and writes to standard output. It also outputs the character string "error\n" to the standard error output.
-Save this script with a name of your choice. Here, the name is sample_20080731.pl.
+Save this script with a name of your choice. Here, the name is example_20080731.pl.
 
 When outputting to a file by redirection, please note that the overwrite confirmation of the file is not performed.
 
@@ -37,7 +37,7 @@ print STDERR "error\n"; # Output to standard error output
 <h3>2. Check normal movement</h3>
 
 <pre>
-perl sample_20080731.pl
+perl example_20080731.pl
 </pre>
 
 Do the above
@@ -66,7 +66,7 @@ line
 will do.
 
 <pre>
-perl sample_20080731.pl <input_20080731.txt
+perl example_20080731.pl <input_20080731.txt
 </pre>
 
 And hit on the command line
@@ -81,7 +81,7 @@ Is displayed on the display. The <symbol is the redirect symbol that switches th
 <h3>4. Switch the output destination of standard output to a file</h3>
 
 <pre>
-perl sample_20080731.pl > output_20080731.txt
+perl example_20080731.pl > output_20080731.txt
 </pre>
 
 At the command line
@@ -95,7 +95,7 @@ When you type, the content aaa is written in output_20080731.txt, and error is d
 <h3>5. Switch the output destination of standard error output to a file</h3>
 
 <pre>
-perl sample_20080731.pl 2> error_20080731.txt
+perl example_20080731.pl 2> error_20080731.txt
 </pre>
 
 At the command line
@@ -111,7 +111,7 @@ If you type, error_20080731.txt will show error and the display will show aaa. T
 Redirects can be used in combination.
 
 <pre>
-perl sample_20080731.pl <input_20080731.txt> output_20080731.txt 2> error_20080731.txt
+perl example_20080731.pl <input_20080731.txt> output_20080731.txt 2> error_20080731.txt
 </pre>
 
 Will be written as line in output_20080731.txt and error in error_20080731.txt. The line written in output_20080731.txt is the one written in the first line of input_20080731.txt. In this way, redirect symbols can be used in combination.

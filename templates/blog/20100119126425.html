@@ -20,9 +20,9 @@ You can use the "<strong> grep function </strong>" to retrieve only the elements
 @matched = grep {conditional statement} @array;
 </pre>
 
-<h3>Sample</h3>
+<h3>Example</h3>
 
-This is a sample to get only the elements that match <a href="/blog/20100827127859.html">regular expression</a>. In this sample, only integers are taken. If @nums is (1.23, 123, 43) then @matched will be (123, 43).
+This is a example to get only the elements that match <a href="/blog/20100827127859.html">regular expression</a>. In this example, only integers are taken. If @nums is (1.23, 123, 43) then @matched will be (123, 43).
 
 <pre>
 # Get only the elements that match the regular expression
@@ -30,14 +30,14 @@ my @nums = (1.23, 123, 43);
 my @matched = grep {/^\d+$/} @nums;
 </pre>
 
-If the pattern matching operator (=~ ) is omitted in the regular expression, the default variable $_ will be the target of pattern matching. The sample above has the same meaning as:
+If the pattern matching operator (=~ ) is omitted in the regular expression, the default variable $_ will be the target of pattern matching. The example above has the same meaning as:
 
 <pre>
 # Explicitly specify the default variable $_
 my @matched = grep {$_ =~ /^\d+$/} @nums;
 </pre>
 
-This is a sample to get only multiples of 2. If @nums is (1, 2, 3, 4) then @even is (2, 4).
+This is a example to get only multiples of 2. If @nums is (1, 2, 3, 4) then @even is (2, 4).
 
 <pre>
 # Get only multiples of 2

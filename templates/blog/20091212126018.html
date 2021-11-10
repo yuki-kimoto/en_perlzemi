@@ -26,47 +26,47 @@ perl script\mojo generate app web application name
 perl script/mojo generate app web application name
 </pre>
 
-Now let's create a template with the web application name named Sampleapp.
+Now let's create a template with the web application name named Exampleapp.
 
 <pre>
 # For Windows
-perl script\mojolicious generate app Sample app
+perl script\mojolicious generate app Example app
 
 # For Unix-like OS
-perl script/mojolicious generate app Sample app
+perl script/mojolicious generate app Example app
 </pre>
 
 A list of created files will be output to the screen.
 
 <pre>
-  [mkdir] C:\Download\mojo\sampleapp\script
-  [write] C:\Download\mojo\sampleapp\script\sampleapp
-  [chmod] sampleapp/script/sampleapp 744
-  [mkdir] C:\Download\mojo\sampleapp\lib
-  [write] C:\Download\mojo\sampleapp\lib\Sampleapp.pm
-  [mkdir] C:\Download\mojo\sampleapp\lib\Sampleapp
-  [write] C:\Download\mojo\sampleapp\lib\Sampleapp\Example.pm
-  [mkdir] C:\Download\mojo\sampleapp\t
-  [write] C:\Download\mojo\sampleapp\t\basic.t
-  [mkdir] C:\Download\mojo\sampleapp\log
-  [mkdir] C:\Download\mojo\sampleapp\public
-  [write] C:\Download\mojo\sampleapp\public\index.html
-  [mkdir] C:\Download\mojo\sampleapp\templates
-  [write] C:\Download\mojo\sampleapp\templates\not_found.html.ep
-  [exist] C:\Download\mojo\sampleapp\templates
-  [write] C:\Download\mojo\sampleapp\templates\exception.html.ep
-  [mkdir] C:\Download\mojo\sampleapp\templates\layouts
-  [write] C:\Download\mojo\sampleapp\templates\layouts\default.html.ep
-  [mkdir] C:\Download\mojo\sampleapp\templates\example
-  [write] C:\Download\mojo\sampleapp\templates\example\welcome.html.ep
+  [mkdir] C:\Download\mojo\exampleapp\script
+  [write] C:\Download\mojo\exampleapp\script\exampleapp
+  [chmod] exampleapp/script/exampleapp 744
+  [mkdir] C:\Download\mojo\exampleapp\lib
+  [write] C:\Download\mojo\exampleapp\lib\Exampleapp.pm
+  [mkdir] C:\Download\mojo\exampleapp\lib\Exampleapp
+  [write] C:\Download\mojo\exampleapp\lib\Exampleapp\Example.pm
+  [mkdir] C:\Download\mojo\exampleapp\t
+  [write] C:\Download\mojo\exampleapp\t\basic.t
+  [mkdir] C:\Download\mojo\exampleapp\log
+  [mkdir] C:\Download\mojo\exampleapp\public
+  [write] C:\Download\mojo\exampleapp\public\index.html
+  [mkdir] C:\Download\mojo\exampleapp\templates
+  [write] C:\Download\mojo\exampleapp\templates\not_found.html.ep
+  [exist] C:\Download\mojo\exampleapp\templates
+  [write] C:\Download\mojo\exampleapp\templates\exception.html.ep
+  [mkdir] C:\Download\mojo\exampleapp\templates\layouts
+  [write] C:\Download\mojo\exampleapp\templates\layouts\default.html.ep
+  [mkdir] C:\Download\mojo\exampleapp\templates\example
+  [write] C:\Download\mojo\exampleapp\templates\example\welcome.html.ep
 </pre>
 
 <h3>Role of each created directory</h3>
 
-If you specify the name "Sampleapp", a directory called "sampleapp" will be created under mojo. You will create a web application by editing the files under sampleapp. I will explain the role of each directory to get an overall overview.
+If you specify the name "Exampleapp", a directory called "exampleapp" will be created under mojo. You will create a web application by editing the files under exampleapp. I will explain the role of each directory to get an overall overview.
 
 <pre>
-sampleapp-+
+exampleapp-+
            | -stores the lib application
            | -log Store error and warning logs
            | -public Store static files (HTML, CSS, JavaScript)
@@ -85,14 +85,14 @@ The default files under lib are as follows.
 
 <pre>
 lib-+
-     | -Sampleapp.pm
-     | -Sampleapp /-+
+     | -Exampleapp.pm
+     | -Exampleapp /-+
                     |-Example.pm
 </pre>
 
-Sampleapp.pm is a class that represents the application itself. In this, the settings related to the application and the branching of processing for each URL are described.
+Exampleapp.pm is a class that represents the application itself. In this, the settings related to the application and the branching of processing for each URL are described.
 
-Classes that will be controllers are placed under the Sampleapp directory. The controller class is a class that describes the process corresponding to the URL. Remember that the controller describes the process that corresponds to the URL. (It corresponds to C of MVC which is often called)
+Classes that will be controllers are placed under the Exampleapp directory. The controller class is a class that describes the process corresponding to the URL. Remember that the controller describes the process that corresponds to the URL. (It corresponds to C of MVC which is often called)
 
 <h4>log - Store error and warning logs</h4>
 
@@ -128,6 +128,6 @@ templates + example-+
           + not_found.html.ep
 </pre>
 
-Notice that there is a directory called layouts. This is commonly used as a template for HTML headers. exsample/welcome.html.ep is a template corresponding to the action "welcome" of the controller "Exsample". I will explain the action later.
+Notice that there is a directory called layouts. This is commonly used as a template for HTML headers. exexample/welcome.html.ep is a template corresponding to the action "welcome" of the controller "Exexample". I will explain the action later.
 
 exceptions.html.ep is a template for exceptions. Mojolicious uses this template to display error messages on the screen in an easy-to-understand manner, which makes development very easy. not_found.html.ep is a template used when a page is not found.

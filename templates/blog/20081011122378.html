@@ -12,7 +12,7 @@
 
 Holidays are very difficult to handle because they are decided by humans. There are also holidays such as spring equinox and autumn equinox, which are decided in February of the previous year, and transfer holidays.
 
-In this sample, we will get the data of Japanese holidays provided by Google with Google Calendar Data API.
+In this example, we will get the data of Japanese holidays provided by Google with Google Calendar Data API.
 
 It is not absolutely reliable because it is the data of Japanese holidays examined by Google. <span style = "color:# FF0000;">If Google is wrong, it will get the wrong holiday data, so please do not use it as it is for applications where the wrong date causes damage. </span> Make sure you are correct by other means.
 
@@ -122,7 +122,7 @@ my $query = "start-min = ${start_date} & start-max = ${end_date} & max-results =
 my $feed_url = $feed_base.'?'. $Query;
 </pre>
 
-In this sample, the following URL is created.
+In this example, the following URL is created.
 [http://www.google.com/calendar/feeds/japanese@holiday.calendar.google.com/public/full?start-min=2007-01-01&start-max=2008-01-01&max-results=100 ]
 
 After that, get the information of the above URL from the Web, analyze it because it is XML data, make it easy to use, and encode the character code according to the OS.

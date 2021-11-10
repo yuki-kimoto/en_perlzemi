@@ -39,9 +39,9 @@ Here, we will briefly explain the procedure for connecting to an FTP server and 
   </li>
 </ol>
 
-<h3>A simple sample to download a file</h3>
+<h3>A simple example to download a file</h3>
 
-Let's write a simple sample to actually download the file.
+Let's write a simple example to actually download the file.
 
 <pre>
 # Load module
@@ -63,7 +63,7 @@ You can connect to the FTP server by specifying the connection destination in th
 
 You can log in to the FTP server by specifying the user name and password in the login method. To put it simply, login is a state in which the server has given permission to execute FTP commands.
 
-You can download the file using a method called get. The file will be downloaded to the current directory. The file name will be the last name (somefile in this sample), not including the directory name.
+You can download the file using a method called get. The file will be downloaded to the current directory. The file name will be the last name (somefile in this example), not including the directory name.
 
 <h3>Frequently used methods</h3>
 
@@ -288,7 +288,7 @@ See the Net::FTP documentation for a complete list of methods.
 
 <h3>Net::FTP error handling</h3>
 
-In fact, the first sample omitted error handling to briefly explain how to use Net::FTP. Net::FTP does not throw an exception when a command fails, so you need to handle the error yourself. Adding error handling to the first sample gives:
+In fact, the first example omitted error handling to briefly explain how to use Net::FTP. Net::FTP does not throw an exception when a command fails, so you need to handle the error yourself. Adding error handling to the first example gives:
 <pre>
 # Connect to FTP server
 my $ftp = Net::FTP->new('somehost')
@@ -334,9 +334,9 @@ $ftp->get('/ dir/somefile');
   or die "FTP command fail:". $ftp->message;
 </pre>
 
-<h3>Net::FTP executable sample</h3>
+<h3>Net::FTP executable example</h3>
 
-The sample cannot connect to the FTP server that specifies the user and password. Try downloading the file from an anonymous server that does not require a password. This is a sample to download the CPAN top page (index.html) from the CPAN mirror site.
+The example cannot connect to the FTP server that specifies the user and password. Try downloading the file from an anonymous server that does not require a password. This is a example to download the CPAN top page (index.html) from the CPAN mirror site.
 
 <pre>
 use strict;
@@ -370,7 +370,7 @@ This section describes how to perform "explicit TSL/SSL encryption" that makes a
 
 Net::FTP can communicate using FTPS if IO::Socket::SSL is installed. If you have an older version of IO::Socket::SSL, please upgrade.
 
-To do "explicit TSL/SSL encryption", just call the starttls method immediately after connecting with the new method. Let's rewrite the above sample with "explicit TSL/SSL encryption".
+To do "explicit TSL/SSL encryption", just call the starttls method immediately after connecting with the new method. Let's rewrite the above example with "explicit TSL/SSL encryption".
 
 <pre>
 use strict;

@@ -53,9 +53,9 @@ You can use the Hash::Util::lock_hash function to prevent key additions, deletio
 
 To make the hash completely read-only, use Hash::Util::lock_hash_recurse. If the hash value contains a reference, you can prevent the reference from changing the value it points to.
 
-<h3>Sample</h3>
+<h3>Example</h3>
 
-This is a sample that uses Hash::Util to limit the change of hash key and value.
+This is a example that uses Hash::Util to limit the change of hash key and value.
 
 <pre>
 use strict;
@@ -73,7 +73,7 @@ print "1-1: Prohibit the addition of hash keys.\n";
 Hash::Util::lock_keys(%hash);
 
 # Added key3.
-# Die, so capture it with eval for a sample.
+# Die, so capture it with eval for a example.
 eval {$hash{key3} = 3};
 print "$@\n";
 
