@@ -39,10 +39,10 @@ This is very useful for defining a default value if no value is given.
 my $name = $opts{name} //'Ken';
 </pre>
 
-You can also write <b> // = </b>.
+You can also write <b> //= </b>.
 
 <pre>
-$value // ='default';
+$value //='default';
 </pre>
 
 Only if $value is undefined will $value be assigned'default'.
@@ -58,7 +58,7 @@ $value ='default' unless defined $value;
 Also, since this writing method is verbose, many people used the <b> || </b> operator to write as follows.
 
 <pre>
-$value || ='default';
+$value ||='default';
 </pre>
 
 However, this way of writing introduced a potential bug to the application because'default' was assigned even if $value was 0 or an empty string.

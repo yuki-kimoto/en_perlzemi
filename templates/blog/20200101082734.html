@@ -399,28 +399,28 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   $gfx->line ($cur_x + $name_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $name_width, $cur_y-$item_height);
-  $cur_x + = $name_width;
+  $cur_x += $name_width;
 
   # Unit price frame (right and bottom)
   $gfx->move ($cur_x + $unit_price_width, $cur_y);
   $gfx->line ($cur_x + $unit_price_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $unit_price_width, $cur_y-$item_height);
-  $cur_x + = $unit_price_width;
+  $cur_x += $unit_price_width;
 
   # Quantity frame (right and bottom)
   $gfx->move ($cur_x + $count_width, $cur_y);
   $gfx->line ($cur_x + $count_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $count_width, $cur_y-$item_height);
-  $cur_x + = $count_width;
+  $cur_x += $count_width;
 
   # Price frame (right and bottom)
   $gfx->move ($cur_x + $price_width, $cur_y);
   $gfx->line ($cur_x + $price_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $price_width, $cur_y-$item_height);
-  $cur_x + = $price_width;
+  $cur_x += $price_width;
   
   # To the next line
   $cur_x = $table_start_x;
@@ -568,7 +568,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   $gfx->line ($cur_x + $name_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $name_width, $cur_y-$item_height);
-  $cur_x + = $name_width;
+  $cur_x += $name_width;
 
   # Unit price frame (right and bottom)
   $text->translate ($cur_x + $item_padding_left, $cur_y-$item_padding_top);
@@ -587,7 +587,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   $gfx->line ($cur_x + $unit_price_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $unit_price_width, $cur_y-$item_height);
-  $cur_x + = $unit_price_width;
+  $cur_x += $unit_price_width;
 
   # Quantity frame (right and bottom)
   # Heading
@@ -607,7 +607,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   $gfx->line ($cur_x + $count_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $count_width, $cur_y-$item_height);
-  $cur_x + = $count_width;
+  $cur_x += $count_width;
 
   # Price frame (right and bottom)
   # Heading
@@ -627,7 +627,7 @@ for (my $column = 0; $column <$rows_count; $column ++) {
   $gfx->line ($cur_x + $price_width, $cur_y-$item_height);
   $gfx->move ($cur_x, $cur_y-$item_height);
   $gfx->line ($cur_x + $price_width, $cur_y-$item_height);
-  $cur_x + = $price_width;
+  $cur_x += $price_width;
   
   # To the next line
   $cur_x = $table_start_x;

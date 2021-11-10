@@ -72,7 +72,7 @@ my $result = timethese (100, {
       $dbi->delete_all (table =>'book');
       my $sth;
       for my $i (1 .. 100) {
-        $sth || = $dbi->dbh->prepare ('insert into book (id, title) values ​​(?,?)');
+        $sth ||= $dbi->dbh->prepare ('insert into book (id, title) values ​​(?,?)');
         my $id = $i;
         my $title ='Perl';
         $sth->execute ($i, $title);

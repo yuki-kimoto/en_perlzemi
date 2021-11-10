@@ -67,8 +67,8 @@ sub new {
   my %args = ref $args[0] eq'HASH'?%{$args[0]}: @args;
   my $self = {%args};
  
-  $self->{title} || ='default title';
-  $self->{author} || ='default author';
+  $self->{title} ||='default title';
+  $self->{author} ||='default author';
 
   return $self, $class;
 }
@@ -77,8 +77,8 @@ sub new {
 Please pay attention to the following part. If the <b> value is a false value, the default value is assigned </b>.
 
 <pre>
-  $self->{title} || ='default title';
-  $self->{author} || ='default author';
+  $self->{title} ||='default title';
+  $self->{author} ||='default author';
 </pre>
 
 However, with this, the default value will be set even if an empty string is assigned, so if that is not the case, use the <b> defined </b> function.

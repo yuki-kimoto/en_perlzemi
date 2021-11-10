@@ -1,13 +1,13 @@
 The g> tag helper makes it easy to write <strong> hyperlinks </strong>.
 
 <pre>
-<% = link_to index => begin%> Home <%end%>
-<% = link_to index => {foo =>'bar'} => (class =>'links') => begin%>
+<%= link_to index => begin%> Home <%end%>
+<%= link_to index => {foo =>'bar'} => (class =>'links') => begin%>
   Home
 <%end%>
-<% = link_to'/ path / to / file' => begin%> File <%end%>
-<% = link_to'http://mojolicio.us' => begin%> Mojolicious <%end%>
-<% = link_to url_for->query (foo => $foo) => begin%> Retry <%end%>
+<%= link_to'/ path / to / file' => begin%> File <%end%>
+<%= link_to'http://mojolicio.us' => begin%> Mojolicious <%end%>
+<%= link_to url_for->query (foo => $foo) => begin%> Retry <%end%>
 </pre>
 
 It will be expanded to the following HTML. The first argument is the root name or path. You can also pass a Mojo::URL object. The last argument is a block, which allows you to specify the text of the hyperlink.
@@ -25,8 +25,8 @@ It will be expanded to the following HTML. The first argument is the root name o
 The <strong> image </strong> tag helper makes it easy to write <strong> image tags </strong>.
 
 <pre>
-<% = image'/images/foo.png'%>
-<% = image'/images/foo.png', alt =>'Foo'%>
+<%= image'/images/foo.png'%>
+<%= image'/images/foo.png', alt =>'Foo'%>
 </pre>
 
 It will be expanded as follows. The first argument is the URL to the image. This URL is expanded by the url_for method. The remaining arguments are used as attributes.
@@ -41,8 +41,8 @@ It will be expanded as follows. The first argument is the URL to the image. This
 The <strong> stylesheet </strong> tag helper makes it easy to write external links to stylesheets and stylesheets.
 
 <pre>
-<% = stylesheet'/foo.css'%>
-<% = stylesheet begin%>
+<%= stylesheet'/foo.css'%>
+<%= stylesheet begin%>
   body {color: # 000}
 <%end%>
 </pre>
@@ -61,8 +61,8 @@ When specifying a link to an external style sheet, describe the path in the firs
 The <strong> javascript </strong> tag helper makes it easy to write JavaScript source code.
 
 <pre>
-% = javascript'/script.js';
-% = javascript begin
+%= javascript'/script.js';
+%= javascript begin
   var a ='b';
 %end
 </pre>
@@ -81,10 +81,10 @@ The argument can be an external JavaScript path or block (begin to end). You can
 The <strong> input_tag </strong> tag helper makes it easy to write <strong> input tags </strong>.
 
 <pre>
-<% = input_tag'first_name'%>
-<% = input_tag first_name =>'Default name'%>
-<% = input_tag'employed', type =>'checkbox'%>
-<% = input_tag'country', type =>'radio', value =>'germany'%>
+<%= input_tag'first_name'%>
+<%= input_tag first_name =>'Default name'%>
+<%= input_tag'employed', type =>'checkbox'%>
+<%= input_tag'country', type =>'radio', value =>'germany'%>
 </pre>
 
 It will be expanded as follows. The first argument is the value of name and the remaining arguments are used as attributes. Input values ​​contained in HTTP request parameters are automatically completed.
@@ -102,7 +102,7 @@ It will be expanded as follows. The first argument is the value of name and the 
 You can easily write a base tag using the base_tag function, which is a tag helper.
 
 <pre>
-<% = base_tag%>
+<%= base_tag%>
 </pre>
 
 It will be expanded to the following tags.
