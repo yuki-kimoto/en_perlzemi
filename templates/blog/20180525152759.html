@@ -59,7 +59,7 @@ The wait function returns control when a CHLD signal occurs. This means that con
 Use the <b> WIFEXITED </b> function to see if the child process has terminated.
 
 <pre>
-use POSIX q (: sys_wait_h);
+use POSIX q (:sys_wait_h);
 my $is_finished = WIFEXITED ($?);
 </pre>
 
@@ -71,7 +71,7 @@ The exit status is 255 because we called die in the child process. You can see t
 use strict;
 use warnings;
 
-use POSIX qw(: sys_wait_h);
+use POSIX qw(:sys_wait_h);
 
 my $pid = fork;
 

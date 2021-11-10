@@ -727,7 +727,7 @@ There is little point in losing execute permission on a directory. It is suffici
 I will explain how to check the permissions. To find out the file permissions, use the <a href="/blog/20080512121060.html">stat function</a> to retrieve the file permissions information. The third element is the mode information. Converting with the obtained S_IMODE function gives pure permission information.
 
 <pre>
-use Fcntl ': mode';
+use Fcntl ':mode';
 my $mode = (stat $file) [2];
 printf "%03o\n", S_IMODE ($mode);
 </pre>
@@ -762,7 +762,7 @@ use strict;
 use warnings;
 
 # Import constants for file permissions
-use Fcntl ': mode';
+use Fcntl ':mode';
 
 my $file = shift || die "Usage: $0 file\n";
 
