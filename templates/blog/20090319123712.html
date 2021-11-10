@@ -49,7 +49,7 @@ The constructor that can be supported is like this.
 <pre>
 sub new {
     my ($class, @args) = @_;
-    my %args = ref $args[0] eq 'HASH'?%{$args[0]}: @args;
+    my %args = ref $args[0] eq 'HASH' ? %{$args[0]}: @args;
     my $self = {%args};
     return $self, $class;
 }
@@ -64,7 +64,7 @@ Now, the demands on the constructor are still going on. For example, if you want
 <pre>
 sub new {
   my ($class, @args) = @_;
-  my %args = ref $args[0] eq 'HASH'?%{$args[0]}: @args;
+  my %args = ref $args[0] eq 'HASH' ? %{$args[0]}: @args;
   my $self = {%args};
  
   $self->{title} ||='default title';
