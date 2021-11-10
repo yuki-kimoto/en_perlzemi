@@ -115,7 +115,7 @@ for my $items (@recs) {
 
 Since it is an array, the outside is a foreach loop. Output $items, which is a reference to the hash, concatenated with commas with <a href="/blog/20081007122338.html">join function</a>.
 
-<h4>(3) -1 Explanation of hash slices</h4>
+<h4>(3) - 1 Explanation of hash slices</h4>
 
 I will explain the esoteric hash slice @{$items}{@$headers}.
 
@@ -189,7 +189,7 @@ while (my $line = <$fh>) {
 }
 </pre>
 
-<h4>(4) -1 Prepare a reference to the hash</h4>
+<h4>(4) - 1 Prepare a reference to the hash</h4>
 
 <pre>
 my $items = {}; # Prepare a reference to the hash that stores the data
@@ -197,7 +197,7 @@ my $items = {}; # Prepare a reference to the hash that stores the data
 
 Prepare a reference to the hash you want to have in the array.
 
-<h4>(4) -2 Assign hash slice to corresponding key on the left side</h4>
+<h4>(4) - 2 Assign hash slice to corresponding key on the left side</h4>
 
 <pre>
 @{$items}{@$headers} = split(',', $line);

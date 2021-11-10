@@ -9,7 +9,7 @@
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">bitwise operation </span>
   </li>
 </ol>
-<h2>Bitwise operator-Performs bitwise operations</h2>
+<h2>Bitwise operator - Performs bitwise operations</h2>
 
 
 
@@ -640,7 +640,7 @@ if ($all_flg_on & FLG3) {
 }
 </pre>
 
-<h4>(3) -1 Expressing a constant with a subroutine</h4>
+<h4>(3) - 1 Expressing a constant with a subroutine</h4>
 
 <pre>
 sub FLG1 {1};
@@ -648,7 +648,7 @@ sub FLG1 {1};
 
 If you write this, 1 will be returned when <a href="/blog/20101130129876.html">subroutine</a> is called, and you can treat it like a constant. When calling, you can call it with FGG1 without writing FLG1 ().
 
-<h4>(3)-Set the flag value to a multiple of 2 so that the bits do not overlap</h4>
+<h4>(3) - Set the flag value to a multiple of 2 so that the bits do not overlap</h4>
 
 <pre>
 sub FLG1 {1;} A subroutine that returns # 1. 1 is 1 in binary.
@@ -658,7 +658,7 @@ A subroutine that returns sub FLG3 {4;} # 4. 4 is 100 in base.
 
 Use multiples of 2 to prevent the bits from overlapping. In order to use it as a flag, each bit must be able to be determined separately.
 
-<h4>(3) -3 Expression that all flags are turned on</h4>
+<h4>(3) - 3 Expression that all flags are turned on</h4>
 
 <pre>
 my $all_flg_on = FLG1 | FLG2 | FLG3;
@@ -666,7 +666,7 @@ my $all_flg_on = FLG1 | FLG2 | FLG3;
 
 OR the bits you want to turn on.
 
-<h4>(3) -4 Make sure the flag is on</h4>
+<h4>(3) - 4 Make sure the flag is on</h4>
 
 <pre>
 if ($all_flg_on & FLG3) {
@@ -675,7 +675,7 @@ if ($all_flg_on & FLG3) {
 </pre>
 You can check if the flag is on by taking the logical product with the flag that you want to check if it is on.
 
-<h4>(3) -5 Basically avoid bit operations</h4>
+<h4>(3) - 5 Basically avoid bit operations</h4>
 
 Basically, I don't write a program that uses bit operations. Bitwise operations are only needed when calling a Perl function that directly wraps a C library.
 

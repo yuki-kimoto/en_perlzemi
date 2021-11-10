@@ -209,7 +209,7 @@ $rule->require('price')->check('int');
 $rule->require('title')->check('ascii');
 </pre>
 
-<h3>Register user-defined constraints - register_constraint</h3>
+<h3>Register user - defined constraints - register_constraint</h3>
 
 I was able to express various constraints using the constraints provided by default, and and or conditions. In addition to this, Validator::Custom allows you to create new user-defined constraints.
 
@@ -414,7 +414,7 @@ to_array converts data that is not an array reference to an array reference. If 
 
 This is useful for converting to an array reference when you don't know if one value will come or multiple values will come, such as checkboxes.
 
-<h3>in_array (constraint function)-Check if the value is contained in the array value</h3>
+<h3>in_array (constraint function) - Check if the value is contained in the array value</h3>
 
 When checking an HTML form, you may not want to allow values other than a certain value. In such cases, use the <strong> in_array </strong> constraint function.
 
@@ -468,7 +468,7 @@ $rule->require('food')
 
 Validator::Custom makes it easy to validate HTML forms.
 
-<h3>selected_at_least (constraint function)-at least one is selected</h3>
+<h3>selected_at_least (constraint function) - at least one is selected</h3>
 
 In an HTML form, you may want to find out if at least one of the checkboxes is selected. In such cases, use the <b> selected_at_least </b> constraint function.
 
@@ -514,7 +514,7 @@ The constraints attribute returns a hash reference that includes the constraint 
 my $is_int = $vc->constraints->{'int'}->($value);
 </pre>
 
-<h3>uint(constraint function) - Non-negative integer</h3>
+<h3>uint(constraint function) - Non - negative integer</h3>
 
 You may want to allow only non-negative integers in your HTML form. In such cases, use the <b> uint </b> constraint function.
 
@@ -675,7 +675,7 @@ my $rule = $vc->create_rule;
 $rule->require('num')->check({'regex' => qr/\d{0,3} /});
 </pre>
 
-<h3>not_space (constraint function)-not whitespace</h3>
+<h3>not_space (constraint function) - not whitespace</h3>
 
 In a <strong> HTML form </strong>, use the <strong> not_space </strong> constraint function if you want to check that it is <strong> not whitespace </strong>. A space character is a string that consists only of a space character, a tab character, and a newline character. This includes cases where the string does not exist. It does not include whitespace in Unicode.
 
@@ -688,7 +688,7 @@ my $rule = $vc->create_rule;
 $rule->require('name')->check('not_space');
 </pre>
 
-<h3>not_defined(constraint function)-value not defined</h3>
+<h3>not_defined(constraint function) - value not defined</h3>
 
 In a <strong> HTML form </strong>, use the <strong> not_defined </strong> constraint function if you want to check that the <strong> value is undefined </strong>.
 
@@ -701,7 +701,7 @@ my $rule = $vc->create_rule;
 $rule->require('name')->check('not_defined');
 </pre>
 
-<h3>less_than (constraint function)-a number is less than a certain number</h3>
+<h3>less_than (constraint function) - a number is less than a certain number</h3>
 
 In a <strong> HTML form </strong>, use the <strong> less_than </strong> constraint function if you want to check that a <strong> number is less than a certain number </strong>.
 
@@ -714,7 +714,7 @@ my $rule = $vc->create_rule;
 $rule->require('num')->check({'less_than' => 25});
 </pre>
 
-<h3>int(constraint function)-integer</h3>
+<h3>int(constraint function) - integer</h3>
 
 In a <strong> HTML form </strong>, use the <strong> int </strong> constraint function if you want to check that it is a <strong> integer </strong>.
 
@@ -740,7 +740,7 @@ my $rule = $vc->create_rule;
 $rule->require('url')->check('http_url');
 </pre>
 
-<h3>greater_than (constraint function)-greater than a certain number</h3>
+<h3>greater_than (constraint function) - greater than a certain number</h3>
 
 In a <strong> HTML form </strong>, use the <strong> greater_than </strong> constraint function if you want to check that it is <strong> greater than a certain number </strong>.
 

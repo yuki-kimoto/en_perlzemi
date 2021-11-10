@@ -149,7 +149,7 @@ sub parse_file {
 }
 </pre>
 
-<h4>(4) -1 Receive file name as an argument</h4>
+<h4>(4) - 1 Receive file name as an argument</h4>
 
 <pre>
 my $file = shift;
@@ -157,7 +157,7 @@ my $file = shift;
 
 Give the file name as an argument to open and close the file in the subroutine.
 
-<h4>(4) -2 Creating an array of arrays to return as a return value</h4>
+<h4>(4) - 2 Creating an array of arrays to return as a return value</h4>
 
 <pre>
 my $recs = []; # Prepare a reference to an array that stores multiple records
@@ -173,7 +173,7 @@ $recs = [
 ]
 </pre>
 
-<h4>(4) -3 Processing in a while loop</h4>
+<h4>(4) - 3 Processing in a while loop</h4>
 
 I'm using a <a href="/blog/20100123126425.html">while statement</a> to create a Perl data structure.
 
@@ -195,7 +195,7 @@ while (my $line = <$fh>) {
 }
 </pre>
 
-<h4>(4) -3-a Creating a reference to an empty array</h4>
+<h4>(4) - 3 - a Creating a reference to an empty array</h4>
 
 <pre>
 my $items = [];
@@ -203,7 +203,7 @@ my $items = [];
 
 At the end of the first while loop, it will be [masao, 10, Japan], but first create only the frame.
 
-<h4>(4) -3-b Comma-separated string split</h4>
+<h4>(4) - 3 - b Comma - separated string split</h4>
 
 <pre>
 @$items = split(/,/, $line);
@@ -211,7 +211,7 @@ At the end of the first while loop, it will be [masao, 10, Japan], but first cre
 
 The split function returns an array, so to receive it, dereference $items to @$items.
 
-<h4>(4) -3-c Add the created record to the reference to the array</h4>
+<h4>(4) - 3 - c Add the created record to the reference to the array</h4>
 
 <pre>
 push @$recs, $items;
