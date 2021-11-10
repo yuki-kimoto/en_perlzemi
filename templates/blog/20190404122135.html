@@ -22,7 +22,7 @@ use File::Temp 'temp file';
 use Mojolicious::Lite;
 
 # render CGI
-app->hook (before_dispatch => sub {
+app->hook(before_dispatch => sub {
   my $c = shift;
   
   my $req = $c->req;
@@ -31,7 +31,7 @@ app->hook (before_dispatch => sub {
   
   if ($path =~ /\.cgi$/) {
     my $method = $c->req->method;
-    my $script_name = $c->app->home->rel_file ("public/$path");
+    my $script_name = $c->app->home->rel_file("public/$path");
     
     # CGI Environment variable
     local $ENV{AUTH_TYPE} = '';
@@ -63,8 +63,8 @@ app->hook (before_dispatch => sub {
       # GET requst
       $output = `$^X $script_name`;
       if ($?) {
-        $c->res->code ('505');
-        $c->render (text => "Internal Server Error");
+        $c->res->code('505');
+        $c->render(text => "Internal Server Error");
       }
     }
     elsif ($method eq 'POST') {
@@ -75,8 +75,8 @@ app->hook (before_dispatch => sub {
       close $in_fh;
       $output = `$^X -pe" "$in_file | $^X $script_name`;
       if ($?) {
-        $c->res->code ('505');
-        $c->render (text => "Internal Server Error");
+        $c->res->code('505');
+        $c->render(text => "Internal Server Error");
       }
       unlink $in_file;
     }
@@ -87,18 +87,18 @@ app->hook (before_dispatch => sub {
     # Response
     my $res = Mojo::Message::Response->new;
     while (! $Res->is_finished) {
-      $res->parse ($header_part);
+      $res->parse($header_part);
     }
-    $c->res->code ($res->code);
-    $c->res->headers ($res->headers);
-    $c->render (data => $body_part);
+    $c->res->code($res->code);
+    $c->res->headers($res->headers);
+    $c->render(data => $body_part);
   }
 });
 
 get'/' => sub {
   my $c = shift;
   
-  $c->reply->static ('index.html');
+  $c->reply->static('index.html');
 };
 
 app->start;

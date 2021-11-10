@@ -73,13 +73,13 @@ use PDL::Graphics::PLplot;
 my $pl = PDL::Graphics::PLplot->new(DEV =>'png', FILE =>'graph.png');
 
 # Create a PDL variable that represents 0 to 99 as the value of x
-my $x = pdl->sequence (100);
+my $x = pdl->sequence(100);
 
 # y = 2x
 my $y = 2 * $x;
 
 # Create a graph
-$pl->xyplot ($x, $y);
+$pl->xyplot($x, $y);
 
 # Close
 $pl->close;
@@ -116,7 +116,7 @@ PAGESIZE => [500, 400]
 This option is specified when drawing the graph.
 
 <pre>
-$pl->xyplot ($x, $y, XLAB =>'x', YLAB =>'y');
+$pl->xyplot($x, $y, XLAB =>'x', YLAB =>'y');
 </pre>
 
 <b> x-axis label </b>
@@ -245,13 +245,13 @@ my $pl = PDL::Graphics::PLplot->new(
 );
 
 # Create a PDL variable that represents 0 to 99 as the value of x
-my $x = pdl->sequence (100)- 50;
+my $x = pdl->sequence(100)- 50;
 
 # y = 2x
 my $y = (1/2) * $x + 10;
 
 # Create a graph
-$pl->xyplot (
+$pl->xyplot(
   $x,
   $y,
   XLAB =>'x',
@@ -284,13 +284,13 @@ use PDL::Graphics::PLplot;
 my $pl = PDL::Graphics::PLplot->new(DEV =>'png', FILE =>'graph.png');
 
 # x value (0 to 4 in 0.1 increments)
-my $x = pdl->sequence (40) * 0.1;
+my $x = pdl->sequence(40) * 0.1;
 
 # y = x ^ 3 - 6x ^ 2 + 11x -6
 my $y = ($x ** 3) -6 * ($x ** 2) + (11 * $x) -6;
 
 # Create a graph
-$pl->xyplot ($x, $y);
+$pl->xyplot($x, $y);
 
 # Close
 $pl->close;
@@ -313,13 +313,13 @@ use PDL::Graphics::PLplot;
 my $pl = PDL::Graphics::PLplot->new(DEV =>'png', FILE =>'graph.png');
 
 # x value
-my $x = pdl->sequence (200) * 0.1;
+my $x = pdl->sequence(200) * 0.1;
 
 # y = sin(x)
 my $y = $x->sin;
 
 # Create a graph
-$pl->xyplot ($x, $y);
+$pl->xyplot($x, $y);
 
 # Close
 $pl->close;
@@ -345,13 +345,13 @@ my $pl = PDL::Graphics::PLplot->new(DEV =>'png', FILE =>'graph.png');
 my $e = pdl [exp(1)];
 
 # x value
-my $x = pdl->sequence (60) * 0.1 - 3;
+my $x = pdl->sequence(60) * 0.1 - 3;
 
 # y = e ^ x
 my $y = $e ** $x;
 
 # Create a graph
-$pl->xyplot ($x, $y);
+$pl->xyplot($x, $y);
 
 # Close
 $pl->close;
@@ -375,13 +375,13 @@ use PDL::Graphics::PLplot;
 my $pl = PDL::Graphics::PLplot->new(DEV =>'png', FILE =>'graph.png');
 
 # x value
-my $x = pdl->sequence (100) * 0.1 + 0.1;
+my $x = pdl->sequence(100) * 0.1 + 0.1;
 
 # y = log(x)
 my $y = $x->log;
 
 # Create a graph
-$pl->xyplot ($x, $y);
+$pl->xyplot($x, $y);
 
 # Close
 $pl->close;
@@ -405,16 +405,16 @@ use PDL::Graphics::PLplot;
 my $pl = PDL::Graphics::PLplot->new(DEV =>'png', FILE =>'graph.png');
 
 # data
-my $x = pdl->sequence (20);
+my $x = pdl->sequence(20);
 my $pi = 4 * atan2 (1,1);
 my $y1 = $x ** 2;
 my $y2 = sqrt $x;
 my $y3 = $x ** 3;
 my $y4 = sin(($x/20) * 2 * $pi);
-my $ys = $y1->cat ($y2, $y3, $y4);
+my $ys = $y1->cat($y2, $y3, $y4);
 
 # Strip plot
-$pl->stripplots (
+$pl->stripplots(
   $x,
   $ys,
   PLOTTYPE =>'LINE',

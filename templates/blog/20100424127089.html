@@ -28,7 +28,7 @@ Use the <strong> XMLin method </strong> to read the XML file. XML is transformed
 
 <pre>
 # XML file parsing
-my $data = $xml->XMLin ('conf.xml');
+my $data = $xml->XMLin('conf.xml');
 </pre>
 
 This is a sample XML of the configuration file. Imagine an application that edits multiple logs on multiple systems. Save the file in UTF-8.
@@ -97,7 +97,7 @@ Since it is converted to an internal character string, if you want to output it,
 <pre>
 # When outputting, convert from internal character string to byte character string
 use Encode 'encode';
-my $conf = $xml->XMLin ('japanese.xml');
+my $conf = $xml->XMLin('japanese.xml');
 print encode ('UTF-8', $conf->{name});
 </pre>
 

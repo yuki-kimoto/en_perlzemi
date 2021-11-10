@@ -45,7 +45,7 @@ my $feed_url = $feed_base.'?'. $Query;
 
 # Get XML from the web
 my $http_client = LWP::UserAgent->new;
-my $response = $http_client->get ($feed_url);
+my $response = $http_client->get($feed_url);
 
 my $holidays_xml;
 if ($response->is_success) {
@@ -59,7 +59,7 @@ else {
 my $xml_parser = XML::Simple->new;
 # XML::Change parser for those who don't have SAX
 $XML::Simple::PREFERRED_PARSER = 'XML::Parser';
-my $holidays_data = $xml_parser->XMLin ($holidays_xml);
+my $holidays_data = $xml_parser->XMLin($holidays_xml);
 
 my $holidays = [];
 for my $key (keys %{$holidays_data->{'entry'}}) {
@@ -86,7 +86,7 @@ for my $holiday (@$holidays) {
 }
 
 use Data::Dumper;
-print Data::Dumper->Dump ([$holidays], ['* holidays']);
+print Data::Dumper->Dump([$holidays], ['* holidays']);
 </pre>
 
 <h3> Holiday issues </h3>
@@ -134,7 +134,7 @@ LWP::UserAgent is a module for creating HTTP clients. You can programmatically d
 <pre>
 use LWP::UserAgent;
 my $http_client = LWP::UserAgent->new;
-my $response = $http_client->get ($feed_url);
+my $response = $http_client->get($feed_url);
 
 my $holidays_xml;
 if ($response->is_success) {
@@ -153,7 +153,7 @@ use XML::Simple;
 # Parse XML
 my $xml_parser = XML::Simple->new();
 $XML::Simple::PREFERRED_PARSER = 'XML::Parser';
-my $holidays_data = $xml_parser->XMLin ($holidays_xml);
+my $holidays_data = $xml_parser->XMLin($holidays_xml);
 
 my $holidays = [];
 for my $key (keys %{$holidays_data->{'entry'}}) {

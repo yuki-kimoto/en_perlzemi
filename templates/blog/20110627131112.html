@@ -34,7 +34,7 @@ my $csv = Text::CSV::Encoded->new({{
 open my $fh, "<", $file
   or die "Can't open $file: $!";
 
-while (my $fields = $csv->getline ($fh)) {
+while (my $fields = $csv->getline($fh)) {
 
   # Edit data (here, put the word edit in the first field)
   $fields->[0]. = 'Edit';

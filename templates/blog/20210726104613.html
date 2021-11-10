@@ -177,7 +177,7 @@ Save the Perl string with the Set method. It is assumed that the Perl source cod
 
 <pre>
 # Save string to clipboard
-$clip->Set (encode ('cp932', $string));
+$clip->Set(encode ('cp932', $string));
 </pre>
 
 <h4> Extract Perl string from clipboard </h4>
@@ -186,7 +186,7 @@ By specifying "CF_UNICODETEXT" in the argument of the GetAs method, it can be ob
 
 <pre>
 # Fetch a Perl string from the clipboard
-my $string = $CLIP->GetAs (CF_UNICODETEXT);
+my $string = $CLIP->GetAs(CF_UNICODETEXT);
 $text = Encode::decode ("UTF16-LE", $string);
 </pre>
 

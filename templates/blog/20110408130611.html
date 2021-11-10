@@ -1,8 +1,8 @@
 nt; filename = pictures.csv');
-  $headers->content_type ('text/csv; charset = UTF-8');
+  $headers->content_type('text/csv; charset = UTF-8');
   
   # Render data
-  return $self->render (data => $content);
+  return $self->render(data => $content);
 };
 app->start;
 </pre>
@@ -16,7 +16,7 @@ You can name the file using the Content-Disposition header. Let's also specify t
 You can specify <strong> template_class </strong> as an argument of the render method for the class that describes the template when drawing.
 
 <pre>
-$c->render (template_class => $class);
+$c->render(template_class => $class);
 </pre>
 
 This is very useful if you want to write the template directly in a plugin etc. Mojolicious plugins are very flexible and allow you to write and incorporate the web application itself.
@@ -29,10 +29,10 @@ sub register {
   my ($self, $app, $conf) = @_;
   
   my $r = $app->route;
-  $r->get ('/ viewer', sub {
+  $r->get('/ viewer', sub {
      my $self = shift;
      # Specify template class
-     return $self->render (template_class => __PACKAGE__);
+     return $self->render(template_class => __PACKAGE__);
   });
 }
 
@@ -67,8 +67,8 @@ get'/ sizeunknowndata' => sub {
     or die "Error";
 
   # Write chunk
-  $self->res->headers->content_type ('application/gzip');
-  $self->res->headers->content_disposition (qq/attachment; filename = "$file" /);
+  $self->res->headers->content_type('application/gzip');
+  $self->res->headers->content_disposition(qq/attachment; filename = "$file" /);
   my $cb;
   $cb = sub {
     my $c = shift;
@@ -79,7 +79,7 @@ get'/ sizeunknowndata' => sub {
       undef $cb;
       return;
     }
-    $c->write_chunk ($buffer, $cb);
+    $c->write_chunk($buffer, $cb);
   };
   $self->$cb;
 };
@@ -147,15 +147,15 @@ use Mojolicious::Lite;
 use Mojo::JSON::XS;
 
 # Replace handler for drawing json
-app->renderer->add_handler (json => sub {
+app->renderer->add_handler(json => sub {
   my ($self, $c, $output, $options) = @_;
-  $$output = Mojo::JSON::XS->new->encode ($options->{json});
+  $$output = Mojo::JSON::XS->new->encode($options->{json});
 });
 
 get'/' => sub {
   my $self = shift;
   
-  $self->render (json => {name =>'kimoto'});
+  $self->render(json => {name =>'kimoto'});
 };
 
 app->start;

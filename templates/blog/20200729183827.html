@@ -31,16 +31,16 @@ my $bucket = "mybucket";
 my $key = "dir/file.txt";
 my $response;
  
-$response = $s3client->put_bucket ($bucket);
+$response = $s3client->put_bucket($bucket);
  
-$response = $s3client->put_object ($bucket, $key, "hello world");
+$response = $s3client->put_object($bucket, $key, "hello world");
  
-$response = $s3client->get_object ($bucket, $key);
+$response = $s3client->get_object($bucket, $key);
 print $response->content; # => "hello world"
  
-$response = $s3client->delete_object ($bucket, $key);
+$response = $s3client->delete_object($bucket, $key);
  
-$response = $s3client->list_objects (
+$response = $s3client->list_objects(
                             $bucket,
                             {prefix => "foo", delimiter => "/"}
                            );
@@ -159,7 +159,7 @@ Debug options.
 <b> Return:</b> <a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a> object in response to the request. You can use the content () method on the returned object to read its contents.
 
 <pre>
-my $res = $s3->get_object ('my.bucket', 'my/key.ext');
+my $res = $s3->get_object('my.bucket', 'my/key.ext');
  
 if ($res->is_success) {
     my $content = $res->content;
@@ -181,10 +181,10 @@ For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/AP
 <b> Return:</b> <a href="https://metacpan.org/pod/HTTP::Response">HTTP::Response</a> object in response to the request. You can use the header () method on the returned object to read the metadata.
 
 <pre>
-my $res = $s3->head_object ('my.bucket', 'my/key.ext');
+my $res = $s3->head_object('my.bucket', 'my/key.ext');
  
 if ($res->is_success) {
-    my $etag = $res->header ('etag'); # => `" fba9dede5f27731c9771645a39863328 "`
+    my $etag = $res->header('etag'); # => `" fba9dede5f27731c9771645a39863328 "`
 }
 </pre>
 
@@ -285,7 +285,7 @@ Note: This method only supports signature v4.
 This is an example of generating a signed URL and uploading the file "test.txt". In this case, you can set the object metadata "x-amz-meta-foo" with any value and the upload size is limited to 1MB.
 
 <pre>
-my $presigned = $s3->generate_presigned_post ('my.bucket', 'my/key.ext', [
+my $presigned = $s3->generate_presigned_post('my.bucket', 'my/key.ext', [
     'x-amz-meta-foo' =>'bar',
 ], [
     ['starts-with' =>'$x-amz-meta-foo', ''],
@@ -293,7 +293,7 @@ my $presigned = $s3->generate_presigned_post ('my.bucket', 'my/key.ext', [
 ], 24 * 60 * 60);
  
 my $ua = LWP::UserAgent->new;
-my $res = $ua->post (
+my $res = $ua->post(
     $signed->{url},
     Content_Type =>'multipart/form-data',
     Content => [

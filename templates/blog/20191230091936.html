@@ -23,22 +23,22 @@ my $pdf = PDF::API2->new;
 my $page = $pdf->page;
 
 # Load core font
-my $font = $pdf->corefont ('Helvetica');
+my $font = $pdf->corefont('Helvetica');
 
 # Get a content object that represents the text
-my $text = $page->text ();
+my $text = $page->text();
 
 # Set font
-$text->font ($font, 11);
+$text->font($font, 11);
 
 # Set drawing position (origin is lower left. By default, page width is 612 units and height is 792 units)
-$text->translate (30, 750);
+$text->translate(30, 750);
 
 # Draw text
-$text->text ('Hello World!');
+$text->text('Hello World!');
 
 my $pdf_file = 'text_core_font.pdf';
-$pdf->saveas ($pdf_file);
+$pdf->saveas($pdf_file);
 </pre>
 
 <a href="/examples/pdf/text_core_font.pdf">Output result text English</a>
@@ -50,7 +50,7 @@ In PDF::API2, get the font object that represents the font using the corefont me
 
 <pre>
 # Load core font
-my $font = $pdf->corefont ('Helvetica');
+my $font = $pdf->corefont('Helvetica');
 </pre>
 
 Use the corefont method to get the core font. Please note that corefont cannot draw Japanese. If you want to use Japanese, you need to specify a truetype font that supports Japanese with ttfont.
@@ -61,7 +61,7 @@ In PDF::API2, the content object that represents the text is obtained using the 
 
 <pre>
 # Get a content object that represents the text
-my $text = $page->text ();
+my $text = $page->text();
 </pre>
 
 <b> Font settings </b>
@@ -70,7 +70,7 @@ In PDF::API2, set the font with the font method of the text object.
 
 <pre>
 # Set font
-$text->font ($font, 11);
+$text->font($font, 11);
 </pre>
 
 <b> Specify drawing position </b>
@@ -79,7 +79,7 @@ In PDF::API2, the drawing position is set by the translate method of the text ob
 
 <pre>
 # Set drawing position (origin is lower left. By default, page width is 612 units and height is 792 units)
-$text->translate (30, 750);
+$text->translate(30, 750);
 </pre>
 
 The origin is at the bottom left. By default, the page width is 612 units and height is 792 units. For PDF coordinates, see the explanation of "Setting the paper size" in <a href="/blog/20191226175520.html">Creating a PDF file</a>.
@@ -92,7 +92,7 @@ PDF::API2 draws text with the text method of the text object.
 
 <pre>
 # Draw text
-$text->text ('Hello World!');
+$text->text('Hello World!');
 </pre>
 
 When you draw text, the x-coordinate of the current drawing position moves to the end of the text. This position can be obtained with the textpos method.
@@ -105,16 +105,16 @@ To set the font color, set the stroke color and fill color. Please note that the
 
 <pre>
 # Set font color-color name
-$text->strokecolor ('red');
-$text->fillcolor ('red');
+$text->strokecolor('red');
+$text->fillcolor('red');
 
 # Set font color - RGB
-$text->strokecolor ('red');
-$text->fillcolor ('red');
+$text->strokecolor('red');
+$text->fillcolor('red');
 
 # Set font color - CMYK
-$text->strokecolor ('%FF000000');
-$text->fillcolor ('%FF000000');
+$text->strokecolor('%FF000000');
+$text->fillcolor('%FF000000');
 </pre>
 
 Text drawing is also created by using the content drawing function to create the outline path that exists in the font and then fill the inside of the path.
@@ -148,14 +148,14 @@ my $gfx = $page->gfx;
 
 # Don't forget to set the font color
 my $text = $page->text;
-$text->strokecolor ('# 000');
-$text->fillcolor ('# 000');
+$text->strokecolor('# 000');
+$text->fillcolor('# 000');
 
 # Draw background
 # ...
 
 # Draw text
-$text->text ('Hello');
+$text->text('Hello');
 <pre>
 
 The background color is simply written using the function of the graphic content object. For example, if you draw a rectangle and fill it, it will be the background color. Please refer to <a href="/blog/20200101082734.html">Drawing basic figures and creating tables</a>.
@@ -168,7 +168,7 @@ To underline text in PDF::API2, specify the "-underline" option of the text meth
 
 <pre>
 # Draw underline
-$text->text ('Hello World!', -Underline =>'auto');
+$text->text('Hello World!', -Underline =>'auto');
 </pre>
 
 <h3> Make it bold </h3>
@@ -177,7 +177,7 @@ To use bold in the core font, specify the font for bold.
 
 <pre>
 # Load core font
-my $font = $pdf->corefont ('Helvetica-Bold');
+my $font = $pdf->corefont('Helvetica-Bold');
 </pre>
 
 There are two types of expression in bold on a computer, either using a font for bold or using an application to draw overlapping characters.
@@ -188,7 +188,7 @@ As an alternative, consider increasing the font size by 1.
 
 <pre>
 # Increase font size by 1 as an alternative to bold
-$text->font ($font, $font_size + 1);
+$text->font($font, $font_size + 1);
 </pre>
 
 <h3> Set character spacing </h3>
@@ -197,7 +197,7 @@ Use the charspace method to set the character spacing. The default is 0.
 
 <pre>
 # Set character spacing
-$text->charspace (1);
+$text->charspace(1);
 </pre>
 
 <h3> Draw text around the specified position </h3>
@@ -206,7 +206,7 @@ To draw text centered on a specified position in PDF::API2, use the text_center 
 
 <pre>
 # Draw underline
-$text->text_center ('Hello World!');
+$text->text_center('Hello World!');
 </pre>
 
 It can be used when you want to display the page heading etc. in the center of the screen.
@@ -219,7 +219,7 @@ It can be used when you want to display the page number etc. at the bottom right
 
 <pre>
 # Draw underline
-$text->text_right ('Hello World!');
+$text->text_right('Hello World!');
 </pre>
 
 <h3> Get the current text drawing position </h3>
@@ -228,7 +228,7 @@ To get the current text drawing position in PDF::API2, use the textpos method.
 
 <pre>
 # Get the current text drawing position
-my ($x, $y) = $text->textpos ();
+my ($x, $y) = $text->textpos();
 </pre>
 
 You can use this value to check where line breaks should occur and where page breaks should occur.
@@ -275,7 +275,7 @@ For example, if you want to make a line break and move, you can subtract the lin
 Use the advancewidth method to get the width of the text to draw in advance.
 
 <pre>
-my $text_width = $text->advancewidth ($string);
+my $text_width = $text->advancewidth($string);
 </pre>
 
 It can be used when performing a process called line break when it extends to the right side.
@@ -385,7 +385,7 @@ use PDF::API2;
 my $pdf = PDF::API2->new;
 
 # Load core font
-my $font = $pdf->corefont ('Helvetica-Bold');
+my $font = $pdf->corefont('Helvetica-Bold');
 my $font_size = 11;
 
 # Text height
@@ -398,7 +398,7 @@ my $line_margin = 2;
 my $line_height = $text_height + $line_margin;
 
 # Default global setting for paper size (to get paper size)
-$pdf->mediabox (undef);
+$pdf->mediabox(undef);
 
 # Page height and width
 my @page_size_infos = $pdf->mediabox;
@@ -437,13 +437,13 @@ my $cur_render_y = $render_start_y;
 my $page = $pdf->page;
 
 # Get a content object that represents the text
-my $text = $page->text ();
+my $text = $page->text();
 
 # Font settings
-$text->font ($font, $font_size);
+$text->font($font, $font_size);
 
 # Move to drawing start position
-$text->translate ($render_start_x, $render_start_y);
+$text->translate($render_start_x, $render_start_y);
 
 # Extract one character at a time
 while ($message =~ /(.)/G) {
@@ -455,7 +455,7 @@ while ($message =~ /(.)/G) {
     $cur_render_y-= $line_height;
     
     # Move to drawing start position
-    $text->translate ($cur_render_x, $cur_render_y);
+    $text->translate($cur_render_x, $cur_render_y);
   }
 
   # Page break if the current drawing position exceeds the drawing end y coordinate
@@ -467,24 +467,24 @@ while ($message =~ /(.)/G) {
     $page = $pdf->page;
 
     # Get a content object that represents the text
-    $text = $page->text ();
+    $text = $page->text();
 
     # Font settings
-    $text->font ($font, $font_size);
+    $text->font($font, $font_size);
 
     # Move to drawing start position
-    $text->translate ($cur_render_x, $cur_render_y);
+    $text->translate($cur_render_x, $cur_render_y);
   }
   
   # Draw characters
-  $text->text ($char);
+  $text->text($char);
   
   # Update drawing position
   ($cur_render_x) = $text->textpos;
 }
 
 my $pdf_file = 'margin_full_text.pdf';
-$pdf->saveas ($pdf_file);
+$pdf->saveas($pdf_file);
 </pre>
 
 Three pages with margins that repeat "Hello World!" Are output.
@@ -545,7 +545,7 @@ TrueType Fonts can be read with the ttfont method. Specify the path of the acqui
 
 <pre>
 my $true_type_font_file = '/path/kochi-gothic-subst.ttf';
-my $font = $pdf->ttfont ($true_type_font_file);
+my $font = $pdf->ttfont($true_type_font_file);
 </pre>
 
 You can output Japanese by rewriting the location where the core font is read by corefont to the above.
@@ -599,11 +599,11 @@ These files can be used for normal and bold.
 <pre>
 # generally
 my $true_type_font_file = '/path/AozoraMinchoRegular.ttf';
-my $font = $pdf->ttfont ($true_type_font_file);
+my $font = $pdf->ttfont($true_type_font_file);
 
 # Bold
 my $true_type_font_bold_file = '/path/AozoraMincho-bold.ttf';
-my $font_bold = $pdf->ttfont ($true_type_font_file);
+my $font_bold = $pdf->ttfont($true_type_font_file);
 </pre>
 
 In Japanese fonts, it is assumed that the text baseline is almost always at the bottom of the character, but in Aozora Mincho font, the baseline is at the bottom of the character. In other words, the characters are drawn so that they extend to the upper right of the point moved by translate.
@@ -626,9 +626,9 @@ my $pdf = PDF::API2->new;
 
 # Reading TrueType fonts that support Japanese
 my $true_type_font_file = "$FindBin::Bin/AozoraMinchoRegular.ttf";
-my $font = $pdf->ttfont ($true_type_font_file);
+my $font = $pdf->ttfont($true_type_font_file);
 my $true_type_font_bold_file = "$FindBin::Bin/AozoraMincho-bold.ttf";
-my $font_bold = $pdf->ttfont ($true_type_font_bold_file);
+my $font_bold = $pdf->ttfont($true_type_font_bold_file);
 
 my $font_size = 11;
 
@@ -642,7 +642,7 @@ my $line_margin = 2;
 my $line_height = $text_height + $line_margin;
 
 # Default global setting for paper size (to get paper size)
-$pdf->mediabox (undef);
+$pdf->mediabox(undef);
 
 # Page height and width
 my @page_size_infos = $pdf->mediabox;
@@ -681,13 +681,13 @@ my $cur_render_y = $render_start_y;
 my $page = $pdf->page;
 
 # Get a content object that represents the text
-my $text = $page->text ();
+my $text = $page->text();
 
 # Font settings
-$text->font ($font, $font_size);
+$text->font($font, $font_size);
 
 # Move to drawing start position
-$text->translate ($render_start_x, $render_start_y);
+$text->translate($render_start_x, $render_start_y);
   
 # Extract one character at a time
 while ($message =~ /(.)/G) {
@@ -699,7 +699,7 @@ while ($message =~ /(.)/G) {
     $cur_render_y-= $line_height;
     
     # Move to drawing start position
-    $text->translate ($cur_render_x, $cur_render_y);
+    $text->translate($cur_render_x, $cur_render_y);
   }
 
   # Page break if the current drawing position exceeds the drawing end y coordinate
@@ -711,32 +711,32 @@ while ($message =~ /(.)/G) {
     $page = $pdf->page;
 
     # Get a content object that represents the text
-    $text = $page->text ();
+    $text = $page->text();
 
     # Font settings
-    $text->font ($font, $font_size);
+    $text->font($font, $font_size);
 
     # Move to drawing start position
-    $text->translate ($cur_render_x, $cur_render_y);
+    $text->translate($cur_render_x, $cur_render_y);
   }
   
   # Bold world
   if ($char eq 'world' || $char eq 'world') {
-    $text->font ($font_bold, $font_size);
+    $text->font($font_bold, $font_size);
   }
   else {
-    $text->font ($font, $font_size);
+    $text->font($font, $font_size);
   }
 
   # Draw characters
-  $text->text ($char);
+  $text->text($char);
   
   # Update drawing position
   ($cur_render_x) = $text->textpos;
 }
 
 my $pdf_file = 'margin_full_text_jp.pdf';
-$pdf->saveas ($pdf_file);
+$pdf->saveas($pdf_file);
 </pre>
 
 <a href="/examples/pdf/margin_full_text_jp.pdf">Output result Japanese, bold support</a>

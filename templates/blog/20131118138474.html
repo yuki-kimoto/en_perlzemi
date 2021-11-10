@@ -29,7 +29,7 @@ my $current_page = 1;
 my $pager = Data::Page->new($total_entries, $entries_per_page, $current_page);
 
 # Set the number of page navigation
-$pager->pages_per_navigation (10);
+$pager->pages_per_navigation(10);
 
 # Get data for page navigation
 my @pages = $pagesr->pages_in_navigation;
@@ -38,7 +38,7 @@ my @pages = $pagesr->pages_in_navigation;
 print "@pages\n";
 
 # Change current page
-$pager->current_page (9);
+$pager->current_page(9);
 my @pages2 = $pagesr->pages_in_navigation;
 
 # 5 6 7 8 9 10 11 12 13 14
@@ -53,7 +53,7 @@ Sets the number of pages displayed on one page. The default is 10.
 
 <pre>
 my $pages_per_navigation = $pagesr->pages_per_navigation;
-$pager->pages_per_navigation (15);
+$pager->pages_per_navigation(15);
 </pre>
 
 <h4> pages_in_navigation </h4>

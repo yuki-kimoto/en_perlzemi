@@ -18,10 +18,10 @@ my ($x, $y) = $bezier->point(0.5);
 my $xy = $bezier->point(0.5);
  
 # Returns the (x, y) points divided into 20 along the curve.
-my @curve = $bezier->curve (20);
+my @curve = $bezier->curve(20);
  
 # Receive in reference
-my $curve = $bezier->curve (20);
+my $curve = $bezier->curve(20);
 </pre>
 
 <h3> A sample that draws a 3D Bezier curve and divides it into 100 points </h3>
@@ -43,7 +43,7 @@ use Math::Bezier;
 # List of control points (x, y)
 my $bezier = Math::Bezier->new(0, 0, 10, 10, 20, 40);
 
-my $curve_points = $bezier->curve (100);
+my $curve_points = $bezier->curve(100);
 
 for (my $i = 0; $i < @$curve_points; $i += 2) {
   my $x = $curve_points->[$i];

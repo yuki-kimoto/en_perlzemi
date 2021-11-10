@@ -9,19 +9,19 @@ Validator::Custom::Validation - Validation result
 <pre>
   my $validation = $vc->validation;
   
-  $validation->add_failed (title =>'title is invalid');
-  $validation->add_failed (name =>'name is invalid');
+  $validation->add_failed(title =>'title is invalid');
+  $validation->add_failed(name =>'name is invalid');
   
   # Is it correct
   my $is_valid = $validation->is_valid;
-  my $title_is_valid = $validation->is_valid ('title');
+  my $title_is_valid = $validation->is_valid('title');
   
   # Name of failed parameter
   my $failed = $validation->failed;
   
   # message
   my $messages = $validation->messages;
-  my $title_message = $validation->message ('title');
+  my $title_message = $validation->message('title');
   my $messages_h = $validation->messages_to_hash;
 </pre>
 
@@ -49,7 +49,7 @@ Generally this method is not used. It's a good idea to use the <b> validation </
 
 <pre>
   my $is_valid = $validation->is_valid;
-  my $is_valid = $validation->is_valid ('title');
+  my $is_valid = $validation->is_valid('title');
 </pre>
 
 Check if the validation result is correct. If given a name, it checks if the parameters corresponding to that name are correct.
@@ -57,8 +57,8 @@ Check if the validation result is correct. If given a name, it checks if the par
 <h4> add_failed </h4>
 
 <pre>
-  $validation->add_failed ('title' =>'title is invalid value');
-  $validation->add_failed ('title');
+  $validation->add_failed('title' =>'title is invalid value');
+  $validation->add_failed('title');
 </pre>
 
 Add the name and message of the failed parameter. If the message is omitted, the default message will be set automatically.
@@ -74,7 +74,7 @@ Gets the names of all failed parameters.
 <h4> message </h4>
 
 <pre>
-  my $message = $validation->message ('title');
+  my $message = $validation->message('title');
 </pre>
 
 Gets the failure message that corresponds to the name.

@@ -73,7 +73,7 @@ Now let's connect to the database. Use the DBI module's connect method to connec
 use DBI;
 my $database = 'test.db';
 my $data_source = "dbi: SQLite: dbname = $database";
-my $dbh = DBI->connect ($data_source);
+my $dbh = DBI->connect($data_source);
 </pre>
 
 You should now have a file called test.db in your current directory.
@@ -253,7 +253,7 @@ Now let's actually execute the select statement.
 
 <pre>
 my $select = "select * from book;";
-my $sth = $dbh->prepare ($select);
+my $sth = $dbh->prepare($select);
 $sth->execute;
 </pre>
 
@@ -278,7 +278,7 @@ SQLite allows you to create a database in memory. You don't need to specify a fi
 To create a database in memory, specify ": memory:" as the database name of the data source.
 
 <pre>
-my $dbh = DBI->connect ("dbi: SQLite: dbname =: memory:");
+my $dbh = DBI->connect("dbi: SQLite: dbname =: memory:");
 </pre>
 
 You can now connect to the database in memory.
@@ -294,7 +294,7 @@ use warnings;
 use DBI;
 
 # Connect to database in memory
-my $dbh = DBI->connect ("dbi: SQLite: dbname =: memory:");
+my $dbh = DBI->connect("dbi: SQLite: dbname =: memory:");
 
 # Create table
 my $create_table = <<'EOS';
@@ -319,7 +319,7 @@ $dbh->do("update book set title = 'Ruby' where author = 'mamoru'");
 $dbh->do("delete from book where author = 'ken';");
 
 # Execution of select statement
-my $sth = $dbh->prepare ("select * from book;");
+my $sth = $dbh->prepare("select * from book;");
 $sth->execute;
 
 # Fetch each row
@@ -347,7 +347,7 @@ No username or password is required to connect to the database created by SQLite
 To connect using DBI with a username and password: Specify the user name in the second argument and the password in the third argument.
 
 <pre>
-my $dbh = DBI->connect ($data_source, $user, $password);
+my $dbh = DBI->connect($data_source, $user, $password);
 </pre>
 
 <h3> Standard settings for DBI options </h3>
@@ -355,7 +355,7 @@ my $dbh = DBI->connect ($data_source, $user, $password);
 In DBI, you can specify DBI options in the 4th argument of the connect method.
 
 <pre>
-DBI->connect ($data_source, $user, $password, {opt1 => $val1, opt2 => $val2, ..});
+DBI->connect($data_source, $user, $password, {opt1 => $val1, opt2 => $val2, ..});
 </pre>
 
 DBI's default behavior is to print a warning to standard error if an error occurs.
@@ -378,7 +378,7 @@ DBI also has an option called AutoCommit. This is an option that decides whether
 
 Therefore, when connecting to the database based on this, it may be better to write as follows.
 <pre>
-my $dbh = DBI->connect (
+my $dbh = DBI->connect(
   $data_source,
   $user,
   $password,
@@ -393,7 +393,7 @@ my $dbh = DBI->connect (
 If you don't need a username or password and just want to specify options, do the following:
 
 <pre>
-my $dbh = DBI->connect (
+my $dbh = DBI->connect(
   $data_source,
   undef,
   undef,

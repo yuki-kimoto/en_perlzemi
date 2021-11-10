@@ -68,7 +68,7 @@ You can access the attribute values by defining an accessor.
 
 <pre>
 # Value setting
-$obj->foo (1);
+$obj->foo(1);
 
 # Get value
 my $foo = $obj->foo;
@@ -181,8 +181,8 @@ has y => 0;
 sub clear {
   my $self = shift;
   
-  $self->x (0);
-  $self->y (0);
+  $self->x(0);
+  $self->y(0);
 }
 
 1;
@@ -196,7 +196,7 @@ The Point class can be used as follows.
 use Point;
 my $point = Point->new(x => 3, y => 5);
 print $point->x;
-$point->y (9);
+$point->y(9);
 $point->clear;
 </pre>
 
@@ -229,7 +229,7 @@ sub clear {
   
   $self->SUPER::clear;
   
-  $self->z (0);
+  $self->z(0);
 }
 
 1;
@@ -241,7 +241,7 @@ The Point3D class can be used as follows.
 use Point3D;
 my $point = Point->new(x => 3, y => 5, z => 8);
 print $point->z;
-$point->z (9);
+$point->z(9);
 $point->clear;
 </pre>
 
@@ -263,8 +263,8 @@ has y => 0;
 sub clear {
   my $self = shift;
   
-  $self->x (0);
-  $self->y (0);
+  $self->x(0);
+  $self->y(0);
 }
 
 1;
@@ -285,7 +285,7 @@ sub clear {
   
   $self->SUPER::clear;
   
-  $self->z (0);
+  $self->z(0);
 }
 
 1;
@@ -306,7 +306,7 @@ my $point = Point3D->new(x => 3, y => 5, z => 8);
 # 8 is displayed
 print $point->z . "\n";
 
-$point->z (9);
+$point->z(9);
 
 # 9 is displayed
 print $point->z . "\n";
@@ -375,14 +375,14 @@ my $class = ref $obj;
 To find out if an object inherits a particular class, use the isa method.
 
 <pre>
-$obj->isa ('MyClass');
+$obj->isa('MyClass');
 </pre>
 
 Use the can method to find out if an object (or class) can call a particular method.
 
 <pre>
-MyClass->can ('method1');
-$obj->can ('method1');
+MyClass->can('method1');
+$obj->can('method1');
 </pre>
 
 <h4> Encapsulation </h4>
@@ -393,7 +393,7 @@ In order to follow this rule, it is necessary to generate an accessor to get and
 
 <pre>
 my $value = $obj->foo;
-$obj->foo (1);
+$obj->foo(1);
 </pre>
 
   Accessing data directly is a bad habit.
@@ -496,8 +496,8 @@ package Point {
   sub clear {
     my $self = shift;
     
-    $self->x (0);
-    $self->y (0);
+    $self->x(0);
+    $self->y(0);
   }
 }
 </pre>
