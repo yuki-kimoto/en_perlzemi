@@ -28,7 +28,7 @@ Taking advantage of these properties, or is often used for conditional branching
 
 <pre>
 open my $fh, '<', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 </pre>
 
 If the open function succeeds, true is returned and the right-hand side of or is not executed. If the open function fails, undef is returned, so <a href="/blog/20100212126425.html">die</a> on the right side is executed and the program ends.

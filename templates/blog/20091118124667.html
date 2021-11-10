@@ -142,7 +142,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Encode qw/encode decode /;
+use Encode qw/encode decode/;
 
 # Command line argument (UTF-8 byte string)
 my $str1 = shift;
@@ -217,7 +217,7 @@ It is also convenient to specify the standard error output encoding using the bi
 use warnings;
 use utf8;
 
-use Encode qw/encode decode /;
+use Encode qw/encode decode/;
 my $enc ='cp932';
 binmode STDERR, ": encoding ($enc)";
 sub d ($) {decode ($enc, shift)}
@@ -225,7 +225,7 @@ sub e ($) {encode ($enc, shift)}
 
 my $file ='Ah.txt';
 open my $fh, '<', e $file
-  or die qq/Can't open "$file": $! /;
+  or die qq/Can't open "$file": $!/;
 </pre>
 
 Now you can handle Perl character codes very simply.

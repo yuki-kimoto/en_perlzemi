@@ -44,7 +44,7 @@ To create a tar file, add the file with the <strong> add_files </strong> method 
 # Create tar file
 my $curdir ='/ somedir';
 chdir $curdir
-  or die qq/Can't change directory "$curdir": $! /;
+  or die qq/Can't change directory "$curdir": $!/;
 
 $tar->add_files ('xxx.txt', 'dir/yyy.txt');
 $tar->write ('archive.tar');
@@ -106,7 +106,7 @@ use Archive::Tar;
 
 my $curdir ='/ somedir';
 chdir $curdir
-  or die qq/Can't change directory "$curdir": $! /;
+  or die qq/Can't change directory "$curdir": $!/;
 
 my $tar = Archive::Tar->new;
 my $top ='top';

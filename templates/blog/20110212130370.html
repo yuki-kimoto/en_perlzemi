@@ -21,7 +21,7 @@ Use the <a href="/blog/20080718121643.html">open function</a>: title = open func
 <pre>
 my $file ='data.txt';
 open my $fh, '<', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 </pre>
 
 I will explain the process of opening files one by one.
@@ -150,7 +150,7 @@ The exception message should include the following:
 </ol>
 
 <pre>
-die qq/Can't open file "$file": $! /;
+die qq/Can't open file "$file": $!/;
 </pre>
 
 "Can't open file" $file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html">special variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
@@ -165,7 +165,7 @@ If you open the file in read mode, you can read the contents from the file.
 # Open in read mode
 my $file ='data.txt';
 open my $fh, '<', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 </pre>
 
 Use the <a href="/blog/20080722121673.html">line input operator</a> to read the file line by line.
@@ -207,7 +207,7 @@ Next, let's write to the file. To write to a file, first open the file in write 
 # Open in additional write mode
 my $file ='data.txt';
 open my $fh, '>', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 </pre>
 
 Use the <a href="/blog/20170404149131.html">print function</a> to write a string to the file.
@@ -226,7 +226,7 @@ print $fh $str;
 After writing, close the file. In the case of writing, writing to the file is completed when close is performed, so it is safe to add exception handling.
 
 <pre>
-close $fh or die qw/Can't close file "$file": $! /;
+close $fh or die qw/Can't close file "$file": $!/;
 </pre>
 
 You can see that the string "Hello" is written in data.txt.
@@ -239,7 +239,7 @@ Let's do additional writing to the file. To write to a file, first open the file
 # Open in write mode
 my $file ='data.txt';
 open my $fh, '>>', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 </pre>
 
 Use the print function to write a string to a file.
@@ -252,7 +252,7 @@ print $fh $str;
 After writing, close the file. In the case of writing, writing to the file is completed when close is performed, so it is safe to add exception handling.
 
 <pre>
-close $fh or die qw/Can't close file "$file": $! /;
+close $fh or die qw/Can't close file "$file": $!/;
 </pre>
 
 When you run the program repeatedly, you can see that the character string "Hello" is added to data.txt.
@@ -348,7 +348,7 @@ Consider editing a Windwos file on Unix. Since it is on Unix, "0D 0A" is assigne
 # File open
 my $file ='data.txt';
 open my $fh, '<', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 
 # Read file
 {
@@ -407,7 +407,7 @@ use File::Copy 'move';
 # (1) Read the contents of the file
 my $file ='date.txt';
 open my $fh, '<', $file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 my $content = do {local $/; <$fh>};
 close $fh;
 
@@ -417,13 +417,13 @@ $content ='Hello!';
 # (3) Export to temporary file
 my $temp_file = "$file. $$.". Int (rand 10000);
 open my $temp_fh, '>', $temp_file
-  or die qq/Can't open file "$file": $! /;
+  or die qq/Can't open file "$file": $!/;
 print $temp_fh $content;
-close $temp_fh or die qq/Can't open file "$file": $! /;
+close $temp_fh or die qq/Can't open file "$file": $!/;
 
 # (4) Change the temporary file name to the original file name
 move $temp_file, $file
-  or die qq/Can't move "$temp_file" to "$file": $! /;
+  or die qq/Can't move "$temp_file" to "$file": $!/;
 </pre>
 
 (Reference) <a href="/blog/20100408127089.html">File::Copy</a>

@@ -20,7 +20,7 @@ The following is a sample that makes you realize that you are actually reading a
 <pre>
 use strict;
 use warnings;
-use Fcntl qw /: DEFAULT: flock: seek /;
+use Fcntl qw /: DEFAULT: flock: seek/;
 
 # Be careful as it will be overwritten
 my $file = "data_20080814.txt";
@@ -95,7 +95,7 @@ Kill all three processes with Ctrl + C and make sure there are no duplicate coun
 The <a href="/blog/20180310152509.html">Fcntl</a> module allows you to use the file locking constants used by flock.
 
 <pre>
-use Fcntl qw /: DEFAULT: flock: seek /;
+use Fcntl qw /: DEFAULT: flock: seek/;
 </pre>
 
 Use use Fcntl qw (: flock) to read the constants used by flock. There are three constants read by the: flock tag: LOCK_SH, LOCK_EX, and LOCK_UN.

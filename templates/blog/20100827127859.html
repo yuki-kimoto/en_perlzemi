@@ -112,7 +112,7 @@ Get aaa and p1
 You can use a regular expression to replace the matched string. The replacement syntax is as follows:
 
 <pre>
-Target string =~ s/regular expression/replacement string /;
+Target string =~ s/regular expression/replacement string/;
 </pre>
 
 Now let's replace the string "This string is aa" with the string "This string is bb". This sample uses the regular expression "a {1,3}" that matches aa.
@@ -129,7 +129,7 @@ The script looks like this:
 
 <pre>
 my $str ='This string is aa';
-$str =~ s/a {1,3}/bb /;
+$str =~ s/a {1,3}/bb/;
 </pre>
 
 Only one is replaced. For example, if you have the string "This string is aa aaa", the above replacement will result in "This string is bb aaa" and only the first matching string will be replaced.

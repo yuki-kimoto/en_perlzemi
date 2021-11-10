@@ -24,10 +24,10 @@ Inherit # Exporter
 use Exporter 'import';
 
 # Write the function to export
-our @EXPORT = qw/func1 func2 /;
+our @EXPORT = qw/func1 func2/;
 
 # Write an exportable function
-our @EXPORT_OK = qw/func3 func4 /;
+our @EXPORT_OK = qw/func3 func4/;
 
 # Function
 sub func1 {...}
@@ -49,7 +49,7 @@ When executed in the form of "use module name argument 1 argument 2 ..", the fun
 
 <pre>
 # @EXPORT_OK or the functions contained in @EXPORT (func2, func3 and func4) are imported
-use YourModule qw/func2 func3 func4 /;
+use YourModule qw/func2 func3 func4/;
 </pre>
 
 @EXPORT, @EXPORT_OK are package variables.

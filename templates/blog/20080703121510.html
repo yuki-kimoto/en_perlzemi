@@ -30,7 +30,7 @@ You can use Hash::Util::lock_keys to limit the keys in a hash. If you specify on
 <pre>
 %hash = ();
 Limited to # key1 and key2.
-@restrict_keys = qw/key1 key2 /;
+@restrict_keys = qw/key1 key2/;
 Hash::Util::lock_keys(%hash, @restrict_keys);
 # Remove restrictions.
 Hash::Util::unlock_keys(%hash);
@@ -83,7 +83,7 @@ Hash::Util::unlock_keys(%hash);
 Limited to # key1 and key2.
 print "1-2: Prohibit the addition of keys other than the specified key.\n";
 %hash = ();
-@restrict_keys = qw/key1 key2 /;
+@restrict_keys = qw/key1 key2/;
 
 Die when trying to add # key3.
 Hash::Util::lock_keys(%hash, @restrict_keys);
