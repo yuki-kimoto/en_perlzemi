@@ -47,7 +47,7 @@ $str =~ /regular expression/</pre>
 The pattern matching operator is "=~ ". Regular expressions must be enclosed in slashes "/". Returns true if there is a match, false if there is no match. Pattern matching is often used in combination with if statements.
 
 <pre>
-if ($str =~ /regular expression /) {
+if ($str =~ /regular expression/) {
   # What to do if there is a match
 }
 </pre>
@@ -65,7 +65,7 @@ The script is as follows.
 <pre>
 my $str = 'This string is aa.';
 
-if ($str =~ /a {1,3} /) {
+if ($str =~ /a {1,3}/) {
   print "Match\n";
 }
 </pre>
@@ -91,7 +91,7 @@ The script looks like this: <a href="/blog/20161102147817.html">Special variable
 
 <pre>
 my $str = 'This string is aar1';
-if ($str =~ /(a {1,3}) ([pqr] 1) /) {
+if ($str =~ /(a {1,3}) ([pqr] 1)/) {
   print "Get $1 and $2";
 }
 </pre>
@@ -615,7 +615,7 @@ This can also be used in regular pattern matching.
 
 <pre>
 my $num = 34;
-if ($num =~ /$regex /) {
+if ($num =~ /$regex/) {
    
 }
 </pre>
@@ -753,7 +753,7 @@ my $time = '03:02:56';
 # ::(\d{2}) seconds
 / x;
 
-if ($time =~ /$regex /) {
+if ($time =~ /$regex/) {
   my $hour = $1;
   my $minute = $2;
   my $second = $3;

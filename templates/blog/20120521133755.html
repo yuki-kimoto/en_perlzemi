@@ -96,7 +96,7 @@ A memory leak in the following code has been fixed. This has been around since P
 
 <pre>
     for (1..10_000_000) {
-        if ("foo" =~ /(foo | (? <capture> bar))? /) {
+        if ("foo" =~ /(foo | (? <capture> bar))?/) {
             my $capture = $+ {capture}
         }
     }
