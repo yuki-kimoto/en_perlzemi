@@ -559,7 +559,7 @@ Here, "[]", "{}", "@$students", and "$student->{name}" that have never been expl
 Perl has a <a href="/blog/20100119126425.html">grep function</a> that allows you to retrieve only matching elements of an array.
 
 <pre>
-my @matches = grep {$_> 5} @values;
+my @matches = grep {$_ > 5} @values;
 </pre>
 
 This is the same as writing the following in a for statement, but more concisely.
@@ -567,7 +567,7 @@ This is the same as writing the following in a for statement, but more concisely
 <pre>
 my @matches;
 for my $value (@$values) {
-  if ($value> 5) {
+  if ($value > 5) {
     push @matches, $value;
   }
 }
