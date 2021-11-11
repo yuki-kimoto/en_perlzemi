@@ -12,25 +12,25 @@
 </ol>
 <h2>String list operator - qw()</h2>
 
-<b>String list operator</b> is a operator to create a <a href="/blog/20100308126967.html">list</a> of <a href="/blog/20161003147558.html">strings</a> easily. You can use the string list operator to represent a list of strings without writing single quotes or commas.
+<b>String list operator</b> is a operator to create a <a href="/blog/20100308126967.html">list</a> of <a href="/blog/20161003147558.html">strings</a> easily. You can create a list of strings without writing single quotes and commas.
 
 <pre>
 qw(string1 string2 string3)
 </pre>
 
-This is an example of actually using the string list operator.
+The following is a example of the string list operator. The return value is assigned to a <a href="/blog/20161012147627.html">array</a>.
 
 <pre>
-my @strings = qw/cat dog mouse/;
+my @strings = qw(cat dog mouse);
 </pre>
 
-It has the same meaning as the following list of strings.
+This is the same as the following list of strings.
 
 <pre>
 my @strings = ('cat', 'dog', 'mouse');
 </pre>
 
-Characters other than () can be used for the symbols surrounding the string.
+You can also use characters other than "(" and ")" to create a list of strings.
 
 <pre>
 qw(cat dog mouse)
@@ -43,26 +43,24 @@ qw!cat dog mouse!
 
 <h3>Example program</h3>
 
-This is a example program that uses the string list operator.
+This is a example program that uses the string list operator. 
 
 <pre>
 use strict;
 use warnings;
 
 # String list operator
-my @strings = qw/cat dog mouse/; # Same meaning as ('cat', 'dog', 'mouse')
+my @strings = qw(cat dog mouse); # Same meaning as ('cat', 'dog', 'mouse')
 print "1: String list\n";
 print join(',', @strings) . "\n";
 </pre>
 
 Reference: <a href="/blog/20081007122338.html">join function</a>
 
-<h3>Reference "Array of Perl"</h3>
+Execution result:
 
-See below for a description of Perl's "arrays".
+<pre>
+1: String list
+cat,dog,mouse
+</pre>
 
-<ul>
-  <li>
-    <a href="/blog/20161012147627.html">Understand Perl's "arrays"</a>
-  </li>
-</ul>
