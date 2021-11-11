@@ -12,21 +12,21 @@
 </ol>
 <h2>chomp function - remove a line break</h2>
 
-You can use the <strong> chomp function </strong> to remove a trailing line break.
+You can use the <strong> chomp function </strong> to remove a line break at the end of the line.
 
 <pre>
-# Remove a trailing line break
+# Remove a line break at the end of the line
 chomp $line;
 </pre>
 
 <h4>Remove a line break independent of OS</h4>
 
-Note that chomp is environment dependent. For example, when running on Windows, the trailing "\x0D\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a escape sequence for carriage return and \x0A is a escape sequence for line feed. On Windows, the line break character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A". This is the value of <a href="/blog/20161102147817.html">predefined variable $/</a> which depends on OS.
+Note that chomp is OS dependent. For example, when running on Windows, the trailing "\x0D\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a escape sequence for carriage return and \x0A is a escape sequence for line feed. On Windows, the line break character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A". This is the value of <a href="/blog/20161102147817.html">predefined variable $/</a> which depends on OS.
 
-For this reason, if the script saved on Windows and the loaded text file are moved to Unix as they are, a line break may not be removed correctly. If you want to remove a line break independent of the environment, use <a href="/blog/20100827127859.html">regular expression</a> as follows.
+For this reason, if the Perl program is saved on Windows and the program is moved to Linux. A line break may not be removed correctly. If you want to remove a line break independent of the OS, use <a href="/blog/20100827127859.html">regular expression</a> as follows.
 
 <pre>
-# Remove a trailing line break independent of environment
+# Remove a line break at the end of the line independent of OS
 $string =~ s/\x0D?\x0A?$//;
 </pre>
 
@@ -40,7 +40,7 @@ use warnings;
 
 my $message = "I like a cake.\n";
 
-# Remove a line break at the end of lines
+# Remove a line break at the end of the line
 chomp($message);
 print $message;
 </pre>
