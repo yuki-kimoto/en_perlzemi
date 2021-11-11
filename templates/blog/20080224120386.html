@@ -19,7 +19,7 @@ You can use the <strong> substr function </strong> to extract or replace the par
 my $word_like = substr($message, 2, 4);
 </pre>
 
-To replace the character at the specified index, specify the string in the 4th argument.
+To replace the string at the specified index, specify the string in the 4th argument.
 
 <pre>
 # Replace
@@ -31,7 +31,7 @@ substr($message, 2, 4, 'want to eat');
 This is a example to extract the string at the specified index using the substr function. In the following example, the string "Ken" is extracted.
 
 <pre>
-# Extract the character at the specified index. The string to be extract is "Ken".
+# Extract the string at the specified index. The string to be extract is "Ken".
 my $message = "I'm Ken";
 my $name = substr($message, 4, 3);
 </pre>
@@ -39,24 +39,24 @@ my $name = substr($message, 4, 3);
 This is a example that replaces the string at the specified index using the substr function.
 
 <pre>
-# Replaces the character at the specified index. After the replacement, it becomes "I'm Mike".
+# Replaces the string at the specified index. After the replacement, it becomes "I'm Mike".
 my $message = "I'm Ken";
 substr($message, 4, 3, 'Mike');
 </pre>
 
-<h4>If you want to handle Japanese</h4>
+<h4>If you want to handle Unicode such as using Japanese</h4>
 
-In order for the substr function to handle Japanese correctly, the string must be an internal string. See the following articles for internal strings.
+In order for the substr function to handle Unicode correctly, the string must be an internal string. See the following articles for internal strings.
 
 <ul>
   <li>
-    <a href="/blog/20091118124667.html">Encode module-Properly handles multi-byte strings such as Japanese</a>
+    <a href="/blog/20091118124667.html">Encode module-Properly handles Unicode strings such as using Japanese</a>
   </li>
 </ul>
 
 <h4>Replace with regular expression</h4>
 
-You can also replace strings using <a href="/blog/20100827127859.html">regular expressions</a>. If you want to specify the target string instead of the character index, use a regular expression.
+You can also replace strings using <a href="/blog/20100827127859.html">regular expressions</a>. If you want to specify the target string instead of the string index, use a regular expression.
 
 <pre>
 # Replace Ken with Taro using regular expressions
