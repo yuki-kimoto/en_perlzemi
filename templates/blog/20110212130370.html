@@ -153,7 +153,7 @@ The exception message should include the following:
 die qq/Can't open file "$file":$!/;
 </pre>
 
-"Can't open file" $file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html">special variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
+"Can't open file" $file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html">predefined variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
 
 For a detailed explanation of <a href="/blog/20100411127089.html">exception handling</a>, see the following article.
 
@@ -273,7 +273,7 @@ my $content = do {local $/; <$fh>};
 
 This is confusing, but it is often described this way.
 
-An input record separator is set for the special variable "$/". By default, the standard line feed code of the OS is set as the input record separator. You can use the line input operator to read the contents of a file at once by setting the input record separator to undef. So if you set $/ to undef, you can get all the contents of the file when you run <$fh>. However, $/ is global, so you should always restore it to its original value if you change it.
+An input record separator is set for the predefined variable "$/". By default, the standard line feed code of the OS is set as the input record separator. You can use the line input operator to read the contents of a file at once by setting the input record separator to undef. So if you set $/ to undef, you can get all the contents of the file when you run <$fh>. However, $/ is global, so you should always restore it to its original value if you change it.
 
 <a href="/blog/20080309120507.html">local</a> is for temporarily changing the contents of a variable. local can be used for variables other than lexical variables.
 

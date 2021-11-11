@@ -100,9 +100,9 @@ my $ids;
 </pre>
 The above variable has the name ids, but it's a completely different variable.
 
-<h3>Examine the meaning of special variables</h3>
+<h3>Examine the meaning of predefined variables</h3>
 
-Special variables are very difficult to find by google search. It is also troublesome to search from the document. You can use the "-v" option of the perldoc command to find out the meaning of special variables, albeit in English.
+Special variables are very difficult to find by google search. It is also troublesome to search from the document. You can use the "-v" option of the perldoc command to find out the meaning of predefined variables, albeit in English.
 
 <pre>
 perldoc -v $.
@@ -260,7 +260,7 @@ die "Exception" if $@;
 </pre>
 I prefer.
 
-<h3>Frequently used special variables</h3>
+<h3>Frequently used predefined variables</h3>
 <ul>
   <li>
     @_ - Subroutine arguments
@@ -312,7 +312,7 @@ sub {
 
 <h3>Exit status of external process</h3>
 
-When an external process is called with the system function etc., the exit status of the external process is in the upper 8 bits of the special variable $?. If the command call itself fails, $? Is set to -1. So, to check that the exit status is normal (normal if 0), do the following:vinegar.
+When an external process is called with the system function etc., the exit status of the external process is in the upper 8 bits of the predefined variable $?. If the command call itself fails, $? Is set to -1. So, to check that the exit status is normal (normal if 0), do the following:vinegar.
 
 <pre>
 my $command = "ls -l";

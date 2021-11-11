@@ -58,13 +58,13 @@ my %score = (math => 90, english => 70);
 local $score{math};
 </pre>
 
-<h3>local for special variables</h3>
+<h3>local for predefined variables</h3>
 
-The most common use of local in Perl is for <a href="/blog/20161102147817.html">special variables</a> such as "$/", "%ENV" and "@ARGV".
+The most common use of local in Perl is for <a href="/blog/20161102147817.html">predefined variables</a> such as "$/", "%ENV" and "@ARGV".
 
-local targets package variables, but special variables actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
+local targets package variables, but predefined variables actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
 
-So you can use local for special variables as well.
+So you can use local for predefined variables as well.
 
 <pre>
 local $/;
@@ -138,7 +138,7 @@ my $content = do {local $/; <$fh>};
 
 The <a href="/blog/20090208123289.html">do block</a> returns the last evaluated value.
 
-local undefined the <a href="/blog/20161102147817.html">special variable</a> "$/" that represents a line break in the file.
+local undefined the <a href="/blog/20161102147817.html">predefined variable</a> "$/" that represents a line break in the file.
 
 This causes the <a href="/blog/20080722121673.html">file input operator</a> "<$fh>" to return the contents of the entire file.
 
@@ -148,11 +148,11 @@ Keep in mind that Perl, which doesn't have a standard function to read a file at
 
 <h3>local example program</h3>
 
-This is an example to temporarily change a special variable using local. Special variables are package variables that belong to the main package.
+This is an example to temporarily change a predefined variable using local. Special variables are package variables that belong to the main package.
 
 <pre>
 {
-    # Temporary change of special variable $/
+    # Temporary change of predefined variable $/
     local $/ = undef;
 }
 # Original value is restored when exiting scope

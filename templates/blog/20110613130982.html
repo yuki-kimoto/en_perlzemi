@@ -28,7 +28,7 @@ Please refer to here for the types of constants that can be imported.
   </li>
 </ul>
 
-You can find out what kind of error occurred by numerically comparing the system call error with the special variable $! To which it is assigned.
+You can find out what kind of error occurred by numerically comparing the system call error with the predefined variable $! To which it is assigned.
 
 <pre>
 # Call some system call
@@ -40,4 +40,4 @@ if ($! == EAGAIN) {
 }
 </pre>
 
-Please note that $! Is a special variable and is evaluated as an error number when a numerical comparison is performed, and as an error content when used as a string.
+Please note that $! Is a predefined variable and is evaluated as an error number when a numerical comparison is performed, and as an error content when used as a string.
