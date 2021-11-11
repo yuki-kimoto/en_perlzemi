@@ -231,7 +231,7 @@ To get the current text drawing position in PDF::API2, use the textpos method.
 my ($x, $y) = $text->textpos();
 </pre>
 
-You can use this value to check where line breaks should occur and where page breaks should occur.
+You can use this value to check where a line break should occur and where page breaks should occur.
 
 <h3>Get the font size</h3>
 
@@ -371,9 +371,9 @@ my $render_end_x = $page_width - 1- $page_right_margin;
 my $render_end_y = $page_bottom_margin;
 </pre>
 
-<h4>Text drawing corresponding to margins, line breaks, and page breaks</h4>
+<h4>Text drawing corresponding to margins, a line break, and page breaks</h4>
 
-Now, let's draw the text, paying attention to the margins, line breaks, and page breaks. When it reaches the right end, it will start a new line. English only. English words are broken on a character-by-character basis. When you reach the bottom, the page will break.
+Now, let's draw the text, paying attention to the margins, a line break, and page breaks. When it reaches the right end, it will start a new line. English only. English words are broken on a character-by-character basis. When you reach the bottom, the page will break.
 
 <pre>
 use strict;
@@ -491,7 +491,7 @@ Three pages with margins that repeat "Hello World!" Are output.
 
 In my environment, 12,000 characters take 1-2 seconds. PDF output is a surprisingly heavy process.
 
-<a href="/examples/pdf/margin_full_text.pdf">Output result margins, line breaks, page breaks</a>
+<a href="/examples/pdf/margin_full_text.pdf">Output result margins, a line break, page breaks</a>
 
 <h4>How to represent HTML headlines and p tags? </H4>
 
@@ -610,9 +610,9 @@ In Japanese fonts, it is assumed that the text baseline is almost always at the 
 
 In this case, please note that the setting above the margin needs to be taken into consideration because the characters will protrude upward.
 
-<h3>Examples for margins, line breaks, page breaks, Japanese, and bold</h3>
+<h3>Examples for margins, a line break, page breaks, Japanese, and bold</h3>
 
-This is an example that supports margins, line breaks, page breaks, Japanese, and bold. "Hello world." Is displayed repeatedly, and only in the case of the world, it is in bold.
+This is an example that supports margins, a line break, page breaks, Japanese, and bold. "Hello world." Is displayed repeatedly, and only in the case of the world, it is in bold.
 
 <pre>
 use strict;

@@ -240,7 +240,7 @@ while (my $line = <>) {
   push @$persons, \@person;
 }
 </pre>
-chomp is a function that removes line breaks. Use the split function to decompose a string with the specified delimiter to create an array. Note that the first argument of the push function is an array.
+chomp is a function that removes a line break. Use the split function to decompose a string with the specified delimiter to create an array. Note that the first argument of the push function is an array.
 
 You need to dereference and pass it like "@$persons". Also, the elements added by push must be an array reference. Generate an array reference like "\@person" and specify it as the second argument of the push function.
 
@@ -458,7 +458,7 @@ Now let's create an array of hashes from a comma separated file. Reading a file 
 my $people = [];
 while (my $line = <>) {
 
-  # (1) Delete line breaks
+  # (1) Delete a line break
   chomp $line;
   
   # (2) Make an array of comma-separated strings
@@ -475,7 +475,7 @@ while (my $line = <>) {
 }
 </pre>
 
-(1) chomp is a function that removes line breaks. (2) Use the split function to decompose the string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@$persons".
+(1) chomp is a function that removes a line break. (2) Use the split function to decompose the string with the specified delimiter to create an array. (3) Create a hash reference and set the key and value. (4) Add to the array reference. The first argument of the push function receives an array, so you need to dereference it like "@$persons".
 
 The resulting array of hashes looks like this:
 

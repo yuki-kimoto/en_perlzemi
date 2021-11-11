@@ -55,7 +55,7 @@ my $str1 = "Hello\n";
 my $str2 = "Cat\tDog";
 </pre>
 
-Frequently used escape sequences are line breaks and tabs, so be sure to remember these two.
+Frequently used escape sequences are a line break and tabs, so be sure to remember these two.
 
 The "\" symbol is used for escaping. If you want to express the symbol "\" itself, use "\\".
 
@@ -204,15 +204,15 @@ Please refer to the following for a detailed explanation of the string list oper
   </li>
 </ul>
 
-<h4>Remove line breaks</h4>
+<h4>Remove a line break</h4>
 
-You may want to <b> remove trailing line breaks </b> when reading a text file.
+You may want to <b> remove trailing a line break </b> when reading a text file.
 
-Perl has a <a href="/blog/20080226120403.html">chomp function</a> for removing line breaks, but this function is environment dependent.
+Perl has a <a href="/blog/20080226120403.html">chomp function</a> for removing a line break, but this function is environment dependent.
 
 When running on a Windows OS, remove the "CR + LF" which is a line break in Windows, and when running on Unix/Linux/Mac, remove "LF".
 
-To ensure that line breaks are removed, it's a good idea to use the following <a href="/blog/20100827127859.html">regular expression</a>.
+To ensure that a line break are removed, it's a good idea to use the following <a href="/blog/20100827127859.html">regular expression</a>.
 
 <pre>
 $str =~ s/\x0D?\X0A?$//;

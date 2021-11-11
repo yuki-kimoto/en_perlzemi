@@ -13,7 +13,7 @@
 
 This is an example that actually reads a CSV file, converts it to a Perl data type (array of arrays), and writes it to standard output. The conversion from csv to an array of arrays is done using subroutines. I think it will also be a basic template for reading and editing some kind of file.
 
-CSV etc. including line breaks etc. cannot be processed correctly by the following programs. If you want to process CSV correctly, <a href="https://perldoc.jp/docs/modules/Text-CSV_XS-0.23/Text-CSV_XS-0.23.pod">Text::CSV_XS</a> or There is <a href="https://perlzemi.com/blog/20110627131112.html">Text::CSV::Encoded</a>. Text::CSV::Encoded is a wrapper module of Text::CSV or Text::CSV_XS and can handle Japanese easily.
+CSV etc. including a line break etc. cannot be processed correctly by the following programs. If you want to process CSV correctly, <a href="https://perldoc.jp/docs/modules/Text-CSV_XS-0.23/Text-CSV_XS-0.23.pod">Text::CSV_XS</a> or There is <a href="https://perlzemi.com/blog/20110627131112.html">Text::CSV::Encoded</a>. Text::CSV::Encoded is a wrapper module of Text::CSV or Text::CSV_XS and can handle Japanese easily.
 
 <pre>
 use strict;
@@ -46,7 +46,7 @@ sub parse_file {
   # Prepare a reference to an array that stores multiple records
   my $recs = [];
   while (my $line = <$fh>) {
-    chomp $line; # Remove line breaks
+    chomp $line; # Remove a line break
     
     # Prepare a reference to the array that stores the data
     # Separate rows with commas and store in array
@@ -131,7 +131,7 @@ sub parse_file {
   # Prepare a reference to an array that stores multiple records
   my $recs = [];
   while (my $line = <$fh>) {
-    # Remove line breaks
+    # Remove a line break
     chomp $line;
     
     # Prepare a reference to the array that stores the data
@@ -179,7 +179,7 @@ I'm using a <a href="/blog/20100123126425.html">while statement</a> to create a 
 
 <pre>
 while (my $line = <$fh>) {
-  # Remove line breaks
+  # Remove a line break
   chomp $line;
 
   # Prepare a reference to the array that stores the data
@@ -247,7 +247,7 @@ sub parse_file {
   # Change to array
   my @recs;
   while (my $line = <$fh>) {
-    # Remove line breaks
+    # Remove a line break
 chomp $line;
       
      # Change to array
