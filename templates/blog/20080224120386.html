@@ -12,14 +12,14 @@
 </ol>
 <h2>substr function - cut out/replace string</h2>
 
-You can use the <strong> substr function </strong> to cut out or replace the part of the string. The first argument is a string, the second argument is the start position, and the third argument is the cutout length. The starting position starts at 0. If the 3rd argument is omitted, the target will be up to the end of <a href="/blog/20161003147558.html">string</a>.
+You can use the <strong> substr function </strong> to cut out or replace the part of the string. The first argument is a string, the second argument is the start index, and the third argument is the cutout length. The index starts at 0. If the 3rd argument is omitted, the target will be up to the end of <a href="/blog/20161003147558.html">string</a>.
 
 <pre>
 # Cut out
 my $word_like = substr($message, 2, 4);
 </pre>
 
-To replace the character at the specified position, specify the string in the 4th argument.
+To replace the character at the specified index, specify the string in the 4th argument.
 
 <pre>
 # Replace
@@ -28,18 +28,18 @@ substr($message, 2, 4, 'want to eat');
 
 <h4>Substr function example program</h4>
 
-This is a example to cut out the character at the specified position using the substr function. In the following example, the string "Ken" is extracted.
+This is a example to cut out the string at the specified index using the substr function. In the following example, the string "Ken" is extracted.
 
 <pre>
-# Cut out the character at the specified position. The string to be cut out is "Ken".
+# Cut out the character at the specified index. The string to be cut out is "Ken".
 my $message = "I'm Ken";
 my $name = substr($message, 4, 3);
 </pre>
 
-This is a example that replaces the string at the specified position using the substr function.
+This is a example that replaces the string at the specified index using the substr function.
 
 <pre>
-# Replaces the character at the specified position. After the replacement, it becomes "I'm Mike".
+# Replaces the character at the specified index. After the replacement, it becomes "I'm Mike".
 my $message = "I'm Ken";
 substr($message, 4, 3, 'Mike');
 </pre>
@@ -56,7 +56,7 @@ In order for the substr function to handle Japanese correctly, the string must b
 
 <h4>Replace with regular expression</h4>
 
-You can also replace strings using <a href="/blog/20100827127859.html">regular expressions</a>. If you want to specify the target string instead of the character position, use a regular expression.
+You can also replace strings using <a href="/blog/20100827127859.html">regular expressions</a>. If you want to specify the target string instead of the character index, use a regular expression.
 
 <pre>
 # Replace Ken with Taro using regular expressions
