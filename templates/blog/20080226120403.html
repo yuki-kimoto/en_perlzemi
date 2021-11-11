@@ -12,21 +12,21 @@
 </ol>
 <h2>chomp function - remove a line break</h2>
 
-You can use the <strong> chomp function </strong> to remove a line break.
+You can use the <strong> chomp function </strong> to remove a trailing line break.
 
 <pre>
-# Remove trailing a line break
+# Remove a trailing line break
 chomp $line;
 </pre>
 
-<h4>Delete a line break independent of OS</h4>
+<h4>Remove a line break independent of OS</h4>
 
-There is one caveat regarding chomp. chomp is environment dependent. For example, when running on Windows, the trailing "\x0D\x0A" or "\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a special character for carriage return and \x0A is a special character for line feed. On Windows, the newline character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A".
+Note that chomp is environment dependent. For example, when running on Windows, the trailing "\x0D\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a special character for carriage return and \x0A is a special character for line feed. On Windows, the newline character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A".
 
 For this reason, if the script saved on Windows and the loaded text file are moved to Unix as they are, a line break may not be removed correctly. If you want to remove a line break independent of the environment, use <a href="/blog/20100827127859.html">regular expression</a> as follows.
 
 <pre>
-# Remove trailing a line break independent of environment
+# Remove a trailing line break independent of environment
 $string =~ s/\x0D?\x0A?$//;
 </pre>
 
@@ -40,7 +40,7 @@ use warnings;
 
 my $message = "I like a cake.\n";
 
-# Delete a line break at the end of lines
+# Remove a line break at the end of lines
 chomp($message);
 print $message;
 </pre>
