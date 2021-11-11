@@ -21,7 +21,7 @@ chomp $line;
 
 <h4>Remove a line break independent of OS</h4>
 
-Note that chomp is environment dependent. For example, when running on Windows, the trailing "\x0D\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a special character for carriage return and \x0A is a special character for line feed. On Windows, the newline character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A".
+Note that chomp is environment dependent. For example, when running on Windows, the trailing "\x0D\x0A" is removed, but when running on a Unix-like OS, "\x0A" is removed. \x0D is a special character for carriage return and \x0A is a special character for line feed. On Windows, the line break character is represented by "\x0D\x0A", and on Unix it is represented by "\x0A".
 
 For this reason, if the script saved on Windows and the loaded text file are moved to Unix as they are, a line break may not be removed correctly. If you want to remove a line break independent of the environment, use <a href="/blog/20100827127859.html">regular expression</a> as follows.
 

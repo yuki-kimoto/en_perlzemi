@@ -210,7 +210,7 @@ Regular expressions that represent a set of characters include:
 \s
     </td>
     <td>
-      White space (space "", tab character "\t", newline character "\n,\r", etc.)
+      White space (space "", tab character "\t", line break character "\n,\r", etc.)
     </td>
   </tr>
 
@@ -262,10 +262,10 @@ c->.
 )
 @</pre>
 
-You can also match the "." To any character, including newlines. If you want the "." To match a newline, use the regular expression option "s".
+You can also match the "." To any character, including line breaks. If you want the "." To match a line break, use the regular expression option "s".
 
 <pre>
-# Match . To any character, including newlines
+# Match . To any character, including line breaks
 $str =~ /./s;
 </pre>
 
@@ -785,7 +785,7 @@ Perl a regular expression have one quirk. That is, the quantifier matches at the
 aaa bbb ccc
 </pre>
 
-The regular expression .+\s means "one or more characters other than newline and blank". There are multiple candidates in the example above. There are two candidates, "aaa" and "aaa bbb". Perl's default behavior is to match the longest position and match "aaa bbb".
+The regular expression .+\s means "one or more characters other than line break and blank". There are multiple candidates in the example above. There are two candidates, "aaa" and "aaa bbb". Perl's default behavior is to match the longest position and match "aaa bbb".
 
 <pre>
 # Matching string
