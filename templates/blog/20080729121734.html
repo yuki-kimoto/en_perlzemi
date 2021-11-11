@@ -13,7 +13,7 @@
 
 This is a example that reads a csv format file and converts it into an array of hashes.
 
-Readability is a bit low because we are actively using a feature called hash slices. If you haven't used Perl for a while and aren't used to it, it may look cryptographic. The structure is almost the same as the previous example, so I will explain only the different parts.
+Readability is a bit low because we are actively using a feature called hash slice. If you haven't used Perl for a while and aren't used to it, it may look cryptographic. The structure is almost the same as the previous example, so I will explain only the different parts.
 
 <pre>
 use strict;
@@ -35,7 +35,7 @@ my @recs = parse_file ($file, $headers);
 
 # Output (because it is an array of hashes, follow it with for)
 for my $items (@recs) {
-  # Concatenate using hash slices
+  # Concatenate using hash slice
   print join(',', @{$items}{@$headers}) . "\n";
 }
 
@@ -115,7 +115,7 @@ for my $items (@recs) {
 
 Since it is an array, the outside is a foreach loop. Output $items, which is a reference to the hash, concatenated with commas with <a href="/blog/20081007122338.html">join function</a>.
 
-<h4>(3) - 1 Explanation of hash slices</h4>
+<h4>(3) - 1 Explanation of hash slice</h4>
 
 I will explain the esoteric hash slice @{$items}{@$headers}.
 
@@ -127,7 +127,7 @@ First, $items is a reference to the hash.
 
 It looks like this.
 
-I usually use%$items to dereference, but I want to dereference it so that hash slices can be used.
+I usually use%$items to dereference, but I want to dereference it so that hash slice can be used.
 
 <pre>
 @{$items}{list of hash keys}
