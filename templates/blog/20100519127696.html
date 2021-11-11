@@ -33,14 +33,14 @@ One thing to note is that the Net::Ping ping method is not an alternative to the
 
 To check the existence using ICMP, specify icmp in the constructor. However, you need root privileges to do this (* 1).
 <pre>
-# Survival confirmation using ICMP
+# Survival check using ICMP
 my $p = Net::Ping->new('icmp');
 my $alive = $p->ping('somehost');
 </pre>
 
 If you want to check the existence by HTTP, use the <strong> port_number </strong> method and specify 80 as the port number. (v5.10.0 or later)
 <pre>
-# Survival confirmation using HTTP
+# Survival check using HTTP
 $p->port_number(80);
 my $alive = $p->ping('www.google.co.jp');
 </pre>
