@@ -9,7 +9,7 @@ app->start;
 
 Use the Text::CSV::Encoded module to create CSV data. The only way to convert the data of one record to a row is to use the print method, which is a method for printing to a filehandle. Therefore, Perl's scalar input/output function is used to output to scalar variables.
 
-You can name the file using the Content-Disposition header. Let's also specify the Content-Type so that we can see that it is CSV data. When drawing, CSV data is binary data (not an internal string), so use the data option.
+You can name the file using the Content-Disposition header. Let's also specify the Content-Type so that we can see that it is CSV data. When drawing, CSV data is binary data (not an decoded string), so use the data option.
 
 <h3>Specify the class that describes the template when drawing</h3>
 

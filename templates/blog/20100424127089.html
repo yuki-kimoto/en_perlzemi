@@ -83,7 +83,7 @@ $conf = {
 
 <h3>Handling Japanese in XML::Simple</h3>
 
-When a string containing Japanese is read by XMLin, the character code specified by the encoding attribute of the XML declaration is converted to the internal string. Note that it is not a byte string.
+When a string containing Japanese is read by XMLin, the character code specified by the encoding attribute of the XML declaration is converted to the decoded string. Note that it is not a byte string.
 
 <pre>
 <? xml version = "1.0" encoding = "UTF-8"?>
@@ -92,10 +92,10 @@ When a string containing Japanese is read by XMLin, the character code specified
 </conf>
 </pre>
 
-Since it is converted to an internal string, if you want to output it, you need to convert it to a byte string using the encode function of the Encode module.
+Since it is converted to an decoded string, if you want to output it, you need to convert it to a byte string using the encode function of the Encode module.
 
 <pre>
-# When outputting, convert from internal string to byte string
+# When outputting, convert from decoded string to byte string
 use Encode 'encode';
 my $conf = $xml->XMLin('japanese.xml');
 print encode('UTF-8', $conf->{name});

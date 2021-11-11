@@ -78,6 +78,6 @@ print Dumper {math => 97, english => 80};
 
 Q. When I output Japanese with Data::Dumper, it sometimes looks like a hexadecimal symbol instead of Japanese. Is there a solution?
 
-A. It's happening because you're trying to output an internal string (* 1). The output string must be a byte string, not an internal string. However, I find it difficult to convert all strings contained in hashes and arrays to byte strings. <a href="http://search.cpan.org/dist/Data-Recursive-Encode/lib/Data/Recursive/Encode.pm">Data::Recursive::Encode.pm</a> There is module on CPAN, so I think it's a good idea to use it in combination with Data::Dumper.
+A. It's happening because you're trying to output an decoded string (* 1). The output string must be a byte string, not an decoded string. However, I find it difficult to convert all strings contained in hashes and arrays to byte strings. <a href="http://search.cpan.org/dist/Data-Recursive-Encode/lib/Data/Recursive/Encode.pm">Data::Recursive::Encode.pm</a> There is module on CPAN, so I think it's a good idea to use it in combination with Data::Dumper.
 
-* 1 For the internal string and byte string, see <a href="/blog/20091118124667.html">Explanation of Encode module</a>.
+* 1 For the decoded string and byte string, see <a href="/blog/20091118124667.html">Explanation of Encode module</a>.

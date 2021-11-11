@@ -30,15 +30,15 @@ Use the Encode module to properly handle multibyte characters such as Japanese i
 
 <h3>Terms in this commentary</h3>
 
-In this explanation, the string input from the outside is called "<span style =" font-weight: bold;">byte string </span>". Let's call the string converted to Perl's internal representation "<span style =" font-weight: bold;">internal string </span>". If the "byte string" is described in a specific character code, it will be called "UTF-8 byte string" or "Shift_JIS byte string".
+In this explanation, the string input from the outside is called "<span style =" font-weight: bold;">byte string </span>". Let's call the string converted to Perl's internal representation "<span style =" font-weight: bold;">decoded string </span>". If the "byte string" is described in a specific character code, it will be called "UTF-8 byte string" or "Shift_JIS byte string".
 
-When dealing with Japanese in programming, it is necessary to clearly distinguish whether the string is a byte string or an internal string. The rule when dealing with multiple languages in Perl is that the program is responsible for converting between internal and byte strings. This method is a little tricky, but the mechanism is very simple as you only have to remember the above three rules.
+When dealing with Japanese in programming, it is necessary to clearly distinguish whether the string is a byte string or an decoded string. The rule when dealing with multiple languages in Perl is that the program is responsible for converting between internal and byte strings. This method is a little tricky, but the mechanism is very simple as you only have to remember the above three rules.
 
 <h3>Be sure to decode the string input from the outside</h3>
 
-Character strings input from the outside are always decoded using the decode function of the Encode module. Decoding is the process of converting a "byte string" to an "internal string". When dealing with multibyte strings, be sure to use the decode function to convert them to internal strings.
+Character strings input from the outside are always decoded using the decode function of the Encode module. Decoding is the process of converting a "byte string" to an "decoded string". When dealing with multibyte strings, be sure to use the decode function to convert them to decoded strings.
 
-Specify the character code of the byte string in the first argument of the decode function, and specify the byte string in the second argument. The return value will be an internal string.
+Specify the character code of the byte string in the first argument of the decode function, and specify the byte string in the second argument. The return value will be an decoded string.
 
 <pre>
 use Encode 'decode';
@@ -46,10 +46,10 @@ use Encode 'decode';
 # External input (command line argument)
 my $str = shift;
 
-# Convert byte string (external input) to internal string (when $str is UTF-8)
+# Convert byte string (external input) to decoded string (when $str is UTF-8)
 $str = decode('UTF-8', $str);
 
-# Convert byte string (external input) to internal string (when $str is Shift_JIS)
+# Convert byte string (external input) to decoded string (when $str is Shift_JIS)
 $str = decode('Shift_JIS', $str);
 </pre>
 
@@ -62,29 +62,29 @@ $str = decode('UTF-8', $str);
 Is expressed graphically as follows.
 
 <pre>
-                Convert "UTF-8 byte string" to "internal string"
-UTF-8 byte string - ->internal string
+                Convert "UTF-8 byte string" to "decoded string"
+UTF-8 byte string - ->decoded string
 </pre>
 
 The meaning of the first argument of the decode function is easy to misunderstand. Specifies which character code the byte string is actually encoded in.
 
 <h3>Be sure to encode the string to be output to the outside</h3>
 
-The string to be output to the outside is encoded using the encode function of the Encode module. Encoding is the process of converting an "internal string" to a "byte string".
+The string to be output to the outside is encoded using the encode function of the Encode module. Encoding is the process of converting an "decoded string" to a "byte string".
 
-The first argument of the encode function specifies which character code to convert. Specify the internal string in the second argument.
+The first argument of the encode function specifies which character code to convert. Specify the decoded string in the second argument.
 
 <pre>
 use Encode 'encode';
 
-# When converting an internal string to a UTF-8 byte string
+# When converting an decoded string to a UTF-8 byte string
 $str = encode('UTF-8', $str);
 
-# When converting an internal string to a Shift_JIS byte string
+# When converting an decoded string to a Shift_JIS byte string
 $str = encode('Shift_JIS', $str);
 </pre>
 
-Whenever you use the decode function to output a string converted to an internal string, you must use the encode function to convert it back to a byte string. When to convert using the encode function is just before the output. Try to keep the internal string as late as possible in your program.
+Whenever you use the decode function to output a string converted to an decoded string, you must use the encode function to convert it back to a byte string. When to convert using the encode function is just before the output. Try to keep the decoded string as late as possible in your program.
 
 <pre>
 $str = encode('UTF-8', $str);
@@ -93,7 +93,7 @@ $str = encode('UTF-8', $str);
 Is expressed graphically as follows.
 
 <pre>
-                Convert "internal string" to "UTF-8 byte string"
+                Convert "decoded string" to "UTF-8 byte string"
 Internal string - ->UTF-8 byte string
 </pre>
 
@@ -117,27 +117,27 @@ How to save with a specific character code depends on the editor. For reference,
 Select "File"->"Save As"->"Character Code"->"UTF-8".
 </blockquote>
 
-The utf8 pragma has the effect of converting a UTF-8 byte string written in the source code into an internal string. So if you save the source code in UTF-8 and enable the utf8 pragma, string literals will be converted to internal strings.
+The utf8 pragma has the effect of converting a UTF-8 byte string written in the source code into an decoded string. So if you save the source code in UTF-8 and enable the utf8 pragma, string literals will be converted to decoded strings.
 
 The effect of the utf8 pragma is graphically represented as follows. The effect is very similar to the decode function.
 
 <pre>
                                 use utf8
-UTF-8 byte string - ->internal string
+UTF-8 byte string - ->decoded string
 </pre>
 
 As long as you follow the following three things mentioned at the beginning, you will have less trouble with character codes. If you are worried about the character code, please go back to this principle first.
 
-<h3>Meaning of converting to an internal string</h3>
+<h3>Meaning of converting to an decoded string</h3>
 
-Let's see the effect of actually converting it to an internal string. You can see that Perl handles strings correctly. The <a href="/blog/20080926122245.html">length function</a> returns the correct length, and the <a href="/blog/20100827127859.html">regular expression</a> It works correctly.
+Let's see the effect of actually converting it to an decoded string. You can see that Perl handles strings correctly. The <a href="/blog/20080926122245.html">length function</a> returns the correct length, and the <a href="/blog/20100827127859.html">regular expression</a> It works correctly.
 
 Save the source code in UTF-8. If it is not saved in UTF-8, you will get a warning such as "Malformed UTF-8 character".
 
 The explanation is given in the case of UTF-8, but in the case of Windows, it is necessary to specify cp932 in the encode function and decode function. cp932 stands for "Windows-31J" which is the character code of Windows. Try passing the string "This is Japanese" as a command line argument.
 
 <pre>
-# Try the effect of converting to an internal string
+# Try the effect of converting to an decoded string
 use strict;
 use warnings;
 
@@ -147,21 +147,21 @@ use Encode qw/encode decode/;
 # Command line argument (UTF-8 byte string)
 my $str1 = shift;
 
-# UTF-8 byte string decoded to internal string
+# UTF-8 byte string decoded to decoded string
 $str1 = decode('UTF-8', $str1);
 
-# String literal (because utf8 pragma is valid, it becomes an internal string)
+# String literal (because utf8 pragma is valid, it becomes an decoded string)
 my $str2 = "Japanese";
 
-# You can count characters correctly by converting to an internal string
+# You can count characters correctly by converting to an decoded string
 print length $str2, "\n"; # 3
 
-# Regular expressions can be used correctly between internal strings
+# Regular expressions can be used correctly between decoded strings
 if ($str1 =~ /$str2/) {
   print "Match!\n";
 }
 
-# Encode the internal string into a byte string just before outputting
+# Encode the decoded string into a byte string just before outputting
 $str1 = encode('UTF-8', $str1);
 $str2 = encode('UTF-8', $str2);
 
@@ -170,18 +170,18 @@ print "'$str1' is match'$str2'\n";
 
 <h3>Character code conversion</h3>
 
-In Perl, the character code conversion process is as follows by combining the decode function and encode function. You need to convert it to an internal string once. The following example converts a UTF-8 byte string to a Shift_JIS byte string.
+In Perl, the character code conversion process is as follows by combining the decode function and encode function. You need to convert it to an decoded string once. The following example converts a UTF-8 byte string to a Shift_JIS byte string.
 
 <pre>
-# Convert UTF-8 byte string to internal string
+# Convert UTF-8 byte string to decoded string
 $str = decode('UTF-8', $str);
 
-# Convert internal string to Shift_JIS byte string
+# Convert decoded string to Shift_JIS byte string
 $str = encode('Shift_JIS', $str);
 </pre>
 The diagram is as follows.
 <pre>
-UTF-8 byte string->internal string->Shift_JIS byte string
+UTF-8 byte string->decoded string->Shift_JIS byte string
 </pre>
 
 This is a bit annoying, so we have a function called from_to.The first argument is a byte string, the second argument is the character code before conversion, and the third argument is the character code after conversion. Note that unlike the enocde and decode functions, the byte string itself specified in the first argument is converted.
@@ -234,25 +234,25 @@ Now you can handle Perl character codes very simply.
 
 <h4>Avoid concatenating internal and byte strings</h4>
 
-Avoid concatenating internal and byte strings. In this case, the byte string is automatically converted to an internal string, but that conversion causes garbled characters. Let's convert everything to an internal string before concatenating.
+Avoid concatenating internal and byte strings. In this case, the byte string is automatically converted to an decoded string, but that conversion causes garbled characters. Let's convert everything to an decoded string before concatenating.
 
-<h4>It is not possible to accurately distinguish between an internal string and a byte string</h4>
+<h4>It is not possible to accurately distinguish between an decoded string and a byte string</h4>
 
-Perl has no way in your program to pinpoint whether a string is a byte string or an internal string. You cannot use the utf8::is_utf8 method to identify whether it is an internal string or a byte string. The utf8::is_utf8 method can only determine if the UTF8 flag is set, not an internal string or a byte string.
+Perl has no way in your program to pinpoint whether a string is a byte string or an decoded string. You cannot use the utf8::is_utf8 method to identify whether it is an decoded string or a byte string. The utf8::is_utf8 method can only determine if the UTF8 flag is set, not an decoded string or a byte string.
 
-So, while you can use it to speculate that this is probably the case, be aware that it can't be used to determine in-program whether it's an internal string or a byte string. Whenever the UTF8 flag is set, it is an internal string. If the UTF8 flag is not set, it is an internal string or a byte string.
+So, while you can use it to speculate that this is probably the case, be aware that it can't be used to determine in-program whether it's an decoded string or a byte string. Whenever the UTF8 flag is set, it is an decoded string. If the UTF8 flag is not set, it is an decoded string or a byte string.
 
 <h4>Cooperation with modules</h4>
 
-Whether a function in a module accepts an internal string or a byte string as an argument depends on the intention of the module creator. The same is true for the return value of a function. It is up to the author to decide whether to return a byte string or an internal string. Be sure to read the documentation.
+Whether a function in a module accepts an decoded string or a byte string as an argument depends on the intention of the module creator. The same is true for the return value of a function. It is up to the author to decide whether to return a byte string or an decoded string. Be sure to read the documentation.
 
 I think this is one of the things programmers find particularly difficult when programming in Perl. But don't just deny it, remember that you're benefiting from the other big benefits of "maintaining backwards compatibility, " "simple conversion rules, " and "correct and proper handling of strings." I think Perl handles strings pretty well compared to other languages.
 
 As you can see from the implementation of other programming languages, there is a trade-off with the handling of character codes. It's a difficult field to deal with.
 
-<h3>About internal strings</h3>
+<h3>About decoded strings</h3>
 
-You shouldn't be aware of what the internal strings look like. You don't have to be aware of it when creating a program. If you still want to know, the following explanation is easy to understand.
+You shouldn't be aware of what the decoded strings look like. You don't have to be aware of it when creating a program. If you still want to know, the following explanation is easy to understand.
 
 <ul>
   <li>

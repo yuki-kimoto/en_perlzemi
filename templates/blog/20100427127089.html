@@ -64,10 +64,10 @@ You need to be a little careful when dealing with Japanese in the JSON module. Y
 
 <ol>
   <li>
-    decode_json converts from "UTF-8 byte string-JSON" to "internal string-Perl data"
+    decode_json converts from "UTF-8 byte string-JSON" to "decoded string-Perl data"
   </li>
   <li>
-    encode_json converts from "internal string-Perl data" to "UTF-8 byte string-JSON"
+    encode_json converts from "decoded string-Perl data" to "UTF-8 byte string-JSON"
   </li>
 </ol>
 
@@ -95,7 +95,7 @@ my $json = '{"name": "Masuda"}';
 my $data = decode_json ($json);
 </pre>
 
-The reason this doesn't work is that $json has already been converted to an internal string because the utf8 pragma is enabled. This doesn't work because decode_json takes a byte string as an argument. You need to convert it to a UTF-8 byte string with the encode_utf8 function of the Encode module.
+The reason this doesn't work is that $json has already been converted to an decoded string because the utf8 pragma is enabled. This doesn't work because decode_json takes a byte string as an argument. You need to convert it to a UTF-8 byte string with the encode_utf8 function of the Encode module.
 
 <pre>
 # Correct example when dealing with Japanese

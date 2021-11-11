@@ -10,23 +10,23 @@
     here
   </li>
 </ol>
-<h2>utf8 - Converts a string written in UTF - 8 of the source code to an internal string</h2>
+<h2>utf8 - Converts a string written in UTF - 8 of the source code to an decoded string</h2>
 
 
 
-The <strong> utf8 </strong> module allows you to convert a string written in UTF-8 in your source code to an internal string.
+The <strong> utf8 </strong> module allows you to convert a string written in UTF-8 in your source code to an decoded string.
 
 <pre>
-# Convert a string written in UTF-8 in the source code to an internal string
+# Convert a string written in UTF-8 in the source code to an decoded string
 use utf8;
 my $message = 'aiueo';
 </pre>
 
-Save the source code in UTF-8. The string'aiueo'is automatically converted to an internal string.
+Save the source code in UTF-8. The string'aiueo'is automatically converted to an decoded string.
 
 <h3>FAQ about utf8 pragma</h3>
 
-Q, Regarding the function of the utf8 pragma, can you think that the UTF-8 byte string is converted to an internal string using the decode function of the Encode module?
+Q, Regarding the function of the utf8 pragma, can you think that the UTF-8 byte string is converted to an decoded string using the decode function of the Encode module?
 A. Yes. Think of it as doing the following:
 
 <pre>
@@ -39,19 +39,19 @@ Q. I've heard about the UTF-8 flag, but can I think that the utf8 pragma does th
 
 A. The interpretation is wrong. If the string in the source code consists of characters in the ASCII range, the utf8 pragma will not set the UTF-8 flag on the string, and if it contains characters outside the ASCII range, it will be in the UTF-8 flag. Stand up.
 
-This makes it very difficult to understand what you are doing from the programmer's point of view. So don't be afraid to remember that the utf8 pragma converts a UTF-8 byte string into an internal string.
+This makes it very difficult to understand what you are doing from the programmer's point of view. So don't be afraid to remember that the utf8 pragma converts a UTF-8 byte string into an decoded string.
 
 Q. Should I forget about the UTF-8 flag?
-A. Yes, basically forget about it. But there is one thing that is useful to remember, so let me tell you. That is, "If the UTF-8 flag is set, it can be said that it is an internal string." The opposite is not true. There is a <strong> utf8::is_utf8 </strong> function as a function to check if the UTF-8 flag is set. If you use this function to check that the UTF-8 flag is set, you can say that it is an internal string.
+A. Yes, basically forget about it. But there is one thing that is useful to remember, so let me tell you. That is, "If the UTF-8 flag is set, it can be said that it is an decoded string." The opposite is not true. There is a <strong> utf8::is_utf8 </strong> function as a function to check if the UTF-8 flag is set. If you use this function to check that the UTF-8 flag is set, you can say that it is an decoded string.
 
 <pre>
 # Internal string if UTF-8 flag is set
 my $utf8_flagged = utf8::is_utf8 ($str);
 
 if ($utf8_flagged) {
-  # $str is an internal string
+  # $str is an decoded string
 }
 else {
-  # $str is an internal string or a byte string
+  # $str is an decoded string or a byte string
 }
 </pre>

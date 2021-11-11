@@ -437,7 +437,7 @@ So far, all the string examples have been in English. However, I think that most
 
 If you are a beginner, you will feel how to do Japanese processing correctly in Perl.
 
-For example, the length function or regular expression must be converted to an internal string and then executed before it returns the correct result.
+For example, the length function or regular expression must be converted to an decoded string and then executed before it returns the correct result.
 
 If you say "Regular expressions don't work well in Japanese", it's possible that Perl doesn't handle Japanese correctly.
 
@@ -487,17 +487,17 @@ if ($message =~ /day/) {
 }
 </pre>
 
-The utf8 pragma converts the "UTF-8 byte string" written in the source code to the "internal string".
+The utf8 pragma converts the "UTF-8 byte string" written in the source code to the "decoded string".
 
-By converting to an internal string, you will be able to perform string processing correctly.
+By converting to an decoded string, you will be able to perform string processing correctly.
 
-"Byte string" and "internal string" will be explained later.
+"Byte string" and "decoded string" will be explained later.
 
 <h4>Be sure to decode the string received from the outside</h4>
 
-<b> Decoding </b> means converting a "string written in a specific character code" into a "Perl internal string".
+<b> Decoding </b> means converting a "string written in a specific character code" into a "Perl decoded string".
 
-For the sake of convenience, "Perl's internal string" is called <b> internal string </b>, and "string written in a specific character code" is a <b> byte character. Let's call it a column </b>.
+For the sake of convenience, "Perl's decoded string" is called <b> decoded string </b>, and "string written in a specific character code" is a <b> byte character. Let's call it a column </b>.
 
 For example, a string written with the character code "UTF-8" is called "UTF-8 byte string", and a string written with the character code "EUC-jp" is called "EUC-jp byte character". It is called "column".
 
@@ -557,7 +557,7 @@ $name = decode('cp932', $name);
 
 While the string received from the outside is decoded, the character output to the outside is always encoded.
 
-Encoding means converting an "internal string" to a "byte string".
+Encoding means converting an "decoded string" to a "byte string".
 
 To encode, use the encode function of the <a href="/blog/20091118124667.html">Encode module</a>.
 
