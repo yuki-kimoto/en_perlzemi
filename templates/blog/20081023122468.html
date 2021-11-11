@@ -1,12 +1,12 @@
-<h2>Cut out a record containing a specific time from the log</h2>
+<h2>Extract a record containing a specific time from the log</h2>
 
-This is a example to cut out a record containing a specific time.
+This is a example to extract a record containing a specific time.
 
 <pre>
 use strict;
 use warnings;
 
-print "(1) Cut out a record containing a specific range of time.\n";
+print "(1) Extract a record containing a specific range of time.\n";
 my @records = (
   '1 7:00:00 aaa',
   '2 8:00:00 iii',
@@ -22,13 +22,13 @@ my $end_time = '11:00:00';
 
 for my $record(@records) {
   
-  # Cut out the time
+  # Extract the time
   if ($record =~ /(\d{1,2}): (\d{2}) :(\d{2})/) {
     # You can compare as a string by matching the format.
     # '7: 00:00'->'07:00:00'
     my $time = sprintf("%02s:%02s:%02s", $1, $2, $3);
     
-    # Cut out the records included from the start time to the end time.
+    # Extract the records included from the start time to the end time.
     if ($time ge $start_time && $time lt $end_time) {
       print $record . "\n";
     }
@@ -38,7 +38,7 @@ for my $record(@records) {
 Execution result
 
 <pre>
-(1) Cut out a record that includes a specific range of time.
+(1) Extract a record that includes a specific range of time.
 2 8:00:00 iii
 3 9:00:00 uuu
 4 10:00:00 eee
@@ -59,7 +59,7 @@ if ($record =~ /(\d{1,2}): (\d{2}) :(\d{2})/) {
 }
 </pre>
 
-<h4>Cut out the records included from the start time to the end time</h4>
+<h4>Extract the records included from the start time to the end time</h4>
 
 ge and lt are operators that compare which comes first in the dictionary order of strings. ge is an abbreviation for greater than or equel and lt is an abbreviation for lower than.
 
