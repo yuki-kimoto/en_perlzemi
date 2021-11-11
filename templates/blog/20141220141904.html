@@ -179,7 +179,7 @@ struct People {
 };
 </pre>
 
-In this case, use SvREFCNT_inc to increase the reference count when substituting. Otherwise, the reference count will be decremented by 1 the moment you exit Perl's scope and will be released on your own.
+In this case, use SvREFCNT_inc to increase the reference count when substituting. Otherwise, the reference count will be decremented by 1 the moment you exit Perl's scope and will be released on its own.
 
 <pre>
 SV *
