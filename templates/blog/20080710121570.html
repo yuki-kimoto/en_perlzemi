@@ -90,7 +90,7 @@ Only the var subroutine can see $var. After the scope is finished, the value of 
                    Data is inaccessible from outside the scope
 </pre>
 
-Data can only be accessed from outside the scope through subroutines. You cannot access the data directly.
+Data can only be accessed from outside the scope through subroutine. You cannot access the data directly.
 
 <h3>Create closures using "function generator"</h3>
 
@@ -347,7 +347,7 @@ sub make_counter {
   my $self = {};
   $self->{cnt} = shift;
    
-  # Closures implement methods using references to subroutines.
+  # Closures implement methods using references to subroutine.
   my $funcs = {};
   $funcs->{add_count} = sub {
     $self->{cnt}++;
