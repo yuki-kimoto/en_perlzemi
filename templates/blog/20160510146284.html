@@ -14,7 +14,7 @@
 
 
 
-The latest version of Perl <strong> 5.24 </strong> has been released. In this release, Perl's subroutine and numerical calculations are faster. In terms of functionality, Unicode 8.0 is now supported. As a grammatical enhancement, the experimental status of forward dereferences has been removed. Other minor bug fixes have been made.
+The latest version of Perl <strong> 5.24 </strong> has been released. In this release, Perl's subroutine and numerical calculations are faster. In terms of functionality, Unicode 8.0 is now supported. As a grammatical enhancement, the experimental status of forward dereference has been removed. Other minor bug fixes have been made.
 
 Following Perl 5.22, Perl 5.24 includes improvements to Perl's internal code. Although it has the great advantage of improving performance, it also has some side effects, so I will explain it together.
 
@@ -71,7 +71,7 @@ A new regular expression "\b{lb}" has been added to represent a line break.
 
 <h4>Experimental status of forward dereference has been obtained</h4>
 
-In Perl 5.24, forward dereferences are enabled from the beginning. This makes it easier to describe the process of array slice, hash slice, partial hash acquisitions, and partial array acquisitions from the reference.
+In Perl 5.24, forward dereference are enabled from the beginning. This makes it easier to describe the process of array slice, hash slice, partial hash acquisitions, and partial array acquisitions from the reference.
 
 <pre>
 # Forward dereference
@@ -98,9 +98,9 @@ my %names_h_part = $names_h_ref->%{'ken', 'kimoto'}; # (ken => 1, kimoto => 3)
 
 Some experimental features have been removed in this release.
 
-<h4>Remove automatic dereferences</h4>
+<h4>Remove automatic dereference</h4>
 
-The experimental automatic dereference that was issuing the obsolete warning has been removed. For example, the following processing will not work. You cannot pass references to push, pop, shift, unshift, splice, keys, values, each.
+The experimental automatic dereference that was issuing the obsolete warning has been removed. For example, the following processing will not work. You cannot pass reference to push, pop, shift, unshift, splice, keys, values, each.
 
 <h4>The lexical $_ has been deprecated.</h4>
 

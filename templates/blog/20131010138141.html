@@ -21,15 +21,15 @@ Generally speaking, the reference counting method is simple and fast to implemen
 
 Second, the time when the object is destroyed is when the reference is gone, so the programmer knows exactly when the object is destroyed.
 
-For example, in Java, garbage collection is called generational CG, and because there are objects that will be released later, it is not possible to write post-processing that you want to execute immediately in finalize. In the case of Perl, it is a reference counting method, so if you describe the process in the destructor DESTROY, you can execute the process when there are no more references.
+For example, in Java, garbage collection is called generational CG, and because there are objects that will be released later, it is not possible to write post-processing that you want to execute immediately in finalize. In the case of Perl, it is a reference counting method, so if you describe the process in the destructor DESTROY, you can execute the process when there are no more reference.
 
 The second feature is memory saving. Since the processing is performed when the reference disappears, no object remains in the memory. Nowadays, memory can be packed a lot, so this drawback is less noticeable than it used to be, but memory-hungry programs can also cause swap-in and swap-out on small machines. Therefore, it can be said that memory saving is easier to manage.
 
 The third is that it does not stop at the timing of Full GC like the generational GC. In generational GC, there is something called FullGC in which many objects are released at a specific timing. The program will stop during FullGC. But for web apps, you probably don't care too much (probably).
 
-<h3>The disadvantage of the reference counting method is that cross - references cannot be resolved</h3>
+<h3>The disadvantage of the reference counting method is that cross - reference cannot be resolved</h3>
 
-The obvious drawback of the reference counting method is that it cannot resolve cross-references. Objects that are referenced to each other are not released from memory. Programmers need to be careful if objects are cross-referenced or circularly referenced.
+The obvious drawback of the reference counting method is that it cannot resolve cross-reference. Objects that are referenced to each other are not released from memory. Programmers need to be careful if objects are cross-referenced or circularly referenced.
 
 <pre>
 # Cross-reference
@@ -57,4 +57,4 @@ weaken $hash1->{hash2};
 
 This way, memory will be freed when the reference to $hash1 or $hash2 reaches zero.
 
-Keep in mind that in Perl, garbage collection implementations are reference-counted and rarely suffer from performance issues, but instead you have to be aware of cross-references yourself. Let's go.
+Keep in mind that in Perl, garbage collection implementations are reference-counted and rarely suffer from performance issues, but instead you have to be aware of cross-reference yourself. Let's go.
