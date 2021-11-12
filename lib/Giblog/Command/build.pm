@@ -189,7 +189,7 @@ sub create_list {
   
   my $list_content;
 
-  $list_content .= "<h2>Perlゼミ新着情報</h2>\n";
+  $list_content .= "<h2>Perl Zemi new entries</h2>\n";
   
   $list_content .= "<ul>\n";
   my $before_year = 0;
@@ -246,7 +246,7 @@ EOS
   
   my $config = $api->config;
   my $site_title = $config->{site_title};
-  $data->{meta} .= "<title>新着情報 - $site_title</title>\n";
+  $data->{meta} .= "<title>New entries - $site_title</title>\n";
 
   # Build entry html
   $api->build_entry($data);
