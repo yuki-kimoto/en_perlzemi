@@ -1,83 +1,68 @@
-<ol class="bread" itemscope itemtype="http://schema.org/BreadcrumbList">  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">    <a itemprop="item" href="/">      <span itemprop="name">Perl</span></a>
-    <meta itemprop="position" content="1" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161022147731.html">      <span itemprop="name">構文</span></a>
-    <meta itemprop="position" content="2" />
-  </li>
-  &#8250;
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">      <span itemprop="name">here</span>
-    <meta itemprop="position" content="3" />
-  </li>
-</ol>
-<h2>use - モジュールを読み込む</h2>
+<h2>use - load module at compile time</h2>
 
-
-
-モジュールをコンパイル時に読み込むには<strong>use</strong>を使用します。
+Use <strong> use </strong> to load the module at compile time.
 
 <pre>
-use モジュール名
+use MODULE_NAME;
 </pre>
 
-モジュール名は裸の文字列で指定する必要があります。クォートやダブルクォートで囲んだ文字列は受け付けません。また変数も受付ません。
+The module name must be specified as a bare string. Strings enclosed in quotes or double quotes will not be accepted. Also, variables are not accepted.
 
 <pre>
-# 裸の文字列でモジュール名を指定する
+# Specify the module name with a bare string
 use CGI;
 </pre>
 
-また標準的な慣習としてモジュール名の後ろに関数名を指定すると、関数を現在の名前空間にインポートすることができます。
+It is also standard practice to specify the function name after the module name to import the function into the current namespace.
 
 <pre>
-# 関数のインポート
+# Import function
 use File::Basename 'basename', 'dirname';
 </pre>
 
-モジュールを読み込む手段としては、useの他にrequire関数がありますが、モジュールを読み込む場合は通常はuseを使っておきましょう。モジュールは、importメソッドを呼ばれることを期待しているので、use を使えば自動で行ってくれます。
+There is a require function in addition to use as a means to load a module, but when loading a module, usually use use. The module expects the import method to be called, so use will do it for you.
 
-<h3>useで実行される処理</h3>
+<h3> Processing executed by use </h3>
 
-useで実行されるのは次の処理です。File::Basenameの場合を例にしています。
+The following processing is executed by use. The case of File :: Basename is taken as an example.
 
 <pre>
-# useで実行される処理
+# Process executed by use
 BEGIN {
   require File::Basename;
   File::Basename->import(qw/basename dirname/);
 }
 </pre>
 
-BEGINブロックで囲われた部分はコンパイル時に実行されます。requireでモジュールが読み込まれ、そのモジュールのimportがメソッド呼び出しとして実行されます。
+The part enclosed in the BEGIN block is executed at compile time. require loads the module and imports that module as a method call.
 
-<h3>importを実行しない方法</h3>
+<h3> How to not execute import </h3>
 
-useは自動的にimportを実行します。importを実行したくない場合は次のようにします。
+use will automatically perform the import. If you don't want to import, do the following:
 
 <pre>
-# importを実行しない
-use File::Basename ();
+# Do not execute import
+use File::Basename();
 </pre>
 
-<h3>useに変数を渡す方法</h3>
+<h3> How to pass variables to use </h3>
 
-useは裸の文字列しか受け取ることができないため、変数を渡すには工夫が必要です。<a href="/blog/20100312126967.html">eval</a>を使って変数名を裸の文字列として認識させる必要があります。
+Since use can only accept bare strings, you need to be creative in passing variables. You need to use <a href="/blog/20100312126967.html"> eval</a> to recognize the variable name as a bare string.
 
-またevalは危険がある処理を実行する可能性があるので、必ず有害な処理を含まないことを確認してから実行します。モジュールの読み込みに失敗した場合はエラーメッセージが$@に格納されます。
+Also, eval can perform dangerous processing, so make sure it does not contain harmful processing before executing it. If the module fails to load, an error message will be stored in $ @.
 
 <pre>
-# useに変数を渡す
+# Pass a variable to use
 
-# モジュール名
+# Module name
 my $module = 'AAA';
 
-# ワード文字だけで構成されていることを確認
+# Make sure it consists of only word characters
 die "Invalid module name" if $module =~ /\W/;
 
-# モジュールの読み込み
+# Load module
 eval "use $module";
 
-# モジュール読み込みに失敗した場合の処理
-die $@if $@;
+# What to do if module loading fails
+die $@ if $@;
 </pre>
-
