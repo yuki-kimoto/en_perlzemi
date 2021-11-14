@@ -14,7 +14,7 @@
 
 
 
-<strong> perlvars.h </strong> defines Perl global variables.
+<strong> perlvars.h </strong> defines Perl global variable.
 
 <pre>
 /* perlvars.h */
@@ -27,9 +27,9 @@ PERLVARI (G, curinterp, PerlInterpreter *, NULL)
 PERLVAR (G, thr_key, perl_key)/* key to retrieve per-thread struct */# endif
 </pre>
 
-Perl has an interpreter variable for each interpreter, but there are also global variables. For example, the interpreter currently running, the mutex to control thread contention, etc. are defined as global variables.
+Perl has an interpreter variable for each interpreter, but there are also global variable. For example, the interpreter currently running, the mutex to control thread contention, etc. are defined as global variable.
 
-The declaration of global variables is described using the macros "PERLVAR" and "PERLVARI". It is defined in "perl.h".
+The declaration of global variable is described using the macros "PERLVAR" and "PERLVARI". It is defined in "perl.h".
 =====
 <pre>
 /*perl.h */
@@ -55,7 +55,7 @@ This global variable is not used directly on the source, but is accessed in a wr
 PL_op_mutex = ...;
 </pre>
 
-The reason for this wrapping is that the storage method of global variables differs depending on the compile option "PERL_GLOBAL_STRUCT". If "PERL_GLOBAL_STRUCT" is defined, the global variable is stored in the structure, otherwise the global variable is written directly.
+The reason for this wrapping is that the storage method of global variable differs depending on the compile option "PERL_GLOBAL_STRUCT". If "PERL_GLOBAL_STRUCT" is defined, the global variable is stored in the structure, otherwise the global variable is written directly.
 
 Let's see how "PL_op_mutex" is expanded on this premise. First, from "embedvar.h"
 

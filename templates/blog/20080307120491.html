@@ -10,12 +10,12 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>my - Declaration of lexical variables</h2>
+<h2>my - Declaration of lexical variable</h2>
 
-You can declare lexical variables using <b> my </b>.
+You can declare lexical variable using <b> my </b>.
 
 <pre>
-# Declaration of lexical variables
+# Declaration of lexical variable
 my $num;
 my @nums;
 my %scores;
@@ -23,25 +23,25 @@ my %scores;
 
 A lexical variable is a local variable in C language.
 
-Perl has the keyword <a href="/blog/20080309120507.html">local</a>, but it doesn't actually create a local variable. The local keyword has the ability to temporarily save and restore <a href="/blog/20080308120495.html">package variables</a>.
+Perl has the keyword <a href="/blog/20080309120507.html">local</a>, but it doesn't actually create a local variable. The local keyword has the ability to temporarily save and restore <a href="/blog/20080308120495.html">package variable</a>.
 
 Variable declaration by my is a feature added in <a href="/blog/20160225145640.html">Perl 5.6</a>. This is the local variable itself in other languages, but since the keyword local already exists, it may have been named lexical variable so as not to be confusing.
 
-Think of lexical variables in Perl as local variables in other languages.
+Think of lexical variable in Perl as local variable in other languages.
 
 <h3>What is a variable declaration? </H3>
 
-The variable declaration declares that we will use <a href="/blog/20161107147852.html">variables</a> from now on. Declare new variables using "my".
+The variable declaration declares that we will use <a href="/blog/20161107147852.html">variable</a> from now on. Declare new variable using "my".
 
 <pre>
-# Declaration of scalar variables
+# Declaration of scalar variable
 my $num;
 </pre>
 
-In addition to scalar variables, you can also declare <a href="/blog/20161012147627.html">array variables</a> and <a href="/blog/20161013147635.html">hash variables</a>. I can do it.
+In addition to scalar variable, you can also declare <a href="/blog/20161012147627.html">array variable</a> and <a href="/blog/20161013147635.html">hash variable</a>. I can do it.
 
 <pre>
-# Declaration of array variables
+# Declaration of array variable
 my @nums;
 
 # Hash variable declaration
@@ -53,23 +53,23 @@ my %score;
 "Variable initialization" can be performed at the same time as the variable declaration.
 
 <pre>
-# Initialization of scalar variables
+# Initialization of scalar variable
 my $num = 3;
 
-# Initialization of array variables
+# Initialization of array variable
 my @nums = (1, 2, 3);
 
-# Initialization of hash variables
+# Initialization of hash variable
 my %score = (math => 80, english => 70);
 </pre>
 
-If initialization is not performed, <a href="/blog/20100220126425.html">undefined value</a> will be assigned for scalar variables. For array variables and hash variables, <a href="/blog/20100308126967.html">empty list</a> is assigned.
+If initialization is not performed, <a href="/blog/20100220126425.html">undefined value</a> will be assigned for scalar variable. For array variable and hash variable, <a href="/blog/20100308126967.html">empty list</a> is assigned.
 
-<h3>What are lexical variables? </H3>
+<h3>What are lexical variable? </H3>
 
 I wrote that you can declare a "lexical variable" using my, but what exactly is a lexical variable? A lexical variable is a variable that has a lexical scope.
 
-Lexical variables have reached the end of their life and are freed from memory at the end of scope.
+Lexical variable have reached the end of their life and are freed from memory at the end of scope.
 
 <pre>
 # Start of scope
@@ -115,15 +115,15 @@ There are three Perl variable declarations: "my", "our", and "local".
 
 The simple difference is that "my" declares a "lexical variable", "our" declares a "package variable", and "local" declares a package variable and saves the value until the end of scope. I have.
 
-Avoid using "our" or "local" when declaring variables in Perl as much as possible. In modern Perl, you can do complete programming with just a variable declaration with "my".
+Avoid using "our" or "local" when declaring variable in Perl as much as possible. In modern Perl, you can do complete programming with just a variable declaration with "my".
 
 See below for additional explanations for our and local.
 
 <ul>
   <li>
-    <a href="/blog/20080308120495.html">our - Declaration of package variables</a>
+    <a href="/blog/20080308120495.html">our - Declaration of package variable</a>
   </li>
   <li>
-    <a href="/blog/20080309120507.html">local - Temporarily save and restore package variables</a>
+    <a href="/blog/20080309120507.html">local - Temporarily save and restore package variable</a>
   </li>
 </ul>

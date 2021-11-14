@@ -2,15 +2,15 @@
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">Variables </span>
+  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">      <span itemprop = "name">Variable </span>
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2>Perl variables</h2>
+<h2>Perl variable</h2>
 
 
 
-A description of Perl variables. Explains variable declarations and variable types.
+A description of Perl variable. Explains variable declarations and variable types.
 
 <h3>Variable declaration</h3>
 
@@ -21,46 +21,46 @@ Describes Perl variable declarations.
 You can use "my" to declare a "lexical variable".
 
 <pre>
-# Declaration of scalar variables
+# Declaration of scalar variable
 my $num;
 
-# Declaration of array variables
+# Declaration of array variable
 my @nums;
 
 # Hash variable declaration
 my %score;
 </pre>
 
-For a detailed explanation of "declaration of lexical variables" using "my", see the following article.
+For a detailed explanation of "declaration of lexical variable" using "my", see the following article.
 
 <ul>
   <li>
-    <a href="/blog/20080307120491.html">Declare lexical variables using my</a>
+    <a href="/blog/20080307120491.html">Declare lexical variable using my</a>
   </li>
 </ul>
 
 <h4>Declaration of "package variable" by "our"</h4>
 
-You can use "our" to declare "package variables".
+You can use "our" to declare "package variable".
 
-Use <strong> our </strong> to declare package variables.
+Use <strong> our </strong> to declare package variable.
 
 <pre>
-# Declaration of scalar variables
+# Declaration of scalar variable
 our $NUM;
 
-# Declaration of array variables
+# Declaration of array variable
 our @NUMS;
 
 # Hash variable declaration
 our%SCORE;
 </pre>
 
-See the following article for "declaring package variables" using "our".
+See the following article for "declaring package variable" using "our".
 
 <ul>
   <li>
-    <a href="/blog/20080308120495.html">Declaration of package variables by our</a>
+    <a href="/blog/20080308120495.html">Declaration of package variable by our</a>
   </li>
 </ul>
 
@@ -80,13 +80,13 @@ For "save and restore values" by "local", see the following article.
 
 <ul>
   <li>
-    local is explained in "<a href="/blog/20080309120507.html">local - temporarily save and restore package variables</a>".
+    local is explained in "<a href="/blog/20080309120507.html">local - temporarily save and restore package variable</a>".
   </li>
 </ul>
 
 <h3>Perl variable type</h3>
 
-Perl has three "variable types": "scalar variables", "array variables", and "hash variables". Please note that it does not indicate the type of a number like "int type" and "double type" like C language and Java.
+Perl has three "variable types": "scalar variable", "array variable", and "hash variable". Please note that it does not indicate the type of a number like "int type" and "double type" like C language and Java.
 
 <h4>"Scalar variable" - stores one value</h4>
 
@@ -126,12 +126,12 @@ $scalar = undef; # undefined value
 
 <h4>"Array variable" - stores multiple values</h4>
 
-An "array variable" can contain multiple values. Only scalar variables can be included in the "elements" of an array variable.
+An "array variable" can contain multiple values. Only scalar variable can be included in the "elements" of an array variable.
 
 An array variable is represented by prefixing the variable with "@". Only "list ()" can be assigned to an array variable.
 
 <pre>
-# Array variables can have scalars as elements
+# Array variable can have scalars as elements
 my @elements = (
   "one",
   2,
@@ -156,7 +156,7 @@ my @list = (1, 2, 3, 4);
 
 The hash has the following characteristics.
 
-Includes multiple values that are a set of "key and value". Only scalar variables can be included in the "elements" of a hash variable.
+Includes multiple values that are a set of "key and value". Only scalar variable can be included in the "elements" of a hash variable.
 
 A hash variable is represented by prefixing the variable with "%". Only "list ()" can be assigned to a hash variable.
 
@@ -166,16 +166,16 @@ my %scores = (math => 70, engligh => 80);
 
 <b> Array-type to hash-type conversion </b>
 
-Both array variables and hash variables have a list as their content, so they can be converted to each other.
+Both array variable and hash variable have a list as their content, so they can be converted to each other.
 
 <pre>
 @array = %hash;
 %hash = @array;
 </pre>
 
-<h3>Variables and scope</h3>
+<h3>Variable and scope</h3>
 
-Another thing to know about variables is their <b> scope </b> and <b> lifetime </b>. Scope is a term that describes where a variable is visible. Lifespan is the length of time a variable stores a value.
+Another thing to know about variable is their <b> scope </b> and <b> lifetime </b>. Scope is a term that describes where a variable is visible. Lifespan is the length of time a variable stores a value.
 
 For example, for a lexical variable declared with my, the scope is from "{" to "}".
 

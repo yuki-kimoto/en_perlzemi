@@ -14,7 +14,7 @@
 
 
 
-<strong> interpretvar.h </strong> contains the definitions of interpreted variables. Interpreter variables are variables that are defined for each Perl interpreter.
+<strong> interpretvar.h </strong> contains the definitions of interpreted variable. Interpreter variable are variable that are defined for each Perl interpreter.
 
 <h3>What is an interpreter? </H3>
 
@@ -41,11 +41,11 @@ Perl-(no interpreter)
 
 <h3>Interpreter variable</h3>
 
-Interpreter variables are variables that each interpreter has. When reading Perl source code, you will open interpvar.h very often. This is because the variables defined here are used throughout the Perl source code.
+Interpreter variable are variable that each interpreter has. When reading Perl source code, you will open interpvar.h very often. This is because the variable defined here are used throughout the Perl source code.
 
-For example, subroutine call stack information, currently executing syntax tree nodes, lexical variable information, local variable information, control information, variables related to SV memory allocation, program execution start position, and so on.
+For example, subroutine call stack information, currently executing syntax tree nodes, lexical variable information, local variable information, control information, variable related to SV memory allocation, program execution start position, and so on.
 
-Interpreter variables are defined using special macros. It's a macro called PERLVAR.
+Interpreter variable are defined using special macros. It's a macro called PERLVAR.
 
 <pre>
 PERLVAR (I, stack_sp, SV **)/* top of the stack */PERLVAR (I, op, OP *)/* currently executing op */PERLVAR (I, curpad, SV **)/* active pad (lexicals + tmps) */</pre>
@@ -75,9 +75,9 @@ However, this variable is rarely used in Perl source code. It is often accessed 
 
 When actually reading the source code, if you see the variable name "PL_stack_sp", you first guess that this is an interpreter variable. Then open "interpvar.h" and check if there is a definition like "PERLVAR (I, stack_sp, SV **)".
 
-<h3>Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled</h3>
+<h3>Interpreter variable are defined as global variable when "MULTIPLICITY" is not enabled</h3>
 
-Interpreter variables are defined as global variables when "MULTIPLICITY" is not enabled. The description is in "perl.h".
+Interpreter variable are defined as global variable when "MULTIPLICITY" is not enabled. The description is in "perl.h".
 
 <pre>
 # if !defined(MULTIPLICITY)

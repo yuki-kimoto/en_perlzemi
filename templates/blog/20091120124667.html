@@ -26,7 +26,7 @@ Be sure to write the two lines use strict; and use warnings; at the beginning of
 
 Think of it as the only time you don't have to write use strict; and use warnings when writing a command line script called a one-liner.
 
-<h3>Use lexical variables for filehandles (required unless you really have a specific purpose)</h3>
+<h3>Use lexical variable for filehandles (required unless you really have a specific purpose)</h3>
 
 Use the lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the lexical variable.
 
@@ -43,9 +43,9 @@ while (my $lien = <$fh>) {
 }
 </pre>
 
-Lexical variables have the great advantage of having scope and being able to be passed as arguments to other functions. Avoid using symbols such as FH and * FH as in the old commentary.
+Lexical variable have the great advantage of having scope and being able to be passed as arguments to other functions. Avoid using symbols such as FH and * FH as in the old commentary.
 
-It would also be more modern to put the declarations of lexical variables together in the open function.
+It would also be more modern to put the declarations of lexical variable together in the open function.
 
 <pre>
 open my $fh, '<', $file
@@ -89,9 +89,9 @@ Use the die function to terminate the program with an error message. From the pe
 
 Be sure to perform error handling not only when opening a file but also when communicating with the outside of the program. External is everything except memory manipulation. Files, networks, etc. are external.
 
-<h3>Use lowercase letters and underscores in lexical variables and subroutine names (highly recommended)</h3>
+<h3>Use lowercase letters and underscores in lexical variable and subroutine names (highly recommended)</h3>
 
-Use lowercase letters and underscores in the names of "lexical variables declared with my" and "subroutine".
+Use lowercase letters and underscores in the names of "lexical variable declared with my" and "subroutine".
 
 <pre>
 # Lexical variable
@@ -111,23 +111,23 @@ sub create_table {
 
 Whether this notation is good or bad, most of the new modules on CPAN are written in this notation. There are many benefits to following this habit in that it can provide users with a unified interface.
 
-I have written a separate article on how to name variables, so please refer to this as well.
+I have written a separate article on how to name variable, so please refer to this as well.
 <a href="/blog/20081103122562.html"><Give the variable a proper name></a>
 
 As a general rule, the naming method for subroutine is "verb + noun". For those whose meaning is clear, it may be possible to use only "verbs" for the convenience of the user. However, I think it is safe to use "verb + noun" because it may cause problems later.
 
-<h3>Use uppercase letters and underscores for package variables (highly recommended)</h3>
+<h3>Use uppercase letters and underscores for package variable (highly recommended)</h3>
 
-Use uppercase letters and underscores for package variables.
+Use uppercase letters and underscores for package variable.
 
 <pre>
 our $OBJECT_COUNT;
 our $CLASS_INFO;
 </pre>
 
-<h3>Use lexical variables instead of package variables (required)</h3>
+<h3>Use lexical variable instead of package variable (required)</h3>
 
-If you are not the author of the module, you will not have the opportunity to use package variables. If you're using a package variable in a single script, that's the wrong way to use it. Let's change it to a lexical variable using my.
+If you are not the author of the module, you will not have the opportunity to use package variable. If you're using a package variable in a single script, that's the wrong way to use it. Let's change it to a lexical variable using my.
 
 <h3>Write in standard (?) Code format (slightly recommended)</h3>
 
@@ -188,9 +188,9 @@ my @mapped_array = map {$_ * 2} @array;
 print $_ for @array;
 </pre>
 
-Some well-known CPAN modules use default variables, but I personally don't recommend them. A program that is as explicit as possible will be more readable.
+Some well-known CPAN modules use default variable, but I personally don't recommend them. A program that is as explicit as possible will be more readable.
 
-<h3>Declare lexical variables in foreach statement (highly recommended)</h3>
+<h3>Declare lexical variable in foreach statement (highly recommended)</h3>
 
 Perl 5 allows you to declare a lexical variable at the beginning of a foreach statement.
 

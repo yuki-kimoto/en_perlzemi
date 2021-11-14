@@ -289,7 +289,7 @@ I've been practicing XS recently, and I'm making it with the following policy fo
     Use only the PPCODE section.
   </li>
   <li>
-    Enclose the source code in {} so that you can declare variables at the beginning
+    Enclose the source code in {} so that you can declare variable at the beginning
   </li>
   <li>
     The return value should be only one SV *. Substitute in ST (0) and then XSRETURN (1).. Ignore the warning that you are not using RETVAL.
@@ -510,11 +510,11 @@ if (strLT ("foo", "bar")) {...}
 if (strNE ("foo", "bar")) {...}
 </pre>
 
-<h3>Package variables</h3>
+<h3>Package variable</h3>
 
-Introducing functions for manipulating package variables in XS.
+Introducing functions for manipulating package variable in XS.
 
-<h4>Get package variables</h4>
+<h4>Get package variable</h4>
 
 To get the package variable, write:
 
@@ -532,7 +532,7 @@ HV * hv_var = get_hv ("Foo::bar", 0);
 
 The second argument, 0, means that no new variable is created.
 
-<h4>Creating package variables]</h4>
+<h4>Creating package variable]</h4>
 
 Introducing a function that creates a package variable in XS. Specify "GV_ADD" in the second argument of get_sv, get_av, get_hv.
 

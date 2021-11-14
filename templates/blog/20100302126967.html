@@ -149,7 +149,7 @@ Is a breakpoint that can be embedded in a script. If you want to see the content
 
 This section describes display commands.
 
-<h4>p - Display the contents of variables</h4>
+<h4>p - Display the contents of variable</h4>
 
 <strong> You can display the contents of the variable with "p". </strong> For example, if you want to display a variable called $message, do as follows.
 
@@ -157,9 +157,9 @@ This section describes display commands.
 p $message
 </pre>
 
-<h4>x - Expand and display the contents of variables</h4>
+<h4>x - Expand and display the contents of variable</h4>
 
-The "p" is useful for displaying the contents of scalar variables, but not for displaying hashes, arrays, or even more complex data structures.
+The "p" is useful for displaying the contents of scalar variable, but not for displaying hashes, arrays, or even more complex data structures.
 
 <strong> "x" can be used to display the internal structure of data in an easy-to-understand way. Note that you must pass a reference to the </strong> "x" argument.
 
@@ -236,7 +236,7 @@ This is really convenient, so please use it more and more. Also, don't forget to
 
 <h4>Conditional breakpoints</h4>
 
-When debugging, there are times when you want to stop processing and see the contents of variables only under certain conditions. In such a case, use the conditional statement in combination with "$DB::single = 1". In this example, when $num is 2, the debugger stops at that position.
+When debugging, there are times when you want to stop processing and see the contents of variable only under certain conditions. In such a case, use the conditional statement in combination with "$DB::single = 1". In this example, when $num is 2, the debugger stops at that position.
 
 <pre>
 if ($num == 2) {$DB::single = 1}
@@ -330,7 +330,7 @@ sub total {
 }
 </pre>
 
-Environment variables are global variables, so let me use them for a moment. If you set the environment variable a and set a breakpoint only when it is set, you can stop at the position you want to stop. This is a pretty useful technique, so keep it in mind.
+Environment variable are global variable, so let me use them for a moment. If you set the environment variable a and set a breakpoint only when it is set, you can stop at the position you want to stop. This is a pretty useful technique, so keep it in mind.
 
 <h3>Please use the debugger positively</h3>
 

@@ -10,7 +10,7 @@
 
 
 
-For scripting languages such as PHP, Perl, Ruby, and Python, some people may think that variables have no type. Especially for those who have used static languages such as C and Java, I think that the lack of types is often seen as anxiety. Twice
+For scripting languages such as PHP, Perl, Ruby, and Python, some people may think that variable have no type. Especially for those who have used static languages such as C and Java, I think that the lack of types is often seen as anxiety. Twice
 
 But the lack of mold is really great. The lack of a mold frees you from a lot of hassle.
 
@@ -43,9 +43,9 @@ LWP::UserAgent ua = new LWP::UserAgent ();
 
 Some may argue that type inference can solve it, but I think type inference is incomplete. First of all, it cannot be used if the type is not specified on the right side, so if there is no type on the right side, you have to write the type after all. Type inference also slows down the time it takes to compile source code. When the source code becomes large, you will not be able to write it quickly and get the execution result quickly. It also makes it a little more difficult to implement the method auto-completion feature in an integrated development environment.
 
-<h3>Variables are resistant to change if they have no type</h3>
+<h3>Variable are resistant to change if they have no type</h3>
 
-Untyped variables are more resistant to source code changes. For example, even if the return type on the right side changes, there is no need to change the source code on the receiving side.
+Untyped variable are more resistant to source code changes. For example, even if the return type on the right side changes, there is no need to change the source code on the receiving side.
 
 <pre>
 # clinet can be ClientA type or ClientB type
@@ -69,19 +69,19 @@ sub sum {
 }
 </pre>
 
-The lack of types in variables has the great advantage of reducing function duplication.
+The lack of types in variable has the great advantage of reducing function duplication.
 
 <h3>No need to implement an interface when you want to receive multiple types</h3>
 
 The big effort in Java is to learn and implement how the interface works. If you want to create a variable that wants to accept multiple types, you'll first implement the interface.
 
-However, if the variable has no type, there is no need for an interface mechanism. The lack of types in variables makes class implementations very simple with no duplication.
+However, if the variable has no type, there is no need for an interface mechanism. The lack of types in variable makes class implementations very simple with no duplication.
 
 <h3>No need for features like C ++ templates</h3>
 
 Consider the case where the function argument receives an array. Then, suppose that the type of the variable contained in the array is not fixed. Also consider if you don't know if the array itself is a regular array, a dynamic array, or a special list. When a variable has a type, you have to think about many of these things individually, implement the interface well, or use complex, hard-to-debug features like C ++ templates.
 
-But if a variable doesn't have a type, you won't face this problem in the first place. After receiving it in the function, you just have to determine the type with the if statement if necessary. Therefore, the lack of types in variables makes it easy to write function and method implementations without duplication.
+But if a variable doesn't have a type, you won't face this problem in the first place. After receiving it in the function, you just have to determine the type with the if statement if necessary. Therefore, the lack of types in variable makes it easy to write function and method implementations without duplication.
 
 <h3>Answer the criticism that you don't know what type of value is assigned to a variable if it doesn't have a type. </H3>
 
@@ -123,7 +123,7 @@ Scripting languages are said to be less maintainable, but I don't think there is
 
 It's sometimes commented that the untyped language is over, and it's time for a hybrid language, but I don't think that person understands the benefits of having no type. Maybe that person only understands how it looks in the source code.
 
-<h3>Is there a disadvantage that variables have no type? </H3>
+<h3>Is there a disadvantage that variable have no type? </H3>
 
 Performance is one of them. Numerical operations can be overwhelmingly faster if the value type is known in advance. If you know that it is an integer, you can calculate on that assumption, so the performance of numerical calculation is overwhelmingly better in static languages.
 

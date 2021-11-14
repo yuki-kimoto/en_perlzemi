@@ -143,7 +143,7 @@ First, as the user who installed perlbrew, display the value of the PATH environ
 env | grep PATH
 </pre>
 
-You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
+You will see some environment variable that include PATH, so look for something called PATH. (This is an example when the user name is admins.)
 
 <pre>
 PATH =/home/admins/perl5/perlbrew/bin:/home/admins/perl5/perlbrew/perls/perl-5.16.2/bin:/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home/admins/bin
@@ -176,6 +176,6 @@ This will automatically detect perl from the set PATH value.
 
 As you can see, this method solidifies the PATH, so crontab is not portable at all. Since the user name admins is directly embedded and the version number of perl is written as it is, it will not work when changing the version with perlbrew.
 
-But I think this method is the best. The reason is that it is difficult to make it portable because there is a limitation that environment variables cannot be expanded in crontab. Portability increases the amount of description, requires additional scripts, and complicates management.
+But I think this method is the best. The reason is that it is difficult to make it portable because there is a limitation that environment variable cannot be expanded in crontab. Portability increases the amount of description, requires additional scripts, and complicates management.
 
 Also, no matter how hard you try, crontab usually has some differences depending on the environment, so even if you keep portability, there may not be much merit.

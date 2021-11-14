@@ -40,7 +40,7 @@ If you want to load the module dynamically, you may use require, but for general
 
 <h3>local</h3>
 
-local is not meant to generate local variables. local is for temporarily changing the value and restoring it when it goes out of scope. For some reason it cannot be used for the scalar variable itself declared by my. You can use package variables and hash elements, array elements, and so on.
+local is not meant to generate local variable. local is for temporarily changing the value and restoring it when it goes out of scope. For some reason it cannot be used for the scalar variable itself declared by my. You can use package variable and hash elements, array elements, and so on.
 
 <pre>
 our $num = 1;
@@ -68,7 +68,7 @@ Please refer to the following for a detailed explanation of local.
 
 <ul>
   <li>
-    <a href="/blog/20080309120507.html">local - Temporarily save and restore package variables</a>
+    <a href="/blog/20080309120507.html">local - Temporarily save and restore package variable</a>
   </li>
 </ul>
 
@@ -87,9 +87,9 @@ my $foo = 'foo';
 
 The part enclosed as "=pod" and "=cut" is interpreted as a document and ignored.
 
-<h3>Different variables with different sigils</h3>
+<h3>Different variable with different sigils</h3>
 
-Different sigils are completely different variables.
+Different sigils are completely different variable.
 
 <pre>
 # arrangement
@@ -100,9 +100,9 @@ my $ids;
 </pre>
 The above variable has the name ids, but it's a completely different variable.
 
-<h3>Examine the meaning of predefined variables</h3>
+<h3>Examine the meaning of predefined variable</h3>
 
-Special variables are very difficult to find by google search. It is also troublesome to search from the document. You can use the "-v" option of the perldoc command to find out the meaning of predefined variables, albeit in English.
+Special variable are very difficult to find by google search. It is also troublesome to search from the document. You can use the "-v" option of the perldoc command to find out the meaning of predefined variable, albeit in English.
 
 <pre>
 perldoc -v $.
@@ -260,7 +260,7 @@ die "Exception" if $@;
 </pre>
 I prefer.
 
-<h3>Frequently used predefined variables</h3>
+<h3>Frequently used predefined variable</h3>
 <ul>
   <li>
     @_ - Subroutine arguments
@@ -476,7 +476,7 @@ my $message = "${name}::aaa ${name} _ppp";
 
 <h3>Take a peek at the symbol table</h3>
 
-A data structure in which names such as variables and subroutine are registered. The symbol for each package is stored in a variable with "::" at the end of the package name.
+A data structure in which names such as variable and subroutine are registered. The symbol for each package is stored in a variable with "::" at the end of the package name.
 
 <pre>
 # Symbol table

@@ -6,7 +6,7 @@ Use <strong> use </strong> to load the module at compile time.
 use MODULE_NAME;
 </pre>
 
-The module name must be specified as a bare string. Strings enclosed in quotes or double quotes will not be accepted. Also, variables are not accepted.
+The module name must be specified as a bare string. Strings enclosed in quotes or double quotes will not be accepted. Also, variable are not accepted.
 
 <pre>
 # Specify the module name with a bare string
@@ -45,9 +45,9 @@ use will automatically perform the import. If you don't want to import, do the f
 use File::Basename();
 </pre>
 
-<h3> How to pass variables to use </h3>
+<h3> How to pass variable to use </h3>
 
-Since use can only accept bare strings, you need to be creative in passing variables. You need to use <a href="/blog/20100312126967.html"> eval</a> to recognize the variable name as a bare string.
+Since use can only accept bare strings, you need to be creative in passing variable. You need to use <a href="/blog/20100312126967.html"> eval</a> to recognize the variable name as a bare string.
 
 Also, eval can perform dangerous processing, so make sure it does not contain harmful processing before executing it. If the module fails to load, an error message will be stored in $ @.
 

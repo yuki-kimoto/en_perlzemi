@@ -21,7 +21,7 @@ On the symbol table, $main::{num} is assigned the string'* main::num', which is 
 
 If you omit the package name, it becomes an entry in the symbol table of the current current package.
 
-<h3>Typeglobs and variables</h3>
+<h3>Typeglobs and variable</h3>
 
 <pre>
 my $num_from_typedglob = ${* main::num}; # Same as $num
@@ -62,7 +62,7 @@ use warnings;
 # Represents an entry in the symbol table.
 
 
-# Variables with the same name but different only in funny characters ($, @,%)
+# Variable with the same name but different only in funny characters ($, @,%)
 our $num = 11;
 our @num = (12, 13);
 our%num = (key => 14);
@@ -74,7 +74,7 @@ sub num {
 
 require Data::Dumper;
 
-print "1-1: Access variables from the symbol table.\n";
+print "1-1: Access variable from the symbol table.\n";
 # Enclosed in ${}, a scalar entry
 my $num_from_symbol = ${$main::{num}};
 # Array entries, enclosed in @{}

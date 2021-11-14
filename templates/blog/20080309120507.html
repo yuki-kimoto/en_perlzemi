@@ -10,9 +10,9 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>local - Temporarily save and restore package variables</h2>
+<h2>local - Temporarily save and restore package variable</h2>
 
-You can use <b> local </b> to temporarily change package variables.
+You can use <b> local </b> to temporarily change package variable.
 
 <pre>
 LOCAL_VARIABLE_NAME = value;
@@ -32,7 +32,7 @@ our $NUM = 5;
 # Here, "$NUM" returns to "5" which is the "original value"
 </pre>
 
-Package variables modified by local are restored at the end of <a href="/blog/20110128130016.html">scope</a>.
+Package variable modified by local are restored at the end of <a href="/blog/20110128130016.html">scope</a>.
 
 If initialization is not performed, the initial value of the variable value will be an undefined value.
 
@@ -40,7 +40,7 @@ If initialization is not performed, the initial value of the variable value will
 local $NUM;
 </pre>
 
-local is for package variables declared with <a href="/blog/20080308120495.html">our</a>. Note that it is not available for lexical variables declared by <a href="/blog/20080307120491.html">my</a>.
+local is for package variable declared with <a href="/blog/20080308120495.html">our</a>. Note that it is not available for lexical variable declared by <a href="/blog/20080307120491.html">my</a>.
 
 <pre>
 # Compile error
@@ -58,13 +58,13 @@ my %score = (math => 90, english => 70);
 local $score{math};
 </pre>
 
-<h3>local for predefined variables</h3>
+<h3>local for predefined variable</h3>
 
-The most common use of local in Perl is for <a href="/blog/20161102147817.html">predefined variables</a> such as "$/", "%ENV" and "@ARGV".
+The most common use of local in Perl is for <a href="/blog/20161102147817.html">predefined variable</a> such as "$/", "%ENV" and "@ARGV".
 
-local targets package variables, but predefined variables actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
+local targets package variable, but predefined variable actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
 
-So you can use local for predefined variables as well.
+So you can use local for predefined variable as well.
 
 <pre>
 local $/;
@@ -74,7 +74,7 @@ local @ARGV;
 
 <h3>Use my for variable declaration</h3>
 
-Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variables by lcoal. Try to use "my" for almost all variable declarations.
+Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variable by lcoal. Try to use "my" for almost all variable declarations.
 
 <pre>
 # Variable declaration
@@ -85,7 +85,7 @@ my $num;
 
 local is not a variable declaration, contrary to the expectation of the name. It has a dynamic scope.
 
-Local variables in other languages are lexical variables using my in Perl.
+Local variable in other languages are lexical variable using my in Perl.
 
 <table>
   <tr>
@@ -148,7 +148,7 @@ Keep in mind that Perl, which doesn't have a builtin functions to read a file at
 
 <h3>local example program</h3>
 
-This is an example to temporarily change a predefined variable using local. Special variables are package variables that belong to the main package.
+This is an example to temporarily change a predefined variable using local. Special variable are package variable that belong to the main package.
 
 <pre>
 {
@@ -171,7 +171,7 @@ print "\$NUM = $NUM\n";
 
 # The fully qualified name of $NUM is $main::NUM and belongs to the main package.
 # (In Perl, no variable is a global variable
-# Perl has only lexical and package variables. )
+# Perl has only lexical and package variable. )
 
 print "\$main::NUM = $main::NUM\n";
 print "\n";

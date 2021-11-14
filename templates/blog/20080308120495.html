@@ -10,23 +10,23 @@
     <meta itemprop = "position" content = "4" />
   </li>
 </ol>
-<h2>our - Declaration of package variables</h2>
+<h2>our - Declaration of package variable</h2>
 
-I will explain the declaration of <b> package variables </b> by <b> our </b>.
+I will explain the declaration of <b> package variable </b> by <b> our </b>.
 
-<h3>Declaration of package variables</h3>
+<h3>Declaration of package variable</h3>
 
-Use <strong> our </strong> to declare package variables.
+Use <strong> our </strong> to declare package variable.
 
 <pre>
 our $NUM;
 </pre>
 
-Package variables are global variables that belong to one namespace. Package variables have qualified names (package names) and can be referenced from anywhere in the source code.
+Package variable are global variable that belong to one namespace. Package variable have qualified names (package names) and can be referenced from anywhere in the source code.
 
 It is customary in Perl to make the variable name of a package variable "uppercase".
 
-<h3>Initialization of package variables</h3>
+<h3>Initialization of package variable</h3>
 
 "Initialization" can be performed at the same time as the declaration of the package variable.
 
@@ -36,7 +36,7 @@ our $NUM = 5;
 
 <h3>Package variable scope and lifetime</h3>
 
-Describes the life and scope of package variables.
+Describes the life and scope of package variable.
 
 <h4>Package variable lifespan</h4>
 
@@ -76,7 +76,7 @@ In Perl, a package declaration is a namespace declaration in another language. G
 package SomePackage;
 </pre>
 
-Package variables can also be accessed with fully qualified names.
+Package variable can also be accessed with fully qualified names.
 
 <pre>
 $SomePackage::PACKAGE_VAR1
@@ -92,40 +92,40 @@ See the following articles for more information on package declarations.
 
 <h3>main package</h3>
 
-If no package is declared, the package variables declared with our belong to the main package.
+If no package is declared, the package variable declared with our belong to the main package.
 
 <pre>
 # Belongs to "main package" as "$main::NUM"
 our $NUM;
 </pre>
 
-In Perl, there are no variables that do not have a package. What looks like no package actually belongs to the main package.
+In Perl, there are no variable that do not have a package. What looks like no package actually belongs to the main package.
 
-For example, <a href="/blog/20161102147817.html">predefined variables</a> don't seem to belong to the package, but they do.
+For example, <a href="/blog/20161102147817.html">predefined variable</a> don't seem to belong to the package, but they do.
 
 <h3>Should we use variable declaration by our?</h3>
 
 If you write its own program, you rarely have the opportunity to use our variable declarations. The safer and faster "my" variable declaration makes it possible to write a complete program. Avoid "our" as much as possible and use only "my".
 
-my has a lexical scope and is safe with a small accessible range. Since it is in a continuous area, it has the characteristic that the access speed to variables is fast.
+my has a lexical scope and is safe with a small accessible range. Since it is in a continuous area, it has the characteristic that the access speed to variable is fast.
 
 See the following article for variable declaration by my.
 
 <ul>
   <li>
-    <a href="/blog/20080307120491.html">my - Declaration of lexical variables</a>
+    <a href="/blog/20080307120491.html">my - Declaration of lexical variable</a>
   </li>
 </ul>
 
 <h3>Example</h3>
 
-This is an example using package variables.
+This is an example using package variable.
 
 <pre>
 use strict;
 use warnings;
 
-# Package variables
+# Package variable
 print "1: Package variable has a qualified name (SomePackage)".
     "It can be referenced from anywhere in the program (even from outside the scope).\n";
 {

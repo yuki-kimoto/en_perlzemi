@@ -49,7 +49,7 @@ A brief description of the source code. There are many directories and source co
       <a href="/blog/20160321145852.html">interpvar.h</a>
     </td>
     <td>
-      Perl interpreter variables are defined
+      Perl interpreter variable are defined
     </td>
   </tr>
 
@@ -58,7 +58,7 @@ A brief description of the source code. There are many directories and source co
       <a href="/blog/20160322145863.html">perlvars.h</a>
     </td>
     <td>
-      Perl global variables are defined
+      Perl global variable are defined
     </td>
   </tr>
 
@@ -67,7 +67,7 @@ A brief description of the source code. There are many directories and source co
       <a href="/blog/20160325145889.html">embedvar.h</a>
     </td>
     <td>
-      Abstraction of interpreter variables and global variables
+      Abstraction of interpreter variable and global variable
     </td>
   </tr>
 
@@ -175,7 +175,7 @@ A brief description of the source code. There are many directories and source co
       sv.c
     </td>
     <td>
-      Implementation of scalar variables
+      Implementation of scalar variable
     </td>
   </tr>
 
@@ -202,7 +202,7 @@ A brief description of the source code. There are many directories and source co
       pad.c
     </td>
     <td>
-      Implementation of functionality for holding lexical variables within scope
+      Implementation of functionality for holding lexical variable within scope
     </td>
   </tr>
 
@@ -784,7 +784,7 @@ If the thread is not enabled, it will be expanded as follows and will do nothing
 
 <h3>Expected abbreviations</h3>
 
-Since you can roughly predict the abbreviations used for variables, pick up the ones that are often used.
+Since you can roughly predict the abbreviations used for variable, pick up the ones that are often used.
 
 <ul>
   <li>
@@ -798,7 +798,7 @@ Since you can roughly predict the abbreviations used for variables, pick up the 
 
 <h3>Safefree is just free memory</h3>
 
-Safefree is used to free memory for variables, but it's just free memory. Think of it as free. The process is hidden so that it can handle various conditions.
+Safefree is used to free memory for variable, but it's just free memory. Think of it as free. The process is hidden so that it can handle various conditions.
 
 <pre>
 // Example of use
@@ -835,7 +835,7 @@ Perl_safesysfree (Malloc_t where)
 
 <h3>SvREFCNT_dec is performed when freeing the memory of SV type variable.</h3>
 
-In perl_destruct, the memory of variables used in Perl is released, which is done as follows.
+In perl_destruct, the memory of variable used in Perl is released, which is done as follows.
 
 <pre>
 SvREFCNT_dec (PL_ofsgv);
@@ -926,9 +926,9 @@ Looking only at the skeleton, it's very simple.
 
 <h3>Difference between EXTERN.h and INTERN.h</h3>
 
-There are EXTERN.h and INTERN.h in Perl, but for the purpose, EXTERN.h is used when referencing Perl itself from an extension module. You need to load EXTERN.h to make the global variables that Perl itself has visible to the extension module.
+There are EXTERN.h and INTERN.h in Perl, but for the purpose, EXTERN.h is used when referencing Perl itself from an extension module. You need to load EXTERN.h to make the global variable that Perl itself has visible to the extension module.
 
-INTERN.h, on the other hand, is used when compiling Perl itself. The values of global variables are set.
+INTERN.h, on the other hand, is used when compiling Perl itself. The values of global variable are set.
 
 <h3>SVp_IOK indicates that you have a valid integer that is not exposed.</h3>
 
@@ -1070,7 +1070,7 @@ perl_alloc just allocates memory and initializes with 0.
     Ignore macros that contain ASSERT because they just call assert
   </li>
   <li>
-    PERL_UNUSED_ARG only removes warnings for unused variables, so ignore them
+    PERL_UNUSED_ARG only removes warnings for unused variable, so ignore them
   </li>
   <li>
     EnvoyMany macros used are in perl.h, proto.h or handy.h
@@ -1233,7 +1233,7 @@ to the next */    char * oldbufptr;/* in yylex, beginning of current token */   
 </pre>
 <h3>PADLIST</h3>
 
-PADLIST is a list of lexical variables.
+PADLIST is a list of lexical variable.
 
 <pre>
 // perl.h
@@ -1363,9 +1363,9 @@ struct stackinfo {
 typedef struct stackinfo PERL_SI;
 </pre>
 
-<h3>Variables starting with PL_ may be global variables</h3>
+<h3>Variable starting with PL_ may be global variable</h3>
 
-Variables that start with PL_ can also be global variables. PL_Yes and PL_No are defined in perl.h.
+Variable that start with PL_ can also be global variable. PL_Yes and PL_No are defined in perl.h.
 
 <blockquote>
 // perl.h
@@ -1375,9 +1375,9 @@ EXTCONST char PL_No []
   INIT ("");
 </blockquote>
 
-<h3>Variable names starting with PL_ are interpreted variables</h3>
+<h3>Variable names starting with PL_ are interpreted variable</h3>
 
-Variable names starting with PL_ are interpreted variables. A variable that holds information about the currently running Perl interpreter. It is defined in embedvar.h.
+Variable names starting with PL_ are interpreted variable. A variable that holds information about the currently running Perl interpreter. It is defined in embedvar.h.
 
 <pre>
 // embedvar.h

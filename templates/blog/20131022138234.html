@@ -37,7 +37,7 @@ When I run this example, I get the following output on the screen:
 [2 4 7]
 </pre>
 
-<h3>Creating PDL variables</h3>
+<h3>Creating PDL variable</h3>
 
 You can first create a PDL variable using the pdl function. First, load the PDL to use the minimum functions of the PDL.
 
@@ -62,7 +62,7 @@ my $second = $nums->at(1);
 
 In the above example, we got the value of the element contained in the PDL variable, but we can also get it as a PDL variable.
 
-There are several ways to get some data as PDL variables, but it's easier to write in nice slice notation. Read the PDL::NiceSlice module for writing nice slice notation. This is done at the beginning of the script.
+There are several ways to get some data as PDL variable, but it's easier to write in nice slice notation. Read the PDL::NiceSlice module for writing nice slice notation. This is done at the beginning of the script.
 
 <pre>
 use PDL::NiceSlice;
@@ -76,7 +76,7 @@ my $pdl_first = $nums (0);
 my $pdl_second = $nums (1);
 </pre>
 
-These are PDL variables, so if you want to get the element value itself, you can retrieve it with the <strong> at </strong> method.
+These are PDL variable, so if you want to get the element value itself, you can retrieve it with the <strong> at </strong> method.
 
 <pre>
 my $first = $pdl_first->at(0);
@@ -128,14 +128,14 @@ my $nums = pdl [2, 4, 7];
 print $nums->at(0) . "\n";
 print $nums->at(1) . "\n";
 
-# Retrieving PDL variables
+# Retrieving PDL variable
 my $pdl_first = $nums (0);
 my $pdl_second = $nums (1);
 
 # Substitution
 $nums (0). = 5;
 
-# Getting multi-element PDL variables
+# Getting multi-element PDL variable
 my $pdl_parts = $nums (1: 2);
 
 # Assignment to multiple elements retrieved as PDL variable
@@ -173,7 +173,7 @@ my $pdl_quotient = $pdl % 3;
 my $pdl_pow = $pdl + 3;
 </pre>
 
-Multiplication and division correspond to constant multiples of the vector. Keep in mind that you are doing operations between PDL variables and ordinary values, not operations between PDL variables.
+Multiplication and division correspond to constant multiples of the vector. Keep in mind that you are doing operations between PDL variable and ordinary values, not operations between PDL variable.
 
 <h3>Extract unique values</h3>
 
@@ -183,12 +183,12 @@ Use the <strong> uniq method </strong> to retrieve the <strong> unique value </s
 my $pdl_uniq = $pdl->uniq;
 </pre>
 
-<h3>Four arithmetic operations between PDL variables</h3>
+<h3>Four arithmetic operations between PDL variable</h3>
 
-To add <strong> PDL variables </strong>, use the <strong> + </strong> operator for PDL variables. Each element is added.
+To add <strong> PDL variable </strong>, use the <strong> + </strong> operator for PDL variable. Each element is added.
 
 <pre>
-# Addition of PDL variables
+# Addition of PDL variable
 my $pdl1 = pdl [1, 2, 3];
 my $pdl2 = pdl [4, 5, 6];
 my $pdl_add = $pdl1 + $pdl2;
@@ -217,7 +217,7 @@ Addition and subtraction corresponds to addition and subtraction of vectors.
 
 <h3>Dot product</h3>
 
-There is no special way to calculate the dot product. To calculate the <strong> inner product </strong>, multiply the PDL variables and then find the sum.
+There is no special way to calculate the dot product. To calculate the <strong> inner product </strong>, multiply the PDL variable and then find the sum.
 
 <pre>
 # Dot product
@@ -270,7 +270,7 @@ use warnings;
 
 use PDL;
 
-# Addition of PDL variables
+# Addition of PDL variable
 my $pdl1 = pdl [1, 2, 3];
 my $pdl2 = pdl [4, 5, 6];
 my $pdl_add = $pdl1 + $pdl2;

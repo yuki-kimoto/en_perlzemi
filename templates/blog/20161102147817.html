@@ -6,11 +6,11 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2>Perl predefined variables</h2>
+<h2>Perl predefined variable</h2>
 
 
 
-A list of Perl predefined variables. Special variables are global variables that are predefined in Perl. The variable name identifies its use. I will introduce only this from the predefined variables that I definitely want to remember.
+A list of Perl predefined variable. Special variable are global variable that are predefined in Perl. The variable name identifies its use. I will introduce only this from the predefined variable that I definitely want to remember.
 
 <h4>@ARGV - command line arguments</h4>
 
@@ -40,7 +40,7 @@ $3;
 
 <h4>$_ - Default variable</h4>
 
-"$_" Is called <a href="/blog/20180118151628.html">default variable</a>. It's best to refrain from using default arguments yourself for readability, but some builtin functions use default variables, so there are a few things to keep in mind.
+"$_" Is called <a href="/blog/20180118151628.html">default variable</a>. It's best to refrain from using default arguments yourself for readability, but some builtin functions use default variable, so there are a few things to keep in mind.
 
 At a minimum, <a href="/blog/20100118126425.html">map function</a>, <a href="/blog/20100119126425.html">grep function</a>, <a href="/blog" /20170521149524.html">Postscript for</a> often uses" $_ ", so keep in mind.
 
@@ -62,16 +62,16 @@ grep {$_ eq 'foo'} @elements
 $_ for @elements;
 </pre>
 
-<h4>%ENV - Getting and setting environment variables</h4>
+<h4>%ENV - Getting and setting environment variable</h4>
 
-You can access <a href="/blog/20180510152716.html">environment variables</a> with a predefined variable called <strong>%ENV </strong>.
+You can access <a href="/blog/20180510152716.html">environment variable</a> with a predefined variable called <strong>%ENV </strong>.
 
 <pre>
 %ENV
 </pre>
 
-The environment variable name is the key and you can refer to the value with $ENV{'env_name'}. Environment variables are like variables that the OS has. Environment variables are copied into the memory of the process space when the OS starts the process. OS environment variables cannot be changed from the process.
-Environment variables can be set freely, but they are valid only in that process. When a process launches a child process, the environment variables are copied, as if the OS launched the process.
+The environment variable name is the key and you can refer to the value with $ENV{'env_name'}. Environment variable are like variable that the OS has. Environment variable are copied into the memory of the process space when the OS starts the process. OS environment variable cannot be changed from the process.
+Environment variable can be set freely, but they are valid only in that process. When a process launches a child process, the environment variable are copied, as if the OS launched the process.
 
 <h4>$0 - Get program name</h4>
 
@@ -119,7 +119,7 @@ To find out <a href="/blog/20180529152759.html">loaded modules</a>, look at the 
 
 The%INC hash is assigned a combination of module name and module file name. You can see the module name and which file you actually imported.
 
-It has nothing to do with @INC, which stores the module's search path. @INC and%INC are completely different variables. If you want to know only the module name, use the <a href="/blog/20080210120265.html">keys function</a> to retrieve only the keys.
+It has nothing to do with @INC, which stores the module's search path. @INC and%INC are completely different variable. If you want to know only the module name, use the <a href="/blog/20080210120265.html">keys function</a> to retrieve only the keys.
 
 <h4>$^O - Get OS name</h4>
 
@@ -277,7 +277,7 @@ The value of "$^O" in each OS is summarized.
 
 </table>
 
-<h3>Other predefined variables</h3>
+<h3>Other predefined variable</h3>
 
 <h4>$$ - Get process ID</h4>
 
@@ -309,14 +309,14 @@ $?
 
 If wait waits for the child process to terminate, $? Contains multiple values, including the exit status of the child process. $? Is also set when a child process is executed using the system function.
 
-<h3>List of all predefined variables</h3>
+<h3>List of all predefined variable</h3>
 
-Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs/perl/5.20.1/perlvar.pod">official document "perlvar"</a> for more information.
+Below is a list of predefined variable. See the <a href="http://perldoc.jp/docs/perl/5.20.1/perlvar.pod">official document "perlvar"</a> for more information.
 
 <table>
   <tr>
     <td>
-      * Special variables
+      * Special variable
     </td>
     <td>
       *meaning
@@ -418,7 +418,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $a, $b
     </td>
     <td>
-      Variables used in the sort function
+      Variable used in the sort function
     </td>
   </tr>
 
@@ -427,7 +427,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       %ENV
     </td>
     <td>
-      environmental variables
+      environmental variable
     </td>
   </tr>
 
@@ -733,7 +733,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $^A
     </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -742,7 +742,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $^L
     </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -751,7 +751,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $%
     </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -760,7 +760,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $-
     </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -768,7 +768,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
     <td>
       $:</td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -777,7 +777,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $=
     </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -785,7 +785,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
     <td>
       $^    </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -794,7 +794,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $~
     </td>
     <td>
-      Format predefined variables
+      Format predefined variable
     </td>
   </tr>
 
@@ -928,7 +928,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       ${^OPEN}
     </td>
     <td>
-      Internal variables for PerlIO
+      Internal variable for PerlIO
     </td>
   </tr>
 
@@ -937,7 +937,7 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
       $^P
     </td>
     <td>
-      Internal variables for debugging
+      Internal variable for debugging
     </td>
   </tr>
 
@@ -979,4 +979,4 @@ Below is a list of predefined variables. See the <a href="http://perldoc.jp/docs
 
 </table>
 
-We recommend that you do not use predefined variables until you really need them, as they significantly reduce the readability of your source code.
+We recommend that you do not use predefined variable until you really need them, as they significantly reduce the readability of your source code.

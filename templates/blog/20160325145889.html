@@ -14,7 +14,7 @@
 
 
 
-<strong> embedvar.h </strong> is a header for abstracting interpreter variables and global variables.
+<strong> embedvar.h </strong> is a header for abstracting interpreter variable and global variable.
 
 <h3>Interpreter variable abstraction</h3>
 
@@ -37,7 +37,7 @@ The logic of the interpretation variable abstraction is as follows.
 # endif
 </pre>
 
-First, when "MULTIPLICITY" is defined, it means that multiple interpreters can be used. In such cases, you need to access the variables for each interpreter.
+First, when "MULTIPLICITY" is defined, it means that multiple interpreters can be used. In such cases, you need to access the variable for each interpreter.
 
 Next, "PERL_IMPLICIT_CONTEXT" means that the interpreter is passed as the first argument of a function that starts with "Perl_", in the sense that an implicit context assumes it.
 
@@ -81,7 +81,7 @@ And the access to the interpreted variable is defined as follows.
 
 <h3>Global variable abstraction</h3>
 
-Next is the code for the abstraction of global variables. If "PERL_GLOBAL_STRUCT" is defined, the entire global variable exists as a single structure, otherwise it exists as a regular global variable. In both of these cases, you can access the variable with "PL_appctx".
+Next is the code for the abstraction of global variable. If "PERL_GLOBAL_STRUCT" is defined, the entire global variable exists as a single structure, otherwise it exists as a regular global variable. In both of these cases, you can access the variable with "PL_appctx".
 
 <pre>
 # if defined(PERL_GLOBAL_STRUCT)

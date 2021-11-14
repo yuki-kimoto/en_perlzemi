@@ -29,9 +29,9 @@ Perl scope starts with "{" and ends with "}".
 
 <h3>Meaning of scope</h3>
 
-<h4>Lexical variables</h4>
+<h4>Lexical variable</h4>
 
-Lexical variables declared within a scope (variables declared with my) can only be referenced within that scope. Also, the value contained in the variable is released when the scope ends.
+Lexical variable declared within a scope (variable declared with my) can only be referenced within that scope. Also, the value contained in the variable is released when the scope ends.
 
 <pre>
 {
@@ -45,9 +45,9 @@ Lexical variables declared within a scope (variables declared with my) can only 
 print $num;
 </pre>
 
-<h4>Package variables</h4>
+<h4>Package variable</h4>
 
-Package variables declared inside a scope (variables declared with our) can be referenced by partial name within that scope. You must use a fully qualified name to reference it from outside the scope.
+Package variable declared inside a scope (variable declared with our) can be referenced by partial name within that scope. You must use a fully qualified name to reference it from outside the scope.
 
 <pre>
 package Foo;
@@ -68,7 +68,7 @@ print $Foo::NUM;
 
 Keep in mind that once a package variable is created, it exists to the end of the program and can be referenced by its fully qualified name from anywhere in the program.
 
-<h4>Package variables modified locally</h4>
+<h4>Package variable modified locally</h4>
 
 You can use <a href="/blog/20080309120507.html">local</a> to temporarily change a package variable. This changed value is reverted at the end of the scope.
 
@@ -88,7 +88,7 @@ our $NUM = 1;
 print $NUM;
 </pre>
 
-Use local only for temporary changes to the value of package variables, and don't use it for variable declarations as it used to be.
+Use local only for temporary changes to the value of package variable, and don't use it for variable declarations as it used to be.
 
 <h4>Subroutine</h4>
 
@@ -170,7 +170,7 @@ The above can be thought of as the beginning and end of the file surrounded by "
 }
 </pre>
 
-<h3>Lexical variables declared at special positions</h3>
+<h3>Lexical variable declared at special positions</h3>
 
 There are some cases where you have a scope, though it is not declared inside the scope.
 
