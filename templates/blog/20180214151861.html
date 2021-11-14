@@ -112,12 +112,12 @@ If the array reference is a scalar variable, you can omit the "{}".
 my @nums = @$nums_ref;
 </pre>
 
-<h4>Pass as an argument to a standard function</h4>
+<h4>Pass as an argument to a builtin functions</h4>
 
 <a href="/blog/20100104126425.html">shift function</a>, <a href="/blog/20100105126425.html">unshift function</a>, <a href="/blog/20100107126425. Array-related functions such as html">pop function</a> and <a href="/blog/20100106126425.html">push</a> take an array as an argument. So be aware that if you want to pass an array reference, you need to dereference it.
 
 <pre>
-# Dereference and pass to standard function
+# Dereference and pass to builtin functions
 shift @$array;
 unshift @$array, $element;
 push @$array, $element;

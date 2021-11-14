@@ -52,10 +52,10 @@ my $second = $t->sec;
 
 You can get the Time::Piece object by calling localtime, and you can get the date and time information from now on.
 
-The case where the time information is got by the standard function localtime is described for comparison.
+The case where the time information is got by the builtin functions localtime is described for comparison.
 
 <pre>
-# When time information is got by localtime of standard function
+# When time information is got by localtime of builtin functions
 my ($second, $minute, $hour, $mday, $month, $year) = localtime;
 
 # Month starts from 0, so add 1
@@ -86,7 +86,7 @@ A list of information that can be obtained with Time::Piece.
       $t->_ year
     </td>
     <td>
-       Year-1900 (same as localtime for standard function) = "aaa"
+       Year-1900 (same as localtime for builtin functions) = "aaa"
     </td>
   </tr>
 
@@ -113,7 +113,7 @@ A list of information that can be obtained with Time::Piece.
       $t->_mon
     </td>
     <td>
-       Month (starting at 0, same as the standard function localtime)
+       Month (starting at 0, same as the builtin functions localtime)
     </td>
   </tr>
 
