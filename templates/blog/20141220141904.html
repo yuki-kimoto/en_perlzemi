@@ -62,7 +62,7 @@ Next, based on this, I will explain the basics of memory management in XS.
 
 First, let's take a brief look at Perl variable.
 
-I will explain <a href="/blog/20161107147852.html">Perl variable</a>. First, internally, scalar variable are represented by "SV * type". Arrays are represented by "AV * type" and hashes are represented by "HV * type". Let's remember this three first. Of course, the reference can be assigned to "SV * type". And, internally, keep in mind that "AV * type" and "HV * type" are derived from "SV * type". This means that you can upcast and downcast.
+I will explain <a href="/blog/20161107147852.html">Perl variable</a>. First, internally, a scalar variable are represented by "SV * type". Arrays are represented by "AV * type" and hashes are represented by "HV * type". Let's remember this three first. Of course, the reference can be assigned to "SV * type". And, internally, keep in mind that "AV * type" and "HV * type" are derived from "SV * type". This means that you can upcast and downcast.
 
 The following function is used to create a scalar variable. Keep in mind that in XS, the functions you create are different for strings, floats, and integers.
 

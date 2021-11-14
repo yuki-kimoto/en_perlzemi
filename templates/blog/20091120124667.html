@@ -28,7 +28,7 @@ Think of it as the only time you don't have to write use strict; and use warning
 
 <h3>Use a lexical variable for filehandles (required unless you really have a specific purpose)</h3>
 
-Use the a lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the a lexical variable.
+Use the lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the lexical variable.
 
 <pre>
 # Lexical variable
@@ -203,7 +203,7 @@ for my $student (@students) {
 
 In this example, each element of @students goes into $student. $student is a lexical variable that has a scope from the beginning to the end of the foreach block.
 
-It is possible to omit the a lexical variable, but it is not recommended.
+It is possible to omit the lexical variable, but it is not recommended.
 
 <pre>
 # Not recommended writing

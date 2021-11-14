@@ -28,7 +28,7 @@ I will explain the process of opening files one by one.
 
 <h4>open function</h4>
 
-The open function takes three arguments. Specify the a lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, the <a href="/blog/20080721121664.html">file handle</a> is stored in the a lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
+The open function takes three arguments. Specify the lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, the <a href="/blog/20080721121664.html">file handle</a> is stored in the lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
 
 If the open function fails because the file does not exist, it returns <a href="/blog/20100220126425.html">undef</a>. If it fails, use the <a href="/blog/20100212126425.html">die function</a> to throw an exception. By using <a href="/blog/20180125151688.html">or operator</a>, if the executable statement on the left side of or is false, you can describe the process of executing the executable statement on the right side.
 
@@ -334,7 +334,7 @@ You can use the <a href="/blog/20080226120403.html">chomp function</a> to remove
 chomp string;
 </pre>
 
-That is, you can change the a line break that you remove by changing the input record separator.
+That is, you can change the line break that you remove by changing the input record separator.
 
 Characters output by <h4>\n</h4>
 
