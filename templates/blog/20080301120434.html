@@ -18,7 +18,7 @@ You can use the <strong> split function </strong> to split the <a href="/blog/20
 my @ret = split(/,/, $person_csv);
 </pre>
 
-In the first argument, specify the delimiter with <a href="/blog/20100827127859.html">regular expression</a>. In the second argument, specify the string you want to split. The return value is a <a href="/blog/20161012147627.html">array</a> of the split strings.
+In the first argument, specify the delimiter with a <a href="/blog/20100827127859.html">regular expression</a>. In the second argument, specify the string you want to split. The return value is a <a href="/blog/20161012147627.html">array</a> of the split strings.
 
 <h4>Use a regular expression</h4>
 
@@ -30,7 +30,7 @@ my @ret = split(/ +/, $line);
 
 <h4>Concatenation of strings</h4>
 
-The split function splits a string, but the opposite is to use the join function if you want to concatenate the strings. See the following article for the join function.
+The split function splits a string. the opposite is the join function if you want to concatenate the strings with a delimiter. See the following article for the join function.
 
 <ul>
   <li>
@@ -54,7 +54,7 @@ my @record = split /,/, $string;
 
 <h4>Blank delimiter</h4>
 
-This is an example to convert to a data array separated by blanks.
+This is an example to convert a string separated by blanks to an array.
 
 <pre>
 # Convert data separated by blanks to an array
@@ -89,7 +89,7 @@ print "\$person_csv = $person_csv\n";
 print "\n";
 
 for my $i (0 .. 2) {
-  print "\$header[$i] =" . $Header[$i] . "\n";
+  print "\$header[$i] =" . $header[$i] . "\n";
   print "\$person_attribute[$i] =" . $person_attribute[$i] . "\n\n";
 }
 </pre>
@@ -101,12 +101,12 @@ Execution result
 $header_csv = name,age,country
 $person_csv = kaori,23,Japan
 
-$header[0] = name
-$person_attribute[0] = kaori
+$header[0] =name
+$person_attribute[0] =kaori
 
-$header[1] = age
-$person_attribute[1] = 23
+$header[1] =age
+$person_attribute[1] =23
 
-$header[2] = country
-$person_attribute[2] = Japan
+$header[2] =country
+$person_attribute[2] =Japan
 </pre>
