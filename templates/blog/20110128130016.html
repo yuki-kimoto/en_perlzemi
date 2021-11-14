@@ -88,7 +88,7 @@ our $NUM = 1;
 print $NUM;
 </pre>
 
-Use local only for temporary changes to the value of package variable, and don't use it for variable declarations as it used to be.
+Use local only for temporary changes to the value of a package variable, and don't use it for variable declarations as it used to be.
 
 <h4>Subroutine</h4>
 
@@ -176,7 +176,7 @@ There are some cases where you have a scope, though it is not declared inside th
 
 <h4>if condition part</h4>
 
-The lexical variable declared in the conditional part of if has the scope of if.
+The a lexical variable declared in the conditional part of if has the scope of if.
 
 <pre>
 if (my $num = 1) {
@@ -223,7 +223,7 @@ print $num;
 
 <h4>for condition part</h4>
 
-The lexical variable declared in the condition part of for has the scope of for.
+The a lexical variable declared in the condition part of for has the scope of for.
 
 <pre>
 for (my $i = 0; $i < @nums; $i++) {
@@ -237,7 +237,7 @@ print $i;
 
 <h4>variable assignment part of for</h4>
 
-The lexical variable declared in the variable assignment part of for has the scope of for.
+The a lexical variable declared in the variable assignment part of for has the scope of for.
 
 <pre>
 for my $num (@nums) {

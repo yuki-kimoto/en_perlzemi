@@ -10,9 +10,9 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>local - Temporarily save and restore package variable</h2>
+<h2>local - Temporarily save and restore a package variable</h2>
 
-You can use <b> local </b> to temporarily change package variable.
+You can use <b> local </b> to temporarily change a package variable.
 
 <pre>
 LOCAL_VARIABLE_NAME = value;
@@ -40,7 +40,7 @@ If initialization is not performed, the initial value of the variable value will
 local $NUM;
 </pre>
 
-local is for package variable declared with <a href="/blog/20080308120495.html">our</a>. Note that it is not available for lexical variable declared by <a href="/blog/20080307120491.html">my</a>.
+local is for a package variable declared with <a href="/blog/20080308120495.html">our</a>. Note that it is not available for a lexical variable declared by <a href="/blog/20080307120491.html">my</a>.
 
 <pre>
 # Compile error
@@ -62,7 +62,7 @@ local $score{math};
 
 The most common use of local in Perl is for <a href="/blog/20161102147817.html">predefined variable</a> such as "$/", "%ENV" and "@ARGV".
 
-local targets package variable, but predefined variable actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
+local targets a package variable, but predefined variable actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
 
 So you can use local for predefined variable as well.
 
@@ -85,7 +85,7 @@ my $num;
 
 local is not a variable declaration, contrary to the expectation of the name. It has a dynamic scope.
 
-Local variable in other languages are lexical variable using my in Perl.
+Local variable in other languages are a lexical variable using my in Perl.
 
 <table>
   <tr>
@@ -148,7 +148,7 @@ Keep in mind that Perl, which doesn't have a builtin functions to read a file at
 
 <h3>local example program</h3>
 
-This is an example to temporarily change a predefined variable using local. Predefined variable are package variable that belong to the main package.
+This is an example to temporarily change a predefined variable using local. Predefined variable are a package variable that belong to the main package.
 
 <pre>
 {
@@ -171,7 +171,7 @@ print "\$NUM = $NUM\n";
 
 # The fully qualified name of $NUM is $main::NUM and belongs to the main package.
 # (In Perl, no variable is a global variable
-# Perl has only lexical and package variable. )
+# Perl has only lexical and a package variable. )
 
 print "\$main::NUM = $main::NUM\n";
 print "\n";

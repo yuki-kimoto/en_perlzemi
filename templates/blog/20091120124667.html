@@ -26,9 +26,9 @@ Be sure to write the two lines use strict; and use warnings; at the beginning of
 
 Think of it as the only time you don't have to write use strict; and use warnings when writing a command line script called a one-liner.
 
-<h3>Use lexical variable for filehandles (required unless you really have a specific purpose)</h3>
+<h3>Use a lexical variable for filehandles (required unless you really have a specific purpose)</h3>
 
-Use the lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the lexical variable.
+Use the a lexical variable you just declared for the filehandle. Declaring a lexical variable and specifying it as the first argument of the open function sets the file handle on the a lexical variable.
 
 <pre>
 # Lexical variable
@@ -45,7 +45,7 @@ while (my $lien = <$fh>) {
 
 Lexical variable have the great advantage of having scope and being able to be passed as arguments to other functions. Avoid using symbols such as FH and * FH as in the old commentary.
 
-It would also be more modern to put the declarations of lexical variable together in the open function.
+It would also be more modern to put the declarations of a lexical variable together in the open function.
 
 <pre>
 open my $fh, '<', $file
@@ -89,9 +89,9 @@ Use the die function to terminate the program with an error message. From the pe
 
 Be sure to perform error handling not only when opening a file but also when communicating with the outside of the program. External is everything except memory manipulation. Files, networks, etc. are external.
 
-<h3>Use lowercase letters and underscores in lexical variable and subroutine names (highly recommended)</h3>
+<h3>Use lowercase letters and underscores in a lexical variable and subroutine names (highly recommended)</h3>
 
-Use lowercase letters and underscores in the names of "lexical variable declared with my" and "subroutine".
+Use lowercase letters and underscores in the names of "a lexical variable declared with my" and "subroutine".
 
 <pre>
 # Lexical variable
@@ -116,18 +116,18 @@ I have written a separate article on how to name variable, so please refer to th
 
 As a general rule, the naming method for subroutine is "verb + noun". For those whose meaning is clear, it may be possible to use only "verbs" for the convenience of the user. However, I think it is safe to use "verb + noun" because it may cause problems later.
 
-<h3>Use uppercase letters and underscores for package variable (highly recommended)</h3>
+<h3>Use uppercase letters and underscores for a package variable (highly recommended)</h3>
 
-Use uppercase letters and underscores for package variable.
+Use uppercase letters and underscores for a package variable.
 
 <pre>
 our $OBJECT_COUNT;
 our $CLASS_INFO;
 </pre>
 
-<h3>Use lexical variable instead of package variable (required)</h3>
+<h3>Use a lexical variable instead of a package variable (required)</h3>
 
-If you are not the author of the module, you will not have the opportunity to use package variable. If you're using a package variable in a single script, that's the wrong way to use it. Let's change it to a lexical variable using my.
+If you are not the author of the module, you will not have the opportunity to use a package variable. If you're using a package variable in a single script, that's the wrong way to use it. Let's change it to a lexical variable using my.
 
 <h3>Write in standard (?) Code format (slightly recommended)</h3>
 
@@ -190,7 +190,7 @@ print $_ for @array;
 
 Some well-known CPAN modules use default variable, but I personally don't recommend them. A program that is as explicit as possible will be more readable.
 
-<h3>Declare lexical variable in foreach statement (highly recommended)</h3>
+<h3>Declare a lexical variable in foreach statement (highly recommended)</h3>
 
 Perl 5 allows you to declare a lexical variable at the beginning of a foreach statement.
 
@@ -203,7 +203,7 @@ for my $student (@students) {
 
 In this example, each element of @students goes into $student. $student is a lexical variable that has a scope from the beginning to the end of the foreach block.
 
-It is possible to omit the lexical variable, but it is not recommended.
+It is possible to omit the a lexical variable, but it is not recommended.
 
 <pre>
 # Not recommended writing

@@ -15,7 +15,7 @@
 
 Perl has a symbol table that programmers can reference and make changes to. Perl is more flexible and adaptable than other languages, but one of the features that makes it so powerful is the symbol table.
 
-The symbol table is just a hash named%main::. From the hash%main::, you can see all the subroutine and package variable of the script being executed. (Excluding lexical variable)
+The symbol table is just a hash named%main::. From the hash%main::, you can see all the subroutine and a package variable of the script being executed. (Excluding a lexical variable)
 
 <h3>Take a peek at the contents of the symbol table</h3>
 
@@ -23,14 +23,14 @@ The symbol table is just a hash named%main::. From the hash%main::, you can see 
 # main A symbol table containing the contents of the package
 # %main::Another name for %main::%::</pre>
 
-<h3>Know the contents of package variable through the symbol table</h3>
+<h3>Know the contents of a package variable through the symbol table</h3>
 
 <pre>
 our $num = 1;
 ${$main::{num}};
 </pre>
 
-A detailed explanation is given in the explanation of typeglobs. Here, remember Perl's ability to know the contents of package variable and subroutine from the symbol table.
+A detailed explanation is given in the explanation of typeglobs. Here, remember Perl's ability to know the contents of a package variable and subroutine from the symbol table.
 
 This is an example that outputs the contents of the symbol table.
 
