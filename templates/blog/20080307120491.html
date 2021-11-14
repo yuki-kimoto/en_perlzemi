@@ -29,7 +29,7 @@ the lexical variable declaration by my is a feature added in <a href="/blog/2016
 
 Think of a lexical variable in Perl as a local variable in other languages.
 
-<h3>What is a variable declaration? </H3>
+<h3>Variable declaration</H3>
 
 The variable declaration declares that the program uses a <a href="/blog/20161107147852.html">variable</a> from now.
 
@@ -63,11 +63,11 @@ my @nums = (1, 2, 3);
 my %score = (math => 80, english => 70);
 </pre>
 
-If initialization is not performed, <a href="/blog/20100220126425.html">undefined value</a> will be assigned for a scalar variable. For a array variable and a hash variable, <a href="/blog/20100308126967.html">empty list</a> is assigned.
+If initialization is not written, <a href="/blog/20100220126425.html">undefined value</a> is assigned for a scalar variable. For a array variable and a hash variable, <a href="/blog/20100308126967.html">empty list</a> is assigned.
 
-<h3>What are a lexical variable? </H3>
+<h3>What is a lexical variable? </H3>
 
-I wrote that you can declare a "a lexical variable" using my, but what exactly is a lexical variable? A lexical variable is a variable that has a lexical scope.
+What is a lexical variable? A lexical variable is a variable that has a lexical scope.
 
 Lexical variable have reached the end of their life and are freed from memory at the end of scope.
 
@@ -79,7 +79,7 @@ Lexical variable have reached the end of their life and are freed from memory at
 # "$num" is not available here.
 </pre>
 
-See below for a detailed explanation of lexical scopes.
+See below for the detailed explanation of the lexical scope.
 
 <ul>
   <li>
@@ -100,22 +100,22 @@ my $num = 1;
 print $nam;
 </pre>
 
-Be sure to use the strict module in your Perl programs, as you can quickly discover unintended variable usage.
+You can quickly find unused variables using the strict module.
 
-See below for a detailed explanation of the strict module.
+See below for the detailed explanation of the strict module.
 <ul>
   <li>
     <a href="/blog/20130912137895.html">strict - Strict grammar check</a>
   </li>
 </ul>
 
-<h3>Difference in variable declaration by "my", "our" and "local"</h3>
+<h3>Difference in variable declarations by "my", "our" and "local"</h3>
 
 There are three Perl variable declarations: "my", "our", and "local".
 
-The simple difference is that "my" declares a "a lexical variable", "our" declares a "a package variable", and "local" declares a package variable and saves the value until the end of scope. I have.
+The simple difference is that "my" declares a "a lexical variable", "our" declares a "a package variable", and "local" declares a package variable and saves the value until the end of scope.
 
-Avoid using "our" or "local" when declaring variable in Perl as much as possible. In modern Perl, you can do complete programming with just a variable declaration with "my".
+Avoid using "our" or "local" as much as possible. In modern Perl, you can write easy-to-read programs using only lexical variable declarations by "my".
 
 See below for additional explanations for our and local.
 
