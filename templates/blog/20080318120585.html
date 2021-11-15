@@ -12,20 +12,20 @@
 </ol>
 <h2>Perl comparison operator</h2>
 
-The <b> comparison operator </b> is an operator that compares the magnitude of two values. Perl has a <b> numeric comparison operator </b> that compares numbers and a <b> string comparison operator </b> that compares which is larger in lexical order.
+The <b> comparison operator </b> is an operator that compares two numbers. Perl has a <b> numeric comparison operator </b> which compares numbers and a <b> string comparison operator </b> which compares strings.
 
 <h3>Numeric comparison operator</h3>
 
-Numeric comparison operators are operators used to compare values as numbers.
+Numeric comparison operators are operators to compare values as numbers.
 
 <table>
   <tr>
-    <td>
-      *operator
-    </td>
-    <td>
-      *meaning
-    </td>
+    <th>
+      Operator
+    </th>
+    <th>
+      Meaning
+    </th>
   </tr>
 
   <tr>
@@ -33,7 +33,7 @@ Numeric comparison operators are operators used to compare values as numbers.
       A == B
     </td>
     <td>
-      A and B are equal
+      A is equal to B
     </td>
   </tr>
 
@@ -42,13 +42,13 @@ Numeric comparison operators are operators used to compare values as numbers.
       A != B
     </td>
     <td>
-      A and B are not equal
+      A is not equal to B
     </td>
   </tr>
 
   <tr>
     <td>
-      A> B
+      A > B
     </td>
     <td>
       A is greater than B
@@ -60,16 +60,16 @@ Numeric comparison operators are operators used to compare values as numbers.
       A >= B
     </td>
     <td>
-      A is B or higher
+      A is greater than or equal to B
     </td>
   </tr>
 
   <tr>
     <td>
-      A <B
+      A < B
     </td>
     <td>
-      A is smaller than B
+      A is less than B
     </td>
   </tr>
 
@@ -86,7 +86,7 @@ Numeric comparison operators are operators used to compare values as numbers.
 
 The comparison operator returns a true value if the condition is met, and a false value if the condition is not met.
 
-Please also refer to the following articles for Perl booleans.
+See the following article for Perl boolean.
 
 <ul>
   <li>
@@ -94,9 +94,9 @@ Please also refer to the following articles for Perl booleans.
   </li>
 </ul>
 
-<h4>Used in the conditional part of the if statement</h4>
+<h4>Example using if statement</h4>
 
-Use <a href="/blog/20161023147731.html">if statement</a> for an example program that compares the numbers assigned to <a href="/blog/20161107147852.html">variable</a> I will write it.
+Example using numeric comparison operators and a if statement:
 
 <pre>
 my $num1 = 4;
@@ -107,11 +107,11 @@ if ($num1 > $num2) {
 }
 </pre>
 
-In this program, $num1 is assigned 4 and $num2 is assigned 3. Since $num1 is greater than $num2, the condition is true and the inside of the block is executed.
+In this program, 4 is assigned to $num1 and 3 is assinged to $num2. Because $num1 is greater than $num2, the condition is true and the inside of the block is executed.
 
-<h4>Used in the conditional part of the ternary operator</h4>
+<h4>Example using ternary operator</h4>
 
-Let's use the comparison operator in the conditional part of the <a href="/blog/20080325120646.html">ternary operator</a>.
+Let's use the comparison operator with the <a href="/blog/20080325120646.html">ternary operator</a>.
 
 <pre>
 my $num1 = 4;
@@ -120,7 +120,7 @@ my $num2 = 3;
 my $message = $num1 > $num2 ? "OK": "Not OK";
 </pre>
 
-Since $num1 is larger than $num2, true is returned and "OK" is assigned to $message.
+Because $num1 is larger than $num2, true is returned and "OK" is assigned to $message.
 
 <h3>String comparison operator</h3>
 
