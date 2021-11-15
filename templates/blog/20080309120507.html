@@ -12,35 +12,33 @@
 </ol>
 <h2>local - Temporarily save and restore a package variable</h2>
 
-You can use <b> local </b> to temporarily change a package variable.
+You can use <b> local </b> to temporarily save and restore a package variable.
 
 <pre>
-LOCAL_VARIABLE_NAME = value;
+local $VAR = 4;
 </pre>
 
-If no value is specified, <a href="/blog/20100220126425.html">undefined value</a> will be set.
+If no value is specified, <a href="/blog/20100220126425.html">undefined value</a> is assinged.
 
 <h3>Saving and restoring values</h3>
 
-Assigning a value using local restores the previous value at the end of the <a href="/blog/20110128130016.html">scope</a>.
+The assigned value using local is restored at the end of the <a href="/blog/20110128130016.html">scope</a>.
 
 <pre>
 our $NUM = 5;
 {
   local $NUM = 3;
 }
-# Here, "$NUM" returns to "5" which is the "original value"
+# Here, $NUM becomes 5. This is the original value.
 </pre>
 
-Package variable modified by local are restored at the end of <a href="/blog/20110128130016.html">scope</a>.
-
-If initialization is not performed, the initial value of the variable value will be an undefined value.
+If initialization is not performed, a <a href="/blog/20100220126425.html">undefined value</a> is assinged.
 
 <pre>
 local $NUM;
 </pre>
 
-local is for a package variable declared with <a href="/blog/20080308120495.html">our</a>. Note that it is not available for a lexical variable declared by <a href="/blog/20080307120491.html">my</a>.
+local is available for the package variable declared by using <a href="/blog/20080308120495.html">our</a>. Note that local is not available for a lexical variable declared by using <a href="/blog/20080307120491.html">my</a>.
 
 <pre>
 # Compile error
@@ -48,7 +46,7 @@ my $num;
 local $num;
 </pre>
 
-However, no exception occurs for <a href="/blog/20161012147627.html">array</a> values and <a href="/blog/20161013147635.html">hash</a> values.
+However, no exception occurs for the element of a <a href="/blog/20161012147627.html">array</a> and the value of a <a href="/blog/20161013147635.html">hash</a>.
 
 <pre>
 my @nums = (1, 2, 3);
@@ -60,9 +58,9 @@ local $score{math};
 
 <h3>local for predefined variable</h3>
 
-The most common use of local in Perl is for <a href="/blog/20161102147817.html">predefined variable</a> such as "$/", "%ENV" and "@ARGV".
+The most common use of local in Perl is for <a href="/blog/20161102147817.html">predefined variables</a> such as "$/", "%ENV" and "@ARGV".
 
-local targets a package variable, but predefined variable actually belong to the <a href="/blog/20100419127089.html">package</a> called main.
+local is available for a package variable. Predefined variable actually belong to the CORE <a href="/blog/20100419127089.html">package</a>.
 
 So you can use local for predefined variable as well.
 
@@ -72,9 +70,9 @@ local $ENV{HOME};
 local @ARGV;
 </pre>
 
-<h3>Use my for variable declaration</h3>
+<h3>Let's use my for variable declarations</h3>
 
-Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces variable declaration by "my", and there is almost no need to declare variable by lcoal. Try to use "my" for almost all variable declarations.
+Since <a href="/blog/20160225145640.html">Perl 5.0</a>, Perl introduces the variable declaration by "my", so there is almost no need to declare variable by lcoal. Try to use "my" for almost all variable declarations.
 
 <pre>
 # Variable declaration
@@ -83,9 +81,9 @@ my $num;
 
 <h3>Difference between my and local</h3>
 
-local is not a variable declaration, contrary to the expectation of the name. It has a dynamic scope.
+local is not a variable declaration unlike what you can imagine from its name. It has a dynamic scope.
 
-Local variable in other languages are a lexical variable using my in Perl.
+The local variable in other languages is the same as the lexical variable of Perl.
 
 <table>
   <tr>
@@ -122,33 +120,34 @@ Local variable in other languages are a lexical variable using my in Perl.
   </tr>
 </table>
 
-<h3>Read the contents of the file at once</h3>
+<h3>Read the whole content of a file using local</h3>
 
-There are not many occasions when local is used voluntarily, but there are occasions when it is used. That is when describing the process of reading the contents of a file at once.
-Let's describe the process of reading the contents of a file at once.
+There are not many opportunities to use local, but there are a some important opportunities. The one is to read the whole content of a file.
+
+I describe the way to read the whole content of a file.
 
 <pre>
 my $file = 'a.txt';
 open my $fh, '<', $file
   or die "Can't open $file:$!";
 
-# Read the contents of the file at once
+# Read the whole content of a file
 my $content = do {local $/; <$fh>};
 </pre>
 
 The <a href="/blog/20090208123289.html">do block</a> returns the last evaluated value.
 
-local undefined the <a href="/blog/20161102147817.html">predefined variable</a> "$/" that represents a line break in the file.
+the <a href="/blog/20161102147817.html">predefined variable</a> "$/" is assinged to a undefined value by using local. "$/" is a line separator of files.
 
-This causes the <a href="/blog/20080722121673.html">file input operator</a> "<$fh>" to return the contents of the entire file.
+the <a href="/blog/20080722121673.html">line input operator</a> <$fh> returns the whole content of the file.
 
-And when the scope ends, "$/" returns to its original state.
+At the end of scope , "$/" is restored to its original value.
 
-Keep in mind that Perl, which doesn't have a builtin functions to read a file at once, may read the entire contents of the file in this way.
+Note that Perl doesn't yet have the builtin function to read the whole content of a file.
 
 <h3>local example program</h3>
 
-This is an example to temporarily change a predefined variable using local. Predefined variable are a package variable that belong to the main package.
+This is an example to temporarily save and restore a predefined variable using local. Predefined variable are a package variable that belong to the CORE package.
 
 <pre>
 {
@@ -190,4 +189,17 @@ print "\n";
 # Output 1
 print "Out of scope\n";
 print "\$NUM = $NUM\n";
+</pre>
+
+Execution result:
+
+<pre>
+$NUM = 1
+$main::NUM = 1
+
+In scope
+$NUM = 2
+
+Out of scope
+$NUM = 1
 </pre>
