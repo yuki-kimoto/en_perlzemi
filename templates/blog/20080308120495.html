@@ -10,11 +10,11 @@
     <meta itemprop = "position" content = "4" />
   </li>
 </ol>
-<h2>our - Declaration of a package variable</h2>
+<h2>our - Package variable declaration</h2>
 
 I will explain the declaration of <b> a package variable </b> by <b> our </b>.
 
-<h3>Declaration of a package variable</h3>
+<h3>Package variable declaration</h3>
 
 Use <strong> our </strong> to declare a package variable.
 
@@ -22,13 +22,13 @@ Use <strong> our </strong> to declare a package variable.
 our $NUM;
 </pre>
 
-Package variable are global variable that belong to one namespace. Package variable have qualified names (package names) and can be referenced from anywhere in the source code.
+A package variable are a global variable that belong to a package(For example, Foo). Package variable have a fully qualified name(For example, $Foo::NUM). You can access to the package variable from anywhere in the program.
 
-It is customary in Perl to make the variable name of a package variable "uppercase".
+Usually the name of a package variable is wrriten by uppercase characters.
 
-<h3>Initialization of a package variable</h3>
+<h3>Package variable initialization</h3>
 
-"Initialization" can be performed at the same time as the declaration of the package variable.
+You can initialize a package variable at the same time as the declaration of the package variable.
 
 <pre>
 our $NUM = 5;
@@ -44,7 +44,7 @@ Once a package variable is declared and initialized, its value will continue to 
 
 <h4>Package variable scope</h4>
 
-At the end of the scope, you will not be able to see it without the package name. You can refer to it by using the fully qualified name.
+At the end of the scope, you will not be able to see it without the package name. You can access to it by using the fully qualified name.
 
 <pre>
 package SomePackage;
@@ -56,7 +56,7 @@ $PACKAGE_VAR1 = 1;
 {
   our $PACKAGE_VAR2 = 2;
 }
-# At the end of scope, you can only refer to it with a fully qualified name
+# At the end of scope, you can only access to it with a fully qualified name
 $SomePackage::PACKAGE_VAR2;
 </pre>
 
@@ -70,7 +70,7 @@ See below for a detailed explanation of the scope.
 
 <h3>Package declaration</h3>
 
-In Perl, a package declaration is a namespace declaration in another language. Generally, package names start with an uppercase letter. Capitalize the word breaks as well.
+In Perl, a package declaration is the same as a namespace declaration in other language. Generally, package names start with an uppercase character as follows.
 
 <pre>
 package SomePackage;
@@ -82,7 +82,7 @@ Package variable can also be accessed with fully qualified names.
 $SomePackage::PACKAGE_VAR1
 </pre>
 
-See the following articles for more information on package declarations.
+See the following articles for more information on the package declaration.
 
 <ul>
   <li>
@@ -92,22 +92,22 @@ See the following articles for more information on package declarations.
 
 <h3>main package</h3>
 
-If no package is declared, the package variable declared with our belong to the main package.
+If no package is declared, the package variable declared in the "main" package.
 
 <pre>
 # Belongs to "main package" as "$main::NUM"
 our $NUM;
 </pre>
 
-In Perl, there are no variable that do not have a package. What looks like no package actually belongs to the main package.
+In Perl, all package variables belong to thier own package. If a package variable looks like not to belong to a package, the package variable belongs to the main package.
 
-For example, <a href="/blog/20161102147817.html">predefined variable</a> don't seem to belong to the package, but they do.
+For example, <a href="/blog/20161102147817.html">predefined variables</a> belong to the "CORE" package.
 
-<h3>Should we use variable declaration by our?</h3>
+<h3>Should I use package variable declarations?</h3>
 
-If you write its own program, you rarely have the opportunity to use our variable declarations. The safer and faster "my" variable declaration makes it possible to write a complete program. Avoid "our" as much as possible and use only "my".
+If you write your own program, you rarely have the opportunity to use our variable declarations. The safer and faster "my" variable declaration makes it possible to write a enough program. Avoid "our" as much as possible and use "my" in most places.
 
-my has a lexical scope and is safe with a small accessible range. Since it is in a continuous area, it has the characteristic that the access speed to variable is fast.
+Because my has a lexical scope and a small accessible range, you can write more safety program. Access speed to the variable is also faster.
 
 See the following article for variable declaration by my.
 
@@ -143,8 +143,7 @@ print "\$OtherPackage::PACKAGE_VAR1 = $OtherPackage::PACKAGE_VAR1\n\n";
 Execution result
 
 <pre>
-1: The a package variable has a qualified name (SomePackage) from any position in the program (Sco)
-You can also refer to it from outside the loop).
+1: Package variable has a qualified name (SomePackage)It can be referenced from anywhere in the program (even from outside the scope).
 $SomePackage::PACKAGE_VAR1 = 1
 $OtherPackage::PACKAGE_VAR1 = 2
 </pre>
