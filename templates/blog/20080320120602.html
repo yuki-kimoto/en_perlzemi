@@ -20,6 +20,8 @@ if (condition) {
 }
 </pre>
 
+<h4>elsif</h4>
+
 You can also use elsif to make multiple conditional branches.
 
 <pre>
@@ -30,6 +32,22 @@ elsif (condition2) {
   ...
 }
 </pre>
+
+More conditinal branches.
+
+<pre>
+if (condition1) {
+  ...
+}
+elsif (condition2) {
+  ...
+}
+elsif (condition3) {
+  ...
+}
+</pre>
+
+<h4>else</h4>
 
 If you use else, you can create the branch executed if the condition is not met.
 
@@ -42,45 +60,30 @@ else {
 }
 </pre>
 
+A combination with elsif statements:
+
+<pre>
+if (condition1) {
+  ...
+}
+elsif (condition2) {
+  ...
+}
+elsif (condition3) {
+  ...
+}
+else {
+
+}
+</pre>
+
 Please see below for details on how to use conditional branch using if statement.
 
 <ul>
   <li>
-    <a href="/blog/20161023147731.html">Conditional branching by if statement</a>
+    <a href="/blog/20161023147731.html">Conditional branch using if statement</a>
   </li>
 </ul>
-
-<h3>Conditional branch if ~ else</h3>
-
-<pre>
-if (condition) {
-  When the conditions are met
-}
-else {
-  If the conditions are not met
-}
-</pre>
-
-It is used when conditional branch is performed depending on whether the condition is satisfied or not.
-  
-<h3>Conditional branch if ~ elsif</h3>
-
-<pre>
-if (condition 1) {
-  When condition 1 is met
-}
-elsif (condition 2) {
-  When condition 2 is met
-}
-elsif (condition 3) {
-  When condition 3 is met
-}
-else {
-  If you didn't see any of the conditions.
-}
-</pre>
-
-Used when conditional branch is performed under multiple conditions. Unlike C language and Java, it is not written as else if. Write elsif.
 
 <h3>If statement example</h3>
 
@@ -115,4 +118,14 @@ elsif ($num == 3) {
 else {
   # Not effective
 }
+</pre>
+
+Execution result:
+
+<pre>
+1: if ~ else statement
+$num is not 1.
+
+2: if ~ elsif ~ elsif ~ else
+$num is 2
 </pre>
