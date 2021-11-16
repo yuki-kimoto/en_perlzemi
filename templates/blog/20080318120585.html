@@ -126,16 +126,16 @@ Because $num1 is greater than $num2, true is returned and "OK" is assigned to $m
 
 The string comparison operator is an operator used to compare <a href="/blog/20161003147558.html">strings</a> in the dictionary order.
 
-In dictionary order comparison, the size of the character code is compared one character at a time from the beginning. "A" is less than "b". "1" is greater than "02".
+In dictionary order comparison, the index of the character code is compared one by one from the beginning of the string. "A" is less than "b". "1" is greater than "02".
 
 <table>
   <tr>
-    <td>
-      *operator
-    </td>
-    <td>
-      *meaning
-    </td>
+    <th>
+      operator
+    </th>
+    <th>
+      meaning
+    </th>
   </tr>
 
   <tr>
@@ -143,7 +143,7 @@ In dictionary order comparison, the size of the character code is compared one c
       A eq B
     </td>
     <td>
-      A and B are equal
+      A is equal to B
     </td>
   </tr>
 
@@ -152,7 +152,7 @@ In dictionary order comparison, the size of the character code is compared one c
       A ne B
     </td>
     <td>
-      A and B are not equal
+      A is not equal to B
     </td>
   </tr>
 
@@ -170,7 +170,7 @@ In dictionary order comparison, the size of the character code is compared one c
       A ge B
     </td>
     <td>
-      A is B or higher
+      A is greater than or equal to B
     </td>
   </tr>
 
@@ -194,9 +194,9 @@ In dictionary order comparison, the size of the character code is compared one c
 
 </table>
 
-<h4>Used in the conditional part of the if statement</h4>
+<h4>Example using if statement</h4>
 
-This is an example that uses the string comparison operator in the conditional part of the if statement.
+This is an example that uses the string comparison operators with a if statement.
 
 <pre>
 my $str1 = "1";
@@ -207,9 +207,9 @@ if ($num1 gt $num2) {
 }
 </pre>
 
-<h3>Combine conditions with logical operators</h3>
+<h3>Join multiple conditions with logical operator</h3>
 
-Logical operators allow you to use them in a combination of comparison operators.
+Logical operators allow you to join multiple comparison operators.
 
 <pre>
 # $num1 is greater than 1 and less than 5
@@ -231,9 +231,9 @@ Logical operators are explained here.
   </li>
 </ul>
 
-<h3>How to check the partial position of a string</h3>
+<h3>How to check the containing of the partial string</h3>
 
-Perl's string comparison operator "eq" is used when a string matches perfectly, but there are times when you want to know a partial match of a string. In that case, use a regular expression.
+Perl's string comparison operator "eq" is used when the whole charaters of the strings match, but there are times when you want to know a partial match of a string. In that case, use a regular expression.
 
 <pre>
 # If $str1 contains "Cat"
@@ -252,23 +252,23 @@ Regular expressions are explained below.
 
 <h3>Example program</h3>
 
-This is an example of numerical comparison and dictionary order comparison.
+This is an example of numerical comparison and string comparison.
 
 <pre>
 use strict;
 use warnings;
 
-# Numerical comparison and dictionary order comparison
-print "1: Compare numerical comparison and dictionary order comparison\n";
+# Numeric comparison and string comparison
+print "1: Compare numerical comparison and string comparison\n";
 my $num1 = "1";
 my $num2 = "02";
 
 if ($num1 < $num2) {
-  print "$num1 is less than $num2 when compared numerically\n";
+  print "Compare in the numeric order, $num1 is less than $num2\n";
 }
 
 if ($num1 gt $num2) {
-  print "Compare in lexicographical order, $num1 is greater than $num2\n";
+  print "Compare in the dictionary order, $num1 is greater than $num2\n";
 }
 
 </pre>
@@ -276,7 +276,7 @@ if ($num1 gt $num2) {
 Execution result
 
 <pre>
-1: Compare numerical comparison and dictionary order comparison
-Compared numerically, 1 is less than 02
-Compared in lexicographical order, 1 is greater than 02
+1: Compare numerical comparison and string comparison
+Compare in the numeric order, 1 is less than 02
+Compare in the dictionary order, 1 is greater than 02
 </pre>
