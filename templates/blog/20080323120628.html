@@ -12,9 +12,12 @@
 </ol>
 <h2>Perl boolean</h2>
 
+Explains <strong> boolean </strong> in Perl.
 
+<h4>False values</h4>
 
-Explains <strong> boolean </strong> in Perl. There are five <strong> false values </strong> in Perl:
+There are <strong>five false values </strong> in Perl. Undefined value, equal to 0 as a <a href="/blog/20161026147748.html">number</a>, empty <a href="/blog/20161003147558.html">string</a>, string "0", a empty <a href="/blog/20100308126967.html">list</a> are false value.
+
 
 <table>
   <tr>
@@ -49,13 +52,13 @@ Explains <strong> boolean </strong> in Perl. There are five <strong> false value
       0
     </td>
     <td>
-      0
+      Equal to 0 as a number.
     </td>
   </tr>
 
   <tr>
     <td>
-      Four
+      4
     </td>
     <td>
       "0"
@@ -65,13 +68,24 @@ Explains <strong> boolean </strong> in Perl. There are five <strong> false value
     </td>
   </tr>
 
+  <tr>
+    <td>
+      5
+    </td>
+    <td>
+      ()
+    </td>
+    <td>
+      Empty list
+    </td>
+  </tr>
 </table>
 
-The <strong> true value </strong> in Perl is all but the above.
+<h4>True values</h4>
 
-Undefined value, equal to 0 in <a href="/blog/20161026147748.html">number</a>, empty <a href="/blog/20161003147558.html">string</a>, 0 Only the string, the empty <a href="/blog/20100308126967.html">list</a>, will be false.
+The <strong> true value </strong> in Perl is all values except the above.
 
-<h4>Examples of true values</h4>
+The following is the example of true values.
 
 <pre>
 # 1
@@ -87,7 +101,7 @@ my $obj = Point->new;
 "0.0"
 </pre>
 
-"0.0" is numerically equal to 0, but is treated as true.
+Note that "0.0" is a true value. Only "0" is a false value in strings which has more than zero length.
 
 <h3>Example program</h3>
 
@@ -107,7 +121,7 @@ $var = '0'; # False.
 # $var = '0.0' True. True for strings except '0' and''.
 </pre>
 
-False values are often used in if statement. Please see the following article for conditional branch by if statement.
+See the following article for the combination with if statement.
 
 <ul>
   <li>
