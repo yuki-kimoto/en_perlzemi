@@ -11,15 +11,13 @@
 </ol>
 <h2>if modifier - postfix if</h2>
 
-
-
-You can add if after the if modifier.
+Perl has if modifier syntax. You can place if keyword after a statement.
 
 <pre>
-Statement if condition;
+STATEMENT if CONDITION;
 </pre>
 
-This is an example using the if modifier. <a href="/blog/20100827127859.html">Regular expression</a> is used to move to the next line if the beginning is "#".
+This is an example using the if modifier. If the line starts with "#"(<a href="/blog/20100827127859.html">regular expression</a> /^#/), The program jumps to the next loop.
 
 <pre>
 for my $line (@lines) {
@@ -27,15 +25,13 @@ for my $line (@lines) {
 }
 </pre>
 
-There is a merit to use the if modifier when it is a simple condition that can be written in one line. In combination with <a href="/blog/20080329120687.html">next</a> and last, "next if condition" and "last if condition" are often used.
+The benefits to use the if modifier is that a simple condition branch is written in one line. The combination with <a href="/blog/20080329120687.html">next</a> are often used.
 
-<h4>Benefits of the if modifier</h4>
-
-The advantage of the if modifier over the normal <a href="/blog/20161023147731.html">if statement</a> is performance. The if statement creates a <a href="/blog/20110128130016.html">scope</a>, while the if modifier does not. Therefore, the if modifier has better performance.
+The if statement creates a <a href="/blog/20110128130016.html">scope</a>, while the if modifier does not. Therefore, the if modifier has a little better performance.
 
 <h4>unless modifier</h4>
 
-There is an unless modifier that can be followed in the same way as the if modifier.
+The unless modifier also exists.
 
 <pre>
 $num1 = 1 unless defined $num1;
@@ -51,14 +47,14 @@ The unless modifier is explained in detail below.
 
 <h3>Example code</h3>
 
-This is an example if modifier.
+This is an example of if modifiers.
 
 <pre>
 use strict;
 use warnings;
 
-# Postfix if
-print "1-2: Example of postfix if (next if)\n";
+# if modifier
+print "1-2: Example of if modifier (next if)\n";
 my @lines = (
   '#comment',
   'The first line',
@@ -76,6 +72,7 @@ print "\n";
 Execution result
 
 <pre>
+1-2: Example of if modifier (next if)
 The first line
 2nd line
 </pre>
