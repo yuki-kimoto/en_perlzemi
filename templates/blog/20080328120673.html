@@ -2,10 +2,6 @@
     <meta itemprop = "position" content = "1" />
   </li>
   &#8250;
-  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161023147731.html">        <span itemprop = "name">control structure </span></a>
-    <meta itemprop = "position" content = "2" />
-  </li>
-  &#8250;
   <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/blog/20161022147731.html">        <span itemprop = "name">Syntax </span></a>
     <meta itemprop = "position" content = "3" />
   </li>
@@ -16,35 +12,42 @@
 </ol>
 <h2>foreach - Processing of each element of the array</h2>
 
-
-
-Use <strong> foreach </strong> to process each element of the <strong> array in turn </strong>. Perl prefers to use <a href="/blog/20100123126425.html">while statement</a>.
+Use <strong> foreach </strong> statement to iterate the elements of the array.
 
 <pre>
-foreach my $item (@array) {
+foreach my $element (@array) {
   ...
 }
 </pre>
 
-Also, in Perl, foreach is another name for for, so you can use for instead of foreach. I think this is more concise.
+In Perl, foreach is the alias for for statement, so you can use for instead of foreach.
 
 <pre>
-for my $item (@array) {
+for my $element (@array) {
   ...
 }
 </pre>
 
-The method of outputting the elements in order is explained in detail on the following page.
+The way to output the elements of a array is explained in detail on the following article.
 
 <ul>
   <li>
-    <a href="/blog/20170521149524.html">Let's learn the iterative processing using for statement and while statement</a>
+    <a href="/blog/20170521149524.html">Let's learn the repeat syntax using for statement and while statement</a>
   </li>
 </ul>
 
+<h3>Other repeat syntaxes</h3>
+
+Other repeat syntaxes are <a href="/blog/20100123126425.html">while statement</a> and for statement. foreach statement is the merely alias for for statement.
+
 <h3>Example</h3>
 
+Examples of foreach statement.
+
+<h4>Array</h4>
+
 This is an example that outputs the elements of the array in order.
+
 <pre>
 # Output array elements in order
 my @nums = (3, 4, 5);
@@ -52,6 +55,16 @@ foreach my $num (@nums) {
   print "$num\n";
 }
 </pre>
+
+Output:
+
+<pre>
+3
+4
+5
+</pre>
+
+<h4>Array reference</h4>
 
 This is an example that outputs the elements of an array in order when the data structure is an array reference.
 
@@ -63,7 +76,17 @@ foreach my $num (@$nums) {
 }
 </pre>
 
- This is an example that outputs the values contained in the two-dimensional array, separated by tabs for each line. <a href="/blog/20081007122338.html">join function</a> is used to connect the strings contained in the array with tabs.
+Output:
+
+<pre>
+3
+4
+5
+</pre>
+
+<h4>2D array</h4>
+
+This is an example that outputs the values contained in the two-dimensional array, separated by tabs for each line. <a href="/blog/20081007122338.html">join function</a> is used to connect the strings contained in the array with tabs.
 
 <pre>
 # Output the values contained in the 2D array in tabs for each line
@@ -72,16 +95,25 @@ my $data = [
   ['b', 2]
 ];;
 
-foreach my $record(@$data) {
+foreach my $record (@$data) {
   print join("\t", @$record) . "\n";
 }
 </pre>
+
+Output:
+
+<pre>
+a	1
+b	2
+</pre>
+
+<h4>Join with tab</h4>
 
 This is an example that outputs the values contained in the hash array for each line, separated by tabs.
 
 <pre>
 # Outputs the values contained in the hash array, tab-separated line by line
-my $people = [
+my $persons = [
   {name =>'Ken', age => 19},
   {name =>'Taro', age => 32}
 ];;
@@ -91,6 +123,15 @@ foreach my $person (@$persons) {
   print join("\t", @record) . "\n";
 }
 </pre>
+
+Output:
+
+<pre>
+Ken	19
+Taro	32
+</pre>
+
+<h4>Output strings</h4>
 
 Here are some examples of foreach.
 
@@ -119,7 +160,9 @@ foreach my $index(0 .. $# persons) {
   print "\$persons[$index] = $persons[$index]\n";
 }
 </pre>
-Output
+
+Output:
+
 <pre>
 [1]
 tom
