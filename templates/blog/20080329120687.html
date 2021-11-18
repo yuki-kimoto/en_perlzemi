@@ -67,7 +67,7 @@ Only when $char is "z", the program jumps to the beginning of the next loop. <a 
 
 <pre>
 a
-b b
+b
 c
 d
 e
@@ -76,20 +76,20 @@ f
 
 qw(z z a b c d e f) is <a href="/blog/20080222120369.html">string list operator</a>.
 
-if statement, for statement, and while statement are explained in detail below, so please refer to them.
+The details of if statement, for statement, and while statement are explained below.
 
 <ul>
   <li>
     <a href="/blog/20161023147731.html">Learn the syntax of conditional branch using if statement</a>
   </li>
   <li>
-    <a href="/blog/20170521149524.html">Let's learn the iterative processing using for statement and while statement</a>
+    <a href="/blog/20170521149524.html">Let's learn the syntax of the loop using for statement and while statement</a>
   </li>
 </ul>
 
-<h3>Try using it with a regular expression</h3>
+<h3>next statement with regular expression</h3>
 
-I often combine next with a regular expression. Let's write one example. Let's write an example that skips the output if it doesn't contain the string "ABC". unless statement is used for condition judgment.
+I often use next with regular expression. The following example is that if the string doesn't contain "ABC", the program jumps to the beginning of the next loop.
 
 <pre>
 use strict;
@@ -110,17 +110,15 @@ ABC
 ABCD
 </pre>
 
-<h3>Related information</h3>
+<h4>last statement - finish the loop</h4>
 
-<h4>You can escape the loop using last statement</h4>
-
-Similar to next statement is last statement. You can break out of the loop with last statement.
+last statement is the syntax associated with next statement . You can finish the loop using last statement.
 
 <pre>
 last
 </pre>
 
-For last statement, refer to the following article.
+For last statement, See the following article.
 
 <ul>
   <li>
