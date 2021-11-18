@@ -47,7 +47,7 @@ This is an example program that uses the next statement.
 
 <h4>Jump to the beginning of the loop when a specific character is matched</h4>
 
-In the middle of loop processing, you can use next statement when you want to jump to the beginning of the next loop under certain conditions.
+In the middle of loop block, you can use next statement when you want to jump to the beginning of the next loop with if statement.
 
 <pre>
 use strict;
@@ -61,7 +61,9 @@ for my $char (@chars) {
 }
 </pre>
 
-This is the execution result. Only when it is "z", it jumps to the beginning of the next loop, so the following <a href="/blog/20170404149131.html">print function</a> is not executed.
+Output:
+
+Only when $char is "z", the program jumps to the beginning of the next loop. <a href="/blog/20170404149131.html">print function</a> in the next line is not executed.
 
 <pre>
 a
@@ -72,7 +74,7 @@ e
 f
 </pre>
 
-"Qw (z z a b c d e f)" is a <a href="/blog/20080222120369.html">string list operator</a>.
+qw(z z a b c d e f) is a <a href="/blog/20080222120369.html">string list operator</a>.
 
 The if statement, for statement, and while statement are explained in detail below, so please refer to them.
 
