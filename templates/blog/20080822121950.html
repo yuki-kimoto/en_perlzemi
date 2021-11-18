@@ -149,7 +149,7 @@ For example, if the bit string is 110, you have read and write permissions, and 
 
 <h4>Octal representation of file permissions</h4>
 
-File permissions are just bit strings, but they are often specified in octal for convenience. Use octal numbers when changing permissions with the command chmod, or when specifying permissions with the <a href="/blog/20080804121794.html">sysopen function</a>.
+File permissions are just bit strings, but they are often specified in octal for convenience. Use octal numbers when changing permissions with the command chmod, or when specifying permissions with <a href="/blog/20080804121794.html">sysopen function</a>.
 
 The correspondence between binary numbers (bit strings) and octal numbers is described.
 
@@ -269,7 +269,7 @@ Of these, the four most commonly used are 6 (110, read and write), 7 (111, read 
 
 <h4>Character representation of file permissions</h4>
 
-File permissions are often expressed in text for human readability. It is used when specifying permissions with the <a href="/blog/20080821121933.html">chmod function</a> and when displaying detailed file information with the ls -l command.
+File permissions are often expressed in text for human readability. It is used when specifying permissions with <a href="/blog/20080821121933.html">chmod function</a> and when displaying detailed file information with the ls -l command.
 
 The read permission bit is represented by "r", the write permission bit is represented by "w", and the execute permission bit is represented by "x". If the bit is not set, it is represented by "-".
 
@@ -724,7 +724,7 @@ There is little point in losing execute permission on a directory. It is suffici
 
 <h3>Check file permissions</h3>
 
-I will explain how to check the permissions. To find out the file permissions, use the <a href="/blog/20080512121060.html">stat function</a> to retrieve the file permissions information. The third element is the mode information. Converting with the obtained S_IMODE function gives pure permission information.
+I will explain how to check the permissions. To find out the file permissions, use <a href="/blog/20080512121060.html">stat function</a> to retrieve the file permissions information. The third element is the mode information. Converting with the obtained S_IMODE function gives pure permission information.
 
 <pre>
 use Fcntl ':mode';
@@ -778,7 +778,7 @@ printf "$file permissions (binary display):%09b\n", S_IMODE ($mode);
 
 <h3>What is a bit mask? </H3>
 
-Bitmasks affect the permissions when creating files and directories with the <a href="/blog/20080804121794.html">sysopen function</a> and mkdir functions.
+Bitmasks affect the permissions when creating files and directories with <a href="/blog/20080804121794.html">sysopen function</a> and mkdir functions.
 
 For example, if the permission specified in the sysopen function is 666 and the bitmask setting is 022, the permission of the created file will be 644.
 

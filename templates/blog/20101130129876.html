@@ -36,7 +36,7 @@ sub total {
 }
 </pre>
 
-(1) The argument is stored in the variable "<strong> @_ </strong>". I've reassigned the variable $num1 and $num2 to give the arguments descriptive names. (2) The two values are totaled. (3) The return value can be returned using the <a href="/blog/20171111151040.html">return function</a>.
+(1) The argument is stored in the variable "<strong> @_ </strong>". I've reassigned the variable $num1 and $num2 to give the arguments descriptive names. (2) The two values are totaled. (3) The return value can be returned using <a href="/blog/20171111151040.html">return function</a>.
 
 <h3>Subroutine call</h3>
 
@@ -315,7 +315,7 @@ func {
 
 However, this method is not recommended.The recommended method is to return the "array reference" and "hash reference" described below.
 
-You can also use the <a href="/blog/20080610121319.html">wantarray function</a> to return arguments depending on the context of the caller, but this is not recommended. The reason is that changing the return value depending on the context forces the user to write "scalar func ()" at some point to enforce the scalar context.
+You can also use <a href="/blog/20080610121319.html">wantarray function</a> to return arguments depending on the context of the caller, but this is not recommended. The reason is that changing the return value depending on the context forces the user to write "scalar func ()" at some point to enforce the scalar context.
 
 <h4>Return reference as return value</h4>
 
@@ -449,7 +449,7 @@ if (my $error = $@) {
 }
 </pre>
 
-When an exception occurs, the content of the error is stored in the <a href="/blog/20161102147817.html">predefined variable</a> called "$@". Since "$@" may be overwritten by a global variable, it is recommended to assign it to a lexical variable immediately.
+When an exception occurs, the content of the error is stored in <a href="/blog/20161102147817.html">predefined variable</a> called "$@". Since "$@" may be overwritten by a global variable, it is recommended to assign it to a lexical variable immediately.
 
 For a detailed explanation of exception handling, see "<a href="/blog/20100411127089.html">Perl's" Exception Handling "Mechanism-Error Notification and Detection</a>".
 

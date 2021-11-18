@@ -14,7 +14,7 @@ I will explain how to perform "base conversion" in Perl.
 
 <h4>Conversion from decimal to binary, octal, hexadecimal</h4>
 
-Let's convert from decimal to binary, octal, and hexadecimal. Use the format specification in the <a href="/blog/20081001122296.html">sprintf function</a>.
+Let's convert from decimal to binary, octal, and hexadecimal. Use the format specification in <a href="/blog/20081001122296.html">sprintf function</a>.
 
 <pre>
 # Convert to binary string
@@ -33,7 +33,7 @@ my $hex_str = sprintf("%X", $num);
 
 To convert a decimal string to a binary number, use the sprintf function to specify the format as "%b". To convert to octal and hexadecimal, use "%o" and "%X" respectively.
 
-The sprintf function is a common function of the <a href="/blog/20170326149148.html">printf function</a>. If you use sprintf, you can get the string output by the printf function as the return value.
+The sprintf function is a common function of <a href="/blog/20170326149148.html">printf function</a>. If you use sprintf, you can get the string output by the printf function as the return value.
 
 Below is an example conversion to binary, octal, and hexadecimal numbers.
 
@@ -66,7 +66,7 @@ I will explain the conversion from binary numbers, octal numbers, and hexadecima
 
 <b> Binary to Decimal Conversion </b>
 
-Use the <a href="/blog/20171027150945.html">oct function</a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
+Use <a href="/blog/20171027150945.html">oct function</a> to convert from binary to decimal. The oct function is originally a function that converts an octal number to a decimal number, but if a string prefixed with 0b is passed as an argument, the binary number is converted to a decimal number.
 
 <pre>
 my $num = oct('0b'. $Bit_str);
@@ -74,7 +74,7 @@ my $num = oct('0b'. $Bit_str);
 
 <b> Conversion from octal to decimal </b>
 
-Use the <a href="/blog/20171027150945.html">oct function</a> to convert from octal to decimal. In the example, '17' is passed, but even if there is a leading 0 like '017', it will be converted correctly.
+Use <a href="/blog/20171027150945.html">oct function</a> to convert from octal to decimal. In the example, '17' is passed, but even if there is a leading 0 like '017', it will be converted correctly.
 
 <pre>
 my $num = oct($oct_str);
@@ -82,7 +82,7 @@ my $num = oct($oct_str);
 
 <b> Hexadecimal to Decimal Conversion </b>
 
-Use the <a href="/blog/20171026150980.html">hex function</a> to convert from hexadecimal to decimal. In the example, 'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
+Use <a href="/blog/20171026150980.html">hex function</a> to convert from hexadecimal to decimal. In the example, 'FF' is passed as an argument, but even if 0x is added at the beginning like '0xFF', it will be converted correctly.
 
 <pre>
 my $hex_to_dec = hex($hex_str);
@@ -209,7 +209,7 @@ my $sign = $1 ? substr($dec, 0, 1, ''):'';
 
 If there is a sign, the sign is assigned to $1, so the presence or absence of the sign is judged by whether or not $1 is defined. Here, the ternary operator is used for conditional branch.
 
-If there is a sign, delete it by replacing the first character with an empty string with the <a href="/blog/20080224120386.html">substr function</a>. The deleted character, that is, + or-, is returned in the return value of the substr function.
+If there is a sign, delete it by replacing the first character with an empty string with <a href="/blog/20080224120386.html">substr function</a>. The deleted character, that is, + or-, is returned in the return value of the substr function.
 
 If $1 is undefined, there is no sign, so substitute an empty string.
 

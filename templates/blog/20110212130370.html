@@ -16,7 +16,7 @@ Let's master the basics of Perl's file I/O. The goal is to be able to read and w
 
 You must first open the file in order to read it. Files are managed by the OS, so you must first tell the OS that you want to work with the files programmatically. The OS returns the identifier of the target file to the program.
 
-Use the <a href="/blog/20080718121643.html">open function</a>: title = open function] to open the file.
+Use <a href="/blog/20080718121643.html">open function</a>: title = open function] to open the file.
 
 <pre>
 my $file = 'data.txt';
@@ -28,9 +28,9 @@ I will explain the process of opening files one by one.
 
 <h4>open function</h4>
 
-The open function takes three arguments. Specify the lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, the <a href="/blog/20080721121664.html">file handle</a> is stored in the lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
+The open function takes three arguments. Specify the lexical variable in the first argument, the open mode in the second argument, and the file name in the third argument. When the file is opened, <a href="/blog/20080721121664.html">file handle</a> is stored in the lexical variable specified by the first argument. Input from a file and output to a file are done through this file handle. The second argument is open mode, and if you want to read the contents from the file, specify "<".
 
-If the open function fails because the file does not exist, it returns <a href="/blog/20100220126425.html">undef</a>. If it fails, use the <a href="/blog/20100212126425.html">die function</a> to throw an exception. By using <a href="/blog/20180125151688.html">or operator</a>, if the executable statement on the left side of or is false, you can describe the process of executing the executable statement on the right side.
+If the open function fails because the file does not exist, it returns <a href="/blog/20100220126425.html">undef</a>. If it fails, use <a href="/blog/20100212126425.html">die function</a> to throw an exception. By using <a href="/blog/20180125151688.html">or operator</a>, if the executable statement on the left side of or is false, you can describe the process of executing the executable statement on the right side.
 
 <h4>Open mode</h4>
 
@@ -112,7 +112,7 @@ use Encode::UTF8Mac;
 open my $fh, '<', encode('' utf-8-mac'', $file);
 </pre>
 
-Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use the <a href="/blog/20120201132807.html">Encode::UTF8Mac</a> module.
+Note that Mac OS X is stored in a special UTF-8, not a simple UTF-8. Use <a href="/blog/20120201132807.html">Encode::UTF8Mac</a> module.
 
 The following explanation is detailed about the handling of Japanese.
 
@@ -153,7 +153,7 @@ The exception message should include the following:
 die qq/Can't open file "$file":$!/;
 </pre>
 
-"Can't open file" $file "" tells the user that the file open failed. Also, the <a href="/blog/20161102147817.html">predefined variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
+"Can't open file" $file "" tells the user that the file open failed. Also, <a href="/blog/20161102147817.html">predefined variable</a> called $! Is set to the content of the message notified by the OS when the system call fails. Please include the exception message.
 
 For a detailed explanation of <a href="/blog/20100411127089.html">exception handling</a>, see the following article.
 
@@ -168,14 +168,14 @@ open my $fh, '<', $file
   or die qq/Can't open file "$file":$!/;
 </pre>
 
-Use the <a href="/blog/20080722121673.html">line input operator</a> to read the file line by line.
+Use <a href="/blog/20080722121673.html">line input operator</a> to read the file line by line.
 
 <pre>
 # Line input operator
 <File handle>
 </pre>
 
-Use the <a href="/blog/20170521149524.html">while statement</a> to read the lines line by line. The following is an example of outputting all lines to standard output (screen).
+Use <a href="/blog/20170521149524.html">while statement</a> to read the lines line by line. The following is an example of outputting all lines to standard output (screen).
 
 <pre>
 while (my $line = <$fh>) {
@@ -191,7 +191,7 @@ The line input operator returns an undef when it reaches the end of the file, so
 
 Close the file after reading or writing to it.
 
-Use the <a href="/blog/20160312145776.html">close function</a> to close the file.
+Use <a href="/blog/20160312145776.html">close function</a> to close the file.
 
 <pre>
 close $fh;
@@ -210,7 +210,7 @@ open my $fh, '>', $file
   or die qq/Can't open file "$file":$!/;
 </pre>
 
-Use the <a href="/blog/20170404149131.html">print function</a> to write a string to the file.
+Use <a href="/blog/20170404149131.html">print function</a> to write a string to the file.
 
 <pre>
 print file handle string
@@ -328,7 +328,7 @@ $/ = "\x0A";
 
 <h4>behavior of chomp function</h4>
 
-You can use the <a href="/blog/20080226120403.html">chomp function</a> to remove the trailing line break, but it's actually removing the trailing input record separator.
+You can use <a href="/blog/20080226120403.html">chomp function</a> to remove the trailing line break, but it's actually removing the trailing input record separator.
 
 <pre>
 chomp string;

@@ -62,9 +62,9 @@ I think this part is difficult to understand.
   my $proto = shift;
   my $class = ref $proto || $proto;
 </pre>
-What this does is that if $proto is an object, use the <a href="/blog/20090318123712.html">ref function</a> to retrieve the associated class name. increase.
+What this does is that if $proto is an object, use <a href="/blog/20090318123712.html">ref function</a> to retrieve the associated class name. increase.
 
-If not, I'm trying to just use the class name. If a string (class name) is passed to the <a href="/blog/20090318123712.html">ref function</a>, a false value will be returned and the right side of || will be executed.
+If not, I'm trying to just use the class name. If a string (class name) is passed to <a href="/blog/20090318123712.html">ref function</a>, a false value will be returned and the right side of || will be executed.
 
 That's why $class will contain the class name, whether it's called by the class name or by an object.
 

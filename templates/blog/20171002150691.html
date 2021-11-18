@@ -36,7 +36,7 @@ If the directory opening fails, a false message will be returned, so you need to
 
 <a href="/blog/20100212126425.html">die function</a> raises an exception and terminates the program.
 
-The <a href="/blog/20161102147817.html">predefined variable "$!"</a> is assigned the reason why the directory open failed, so be sure to include it in the error message.
+<a href="/blog/20161102147817.html">predefined variable "$!"</a> is assigned the reason why the directory open failed, so be sure to include it in the error message.
 
 <!-
 <h4>How to read the contents of a directory? </H4>
@@ -50,7 +50,7 @@ Use the readdir function to actually read the contents of the directory. The rea
 
 <h4>How to close the directory handle? </H4>
 
-The directory handle is automatically released when the <a href="/blog/20110128130016.html">scope</a> is finished, so there is no need to explicitly close it. This is because the destructor runs when there are no more reference to the directory handle.
+The directory handle is automatically released when <a href="/blog/20110128130016.html">scope</a> is finished, so there is no need to explicitly close it. This is because the destructor runs when there are no more reference to the directory handle.
 
 <pre>
 {
@@ -65,7 +65,7 @@ The directory handle is automatically released when the <a href="/blog/201101281
 # The directory handle is automatically closed when the scope ends
 </pre>
 
-If you want to explicitly close the directory handle, use the <a href="/blog/20171001150694.html">closedir function</a>.
+If you want to explicitly close the directory handle, use <a href="/blog/20171001150694.html">closedir function</a>.
 
 <pre>
 closedir $dh;

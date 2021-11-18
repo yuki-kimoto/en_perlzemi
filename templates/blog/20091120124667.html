@@ -398,7 +398,7 @@ In such a case, you may end up reading the documentation for all the modules bei
 
 <h3>Don't use goto (required except in really special cases)</h3>
 
-Perl has a <a href="/blog/20170514149606.html">goto statement</a>, but you shouldn't use it. Programming with goto is a thing of the past, not just Perl. If for some reason you want to use goto, be sure to have an alternative.
+Perl has <a href="/blog/20170514149606.html">goto statement</a>, but you shouldn't use it. Programming with goto is a thing of the past, not just Perl. If for some reason you want to use goto, be sure to have an alternative.
 
 If you want to perform loop control, use "last" and "next". If you want to handle the error, use die to throw the exception.
 
@@ -412,7 +412,7 @@ Statements that can be described by the do while statement can always be describ
 
 <h3>Do not use redo(recommended)</h3>
 
-Perl has a <a href="/blog/20170515149615.html">redo statement</a>, but you can write the same logic without using redo. I've used redo several times, but I find programming with redo very confusing. Since the same logic can always be written without using redo, it is recommended to consider logic that does not use redo.
+Perl has <a href="/blog/20170515149615.html">redo statement</a>, but you can write the same logic without using redo. I've used redo several times, but I find programming with redo very confusing. Since the same logic can always be written without using redo, it is recommended to consider logic that does not use redo.
 
 <h3>Do not use prototype (highly recommended)</h3>
 
@@ -488,7 +488,7 @@ If you do this, func will be called and if an error occurs, an error message wil
 func ();
 </pre>
 
-If you don't want to quit the program, use the <a href="/blog/20100312126967.html">eval block</a>. Think of it as a catch in Java. If an error occurs, the content of the error is set in a predefined variable called $@, so you can check this variable to see if an error has occurred.
+If you don't want to quit the program, use <a href="/blog/20100312126967.html">eval block</a>. Think of it as a catch in Java. If an error occurs, the content of the error is set in a predefined variable called $@, so you can check this variable to see if an error has occurred.
 
 <pre>
 eval {func ()};

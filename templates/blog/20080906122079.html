@@ -70,13 +70,13 @@ my @members = qw/aya toru kato kenji mina haruna kita michel kotaro/;
 $members[int(rand scalar @members)];
 </pre>
 
-To randomly select the elements of the <a href="/blog/20161012147627.html">array</a>, give the number of elements in the array to the rand function, extract the integer part with the int function, and add subscripts. You can do it.
+To randomly select the elements of <a href="/blog/20161012147627.html">array</a>, give the number of elements in the array to the rand function, extract the integer part with the int function, and add subscripts. You can do it.
 
 If the elements of the array are 10, random numbers from 0 to 9 will be generated and the corresponding elements will be returned.
 
 <h3>To generate reproducible random numbers</h3>
 
-To generate reproducible random numbers, give the <a href="/blog/20080908122097.html">srand function</a> an appropriate number before calling the rand function.
+To generate reproducible random numbers, give <a href="/blog/20080908122097.html">srand function</a> an appropriate number before calling the rand function.
 
 <pre>
 # Initialize random number generation algorithm
@@ -86,6 +86,6 @@ rand $num;
 
 <h3>How to find accurate pseudo - random numbers</h3>
 
-If you want to find a random number that is more accurate than Perl's rand function, it is convenient to use the <a href="/blog/20080909122097.html">Math::Random::MT module</a> available on CPAN.
+If you want to find a random number that is more accurate than Perl's rand function, it is convenient to use <a href="/blog/20080909122097.html">Math::Random::MT module</a> available on CPAN.
 
 A method called the "Mersenne Twister method" is used to obtain accurate random numbers.

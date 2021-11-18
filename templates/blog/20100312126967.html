@@ -36,7 +36,7 @@ eval {...};
 
 This plays the same role as the catch syntax for exception handling in Java and elsewhere. If an exception occurs inside the eval block, you can catch the exception and prevent the program from terminating.
 
-The content of the exception is assigned to <a href="/blog/20161102147817.html">predefined variable</a> "$@", so let's check this. It is recommended to save $@in a <a href="/blog/20161107147852.html">variable</a> as it may be overwritten by other processing.
+The content of the exception is assigned to <a href="/blog/20161102147817.html">predefined variable</a> "$@", so let's check this. It is recommended to save $@in <a href="/blog/20161107147852.html">variable</a> as it may be overwritten by other processing.
 
 <pre>
 if (my $error = $@) {
@@ -61,7 +61,7 @@ The one called the eval string is a syntax that dynamically executes a string. I
 eval $string;
 </pre>
 
-As an example, you can define a <a href="/blog/20101130129876.html">subroutine</a> at runtime. The following example defines a subroutine called foo that returns 5 with an eval string and a <a href="/blog/20080614121342.html">typeglob</a> at runtime. "No string'refs'" temporarily allows symbolic reference.
+As an example, you can define <a href="/blog/20101130129876.html">subroutine</a> at runtime. The following example defines a subroutine called foo that returns 5 with an eval string and <a href="/blog/20080614121342.html">typeglob</a> at runtime. "No string'refs'" temporarily allows symbolic reference.
 
 <pre>
 {

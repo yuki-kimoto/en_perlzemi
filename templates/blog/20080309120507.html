@@ -22,7 +22,7 @@ If no value is specified, <a href="/blog/20100220126425.html">undefined value</a
 
 <h3>Saving and restoring values</h3>
 
-The assigned value using local is restored at the end of the <a href="/blog/20110128130016.html">scope</a>.
+The assigned value using local is restored at the end of <a href="/blog/20110128130016.html">scope</a>.
 
 <pre>
 our $NUM = 5;
@@ -32,7 +32,7 @@ our $NUM = 5;
 # Here, $NUM becomes 5. This is the original value.
 </pre>
 
-If initialization is not performed, a <a href="/blog/20100220126425.html">undefined value</a> is assinged.
+If initialization is not performed, <a href="/blog/20100220126425.html">undefined value</a> is assinged.
 
 <pre>
 local $NUM;
@@ -46,7 +46,7 @@ my $num;
 local $num;
 </pre>
 
-However, no exception occurs for the element of a <a href="/blog/20161012147627.html">array</a> and the value of a <a href="/blog/20161013147635.html">hash</a>.
+However, no exception occurs for the element of <a href="/blog/20161012147627.html">array</a> and the value of <a href="/blog/20161013147635.html">hash</a>.
 
 <pre>
 my @nums = (1, 2, 3);
@@ -135,11 +135,11 @@ open my $fh, '<', $file
 my $content = do {local $/; <$fh>};
 </pre>
 
-The <a href="/blog/20090208123289.html">do block</a> returns the last evaluated value.
+<a href="/blog/20090208123289.html">do block</a> returns the last evaluated value.
 
-the <a href="/blog/20161102147817.html">predefined variable</a> "$/" is assinged to a undefined value by using local. "$/" is a line separator of files.
+<a href="/blog/20161102147817.html">predefined variable</a> "$/" is assinged to a undefined value by using local. "$/" is a line separator of files.
 
-the <a href="/blog/20080722121673.html">line input operator</a> <$fh> returns the whole content of the file.
+<a href="/blog/20080722121673.html">line input operator</a> <$fh> returns the whole content of the file.
 
 At the end of scope , "$/" is restored to its original value.
 

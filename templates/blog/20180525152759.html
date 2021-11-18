@@ -16,7 +16,7 @@
 
 Use the predefined variable "$?" To get the exit status of the child process.
 
-If wait waits for the child process to terminate, $? Contains multiple values, including the exit status of the child process. $? Is also set when a child process is executed using the <a href="/blog/20180124151680.html">system function</a>.
+If wait waits for the child process to terminate, $? Contains multiple values, including the exit status of the child process. $? Is also set when a child process is executed using <a href="/blog/20180124151680.html">system function</a>.
 
 The method of interpreting $? Is a little complicated. $? Is set to a 16-bit value. The exit status of the child process is set to the <b> upper 8 bits </b>. The <b> 8th bit of the lower 8 bits </b> indicates whether a core dump was generated </b>. The <b> lower 8 bits up to the 7th bit </b> represent the <b> signal number that terminated the process </b>, if any.
 
