@@ -11,13 +11,13 @@
 </ol>
 <h2>next statement - jumps to the beginning of the next loop</h2>
 
-You can use the <strong> next statement </strong> to jump to the beginning of the next loop.
+You can use <strong> next statement </strong> to jump to the beginning of the next loop.
 
 <pre>
 next
 </pre>
 
-The next statement can be used in loop syntax such as <a href="/blog/20100123126425.html">while statement</a> and for statement.
+The next statement can be used in loop syntax such as <a href="/blog/20100123126425.html">while statement</a>, for statement, foreach statement.
 
 <pre>
 while (1) {
@@ -27,19 +27,19 @@ while (1) {
 }
 
 for (my $i = 0; $i < 10; $i++) {
-  if (condition) {
+  if ($condition) {
     next;
   }
 }
 
 foreach my $animal (@animals) {
-  if (condition) {
+  if ($condition) {
     next;
   }
 }
 </pre>
 
-You can use the next statement when you want to skip the process only under specific conditions.
+next statement is used when you want to skip the rest statements.
 
 <h3>Example program</h3>
 
@@ -47,7 +47,7 @@ This is an example program that uses the next statement.
 
 <h4>Jump to the beginning of the loop when a specific character is matched</h4>
 
-In the middle of loop processing, you can use the next statement when you want to jump to the beginning of the next loop under certain conditions.
+In the middle of loop processing, you can use next statement when you want to jump to the beginning of the next loop under certain conditions.
 
 <pre>
 use strict;
