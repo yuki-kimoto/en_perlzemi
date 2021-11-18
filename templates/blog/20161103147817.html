@@ -178,8 +178,8 @@ if (waitpid (-1, WNOHANG)> 0) {
 while (waitpid (-1, WNOHANG)> 0) {Resource release process}
 </pre>
 
-Looking at this part, you may wonder why you need <a href="/blog/20100123126425.html">while statement</a>. If one CHLD signal is sent when one child process terminates, it's natural to think that a while statement isn't needed. However, there is one constraint on the signal, and if multiple child processes are terminated in a very short time, the signal will be overwritten and even though multiple child processes are terminated. , It is possible that only one signal can be sent.
-To do this, you need to use a while statement to process all terminated child processes.
+Looking at this part, you may wonder why you need <a href="/blog/20100123126425.html">while statement</a>. If one CHLD signal is sent when one child process terminates, it's natural to think that while statement isn't needed. However, there is one constraint on the signal, and if multiple child processes are terminated in a very short time, the signal will be overwritten and even though multiple child processes are terminated. , It is possible that only one signal can be sent.
+To do this, you need to use while statement to process all terminated child processes.
 
 <h4>If you don't need any specific action and just want to release the zombies</h4>
 

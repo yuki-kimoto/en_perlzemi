@@ -37,7 +37,7 @@ Five
 9
 </pre>
 
-Let's explain the syntax in order. The for statement has the following syntax.
+Let's explain the syntax in order. for statement has the following syntax.
 
 <pre>
 for (Initialization of loop variable; Condition to loop; Update of loop variable) {
@@ -85,7 +85,7 @@ for (Initialization of loop variable; Condition to loop; Update of loop variable
 }
 </pre>
 
-The for statement repeatedly executes the block while the looping condition is met. Looking at the first example, the condition is that "$i" is less than "10".
+for statement repeatedly executes the block while the looping condition is met. Looking at the first example, the condition is that "$i" is less than "10".
 
 <pre>
 for (my $i = 0; $i < 10; $i++) {
@@ -210,7 +210,7 @@ Five
 
 <h4>Combining for and if statement</h4>
 
-Let's combine the for statement and the if statement. Programming will improve when you can combine for and if statement.
+Let's combine for statement and if statement. Programming will improve when you can combine for and if statement.
 
 I will write an example program that loops from "0" to "10", but outputs only when the loop variable is a multiple of 3.
 
@@ -222,7 +222,7 @@ for (my $i = 0; $i < 10; $i++) {
 }
 </pre>
 
-Please pay attention to the conditional branch part using the if statement. You can confirm that "$i" is a multiple of "3" by writing "$i % 3 == 0". This is because if the remainder after dividing by "3" is "0", that number is a multiple of 3.
+Please pay attention to the conditional branch part using if statement. You can confirm that "$i" is a multiple of "3" by writing "$i % 3 == 0". This is because if the remainder after dividing by "3" is "0", that number is a multiple of 3.
 
 Please refer to the following articles for the modulo operator.
 
@@ -232,7 +232,7 @@ Please refer to the following articles for the modulo operator.
   </li>
 </ul>
 
-Since the if statement block is executed only when it is a multiple of 3, the output result is as follows.
+Since if statement block is executed only when it is a multiple of 3, the output result is as follows.
 
 <pre>
 0
@@ -241,7 +241,7 @@ Since the if statement block is executed only when it is a multiple of 3, the ou
 9
 </pre>
 
-Combining if and for statement gives you better control over your program. Please refer to the following article for a detailed explanation of the if statement.
+Combining if and for statement gives you better control over your program. Please refer to the following article for a detailed explanation of if statement.
 
 <ul>
   <li>
@@ -251,9 +251,9 @@ Combining if and for statement gives you better control over your program. Pleas
 
 <h3>while statement</h3>
 
-Next, let's learn about <a href="/blog/20100123126425.html">while statement</a>. The while statement is a syntax for looping like the for statement.
+Next, let's learn about <a href="/blog/20100123126425.html">while statement</a>. while statement is a syntax for looping like for statement.
 
-The difference from the for statement is that the while statement has only the "looping condition" part. Take a look at the following example.
+The difference from for statement is that while statement has only the "looping condition" part. Take a look at the following example.
 
 <pre>
 my $i = 0;
@@ -281,7 +281,7 @@ Five
 9
 </pre>
 
-The part "$i < 10" is the part of the condition that loops in the while statement. Unlike the for statement, the while statement does not have an initialization part or a loop variable update part.
+The part "$i < 10" is the part of the condition that loops in while statement. Unlike for statement, while statement does not have an initialization part or a loop variable update part.
 
 <pre>
 while (condition to loop) {...}
@@ -310,7 +310,7 @@ for (my $i = 0; $i < 10; $i++) {
 }
 </pre>
 
-The for statement is simpler to write. If you need a loop variable, the for statement is easier to write.
+for statement is simpler to write. If you need a loop variable, for statement is easier to write.
 
 <h3>foreach statement</h3>
 
@@ -334,7 +334,7 @@ Mouse
 
 <h4>Same as for statement and foreach statement</h4>
 
-In Perl, the foreach statement is an alias for the for statement, and you can also write for where you should write foreach.
+In Perl, foreach statement is an alias for for statement, and you can also write for where you should write foreach.
 
 <pre>
 my @animals = ('Cat', 'Dog', 'Mouse');
@@ -380,7 +380,7 @@ Only when it is "5", the "print function" is not executed because it jumps to th
 
 <h3>last statement</h3>
 
-You can use <a href="/blog/20170527149589.html">last statement</a> to end the iteration and escape the for statement. Take a look at the following example program.
+You can use <a href="/blog/20170527149589.html">last statement</a> to end the iteration and escape for statement. Take a look at the following example program.
 
 <pre>
 my @nums = (3, 5, 6, 7);
@@ -452,11 +452,11 @@ The output result is as follows.
 
 <h4>While statement for repetition that does not increase the index</h4>
 
-Finally, use a while statement if the repetition does not increase the index. Here are some common examples.
+Finally, use while statement if the repetition does not increase the index. Here are some common examples.
 
 <b> 1. Read a line from a file </b>
 
-Use a while statement to read a line from a file.
+Use while statement to read a line from a file.
 
 <pre>
 while (my $line = <>) {
@@ -474,7 +474,7 @@ File I/O is explained in detail below.
 
 <b> 2. Pop an array </b>
 
-Use a while statement to write the process such as ending when the array is extracted using the pop function and disappears.
+Use while statement to write the process such as ending when the array is extracted using the pop function and disappears.
 
 <pre>
 my @animals = ('Cat', 'Dog', 'Mouse');
@@ -496,7 +496,7 @@ When popped and emptied, the loop ends.
 
 <b> 3. I want to write an infinite loop </b>
 
-If you want to write an infinite loop, use a while statement. If the condition is set to 1, the while statement will continue to be executed.
+If you want to write an infinite loop, use while statement. If the condition is set to 1, while statement will continue to be executed.
 
 <pre>
 while (1) {
@@ -562,7 +562,7 @@ Perl has <a href="/blog/20100119126425.html">grep function</a> that allows you t
 my @matches = grep {$_ > 5} @values;
 </pre>
 
-This is the same as writing the following in a for statement, but more concisely.
+This is the same as writing the following in for statement, but more concisely.
 
 <pre>
 my @matches;
@@ -581,7 +581,7 @@ Perl has <a href="/blog/20100118126425.html">map function</a> that makes it easy
 my @values2 = map {"$_. Txt"} @values1;
 </pre>
 
-This is the same as writing the following in a for statement, but more concisely.
+This is the same as writing the following in for statement, but more concisely.
 
 <pre>
 my @values2;
@@ -593,7 +593,7 @@ for my $value1 (@values1) {
 
 <h3>Postfix for - for modifier</h3>
 
-A special for syntax is the for modifier, which allows you to put a for after a statement. If you can write a for statement in one line, this writing method is also simple.
+A special for syntax is the for modifier, which allows you to put a for after a statement. If you can write for statement in one line, this writing method is also simple.
 
 Below is an example that outputs all the elements of the array. The elements of the array are sequentially assigned to the default argument "$_".
 

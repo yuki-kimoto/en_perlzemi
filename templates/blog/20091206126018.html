@@ -20,7 +20,7 @@ Let's start sqlite3 by specifying the database name. If the database does not ex
 
 <h3>Syntax other than select</h3>
 
-The difficult part in SQL is the select statement. Other syntax is relatively simple. In preparation for executing the select statement, I will first explain the SQL that is frequently used other than the select statement.
+The difficult part in SQL is select statement. Other syntax is relatively simple. In preparation for executing select statement, I will first explain the SQL that is frequently used other than select statement.
 
 <h4>create table - create table</h4>
 
@@ -68,7 +68,7 @@ Type ".table" to make sure the table has been deleted. After this, the "books" t
 
 <h3>insert - add record</h3>
 
-Use the insert statement to insert a record into the table.
+Use insert statement to insert a record into the table.
 
 <pre>
 insert into table name (field name 1, field name 2, ..) values (value 1, value 2, value 3);
@@ -90,13 +90,13 @@ This will add a record like the one below to the table.
 + - -- -- -- --- + - -- -- -- - + - -- --- +
 </pre>
 
-I will explain the select statement in detail later, but let's execute the select statement to confirm that one line has been inserted.
+I will explain select statement in detail later, but let's execute select statement to confirm that one line has been inserted.
 
 <pre>
 select * from books;
 </pre>
 
-If the above content is displayed, insert is successful. (The output format is slightly different. I will explain how to display it in an easy-to-read format in the select statement)
+If the above content is displayed, insert is successful. (The output format is slightly different. I will explain how to display it in an easy-to-read format in select statement)
 
 Let's insert a few more records for the rest of this.
 
@@ -107,7 +107,7 @@ insert into books (title, author, price) values ('Good morning', 'Kenta', 3000);
 
 <h3>Record update update</h3>
 
-Use the update statement to update the data in the table. Generally, you can narrow down the update target by specifying the search conditions in the where section. As explained in the select statement, multiple conditions can be specified in the where section.
+Use update statement to update the data in the table. Generally, you can narrow down the update target by specifying the search conditions in the where section. As explained in select statement, multiple conditions can be specified in the where section.
 
 <pre>
 update table name set field name 1 = value 1, feel name 2 = value 2, .. where to search field name = value
@@ -119,7 +119,7 @@ The SQL to change the title value of a record whose "author" is "taro" to Ruby i
 update books set title = 'Ruby' where author = 'taro'
 </pre>
 
-Let's execute the update statement using do.
+Let's execute update statement using do.
 
 <pre>
 my $update = "update books set title = 'Ruby' where author = 'taro'";
@@ -138,7 +138,7 @@ The previous record is updated and looks like this:
 
 <h3>Delete record delete</h3>
 
-Use the delete statement to delete a record. Generally, the search condition is specified in the where section to narrow down the deletion target.
+Use delete statement to delete a record. Generally, the search condition is specified in the where section to narrow down the deletion target.
 
 <pre>
 delete from table name where field name to search = value
@@ -150,7 +150,7 @@ The SQL to delete a record whose "author" is "taro" looks like this:
 delete from books where author = 'taro';
 </pre>
 
-Let's execute a delete statement using do.
+Let's execute delete statement using do.
 
 <pre>
 my $delete = "delete from books where author = 'taro';";

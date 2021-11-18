@@ -143,11 +143,11 @@ while (my $line = readline $fh) {
     # process ...
 }
 </pre>
-To read the file line by line, use the readline function. $fh is the filehandle opened by the open function. Repeat reading one line with a while statement to read to the end of the file.
+To read the file line by line, use the readline function. $fh is the filehandle opened by the open function. Repeat reading one line with while statement to read to the end of the file.
 
-It may seem strange to read one line at the position where the conditional statement of the while loop is written, but such a description is possible. With the description my $line = readline $fh, I declare a lexical variable called $line and assign the read line to $line. $line is valid only inside a while loop and is not visible from the outside.
+It may seem strange to read one line at the position where conditional statement of the while loop is written, but such a description is possible. With the description my $line = readline $fh, I declare a lexical variable called $line and assign the read line to $line. $line is valid only inside a while loop and is not visible from the outside.
 
-When the end of the file is reached, the readline function returns undef and $line is assigned undef. Since $line is undef, the while statement ends.
+When the end of the file is reached, the readline function returns undef and $line is assigned undef. Since $line is undef, while statement ends.
 
 <h4>(2) Remove a line break with chomp function</h4>
 

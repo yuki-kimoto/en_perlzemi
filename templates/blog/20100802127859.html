@@ -252,7 +252,7 @@ my $key3 = $hash->{key3};
 eval {execution statement; 1;} or die "Exception";
 </pre>
 
-I often see the description, but it is a little difficult to read. The meaning of this is that <a href="/blog/20100312126967.html">eval</a> returns the result of the last executable statement if the inside of {} is normal. That is, 1 is returned. In this case, the right side of or is not executed. Returns undef on failure. In this case, the right-hand side is executed. The reason for writing 1; is that if the return value of the executable statement matches 0, the right-hand side will be executed even if it succeeds.
+I often see the description, but it is a little difficult to read. The meaning of this is that <a href="/blog/20100312126967.html">eval</a> returns the result of the last executable statement if the inside of {} is normal. That is, 1 is returned. In this case, the right side of or is not executed. Returns undef on failure. In this case, the right-hand side is executed. The reason for writing 1; is that if the return value of executable statement matches 0, the right-hand side will be executed even if it succeeds.
 
 <pre>
 eval {execution statement};
@@ -573,7 +573,7 @@ Anonymous subroutine that appear to be dynamically created are compiled at the b
 
 <h3>Regular expression list context</h3>
 
-If you want to get a part of the matched character using <a href="/blog/20100827127859.html">regular expression</a>, write as follows in combination with the if statement.
+If you want to get a part of the matched character using <a href="/blog/20100827127859.html">regular expression</a>, write as follows in combination with if statement.
 
 <pre>
 if ($str =~ /regular expression/) {

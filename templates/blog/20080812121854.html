@@ -61,7 +61,7 @@ close $fh or die "Cannot close $file";
 
 Perl does not support writing without buffering at all. You don't have to write one character at a time. Instead, you can use command buffering to write when the command print is finished.
 
-It is guaranteed that it will be written to the output before you write the print function and execute the following statement.
+It is guaranteed that it will be written to the output before you write the print function and execute following statement.
 
 Command buffering is often used for interactive communication. For example, suppose you send data to someone and wait for a reply. To send data over the network, write to something called a socket (a kind of filehandle) and wait for a reply. At this time, if block buffering is enabled, it means that even if you think that you wrote it, it is actually stored in the write buffer and you are not actually writing it.
 
