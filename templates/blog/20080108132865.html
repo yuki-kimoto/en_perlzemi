@@ -10,13 +10,11 @@
     <meta itemprop = "position" content = "3" />
   </li>
 </ol>
-<h2>Handling command line arguments @ARGV</h2>
-
-
+<h2>Handling Command Line Arguments @ARGV</h2>
 
 Learn how to handle <b> command line arguments </b> in Perl.
 
-Command line arguments are arguments that can be specified in addition to the program name, separated by spaces, when the program is executed.
+Command line arguments are arguments that can be specified after the program name, separated by spaces.
 
 For example, if you want to specify the values "1", "3", and "5" when executing "test.pl", you can call the program as follows.
 
@@ -30,17 +28,17 @@ The above example is a number, but a string such as a file name is also acceptab
 perl test.pl a.txt b.txt
 </pre>
 
-<h4>If you want to use spaces in command line arguments</h4>
+<h4>Useing Whitespace in Command Line Arguments</h4>
 
-The command line argument delimiter is blank. If you want to use whitespace, you need to escape it with quotes.
+The command line argument delimiter is blank. If you want to use whitespace, you need to escape it with double quotes.
 
 <pre>
 perl test.pl foo "bar baz"
 </pre>
 
-<h3>How to receive command line arguments</h3>
+<h3>Receiving Command Line Arguments</h3>
 
-The command line arguments are assigned to the <b> @ARGV </b> <a href="/blog/20161102147817.html">predefined variable</a>. This predefined variable can be used in the same way as a normal <a href="/blog/20161012147627.html">array</a>.
+The command line arguments are assigned to the <b> @ARGV </b> <a href="/blog/20161102147817.html">Predefined Variables</a>. This predefined variable can be used in the same way as a normal <a href="/blog/20161012147627.html">Arrays</a>.
 
 For example, if multiple numbers are specified as command line arguments, assign them to the named array.
 
@@ -54,23 +52,23 @@ You can also use <a href="/blog/20100308126967.html">List Assignment</a> to rece
 my ($name, $age) = @ARGV;
 </pre>
 
-You can use <a href="/blog/20100104126425.html">shift function</a> with no arguments to receive the first argument of @ARGV.
+You can use <a href="/blog/20100104126425.html">The shift Function</a> with no arguments to receive the first argument of @ARGV.
 
 <pre>
 # Get the first value of @ARGV
 my $file = shift;
 </pre>
 
-In either case, do not use "@ARGV" as it is, but store it in the named <a href="/blog/20161107147852.html">variable</a>.
+In either case, do not use "@ARGV" as it is, but store it in the named <a href="/blog/20161107147852.html">Variables</a>.
 
-If you want to know the number of command line arguments, @ARGV is a normal variable, so you can get it by evaluating it with <a href="/blog/20080608121292.html">scalar context</a>.
+If you want to know the number of command line arguments, @ARGV is a normal variable, so you can get it by evaluating it with <a href="/blog/20080608121292.html">Scalar Context</a>.
 
 <pre>
 # Number of command line arguments
 my $count = @ARGV;
 </pre>
 
-The arguments in <a href="/blog/20101130129876.html">subroutine</a> were assigned to a predefined variable called <b> @_ </b>. The command line arguments are <b> @ARGV </b>, so be sure to distinguish them and remember them.
+The arguments in <a href="/blog/20101130129876.html">Subroutines</a> were assigned to a predefined variable called <b> @_ </b>. The command line arguments are <b> @ARGV </b>, so be sure to distinguish them and remember them.
 
 <h3>Handle command line argument "options"</h3>
 
@@ -78,6 +76,6 @@ If you want to handle "optional" form of command line arguments in addition to t
 
 <ul>
   <li>
-    <a href="/blog/20100514127696.html">Getopt::Long - Handle command line argument options</a>
+    <a href="/blog/20100514127696.html">Getopt::Long - Handling Options of Command Line Arguments</a>
   </li>
 </ul>
