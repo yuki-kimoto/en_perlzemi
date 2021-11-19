@@ -10,68 +10,80 @@
       <span itemprop = "name">here </span>
   </li>
 </ol>
-<h2>"=~ " - Pattern matching operator</h2>
+<h2>=~ - Pattern Matching Operators</h2>
 
+<b>=~</b> is the pattern matching operator. It is used when executing pattern matching and replacement with <a href="/blog/20100827127859.html">Regular Expressions</a>.
 
+<h3>Pattern Matching</h3>
 
-"=~ " Is called "pattern matching operator" and is used when performing pattern matching and replacement with <a href="/blog/20100827127859.html">regular expression</a>.
-
-<h3>Pattern matching</h3>
-
-To find out if a string contains the specified regular expression:
+Pattern matching operators are used with regular expressions.
 
 <pre>
-$message =~ /play/</pre>
+# Pattern Matching Operators
+$message =~ /eat/
+</pre>
 
-$string =~ /Regular expression /. If $string contains a regular expression, it returns non-zero. =~ Is called the pattern matching operator. In this example, we're using the letters play instead of a regular expression.
+If the $message matches the regular expression, the pattern matching operator returns a true value.
 
-<h3>Pattern matching does not match</h3>
+<h3>Negate Pattern Matching Operator</h3>
 
-To check if a string contains the specified regular expression:
+To check if strings don't match regular expressions, you use negate pattern matching operators.
 
 <pre>
-$message !~ /You/</pre>
+$message !~ /You/
+</pre>
 
-$string !~ /Regular expression /. If $string does not contain a regular expression, it returns non-zero.
+If the $message does not match the regular expression, the negate pattern matching operator returns a true value.
 
 <h3>Replacement</h3>
 
-To replace a string with a regular expression:
+You can replace strings with pattern matching operators and regular expressions.
 
 <pre>
-$message =~ s/tennis/baseball/;
+# s/RegularExpression/ReplaceString/
+$message =~ s/orange/banana/;
 </pre>
 
-$string =~ s/regular expression/replacement string /. If $string contains a regular expression, replace it with the specified string. The $message itself will be replaced.
+If the $message matched the regular expression, it is replaced with the specifed string.
 
 <h3>Example</h3>
 
-Regular expression pattern matching, substitutions and examples.
+Examples of regular expressions and pattern matching operators.
 
 <pre>
 use strict;
 use warnings;
 
-# Regular expression pattern matching and replacement
+my $message = 'I eat an orange.';
+print "\$message:$message\n\n ";
 
-my $message = 'I play tennis.';
-print "\$message =" $message'\n\n ";
-
-# Pattern matching basics ($var =~ /regular expression/) (Here, just a string (play))
-print "1: Check if the string contains play.\n";
-if ($message =~ /play/) {
-  print "\$message contains play.\n\n";
+print "1: Check if the string contains eat.\n";
+if ($message =~ /eat/) {
+  print "\$message contains eat.\n\n";
 }
 
-print "2: Check if the string contains you.\n";
+print "2: Check if the string contains You.\n";
 if ($message !~ /You/) {
-  print "\$message does not contain you.\n\n";
+  print "\$message does not contain You.\n\n";
 }
 
-# Substitution basics
-print "3: Replace tennis in the string with baseball.\n";
-
-# $var =~ s/regular expression/replacement string/$message =~ s/tennis/baseball/;
+print "3: Replace orange in the string with banana.\n";
+$message =~ s/orange/banana/;
 
 print "$message\n";
+</pre>
+
+The output:
+
+<pre>
+$message:I eat an orange.
+
+ 1: Check if the string contains eat.
+$message contains eat.
+
+2: Check if the string contains You.
+$message does not contain You.
+
+3: Replace orange in the string with banana.
+I eat an banana.
 </pre>
