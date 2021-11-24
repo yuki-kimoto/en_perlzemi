@@ -188,5 +188,22 @@ The output:
 Google
 </pre>
 
+<h4>Get the Screenshot</h4>
+
+You can get the screenshot using <b>capture_screenshot</b> method.
+
+<pre>
+$driver->capture_screenshot("screenshot.png");
+</pre>
+
+If you want to save the screenshot to the program directory, you can use <a href="/blog/20100524127696.html">FindBin</a> module.
+
+<pre>
+use FindBin;
+
+$driver->capture_screenshot("$FindBin::Bin/screenshot.png");
+</pre>
+
+If you see character corruption, Fonts is needed.
 
 (Uncompleted)
