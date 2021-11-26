@@ -1,4 +1,4 @@
-<h2>JavaScript Supported Web Scraping using Perl</h2>
+<h2>JavaScript Supported Web Scraping using Perl and Selenium</h2>
 
 I explain JavaScript supported web scraping using Perl and <a href="https://metacpan.org/pod/Selenium::Remote::Driver">Selenium::Remote::Driver</a>. Selenium::Remote::Driver is a Perl module for Selenium. Selenium provides the APIs for JavaScript supported web scraping. 
 
@@ -221,5 +221,114 @@ I explain the way to install the fonts on some OSs.
 <ul>
   <li><a href="https://en.centos.perlzemi.com/blog/20211124121003.html">Install Fonts on CentOS</a></li>
 </ul>
+
+<h3>CSS Selector</h3>
+
+If you are familiar with CSS Selector, you can make CSS Selector as the default finder.
+
+<pre>
+# Make CSS Selector as the default finder
+$driver->default_finder('css');
+</pre>
+
+In this page, I use CSS selector to select elements of HTML.
+
+<h3>Get Elements</h3>
+
+I expain how to get elements using <a href="https://metacpan.org/pod/Selenium::Remote::Driver">Selenium::Remote::Driver</a>.
+
+<h4>Get An Element</h4>
+
+You can get an element using <b>find_element</b> method with CSS selector. The return value is <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>
+
+<pre>
+# Get an element using id CSS selector
+my $element = $driver->find_element("#myid");
+
+# Get an element using class CSS selector
+my $element = $driver->find_element(".myclass");
+
+# Get an element using attirbute CSS selector
+my $element = $driver->find_element("[name=id]");
+</pre>
+
+Note that <b>find_element</b> method throws exception when the element is not found.
+
+If you want to avoid exceptions, you need to use <a href="/blog/20100312126967.html">eval</a> block.
+
+<pre>
+my $element;
+eval {
+  $element = $driver->find_element("#myid");
+};
+</pre>
+
+<h4>Get Multiple Elements</h4>
+
+You can get multiple elements using <b>find_elements</b> method with CSS selector. The return value is an <a href="https://en.perlzemi.com/blog/20180214151861.html">array reference</a> which contains the list <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>
+
+<pre>
+# Get Multiple Elements
+my $buttons = $driver->find_elements('button');
+for my $button (@$buttons) {
+  my $text = $button->get_text;
+  if ($text =~ /Signin/) {
+    $button->click;
+  }
+}
+</pre>
+
+Note that <b>find_elements</b> method throws exception when all the elements is not found.
+
+If you want to avoid exceptions, you need to use <a href="/blog/20100312126967.html">eval</a> block.
+
+<pre>
+my $buttons;
+eval {
+  $buttons = $driver->find_elements('button');
+};
+</pre>
+
+<h3>Checkbox and Radio Button</h3>
+
+I explain how to check the chekking of checkboxes and radio buttons and set the chekking of checkboxes and radio buttons.
+
+<h4>Check the Chekking of Checkboxes and Radio Buttons</h4>
+
+You can check the checking of checkboxes or radio buttons using <b>is_selected</b> method of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+<pre>
+# Check the Chekking of Checkboxes or Radio Buttons
+my $is_selected = $element->is_selected;
+</pre>
+
+<h4>Set the Chekking of Checkboxes or Radio Buttons</h4>
+
+You can set the chekking of checkboxes or radio buttons <b>set_selected</b> method of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+<pre>
+# Set the Chekking of Checkboxes or Radio Buttons
+$element->set_selected;
+</pre>
+
+You maybe see the following error "Other element would receive the click".
+
+<pre>
+Error while executing command: element click intercepted: element click intercepted: Element <input type="checkbox" class="myclass" value="true" id="myid"> is not clickable at point (1009, 210). Other element would receive the click: <label class="mylabel" for="myid">...</label>
+  (Session info: headless chrome=87.0.4280.88) at /home/perlclub/perl5/perlbrew/perls/perl-5.20.3/lib/site_perl/5.20.3/Selenium/Remote/Driver.pm line 410.
+ at /home/perlclub/perl5/perlbrew/perls/perl-5.20.3/lib/site_perl/5.20.3/Selenium/Remote/Driver.pm line 361.
+</pre>
+
+This is because label block receive the click.
+
+You can write the following codes to click the label. The label block is a sibling of #myid
+
+<pre>
+my $checkbox = $driver->find_element("#myid");
+unless ($checkbox->is_selected) {
+  my $checkbox_label = $driver->find_element("#myid ~ label");
+  $checkbox_label->set_selected;
+}
+</pre>
 
 (Uncompleted)
