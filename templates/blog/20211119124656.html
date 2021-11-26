@@ -289,6 +289,32 @@ eval {
 };
 </pre>
 
+<h3>Text Fields, Password Fields, Text Area</h3>
+
+I explain the manipulation of text fields, password fields, text areas.
+
+<h4>Input Text</h4>
+
+You can input text in text fields, password fields, text areas using <b>send_keys</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+<pre>
+# Input text
+$input_element->send_keys("perlclub");
+</pre>
+
+<b>send_keys</b> method supports Unicode. You need to write "use utf8;" and save the source code as UTF-8.
+
+<pre>
+# Input unicode text
+use strict;
+use warnings;
+use utf8;
+
+# ...
+
+$input_element->send_keys("あいうえお");
+</pre>
+
 <h3>Checkbox and Radio Button</h3>
 
 I explain how to check the chekking of checkboxes and radio buttons and set the chekking of checkboxes and radio buttons.
@@ -319,7 +345,7 @@ Error while executing command: element click intercepted: element click intercep
  at /home/perlclub/perl5/perlbrew/perls/perl-5.20.3/lib/site_perl/5.20.3/Selenium/Remote/Driver.pm line 361.
 </pre>
 
-This is because label block receive the click.
+This is because label block receive the click in the logic of <b>set_selected</b> method.
 
 You can write the following codes to click the label. The label block is a sibling of #myid
 
@@ -329,6 +355,24 @@ unless ($checkbox->is_selected) {
   my $checkbox_label = $driver->find_element("#myid ~ label");
   $checkbox_label->set_selected;
 }
+</pre>
+
+<h3>Click Buttons</h3>
+
+You can click buttons using <b>click</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+<pre>
+# Click Buttons
+$button->click;
+</pre>
+
+<h3>Get Text</h3>
+
+You can get text of an element using <b>get_text</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+<pre>
+# Get text
+my $text = $element->get_text;
 </pre>
 
 (Uncompleted)
