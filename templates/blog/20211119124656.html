@@ -233,11 +233,7 @@ $driver->default_finder('css');
 
 In this page, I use CSS selector to select elements of HTML.
 
-<h3>Get Elements</h3>
-
-I expain how to get elements using <a href="https://metacpan.org/pod/Selenium::Remote::Driver">Selenium::Remote::Driver</a>.
-
-<h4>Get An Element</h4>
+<h3>Get An Element</h3>
 
 You can get an element using <b>find_element</b> method with CSS selector. The return value is <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>
 
@@ -263,7 +259,16 @@ eval {
 };
 </pre>
 
-<h4>Get Multiple Elements</h4>
+<h4>Often Used CSS Selectors</h4>
+
+I introduce often used CSS selectors.
+
+<pre>
+# id starts with "myid_"
+my $selects_first = $driver->find_element('[id^=myid_]');
+</pre>
+
+<h3>Get Multiple Elements</h3>
 
 You can get multiple elements using <b>find_elements</b> method with CSS selector. The return value is an <a href="https://en.perlzemi.com/blog/20180214151861.html">array reference</a> which contains the list <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>
 
@@ -313,6 +318,117 @@ use utf8;
 # ...
 
 $input_element->send_keys("あいうえお");
+</pre>
+
+<h3>Input Keys from Keybord</h3>
+
+I explain the details of input keys from keybord.
+
+<h4>Input Characters</h4>
+
+You can input keys to an element using <b>send_keys</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+<pre>
+# Input text
+$element->send_keys("perlclub");
+</pre>
+
+<h4>Input Unicode Characters</h4>
+
+<b>send_keys</b> method supports Unicode. You need to write "use utf8;" and save the source code as UTF-8.
+
+<pre>
+# Input unicode text
+use strict;
+use warnings;
+use utf8;
+
+# ...
+
+$element->send_keys("あいうえお");
+</pre>
+
+<h4>Input Special Keys</h4>
+
+You can input special keys such as "space", "enter" using <b>send_keys</b> method with <b>KEYS</b> function <a href="https://metacpan.org/pod/Selenium::Remote::WDKeys">Selenium::Remote::WDKeys</a>.
+
+<pre>
+use Selenium::Remote::WDKeys;
+
+# ...
+
+# Input space
+$element->send_keys(KEYS->{'space'});
+
+# Input enter
+$element->send_keys(KEYS->{'enter'});
+
+# Input "up arrow" x 10
+$element->send_keys(KEYS->{'up_arrow'} x 10);
+
+# Input "down arrow" x 5
+$element->send_keys(KEYS->{'down_arrow'} x 5);
+</pre>
+
+The following is the list of constant keys.
+
+<pre>
+null
+cancel
+help
+backspace
+tab
+clear
+return
+enter
+shift
+control
+alt
+pause
+escape
+space
+page_up
+page_down
+end
+home
+left_arrow
+up_arrow
+right_arrow
+down_arrow
+insert
+delete
+semicolon
+equals
+numpad_0
+numpad_1
+numpad_2
+numpad_3
+numpad_4
+numpad_5
+numpad_6
+numpad_7
+numpad_8
+numpad_9
+multiply
+add
+separator
+subtract
+decimal
+divide
+f1
+f2
+f3
+f4
+f5
+f6
+f7
+f8
+f9
+f10
+f11
+f12
+command_meta
+ZenkakuHankaku
 </pre>
 
 <h3>Checkbox and Radio Button</h3>
@@ -366,6 +482,41 @@ You can click buttons using <b>click</b> method  of <a href="https://metacpan.or
 $button->click;
 </pre>
 
+You maybe see the following error "is not clickable".
+
+<pre>
+...<button>...</button> is not clickable ... at /home/perlclub/perl5/perlbrew/perls/perl-5.20.3/lib/site_perl/5.20.3/Selenium/Remote/Driver.pm line 410.
+ at /home/perlclub/perl5/perlbrew/perls/perl-5.20.3/lib/site_perl/5.20.3/Selenium/Remote/Driver.pm line 361.
+</pre>
+
+Note that the clicked button is needed to be displayed.
+
+You can scroll the windows to display the button in the middle of the window using <b>execute_script</b> method and JavaScript's <b>scrollIntoView</b> method.
+
+<pre>
+# Display the button in the middle of the window
+$driver->execute_script('arguments[0].scrollIntoView({block: "center"});', $button);
+
+# Click Buttons
+$button->click;
+</pre>
+
+<h4>Examples to click buttons</h4>
+
+Click the button that text is "Search".
+
+<pre>
+# Click the button that text is "Search".
+my $buttons = $driver->find_elements('button');
+for my $button (@$buttons) {
+  my $text = $button->get_text;
+  if ($text =~ /^\s*Search\s*$/) {
+    $button->click;
+    last;
+  }
+}
+</pre>
+
 <h3>Get Text</h3>
 
 You can get text of an element using <b>get_text</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
@@ -379,6 +530,42 @@ If you click buttons, you maybe wait a few seconds until the next page is shown 
 
 <pre>
 sleep 3;
+</pre>
+
+<h3>Execute JavaScript</h3>
+
+You can execute JavaScript using <b>execute_script</b> method. The first argument is JavaScript you want to execute. The second argument is an element. This elemenet is passed to the first argument of <b>arguments</b> variable of JavaScript.
+
+<pre>
+$driver->execute_script('arguments[0].scrollIntoView({block: "center"});', $button);
+</pre>
+
+If you can't found operations you want to execute in the Selenium::Remote::Driver documents, you can execute any JavaScript using <b>execute_script</b> method.
+
+<h3>Select Fields</h3>
+
+I explain how to select the value of Select Fields. 
+
+1. Display the select field
+
+2. Click the select field.
+
+3. Input down keys
+
+4. Input enter key
+
+<pre>
+# Display the select field
+$driver->execute_script('arguments[0].scrollIntoView({block: "center"});', $select);
+
+# Click the select field
+$select->click;
+
+# Input down keys
+$select->send_keys(KEYS->{'down_arrow'} x $key_down_count);
+
+# Input enter key
+$select->send_keys(KEYS->{'enter'});
 </pre>
 
 (Uncompleted)
