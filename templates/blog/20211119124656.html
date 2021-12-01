@@ -204,6 +204,16 @@ use FindBin;
 $driver->capture_screenshot("$FindBin::Bin/screenshot.png");
 </pre>
 
+If you want to serve the screenshot file and see it on your web browser, you can use <a href="https://metacpan.org/pod/Mojolicious::Plugin::Directory::Stylish">Mojolicious::Plugin::Directory::Stylish</a>.
+
+<pre>
+# Insltall
+cpanm Mojolicious::Plugin::Directory::Stylish
+
+# Serve current directories on your command line
+perl -Mojo -E 'a->plugin("Directory::Stylish")->start' daemon
+</pre>
+
 <h3>Install Fonts</h3>
 
 If you see character corruption when you get screenshots, the installing of fonts is needed.
