@@ -578,4 +578,22 @@ $select->send_keys(KEYS->{'down_arrow'} x $key_down_count);
 $select->send_keys(KEYS->{'enter'});
 </pre>
 
+<h3>Get Page Source</h3>
+
+You can get the page source that is parsed after the web browser using <b>get_page_source</b> method. This is not a pure raw page source.
+
+<pre>
+# Get the page source
+my $page_source = $driver->get_page_source;
+</pre>
+
+<h3>Get body Text</h3>
+
+You can get the text in the body tag using <b>get_body</b> method. The return value doesn't contain HTML tags, only contains text.
+
+<pre>
+# Get the body text
+my $body_text = $driver->get_body;
+</pre>
+
 (Uncompleted)
