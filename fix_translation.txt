@@ -1,6 +1,7 @@
 # Google
 find * | grep templates | grep '\.html' | xargs perl -pi -e 's|</ |</|g'
 find * | grep templates | grep '\.html' | xargs perl -pi -e 's| </a>|</a>|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\s*::\s*|::|g'
 
 # DeepL
 find * | grep templates | grep '\.html' | xargs perl -pi -e 's|pre>\.|pre>|g'
