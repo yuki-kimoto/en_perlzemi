@@ -110,7 +110,7 @@ use Selenium::Chrome;
 
 <h4>Create a Selenium::Chrome Object</h4>
 
-Create a Selenium::Chrome object with headless options.
+Create a Selenium::Chrome object with headless options. 
 
 <pre>
 my $driver = Selenium::Chrome->new(
@@ -121,6 +121,8 @@ my $driver = Selenium::Chrome->new(
   }
 );
 </pre>
+
+<b>new</b> method is a constructor of normal <a href="https://en.perlzemi.com/blog/20161030147778.html">Perl Objcet Oriented Programing</a>. Options is specified using <a href="https://en.perlzemi.com/blog/20180208151809.html">Hash References</a> and <a href="https://en.perlzemi.com/blog/20180214151861.html">Array References</a>
 
 These options is needed for headless execution. Headless execution means you get a page without the GUI of Google Chrome.
 
@@ -204,7 +206,19 @@ use FindBin;
 $driver->capture_screenshot("$FindBin::Bin/screenshot.png");
 </pre>
 
-If you want to serve the screenshot file and see it on your web browser, you can use <a href="https://metacpan.org/pod/Mojolicious::Plugin::Directory::Stylish">Mojolicious::Plugin::Directory::Stylish</a>.
+If you want to serve the screenshot file and see it on your web browser, you can use <a href="https://metacpan.org/pod/Mojolicious::Plugin::Directory">Mojolicious::Plugin::Directory</a> or <a href="https://metacpan.org/pod/Mojolicious::Plugin::Directory::Stylish">Mojolicious::Plugin::Directory::Stylish</a>.
+
+<b>Mojolicious::Plugin::Directory</b>
+
+<pre>
+# Insltall
+cpanm Mojolicious::Plugin::Directory
+
+# Serve current directories on your command line
+perl -Mojo -E 'a->plugin("Directory")->start' daemon
+</pre>
+
+<b>Mojolicious::Plugin::Directory::Stylish</b>
 
 <pre>
 # Insltall
@@ -278,9 +292,20 @@ I introduce often used CSS selectors.
 my $selects_first = $driver->find_element('[id^=myid_]');
 </pre>
 
+<h4>Get a Child Element</h4>
+
+If you get a child element of the element, you can use <b>find_child_element</b> method.
+
+<pre>
+# Get a child elemen
+my $child_element = $driver->find_child_element($element, ".myclass");
+</pre>
+
 <h3>Get Multiple Elements</h3>
 
-You can get multiple elements using <b>find_elements</b> method with CSS selector. The return value is an <a href="https://en.perlzemi.com/blog/20180214151861.html">array reference</a> which contains the list <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>
+You can get multiple elements using <b>find_elements</b> method with CSS selector. The return value is an <a href="https://en.perlzemi.com/blog/20180214151861.html">Array References</a> which contains the list <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+
+In this example, I get the button that contains "Signin" using <a href="https://en.perlzemi.com/blog/20161023147731.html">if statement</a> and <a href="https://en.perlzemi.com/blog/20170521149524.html">for statement</a> and <a href="https://en.perlzemi.com/blog/20100827127859.html">Regular Expressions</a>.
 
 <pre>
 # Get Multiple Elements
@@ -304,13 +329,22 @@ eval {
 };
 </pre>
 
+<h4>Get Child Elements</h4>
+
+If you get child elements of the element, you can use <b>find_child_elements</b> method.
+
+<pre>
+# Get a child elemen
+my $child_elements = $driver->find_child_elements($element, ".myclass");
+</pre>
+
 <h3>Text Fields, Password Fields, Text Area</h3>
 
 I explain the manipulation of text fields, password fields, text areas.
 
 <h4>Input Text</h4>
 
-You can input text in text fields, password fields, text areas using <b>send_keys</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>.
+You can input text in text fields, password fields, text areas using <b>send_keys</b> method  of <a href="https://metacpan.org/pod/Selenium::Remote::WebElement">Selenium::Remote::WebElement</a>. Text are <a href="https://en.perlzemi.com/blog/20161003147558.html">Perl Strings</a>.
 
 <pre>
 # Input text
@@ -578,6 +612,8 @@ $select->send_keys(KEYS->{'down_arrow'} x $key_down_count);
 $select->send_keys(KEYS->{'enter'});
 </pre>
 
+"x" is a <a href="https://en.perlzemi.com/blog/20180227151973.html">Perl Repeat Operator</a>.
+
 <h3>Get Page Source</h3>
 
 You can get the page source that is parsed after the web browser using <b>get_page_source</b> method. This is not a pure raw page source.
@@ -596,4 +632,77 @@ You can get the text in the body tag using <b>get_body</b> method. The return va
 my $body_text = $driver->get_body;
 </pre>
 
-(Uncompleted)
+<h3>Table Manipulation</h3>
+
+I introduce examples of table manipulation to iterate each row of the table.
+
+<pre>
+# Table manipulation
+my $rows;
+eval { $rows = $driver->find_elements('table.mytable > tr') };
+if ($rows) {
+  for my $row (@$rows) {
+    my $row_text = $row->get_text;
+    if ($row_text =~ /\b(\d{12})\b/a) {
+      my $id = $1;
+      
+      print "$id\n";
+    }
+  }
+}
+</pre>
+
+<h3>Donwload Files</h3>
+
+I explain how to donwload files using Selenium::Chrome.
+
+<h4>Set the Download Directory</h4>
+
+You can set the download directory using C<prefs> option of <b>new</b> method of Selenium::Chrome.
+
+<pre>
+my $driver = Selenium::Chrome->new(
+  extra_capabilities => {
+    'goog:chromeOptions' => {
+      args => ['headless', 'disable-gpu', 'window-size=1920,1080', 'no-sandbox' ],
+      prefs => {
+          'download.default_directory' => '/tmp'
+      },
+    }
+  }
+);
+</pre>
+
+Note that you can't specify home direcitories as download directories for security reasones.
+
+<h4>Download Files</h4>
+
+Selenium doesn't have a special features to donload files. Normally, you can download files using <b>click</b> method. You need to wait the finish of the donwloading using <a href="https://en.perlzemi.com/blog/20170522149546.html">sleep</a> method.
+
+<pre>
+# Donwload files
+$download_button->click;
+sleep 3;
+</pre>
+
+<b>Examples:</b>
+
+<pre>
+# Get the download button
+my $download_buttons = $driver->find_elements('button');
+my $download_button;
+for my $download_button (@$download_buttons) {
+  my $download_button_text = $download_button->get_text;
+  
+  if ($download_button_text =~ /^\s*Download\s*$/) {
+    $download_button = $download_button;
+    last;
+  }
+}
+
+# Donwload the file
+if ($download_button) {
+  $download_button->click;
+  sleep 3;
+}
+</pre>
