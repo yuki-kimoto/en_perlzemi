@@ -150,6 +150,12 @@ You can get a web page using a <b>get</b> method.
 $driver->get('http://www.google.com');
 </pre>
 
+It is good to wait for a few seconds because the page is maybe not yet rendered.
+
+<pre>
+sleep 3;
+</pre>
+
 You can get the title using a <b>get_title</b> method.
 
 <pre>
@@ -174,6 +180,8 @@ my $driver = Selenium::Chrome->new(
 
 # Get a page
 $driver->get('http://www.google.com');
+
+sleep 3;
 
 # Get the title
 my $title = $driver->get_title;
