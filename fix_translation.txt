@@ -1,7 +1,15 @@
-# Google
+# Google 翻訳 修正ロジック
 find * | grep templates | grep '\.html' | xargs perl -pi -e 's|</ |</|g'
 find * | grep templates | grep '\.html' | xargs perl -pi -e 's| </a>|</a>|g'
-find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\s*::\s*|::|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\$ |\$|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\@ |\@|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\% |\%|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's| \\ n|\\n|g'
+find templates | grep -P '\.html$' | xargs perl -pi -e 's/\b(join|length|substr|index|rindex|split|reverse|uc|ucfirst|lc|lcfirst|sprintf|chomp|chr|ord|oct|hex|crypt|quotemeta|shift|unshift|pop|push|splice|grep|map|sort|reverse|keys|values|each|exists|delete|reverse|wantarray|caller|return|print|printf|open|close|sysopen|getc|binmode|flock|opendir|closedir|readdir|read|sysread|syswrite|undef|defined|scalar|unlink|chdir|mkdir|rmdir|chmod|stat|fileno|glob|umask|__LINE__|__FILE__|__DATA__|time|localtime|sleep|abs|sqrt|int|ceil|floor|rand|looks_like_number|pi|deg2rad|sin|cos|exp|log|srand|bless|__PACKAGE__|die|warn|eval|system|fork|wait|getpwuid|getpwnam|getgrnam|kill|do|pack|unpack) \(/$1(/g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\s+::\s+|::|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\-\>\s+|->|g'
+find * | grep templates | grep '\.html' | xargs perl -pi -e 's|\-\>(\w+)\s+|->$1|g'
+
 
 # DeepL
 find * | grep templates | grep '\.html' | xargs perl -pi -e 's|pre>\.|pre>|g'
