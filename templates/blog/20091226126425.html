@@ -79,76 +79,70 @@ These are executed on CUI envrinements, for example:
 
 <h4>Compile check</h4>
 
-To perform a compile check in advance, do the following on the command line.
+You can do only compile check without runing the script.
 
 <pre>
 perl -c script.pl
 </pre>
 
-<h4>Debugger startup</h4>
+<h4>Perl Debugger</h4>
 
-Perl comes standard with a debugger. To start the debugger, do the following on the command line:
+Perl has the <a href="/blog/20100302126967.html">debugger</a>. To start the debugger, use <b>-d</b> option with the <b>perl</b> command.
 
 <pre>
 perl -d script.pl
 </pre>
 
-Please refer to the following for details on how to use the debugger.
+<h3>Numbers</h3>
 
-<ul>
-  <li>
-    <a href="/blog/20100302126967.html">Perl Debugger Guide</a>
-  </li>
-</ul>
+<h4>Numbers</h4>
 
-<h3>Numerical value</h3>
-
-<h4>Numerical representation</h4>
-
-You can assign a number to a scalar variable. You can assign either an integer or a decimal. If the number of digits is large, the underscore can be used as a delimiter.
+You can assign a number to a scalar variable. The number is a integral number or a floating point number.
 
 <pre>
 my $num = 1;
 my $num = 1.234;
-my $num = 100_000_000;
 </pre>
 
-Such a numerical representation is called a numeric literal. See the following articles for more information on numerical literals.
-
-<ul>
-  <li>
-    <a href="/blog/20080826121977.html">Numeric literals - Representation of numbers in source code</a>
-  </li>
-</ul>
-
-<h4>Four arithmetic operations</h4>
-
-It is an arithmetic operation.
+If the digits is large, underscores can be used as delimiters.
 
 <pre>
+my $num = 100_000_000;
+</pre>
+ 
+Numbers written in source codes are called <a href="/blog/20080826121977.html">numeric literals</a>.
+
+<h4>Arithmetic Operations</h4>
+
+These are basic <a href="/blog/20080910122105.html">arithmetic operations</a>.
+
+<pre>
+# Addition
 $num = 1 + 1;
+
+# Subtruction
 $num = 1 - 1;
+
+# Multiplication
 $num = 1 * 2;
+
+# Division
 $num = 1 / 2;
 </pre>
 
-How to find a quotient. To find the quotient, perform ordinary division and then extract the integer part with the int function.
+To culcurate the quotient, perform division and then extract the integer part using the <a href="/blog/20080923122214.html">int function</a>.
 
 <pre>
 # Quotient
-$div = int(3 / 2);
+$quo = int(3 / 2);
+</pre>
 
+The <b>%</b> operator calculates the remainder.
+
+<pre>
 # Remainder
 $mod = 3 % 2;
 </pre>
-
-See the following articles for a detailed explanation of the four arithmetic operations.
-
-<ul>
-  <li>
-    <a href="/blog/20080910122105.html">Operators that perform four arithmetic operations</a>
-  </li>
-</ul>
 
 <h4>Increment and decrement</h4>
 
@@ -162,42 +156,65 @@ $i++
 $i--
 </pre>
 
-<h3>String</h3>
+<h3>Strings</h3>
 
-<h4>String representation</h4>
+<h4>Single Quoted Strings</h4>
 
-Enclose the string in single or double quotes. You can use special characters such as\t (tab) and\n (line break) in double quotes. You can also expand variable in a string enclosed in double quotes.
+This is a <a href="/blog/20201027075254.html">single quoted string</a>. You can assign it to a scalar varialbe.
 
 <pre>
 my $str1 = 'abc';
+</pre>
+
+<h4>Double Quoted Strings</h4>
+
+This is a <a href="/blog/20201026075254.html">double quoted string</a>.  You can assign it to a scalar varialbe. In double quoted strings, you can use escape sequences such as <b>\t</b>(tab), <b>\n</b>(line break) or etc.
+
+<pre>
 my $str2 = "def";
 my $str3 = "a\tbc\n";
+</pre>
 
-# Variable expansion (result is abc def)
+You can also use variable expansions in double quoted strings.
+
+<pre>
+# Variable expansion - The result is "abc def"
 my $str4 = "$str1 def";
 </pre>
 
-<h4>String manipulation</h4>
+<h4>String Operators and Functions</h4>
 
-Various string operations. Dot operator to concatenate strings, <a href="/blog/20081007122338.html">join function</a>, split string <a href="/blog/20080301120434.html">split function </a>, <a href="/blog/20080926122245.html">length function</a> to get the length, <a href="/blog/20080224120386.html">substr function to replace the string <a href="/blog/20080224120386.html">substr function </a>, <a href="/blog/20080225120395.html">index function</a> for searching, etc.
+Often used string operators and functions.
+
+<ul>
+  <li><a href="/blog/20080221120361.html">String Concatnation Operator</a></li>
+  <li><a href="/blog/20081007122338.html">join Function</a></li>
+  <li><a href="/blog/20080301120434.html">split Function</a></li>
+  <li><a href="/blog/20080926122245.html">length Function</a></li>
+  <li><a href="/blog/20080224120386.html">substr Function</a></li>
+  <li><a href="/blog/20080225120395.html">index Function</a></li>
+</ul>
+
+<b>Examples:</b>
 
 <pre>
-# Join
+# Concat two strings
 my $join1 = 'aaa' . ' Bbb';
 
+# Concat strings with a delimiter
 my $join2 = join(',','aaa', 'bbb', 'ccc');
 
 # Split
 my @record = split(/,/, 'aaa,bbb,ccc');
 
-# length
+# Length
 my $length = length 'abcdef';
 
-# Extract
-my $substr = substr('abcd', 0, 2); # ab
+# Cut - The result is "ab"
+my $substr = substr('abcd', 0, 2);
 
-# search
-my $result = index('abcd', 'cd'); # Returns its position if found, -1 if not found
+# Search - Returns the found position, otherwise returns -1
+my $result = index('abcd', 'cd');
 </pre>
 
 <h3>Array</h3>
