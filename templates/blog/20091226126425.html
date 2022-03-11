@@ -328,177 +328,171 @@ exists $hash{a};
 delete $hash{a};
 </pre>
 
-<h3>Conditional branch</h3>
+<h3>Conditional Branches</h3>
 
-Describes Perl's conditional branch syntax.
+Explains conditional branches.
 
-<h4>if statement</h4>
+<h4>if Statements</h4>
 
-If statement.
+For conditional branches, You can use <a href="/blog/20161023147731.html">if statements</a>.
 
 <pre>
-if (condition) {
-    
+if ($condition) {
+  # If the condition is ture, the statements in this block are executed.
 }
 </pre>
 
-<h4>if ~ else statement</h4>
+<h4>if-else statement</h4>
 
-If ~ else statement.
+This is a if-else statement.
 
 <pre>
-if (condition) {
-    
+if ($condition) {
+  # If the condition is ture, the statements in this block are executed.
 }
 else {
-    
+  # If the condition is false, the statements in this block are executed.
 }
 </pre>
 
-<h4>if ~ elsif statement</h4>
+<h4>if-elsif Statements</h4>
 
-if ~ elsif statement.
+This is a if-elsif statement.
 
 <pre>
-if (condition) {
-    
+if ($condition1) {
+  # If the condition 1 is ture, the statements in this block are executed.
 }
-elsif (condition) {
-    
+elsif ($condition1) {
+  # If the condition 2 is ture, the statements in this block are executed.
 }
 </pre>
-
-Note that it is elsif, not else if like other languages.
 
 <h4>Comparison operator</h4>
 
-A list of comparison operators. Perl makes a strict distinction between numeric and string comparisons.
+The list of Perl <a href="/blog/20080318120585.html">comparison operators</a>. Perl has numeric comparison operators and string comparison operators.
 
-<b> [A] List of numeric comparison operators </b>
+<b>Numeric Comparison Operators </b>
+
+Numeric comparison compares the values as numbers.
 
 <table>
   <tr>
     <td>
-      $p == $q
+      $x == $y
     </td>
     <td>
-      $p and $q are equal
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      $p != $q
-    </td>
-    <td>
-      $p and $q are not equal
+      $x is equal to $y
     </td>
   </tr>
 
   <tr>
     <td>
-      $p < $q
+      $x != $y
     </td>
     <td>
-      $p is less than $q
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      $p > $q
-    </td>
-    <td>
-      $p is greater than $q
+      $x is not equal to $y
     </td>
   </tr>
 
   <tr>
     <td>
-      $p <= $q
+      $x < $y
     </td>
     <td>
-      $p is less than $q
+      $x is less than $y
     </td>
   </tr>
 
   <tr>
     <td>
-      $p >= $q
+      $x > $y
     </td>
     <td>
-      $p is over $q
+      $x is greater than $y
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      $x <= $y
+    </td>
+    <td>
+      $x is less than or equal to $y
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      $x >= $y
+    </td>
+    <td>
+      $x is greater than or equal to $y
     </td>
   </tr>
 
 </table>
 
-<b> [B] List of string comparison operators </b>
+<b>String Comparison Operators </b>
+
+String comparison operators compares the values as strings. The values are compared with the dictionary order.
 
 <table>
   <tr>
     <td>
-      $s eq $t
+      $x eq $y
     </td>
     <td>
-      $s equals $t
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      $s ne $t
-    </td>
-    <td>
-      $s is not equal to $t
+      $x is equal to $y
     </td>
   </tr>
 
   <tr>
     <td>
-      $s lt $t
+      $x ne $y
     </td>
     <td>
-      $s is less than $t
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      $s gt $t
-    </td>
-    <td>
-      $s is greater than $t
+      $x is not equal to $y
     </td>
   </tr>
 
   <tr>
     <td>
-      $s le $t
+      $x lt $y
     </td>
     <td>
-      $s is less than $t
+      $x is less than $y
     </td>
   </tr>
 
   <tr>
     <td>
-      $s ge $t
+      $x gt $y
     </td>
     <td>
-      $s is over $t
+      $x is greater than $y
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      $x le $y
+    </td>
+    <td>
+      $x is less than or equal to $y
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      $x ge $y
+    </td>
+    <td>
+      $x is greater than or equal to $y
     </td>
   </tr>
 
 </table>
-
-See below for a detailed explanation of Perl's conditional branch.
-
-<ul>
-  <li>
-    <a href="/blog/20161023147731.html">Learn the syntax of conditional branch using if statement</a>
-  </li>
-</ul>
 
 <h3>Loop syntax</h3>
 
