@@ -184,7 +184,7 @@ my $str4 = "$str1 def";
 
 <h4>String Operators and Functions</h4>
 
-Often used string operators and functions.
+Often used string <a href="/blog/20161005147566.html">operators</a> and <a href="/blog/20161004147558.html">functions</a>.
 
 <ul>
   <li><a href="/blog/20080221120361.html">String Concatnation Operator</a></li>
@@ -258,7 +258,7 @@ my $array_length = @array;
 
 <h4>Array Functions</h4>
 
-Often used array functions.
+Often used array <a href="/blog/20161004147558.html">functions</a>.
 
 <pre>
 # Cut off the first element
@@ -274,58 +274,59 @@ my $last = pop @array;
 push @array, 9;
 </pre>
 
-<h3>Hash</h3>
+<h3>Hashes</h3>
 
-Let's take a brief look at Perl hashes.
+Explains Perl <a href="/blog/20161013147635.html">hashes</a>. Hashes are data structures that have key-value pairs.
 
-<h4>Hash declaration and assignment</h4>
+<h4>Hash Declarations</h4>
 
-Hash declaration and assignment. A hash is a variable to which you can assign multiple pairs of values.
+This is a hash declaration. A <a href="/blog/20100308126967.html">list</a> can be assigned to a hash.
 
 <pre>
+# Hash declaration
 my %hash;
+
+# Assignment values to the hash
 %hash = (a => 1, b => 2);
 </pre>
 
-<h4>Hash element reference and assignment</h4>
+<h4>Getting and Setting a Value of the Hash</h4>
 
-Hash element reference and assignments.
+Get and set a value of the hash.
 
 <pre>
-# Element reference
+# Get a value of the hash
 $hash{a};
 $hash{b};
 
-# Element assignment
+# Set a value of the hash
 $hash{a} = 5;
 $hash{b} = 7;
 </pre>
 
-If the hash key consists of "a-zA-Z_", it does not need to be enclosed in single or double quotes.
-
-<h4>Hash functions</h4>
+If the key of the hash is not consists of "a-zA-Z0-9_", it must be enclosed in single or double quotes.
 
 <pre>
-# Get key
-@keys = keys %hash;
-
-# Get value
-@values = values %hash;
-
-# Key existence check
-exists $hash{a};
-
-# Delete hash key
-delete $hash{a};
+$hash{'some-key'} = 5;
 </pre>
 
-See the following articles for more information on hashing.
+<h4>Hash Functions</h4>
 
-<ul>
-  <li>
-    <a href="/blog/20161013147635.html">Master Perl hashes</a>
-  </li>
-</ul>
+Often used hash <a href="/blog/20161004147558.html">functions</a>.
+
+<pre>
+# Get all keys
+my @keys = keys %hash;
+
+# Get all values
+my @values = values %hash;
+
+# Check if the key exists
+exists $hash{a};
+
+# Delete a key of the hash
+delete $hash{a};
+</pre>
 
 <h3>Conditional branch</h3>
 
