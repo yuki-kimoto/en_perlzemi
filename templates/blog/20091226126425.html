@@ -217,69 +217,62 @@ my $substr = substr('abcd', 0, 2);
 my $result = index('abcd', 'cd');
 </pre>
 
-<h3>Array</h3>
+<h3>Arrays</h3>
 
-Let's take a brief look at Perl arrays.
+Explains Perl <a href="/blog/20161012147627.html">arrays</a>. Arrays are data structures to have multiple values.
 
-<h4>Array declaration and assignment</h4>
+<h4>Array Declarations</h4>
 
-Array declaration and assignment. An array is a variable to which you can assign multiple values.
+This is an array declaration and assignment. A <a href="/blog/20100308126967.html">list</a> can be assigned to an array.
 
 <pre>
-# Array declaration
+# Array declarations
 my @array;
 
-# Assignment to array
+# Assignment to the array
 @array = (1, 2, 3);
 </pre>
 
-<h4>Array element reference and assignment</h4>
+<h4>Getting and Setting an Element of the Array</h4>
 
-References and assignments to array elements.
+Set and get an element of the array.
 
 <pre>
-# Element reference
+# Get an element of the array
 $array[0];
 $array[1];
 
-# Element assignment
+# Set an element of the array
 $array[0] = 1;
 $array[1] = 2;
 </pre>
 
-<h4>Number of arrays</h4>
+<h4>The Length of the Array</h4>
 
-To get the number of arrays, evaluate the arrays in a scalar context. It's a slightly special grammar found only in Perl.
+To get the length of the array, By evaluating the array in a scalar context, you can get the length of the array.
 
 <pre>
-my $array_num = @array;
+# Get the legnth of the array
+my $array_length = @array;
 </pre>
 
-<h4>Array manipulation</h4>
+<h4>Array Functions</h4>
 
-A function that manipulates arrays.
+Often used array functions.
 
 <pre>
-# Extract the first element
+# Cut off the first element
 my $first = shift @array;
 
-# Add element at the beginning
+# Add an element at the beginning of the array
 unshift @array, 5;
 
-# Extract the last element
+# Cut off the last element
 my $last = pop @array;
 
-# Add element at the end
+# Add an element at the end of the array
 push @array, 9;
 </pre>
-
-See the following articles for a detailed explanation of arrays.
-
-<ul>
-  <li>
-    <a href="/blog/20161012147627.html">Let's understand Perl arrays</a>
-  </li>
-</ul>
 
 <h3>Hash</h3>
 
