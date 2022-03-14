@@ -8,7 +8,7 @@
 </ol>
 <h2>The Fastest Master of Perl Basic Syntax</h2>
 
-This article is a summary of Perl's basic syntax to learn Perl quickly.
+This article is a summary of Perl's basic <a href="/blog/20161022147731.html">syntax</a> to learn Perl quickly.
 
 <h3>Perl Basic Syntax</h3>
 
@@ -494,81 +494,89 @@ String comparison operators compares the values as strings. The values are compa
 
 </table>
 
-<h3>Loop syntax</h3>
+<h3>Loop Syntax</h3>
 
-Learn about Perl's iterative syntax.
+Explains <a href="/blog/20170521149524.html">loop syntax such as while/for</a>.
 
-<h4>while statement</h4>
+<h4>The while statement</h4>
 
-<a href="/blog/20100123126425.html">while statement</a>.
+This is a <a href="/blog/20100123126425.html">while</a> statement.
 
 <pre>
 my $i = 0;
 while ($i < 5) {
     
-    # process
+    # Do something
     
     $i++;
 }
 </pre>
 
-<h4>for statement</h4>
+<h4>The for statement</h4>
 
-It is for statement.
+This is a <a href="/blog/20080327120662.html">for</a> statement.
 
 <pre>
 for (my $i = 0; $i < 5; $i++) {
-  ...
+  # Do something
 }
 </pre>
 
-<h4>foreach statement</h4>
+<h4>The foreach statement</h4>
 
-It is foreach statement. You can process each element of the array. foreach is an alias for for and is essentially the same.
+This is a <a href="/blog/20080328120673.html">foreach</a> statement to iterate each element of the array.
 
 <pre>
-foreach my $field (@fields) {
-  ...
+foreach my $num (@nums) {
+  # Do something
 }
 </pre>
 
-Perl's iterative syntax is explained in detail in the next article.
+In Perl, the <b>foreach</b> statement is alias for the <b>for</b> statement.
 
-<ul>
-  <li>
-    <a href="/blog/20170521149524.html">Let's learn the iterative processing using for statement and while statement</a>
-  </li>
-</ul>
+<pre>
+# Same as the above foreach statement
+for my $num (@nums) {
+  # Do something
+}
+</pre>
 
-<h3>Subroutine</h3>
+<h3>Subroutines</h3>
 
-In Perl, a function is also called a subroutine. To create a subroutine:
+Explaines <a href="/blog/20101130129876.html">subroutines</a>. 
+
+<h4>Subroutine Definition</h4>
+
+This is a subroutine defintiion. A subroutine recieves the arguments, execute the statements, and return the return values.
 
 <pre>
 sub sum {
+  # Revices arguments
   my ($num1, $num2) = @_;
   
+  # Execute the statements
   my $total = $num1 + $num2;
   
+  # Return the return values
   return $total;
 }
 </pre>
 
-Perl doesn't require you to explicitly specify argument names like in other languages. Since the argument is contained in the array @_, use it as needed. Use return to return the return value.
+<h4>Calling Subroutines</h4>
 
-The following article explains in detail how to create a subroutine.
-
-<ul>
-  <li>
-    <a href="/blog/20101130129876.html">How to create a subroutine</a>
-  </li>
-</ul>
-
-<h3>File input/output</h3>
-
-File input/output.
+Call a subroutine.
 
 <pre>
+# Call a subroutine
+my $sum = sum(1, 2);
+</pre>
+
+<h3>File Input/Output</h3>
+
+Explains <a href="/blog/20110212130370.html">file Input/Output</a>.
+
+<pre>
+# Open file
 open my $fh, '<', $file
   or die "Cannot open'$file':$!";
 
@@ -579,15 +587,11 @@ while (my $line = <$fh>) {
 close $fh;
 </pre>
 
-When you open a file with the open function, the file handle is assigned to $fh. '<' Is the read mode. When writing, use'>'. You can read a line from a file with the description <$fh>. After or, it is executed when the file open fails. die is a function that displays an error message and terminates the program. $! Is an error message from the OS when the file open fails.
+The <a href="/blog/20080718121643.html">open function</a> opens a file. The "<" means the read mode.
 
-Perl's file I/O is explained in detail on the following pages.
+The <b>&lt;$fh&gt;</b> is a <a href="/blog/20080722121673.html">line input operator</a>.
 
-<ul>
-  <li>
-    <a href="/blog/20110212130370.html">Basics of file input/output</a>
-  </li>
-</ul>
+<b>$!</b> is a <a href="/blog/20161102147817.html">predefined variable</a> to be set to the error that the operating system returns.
 
 <h3>Grammar you should know</h3>
 
