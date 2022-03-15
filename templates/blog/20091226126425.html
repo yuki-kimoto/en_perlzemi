@@ -593,61 +593,82 @@ The <b>&lt;$fh&gt;</b> is a <a href="/blog/20080722121673.html">line input opera
 
 <b>$!</b> is a <a href="/blog/20161102147817.html">predefined variable</a> to be set to the error that the operating system returns.
 
-<h3>Grammar you should know</h3>
+<h3>Often Used Features</h3>
 
-Here's a list of grammars you should know that often appear in Perl.
+Explains Perl often used features.
 
-<h4>Perl truth value</h4>
+<h4>Perl True and False Values</h4>
 
-<a href="/blog/20080323120628.html">Perl boolean</a> has the following definition: There are four types of values that Perl determines to be false: "undef", "''", "0", and "'0'". Everything else is true.
+Explains <a href="/blog/20080323120628.html">Perl true and false values</a>.
 
-<h4>Determine if a defined value is defined</h4>
+<h5>False Values</h5>
 
-Use <a href="/blog/20100219126425.html">defined function</a> to see if a value is defined.
+These are false values in Perl.
+
+<ul>
+  <li>undef</li>
+  <li>0</li>
+  <li>""</li>
+  <li>"0"</li>
+  <li>()</li>
+</ul>
+
+<h5>True Values</h5>
+
+True values are all values except for the above false values.
+
+<h4>The defined Function</h4>
+
+The <a href="/blog/20100219126425.html">defined function</a> checks if the value is defined.
 
 <pre>
 defined $num;
 </pre>
 
-<h4>Command line arguments</h4>
+<h4>Command Line Arguments</h4>
 
-Use the @ARGV variable to receive <a href="/blog/20080108132865.html">command line arguments</a>.
+@ARGV is <a href="/blog/20080108132865.html">command line arguments</a>.
 
 <pre>
-my ($file, $options) = @ARGV;
+my ($args0, $args1, $args2) = @ARGV;
 </pre>
 
-If you want to receive only one command line argument, you can write: Implicitly @ARGV is passed as an argument to shift.
+<h4>Scalar Context and List Context</h4>
+
+Perl has <a href="/blog/20080608121292.html">context</a> that the value is evaluated.
+
+These are examples that the return values are different corresponding to scalar context and list context.
 
 <pre>
-my $file = shift;
-</pre>
-
-<h4>Scalar context and list context</h4>
-
-In Perl, some functions have different return values depending on the context. For example, the localtime function. This is a Perl-specific grammar called <a href="/blog/20080608121292.html">context</a>.
-
-<pre>
-# Scalar context (get date/time as a string)
+# Scalar context
 my $time_str = localtime();
 
-# List context (get each element of date and time as an array)
+# List contex
 my @datetime = localtime();
 </pre>
 
-<h4>unless statement</h4>
+<h4>The unless Statement</h4>
 
-<a href="/blog/20100125126425.html">unless statement</a> expresses the negation of if statement.
+Perl has the <a href="/blog/20100125126425.html">unless statement</a>.
 
 <pre>
-unless (condition) {
+unless ($condition) {
   ...
 }
 </pre>
 
+The above unless statement is same as the following if statement.
+
+<pre>
+if (!$condition) {
+  ...
+}
+
+</pre>
+
 <h4>Postfix if, Postfix unless</h4>
 
-In Perl you can put if or unless after a statement.
+Perl has the postfix if statement and the postfix unless statement.
 
 <pre>
 # Postfix if
@@ -659,48 +680,72 @@ die "error" unless $num;
 
 <h4>Postfix for</h4>
 
-In Perl you can put a for after a statement.
+Per has the postfix for statement.
 
 <pre>
 # Postfix for
 print $_ for @nums;
 </pre>
 
-The values are sequentially assigned to "$_".
+Each element of the array is assigned to <b>$_</b>.
 
-<h4>Array slices and hash slice</h4>
+<b>$_</b> is called <a href="/blog/20180118151628.html">default variables</a>
 
-Use <a href="/blog/20080216120316.html">array slice</a> and <a href="/blog/20080215120307.html">hash slice</a> to get only the specified elements as an array I can do it.
+<h4>Array Slices and Hash Slices</h4>
+
+Perl has <a href="/blog/20080216120316.html">array slices</a> and <a href="/blog/20080215120307.html">hash slices</a> syntax to get the specified elements.
 
 <pre>
 # Array slice
-@select = @array[1, 4, 5];
+my @select = @array[1, 4, 5];
 
 # Hash slice
-@select = @hash {'a', 'b', 'd'};
+my @select = @hash{'a', 'b', 'd'};
 </pre>
 
-<h4>map function</h4>
+<h4>The map Function</h4>
 
-You can use <a href="/blog/20100118126425.html">map function</a> to transform each element of the array. The elements of @array are assigned to $_ in order.
+Perl has the <a href="/blog/20100118126425.html">map function</a> to process each element of the array. Each element is assigned to <b>$_</b>.
 
 <pre>
-@mapped = map {$_ * 2} @array;
+my @mapped = map {$_ * 2} @array;
+</pre>
+
+The above result of the map funtion is same as the result of the following for statement.
+
+<pre>
+my @mapped;
+for my $elem (@array) {
+  my $new_elem = $elem * 2;
+  push @mapped, $new_elem;
+}
 </pre>
 
 <h4>grep function</h4>
 
-You can use <a href="/blog/20100119126425.html">grep function</a> to get only the elements that match the conditions as an array. The elements of @array are assigned to $_ in order.
+Perl has the <a href="/blog/20100119126425.html">grep function</a> to get the elements that the condition match. Each element is assigned to <b>$_</b>.
 
 <pre>
-@select = grep {$_ =~ 'cat'} @array;
+my @select = grep {$_ =~ /cat/} @array;
 </pre>
 
-<h4>List assignment</h4>
-
-<a href="/blog/20100308126967.html">List</a> There is an assignment method called assignment.
+The above result of the grep function is same as the result of the following for statement.
 
 <pre>
+my @select;
+for my $elem (@array) {
+  if ($elem =~ /cat/) {
+    push @select, $elem;
+  }
+}
+</pre>
+
+<h4>List Assignment</h4>
+
+This is the syntax of <a href="/blog/20100308126967.html">list</a> assignment.
+
+<pre>
+# List assignment
 my ($num1, $num2) = ($num3, $num4);
 </pre>
 
