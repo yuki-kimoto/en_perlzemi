@@ -749,108 +749,142 @@ This is the syntax of <a href="/blog/20100308126967.html">list</a> assignment.
 my ($num1, $num2) = ($num3, $num4);
 </pre>
 
-<h4>Range operator</h4>
+<h4>The Range Operator</h4>
 
-There is something called <a href="/blog/20170520149523.html">range operator</a> that represents a range of integers.
+The <a href="/blog/20170520149523.html">range operator</a> creates a list that has a range of integers.
 
 <pre>
+# Range operator
 my @numes = (0 .. 5);
 </pre>
 
-<h4>String list operator</h4>There is something called <a href="/blog/20080222120369.html">string list operator</a> that makes it easy to write a list of strings.
+This is same as the following code.
 
 <pre>
+my @numes = (0, 1, 2, 3, 4, 5);
+</pre>
+
+<h4>The string list operator</h4>
+
+Perl has the <a href="/blog/20080222120369.html">string list operator</a> to create a string list easily.
+
+<pre>
+# String list operator
 my @strs = qw(aaa bbb ccc);
 </pre>
 
-<h4>Single return</h4>
-
-If you write return in a subroutine, <a href="/blog/20100220126425.html">undef</a> will be returned in the case of scalar context, and an empty list () will be returned in the case of list context. .. If you want to use the return value to tell that an error has occurred in a subroutine, write return instead of return undef.
+This is same as the following code.
 
 <pre>
-sub name {
-  my @args = @_;
+my @strs = ('aaa', 'bbb',  'ccc');
+</pre>
+
+<h4>Return Statments that has No Operand</h4>
+
+The return statments that has no operand returns <a href="/blog/20100220126425.html">undef</a> in scalar context, or returns an empty list in list context.
+
+<pre>
+sub foo {
   
   return;
 }
+
+# undef
+my $ret = foo();
+
+# ()
+my @ret = foo();
 </pre>
 
-<h4>Exception handling</h4>
+<h4>Exception Handling</h4>
 
-Use <a href="/blog/20100212126425.html">die function</a> to throw an exception.
+The <a href="/blog/20100212126425.html">die function</a> throws an exception.
 
 <pre>
+# Throw an exception
 die "Error message";
 </pre>
 
-To catch the exception, use <a href="/blog/20100312126967.html">eval block</a> to determine $@.
+The <a href="/blog/20100312126967.html">eval block</a> catch exceptions. If an exception occurs, the exception message is assinged to the predefined variable "$@".
 
 <pre>
-eval {functions that die can occur, etc.};
+# Catch exceptions
+eval {
+  # Do something
+};
 
+# The exception message
 if ($@) {
   ...
 }
 </pre>
 
-<h4>Read everything from a file</h4>
+<h4>Read Whole Content from a File</h4>
 
-There is no function to read everything from a file, so read all the lines into an array and connect them with <a href="/blog/20081007122338.html">join function</a>.
+To <a href="/blog/20180521152690.html">read whole content from a file</a>, you can use the following syntax.
 
 <pre>
-my @lines = <$fh>;
-my $content = join('', @lines);
+# Read whole content from a file
+my $content = do { local $/; <$fh> };
 </pre>
 
-This can be written in one line.
+<h4>The Ternary Operator</h4>
+
+Perl has <a href="/blog/20080325120646.html">Ternary operator</a>.
 
 <pre>
-my $content = join('', <$fh>);
-</pre>
-
-<h4>Ternary operator</h4>
-
-<a href="/blog/20080325120646.html">Ternary operator</a>. In the example below, 1 is assigned to $num if $flg is true, and 2 is assigned to $num if it is false.
-
-<pre>
-my $num = $flg ? 1: 2;
+# Ternary operator
+my $num = $flag ? 1 : 2;
 </pre>
 
 <h4>||=</h4>
 
-Substitutes the rvalue if the lvalue is a false value. In the case of the example below, 2 is assigned to $num if $num is a false value.
+Perl has special assign operator "||=".
 
 <pre>
 $num ||= 2;
 </pre>
 
+This is same as the following code.
+
+<pre>
+$num = $num || 2;
+</pre>
+
 <h4>//=</h4>
 
-Defined-or operator. Substitutes the rvalue if the lvalue is undefined. In the example below, 2 is assigned to $num if $num is undefined.
+Perl has the <a href="/blog/20120702134129.html">defined-or operator</a> and the special assign operator.
 
 <pre>
 $num //= 2;
 </pre>
 
-<h4>Loading modules</h4>
-
-Use <a href="/blog/20090205123287.html">use</a> to load the module.
+This is same as the following code.
 
 <pre>
-use module name;
+$num = $num // 2;
+</pre>
+
+<h4>Module Loading</h4>
+
+The <a href="/blog/20090205123287.html">use</a> function loads a <a href="/blog/20091116124667.html">module</a>.
+
+<pre>
+use SomeModule;
 </pre>
 
 <h4>Write a configuration file in Perl</h4>
 
-Use <a href="/blog/20090208123289.html">do function</a> to read the configuration file written in Perl.
+The <a href="/blog/20090208123289.html">do function</a> read the configuration file written by Perl.
 
 <pre>
-my $conf_file = "app.conf";
+use FindBind;
+my $conf_file = "$FindBin::Bin/app.conf";
 my $conf = do $conf_file
-  or die qq/Can't load config file "$conf_file":$! $@/;
+  or die "Can't load config file \"$conf_file\":$! $@";
 </pre>
 
-The contents of the configuration file.
+<b>Examples of config file:</b>
 
 <pre>
 {
@@ -859,16 +893,20 @@ The contents of the configuration file.
 }
 </pre>
 
-If the file is not read or parsed successfully, the undefined value will be returned. If the file name does not exist, $! Will be set, and if the Perl source code fails to load, $@will be set to the error content.
+<h4>Multiple Line Comments</h4>
 
-<h4>Multi - line comment</h4>
-
-You can comment on multiple lines by writing as follows.
+Although Perl has not the syntax of multiple line comments, You can use <a href="/blog/20170408149166.html">POD</a> syntax to write multiple line comments.
 
 <pre>
+
 =pod
 
-The text you want to comment on
+Comment1
+
+Comment2
+
+Comment3
 
 =cut
+
 </pre>
