@@ -6,7 +6,7 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2>Install Strawberry Perl on Windows</h2>
+<h2>Installation of Strawberry Perl on Windows</h2>
 
 <b>Strawberry Perl</b> is one of the Windows Perl distributions. Strawberry Perl is easy to install and has the C language compiler <a href="https://en.wikipedia.org/wiki/MinGW">MinGW</a>, a CPAN module installer <a href="/blog/20101027127859.html">cpanm</a> and often used C libraries.
 
@@ -68,86 +68,84 @@ When the progress bar is full, the Strawberry Perl installation is complete.
 
 Press "Finish" to close the dialog. A Readme will be displayed. Close it.
 
-<h3>Checking if Strawberry Perl is Installed</h3>
+<h3>Check the Installation of Strawberry Perl</h3>
 
-After the installation is complete, let's check if Strawberry Perl is actually installed.
+Let's check if Strawberry Perl is installed.
 
-Try running a tool called Command Prompt to see the version of Perl.
+<h4>Command Prompt</h4>
 
-The command prompt can be executed from "Start Menu"->"List of Apps"->"Windows System Tools"->"Command Prompt".
+At first, you execute <a href="/blog/20080603121251.html">Command Prompt</a>. Command Prompt is a Windows CUI tool.
 
-A black screen will appear, so try pressing "Enter" from the keyboard with the following characters.
+The command prompt can be executed from:
+
+"Start Menu" | "List of Apps" | "Windows System Tools" | "Command Prompt".
+
+A black screen will appear. This is Command Prompt.
+
+<img src="/images/commandprompt/commandprompt.png">
+
+Input the following command to display the version of Perl.
 
 <pre>
 perl -v
 </pre>
 
-If the version information is displayed as shown below, the installation is successful.
+And press "Enter".
+
+The version information of Perl is displayed.
 
 <pre>
 This is perl 5, version 32, subversion 0 (v5.32.1) built for MSWin32-x64-multi-thread
 </pre>
 
-This completes the Strawberry Perl installation.
+If you can see this, the installation of Strawberry Perl is succeed.
 
-To run Perl on Windows, use what is called a command prompt. You will be able to run Perl scripts using the perl command.
+<h3>Trouble Shooting</h3>
 
-If you want to get started with Perl in Strawberry Perl, learn how to use the command prompt.
+If Strawberry Perl doesn't work, see the following trouble shooting.
 
-If you want to know how to use the command prompt, see the article "Introduction to Command Prompt for Running Perl".
+<h4>The Priority of PATH Environment Variable</h4>
 
-<ul>
-  <li> <a href="/blog/20080603121251.html">Introduction to Command Prompt for running Perl</a> </li>
-</ul>
+If another Perl such as ActivePerl or Strawberry Perl 32bit is already installed, the Strawberry Perl installed in this article may not work due to the priority problem of the PATH environment variable.
 
-<h3>Strawberry Perl doesn't work</h3>
+Move the path of Perl you want to use to the front of other Perls.
 
-Troubleshooting if Strawberry Perl doesn't work.
+<h3>The ways of Installation other than MSI</h3>
 
-<h4>PATH environment variable priority</h4>
+The ways to install Strawberry Perl other than MSI.
 
-If another Perl such as Active Perl or Strawberry Perl 32bit is installed, the installed Strawberry Perl may not work due to the priority problem of the PATH environment variable.
+<h4>ZIP Version of Strawberry Perl</h4>
 
-In the PATH environment variable setting, move the path of the installed Strawberry Perl perl to the front, or if you are not using it, try uninstalling the conflicting Perl.
-
-Search for information on how to set environment variable on Windows.
-
-<h3>Installation other than MSI</h3>
-
-Introducing the installation of Strawberry Perl other than MSI.
-
-<h4>ZIP version of Strawberry Perl</h4>
-
-If you don't have Windows administrator privileges and can't install as an administrator, you can use the ZIP version of Strawberry Perl.
+ZIP Version of Strawberry Perl is also prepared.
 
 <ul>
   <li> <a target="_blank" href="https://insource-mkd.co.jp/staff-blog/16635.html">Reference: Installing the ZIP version of Strawberry Perl</a> </li>
 </ul>
 
-<h4>Portable version of Strawberry Perl</h4>
+<h4>Portable Version of Strawberry Perl</h4>
 
-There is a portable edition of Strawberry Perl, and you can use Strawberry Perl without installation. You can use Perl directly from the USB stick, or you can copy the Strawberry Perl directory from the USB stick and use Perl.
+Portable Version of Strawberry Perl is also prepared.
 
-<h3>Other ways to install Perl on Windows</h3>
+<h3>Other Ways to Install Perl on Windows</h3>
 
-See below for other ways to install Perl on Windows.
+See the following links to known other ways to install Perl on Windows.
 
 <h4>ActivePerl</h4>
 
-If you want to compare it to Active Perl, another popular Perl distribution on Windows, see the Active Perl Download and Installation article.
+ActivePerl is another Windows Perl distribution.
 
 <ul>
   <li>
-    <a href="/blog/20080602121231.html">Install ActivePerl on Windows</a>
+    <a href="/blog/20080602121231.html">Installation of Active Perl on Windows</a>
   </li>
 </ul>
 
 <h4>msys2</h4>
 
-If you want to create a Linux pseudo environment on Windows and use Perl, you can use msys2. Window file systemIt's easier than any other way to create a Linux environment, as it can handle the stem and the only steps are download and installation.
+If you want a Linux pseudo environment on Windows, you can use msys2.
 
 <ul>
    <li>
-     <a href="/blog/20180806153350.html">Install msys2 on Windows and use Perl</a>
+     <a href="/blog/20180806153350.html">Install msys2 on Windows to use Perl</a>
    </li>
 </ul>
