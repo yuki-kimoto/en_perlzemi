@@ -7,75 +7,43 @@
   </li>
 </ol>
 
-<h2>Install msys2 on Windows and use Perl</h2>
+<h2>Installation of msys2 and Perl on Windows</h2>
 
-Learn how to install msys2 on Windows and use Perl.
+Explains how to install <a href="https://www.msys2.org">msys2</a> and Perl on Windows. The msys2 is a software to build a Linux-like environment on Windows. Perl can be installed on msys2.
 
-<a href="https://www.msys2.org">msys2</a> is a tool that <b> provides a Linux-like shell environment on Windows </b>. You can develop using Perl in a Linux-like environment.
+<img src="/images/msys2.png">
 
-<b> msys2 screen </b>
-<div>
-  <img src="/images/msys2.png"></div>
+On msys2, you can use <a href="https://en.linux.perlzemi.com/blog/20200211081227.html">Linux commands</a> such as ls, cat, tar, and <a href="https://en.git.perlzemi.com/">git</a>. The terminal charset is UTF-8.
 
-With msys2, you can use Linux commands such as ls, cat, tar, and git, and UTF-8 can be displayed correctly.
+The msys2 is compatible with POSIX. The Perl web framework such as <a href="https://en.mojolicious.perlzemi.com/">Mojolicious</a> can work correctly.
 
-Since there is a POSIX compatibility layer, the development server of <a href="/blog/20140319139520.html">Mojolicious</a> will work properly, assuming booting on Linux.
+<h3>Download of msys2</h3>
 
-<h3>10 minutes to install msys2</h3>
-
-Download and install msys2.
-
-<h4>Download msys2</h4>
-
-Let's install msys2. Use the 64-bit version of msys2 for 64-bit Windows, and use the 32-bit version of msys2 for 32-bit Windows.
-
-Currently (March 8, 2021), most Windows seems to be a 64-bit version, so normally a 64-bit version should be fine. The following explanation is based on the 64-bit version.
+Let's download msys2 from the following page.
 
 <ul>
   <li>
-    <a href="https://www.msys2.org/">Top page-Click "1. Download the installer: msys2-x86_64-Date.exe"</a>
+    <a href="https://www.msys2.org/">msys2.org</a>
   </li>
 </ul>
 
-Click to download msys2 to your desktop.
+Click "the installer: msys2-x86_64-20220319.exe" and donwload msys2 to your desktop.
 
-<h4>Confirm user name</h4>
-
-Make sure that the user directory under "C:\Users" (Japanese display is C:\users) in Windows is in English as shown below.
-
-<pre>
-kimot
-</pre>
-
-If it is in Japanese as shown below, additional settings are required.
-
-<pre>
-Kimoto
-</pre>
-
-If it is in Japanese, before installing msys2, set the variable name to "HOME" and the variable value to "C:\msys64\home\msys2user" in the environment variable settings. ..
-
-<ul>
-  <li> <a href="http://www.wannko.net/windows10/etc/kankyo.html">Add environment variable</a>
-</ul>
-
-The above directory is set as the home directory of msys2.
-
-<h4>Install msys2</h4>
+<h3>Installation of msys2</h3>
 
 Double-click the msys2 icon on your desktop.
 
-Press Next to start the installation. It will take about 3 minutes, so let's wait.
+Press Next.
 
-When you press Finish, msys2 will start, but let's press the cross on the upper right to end it.
+Press Finish. The msys2 will start.
 
-<h4>Second and subsequent startups of msys2</h4>
+<h3>Execution of msys2</h3>
 
-Once you close msys2, you're wondering where to start next.
+You close msys2. Next time, you find the msys2 program.
 
-If you look for the table of contents of m from the list of applications in the Windows Start-menu, you will find the directory "MSYS2 64bit".
+"Windows Start Menu" | "List of Apps" | "MSYS2 64bit".
 
-In it
+You will see three msys2 program.
 
 <ul>
   <li>
@@ -85,19 +53,15 @@ In it
     MSYS2 MINGW 32bit
   </li>
   <li>
-    <b> MSYS2 MSYS </b>
+    <b>MSYS2 MSYS</b>
   </li>
 </ul>
 
-However, let's start <b> "MSYS2 MSYS" </b>. There are three types of startup scripts in msys2, but <b> for Perl to work properly, select "MSYS2 MSYS", which has the highest Linux reproducibility </b>.
+Click <b>MSYS2 MSYS</b>. This is needed to run Perl.
 
-Please note that if you make a mistake, the Perl environment will not be set up correctly.
+"MSYS2 MinGW 64bit" and "MSYS2 MINGW 32bit" are used to create Windows native apps.
 
-The other two seem to be used when developing Windows native apps.
-
-It is convenient to start by creating a shortcut on the desktop. In that case, select "Right click", "Other", "Open file location", "Right click" and "Copy" "MSYS2 MSYS", and then "Paste" on the desktop.
-
-<h3>Perl environment construction 20 minutes</h3>
+<h3>Instalation of Perl on msys2</h3>
 
 Make Perl available on msys2. Let's install Perl and the list of development environments required for Perl together.
 
