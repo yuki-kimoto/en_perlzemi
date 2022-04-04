@@ -6,68 +6,61 @@
     <meta itemprop = "position" content = "2" />
   </li>
 </ol>
-<h2>Command Prompt Tutorial</h2>
+<h2>Windows Command Prompt Tutorial</h2>
 
-Perl programming is done by typing text called commands. First of all, I would like to explain the command prompt, which is a command execution tool in Windows. The explanation assumes that you are using Windows 10. You can follow almost the same procedure on Windows 7 and 8, but there may be some differences, such as where to look for the application.
+Explains how to use Windows Command Prompt to run Perl. Command Prompt is a <a href="https://en.wikipedia.org/wiki/Command-line_interface">CLI</a> tool to run programs on Windows.
 
-<h4>What is a command prompt? </H4>
+<h3>Execution of Command Prompt</h3>
 
-The command prompt is the execution environment of the program using CUI in the Windows environment. CUI is an abbreviation for Character-based User Interface, which is an interface for inputting text and executing a program. When programming Perl on Windows, you will run Perl using the command prompt.
+Let's execute Command Prompt.
 
-<h4>To run the command prompt</h4>
-
-You can execute it from "Windows System Tools"->"Command Prompt" in the list of apps from the Windows menu at the bottom left of the screen. It is convenient to create a shortcut on the desktop by right-clicking and dragging the command prompt icon.
-
-When you execute the command prompt, the command prompt will be launched as shown below.
+"Start Menu" | "Apps" | "Windows System Tools" | "Command Prompt"
 
 <img src="/images/commandprompt/commandprompt.png">
-The command prompt home directory is the user directory.
 
-In this example:
-
-<pre>
-C:\Users\kimot
-</pre>
-
-<h4>Show extension</h4>
-
-The Perl program is just a text file, but the extension is ".pl", so let's set it to display the extension. The extension is used to indicate the type of program.
-
-Right-click the Windows menu at the bottom left of the screen → click "Explorer" → click "View" on the upper tab → check "File name extension".
-
-<h4>Create a Perl program</h4>
-
-Open the command prompt home directory in Explorer.
-
-In this example, access the following directories.
+Your home directory is shown on Command Prompt.
 
 <pre>
 C:\Users\kimot
 </pre>
 
-Right-click the Windows menu at the bottom left of the screen → click "Explorer" → click the left menu "OS (C :)" → click "User" → click "kimot".
+<h3>Showing File Extensions</h3>
 
-Please note that the part corresponding to Users is displayed as "User" in Japanese.
+The extension of Perl program is "<b>.pl</b>". It is useful if extensions of files are displayed.
 
-Right-click an empty part of the C:\Users\kimot directory → "New" → "Text Document". Name it "start.pl" and save it. You can note that "If you change the extension, it may not work", but proceed as it is.
+The way to show file extensions is described in the following page.
 
-Change the association of ".pl" to Notepad. If you have a text editor you are using, change the association to the text editor you are using.
+<a href="https://www.howtogeek.com/205086/beginner-how-to-make-windows-show-file-extensions/">How to Make Windows Show File Extensions</a>
 
-Right-click "start.pl"->"Open with"->"Select another program"->"Notepad"->Check "Always use this app to open .pl files".
+<h3>Execution of Notepad</h3>
 
-Click "start.pl" to open it in Notepad.
+Perl programs are text files. You can create your Perl programs using Notepad.
 
-Please enter the following content.
+The way to use Notepad is described in the following page.
+
+<a href="https://www.digitalcitizen.life/start-notepad-windows/">11 ways to start Notepad in Windows</a>
+
+<h3>Creating Perl Programs</h3>
+
+Let's create a Perl program.
+
+Create a file named "start.pl" at your home directory.
+
+<pre>
+C:\Users\kimot\start.pl
+</pre>
+
+And write the following text.
 
 <pre>
 print "Hello World";
 </pre>
 
-Save by selecting "File"->"Save" in the upper left.
+And save it.
 
-<h4>Run Perl</h4>
+<h3>Runing Perl Programs</h3>
 
-Use the perl command to run Perl. Enter the following at the command prompt and enter Enter.
+Use the perl command to run Perl. Enter the following at Command Prompt and enter Enter.
 
 <pre>
 perl start.pl
@@ -79,7 +72,7 @@ If the output is as follows, the Perl program can be executed. Congratulations.
 Hello World
 </pre>
 
-<h4>First command to remember</h4>
+<h3>First command to remember</h3>
 
 You can display a list of files with the dir command. Type dir and press Enter.
 
@@ -99,7 +92,7 @@ Use cd .. to move up one directory.
 cd ..
 </pre>
 
-<h4>Pass an argument with a blank</h4>
+<h3>Pass an argument with a blank</h3>
 
 <pre>
 perl start.pl "a i u"
@@ -107,7 +100,7 @@ perl start.pl "a i u"
 
 If the argument contains spaces, enclose it in double quotes.
 
-<h4>Change drive</h4>
+<h3>Change drive</h3>
 
 <pre>
 c:
@@ -116,7 +109,7 @@ d:
 
 You can change the drive to C drive with c: and to D drive with d :.
 
-<h4>Refer to command history</h4>
+<h3>Refer to command history</h3>
 
 <pre>
 ↑
@@ -125,15 +118,15 @@ You can change the drive to C drive with c: and to D drive with d :.
 
 You can follow the command history with the up and down keys.
 
-<h4>Completing the file name</h4>
+<h3>Completing the file name</h3>
 
 <pre>
 Ctrl + f
 </pre>
 
-You can enter the file name halfway and press Ctrl + f to complete the file name. It is necessary to change the command prompt settings described below.
+You can enter the file name halfway and press Ctrl + f to complete the file name. It is necessary to change Command Prompt settings described below.
 
-<h4>Display environment variable</h4>
+<h3>Display environment variable</h3>
 
 <pre>
 echo %PATH% (when looking at the contents of the environment variable PATH)
@@ -141,7 +134,7 @@ echo %PATH% (when looking at the contents of the environment variable PATH)
 
 To see the environment variable, use echo %environment variable name%.
 
-<h4>Set environment variable</h4>
+<h3>Set environment variable</h3>
 
 <pre>
 SET DATE = 20080604 (when setting the environment variable DATE to 20080604)
@@ -150,11 +143,11 @@ perl start.pl %DATE% (Example using environment variable as arguments)
 
 You can set environment variable with SET environment variable name = value. There should be no space to the left or right of =. To use an environment variable, use%environment variable name%.
 
-Setting environment variable does not change the value of OS environment variable. It is valid only within the command prompt that is running.
+Setting environment variable does not change the value of OS environment variable. It is valid only within Command Prompt that is running.
 
-<h4>Convenient command prompt settings</h4>
+<h3>Convenient Command Prompt settings</h3>
 
-<b> How to change the command prompt settings </b>
+<b> How to change Command Prompt settings </b>
 
 After creating the shortcut on the desktop, you can change the setting by right-clicking "Properties".
 
@@ -162,7 +155,7 @@ After creating the shortcut on the desktop, you can change the setting by right-
 
 You can set the working folder and file name completion from the "Shortcut" tab. The working folder is the current directory when the shortcut is started.
 
-To set filename completion, add:/f on to the end of the command prompt path labeled "link destination". There must be a space before the :. This will enable the "8. Complete Filename" command.
+To set filename completion, add:/f on to the end of Command Prompt path labeled "link destination". There must be a space before the :. This will enable the "8. Complete Filename" command.
 
 Example%SystemRoot%\system32\cmd.exe: /f on
 
