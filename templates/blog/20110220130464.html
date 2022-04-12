@@ -10,19 +10,19 @@
     here
   </li>
 </ol>
-<h2>perlbrew - Install Perl in your environment</h2>
+<h2>perlbrew - Installation of Perl on User Directries</h2>
 
-To install Perl in your environment, use a tool called perlbrew. This is useful if you don't want to use the system standard Perl or if you want to use a newer version of Perl. You can also use perlbrew to switch between multiple versions of Perl.
+<a href="https://perlbrew.pl/">perlbrew</a> is a command line tool to intall Perl on user directries. You can install any version of Perl on your user directries and use it.
 
-<h3>Install perlbrew</h3>
+<h3>Installation of perlbrew</h3>
 
-Execute the following command.
+Execute the following command to install perlbrew.
 
 <pre>
 curl -L http://install.perlbrew.pl | bash
 </pre>
 
-If you don't have the curl command, try running the following command:
+If you don't have curl command, use wget command or fetch command.
 
 <pre>
 # Linux
@@ -32,104 +32,138 @@ wget -O - http://install.perlbrew.pl | bash
 fetch -o- http://install.perlbrew.pl | sh
 </pre>
 
-You can also install from cpan in two steps.
+You can also install perlbrew from <a href="/blog/20100504127089.html">CPAN</a>.
 
 <pre>
 sudo cpan App::perlbrew
 perlbrew init
 </pre>
 
-Next, let's pass the path of perlbrew. Add the configuration file for bash provided by perlbrew to "~/.bashrc" (in the case of bash).
+<h4>bash</h4>
+
+Add the perlbrew settings to "~/.bashrc".
 
 <pre>
-echo "source ~/perl5/perlbrew/etc/bashrc">> ~/.bashrc
+echo "source ~/perl5/perlbrew/etc/bashrc" >> ~/.bashrc
 </pre>
 
-Reload ".bashrc".
+Reload "~/.bashrc".
 
 <pre>
 source ~/.bashrc
 </pre>
 
-<h3>Installing Perl in the user environment</h3>
+<h4>csh</h4>
 
-Install Perl in your environment. Let's install Perl for 5.28.2. It will take some time, so wait(about 30 minutes).
+Add the perlbrew settings to "~/.cshrc".
 
 <pre>
-perlbrew install perl-5.28.2
+echo "source ~/perl5/perlbrew/etc/cshrc" >> ~/.cshrc
 </pre>
 
-If you can't install it, the tools needed to compile Perl may not have been installed yet. The following tools are required, so install them according to each environment.
+Reload "~/.cshrc".
+
+<pre>
+source ~/.cshrc
+</pre>
+
+<h3>Installtion of Perl using perlbrew</h3>
+
+You can check the available Perls using <b>available</b> command.
+
+<pre>
+# Show the available Perls
+perlbrew available
+</pre>
+
+Let's install a Perl using <b>install</b> command. The latest Perl version for 2022 is v5.34.1.
+
+<pre>
+# Install Perl
+perlbrew install perl-5.34.1
+</pre>
+
+If the installation of Perl fails, check the following commands are installled. These commands are needed to install Perl.
 
 <ul>
   <li> make </li>
-  <li> gcc </li>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20201216103956.html">gcc</a> </li>
   <li> patch </li>
 </ul>
 
-If you want to force the test to skip and force the installation, use the "-n" option.
+Show the list of installed Perls using <b>list</b> command.
 
 <pre>
-perlbrew install -n perl-5.28.2
-</pre>
-
-Let's take a look at the list of available Perls. Use the perlbrew list command.
-
-<pre>
+# Show the list of installed Perls
 perlbrew list
 </pre>
 
-The available Perls are displayed as shown below. The one with the asterisk is the Perl you are currently using.
+The installed Perls are displayed.
 
 <pre>
-  perl-5.28.2
-*/usr/bin/perl (5.8.8)
+  perl-5.34.1
 </pre>
 
-Use perlbrew's switch command to switch Perl.
+And switch to the installed Perl.
 
 <pre>
-perlbrew switch perl-5.28.2
+perlbrew switch perl-5.34.1
 </pre>
 
-Let's actually check the version of Perl.
+And show the installed Perls again. 
+
+<pre>
+# Show the installed Perls
+perlbrew list
+</pre>
+
+"*" is added to the head of the current Perl.
+
+<pre>
+* perl-5.34.1
+</pre>
+
+And see the Perl version.
 
 <pre>
 perl -v
 </pre>
 
-The version is 5.28.2 as shown below.
+The version of current Perl is displayed.
 
 <pre>
-This is perl 5, version 16, subversion 3 (v5.28.2) built for i686-linux
+This is perl 5, version 34, subversion 1 (v5.34.1) built for x86_64-linux
 </pre>
 
-<h3>Install cpanm</h3>
+<h3>Installation of cpanm</h3>
 
-Let's also install <a href="/blog/20101027127859.html">cpanm</a>, which is convenient for installing modules.
+<a href="/blog/20101027127859.html">cpanm</a> can be installed using <b>install-cpanm</b> command.
+
 <pre>
 perlbrew install-cpanm
 </pre>
 
-Now you can install the module with the following command.
+And install a module.
 
 <pre>
 cpanm JSON
 </pre>
 
-The module will be installed in the following directories.
+Modules are installed on the following directory in my case.
 
 <pre>
-/home/kimoto/perl5/perlbrew/perls/perl-5.28.2/lib/site_perl/5.28.2/
+/home/kimoto/perl5/perlbrew/perls/perl-5.34.1/lib/site_perl/5.34.1/
 </pre>
 
-<h3>Revert to original Perl</h3>
+<h3>Returning back to System Perl</h3>
 
-To revert to the original Perl:
+If you want to returning back to system Perl, use <b>off</b> command.
 
 <pre>
 perlbrew off
 </pre>
+
+<!--
 
 <h3>How to use the version of Perl specified by perlbrew with crontab</h3>
 
@@ -179,3 +213,5 @@ As you can see, this method solidifies the PATH, so crontab is not portable at a
 But I think this method is the best. The reason is that it is difficult to make it portable because there is a limitation that environment variable cannot be expanded in crontab. Portability increases the amount of description, requires additional scripts, and complicates management.
 
 Also, no matter how hard you try, crontab usually has some differences depending on the environment, so even if you keep portability, there may not be much merit.
+
+-->
