@@ -10,35 +10,32 @@
     here
   </li>
 </ol>
-<h2>plenv - Install Perl in your environment</h2>
+<h2>plenv - Installation of Perl on user directories.</h2>
 
+<a href="https://github.com/tokuhirom/plenv">plenv</a> is a command line tool to intall Perl on user directries. You can install any version of Perl on your user directries and use it.
 
+<h3>Installation of plenv</h3>
 
-You can use a tool called plenv to install Perl in your environment. This is useful if you don't want to use the system standard Perl or if you want to use a newer version of Perl. You can also use plenv to switch between multiple versions of Perl.
-
-<h3>Install plenv</h3>
-
-Let's install plenv. As a prerequisite, please note that git must be installed to install plenv.
-
-Execute the following command.
+Execute the following command to install plenv.
 
 <pre>
-git clone git: //github.com/tokuhirom/plenv.git ~/.plenv
-git clone git: //github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/</pre>
+git clone https://github.com/tokuhirom/plenv.git ~/.plenv
+git clone https://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/
+</pre>
 
 Next, let's pass the path of plenv. Add the configuration file for bash provided by plenv to ".bash_profile" (for bash).
 
 Execute the following command.
 
 <pre>
-echo'export PATH = "$HOME/.plenv/bin: $PATH"' >> ~/.bash_profile
-echo'eval "$(plenv init-)"'>> ~/.bash_profile
+echo 'export PATH="$HOME/.plenv/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(plenv init -)"' >> ~/.bash_profile
 exec $SHELL -l
 </pre>
 
-<h3>Installing Perl in the user environment</h3>
+<h3>Installtion of Perl using plenv</h3>
 
-Let's take a look at the list of available Perls.
+You can check the available Perls using <b>install</b> command and <b>-l</b> option.
 
 <pre>
 plenv install -l
@@ -48,92 +45,106 @@ If plenv is installed successfully, you will see a list of Perls you can install
 
 <pre>
 Available versions: Available versions:
- 5.29.1
- 5.29.0
- 5.28.0
- 5.28.0-RC4
- 5.28.0-RC3
- 5.28.0-RC2
- 5.28.0-RC1
- ...
+ 5.35.10
+ 5.35.9
+ 5.35.8
+ 5.35.7
+ 5.35.6
+ 5.35.5
+ 5.35.4
+ 5.35.3
+ 5.35.2
+ 5.35.1
+ 5.35.0
+ 5.34.1
+  ...
 </pre>
 
-If you get an error such as 599 Internal Exception, try to fix it based on the following article.
+Install Perl in your environment. Let's install Perl of 5.34.1. It will take some time, so wait(about 40 minutes).
+
+<pre>
+plenv install 5.34.1
+</pre>
+
+If the installation of Perl fails, check the following commands are installled. These commands are needed to install Perl.
 
 <ul>
-  <li>
-    <a href="https://qiita.com/DQNEO/items/890b99134be0ad81d174">[Remedy</a> 599 Internal Exception, https://fastapi.metacpan.org/v1/release/_search]
-  </li>
-  <li>
-    <a href="https://github.com/miyagawa/HTTP-Tinyish/issues/14">want to check Mozilla::CA</a>
-  </li>
+  <li> make </li>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20201216103956.html">gcc</a> </li>
+  <li> patch </li>
 </ul>
 
-If all else fails, use <a href="/blog/20110220130464.html">perlbrew</a>.
-
-Install Perl in your environment. Let's install Perl of 5.20.3. It will take some time, so wait(about 40 minutes).
+Show the list of installed Perls using <b>versions</b> command.
 
 <pre>
-plenv install 5.20.3
-</pre>
-
-Let's display a list of available Perls.
-
-<pre>
+# Show the list of installed Perls
 plenv versions
 </pre>
 
 When Perl is available
 
-The available Perls are displayed as shown below. The one with the asterisk is the Perl you are currently using.
+The installed Perls are displayed.
 
 <pre>
-* system(set by /home/kimoto2/.plenv/version)
-  5.20.3
+* system(set by /home/kimoto/.plenv/version)
+  5.34.1
 </pre>
 
-Use plenv's global command to switch between Perls.
+And switch to the installed Perl using the <b>global</b> command.
 
 <pre>
-plenv global 5.20.3
+plenv global 5.34.1
 </pre>
 
-As an advantage of plenv, you can also switch Perl for each directory by using <a href="https://papix.hatenablog.com/entry/2018/03/10/160838">local command</a>.
+And show the installed Perls again. 
 
-Let's actually check the version of Perl.
+<pre>
+# Show the list of installed Perls
+plenv versions
+</pre>
+
+"*" is added to the head of the current Perl.
+
+<pre>
+  system(set by /home/kimoto/.plenv/version)
+* 5.34.1
+</pre>
+
+And see the Perl version.
 
 <pre>
 perl -v
 </pre>
 
-The version is 5.20.3 as shown below.
+The version of current Perl is displayed.
 
 <pre>
-This is perl 5, version 20, subversion 3 (v5.20.3) built for x86_64-linux
-(with 1 registered patch, see perl -V for more detail)
+This is perl 5, version 34, subversion 1 (v5.34.1)  built for x86_64-linux
 </pre>
 
-<h3>Install cpanm</h3>
+<h3>Installation of cpanm</h3>
 
-Let's also install <a href="/blog/20101027127859.html">cpanm</a>, which is convenient for installing modules.
+<a href="/blog/20101027127859.html">cpanm</a> can be installed using <b>install-cpanm</b> command.
 
 <pre>
 plenv install-cpanm
 </pre>
 
-Now you can install the module with the following command.
+And install a module.
 
 <pre>
 cpanm JSON
 </pre>
 
-<h3>Revert to original Perl</h3>
+<h3>Returning back to System Perl</h3>
 
-To revert to the original Perl:
+If you want to returning back to system Perl, switch to <b>system</b>.
 
 <pre>
 plenv global system
 </pre>
+
+<!--
 
 <h3>How to use Perl installed with plenv with crontab</h3>
 
@@ -184,3 +195,5 @@ As you can see, this method is completely non-portable to crontab. The user name
 But I think this method is the best. The reason is that it is difficult to make it portable because there is a limitation that environment variable cannot be expanded in crontab. Portability increases the amount of description, requires additional scripts, and complicates management.
 
 Also, no matter how hard you try, crontab usually has some differences depending on the environment, so even if you keep portability, there may not be much merit.
+
+-->
