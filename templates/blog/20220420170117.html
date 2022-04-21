@@ -1,4 +1,4 @@
-<h3>PowerShell(pwsh) Tutorail for Perl</h3>
+<h2>PowerShell(pwsh) Tutorail for Perl</h2>
 
 <ol class = "bread" itemscope itemtype = "http://schema.org/BreadcrumbList">  <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">    <a itemprop="item" href="/">        <span itemprop = "name">Perl </span></a>
     <meta itemprop = "position" content = "1" />
@@ -100,12 +100,12 @@ Hello World
 
 Intorduce offten used commands of PowerShell/pwsh.
 
-<h4>dir</h4>
+<h4>ls</h4>
 
-The "dir" command displays the list of files.
+The "ls" command displays the list of files.
 
 <pre>
-dir
+ls
 </pre>
 
 <h4>cd</h4>
@@ -127,8 +127,8 @@ cd ..
 You can change drives using "c:" or "d:".
 
 <pre>
-c:
-d:
+Set-Location -Path c:
+Set-Location -Path d:
 </pre>
 
 <h4>Seeing Command Histories</h4>
@@ -140,18 +140,28 @@ You can see command histories using "↑" and "↓" keys.
 ↓
 </pre>
 
-<h4>Getting Environment Variables</h4>
+<h3>Show Environment Variables</h3>
 
-You can get and show a environment variable as the following.
+Show environment variables.
 
 <pre>
-echo %PATH%
+ls env:
 </pre>
+
+<h4>Getting Environment Variables</h4>
+
+You can get and show an environment variable as the following.
+
+<pre>
+echo $env:PATH
+</pre>
+
+$env:MYENV = "This is my env."
 
 <h4>Setting Environment Variable</h4>
 
-You can set a environment variable as the following.
+You can set an environment variable as the following.
 
 <pre>
-SET DATE=20080604
+$env:DATE=20080604
 </pre>
