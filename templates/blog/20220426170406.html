@@ -1,0 +1,33 @@
+<h2>Installing Strawberry Perl using Chocolatey</h2>
+
+If you use <a href="https://docs.chocolatey.org/en-us/">Chocolatey</a>, you can install <a href="/blog/20180808153368.html">Strawberry Perl</a> from <a href="https://en.wikipedia.org/wiki/Command-line_interface">CLI</a>.
+
+<h3>Installing Chocolatey</h3>
+
+Let's install Chocolatey. Chocolatey is a CLI tool to manage applications on Windows.
+
+See also official <a href="https://docs.chocolatey.org/en-us/choco/setup">SETUP / INSTALL of Chocolatey</a>.
+
+<h4>Command Prompt</h4>
+
+Install Chocolatey using <a href="/blog/20080603121251.html">Command Prompt</a>.
+
+<pre>
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+</pre>
+
+<h4>PowerShell</h4>
+
+Install Chocolatey using <a href="/blog/20220420170117.html">PowerShell</a>.
+
+<pre>
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+</pre>
+
+<h3>Installing Strawberry Perl using Chocolatey</h3>
+
+Install Strawberry Perl using Chocolatey.
+
+<pre>
+choco install strawberryperl
+</pre>
