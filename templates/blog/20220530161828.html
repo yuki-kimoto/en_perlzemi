@@ -1,0 +1,239 @@
+<h2>Perl 5.36 is released - warnings enabled, subroutine signatures, try-catch-finally statements, Unicode 14 support</h2>
+
+Perl 5.36 was released on May 28, 2022. Enabling warnings, subroutine signatures, try-catch-finally statements, Unicode 14 support, and the functions to distinguish between booleans, strings, and numbers.
+
+<h3>Use Perl 5.36 Features</h3>
+
+To use all the features of Perl 5.36, put the version declaration "use v5.36" at the beginning of the source code.
+
+<pre>
+use v5.36;
+</pre>
+
+The version declaration should be written at the beginning of the source code. Otherwise, unexpected behavior may occur.
+
+<h3>Enable Warnings</h3>
+
+The <a href="/blog/20130916137930.html">warnings module</a> is enabled by the version declaration.
+
+<pre>
+use warnings;
+</pre>
+
+The <a href="/blog/20130912137895.html">strict module</a> is already enabled by the version declaration, so in Perl 5.36 the version declaration enables strict and warning.
+
+<pre>
+# From now
+use strict;
+use warnings;
+
+# Perl 5.36+
+use v5.36;
+</pre>
+
+If <a href="http://blogs.perl.org/users/psc/2022/05/what-happened-to-perl-7.html">Perl 7</a> is released in the future, you can omit the minor version:
+
+<pre>
+use v7;
+</pre>
+
+<h3>Subroutine signature is no longer experimental</h3>
+
+Subroutine signature is no longer experimental and is enabled by the version declaration. Subroutine signature is the feature to write arguments after a subroutine name.
+
+<pre>
+use v5.36;
+
+sub add ($x, $y) {
+  return $x + $y;
+}
+</pre>
+
+You can write subroutines as follows.
+
+<pre>
+# From now
+sub add ($x, $y) {
+  my ($x, $y) = @_;
+  
+  $y = 3 unless defined $y;
+  
+  return $x + $y;
+}
+
+# v5.36
+sub add ($x, $y = 3) {
+  return $x + $y;
+}
+</pre>
+
+Note that a subroutine signature checkes the number of arguments. If there are few or many arguments given, an exception will be thrown.
+
+If you want to disable the number of arguments check, please write as follows.
+
+<pre>
+sub add ($x, $y, @) {
+  return $x + $y;
+}
+</pre>
+
+<h3>Experimental try-catch-finally Statement</h3>
+
+You can use experimental try-catch-finally statement.
+
+<pre>
+use feature'try';
+
+try {
+  
+}
+catch ($e) {
+  
+}
+finally {
+  
+}
+</pre>
+
+<h3>"-g" Command Line Flag</h3>
+
+An option "-g" is added to the perl command. This option reads a whole file .
+
+<pre>
+perl -n -g -E'if (m | <h1> (. *?)</h1> |) {say $1;}' a.html
+</pre>
+
+Previously, Perl do the same thing using the option "-0777", but this feature is used so often, an easy way is added.
+
+<pre>
+perl -n -0777 -E'if (m | <h1> (. *?)</h1> |) {say $1;}' a.html
+</pre>
+
+<h3>Unicode 14.0 Support</h3>
+
+<a href="https://gigazine.net/news/20210916-unicode-14-emoji/">Unicode 14.0</a> is now supported.
+
+<h3>builtin Namespace</h3>
+
+Experimentally "builtin" namespace is added for standard functions. Perl can add functions without worrying about name clashes.
+
+<pre>
+my $true = builtin::true;
+
+use builtin 'true';
+
+my $true = true;
+</pre>
+
+All functions in the builtin namespace are currently experimental.
+
+<h3>true Function, false Function, and is_bool Function</h3>
+
+"builtin::true" and "builtin::false" functions are added to represent boolean values.
+
+<pre>
+# True
+builtin::true;
+
+# False
+builtin::false;
+</pre>
+
+"builtin::true" is equal to "!!1" and builtin::false is equal to "!!0".
+
+You can check the boolean value with "builtin::is_bool" function.
+
+<pre>
+if (builtin::is_bool $bool) {
+  
+}
+</pre>
+
+This is useful when generating JSON.
+
+<h3> You can distinguish between numbers and strings</h3>
+
+In Perl 5.36, you can use the "builtin::created_as_number" and "builtin::created_as_string" functions to distinguish between numbers and strings. It is supposed to be used in serializers such as JSON.
+
+<pre>
+if (builtin::created_as_number $data) {
+  
+}
+
+if (builtin::created_as_string $data) {
+  
+}
+</pre>
+
+The combination with "builtin::is_bool" allows correct JSON serialization and deserialization using only the Perl core functions.
+
+<pre>
+if (builtin::is_bool $data) {
+  
+}
+eleif (builtin::created_as_number $data) {
+  
+}
+elsif (builtin::created_as_string $data) {
+  
+}
+</pre>
+
+<h3>builtin::trim Function</h3>
+
+A builtin::trim function is added. You can remove the leading and trailing spaces.
+
+<pre>
+my $trim = builtin::trim $string;
+</pre>
+
+<h3> Iterating multiple elements</h3>
+
+The "for" statement supports the iteratating multiple elements. This feature is experimental.
+
+<pre>
+for my ($key, $value) (%hash) {...}
+for my ($left, $right, $grinding) (@moties) {...}
+</pre>
+
+<h3>How to install Perl 5.36 quickly?</H3>
+
+<a href="/blog/20110220130464.html"> perlbrew</a> or <a href="/blog/20180816153437.html"> plenv</a> is easy ways to install Perl 5.36.
+
+<b> perlbrew</b>
+
+<pre>
+perlbrew install perl-5.36.0
+</pre>
+
+<b> plenv</b>
+
+<pre>
+plenv install 5.36.0
+</pre>
+
+<h3> See all changes</h3>
+
+See perldelta to see all the changes.
+
+<a href="https://metacpan-org.translate.goog/release/RJBS/perl-5.36.0/view/pod/perldelta.pod?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp"> perldelta</a>
+
+You can past release information.
+
+<a href="/blog/20160225145640.html">Perl Release Information</a>
+
+<h3>My Comments</h3>
+
+Congratulations on the release of Perl 5.36! Thank you to all the developers.
+
+"use warnings" is enabled by the version declaration. I want to use the version declaration more.
+
+I want to use "for" syntax that iterates multiple elements.
+
+The "-g" option makes one-liner easier.
+
+"trim" seems to be used frequently.
+
+It is very good to be able to distinguish between strings, numbers and booleans.
+
+Checking the number of arguments in a subroutine signature is a bit worrisome when used in a production environment for products that require high reliability, as it raises unexpected run-time exceptions.
